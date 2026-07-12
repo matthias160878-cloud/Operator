@@ -9,3 +9,11 @@ This repository currently contains no source code — only a `README.md` placeho
 When code is added to this repository, update this file with:
 - Build/lint/test commands (including how to run a single test)
 - High-level architecture and structure notes
+
+## Claude Code skills
+
+If this project ever integrates skills from an external "Jarvis" skills collection, symlink them into `.claude/skills` rather than copying the files, so updates to the source collection are picked up automatically:
+
+```
+ln -s /path/to/jarvis/skills /path/to/this-repo/.claude/skills
+```

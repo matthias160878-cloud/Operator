@@ -1,18 +1,18 @@
 const FEATURES = [
   {
-    title: "Adaptive by design",
+    title: "Passt sich an",
     description:
-      "Darwin learns the shape of your work and adjusts its behavior over time, instead of forcing you into a fixed workflow.",
+      "Darwin lernt, wie du arbeitest, und passt sich mit der Zeit an — statt dich in einen starren Ablauf zu zwingen.",
   },
   {
-    title: "Built for real tasks",
+    title: "Für echte Aufgaben gemacht",
     description:
-      "Plan, execute, and follow through on multi-step work — not just single-shot answers.",
+      "Planen, ausführen und Aufgaben mit mehreren Schritten zu Ende bringen — nicht nur einzelne Antworten.",
   },
   {
-    title: "Transparent by default",
+    title: "Standardmäßig transparent",
     description:
-      "Every action is visible and reviewable, so you always know what changed and why.",
+      "Jede Aktion ist sichtbar und nachvollziehbar, damit du immer weißt, was sich geändert hat und warum.",
   },
 ];
 
@@ -25,10 +25,10 @@ export default function Home() {
             Darwin AI Assistant
           </span>
           <h1 className="max-w-xl text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl dark:text-zinc-50">
-            An assistant that evolves with how you work.
+            Ein Assistent, der sich mit deiner Arbeit weiterentwickelt.
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Darwin adapts to your workflow instead of the other way around.
+            Darwin passt sich deinem Workflow an — nicht umgekehrt.
           </p>
         </div>
 

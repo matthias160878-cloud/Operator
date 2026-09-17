@@ -1,21 +1,21 @@
 # Operator — Darwin AI Assistant
 
-A [Next.js](https://nextjs.org) (App Router, TypeScript, Tailwind CSS) starting point for the Darwin AI Assistant web app.
+Ein [Next.js](https://nextjs.org)-Projekt (App Router, TypeScript, Tailwind CSS) als Ausgangspunkt für die Darwin-AI-Assistant-Webanwendung.
 
-## Getting Started
+## Loslegen
 
-Install dependencies and run the dev server:
+Abhängigkeiten installieren und den Entwicklungsserver starten:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the result. Edit `src/app/page.tsx` to change the landing page; it auto-updates as you edit.
+Öffne [http://localhost:3000](http://localhost:3000), um das Ergebnis zu sehen. Bearbeite `src/app/page.tsx`, um die Startseite zu ändern; die Seite aktualisiert sich automatisch.
 
-## Scripts
+## Skripte
 
-- `npm run dev` — start the development server
-- `npm run build` — production build
-- `npm run start` — run the production build
-- `npm run lint` — lint with ESLint
+- `npm run dev` — Entwicklungsserver starten
+- `npm run build` — Produktions-Build erstellen
+- `npm run start` — Produktions-Build ausführen
+- `npm run lint` — mit ESLint prüfen

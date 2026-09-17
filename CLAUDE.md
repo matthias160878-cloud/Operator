@@ -1,32 +1,32 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Diese Datei gibt Claude Code (claude.ai/code) Hinweise für die Arbeit mit dem Code in diesem Repository.
 
-## Repository status
+## Repository-Status
 
-This is a Next.js (App Router) application, bootstrapped with `create-next-app`, using TypeScript and Tailwind CSS v4. It is the starting point for the Darwin AI Assistant web app.
+Dies ist eine Next.js-Anwendung (App Router), erstellt mit `create-next-app`, unter Verwendung von TypeScript und Tailwind CSS v4. Sie ist der Ausgangspunkt für die Darwin-AI-Assistant-Webanwendung.
 
-## Commands
+## Befehle
 
-- `npm install` — install dependencies
-- `npm run dev` — start the development server (http://localhost:3000)
-- `npm run build` — production build
-- `npm run start` — run the production build
-- `npm run lint` — lint with ESLint (flat config, `eslint.config.mjs`)
+- `npm install` — Abhängigkeiten installieren
+- `npm run dev` — Entwicklungsserver starten (http://localhost:3000)
+- `npm run build` — Produktions-Build erstellen
+- `npm run start` — Produktions-Build ausführen
+- `npm run lint` — mit ESLint prüfen (Flat Config, `eslint.config.mjs`)
 
-There is no test runner configured yet. When tests are added, document how to run the full suite and a single test here.
+Es ist noch kein Test-Runner eingerichtet. Sobald Tests hinzugefügt werden, hier dokumentieren, wie man die gesamte Suite und einen einzelnen Test ausführt.
 
-## Architecture
+## Architektur
 
-- `src/app/` — App Router routes. `layout.tsx` defines the root HTML shell and fonts (Geist Sans/Mono via `next/font/google`); `page.tsx` is the landing page.
-- `src/app/globals.css` — Tailwind v4 import and CSS custom properties (light/dark theme via `prefers-color-scheme`).
-- `public/` — static assets served from `/`.
-- Path alias `@/*` maps to `src/*` (see `tsconfig.json`).
+- `src/app/` — App-Router-Routen. `layout.tsx` definiert das Root-HTML-Gerüst und die Schriftarten (Geist Sans/Mono über `next/font/google`); `page.tsx` ist die Startseite.
+- `src/app/globals.css` — Tailwind-v4-Import und CSS-Custom-Properties (Hell-/Dunkelmodus über `prefers-color-scheme`).
+- `public/` — statische Assets, die unter `/` ausgeliefert werden.
+- Pfad-Alias `@/*` verweist auf `src/*` (siehe `tsconfig.json`).
 
-## Claude Code skills
+## Claude Code Skills
 
-If this project ever integrates skills from an external "Jarvis" skills collection, symlink them into `.claude/skills` rather than copying the files, so updates to the source collection are picked up automatically:
+Falls dieses Projekt jemals Skills aus einer externen "Jarvis"-Skill-Sammlung einbindet, diese per Symlink nach `.claude/skills` verlinken statt die Dateien zu kopieren, damit Updates der Quellsammlung automatisch übernommen werden:
 
 ```
-ln -s /path/to/jarvis/skills /path/to/this-repo/.claude/skills
+ln -s /pfad/zu/jarvis/skills /pfad/zu/diesem-repo/.claude/skills
 ```

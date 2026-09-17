@@ -15,13 +15,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Darwin AI Assistant",
   description:
-    "Darwin AI Assistant — an AI assistant that adapts to how you work.",
+    "Darwin AI Assistant — ein KI-Assistent, der sich an deine Arbeitsweise anpasst.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="de"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>

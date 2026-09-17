@@ -12,8 +12,9 @@ Darwin AI Assistant), aber eine **eigene, unabhängige Implementierung** und
 - `src/heim_assistant/tools.py` - lokale Werkzeuge: Uhrzeit abfragen,
   Dateien in einem sandboxed Arbeitsverzeichnis auflisten/lesen
 - `src/heim_assistant/__main__.py` - Kommandozeilen-Chat (Textmodus)
-- `src/heim_assistant/voice/` - Sprach-Erweiterung: Spracherkennung
-  (faster-whisper) und Sprachausgabe (sherpa-onnx), siehe unten
+- `src/heim_assistant/voice/` - Sprach-Erweiterung: Wake-Word-Erkennung
+  (openWakeWord), Spracherkennung (faster-whisper) und Sprachausgabe
+  (sherpa-onnx), siehe unten
 
 ## Textmodus einrichten
 
@@ -32,8 +33,9 @@ python -m heim_assistant
 
 ## Sprach-Erweiterung einrichten
 
-Push-to-Talk-Sprachmodus: Enter drücken, sprechen, Antwort hören. Kein
-Wake-Word (siehe "Was bewusst fehlt" unten).
+Sprachmodus mit Wake-Word: "Hey Jarvis" sagen, dann sprechen, Antwort hören.
+Ohne Wake-Word-Modell (oder mit `WAKE_WORD_ENABLED=false`) fällt der Modus
+automatisch auf Push-to-Talk zurück (Enter drücken, sprechen).
 
 ### 1. System-Abhängigkeiten
 
@@ -53,16 +55,32 @@ brew install portaudio
 pip install -e ".[dev,voice]"
 ```
 
-Installiert `faster-whisper`, `sherpa-onnx`, `sounddevice`, `numpy`.
+Installiert `faster-whisper`, `sherpa-onnx`, `sounddevice`, `numpy`,
+`openwakeword`.
 
-### 3. Spracherkennung (faster-whisper)
+### 3. Wake-Word (openWakeWord)
+
+Lädt beim ersten Start automatisch ein vortrainiertes Modell herunter
+(Internetverbindung nötig; eigener Download-Host, unabhängig von Hugging
+Face). Standard-Wake-Word ist `hey_jarvis` (weitere vortrainierte Modelle:
+`alexa`, `hey_mycroft`, `hey_rhasspy` - über `WAKE_WORD_MODEL` wählbar).
+
+Läuft bewusst mit `inference_framework="onnx"` statt dem openWakeWord-
+Standard `"tflite"`: Das vorkompilierte `tflite-runtime`-Wheel ist mit
+NumPy 2.x inkompatibel (`AttributeError: _ARRAY_API not found`).
+`onnxruntime` ist ohnehin schon über sherpa-onnx installiert.
+
+Kein Audio wird gespeichert - jeder 80-ms-Frame wird direkt nach der
+Vorhersage verworfen (siehe `voice/wakeword.py`).
+
+### 4. Spracherkennung (faster-whisper)
 
 Lädt das Modell beim ersten Start automatisch von Hugging Face herunter
 (Internetverbindung nötig). Modellgröße über `STT_MODEL_SIZE` wählbar
 (Standard: `small`, gut für CPU). Für bessere Genauigkeit z. B. `medium`,
 für schwache Rechner `base` oder `tiny`.
 
-### 4. Sprachausgabe (sherpa-onnx) - Modell herunterladen
+### 5. Sprachausgabe (sherpa-onnx) - Modell herunterladen
 
 sherpa-onnx bringt kein Sprachmodell mit. Ein deutsches VITS/Piper-Voice
 von der offiziellen Release-Seite herunterladen und entpacken:
@@ -80,20 +98,13 @@ SHERPA_ONNX_TTS_DATA_DIR=/pfad/zu/espeak-ng-data
 SHERPA_ONNX_TTS_LEXICON=/pfad/zu/lexicon.txt
 ```
 
-### 5. Starten
+### 6. Starten
 
 ```bash
 python -m heim_assistant.voice
 # oder, nach `pip install -e .`:
 heim-assistant-voice
 ```
-
-## Was bewusst fehlt
-
-Wake-Word-Erkennung (Dauerlauschen auf ein Aktivierungswort) ist nicht
-enthalten - der Sprachmodus ist Push-to-Talk (Enter drücken, sprechen).
-Sie ließe sich mit [openWakeWord](https://github.com/dscripka/openWakeWord)
-ergänzen, indem eine Erkennung vor `voice/recorder.py:record()` gehängt wird.
 
 ## Tests
 
@@ -102,10 +113,11 @@ pytest
 ```
 
 Die Tests decken die Datei-Werkzeuge (inkl. Schutz vor Pfad-Ausbrüchen aus
-dem Arbeitsverzeichnis) und den Fehlerfall bei fehlendem TTS-Modell ab; sie
-brauchen keinen API-Schlüssel, kein heruntergeladenes Modell und kein
-Mikrofon. Chat-Loop und Sprachmodus selbst sind nicht Teil der
-automatisierten Tests (brauchen `ANTHROPIC_API_KEY` bzw. echte Hardware).
+dem Arbeitsverzeichnis), den Fehlerfall bei fehlendem TTS-Modell und die
+Audio-Konvertierung für die Wake-Word-Erkennung ab; sie brauchen keinen
+API-Schlüssel, kein heruntergeladenes Modell und kein Mikrofon. Chat-Loop
+und Sprachmodus selbst sind nicht Teil der automatisierten Tests (brauchen
+`ANTHROPIC_API_KEY` bzw. echte Hardware).
 
 ## Konfiguration
 
@@ -127,4 +139,7 @@ automatisierten Tests (brauchen `ANTHROPIC_API_KEY` bzw. echte Hardware).
 | `SHERPA_ONNX_TTS_LEXICON` | Pfad zur Lexikon-Datei (falls vorhanden) | leer |
 | `SHERPA_ONNX_TTS_DATA_DIR` | Pfad zu `espeak-ng-data` (falls vorhanden) | leer |
 | `ASSISTANT_MIC_SAMPLE_RATE` | Abtastrate der Mikrofonaufnahme | `16000` |
-| `ASSISTANT_RECORD_SECONDS` | Aufnahmedauer pro Push-to-Talk-Runde | `5` |
+| `ASSISTANT_RECORD_SECONDS` | Aufnahmedauer pro Aufnahme-Runde | `5` |
+| `WAKE_WORD_ENABLED` | Wake-Word statt Enter-Taste nutzen | `true` |
+| `WAKE_WORD_MODEL` | openWakeWord-Modellname (`hey_jarvis`, `alexa`, `hey_mycroft`, `hey_rhasspy`) | `hey_jarvis` |
+| `WAKE_WORD_THRESHOLD` | Erkennungsschwelle (0.0-1.0, höher = weniger Fehlauslöser) | `0.5` |

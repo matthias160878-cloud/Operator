@@ -22,6 +22,11 @@ class VoiceSettings:
     sample_rate: int
     record_seconds: float
 
+    # Wake-Word-Erkennung (openWakeWord)
+    wake_word_enabled: bool
+    wake_word_model: str
+    wake_word_threshold: float
+
     @classmethod
     def from_env(cls) -> "VoiceSettings":
         return cls(
@@ -35,4 +40,8 @@ class VoiceSettings:
             tts_data_dir=os.environ.get("SHERPA_ONNX_TTS_DATA_DIR", ""),
             sample_rate=int(os.environ.get("ASSISTANT_MIC_SAMPLE_RATE", "16000")),
             record_seconds=float(os.environ.get("ASSISTANT_RECORD_SECONDS", "5")),
+            wake_word_enabled=os.environ.get("WAKE_WORD_ENABLED", "true").lower()
+            not in {"false", "0", "no"},
+            wake_word_model=os.environ.get("WAKE_WORD_MODEL", "hey_jarvis"),
+            wake_word_threshold=float(os.environ.get("WAKE_WORD_THRESHOLD", "0.5")),
         )

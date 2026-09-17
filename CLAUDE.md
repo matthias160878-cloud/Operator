@@ -4,11 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository status
 
-This repository currently contains no source code — only a `README.md` placeholder. There are no build, lint, or test commands, no dependency manifests, and no established architecture yet.
+This is a Next.js (App Router) application, bootstrapped with `create-next-app`, using TypeScript and Tailwind CSS v4. It is the starting point for the Darwin AI Assistant web app.
 
-When code is added to this repository, update this file with:
-- Build/lint/test commands (including how to run a single test)
-- High-level architecture and structure notes
+## Commands
+
+- `npm install` — install dependencies
+- `npm run dev` — start the development server (http://localhost:3000)
+- `npm run build` — production build
+- `npm run start` — run the production build
+- `npm run lint` — lint with ESLint (flat config, `eslint.config.mjs`)
+
+There is no test runner configured yet. When tests are added, document how to run the full suite and a single test here.
+
+## Architecture
+
+- `src/app/` — App Router routes. `layout.tsx` defines the root HTML shell and fonts (Geist Sans/Mono via `next/font/google`); `page.tsx` is the landing page.
+- `src/app/globals.css` — Tailwind v4 import and CSS custom properties (light/dark theme via `prefers-color-scheme`).
+- `public/` — static assets served from `/`.
+- Path alias `@/*` maps to `src/*` (see `tsconfig.json`).
 
 ## Claude Code skills
 

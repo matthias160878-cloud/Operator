@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+*.egg-info/
+
+# vom Next.js-.gitignore im Repo-Root ignoriertes .env* wieder freigeben
+!.env.example

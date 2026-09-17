@@ -4,7 +4,12 @@ Diese Datei gibt Claude Code (claude.ai/code) Hinweise für die Arbeit mit dem C
 
 ## Repository-Status
 
-Dies ist eine Next.js-Anwendung (App Router), erstellt mit `create-next-app`, unter Verwendung von TypeScript und Tailwind CSS v4. Sie ist der Ausgangspunkt für die Darwin-AI-Assistant-Webanwendung.
+Dieses Repository enthält zwei unabhängige Teilprojekte:
+
+- **`src/`** — Next.js-Anwendung (App Router), erstellt mit `create-next-app`, TypeScript und Tailwind CSS v4. Ausgangspunkt für die Darwin-AI-Assistant-Webanwendung.
+- **`assistant/`** — eigenständiges Python-Projekt für einen lokalen KI-Assistenten (Textmodus + optionale Sprach-Erweiterung mit faster-whisper/sherpa-onnx). Siehe `assistant/README.md` für Befehle, Architektur und Einrichtung — eigene, unabhängige Implementierung, keine Kopie eines bezahlten Produkts.
+
+Die folgenden Abschnitte beziehen sich auf das Next.js-Teilprojekt (`src/`).
 
 ## Befehle
 

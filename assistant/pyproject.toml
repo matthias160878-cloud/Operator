@@ -11,9 +11,16 @@ dependencies = [
 dev = [
     "pytest>=8",
 ]
+voice = [
+    "faster-whisper>=1.2",
+    "sherpa-onnx>=1.13",
+    "sounddevice>=0.5",
+    "numpy>=2",
+]
 
 [project.scripts]
 heim-assistant = "heim_assistant.__main__:main"
+heim-assistant-voice = "heim_assistant.voice.__main__:main"
 
 [build-system]
 requires = ["setuptools>=68"]

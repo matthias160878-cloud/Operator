@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Loader2, Rocket } from "lucide-react";
+import { PACKAGE_PRICE_DISPLAY } from "@/lib/pricing";
 
 export function BuyButton({ configured }: { configured: boolean }) {
   const [loading, setLoading] = useState(false);
@@ -34,8 +35,8 @@ export function BuyButton({ configured }: { configured: boolean }) {
       {error && <p className="text-sm text-danger">{error}</p>}
       {!configured && (
         <p className="text-xs text-warning">
-          Zahlung ist noch nicht konfiguriert — der Betreiber muss zuerst STRIPE_SECRET_KEY und
-          STRIPE_PRICE_ID hinterlegen.
+          Zahlung ist noch nicht konfiguriert — der Betreiber muss zuerst in Stripe ein Produkt
+          zu {PACKAGE_PRICE_DISPLAY} anlegen und STRIPE_SECRET_KEY / STRIPE_PRICE_ID hinterlegen.
         </p>
       )}
     </div>

@@ -80,6 +80,7 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
   const audio = item.mediaAssets.find((a) => a.type === "AUDIO");
   const subtitle = item.mediaAssets.find((a) => a.type === "SUBTITLE");
   const video = item.mediaAssets.find((a) => a.type === "VIDEO");
+  const repurposeOptions = Object.keys(PLATFORM_LABELS).filter((key) => key !== item.platform);
 
   return (
     <div className="space-y-5">
@@ -289,7 +290,22 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
       </div>
 
       <div className="card space-y-3 p-5">
-        <h3 className="text-sm font-semibold text-foreground">{t("detail.repurpose.heading")}</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="text-sm font-semibold text-foreground">{t("detail.repurpose.heading")}</h3>
+          <button
+            type="button"
+            onClick={() =>
+              setRepurposeTargets((prev) =>
+                prev.length === repurposeOptions.length ? [] : repurposeOptions
+              )
+            }
+            className="text-xs text-accent-2 hover:underline"
+          >
+            {repurposeTargets.length === repurposeOptions.length
+              ? t("detail.repurpose.clearAll")
+              : t("detail.repurpose.selectAll")}
+          </button>
+        </div>
         <p className="text-xs text-muted">{t("detail.repurpose.description")}</p>
         <div className="flex flex-wrap gap-2">
           {Object.entries(PLATFORM_LABELS)

@@ -78,7 +78,9 @@
     },
     "repurpose": {
       "heading": "Repurpose Content",
-      "description": "Erzeuge aus diesem Content-Item plattformgerechte Ableger für weitere Kanäle.",
+      "description": "Erzeuge aus diesem Content-Item plattformgerechte Ableger für weitere Kanäle. Mehr Kanäle = mehr Chancen, dass Leute das Video sehen.",
+      "selectAll": "Alle Plattformen auswählen",
+      "clearAll": "Auswahl aufheben",
       "generateButton": "{count} Ableger erzeugen"
     }
   }

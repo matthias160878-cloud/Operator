@@ -1,9 +1,16 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import { isStripeConfigured, getConfiguredPrice } from "@/lib/stripe";
+import { PACKAGE_NAME, PACKAGE_PRICE_DISPLAY } from "@/lib/pricing";
 import { BuyButton } from "@/components/buy/BuyButton";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: `${PACKAGE_NAME} — SECRET 58`,
+  description: `Ein Paket, ein Preis: voller Zugriff auf SECRET 58 für ${PACKAGE_PRICE_DISPLAY} einmalig.`,
+};
 
 const FEATURES = [
   "Content Brain — eine Idee, alle Plattformen",
@@ -16,7 +23,12 @@ const FEATURES = [
 
 export default async function BuyPage() {
   const configured = isStripeConfigured();
-  const price = await getConfiguredPrice();
+  const configuredPrice = await getConfiguredPrice();
+  // Ein Paket, ein Preis, kein Staffelsystem: solange Stripe noch nicht
+  // eingerichtet ist, zeigen wir den empfohlenen Preis als Ankündigung —
+  // der Kaufen-Button bleibt trotzdem ehrlich deaktiviert, bis Stripe
+  // wirklich konfiguriert ist.
+  const priceDisplay = configuredPrice?.formatted ?? PACKAGE_PRICE_DISPLAY;
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-grid px-4 py-12">
@@ -30,10 +42,10 @@ export default async function BuyPage() {
 
         <div className="relative">
           <div className="text-xs uppercase tracking-[0.25em] text-accent-2">AI Social Command Center</div>
-          <h1 className="mt-2 text-2xl font-semibold text-foreground">SECRET 58</h1>
+          <h1 className="mt-2 text-2xl font-semibold text-foreground">SECRET 58 — {PACKAGE_NAME}</h1>
           <p className="mt-2 text-sm text-muted">
-            Eine Idee. Mehrere Plattformen. Maximale Reichweite. Schalte den vollständigen
-            Zugriff frei.
+            Eine Idee. Mehrere Plattformen. Maximale Reichweite. Ein einziges Komplettpaket —
+            kein Abo, keine Staffelung, voller Zugriff auf die gesamte Anwendung.
           </p>
 
           <ul className="mx-auto mt-6 max-w-sm space-y-2 text-left text-sm text-foreground">
@@ -45,11 +57,15 @@ export default async function BuyPage() {
             ))}
           </ul>
 
-          {price && (
-            <div className="mt-6 text-3xl font-semibold text-foreground">
-              {price.formatted}
-              <span className="ml-1 text-sm font-normal text-muted">einmalig</span>
-            </div>
+          <div className="mt-6 text-3xl font-semibold text-foreground">
+            {priceDisplay}
+            <span className="ml-1 text-sm font-normal text-muted">einmalig</span>
+          </div>
+          {!configuredPrice && (
+            <p className="mt-1 text-xs text-muted">
+              Empfohlener Preis — wird verbindlich, sobald Stripe mit einem passenden Preis
+              konfiguriert ist.
+            </p>
           )}
 
           <div className="mt-6 flex justify-center">

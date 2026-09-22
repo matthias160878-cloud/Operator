@@ -138,13 +138,22 @@ oder hinter einer Bezahlschranke: erst nach echtem Stripe-Kauf bekommt ein
 Kunde Zugriff, der Betreiber selbst hat über einen eigenen Schlüssel immer
 Zugriff.
 
+**Ein Paket, ein Preis.** SECRET 58 ("Social Media KI") wird als einzelnes
+Komplettpaket mit Vollzugriff verkauft — kein Kleines/Großes Paket, keine
+Staffelung, kein Abo. Empfohlener Preis: **497 € einmalig**
+(hinterlegt in [`src/lib/pricing.ts`](src/lib/pricing.ts), dort auch
+anpassbar). `/buy` zeigt diesen Preis bereits als Ankündigung an, auch
+bevor Stripe konfiguriert ist — verbindlich (inkl. funktionierendem
+Kaufen-Button) wird er erst mit einem passenden Stripe-Preis.
+
 **Wo trage ich den API-Schlüssel ein?** Genau wie bei jeder anderen
 Integration hier (ElevenLabs, Anthropic, …): in `.env` für die lokale
 Entwicklung, und im Render-Dashboard unter **Environment** für die Live-Seite
 (oder analog beim jeweils genutzten Hoster).
 
 1. **Stripe-Account** auf [stripe.com](https://stripe.com/) anlegen, im
-   Dashboard ein Produkt "SECRET 58" mit einem einmaligen Preis anlegen.
+   Dashboard ein Produkt "Social Media KI" mit einem einmaligen Preis von
+   497 € (oder dem angepassten Wert aus `src/lib/pricing.ts`) anlegen.
 2. In `.env` (bzw. Render-Environment) setzen:
    - `STRIPE_SECRET_KEY` — der geheime API-Key aus dem Stripe-Dashboard
      (Entwickler → API-Schlüssel).

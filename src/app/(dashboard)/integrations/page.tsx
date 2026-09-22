@@ -15,7 +15,8 @@ export default async function IntegrationsPage() {
     VIDEO: t("categories.VIDEO"),
     TREND: t("categories.TREND"),
   };
-  const statuses = await getAllIntegrationStatuses();
+  const ti = await getTranslations("common.integrationStatus");
+  const statuses = await getAllIntegrationStatuses(ti);
   const byCategory = new Map<IntegrationCategory, typeof statuses>();
   for (const s of statuses) {
     const list = byCategory.get(s.category) ?? [];

@@ -62,6 +62,7 @@ function currentWeekRange(): { start: Date; end: Date; days: Date[] } {
 export default async function DashboardPage() {
   const t = await getTranslations("dashboard");
   const tc = await getTranslations("common");
+  const ti = await getTranslations("common.integrationStatus");
   const weekdayLabels = t.raw("weekdayLabels") as string[];
   const workspace = await getDefaultWorkspace();
   const workspaceId = workspace.id;
@@ -102,7 +103,7 @@ export default async function DashboardPage() {
       take: 5,
     }),
     prisma.platformAccount.findMany({ where: { workspaceId } }),
-    getAllIntegrationStatuses(),
+    getAllIntegrationStatuses(ti),
     getBestPerformingContent(workspaceId, 3),
     prisma.setting.findUnique({
       where: { workspaceId_key: { workspaceId, key: "demoDataSeeded" } },

@@ -13,6 +13,7 @@ export const dynamic = "force-dynamic";
 
 export default async function RevenuePage() {
   const t = await getTranslations("revenue");
+  const ti = await getTranslations("common.integrationStatus");
   const workspaceId = await getCurrentWorkspaceId();
   const TYPE_LABELS: Record<string, string> = {
     AD_REVENUE: t("types.AD_REVENUE"),
@@ -30,12 +31,15 @@ export default async function RevenuePage() {
     }),
     prisma.campaign.findMany({ where: { workspaceId }, orderBy: { createdAt: "desc" } }),
     getRevenueSummary(workspaceId),
-    checkIntegration({
-      key: "youtube-revenue",
-      name: "YouTube Analytics (Umsatz)",
-      category: "PLATFORM",
-      requiredEnv: ["YOUTUBE_CLIENT_ID", "YOUTUBE_CLIENT_SECRET"],
-    }),
+    checkIntegration(
+      {
+        key: "youtube-revenue",
+        name: "YouTube Analytics (Umsatz)",
+        category: "PLATFORM",
+        requiredEnv: ["YOUTUBE_CLIENT_ID", "YOUTUBE_CLIENT_SECRET"],
+      },
+      ti
+    ),
   ]);
 
   const primaryTotal = summary.totals[0];

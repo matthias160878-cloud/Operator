@@ -1,4 +1,7 @@
+"use client";
+
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 
 const STATUS_STYLES: Record<string, string> = {
   CONNECTED: "bg-success/15 text-success border-success/30",
@@ -21,28 +24,10 @@ const STATUS_STYLES: Record<string, string> = {
   PENDING: "bg-warning/15 text-warning border-warning/30",
 };
 
-const STATUS_LABELS: Record<string, string> = {
-  CONNECTED: "Verbunden",
-  ACTIVE: "Aktiv",
-  COMPLETED: "Abgeschlossen",
-  RUNNING: "Läuft",
-  SUCCESS: "Erfolgreich",
-  PUBLISHED: "Veröffentlicht",
-  APPROVED: "Freigegeben",
-  SCHEDULED: "Geplant",
-  WAITING: "Wartet",
-  IN_REVIEW: "In Prüfung",
-  NOT_CONFIGURED: "Nicht konfiguriert",
-  IDLE: "Bereit",
-  DRAFT: "Entwurf",
-  ARCHIVED: "Archiviert",
-  ERROR: "Fehler",
-  REJECTED: "Abgelehnt",
-  RECEIVED: "Erhalten",
-  PENDING: "Ausstehend",
-};
-
 export function StatusBadge({ status }: { status: string }) {
+  const t = useTranslations("common.statusBadge");
+  const hasLabel = t.has(status);
+
   return (
     <span
       className={clsx(
@@ -50,7 +35,7 @@ export function StatusBadge({ status }: { status: string }) {
         STATUS_STYLES[status] ?? "bg-muted/15 text-muted border-border"
       )}
     >
-      {STATUS_LABELS[status] ?? status}
+      {hasLabel ? t(status) : status}
     </span>
   );
 }

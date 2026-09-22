@@ -18,6 +18,7 @@ const PLATFORM_INTEGRATION_KEY: Record<string, string> = {
 
 export default async function SocialMediaPage() {
   const t = await getTranslations("socialMedia");
+  const ti = await getTranslations("common.integrationStatus");
   const locale = await getLocale();
   const workspaceId = await getCurrentWorkspaceId();
   const accounts = await prisma.platformAccount.findMany({
@@ -27,7 +28,7 @@ export default async function SocialMediaPage() {
 
   const credentialStatuses = await Promise.all(
     INTEGRATIONS.filter((i) => Object.values(PLATFORM_INTEGRATION_KEY).includes(i.key)).map(
-      (i) => checkIntegration(i)
+      (i) => checkIntegration(i, ti)
     )
   );
   const credentialByKey = new Map(credentialStatuses.map((s) => [s.key, s]));

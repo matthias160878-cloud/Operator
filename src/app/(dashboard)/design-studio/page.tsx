@@ -9,6 +9,7 @@ export const dynamic = "force-dynamic";
 
 export default async function DesignStudioPage() {
   const t = await getTranslations("designStudio");
+  const ti = await getTranslations("common.integrationStatus");
   const workspaceId = await getCurrentWorkspaceId();
   const [images, canva] = await Promise.all([
     prisma.mediaAsset.findMany({
@@ -16,7 +17,7 @@ export default async function DesignStudioPage() {
       orderBy: { createdAt: "desc" },
       take: 12,
     }),
-    checkIntegration(INTEGRATIONS.find((i) => i.key === "canva")!),
+    checkIntegration(INTEGRATIONS.find((i) => i.key === "canva")!, ti),
   ]);
 
   return (

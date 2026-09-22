@@ -18,7 +18,7 @@ export async function GET(request: Request) {
 
     const license = await activateLicenseFromSession(session);
 
-    const response = NextResponse.redirect(new URL("/", request.url));
+    const response = NextResponse.redirect(new URL("/schulung?willkommen=1", request.url));
     response.cookies.set(ACCESS_COOKIE_NAME, license.unlockToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

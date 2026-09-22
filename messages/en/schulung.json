@@ -1,0 +1,86 @@
+{
+  "title": "Training",
+  "subtitle": "Step-by-step guides for every area of SECRET 58 — always here to look up. Videos will be added as soon as they're recorded.",
+  "welcomeBanner": {
+    "title": "Welcome to SECRET 58!",
+    "body": "Thanks for your purchase. Before you dive in, take a quick look at \"First steps\" below — so the AI agents work with your real data from the start."
+  },
+  "videoPending": "Video coming soon",
+  "stepsLabel": "Steps",
+  "openPage": "Open page",
+  "topics": {
+    "firstSteps": {
+      "title": "First steps",
+      "description": "Do these three things first, then every AI agent works with real data instead of placeholders.",
+      "steps": [
+        "Under \"Integrations\", connect at least one AI provider (Anthropic or OpenAI) — click \"Get API key\" on the row, create the key with the provider, then add it via \"Set in Render\".",
+        "Under \"Brand DNA\", fill in your own brand (tone, audience, values) — every AI agent uses this for the text it generates.",
+        "Under \"Ideas & Inspiration\" or \"Content Brain\", generate your first idea or campaign."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "How an idea becomes finished, approved content.",
+      "steps": [
+        "In Content Brain, create a new campaign with a topic and target platforms — this automatically produces several content items.",
+        "In the Content Factory, each content item moves through a status: Draft → In review → Approved → Scheduled → Published.",
+        "Approval is a manual, required step — nothing is published automatically without confirmation.",
+        "In a content item's detail view, you can regenerate script, voiceover, subtitles, hashtags, and thumbnail individually."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video & Design Studio",
+      "description": "The specialized tools for every content building block.",
+      "steps": [
+        "Script Studio: generates scripts following the Hook → Problem → Value → Example → Payoff → CTA structure.",
+        "Voice Studio: import or create your own ElevenLabs voice, then generate a voiceover directly from a script.",
+        "Design Studio: the thumbnail agent suggests a title, visual idea, text, layout, and image description.",
+        "Video Studio: shows the current state of the video provider connection (format manager, provider status)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Content calendar & publishing",
+      "description": "Where scheduled posts show up — and why a post actually goes out (or doesn't).",
+      "steps": [
+        "The content calendar lists every content item with a scheduled publish date.",
+        "Before every publish, the PublishingAgent checks live whether the target platform is actually marked \"Connected\" under \"Social Media\".",
+        "Without a real platform connection, it honestly shows an error instead of faking a successful publish."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics & Growth",
+      "description": "Real numbers on your own performance — and recommendations instead of automation.",
+      "steps": [
+        "Analytics shows only real, imported or manually logged performance data.",
+        "The Growth page calculates best posting times, top hashtags, and best-performing formats from that data.",
+        "Important: there is deliberately no automated follower/engagement growth (no bot behavior) — that would violate every platform's terms of service."
+      ]
+    },
+    "inbox": {
+      "title": "Inbox",
+      "description": "AI-drafted replies to messages — with approval before sending.",
+      "steps": [
+        "Since no platform is connected via OAuth yet, conversations are currently added manually instead of pulled live.",
+        "The MessageAgent drafts a reply based on Brand DNA and conversation history.",
+        "The draft must be manually reviewed and approved before it counts as sent — an actual send honestly fails without a platform connection instead of faking success."
+      ]
+    },
+    "revenue": {
+      "title": "Revenue tracking",
+      "description": "One overview of all platform revenue — payout still runs through the platforms themselves.",
+      "steps": [
+        "Revenue is logged manually, since TikTok/Meta offer no public revenue API and YouTube requires Partner Program access (not yet connected).",
+        "The actual payout always runs directly through the respective platform (e.g. YouTube via Google AdSense) — SECRET 58 never processes payouts."
+      ]
+    },
+    "integrations": {
+      "title": "Integrations & API keys",
+      "description": "Where every connection status comes from, and where to set the matching key.",
+      "steps": [
+        "Every row shows the real, live-checked status — never a faked connection.",
+        "For \"Not configured\", \"Get API key\" leads to the provider's official page.",
+        "\"Set in Render\" leads directly to the environment variables where the key is stored — there is deliberately no key input form inside the app itself, for security."
+      ]
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "title": "Formation",
+  "subtitle": "Guides pas à pas pour chaque domaine de SECRET 58 — toujours consultables ici. Les vidéos seront ajoutées dès qu'elles seront enregistrées.",
+  "welcomeBanner": {
+    "title": "Bienvenue chez SECRET 58 !",
+    "body": "Merci pour votre achat. Avant de commencer, jetez un œil aux \"Premiers pas\" ci-dessous — pour que les agents IA travaillent dès le départ avec vos vraies données."
+  },
+  "videoPending": "Vidéo à venir",
+  "stepsLabel": "Étapes",
+  "openPage": "Ouvrir la page",
+  "topics": {
+    "firstSteps": {
+      "title": "Premiers pas",
+      "description": "Faites ces trois choses en premier, ensuite chaque agent IA travaille avec de vraies données plutôt qu'avec des exemples.",
+      "steps": [
+        "Sous \"Intégrations\", connectez au moins un fournisseur d'IA (Anthropic ou OpenAI) — cliquez sur \"Obtenir la clé API\" sur la ligne concernée, créez la clé chez le fournisseur, puis ajoutez-la via \"Configurer dans Render\".",
+        "Sous \"ADN de marque\", renseignez votre marque (ton, public, valeurs) — chaque agent IA s'en sert pour le texte qu'il génère.",
+        "Sous \"Idées & inspiration\" ou \"Content Brain\", générez votre première idée ou campagne."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Usine à contenu",
+      "description": "Comment une idée devient un contenu terminé et validé.",
+      "steps": [
+        "Dans Content Brain, créez une nouvelle campagne avec un sujet et des plateformes cibles — plusieurs éléments de contenu sont générés automatiquement.",
+        "Dans l'usine à contenu, chaque élément suit un statut : Brouillon → En révision → Validé → Planifié → Publié.",
+        "La validation est une étape manuelle et obligatoire — rien n'est publié automatiquement sans confirmation.",
+        "Dans la vue détaillée d'un élément, vous pouvez régénérer séparément le script, la voix off, les sous-titres, les hashtags et la miniature."
+      ]
+    },
+    "studios": {
+      "title": "Studio de script, voix, vidéo et design",
+      "description": "Les outils spécialisés pour chaque brique de contenu.",
+      "steps": [
+        "Studio de script : génère des scripts selon la structure Accroche → Problème → Valeur → Exemple → Bénéfice → CTA.",
+        "Studio vocal : importez ou créez votre propre voix ElevenLabs, puis générez une voix off directement à partir d'un script.",
+        "Studio de design : l'agent de miniatures propose un titre, une idée visuelle, un texte, une mise en page et une description d'image.",
+        "Studio vidéo : affiche l'état actuel de la connexion au fournisseur vidéo (gestionnaire de formats, statut du fournisseur)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Calendrier de contenu et publication",
+      "description": "Où apparaissent les publications planifiées — et pourquoi une publication part vraiment (ou pas).",
+      "steps": [
+        "Le calendrier de contenu liste chaque élément avec sa date de publication planifiée.",
+        "Avant chaque publication, le PublishingAgent vérifie en direct si la plateforme cible est réellement marquée \"Connecté\" sous \"Réseaux sociaux\".",
+        "Sans connexion réelle à la plateforme, une erreur honnête s'affiche au lieu de simuler une publication réussie."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytique & Croissance",
+      "description": "De vrais chiffres sur votre propre performance — et des recommandations plutôt que de l'automatisation.",
+      "steps": [
+        "Analytique n'affiche que des données de performance réelles, importées ou saisies manuellement.",
+        "La page Croissance calcule à partir de ces données les meilleurs horaires de publication, les hashtags les plus efficaces et les formats les plus performants.",
+        "Important : il n'y a volontairement aucune croissance automatisée des abonnés/de l'engagement (aucun comportement de bot) — cela enfreindrait les conditions d'utilisation de toute plateforme."
+      ]
+    },
+    "inbox": {
+      "title": "Messagerie",
+      "description": "Réponses rédigées par IA aux messages — avec validation avant l'envoi.",
+      "steps": [
+        "Comme aucune plateforme n'est encore connectée via OAuth, les conversations sont actuellement ajoutées manuellement plutôt que récupérées en direct.",
+        "Le MessageAgent rédige une réponse à partir de l'ADN de marque et de l'historique de la conversation.",
+        "Le brouillon doit être vérifié et validé manuellement avant d'être considéré comme envoyé — un envoi réel échoue honnêtement sans connexion à la plateforme, plutôt que de simuler un succès."
+      ]
+    },
+    "revenue": {
+      "title": "Suivi des revenus",
+      "description": "Une vue de tous les revenus par plateforme — le versement passe toujours par les plateformes elles-mêmes.",
+      "steps": [
+        "Les revenus sont saisis manuellement, car TikTok/Meta ne proposent pas d'API publique de revenus et YouTube nécessite un accès au Partner Program (pas encore connecté).",
+        "Le versement réel passe toujours directement par la plateforme concernée (p. ex. YouTube via Google AdSense) — SECRET 58 ne traite jamais les versements."
+      ]
+    },
+    "integrations": {
+      "title": "Intégrations & clés API",
+      "description": "D'où vient chaque statut de connexion, et où configurer la clé correspondante.",
+      "steps": [
+        "Chaque ligne affiche le statut réel, vérifié en direct — jamais une connexion simulée.",
+        "Pour \"Non configuré\", \"Obtenir la clé API\" mène à la page officielle du fournisseur.",
+        "\"Configurer dans Render\" mène directement aux variables d'environnement où la clé est stockée — il n'y a volontairement aucun formulaire de saisie de clé dans l'application elle-même, pour des raisons de sécurité."
+      ]
+    }
+  }
+}

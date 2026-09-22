@@ -26,6 +26,13 @@ type ItemWithRelations = ContentItem & { scripts: Script[]; mediaAssets: MediaAs
 const inputClass =
   "w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none";
 
+function toLocalDatetimeInputValue(date: Date): string {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(
+    date.getHours()
+  )}:${pad(date.getMinutes())}`;
+}
+
 function parseArr(json: string): string[] {
   try {
     const v = JSON.parse(json);
@@ -113,7 +120,7 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
           </button>
           <button
             onClick={() => {
-              const when = prompt(t("detail.scheduleDatePrompt"), new Date().toISOString().slice(0, 16));
+              const when = prompt(t("detail.scheduleDatePrompt"), toLocalDatetimeInputValue(new Date()));
               if (!when) return;
               runAction("schedule", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "schedule", scheduledAt: when }) }));
             }}

@@ -24,7 +24,7 @@ const PUBLIC_PREFIXES = [
   "/manifest.webmanifest",
   "/sw.js",
   "/icons",
-  "/brand",
+  "/brand/",
   "/media",
   "/robots.txt",
 ];

@@ -13,6 +13,16 @@ const PLATFORM_VALUES = [
   "NEWSLETTER",
 ] as const;
 
+const STATUS_VALUES = [
+  "DRAFT",
+  "IN_REVIEW",
+  "APPROVED",
+  "SCHEDULED",
+  "PUBLISHED",
+  "ARCHIVED",
+  "REJECTED",
+] as const;
+
 const createSchema = z.object({
   title: z.string().min(1),
   platform: z.enum(PLATFORM_VALUES),
@@ -26,14 +36,19 @@ const createSchema = z.object({
 export async function GET(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const { searchParams } = new URL(request.url);
-  const status = searchParams.get("status");
-  const platform = searchParams.get("platform");
+  const statusParam = searchParams.get("status");
+  const platformParam = searchParams.get("platform");
+  const status = STATUS_VALUES.find((s) => s === statusParam);
+  const platform = PLATFORM_VALUES.find((p) => p === platformParam);
+  if ((statusParam && !status) || (platformParam && !platform)) {
+    return NextResponse.json({ error: "Ungültiger Filter." }, { status: 400 });
+  }
 
   const items = await prisma.contentItem.findMany({
     where: {
       workspaceId,
-      ...(status ? { status: status as never } : {}),
-      ...(platform ? { platform: platform as never } : {}),
+      ...(status ? { status } : {}),
+      ...(platform ? { platform } : {}),
     },
     orderBy: { createdAt: "desc" },
   });

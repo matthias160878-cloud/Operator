@@ -32,12 +32,13 @@ export default async function ContentFactoryPage({
 }: {
   searchParams: Promise<{ status?: string }>;
 }) {
-  const { status } = await searchParams;
+  const { status: statusParam } = await searchParams;
+  const status = STATUS_TAB_VALUES.find((s) => s === statusParam);
   const workspaceId = await getCurrentWorkspaceId();
   const t = await getTranslations("contentFactory");
 
   const items = await prisma.contentItem.findMany({
-    where: { workspaceId, ...(status ? { status: status as never } : {}) },
+    where: { workspaceId, ...(status ? { status } : {}) },
     orderBy: { updatedAt: "desc" },
   });
 

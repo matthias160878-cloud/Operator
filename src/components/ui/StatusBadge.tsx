@@ -17,6 +17,8 @@ const STATUS_STYLES: Record<string, string> = {
   ARCHIVED: "bg-muted/15 text-muted border-border",
   ERROR: "bg-danger/15 text-danger border-danger/30",
   REJECTED: "bg-danger/15 text-danger border-danger/30",
+  RECEIVED: "bg-success/15 text-success border-success/30",
+  PENDING: "bg-warning/15 text-warning border-warning/30",
 };
 
 const STATUS_LABELS: Record<string, string> = {
@@ -36,6 +38,8 @@ const STATUS_LABELS: Record<string, string> = {
   ARCHIVED: "Archiviert",
   ERROR: "Fehler",
   REJECTED: "Abgelehnt",
+  RECEIVED: "Erhalten",
+  PENDING: "Ausstehend",
 };
 
 export function StatusBadge({ status }: { status: string }) {

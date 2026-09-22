@@ -73,6 +73,24 @@ enum AccountStatus {
   ERROR
 }
 
+enum RevenueType {
+  AD_REVENUE
+  SPONSORSHIP
+  AFFILIATE
+  DONATION
+  OTHER
+}
+
+enum RevenueStatus {
+  PENDING
+  RECEIVED
+}
+
+enum RevenueOrigin {
+  MANUAL
+  YOUTUBE_API
+}
+
 enum AgentStatus {
   IDLE
   RUNNING
@@ -100,18 +118,19 @@ model Workspace {
   integrations     IntegrationStatus[]
   settings         Setting[]
   auditLogs        AuditLog[]
+  revenueEntries   RevenueEntry[]
 
   @@map("workspaces")
 }
 
 model User {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   workspaceId String
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  email       String   @unique
+  email       String    @unique
   name        String
-  role        Role     @default(EDITOR)
-  createdAt   DateTime @default(now())
+  role        Role      @default(EDITOR)
+  createdAt   DateTime  @default(now())
 
   auditLogs AuditLog[]
 
@@ -119,68 +138,69 @@ model User {
 }
 
 model Brand {
-  id             String   @id @default(cuid())
-  workspaceId    String   @unique
+  id             String    @id @default(cuid())
+  workspaceId    String    @unique
   workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   name           String
-  description    String   @default("")
-  targetAudience String   @default("")
-  industry       String   @default("")
-  language       String   @default("Deutsch")
-  tonality       String   @default("Professionell & Inspirierend")
-  humor          String   @default("Dezent")
-  formality      String   @default("Neutral")
-  preferredWords String   @default("[]") // JSON string[]
-  forbiddenWords String   @default("[]") // JSON string[]
-  preferredCtas  String   @default("[]") // JSON string[]
-  brandValues    String   @default("[]") // JSON string[]
-  topics         String   @default("[]") // JSON string[]
-  colors         String   @default("[]") // JSON string[]
-  fonts          String   @default("[]") // JSON string[]
+  description    String    @default("")
+  targetAudience String    @default("")
+  industry       String    @default("")
+  language       String    @default("Deutsch")
+  tonality       String    @default("Professionell & Inspirierend")
+  humor          String    @default("Dezent")
+  formality      String    @default("Neutral")
+  preferredWords String    @default("[]") // JSON string[]
+  forbiddenWords String    @default("[]") // JSON string[]
+  preferredCtas  String    @default("[]") // JSON string[]
+  brandValues    String    @default("[]") // JSON string[]
+  topics         String    @default("[]") // JSON string[]
+  colors         String    @default("[]") // JSON string[]
+  fonts          String    @default("[]") // JSON string[]
   logoUrl        String?
-  visualRules    String   @default("")
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  visualRules    String    @default("")
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
   @@map("brands")
 }
 
 model Campaign {
-  id             String   @id @default(cuid())
+  id             String    @id @default(cuid())
   workspaceId    String
   workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   title          String
-  goal           String   @default("")
-  targetAudience String   @default("")
-  platforms      String   @default("[]") // JSON Platform[]
-  language       String   @default("Deutsch")
-  status         String   @default("DRAFT") // DRAFT | ACTIVE | COMPLETED | ARCHIVED
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  goal           String    @default("")
+  targetAudience String    @default("")
+  platforms      String    @default("[]") // JSON Platform[]
+  language       String    @default("Deutsch")
+  status         String    @default("DRAFT") // DRAFT | ACTIVE | COMPLETED | ARCHIVED
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
-  contentItems ContentItem[]
-  ideas        ContentIdea[]
+  contentItems   ContentItem[]
+  ideas          ContentIdea[]
+  revenueEntries RevenueEntry[]
 
   @@map("campaigns")
 }
 
 model ContentIdea {
-  id                     String    @id @default(cuid())
-  workspaceId            String
-  workspace              Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  campaignId             String?
-  campaign               Campaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
-  title                  String
-  hook                   String    @default("")
-  targetAudience         String    @default("")
-  platform               String    @default("")
-  format                 String    @default("")
-  goal                   String    @default("")
-  priority               Priority  @default(MEDIUM)
-  estimatedMinutes       Int       @default(30)
-  status                 IdeaStatus @default(NEW)
-  source                 IdeaSource @default(MANUAL)
-  createdAt              DateTime  @default(now())
+  id               String     @id @default(cuid())
+  workspaceId      String
+  workspace        Workspace  @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  campaignId       String?
+  campaign         Campaign?  @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  title            String
+  hook             String     @default("")
+  targetAudience   String     @default("")
+  platform         String     @default("")
+  format           String     @default("")
+  goal             String     @default("")
+  priority         Priority   @default(MEDIUM)
+  estimatedMinutes Int        @default(30)
+  status           IdeaStatus @default(NEW)
+  source           IdeaSource @default(MANUAL)
+  createdAt        DateTime   @default(now())
 
   contentItems ContentItem[]
 
@@ -220,81 +240,81 @@ model ContentItem {
 }
 
 model Script {
-  id            String   @id @default(cuid())
+  id            String      @id @default(cuid())
   contentItemId String
   contentItem   ContentItem @relation(fields: [contentItemId], references: [id], onDelete: Cascade)
-  variantLabel  String   @default("A")
-  hook          String   @default("")
-  problem       String   @default("")
-  value         String   @default("")
-  example       String   @default("")
-  payoff        String   @default("")
-  cta           String   @default("")
-  createdAt     DateTime @default(now())
+  variantLabel  String      @default("A")
+  hook          String      @default("")
+  problem       String      @default("")
+  value         String      @default("")
+  example       String      @default("")
+  payoff        String      @default("")
+  cta           String      @default("")
+  createdAt     DateTime    @default(now())
 
   @@map("scripts")
 }
 
 model Voice {
-  id          String   @id @default(cuid())
-  workspaceId String
-  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  name        String
+  id              String    @id @default(cuid())
+  workspaceId     String
+  workspace       Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  name            String
   providerVoiceId String
-  language    String   @default("de")
-  style       String   @default("")
-  description String   @default("")
-  active      Boolean  @default(true)
-  createdAt   DateTime @default(now())
+  language        String    @default("de")
+  style           String    @default("")
+  description     String    @default("")
+  active          Boolean   @default(true)
+  createdAt       DateTime  @default(now())
 
   @@map("voices")
 }
 
 model MediaAsset {
-  id             String    @id @default(cuid())
-  workspaceId    String
-  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  contentItemId  String?
-  contentItem    ContentItem? @relation(fields: [contentItemId], references: [id], onDelete: SetNull)
-  type           MediaType
-  url            String
-  provider       String    @default("local")
-  format         String    @default("")
+  id              String       @id @default(cuid())
+  workspaceId     String
+  workspace       Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  contentItemId   String?
+  contentItem     ContentItem? @relation(fields: [contentItemId], references: [id], onDelete: SetNull)
+  type            MediaType
+  url             String
+  provider        String       @default("local")
+  format          String       @default("")
   durationSeconds Int?
-  createdAt      DateTime  @default(now())
+  createdAt       DateTime     @default(now())
 
   @@map("media_assets")
 }
 
 model PlatformAccount {
-  id              String    @id @default(cuid())
+  id              String        @id @default(cuid())
   workspaceId     String
-  workspace       Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspace       Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   platform        Platform
-  accountName     String    @default("")
+  accountName     String        @default("")
   status          AccountStatus @default(NOT_CONFIGURED)
   lastPublishedAt DateTime?
   lastError       String?
-  createdAt       DateTime  @default(now())
+  createdAt       DateTime      @default(now())
 
   @@unique([workspaceId, platform])
   @@map("platform_accounts")
 }
 
 model Analytics {
-  id                String   @id @default(cuid())
-  contentItemId     String
-  contentItem       ContentItem @relation(fields: [contentItemId], references: [id], onDelete: Cascade)
-  platform          Platform
-  views             Int      @default(0)
-  likes             Int      @default(0)
-  comments          Int      @default(0)
-  shares            Int      @default(0)
-  saves             Int      @default(0)
-  engagementRate    Float    @default(0)
-  watchTimeSeconds  Int      @default(0)
-  ctr               Float?
-  recordedAt        DateTime @default(now())
+  id               String      @id @default(cuid())
+  contentItemId    String
+  contentItem      ContentItem @relation(fields: [contentItemId], references: [id], onDelete: Cascade)
+  platform         Platform
+  views            Int         @default(0)
+  likes            Int         @default(0)
+  comments         Int         @default(0)
+  shares           Int         @default(0)
+  saves            Int         @default(0)
+  engagementRate   Float       @default(0)
+  watchTimeSeconds Int         @default(0)
+  ctr              Float?
+  recordedAt       DateTime    @default(now())
 
   @@map("analytics")
 }
@@ -316,12 +336,12 @@ model AgentRun {
 }
 
 model IntegrationStatus {
-  id            String   @id @default(cuid())
+  id            String        @id @default(cuid())
   workspaceId   String
-  workspace     Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspace     Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   key           String
   status        AccountStatus @default(NOT_CONFIGURED)
-  lastCheckedAt DateTime @default(now())
+  lastCheckedAt DateTime      @default(now())
   lastError     String?
 
   @@unique([workspaceId, key])
@@ -329,26 +349,54 @@ model IntegrationStatus {
 }
 
 model Setting {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   workspaceId String
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   key         String
-  value       String   @default("")
-  updatedAt   DateTime @updatedAt
+  value       String    @default("")
+  updatedAt   DateTime  @updatedAt
 
   @@unique([workspaceId, key])
   @@map("settings")
 }
 
 model AuditLog {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   workspaceId String
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   userId      String?
-  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  user        User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
   action      String
-  detail      String   @default("")
-  createdAt   DateTime @default(now())
+  detail      String    @default("")
+  createdAt   DateTime  @default(now())
 
   @@map("audit_logs")
+}
+
+// Einnahmen (Abschnitt "Revenue" — nicht Teil des ursprünglichen Master-Prompts,
+// auf Nutzerwunsch ergänzt). Plattformen geben Einnahmen überwiegend NICHT über
+// eine öffentliche API heraus (TikTok/Meta gar nicht, YouTube nur eingeschränkt
+// über die YouTube-Analytics-API mit Partnerprogramm-Zugang). Einträge sind
+// deshalb primär manuell erfasst (`origin: MANUAL`); `origin: YOUTUBE_API` ist
+// für eine spätere echte Anbindung vorgesehen, aber noch nicht implementiert —
+// siehe `lib/integrations/registry.ts` (Status bleibt NOT_CONFIGURED).
+model RevenueEntry {
+  id          String        @id @default(cuid())
+  workspaceId String
+  workspace   Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  campaignId  String?
+  campaign    Campaign?     @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  platform    Platform?
+  type        RevenueType   @default(OTHER)
+  status      RevenueStatus @default(RECEIVED)
+  origin      RevenueOrigin @default(MANUAL)
+  source      String        @default("")
+  amount      Float
+  currency    String        @default("EUR")
+  note        String        @default("")
+  recordedAt  DateTime      @default(now())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@map("revenue_entries")
 }

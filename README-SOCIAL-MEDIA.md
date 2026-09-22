@@ -58,6 +58,7 @@ Siehe [`.env.example`](.env.example) für die vollständige Liste. Wichtig:
 | `YOUTUBE_CLIENT_ID/SECRET`, `INSTAGRAM_CLIENT_ID/SECRET`, `TIKTOK_CLIENT_KEY/SECRET`, `LINKEDIN_CLIENT_ID/SECRET`, `FACEBOOK_APP_ID/SECRET` | Nein | App-Zugangsdaten je Social-Plattform (Statusanzeige unter Integrationen/Social Media). Ein echter OAuth-Login-Flow ist vorbereitet, aber noch nicht implementiert (siehe unten). |
 | `CANVA_API_KEY`, `CAPCUT_API_KEY` | Nein | Design-/Video-Provider-Status |
 | `TREND_API_KEY`, `TREND_API_PROVIDER` | Nein | TrendAgent — ohne diese Variablen zeigt der Agent konsequent „Trend API nicht konfiguriert.“ statt erfundener Trends. |
+| `STRIPE_SETUP_PRICE_ID` | Nein | Optionaler Einrichtungsservice (299 € einmalig), auf `/buy` per Häkchen zum Komplettpaket dazubuchbar. Ohne diese Variable ist das Häkchen deaktiviert. |
 | `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, `STRIPE_WEBHOOK_SECRET` | Nein | Kauf-Freischaltung über Stripe Checkout (siehe „Kauf-Freischaltung“ unten). Ohne diese Variablen zeigt `/buy` „Zahlung noch nicht konfiguriert.“ |
 | `OWNER_ACCESS_KEY` | Nein | Sperrt bei Gesetztsein die **komplette Anwendung** hinter `/buy`, bis bezahlt wurde oder `/unlock?key=...` aufgerufen wird. Ohne diese Variable bleibt die App frei zugänglich. |
 
@@ -180,6 +181,14 @@ prüft bei jedem Request entweder das Owner-Cookie oder eine `License` mit
 Status `ACTIVE` in der Datenbank. Ohne `OWNER_ACCESS_KEY` ist die Prüfung
 komplett inaktiv (No-Op) — die App bleibt wie bisher startfähig ohne jede
 Zahlungs-Konfiguration.
+
+**Einrichtungsservice & Autopilot-Vorschau:** Unter dem Komplettpaket kann
+optional ein Einrichtungsservice (299 € einmalig) dazugebucht werden — dafür in
+Stripe ein zweites Produkt mit einmaligem Preis anlegen und
+`STRIPE_SETUP_PRICE_ID` setzen. Darunter zeigt `/buy` den geplanten
+Autopilot (Monatsabo S/M/L, Werte in `AUTOPILOT_TIERS` in
+`src/lib/pricing.ts`) als nicht buchbare Vorschau. Herleitung der Preise:
+[`docs/preisanalyse.html`](docs/preisanalyse.html).
 
 **PWA (installierbare App):** Die Anwendung ist als Progressive Web App
 ausgelegt (`public/manifest.webmanifest`, `public/sw.js`) — auf iOS/Android

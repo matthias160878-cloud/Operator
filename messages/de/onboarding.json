@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Schritt {current} von {total}",
+    "close": "Schließen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "skip": "Überspringen",
+    "finish": "Fertig, loslegen",
+    "checking": "Wird geprüft …",
+    "checkAgain": "Jetzt prüfen",
+    "connected": "Verbunden",
+    "notConnected": "Noch nicht verbunden",
+    "skippedNote": "Übersprungen — du kannst das jederzeit unter „Integrationen“ nachholen.",
+    "envHint": "Hinweis: Nach dem Speichern in Render dauert es meist 1–2 Minuten, bis der Dienst neu startet und die Änderung wirkt. Falls „Jetzt prüfen“ noch nichts findet, kurz warten und erneut klicken.",
+    "reopenHint": "Du kannst diesen Assistenten jederzeit erneut öffnen: in den Einstellungen unter „Einrichtungsassistent“."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Willkommen bei SECRET 58",
+      "body": "Bevor es losgeht, richten wir gemeinsam das Nötigste ein — in ganz kleinen, einzelnen Schritten. Du kannst jederzeit pausieren und später an derselben Stelle weitermachen."
+    },
+    "aiProvider": {
+      "title": "Schritt 1: KI-Anbieter verbinden",
+      "body": "Für Texte, Skripte, Hooks und Hashtags braucht die Software einen KI-Anbieter. Wähle einen der beiden — einer reicht.",
+      "steps": [
+        "Klicke unten bei Anthropic oder OpenAI auf „API-Schlüssel holen“.",
+        "Erstelle dort, falls nötig, ein kostenloses Konto.",
+        "Erzeuge dort einen neuen API-Schlüssel und kopiere ihn.",
+        "Klicke auf „In Render eintragen“, füge den Schlüssel dort als Umgebungsvariable ein und speichere.",
+        "Komm hierher zurück und klicke unten auf „Jetzt prüfen“."
+      ],
+      "costHint": "Kosten entstehen erst bei tatsächlicher Nutzung, direkt beim jeweiligen Anbieter — nie über SECRET 58."
+    },
+    "platform": {
+      "title": "Schritt 2: Social-Media-Plattform verbinden (optional)",
+      "body": "Optional, aber empfohlen: Verbinde mindestens eine Plattform, auf der du später veröffentlichen möchtest. Du kannst diesen Schritt auch später nachholen.",
+      "steps": [
+        "Wähle unten eine Plattform, die du nutzen möchtest.",
+        "Klicke auf „API-Schlüssel holen“ und folge den Anweisungen des Anbieters.",
+        "Klicke auf „In Render eintragen“ und speichere die Zugangsdaten dort.",
+        "Komm hierher zurück und klicke auf „Jetzt prüfen“."
+      ]
+    },
+    "voice": {
+      "title": "Schritt 3: Sprachausgabe verbinden (optional)",
+      "body": "Nur nötig, wenn du automatisch gesprochene Voiceover für deine Videos erzeugen möchtest. Ohne diesen Schritt funktioniert alles andere trotzdem.",
+      "steps": [
+        "Klicke auf „API-Schlüssel holen“ bei ElevenLabs.",
+        "Erstelle dort ein Konto und einen API-Schlüssel.",
+        "Klicke auf „In Render eintragen“ und speichere den Schlüssel dort.",
+        "Komm hierher zurück und klicke auf „Jetzt prüfen“."
+      ]
+    },
+    "done": {
+      "title": "Fertig!",
+      "body": "Du kannst jetzt loslegen. Alles, was du übersprungen hast, findest und ergänzt du jederzeit im Bereich „Integrationen“ — oder öffnest diesen Assistenten erneut über „Einstellungen“."
+    }
+  }
+}

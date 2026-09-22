@@ -1,14 +1,24 @@
 import { prisma } from "@/lib/db";
 import type { ContentStatus } from "@prisma/client";
+import {
+  publishToFacebook,
+  publishToInstagram,
+  publishToLinkedIn,
+  publishToTikTok,
+  publishToYouTube,
+} from "@/lib/publishing/adapters";
 
 /**
  * PublishingAgent — steuert den Workflow DRAFT -> REVIEW -> APPROVED ->
  * SCHEDULED -> PUBLISHED (Abschnitt 16/34). Es wird NIEMALS automatisch
  * veröffentlicht: `publishContentItem` versucht einen echten API-Aufruf nur,
- * wenn der zugehörige Plattform-Account als CONNECTED markiert ist — was
- * aktuell für keine Plattform der Fall ist, solange keine OAuth-Zugangsdaten
- * hinterlegt sind. In diesem Fall bleibt der Content im aktuellen Status und
- * der Nutzer erhält eine klare Fehlermeldung statt einer stillen Fake-Veröffentlichung.
+ * wenn der zugehörige Plattform-Account als CONNECTED markiert ist (echter
+ * OAuth-Verbinden-Flow unter /social-media, siehe src/lib/oauth/providers.ts).
+ * Jede Plattform ruft die echte native API auf (YouTube-Upload, LinkedIn-
+ * UGC-Post, Facebook-Seiten-Post, Instagram-Reel, TikTok-Direct-Post) — bei
+ * einem Fehler (fehlende Freigabe, abgelaufener Token, fehlendes Video)
+ * bekommt die Nutzerin/der Nutzer die echte Fehlermeldung, nie eine
+ * stille Fake-Veröffentlichung.
  */
 export async function setContentStatus(
   contentItemId: string,
@@ -29,10 +39,12 @@ export async function scheduleContentItem(contentItemId: string, scheduledAt: Da
 }
 
 export async function publishContentItem(
-  contentItemId: string
+  contentItemId: string,
+  publicOrigin: string
 ): Promise<{ published: boolean; message: string }> {
   const item = await prisma.contentItem.findUniqueOrThrow({
     where: { id: contentItemId },
+    include: { mediaAssets: true },
   });
 
   const account = await prisma.platformAccount.findUnique({
@@ -51,11 +63,49 @@ export async function publishContentItem(
     };
   }
 
-  // Kein Plattform-Account ist aktuell tatsächlich verbunden (siehe
-  // Integrations-Status) — der echte Publish-Call ist bewusst nicht
-  // implementiert, um keine Fake-Veröffentlichung vorzutäuschen.
-  return {
-    published: false,
-    message: `Publishing-Adapter für ${item.platform} ist vorbereitet, der native API-Aufruf ist noch nicht implementiert.`,
-  };
+  const video = item.mediaAssets.find((a) => a.type === "VIDEO");
+
+  try {
+    let result;
+    switch (item.platform) {
+      case "YOUTUBE":
+        result = await publishToYouTube(account, item, video);
+        break;
+      case "LINKEDIN":
+        result = await publishToLinkedIn(account, item);
+        break;
+      case "FACEBOOK":
+        result = await publishToFacebook(account, item, video);
+        break;
+      case "INSTAGRAM":
+        result = await publishToInstagram(account, item, video, publicOrigin);
+        break;
+      case "TIKTOK":
+        result = await publishToTikTok(account, item, video, publicOrigin);
+        break;
+      default:
+        return {
+          published: false,
+          message: `Veröffentlichen für ${item.platform} ist hier nicht vorgesehen (Blog/Newsletter laufen nicht über eine Plattform-API).`,
+        };
+    }
+
+    await prisma.platformAccount.update({
+      where: { id: account.id },
+      data: result.published
+        ? { lastPublishedAt: new Date(), lastError: null }
+        : { lastError: result.message },
+    });
+    if (result.published) {
+      await prisma.contentItem.update({
+        where: { id: item.id },
+        data: { status: "PUBLISHED", publishedAt: new Date() },
+      });
+    }
+    return result;
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unbekannter Fehler beim Veröffentlichen.";
+    await prisma.platformAccount.update({ where: { id: account.id }, data: { lastError: message } });
+    return { published: false, message };
+  }
 }

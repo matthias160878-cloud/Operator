@@ -231,7 +231,9 @@ export function RevenueBoard({
             {entries.map((entry) => (
               <tr key={entry.id} className="border-b border-border/60 last:border-0">
                 <td className="px-4 py-3 text-muted">
-                  {new Intl.DateTimeFormat("de-DE", { dateStyle: "short" }).format(entry.recordedAt)}
+                  {new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeZone: "UTC" }).format(
+                    entry.recordedAt
+                  )}
                 </td>
                 <td className="px-4 py-3 text-foreground">{entry.source || "—"}</td>
                 <td className="px-4 py-3 text-muted">{TYPE_LABELS[entry.type] ?? entry.type}</td>

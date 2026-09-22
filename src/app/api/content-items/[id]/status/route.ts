@@ -41,8 +41,9 @@ export async function POST(
         item: await scheduleContentItem(id, new Date(input.scheduledAt)),
       });
     case "publish": {
+      const publicOrigin = new URL(request.url).origin;
       const result = await runAgent("publishing", workspaceId, `Veröffentliche Content-Item ${id}`, () =>
-        publishContentItem(id)
+        publishContentItem(id, publicOrigin)
       );
       return NextResponse.json(result);
     }

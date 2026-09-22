@@ -1,11 +1,24 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Comptes de plateforme et leur statut de connexion. Les identifiants sont gérés exclusivement en tant que variables d'environnement côté serveur et ne sont jamais stockés côté frontend. Un véritable flux de connexion OAuth est prévu pour chaque plateforme, mais pas encore implémenté — dès que les identifiants de l'application seront renseignés, il pourra être ajouté ici.",
+  "subtitle": "Comptes de plateforme et leur statut de connexion. Les identifiants sont gérés exclusivement en tant que variables d'environnement côté serveur et ne sont jamais stockés côté frontend. Les jetons d'accès sont chiffrés avant d'être enregistrés dans la base de données une fois connectés.",
   "credentialsLabel": "Identifiants de l'application",
   "accountLabel": "Compte",
   "lastPublishedLabel": "Dernière publication",
   "lastErrorLabel": "Dernière erreur",
-  "connectButtonConnected": "Connecté",
-  "connectButtonUnavailable": "Connecter (pas encore disponible)",
-  "connectButtonTitle": "Flux OAuth pas encore implémenté"
+  "connectButton": "Connecter",
+  "connectButtonUnavailable": "Connecter (pas encore possible)",
+  "connectButtonTitleNoCreds": "Identifiants de l'application manquants",
+  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY pas encore configurée",
+  "disconnectButton": "Déconnecter",
+  "disconnectConfirm": "Vraiment déconnecter ce compte ? Il faudra le reconnecter via \"Connecter\" ensuite.",
+  "needsCredentialsNote": "Il manque : configurer {idVar} et {secretVar} dans Render.",
+  "goToIntegrations": "Aller aux intégrations",
+  "connectedBanner": "{platform} connecté avec succès.",
+  "errorNotConfigured": "{platform} : identifiants de l'application manquants. Obtenez une clé API sous \"Intégrations\" et configurez-la dans Render.",
+  "errorEncryptionMissing": "TOKEN_ENCRYPTION_KEY n'est pas configurée sur le serveur — nécessaire pour stocker les jetons d'accès de façon sécurisée avant de pouvoir connecter un compte.",
+  "errorDenied": "Connexion annulée ou refusée.",
+  "errorInvalidState": "Échec de la connexion (code de sécurité invalide). Veuillez réessayer.",
+  "errorExchangeFailed": "Échec de la connexion. Vérifiez les identifiants et réessayez.",
+  "errorUnknownPlatform": "Plateforme inconnue.",
+  "encryptionKeyMissingNotice": "Remarque : TOKEN_ENCRYPTION_KEY n'est pas encore configurée — les comptes ne pourront être connectés qu'une fois cette variable d'environnement définie dans Render."
 }

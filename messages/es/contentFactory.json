@@ -78,7 +78,9 @@
     },
     "repurpose": {
       "heading": "Reutilizar contenido",
-      "description": "Genera derivados adaptados a otras plataformas a partir de este elemento de contenido.",
+      "description": "Genera derivados adaptados a otras plataformas a partir de este elemento de contenido. Más canales significa más posibilidades de que la gente vea el vídeo.",
+      "selectAll": "Seleccionar todas las plataformas",
+      "clearAll": "Quitar selección",
       "generateButton": "Generar {count} derivados"
     }
   }

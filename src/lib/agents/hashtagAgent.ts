@@ -6,6 +6,16 @@ export interface HashtagResult {
   keywords: string[];
 }
 
+const STOPWORDS = new Set([
+  "der", "die", "das", "den", "dem", "des", "ein", "eine", "einen", "einem", "einer",
+  "und", "oder", "mit", "für", "von", "bei", "auf", "aus", "als", "ist", "sind",
+  "the", "a", "an", "and", "or", "with", "for", "from", "at", "on", "is", "are", "to",
+]);
+
+function cleanWord(word: string): string {
+  return word.replace(/[.,!?:;"'„“()]+$/g, "").replace(/^[.,!?:;"'„“()]+/g, "");
+}
+
 function slugifyTag(word: string): string {
   return (
     "#" +
@@ -17,15 +27,19 @@ function slugifyTag(word: string): string {
 }
 
 function templateHashtags(topic: string, brand?: BrandDNA | null): HashtagResult {
-  const words = topic.split(/\s+/).filter((w) => w.length > 2).slice(0, 4);
+  const words = topic
+    .split(/\s+/)
+    .map(cleanWord)
+    .filter((w) => w.length > 2 && !STOPWORDS.has(w.toLowerCase()));
+  const keywordWords = words.slice(0, 4);
   const brandTags = (brand?.topics ?? []).slice(0, 3).map(slugifyTag);
-  const topicTags = words.map(slugifyTag);
+  const topicTags = keywordWords.map(slugifyTag).filter((tag) => tag.length > 1);
   const hashtags = Array.from(
     new Set([...topicTags, ...brandTags, "#KI", "#SocialMedia", "#ContentMarketing"])
   ).slice(0, 10);
   return {
     hashtags,
-    keywords: Array.from(new Set([...words, ...(brand?.topics ?? [])])).slice(0, 8),
+    keywords: Array.from(new Set([...keywordWords, ...(brand?.topics ?? [])])).slice(0, 8),
   };
 }
 

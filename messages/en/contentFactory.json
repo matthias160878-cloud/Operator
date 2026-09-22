@@ -78,7 +78,9 @@
     },
     "repurpose": {
       "heading": "Repurpose Content",
-      "description": "Generate platform-fit spin-offs of this content item for other channels.",
+      "description": "Generate platform-fit spin-offs of this content item for other channels. More channels means more chances for people to see the video.",
+      "selectAll": "Select all platforms",
+      "clearAll": "Clear selection",
       "generateButton": "Generate {count} spin-offs"
     }
   }

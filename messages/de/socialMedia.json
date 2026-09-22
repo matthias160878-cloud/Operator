@@ -1,11 +1,24 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Plattform-Accounts und ihr Verbindungsstatus. Zugangsdaten werden ausschließlich als Server-seitige Environment-Variablen verwaltet, niemals im Frontend gespeichert. Ein echter OAuth-Login-Flow ist je Plattform vorbereitet, aber noch nicht implementiert — sobald App-Zugangsdaten hinterlegt sind, kann er hier ergänzt werden.",
+  "subtitle": "Plattform-Accounts und ihr Verbindungsstatus. Zugangsdaten werden ausschließlich als Server-seitige Environment-Variablen verwaltet, niemals im Frontend gespeichert. Zugangstoken nach dem Verbinden werden verschlüsselt in der Datenbank abgelegt.",
   "credentialsLabel": "App-Zugangsdaten",
   "accountLabel": "Account",
   "lastPublishedLabel": "Letzte Veröffentlichung",
   "lastErrorLabel": "Letzter Fehler",
-  "connectButtonConnected": "Verbunden",
-  "connectButtonUnavailable": "Verbinden (noch nicht verfügbar)",
-  "connectButtonTitle": "OAuth-Flow noch nicht implementiert"
+  "connectButton": "Verbinden",
+  "connectButtonUnavailable": "Verbinden (noch nicht möglich)",
+  "connectButtonTitleNoCreds": "App-Zugangsdaten fehlen noch",
+  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY ist noch nicht gesetzt",
+  "disconnectButton": "Trennen",
+  "disconnectConfirm": "Diesen Account wirklich trennen? Der Zugriff muss danach neu über \"Verbinden\" hergestellt werden.",
+  "needsCredentialsNote": "Fehlt noch: {idVar} und {secretVar} in Render eintragen.",
+  "goToIntegrations": "Zu Integrationen",
+  "connectedBanner": "{platform} erfolgreich verbunden.",
+  "errorNotConfigured": "{platform}: App-Zugangsdaten fehlen noch. Unter \"Integrationen\" API-Schlüssel holen und in Render eintragen.",
+  "errorEncryptionMissing": "TOKEN_ENCRYPTION_KEY ist auf dem Server nicht gesetzt — zum sicheren Speichern von Zugangstoken erforderlich, bevor ein Account verbunden werden kann.",
+  "errorDenied": "Verbindung abgebrochen oder abgelehnt.",
+  "errorInvalidState": "Verbindung fehlgeschlagen (ungültiger Sicherheitscode). Bitte erneut versuchen.",
+  "errorExchangeFailed": "Verbindung fehlgeschlagen. Zugangsdaten prüfen und erneut versuchen.",
+  "errorUnknownPlatform": "Unbekannte Plattform.",
+  "encryptionKeyMissingNotice": "Hinweis: TOKEN_ENCRYPTION_KEY ist noch nicht gesetzt — Konten können erst verbunden werden, sobald diese Umgebungsvariable in Render eingetragen ist."
 }

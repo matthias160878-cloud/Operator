@@ -1,9 +1,26 @@
 import type { ReactNode } from "react";
+import { Suspense } from "react";
+import { getTranslations } from "next-intl/server";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Topbar } from "@/components/layout/Topbar";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
+import { OnboardingWizard } from "@/components/onboarding/OnboardingWizard";
+import { getAllIntegrationStatuses } from "@/lib/integrations/registry";
+import { prisma } from "@/lib/db";
+import { getCurrentWorkspaceId } from "@/lib/workspace";
 
-export function AppShell({ children }: { children: ReactNode }) {
+const ONBOARDING_SETTING_KEY = "onboardingCompleted";
+
+export async function AppShell({ children }: { children: ReactNode }) {
+  const ti = await getTranslations("common.integrationStatus");
+  const workspaceId = await getCurrentWorkspaceId();
+  const [integrations, onboardingSetting] = await Promise.all([
+    getAllIntegrationStatuses(ti),
+    prisma.setting.findUnique({
+      where: { workspaceId_key: { workspaceId, key: ONBOARDING_SETTING_KEY } },
+    }),
+  ]);
+
   return (
     <div className="flex min-h-screen">
       <Sidebar />
@@ -14,6 +31,12 @@ export function AppShell({ children }: { children: ReactNode }) {
         </main>
       </div>
       <ChatWidget />
+      <Suspense fallback={null}>
+        <OnboardingWizard
+          initialCompleted={Boolean(onboardingSetting)}
+          initialIntegrations={integrations}
+        />
+      </Suspense>
     </div>
   );
 }

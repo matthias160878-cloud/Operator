@@ -78,7 +78,9 @@
     },
     "repurpose": {
       "heading": "Réutiliser le contenu",
-      "description": "Génère des déclinaisons adaptées à d'autres canaux à partir de ce contenu.",
+      "description": "Génère des déclinaisons adaptées à d'autres canaux à partir de ce contenu. Plus de canaux, c'est plus de chances que les gens voient la vidéo.",
+      "selectAll": "Sélectionner toutes les plateformes",
+      "clearAll": "Effacer la sélection",
       "generateButton": "Générer {count} déclinaisons"
     }
   }

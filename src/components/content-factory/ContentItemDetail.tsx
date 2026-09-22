@@ -18,12 +18,20 @@ import {
 } from "lucide-react";
 import type { ContentItem, MediaAsset, Script } from "@prisma/client";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { VideoPreview } from "@/components/ui/VideoPreview";
 import { PLATFORM_LABELS } from "@/lib/format";
 
 type ItemWithRelations = ContentItem & { scripts: Script[]; mediaAssets: MediaAsset[] };
 
 const inputClass =
   "w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none";
+
+function toLocalDatetimeInputValue(date: Date): string {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(
+    date.getHours()
+  )}:${pad(date.getMinutes())}`;
+}
 
 function parseArr(json: string): string[] {
   try {
@@ -78,6 +86,8 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
   const keywords = parseArr(item.keywords);
   const audio = item.mediaAssets.find((a) => a.type === "AUDIO");
   const subtitle = item.mediaAssets.find((a) => a.type === "SUBTITLE");
+  const video = item.mediaAssets.find((a) => a.type === "VIDEO");
+  const repurposeOptions = Object.keys(PLATFORM_LABELS).filter((key) => key !== item.platform);
 
   return (
     <div className="space-y-5">
@@ -110,7 +120,7 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
           </button>
           <button
             onClick={() => {
-              const when = prompt(t("detail.scheduleDatePrompt"), new Date().toISOString().slice(0, 16));
+              const when = prompt(t("detail.scheduleDatePrompt"), toLocalDatetimeInputValue(new Date()));
               if (!when) return;
               runAction("schedule", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "schedule", scheduledAt: when }) }));
             }}
@@ -247,7 +257,11 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
             {busy === "video" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : t("detail.video.request")}
           </button>
         </div>
-        <p className="text-xs text-muted">{t("detail.video.note")}</p>
+        {video ? (
+          <VideoPreview src={video.url} className="max-w-md" />
+        ) : (
+          <p className="text-xs text-muted">{t("detail.video.note")}</p>
+        )}
       </div>
 
       <div className="card space-y-3 p-5">
@@ -283,7 +297,22 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
       </div>
 
       <div className="card space-y-3 p-5">
-        <h3 className="text-sm font-semibold text-foreground">{t("detail.repurpose.heading")}</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="text-sm font-semibold text-foreground">{t("detail.repurpose.heading")}</h3>
+          <button
+            type="button"
+            onClick={() =>
+              setRepurposeTargets((prev) =>
+                prev.length === repurposeOptions.length ? [] : repurposeOptions
+              )
+            }
+            className="text-xs text-accent-2 hover:underline"
+          >
+            {repurposeTargets.length === repurposeOptions.length
+              ? t("detail.repurpose.clearAll")
+              : t("detail.repurpose.selectAll")}
+          </button>
+        </div>
         <p className="text-xs text-muted">{t("detail.repurpose.description")}</p>
         <div className="flex flex-wrap gap-2">
           {Object.entries(PLATFORM_LABELS)

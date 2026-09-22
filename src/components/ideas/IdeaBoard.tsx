@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Lightbulb, Loader2, Plus, Sparkles } from "lucide-react";
 import type { ContentIdea } from "@prisma/client";
 import { PLATFORM_LABELS } from "@/lib/format";
@@ -16,6 +17,7 @@ const PRIORITY_COLORS: Record<string, string> = {
 };
 
 export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
+  const t = useTranslations("ideas.board");
   const router = useRouter();
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
@@ -34,11 +36,11 @@ export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
         body: JSON.stringify({ topic, count: 5 }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Fehler bei der Ideengenerierung.");
+      if (!res.ok) throw new Error(data.error ?? t("generateError"));
       setTopic("");
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unbekannter Fehler.");
+      setError(err instanceof Error ? err.message : t("unknownError"));
     } finally {
       setLoading(false);
     }
@@ -70,10 +72,10 @@ export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
     <div className="space-y-5">
       <form onSubmit={handleGenerate} className="card flex flex-col gap-3 p-4 sm:flex-row sm:items-end">
         <label className="flex-1">
-          <span className="text-sm font-medium text-foreground">Thema für neue Ideen</span>
+          <span className="text-sm font-medium text-foreground">{t("topicLabel")}</span>
           <input
             className={`${inputClass} mt-1.5`}
-            placeholder="z.B. Produktivität mit KI-Agenten"
+            placeholder={t("topicPlaceholder")}
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
           />
@@ -84,14 +86,14 @@ export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
           className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
         >
           {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
-          Ideen generieren
+          {t("generateButton")}
         </button>
         <button
           type="button"
           onClick={() => setShowManual((v) => !v)}
           className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-4 py-2 text-sm text-foreground"
         >
-          <Plus className="h-4 w-4" /> Manuell
+          <Plus className="h-4 w-4" /> {t("manualButton")}
         </button>
       </form>
 
@@ -99,12 +101,12 @@ export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
         <form onSubmit={handleManualAdd} className="card flex gap-2 p-4">
           <input
             className={inputClass}
-            placeholder="Idee-Titel"
+            placeholder={t("manualTitlePlaceholder")}
             value={manualTitle}
             onChange={(e) => setManualTitle(e.target.value)}
           />
           <button type="submit" className="rounded-lg bg-accent px-4 py-2 text-sm text-white">
-            Hinzufügen
+            {t("addButton")}
           </button>
         </form>
       )}
@@ -115,7 +117,7 @@ export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
         {ideas.length === 0 && (
           <div className="card col-span-full flex flex-col items-center gap-2 p-8 text-center text-muted">
             <Lightbulb className="h-6 w-6" />
-            <p className="text-sm">Noch keine Ideen — generiere welche oder lege manuell an.</p>
+            <p className="text-sm">{t("emptyState")}</p>
           </div>
         )}
         {ideas.map((idea) => (
@@ -137,7 +139,7 @@ export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
                 <span className="rounded-full border border-border px-2 py-0.5">{idea.format}</span>
               )}
               <span className="rounded-full border border-border px-2 py-0.5">
-                ~{idea.estimatedMinutes} Min.
+                {t("minutesUnit", { count: idea.estimatedMinutes })}
               </span>
             </div>
             <div className="mt-1 flex items-center justify-between">
@@ -146,13 +148,17 @@ export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
                 onChange={(e) => updateStatus(idea.id, e.target.value)}
                 className="rounded-lg border border-border bg-surface-2 px-2 py-1 text-xs text-foreground"
               >
-                <option value="NEW">Neu</option>
-                <option value="IN_PROGRESS">In Arbeit</option>
-                <option value="USED">Verwendet</option>
-                <option value="ARCHIVED">Archiviert</option>
+                <option value="NEW">{t("statusNew")}</option>
+                <option value="IN_PROGRESS">{t("statusInProgress")}</option>
+                <option value="USED">{t("statusUsed")}</option>
+                <option value="ARCHIVED">{t("statusArchived")}</option>
               </select>
               <span className="text-[10px] text-muted">
-                {idea.source === "IDEA_AGENT" ? "KI-generiert" : idea.source === "MANUAL" ? "Manuell" : idea.source}
+                {idea.source === "IDEA_AGENT"
+                  ? t("sourceAiGenerated")
+                  : idea.source === "MANUAL"
+                    ? t("sourceManual")
+                    : idea.source}
               </span>
             </div>
           </div>

@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Content Kalender",
+  "subtitle": "Geplante und veröffentlichte Inhalte im Überblick.",
+  "weekdays": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+  "months": [
+    "Januar", "Februar", "März", "April", "Mai", "Juni",
+    "Juli", "August", "September", "Oktober", "November", "Dezember"
+  ],
+  "allPlatforms": "Alle Plattformen",
+  "moreItems": "+{count} weitere",
+  "listTitle": "Liste dieses Monats",
+  "emptyMonth": "Keine geplanten Beiträge in diesem Monat."
+}

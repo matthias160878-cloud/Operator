@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Performance-Kennzahlen aus tatsächlich vorhandenen Daten — sobald Plattformen verbunden sind, füllt sich diese Ansicht mit echten Werten.",
+  "statViewsTotal": "Views gesamt",
+  "statLikesTotal": "Likes gesamt",
+  "statComments": "Kommentare",
+  "statShares": "Shares",
+  "chartTitle": "Content Performance über Zeit",
+  "chartLegend": "Views (violett) · Engagement % (türkis)",
+  "chartEmpty": "Noch keine Analytics-Daten vorhanden.",
+  "bestPerformingTitle": "Best Performing Content",
+  "bestPerformingEmpty": "Noch keine Daten.",
+  "learningAgentTitle": "Learning Agent — Empfehlungen"
+}

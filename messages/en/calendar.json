@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Content Calendar",
+  "subtitle": "Overview of scheduled and published content.",
+  "weekdays": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  "months": [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ],
+  "allPlatforms": "All platforms",
+  "moreItems": "+{count} more",
+  "listTitle": "This month's list",
+  "emptyMonth": "No scheduled posts this month."
+}

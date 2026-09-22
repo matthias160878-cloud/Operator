@@ -1,0 +1,85 @@
+{
+  "title": "Content Factory",
+  "subtitle": "All content items in one place — create, duplicate, rewrite, enrich with voiceover/subtitles, and push through the approval workflow.",
+  "statusTabs": {
+    "all": "All",
+    "draft": "Draft",
+    "inReview": "In Review",
+    "approved": "Approved",
+    "scheduled": "Scheduled",
+    "published": "Published",
+    "archived": "Archived"
+  },
+  "newItem": {
+    "openButton": "New Content Item",
+    "titleLabel": "Title",
+    "platformLabel": "Platform",
+    "create": "Create",
+    "closeAria": "Close"
+  },
+  "table": {
+    "empty": "No content items yet — create one manually or via Content Brain.",
+    "title": "Title",
+    "platform": "Platform",
+    "format": "Format",
+    "status": "Status",
+    "updated": "Updated",
+    "actions": "Actions",
+    "duplicate": "Duplicate",
+    "delete": "Delete",
+    "confirmDelete": "Really delete this content item?"
+  },
+  "detail": {
+    "backLink": "Back to Content Factory",
+    "actionFailed": "Action failed.",
+    "actions": {
+      "review": "Send for review",
+      "approve": "Approve",
+      "reject": "Reject",
+      "schedule": "Schedule",
+      "publish": "Publish"
+    },
+    "rejectReasonPrompt": "Reason for rejection (optional):",
+    "scheduleDatePrompt": "Publish date (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Title",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caption"
+    },
+    "save": "Save",
+    "saving": "Saving…",
+    "hashtags": {
+      "heading": "Hashtags & Keywords",
+      "regenerate": "Regenerate",
+      "empty": "No hashtags generated yet."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Generate",
+      "empty": "No voiceover generated yet."
+    },
+    "subtitles": {
+      "heading": "Subtitles",
+      "generate": "Generate (SRT)",
+      "download": "Download {file}",
+      "empty": "No subtitles generated yet."
+    },
+    "video": {
+      "heading": "Video Rendering",
+      "request": "Request render",
+      "note": "Provider-agnostic video pipeline (section 11/12) — no video provider is currently configured (see Integrations)."
+    },
+    "scriptVariants": {
+      "heading": "Script Variants",
+      "newVariant": "New Variant",
+      "empty": "No variants yet.",
+      "variantSummary": "Variant {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Generate platform-fit spin-offs of this content item for other channels.",
+      "generateButton": "Generate {count} spin-offs"
+    }
+  }
+}

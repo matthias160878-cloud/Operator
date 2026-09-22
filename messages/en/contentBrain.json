@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "One idea in — a complete, platform-ready content plan out. The ContentBrainAgent takes your Brand DNA into account and generates matching hooks, scripts, hashtags and thumbnail concepts as drafts for every platform you choose.",
+  "campaignsHeading": "Campaigns",
+  "noCampaigns": "No campaigns created yet.",
+  "campaignSummary": "{count} content items · {audience}",
+  "form": {
+    "textEngineLabel": "Text engine:",
+    "templateMode": "Template mode (no AI provider configured)",
+    "modeTemplate": "Template",
+    "topicLabel": "Topic / idea",
+    "topicPlaceholder": "e.g. Explain why autonomous AI agents are transforming the world of work.",
+    "audienceLabel": "Target audience",
+    "audiencePlaceholder": "e.g. 25-45, tech enthusiasts",
+    "goalLabel": "Goal",
+    "languageLabel": "Language",
+    "platformsLabel": "Platforms",
+    "itemsPerPlatformLabel": "Content items per platform ({count})",
+    "generateError": "Generation failed.",
+    "unknownError": "Unknown error.",
+    "submitLoading": "Content Brain is working…",
+    "submitIdle": "Generate content plan",
+    "resultHeading": "Campaign created — {count} content items added as drafts.",
+    "resultDescription": "Generated in {mode} mode. All content starts as DRAFT — review and edit it in the Content Factory.",
+    "resultLink": "Go to Content Factory →"
+  }
+}

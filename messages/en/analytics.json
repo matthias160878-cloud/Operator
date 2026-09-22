@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Performance metrics from real data — as soon as platforms are connected, this view fills with actual values.",
+  "statViewsTotal": "Total views",
+  "statLikesTotal": "Total likes",
+  "statComments": "Comments",
+  "statShares": "Shares",
+  "chartTitle": "Content performance over time",
+  "chartLegend": "Views (purple) · Engagement % (teal)",
+  "chartEmpty": "No analytics data yet.",
+  "bestPerformingTitle": "Best Performing Content",
+  "bestPerformingEmpty": "No data yet.",
+  "learningAgentTitle": "Learning Agent — Recommendations"
+}

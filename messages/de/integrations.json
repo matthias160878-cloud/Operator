@@ -1,0 +1,12 @@
+{
+  "title": "Integrationen",
+  "description": "Live-Status aller externen Dienste — ausschließlich auf Basis der tatsächlich gesetzten Environment-Variablen. Keine vorgetäuschten Verbindungen.",
+  "categories": {
+    "AI": "KI-Provider",
+    "VOICE": "Voice",
+    "PLATFORM": "Social Plattformen",
+    "DESIGN": "Design",
+    "VIDEO": "Video",
+    "TREND": "Trends"
+  }
+}

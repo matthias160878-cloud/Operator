@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   CheckCircle2,
   Clock,
@@ -35,6 +36,7 @@ function parseArr(json: string): string[] {
 
 export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
   const router = useRouter();
+  const t = useTranslations("contentFactory");
   const [title, setTitle] = useState(item.title);
   const [hook, setHook] = useState(item.hook);
   const [script, setScript] = useState(item.script);
@@ -62,7 +64,7 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
       const res = await fn();
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setMessage(data.error ?? "Aktion fehlgeschlagen.");
+        setMessage(data.error ?? t("detail.actionFailed"));
       } else if (data.message) {
         setMessage(data.message);
       }
@@ -89,39 +91,39 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
             onClick={() => runAction("review", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "review" }) }))}
             className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs text-foreground"
           >
-            <Clock className="h-3.5 w-3.5" /> Zur Prüfung
+            <Clock className="h-3.5 w-3.5" /> {t("detail.actions.review")}
           </button>
           <button
             onClick={() => runAction("approve", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "approve" }) }))}
             className="inline-flex items-center gap-1.5 rounded-lg border border-success/40 bg-success/10 px-3 py-1.5 text-xs text-success"
           >
-            <CheckCircle2 className="h-3.5 w-3.5" /> Freigeben
+            <CheckCircle2 className="h-3.5 w-3.5" /> {t("detail.actions.approve")}
           </button>
           <button
             onClick={() => {
-              const reason = prompt("Ablehnungsgrund (optional):") ?? "";
+              const reason = prompt(t("detail.rejectReasonPrompt")) ?? "";
               runAction("reject", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "reject", reason }) }));
             }}
             className="inline-flex items-center gap-1.5 rounded-lg border border-danger/40 bg-danger/10 px-3 py-1.5 text-xs text-danger"
           >
-            <XCircle className="h-3.5 w-3.5" /> Ablehnen
+            <XCircle className="h-3.5 w-3.5" /> {t("detail.actions.reject")}
           </button>
           <button
             onClick={() => {
-              const when = prompt("Veröffentlichungsdatum (YYYY-MM-DDTHH:mm):", new Date().toISOString().slice(0, 16));
+              const when = prompt(t("detail.scheduleDatePrompt"), new Date().toISOString().slice(0, 16));
               if (!when) return;
               runAction("schedule", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "schedule", scheduledAt: when }) }));
             }}
             className="inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-xs text-accent"
           >
-            <Send className="h-3.5 w-3.5" /> Einplanen
+            <Send className="h-3.5 w-3.5" /> {t("detail.actions.schedule")}
           </button>
           <button
             onClick={() => runAction("publish", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "publish" }) }))}
             className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-white"
           >
             {busy === "publish" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Send className="h-3.5 w-3.5" />}
-            Veröffentlichen
+            {t("detail.actions.publish")}
           </button>
         </div>
       </div>
@@ -134,15 +136,15 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
 
       <div className="card space-y-3 p-5">
         <label className="block">
-          <span className="text-sm font-medium text-foreground">Titel</span>
+          <span className="text-sm font-medium text-foreground">{t("detail.fields.title")}</span>
           <input className={`${inputClass} mt-1.5`} value={title} onChange={(e) => setTitle(e.target.value)} />
         </label>
         <label className="block">
-          <span className="text-sm font-medium text-foreground">Hook</span>
+          <span className="text-sm font-medium text-foreground">{t("detail.fields.hook")}</span>
           <input className={`${inputClass} mt-1.5`} value={hook} onChange={(e) => setHook(e.target.value)} />
         </label>
         <label className="block">
-          <span className="text-sm font-medium text-foreground">Script</span>
+          <span className="text-sm font-medium text-foreground">{t("detail.fields.script")}</span>
           <textarea
             className={`${inputClass} mt-1.5 font-mono`}
             rows={10}
@@ -151,7 +153,7 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
           />
         </label>
         <label className="block">
-          <span className="text-sm font-medium text-foreground">Caption</span>
+          <span className="text-sm font-medium text-foreground">{t("detail.fields.caption")}</span>
           <textarea className={`${inputClass} mt-1.5`} rows={2} value={caption} onChange={(e) => setCaption(e.target.value)} />
         </label>
         <button
@@ -159,19 +161,19 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
           disabled={saving}
           className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
         >
-          <Save className="h-4 w-4" /> {saving ? "Speichert…" : "Speichern"}
+          <Save className="h-4 w-4" /> {saving ? t("detail.saving") : t("detail.save")}
         </button>
       </div>
 
       <div className="card space-y-3 p-5">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-foreground">Hashtags & Keywords</h3>
+          <h3 className="text-sm font-semibold text-foreground">{t("detail.hashtags.heading")}</h3>
           <button
             onClick={() => runAction("hashtags", () => fetch(`/api/content-items/${item.id}/hashtags`, { method: "POST" }))}
             className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1 text-xs text-foreground"
           >
             {busy === "hashtags" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <RefreshCw className="h-3.5 w-3.5" />}
-            Neu generieren
+            {t("detail.hashtags.regenerate")}
           </button>
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -186,7 +188,7 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
             </span>
           ))}
           {hashtags.length === 0 && keywords.length === 0 && (
-            <span className="text-xs text-muted">Noch keine Hashtags generiert.</span>
+            <span className="text-xs text-muted">{t("detail.hashtags.empty")}</span>
           )}
         </div>
       </div>

@@ -1,0 +1,11 @@
+{
+  "pageTitle": "Social Media",
+  "subtitle": "Platform accounts and their connection status. Credentials are managed exclusively as server-side environment variables and are never stored in the frontend. A real OAuth login flow is prepared for each platform but not yet implemented — once app credentials are in place, it can be added here.",
+  "credentialsLabel": "App credentials",
+  "accountLabel": "Account",
+  "lastPublishedLabel": "Last published",
+  "lastErrorLabel": "Last error",
+  "connectButtonConnected": "Connected",
+  "connectButtonUnavailable": "Connect (not available yet)",
+  "connectButtonTitle": "OAuth flow not implemented yet"
+}

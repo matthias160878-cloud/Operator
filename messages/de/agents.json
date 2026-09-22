@@ -1,0 +1,21 @@
+{
+  "title": "Agent Monitor",
+  "description": "Alle SECRET-58-Agenten mit Status, letzter Aufgabe und Ergebnis. Jeder Lauf wird protokolliert.",
+  "table": {
+    "agent": "Agent",
+    "description": "Beschreibung",
+    "status": "Status",
+    "lastTask": "Letzte Aufgabe"
+  },
+  "history": {
+    "title": "Lauf-Historie",
+    "agent": "Agent",
+    "task": "Task",
+    "status": "Status",
+    "start": "Start",
+    "end": "Ende",
+    "resultError": "Ergebnis / Fehler",
+    "empty": "Noch keine Agent-Läufe.",
+    "completed": "Abgeschlossen"
+  }
+}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import {
   Bot,
   Brain,
@@ -44,8 +45,6 @@ import { isSameDay } from "@/lib/calendarGrid";
 
 export const dynamic = "force-dynamic";
 
-const WEEKDAY_LABELS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
-
 function currentWeekRange(): { start: Date; end: Date; days: Date[] } {
   const now = new Date();
   const offset = (now.getDay() + 6) % 7; // Montag = 0
@@ -61,6 +60,9 @@ function currentWeekRange(): { start: Date; end: Date; days: Date[] } {
 }
 
 export default async function DashboardPage() {
+  const t = await getTranslations("dashboard");
+  const tc = await getTranslations("common");
+  const weekdayLabels = t.raw("weekdayLabels") as string[];
   const workspace = await getDefaultWorkspace();
   const workspaceId = workspace.id;
   const week = currentWeekRange();
@@ -126,15 +128,16 @@ export default async function DashboardPage() {
     { key: "TIKTOK", label: "TikTok", connected: platformConnected.get("TIKTOK") ?? false },
     { key: "LINKEDIN", label: "LinkedIn", connected: platformConnected.get("LINKEDIN") ?? false },
     { key: "FACEBOOK", label: "Facebook", connected: platformConnected.get("FACEBOOK") ?? false },
-    { key: "X", label: "X (nicht angebunden)", connected: false },
+    { key: "X", label: t("orbit.xNotConnected"), connected: false },
   ];
 
   return (
     <div className="space-y-5">
       {demoSetting && (
         <div className="rounded-lg border border-accent/30 bg-accent/10 px-4 py-2 text-xs text-accent">
-          Demo-Daten aktiv — Kampagnen, Content-Items und Analytics sind Beispieldaten aus{" "}
-          <code>prisma/seed.ts</code>, keine echten Plattform-Zahlen.
+          {t("demoBanner.before")}
+          <code>prisma/seed.ts</code>
+          {t("demoBanner.after")}
         </div>
       )}
 
@@ -146,38 +149,38 @@ export default async function DashboardPage() {
           <div className="relative flex flex-col items-center gap-6 md:flex-row md:justify-between">
             <div className="w-full md:max-w-sm">
               <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-accent-2">
-                <Sparkles className="h-3.5 w-3.5" /> AI Social Command Center
+                <Sparkles className="h-3.5 w-3.5" /> {tc("appTagline")}
               </div>
               <h1 className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
                 SECRET 58
               </h1>
               <p className="mt-1 max-w-md text-sm text-muted">
-                Eine Idee. Mehrere Plattformen. Maximale Reichweite.
+                {t("hero.subtitle")}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 <Link
                   href="/content-brain"
                   className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent to-accent-3 px-3.5 py-2 text-sm font-medium text-white shadow-[0_0_25px_rgba(109,91,255,0.35)]"
                 >
-                  <Brain className="h-4 w-4" /> Neue Kampagne
+                  <Brain className="h-4 w-4" /> {t("hero.newCampaign")}
                 </Link>
                 <Link
                   href="/content-factory"
                   className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2 text-sm font-medium text-foreground hover:border-accent/40"
                 >
-                  <FileText className="h-4 w-4" /> Content erstellen
+                  <FileText className="h-4 w-4" /> {t("hero.createContent")}
                 </Link>
                 <Link
                   href="/ideas"
                   className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2 text-sm font-medium text-foreground hover:border-accent/40"
                 >
-                  <Compass className="h-4 w-4" /> Ideen finden
+                  <Compass className="h-4 w-4" /> {t("hero.findIdeas")}
                 </Link>
                 <Link
                   href="/agents"
                   className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2 text-sm font-medium text-foreground hover:border-accent/40"
                 >
-                  <Bot className="h-4 w-4" /> KI-Agenten
+                  <Bot className="h-4 w-4" /> {t("hero.aiAgents")}
                 </Link>
               </div>
             </div>
@@ -188,14 +191,14 @@ export default async function DashboardPage() {
 
         <div className="card p-4">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-foreground">Aktive Agenten</h2>
+            <h2 className="text-sm font-semibold text-foreground">{t("activeAgents.title")}</h2>
             <Link href="/agents" className="text-xs text-accent-2 hover:underline">
-              Alle anzeigen
+              {t("viewAll")}
             </Link>
           </div>
           <div className="space-y-2">
             {recentRuns.length === 0 && (
-              <p className="text-xs text-muted">Noch keine Agent-Läufe.</p>
+              <p className="text-xs text-muted">{t("activeAgents.empty")}</p>
             )}
             {recentRuns.map((run) => (
               <div
@@ -217,49 +220,49 @@ export default async function DashboardPage() {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
         <StatCard
           icon={FileText}
-          label="Content erstellt"
+          label={t("kpi.contentCreated")}
           value={String(stats.contentCreated)}
           accent="accent"
           delta={weekOverWeek.contentCreated != null ? `${weekOverWeek.contentCreated > 0 ? "+" : ""}${weekOverWeek.contentCreated}%` : undefined}
         />
         <StatCard
           icon={Film}
-          label="Videos erstellt"
+          label={t("kpi.videosCreated")}
           value={String(stats.videosCreated)}
           accent="accent-3"
           delta={weekOverWeek.videosCreated != null ? `${weekOverWeek.videosCreated > 0 ? "+" : ""}${weekOverWeek.videosCreated}%` : undefined}
         />
         <StatCard
           icon={Send}
-          label="Posts erstellt"
+          label={t("kpi.postsCreated")}
           value={String(stats.postsCreated)}
           accent="accent-2"
           delta={weekOverWeek.postsCreated != null ? `${weekOverWeek.postsCreated > 0 ? "+" : ""}${weekOverWeek.postsCreated}%` : undefined}
         />
         <StatCard
           icon={Rocket}
-          label="Veröffentlichungen"
+          label={t("kpi.published")}
           value={String(stats.published)}
           accent="success"
           delta={weekOverWeek.published != null ? `${weekOverWeek.published > 0 ? "+" : ""}${weekOverWeek.published}%` : undefined}
         />
         <StatCard
           icon={Eye}
-          label="Views"
+          label={t("kpi.views")}
           value={formatNumber(stats.totalViews)}
           accent="accent"
           delta={weekOverWeek.totalViews != null ? `${weekOverWeek.totalViews > 0 ? "+" : ""}${weekOverWeek.totalViews}%` : undefined}
         />
         <StatCard
           icon={Heart}
-          label="Ø Engagement"
+          label={t("kpi.avgEngagement")}
           value={formatPercent(stats.avgEngagementRate)}
           accent="accent-3"
           delta={weekOverWeek.avgEngagementRate != null ? `${weekOverWeek.avgEngagementRate > 0 ? "+" : ""}${weekOverWeek.avgEngagementRate}%` : undefined}
         />
         <StatCard
           icon={Wallet}
-          label="Einnahmen gesamt"
+          label={t("kpi.totalRevenue")}
           value={
             revenueSummary.totals[0]
               ? formatCurrency(revenueSummary.totals[0].amount, revenueSummary.totals[0].currency)
@@ -270,7 +273,7 @@ export default async function DashboardPage() {
       </div>
       {Object.values(weekOverWeek).every((v) => v == null) && (
         <p className="-mt-2 text-[11px] text-muted">
-          Noch keine Vorwoche als Vergleichsbasis vorhanden — Veränderungsraten erscheinen, sobald Daten über mindestens zwei Wochen vorliegen.
+          {t("kpi.noComparisonWeek")}
         </p>
       )}
 
@@ -278,22 +281,22 @@ export default async function DashboardPage() {
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
         <div className="card p-4 xl:col-span-1">
           <div className="mb-2 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-foreground">Content Produktion</h2>
-            <span className="text-xs text-muted">Diese Woche</span>
+            <h2 className="text-sm font-semibold text-foreground">{t("production.title")}</h2>
+            <span className="text-xs text-muted">{t("production.thisWeek")}</span>
           </div>
           <ProductionChart data={weeklyProduction} />
         </div>
 
         <div className="card p-4">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-foreground">Geplante Beiträge</h2>
+            <h2 className="text-sm font-semibold text-foreground">{t("scheduled.title")}</h2>
             <Link href="/calendar" className="text-xs text-accent-2 hover:underline">
-              Alle anzeigen
+              {t("viewAll")}
             </Link>
           </div>
           <div className="space-y-2">
             {upcomingItems.length === 0 && (
-              <p className="text-xs text-muted">Keine geplanten Beiträge.</p>
+              <p className="text-xs text-muted">{t("scheduled.empty")}</p>
             )}
             {upcomingItems.map((item) => (
               <div key={item.id} className="flex items-center justify-between rounded-lg border border-border bg-surface-2 px-3 py-2">
@@ -314,11 +317,11 @@ export default async function DashboardPage() {
 
         <div className="card p-4">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-foreground">Letzte Aktivitäten</h2>
+            <h2 className="text-sm font-semibold text-foreground">{t("activity.title")}</h2>
           </div>
           <div className="space-y-3">
             {recentRuns.length === 0 && (
-              <p className="text-xs text-muted">Noch keine Aktivitäten.</p>
+              <p className="text-xs text-muted">{t("activity.empty")}</p>
             )}
             {recentRuns.map((run) => (
               <div key={run.id} className="flex items-start gap-2.5">
@@ -344,30 +347,30 @@ export default async function DashboardPage() {
               <Sparkles className="h-5 w-5 text-accent-2" />
             </div>
             <div className="relative mt-4">
-              <h2 className="text-lg font-semibold text-foreground">Content Factory</h2>
+              <h2 className="text-lg font-semibold text-foreground">{tc("nav.contentFactory")}</h2>
               <p className="mt-1 text-sm text-muted">
-                Erstelle mit nur einer Idee komplette Content-Kampagnen für alle Plattformen.
+                {t("contentFactory.description")}
               </p>
               <Link
                 href="/content-factory"
                 className="mt-4 inline-flex items-center gap-2 rounded-lg bg-accent px-3.5 py-2 text-sm font-medium text-white"
               >
-                Jetzt starten →
+                {t("contentFactory.cta")}
               </Link>
             </div>
           </div>
 
           <div className="w-full shrink-0 sm:w-40">
-            <div className="mb-2 text-xs font-medium text-muted">Beliebte Vorlagen</div>
+            <div className="mb-2 text-xs font-medium text-muted">{t("contentFactory.popularTemplates")}</div>
             <div className="space-y-1.5">
               {[
-                { key: "YOUTUBE" as const, label: "YouTube Video" },
-                { key: "TIKTOK" as const, label: "TikTok Serie" },
-                { key: "INSTAGRAM" as const, label: "Instagram Reel" },
-                { key: "LINKEDIN" as const, label: "LinkedIn Post" },
+                { key: "YOUTUBE" as const, label: t("contentFactory.templateYoutubeVideo") },
+                { key: "TIKTOK" as const, label: t("contentFactory.templateTiktokSeries") },
+                { key: "INSTAGRAM" as const, label: t("contentFactory.templateInstagramReel") },
+                { key: "LINKEDIN" as const, label: t("contentFactory.templateLinkedinPost") },
               ].map((tpl) => (
                 <Link
-                  key={tpl.label}
+                  key={tpl.key}
                   href="/script-studio"
                   className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs text-muted hover:bg-surface-2 hover:text-foreground"
                 >
@@ -379,61 +382,61 @@ export default async function DashboardPage() {
                 href="/script-studio"
                 className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs text-muted hover:bg-surface-2 hover:text-foreground"
               >
-                <FileText className="h-3.5 w-3.5" /> Blogartikel
+                <FileText className="h-3.5 w-3.5" /> {t("contentFactory.templateBlogPost")}
               </Link>
             </div>
             <Link
               href="/content-factory"
               className="mt-1 block px-2 text-xs text-accent-2 hover:underline"
             >
-              Alle Vorlagen →
+              {t("contentFactory.viewAllTemplates")}
             </Link>
           </div>
         </div>
 
         <div className="card p-4">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-foreground">Brand DNA</h2>
+            <h2 className="text-sm font-semibold text-foreground">{tc("nav.brandDna")}</h2>
             <div className="flex items-center gap-2">
               <StatusBadge status={brand ? "CONNECTED" : "NOT_CONFIGURED"} />
               <Link href="/brand-dna" className="text-xs text-accent-2 hover:underline">
-                Bearbeiten
+                {tc("actions.edit")}
               </Link>
             </div>
           </div>
           {brand ? (
             <dl className="space-y-1.5 text-xs">
               <div className="flex justify-between gap-2">
-                <dt className="text-muted">Tonalität</dt>
+                <dt className="text-muted">{t("brandDna.tonality")}</dt>
                 <dd className="text-right text-foreground">{brand.tonality}</dd>
               </div>
               <div className="flex justify-between gap-2">
-                <dt className="text-muted">Zielgruppe</dt>
+                <dt className="text-muted">{t("brandDna.targetAudience")}</dt>
                 <dd className="text-right text-foreground">{brand.targetAudience}</dd>
               </div>
               <div className="flex justify-between gap-2">
-                <dt className="text-muted">Branche</dt>
+                <dt className="text-muted">{t("brandDna.industry")}</dt>
                 <dd className="text-right text-foreground">{brand.industry}</dd>
               </div>
               <div className="flex justify-between gap-2">
-                <dt className="text-muted">Sprache</dt>
+                <dt className="text-muted">{t("brandDna.language")}</dt>
                 <dd className="text-right text-foreground">{brand.language}</dd>
               </div>
             </dl>
           ) : (
-            <p className="text-xs text-muted">Noch keine Brand DNA hinterlegt.</p>
+            <p className="text-xs text-muted">{t("brandDna.empty")}</p>
           )}
         </div>
 
         <div className="card p-4">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-foreground">Aktuelle Kampagnen</h2>
+            <h2 className="text-sm font-semibold text-foreground">{t("campaigns.title")}</h2>
             <Link href="/content-brain" className="text-xs text-accent-2 hover:underline">
-              Alle anzeigen
+              {t("viewAll")}
             </Link>
           </div>
           <div className="space-y-3">
-            {campaigns.length === 0 && <p className="text-xs text-muted">Noch keine Kampagnen.</p>}
+            {campaigns.length === 0 && <p className="text-xs text-muted">{t("campaigns.empty")}</p>}
             {campaigns.map((c) => {
               const total = c.contentItems.length || 1;
               const done = c.contentItems.filter((i) => i.status === "PUBLISHED").length;
@@ -469,9 +472,9 @@ export default async function DashboardPage() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-4">
         <div className="card p-4">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-foreground">Plattformen</h2>
+            <h2 className="text-sm font-semibold text-foreground">{t("platforms.title")}</h2>
             <Link href="/social-media" className="text-xs text-accent-2 hover:underline">
-              Verwalten
+              {t("platforms.manage")}
             </Link>
           </div>
           <div className="space-y-2">
@@ -486,9 +489,9 @@ export default async function DashboardPage() {
 
         <div className="card p-4">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-foreground">Integrationen</h2>
+            <h2 className="text-sm font-semibold text-foreground">{tc("nav.integrations")}</h2>
             <Link href="/integrations" className="text-xs text-accent-2 hover:underline">
-              {connectedIntegrations}/{integrationStatuses.length} verbunden
+              {t("integrations.connectedCount", { connected: connectedIntegrations, total: integrationStatuses.length })}
             </Link>
           </div>
           <div className="space-y-2">
@@ -503,13 +506,13 @@ export default async function DashboardPage() {
 
         <div className="card p-4">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-foreground">Agent Monitor</h2>
+            <h2 className="text-sm font-semibold text-foreground">{t("agentMonitor.title")}</h2>
             <Link href="/agents" className="text-xs text-accent-2 hover:underline">
-              Alle anzeigen
+              {t("viewAll")}
             </Link>
           </div>
           <div className="space-y-2">
-            {recentRuns.length === 0 && <p className="text-xs text-muted">Noch keine Läufe.</p>}
+            {recentRuns.length === 0 && <p className="text-xs text-muted">{t("agentMonitor.empty")}</p>}
             {recentRuns.map((run) => (
               <div key={run.id} className="flex items-center justify-between gap-2 text-sm">
                 <div className="min-w-0">
@@ -529,11 +532,11 @@ export default async function DashboardPage() {
 
         <div className="card p-4">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-foreground">Top Performer</h2>
-            <span className="text-xs text-muted">Letzte 7 Tage</span>
+            <h2 className="text-sm font-semibold text-foreground">{t("topPerformer.title")}</h2>
+            <span className="text-xs text-muted">{t("topPerformer.last7Days")}</span>
           </div>
           {bestPerforming.length === 0 ? (
-            <p className="text-xs text-muted">Noch keine Performance-Daten.</p>
+            <p className="text-xs text-muted">{t("topPerformer.empty")}</p>
           ) : (
             (() => {
               const top = bestPerforming[0];
@@ -550,29 +553,29 @@ export default async function DashboardPage() {
                       <div className="flex items-center justify-center gap-1 text-[11px] text-foreground">
                         <Eye className="h-3 w-3 text-muted" /> {formatNumber(top.views)}
                       </div>
-                      <div className="text-[10px] text-muted">Views</div>
+                      <div className="text-[10px] text-muted">{t("topPerformer.views")}</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-center gap-1 text-[11px] text-foreground">
                         <Heart className="h-3 w-3 text-muted" /> {formatNumber(top.likes)}
                       </div>
-                      <div className="text-[10px] text-muted">Likes</div>
+                      <div className="text-[10px] text-muted">{t("topPerformer.likes")}</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-center gap-1 text-[11px] text-foreground">
                         <MessageCircle className="h-3 w-3 text-muted" /> {formatNumber(top.comments)}
                       </div>
-                      <div className="text-[10px] text-muted">Kommentare</div>
+                      <div className="text-[10px] text-muted">{t("topPerformer.comments")}</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-center gap-1 text-[11px] text-foreground">
                         <Share2 className="h-3 w-3 text-muted" /> {formatNumber(top.shares)}
                       </div>
-                      <div className="text-[10px] text-muted">Shares</div>
+                      <div className="text-[10px] text-muted">{t("topPerformer.shares")}</div>
                     </div>
                   </div>
                   <div className="mt-3 rounded-lg bg-success/15 px-2.5 py-1.5 text-center text-xs font-medium text-success">
-                    +Engagement Rate {formatPercent(top.engagementRate)}
+                    {t("topPerformer.engagementRate", { value: formatPercent(top.engagementRate) })}
                   </div>
                 </div>
               );
@@ -584,7 +587,7 @@ export default async function DashboardPage() {
       <div className="card p-4">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <div>
-            <h2 className="text-sm font-semibold text-foreground">Content Kalender</h2>
+            <h2 className="text-sm font-semibold text-foreground">{tc("nav.calendar")}</h2>
             <p className="text-xs text-muted">
               {new Intl.DateTimeFormat("de-DE", { day: "2-digit" }).format(week.days[0])}. –{" "}
               {new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "long", year: "numeric" }).format(
@@ -594,18 +597,23 @@ export default async function DashboardPage() {
           </div>
           <div className="flex items-center gap-2">
             <div className="flex overflow-hidden rounded-lg border border-border text-xs">
-              {["Monat", "Woche", "Tag", "Kampagne"].map((label) => (
+              {[
+                { key: "month", label: t("calendar.viewMonth") },
+                { key: "week", label: t("calendar.viewWeek") },
+                { key: "day", label: t("calendar.viewDay") },
+                { key: "campaign", label: t("calendar.viewCampaign") },
+              ].map((view) => (
                 <Link
-                  key={label}
+                  key={view.key}
                   href="/calendar"
                   className={
                     "px-2.5 py-1 " +
-                    (label === "Woche"
+                    (view.key === "week"
                       ? "bg-accent/20 text-foreground"
                       : "text-muted hover:bg-surface-2 hover:text-foreground")
                   }
                 >
-                  {label}
+                  {view.label}
                 </Link>
               ))}
             </div>
@@ -613,7 +621,7 @@ export default async function DashboardPage() {
               href="/calendar"
               className="inline-flex items-center gap-1.5 text-xs text-accent-2 hover:underline"
             >
-              <CalendarPlus className="h-3.5 w-3.5" /> Öffnen
+              <CalendarPlus className="h-3.5 w-3.5" /> {t("calendar.open")}
             </Link>
           </div>
         </div>
@@ -632,7 +640,7 @@ export default async function DashboardPage() {
                 }
               >
                 <div className={"text-[11px] " + (isToday ? "font-semibold text-accent-2" : "text-muted")}>
-                  {WEEKDAY_LABELS[i]} {day.getDate()}
+                  {weekdayLabels[i]} {day.getDate()}
                 </div>
                 <div className="mt-1.5 space-y-1">
                   {dayItems.slice(0, 2).map((item) => (
@@ -654,7 +662,7 @@ export default async function DashboardPage() {
                     </Link>
                   ))}
                   {dayItems.length > 2 && (
-                    <div className="text-[10px] text-muted">+{dayItems.length - 2} weitere</div>
+                    <div className="text-[10px] text-muted">{t("calendar.moreItems", { count: dayItems.length - 2 })}</div>
                   )}
                 </div>
               </div>
@@ -666,20 +674,20 @@ export default async function DashboardPage() {
       <div className="flex flex-col items-center justify-between gap-2 border-t border-border pt-4 pb-2 text-xs text-muted sm:flex-row">
         <div className="flex items-center gap-1.5">
           <Brain className="h-3.5 w-3.5 text-accent-2" />
-          <span className="font-medium text-foreground">SECRET 58</span> · AI Social Command Center
+          <span className="font-medium text-foreground">SECRET 58</span> · {tc("appTagline")}
         </div>
         <div className="flex items-center gap-4">
           <Link href="/settings" className="hover:text-foreground">
-            Hilfe
+            {tc("footer.help")}
           </Link>
           <Link href="/settings" className="hover:text-foreground">
-            Datenschutz
+            {tc("footer.privacy")}
           </Link>
           <Link href="/settings" className="hover:text-foreground">
-            Impressum
+            {tc("footer.imprint")}
           </Link>
           <span className="inline-flex items-center gap-1.5 rounded-full border border-success/30 bg-success/10 px-2 py-0.5 text-success">
-            <span className="status-dot bg-success" /> System online
+            <span className="status-dot bg-success" /> {tc("footer.systemOnline")}
           </span>
         </div>
       </div>

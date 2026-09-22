@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Loader2, Plus, X } from "lucide-react";
 import { PLATFORM_LABELS } from "@/lib/format";
 
@@ -10,6 +11,7 @@ const inputClass =
   "w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none";
 
 export function NewConversationForm() {
+  const t = useTranslations("inbox");
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [platform, setPlatform] = useState("INSTAGRAM");
@@ -40,7 +42,7 @@ export function NewConversationForm() {
         onClick={() => setOpen(true)}
         className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white"
       >
-        <Plus className="h-4 w-4" /> Konversation simulieren
+        <Plus className="h-4 w-4" /> {t("newConversation.simulateButton")}
       </button>
     );
   }
@@ -48,11 +50,8 @@ export function NewConversationForm() {
   return (
     <form onSubmit={handleSubmit} className="card space-y-3 p-4">
       <div className="flex items-center justify-between">
-        <p className="text-xs text-muted">
-          Da keine echte Plattform-Verbindung besteht, kannst du hier eine eingehende Nachricht
-          simulieren, um den KI-Antwortentwurf auszuprobieren.
-        </p>
-        <button type="button" onClick={() => setOpen(false)} className="text-muted" aria-label="Schließen">
+        <p className="text-xs text-muted">{t("newConversation.simulateHint")}</p>
+        <button type="button" onClick={() => setOpen(false)} className="text-muted" aria-label={t("newConversation.close")}>
           <X className="h-4 w-4" />
         </button>
       </div>
@@ -66,14 +65,14 @@ export function NewConversationForm() {
         </select>
         <input
           className={inputClass}
-          placeholder="Name"
+          placeholder={t("newConversation.namePlaceholder")}
           value={participantName}
           onChange={(e) => setParticipantName(e.target.value)}
           required
         />
         <input
           className={inputClass}
-          placeholder="@handle (optional)"
+          placeholder={t("newConversation.handlePlaceholder")}
           value={participantHandle}
           onChange={(e) => setParticipantHandle(e.target.value)}
         />
@@ -81,7 +80,7 @@ export function NewConversationForm() {
       <textarea
         className={inputClass}
         rows={2}
-        placeholder="Nachrichtentext …"
+        placeholder={t("newConversation.messagePlaceholder")}
         value={initialMessage}
         onChange={(e) => setInitialMessage(e.target.value)}
         required
@@ -92,7 +91,7 @@ export function NewConversationForm() {
         className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
       >
         {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-        Erstellen
+        {t("newConversation.createButton")}
       </button>
     </form>
   );

@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Your brand. Your style. Everywhere. This information automatically feeds into Content Brain and the Script, Hook and Hashtag agents.",
+  "form": {
+    "nameLabel": "Brand name",
+    "industryLabel": "Industry",
+    "descriptionLabel": "Description",
+    "descriptionHint": "What defines the brand?",
+    "audienceLabel": "Target audience",
+    "languageLabel": "Language",
+    "tonalityLabel": "Tonality",
+    "humorLabel": "Humor",
+    "formalityLabel": "Formality",
+    "preferredWordsLabel": "Preferred words",
+    "forbiddenWordsLabel": "Forbidden words",
+    "preferredCtasLabel": "Preferred CTAs",
+    "brandValuesLabel": "Brand values",
+    "topicsLabel": "Topics",
+    "csvHint": "comma-separated",
+    "colorsLabel": "Colors",
+    "colorsHint": "comma-separated, e.g. #6D5BFF",
+    "fontsLabel": "Fonts",
+    "visualRulesLabel": "Visual rules",
+    "saveError": "Save failed.",
+    "unknownError": "Unknown error.",
+    "saving": "Saving…",
+    "save": "Save Brand DNA",
+    "savedAt": "Saved at {time}"
+  }
+}

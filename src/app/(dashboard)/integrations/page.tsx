@@ -1,19 +1,20 @@
+import { getTranslations } from "next-intl/server";
 import { getAllIntegrationStatuses } from "@/lib/integrations/registry";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import type { IntegrationCategory } from "@/lib/integrations/types";
 
 export const dynamic = "force-dynamic";
 
-const CATEGORY_LABELS: Record<IntegrationCategory, string> = {
-  AI: "KI-Provider",
-  VOICE: "Voice",
-  PLATFORM: "Social Plattformen",
-  DESIGN: "Design",
-  VIDEO: "Video",
-  TREND: "Trends",
-};
-
 export default async function IntegrationsPage() {
+  const t = await getTranslations("integrations");
+  const CATEGORY_LABELS: Record<IntegrationCategory, string> = {
+    AI: t("categories.AI"),
+    VOICE: t("categories.VOICE"),
+    PLATFORM: t("categories.PLATFORM"),
+    DESIGN: t("categories.DESIGN"),
+    VIDEO: t("categories.VIDEO"),
+    TREND: t("categories.TREND"),
+  };
   const statuses = await getAllIntegrationStatuses();
   const byCategory = new Map<IntegrationCategory, typeof statuses>();
   for (const s of statuses) {
@@ -25,11 +26,8 @@ export default async function IntegrationsPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-semibold text-foreground">Integrationen</h1>
-        <p className="mt-1 text-sm text-muted">
-          Live-Status aller externen Dienste — ausschließlich auf Basis der tatsächlich
-          gesetzten Environment-Variablen. Keine vorgetäuschten Verbindungen.
-        </p>
+        <h1 className="text-xl font-semibold text-foreground">{t("title")}</h1>
+        <p className="mt-1 text-sm text-muted">{t("description")}</p>
       </div>
 
       {Array.from(byCategory.entries()).map(([category, items]) => (

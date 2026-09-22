@@ -1,0 +1,14 @@
+{
+  "title": "Analytique",
+  "subtitle": "Indicateurs de performance basés sur des données réelles — dès que des plateformes seront connectées, cette vue se remplira de valeurs concrètes.",
+  "statViewsTotal": "Vues totales",
+  "statLikesTotal": "Mentions J'aime totales",
+  "statComments": "Commentaires",
+  "statShares": "Partages",
+  "chartTitle": "Performance du contenu dans le temps",
+  "chartLegend": "Vues (violet) · Engagement % (turquoise)",
+  "chartEmpty": "Aucune donnée d'analyse pour le moment.",
+  "bestPerformingTitle": "Contenu le plus performant",
+  "bestPerformingEmpty": "Aucune donnée pour le moment.",
+  "learningAgentTitle": "Learning Agent — Recommandations"
+}

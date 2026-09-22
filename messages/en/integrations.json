@@ -1,0 +1,12 @@
+{
+  "title": "Integrations",
+  "description": "Live status of all external services — based solely on the environment variables actually set. No simulated connections.",
+  "categories": {
+    "AI": "AI providers",
+    "VOICE": "Voice",
+    "PLATFORM": "Social platforms",
+    "DESIGN": "Design",
+    "VIDEO": "Video",
+    "TREND": "Trends"
+  }
+}

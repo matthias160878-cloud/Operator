@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Provider-agnostic video pipeline: format manager, swappable video providers, voiceover and subtitle integration (see Content Factory per content item).",
+  "providerCardTitle": "Video providers",
+  "providerNotePrefix": "Additional providers (AI video APIs, stock video libraries) can be added through the same",
+  "providerNoteSuffix": "interface without touching existing code.",
+  "formatManagerTitle": "Format manager",
+  "assetsTitle": "Video assets",
+  "assetsEmpty": "No videos rendered yet — rendering runs through content items in the Content Factory once a video provider is configured."
+}

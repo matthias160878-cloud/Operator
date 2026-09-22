@@ -1,0 +1,22 @@
+{
+  "title": "Settings",
+  "description": "Workspace, users and system information. Credentials are managed exclusively via environment variables (see <code>.env.example</code>).",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Name",
+    "slug": "Slug",
+    "createdAt": "Created on"
+  },
+  "users": {
+    "title": "Users & roles",
+    "note": "The multi-tenant data model is fully in place (workspace isolation across all tables). A real login/auth interface with multiple users is the next build step — for now the app runs on this single default workspace."
+  },
+  "system": {
+    "title": "System",
+    "contentItems": "Content items",
+    "campaigns": "Campaigns",
+    "mediaAssets": "Media assets",
+    "agentRuns": "Agent runs",
+    "dbNote": "Database: SQLite (local, <code>prisma/dev.db</code>) via Prisma ORM. For production, switch <codeSpaced>DATABASE_URL</codeSpaced> to Postgres/MySQL (adjust the provider in <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  }
+}

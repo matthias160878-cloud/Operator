@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { NewConversationForm } from "@/components/inbox/NewConversationForm";
@@ -9,6 +10,7 @@ import { PlatformGlyph, type PlatformGlyphKey } from "@/components/dashboard/Pla
 export const dynamic = "force-dynamic";
 
 export default async function InboxPage() {
+  const t = await getTranslations("inbox");
   const workspaceId = await getCurrentWorkspaceId();
   const conversations = await prisma.conversation.findMany({
     where: { workspaceId },
@@ -20,13 +22,8 @@ export default async function InboxPage() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold text-foreground">Posteingang</h1>
-          <p className="mt-1 max-w-2xl text-sm text-muted">
-            Nachrichten &amp; Kommentare über alle Plattformen. Der MessageAgent schlägt
-            Antworten vor — gesendet wird nur, was du freigibst. Es besteht noch keine echte
-            OAuth-Verbindung zu einer Plattform, daher werden Konversationen hier manuell
-            simuliert statt live abgerufen.
-          </p>
+          <h1 className="text-xl font-semibold text-foreground">{t("title")}</h1>
+          <p className="mt-1 max-w-2xl text-sm text-muted">{t("description")}</p>
         </div>
         <NewConversationForm />
       </div>
@@ -35,7 +32,7 @@ export default async function InboxPage() {
         {conversations.length === 0 && (
           <div className="flex flex-col items-center gap-2 p-10 text-center text-muted">
             <MessageCircle className="h-6 w-6" />
-            <p className="text-sm">Noch keine Konversationen — simuliere eine, um zu starten.</p>
+            <p className="text-sm">{t("emptyState")}</p>
           </div>
         )}
         {conversations.map((c) => {

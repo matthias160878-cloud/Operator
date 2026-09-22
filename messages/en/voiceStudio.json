@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs voice engine — manage the voice library, generate voiceover previews and import voices.",
+  "envWarning": "ElevenLabs is not configured yet. Add <envKey>ELEVENLABS_API_KEY</envKey> to <envFile>.env</envFile> to use voiceover and voice import. The voice library can still be used for planning in the meantime.",
+  "addManual": "Add voice manually",
+  "importFromElevenLabs": "Import from ElevenLabs",
+  "form": {
+    "namePlaceholder": "Name",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Language",
+    "submit": "Add"
+  },
+  "confirmDelete": "Really delete this voice?",
+  "importFailed": "Import failed.",
+  "previewFailed": "Preview failed.",
+  "unknownError": "Unknown error.",
+  "empty": "No voices in the library yet.",
+  "active": "Active",
+  "inactive": "Inactive",
+  "remove": "Remove",
+  "preview": {
+    "heading": "Voice Preview",
+    "defaultText": "Hello, this is a sample for this voice.",
+    "selectPlaceholder": "Select voice…",
+    "play": "Play preview"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Ideas e inspiración",
+  "subtitle": "Clústeres temáticos, series y formatos para próximos contenidos — generados por el IdeaAgent o añadidos manualmente.",
+  "board": {
+    "topicLabel": "Tema para nuevas ideas",
+    "topicPlaceholder": "p. ej. Productividad con agentes de IA",
+    "generateButton": "Generar ideas",
+    "manualButton": "Manual",
+    "manualTitlePlaceholder": "Título de la idea",
+    "addButton": "Añadir",
+    "generateError": "Error al generar ideas.",
+    "unknownError": "Error desconocido.",
+    "emptyState": "Aún no hay ideas — genera algunas o añade una manualmente.",
+    "minutesUnit": "~{count} min",
+    "statusNew": "Nueva",
+    "statusInProgress": "En curso",
+    "statusUsed": "Usada",
+    "statusArchived": "Archivada",
+    "sourceAiGenerated": "Generada por IA",
+    "sourceManual": "Manual"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Todos los elementos de contenido en un solo lugar: crea, duplica, reescribe, enriquece con locución/subtítulos y llévalos a través del flujo de aprobación.",
+  "statusTabs": {
+    "all": "Todos",
+    "draft": "Borrador",
+    "inReview": "En revisión",
+    "approved": "Aprobado",
+    "scheduled": "Programado",
+    "published": "Publicado",
+    "archived": "Archivado"
+  },
+  "newItem": {
+    "openButton": "Nuevo elemento de contenido",
+    "titleLabel": "Título",
+    "platformLabel": "Plataforma",
+    "create": "Crear",
+    "closeAria": "Cerrar"
+  },
+  "table": {
+    "empty": "Aún no hay elementos de contenido — crea uno manualmente o desde Content Brain.",
+    "title": "Título",
+    "platform": "Plataforma",
+    "format": "Formato",
+    "status": "Estado",
+    "updated": "Actualizado",
+    "actions": "Acciones",
+    "duplicate": "Duplicar",
+    "delete": "Eliminar",
+    "confirmDelete": "¿Eliminar este elemento de contenido?"
+  },
+  "detail": {
+    "backLink": "Volver a Content Factory",
+    "actionFailed": "La acción ha fallado.",
+    "actions": {
+      "review": "Enviar a revisión",
+      "approve": "Aprobar",
+      "reject": "Rechazar",
+      "schedule": "Programar",
+      "publish": "Publicar"
+    },
+    "rejectReasonPrompt": "Motivo del rechazo (opcional):",
+    "scheduleDatePrompt": "Fecha de publicación (AAAA-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Título",
+      "hook": "Hook",
+      "script": "Guion",
+      "caption": "Descripción"
+    },
+    "save": "Guardar",
+    "saving": "Guardando…",
+    "hashtags": {
+      "heading": "Hashtags y palabras clave",
+      "regenerate": "Regenerar",
+      "empty": "Aún no se han generado hashtags."
+    },
+    "voiceover": {
+      "heading": "Locución",
+      "generate": "Generar",
+      "empty": "Aún no se ha generado ninguna locución."
+    },
+    "subtitles": {
+      "heading": "Subtítulos",
+      "generate": "Generar (SRT)",
+      "download": "Descargar {file}",
+      "empty": "Aún no se han generado subtítulos."
+    },
+    "video": {
+      "heading": "Renderizado de vídeo",
+      "request": "Solicitar renderizado",
+      "note": "Pipeline de vídeo independiente del proveedor (sección 11/12) — actualmente no hay ningún proveedor de vídeo configurado (ver Integraciones)."
+    },
+    "scriptVariants": {
+      "heading": "Variantes de guion",
+      "newVariant": "Nueva variante",
+      "empty": "Aún no hay variantes.",
+      "variantSummary": "Variante {label}"
+    },
+    "repurpose": {
+      "heading": "Reutilizar contenido",
+      "description": "Genera derivados adaptados a otras plataformas a partir de este elemento de contenido.",
+      "generateButton": "Generar {count} derivados"
+    }
+  }
+}

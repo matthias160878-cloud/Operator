@@ -1,0 +1,11 @@
+{
+  "pageTitle": "Social Media",
+  "subtitle": "Comptes de plateforme et leur statut de connexion. Les identifiants sont gérés exclusivement en tant que variables d'environnement côté serveur et ne sont jamais stockés côté frontend. Un véritable flux de connexion OAuth est prévu pour chaque plateforme, mais pas encore implémenté — dès que les identifiants de l'application seront renseignés, il pourra être ajouté ici.",
+  "credentialsLabel": "Identifiants de l'application",
+  "accountLabel": "Compte",
+  "lastPublishedLabel": "Dernière publication",
+  "lastErrorLabel": "Dernière erreur",
+  "connectButtonConnected": "Connecté",
+  "connectButtonUnavailable": "Connecter (pas encore disponible)",
+  "connectButtonTitle": "Flux OAuth pas encore implémenté"
+}

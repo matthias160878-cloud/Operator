@@ -1,0 +1,12 @@
+{
+  "title": "Intégrations",
+  "description": "Statut en direct de tous les services externes — basé uniquement sur les variables d'environnement réellement définies. Aucune connexion simulée.",
+  "categories": {
+    "AI": "Fournisseurs IA",
+    "VOICE": "Voix",
+    "PLATFORM": "Plateformes sociales",
+    "DESIGN": "Design",
+    "VIDEO": "Vidéo",
+    "TREND": "Tendances"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Thumbnail-Konzepte, Bild-Assets und die Canva-Integration.",
+  "imageAssetsTitle": "Bild-Assets",
+  "imageAssetsEmpty": "Noch keine Bild-Assets vorhanden.",
+  "thumbnailAgent": {
+    "title": "Thumbnail-Agent",
+    "description": "Erzeugt ein Text-Konzept (Titel, visuelle Idee, Layout, CTA) — vorbereitet für die Anbindung eines Bildgenerators. Es wird noch kein Bild erzeugt.",
+    "inputPlaceholder": "Thema für das Thumbnail",
+    "submitButton": "Konzept generieren",
+    "errorGenerationFailed": "Generierung fehlgeschlagen.",
+    "errorUnknown": "Unbekannter Fehler.",
+    "fieldTitle": "Titel",
+    "fieldVisualIdea": "Visuelle Idee",
+    "fieldText": "Text",
+    "fieldLayout": "Layout",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Bildbeschreibung"
+  }
+}

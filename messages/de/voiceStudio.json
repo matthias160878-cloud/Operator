@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — Voice Library verwalten, Voiceover-Previews erzeugen und Voices importieren.",
+  "envWarning": "ElevenLabs ist noch nicht konfiguriert. Trage <envKey>ELEVENLABS_API_KEY</envKey> in <envFile>.env</envFile> ein, um Voiceover und Voice-Import zu nutzen. Die Voice Library kann trotzdem für die Planung genutzt werden.",
+  "addManual": "Voice manuell anlegen",
+  "importFromElevenLabs": "Von ElevenLabs importieren",
+  "form": {
+    "namePlaceholder": "Name",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Sprache",
+    "submit": "Hinzufügen"
+  },
+  "confirmDelete": "Voice wirklich löschen?",
+  "importFailed": "Import fehlgeschlagen.",
+  "previewFailed": "Preview fehlgeschlagen.",
+  "unknownError": "Unbekannter Fehler.",
+  "empty": "Noch keine Voices in der Library.",
+  "active": "Aktiv",
+  "inactive": "Inaktiv",
+  "remove": "Entfernen",
+  "preview": {
+    "heading": "Voice Preview",
+    "defaultText": "Hallo, das ist ein Beispiel für dieses Voice.",
+    "selectPlaceholder": "Voice wählen…",
+    "play": "Preview abspielen"
+  }
+}

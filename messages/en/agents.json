@@ -1,0 +1,21 @@
+{
+  "title": "Agent Monitor",
+  "description": "All SECRET 58 agents with status, latest task and result. Every run is logged.",
+  "table": {
+    "agent": "Agent",
+    "description": "Description",
+    "status": "Status",
+    "lastTask": "Latest task"
+  },
+  "history": {
+    "title": "Run history",
+    "agent": "Agent",
+    "task": "Task",
+    "status": "Status",
+    "start": "Start",
+    "end": "End",
+    "resultError": "Result / error",
+    "empty": "No agent runs yet.",
+    "completed": "Completed"
+  }
+}

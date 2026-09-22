@@ -1,0 +1,22 @@
+{
+  "title": "Einstellungen",
+  "description": "Workspace, Nutzer und Systeminformationen. Zugangsdaten werden ausschließlich über Environment-Variablen verwaltet (siehe <code>.env.example</code>).",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Name",
+    "slug": "Slug",
+    "createdAt": "Erstellt am"
+  },
+  "users": {
+    "title": "Nutzer & Rollen",
+    "note": "Multi-Tenant-Datenmodell ist vollständig vorbereitet (Workspace-Isolation für alle Tabellen). Eine echte Login-/Auth-Oberfläche mit mehreren Nutzern ist der nächste Ausbauschritt — aktuell arbeitet die App mit genau diesem Default-Workspace."
+  },
+  "system": {
+    "title": "System",
+    "contentItems": "Content-Items",
+    "campaigns": "Kampagnen",
+    "mediaAssets": "Medien-Assets",
+    "agentRuns": "Agent-Läufe",
+    "dbNote": "Datenbank: SQLite (lokal, <code>prisma/dev.db</code>) über Prisma ORM. Für Produktion <codeSpaced>DATABASE_URL</codeSpaced> auf Postgres/MySQL umstellen (Provider in <codeSpaced>prisma/schema.prisma</codeSpaced> anpassen)."
+  }
+}

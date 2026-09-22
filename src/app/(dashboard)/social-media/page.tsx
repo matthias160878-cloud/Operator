@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { checkIntegration, INTEGRATIONS } from "@/lib/integrations/registry";
@@ -16,6 +17,8 @@ const PLATFORM_INTEGRATION_KEY: Record<string, string> = {
 };
 
 export default async function SocialMediaPage() {
+  const t = await getTranslations("socialMedia");
+  const locale = await getLocale();
   const workspaceId = await getCurrentWorkspaceId();
   const accounts = await prisma.platformAccount.findMany({
     where: { workspaceId },
@@ -32,13 +35,8 @@ export default async function SocialMediaPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-semibold text-foreground">Social Media</h1>
-        <p className="mt-1 max-w-2xl text-sm text-muted">
-          Plattform-Accounts und ihr Verbindungsstatus. Zugangsdaten werden ausschließlich als
-          Server-seitige Environment-Variablen verwaltet, niemals im Frontend gespeichert.
-          Ein echter OAuth-Login-Flow ist je Plattform vorbereitet, aber noch nicht
-          implementiert — sobald App-Zugangsdaten hinterlegt sind, kann er hier ergänzt werden.
-        </p>
+        <h1 className="text-xl font-semibold text-foreground">{t("pageTitle")}</h1>
+        <p className="mt-1 max-w-2xl text-sm text-muted">{t("subtitle")}</p>
       </div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -67,20 +65,20 @@ export default async function SocialMediaPage() {
               </div>
               <dl className="space-y-1.5 text-xs">
                 <div className="flex justify-between">
-                  <dt className="text-muted">App-Zugangsdaten</dt>
+                  <dt className="text-muted">{t("credentialsLabel")}</dt>
                   <dd>
                     <StatusBadge status={cred?.status ?? "NOT_CONFIGURED"} />
                   </dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-muted">Account</dt>
+                  <dt className="text-muted">{t("accountLabel")}</dt>
                   <dd className="text-foreground">{acc.accountName || "—"}</dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-muted">Letzte Veröffentlichung</dt>
+                  <dt className="text-muted">{t("lastPublishedLabel")}</dt>
                   <dd className="text-foreground">
                     {acc.lastPublishedAt
-                      ? new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short" }).format(
+                      ? new Intl.DateTimeFormat(locale, { dateStyle: "short", timeStyle: "short" }).format(
                           acc.lastPublishedAt
                         )
                       : "—"}
@@ -88,17 +86,17 @@ export default async function SocialMediaPage() {
                 </div>
                 {acc.lastError && (
                   <div className="flex justify-between">
-                    <dt className="text-muted">Letzter Fehler</dt>
+                    <dt className="text-muted">{t("lastErrorLabel")}</dt>
                     <dd className="text-danger">{acc.lastError}</dd>
                   </div>
                 )}
               </dl>
               <button
                 disabled
-                title="OAuth-Flow noch nicht implementiert"
+                title={t("connectButtonTitle")}
                 className="w-full cursor-not-allowed rounded-lg border border-border bg-surface-2 px-3 py-2 text-xs text-muted"
               >
-                {acc.status === "CONNECTED" ? "Verbunden" : "Verbinden (noch nicht verfügbar)"}
+                {acc.status === "CONNECTED" ? t("connectButtonConnected") : t("connectButtonUnavailable")}
               </button>
             </div>
           );

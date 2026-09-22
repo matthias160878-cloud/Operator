@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Script and hook engine: generates platform-fit scripts following the Hook → Problem → Value → Example → Payoff → CTA structure, plus several hook variants.",
+  "form": {
+    "topicLabel": "Topic",
+    "topicPlaceholder": "e.g. 5 ways AI agents save time",
+    "platformLabel": "Platform",
+    "generateButton": "Generate script & hooks",
+    "generateFailed": "Generation failed.",
+    "unknownError": "Unknown error."
+  },
+  "hookTypes": {
+    "direkt": "Direct",
+    "neugierig": "Curious",
+    "story": "Story",
+    "problem": "Problem",
+    "zahlen": "Numbers",
+    "kontroversSachlich": "Controversial (factual)",
+    "educational": "Educational"
+  },
+  "hooksHeading": "Hook Variants",
+  "engine": {
+    "label": "Engine: {provider}",
+    "templateMode": "Template mode (no AI provider configured)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Save as content item",
+    "saving": "Saving…"
+  }
+}

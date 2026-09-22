@@ -1,0 +1,11 @@
+{
+  "pageTitle": "Social Media",
+  "subtitle": "Cuentas de plataforma y su estado de conexión. Las credenciales se gestionan exclusivamente como variables de entorno del servidor y nunca se almacenan en el frontend. Hay previsto un flujo de inicio de sesión OAuth real para cada plataforma, pero aún no está implementado — en cuanto se configuren las credenciales de la app, podrá añadirse aquí.",
+  "credentialsLabel": "Credenciales de la app",
+  "accountLabel": "Cuenta",
+  "lastPublishedLabel": "Última publicación",
+  "lastErrorLabel": "Último error",
+  "connectButtonConnected": "Conectado",
+  "connectButtonUnavailable": "Conectar (aún no disponible)",
+  "connectButtonTitle": "El flujo OAuth aún no está implementado"
+}

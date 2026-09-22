@@ -1,0 +1,85 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Alle Content-Items an einem Ort — erstellen, duplizieren, umschreiben, mit Voiceover/Untertiteln anreichern und durch den Freigabe-Workflow schleusen.",
+  "statusTabs": {
+    "all": "Alle",
+    "draft": "Entwurf",
+    "inReview": "In Prüfung",
+    "approved": "Freigegeben",
+    "scheduled": "Geplant",
+    "published": "Veröffentlicht",
+    "archived": "Archiviert"
+  },
+  "newItem": {
+    "openButton": "Neues Content-Item",
+    "titleLabel": "Titel",
+    "platformLabel": "Plattform",
+    "create": "Erstellen",
+    "closeAria": "Schließen"
+  },
+  "table": {
+    "empty": "Noch keine Content-Items — erstelle eines manuell oder über Content Brain.",
+    "title": "Titel",
+    "platform": "Plattform",
+    "format": "Format",
+    "status": "Status",
+    "updated": "Aktualisiert",
+    "actions": "Aktionen",
+    "duplicate": "Duplizieren",
+    "delete": "Löschen",
+    "confirmDelete": "Content-Item wirklich löschen?"
+  },
+  "detail": {
+    "backLink": "Zurück zur Content Factory",
+    "actionFailed": "Aktion fehlgeschlagen.",
+    "actions": {
+      "review": "Zur Prüfung",
+      "approve": "Freigeben",
+      "reject": "Ablehnen",
+      "schedule": "Einplanen",
+      "publish": "Veröffentlichen"
+    },
+    "rejectReasonPrompt": "Ablehnungsgrund (optional):",
+    "scheduleDatePrompt": "Veröffentlichungsdatum (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Titel",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caption"
+    },
+    "save": "Speichern",
+    "saving": "Speichert…",
+    "hashtags": {
+      "heading": "Hashtags & Keywords",
+      "regenerate": "Neu generieren",
+      "empty": "Noch keine Hashtags generiert."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Erzeugen",
+      "empty": "Noch kein Voiceover erzeugt."
+    },
+    "subtitles": {
+      "heading": "Untertitel",
+      "generate": "Erzeugen (SRT)",
+      "download": "{file} herunterladen",
+      "empty": "Noch keine Untertitel erzeugt."
+    },
+    "video": {
+      "heading": "Video-Rendering",
+      "request": "Rendern anfragen",
+      "note": "Provider-agnostische Video-Pipeline (Abschnitt 11/12) — aktuell ist kein Video-Provider konfiguriert (siehe Integrationen)."
+    },
+    "scriptVariants": {
+      "heading": "Script-Varianten",
+      "newVariant": "Neue Variante",
+      "empty": "Noch keine Varianten.",
+      "variantSummary": "Variante {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Erzeuge aus diesem Content-Item plattformgerechte Ableger für weitere Kanäle.",
+      "generateButton": "{count} Ableger erzeugen"
+    }
+  }
+}

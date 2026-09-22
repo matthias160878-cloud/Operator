@@ -1,0 +1,22 @@
+{
+  "title": "Ideen & Inspiration",
+  "subtitle": "Themencluster, Serien und Formate für kommenden Content — generiert vom IdeaAgent oder manuell erfasst.",
+  "board": {
+    "topicLabel": "Thema für neue Ideen",
+    "topicPlaceholder": "z.B. Produktivität mit KI-Agenten",
+    "generateButton": "Ideen generieren",
+    "manualButton": "Manuell",
+    "manualTitlePlaceholder": "Idee-Titel",
+    "addButton": "Hinzufügen",
+    "generateError": "Fehler bei der Ideengenerierung.",
+    "unknownError": "Unbekannter Fehler.",
+    "emptyState": "Noch keine Ideen — generiere welche oder lege manuell an.",
+    "minutesUnit": "~{count} Min.",
+    "statusNew": "Neu",
+    "statusInProgress": "In Arbeit",
+    "statusUsed": "Verwendet",
+    "statusArchived": "Archiviert",
+    "sourceAiGenerated": "KI-generiert",
+    "sourceManual": "Manuell"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Calendrier de Contenu",
+  "subtitle": "Vue d'ensemble du contenu planifié et publié.",
+  "weekdays": ["Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"],
+  "months": [
+    "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+    "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+  ],
+  "allPlatforms": "Toutes les plateformes",
+  "moreItems": "+{count} de plus",
+  "listTitle": "Liste de ce mois",
+  "emptyMonth": "Aucune publication planifiée ce mois-ci."
+}

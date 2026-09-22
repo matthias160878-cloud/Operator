@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Eine Idee rein — ein vollständiger, plattformgerechter Content-Plan raus. Der ContentBrainAgent berücksichtigt deine Brand DNA und erzeugt für jede gewählte Plattform passende Hooks, Scripts, Hashtags und Thumbnail-Konzepte als Entwurf.",
+  "campaignsHeading": "Kampagnen",
+  "noCampaigns": "Noch keine Kampagnen erstellt.",
+  "campaignSummary": "{count} Content-Items · {audience}",
+  "form": {
+    "textEngineLabel": "Text-Engine:",
+    "templateMode": "Template-Modus (kein KI-Provider konfiguriert)",
+    "modeTemplate": "Template",
+    "topicLabel": "Thema / Idee",
+    "topicPlaceholder": "z.B. Erkläre, warum autonome KI-Agenten die Arbeitswelt verändern.",
+    "audienceLabel": "Zielgruppe",
+    "audiencePlaceholder": "z.B. 25-45, Tech-Interessierte",
+    "goalLabel": "Ziel",
+    "languageLabel": "Sprache",
+    "platformsLabel": "Plattformen",
+    "itemsPerPlatformLabel": "Content-Items je Plattform ({count})",
+    "generateError": "Generierung fehlgeschlagen.",
+    "unknownError": "Unbekannter Fehler.",
+    "submitLoading": "Content Brain arbeitet…",
+    "submitIdle": "Content-Plan generieren",
+    "resultHeading": "Kampagne erstellt — {count} Content-Items als Entwurf angelegt.",
+    "resultDescription": "Generiert im {mode}-Modus. Alle Inhalte starten als DRAFT — prüfe und bearbeite sie in der Content Factory.",
+    "resultLink": "Zur Content Factory →"
+  }
+}

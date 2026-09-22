@@ -1,0 +1,11 @@
+{
+  "pageTitle": "Social Media",
+  "subtitle": "Plattform-Accounts und ihr Verbindungsstatus. Zugangsdaten werden ausschließlich als Server-seitige Environment-Variablen verwaltet, niemals im Frontend gespeichert. Ein echter OAuth-Login-Flow ist je Plattform vorbereitet, aber noch nicht implementiert — sobald App-Zugangsdaten hinterlegt sind, kann er hier ergänzt werden.",
+  "credentialsLabel": "App-Zugangsdaten",
+  "accountLabel": "Account",
+  "lastPublishedLabel": "Letzte Veröffentlichung",
+  "lastErrorLabel": "Letzter Fehler",
+  "connectButtonConnected": "Verbunden",
+  "connectButtonUnavailable": "Verbinden (noch nicht verfügbar)",
+  "connectButtonTitle": "OAuth-Flow noch nicht implementiert"
+}

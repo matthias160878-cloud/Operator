@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { PlatformGlyph, type PlatformGlyphKey } from "@/components/dashboard/PlatformGlyph";
 
 export interface OrbitPlatform {
@@ -24,6 +25,8 @@ function positionStyle(angleDeg: number, radiusPct: number): React.CSSProperties
  * Plattformen bleiben bewusst gedimmt statt eine Verbindung vorzutäuschen.
  */
 export function BrainOrbit({ platforms }: { platforms: OrbitPlatform[] }) {
+  const t = useTranslations("dashboard");
+  const tc = useTranslations("common");
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[280px] shrink-0">
       <div className="absolute inset-[6%] rounded-full border border-border/70" />
@@ -33,7 +36,7 @@ export function BrainOrbit({ platforms }: { platforms: OrbitPlatform[] }) {
         <div className="relative h-28 w-28 overflow-hidden rounded-full shadow-[0_0_50px_rgba(109,91,255,0.55)]">
           <Image
             src="/brand/brain-core.png"
-            alt="SECRET 58 KI-Gehirn"
+            alt={t("orbit.brainAlt")}
             fill
             sizes="112px"
             className="object-cover"
@@ -47,7 +50,7 @@ export function BrainOrbit({ platforms }: { platforms: OrbitPlatform[] }) {
           key={p.key}
           className="absolute -translate-x-1/2 -translate-y-1/2"
           style={positionStyle(ANGLES_DEG[i], 42)}
-          title={`${p.label} — ${p.connected ? "verbunden" : "nicht konfiguriert"}`}
+          title={`${p.label} — ${p.connected ? tc("status.connected") : tc("status.notConfigured")}`}
         >
           <div
             className={

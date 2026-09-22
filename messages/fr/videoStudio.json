@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Pipeline vidéo indépendante du fournisseur : gestionnaire de formats, fournisseurs vidéo interchangeables, intégration voix off et sous-titres (voir Content Factory par élément de contenu).",
+  "providerCardTitle": "Fournisseurs vidéo",
+  "providerNotePrefix": "D'autres fournisseurs (API vidéo IA, bibliothèques de vidéos libres de droits) peuvent être ajoutés via la même interface",
+  "providerNoteSuffix": "sans toucher au code existant.",
+  "formatManagerTitle": "Gestionnaire de formats",
+  "assetsTitle": "Ressources vidéo",
+  "assetsEmpty": "Aucune vidéo générée pour le moment — le rendu se fait via les éléments de contenu dans Content Factory dès qu'un fournisseur vidéo est configuré."
+}

@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Deine Marke. Dein Stil. Überall. Diese Angaben fließen automatisch in Content Brain, Script-, Hook- und Hashtag-Agent ein.",
+  "form": {
+    "nameLabel": "Markenname",
+    "industryLabel": "Branche",
+    "descriptionLabel": "Beschreibung",
+    "descriptionHint": "Was macht die Marke aus?",
+    "audienceLabel": "Zielgruppe",
+    "languageLabel": "Sprache",
+    "tonalityLabel": "Tonalität",
+    "humorLabel": "Humor",
+    "formalityLabel": "Formalität",
+    "preferredWordsLabel": "Bevorzugte Wörter",
+    "forbiddenWordsLabel": "Verbotene Wörter",
+    "preferredCtasLabel": "Bevorzugte CTAs",
+    "brandValuesLabel": "Markenwerte",
+    "topicsLabel": "Themen",
+    "csvHint": "kommagetrennt",
+    "colorsLabel": "Farben",
+    "colorsHint": "kommagetrennt, z.B. #6D5BFF",
+    "fontsLabel": "Schriften",
+    "visualRulesLabel": "Visuelle Regeln",
+    "saveError": "Speichern fehlgeschlagen.",
+    "unknownError": "Unbekannter Fehler.",
+    "saving": "Speichert…",
+    "save": "Brand DNA speichern",
+    "savedAt": "Gespeichert um {time}"
+  }
+}

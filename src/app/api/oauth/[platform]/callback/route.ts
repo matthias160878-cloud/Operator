@@ -46,6 +46,7 @@ export async function GET(
     const workspaceId = await getCurrentWorkspaceId();
     const tokenResult = await exchangeCodeForToken(provider, code, redirectUri, pkceCookie);
     const accountInfo = await provider.fetchAccountInfo(tokenResult.accessToken);
+    const storedAccessToken = accountInfo.overrideAccessToken ?? tokenResult.accessToken;
 
     await prisma.platformAccount.upsert({
       where: { workspaceId_platform: { workspaceId, platform: platform as never } },
@@ -55,7 +56,7 @@ export async function GET(
         accountName: accountInfo.name,
         externalAccountId: accountInfo.externalId,
         status: "CONNECTED",
-        accessTokenEnc: encryptToken(tokenResult.accessToken),
+        accessTokenEnc: encryptToken(storedAccessToken),
         refreshTokenEnc: tokenResult.refreshToken ? encryptToken(tokenResult.refreshToken) : null,
         tokenExpiresAt: tokenResult.expiresInSeconds
           ? new Date(Date.now() + tokenResult.expiresInSeconds * 1000)
@@ -66,7 +67,7 @@ export async function GET(
         accountName: accountInfo.name,
         externalAccountId: accountInfo.externalId,
         status: "CONNECTED",
-        accessTokenEnc: encryptToken(tokenResult.accessToken),
+        accessTokenEnc: encryptToken(storedAccessToken),
         refreshTokenEnc: tokenResult.refreshToken ? encryptToken(tokenResult.refreshToken) : null,
         tokenExpiresAt: tokenResult.expiresInSeconds
           ? new Date(Date.now() + tokenResult.expiresInSeconds * 1000)

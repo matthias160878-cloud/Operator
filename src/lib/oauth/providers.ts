@@ -9,6 +9,13 @@ export interface OAuthTokenResult {
 export interface OAuthAccountInfo {
   name: string;
   externalId?: string;
+  /**
+   * Manche Plattformen (Facebook) verlangen für das eigentliche Posten
+   * einen anderen Token als den ursprünglichen Nutzer-Zugangstoken (hier:
+   * einen Seiten-Token). Wenn gesetzt, wird DIESER statt des Original-
+   * Tokens verschlüsselt gespeichert.
+   */
+  overrideAccessToken?: string;
 }
 
 export interface OAuthProvider {
@@ -84,13 +91,21 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     tokenUrl: "https://graph.facebook.com/v19.0/oauth/access_token",
     scope: "pages_show_list,pages_manage_posts,pages_read_engagement",
     publishingCaveat:
-      "Für echtes Veröffentlichen auf verbundenen Facebook-Seiten muss die App bei Meta zusätzlich zur Prüfung (App Review) eingereicht werden — das ist ein separater Schritt bei Meta, den diese Software nicht ersetzt.",
+      "Für echtes Veröffentlichen auf verbundenen Facebook-Seiten muss die App bei Meta zusätzlich zur Prüfung (App Review) eingereicht werden — das ist ein separater Schritt bei Meta, den diese Software nicht ersetzt. Facebook postet immer über eine Seite, nicht über das persönliche Profil; falls mehrere Seiten verwaltet werden, wird automatisch die erste verbunden. Der Seiten-Zugangstoken läuft nicht automatisch ab, ein Refresh ist hier nicht nötig.",
     async fetchAccountInfo(accessToken) {
       const res = await fetch(
-        `https://graph.facebook.com/me?fields=name&access_token=${encodeURIComponent(accessToken)}`
+        `https://graph.facebook.com/me/accounts?fields=id,name,access_token&access_token=${encodeURIComponent(accessToken)}`
       );
-      const data = (await jsonOrThrow(res, "Facebook-Profilabruf")) as { id: string; name?: string };
-      return { name: data.name ?? "Facebook-Konto", externalId: data.id };
+      const data = (await jsonOrThrow(res, "Facebook-Seiten-Abruf")) as {
+        data?: { id: string; name: string; access_token: string }[];
+      };
+      const page = data.data?.[0];
+      if (!page) {
+        throw new Error(
+          "Keine Facebook-Seite gefunden, die du verwalten kannst. Lege zuerst eine Facebook-Seite an und verbinde sie mit deinem Konto, bevor du hier verbindest."
+        );
+      }
+      return { name: page.name, externalId: page.id, overrideAccessToken: page.access_token };
     },
   },
   INSTAGRAM: {
@@ -202,6 +217,43 @@ export async function exchangeCodeForToken(
   return {
     accessToken: data.access_token,
     refreshToken: data.refresh_token,
+    expiresInSeconds: data.expires_in,
+  };
+}
+
+/**
+ * Erneuert einen abgelaufenen Zugangstoken über den Refresh-Token. Nur
+ * Google (YouTube) und TikTok geben zuverlässig einen Refresh-Token
+ * zurück, siehe jeweiliges publishingCaveat der anderen Plattformen.
+ */
+export async function refreshAccessToken(
+  provider: OAuthProvider,
+  refreshToken: string
+): Promise<OAuthTokenResult> {
+  const clientId = process.env[provider.clientIdEnv] ?? "";
+  const clientSecret = process.env[provider.clientSecretEnv] ?? "";
+  const body = new URLSearchParams({
+    grant_type: "refresh_token",
+    refresh_token: refreshToken,
+    client_id: clientId,
+    client_secret: clientSecret,
+  });
+  const res = await fetch(provider.tokenUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body,
+  });
+  const data = (await jsonOrThrow(res, `${provider.platform}-Token-Erneuerung`)) as {
+    access_token?: string;
+    refresh_token?: string;
+    expires_in?: number;
+  };
+  if (!data.access_token) {
+    throw new Error(`${provider.platform}: Token-Erneuerung lieferte keinen access_token.`);
+  }
+  return {
+    accessToken: data.access_token,
+    refreshToken: data.refresh_token ?? refreshToken,
     expiresInSeconds: data.expires_in,
   };
 }

@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Step {current} of {total}",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "skip": "Skip",
+    "finish": "Done, let's go",
+    "checking": "Checking …",
+    "checkAgain": "Check now",
+    "connected": "Connected",
+    "notConnected": "Not connected yet",
+    "skippedNote": "Skipped — you can do this anytime under \"Integrations\".",
+    "envHint": "Note: after saving in Render it usually takes 1–2 minutes for the service to restart and the change to take effect. If \"Check now\" doesn't find it yet, wait briefly and click again.",
+    "reopenHint": "You can reopen this assistant anytime: under Settings → \"Setup assistant\"."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Welcome to SECRET 58",
+      "body": "Before you get started, let's set up the essentials together — in small, individual steps. You can pause anytime and pick up right where you left off."
+    },
+    "aiProvider": {
+      "title": "Step 1: Connect an AI provider",
+      "body": "Text, scripts, hooks and hashtags need an AI provider. Pick either one — one is enough.",
+      "steps": [
+        "Click \"Get API key\" below for Anthropic or OpenAI.",
+        "Create a free account there if you don't already have one.",
+        "Generate a new API key and copy it.",
+        "Click \"Set in Render\", paste the key there as an environment variable, and save.",
+        "Come back here and click \"Check now\" below."
+      ],
+      "costHint": "Costs only apply once you actually use it, billed directly by the provider — never through SECRET 58."
+    },
+    "platform": {
+      "title": "Step 2: Connect a social platform (optional)",
+      "body": "Optional but recommended: connect at least one platform you plan to publish on. You can also do this later.",
+      "steps": [
+        "Pick a platform below that you want to use.",
+        "Click \"Get API key\" and follow the provider's instructions.",
+        "Click \"Set in Render\" and save the credentials there.",
+        "Come back here and click \"Check now\"."
+      ]
+    },
+    "voice": {
+      "title": "Step 3: Connect voice output (optional)",
+      "body": "Only needed if you want automatic spoken voiceovers for your videos. Everything else works fine without this step.",
+      "steps": [
+        "Click \"Get API key\" for ElevenLabs.",
+        "Create an account and an API key there.",
+        "Click \"Set in Render\" and save the key there.",
+        "Come back here and click \"Check now\"."
+      ]
+    },
+    "done": {
+      "title": "All set!",
+      "body": "You're ready to go. Anything you skipped can be found and added anytime under \"Integrations\" — or by reopening this assistant from \"Settings\"."
+    }
+  }
+}

@@ -18,5 +18,10 @@
     "mediaAssets": "Media assets",
     "agentRuns": "Agent runs",
     "dbNote": "Database: SQLite (local, <code>prisma/dev.db</code>) via Prisma ORM. For production, switch <codeSpaced>DATABASE_URL</codeSpaced> to Postgres/MySQL (adjust the provider in <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Setup assistant",
+    "description": "The small step-by-step windows for AI providers, social platforms and voice output that appear the first time you open the app.",
+    "reopen": "Reopen setup assistant"
   }
 }

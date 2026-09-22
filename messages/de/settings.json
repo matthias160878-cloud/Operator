@@ -18,5 +18,10 @@
     "mediaAssets": "Medien-Assets",
     "agentRuns": "Agent-Läufe",
     "dbNote": "Datenbank: SQLite (lokal, <code>prisma/dev.db</code>) über Prisma ORM. Für Produktion <codeSpaced>DATABASE_URL</codeSpaced> auf Postgres/MySQL umstellen (Provider in <codeSpaced>prisma/schema.prisma</codeSpaced> anpassen)."
+  },
+  "onboarding": {
+    "title": "Einrichtungsassistent",
+    "description": "Die kleinen Schritt-für-Schritt-Fenster für KI-Anbieter, Social-Media-Plattformen und Sprachausgabe, die beim ersten Öffnen erscheinen.",
+    "reopen": "Einrichtungsassistent erneut öffnen"
   }
 }

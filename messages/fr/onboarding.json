@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Étape {current} sur {total}",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "skip": "Passer",
+    "finish": "Terminé, c'est parti",
+    "checking": "Vérification …",
+    "checkAgain": "Vérifier maintenant",
+    "connected": "Connecté",
+    "notConnected": "Pas encore connecté",
+    "skippedNote": "Passé — vous pouvez le faire à tout moment sous « Intégrations ».",
+    "envHint": "Remarque : après l'enregistrement dans Render, il faut généralement 1 à 2 minutes pour que le service redémarre et que le changement prenne effet. Si « Vérifier maintenant » ne trouve encore rien, patientez un instant et réessayez.",
+    "reopenHint": "Vous pouvez rouvrir cet assistant à tout moment : dans Paramètres → « Assistant de configuration »."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Bienvenue chez SECRET 58",
+      "body": "Avant de commencer, configurons ensemble l'essentiel — en petites étapes individuelles. Vous pouvez faire une pause à tout moment et reprendre exactement là où vous en étiez."
+    },
+    "aiProvider": {
+      "title": "Étape 1 : connecter un fournisseur d'IA",
+      "body": "Les textes, scripts, accroches et hashtags nécessitent un fournisseur d'IA. Choisissez l'un des deux — un seul suffit.",
+      "steps": [
+        "Cliquez sur « Obtenir la clé API » pour Anthropic ou OpenAI.",
+        "Créez-y un compte gratuit si vous n'en avez pas déjà un.",
+        "Générez-y une nouvelle clé API et copiez-la.",
+        "Cliquez sur « Configurer dans Render », collez-y la clé comme variable d'environnement, puis enregistrez.",
+        "Revenez ici et cliquez sur « Vérifier maintenant »."
+      ],
+      "costHint": "Les coûts ne s'appliquent qu'à l'usage réel, facturés directement par le fournisseur — jamais via SECRET 58."
+    },
+    "platform": {
+      "title": "Étape 2 : connecter une plateforme sociale (optionnel)",
+      "body": "Optionnel mais recommandé : connectez au moins une plateforme sur laquelle vous prévoyez de publier. Vous pouvez aussi le faire plus tard.",
+      "steps": [
+        "Choisissez ci-dessous une plateforme que vous souhaitez utiliser.",
+        "Cliquez sur « Obtenir la clé API » et suivez les instructions du fournisseur.",
+        "Cliquez sur « Configurer dans Render » et enregistrez-y les identifiants.",
+        "Revenez ici et cliquez sur « Vérifier maintenant »."
+      ]
+    },
+    "voice": {
+      "title": "Étape 3 : connecter la voix (optionnel)",
+      "body": "Utile uniquement si vous souhaitez générer automatiquement des voix off pour vos vidéos. Tout le reste fonctionne sans cette étape.",
+      "steps": [
+        "Cliquez sur « Obtenir la clé API » pour ElevenLabs.",
+        "Créez-y un compte et une clé API.",
+        "Cliquez sur « Configurer dans Render » et enregistrez-y la clé.",
+        "Revenez ici et cliquez sur « Vérifier maintenant »."
+      ]
+    },
+    "done": {
+      "title": "C'est prêt !",
+      "body": "Vous pouvez commencer. Tout ce que vous avez passé se retrouve et se complète à tout moment sous « Intégrations » — ou en rouvrant cet assistant depuis « Paramètres »."
+    }
+  }
+}

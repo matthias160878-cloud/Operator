@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Sparkles } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getDefaultWorkspace } from "@/lib/workspace";
@@ -90,6 +92,18 @@ export default async function SettingsPage() {
             codeSpaced: (chunks) => <code className="mx-1">{chunks}</code>,
           })}
         </p>
+      </div>
+
+      <div className="card p-5">
+        <h2 className="mb-3 text-sm font-semibold text-foreground">{t("onboarding.title")}</h2>
+        <p className="text-sm text-muted">{t("onboarding.description")}</p>
+        <Link
+          href="/?einrichtung=1"
+          className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs text-foreground hover:bg-surface-2"
+        >
+          <Sparkles className="h-3.5 w-3.5 text-accent-2" />
+          {t("onboarding.reopen")}
+        </Link>
       </div>
     </div>
   );

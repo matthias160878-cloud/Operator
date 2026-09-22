@@ -40,6 +40,7 @@ export default getRequestConfig(async () => {
     "settings",
     "buy",
     "schulung",
+    "chatbot",
   ];
 
   const messages: Record<string, unknown> = {};

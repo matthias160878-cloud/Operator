@@ -11,10 +11,22 @@
 
 export type TextGenProvider = "anthropic" | "openai" | "template";
 
+export interface ChatMessage {
+  role: "user" | "assistant";
+  content: string;
+}
+
 export interface GenerateTextInput {
   system: string;
-  prompt: string;
+  /** Einzelner Prompt für Single-Turn-Aufrufe (bestehende Agenten). */
+  prompt?: string;
+  /** Alternative für Multi-Turn-Konversationen (z. B. Chatbot). */
+  messages?: ChatMessage[];
   maxTokens?: number;
+}
+
+function toChatMessages(input: GenerateTextInput): ChatMessage[] {
+  return input.messages ?? [{ role: "user", content: input.prompt ?? "" }];
 }
 
 export interface GenerateTextResult {
@@ -37,7 +49,7 @@ async function callAnthropic(input: GenerateTextInput): Promise<string> {
       model: ANTHROPIC_MODEL,
       max_tokens: input.maxTokens ?? 1024,
       system: input.system,
-      messages: [{ role: "user", content: input.prompt }],
+      messages: toChatMessages(input),
     }),
     cache: "no-store",
   });
@@ -64,10 +76,7 @@ async function callOpenAI(input: GenerateTextInput): Promise<string> {
     body: JSON.stringify({
       model: OPENAI_MODEL,
       max_tokens: input.maxTokens ?? 1024,
-      messages: [
-        { role: "system", content: input.system },
-        { role: "user", content: input.prompt },
-      ],
+      messages: [{ role: "system", content: input.system }, ...toChatMessages(input)],
     }),
     cache: "no-store",
   });

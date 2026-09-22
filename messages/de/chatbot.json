@@ -1,0 +1,14 @@
+{
+  "title": "KI-Assistent",
+  "welcome": "Hallo! Frag mich alles zu SECRET 58 — wie du etwas einrichtest, wo du etwas findest, oder wie ein Bereich funktioniert.",
+  "inputPlaceholder": "Frage eingeben …",
+  "thinking": "Denkt nach …",
+  "openButton": "KI-Assistent öffnen",
+  "close": "Schließen",
+  "sendButton": "Senden",
+  "micButton": "Spracheingabe",
+  "speakToggle": "Antworten vorlesen",
+  "notConfigured": "Der KI-Assistent ist noch nicht konfiguriert — dafür muss ein KI-Provider (Anthropic oder OpenAI) hinterlegt werden.",
+  "openIntegrations": "Zu Integrationen",
+  "error": "Der KI-Assistent konnte gerade nicht antworten. Bitte später erneut versuchen."
+}

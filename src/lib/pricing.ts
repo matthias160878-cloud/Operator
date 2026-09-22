@@ -7,7 +7,7 @@ import type { Locale } from "@/i18n/config";
  * konfiguriert ist, zeigt /buy den echten, dort hinterlegten Preis an.
  */
 export const PACKAGE_NAME = "Social Media KI";
-export const PACKAGE_PRICE_EUR = 497;
+export const PACKAGE_PRICE_EUR = 797;
 
 export const PACKAGE_PRICE_DISPLAY = new Intl.NumberFormat("de-DE", {
   style: "currency",

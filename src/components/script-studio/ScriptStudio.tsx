@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { FileText, Loader2, Save, Sparkles } from "lucide-react";
 import { PLATFORM_LABELS } from "@/lib/format";
 import type { HookVariant } from "@/lib/agents/hookAgent";
@@ -10,18 +11,18 @@ import type { ScriptStructure } from "@/lib/agents/scriptAgent";
 const inputClass =
   "w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none";
 
-const HOOK_TYPE_LABELS: Record<string, string> = {
-  direkt: "Direkt",
-  neugierig: "Neugierig",
-  story: "Story",
-  problem: "Problem",
-  zahlen: "Zahlen",
-  "kontrovers-sachlich": "Kontrovers (sachlich)",
-  educational: "Educational",
-};
-
 export function ScriptStudio() {
   const router = useRouter();
+  const t = useTranslations("scriptStudio");
+  const HOOK_TYPE_LABELS: Record<string, string> = {
+    direkt: t("hookTypes.direkt"),
+    neugierig: t("hookTypes.neugierig"),
+    story: t("hookTypes.story"),
+    problem: t("hookTypes.problem"),
+    zahlen: t("hookTypes.zahlen"),
+    "kontrovers-sachlich": t("hookTypes.kontroversSachlich"),
+    educational: t("hookTypes.educational"),
+  };
   const [topic, setTopic] = useState("");
   const [platform, setPlatform] = useState("YOUTUBE");
   const [loading, setLoading] = useState(false);
@@ -43,13 +44,13 @@ export function ScriptStudio() {
         body: JSON.stringify({ topic, platform }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Generierung fehlgeschlagen.");
+      if (!res.ok) throw new Error(data.error ?? t("form.generateFailed"));
       setHooks(data.hooks);
       setScript(data.script);
       setSelectedHook(data.hooks[0]?.text ?? "");
       setProvider(data.provider);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unbekannter Fehler.");
+      setError(err instanceof Error ? err.message : t("form.unknownError"));
     } finally {
       setLoading(false);
     }
@@ -88,17 +89,17 @@ export function ScriptStudio() {
       <form onSubmit={handleGenerate} className="card space-y-4 p-5">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_200px]">
           <label className="block">
-            <span className="text-sm font-medium text-foreground">Thema</span>
+            <span className="text-sm font-medium text-foreground">{t("form.topicLabel")}</span>
             <input
               className={`${inputClass} mt-1.5`}
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
-              placeholder="z.B. 5 Wege, wie KI-Agenten Zeit sparen"
+              placeholder={t("form.topicPlaceholder")}
               required
             />
           </label>
           <label className="block">
-            <span className="text-sm font-medium text-foreground">Plattform</span>
+            <span className="text-sm font-medium text-foreground">{t("form.platformLabel")}</span>
             <select
               className={`${inputClass} mt-1.5`}
               value={platform}
@@ -119,15 +120,15 @@ export function ScriptStudio() {
           className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent to-accent-3 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
         >
           {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
-          Script & Hooks generieren
+          {t("form.generateButton")}
         </button>
       </form>
 
       {hooks.length > 0 && (
         <div className="card space-y-3 p-5">
-          <h3 className="text-sm font-semibold text-foreground">Hook-Varianten</h3>
+          <h3 className="text-sm font-semibold text-foreground">{t("hooksHeading")}</h3>
           <p className="text-xs text-muted">
-            Engine: {provider === "template" ? "Template-Modus (kein KI-Provider konfiguriert)" : provider}
+            {t("engine.label", { provider: provider === "template" ? t("engine.templateMode") : provider })}
           </p>
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
             {hooks.map((h) => (
@@ -155,14 +156,14 @@ export function ScriptStudio() {
         <div className="card space-y-3 p-5">
           <div className="flex items-center justify-between">
             <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
-              <FileText className="h-4 w-4" /> Script
+              <FileText className="h-4 w-4" /> {t("script.heading")}
             </h3>
             <button
               onClick={saveAsContentItem}
               disabled={saving}
               className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-white disabled:opacity-60"
             >
-              <Save className="h-3.5 w-3.5" /> {saving ? "Speichert…" : "Als Content-Item speichern"}
+              <Save className="h-3.5 w-3.5" /> {saving ? t("script.saving") : t("script.save")}
             </button>
           </div>
           <div className="space-y-2 text-sm">

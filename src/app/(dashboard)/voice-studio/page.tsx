@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { isElevenLabsConfigured } from "@/lib/elevenlabs";
@@ -11,15 +12,13 @@ export default async function VoiceStudioPage() {
     where: { workspaceId },
     orderBy: { createdAt: "desc" },
   });
+  const t = await getTranslations("voiceStudio");
 
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-semibold text-foreground">Voice Studio</h1>
-        <p className="mt-1 text-sm text-muted">
-          ElevenLabs Voice Engine — Voice Library verwalten, Voiceover-Previews erzeugen und
-          Voices importieren.
-        </p>
+        <h1 className="text-xl font-semibold text-foreground">{t("title")}</h1>
+        <p className="mt-1 text-sm text-muted">{t("subtitle")}</p>
       </div>
       <VoiceLibrary voices={voices} elevenLabsConfigured={isElevenLabsConfigured()} />
     </div>

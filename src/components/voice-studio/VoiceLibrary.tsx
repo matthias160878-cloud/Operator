@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Download, Loader2, Mic, Play, Plus, Trash2 } from "lucide-react";
 import type { Voice } from "@prisma/client";
 
@@ -16,12 +17,13 @@ export function VoiceLibrary({
   elevenLabsConfigured: boolean;
 }) {
   const router = useRouter();
+  const t = useTranslations("voiceStudio");
   const [showForm, setShowForm] = useState(false);
   const [name, setName] = useState("");
   const [providerVoiceId, setProviderVoiceId] = useState("");
   const [language, setLanguage] = useState("de");
   const [importing, setImporting] = useState(false);
-  const [previewText, setPreviewText] = useState("Hallo, das ist ein Beispiel für dieses Voice.");
+  const [previewText, setPreviewText] = useState(t("preview.defaultText"));
   const [previewVoiceId, setPreviewVoiceId] = useState(voices[0]?.providerVoiceId ?? "");
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
@@ -50,7 +52,7 @@ export function VoiceLibrary({
   }
 
   async function removeVoice(id: string) {
-    if (!confirm("Voice wirklich löschen?")) return;
+    if (!confirm(t("confirmDelete"))) return;
     await fetch(`/api/voices/${id}`, { method: "DELETE" });
     router.refresh();
   }
@@ -61,10 +63,10 @@ export function VoiceLibrary({
     try {
       const res = await fetch("/api/voices/import", { method: "POST" });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Import fehlgeschlagen.");
+      if (!res.ok) throw new Error(data.error ?? t("importFailed"));
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unbekannter Fehler.");
+      setError(err instanceof Error ? err.message : t("unknownError"));
     } finally {
       setImporting(false);
     }
@@ -81,10 +83,10 @@ export function VoiceLibrary({
         body: JSON.stringify({ text: previewText, voiceId: previewVoiceId }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Preview fehlgeschlagen.");
+      if (!res.ok) throw new Error(data.error ?? t("previewFailed"));
       setPreviewUrl(data.url);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unbekannter Fehler.");
+      setError(err instanceof Error ? err.message : t("unknownError"));
     } finally {
       setPreviewLoading(false);
     }

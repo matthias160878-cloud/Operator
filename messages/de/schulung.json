@@ -1,0 +1,86 @@
+{
+  "title": "Schulung",
+  "subtitle": "Schritt-für-Schritt-Anleitungen zu jedem Bereich von SECRET 58 — jederzeit hier nachschlagbar. Videos werden ergänzt, sobald sie aufgenommen sind.",
+  "welcomeBanner": {
+    "title": "Willkommen bei SECRET 58!",
+    "body": "Danke für deinen Kauf. Bevor es losgeht, lohnt sich ein kurzer Blick auf \"Erste Schritte\" unten — damit die KI-Agenten von Anfang an mit deinen echten Daten arbeiten."
+  },
+  "videoPending": "Video folgt",
+  "stepsLabel": "Schritte",
+  "openPage": "Seite öffnen",
+  "topics": {
+    "firstSteps": {
+      "title": "Erste Schritte",
+      "description": "Diese drei Dinge zuerst erledigen, dann arbeiten alle KI-Agenten mit echten Daten statt mit Platzhaltern.",
+      "steps": [
+        "Unter \"Integrationen\" mindestens einen KI-Provider verbinden (Anthropic oder OpenAI) — dafür oben rechts auf der jeweiligen Zeile auf \"API-Schlüssel holen\" klicken, den Schlüssel beim Anbieter erstellen und über \"In Render eintragen\" hinterlegen.",
+        "Unter \"Brand DNA\" die eigene Marke ausfüllen (Ton, Zielgruppe, Werte) — die KI-Agenten nutzen das für jeden generierten Text.",
+        "Unter \"Ideen & Inspiration\" oder \"Content Brain\" die erste Idee bzw. Kampagne erzeugen lassen."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "So wird aus einer Idee fertiger, freigegebener Content.",
+      "steps": [
+        "Im Content Brain eine neue Kampagne mit Thema und Zielplattformen anlegen — daraus entstehen automatisch mehrere Content-Items.",
+        "In der Content Factory durchläuft jedes Content-Item einen Status: Entwurf → In Prüfung → Freigegeben → Geplant → Veröffentlicht.",
+        "Die Freigabe ist ein manueller Schritt und Pflicht — nichts wird automatisch ohne Bestätigung veröffentlicht.",
+        "In der Detailansicht eines Content-Items lassen sich Skript, Voiceover, Untertitel, Hashtags und Thumbnail einzeln nachgenerieren."
+      ]
+    },
+    "studios": {
+      "title": "Script-, Voice-, Video- & Design-Studio",
+      "description": "Die spezialisierten Werkzeuge für jeden Content-Baustein.",
+      "steps": [
+        "Script Studio: erzeugt Skripte nach der Hook → Problem → Value → Example → Payoff → CTA-Struktur.",
+        "Voice Studio: eigene ElevenLabs-Voice importieren oder anlegen, danach Voiceover direkt aus einem Script erzeugen.",
+        "Design Studio: der Thumbnail-Agent schlägt Titel, visuelle Idee, Text, Layout und Bildbeschreibung vor.",
+        "Video Studio: zeigt den aktuellen Stand der Video-Provider-Anbindung (Format-Manager, Provider-Status)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Content Kalender & Veröffentlichung",
+      "description": "Wo geplante Beiträge landen — und warum ein Post wirklich rausgeht (oder eben nicht).",
+      "steps": [
+        "Im Content Kalender erscheinen alle Content-Items mit geplantem Veröffentlichungsdatum.",
+        "Vor jeder Veröffentlichung prüft der PublishingAgent live, ob die Zielplattform unter \"Social Media\" wirklich als \"Verbunden\" markiert ist.",
+        "Ohne echte Plattform-Verbindung wird ehrlich ein Fehler angezeigt statt eine Veröffentlichung vorzutäuschen."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics & Wachstum",
+      "description": "Echte Zahlen zur eigenen Performance — und Empfehlungen statt Automatisierung.",
+      "steps": [
+        "Analytics zeigt ausschließlich echte, importierte oder manuell erfasste Performance-Daten.",
+        "Die Wachstums-Seite berechnet aus diesen Daten beste Posting-Zeiten, erfolgreiche Hashtags und Formate.",
+        "Wichtig: es gibt bewusst keine automatisierte Follower-/Engagement-Steigerung (kein Bot-Verhalten) — das würde gegen die Nutzungsbedingungen jeder Plattform verstoßen."
+      ]
+    },
+    "inbox": {
+      "title": "Posteingang",
+      "description": "KI-Antwortentwürfe für Nachrichten — mit Freigabe vor dem Versand.",
+      "steps": [
+        "Da (noch) keine Plattform per OAuth verbunden ist, werden Unterhaltungen aktuell manuell angelegt statt live abgerufen.",
+        "Der MessageAgent schlägt eine Antwort auf Basis von Brand DNA und Gesprächsverlauf vor.",
+        "Der Entwurf muss manuell geprüft und freigegeben werden, bevor er als gesendet gilt — ein echter Versand schlägt ohne Plattform-Verbindung ehrlich fehl, statt Erfolg vorzutäuschen."
+      ]
+    },
+    "revenue": {
+      "title": "Einnahmen-Tracking",
+      "description": "Überblick über alle Plattform-Einnahmen an einem Ort — Auszahlung läuft trotzdem über die Plattformen selbst.",
+      "steps": [
+        "Einnahmen werden manuell eingetragen, da TikTok/Meta keine öffentliche Umsatz-API anbieten und YouTube dafür Partner-Program-Zugang (noch nicht angebunden) braucht.",
+        "Die tatsächliche Auszahlung läuft immer direkt über die jeweilige Plattform (z. B. YouTube über Google AdSense) — SECRET 58 wickelt keine Auszahlungen ab."
+      ]
+    },
+    "integrations": {
+      "title": "Integrationen & API-Schlüssel",
+      "description": "Wo jeder Verbindungsstatus herkommt und wo der passende Schlüssel eingetragen wird.",
+      "steps": [
+        "Jede Zeile zeigt den echten, live geprüften Status — nie eine vorgetäuschte Verbindung.",
+        "Bei \"Nicht konfiguriert\" führt \"API-Schlüssel holen\" zur offiziellen Seite des Anbieters.",
+        "\"In Render eintragen\" führt direkt zu den Umgebungsvariablen, wo der Schlüssel hinterlegt wird — ein Eingabeformular in der App selbst gibt es aus Sicherheitsgründen bewusst nicht."
+      ]
+    }
+  }
+}

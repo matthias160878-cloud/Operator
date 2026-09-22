@@ -39,6 +39,7 @@ export default getRequestConfig(async () => {
     "integrations",
     "settings",
     "buy",
+    "schulung",
   ];
 
   const messages: Record<string, unknown> = {};

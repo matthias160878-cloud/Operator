@@ -18,6 +18,7 @@ import {
   Bot,
   Plug,
   Settings,
+  GraduationCap,
 } from "lucide-react";
 
 export interface NavItem {
@@ -28,6 +29,7 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { href: "/", labelKey: "dashboard", icon: LayoutDashboard },
+  { href: "/schulung", labelKey: "schulung", icon: GraduationCap },
   { href: "/content-factory", labelKey: "contentFactory", icon: Factory },
   { href: "/ideas", labelKey: "ideas", icon: Lightbulb },
   { href: "/content-brain", labelKey: "contentBrain", icon: Brain },

@@ -1,0 +1,12 @@
+{
+  "title": "Integraciones",
+  "description": "Estado en vivo de todos los servicios externos — basado exclusivamente en las variables de entorno realmente configuradas. Sin conexiones simuladas.",
+  "categories": {
+    "AI": "Proveedores de IA",
+    "VOICE": "Voz",
+    "PLATFORM": "Plataformas sociales",
+    "DESIGN": "Diseño",
+    "VIDEO": "Vídeo",
+    "TREND": "Tendencias"
+  }
+}

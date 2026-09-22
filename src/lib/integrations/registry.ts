@@ -1,6 +1,7 @@
 import type {
   IntegrationDefinition,
   IntegrationStatusResult,
+  IntegrationTranslator,
 } from "@/lib/integrations/types";
 
 function envPresent(key: string): boolean {
@@ -35,7 +36,7 @@ export const INTEGRATIONS: IntegrationDefinition[] = [
     name: "ElevenLabs",
     category: "VOICE",
     requiredEnv: ["ELEVENLABS_API_KEY"],
-    verify: async () => {
+    verify: async (t) => {
       try {
         const res = await withTimeout(
           fetch("https://api.elevenlabs.io/v1/user", {
@@ -47,12 +48,12 @@ export const INTEGRATIONS: IntegrationDefinition[] = [
         if (res.ok) return { ok: true };
         return {
           ok: false,
-          message: `ElevenLabs antwortete mit Status ${res.status}.`,
+          message: t("verifyFailedStatus", { service: "ElevenLabs", status: res.status }),
         };
       } catch {
         return {
           ok: false,
-          message: "ElevenLabs konnte nicht erreicht werden.",
+          message: t("verifyUnreachable", { service: "ElevenLabs" }),
         };
       }
     },
@@ -108,7 +109,8 @@ export const INTEGRATIONS: IntegrationDefinition[] = [
 ];
 
 export async function checkIntegration(
-  def: IntegrationDefinition
+  def: IntegrationDefinition,
+  t: IntegrationTranslator
 ): Promise<IntegrationStatusResult> {
   const missing = def.requiredEnv.filter((key) => !envPresent(key));
 
@@ -118,20 +120,20 @@ export async function checkIntegration(
       name: def.name,
       category: def.category,
       status: "NOT_CONFIGURED",
-      message: `Nicht konfiguriert — fehlende Variable(n): ${missing.join(", ")}.`,
+      message: t("notConfigured", { vars: missing.join(", ") }),
       requiredEnv: def.requiredEnv,
     };
   }
 
   if (def.verify) {
-    const result = await def.verify();
+    const result = await def.verify(t);
     if (!result.ok) {
       return {
         key: def.key,
         name: def.name,
         category: def.category,
         status: "ERROR",
-        message: result.message ?? "Verbindung fehlgeschlagen.",
+        message: result.message ?? t("verifyFailedGeneric"),
         requiredEnv: def.requiredEnv,
       };
     }
@@ -142,13 +144,13 @@ export async function checkIntegration(
     name: def.name,
     category: def.category,
     status: "CONNECTED",
-    message: "Verbunden.",
+    message: t("connected"),
     requiredEnv: def.requiredEnv,
   };
 }
 
-export async function getAllIntegrationStatuses(): Promise<
-  IntegrationStatusResult[]
-> {
-  return Promise.all(INTEGRATIONS.map((def) => checkIntegration(def)));
+export async function getAllIntegrationStatuses(
+  t: IntegrationTranslator
+): Promise<IntegrationStatusResult[]> {
+  return Promise.all(INTEGRATIONS.map((def) => checkIntegration(def, t)));
 }

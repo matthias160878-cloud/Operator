@@ -1,0 +1,21 @@
+{
+  "title": "Monitor de agentes",
+  "description": "Todos los agentes de SECRET 58 con su estado, última tarea y resultado. Cada ejecución queda registrada.",
+  "table": {
+    "agent": "Agente",
+    "description": "Descripción",
+    "status": "Estado",
+    "lastTask": "Última tarea"
+  },
+  "history": {
+    "title": "Historial de ejecuciones",
+    "agent": "Agente",
+    "task": "Tarea",
+    "status": "Estado",
+    "start": "Inicio",
+    "end": "Fin",
+    "resultError": "Resultado / error",
+    "empty": "Todavía no hay ejecuciones de agentes.",
+    "completed": "Completado"
+  }
+}

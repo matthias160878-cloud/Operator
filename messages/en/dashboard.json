@@ -1,0 +1,96 @@
+{
+  "viewAll": "View all",
+  "demoBanner": {
+    "before": "Demo data active — campaigns, content items, and analytics are sample data from ",
+    "after": ", not real platform numbers."
+  },
+  "hero": {
+    "subtitle": "One idea. Multiple platforms. Maximum reach.",
+    "newCampaign": "New Campaign",
+    "createContent": "Create Content",
+    "findIdeas": "Find Ideas",
+    "aiAgents": "AI Agents"
+  },
+  "orbit": {
+    "xNotConnected": "X (not connected)",
+    "brainAlt": "SECRET 58 AI brain"
+  },
+  "activeAgents": {
+    "title": "Active Agents",
+    "empty": "No agent runs yet."
+  },
+  "kpi": {
+    "contentCreated": "Content Created",
+    "videosCreated": "Videos Created",
+    "postsCreated": "Posts Created",
+    "published": "Published",
+    "views": "Views",
+    "avgEngagement": "Avg. Engagement",
+    "totalRevenue": "Total Revenue",
+    "noComparisonWeek": "No previous week available for comparison yet — change rates will appear once at least two weeks of data are available."
+  },
+  "production": {
+    "title": "Content Production",
+    "thisWeek": "This week"
+  },
+  "scheduled": {
+    "title": "Scheduled Posts",
+    "empty": "No scheduled posts."
+  },
+  "activity": {
+    "title": "Recent Activity",
+    "empty": "No activity yet."
+  },
+  "contentFactory": {
+    "description": "Turn a single idea into complete content campaigns for every platform.",
+    "cta": "Get started →",
+    "popularTemplates": "Popular Templates",
+    "templateYoutubeVideo": "YouTube Video",
+    "templateTiktokSeries": "TikTok Series",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn Post",
+    "templateBlogPost": "Blog Post",
+    "viewAllTemplates": "All templates →"
+  },
+  "brandDna": {
+    "tonality": "Tone",
+    "targetAudience": "Target Audience",
+    "industry": "Industry",
+    "language": "Language",
+    "empty": "No Brand DNA set up yet."
+  },
+  "campaigns": {
+    "title": "Current Campaigns",
+    "empty": "No campaigns yet."
+  },
+  "platforms": {
+    "title": "Platforms",
+    "manage": "Manage"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} connected"
+  },
+  "agentMonitor": {
+    "title": "Agent Monitor",
+    "empty": "No runs yet."
+  },
+  "topPerformer": {
+    "title": "Top Performer",
+    "last7Days": "Last 7 days",
+    "empty": "No performance data yet.",
+    "views": "Views",
+    "likes": "Likes",
+    "comments": "Comments",
+    "shares": "Shares",
+    "engagementRate": "+Engagement Rate {value}"
+  },
+  "calendar": {
+    "open": "Open",
+    "viewMonth": "Month",
+    "viewWeek": "Week",
+    "viewDay": "Day",
+    "viewCampaign": "Campaign",
+    "moreItems": "+{count} more"
+  },
+  "weekdayLabels": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+}

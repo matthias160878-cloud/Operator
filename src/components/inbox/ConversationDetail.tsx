@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Loader2, Send, Sparkles } from "lucide-react";
 import type { Conversation, Message } from "@prisma/client";
 import { PLATFORM_LABELS } from "@/lib/format";
@@ -14,6 +15,7 @@ export function ConversationDetail({
 }: {
   conversation: Conversation & { messages: Message[] };
 }) {
+  const t = useTranslations("inbox");
   const router = useRouter();
   const [simulateText, setSimulateText] = useState("");
   const [drafting, setDrafting] = useState(false);
@@ -39,7 +41,7 @@ export function ConversationDetail({
     try {
       const res = await fetch(`/api/conversations/${conversation.id}/draft`, { method: "POST" });
       const data = await res.json();
-      if (!res.ok) setNotice(data.error ?? "Entwurf fehlgeschlagen.");
+      if (!res.ok) setNotice(data.error ?? t("detail.draftFailed"));
       router.refresh();
     } finally {
       setDrafting(false);
@@ -116,7 +118,7 @@ export function ConversationDetail({
                     onClick={() => saveEdit(m.id)}
                     className="rounded-lg bg-accent px-2.5 py-1 text-xs text-white"
                   >
-                    Speichern
+                    {t("detail.save")}
                   </button>
                 </div>
               ) : (
@@ -134,7 +136,7 @@ export function ConversationDetail({
                     onClick={() => setEditing((prev) => ({ ...prev, [m.id]: m.body }))}
                     className="rounded-lg border border-border px-2.5 py-1 text-xs text-foreground"
                   >
-                    Bearbeiten
+                    {t("detail.edit")}
                   </button>
                   <button
                     onClick={() => send(m.id)}
@@ -142,7 +144,7 @@ export function ConversationDetail({
                     className="inline-flex items-center gap-1 rounded-lg bg-accent px-2.5 py-1 text-xs text-white disabled:opacity-60"
                   >
                     {sendingId === m.id ? <Loader2 className="h-3 w-3 animate-spin" /> : <Send className="h-3 w-3" />}
-                    Freigeben &amp; senden
+                    {t("detail.approveAndSend")}
                   </button>
                 </div>
               )}
@@ -165,26 +167,24 @@ export function ConversationDetail({
           className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent to-accent-3 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
         >
           {drafting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
-          KI-Antwortentwurf anfordern
+          {t("detail.requestDraft")}
         </button>
         {hasOpenDraft && (
-          <p className="text-xs text-muted">Es gibt bereits einen offenen Entwurf oben — erst bearbeiten/senden.</p>
+          <p className="text-xs text-muted">{t("detail.openDraftExists")}</p>
         )}
       </div>
 
       <form onSubmit={simulateInbound} className="card space-y-2 p-5">
-        <p className="text-xs text-muted">
-          Weitere eingehende Nachricht simulieren (Test ohne echte Plattform-Verbindung):
-        </p>
+        <p className="text-xs text-muted">{t("detail.simulateMoreHint")}</p>
         <div className="flex gap-2">
           <input
             className={inputClass}
-            placeholder="Nachrichtentext …"
+            placeholder={t("detail.messagePlaceholder")}
             value={simulateText}
             onChange={(e) => setSimulateText(e.target.value)}
           />
           <button type="submit" className="rounded-lg border border-border px-4 py-2 text-sm text-foreground">
-            Hinzufügen
+            {t("detail.addButton")}
           </button>
         </div>
       </form>

@@ -54,5 +54,32 @@
     "connected": "Verbunden",
     "notConfigured": "Nicht konfiguriert",
     "error": "Fehler"
+  },
+  "statusBadge": {
+    "CONNECTED": "Verbunden",
+    "ACTIVE": "Aktiv",
+    "COMPLETED": "Abgeschlossen",
+    "RUNNING": "Läuft",
+    "SUCCESS": "Erfolgreich",
+    "PUBLISHED": "Veröffentlicht",
+    "APPROVED": "Freigegeben",
+    "SCHEDULED": "Geplant",
+    "WAITING": "Wartet",
+    "IN_REVIEW": "In Prüfung",
+    "NOT_CONFIGURED": "Nicht konfiguriert",
+    "IDLE": "Bereit",
+    "DRAFT": "Entwurf",
+    "ARCHIVED": "Archiviert",
+    "ERROR": "Fehler",
+    "REJECTED": "Abgelehnt",
+    "RECEIVED": "Erhalten",
+    "PENDING": "Ausstehend"
+  },
+  "integrationStatus": {
+    "notConfigured": "Nicht konfiguriert — fehlende Variable(n): {vars}.",
+    "verifyFailedGeneric": "Verbindung fehlgeschlagen.",
+    "verifyFailedStatus": "{service} antwortete mit Status {status}.",
+    "verifyUnreachable": "{service} konnte nicht erreicht werden.",
+    "connected": "Verbunden."
   }
 }

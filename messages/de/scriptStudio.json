@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Script- und Hook-Engine: erzeugt plattformgerechte Skripte nach der Struktur Hook → Problem → Value → Example → Payoff → CTA sowie mehrere Hook-Varianten.",
+  "form": {
+    "topicLabel": "Thema",
+    "topicPlaceholder": "z.B. 5 Wege, wie KI-Agenten Zeit sparen",
+    "platformLabel": "Plattform",
+    "generateButton": "Script & Hooks generieren",
+    "generateFailed": "Generierung fehlgeschlagen.",
+    "unknownError": "Unbekannter Fehler."
+  },
+  "hookTypes": {
+    "direkt": "Direkt",
+    "neugierig": "Neugierig",
+    "story": "Story",
+    "problem": "Problem",
+    "zahlen": "Zahlen",
+    "kontroversSachlich": "Kontrovers (sachlich)",
+    "educational": "Educational"
+  },
+  "hooksHeading": "Hook-Varianten",
+  "engine": {
+    "label": "Engine: {provider}",
+    "templateMode": "Template-Modus (kein KI-Provider konfiguriert)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Als Content-Item speichern",
+    "saving": "Speichert…"
+  }
+}

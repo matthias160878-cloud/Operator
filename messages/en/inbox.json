@@ -1,0 +1,26 @@
+{
+  "title": "Inbox",
+  "description": "Messages & comments across all platforms. The MessageAgent suggests replies — only what you approve gets sent. There's no real OAuth connection to any platform yet, so conversations here are simulated manually instead of fetched live.",
+  "emptyState": "No conversations yet — simulate one to get started.",
+  "backToInbox": "Back to inbox",
+  "newConversation": {
+    "simulateButton": "Simulate conversation",
+    "simulateHint": "Since there's no real platform connection, you can simulate an incoming message here to try out the AI reply draft.",
+    "close": "Close",
+    "namePlaceholder": "Name",
+    "handlePlaceholder": "@handle (optional)",
+    "messagePlaceholder": "Message text …",
+    "createButton": "Create"
+  },
+  "detail": {
+    "draftFailed": "Draft failed.",
+    "save": "Save",
+    "edit": "Edit",
+    "approveAndSend": "Approve & send",
+    "requestDraft": "Request AI reply draft",
+    "openDraftExists": "There's already an open draft above — edit or send it first.",
+    "simulateMoreHint": "Simulate another incoming message (test without a real platform connection):",
+    "messagePlaceholder": "Message text …",
+    "addButton": "Add"
+  }
+}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { Save } from "lucide-react";
 import type { Brand } from "@prisma/client";
 
@@ -103,6 +104,8 @@ const inputClass =
   "w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none";
 
 export function BrandForm({ brand }: { brand: Brand | null }) {
+  const t = useTranslations("brandDna.form");
+  const locale = useLocale();
   const router = useRouter();
   const [form, setForm] = useState<FormState>(initialState(brand));
   const [saving, setSaving] = useState(false);
@@ -134,12 +137,12 @@ export function BrandForm({ brand }: { brand: Brand | null }) {
       });
       if (!res.ok) {
         const data = await res.json().catch(() => null);
-        throw new Error(data?.error ?? "Speichern fehlgeschlagen.");
+        throw new Error(data?.error ?? t("saveError"));
       }
       setSavedAt(new Date());
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unbekannter Fehler.");
+      setError(err instanceof Error ? err.message : t("unknownError"));
     } finally {
       setSaving(false);
     }
@@ -148,7 +151,7 @@ export function BrandForm({ brand }: { brand: Brand | null }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="card grid grid-cols-1 gap-4 p-5 md:grid-cols-2">
-        <Field label="Markenname">
+        <Field label={t("nameLabel")}>
           <input
             className={inputClass}
             value={form.name}
@@ -156,14 +159,14 @@ export function BrandForm({ brand }: { brand: Brand | null }) {
             required
           />
         </Field>
-        <Field label="Branche">
+        <Field label={t("industryLabel")}>
           <input
             className={inputClass}
             value={form.industry}
             onChange={(e) => set("industry", e.target.value)}
           />
         </Field>
-        <Field label="Beschreibung" hint="Was macht die Marke aus?">
+        <Field label={t("descriptionLabel")} hint={t("descriptionHint")}>
           <textarea
             className={inputClass}
             rows={2}
@@ -171,35 +174,35 @@ export function BrandForm({ brand }: { brand: Brand | null }) {
             onChange={(e) => set("description", e.target.value)}
           />
         </Field>
-        <Field label="Zielgruppe">
+        <Field label={t("audienceLabel")}>
           <input
             className={inputClass}
             value={form.targetAudience}
             onChange={(e) => set("targetAudience", e.target.value)}
           />
         </Field>
-        <Field label="Sprache">
+        <Field label={t("languageLabel")}>
           <input
             className={inputClass}
             value={form.language}
             onChange={(e) => set("language", e.target.value)}
           />
         </Field>
-        <Field label="Tonalität">
+        <Field label={t("tonalityLabel")}>
           <input
             className={inputClass}
             value={form.tonality}
             onChange={(e) => set("tonality", e.target.value)}
           />
         </Field>
-        <Field label="Humor">
+        <Field label={t("humorLabel")}>
           <input
             className={inputClass}
             value={form.humor}
             onChange={(e) => set("humor", e.target.value)}
           />
         </Field>
-        <Field label="Formalität">
+        <Field label={t("formalityLabel")}>
           <input
             className={inputClass}
             value={form.formality}
@@ -209,35 +212,35 @@ export function BrandForm({ brand }: { brand: Brand | null }) {
       </div>
 
       <div className="card grid grid-cols-1 gap-4 p-5 md:grid-cols-2">
-        <Field label="Bevorzugte Wörter" hint="kommagetrennt">
+        <Field label={t("preferredWordsLabel")} hint={t("csvHint")}>
           <input
             className={inputClass}
             value={form.preferredWords}
             onChange={(e) => set("preferredWords", e.target.value)}
           />
         </Field>
-        <Field label="Verbotene Wörter" hint="kommagetrennt">
+        <Field label={t("forbiddenWordsLabel")} hint={t("csvHint")}>
           <input
             className={inputClass}
             value={form.forbiddenWords}
             onChange={(e) => set("forbiddenWords", e.target.value)}
           />
         </Field>
-        <Field label="Bevorzugte CTAs" hint="kommagetrennt">
+        <Field label={t("preferredCtasLabel")} hint={t("csvHint")}>
           <input
             className={inputClass}
             value={form.preferredCtas}
             onChange={(e) => set("preferredCtas", e.target.value)}
           />
         </Field>
-        <Field label="Markenwerte" hint="kommagetrennt">
+        <Field label={t("brandValuesLabel")} hint={t("csvHint")}>
           <input
             className={inputClass}
             value={form.brandValues}
             onChange={(e) => set("brandValues", e.target.value)}
           />
         </Field>
-        <Field label="Themen" hint="kommagetrennt">
+        <Field label={t("topicsLabel")} hint={t("csvHint")}>
           <input
             className={inputClass}
             value={form.topics}
@@ -247,7 +250,7 @@ export function BrandForm({ brand }: { brand: Brand | null }) {
       </div>
 
       <div className="card grid grid-cols-1 gap-4 p-5 md:grid-cols-2">
-        <Field label="Farben" hint="kommagetrennt, z.B. #6D5BFF">
+        <Field label={t("colorsLabel")} hint={t("colorsHint")}>
           <input
             className={inputClass}
             value={form.colors}
@@ -264,14 +267,14 @@ export function BrandForm({ brand }: { brand: Brand | null }) {
             ))}
           </div>
         </Field>
-        <Field label="Schriften" hint="kommagetrennt">
+        <Field label={t("fontsLabel")} hint={t("csvHint")}>
           <input
             className={inputClass}
             value={form.fonts}
             onChange={(e) => set("fonts", e.target.value)}
           />
         </Field>
-        <Field label="Visuelle Regeln">
+        <Field label={t("visualRulesLabel")}>
           <textarea
             className={inputClass}
             rows={2}
@@ -289,11 +292,11 @@ export function BrandForm({ brand }: { brand: Brand | null }) {
           disabled={saving}
           className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
         >
-          <Save className="h-4 w-4" /> {saving ? "Speichert…" : "Brand DNA speichern"}
+          <Save className="h-4 w-4" /> {saving ? t("saving") : t("save")}
         </button>
         {savedAt && (
           <span className="text-xs text-success">
-            Gespeichert um {savedAt.toLocaleTimeString("de-DE")}
+            {t("savedAt", { time: savedAt.toLocaleTimeString(locale) })}
           </span>
         )}
       </div>

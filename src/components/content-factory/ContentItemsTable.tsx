@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Copy, Trash2 } from "lucide-react";
 import type { ContentItem } from "@prisma/client";
 import { StatusBadge } from "@/components/ui/StatusBadge";
@@ -9,6 +10,7 @@ import { PLATFORM_LABELS } from "@/lib/format";
 
 export function ContentItemsTable({ items }: { items: ContentItem[] }) {
   const router = useRouter();
+  const t = useTranslations("contentFactory");
 
   async function duplicate(id: string) {
     const res = await fetch(`/api/content-items/${id}/duplicate`, { method: "POST" });
@@ -16,7 +18,7 @@ export function ContentItemsTable({ items }: { items: ContentItem[] }) {
   }
 
   async function remove(id: string) {
-    if (!confirm("Content-Item wirklich löschen?")) return;
+    if (!confirm(t("table.confirmDelete"))) return;
     const res = await fetch(`/api/content-items/${id}`, { method: "DELETE" });
     if (res.ok) router.refresh();
   }
@@ -24,7 +26,7 @@ export function ContentItemsTable({ items }: { items: ContentItem[] }) {
   if (items.length === 0) {
     return (
       <div className="card p-8 text-center text-sm text-muted">
-        Noch keine Content-Items — erstelle eines manuell oder über Content Brain.
+        {t("table.empty")}
       </div>
     );
   }
@@ -34,12 +36,12 @@ export function ContentItemsTable({ items }: { items: ContentItem[] }) {
       <table className="w-full min-w-[640px] text-left text-sm">
         <thead>
           <tr className="border-b border-border text-xs text-muted">
-            <th className="px-4 py-3 font-medium">Titel</th>
-            <th className="px-4 py-3 font-medium">Plattform</th>
-            <th className="px-4 py-3 font-medium">Format</th>
-            <th className="px-4 py-3 font-medium">Status</th>
-            <th className="px-4 py-3 font-medium">Aktualisiert</th>
-            <th className="px-4 py-3 font-medium text-right">Aktionen</th>
+            <th className="px-4 py-3 font-medium">{t("table.title")}</th>
+            <th className="px-4 py-3 font-medium">{t("table.platform")}</th>
+            <th className="px-4 py-3 font-medium">{t("table.format")}</th>
+            <th className="px-4 py-3 font-medium">{t("table.status")}</th>
+            <th className="px-4 py-3 font-medium">{t("table.updated")}</th>
+            <th className="px-4 py-3 font-medium text-right">{t("table.actions")}</th>
           </tr>
         </thead>
         <tbody>
@@ -65,14 +67,14 @@ export function ContentItemsTable({ items }: { items: ContentItem[] }) {
                   <button
                     onClick={() => duplicate(item.id)}
                     className="rounded-lg border border-border p-1.5 text-muted hover:text-foreground"
-                    title="Duplizieren"
+                    title={t("table.duplicate")}
                   >
                     <Copy className="h-3.5 w-3.5" />
                   </button>
                   <button
                     onClick={() => remove(item.id)}
                     className="rounded-lg border border-border p-1.5 text-muted hover:text-danger"
-                    title="Löschen"
+                    title={t("table.delete")}
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>

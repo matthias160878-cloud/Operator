@@ -1,0 +1,26 @@
+{
+  "title": "Boîte de réception",
+  "description": "Messages et commentaires de toutes les plateformes. Le MessageAgent propose des réponses — seul ce que tu approuves est envoyé. Il n'existe pas encore de véritable connexion OAuth à une plateforme, les conversations sont donc simulées manuellement ici plutôt que récupérées en direct.",
+  "emptyState": "Aucune conversation pour l'instant — simules-en une pour commencer.",
+  "backToInbox": "Retour à la boîte de réception",
+  "newConversation": {
+    "simulateButton": "Simuler une conversation",
+    "simulateHint": "Comme il n'y a pas de véritable connexion à la plateforme, tu peux simuler ici un message entrant pour tester le brouillon de réponse généré par l'IA.",
+    "close": "Fermer",
+    "namePlaceholder": "Nom",
+    "handlePlaceholder": "@identifiant (facultatif)",
+    "messagePlaceholder": "Texte du message …",
+    "createButton": "Créer"
+  },
+  "detail": {
+    "draftFailed": "Échec de la génération du brouillon.",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "approveAndSend": "Approuver et envoyer",
+    "requestDraft": "Demander un brouillon de réponse IA",
+    "openDraftExists": "Il y a déjà un brouillon ouvert ci-dessus — modifie-le ou envoie-le d'abord.",
+    "simulateMoreHint": "Simuler un autre message entrant (test sans véritable connexion à la plateforme) :",
+    "messagePlaceholder": "Texte du message …",
+    "addButton": "Ajouter"
+  }
+}

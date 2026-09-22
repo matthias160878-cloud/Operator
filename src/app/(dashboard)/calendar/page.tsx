@@ -1,6 +1,7 @@
 import Link from "next/link";
 import clsx from "clsx";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { getLocale, getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { getMonthGrid, isSameDay } from "@/lib/calendarGrid";
@@ -9,17 +10,15 @@ import { PLATFORM_LABELS } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
-const WEEKDAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
-const MONTH_NAMES = [
-  "Januar", "Februar", "März", "April", "Mai", "Juni",
-  "Juli", "August", "September", "Oktober", "November", "Dezember",
-];
-
 export default async function CalendarPage({
   searchParams,
 }: {
   searchParams: Promise<{ year?: string; month?: string; platform?: string }>;
 }) {
+  const t = await getTranslations("calendar");
+  const locale = await getLocale();
+  const WEEKDAYS = t.raw("weekdays") as string[];
+  const MONTH_NAMES = t.raw("months") as string[];
   const { year: yearParam, month: monthParam, platform } = await searchParams;
   const now = new Date();
   const year = yearParam ? Number(yearParam) : now.getFullYear();
@@ -47,10 +46,8 @@ export default async function CalendarPage({
     <div className="space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold text-foreground">Content Kalender</h1>
-          <p className="mt-1 text-sm text-muted">
-            Geplante und veröffentlichte Inhalte im Überblick.
-          </p>
+          <h1 className="text-xl font-semibold text-foreground">{t("pageTitle")}</h1>
+          <p className="mt-1 text-sm text-muted">{t("subtitle")}</p>
         </div>
         <div className="flex items-center gap-2">
           <Link
@@ -79,7 +76,7 @@ export default async function CalendarPage({
             !platform ? "border-accent bg-accent/15 text-foreground" : "border-border bg-surface-2 text-muted"
           )}
         >
-          Alle Plattformen
+          {t("allPlatforms")}
         </Link>
         {Object.entries(PLATFORM_LABELS).map(([key, label]) => (
           <Link
@@ -136,7 +133,7 @@ export default async function CalendarPage({
                     </Link>
                   ))}
                   {dayItems.length > 3 && (
-                    <div className="text-[10px] text-muted">+{dayItems.length - 3} weitere</div>
+                    <div className="text-[10px] text-muted">{t("moreItems", { count: dayItems.length - 3 })}</div>
                   )}
                 </div>
               </div>
@@ -146,9 +143,9 @@ export default async function CalendarPage({
       </div>
 
       <div className="card p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Liste dieses Monats</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">{t("listTitle")}</h3>
         <div className="space-y-2">
-          {items.length === 0 && <p className="text-xs text-muted">Keine geplanten Beiträge in diesem Monat.</p>}
+          {items.length === 0 && <p className="text-xs text-muted">{t("emptyMonth")}</p>}
           {items.map((item) => (
             <div key={item.id} className="flex items-center justify-between rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm">
               <div>
@@ -158,7 +155,7 @@ export default async function CalendarPage({
                 <div className="text-xs text-muted">
                   {PLATFORM_LABELS[item.platform] ?? item.platform} ·{" "}
                   {item.scheduledAt
-                    ? new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short" }).format(item.scheduledAt)
+                    ? new Intl.DateTimeFormat(locale, { dateStyle: "short", timeStyle: "short" }).format(item.scheduledAt)
                     : "—"}
                 </div>
               </div>

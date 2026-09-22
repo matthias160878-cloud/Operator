@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "Moteur vocal ElevenLabs — gérez la bibliothèque de voix, générez des aperçus de voix off et importez des voix.",
+  "envWarning": "ElevenLabs n'est pas encore configuré. Ajoutez <envKey>ELEVENLABS_API_KEY</envKey> dans <envFile>.env</envFile> pour utiliser la voix off et l'import de voix. La bibliothèque de voix reste utilisable pour la planification en attendant.",
+  "addManual": "Ajouter une voix manuellement",
+  "importFromElevenLabs": "Importer depuis ElevenLabs",
+  "form": {
+    "namePlaceholder": "Nom",
+    "voiceIdPlaceholder": "ID de voix (ElevenLabs)",
+    "languagePlaceholder": "Langue",
+    "submit": "Ajouter"
+  },
+  "confirmDelete": "Vraiment supprimer cette voix ?",
+  "importFailed": "Échec de l'import.",
+  "previewFailed": "Échec de l'aperçu.",
+  "unknownError": "Erreur inconnue.",
+  "empty": "Aucune voix dans la bibliothèque pour le moment.",
+  "active": "Active",
+  "inactive": "Inactive",
+  "remove": "Retirer",
+  "preview": {
+    "heading": "Aperçu vocal",
+    "defaultText": "Bonjour, ceci est un exemple pour cette voix.",
+    "selectPlaceholder": "Choisir une voix…",
+    "play": "Lire l'aperçu"
+  }
+}

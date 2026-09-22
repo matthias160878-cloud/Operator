@@ -1,0 +1,85 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Tous les contenus au même endroit — créez, dupliquez, réécrivez, enrichissez avec voix off/sous-titres et faites-les passer par le workflow de validation.",
+  "statusTabs": {
+    "all": "Tous",
+    "draft": "Brouillon",
+    "inReview": "En relecture",
+    "approved": "Validé",
+    "scheduled": "Planifié",
+    "published": "Publié",
+    "archived": "Archivé"
+  },
+  "newItem": {
+    "openButton": "Nouveau contenu",
+    "titleLabel": "Titre",
+    "platformLabel": "Plateforme",
+    "create": "Créer",
+    "closeAria": "Fermer"
+  },
+  "table": {
+    "empty": "Aucun contenu pour le moment — créez-en un manuellement ou via Content Brain.",
+    "title": "Titre",
+    "platform": "Plateforme",
+    "format": "Format",
+    "status": "Statut",
+    "updated": "Mis à jour",
+    "actions": "Actions",
+    "duplicate": "Dupliquer",
+    "delete": "Supprimer",
+    "confirmDelete": "Vraiment supprimer ce contenu ?"
+  },
+  "detail": {
+    "backLink": "Retour à Content Factory",
+    "actionFailed": "Échec de l'action.",
+    "actions": {
+      "review": "Envoyer en relecture",
+      "approve": "Valider",
+      "reject": "Refuser",
+      "schedule": "Planifier",
+      "publish": "Publier"
+    },
+    "rejectReasonPrompt": "Motif du refus (facultatif) :",
+    "scheduleDatePrompt": "Date de publication (AAAA-MM-JJTHH:mm) :",
+    "fields": {
+      "title": "Titre",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Légende"
+    },
+    "save": "Enregistrer",
+    "saving": "Enregistrement…",
+    "hashtags": {
+      "heading": "Hashtags et mots-clés",
+      "regenerate": "Régénérer",
+      "empty": "Aucun hashtag généré pour le moment."
+    },
+    "voiceover": {
+      "heading": "Voix off",
+      "generate": "Générer",
+      "empty": "Aucune voix off générée pour le moment."
+    },
+    "subtitles": {
+      "heading": "Sous-titres",
+      "generate": "Générer (SRT)",
+      "download": "Télécharger {file}",
+      "empty": "Aucun sous-titre généré pour le moment."
+    },
+    "video": {
+      "heading": "Rendu vidéo",
+      "request": "Demander un rendu",
+      "note": "Pipeline vidéo indépendante du fournisseur (section 11/12) — aucun fournisseur vidéo n'est configuré actuellement (voir Intégrations)."
+    },
+    "scriptVariants": {
+      "heading": "Variantes de script",
+      "newVariant": "Nouvelle variante",
+      "empty": "Aucune variante pour le moment.",
+      "variantSummary": "Variante {label}"
+    },
+    "repurpose": {
+      "heading": "Réutiliser le contenu",
+      "description": "Génère des déclinaisons adaptées à d'autres canaux à partir de ce contenu.",
+      "generateButton": "Générer {count} déclinaisons"
+    }
+  }
+}

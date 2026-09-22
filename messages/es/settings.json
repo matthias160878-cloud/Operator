@@ -1,0 +1,22 @@
+{
+  "title": "Ajustes",
+  "description": "Workspace, usuarios e información del sistema. Las credenciales se gestionan exclusivamente mediante variables de entorno (ver <code>.env.example</code>).",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Nombre",
+    "slug": "Slug",
+    "createdAt": "Creado el"
+  },
+  "users": {
+    "title": "Usuarios y roles",
+    "note": "El modelo de datos multiinquilino está completamente preparado (aislamiento por workspace en todas las tablas). Una interfaz real de inicio de sesión/autenticación con varios usuarios es el siguiente paso — por ahora la app funciona con este único workspace predeterminado."
+  },
+  "system": {
+    "title": "Sistema",
+    "contentItems": "Elementos de contenido",
+    "campaigns": "Campañas",
+    "mediaAssets": "Recursos multimedia",
+    "agentRuns": "Ejecuciones de agentes",
+    "dbNote": "Base de datos: SQLite (local, <code>prisma/dev.db</code>) mediante Prisma ORM. Para producción, cambia <codeSpaced>DATABASE_URL</codeSpaced> a Postgres/MySQL (ajusta el proveedor en <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  }
+}

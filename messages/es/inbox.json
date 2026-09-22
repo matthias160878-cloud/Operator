@@ -1,0 +1,26 @@
+{
+  "title": "Bandeja de entrada",
+  "description": "Mensajes y comentarios de todas las plataformas. El MessageAgent sugiere respuestas — solo se envía lo que tú apruebes. Todavía no existe una conexión OAuth real con ninguna plataforma, así que las conversaciones aquí se simulan manualmente en lugar de obtenerse en tiempo real.",
+  "emptyState": "Aún no hay conversaciones — simula una para empezar.",
+  "backToInbox": "Volver a la bandeja de entrada",
+  "newConversation": {
+    "simulateButton": "Simular conversación",
+    "simulateHint": "Como no existe una conexión real con la plataforma, aquí puedes simular un mensaje entrante para probar el borrador de respuesta de la IA.",
+    "close": "Cerrar",
+    "namePlaceholder": "Nombre",
+    "handlePlaceholder": "@usuario (opcional)",
+    "messagePlaceholder": "Texto del mensaje …",
+    "createButton": "Crear"
+  },
+  "detail": {
+    "draftFailed": "No se pudo generar el borrador.",
+    "save": "Guardar",
+    "edit": "Editar",
+    "approveAndSend": "Aprobar y enviar",
+    "requestDraft": "Solicitar borrador de respuesta con IA",
+    "openDraftExists": "Ya hay un borrador abierto arriba — edítalo o envíalo primero.",
+    "simulateMoreHint": "Simular otro mensaje entrante (prueba sin conexión real a la plataforma):",
+    "messagePlaceholder": "Texto del mensaje …",
+    "addButton": "Añadir"
+  }
+}

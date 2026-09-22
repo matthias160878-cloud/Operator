@@ -1,0 +1,15 @@
+{
+  "title": "Wachstum",
+  "subtitle": "Empfehlungen für Reichweite und Wachstum — abgeleitet aus den echten Analytics-Daten deiner bisherigen Inhalte: beste Posting-Zeiten, erfolgreichste Hashtags und Formate.",
+  "warning": "Bewusst <strong>nicht</strong> enthalten: automatisiertes Folgen/Liken/Kommentieren zur künstlichen Follower-Steigerung. Das verstößt bei YouTube, Instagram, TikTok, LinkedIn und Facebook gegen die Nutzungsbedingungen und kann zur Kontosperrung führen. Diese Seite gibt ausschließlich daten-basierte Empfehlungen für deinen eigenen Content.",
+  "filterAll": "Alle Plattformen",
+  "emptyState": "Noch keine Analytics-Daten für {platform} vorhanden. Sobald veröffentlichte Inhalte Performance-Daten sammeln, erscheinen hier Empfehlungen.",
+  "emptyStateDefaultScope": "diesen Workspace",
+  "bestPostingTimesTitle": "Beste Posting-Zeiten",
+  "postingTime": "{day} · {hour} Uhr",
+  "avgLabel": "Ø {percent} ({count})",
+  "topHashtagsTitle": "Erfolgreichste Hashtags",
+  "topHashtagsEmpty": "Keine Hashtag-Daten vorhanden.",
+  "hashtagTooltip": "Ø {percent} Engagement, {count}× genutzt",
+  "topFormatsTitle": "Beste Formate"
+}

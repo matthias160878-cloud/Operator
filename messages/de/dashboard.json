@@ -1,0 +1,96 @@
+{
+  "viewAll": "Alle anzeigen",
+  "demoBanner": {
+    "before": "Demo-Daten aktiv — Kampagnen, Content-Items und Analytics sind Beispieldaten aus ",
+    "after": ", keine echten Plattform-Zahlen."
+  },
+  "hero": {
+    "subtitle": "Eine Idee. Mehrere Plattformen. Maximale Reichweite.",
+    "newCampaign": "Neue Kampagne",
+    "createContent": "Content erstellen",
+    "findIdeas": "Ideen finden",
+    "aiAgents": "KI-Agenten"
+  },
+  "orbit": {
+    "xNotConnected": "X (nicht angebunden)",
+    "brainAlt": "SECRET 58 KI-Gehirn"
+  },
+  "activeAgents": {
+    "title": "Aktive Agenten",
+    "empty": "Noch keine Agent-Läufe."
+  },
+  "kpi": {
+    "contentCreated": "Content erstellt",
+    "videosCreated": "Videos erstellt",
+    "postsCreated": "Posts erstellt",
+    "published": "Veröffentlichungen",
+    "views": "Views",
+    "avgEngagement": "Ø Engagement",
+    "totalRevenue": "Einnahmen gesamt",
+    "noComparisonWeek": "Noch keine Vorwoche als Vergleichsbasis vorhanden — Veränderungsraten erscheinen, sobald Daten über mindestens zwei Wochen vorliegen."
+  },
+  "production": {
+    "title": "Content Produktion",
+    "thisWeek": "Diese Woche"
+  },
+  "scheduled": {
+    "title": "Geplante Beiträge",
+    "empty": "Keine geplanten Beiträge."
+  },
+  "activity": {
+    "title": "Letzte Aktivitäten",
+    "empty": "Noch keine Aktivitäten."
+  },
+  "contentFactory": {
+    "description": "Erstelle mit nur einer Idee komplette Content-Kampagnen für alle Plattformen.",
+    "cta": "Jetzt starten →",
+    "popularTemplates": "Beliebte Vorlagen",
+    "templateYoutubeVideo": "YouTube Video",
+    "templateTiktokSeries": "TikTok Serie",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn Post",
+    "templateBlogPost": "Blogartikel",
+    "viewAllTemplates": "Alle Vorlagen →"
+  },
+  "brandDna": {
+    "tonality": "Tonalität",
+    "targetAudience": "Zielgruppe",
+    "industry": "Branche",
+    "language": "Sprache",
+    "empty": "Noch keine Brand DNA hinterlegt."
+  },
+  "campaigns": {
+    "title": "Aktuelle Kampagnen",
+    "empty": "Noch keine Kampagnen."
+  },
+  "platforms": {
+    "title": "Plattformen",
+    "manage": "Verwalten"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} verbunden"
+  },
+  "agentMonitor": {
+    "title": "Agent Monitor",
+    "empty": "Noch keine Läufe."
+  },
+  "topPerformer": {
+    "title": "Top Performer",
+    "last7Days": "Letzte 7 Tage",
+    "empty": "Noch keine Performance-Daten.",
+    "views": "Views",
+    "likes": "Likes",
+    "comments": "Kommentare",
+    "shares": "Shares",
+    "engagementRate": "+Engagement Rate {value}"
+  },
+  "calendar": {
+    "open": "Öffnen",
+    "viewMonth": "Monat",
+    "viewWeek": "Woche",
+    "viewDay": "Tag",
+    "viewCampaign": "Kampagne",
+    "moreItems": "+{count} weitere"
+  },
+  "weekdayLabels": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+}

@@ -17,6 +17,11 @@ export interface IntegrationStatusResult {
   requiredEnv: string[];
 }
 
+export type IntegrationTranslator = (
+  key: string,
+  params?: Record<string, string | number>
+) => string;
+
 export interface IntegrationDefinition {
   key: string;
   name: string;
@@ -27,5 +32,5 @@ export interface IntegrationDefinition {
    * wenn alle requiredEnv-Variablen gesetzt sind. Muss innerhalb kurzer Zeit
    * antworten und darf niemals Secrets in Fehlermeldungen zurückgeben.
    */
-  verify?: () => Promise<{ ok: boolean; message?: string }>;
+  verify?: (t: IntegrationTranslator) => Promise<{ ok: boolean; message?: string }>;
 }

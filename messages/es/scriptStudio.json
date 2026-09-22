@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Motor de guiones y hooks: genera guiones adaptados a cada plataforma siguiendo la estructura Hook → Problem → Value → Example → Payoff → CTA, además de varias variantes de hook.",
+  "form": {
+    "topicLabel": "Tema",
+    "topicPlaceholder": "p. ej. 5 formas en que los agentes de IA ahorran tiempo",
+    "platformLabel": "Plataforma",
+    "generateButton": "Generar guion y hooks",
+    "generateFailed": "La generación ha fallado.",
+    "unknownError": "Error desconocido."
+  },
+  "hookTypes": {
+    "direkt": "Directo",
+    "neugierig": "Curioso",
+    "story": "Historia",
+    "problem": "Problema",
+    "zahlen": "Cifras",
+    "kontroversSachlich": "Controvertido (objetivo)",
+    "educational": "Educativo"
+  },
+  "hooksHeading": "Variantes de hook",
+  "engine": {
+    "label": "Motor: {provider}",
+    "templateMode": "Modo plantilla (sin proveedor de IA configurado)"
+  },
+  "script": {
+    "heading": "Guion",
+    "save": "Guardar como elemento de contenido",
+    "saving": "Guardando…"
+  }
+}

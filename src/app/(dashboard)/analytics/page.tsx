@@ -1,4 +1,5 @@
 import { Eye, Heart, MessageCircle, Share2, TrendingUp } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import {
   getWorkspaceStats,
@@ -13,6 +14,7 @@ import { formatNumber, formatPercent, PLATFORM_LABELS } from "@/lib/format";
 export const dynamic = "force-dynamic";
 
 export default async function AnalyticsPage() {
+  const t = await getTranslations("analytics");
   const workspaceId = await getCurrentWorkspaceId();
   const [stats, best, series, recommendations] = await Promise.all([
     getWorkspaceStats(workspaceId),
@@ -30,27 +32,24 @@ export default async function AnalyticsPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-semibold text-foreground">Analytics</h1>
-        <p className="mt-1 text-sm text-muted">
-          Performance-Kennzahlen aus tatsächlich vorhandenen Daten — sobald Plattformen
-          verbunden sind, füllt sich diese Ansicht mit echten Werten.
-        </p>
+        <h1 className="text-xl font-semibold text-foreground">{t("title")}</h1>
+        <p className="mt-1 text-sm text-muted">{t("subtitle")}</p>
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <StatCard icon={Eye} label="Views gesamt" value={formatNumber(stats.totalViews)} accent="accent" />
-        <StatCard icon={Heart} label="Likes gesamt" value={formatNumber(stats.totalLikes)} accent="accent-3" />
-        <StatCard icon={MessageCircle} label="Kommentare" value={formatNumber(stats.totalComments)} accent="accent-2" />
-        <StatCard icon={Share2} label="Shares" value={formatNumber(stats.totalShares)} accent="success" />
+        <StatCard icon={Eye} label={t("statViewsTotal")} value={formatNumber(stats.totalViews)} accent="accent" />
+        <StatCard icon={Heart} label={t("statLikesTotal")} value={formatNumber(stats.totalLikes)} accent="accent-3" />
+        <StatCard icon={MessageCircle} label={t("statComments")} value={formatNumber(stats.totalComments)} accent="accent-2" />
+        <StatCard icon={Share2} label={t("statShares")} value={formatNumber(stats.totalShares)} accent="success" />
       </div>
 
       <div className="card p-4">
         <div className="mb-2 flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-foreground">Content Performance über Zeit</h2>
-          <span className="text-xs text-muted">Views (violett) · Engagement % (türkis)</span>
+          <h2 className="text-sm font-semibold text-foreground">{t("chartTitle")}</h2>
+          <span className="text-xs text-muted">{t("chartLegend")}</span>
         </div>
         {chartData.length === 0 ? (
-          <p className="py-10 text-center text-xs text-muted">Noch keine Analytics-Daten vorhanden.</p>
+          <p className="py-10 text-center text-xs text-muted">{t("chartEmpty")}</p>
         ) : (
           <PerformanceChart data={chartData} />
         )}
@@ -58,9 +57,9 @@ export default async function AnalyticsPage() {
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="card p-5">
-          <h2 className="mb-3 text-sm font-semibold text-foreground">Best Performing Content</h2>
+          <h2 className="mb-3 text-sm font-semibold text-foreground">{t("bestPerformingTitle")}</h2>
           <div className="space-y-2">
-            {best.length === 0 && <p className="text-xs text-muted">Noch keine Daten.</p>}
+            {best.length === 0 && <p className="text-xs text-muted">{t("bestPerformingEmpty")}</p>}
             {best.map((a) => (
               <div key={a.id} className="rounded-lg border border-border bg-surface-2 p-3">
                 <div className="truncate text-sm text-foreground">{a.contentItem.title}</div>
@@ -82,7 +81,7 @@ export default async function AnalyticsPage() {
         </div>
 
         <div className="card p-5">
-          <h2 className="mb-3 text-sm font-semibold text-foreground">Learning Agent — Empfehlungen</h2>
+          <h2 className="mb-3 text-sm font-semibold text-foreground">{t("learningAgentTitle")}</h2>
           <div className="space-y-3">
             {recommendations.map((r, i) => (
               <div key={i} className="rounded-lg border border-border bg-surface-2 p-3">

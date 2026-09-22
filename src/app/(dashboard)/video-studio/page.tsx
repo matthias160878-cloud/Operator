@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { VIDEO_FORMATS } from "@/lib/video/formats";
@@ -7,6 +8,7 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 export const dynamic = "force-dynamic";
 
 export default async function VideoStudioPage() {
+  const t = await getTranslations("videoStudio");
   const workspaceId = await getCurrentWorkspaceId();
   const videos = await prisma.mediaAsset.findMany({
     where: { workspaceId, type: "VIDEO" },
@@ -16,15 +18,12 @@ export default async function VideoStudioPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-semibold text-foreground">Video Studio</h1>
-        <p className="mt-1 text-sm text-muted">
-          Provider-agnostische Video-Pipeline: Format Manager, austauschbare Video-Provider,
-          Voiceover- und Untertitel-Anbindung (siehe Content Factory je Content-Item).
-        </p>
+        <h1 className="text-xl font-semibold text-foreground">{t("pageTitle")}</h1>
+        <p className="mt-1 text-sm text-muted">{t("subtitle")}</p>
       </div>
 
       <div className="card p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Video-Provider</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">{t("providerCardTitle")}</h3>
         <div className="space-y-2">
           {VIDEO_PROVIDERS.map((p) => (
             <div key={p.key} className="flex items-center justify-between rounded-lg border border-border bg-surface-2 px-3 py-2">
@@ -34,14 +33,14 @@ export default async function VideoStudioPage() {
           ))}
         </div>
         <p className="mt-3 text-xs text-muted">
-          Weitere Provider (AI-Video-APIs, Stock-Video-Bibliotheken) lassen sich über dieselbe
+          {t("providerNotePrefix")}
           <code className="mx-1 rounded bg-surface-2 px-1">VideoProvider</code>
-          -Schnittstelle ergänzen, ohne bestehenden Code anzufassen.
+          {t("providerNoteSuffix")}
         </p>
       </div>
 
       <div className="card p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Format Manager</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">{t("formatManagerTitle")}</h3>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {VIDEO_FORMATS.map((f) => (
             <div key={f.key} className="rounded-lg border border-border bg-surface-2 p-3">
@@ -62,12 +61,9 @@ export default async function VideoStudioPage() {
       </div>
 
       <div className="card p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Video-Assets</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">{t("assetsTitle")}</h3>
         {videos.length === 0 ? (
-          <p className="text-xs text-muted">
-            Noch keine Videos gerendert — Rendering läuft über Content-Items in der Content
-            Factory, sobald ein Video-Provider konfiguriert ist.
-          </p>
+          <p className="text-xs text-muted">{t("assetsEmpty")}</p>
         ) : (
           <ul className="space-y-2 text-sm text-foreground">
             {videos.map((v) => (

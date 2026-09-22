@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Concepts de miniatures, ressources images et intégration Canva.",
+  "imageAssetsTitle": "Ressources images",
+  "imageAssetsEmpty": "Aucune ressource image pour le moment.",
+  "thumbnailAgent": {
+    "title": "Agent miniatures",
+    "description": "Génère un concept textuel (titre, idée visuelle, mise en page, CTA) — prêt pour la connexion d'un générateur d'images. Aucune image n'est encore générée.",
+    "inputPlaceholder": "Sujet de la miniature",
+    "submitButton": "Générer le concept",
+    "errorGenerationFailed": "Échec de la génération.",
+    "errorUnknown": "Erreur inconnue.",
+    "fieldTitle": "Titre",
+    "fieldVisualIdea": "Idée visuelle",
+    "fieldText": "Texte",
+    "fieldLayout": "Mise en page",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Description de l'image"
+  }
+}

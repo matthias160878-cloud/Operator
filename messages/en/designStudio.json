@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Thumbnail concepts, image assets, and the Canva integration.",
+  "imageAssetsTitle": "Image assets",
+  "imageAssetsEmpty": "No image assets yet.",
+  "thumbnailAgent": {
+    "title": "Thumbnail agent",
+    "description": "Generates a text concept (title, visual idea, layout, CTA) — prepared for connecting an image generator. No image is generated yet.",
+    "inputPlaceholder": "Topic for the thumbnail",
+    "submitButton": "Generate concept",
+    "errorGenerationFailed": "Generation failed.",
+    "errorUnknown": "Unknown error.",
+    "fieldTitle": "Title",
+    "fieldVisualIdea": "Visual idea",
+    "fieldText": "Text",
+    "fieldLayout": "Layout",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Image description"
+  }
+}

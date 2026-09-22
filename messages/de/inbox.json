@@ -1,0 +1,26 @@
+{
+  "title": "Posteingang",
+  "description": "Nachrichten & Kommentare über alle Plattformen. Der MessageAgent schlägt Antworten vor — gesendet wird nur, was du freigibst. Es besteht noch keine echte OAuth-Verbindung zu einer Plattform, daher werden Konversationen hier manuell simuliert statt live abgerufen.",
+  "emptyState": "Noch keine Konversationen — simuliere eine, um zu starten.",
+  "backToInbox": "Zurück zum Posteingang",
+  "newConversation": {
+    "simulateButton": "Konversation simulieren",
+    "simulateHint": "Da keine echte Plattform-Verbindung besteht, kannst du hier eine eingehende Nachricht simulieren, um den KI-Antwortentwurf auszuprobieren.",
+    "close": "Schließen",
+    "namePlaceholder": "Name",
+    "handlePlaceholder": "@handle (optional)",
+    "messagePlaceholder": "Nachrichtentext …",
+    "createButton": "Erstellen"
+  },
+  "detail": {
+    "draftFailed": "Entwurf fehlgeschlagen.",
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "approveAndSend": "Freigeben & senden",
+    "requestDraft": "KI-Antwortentwurf anfordern",
+    "openDraftExists": "Es gibt bereits einen offenen Entwurf oben — erst bearbeiten/senden.",
+    "simulateMoreHint": "Weitere eingehende Nachricht simulieren (Test ohne echte Plattform-Verbindung):",
+    "messagePlaceholder": "Nachrichtentext …",
+    "addButton": "Hinzufügen"
+  }
+}

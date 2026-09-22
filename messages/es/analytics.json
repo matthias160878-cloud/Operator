@@ -1,0 +1,14 @@
+{
+  "title": "Analítica",
+  "subtitle": "Métricas de rendimiento a partir de datos reales — en cuanto se conecten plataformas, esta vista se llenará con valores reales.",
+  "statViewsTotal": "Visualizaciones totales",
+  "statLikesTotal": "Me gusta totales",
+  "statComments": "Comentarios",
+  "statShares": "Compartidos",
+  "chartTitle": "Rendimiento del contenido en el tiempo",
+  "chartLegend": "Visualizaciones (violeta) · Engagement % (turquesa)",
+  "chartEmpty": "Aún no hay datos de analítica.",
+  "bestPerformingTitle": "Contenido con mejor rendimiento",
+  "bestPerformingEmpty": "Aún no hay datos.",
+  "learningAgentTitle": "Learning Agent — Recomendaciones"
+}

@@ -12,6 +12,14 @@ export function formatPercent(value: number): string {
   return `${value.toFixed(1).replace(".", ",")}%`;
 }
 
+export function formatDuration(start: Date, end: Date | null): string {
+  const endTime = end ?? new Date();
+  const totalSeconds = Math.max(0, Math.round((endTime.getTime() - start.getTime()) / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${String(seconds).padStart(2, "0")}`;
+}
+
 export function relativeTime(date: Date): string {
   const diffMs = Date.now() - date.getTime();
   const diffMin = Math.round(diffMs / 60000);

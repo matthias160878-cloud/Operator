@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Brain } from "lucide-react";
@@ -46,6 +47,27 @@ export function Sidebar() {
       </nav>
 
       <div className="border-t border-border p-4 space-y-3">
+        <div className="card relative flex flex-col items-center gap-3 overflow-hidden p-5 text-center">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(109,91,255,0.25),transparent_65%)]" />
+          <div className="relative h-16 w-16 overflow-hidden rounded-full shadow-[0_0_30px_rgba(109,91,255,0.5)]">
+            <Image
+              src="/brand/brain-core.png"
+              alt="SECRET 58"
+              fill
+              sizes="64px"
+              className="object-cover"
+            />
+          </div>
+          <p className="relative text-xs leading-snug text-muted">
+            Mehr als Content.
+            <br />
+            Eine komplette Content-Maschine.
+          </p>
+          <p className="relative text-[11px] font-semibold tracking-[0.2em] text-foreground">
+            SECRET 58
+          </p>
+        </div>
+
         <div className="card p-3">
           <div className="flex items-center gap-2 text-xs text-muted">
             <span className="status-dot bg-success" />

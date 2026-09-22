@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell, Menu, Search, X } from "lucide-react";
+import { Bell, ChevronDown, Menu, Search, X } from "lucide-react";
 import clsx from "clsx";
 import { NAV_ITEMS } from "@/components/layout/nav-items";
 
@@ -28,8 +28,11 @@ export function Topbar() {
           <input
             type="search"
             placeholder="Suche nach Inhalten, Projekten, Kampagnen …"
-            className="w-full rounded-lg border border-border bg-surface-2 py-2 pl-9 pr-3 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none"
+            className="w-full rounded-lg border border-border bg-surface-2 py-2 pl-9 pr-16 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none"
           />
+          <kbd className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 rounded border border-border bg-surface px-1.5 py-0.5 text-[10px] text-muted sm:block">
+            ⌘K
+          </kbd>
         </div>
 
         <div className="ml-auto flex items-center gap-3">
@@ -41,9 +44,12 @@ export function Topbar() {
             <Bell className="h-4 w-4" />
             <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-accent-2" />
           </button>
-          <div className="hidden items-center gap-1 rounded-lg border border-border px-2 py-1 text-xs text-muted sm:flex">
-            🇩🇪 DE
-          </div>
+          <button
+            type="button"
+            className="hidden items-center gap-1 rounded-lg border border-border px-2 py-1 text-xs text-muted hover:text-foreground sm:flex"
+          >
+            🇩🇪 DE <ChevronDown className="h-3 w-3" />
+          </button>
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent-3 to-accent text-xs font-semibold text-white">
             MM
           </div>

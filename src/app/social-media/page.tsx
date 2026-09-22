@@ -2,6 +2,7 @@ import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { checkIntegration, INTEGRATIONS } from "@/lib/integrations/registry";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { PlatformGlyph, type PlatformGlyphKey } from "@/components/dashboard/PlatformGlyph";
 import { PLATFORM_LABELS } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
@@ -47,9 +48,21 @@ export default async function SocialMediaPage() {
           return (
             <div key={acc.id} className="card space-y-3 p-5">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-foreground">
-                  {PLATFORM_LABELS[acc.platform] ?? acc.platform}
-                </h3>
+                <div className="flex items-center gap-2.5">
+                  <div
+                    className={
+                      "flex h-9 w-9 items-center justify-center rounded-full border " +
+                      (acc.status === "CONNECTED"
+                        ? "border-success/50 bg-success/15 text-success"
+                        : "border-border bg-surface-2 text-muted grayscale")
+                    }
+                  >
+                    <PlatformGlyph platform={acc.platform as PlatformGlyphKey} className="h-4 w-4" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground">
+                    {PLATFORM_LABELS[acc.platform] ?? acc.platform}
+                  </h3>
+                </div>
                 <StatusBadge status={acc.status} />
               </div>
               <dl className="space-y-1.5 text-xs">

@@ -104,6 +104,49 @@ async function main() {
     },
   });
 
+  const growthCampaign = await prisma.campaign.create({
+    data: {
+      workspaceId: workspace.id,
+      title: "Social Media Wachstum",
+      goal: "Follower-Wachstum",
+      targetAudience: "18-35 Jahre, Creator-Community",
+      platforms: JSON.stringify(["INSTAGRAM", "TIKTOK"]),
+      language: "Deutsch",
+      status: "DRAFT",
+    },
+  });
+
+  const launchCampaign = await prisma.campaign.create({
+    data: {
+      workspaceId: workspace.id,
+      title: "Produkt Launch",
+      goal: "Launch-Ankündigung",
+      targetAudience: "Bestehende Kundschaft",
+      platforms: JSON.stringify(PLATFORMS),
+      language: "Deutsch",
+      status: "DRAFT",
+    },
+  });
+
+  for (const [camp, count, prefix] of [
+    [growthCampaign, 6, "Wachstum"],
+    [launchCampaign, 12, "Launch"],
+  ] as const) {
+    for (let i = 0; i < count; i++) {
+      await prisma.contentItem.create({
+        data: {
+          workspaceId: workspace.id,
+          campaignId: camp.id,
+          title: `${prefix}-Idee ${i + 1}`,
+          platform: PLATFORMS[i % PLATFORMS.length],
+          format: "Entwurf",
+          status: "DRAFT",
+          language: "Deutsch",
+        },
+      });
+    }
+  }
+
   const now = new Date();
   const statuses: ContentStatus[] = [
     "DRAFT",

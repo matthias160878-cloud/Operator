@@ -18,14 +18,35 @@ Die folgenden Abschnitte beziehen sich auf das Next.js-Teilprojekt (`src/`).
 - `npm run build` — Produktions-Build erstellen
 - `npm run start` — Produktions-Build ausführen
 - `npm run lint` — mit ESLint prüfen (Flat Config, `eslint.config.mjs`)
+- `npm run db:push` — Prisma-Schema mit der (lokalen SQLite-)Datenbank synchronisieren
+- `npm run db:seed` — Demo-Daten laden (`prisma/seed.ts`)
+- `npm run db:studio` — Prisma Studio (DB-GUI) öffnen
 
 Es ist noch kein Test-Runner eingerichtet. Sobald Tests hinzugefügt werden, hier dokumentieren, wie man die gesamte Suite und einen einzelnen Test ausführt.
 
 ## Architektur
 
-- `src/app/` — App-Router-Routen. `layout.tsx` definiert das Root-HTML-Gerüst und die Schriftarten (Geist Sans/Mono über `next/font/google`); `page.tsx` ist die Startseite.
-- `src/app/globals.css` — Tailwind-v4-Import und CSS-Custom-Properties (Hell-/Dunkelmodus über `prefers-color-scheme`).
-- `public/` — statische Assets, die unter `/` ausgeliefert werden.
+`src/` ist SECRET 58 — AI Social Command Center. Vollständige Architektur-,
+Agenten- und API-Dokumentation: siehe [`README-SOCIAL-MEDIA.md`](README-SOCIAL-MEDIA.md).
+
+- `src/app/` — App-Router-Seiten (Dashboard, Content Brain, Brand DNA, Ideen,
+  Content Factory, Script/Voice/Video/Design Studio, Social Media,
+  Content Kalender, Analytics, Agenten, Integrationen, Einstellungen) sowie
+  `src/app/api/**` für alle mutierenden Aktionen. `layout.tsx` bindet den
+  App-Shell (Sidebar/Topbar, `src/components/layout/`) und die Schriftarten
+  (Geist Sans/Mono über `next/font/google`) ein; `page.tsx` ist das Dashboard.
+- `src/app/globals.css` — Tailwind-v4-Import und CSS-Custom-Properties für das
+  dunkle Command-Center-Theme.
+- `src/lib/` — Domänenlogik: `agents/` (14 Agenten + Logging-Runner),
+  `ai/` (KI-Provider-Adapter mit Template-Fallback), `integrations/`
+  (env-basierte Statusprüfung), `video/` (Provider-Abstraktion + Format
+  Manager), `db.ts` (Prisma-Client), `workspace.ts`, `brand.ts`,
+  `mediaStorage.ts`.
+- `prisma/schema.prisma` — Datenmodell (SQLite standardmäßig,
+  `DATABASE_URL` in `.env`); `prisma/seed.ts` für Demo-Daten
+  (`npm run db:seed`).
+- `public/` — statische Assets sowie `public/media/**` (lokale
+  Medienablage für generierte Audio-/Untertitel-/Bild-Dateien).
 - Pfad-Alias `@/*` verweist auf `src/*` (siehe `tsconfig.json`).
 
 ## Claude Code Skills

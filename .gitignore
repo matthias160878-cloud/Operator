@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# SECRET 58 — lokale Datenbank & generierte Medien
+/prisma/dev.db
+/prisma/dev.db-journal
+/dev.db
+/dev.db-journal
+/public/media/audio/*
+/public/media/video/*
+/public/media/images/*
+/public/media/thumbnails/*
+/public/media/subtitles/*
+!/public/media/audio/.gitkeep
+!/public/media/video/.gitkeep
+!/public/media/images/.gitkeep
+!/public/media/thumbnails/.gitkeep
+!/public/media/subtitles/.gitkeep

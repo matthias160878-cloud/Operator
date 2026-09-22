@@ -1,0 +1,14 @@
+{
+  "title": "Assistant IA",
+  "welcome": "Bonjour ! Posez-moi vos questions sur SECRET 58 — comment configurer quelque chose, où le trouver, ou comment fonctionne une section.",
+  "inputPlaceholder": "Écrire une question …",
+  "thinking": "Réflexion …",
+  "openButton": "Ouvrir l'assistant IA",
+  "close": "Fermer",
+  "sendButton": "Envoyer",
+  "micButton": "Saisie vocale",
+  "speakToggle": "Lire les réponses à voix haute",
+  "notConfigured": "L'assistant IA n'est pas encore configuré — un fournisseur d'IA (Anthropic ou OpenAI) doit être configuré.",
+  "openIntegrations": "Aller aux intégrations",
+  "error": "L'assistant IA n'a pas pu répondre pour le moment. Veuillez réessayer plus tard."
+}

@@ -1,0 +1,14 @@
+{
+  "title": "AI Assistant",
+  "welcome": "Hi! Ask me anything about SECRET 58 — how to set something up, where to find it, or how an area works.",
+  "inputPlaceholder": "Type a question …",
+  "thinking": "Thinking …",
+  "openButton": "Open AI assistant",
+  "close": "Close",
+  "sendButton": "Send",
+  "micButton": "Voice input",
+  "speakToggle": "Read replies aloud",
+  "notConfigured": "The AI assistant isn't configured yet — this needs an AI provider (Anthropic or OpenAI) set up.",
+  "openIntegrations": "Go to Integrations",
+  "error": "The AI assistant couldn't reply right now. Please try again later."
+}

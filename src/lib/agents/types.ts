@@ -12,7 +12,9 @@ export type AgentKey =
   | "hashtag"
   | "publishing"
   | "analytics"
-  | "learning";
+  | "learning"
+  | "growth"
+  | "message";
 
 export interface AgentDefinition {
   key: AgentKey;
@@ -90,6 +92,16 @@ export const AGENTS: AgentDefinition[] = [
     key: "learning",
     name: "LearningAgent",
     description: "Leitet Empfehlungen aus historischer Performance ab.",
+  },
+  {
+    key: "growth",
+    name: "GrowthAgent",
+    description: "Beste Posting-Zeiten, Hashtags und Formate aus echten Analytics — keine Automatisierung.",
+  },
+  {
+    key: "message",
+    name: "MessageAgent",
+    description: "Entwirft KI-Antworten auf Nachrichten/Kommentare zur manuellen Freigabe.",
   },
 ];
 

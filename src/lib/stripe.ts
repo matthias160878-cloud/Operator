@@ -58,7 +58,7 @@ export async function retrieveCheckoutSession(sessionId: string) {
   return getClient().checkout.sessions.retrieve(sessionId);
 }
 
-export async function getConfiguredPrice(): Promise<{
+export async function getConfiguredPrice(locale = "de"): Promise<{
   formatted: string;
   productName: string;
 } | null> {
@@ -68,7 +68,7 @@ export async function getConfiguredPrice(): Promise<{
       expand: ["product"],
     });
     const amount = (price.unit_amount ?? 0) / 100;
-    const formatted = new Intl.NumberFormat("de-DE", {
+    const formatted = new Intl.NumberFormat(locale, {
       style: "currency",
       currency: price.currency,
     }).format(amount);

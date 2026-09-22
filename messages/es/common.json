@@ -1,0 +1,58 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Más que contenido.",
+    "footerLine2": "Una máquina de contenido completa.",
+    "workspace": "Espacio de trabajo",
+    "role": "Administrador"
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "contentFactory": "Fábrica de contenido",
+    "ideas": "Ideas e inspiración",
+    "contentBrain": "Content Brain",
+    "brandDna": "ADN de marca",
+    "scriptStudio": "Estudio de guiones",
+    "voiceStudio": "Estudio de voz",
+    "videoStudio": "Estudio de vídeo",
+    "designStudio": "Estudio de diseño",
+    "socialMedia": "Redes sociales",
+    "calendar": "Calendario de contenido",
+    "analytics": "Analítica",
+    "growth": "Crecimiento",
+    "revenue": "Ingresos",
+    "inbox": "Bandeja de entrada",
+    "agents": "Agentes",
+    "integrations": "Integraciones",
+    "settings": "Ajustes"
+  },
+  "topbar": {
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "searchPlaceholder": "Buscar contenido, proyectos, campañas …",
+    "notifications": "Notificaciones",
+    "language": "Idioma"
+  },
+  "footer": {
+    "help": "Ayuda",
+    "privacy": "Privacidad",
+    "imprint": "Aviso legal",
+    "systemOnline": "Sistema en línea"
+  },
+  "actions": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "loading": "Cargando …"
+  },
+  "status": {
+    "connected": "Conectado",
+    "notConfigured": "No configurado",
+    "error": "Error"
+  }
+}

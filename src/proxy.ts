@@ -18,6 +18,7 @@ const PUBLIC_PREFIXES = [
   "/buy",
   "/unlock",
   "/api/stripe",
+  "/api/locale",
   "/_next",
   "/favicon.ico",
   "/manifest.webmanifest",

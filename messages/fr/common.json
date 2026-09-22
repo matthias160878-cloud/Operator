@@ -1,0 +1,58 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Plus que du contenu.",
+    "footerLine2": "Une machine à contenu complète.",
+    "workspace": "Espace de travail",
+    "role": "Administrateur"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "contentFactory": "Usine à contenu",
+    "ideas": "Idées & inspiration",
+    "contentBrain": "Content Brain",
+    "brandDna": "ADN de marque",
+    "scriptStudio": "Studio de script",
+    "voiceStudio": "Studio vocal",
+    "videoStudio": "Studio vidéo",
+    "designStudio": "Studio de design",
+    "socialMedia": "Réseaux sociaux",
+    "calendar": "Calendrier de contenu",
+    "analytics": "Analytique",
+    "growth": "Croissance",
+    "revenue": "Revenus",
+    "inbox": "Messagerie",
+    "agents": "Agents",
+    "integrations": "Intégrations",
+    "settings": "Paramètres"
+  },
+  "topbar": {
+    "menuOpen": "Ouvrir le menu",
+    "menuClose": "Fermer le menu",
+    "searchPlaceholder": "Rechercher du contenu, des projets, des campagnes …",
+    "notifications": "Notifications",
+    "language": "Langue"
+  },
+  "footer": {
+    "help": "Aide",
+    "privacy": "Confidentialité",
+    "imprint": "Mentions légales",
+    "systemOnline": "Système en ligne"
+  },
+  "actions": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "close": "Fermer",
+    "back": "Retour",
+    "loading": "Chargement …"
+  },
+  "status": {
+    "connected": "Connecté",
+    "notConfigured": "Non configuré",
+    "error": "Erreur"
+  }
+}

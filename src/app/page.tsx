@@ -25,6 +25,7 @@ import { getAllIntegrationStatuses } from "@/lib/integrations/registry";
 import { StatCard } from "@/components/ui/StatCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { ProductionChart } from "@/components/dashboard/ProductionChart";
+import { BrainOrbit, type OrbitPlatform } from "@/components/dashboard/BrainOrbit";
 import { formatNumber, formatPercent, relativeTime, PLATFORM_LABELS } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
@@ -76,6 +77,18 @@ export default async function DashboardPage() {
     (i) => i.status === "CONNECTED"
   ).length;
 
+  const platformConnected = new Map(
+    platformAccounts.map((acc) => [acc.platform, acc.status === "CONNECTED"])
+  );
+  const orbitPlatforms: OrbitPlatform[] = [
+    { key: "YOUTUBE", label: "YouTube", connected: platformConnected.get("YOUTUBE") ?? false },
+    { key: "INSTAGRAM", label: "Instagram", connected: platformConnected.get("INSTAGRAM") ?? false },
+    { key: "TIKTOK", label: "TikTok", connected: platformConnected.get("TIKTOK") ?? false },
+    { key: "LINKEDIN", label: "LinkedIn", connected: platformConnected.get("LINKEDIN") ?? false },
+    { key: "FACEBOOK", label: "Facebook", connected: platformConnected.get("FACEBOOK") ?? false },
+    { key: "X", label: "X (nicht angebunden)", connected: false },
+  ];
+
   return (
     <div className="space-y-5">
       {demoSetting && (
@@ -90,42 +103,46 @@ export default async function DashboardPage() {
         <div className="card relative overflow-hidden p-6">
           <div className="pointer-events-none absolute -right-10 -top-10 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-16 right-24 h-40 w-40 rounded-full bg-accent-2/20 blur-3xl" />
-          <div className="relative">
-            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-accent-2">
-              <Sparkles className="h-3.5 w-3.5" /> AI Social Command Center
+          <div className="relative flex flex-col items-center gap-6 md:flex-row md:justify-between">
+            <div className="w-full md:max-w-sm">
+              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-accent-2">
+                <Sparkles className="h-3.5 w-3.5" /> AI Social Command Center
+              </div>
+              <h1 className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
+                SECRET 58
+              </h1>
+              <p className="mt-1 max-w-md text-sm text-muted">
+                Eine Idee. Mehrere Plattformen. Maximale Reichweite.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                <Link
+                  href="/content-brain"
+                  className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent to-accent-3 px-3.5 py-2 text-sm font-medium text-white shadow-[0_0_25px_rgba(109,91,255,0.35)]"
+                >
+                  <Brain className="h-4 w-4" /> Neue Kampagne
+                </Link>
+                <Link
+                  href="/content-factory"
+                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2 text-sm font-medium text-foreground hover:border-accent/40"
+                >
+                  <FileText className="h-4 w-4" /> Content erstellen
+                </Link>
+                <Link
+                  href="/ideas"
+                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2 text-sm font-medium text-foreground hover:border-accent/40"
+                >
+                  <Compass className="h-4 w-4" /> Ideen finden
+                </Link>
+                <Link
+                  href="/agents"
+                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2 text-sm font-medium text-foreground hover:border-accent/40"
+                >
+                  <Bot className="h-4 w-4" /> KI-Agenten
+                </Link>
+              </div>
             </div>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
-              SECRET 58
-            </h1>
-            <p className="mt-1 max-w-md text-sm text-muted">
-              Eine Idee. Mehrere Plattformen. Maximale Reichweite.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              <Link
-                href="/content-brain"
-                className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent to-accent-3 px-3.5 py-2 text-sm font-medium text-white shadow-[0_0_25px_rgba(109,91,255,0.35)]"
-              >
-                <Brain className="h-4 w-4" /> Neue Kampagne
-              </Link>
-              <Link
-                href="/content-factory"
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2 text-sm font-medium text-foreground hover:border-accent/40"
-              >
-                <FileText className="h-4 w-4" /> Content erstellen
-              </Link>
-              <Link
-                href="/ideas"
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2 text-sm font-medium text-foreground hover:border-accent/40"
-              >
-                <Compass className="h-4 w-4" /> Ideen finden
-              </Link>
-              <Link
-                href="/agents"
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2 text-sm font-medium text-foreground hover:border-accent/40"
-              >
-                <Bot className="h-4 w-4" /> KI-Agenten
-              </Link>
-            </div>
+
+            <BrainOrbit platforms={orbitPlatforms} />
           </div>
         </div>
 

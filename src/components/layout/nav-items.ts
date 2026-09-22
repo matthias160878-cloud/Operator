@@ -22,27 +22,27 @@ import {
 
 export interface NavItem {
   href: string;
-  label: string;
+  labelKey: string;
   icon: LucideIcon;
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/content-factory", label: "Content Factory", icon: Factory },
-  { href: "/ideas", label: "Ideen & Inspiration", icon: Lightbulb },
-  { href: "/content-brain", label: "Content Brain", icon: Brain },
-  { href: "/brand-dna", label: "Brand DNA", icon: Dna },
-  { href: "/script-studio", label: "Script Studio", icon: FileText },
-  { href: "/voice-studio", label: "Voice Studio", icon: Mic },
-  { href: "/video-studio", label: "Video Studio", icon: Video },
-  { href: "/design-studio", label: "Design Studio", icon: Palette },
-  { href: "/social-media", label: "Social Media", icon: Share2 },
-  { href: "/calendar", label: "Content Kalender", icon: CalendarDays },
-  { href: "/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/growth", label: "Wachstum", icon: TrendingUp },
-  { href: "/revenue", label: "Einnahmen", icon: Wallet },
-  { href: "/inbox", label: "Posteingang", icon: Inbox },
-  { href: "/agents", label: "Agenten", icon: Bot },
-  { href: "/integrations", label: "Integrationen", icon: Plug },
-  { href: "/settings", label: "Einstellungen", icon: Settings },
+  { href: "/", labelKey: "dashboard", icon: LayoutDashboard },
+  { href: "/content-factory", labelKey: "contentFactory", icon: Factory },
+  { href: "/ideas", labelKey: "ideas", icon: Lightbulb },
+  { href: "/content-brain", labelKey: "contentBrain", icon: Brain },
+  { href: "/brand-dna", labelKey: "brandDna", icon: Dna },
+  { href: "/script-studio", labelKey: "scriptStudio", icon: FileText },
+  { href: "/voice-studio", labelKey: "voiceStudio", icon: Mic },
+  { href: "/video-studio", labelKey: "videoStudio", icon: Video },
+  { href: "/design-studio", labelKey: "designStudio", icon: Palette },
+  { href: "/social-media", labelKey: "socialMedia", icon: Share2 },
+  { href: "/calendar", labelKey: "calendar", icon: CalendarDays },
+  { href: "/analytics", labelKey: "analytics", icon: BarChart3 },
+  { href: "/growth", labelKey: "growth", icon: TrendingUp },
+  { href: "/revenue", labelKey: "revenue", icon: Wallet },
+  { href: "/inbox", labelKey: "inbox", icon: Inbox },
+  { href: "/agents", labelKey: "agents", icon: Bot },
+  { href: "/integrations", labelKey: "integrations", icon: Plug },
+  { href: "/settings", labelKey: "settings", icon: Settings },
 ];

@@ -1,0 +1,58 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "More than content.",
+    "footerLine2": "A complete content machine.",
+    "workspace": "Workspace",
+    "role": "Administrator"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "contentFactory": "Content Factory",
+    "ideas": "Ideas & Inspiration",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Social Media",
+    "calendar": "Content Calendar",
+    "analytics": "Analytics",
+    "growth": "Growth",
+    "revenue": "Revenue",
+    "inbox": "Inbox",
+    "agents": "Agents",
+    "integrations": "Integrations",
+    "settings": "Settings"
+  },
+  "topbar": {
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "searchPlaceholder": "Search content, projects, campaigns …",
+    "notifications": "Notifications",
+    "language": "Language"
+  },
+  "footer": {
+    "help": "Help",
+    "privacy": "Privacy",
+    "imprint": "Imprint",
+    "systemOnline": "System online"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "close": "Close",
+    "back": "Back",
+    "loading": "Loading …"
+  },
+  "status": {
+    "connected": "Connected",
+    "notConfigured": "Not configured",
+    "error": "Error"
+  }
+}

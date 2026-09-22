@@ -1,0 +1,20 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "subtitle": "Eine Idee. Mehrere Plattformen. Maximale Reichweite. Ein einziges Komplettpaket — kein Abo, keine Staffelung, voller Zugriff auf die gesamte Anwendung.",
+  "features": [
+    "Content Brain — eine Idee, alle Plattformen",
+    "Script-, Hook-, Hashtag- und Thumbnail-Agenten",
+    "Content Factory mit Freigabe-Workflow",
+    "Content Kalender, Analytics & Wachstums-Empfehlungen",
+    "Posteingang mit KI-Antwortentwürfen",
+    "Einnahmen-Tracking über alle Plattformen"
+  ],
+  "priceOnetime": "einmalig",
+  "priceRecommendedNote": "Empfohlener Preis — wird verbindlich, sobald Stripe mit einem passenden Preis konfiguriert ist.",
+  "buyButton": "Jetzt kaufen",
+  "redirecting": "Weiterleitung zu Stripe …",
+  "checkoutFailed": "Checkout fehlgeschlagen.",
+  "unknownError": "Unbekannter Fehler.",
+  "notConfigured": "Zahlung ist noch nicht konfiguriert — der Betreiber muss zuerst in Stripe ein Produkt zu {price} anlegen und STRIPE_SECRET_KEY / STRIPE_PRICE_ID hinterlegen."
+}

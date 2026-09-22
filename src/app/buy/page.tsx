@@ -1,34 +1,38 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import { getLocale, getTranslations } from "next-intl/server";
 import { CheckCircle2 } from "lucide-react";
 import { isStripeConfigured, getConfiguredPrice } from "@/lib/stripe";
-import { PACKAGE_NAME, PACKAGE_PRICE_DISPLAY } from "@/lib/pricing";
+import { getPackageName, formatPackagePrice } from "@/lib/pricing";
+import { isLocale, DEFAULT_LOCALE } from "@/i18n/config";
 import { BuyButton } from "@/components/buy/BuyButton";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: `${PACKAGE_NAME} — SECRET 58`,
-  description: `Ein Paket, ein Preis: voller Zugriff auf SECRET 58 für ${PACKAGE_PRICE_DISPLAY} einmalig.`,
-};
-
-const FEATURES = [
-  "Content Brain — eine Idee, alle Plattformen",
-  "Script-, Hook-, Hashtag- und Thumbnail-Agenten",
-  "Content Factory mit Freigabe-Workflow",
-  "Content Kalender, Analytics & Wachstums-Empfehlungen",
-  "Posteingang mit KI-Antwortentwürfen",
-  "Einnahmen-Tracking über alle Plattformen",
-];
+export async function generateMetadata(): Promise<Metadata> {
+  const localeRaw = await getLocale();
+  const locale = isLocale(localeRaw) ? localeRaw : DEFAULT_LOCALE;
+  const packageName = getPackageName(locale);
+  const priceDisplay = formatPackagePrice(locale);
+  return {
+    title: `${packageName} — SECRET 58`,
+    description: `${priceDisplay} — SECRET 58`,
+  };
+}
 
 export default async function BuyPage() {
+  const localeRaw = await getLocale();
+  const locale = isLocale(localeRaw) ? localeRaw : DEFAULT_LOCALE;
+  const t = await getTranslations("buy");
   const configured = isStripeConfigured();
-  const configuredPrice = await getConfiguredPrice();
+  const configuredPrice = await getConfiguredPrice(locale);
+  const packageName = getPackageName(locale);
   // Ein Paket, ein Preis, kein Staffelsystem: solange Stripe noch nicht
   // eingerichtet ist, zeigen wir den empfohlenen Preis als Ankündigung —
   // der Kaufen-Button bleibt trotzdem ehrlich deaktiviert, bis Stripe
   // wirklich konfiguriert ist.
-  const priceDisplay = configuredPrice?.formatted ?? PACKAGE_PRICE_DISPLAY;
+  const priceDisplay = configuredPrice?.formatted ?? formatPackagePrice(locale);
+  const features = t.raw("features") as string[];
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-grid px-4 py-12">
@@ -41,15 +45,14 @@ export default async function BuyPage() {
         </div>
 
         <div className="relative">
-          <div className="text-xs uppercase tracking-[0.25em] text-accent-2">AI Social Command Center</div>
-          <h1 className="mt-2 text-2xl font-semibold text-foreground">SECRET 58 — {PACKAGE_NAME}</h1>
-          <p className="mt-2 text-sm text-muted">
-            Eine Idee. Mehrere Plattformen. Maximale Reichweite. Ein einziges Komplettpaket —
-            kein Abo, keine Staffelung, voller Zugriff auf die gesamte Anwendung.
-          </p>
+          <div className="text-xs uppercase tracking-[0.25em] text-accent-2">{t("kicker")}</div>
+          <h1 className="mt-2 text-2xl font-semibold text-foreground">
+            {t("title", { packageName })}
+          </h1>
+          <p className="mt-2 text-sm text-muted">{t("subtitle")}</p>
 
           <ul className="mx-auto mt-6 max-w-sm space-y-2 text-left text-sm text-foreground">
-            {FEATURES.map((f) => (
+            {features.map((f) => (
               <li key={f} className="flex items-start gap-2">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
                 {f}
@@ -59,17 +62,14 @@ export default async function BuyPage() {
 
           <div className="mt-6 text-3xl font-semibold text-foreground">
             {priceDisplay}
-            <span className="ml-1 text-sm font-normal text-muted">einmalig</span>
+            <span className="ml-1 text-sm font-normal text-muted">{t("priceOnetime")}</span>
           </div>
           {!configuredPrice && (
-            <p className="mt-1 text-xs text-muted">
-              Empfohlener Preis — wird verbindlich, sobald Stripe mit einem passenden Preis
-              konfiguriert ist.
-            </p>
+            <p className="mt-1 text-xs text-muted">{t("priceRecommendedNote")}</p>
           )}
 
           <div className="mt-6 flex justify-center">
-            <BuyButton configured={configured} />
+            <BuyButton configured={configured} priceDisplay={priceDisplay} />
           </div>
         </div>
       </div>

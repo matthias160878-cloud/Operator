@@ -3,11 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Brain } from "lucide-react";
 import { NAV_ITEMS } from "@/components/layout/nav-items";
 import clsx from "clsx";
 
 export function Sidebar() {
+  const t = useTranslations("common");
   const pathname = usePathname();
 
   return (
@@ -17,9 +19,9 @@ export function Sidebar() {
           <Brain className="h-5 w-5 text-white" />
         </div>
         <div className="leading-tight">
-          <div className="font-semibold tracking-wide text-foreground">SECRET 58</div>
+          <div className="font-semibold tracking-wide text-foreground">{t("appName")}</div>
           <div className="text-[10px] uppercase tracking-[0.2em] text-muted">
-            AI Social Command Center
+            {t("appTagline")}
           </div>
         </div>
       </div>
@@ -40,7 +42,7 @@ export function Sidebar() {
               )}
             >
               <Icon className={clsx("h-4 w-4", active && "text-accent-2")} />
-              {item.label}
+              {t(`nav.${item.labelKey}`)}
             </Link>
           );
         })}
@@ -59,19 +61,19 @@ export function Sidebar() {
             />
           </div>
           <p className="relative text-xs leading-snug text-muted">
-            Mehr als Content.
+            {t("sidebar.footerLine1")}
             <br />
-            Eine komplette Content-Maschine.
+            {t("sidebar.footerLine2")}
           </p>
           <p className="relative text-[11px] font-semibold tracking-[0.2em] text-foreground">
-            SECRET 58
+            {t("appName")}
           </p>
         </div>
 
         <div className="card p-3">
           <div className="flex items-center gap-2 text-xs text-muted">
             <span className="status-dot bg-success" />
-            Workspace
+            {t("sidebar.workspace")}
           </div>
           <div className="mt-1 text-sm font-medium text-foreground">Secret 58 Media</div>
         </div>
@@ -81,7 +83,7 @@ export function Sidebar() {
           </div>
           <div className="leading-tight">
             <div className="text-sm text-foreground">Max Mustermann</div>
-            <div className="text-xs text-muted">Administrator</div>
+            <div className="text-xs text-muted">{t("sidebar.role")}</div>
           </div>
         </div>
       </div>

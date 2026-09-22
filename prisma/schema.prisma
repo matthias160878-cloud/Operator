@@ -1,0 +1,354 @@
+// SECRET 58 — AI Social Command Center
+// Datenmodell gemäß Master-Prompt Abschnitt 24.
+// SQLite als Standard-Engine, damit die App ohne externe Datenbank startfähig bleibt.
+// Für Produktion: DATABASE_URL auf Postgres/MySQL umstellen (provider anpassen).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum IdeaStatus {
+  NEW
+  IN_PROGRESS
+  USED
+  ARCHIVED
+}
+
+enum IdeaSource {
+  MANUAL
+  IDEA_AGENT
+  TREND_AGENT
+  REPURPOSE
+}
+
+enum ContentStatus {
+  DRAFT
+  IN_REVIEW
+  APPROVED
+  SCHEDULED
+  PUBLISHED
+  ARCHIVED
+  REJECTED
+}
+
+enum Platform {
+  YOUTUBE
+  TIKTOK
+  INSTAGRAM
+  LINKEDIN
+  FACEBOOK
+  BLOG
+  NEWSLETTER
+}
+
+enum MediaType {
+  AUDIO
+  VIDEO
+  IMAGE
+  THUMBNAIL
+  SUBTITLE
+}
+
+enum AccountStatus {
+  CONNECTED
+  NOT_CONFIGURED
+  ERROR
+}
+
+enum AgentStatus {
+  IDLE
+  RUNNING
+  WAITING
+  SUCCESS
+  ERROR
+}
+
+model Workspace {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users            User[]
+  brand            Brand?
+  campaigns        Campaign[]
+  contentIdeas     ContentIdea[]
+  contentItems     ContentItem[]
+  voices           Voice[]
+  mediaAssets      MediaAsset[]
+  platformAccounts PlatformAccount[]
+  agentRuns        AgentRun[]
+  integrations     IntegrationStatus[]
+  settings         Setting[]
+  auditLogs        AuditLog[]
+
+  @@map("workspaces")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  email       String   @unique
+  name        String
+  role        Role     @default(EDITOR)
+  createdAt   DateTime @default(now())
+
+  auditLogs AuditLog[]
+
+  @@map("users")
+}
+
+model Brand {
+  id             String   @id @default(cuid())
+  workspaceId    String   @unique
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  name           String
+  description    String   @default("")
+  targetAudience String   @default("")
+  industry       String   @default("")
+  language       String   @default("Deutsch")
+  tonality       String   @default("Professionell & Inspirierend")
+  humor          String   @default("Dezent")
+  formality      String   @default("Neutral")
+  preferredWords String   @default("[]") // JSON string[]
+  forbiddenWords String   @default("[]") // JSON string[]
+  preferredCtas  String   @default("[]") // JSON string[]
+  brandValues    String   @default("[]") // JSON string[]
+  topics         String   @default("[]") // JSON string[]
+  colors         String   @default("[]") // JSON string[]
+  fonts          String   @default("[]") // JSON string[]
+  logoUrl        String?
+  visualRules    String   @default("")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("brands")
+}
+
+model Campaign {
+  id             String   @id @default(cuid())
+  workspaceId    String
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  title          String
+  goal           String   @default("")
+  targetAudience String   @default("")
+  platforms      String   @default("[]") // JSON Platform[]
+  language       String   @default("Deutsch")
+  status         String   @default("DRAFT") // DRAFT | ACTIVE | COMPLETED | ARCHIVED
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  contentItems ContentItem[]
+  ideas        ContentIdea[]
+
+  @@map("campaigns")
+}
+
+model ContentIdea {
+  id                     String    @id @default(cuid())
+  workspaceId            String
+  workspace              Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  campaignId             String?
+  campaign               Campaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  title                  String
+  hook                   String    @default("")
+  targetAudience         String    @default("")
+  platform               String    @default("")
+  format                 String    @default("")
+  goal                   String    @default("")
+  priority               Priority  @default(MEDIUM)
+  estimatedMinutes       Int       @default(30)
+  status                 IdeaStatus @default(NEW)
+  source                 IdeaSource @default(MANUAL)
+  createdAt              DateTime  @default(now())
+
+  contentItems ContentItem[]
+
+  @@map("content_ideas")
+}
+
+model ContentItem {
+  id             String        @id @default(cuid())
+  workspaceId    String
+  workspace      Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  campaignId     String?
+  campaign       Campaign?     @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  ideaId         String?
+  idea           ContentIdea?  @relation(fields: [ideaId], references: [id], onDelete: SetNull)
+  title          String
+  platform       Platform
+  format         String        @default("")
+  status         ContentStatus @default(DRAFT)
+  hook           String        @default("")
+  script         String        @default("")
+  caption        String        @default("")
+  hashtags       String        @default("[]") // JSON string[]
+  keywords       String        @default("[]") // JSON string[]
+  language       String        @default("Deutsch")
+  thumbnailIdea  String        @default("")
+  rejectedReason String?
+  scheduledAt    DateTime?
+  publishedAt    DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  scripts     Script[]
+  mediaAssets MediaAsset[]
+  analytics   Analytics[]
+
+  @@map("content_items")
+}
+
+model Script {
+  id            String   @id @default(cuid())
+  contentItemId String
+  contentItem   ContentItem @relation(fields: [contentItemId], references: [id], onDelete: Cascade)
+  variantLabel  String   @default("A")
+  hook          String   @default("")
+  problem       String   @default("")
+  value         String   @default("")
+  example       String   @default("")
+  payoff        String   @default("")
+  cta           String   @default("")
+  createdAt     DateTime @default(now())
+
+  @@map("scripts")
+}
+
+model Voice {
+  id          String   @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  name        String
+  providerVoiceId String
+  language    String   @default("de")
+  style       String   @default("")
+  description String   @default("")
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@map("voices")
+}
+
+model MediaAsset {
+  id             String    @id @default(cuid())
+  workspaceId    String
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  contentItemId  String?
+  contentItem    ContentItem? @relation(fields: [contentItemId], references: [id], onDelete: SetNull)
+  type           MediaType
+  url            String
+  provider       String    @default("local")
+  format         String    @default("")
+  durationSeconds Int?
+  createdAt      DateTime  @default(now())
+
+  @@map("media_assets")
+}
+
+model PlatformAccount {
+  id              String    @id @default(cuid())
+  workspaceId     String
+  workspace       Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  platform        Platform
+  accountName     String    @default("")
+  status          AccountStatus @default(NOT_CONFIGURED)
+  lastPublishedAt DateTime?
+  lastError       String?
+  createdAt       DateTime  @default(now())
+
+  @@unique([workspaceId, platform])
+  @@map("platform_accounts")
+}
+
+model Analytics {
+  id                String   @id @default(cuid())
+  contentItemId     String
+  contentItem       ContentItem @relation(fields: [contentItemId], references: [id], onDelete: Cascade)
+  platform          Platform
+  views             Int      @default(0)
+  likes             Int      @default(0)
+  comments          Int      @default(0)
+  shares            Int      @default(0)
+  saves             Int      @default(0)
+  engagementRate    Float    @default(0)
+  watchTimeSeconds  Int      @default(0)
+  ctr               Float?
+  recordedAt        DateTime @default(now())
+
+  @@map("analytics")
+}
+
+model AgentRun {
+  id          String      @id @default(cuid())
+  workspaceId String
+  workspace   Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  agentKey    String
+  agentName   String
+  task        String
+  status      AgentStatus @default(IDLE)
+  startedAt   DateTime    @default(now())
+  finishedAt  DateTime?
+  result      String?
+  error       String?
+
+  @@map("agent_runs")
+}
+
+model IntegrationStatus {
+  id            String   @id @default(cuid())
+  workspaceId   String
+  workspace     Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  key           String
+  status        AccountStatus @default(NOT_CONFIGURED)
+  lastCheckedAt DateTime @default(now())
+  lastError     String?
+
+  @@unique([workspaceId, key])
+  @@map("integration_status")
+}
+
+model Setting {
+  id          String   @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  key         String
+  value       String   @default("")
+  updatedAt   DateTime @updatedAt
+
+  @@unique([workspaceId, key])
+  @@map("settings")
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action      String
+  detail      String   @default("")
+  createdAt   DateTime @default(now())
+
+  @@map("audit_logs")
+}

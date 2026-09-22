@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AppShell } from "@/components/layout/AppShell";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,18 +14,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Darwin AI Assistant",
+  title: "SECRET 58 — AI Social Command Center",
   description:
-    "Darwin AI Assistant — ein KI-Assistent, der sich an deine Arbeitsweise anpasst.",
+    "Eine Idee. Mehrere Plattformen. Maximale Reichweite. Das SECRET-58-Command-Center für autonome KI-Content-Produktion.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="de"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-grid">
+        <AppShell>{children}</AppShell>
+      </body>
     </html>
   );
 }

@@ -91,6 +91,12 @@ enum RevenueOrigin {
   YOUTUBE_API
 }
 
+enum LicenseStatus {
+  PENDING
+  ACTIVE
+  REFUNDED
+}
+
 enum ConversationStatus {
   OPEN
   CLOSED
@@ -455,4 +461,27 @@ model Message {
   sentAt         DateTime?
 
   @@map("messages")
+}
+
+// Lizenzierung (auf Nutzerwunsch ergänzt). Es gibt in dieser App noch kein
+// Kundenkonto-/Login-System — der Zugriffsschutz läuft deshalb bewusst
+// einfach über ein unlink­bares Freischalt-Token pro Kauf statt über echte
+// Nutzerkonten. Jeder erfolgreiche Stripe-Checkout erzeugt genau einen
+// License-Datensatz; das zugehörige Token landet als Cookie im Browser des
+// Käufers. Der Betreiber-Zugang läuft separat über OWNER_ACCESS_KEY (siehe
+// middleware.ts) und braucht keinen License-Datensatz.
+model License {
+  id                      String        @id @default(cuid())
+  unlockToken             String        @unique
+  status                  LicenseStatus @default(PENDING)
+  customerEmail           String        @default("")
+  stripeCheckoutSessionId String        @unique
+  stripeCustomerId        String        @default("")
+  stripePaymentIntentId   String        @default("")
+  amountTotal             Int           @default(0)
+  currency                String        @default("eur")
+  createdAt               DateTime      @default(now())
+  updatedAt               DateTime      @updatedAt
+
+  @@map("licenses")
 }

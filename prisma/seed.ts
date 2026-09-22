@@ -272,6 +272,53 @@ async function main() {
     });
   }
 
+  await prisma.conversation.create({
+    data: {
+      workspaceId: workspace.id,
+      platform: "INSTAGRAM",
+      participantName: "Lena K.",
+      participantHandle: "lena.k",
+      lastMessageAt: new Date(now.getTime() - 20 * 60000),
+      messages: {
+        create: [
+          {
+            direction: "INBOUND",
+            body: "Hey, tolles Reel! Welches Tool nutzt ihr für die Untertitel?",
+            status: "RECEIVED",
+            createdAt: new Date(now.getTime() - 20 * 60000),
+          },
+        ],
+      },
+    },
+  });
+
+  await prisma.conversation.create({
+    data: {
+      workspaceId: workspace.id,
+      platform: "YOUTUBE",
+      participantName: "Markus B.",
+      participantHandle: "",
+      lastMessageAt: new Date(now.getTime() - 3 * 3600000),
+      messages: {
+        create: [
+          {
+            direction: "INBOUND",
+            body: "Könnt ihr mal ein Video zu Content Repurposing machen?",
+            status: "RECEIVED",
+            createdAt: new Date(now.getTime() - 3 * 3600000),
+          },
+          {
+            direction: "OUTBOUND",
+            body: "Danke für den Vorschlag! Steht auf unserer Liste — wir melden uns, sobald es online ist.",
+            status: "FAILED",
+            error: "YOUTUBE ist nicht verbunden. Verbinde den Account unter Social Media, bevor Nachrichten gesendet werden können.",
+            createdAt: new Date(now.getTime() - 2.5 * 3600000),
+          },
+        ],
+      },
+    },
+  });
+
   await prisma.setting.upsert({
     where: { workspaceId_key: { workspaceId: workspace.id, key: "demoDataSeeded" } },
     update: { value: "true" },

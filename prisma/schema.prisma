@@ -91,6 +91,24 @@ enum RevenueOrigin {
   YOUTUBE_API
 }
 
+enum ConversationStatus {
+  OPEN
+  CLOSED
+}
+
+enum MessageDirection {
+  INBOUND
+  OUTBOUND
+}
+
+enum MessageStatus {
+  RECEIVED
+  DRAFTED
+  APPROVED
+  SENT
+  FAILED
+}
+
 enum AgentStatus {
   IDLE
   RUNNING
@@ -119,6 +137,7 @@ model Workspace {
   settings         Setting[]
   auditLogs        AuditLog[]
   revenueEntries   RevenueEntry[]
+  conversations    Conversation[]
 
   @@map("workspaces")
 }
@@ -399,4 +418,41 @@ model RevenueEntry {
   updatedAt   DateTime      @updatedAt
 
   @@map("revenue_entries")
+}
+
+// Posteingang (auf Nutzerwunsch ergänzt). Es gibt für keine Plattform eine
+// echte OAuth-Verbindung in dieser App — Konversationen werden deshalb
+// manuell simuliert/importiert statt live von den Plattformen abgerufen.
+// Das MessageAgent-Antwortdraft-Feature funktioniert echt (KI oder
+// Template-Fallback); das tatsächliche Senden an eine reale Plattform ist
+// als Adapter vorbereitet, meldet aber ehrlich NOT_CONFIGURED, solange kein
+// echter Zugang existiert — siehe `lib/agents/messageAgent.ts`.
+model Conversation {
+  id                String             @id @default(cuid())
+  workspaceId       String
+  workspace         Workspace          @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  platform          Platform
+  participantName   String
+  participantHandle String             @default("")
+  status            ConversationStatus @default(OPEN)
+  lastMessageAt     DateTime           @default(now())
+  createdAt         DateTime           @default(now())
+
+  messages Message[]
+
+  @@map("conversations")
+}
+
+model Message {
+  id             String           @id @default(cuid())
+  conversationId String
+  conversation   Conversation     @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  direction      MessageDirection
+  body           String
+  status         MessageStatus    @default(RECEIVED)
+  error          String?
+  createdAt      DateTime         @default(now())
+  sentAt         DateTime?
+
+  @@map("messages")
 }

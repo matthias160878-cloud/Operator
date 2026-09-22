@@ -8,6 +8,10 @@ export function formatNumber(value: number): string {
   return new Intl.NumberFormat("de-DE").format(value);
 }
 
+export function formatCurrency(value: number, currency = "EUR"): string {
+  return new Intl.NumberFormat("de-DE", { style: "currency", currency }).format(value);
+}
+
 export function formatPercent(value: number): string {
   return `${value.toFixed(1).replace(".", ",")}%`;
 }

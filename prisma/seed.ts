@@ -212,6 +212,37 @@ async function main() {
     }
   }
 
+  const revenueSamples: Array<{
+    source: string;
+    type: "AD_REVENUE" | "SPONSORSHIP" | "AFFILIATE" | "DONATION" | "OTHER";
+    platform: Platform | null;
+    amount: number;
+    status: "RECEIVED" | "PENDING";
+    daysAgo: number;
+  }> = [
+    { source: "YouTube Partnerprogramm", type: "AD_REVENUE", platform: "YOUTUBE", amount: 184.32, status: "RECEIVED", daysAgo: 3 },
+    { source: "Sponsoring Acme GmbH", type: "SPONSORSHIP", platform: "INSTAGRAM", amount: 650, status: "RECEIVED", daysAgo: 6 },
+    { source: "Affiliate-Links Blogartikel", type: "AFFILIATE", platform: "BLOG", amount: 42.5, status: "RECEIVED", daysAgo: 10 },
+    { source: "Sponsoring TechStart AG", type: "SPONSORSHIP", platform: "TIKTOK", amount: 400, status: "PENDING", daysAgo: 1 },
+  ];
+
+  for (const r of revenueSamples) {
+    await prisma.revenueEntry.create({
+      data: {
+        workspaceId: workspace.id,
+        campaignId: campaign.id,
+        source: r.source,
+        type: r.type,
+        platform: r.platform,
+        amount: r.amount,
+        currency: "EUR",
+        status: r.status,
+        origin: "MANUAL",
+        recordedAt: new Date(now.getTime() - r.daysAgo * 86400000),
+      },
+    });
+  }
+
   const agentSamples: Array<{
     agentKey: string;
     agentName: string;

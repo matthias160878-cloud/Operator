@@ -15,6 +15,7 @@ import {
   Send,
   Share2,
   Sparkles,
+  Wallet,
 } from "lucide-react";
 import { PlatformGlyph } from "@/components/dashboard/PlatformGlyph";
 import { prisma } from "@/lib/db";
@@ -26,11 +27,19 @@ import {
   getWeekOverWeekStats,
 } from "@/lib/agents/analyticsAgent";
 import { getAllIntegrationStatuses } from "@/lib/integrations/registry";
+import { getRevenueSummary } from "@/lib/revenue";
 import { StatCard } from "@/components/ui/StatCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { ProductionChart } from "@/components/dashboard/ProductionChart";
 import { BrainOrbit, type OrbitPlatform } from "@/components/dashboard/BrainOrbit";
-import { formatNumber, formatPercent, formatDuration, relativeTime, PLATFORM_LABELS } from "@/lib/format";
+import {
+  formatNumber,
+  formatPercent,
+  formatDuration,
+  formatCurrency,
+  relativeTime,
+  PLATFORM_LABELS,
+} from "@/lib/format";
 import { isSameDay } from "@/lib/calendarGrid";
 
 export const dynamic = "force-dynamic";
@@ -69,6 +78,7 @@ export default async function DashboardPage() {
     demoSetting,
     weekItems,
     weekOverWeek,
+    revenueSummary,
   ] = await Promise.all([
     getWorkspaceStats(workspaceId),
     getWeeklyProduction(workspaceId),
@@ -100,6 +110,7 @@ export default async function DashboardPage() {
       orderBy: { scheduledAt: "asc" },
     }),
     getWeekOverWeekStats(workspaceId),
+    getRevenueSummary(workspaceId),
   ]);
 
   const connectedIntegrations = integrationStatuses.filter(
@@ -203,7 +214,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* KPIs */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
         <StatCard
           icon={FileText}
           label="Content erstellt"
@@ -245,6 +256,16 @@ export default async function DashboardPage() {
           value={formatPercent(stats.avgEngagementRate)}
           accent="accent-3"
           delta={weekOverWeek.avgEngagementRate != null ? `${weekOverWeek.avgEngagementRate > 0 ? "+" : ""}${weekOverWeek.avgEngagementRate}%` : undefined}
+        />
+        <StatCard
+          icon={Wallet}
+          label="Einnahmen gesamt"
+          value={
+            revenueSummary.totals[0]
+              ? formatCurrency(revenueSummary.totals[0].amount, revenueSummary.totals[0].currency)
+              : formatCurrency(0)
+          }
+          accent="success"
         />
       </div>
       {Object.values(weekOverWeek).every((v) => v == null) && (

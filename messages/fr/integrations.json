@@ -9,8 +9,16 @@
     "VIDEO": "Vidéo",
     "TREND": "Tendances"
   },
+  "costNote": "Le prix d'achat de SECRET 58 est unique et couvre le logiciel. Chaque service externe ici a son propre modèle de coûts indépendant chez ce fournisseur — SECRET 58 ne facture jamais rien en plus pour cela.",
   "links": {
     "getKey": "Obtenir la clé API",
-    "setInRender": "Configurer dans Render"
+    "setInRender": "Configurer dans Render",
+    "viewPricing": "Voir les tarifs"
+  },
+  "pricing": {
+    "free": "Gratuit",
+    "payAsYouGo": "À l'usage",
+    "subscription": "Abonnement",
+    "unknown": "Voir le tarif chez le fournisseur"
   }
 }

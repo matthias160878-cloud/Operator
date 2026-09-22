@@ -16,5 +16,6 @@
   "redirecting": "Weiterleitung zu Stripe …",
   "checkoutFailed": "Checkout fehlgeschlagen.",
   "unknownError": "Unbekannter Fehler.",
-  "notConfigured": "Zahlung ist noch nicht konfiguriert — der Betreiber muss zuerst in Stripe ein Produkt zu {price} anlegen und STRIPE_SECRET_KEY / STRIPE_PRICE_ID hinterlegen."
+  "notConfigured": "Zahlung ist noch nicht konfiguriert — der Betreiber muss zuerst in Stripe ein Produkt zu {price} anlegen und STRIPE_SECRET_KEY / STRIPE_PRICE_ID hinterlegen.",
+  "costDisclosure": "Hinweis: Dieser Preis ist einmalig für die Software. Einzelne Funktionen (z. B. KI-Textgenerierung, Sprachausgabe) benötigen eigene Zugänge bei Drittanbietern (z. B. Anthropic, ElevenLabs) — deren Kosten sind unabhängig von SECRET 58 und werden direkt beim jeweiligen Anbieter fällig, nicht hier berechnet. Details nach dem Kauf unter Integrationen."
 }

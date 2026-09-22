@@ -312,15 +312,19 @@ model MediaAsset {
 }
 
 model PlatformAccount {
-  id              String        @id @default(cuid())
-  workspaceId     String
-  workspace       Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  platform        Platform
-  accountName     String        @default("")
-  status          AccountStatus @default(NOT_CONFIGURED)
-  lastPublishedAt DateTime?
-  lastError       String?
-  createdAt       DateTime      @default(now())
+  id               String        @id @default(cuid())
+  workspaceId      String
+  workspace        Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  platform         Platform
+  accountName      String        @default("")
+  status           AccountStatus @default(NOT_CONFIGURED)
+  lastPublishedAt  DateTime?
+  lastError        String?
+  createdAt        DateTime      @default(now())
+  accessTokenEnc   String?
+  refreshTokenEnc  String?
+  tokenExpiresAt   DateTime?
+  externalAccountId String?
 
   @@unique([workspaceId, platform])
   @@map("platform_accounts")

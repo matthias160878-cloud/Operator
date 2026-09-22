@@ -1,11 +1,24 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Platform accounts and their connection status. Credentials are managed exclusively as server-side environment variables and are never stored in the frontend. A real OAuth login flow is prepared for each platform but not yet implemented — once app credentials are in place, it can be added here.",
+  "subtitle": "Platform accounts and their connection status. Credentials are managed exclusively as server-side environment variables and are never stored in the frontend. Access tokens are encrypted before being stored in the database once connected.",
   "credentialsLabel": "App credentials",
   "accountLabel": "Account",
   "lastPublishedLabel": "Last published",
   "lastErrorLabel": "Last error",
-  "connectButtonConnected": "Connected",
-  "connectButtonUnavailable": "Connect (not available yet)",
-  "connectButtonTitle": "OAuth flow not implemented yet"
+  "connectButton": "Connect",
+  "connectButtonUnavailable": "Connect (not possible yet)",
+  "connectButtonTitleNoCreds": "App credentials missing",
+  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY not set yet",
+  "disconnectButton": "Disconnect",
+  "disconnectConfirm": "Really disconnect this account? You'll need to reconnect it via \"Connect\" afterwards.",
+  "needsCredentialsNote": "Still missing: set {idVar} and {secretVar} in Render.",
+  "goToIntegrations": "Go to Integrations",
+  "connectedBanner": "{platform} connected successfully.",
+  "errorNotConfigured": "{platform}: app credentials are missing. Get an API key under \"Integrations\" and set it in Render.",
+  "errorEncryptionMissing": "TOKEN_ENCRYPTION_KEY is not set on the server — required to securely store access tokens before an account can be connected.",
+  "errorDenied": "Connection cancelled or denied.",
+  "errorInvalidState": "Connection failed (invalid security code). Please try again.",
+  "errorExchangeFailed": "Connection failed. Check the credentials and try again.",
+  "errorUnknownPlatform": "Unknown platform.",
+  "encryptionKeyMissingNotice": "Note: TOKEN_ENCRYPTION_KEY is not set yet — accounts can only be connected once this environment variable is set in Render."
 }

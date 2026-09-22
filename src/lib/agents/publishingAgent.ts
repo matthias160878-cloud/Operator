@@ -5,10 +5,11 @@ import type { ContentStatus } from "@prisma/client";
  * PublishingAgent — steuert den Workflow DRAFT -> REVIEW -> APPROVED ->
  * SCHEDULED -> PUBLISHED (Abschnitt 16/34). Es wird NIEMALS automatisch
  * veröffentlicht: `publishContentItem` versucht einen echten API-Aufruf nur,
- * wenn der zugehörige Plattform-Account als CONNECTED markiert ist — was
- * aktuell für keine Plattform der Fall ist, solange keine OAuth-Zugangsdaten
- * hinterlegt sind. In diesem Fall bleibt der Content im aktuellen Status und
- * der Nutzer erhält eine klare Fehlermeldung statt einer stillen Fake-Veröffentlichung.
+ * wenn der zugehörige Plattform-Account als CONNECTED markiert ist (echter
+ * OAuth-Verbinden-Flow unter /social-media, siehe src/lib/oauth/providers.ts).
+ * Der eigentliche Upload/Post-Aufruf je Plattform ist bewusst noch nicht
+ * implementiert — der Nutzer erhält eine klare Fehlermeldung statt einer
+ * stillen Fake-Veröffentlichung.
  */
 export async function setContentStatus(
   contentItemId: string,

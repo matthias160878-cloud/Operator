@@ -1,11 +1,24 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Cuentas de plataforma y su estado de conexión. Las credenciales se gestionan exclusivamente como variables de entorno del servidor y nunca se almacenan en el frontend. Hay previsto un flujo de inicio de sesión OAuth real para cada plataforma, pero aún no está implementado — en cuanto se configuren las credenciales de la app, podrá añadirse aquí.",
+  "subtitle": "Cuentas de plataforma y su estado de conexión. Las credenciales se gestionan exclusivamente como variables de entorno del servidor y nunca se almacenan en el frontend. Los tokens de acceso se cifran antes de guardarse en la base de datos una vez conectados.",
   "credentialsLabel": "Credenciales de la app",
   "accountLabel": "Cuenta",
   "lastPublishedLabel": "Última publicación",
   "lastErrorLabel": "Último error",
-  "connectButtonConnected": "Conectado",
-  "connectButtonUnavailable": "Conectar (aún no disponible)",
-  "connectButtonTitle": "El flujo OAuth aún no está implementado"
+  "connectButton": "Conectar",
+  "connectButtonUnavailable": "Conectar (aún no es posible)",
+  "connectButtonTitleNoCreds": "Faltan las credenciales de la app",
+  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY aún no está configurada",
+  "disconnectButton": "Desconectar",
+  "disconnectConfirm": "¿Desconectar realmente esta cuenta? Deberás volver a conectarla con \"Conectar\" después.",
+  "needsCredentialsNote": "Falta: configurar {idVar} y {secretVar} en Render.",
+  "goToIntegrations": "Ir a Integraciones",
+  "connectedBanner": "{platform} conectado correctamente.",
+  "errorNotConfigured": "{platform}: faltan las credenciales de la app. Obtén una clave API en \"Integraciones\" y configúrala en Render.",
+  "errorEncryptionMissing": "TOKEN_ENCRYPTION_KEY no está configurada en el servidor — necesaria para guardar tokens de acceso de forma segura antes de poder conectar una cuenta.",
+  "errorDenied": "Conexión cancelada o denegada.",
+  "errorInvalidState": "Conexión fallida (código de seguridad no válido). Inténtalo de nuevo.",
+  "errorExchangeFailed": "Conexión fallida. Revisa las credenciales e inténtalo de nuevo.",
+  "errorUnknownPlatform": "Plataforma desconocida.",
+  "encryptionKeyMissingNotice": "Nota: TOKEN_ENCRYPTION_KEY aún no está configurada — las cuentas solo podrán conectarse una vez que esta variable de entorno esté configurada en Render."
 }

@@ -1,0 +1,376 @@
+<title>SECRET 58 Preismodell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #05070f;
+    --surface: #0b1020;
+    --surface-2: #10162b;
+    --border: #1d2440;
+    --fg: #e7ebfa;
+    --muted: #8a93b8;
+    --accent: #6d5bff;
+    --accent-soft: rgba(109, 91, 255, 0.14);
+    --cyan: #22d3ee;
+    --good: #34d399;
+    --warn: #fbbf24;
+    --bad: #f87171;
+    --cost: #f59e8b;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      color-scheme: light;
+      --bg: #f5f6fb;
+      --surface: #ffffff;
+      --surface-2: #eef0f8;
+      --border: #d9ddec;
+      --fg: #111528;
+      --muted: #5a6285;
+      --accent: #5443e6;
+      --accent-soft: rgba(84, 67, 230, 0.10);
+      --cyan: #0e8fa6;
+      --good: #0f9d6e;
+      --warn: #b7791f;
+      --bad: #c53030;
+      --cost: #c2553f;
+    }
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #f5f6fb;
+    --surface: #ffffff;
+    --surface-2: #eef0f8;
+    --border: #d9ddec;
+    --fg: #111528;
+    --muted: #5a6285;
+    --accent: #5443e6;
+    --accent-soft: rgba(84, 67, 230, 0.10);
+    --cyan: #0e8fa6;
+    --good: #0f9d6e;
+    --warn: #b7791f;
+    --bad: #c53030;
+    --cost: #c2553f;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding-inline: 16px;
+    padding-block: 40px 64px;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; display: grid; gap: 48px; }
+  h1, h2, h3 { text-wrap: balance; line-height: 1.2; margin: 0; }
+  h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 700; letter-spacing: -0.02em; }
+  h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; font-weight: 600; }
+  p { margin: 0; max-width: 68ch; }
+  .eyebrow {
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan);
+  }
+  .muted { color: var(--muted); }
+  .num, td.n, th.n { font-variant-numeric: tabular-nums; }
+  section { display: grid; gap: 16px; }
+  header { display: grid; gap: 14px; }
+  .lead { font-size: 17px; color: var(--muted); }
+
+  .verdict {
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: grid; gap: 10px;
+  }
+  .verdict ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; background: var(--surface-2); }
+  tr:last-child td { border-bottom: 0; }
+  td.n, th.n { text-align: right; white-space: nowrap; }
+  tr.me td { background: var(--accent-soft); font-weight: 600; }
+
+  .models { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .model { border: 1px solid var(--border); border-radius: 14px; padding: 20px; background: var(--surface); display: grid; gap: 10px; align-content: start; }
+  .model .price { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+  .model .price small { font-size: 14px; font-weight: 400; color: var(--muted); margin-left: 4px; }
+  .model ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; color: var(--muted); }
+  .tag { display: inline-block; font-family: "Geist Mono", monospace; font-size: 11px; padding: 2px 8px; border-radius: 99px; border: 1px solid var(--border); color: var(--muted); justify-self: start; }
+  .tag.rec { border-color: var(--good); color: var(--good); }
+
+  .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .tier { border: 1px solid var(--border); border-radius: 14px; padding: 20px; background: var(--surface); display: grid; gap: 12px; align-content: start; }
+  .tier.featured { border-color: var(--accent); }
+  .tier .price { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; }
+  .tier .price small { font-size: 14px; font-weight: 400; color: var(--muted); }
+  .tier dl { margin: 0; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; font-size: 14px; }
+  .tier dt { color: var(--muted); }
+  .tier dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+  .bars { display: grid; gap: 18px; border: 1px solid var(--border); border-radius: 12px; padding: 20px; background: var(--surface); }
+  .bar-row { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; }
+  .bar-label { font-weight: 600; font-size: 14px; }
+  .bar-track { position: relative; height: 30px; background: var(--surface-2); border-radius: 6px; overflow: hidden; }
+  .bar-price { position: absolute; inset: 0 auto 0 0; background: var(--accent-soft); border-right: 2px solid var(--accent); }
+  .bar-cost { position: absolute; inset: 0 auto 0 0; background: var(--cost); opacity: 0.85; }
+  .bar-text { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 10px; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .bar-text .c { color: #1a0d09; font-weight: 600; }
+  .bar-text .p { color: var(--fg); font-weight: 600; }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+  .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .legend .lc::before { background: var(--cost); }
+  .legend .lp::before { background: var(--accent-soft); border: 1px solid var(--accent); }
+
+  .steps { margin: 0; padding-left: 22px; display: grid; gap: 10px; }
+  .steps li::marker { color: var(--accent); font-weight: 700; }
+  code { font-family: "Geist Mono", ui-monospace, monospace; font-size: 13px; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; }
+
+  .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .note { border-left: 3px solid var(--warn); padding: 4px 0 4px 14px; display: grid; gap: 4px; }
+  .note p { font-size: 14px; color: var(--muted); }
+
+  .sources { font-size: 13px; color: var(--muted); display: grid; gap: 6px; }
+  .sources ul { margin: 0; padding-left: 18px; columns: 2 280px; column-gap: 24px; }
+  a { color: var(--cyan); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">SECRET 58 · AI Social Command Center · Stand 22.09.2026</div>
+    <h1>Preisanalyse: Was SECRET 58 kosten sollte</h1>
+    <p class="lead">Marktvergleich, echte Kosten pro Video, Sprachminute und Text, dazu ein fertiges Preismodell mit Umsetzungsplan für die Webseite. Grundlage ist der aktuelle Code (Einmalkauf 797 €, Kunde nutzt eigene API-Schlüssel, ElevenLabs eingebunden, Video-Schnittstelle vorbereitet) plus die geplante Erweiterung um n8n und Videogeneratoren.</p>
+  </header>
+
+  <div class="verdict">
+    <h2>Empfehlung auf einen Blick</h2>
+    <ul>
+      <li><strong>Nie nach Funktionen staffeln, nur nach Menge.</strong> Jeder Kunde bekommt immer alle 14 Agenten, Voice, Video und n8n. Die Pakete unterscheiden sich nur darin, wie viele Videosekunden, Sprachminuten und Ideen im Monat enthalten sind.</li>
+      <li><strong>Zwei Wege zum Kauf:</strong> die <em>Lizenz</em> (einmalig, der Kunde nutzt eigene Zugänge) und den <em>Autopilot</em> (Monatsabo, du zahlst alle Anbieter, Kontingent inklusive).</li>
+      <li><strong>Video ist der Kostentreiber.</strong> In jedem Autopilot-Paket machen Videos rund 75–85 % deiner Kosten aus. Deshalb brauchen Videos ein festes Kontingent und Zusatzpakete.</li>
+      <li><strong>Reihenfolge:</strong> jetzt die Lizenz verkaufen (ist schon gebaut). Den Autopilot erst starten, wenn ein Videogenerator läuft und du die echten Kosten an 3–5 Pilotkunden gemessen hast.</li>
+    </ul>
+  </div>
+
+  <section>
+    <div class="eyebrow">1 · Markt</div>
+    <h2>Was andere verlangen</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Anbieter / Typ</th><th>Modell</th><th class="n">Preis</th><th>Video-KI inklusive?</th></tr></thead>
+        <tbody>
+          <tr><td>Buffer</td><td>Planung, etwas KI-Text</td><td class="n">0 – ca. 5 $ / Kanal / Monat</td><td>nein</td></tr>
+          <tr><td>Blotato</td><td>KI-Content + Posting</td><td class="n">20 – 25 $ / Monat</td><td>begrenzt</td></tr>
+          <tr><td>SocialBee</td><td>KI-Text unbegrenzt</td><td class="n">ab 29 $ / Monat</td><td>nein</td></tr>
+          <tr><td>KI-first-Tools (Durchschnitt)</td><td>Text, Grafik, Auto-Posting</td><td class="n">27 – 129 $ / Monat</td><td>selten</td></tr>
+          <tr><td>Sprout Social</td><td>Team-Plattform</td><td class="n">99 / 199 / 399 € pro Nutzer</td><td>nein</td></tr>
+          <tr><td>Hootsuite Standard</td><td>Team-Plattform</td><td class="n">199 – 249 $ pro Nutzer</td><td>nein</td></tr>
+          <tr><td>KI-Agenten als Dienstleistung (CH)</td><td>Done-for-you</td><td class="n">200 – 600 CHF / Monat</td><td>teils</td></tr>
+          <tr><td>Social-Media-Agentur</td><td>Betreuung durch Menschen</td><td class="n">500 – 15.000 € / Monat</td><td>ja, per Hand</td></tr>
+          <tr class="me"><td>SECRET 58 heute</td><td>Lizenz, eigene Zugänge</td><td class="n">797 € einmalig</td><td>vorbereitet</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">Die Lücke: Planungs-Tools kosten wenig, machen aber keine Videos. Agenturen machen Videos, kosten aber ab 500 € im Monat. Ein Komplettpaket mit Text, Voice, Video und Automatisierung sitzt genau dazwischen.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">2 · Deine Kosten</div>
+    <h2>Was eine Einheit wirklich kostet</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Baustein</th><th>Anbieter / Modell</th><th class="n">Anbieterpreis</th><th class="n">Pro Einheit</th></tr></thead>
+        <tbody>
+          <tr><td>Text (in der App eingestellt)</td><td>Claude Haiku 4.5</td><td class="n">1 $ / 5 $ pro Mio. Tokens</td><td class="n">≈ 0,007 $ / Post · ≈ 0,07 $ / Idee durch alle Agenten</td></tr>
+          <tr><td>Sprache</td><td>ElevenLabs Creator / Pro</td><td class="n">22 $ (121k) / 99 $ (600k Credits)</td><td class="n">≈ 0,17 – 0,18 $ / Minute</td></tr>
+          <tr><td>Video günstig</td><td>Runway Gen-4 Turbo, Veo 3.1 Lite</td><td class="n">0,05 $ / Sek.</td><td class="n">30-s-Reel ≈ 1,50 $</td></tr>
+          <tr><td>Video Standard</td><td>Kling 3.0, Runway Gen-4.5</td><td class="n">0,09 – 0,14 $ / Sek.</td><td class="n">30-s-Reel ≈ 2,70 – 4,20 $</td></tr>
+          <tr><td>Video mit Ton</td><td>Veo 3.1 Fast</td><td class="n">0,15 $ / Sek.</td><td class="n">30-s-Reel ≈ 4,50 $</td></tr>
+          <tr><td>Video Premium 4K</td><td>Veo 3.1 Standard</td><td class="n">0,75 $ / Sek.</td><td class="n">30-s-Reel ≈ 22,50 $</td></tr>
+          <tr><td>Avatar-Video</td><td>HeyGen API, Avatar IV</td><td class="n">0,05 $ / Sek.</td><td class="n">≈ 3 $ / Minute</td></tr>
+          <tr><td>Automatisierung</td><td>n8n selbst gehostet / Cloud</td><td class="n">Server ≈ 5 – 20 € · Cloud 20 – 50 € / Monat</td><td class="n">pauschal, nicht pro Kunde</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">Rechengrundlage für die Pakete: im Schnitt <strong class="num">0,10 $ pro Videosekunde</strong>, mal 1,5 für Fehlversuche (nicht jedes generierte Video ist brauchbar), also rund <strong class="num">0,15 € pro nutzbarer Sekunde</strong>. Dollar wird vorsichtig 1:1 in Euro umgerechnet, das lässt Puffer für Kursschwankungen.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">3 · Preismodell</div>
+    <h2>Zwei Wege, ein Produkt</h2>
+    <div class="models">
+      <div class="model">
+        <span class="tag rec">jetzt starten</span>
+        <h3>Lizenz: Komplettpaket</h3>
+        <div class="price">997 €<small>einmalig</small></div>
+        <p class="muted">Bis ein Videogenerator wirklich Videos erzeugt: 797 €.</p>
+        <ul>
+          <li>Alle 14 Agenten, Voice, Video, n8n-Automationen</li>
+          <li>Kunde hinterlegt eigene API-Schlüssel und zahlt Anbieter direkt</li>
+          <li>12 Monate Updates und Hosting inklusive</li>
+          <li>Danach 249 € / Jahr für Updates, Hosting und n8n</li>
+        </ul>
+        <p class="muted">Dein Risiko: fast null. Du hast keine Kosten pro Video.</p>
+      </div>
+      <div class="model">
+        <span class="tag">später, nach Kostenmessung</span>
+        <h3>Autopilot: alles inklusive</h3>
+        <div class="price">ab 149 €<small>/ Monat</small></div>
+        <p class="muted">Du zahlst alle Anbieter, der Kunde braucht keine eigenen Zugänge.</p>
+        <ul>
+          <li>Gleicher Funktionsumfang wie die Lizenz</li>
+          <li>Monatliches Kontingent an Videosekunden, Sprachminuten, Ideen</li>
+          <li>Zusatzpakete, wenn das Kontingent aufgebraucht ist</li>
+          <li>Jährliche Zahlung: 2 Monate geschenkt</li>
+        </ul>
+        <p class="muted">Dein Risiko: Anbieterpreise. Daher Preise ≥ 2,3 × deine Kosten.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">4 · Autopilot-Größen</div>
+    <h2>Drei Größen, gleicher Inhalt</h2>
+    <div class="tiers">
+      <div class="tier">
+        <h3>Autopilot S</h3>
+        <div class="price">149 €<small> / Monat</small></div>
+        <dl>
+          <dt>Marken</dt><dd>1</dd>
+          <dt>Content-Ideen</dt><dd>30</dd>
+          <dt>Videos (30 s)</dt><dd>10 · 300 Sek.</dd>
+          <dt>Sprache</dt><dd>10 Min.</dd>
+          <dt>Deine Kosten</dt><dd>≈ 59 €</dd>
+          <dt>Rohmarge</dt><dd>≈ 90 € · 60 %</dd>
+        </dl>
+      </div>
+      <div class="tier featured">
+        <h3>Autopilot M</h3>
+        <div class="price">399 €<small> / Monat</small></div>
+        <dl>
+          <dt>Marken</dt><dd>3</dd>
+          <dt>Content-Ideen</dt><dd>90</dd>
+          <dt>Videos (30 s)</dt><dd>30 · 900 Sek.</dd>
+          <dt>Sprache</dt><dd>30 Min.</dd>
+          <dt>Deine Kosten</dt><dd>≈ 162 €</dd>
+          <dt>Rohmarge</dt><dd>≈ 237 € · 59 %</dd>
+        </dl>
+      </div>
+      <div class="tier">
+        <h3>Autopilot L · Agentur</h3>
+        <div class="price">999 €<small> / Monat</small></div>
+        <dl>
+          <dt>Marken</dt><dd>10</dd>
+          <dt>Content-Ideen</dt><dd>250</dd>
+          <dt>Videos (30 s)</dt><dd>80 · 2.400 Sek.</dd>
+          <dt>Sprache</dt><dd>90 Min.</dd>
+          <dt>Deine Kosten</dt><dd>≈ 419 €</dd>
+          <dt>Rohmarge</dt><dd>≈ 580 € · 58 %</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="bars" aria-label="Kosten und Preis je Autopilot-Größe, gleiche Skala bis 1.000 Euro">
+      <div class="legend"><span class="lc">deine Kosten</span><span class="lp">Verkaufspreis</span><span>Skala 0 – 1.000 €</span></div>
+      <div class="bar-row">
+        <div class="bar-label">S</div>
+        <div class="bar-track">
+          <div class="bar-price" style="width:14.9%"></div>
+          <div class="bar-cost" style="width:5.9%"></div>
+          <div class="bar-text"><span class="c">&nbsp;</span><span class="p">59 € → 149 €</span></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">M</div>
+        <div class="bar-track">
+          <div class="bar-price" style="width:39.9%"></div>
+          <div class="bar-cost" style="width:16.2%"></div>
+          <div class="bar-text"><span class="c">&nbsp;</span><span class="p">162 € → 399 €</span></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">L</div>
+        <div class="bar-track">
+          <div class="bar-price" style="width:99.9%"></div>
+          <div class="bar-cost" style="width:41.9%"></div>
+          <div class="bar-text"><span class="c">&nbsp;</span><span class="p">419 € → 999 €</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="muted">So sind die Kosten gerechnet (pro Monat): Ideen × 0,07 € + Sprachminuten × 0,18 € + Videosekunden × 0,15 € + Anteil Hosting und n8n (10 / 15 / 25 €). Zahlungsgebühren (Stripe ca. 1,5 % + 0,25 €) sind nicht abgezogen. Beispiel M: 6,30 + 5,40 + 135 + 15 = 161,70 €.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">5 · Zusatzleistungen</div>
+    <h2>Was du dazu verkaufen kannst</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Zusatz</th><th>Für wen</th><th class="n">Preis</th><th class="n">Deine Kosten</th></tr></thead>
+        <tbody>
+          <tr><td>Video-Paket +300 Sek. (≈ 10 Reels)</td><td>Autopilot</td><td class="n">99 € einmalig</td><td class="n">≈ 45 €</td></tr>
+          <tr><td>Premium-Video (4K, Veo Standard) +60 Sek.</td><td>Autopilot</td><td class="n">149 € einmalig</td><td class="n">≈ 68 € (45 € × 1,5 Fehlversuche)</td></tr>
+          <tr><td>Einrichtungsservice (Schlüssel, Brand DNA, erste Posts)</td><td>alle</td><td class="n">299 € einmalig</td><td class="n">deine Zeit, ca. 2–3 Std.</td></tr>
+          <tr><td>Updates, Hosting, n8n ab Jahr 2</td><td>Lizenz</td><td class="n">249 € / Jahr</td><td class="n">Server-Anteil</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">6 · Umsetzung</div>
+    <h2>Was auf der Webseite gebaut werden muss</h2>
+    <ol class="steps">
+      <li><strong>Preisseite <code>/buy</code> umbauen:</strong> Umschalter „Lizenz | Autopilot“, darunter die Karten. Monatlich / jährlich als zweiter Umschalter. In allen 4 Sprachen (<code>messages/*/buy.json</code>).</li>
+      <li><strong>Stripe erweitern:</strong> Die Lizenz bleibt <code>mode: "payment"</code> (existiert). Autopilot braucht <code>mode: "subscription"</code> mit 6 Preis-IDs (S/M/L × monatlich/jährlich). Zusatzpakete sind Einmalzahlungen. Der Webhook muss Kündigungen und Zahlungsausfälle verarbeiten.</li>
+      <li><strong>Datenbank:</strong> <code>License</code> bekommt ein Feld <code>plan</code> (LICENSE, AUTOPILOT_S/M/L). Neu: ein Guthaben-Konto pro Kunde (Videosekunden, Sprachminuten, Ideen), das monatlich zurückgesetzt wird, plus ein Verbrauchsprotokoll.</li>
+      <li><strong>Verbrauch messen:</strong> In <code>src/lib/video/provider.ts</code>, <code>src/lib/elevenlabs.ts</code> und <code>src/lib/ai/textGenerator.ts</code> vor jedem Aufruf das Guthaben prüfen und danach abbuchen. Nur für Autopilot-Kunden; Lizenzkunden nutzen ihre eigenen Schlüssel ohne Limit.</li>
+      <li><strong>Anzeige im Dashboard:</strong> Verbrauchsbalken, Hinweis bei 80 %, bei 100 % Stopp mit Knopf „Video-Paket kaufen“. Keine versteckten Nachberechnungen.</li>
+      <li><strong>Videogenerator wirklich anbinden:</strong> Der CapCut-Platzhalter erzeugt noch nichts. Ohne echten Generator weder 997 € noch Autopilot verkaufen.</li>
+      <li><strong>n8n anbinden:</strong> ist im Code noch nicht vorhanden. Vorschlag: Webhook-Auslöser pro Agenten-Ergebnis, sodass n8n-Workflows starten (z. B. Posting, CRM, Benachrichtigung).</li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="eyebrow">7 · Vorsicht</div>
+    <h2>Rechtliches und Risiken</h2>
+    <div class="notes">
+      <div class="note"><h3>Preisangaben</h3><p>Verbrauchern Bruttopreise inkl. MwSt. zeigen. Keine erfundenen Streichpreise: Bei Rabatten muss der niedrigste Preis der letzten 30 Tage genannt werden (§ 11 PAngV).</p></div>
+      <div class="note"><h3>Widerrufsrecht</h3><p>Bei digitalen Inhalten und Abos: Checkout mit Zustimmung und Bestätigung zum vorzeitigen Erlöschen des Widerrufsrechts. Kündigungsbutton für Abos ist Pflicht.</p></div>
+      <div class="note"><h3>n8n-Lizenz</h3><p>Die Sustainable Use License erlaubt interne Nutzung. n8n als Teil eines verkauften, gehosteten Produkts zu betreiben, braucht vermutlich eine kommerzielle Vereinbarung mit n8n. Vor dem Verkauf klären.</p></div>
+      <div class="note"><h3>Anbieterpreise ändern sich</h3><p>Alle Kosten oben sind Stand September 2026. In den AGB Kontingente in Sekunden und Minuten festlegen, nicht in Anbieter-Credits, und Preisanpassungen mit Vorlauf erlauben.</p></div>
+      <div class="note"><h3>Premium-Video</h3><p>4K mit Veo Standard kostet das 5- bis 15-Fache. Nie in ein Paket ohne Obergrenze packen, nur als Zusatz.</p></div>
+      <div class="note"><h3>Keine Rechtsberatung</h3><p>AGB, Widerruf und Preisangaben vor dem Start von einem Anwalt oder IT-Rechtskanzlei prüfen lassen.</p></div>
+    </div>
+  </section>
+
+  <section class="sources">
+    <h3 style="color:var(--fg)">Quellen</h3>
+    <ul>
+      <li><a href="https://www.enrichlabs.ai/blog/best-ai-social-media-automation-tools">Enrich Labs, KI-Automation-Tools 2026</a></li>
+      <li><a href="https://apaya.com/blog/best-ai-social-media-tools">Apaya, 21 Tools mit Preisen</a></li>
+      <li><a href="https://www.blotato.com/blog/social-media-automation-tools">Blotato, Automation-Tools</a></li>
+      <li><a href="https://postfa.st/blog/best-social-media-schedulers">PostFast, Scheduler 2026</a></li>
+      <li><a href="https://www.orange-its.ch/de/insights/ai-agents-social-media">Orange ITS, KI-Agenten Kosten</a></li>
+      <li><a href="https://cremermedia.de/social-media-manager/social-media-marketing-preise-2026/">cremermedia, Agenturpreise 2026</a></li>
+      <li><a href="https://costbench.com/software/ai-voice-tools/elevenlabs/">Costbench, ElevenLabs-Pläne</a></li>
+      <li><a href="https://pxlpeak.com/blog/ai-tools/elevenlabs-pricing-guide">pxlpeak, ElevenLabs pro Minute</a></li>
+      <li><a href="https://apiframe.ai/blog/ai-video-api-pricing-2026">Apiframe, Video-API-Preise 2026</a></li>
+      <li><a href="https://modelslab.com/blog/api/veo-3-1-vs-kling-3-sora-2-ai-video-api-cost-2026">ModelsLab, Veo vs. Kling vs. Sora</a></li>
+      <li><a href="https://www.buildmvpfast.com/api-costs/ai-video">BuildMVPFast, Video-API-Kosten</a></li>
+      <li><a href="https://www.g2.com/articles/heygen-api-pricing">G2, HeyGen-API-Preise</a></li>
+      <li><a href="https://n8n.io/pricing/">n8n, offizielle Preise</a></li>
+      <li><a href="https://sliplane.io/blog/n8n-pricing">Sliplane, n8n Cloud vs. Self-Hosting</a></li>
+      <li><a href="https://www.anthropic.com/pricing#api">Anthropic, API-Preise</a></li>
+    </ul>
+  </section>
+
+</div>

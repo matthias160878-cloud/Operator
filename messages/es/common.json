@@ -82,5 +82,9 @@
     "verifyFailedStatus": "{service} respondió con el estado {status}.",
     "verifyUnreachable": "No se pudo contactar con {service}.",
     "connected": "Conectado."
+  },
+  "mediaPreview": {
+    "expand": "Ver más grande",
+    "close": "Cerrar"
   }
 }

@@ -4,6 +4,7 @@ import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { VIDEO_FORMATS } from "@/lib/video/formats";
 import { VIDEO_PROVIDERS } from "@/lib/video/provider";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { VideoPreview } from "@/components/ui/VideoPreview";
 
 export const dynamic = "force-dynamic";
 
@@ -65,11 +66,17 @@ export default async function VideoStudioPage() {
         {videos.length === 0 ? (
           <p className="text-xs text-muted">{t("assetsEmpty")}</p>
         ) : (
-          <ul className="space-y-2 text-sm text-foreground">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {videos.map((v) => (
-              <li key={v.id}>{v.url}</li>
+              <div key={v.id}>
+                <VideoPreview src={v.url} />
+                <p className="mt-1.5 text-xs text-muted">
+                  {v.format || "—"} ·{" "}
+                  {new Intl.DateTimeFormat("de-DE", { dateStyle: "medium" }).format(v.createdAt)}
+                </p>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
       </div>
     </div>

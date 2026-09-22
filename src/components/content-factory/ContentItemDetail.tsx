@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import type { ContentItem, MediaAsset, Script } from "@prisma/client";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { VideoPreview } from "@/components/ui/VideoPreview";
 import { PLATFORM_LABELS } from "@/lib/format";
 
 type ItemWithRelations = ContentItem & { scripts: Script[]; mediaAssets: MediaAsset[] };
@@ -78,6 +79,7 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
   const keywords = parseArr(item.keywords);
   const audio = item.mediaAssets.find((a) => a.type === "AUDIO");
   const subtitle = item.mediaAssets.find((a) => a.type === "SUBTITLE");
+  const video = item.mediaAssets.find((a) => a.type === "VIDEO");
 
   return (
     <div className="space-y-5">
@@ -247,7 +249,11 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
             {busy === "video" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : t("detail.video.request")}
           </button>
         </div>
-        <p className="text-xs text-muted">{t("detail.video.note")}</p>
+        {video ? (
+          <VideoPreview src={video.url} className="max-w-md" />
+        ) : (
+          <p className="text-xs text-muted">{t("detail.video.note")}</p>
+        )}
       </div>
 
       <div className="card space-y-3 p-5">

@@ -35,6 +35,14 @@ function randomBetween(min: number, max: number) {
 }
 
 async function main() {
+  const existingDemo = await prisma.setting.findFirst({
+    where: { key: "demoDataSeeded" },
+  });
+  if (existingDemo) {
+    console.log("Demo-Daten bereits vorhanden — überspringe Seed (kein Duplikat).");
+    return;
+  }
+
   const workspace = await prisma.workspace.upsert({
     where: { slug: "secret-58" },
     update: {},

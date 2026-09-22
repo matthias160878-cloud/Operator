@@ -210,21 +210,21 @@ export function RevenueBoard({
         <table className="w-full min-w-[720px] text-left text-sm">
           <thead>
             <tr className="border-b border-border text-xs text-muted">
-              <th className="px-4 py-3 font-medium">Datum</th>
-              <th className="px-4 py-3 font-medium">Quelle</th>
-              <th className="px-4 py-3 font-medium">Typ</th>
-              <th className="px-4 py-3 font-medium">Plattform</th>
-              <th className="px-4 py-3 font-medium">Kampagne</th>
-              <th className="px-4 py-3 font-medium text-right">Betrag</th>
-              <th className="px-4 py-3 font-medium">Status</th>
-              <th className="px-4 py-3 font-medium text-right">Aktion</th>
+              <th className="px-4 py-3 font-medium">{t("tableDate")}</th>
+              <th className="px-4 py-3 font-medium">{t("tableSource")}</th>
+              <th className="px-4 py-3 font-medium">{t("tableType")}</th>
+              <th className="px-4 py-3 font-medium">{t("tablePlatform")}</th>
+              <th className="px-4 py-3 font-medium">{t("tableCampaign")}</th>
+              <th className="px-4 py-3 font-medium text-right">{t("tableAmount")}</th>
+              <th className="px-4 py-3 font-medium">{t("tableStatus")}</th>
+              <th className="px-4 py-3 font-medium text-right">{t("tableAction")}</th>
             </tr>
           </thead>
           <tbody>
             {entries.length === 0 && (
               <tr>
                 <td colSpan={8} className="px-4 py-8 text-center text-xs text-muted">
-                  Noch keine Einnahmen erfasst.
+                  {t("tableEmpty")}
                 </td>
               </tr>
             )}
@@ -243,7 +243,7 @@ export function RevenueBoard({
                   {formatCurrency(entry.amount, entry.currency)}
                 </td>
                 <td className="px-4 py-3">
-                  <button onClick={() => toggleStatus(entry)} title="Status umschalten">
+                  <button onClick={() => toggleStatus(entry)} title={t("statusToggleTitle")}>
                     <StatusBadge status={entry.status} />
                   </button>
                 </td>
@@ -251,7 +251,7 @@ export function RevenueBoard({
                   <button
                     onClick={() => remove(entry.id)}
                     className="rounded-lg border border-border p-1.5 text-muted hover:text-danger"
-                    title="Löschen"
+                    title={t("deleteTitle")}
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>

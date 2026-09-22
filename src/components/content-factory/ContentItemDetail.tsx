@@ -197,40 +197,40 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
         <div className="card space-y-3 p-5">
           <div className="flex items-center justify-between">
             <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
-              <Mic className="h-4 w-4" /> Voiceover
+              <Mic className="h-4 w-4" /> {t("detail.voiceover.heading")}
             </h3>
             <button
               onClick={() => runAction("voiceover", () => fetch(`/api/content-items/${item.id}/voiceover`, { method: "POST" }))}
               className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1 text-xs text-foreground"
             >
-              {busy === "voiceover" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : "Erzeugen"}
+              {busy === "voiceover" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : t("detail.voiceover.generate")}
             </button>
           </div>
           {audio ? (
             <audio controls src={audio.url} className="w-full" />
           ) : (
-            <p className="text-xs text-muted">Noch kein Voiceover erzeugt.</p>
+            <p className="text-xs text-muted">{t("detail.voiceover.empty")}</p>
           )}
         </div>
 
         <div className="card space-y-3 p-5">
           <div className="flex items-center justify-between">
             <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
-              <Subtitles className="h-4 w-4" /> Untertitel
+              <Subtitles className="h-4 w-4" /> {t("detail.subtitles.heading")}
             </h3>
             <button
               onClick={() => runAction("subtitles", () => fetch(`/api/content-items/${item.id}/subtitles`, { method: "POST" }))}
               className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1 text-xs text-foreground"
             >
-              {busy === "subtitles" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : "Erzeugen (SRT)"}
+              {busy === "subtitles" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : t("detail.subtitles.generate")}
             </button>
           </div>
           {subtitle ? (
             <a href={subtitle.url} download className="text-xs text-accent-2 hover:underline">
-              {subtitle.url.split("/").pop()} herunterladen
+              {t("detail.subtitles.download", { file: subtitle.url.split("/").pop() ?? "" })}
             </a>
           ) : (
-            <p className="text-xs text-muted">Noch keine Untertitel erzeugt.</p>
+            <p className="text-xs text-muted">{t("detail.subtitles.empty")}</p>
           )}
         </div>
       </div>
@@ -238,38 +238,37 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
       <div className="card space-y-3 p-5">
         <div className="flex items-center justify-between">
           <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
-            <Video className="h-4 w-4" /> Video-Rendering
+            <Video className="h-4 w-4" /> {t("detail.video.heading")}
           </h3>
           <button
             onClick={() => runAction("video", () => fetch(`/api/content-items/${item.id}/video`, { method: "POST" }))}
             className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1 text-xs text-foreground"
           >
-            {busy === "video" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : "Rendern anfragen"}
+            {busy === "video" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : t("detail.video.request")}
           </button>
         </div>
-        <p className="text-xs text-muted">
-          Provider-agnostische Video-Pipeline (Abschnitt 11/12) — aktuell ist kein
-          Video-Provider konfiguriert (siehe Integrationen).
-        </p>
+        <p className="text-xs text-muted">{t("detail.video.note")}</p>
       </div>
 
       <div className="card space-y-3 p-5">
         <div className="flex items-center justify-between">
           <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
-            <FileText className="h-4 w-4" /> Script-Varianten
+            <FileText className="h-4 w-4" /> {t("detail.scriptVariants.heading")}
           </h3>
           <button
             onClick={() => runAction("script", () => fetch(`/api/content-items/${item.id}/script`, { method: "POST" }))}
             className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1 text-xs text-foreground"
           >
-            {busy === "script" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : "Neue Variante"}
+            {busy === "script" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : t("detail.scriptVariants.newVariant")}
           </button>
         </div>
         <div className="space-y-2">
-          {item.scripts.length === 0 && <p className="text-xs text-muted">Noch keine Varianten.</p>}
+          {item.scripts.length === 0 && <p className="text-xs text-muted">{t("detail.scriptVariants.empty")}</p>}
           {item.scripts.map((s) => (
             <details key={s.id} className="rounded-lg border border-border bg-surface-2 p-3">
-              <summary className="cursor-pointer text-sm text-foreground">Variante {s.variantLabel}</summary>
+              <summary className="cursor-pointer text-sm text-foreground">
+                {t("detail.scriptVariants.variantSummary", { label: s.variantLabel })}
+              </summary>
               <div className="mt-2 space-y-1 text-xs text-muted">
                 <p><span className="text-foreground">Hook:</span> {s.hook}</p>
                 <p><span className="text-foreground">Problem:</span> {s.problem}</p>
@@ -284,10 +283,8 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
       </div>
 
       <div className="card space-y-3 p-5">
-        <h3 className="text-sm font-semibold text-foreground">Repurpose Content</h3>
-        <p className="text-xs text-muted">
-          Erzeuge aus diesem Content-Item plattformgerechte Ableger für weitere Kanäle.
-        </p>
+        <h3 className="text-sm font-semibold text-foreground">{t("detail.repurpose.heading")}</h3>
+        <p className="text-xs text-muted">{t("detail.repurpose.description")}</p>
         <div className="flex flex-wrap gap-2">
           {Object.entries(PLATFORM_LABELS)
             .filter(([key]) => key !== item.platform)
@@ -324,7 +321,7 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
           className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
         >
           {busy === "repurpose" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-          {repurposeTargets.length} Ableger erzeugen
+          {t("detail.repurpose.generateButton", { count: repurposeTargets.length })}
         </button>
       </div>
     </div>

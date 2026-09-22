@@ -8,5 +8,9 @@
     "DESIGN": "Design",
     "VIDEO": "Video",
     "TREND": "Trends"
+  },
+  "links": {
+    "getKey": "API-Schlüssel holen",
+    "setInRender": "In Render eintragen"
   }
 }

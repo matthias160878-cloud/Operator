@@ -8,5 +8,9 @@
     "DESIGN": "Design",
     "VIDEO": "Video",
     "TREND": "Trends"
+  },
+  "links": {
+    "getKey": "Get API key",
+    "setInRender": "Set in Render"
   }
 }

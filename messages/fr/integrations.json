@@ -8,5 +8,9 @@
     "DESIGN": "Design",
     "VIDEO": "Vidéo",
     "TREND": "Tendances"
+  },
+  "links": {
+    "getKey": "Obtenir la clé API",
+    "setInRender": "Configurer dans Render"
   }
 }

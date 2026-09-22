@@ -24,3 +24,64 @@ export const API_KEY_SIGNUP_LINKS: Partial<Record<string, string>> = {
  */
 export const RENDER_ENV_DASHBOARD_URL =
   "https://dashboard.render.com/web/srv-dap4u46gekts73fq80q0/env";
+
+/**
+ * Kostenmodell jeder Integration beim jeweiligen Drittanbieter — UNABHÄNGIG
+ * vom einmaligen SECRET-58-Kaufpreis. SECRET 58 selbst stellt keine
+ * zusätzliche Rechnung für die Nutzung eines Anbieters; was der Anbieter
+ * selbst verlangt (falls überhaupt), zahlt die Kundin/der Kunde direkt an
+ * ihn, nutzungsbasiert und ohne feste Laufzeit, sofern nicht anders
+ * angegeben. Bewusst keine konkreten Beträge hier — die ändern sich, die
+ * Wahrheit steht nur beim Anbieter selbst (pricingUrl).
+ */
+export type PricingModel = "free" | "payAsYouGo" | "subscription" | "unknown";
+
+export interface IntegrationPricing {
+  model: PricingModel;
+  pricingUrl?: string;
+}
+
+export const INTEGRATION_PRICING: Partial<Record<string, IntegrationPricing>> = {
+  anthropic: {
+    model: "payAsYouGo",
+    pricingUrl: "https://www.anthropic.com/pricing#api",
+  },
+  openai: {
+    model: "payAsYouGo",
+    pricingUrl: "https://openai.com/api/pricing/",
+  },
+  elevenlabs: {
+    model: "subscription",
+    pricingUrl: "https://elevenlabs.io/pricing",
+  },
+  youtube: {
+    model: "free",
+    pricingUrl: "https://developers.google.com/youtube/v3/getting-started#quota",
+  },
+  instagram: {
+    model: "free",
+    pricingUrl: "https://developers.facebook.com/docs/graph-api/overview/rate-limiting",
+  },
+  facebook: {
+    model: "free",
+    pricingUrl: "https://developers.facebook.com/docs/graph-api/overview/rate-limiting",
+  },
+  tiktok: {
+    model: "free",
+    pricingUrl: "https://developers.tiktok.com/doc/login-kit-web",
+  },
+  linkedin: {
+    model: "free",
+    pricingUrl: "https://www.linkedin.com/developers/",
+  },
+  canva: {
+    model: "unknown",
+    pricingUrl: "https://www.canva.com/developers/",
+  },
+  capcut: {
+    model: "unknown",
+  },
+  trend: {
+    model: "unknown",
+  },
+};

@@ -71,6 +71,8 @@ export default async function BuyPage() {
           <div className="mt-6 flex justify-center">
             <BuyButton configured={configured} priceDisplay={priceDisplay} />
           </div>
+
+          <p className="mx-auto mt-4 max-w-sm text-xs text-muted">{t("costDisclosure")}</p>
         </div>
       </div>
     </div>

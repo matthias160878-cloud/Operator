@@ -79,7 +79,8 @@
       "steps": [
         "Chaque ligne affiche le statut réel, vérifié en direct — jamais une connexion simulée.",
         "Pour \"Non configuré\", \"Obtenir la clé API\" mène à la page officielle du fournisseur.",
-        "\"Configurer dans Render\" mène directement aux variables d'environnement où la clé est stockée — il n'y a volontairement aucun formulaire de saisie de clé dans l'application elle-même, pour des raisons de sécurité."
+        "\"Configurer dans Render\" mène directement aux variables d'environnement où la clé est stockée — il n'y a volontairement aucun formulaire de saisie de clé dans l'application elle-même, pour des raisons de sécurité.",
+        "Coûts : le prix d'achat de SECRET 58 est unique. Chaque fournisseur externe a son propre modèle de coûts indépendant (gratuit / à l'usage / abonnement) — la page Intégrations indique le modèle applicable à chaque service, avec un lien vers les tarifs actuels du fournisseur."
       ]
     }
   }

@@ -16,5 +16,6 @@
   "redirecting": "Redirigiendo a Stripe …",
   "checkoutFailed": "Error en el proceso de pago.",
   "unknownError": "Error desconocido.",
-  "notConfigured": "El pago aún no está configurado — primero el operador debe crear un producto de {price} en Stripe y definir STRIPE_SECRET_KEY / STRIPE_PRICE_ID."
+  "notConfigured": "El pago aún no está configurado — primero el operador debe crear un producto de {price} en Stripe y definir STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Nota: este precio es un pago único por el software. Algunas funciones concretas (p. ej. generación de texto con IA, locución) requieren tus propias cuentas con proveedores externos (p. ej. Anthropic, ElevenLabs) — sus costes son independientes de SECRET 58 y los cobra directamente ese proveedor, no aquí. Detalles después de la compra en Integraciones."
 }

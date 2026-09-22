@@ -79,7 +79,8 @@
       "steps": [
         "Every row shows the real, live-checked status — never a faked connection.",
         "For \"Not configured\", \"Get API key\" leads to the provider's official page.",
-        "\"Set in Render\" leads directly to the environment variables where the key is stored — there is deliberately no key input form inside the app itself, for security."
+        "\"Set in Render\" leads directly to the environment variables where the key is stored — there is deliberately no key input form inside the app itself, for security.",
+        "Costs: the SECRET 58 purchase price is one-time. Every external provider has its own, independent cost model (free / pay-as-you-go / subscription) — the Integrations page shows which model applies to each service, with a link to that provider's current pricing."
       ]
     }
   }

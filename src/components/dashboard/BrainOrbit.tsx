@@ -1,4 +1,4 @@
-import { Brain } from "lucide-react";
+import Image from "next/image";
 import { PlatformGlyph, type PlatformGlyphKey } from "@/components/dashboard/PlatformGlyph";
 
 export interface OrbitPlatform {
@@ -30,9 +30,15 @@ export function BrainOrbit({ platforms }: { platforms: OrbitPlatform[] }) {
       <div className="absolute inset-[22%] rounded-full border border-border/50" />
 
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-accent via-accent-3 to-accent-2 shadow-[0_0_45px_rgba(109,91,255,0.55)]">
-          <div className="absolute inset-0 animate-pulse rounded-full bg-accent/30 blur-xl" />
-          <Brain className="relative h-9 w-9 text-white" />
+        <div className="relative h-28 w-28 overflow-hidden rounded-full shadow-[0_0_50px_rgba(109,91,255,0.55)]">
+          <Image
+            src="/brand/brain-core.png"
+            alt="SECRET 58 KI-Gehirn"
+            fill
+            sizes="112px"
+            className="object-cover"
+            priority
+          />
         </div>
       </div>
 

@@ -10,10 +10,12 @@ export async function POST(request: Request) {
   }
 
   try {
+    const body = (await request.json().catch(() => ({}))) as { includeSetupService?: unknown };
     const origin = new URL(request.url).origin;
     const url = await createCheckoutSession({
       successUrl: `${origin}/api/stripe/success?session_id={CHECKOUT_SESSION_ID}`,
       cancelUrl: `${origin}/buy`,
+      includeSetupService: body.includeSetupService === true,
     });
     return NextResponse.json({ url });
   } catch (err) {

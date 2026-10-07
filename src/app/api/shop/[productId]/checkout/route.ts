@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getStripe } from "@/lib/stripe";
 import { isConnectConfigured } from "@/lib/connect/merchant";
+import { sellerProfileComplete } from "@/lib/connect/sellerProfile";
 import { clientIp, hitRateLimit } from "@/lib/rateLimit";
 import { route } from "@/lib/api";
 
@@ -18,10 +19,10 @@ async function handlePOST(request: Request, { params }: { params: Promise<{ prod
   if (!isConnectConfigured()) return NextResponse.json({ error: "Der Verkauf ist nicht verfügbar." }, { status: 503 });
   const product = await prisma.merchantProduct.findFirst({
     where: { id: productId, active: true },
-    include: { workspace: { include: { merchantAccount: true } } },
+    include: { workspace: { include: { merchantAccount: true, sellerProfile: true } } },
   });
   const merchant = product?.workspace.merchantAccount;
-  if (!product || !merchant || !merchant.chargesEnabled) {
+  if (!product || !merchant || !merchant.chargesEnabled || !sellerProfileComplete(product.workspace.sellerProfile)) {
     return NextResponse.json({ error: "Dieses Angebot ist nicht verfügbar." }, { status: 404 });
   }
   const origin = new URL(request.url).origin;

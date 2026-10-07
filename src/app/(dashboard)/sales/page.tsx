@@ -3,6 +3,8 @@ import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { formatCents } from "@/lib/plans";
 import { getMerchantBalance, isConnectConfigured } from "@/lib/connect/merchant";
 import { SalesClient } from "@/components/sales/SalesClient";
+import { SellerLegalForm } from "@/components/sales/SellerLegalForm";
+import { sellerProfileMissing } from "@/lib/connect/sellerProfile";
 
 export const dynamic = "force-dynamic";
 
@@ -12,11 +14,13 @@ export const dynamic = "force-dynamic";
  */
 export default async function SalesPage() {
   const workspaceId = await getCurrentWorkspaceId();
-  const [merchant, products, sales] = await Promise.all([
+  const [merchant, products, sales, sellerProfile] = await Promise.all([
     prisma.merchantAccount.findUnique({ where: { workspaceId } }),
     prisma.merchantProduct.findMany({ where: { workspaceId }, orderBy: { createdAt: "desc" } }),
     prisma.customerSale.findMany({ where: { workspaceId }, orderBy: { occurredAt: "desc" }, take: 100 }),
+    prisma.sellerProfile.findUnique({ where: { workspaceId } }),
   ]);
+  const sellerMissing = sellerProfileMissing(sellerProfile);
 
   const totals = new Map<string, { gross: number; refunded: number }>();
   for (const s of sales) {
@@ -70,6 +74,24 @@ export default async function SalesPage() {
           </p>
         )}
       </section>
+
+      <SellerLegalForm
+        missing={sellerMissing}
+        initial={{
+          anbieter: sellerProfile?.anbieter ?? "",
+          firma: sellerProfile?.firma ?? "",
+          anschrift: sellerProfile?.anschrift ?? "",
+          email: sellerProfile?.email ?? "",
+          telefon: sellerProfile?.telefon ?? "",
+          ustId: sellerProfile?.ustId ?? "",
+          register: sellerProfile?.register ?? "",
+          aufsicht: sellerProfile?.aufsicht ?? "",
+          verantwortlich: sellerProfile?.verantwortlich ?? "",
+          agbUrl: sellerProfile?.agbUrl ?? "",
+          datenschutzUrl: sellerProfile?.datenschutzUrl ?? "",
+          widerrufUrl: sellerProfile?.widerrufUrl ?? "",
+        }}
+      />
 
       <SalesClient
         connectConfigured={isConnectConfigured()}

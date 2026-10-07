@@ -262,8 +262,12 @@ Empfohlener Aufbau (Windows Server 2022/2025):
   `DATENSCHUTZ_URL`), z. B. auf secret58.com.
 * Fehlen Name, Anschrift, E-Mail, AGB- oder Datenschutz-Link, verweigert der Checkout
   den Verkauf; das Betreiber-Dashboard zeigt den Stand.
-* Offen: Kunden, die über ihren Shop verkaufen, brauchen ein eigenes Impressum auf
-  ihrer Angebotsseite — noch nicht umgesetzt.
+* Kunden, die über ihren Shop verkaufen, pflegen unter „Verkauf & Shop“ ihre eigenen
+  Anbieterangaben (Impressum nach § 5 DDG) und Links zu eigenen AGB, Datenschutz und
+  Widerruf. Ihre Angebotsseiten zeigen dann **deren** Impressum
+  (`/shop/<produkt>/impressum`), mit Hinweis auf SECRET 58 als technische Plattform.
+* Ohne Name, Anschrift, E-Mail und Datenschutz-Link ist ein Angebot nicht öffentlich
+  (404) und nicht kaufbar. Links werden nur als http(s) angenommen.
 
 ## 10. Datenschutz-Technik (Vorbereitung, keine rechtliche Vollständigkeit)
 

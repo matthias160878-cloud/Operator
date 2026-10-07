@@ -507,6 +507,25 @@ test("Händlerkonten, Verkäufe und Importe bleiben getrennt und doppelt-sicher"
   // B kann A's Produkt nicht ändern
   assert.equal((await B.req(`/api/sales/products/${product.data.product.id}`, { method: "PATCH", body: { active: false } })).status, 404);
 
+  // Ohne eigene Anbieterangaben (Impressum) ist das Angebot nicht öffentlich und nicht kaufbar
+  const pid = product.data.product.id;
+  assert.equal((await fetch(`${BASE}/shop/${pid}`)).status, 404);
+  assert.equal((await fetch(`${BASE}/api/shop/${pid}/checkout`, { method: "POST", headers: ORIGIN_HDR })).status, 404);
+  // Unsichere Links werden abgelehnt
+  const legalBase = { anbieter: "Anna Händlerin", firma: "", anschrift: "Marktweg 7\n12345 Handelstadt", email: "shop-a@example.test",
+    telefon: "", ustId: "", register: "", aufsicht: "", verantwortlich: "", agbUrl: "", datenschutzUrl: "https://shop-a.example/datenschutz", widerrufUrl: "" };
+  assert.equal((await A.json("/api/sales/legal", { method: "PUT", body: { ...legalBase, datenschutzUrl: "javascript:alert(1)" } })).status, 400);
+  const saved = await A.json("/api/sales/legal", { method: "PUT", body: legalBase });
+  assert.equal(saved.status, 200);
+  assert.deepEqual(saved.data.missing, []);
+  // B sieht A's Angaben nicht über die eigene Schnittstelle
+  assert.equal((await B.json("/api/sales/legal")).data.profile, null);
+  const shopHtml = await (await fetch(`${BASE}/shop/${pid}`)).text();
+  assert.ok(shopHtml.includes("Anna Händlerin") && shopHtml.includes(`/shop/${pid}/impressum`) && shopHtml.includes("https://shop-a.example/datenschutz"));
+  const sellerImp = await (await fetch(`${BASE}/shop/${pid}/impressum`)).text();
+  assert.ok(sellerImp.includes("Marktweg 7") && sellerImp.includes("12345 Handelstadt") && sellerImp.includes("shop-a@example.test"));
+  assert.ok(!sellerImp.includes("Test Anbieter"), "Impressum des Betreibers darf nicht als Verkäufer erscheinen");
+
   // Öffentlicher Kauf: Direct Charge auf A's Konto, Betrag aus der Datenbank
   const buyer = await fetch(`${BASE}/api/shop/${product.data.product.id}/checkout`, { method: "POST", headers: ORIGIN_HDR });
   assert.equal(buyer.status, 200);

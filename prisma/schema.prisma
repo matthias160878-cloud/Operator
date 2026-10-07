@@ -149,6 +149,7 @@ model Workspace {
   checkouts        PlanCheckout[]
   merchantAccount  MerchantAccount?
   merchantProducts MerchantProduct[]
+  sellerProfile    SellerProfile?
   customerSales    CustomerSale[]
   websites         WebsiteConnection[]
 
@@ -687,4 +688,28 @@ model WebsiteConnection {
 
   @@index([workspaceId])
   @@map("website_connections")
+}
+
+/// Anbieterangaben des Kunden als Verkäufer (Impressum nach § 5 DDG, Links zu
+/// eigenen AGB/Datenschutz/Widerruf). Pflegt ausschließlich der Kunde selbst;
+/// ohne vollständige Angaben sind seine Angebotsseiten nicht erreichbar.
+model SellerProfile {
+  id             String    @id @default(cuid())
+  workspaceId    String    @unique
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  anbieter       String    @default("")
+  firma          String    @default("")
+  anschrift      String    @default("") // mehrzeilig
+  email          String    @default("")
+  telefon        String    @default("")
+  ustId          String    @default("")
+  register       String    @default("")
+  aufsicht       String    @default("")
+  verantwortlich String    @default("")
+  agbUrl         String    @default("")
+  datenschutzUrl String    @default("")
+  widerrufUrl    String    @default("")
+  updatedAt      DateTime  @updatedAt
+
+  @@map("seller_profiles")
 }

@@ -10,7 +10,7 @@ import { route } from "@/lib/api";
 async function handleGET() {
   const user = await requireSessionUser();
   const workspaceId = user.workspaceId;
-  const [workspace, users, brand, campaigns, ideas, items, voices, media, revenue, conversations, sales, products, websites, plan, usage, audit] =
+  const [workspace, users, brand, campaigns, ideas, items, voices, media, revenue, conversations, sales, products, websites, plan, usage, audit, sellerProfile] =
     await Promise.all([
       prisma.workspace.findUnique({ where: { id: workspaceId }, select: { id: true, name: true, slug: true, createdAt: true } }),
       prisma.user.findMany({ where: { workspaceId }, select: { id: true, email: true, name: true, role: true, createdAt: true } }),
@@ -28,9 +28,10 @@ async function handleGET() {
       prisma.workspacePlan.findUnique({ where: { workspaceId }, select: { plan: true, status: true, billingMode: true, activatedAt: true, currentPeriodEnd: true } }),
       prisma.usageCounter.findMany({ where: { workspaceId }, select: { metric: true, period: true, used: true } }),
       prisma.auditLog.findMany({ where: { workspaceId }, select: { action: true, detail: true, createdAt: true } }),
+      prisma.sellerProfile.findUnique({ where: { workspaceId } }),
     ]);
   const body = JSON.stringify(
-    { exportedAt: new Date().toISOString(), workspace, users, brand, campaigns, ideas, contentItems: items, voices, mediaAssets: media, revenueEntries: revenue, conversations, customerSales: sales, merchantProducts: products, websites, plan, usage, auditLog: audit },
+    { exportedAt: new Date().toISOString(), workspace, users, brand, campaigns, ideas, contentItems: items, voices, mediaAssets: media, revenueEntries: revenue, conversations, customerSales: sales, merchantProducts: products, websites, plan, usage, auditLog: audit, sellerProfile },
     null,
     2
   );

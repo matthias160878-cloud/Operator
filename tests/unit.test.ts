@@ -123,3 +123,13 @@ test("Rechtliche Angaben: Verkauf erst mit Impressum, AGB und Datenschutz", asyn
   process.env.DATENSCHUTZ_URL = "https://x/ds";
   assert.equal(legalInfoComplete(), true);
 });
+
+test("Anbieterangaben der Kunden: Pflichtfelder und sichere Links", async () => {
+  const { sellerProfileMissing, sellerProfileSchema } = await import("@/lib/connect/sellerProfile");
+  assert.deepEqual(sellerProfileMissing(null), ["Name", "Anschrift", "E-Mail", "Link zur Datenschutzerklärung"]);
+  assert.deepEqual(sellerProfileMissing({ anbieter: "A", anschrift: "W 1", email: "a@b.de", datenschutzUrl: "https://x/ds" }), []);
+  const base = { anbieter: "A", firma: "", anschrift: "W", email: "a@b.de", telefon: "", ustId: "", register: "", aufsicht: "", verantwortlich: "", agbUrl: "", datenschutzUrl: "https://x", widerrufUrl: "" };
+  assert.equal(sellerProfileSchema.safeParse(base).success, true);
+  assert.equal(sellerProfileSchema.safeParse({ ...base, agbUrl: "javascript:alert(1)" }).success, false);
+  assert.equal(sellerProfileSchema.safeParse({ ...base, email: "keine-mail" }).success, false);
+});

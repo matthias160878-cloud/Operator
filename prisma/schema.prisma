@@ -1,14 +1,15 @@
 // SECRET 58 — AI Social Command Center
 // Datenmodell gemäß Master-Prompt Abschnitt 24.
-// SQLite als Standard-Engine, damit die App ohne externe Datenbank startfähig bleibt.
-// Für Produktion: DATABASE_URL auf Postgres/MySQL umstellen (provider anpassen).
+// Postgres als Engine — das Schema enthält keine datenbankspezifischen Typen
+// (kein @db.*, keine Autoincrement-IDs), war also schon vorher portabel.
+// DATABASE_URL muss auf eine echte Postgres-Instanz zeigen (siehe .env.example).
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 

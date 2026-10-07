@@ -188,11 +188,21 @@ Integration hier (ElevenLabs, Anthropic, …): in `.env` für die lokale
 Entwicklung, und im Render-Dashboard unter **Environment** für die Live-Seite
 (oder analog beim jeweils genutzten Hoster).
 
-1. **Stripe-Account** auf [stripe.com](https://stripe.com/) anlegen, im
-   Dashboard **zwei** Produkte mit je einmaligem Preis anlegen: "SECRET 58
-   Pro" (590 €) und "SECRET 58 Maxi" (797 €) — oder die angepassten Werte
-   aus `src/lib/packages.ts`. Jedes Paket ist unabhängig buchbar, es reicht
-   auch, zunächst nur eines der beiden Produkte anzulegen.
+1. **Stripe-Account** auf [stripe.com](https://stripe.com/) anlegen und den
+   Secret Key (Entwickler → API-Schlüssel) in `.env` bei `STRIPE_SECRET_KEY`
+   eintragen (lokal in der Datei, live im Environment des Hosters —
+   niemals im Chat). Dann **zwei** Produkte mit je einmaligem Preis
+   anlegen: "SECRET 58 Pro" (590 €) und "SECRET 58 Maxi" (797 €) — entweder
+   manuell im Stripe-Dashboard, oder automatisiert mit:
+   ```
+   npm run stripe:setup-products
+   ```
+   Das Skript (`scripts/setup-stripe-products.ts`) liest Preis und Name
+   ausschließlich aus `src/lib/packages.ts`, legt beide Produkte/Preise an
+   und gibt die Price-IDs zum Eintragen aus — sicher wiederholt ausführbar,
+   legt bei erneutem Lauf keine Duplikate an (erkennt bestehende Produkte
+   über eine Metadata-Markierung wieder). Jedes Paket ist unabhängig
+   buchbar, es reicht auch, zunächst nur eines der beiden anzulegen.
 2. In `.env` (bzw. Render-Environment) setzen:
    - `STRIPE_SECRET_KEY` — der geheime API-Key aus dem Stripe-Dashboard
      (Entwickler → API-Schlüssel).

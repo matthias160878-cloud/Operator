@@ -15,12 +15,13 @@
  *  - Ein durchgestrichener "Statt"-Preis wird bewusst NICHT angezeigt: Nach
  *    § 11 PAngV darf als Vergleich nur der niedrigste tatsächlich verlangte
  *    Preis der letzten 30 Tage dienen — ein solcher Preis existiert noch nicht.
- *  - Abrechnungszeitraum (einmalig/monatlich) ist noch NICHT bestätigt.
- *  - Die Kontingente sind VORLÄUFIG. Pro übernimmt die Mengen der bisherigen
- *    Autopilot-Stufe S, Maxi die der Stufe M (src/lib/pricing.ts,
- *    docs/preisanalyse.html). Werte ohne Vorlage dort sind als solche markiert.
- *  - Solange PACKAGE_TERMS_CONFIRMED nicht "true" ist, verweigert der
- *    Checkout den Verkauf (siehe packageTermsConfirmed()).
+ *  - Abrechnung: monatliches Abo (bestätigt am 7. Oktober 2026). Der Checkout
+ *    verweigert Stripe-Preise, die nicht monatlich wiederkehren.
+ *  - Kontingente je Monat (bestätigt am 7. Oktober 2026): Pro = bisherige
+ *    Autopilot-Stufe S plus 300 KI-Texte, 500 Widget-Antworten, 1 Webseite;
+ *    Maxi = dreifache Mengen.
+ *  - PACKAGE_TERMS_CONFIRMED ist der Freigabeschalter des Betreibers für den
+ *    Verkaufsstart (erst setzen, wenn Stripe, AGB und Pflichtangaben stehen).
  */
 
 export type PlanKey = "PRO" | "MAXI";
@@ -48,8 +49,6 @@ export interface PlanDefinition {
   displayCurrency: "eur";
   priceEnvVar: string;
   quotas: Record<Metric, number>;
-  /** Kennzahlen ohne Vorlage im Repository — ausdrücklich vom Betreiber festzulegen. */
-  unsourcedQuotas: Metric[];
   features: string[];
 }
 
@@ -61,7 +60,6 @@ export const PLANS: Record<PlanKey, PlanDefinition> = {
     displayCurrency: "eur",
     priceEnvVar: "STRIPE_PRICE_ID_PRO",
     quotas: { BRANDS: 1, IDEAS: 30, VIDEO: 10, VOICEOVER: 10, AI_TEXT: 300, WIDGET_CHAT: 500, WEBSITES: 1 },
-    unsourcedQuotas: ["AI_TEXT", "WIDGET_CHAT", "WEBSITES"],
     features: [
       "Eigener privater Arbeitsbereich",
       "KI-Funktionen über Betreiber-Zugänge — kein eigenes KI-Abo nötig",
@@ -76,7 +74,6 @@ export const PLANS: Record<PlanKey, PlanDefinition> = {
     displayCurrency: "eur",
     priceEnvVar: "STRIPE_PRICE_ID_MAXI",
     quotas: { BRANDS: 3, IDEAS: 90, VIDEO: 30, VOICEOVER: 30, AI_TEXT: 900, WIDGET_CHAT: 1500, WEBSITES: 3 },
-    unsourcedQuotas: ["AI_TEXT", "WIDGET_CHAT", "WEBSITES"],
     features: [
       "Alles aus Pro",
       "Dreifache Kontingente",

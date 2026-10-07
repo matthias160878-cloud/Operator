@@ -47,12 +47,12 @@ export default async function BillingPage({ searchParams }: { searchParams: Prom
       name: def.name,
       priceText: formatCents(def.netAmountCents, def.displayCurrency),
       priceIsLive: Boolean(price),
-      intervalText: `${VAT_NOTE} · ${price ? intervalText(price) : "Abrechnungszeitraum wird noch festgelegt"}`,
+      intervalText: `${VAT_NOTE} · ${price ? intervalText(price) : "monatlich"}`,
       features: def.features,
       quotas: (Object.keys(def.quotas) as Metric[]).map((m) => ({
         label: METRIC_LABELS[m],
         value: def.quotas[m],
-        provisional: true,
+        provisional: false,
       })),
     };
   });
@@ -110,8 +110,8 @@ export default async function BillingPage({ searchParams }: { searchParams: Prom
       />
       <p className="text-xs text-muted">
         Kontingente sind feste Obergrenzen je Kalendermonat (Marken und Webseiten: gleichzeitig). Es gibt keine
-        automatische kostenpflichtige Überschreitung. Alle angezeigten Kontingente sind vorläufig, bis der Betreiber die
-        Paketkonditionen bestätigt hat.
+        automatische kostenpflichtige Überschreitung. Das Abo verlängert sich monatlich und ist über „Abo &amp; Rechnungen
+        verwalten“ kündbar.
       </p>
     </div>
   );

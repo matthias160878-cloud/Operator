@@ -227,11 +227,11 @@ test("Checkout verlangt ausdrückliche Bestätigung und gültiges Paket", async 
 });
 
 let checkoutA;
-test("Kauf Pro (Einmalzahlung): Erfolgs-URL allein schaltet nichts frei", async () => {
+test("Kauf Pro (Monatsabo): Erfolgs-URL allein schaltet nichts frei", async () => {
   const r = await A.json("/api/stripe/checkout", { method: "POST", body: { plan: "pro", confirmed: true } });
   assert.equal(r.status, 200, JSON.stringify(r.data));
   const call = fakes.calls.filter((c) => c.path === "/v1/checkout/sessions").at(-1);
-  assert.equal(call.params.mode, "payment");
+  assert.equal(call.params.mode, "subscription");
   assert.equal(call.params["line_items[0][price]"], "price_pro");
   assert.equal(call.params.allow_promotion_codes, "true");
   // Nettopreis + Umsatzsteuer je Land
@@ -247,8 +247,8 @@ test("Kauf Pro (Einmalzahlung): Erfolgs-URL allein schaltet nichts frei", async 
 test("manipulierte Webhooks aktivieren nichts", async () => {
   const wsA = await workspaceIdOf("a@example.test");
   const paid = (id, extra = {}) => ({
-    id, object: "checkout.session", mode: "payment", payment_status: "paid", amount_subtotal: 59000, amount_total: 59000,
-    currency: "eur", customer: "cus_A", payment_intent: "pi_A", subscription: null, metadata: { workspaceId: wsA, plan: "MAXI" }, ...extra,
+    id, object: "checkout.session", mode: "subscription", payment_status: "paid", amount_subtotal: 59000, amount_total: 70210,
+    currency: "eur", customer: "cus_A", payment_intent: null, subscription: "sub_A_fake", metadata: { workspaceId: wsA, plan: "MAXI" }, ...extra,
   });
   // Falsche Signatur
   assert.equal((await webhook(event("checkout.session.completed", paid(checkoutA)), { badSignature: true })).status, 400);
@@ -281,25 +281,33 @@ test("bestätigte Zahlung aktiviert genau Pro; wiederholter Webhook bucht nicht 
   }
   const wsA = await workspaceIdOf("a@example.test");
   const evt = event("checkout.session.completed", {
-    id: sessionId, object: "checkout.session", mode: "payment", payment_status: "paid", amount_subtotal: 59000,
-    amount_total: 50150, currency: "eur", customer: "cus_A", payment_intent: "pi_A_paid", subscription: null, metadata: { plan: "MAXI" },
+    id: sessionId, object: "checkout.session", mode: "subscription", payment_status: "paid", amount_subtotal: 59000,
+    amount_total: 59679, currency: "eur", customer: "cus_A", payment_intent: null, subscription: "sub_A", metadata: { plan: "MAXI" },
   });
+  // Erste Monatsrechnung (mit Aktionscode, inkl. 19 % USt), doppelt zugestellt
+  const firstInvoice = event("invoice.paid", { id: "in_A_1", object: "invoice", amount_paid: 59679, total_taxes: [{ amount: 9529 }],
+    currency: "eur", customer: "cus_A", parent: { type: "subscription_details", subscription_details: { subscription: "sub_A" } },
+    lines: { data: [{ period: { end: Math.floor(Date.now() / 1000) + 30 * 86400 } }] } });
   const first = await (await webhook(evt)).json();
   const second = await (await webhook(evt)).json();
   const third = await (await webhook(evt)).json();
   assert.equal(first.result, "processed");
   assert.equal(second.result, "duplicate");
   assert.equal(third.result, "duplicate");
+  await webhook(firstInvoice);
+  await webhook(firstInvoice);
   const plan = await prisma.workspacePlan.findUnique({ where: { workspaceId: wsA } });
   assert.equal(plan.plan, "PRO"); // aus der serverseitigen Bestellung, nicht aus den Metadaten ("MAXI")
   assert.equal(plan.status, "ACTIVE");
   const payments = await prisma.operatorPayment.findMany({ where: { workspaceId: wsA } });
   assert.equal(payments.length, 1);
-  assert.equal(payments[0].amount, 50150); // tatsächlich bezahlter Betrag (mit Aktionscode)
+  assert.equal(payments[0].amount, 59679); // tatsächlich bezahlter Betrag (Aktionscode, inkl. USt)
+  assert.equal(payments[0].taxAmount, 9529);
+  assert.ok(plan.currentPeriodEnd > new Date());
   const status = await A.json(`/api/billing/status?checkout=${sessionId}`);
   assert.equal(status.data.plan.status, "ACTIVE");
   assert.equal(status.data.checkout.status, "COMPLETED");
-  // Zweiter Kauf desselben Pakets wird verweigert
+  // Zweiter Kauf (auch Maxi) wird verweigert — Wechsel nur über das Abo-Portal
   assert.equal((await A.json("/api/stripe/checkout", { method: "POST", body: { plan: "pro", confirmed: true } })).status, 409);
 });
 
@@ -381,22 +389,19 @@ test("Maxi als Abo: Aktivierung, Verlängerung, Kündigung", async () => {
   assert.equal(pcall.params.customer, "cus_B");
 });
 
-test("Erstattung einer Einmalzahlung deaktiviert das Paket und wird verbucht", async () => {
+test("Erstattung einer Abo-Zahlung wird verbucht, das Abo entscheidet der Betreiber", async () => {
   const wsA = await workspaceIdOf("a@example.test");
-  const charge = { id: "ch_A", object: "charge", payment_intent: "pi_A_paid", customer: "cus_A", amount: 50150, amount_refunded: 50150, refunded: true, currency: "eur" };
-  const e = event("charge.refunded", charge);
-  await webhook(e);
-  await webhook(e);
+  const charge = { id: "ch_A", object: "charge", payment_intent: "pi_A_invoice", customer: "cus_A", amount: 59679, amount_refunded: 20000, refunded: false, currency: "eur" };
+  await webhook(event("charge.refunded", charge));
+  await webhook(event("charge.refunded", { ...charge, amount_refunded: 59679, refunded: true }));
   const plan = await prisma.workspacePlan.findUnique({ where: { workspaceId: wsA } });
-  assert.equal(plan.status, "REFUNDED");
-  const refunds = await prisma.operatorPayment.findMany({ where: { kind: "REFUND" } });
-  assert.equal(refunds.length, 1);
-  assert.equal(refunds[0].amount, 50150);
-  // reaktivieren für folgende Tests (Testdaten)
-  await prisma.workspacePlan.update({ where: { workspaceId: wsA }, data: { status: "ACTIVE" } });
+  assert.equal(plan.status, "ACTIVE"); // Kündigung/Sperre nur bewusst über Stripe
+  const refunds = await prisma.operatorPayment.findMany({ where: { kind: "REFUND", workspaceId: wsA } });
+  assert.equal(refunds.length, 1); // kumulativer Stand, nicht doppelt
+  assert.equal(refunds[0].amount, 59679);
 });
 
-test("Review-Befunde: Mehrfachaufträge, 100-%-Rabatt, Lastschrift-Upgrade, alte Erstattung, doppelte Checkouts, Stimmen", async () => {
+test("Review-Befunde: Mehrfachaufträge, 100-%-Rabatt, Reihenfolge der Events, doppelte Checkouts, Stimmen", async () => {
   const wsA = await workspaceIdOf("a@example.test");
   const period = `${new Date().getUTCFullYear()}-${String(new Date().getUTCMonth() + 1).padStart(2, "0")}`;
   const key = { workspaceId_metric_period: { workspaceId: wsA, metric: "AI_TEXT", period } };
@@ -417,34 +422,20 @@ test("Review-Befunde: Mehrfachaufträge, 100-%-Rabatt, Lastschrift-Upgrade, alte
   assert.equal((await prisma.planCheckout.findUnique({ where: { id: s2 } })).status, "OPEN");
 
   // 100-%-Aktionscode: no_payment_required schaltet frei
-  await webhook(event("checkout.session.completed", { id: s2, object: "checkout.session", mode: "payment", payment_status: "no_payment_required",
-    amount_subtotal: 59000, amount_total: 0, currency: "eur", customer: "cus_C", payment_intent: null, subscription: null, metadata: {} }));
+  const freeSession = { id: s2, object: "checkout.session", mode: "subscription", payment_status: "no_payment_required",
+    amount_subtotal: 59000, amount_total: 0, currency: "eur", customer: "cus_C", payment_intent: null, subscription: "sub_C", metadata: {} };
+  await webhook(event("checkout.session.completed", freeSession));
   let planC = await prisma.workspacePlan.findUnique({ where: { workspaceId: wsC } });
   assert.equal(planC.status, "ACTIVE");
   assert.equal(planC.plan, "PRO");
 
-  // Upgrade auf Maxi per Lastschrift (noch unbezahlt): Pro bleibt aktiv; Fehlschlag entzieht nichts
-  await prisma.workspacePlan.update({ where: { workspaceId: wsC }, data: { stripeCustomerId: null } });
-  const s3 = (await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "maxi", confirmed: true } }));
-  // Maxi ist ein Abo-Preis, C hat ein aktives Einmal-Pro -> Kauf erlaubt
-  assert.equal(s3.status, 200, JSON.stringify(s3.data));
-  const s3id = s3.data.url.split("/").pop();
-  const sepa = { id: s3id, object: "checkout.session", mode: "subscription", payment_status: "unpaid", amount_subtotal: 79700, amount_total: 79700,
-    currency: "eur", customer: "cus_C", payment_intent: null, subscription: "sub_C", metadata: {} };
-  await webhook(event("checkout.session.completed", sepa));
+  // Events ohne feste Reihenfolge: ein später eintreffendes "unbezahlt" nimmt nichts zurück
+  await webhook(event("checkout.session.completed", { ...freeSession, payment_status: "unpaid" }));
+  await webhook(event("checkout.session.async_payment_failed", freeSession));
   planC = await prisma.workspacePlan.findUnique({ where: { workspaceId: wsC } });
   assert.equal(planC.status, "ACTIVE");
-  assert.equal(planC.plan, "PRO");
-  await webhook(event("checkout.session.async_payment_failed", sepa));
-  planC = await prisma.workspacePlan.findUnique({ where: { workspaceId: wsC } });
-  assert.equal(planC.status, "ACTIVE");
-
-  // Erstattung einer alten Pro-Zahlung deaktiviert ein späteres Maxi nicht
-  await prisma.operatorPayment.create({ data: { stripeObjectId: "pi_C_old", kind: "PAYMENT", workspaceId: wsC, plan: "PRO", amount: 59000, currency: "eur", status: "succeeded" } });
-  await prisma.workspacePlan.update({ where: { workspaceId: wsC }, data: { plan: "MAXI" } });
-  await webhook(event("charge.refunded", { id: "ch_C_old", object: "charge", payment_intent: "pi_C_old", customer: "cus_C", amount: 59000, amount_refunded: 59000, refunded: true, currency: "eur" }));
-  planC = await prisma.workspacePlan.findUnique({ where: { workspaceId: wsC } });
-  assert.equal(planC.status, "ACTIVE");
+  // Laufendes Abo: kein zweiter Checkout (auch nicht für Maxi), Wechsel über das Portal
+  assert.equal((await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "maxi", confirmed: true } })).status, 409);
 
   // Stimmen: fremde/beliebige IDs werden nicht an den Anbieter weitergereicht
   const voice = await A.json("/api/voices/preview", { method: "POST", body: { text: "Hallo", voiceId: "../../v1/user" } });
@@ -465,8 +456,8 @@ test("Betreiber: geschützte Einrichtung, Dashboard ohne Kundeninhalte, kein Zug
   const html = await page.text();
   assert.ok(html.includes("123,45"), "verfügbares Stripe-Guthaben fehlt"); // aus balance.available
   assert.ok(html.includes("5,00"), "ausstehendes Guthaben fehlt");
-  assert.ok(html.includes("501,50") && html.includes("948,43"), "Paketzahlungen fehlen");
-  assert.ok(html.includes("151,43"), "Umsatzsteueranteil fehlt");
+  assert.ok(html.includes("596,79") && html.includes("948,43"), "Paketzahlungen fehlen");
+  assert.ok(html.includes("246,72"), "Umsatzsteueranteil fehlt");
   assert.ok(!html.includes("Geheime Idee von A") && !html.includes("Geheimes Skript A"));
 
   const asCustomer = await A.req("/operator");

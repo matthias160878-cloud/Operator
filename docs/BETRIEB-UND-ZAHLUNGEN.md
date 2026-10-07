@@ -31,9 +31,9 @@ Die zentrale Definition steht in `src/lib/plans.ts`. Verkaufsseite (`/buy`),
 Paketseite (`/billing`), Checkout, Berechtigungen und Kontingente greifen alle
 darauf zu.
 
-* **Preis, Währung, Intervall** kommen aus dem Stripe-Preis
-  (`STRIPE_PRICE_ID_PRO` / `STRIPE_PRICE_ID_MAXI`). Ist der Preis wiederkehrend,
-  entsteht ein Abo, sonst eine Einmalzahlung. Der Code legt kein Intervall fest.
+* **Abgerechnet wird über den Stripe-Preis** (`STRIPE_PRICE_ID_PRO` / `STRIPE_PRICE_ID_MAXI`).
+  Die Anwendung prüft vor jedem Checkout, dass er zu den bestätigten Konditionen passt.
+  (Die Webhook-Verarbeitung kann technisch auch Einmalzahlungen, sie werden aber nicht verkauft.)
 * **Preise (bestätigt am 7. Oktober 2026):** Pro **590 € netto**, Maxi **797 € netto**,
   jeweils bereits nach 15 % Rabatt. Die Umsatzsteuer kommt je nach Land des
   Kunden hinzu: Checkout mit `automatic_tax`, Pflicht-Rechnungsadresse und
@@ -43,14 +43,15 @@ darauf zu.
   Ein durchgestrichener „Statt“-Preis wird nicht angezeigt: Nach § 11 PAngV
   zählt als Vergleich nur der niedrigste tatsächlich verlangte Preis der
   letzten 30 Tage, und den gibt es noch nicht.
-* **Noch offen:** Abrechnungszeitraum (einmalig oder wiederkehrend) und Kontingente.
+* **Abrechnung (bestätigt):** monatliches Abo. Der Checkout verweigert Stripe-Preise,
+  die nicht monatlich wiederkehren (Intervall 1 Monat).
 * **Rabatte** nur über in Stripe angelegte Aktionscodes (`allow_promotion_codes`).
   Ein fester 15-%-Rabatt ist nicht eingebaut.
-* **Kontingente (vorläufig):** Pro = Mengen der früheren Autopilot-Stufe S,
-  Maxi = Stufe M (`docs/preisanalyse.html`). Für `AI_TEXT`, `WIDGET_CHAT` und
-  `WEBSITES` gab es keine Vorlage; diese Werte habe ich gesetzt, sie müssen bestätigt werden.
-* **Verkaufssperre:** Ohne `PACKAGE_TERMS_CONFIRMED=true` verweigert der
-  Checkout jeden Kauf.
+* **Kontingente je Monat (bestätigt):** Pro: 1 Marke, 30 Ideen, 10 Videos,
+  10 Voiceovers, 300 KI-Texte, 500 Widget-Antworten, 1 Webseite. Maxi: 3 Marken,
+  90, 30, 30, 900, 1500, 3 Webseiten.
+* **Verkaufsstart:** Ohne `PACKAGE_TERMS_CONFIRMED=true` verweigert der Checkout
+  jeden Kauf — setzen, sobald Stripe (inkl. Steuern), AGB und Pflichtangaben stehen.
 * **Durchsetzung:** `reserveQuota()` erhöht den Zähler mit **einem** bedingten
   UPDATE (`used <= limit - 1`). Parallele Anfragen können das Limit deshalb
   nicht gemeinsam überschreiten (getestet: 12 parallele Anfragen bei 3 freien
@@ -226,8 +227,7 @@ Empfohlener Aufbau (Windows Server 2022/2025):
    Steuerregistrierungen (z. B. Deutschland; OSS für EU-Privatkunden), Produktsteuercode
    für Software/SaaS. Stripe Tax ist bei Stripe kostenpflichtig.
 1. Im Testmodus zwei Produkte *Pro* (590,00 €) und *Maxi* (797,00 €) mit je einem
-   Preis anlegen, **Steuerverhalten „exklusive Steuer“**.
-   Einmalig oder wiederkehrend ist deine Entscheidung; die Anwendung folgt dem Preis.
+   **monatlich wiederkehrenden** Preis anlegen, **Steuerverhalten „exklusive Steuer“**.
    Die Preis-IDs in `STRIPE_PRICE_ID_PRO/MAXI` eintragen.
 2. Webhook-Endpunkt (dein Konto) auf `/api/stripe/webhook` mit diesen Events:
    - `checkout.session.completed`

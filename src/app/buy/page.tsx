@@ -56,7 +56,7 @@ export default async function BuyPage() {
                   ? price.recurring
                     ? `wiederkehrend (${price.recurring.interval === "month" ? "monatlich" : price.recurring.interval === "year" ? "jährlich" : price.recurring.interval})`
                     : "einmalig"
-                  : "Abrechnungszeitraum wird noch festgelegt"}
+                  : "monatlich"}
               </div>
               <ul className="mt-4 space-y-1.5 text-sm text-foreground">
                 {def.features.map((f) => (
@@ -85,7 +85,7 @@ export default async function BuyPage() {
       </div>
       <p className="max-w-2xl text-center text-xs text-muted">
         Kontingente sind feste Obergrenzen ohne automatische Zusatzkosten.
-        {confirmed ? "" : " Alle Angaben sind vorläufig; der Kauf wird freigeschaltet, sobald die Paketkonditionen bestätigt sind."}{" "}
+        {confirmed ? "" : " Der Kauf wird in Kürze freigeschaltet."}{" "}
         {user ? (
           <Link className="underline" href="/">Zum Arbeitsbereich</Link>
         ) : (

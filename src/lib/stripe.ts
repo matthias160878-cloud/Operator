@@ -114,10 +114,12 @@ export async function createPlanCheckout(input: {
   }
   const price = await getPlanPrice(input.plan);
   if (!price) throw new CheckoutRefused("Für dieses Paket ist in Stripe kein aktiver Preis hinterlegt.", 503);
-  // Schutz vor Fehlkonfiguration: Stripe-Preis muss dem bestätigten Nettopreis entsprechen.
-  if (price.taxBehavior !== "exclusive" || price.unitAmount !== PLANS[input.plan].netAmountCents || price.currency !== "eur") {
+  // Schutz vor Fehlkonfiguration: Stripe-Preis muss dem bestätigten Nettopreis
+  // entsprechen und monatlich wiederkehren.
+  const monthly = price.recurring?.interval === "month" && price.recurring.intervalCount === 1;
+  if (!monthly || price.taxBehavior !== "exclusive" || price.unitAmount !== PLANS[input.plan].netAmountCents || price.currency !== "eur") {
     throw new CheckoutRefused(
-      "Der Stripe-Preis dieses Pakets ist nicht als Nettopreis in der vereinbarten Höhe angelegt. Der Betreiber muss ihn korrigieren.",
+      "Der Stripe-Preis dieses Pakets ist nicht als monatlicher Nettopreis in der vereinbarten Höhe angelegt. Der Betreiber muss ihn korrigieren.",
       503
     );
   }

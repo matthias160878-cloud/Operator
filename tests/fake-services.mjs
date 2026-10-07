@@ -33,7 +33,8 @@ export function startFakeServices() {
       }
       if (req.method === "GET" && p.startsWith("/v1/prices/")) {
         const id = p.split("/").pop();
-        const recurring = id === "price_maxi" ? { interval: "month", interval_count: 1 } : null;
+        // Bestätigt: beide Pakete monatlich; "price_once" nur für den Ablehnungstest.
+        const recurring = id === "price_once" ? null : { interval: "month", interval_count: 1 };
         return json(res, 200, {
           id, object: "price", active: true, currency: "eur", tax_behavior: "exclusive",
           unit_amount: id === "price_maxi" ? 79700 : 59000, recurring,

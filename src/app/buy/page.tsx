@@ -2,11 +2,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { CheckCircle2 } from "lucide-react";
-import { isPackagePriceConfigured, getConfiguredPrice, isSetupServiceConfigured } from "@/lib/stripe";
-import { formatSetupServicePrice, formatEur, AUTOPILOT_TIERS } from "@/lib/pricing";
-import { PACKAGES, PACKAGE_IDS, formatPackagePriceEur, type PackageId } from "@/lib/packages";
+import { formatEur, AUTOPILOT_TIERS } from "@/lib/pricing";
+import { PACKAGES, PACKAGE_IDS, formatPackagePriceEur } from "@/lib/packages";
 import { isLocale, DEFAULT_LOCALE } from "@/i18n/config";
-import { BuyButton } from "@/components/buy/BuyButton";
 
 export const dynamic = "force-dynamic";
 
@@ -17,21 +15,27 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+/**
+ * Pro/Maxi werden ausschließlich bei der Zentrale (secret58-web) verkauft
+ * — als Abo, monatlich oder jährlich, nie einmalig und nie über einen
+ * eigenen Checkout hier (Abschnitt "kein doppeltes Paket-/Zahlungssystem").
+ * Diese Seite zeigt den Funktionsumfang und verlinkt auf die dortige
+ * Preisseite; der `vorauswahl`-Parameter markiert dort direkt das
+ * passende Paket (siehe secret58-web public/social-media-ki.html).
+ */
 export default async function BuyPage() {
   const localeRaw = await getLocale();
   const locale = isLocale(localeRaw) ? localeRaw : DEFAULT_LOCALE;
   const t = await getTranslations("buy");
   const features = t.raw("features") as string[];
+  const zentraleUrl = (process.env.ZENTRALE_URL || "").replace(/\/$/, "");
 
-  const packageData = await Promise.all(
-    PACKAGE_IDS.map(async (id) => {
-      const pkg = PACKAGES[id];
-      const configured = isPackagePriceConfigured(id);
-      const configuredPrice = await getConfiguredPrice(id, locale);
-      const priceDisplay = configuredPrice?.formatted ?? formatPackagePriceEur(id, locale);
-      return { id, pkg, configured, configuredPrice, priceDisplay };
-    })
-  );
+  const packageData = PACKAGE_IDS.map((id) => ({
+    id,
+    pkg: PACKAGES[id],
+    priceDisplay: formatPackagePriceEur(id, locale),
+    kaufLink: zentraleUrl ? `${zentraleUrl}/social-media-ki.html?vorauswahl=${id}#pakete` : null,
+  }));
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-10 bg-grid px-4 py-12">
@@ -46,7 +50,7 @@ export default async function BuyPage() {
       </div>
 
       <div className="grid w-full max-w-4xl gap-6 sm:grid-cols-2">
-        {packageData.map(({ id, pkg, configured, configuredPrice, priceDisplay }) => (
+        {packageData.map(({ id, pkg, priceDisplay, kaufLink }) => (
           <div key={id} className="card relative overflow-hidden p-8 text-center">
             <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-accent/25 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-accent-2/20 blur-3xl" />
@@ -73,20 +77,21 @@ export default async function BuyPage() {
 
               <div className="mt-6 text-3xl font-semibold text-foreground">
                 {priceDisplay}
-                <span className="ml-1 text-sm font-normal text-muted">{t("priceOnetime")}</span>
+                <span className="ml-1 text-sm font-normal text-muted">{t("pricePerMonth")}</span>
               </div>
-              {!configuredPrice && (
-                <p className="mt-1 text-xs text-muted">{t("priceRecommendedNote")}</p>
-              )}
+              <p className="mt-1 text-xs text-muted">{t("priceNote")}</p>
 
               <div className="mt-6 flex justify-center">
-                <BuyButton
-                  packageId={id as PackageId}
-                  configured={configured}
-                  priceDisplay={priceDisplay}
-                  setupServiceAvailable={isSetupServiceConfigured()}
-                  setupServicePrice={formatSetupServicePrice(locale)}
-                />
+                {kaufLink ? (
+                  <a
+                    href={kaufLink}
+                    className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent to-accent-3 px-6 py-3 text-sm font-medium text-white shadow-[0_0_30px_rgba(109,91,255,0.4)]"
+                  >
+                    {t("goToZentrale")}
+                  </a>
+                ) : (
+                  <p className="text-xs text-warning">{t("notConfiguredZentrale")}</p>
+                )}
               </div>
             </div>
           </div>

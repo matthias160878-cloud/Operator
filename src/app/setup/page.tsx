@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
-import { AuthCard, AuthForm } from "@/components/auth/AuthForm";
+import { AuthForm } from "@/components/auth/AuthForm";
+import { AuthCard } from "@/components/auth/AuthCard";
 
 export const dynamic = "force-dynamic";
 

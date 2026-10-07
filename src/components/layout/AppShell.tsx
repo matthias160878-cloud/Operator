@@ -10,6 +10,7 @@ import { prisma } from "@/lib/db";
 import { requireSessionUser } from "@/lib/auth/session";
 import { getActivePlan } from "@/lib/entitlements";
 import Link from "next/link";
+import { LegalFooter } from "@/components/legal/LegalFooter";
 
 const ONBOARDING_SETTING_KEY = "onboardingCompleted";
 
@@ -39,6 +40,7 @@ export async function AppShell({ children }: { children: ReactNode }) {
             </div>
           )}
           {children}
+          <LegalFooter />
         </main>
       </div>
       <ChatWidget />

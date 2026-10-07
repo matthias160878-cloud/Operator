@@ -5,6 +5,7 @@ import { CheckCircle2 } from "lucide-react";
 import { getSessionUser } from "@/lib/auth/session";
 import { METRIC_LABELS, PLANS, PLAN_KEYS, VAT_NOTE, formatCents, packageTermsConfirmed, type Metric } from "@/lib/plans";
 import { getPlanPrice } from "@/lib/stripe";
+import { LegalFooter } from "@/components/legal/LegalFooter";
 
 export const dynamic = "force-dynamic";
 
@@ -92,6 +93,7 @@ export default async function BuyPage() {
           <Link className="underline" href="/login">Anmelden</Link>
         )}
       </p>
+      <LegalFooter />
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import { AuthCard, AuthForm } from "@/components/auth/AuthForm";
+import { AuthForm } from "@/components/auth/AuthForm";
+import { AuthCard } from "@/components/auth/AuthCard";
 import { parsePlanKey } from "@/lib/plans";
 
 export const dynamic = "force-dynamic";

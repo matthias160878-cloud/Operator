@@ -4,6 +4,7 @@ import { getUsage } from "@/lib/entitlements";
 import { METRIC_LABELS, PLANS, PLAN_KEYS, VAT_NOTE, formatCents, packageTermsConfirmed, parsePlanKey, type Metric } from "@/lib/plans";
 import { getPlanPrice, isStripeConfigured, isStripeWebhookConfigured, type PlanPrice } from "@/lib/stripe";
 import { BillingClient, type PlanCard } from "@/components/billing/BillingClient";
+import { legalInfoComplete } from "@/lib/legal";
 
 export const dynamic = "force-dynamic";
 
@@ -66,7 +67,7 @@ export default async function BillingPage({ searchParams }: { searchParams: Prom
       }))
     : [];
 
-  const salesOpen = packageTermsConfirmed() && isStripeConfigured() && isStripeWebhookConfigured();
+  const salesOpen = packageTermsConfirmed() && legalInfoComplete() && isStripeConfigured() && isStripeWebhookConfigured();
 
   return (
     <div className="space-y-5">

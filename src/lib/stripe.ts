@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { prisma } from "@/lib/db";
+import { legalInfoComplete } from "@/lib/legal";
 import { PLANS, packageTermsConfirmed, stripePriceIdFor, type PlanKey } from "@/lib/plans";
 
 /**
@@ -108,6 +109,9 @@ export async function createPlanCheckout(input: {
       "Der Verkauf ist noch nicht freigegeben: Die Paketkonditionen sind vom Betreiber noch nicht bestätigt.",
       503
     );
+  }
+  if (!legalInfoComplete()) {
+    throw new CheckoutRefused("Der Verkauf ist noch nicht freigegeben: Impressum, AGB oder Datenschutzerklärung fehlen.", 503);
   }
   if (!isStripeConfigured() || !isStripeWebhookConfigured()) {
     throw new CheckoutRefused("Die Zahlung ist noch nicht eingerichtet.", 503);

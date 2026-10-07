@@ -108,3 +108,18 @@ test("Signierte Medien-Links: nur passende, gültige Signatur", async () => {
   assert.equal(url.searchParams.get("sig"), mediaSignature("ws1", "video", "a.mp4", exp));
   assert.notEqual(url.searchParams.get("sig"), mediaSignature("ws2", "video", "a.mp4", exp));
 });
+
+test("Rechtliche Angaben: Verkauf erst mit Impressum, AGB und Datenschutz", async () => {
+  const { getImpressum, legalInfoComplete } = await import("@/lib/legal");
+  for (const k of ["IMPRESSUM_NAME", "IMPRESSUM_ANSCHRIFT", "IMPRESSUM_EMAIL", "AGB_URL", "DATENSCHUTZ_URL"]) delete process.env[k];
+  assert.equal(getImpressum(), null);
+  assert.equal(legalInfoComplete(), false);
+  process.env.IMPRESSUM_NAME = "A";
+  process.env.IMPRESSUM_ANSCHRIFT = "Weg 1 | 1 Ort";
+  process.env.IMPRESSUM_EMAIL = "a@example.test";
+  assert.deepEqual(getImpressum()?.anschrift, ["Weg 1", "1 Ort"]);
+  assert.equal(legalInfoComplete(), false); // AGB/Datenschutz fehlen noch
+  process.env.AGB_URL = "https://x/agb";
+  process.env.DATENSCHUTZ_URL = "https://x/ds";
+  assert.equal(legalInfoComplete(), true);
+});

@@ -4,6 +4,8 @@ import { getSessionUser } from "@/lib/auth/session";
 import { getOperatorOverview, type MoneyByCurrency } from "@/lib/operator/overview";
 import { formatCents, packageTermsConfirmed } from "@/lib/plans";
 import { LogoutButton } from "@/components/auth/LogoutButton";
+import { legalInfoComplete } from "@/lib/legal";
+import { LegalFooter } from "@/components/legal/LegalFooter";
 
 export const dynamic = "force-dynamic";
 
@@ -31,8 +33,9 @@ export default async function OperatorPage() {
           <h1 className="text-xl font-semibold text-foreground">Paketumsätze &amp; Betrieb</h1>
           <p className="text-xs text-muted">
             Stripe-Modus: {o.mode === "live" ? "Live" : o.mode === "test" ? "Test" : "nicht konfiguriert"} · Verkauf{" "}
-            {packageTermsConfirmed() ? "freigegeben" : "gesperrt (Konditionen unbestätigt)"} · Kundeninhalte sind hier
-            bewusst nicht sichtbar.
+            {packageTermsConfirmed() ? "freigegeben" : "gesperrt (Freigabeschalter aus)"} · Impressum/AGB/Datenschutz{" "}
+            {legalInfoComplete() ? "hinterlegt" : "unvollständig — Verkauf gesperrt"} · Kundeninhalte sind hier bewusst nicht
+            sichtbar.
           </p>
         </div>
         <div className="flex gap-2">
@@ -121,6 +124,7 @@ export default async function OperatorPage() {
           </ul>
         </div>
       </section>
+      <LegalFooter />
     </div>
   );
 }

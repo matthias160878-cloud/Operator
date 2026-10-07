@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { formatCents } from "@/lib/plans";
 import { ShopBuyButton } from "@/components/sales/ShopBuyButton";
+import { LegalFooter } from "@/components/legal/LegalFooter";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +22,7 @@ export default async function ShopPage({
   });
   if (!product || !product.workspace.merchantAccount?.chargesEnabled) notFound();
   return (
-    <div className="flex min-h-screen items-center justify-center bg-grid px-4 py-12">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-grid px-4 py-12">
       <div className="card w-full max-w-md p-6 text-center">
         <div className="text-xs text-muted">Angebot von {product.workspace.name}</div>
         <h1 className="mt-1 text-xl font-semibold text-foreground">{product.name}</h1>
@@ -38,6 +39,7 @@ export default async function ShopPage({
           Verkäufer ist {product.workspace.name}. Die Zahlung wird über Stripe direkt an den Verkäufer abgewickelt.
         </p>
       </div>
+      <LegalFooter />
     </div>
   );
 }

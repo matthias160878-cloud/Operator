@@ -21,6 +21,7 @@ const PUBLIC_PREFIXES = [
   "/login",
   "/signup",
   "/setup",
+  "/impressum",
   "/shop/",
   "/api/auth/",
   "/api/stripe/webhook",

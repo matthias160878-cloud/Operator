@@ -254,6 +254,17 @@ Empfohlener Aufbau (Windows Server 2022/2025):
 5. Mit Testkarten einen vollständigen Kauf, eine Erstattung und ein Connect-Onboarding durchspielen.
 6. Erst danach Live-Schlüssel eintragen und `PACKAGE_TERMS_CONFIRMED=true` setzen.
 
+## 9a. Impressum, AGB, Datenschutz
+
+* `/impressum` ist öffentlich und von jeder Seite (Verkauf, Anmeldung, Arbeitsbereich,
+  Shop, Betreiberbereich) im Seitenfuß verlinkt. Inhalte nur aus `IMPRESSUM_*`
+  (siehe `.env.example`); AGB und Datenschutzerklärung als Links (`AGB_URL`,
+  `DATENSCHUTZ_URL`), z. B. auf secret58.com.
+* Fehlen Name, Anschrift, E-Mail, AGB- oder Datenschutz-Link, verweigert der Checkout
+  den Verkauf; das Betreiber-Dashboard zeigt den Stand.
+* Offen: Kunden, die über ihren Shop verkaufen, brauchen ein eigenes Impressum auf
+  ihrer Angebotsseite — noch nicht umgesetzt.
+
 ## 10. Datenschutz-Technik (Vorbereitung, keine rechtliche Vollständigkeit)
 
 * Datenflüsse an Dritte:

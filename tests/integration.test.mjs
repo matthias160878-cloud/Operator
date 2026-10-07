@@ -111,6 +111,12 @@ before(async () => {
     STRIPE_PRICE_ID_PRO: "price_pro",
     STRIPE_PRICE_ID_MAXI: "price_maxi",
     PACKAGE_TERMS_CONFIRMED: "true",
+    // Testangaben — keine echten Anbieterdaten
+    IMPRESSUM_NAME: "Test Anbieter",
+    IMPRESSUM_ANSCHRIFT: "Teststraße 1 | 00000 Teststadt",
+    IMPRESSUM_EMAIL: "kontakt@example.test",
+    AGB_URL: "https://example.test/agb",
+    DATENSCHUTZ_URL: "https://example.test/datenschutz",
     OPERATOR_SETUP_TOKEN: SETUP_TOKEN,
     ANTHROPIC_API_KEY: "sk-ant-fake",
     ANTHROPIC_BASE_URL: `http://127.0.0.1:${fakes.stripePort}`,
@@ -151,6 +157,18 @@ test("ohne Anmeldung: Seiten leiten zur Anmeldung, API antwortet 401", async () 
   assert.equal(api.status, 401);
   const media = await fetch(`${BASE}/api/media/audio/x.mp3`);
   assert.equal(media.status, 401);
+});
+
+test("Impressum ist ohne Anmeldung erreichbar und überall verlinkt", async () => {
+  const page = await fetch(`${BASE}/impressum`);
+  assert.equal(page.status, 200);
+  const html = await page.text();
+  assert.ok(html.includes("Test Anbieter") && html.includes("Teststraße 1") && html.includes("§ 5"));
+  for (const p of ["/buy", "/login", "/signup"]) {
+    const h = await (await fetch(`${BASE}${p}`)).text();
+    assert.ok(h.includes('href="/impressum"'), `Impressum-Link fehlt auf ${p}`);
+    assert.ok(h.includes("https://example.test/datenschutz") && h.includes("https://example.test/agb"), `AGB/Datenschutz fehlen auf ${p}`);
+  }
 });
 
 test("Anmeldung: falsches Passwort generisch abgelehnt, richtiges klappt", async () => {

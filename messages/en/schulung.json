@@ -60,7 +60,7 @@
       "title": "Inbox",
       "description": "AI-drafted replies to messages — with approval before sending.",
       "steps": [
-        "Since no platform is connected via OAuth yet, conversations are currently added manually instead of pulled live.",
+        "Since no platform offers an inbox messaging API, conversations are currently added manually instead of pulled live.",
         "The MessageAgent drafts a reply based on Brand DNA and conversation history.",
         "The draft must be manually reviewed and approved before it counts as sent — an actual send honestly fails without a platform connection instead of faking success."
       ]
@@ -80,7 +80,7 @@
         "Every row shows the real, live-checked status — never a faked connection.",
         "For \"Not configured\", \"Get API key\" leads to the provider's official page.",
         "\"Set in Render\" leads directly to the environment variables where the key is stored — there is deliberately no key input form inside the app itself, for security.",
-        "Costs: the SECRET 58 purchase price is one-time. Every external provider has its own, independent cost model (free / pay-as-you-go / subscription) — the Integrations page shows which model applies to each service, with a link to that provider's current pricing."
+        "Costs: your SECRET 58 subscription covers the software. Every external provider has its own, independent cost model (free / pay-as-you-go / subscription) — the Integrations page shows which model applies to each service, with a link to that provider's current pricing."
       ]
     }
   }

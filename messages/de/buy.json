@@ -1,7 +1,7 @@
 {
   "kicker": "AI Social Command Center",
   "claim": "Kein Abo bei anderen Anbietern nötig. Alle Agenten. Feste Kontingente.",
-  "subtitle": "Eine Idee. Mehrere Plattformen. Maximale Reichweite. Zwei Pakete, voller Funktionsumfang — einmal zahlen, voller Zugriff auf die gesamte Anwendung.",
+  "subtitle": "Eine Idee. Mehrere Plattformen. Maximale Reichweite. Zwei Pakete, voller Funktionsumfang — als Monats- oder Jahresabo, voller Zugriff auf die gesamte Anwendung.",
   "features": [
     "Content Brain — eine Idee, alle Plattformen",
     "Alle KI-Agenten: Ideen, Trends, Script, Hook, Hashtags, Thumbnails, Untertitel, Publishing",
@@ -13,17 +13,11 @@
     "KI-Zugänge sind im Paket enthalten — kein eigenes Anbieter-Abo nötig"
   ],
   "packageQuota": "{ideas} Content-Ideen · {videos} KI-Videos · {voice} Sprachausgaben pro Monat enthalten",
-  "priceOnetime": "einmalig",
-  "priceRecommendedNote": "Empfohlener Preis — wird verbindlich, sobald Stripe mit einem passenden Preis konfiguriert ist.",
-  "buyButton": "Jetzt kaufen",
-  "redirecting": "Weiterleitung zu Stripe …",
-  "checkoutFailed": "Checkout fehlgeschlagen.",
-  "unknownError": "Unbekannter Fehler.",
-  "notConfigured": "Zahlung ist noch nicht konfiguriert — der Betreiber muss dieses Paket zuerst in Stripe anlegen und die passende Price-ID hinterlegen.",
-  "costDisclosure": "Hinweis: Dieser Preis ist einmalig für die Software. KI-Zugänge (Text, Sprache) stellt der Betreiber zentral bereit und sind im Rahmen deines monatlichen Paket-Kontingents enthalten — du brauchst kein eigenes Abo bei Anthropic, OpenAI oder ElevenLabs. Ist das Kontingent in einem Monat aufgebraucht, informieren wir dich — es entstehen keine automatischen Zusatzkosten.",
-  "setupServiceTitle": "Einrichtungsservice dazubuchen (+{price} einmalig)",
-  "setupServiceDescription": "Wir richten für dich Brand DNA und die ersten Posts ein.",
-  "setupServiceUnavailable": "Bald buchbar — der Betreiber muss den Service zuerst in Stripe hinterlegen.",
+  "pricePerMonth": "/ Monat",
+  "priceNote": "Verbindlicher Kauf (monatlich oder jährlich mit Rabatt) läuft über secret58 — hier nur zur Orientierung.",
+  "goToZentrale": "Bei secret58 kaufen",
+  "notConfiguredZentrale": "Die Verkaufsadresse ist noch nicht eingerichtet.",
+  "costDisclosure": "Hinweis: Pro/Maxi wird als Abo bei secret58 verkauft (monatlich oder jährlich, mit Rabatt). KI-Zugänge (Text, Sprache) stellt der Betreiber zentral bereit und sind im Rahmen deines monatlichen Paket-Kontingents enthalten — du brauchst kein eigenes Abo bei Anthropic, OpenAI oder ElevenLabs. Ist das Kontingent in einem Monat aufgebraucht, informieren wir dich — es entstehen keine automatischen Zusatzkosten.",
   "autopilot": {
     "kicker": "Demnächst",
     "title": "Autopilot — alles inklusive",

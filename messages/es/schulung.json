@@ -60,7 +60,7 @@
       "title": "Bandeja de entrada",
       "description": "Respuestas redactadas por IA para los mensajes — con aprobación antes de enviarlas.",
       "steps": [
-        "Como todavía no hay ninguna plataforma conectada mediante OAuth, las conversaciones se añaden manualmente en lugar de obtenerse en vivo.",
+        "Como ninguna plataforma ofrece una API de mensajería para la bandeja de entrada, las conversaciones se añaden manualmente en lugar de obtenerse en vivo.",
         "El MessageAgent redacta una respuesta basada en el ADN de marca y el historial de la conversación.",
         "El borrador debe revisarse y aprobarse manualmente antes de considerarse enviado — un envío real falla honestamente sin conexión a la plataforma, en lugar de simular éxito."
       ]
@@ -80,7 +80,7 @@
         "Cada fila muestra el estado real, comprobado en vivo — nunca una conexión simulada.",
         "En \"No configurado\", \"Obtener clave API\" lleva a la página oficial del proveedor.",
         "\"Configurar en Render\" lleva directamente a las variables de entorno donde se guarda la clave — deliberadamente no hay ningún formulario para introducir claves dentro de la propia aplicación, por seguridad.",
-        "Costes: el precio de compra de SECRET 58 es único. Cada proveedor externo tiene su propio modelo de costes independiente (gratis / según uso / suscripción) — la página de Integraciones indica qué modelo aplica a cada servicio, con un enlace a los precios actuales del proveedor."
+        "Costes: tu suscripción a SECRET 58 cubre el software. Cada proveedor externo tiene su propio modelo de costes independiente (gratis / según uso / suscripción) — la página de Integraciones indica qué modelo aplica a cada servicio, con un enlace a los precios actuales del proveedor."
       ]
     }
   }

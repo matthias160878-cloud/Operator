@@ -1,7 +1,7 @@
 {
   "kicker": "AI Social Command Center",
   "claim": "Sin suscripción a otros proveedores. Todos los agentes. Cuotas fijas.",
-  "subtitle": "Una idea. Varias plataformas. Máximo alcance. Dos paquetes, funcionalidad completa — pagas una vez, acceso total a toda la aplicación.",
+  "subtitle": "Una idea. Varias plataformas. Máximo alcance. Dos paquetes, funcionalidad completa — como suscripción mensual o anual, acceso total a toda la aplicación.",
   "features": [
     "Content Brain — una idea, todas las plataformas",
     "Todos los agentes de IA: ideas, tendencias, guion, gancho, hashtags, miniaturas, subtítulos, publicación",
@@ -13,17 +13,11 @@
     "El acceso a la IA está incluido en el paquete — no necesitas tu propia suscripción"
   ],
   "packageQuota": "{ideas} ideas de contenido · {videos} vídeos con IA · {voice} locuciones al mes incluidos",
-  "priceOnetime": "pago único",
-  "priceRecommendedNote": "Precio recomendado — será vinculante en cuanto se configure un precio correspondiente en Stripe.",
-  "buyButton": "Comprar ahora",
-  "redirecting": "Redirigiendo a Stripe …",
-  "checkoutFailed": "Error en el proceso de pago.",
-  "unknownError": "Error desconocido.",
-  "notConfigured": "El pago aún no está configurado — primero el operador debe crear este paquete en Stripe y definir el precio correspondiente.",
-  "costDisclosure": "Nota: este precio es un pago único por el software. El acceso a la IA (texto, voz) lo proporciona el operador de forma centralizada y está incluido dentro de la cuota mensual de tu paquete — no necesitas tu propia suscripción con Anthropic, OpenAI o ElevenLabs. Si se agota la cuota de un mes, te avisamos — no se generan cargos adicionales automáticos.",
-  "setupServiceTitle": "Añadir servicio de configuración (+{price} pago único)",
-  "setupServiceDescription": "Configuramos por ti el Brand DNA y tus primeras publicaciones.",
-  "setupServiceUnavailable": "Disponible pronto — el operador debe añadir primero el servicio en Stripe.",
+  "pricePerMonth": "/ mes",
+  "priceNote": "La compra vinculante (mensual o anual, con descuento) se realiza en secret58 — aquí solo a modo de referencia.",
+  "goToZentrale": "Comprar en secret58",
+  "notConfiguredZentrale": "La dirección de venta aún no está configurada.",
+  "costDisclosure": "Nota: Pro/Maxi se vende como suscripción en secret58 (mensual o anual, con descuento). El acceso a la IA (texto, voz) lo proporciona el operador de forma centralizada y está incluido dentro de la cuota mensual de tu paquete — no necesitas tu propia suscripción con Anthropic, OpenAI o ElevenLabs. Si se agota la cuota de un mes, te avisamos — no se generan cargos adicionales automáticos.",
   "autopilot": {
     "kicker": "Próximamente",
     "title": "Autopilot — todo incluido",

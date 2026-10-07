@@ -18,7 +18,7 @@ export async function POST(
   if (!quota.allowed) {
     return NextResponse.json(
       {
-        error: `Monatliches Video-Kontingent erreicht (${quota.used}/${quota.limit}). Enthalten im gebuchten Paket — siehe Einstellungen für ein Paket-Upgrade.`,
+        error: `Monatliches Video-Kontingent erreicht (${quota.used}/${quota.limit}). Enthalten im gebuchten Paket — ein Upgrade ist bei der Zentrale (secret58.com) möglich.`,
         code: "QUOTA_EXCEEDED",
       },
       { status: 429 },

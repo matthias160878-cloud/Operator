@@ -46,13 +46,4 @@ next-env.d.ts
 /prisma/dev.db-journal
 /dev.db
 /dev.db-journal
-/public/media/audio/*
-/public/media/video/*
-/public/media/images/*
-/public/media/thumbnails/*
-/public/media/subtitles/*
-!/public/media/audio/.gitkeep
-!/public/media/video/.gitkeep
-!/public/media/images/.gitkeep
-!/public/media/thumbnails/.gitkeep
-!/public/media/subtitles/.gitkeep
+/media-storage/

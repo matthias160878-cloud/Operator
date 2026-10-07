@@ -1,14 +1,15 @@
 // SECRET 58 — AI Social Command Center
 // Datenmodell gemäß Master-Prompt Abschnitt 24.
-// SQLite als Standard-Engine, damit die App ohne externe Datenbank startfähig bleibt.
-// Für Produktion: DATABASE_URL auf Postgres/MySQL umstellen (provider anpassen).
+// Postgres als Engine — das Schema enthält keine datenbankspezifischen Typen
+// (kein @db.*, keine Autoincrement-IDs), war also schon vorher portabel.
+// DATABASE_URL muss auf eine echte Postgres-Instanz zeigen (siehe .env.example).
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -95,6 +96,11 @@ enum LicenseStatus {
   PENDING
   ACTIVE
   REFUNDED
+  /// Abo bei der Zentrale nicht mehr aktiv (gekündigt und Periode vorbei,
+  /// Zahlungsausfall, abgelaufen) --- unterscheidet sich bewusst von
+  /// REFUNDED (das bleibt für echte Erstattungen reserviert). Siehe
+  /// src/lib/abostatus.ts.
+  EXPIRED
 }
 
 enum ConversationStatus {
@@ -150,14 +156,18 @@ model Workspace {
 }
 
 model User {
-  id           String    @id @default(cuid())
-  workspaceId  String
-  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  email        String    @unique
-  name         String
-  passwordHash String
-  role         Role      @default(OWNER)
-  createdAt    DateTime  @default(now())
+  id                       String    @id @default(cuid())
+  workspaceId              String
+  workspace                Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  email                    String    @unique
+  name                     String
+  passwordHash             String
+  role                     Role      @default(OWNER)
+  createdAt                DateTime  @default(now())
+  /// "kundenschluessel" der Zentrale (secret58-web) --- gesetzt, wenn dieses
+  /// Konto per Entitlement-Token entstand/verknüpft wurde, siehe
+  /// src/lib/entitlement.ts. Nie die E-Mail-Adresse der Zentrale.
+  externalKundenschluessel String?   @unique
 
   auditLogs AuditLog[]
   sessions  Session[]
@@ -335,18 +345,18 @@ model MediaAsset {
 }
 
 model PlatformAccount {
-  id               String        @id @default(cuid())
-  workspaceId      String
-  workspace        Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  platform         Platform
-  accountName      String        @default("")
-  status           AccountStatus @default(NOT_CONFIGURED)
-  lastPublishedAt  DateTime?
-  lastError        String?
-  createdAt        DateTime      @default(now())
-  accessTokenEnc   String?
-  refreshTokenEnc  String?
-  tokenExpiresAt   DateTime?
+  id                String        @id @default(cuid())
+  workspaceId       String
+  workspace         Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  platform          Platform
+  accountName       String        @default("")
+  status            AccountStatus @default(NOT_CONFIGURED)
+  lastPublishedAt   DateTime?
+  lastError         String?
+  createdAt         DateTime      @default(now())
+  accessTokenEnc    String?
+  refreshTokenEnc   String?
+  tokenExpiresAt    DateTime?
   externalAccountId String?
 
   @@unique([workspaceId, platform])
@@ -500,25 +510,76 @@ model Message {
 // Der Betreiber-Zugang läuft separat über OWNER_ACCESS_KEY (siehe proxy.ts)
 // und braucht keinen License-Datensatz.
 model License {
-  id                      String        @id @default(cuid())
-  unlockToken             String        @unique
-  status                  LicenseStatus @default(PENDING)
+  id                         String        @id @default(cuid())
+  unlockToken                String        @unique
+  status                     LicenseStatus @default(PENDING)
   /// "pro" | "maxi" — siehe src/lib/packages.ts. Nullable für Alt-Lizenzen
   /// aus der Zeit vor dem Zwei-Pakete-Modell.
-  packageId               String?
-  customerEmail           String        @default("")
-  stripeCheckoutSessionId String        @unique
-  stripeCustomerId        String        @default("")
-  stripePaymentIntentId   String        @default("")
-  amountTotal             Int           @default(0)
-  currency                String        @default("eur")
-  userId                  String?
-  user                    User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
-  workspaceId             String?
-  workspace               Workspace?    @relation(fields: [workspaceId], references: [id], onDelete: SetNull)
-  createdAt               DateTime      @default(now())
-  updatedAt               DateTime      @updatedAt
+  packageId                  String?
+  /// "stripe" (hier bezahlt, Normalfall bisher) oder "zentrale" (Zugriff
+  /// über das Entitlement-Token von secret58-web übernommen, kein eigener
+  /// Kauf hier). Das Betreiber-Dashboard zählt nur "stripe" als Umsatz ---
+  /// sonst würde ein unentgeltlich übernommener Zugriff wie ein zweiter
+  /// Verkauf aussehen, siehe src/app/operator/page.tsx.
+  origin                     String        @default("stripe")
+  /// Nur für origin="zentrale": der rohe Abostatus-Text von dort
+  /// (z.B. "active", "past_due", "canceled") --- rein informativ/zur
+  /// Fehlersuche, NIE für die Zugriffsentscheidung gelesen (die liest
+  /// ausschließlich `status`/`packageId`/`statusGueltigBis`).
+  externerAboStatus          String?
+  customerEmail              String        @default("")
+  stripeCheckoutSessionId    String        @unique
+  stripeCustomerId           String        @default("")
+  stripePaymentIntentId      String        @default("")
+  amountTotal                Int           @default(0)
+  currency                   String        @default("eur")
+  userId                     String?
+  user                       User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  workspaceId                String?
+  workspace                  Workspace?    @relation(fields: [workspaceId], references: [id], onDelete: SetNull)
+  /// Nur für origin="zentrale": bis wann der Status (ACTIVE/packageId) als
+  /// aktuell gilt, ohne erneute Bestätigung durch die Zentrale --- wird bei
+  /// jeder Einlösung und jedem Abostatus-Push neu gesetzt (siehe
+  /// src/lib/abostatus.ts). Abgelaufen UND kein neuer Push angekommen heißt:
+  /// proxy.ts verweigert Zugriff, selbst wenn `status` noch ACTIVE sagt ---
+  /// so bleibt ein früherer Login nicht unbegrenzt gültig, wenn die
+  /// Zentrale-Verbindung über diese Frist hinaus ausfällt.
+  statusGueltigBis           DateTime?
+  /// Zeitstempel (`gesendetUm`) des zuletzt ANGEWANDTEN Abostatus-Push ---
+  /// ein verspätet eintreffendes, aber ÄLTERES Ereignis wird daran erkannt
+  /// und verworfen, statt einen neueren Stand zu überschreiben.
+  letzterAboEventZeitstempel DateTime?
+  createdAt                  DateTime      @default(now())
+  updatedAt                  DateTime      @updatedAt
 
   @@index([workspaceId])
   @@map("licenses")
+}
+
+/// Verhindert, dass ein Abostatus-Push der Zentrale doppelt verarbeitet
+/// (Replay) oder ein verspätet eintreffendes ÄLTERES Ereignis ein neueres
+/// überschreibt (Out-of-Order) --- siehe src/lib/abostatus.ts.
+model AboStatusEreignis {
+  id               String   @id @default(cuid())
+  eventId          String   @unique
+  kundenschluessel String
+  verarbeitetAm    DateTime @default(now())
+
+  @@index([kundenschluessel])
+  @@map("abo_status_ereignisse")
+}
+
+/// Replay-Schutz für Entitlement-Tokens aus der Zentrale (secret58-web):
+/// jedes `jti` wird hier genau einmal eingetragen, bevor die Einlösung
+/// fortfährt --- ein zweiter Versuch mit demselben Token (z.B. ein
+/// abgefangener Link) scheitert dann an diesem eindeutigen Index, nicht an
+/// einer zeitlichen Vermutung. Einträge veralten mit der Token-Gültigkeit
+/// (siehe src/lib/entitlement.ts) und müssen nicht aufgeräumt werden, um
+/// korrekt zu bleiben --- nur um die Tabelle klein zu halten.
+model EntitlementRedemption {
+  id         String   @id @default(cuid())
+  jti        String   @unique
+  redeemedAt DateTime @default(now())
+
+  @@map("entitlement_redemptions")
 }

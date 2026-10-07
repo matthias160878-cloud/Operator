@@ -1,6 +1,6 @@
 {
   "title": "Analítica",
-  "subtitle": "Métricas de rendimiento a partir de datos reales — en cuanto se conecten plataformas, esta vista se llenará con valores reales.",
+  "subtitle": "Métricas de rendimiento a partir de datos reales — la conexión con estadísticas reales de las plataformas está prevista pero aún no implementada. Esta vista permanece vacía hasta entonces, sin cifras inventadas.",
   "statViewsTotal": "Visualizaciones totales",
   "statLikesTotal": "Me gusta totales",
   "statComments": "Comentarios",

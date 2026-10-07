@@ -15,13 +15,17 @@ export const dynamic = "force-dynamic";
  * Erfolgsmeldungen.
  */
 export default async function OperatorDashboard() {
-  const [active, pending, refunded, recent] = await Promise.all([
+  const [active, pending, refunded, uebernommen, recent] = await Promise.all([
+    // Nur "stripe": "zentrale"-Lizenzen (Entitlement-Token-Übernahme aus
+    // secret58-web, siehe src/app/entitlement/einloesen/route.ts) sind kein
+    // eigener Verkauf hier und würden Umsatz/Verkaufszahlen sonst verzerren.
     prisma.license.findMany({
-      where: { status: "ACTIVE" },
+      where: { status: "ACTIVE", origin: "stripe" },
       select: { amountTotal: true, currency: true, packageId: true },
     }),
-    prisma.license.count({ where: { status: "PENDING" } }),
-    prisma.license.count({ where: { status: "REFUNDED" } }),
+    prisma.license.count({ where: { status: "PENDING", origin: "stripe" } }),
+    prisma.license.count({ where: { status: "REFUNDED", origin: "stripe" } }),
+    prisma.license.count({ where: { status: "ACTIVE", origin: "zentrale" } }),
     prisma.license.findMany({
       orderBy: { createdAt: "desc" },
       take: 25,
@@ -34,6 +38,7 @@ export default async function OperatorDashboard() {
         currency: true,
         createdAt: true,
         workspaceId: true,
+        origin: true,
       },
     }),
   ]);
@@ -68,7 +73,7 @@ export default async function OperatorDashboard() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
           <div className="card p-5">
             <p className="text-xs uppercase tracking-wide text-muted">Aktive Lizenzen</p>
             <p className="mt-2 text-2xl font-semibold text-foreground">{active.length}</p>
@@ -80,6 +85,13 @@ export default async function OperatorDashboard() {
           <div className="card p-5">
             <p className="text-xs uppercase tracking-wide text-muted">Erstattet</p>
             <p className="mt-2 text-2xl font-semibold text-foreground">{refunded}</p>
+          </div>
+          <div className="card p-5">
+            <p className="text-xs uppercase tracking-wide text-muted">Über die Zentrale übernommen</p>
+            <p className="mt-2 text-2xl font-semibold text-foreground">{uebernommen}</p>
+            <p className="mt-1 text-xs text-muted">
+              Kein eigener Verkauf hier — Pro/Maxi wurde bei secret58-web bezahlt.
+            </p>
           </div>
         </div>
 
@@ -142,6 +154,7 @@ export default async function OperatorDashboard() {
                   <th className="pb-2 pr-4">Paket</th>
                   <th className="pb-2 pr-4">Status</th>
                   <th className="pb-2 pr-4">Betrag</th>
+                  <th className="pb-2 pr-4">Herkunft</th>
                   <th className="pb-2">Workspace zugeordnet</th>
                 </tr>
               </thead>
@@ -159,12 +172,15 @@ export default async function OperatorDashboard() {
                     <td className="py-2 pr-4 text-foreground">
                       {formatEur("de", license.amountTotal / 100)}
                     </td>
+                    <td className="py-2 pr-4 text-muted">
+                      {license.origin === "zentrale" ? "Zentrale" : "Stripe"}
+                    </td>
                     <td className="py-2 text-muted">{license.workspaceId ? "Ja" : "Nein (alt/anonym)"}</td>
                   </tr>
                 ))}
                 {recent.length === 0 && (
                   <tr>
-                    <td colSpan={6} className="py-4 text-center text-muted">
+                    <td colSpan={7} className="py-4 text-center text-muted">
                       Noch keine Lizenzen.
                     </td>
                   </tr>

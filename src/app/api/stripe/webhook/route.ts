@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
 import { constructWebhookEvent, isStripeWebhookConfigured } from "@/lib/stripe";
-import { activateLicenseFromSession, markLicenseRefunded } from "@/lib/license";
+import { markLicenseRefunded } from "@/lib/license";
 
+/**
+ * Pro/Maxi gibt es nicht mehr über einen eigenen Checkout hier (siehe
+ * /api/stripe/checkout, retired, 410) --- deshalb schaltet dieser Webhook
+ * auch kein `checkout.session.completed` mehr zu einer neuen Lizenz frei.
+ * `charge.refunded` bleibt aktiv: eine Erstattung für einen VOR dieser
+ * Umstellung hier abgeschlossenen Kauf muss weiterhin verarbeitet werden
+ * können.
+ */
 export async function POST(request: Request) {
   if (!isStripeWebhookConfigured()) {
     return NextResponse.json(
@@ -19,9 +27,7 @@ export async function POST(request: Request) {
 
   try {
     const event = constructWebhookEvent(rawBody, signature);
-    if (event.type === "checkout.session.completed") {
-      await activateLicenseFromSession(event.data.object);
-    } else if (event.type === "charge.refunded") {
+    if (event.type === "charge.refunded") {
       await markLicenseRefunded(event.data.object);
     }
     return NextResponse.json({ received: true });

@@ -17,11 +17,40 @@ import { formatEur } from "@/lib/pricing";
  * bereits für die Autopilot-Größen festlegt ("Staffelung ausschließlich
  * nach Menge, nie nach Funktionen").
  *
- * WICHTIG: Die Kontingent-Zahlen unten (ideasPerMonth/videosPerMonth/
- * voiceGenerationsPerMonth) sind ein begründeter Startwert, kein vom
- * Auftraggeber verbindlich festgelegter Wert — nur die beiden Preise
- * (590 € Pro / 797 € Maxi) wurden explizit bestätigt. Bitte vor dem
- * echten Verkaufsstart prüfen/anpassen (siehe Projektbericht).
+ * KONTINGENT-HERLEITUNG (nicht mehr frei geschätzt, sondern aus den
+ * Anbieterkosten in docs/preisanalyse.html zurückgerechnet):
+ *
+ * Pro/Maxi sind EINMALIGE Zahlungen, aber die Anbieterkosten (Claude/
+ * ElevenLabs/Videogenerator, zentral über Betreiber-Keys bereitgestellt,
+ * siehe Abschnitt 6 des Auftrags) laufen pro Nutzung weiter — anders als
+ * beim geplanten Autopilot-Abo (monatliche Zahlung deckt monatliche
+ * Kosten) amortisiert sich ein einmaliger Preis nur über einen
+ * begrenzten Zeitraum. Rechengrundlage: Einmalpreis über 12 Monate
+ * verteilt (= der im Preismodell ohnehin genannte Zeitraum "12 Monate
+ * Updates/Hosting inklusive"), davon ~45 % als Anbieter-Kostenbudget
+ * (Rest = Marge, vergleichbar mit der Autopilot-Marge von 58–60 %),
+ * verteilt auf die drei kostenpflichtigen Ressourcen mit den in
+ * docs/preisanalyse.html genannten Einheitspreisen:
+ *   - Idee (Text durch alle Agenten): ≈ 0,07 € / Idee
+ *   - KI-Video (30 s): ≈ 0,15 €/nutzbare Sekunde × 30 ≈ 4,50 € / Video
+ *   - Sprachausgabe: ≈ 0,17 € / Minute, angenommen ≈ 1 Minute / Generierung
+ * Video dominiert die Kosten massiv (4,50 € ggü. 0,07 € oder 0,17 €) —
+ * deshalb bleibt das Video-Kontingent bei beiden Paketen bewusst klein;
+ * wer regelmäßig mehr Videos braucht, ist beim geplanten (noch nicht
+ * buchbaren) Autopilot-Abo richtig, das laufende Kosten laufend deckt.
+ *   Pro (590 €): Budget ≈ 590 × 0,45 / 12 ≈ 22 €/Monat
+ *     → 40 Ideen (2,80 €) + 3 Videos (13,50 €) + 20 Sprachausgaben (3,40 €)
+ *       ≈ 19,70 €/Monat (≈ 60 % Marge auf 49,17 €/Monat Äquivalent)
+ *   Maxi (797 €): Budget ≈ 797 × 0,45 / 12 ≈ 30 €/Monat
+ *     → 80 Ideen (5,60 €) + 4 Videos (18,00 €) + 35 Sprachausgaben (5,95 €)
+ *       ≈ 29,55 €/Monat (≈ 55 % Marge auf 66,42 €/Monat Äquivalent)
+ *
+ * Trotzdem weiterhin ein Startwert, keine vom Auftraggeber verbindlich
+ * bestätigte Vorgabe — nur die beiden Preise (590 €/797 €) sind bestätigt.
+ * Die Annahmen (12-Monats-Horizont, 45 % Kostenanteil, Anbieterpreise
+ * Stand der Preisanalyse) sind explizit genannt, damit sie gezielt
+ * angepasst werden können. Siehe README, Abschnitt
+ * "Monatliche Kontingente", für dieselbe Herleitung in Prosa.
  */
 export type PackageId = "pro" | "maxi";
 
@@ -48,7 +77,7 @@ export const PACKAGES: Record<PackageId, PackageDefinition> = {
     priceEur: 590,
     priceCents: 59_000,
     stripePriceEnvVar: "STRIPE_PRICE_ID_PRO",
-    quotas: { ideasPerMonth: 60, videosPerMonth: 15, voiceGenerationsPerMonth: 20 },
+    quotas: { ideasPerMonth: 40, videosPerMonth: 3, voiceGenerationsPerMonth: 20 },
   },
   maxi: {
     id: "maxi",
@@ -56,7 +85,7 @@ export const PACKAGES: Record<PackageId, PackageDefinition> = {
     priceEur: 797,
     priceCents: 79_700,
     stripePriceEnvVar: "STRIPE_PRICE_ID_MAXI",
-    quotas: { ideasPerMonth: 150, videosPerMonth: 40, voiceGenerationsPerMonth: 50 },
+    quotas: { ideasPerMonth: 80, videosPerMonth: 4, voiceGenerationsPerMonth: 35 },
   },
 };
 

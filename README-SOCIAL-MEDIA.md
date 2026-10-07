@@ -245,8 +245,8 @@ Workspace ein monatliches Kontingent — abhängig vom gebuchten Paket
 
 | Paket | Content-Ideen/Monat | KI-Videos/Monat | Sprachausgaben/Monat |
 | --- | --- | --- | --- |
-| Pro (590 €) | 60 | 15 | 20 |
-| Maxi (797 €) | 150 | 40 | 50 |
+| Pro (590 €) | 40 | 3 | 20 |
+| Maxi (797 €) | 80 | 4 | 35 |
 
 Durchgesetzt in [`src/lib/quota.ts`](src/lib/quota.ts): vor jedem
 kostenpflichtigen Agenten-Aufruf (Ideen generieren, Video rendern,
@@ -260,11 +260,31 @@ Alle anderen Agenten (Script, Hook, Hashtag, Thumbnail, Subtitle,
 Content-Brain, …) bleiben nur durch das bestehende Rate-Limiting
 geschützt, nicht zusätzlich durch ein Monatskontingent.
 
+**Herleitung der Zahlen** (nicht mehr frei geschätzt, siehe
+`src/lib/packages.ts` für dieselbe Rechnung im Code): Pro/Maxi sind
+**einmalige** Zahlungen, aber die Anbieterkosten (Claude/ElevenLabs/
+Videogenerator, zentral über Betreiber-Keys, Abschnitt 6 des Auftrags)
+laufen bei jeder Nutzung weiter — anders als beim geplanten
+Autopilot-Abo, wo die monatliche Zahlung die monatlichen Kosten deckt.
+Rechengrundlage: Einmalpreis über **12 Monate** verteilt (derselbe
+Zeitraum, der im Preismodell ohnehin als "Updates/Hosting inklusive"
+genannt wird), davon **~45 %** als Anbieter-Kostenbudget (Rest = Marge,
+vergleichbar mit der Autopilot-Marge von 58–60 %), verteilt auf die in
+[`docs/preisanalyse.html`](docs/preisanalyse.html) genannten
+Einheitspreise (≈0,07 €/Idee, ≈4,50 €/30-s-Video, ≈0,17 €/Sprachminute,
+≈1 Minute je Sprachausgabe angenommen). Video dominiert die Kosten
+massiv gegenüber Text/Sprache — deshalb bleibt das Video-Kontingent bei
+beiden Paketen bewusst klein; wer regelmäßig mehr Videos braucht, ist
+beim geplanten (noch nicht buchbaren) Autopilot-Abo richtig, das
+laufende Kosten laufend deckt statt aus einer Einmalzahlung.
+
 **Wichtig:** Nur die beiden Preise (590 €/797 €) sind vom Auftraggeber
-bestätigt — die Kontingent-Zahlen oben sind ein begründeter Startwert
-(gleiche Größenordnung wie die bereits committeten Autopilot-Kontingente),
-kein verbindlich festgelegter Wert. Vor dem echten Verkaufsstart prüfen/
-anpassen.
+bestätigt — die Kontingent-Zahlen oben sind jetzt kostenbasiert
+hergeleitet (12-Monats-Horizont, ~45 % Kostenanteil, Anbieterpreise Stand
+der Preisanalyse), aber weiterhin kein vom Auftraggeber verbindlich
+bestätigter Wert. Die Annahmen sind explizit benannt, damit gezielt eine
+davon (z. B. der 12-Monats-Horizont) geändert werden kann, statt die
+Zahlen erneut zu schätzen.
 
 ## Betreiber-Dashboard
 
@@ -439,12 +459,19 @@ Berechtigungen, Multi-Tenancy, Fehlerbehandlung).
 Um ehrlich zu bleiben (Abschnitt 42), sind folgende Punkte bewusst **nicht**
 als fertige Funktion ausgegeben:
 
-1. **Kontingent-Zahlen sind ein Startwert, kein bestätigter Wert** — vom
-   Auftraggeber bestätigt sind ausschließlich die beiden Preise (590 €
-   Pro / 797 € Maxi). Die monatlichen Kontingente je Paket (Ideen/Videos/
-   Sprachausgaben, `src/lib/packages.ts`) wurden begründet, aber ohne
-   explizite Bestätigung festgelegt — vor dem echten Verkaufsstart prüfen/
-   anpassen (siehe [Monatliche Kontingente](#monatliche-kontingente) und
+1. **Kontingent-Zahlen sind kostenbasiert hergeleitet, aber kein
+   bestätigter Wert** — vom Auftraggeber bestätigt sind ausschließlich
+   die beiden Preise (590 € Pro / 797 € Maxi). Die monatlichen
+   Kontingente je Paket (Ideen/Videos/Sprachausgaben, `src/lib/
+   packages.ts`) wurden aus den Anbieter-Einheitspreisen der
+   Preisanalyse zurückgerechnet (12-Monats-Amortisation, ~45 %
+   Kostenanteil) statt frei geschätzt — die zugrunde liegenden Annahmen
+   sind aber selbst nicht vom Auftraggeber bestätigt. Insbesondere das
+   Video-Kontingent ist wegen der hohen Anbieterkosten pro Video bewusst
+   klein (3/4 pro Monat) — vor dem echten Verkaufsstart prüfen, ob das
+   für Kunden akzeptabel ist oder ob stattdessen auf das (noch nicht
+   buchbare) Autopilot-Abo verwiesen werden soll (siehe
+   [Monatliche Kontingente](#monatliche-kontingente) und
    Projektbericht/Restliste).
 2. **Genesis-Sprachsteuerung** — existiert nicht im Code (keine Treffer für
    "genesis" im gesamten Repository). Nicht umgesetzt in diesem Stand.

@@ -1,6 +1,6 @@
 {
   "title": "Analytics",
-  "subtitle": "Performance-Kennzahlen aus tatsächlich vorhandenen Daten — sobald Plattformen verbunden sind, füllt sich diese Ansicht mit echten Werten.",
+  "subtitle": "Performance-Kennzahlen aus echten Daten — eine Anbindung an echte Plattform-Statistiken ist vorbereitet, aber noch nicht implementiert. Diese Ansicht bleibt bis dahin leer, keine erfundenen Zahlen.",
   "statViewsTotal": "Views gesamt",
   "statLikesTotal": "Likes gesamt",
   "statComments": "Kommentare",

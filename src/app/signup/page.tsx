@@ -12,6 +12,16 @@ export default function SignupPage() {
           Dein eigener, privater SECRET-58-Arbeitsbereich — getrennt von allen
           anderen Kundinnen und Kunden.
         </p>
+        <p className="mt-3 rounded-md border border-border bg-background/50 p-3 text-xs text-muted">
+          Ein Konto hier reicht allein nicht aus: Nutzung erfordert ein
+          aktives Pro- oder Maxi-Abo bei der{" "}
+          <a href="/buy" className="text-accent-2 hover:underline">
+            Zentrale (secret58.com)
+          </a>
+          . Hast du dort schon ein Abo, landest du beim Öffnen von
+          &bdquo;Social Media AI&rdquo; automatisch hier — eine separate
+          Registrierung ist dann nicht nötig.
+        </p>
         <Suspense>
           <SignupForm />
         </Suspense>

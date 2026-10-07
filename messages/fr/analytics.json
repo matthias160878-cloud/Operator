@@ -1,6 +1,6 @@
 {
   "title": "Analytique",
-  "subtitle": "Indicateurs de performance basés sur des données réelles — dès que des plateformes seront connectées, cette vue se remplira de valeurs concrètes.",
+  "subtitle": "Indicateurs de performance basés sur des données réelles — une connexion aux statistiques réelles des plateformes est prévue mais pas encore implémentée. Cette vue reste vide jusque-là, aucun chiffre inventé.",
   "statViewsTotal": "Vues totales",
   "statLikesTotal": "Mentions J'aime totales",
   "statComments": "Commentaires",

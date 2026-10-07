@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trends"
   },
-  "costNote": "Der SECRET-58-Kaufpreis ist einmalig und deckt die Software ab. Jeder externe Dienst hier hat sein eigenes, unabhängiges Kostenmodell beim jeweiligen Anbieter — SECRET 58 stellt dafür nie zusätzlich in Rechnung.",
+  "costNote": "Dein SECRET-58-Abo (Pro oder Maxi, monatlich oder jährlich bei der Zentrale) deckt die Software ab. Jeder externe Dienst hier hat sein eigenes, unabhängiges Kostenmodell beim jeweiligen Anbieter — SECRET 58 stellt dafür nie zusätzlich in Rechnung.",
   "links": {
     "getKey": "API-Schlüssel holen",
     "setInRender": "In Render eintragen",

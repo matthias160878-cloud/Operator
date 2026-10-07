@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trends"
   },
-  "costNote": "The SECRET 58 purchase price is one-time and covers the software. Every external service listed here has its own, independent cost model with that provider — SECRET 58 never charges anything extra for it.",
+  "costNote": "Your SECRET 58 subscription (Pro or Maxi, monthly or annual, via the Zentrale) covers the software. Every external service listed here has its own, independent cost model with that provider — SECRET 58 never charges anything extra for it.",
   "links": {
     "getKey": "Get API key",
     "setInRender": "Set in Render",

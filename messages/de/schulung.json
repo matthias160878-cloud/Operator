@@ -60,7 +60,7 @@
       "title": "Posteingang",
       "description": "KI-Antwortentwürfe für Nachrichten — mit Freigabe vor dem Versand.",
       "steps": [
-        "Da (noch) keine Plattform per OAuth verbunden ist, werden Unterhaltungen aktuell manuell angelegt statt live abgerufen.",
+        "Da keine Plattform eine Nachrichten-API für den Posteingang anbietet, werden Unterhaltungen aktuell manuell angelegt statt live abgerufen.",
         "Der MessageAgent schlägt eine Antwort auf Basis von Brand DNA und Gesprächsverlauf vor.",
         "Der Entwurf muss manuell geprüft und freigegeben werden, bevor er als gesendet gilt — ein echter Versand schlägt ohne Plattform-Verbindung ehrlich fehl, statt Erfolg vorzutäuschen."
       ]
@@ -80,7 +80,7 @@
         "Jede Zeile zeigt den echten, live geprüften Status — nie eine vorgetäuschte Verbindung.",
         "Bei \"Nicht konfiguriert\" führt \"API-Schlüssel holen\" zur offiziellen Seite des Anbieters.",
         "\"In Render eintragen\" führt direkt zu den Umgebungsvariablen, wo der Schlüssel hinterlegt wird — ein Eingabeformular in der App selbst gibt es aus Sicherheitsgründen bewusst nicht.",
-        "Kosten: Der SECRET-58-Kaufpreis ist einmalig. Jeder externe Anbieter hat sein eigenes, unabhängiges Kostenmodell (kostenlos / nutzungsbasiert / Abo) — auf der Integrationen-Seite steht bei jedem Dienst, welches Modell gilt, mit Link zu den aktuellen Preisen beim Anbieter."
+        "Kosten: Dein SECRET-58-Abo deckt die Software ab. Jeder externe Anbieter hat sein eigenes, unabhängiges Kostenmodell (kostenlos / nutzungsbasiert / Abo) — auf der Integrationen-Seite steht bei jedem Dienst, welches Modell gilt, mit Link zu den aktuellen Preisen beim Anbieter."
       ]
     }
   }

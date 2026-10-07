@@ -20,6 +20,13 @@ export default function LoginPage() {
             Jetzt registrieren
           </a>
         </p>
+        <p className="mt-2 text-center text-xs text-muted">
+          Nutzung erfordert ein aktives Pro- oder Maxi-Abo bei der{" "}
+          <a href="/buy" className="text-accent-2 hover:underline">
+            Zentrale (secret58.com)
+          </a>
+          .
+        </p>
       </div>
     </div>
   );

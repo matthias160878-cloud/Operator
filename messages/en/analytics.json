@@ -1,6 +1,6 @@
 {
   "title": "Analytics",
-  "subtitle": "Performance metrics from real data — as soon as platforms are connected, this view fills with actual values.",
+  "subtitle": "Performance metrics from real data — a connection to real platform statistics is prepared but not yet implemented. This view stays empty until then, no invented numbers.",
   "statViewsTotal": "Total views",
   "statLikesTotal": "Total likes",
   "statComments": "Comments",

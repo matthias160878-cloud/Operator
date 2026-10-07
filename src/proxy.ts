@@ -42,7 +42,7 @@ import { PACKAGE_IDS } from "@/lib/packages";
  *    keine Browser-Sitzung, wird stattdessen über die Stripe-Signatur
  *    geprüft (`constructWebhookEvent`), nicht über Herkunft/Cookie.
  */
-const CSRF_AUSNAHMEN = ["/api/stripe/webhook"];
+const CSRF_AUSNAHMEN = ["/api/stripe/webhook", "/api/zentrale/abostatus"];
 const MUTIERENDE_METHODEN = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 
 function kommtVonFremderHerkunft(request: NextRequest): boolean {
@@ -69,6 +69,7 @@ const ALWAYS_PUBLIC_PREFIXES = [
   "/entitlement",
   "/api/auth",
   "/api/stripe",
+  "/api/zentrale",
   "/api/locale",
   "/_next",
   "/favicon.ico",
@@ -131,7 +132,12 @@ export async function proxy(request: NextRequest) {
       where: { workspaceId: sessionUser.workspaceId, status: "ACTIVE", packageId: { in: PACKAGE_IDS } },
       orderBy: { createdAt: "desc" },
     });
-    if (!license) {
+    // Für origin="zentrale" gilt der Status nur bis `statusGueltigBis`
+    // (laufend per Push aktualisiert, siehe src/lib/abostatus.ts) --- ohne
+    // frischen Push bleibt ein früherer Login nicht unbegrenzt gültig.
+    const istAbgelaufen =
+      license?.statusGueltigBis != null && license.statusGueltigBis.getTime() < Date.now();
+    if (!license || istAbgelaufen) {
       return denied(request, "/buy");
     }
   }

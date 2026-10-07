@@ -95,6 +95,11 @@ enum LicenseStatus {
   PENDING
   ACTIVE
   REFUNDED
+  /// Abo bei der Zentrale nicht mehr aktiv (gekündigt und Periode vorbei,
+  /// Zahlungsausfall, abgelaufen) --- unterscheidet sich bewusst von
+  /// REFUNDED (das bleibt für echte Erstattungen reserviert). Siehe
+  /// src/lib/abostatus.ts.
+  EXPIRED
 }
 
 enum ConversationStatus {
@@ -504,33 +509,63 @@ model Message {
 // Der Betreiber-Zugang läuft separat über OWNER_ACCESS_KEY (siehe proxy.ts)
 // und braucht keinen License-Datensatz.
 model License {
-  id                      String        @id @default(cuid())
-  unlockToken             String        @unique
-  status                  LicenseStatus @default(PENDING)
+  id                         String        @id @default(cuid())
+  unlockToken                String        @unique
+  status                     LicenseStatus @default(PENDING)
   /// "pro" | "maxi" — siehe src/lib/packages.ts. Nullable für Alt-Lizenzen
   /// aus der Zeit vor dem Zwei-Pakete-Modell.
-  packageId               String?
+  packageId                  String?
   /// "stripe" (hier bezahlt, Normalfall bisher) oder "zentrale" (Zugriff
   /// über das Entitlement-Token von secret58-web übernommen, kein eigener
   /// Kauf hier). Das Betreiber-Dashboard zählt nur "stripe" als Umsatz ---
   /// sonst würde ein unentgeltlich übernommener Zugriff wie ein zweiter
   /// Verkauf aussehen, siehe src/app/operator/page.tsx.
-  origin                  String        @default("stripe")
-  customerEmail           String        @default("")
-  stripeCheckoutSessionId String        @unique
-  stripeCustomerId        String        @default("")
-  stripePaymentIntentId   String        @default("")
-  amountTotal             Int           @default(0)
-  currency                String        @default("eur")
-  userId                  String?
-  user                    User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
-  workspaceId             String?
-  workspace               Workspace?    @relation(fields: [workspaceId], references: [id], onDelete: SetNull)
-  createdAt               DateTime      @default(now())
-  updatedAt               DateTime      @updatedAt
+  origin                     String        @default("stripe")
+  /// Nur für origin="zentrale": der rohe Abostatus-Text von dort
+  /// (z.B. "active", "past_due", "canceled") --- rein informativ/zur
+  /// Fehlersuche, NIE für die Zugriffsentscheidung gelesen (die liest
+  /// ausschließlich `status`/`packageId`/`statusGueltigBis`).
+  externerAboStatus          String?
+  customerEmail              String        @default("")
+  stripeCheckoutSessionId    String        @unique
+  stripeCustomerId           String        @default("")
+  stripePaymentIntentId      String        @default("")
+  amountTotal                Int           @default(0)
+  currency                   String        @default("eur")
+  userId                     String?
+  user                       User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  workspaceId                String?
+  workspace                  Workspace?    @relation(fields: [workspaceId], references: [id], onDelete: SetNull)
+  /// Nur für origin="zentrale": bis wann der Status (ACTIVE/packageId) als
+  /// aktuell gilt, ohne erneute Bestätigung durch die Zentrale --- wird bei
+  /// jeder Einlösung und jedem Abostatus-Push neu gesetzt (siehe
+  /// src/lib/abostatus.ts). Abgelaufen UND kein neuer Push angekommen heißt:
+  /// proxy.ts verweigert Zugriff, selbst wenn `status` noch ACTIVE sagt ---
+  /// so bleibt ein früherer Login nicht unbegrenzt gültig, wenn die
+  /// Zentrale-Verbindung über diese Frist hinaus ausfällt.
+  statusGueltigBis           DateTime?
+  /// Zeitstempel (`gesendetUm`) des zuletzt ANGEWANDTEN Abostatus-Push ---
+  /// ein verspätet eintreffendes, aber ÄLTERES Ereignis wird daran erkannt
+  /// und verworfen, statt einen neueren Stand zu überschreiben.
+  letzterAboEventZeitstempel DateTime?
+  createdAt                  DateTime      @default(now())
+  updatedAt                  DateTime      @updatedAt
 
   @@index([workspaceId])
   @@map("licenses")
+}
+
+/// Verhindert, dass ein Abostatus-Push der Zentrale doppelt verarbeitet
+/// (Replay) oder ein verspätet eintreffendes ÄLTERES Ereignis ein neueres
+/// überschreibt (Out-of-Order) --- siehe src/lib/abostatus.ts.
+model AboStatusEreignis {
+  id               String   @id @default(cuid())
+  eventId          String   @unique
+  kundenschluessel String
+  verarbeitetAm    DateTime @default(now())
+
+  @@index([kundenschluessel])
+  @@map("abo_status_ereignisse")
 }
 
 /// Replay-Schutz für Entitlement-Tokens aus der Zentrale (secret58-web):

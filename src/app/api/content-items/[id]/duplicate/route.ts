@@ -1,17 +1,19 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
+import { getCurrentWorkspaceId } from "@/lib/workspace";
 
 export async function POST(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const source = await prisma.contentItem.findUnique({ where: { id } });
+  const workspaceId = await getCurrentWorkspaceId();
+  const source = await prisma.contentItem.findFirst({ where: { id, workspaceId } });
   if (!source) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
 
   const copy = await prisma.contentItem.create({
     data: {
-      workspaceId: source.workspaceId,
+      workspaceId,
       campaignId: source.campaignId,
       ideaId: source.ideaId,
       title: `${source.title} (Kopie)`,

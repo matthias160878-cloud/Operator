@@ -7,9 +7,22 @@
  *
  * Ausführen mit: npx prisma db seed
  */
+import crypto from "node:crypto";
 import { PrismaClient, Platform, ContentStatus } from "@prisma/client";
 
 const prisma = new PrismaClient();
+
+// Eigenständige Kopie der Passwort-Hash-Logik aus `src/lib/auth.ts` (gleiches
+// Format `salt:hash`, scrypt) — bewusst nicht importiert, damit dieses
+// eigenständige Seed-Skript (läuft über `tsx` außerhalb des Next.js-
+// Request-Kontexts) nicht von `next/headers` abhängt, das `lib/auth.ts`
+// für die Cookie-basierte Session außerhalb von Next.js-Requests einbindet.
+const DEMO_PASSWORD = "secret58-demo";
+function hashPasswordSync(password: string): string {
+  const salt = crypto.randomBytes(16);
+  const derived = crypto.scryptSync(password, salt, 64, { N: 16384, r: 8, p: 1 });
+  return `${salt.toString("hex")}:${derived.toString("hex")}`;
+}
 
 const PLATFORMS: Platform[] = [
   "YOUTUBE",
@@ -54,6 +67,7 @@ async function main() {
           email: "max.mustermann@secret58.media",
           name: "Max Mustermann",
           role: "OWNER",
+          passwordHash: hashPasswordSync(DEMO_PASSWORD),
         },
       },
       brand: {
@@ -326,6 +340,11 @@ async function main() {
   });
 
   console.log("Demo-Daten erfolgreich geseedet für Workspace:", workspace.slug);
+  console.log("");
+  console.log("Demo-Login (nur für diesen lokal geseedeten Workspace):");
+  console.log("  E-Mail:    max.mustermann@secret58.media");
+  console.log(`  Passwort:  ${DEMO_PASSWORD}`);
+  console.log("  -> unter /login anmelden.");
 }
 
 main()

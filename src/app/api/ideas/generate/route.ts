@@ -5,6 +5,8 @@ import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { getBrandDNA } from "@/lib/brand";
 import { runAgent } from "@/lib/agents/runner";
 import { generateIdeas } from "@/lib/agents/ideaAgent";
+import { checkRateLimit } from "@/lib/rateLimit";
+import { checkQuota } from "@/lib/quota";
 
 const bodySchema = z.object({
   topic: z.string().min(3),
@@ -13,6 +15,26 @@ const bodySchema = z.object({
 
 export async function POST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
+
+  const limit = checkRateLimit(`ideas-generate:${workspaceId}`, 20, 60 * 1000);
+  if (!limit.allowed) {
+    return NextResponse.json(
+      { error: "Zu viele Anfragen. Bitte kurz warten." },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(limit.retryAfterMs / 1000)) } },
+    );
+  }
+
+  const quota = await checkQuota(workspaceId, "idea");
+  if (!quota.allowed) {
+    return NextResponse.json(
+      {
+        error: `Monatliches Ideen-Kontingent erreicht (${quota.used}/${quota.limit}). Enthalten im gebuchten Paket — siehe Einstellungen für ein Paket-Upgrade.`,
+        code: "QUOTA_EXCEEDED",
+      },
+      { status: 429 },
+    );
+  }
+
   const body = await request.json().catch(() => null);
   const parsed = bodySchema.safeParse(body);
   if (!parsed.success) {

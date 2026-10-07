@@ -1,21 +1,44 @@
 {
   "kicker": "AI Social Command Center",
-  "title": "SECRET 58 — {packageName}",
-  "subtitle": "Une idée. Plusieurs plateformes. Portée maximale. Un seul forfait complet — pas d'abonnement, pas de paliers, accès total à toute l'application.",
+  "claim": "Aucun autre abonnement fournisseur nécessaire. Tous les agents. Quotas fixes.",
+  "subtitle": "Une idée. Plusieurs plateformes. Portée maximale. Deux forfaits, fonctionnalités complètes — un paiement unique, accès total à toute l'application.",
   "features": [
     "Content Brain — une idée, toutes les plateformes",
-    "Agents de script, d'accroche, de hashtags et de miniatures",
-    "Usine à contenu avec workflow de validation",
-    "Calendrier de contenu, analytique et recommandations de croissance",
+    "Tous les agents IA : idées, tendances, script, accroche, hashtags, miniatures, sous-titres, publication",
+    "Voice Studio avec les voix ElevenLabs",
+    "Video Studio avec gestionnaire de formats — intégration des générateurs vidéo IA en cours",
+    "Usine à contenu avec workflow de validation et calendrier de contenu",
+    "Analytique, recommandations de croissance et suivi des revenus",
     "Messagerie avec réponses rédigées par IA",
-    "Suivi des revenus sur toutes les plateformes"
+    "L'accès à l'IA est inclus dans le forfait — aucun abonnement fournisseur personnel nécessaire"
   ],
+  "packageQuota": "{ideas} idées de contenu · {videos} vidéos IA · {voice} générations vocales par mois incluses",
   "priceOnetime": "paiement unique",
   "priceRecommendedNote": "Prix recommandé — deviendra définitif dès qu'un prix correspondant sera configuré dans Stripe.",
   "buyButton": "Acheter maintenant",
   "redirecting": "Redirection vers Stripe …",
   "checkoutFailed": "Échec du paiement.",
   "unknownError": "Erreur inconnue.",
-  "notConfigured": "Le paiement n'est pas encore configuré — l'exploitant doit d'abord créer un produit à {price} dans Stripe et définir STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
-  "costDisclosure": "Remarque : ce prix est un paiement unique pour le logiciel. Certaines fonctionnalités (génération de texte par IA, voix off, etc.) nécessitent vos propres comptes chez des fournisseurs tiers (p. ex. Anthropic, ElevenLabs) — leurs coûts sont indépendants de SECRET 58 et facturés directement par ce fournisseur, pas ici. Détails après l'achat sous Intégrations."
+  "notConfigured": "Le paiement n'est pas encore configuré — l'exploitant doit d'abord créer ce forfait dans Stripe et définir le prix correspondant.",
+  "costDisclosure": "Remarque : ce prix est un paiement unique pour le logiciel. L'accès à l'IA (texte, voix) est fourni de façon centralisée par l'exploitant et inclus dans le quota mensuel de votre forfait — aucun abonnement personnel chez Anthropic, OpenAI ou ElevenLabs n'est nécessaire. Si le quota d'un mois est épuisé, nous vous prévenons — aucun coût supplémentaire automatique.",
+  "setupServiceTitle": "Ajouter le service d'installation (+{price} paiement unique)",
+  "setupServiceDescription": "Nous configurons pour vous le Brand DNA et vos premières publications.",
+  "setupServiceUnavailable": "Bientôt disponible — l'exploitant doit d'abord ajouter le service dans Stripe.",
+  "autopilot": {
+    "kicker": "Bientôt",
+    "title": "Autopilot — tout compris",
+    "subtitle": "Aucun compte personnel nécessaire : tous les coûts des fournisseurs pour le texte, la voix et la vidéo sont inclus. Mêmes fonctionnalités que Pro/Maxi — les tailles ne diffèrent que par le volume.",
+    "comingSoon": "Bientôt",
+    "perMonth": "/ mois",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agence"
+    },
+    "brands": "{count, plural, one {# marque} other {# marques}}",
+    "ideas": "{count} idées de contenu par mois",
+    "videos": "{count} vidéos IA (30 s chacune) par mois",
+    "voiceMinutes": "{count} minutes de voix off par mois",
+    "note": "Prix prévus, pas encore disponibles. Autopilot sera lancé dès que les générateurs vidéo IA seront connectés."
+  }
 }

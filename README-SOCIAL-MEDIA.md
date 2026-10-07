@@ -58,6 +58,7 @@ Siehe [`.env.example`](.env.example) für die vollständige Liste. Wichtig:
 | `YOUTUBE_CLIENT_ID/SECRET`, `INSTAGRAM_CLIENT_ID/SECRET`, `TIKTOK_CLIENT_KEY/SECRET`, `LINKEDIN_CLIENT_ID/SECRET`, `FACEBOOK_APP_ID/SECRET` | Nein | App-Zugangsdaten je Social-Plattform (Statusanzeige unter Integrationen/Social Media). Ein echter OAuth-Login-Flow ist vorbereitet, aber noch nicht implementiert (siehe unten). |
 | `CANVA_API_KEY`, `CAPCUT_API_KEY` | Nein | Design-/Video-Provider-Status |
 | `TREND_API_KEY`, `TREND_API_PROVIDER` | Nein | TrendAgent — ohne diese Variablen zeigt der Agent konsequent „Trend API nicht konfiguriert.“ statt erfundener Trends. |
+| `STRIPE_SETUP_PRICE_ID` | Nein | Optionaler Einrichtungsservice (299 € einmalig), auf `/buy` per Häkchen zum Komplettpaket dazubuchbar. Ohne diese Variable ist das Häkchen deaktiviert. |
 | `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, `STRIPE_WEBHOOK_SECRET` | Nein | Kauf-Freischaltung über Stripe Checkout (siehe „Kauf-Freischaltung“ unten). Ohne diese Variablen zeigt `/buy` „Zahlung noch nicht konfiguriert.“ |
 | `OWNER_ACCESS_KEY` | Nein | Sperrt bei Gesetztsein die **komplette Anwendung** hinter `/buy`, bis bezahlt wurde oder `/unlock?key=...` aufgerufen wird. Ohne diese Variable bleibt die App frei zugänglich. |
 
@@ -72,10 +73,12 @@ Frontend-Bundle, nie in Log-Ausgaben, nie in Fehlermeldungen.
   `prisma/schema.prisma` auf `postgresql`/`mysql` umstellen und
   `DATABASE_URL` entsprechend setzen — das Schema ist provider-agnostisch
   geschrieben (bis auf den Provider selbst).
-- Modelle: `Workspace`, `User`, `Brand` (Brand DNA), `Campaign`,
-  `ContentIdea`, `ContentItem`, `Script`, `Voice`, `MediaAsset`,
+- Modelle: `Workspace`, `User` (inkl. `passwordHash`), `Session`
+  (Server-Sessions, siehe Authentifizierung), `Brand` (Brand DNA),
+  `Campaign`, `ContentIdea`, `ContentItem`, `Script`, `Voice`, `MediaAsset`,
   `PlatformAccount`, `Analytics`, `AgentRun`, `IntegrationStatus`, `Setting`,
-  `AuditLog` — jede Tabelle trägt `workspaceId` für vollständige
+  `AuditLog`, `License` (an `User`/`Workspace` gebunden) — jede
+  Workspace-gebundene Tabelle trägt `workspaceId` für vollständige
   Multi-Tenant-Isolation (Abschnitt 29).
 - Befehle:
   ```bash
@@ -131,55 +134,187 @@ Verbindung vorzutäuschen. `PublishingAgent.publishContentItem()` prüft live,
 ob ein `PlatformAccount` den Status `CONNECTED` trägt, und veröffentlicht
 niemals automatisch ohne diese Prüfung.
 
+## Authentifizierung & Mandantentrennung
+
+Jede Kundin/jeder Kunde bekommt über **Registrieren** (`/signup`) einen
+eigenen, privaten Workspace — vollständig isoliert von allen anderen
+Workspaces (Datenmodell siehe [Datenbank](#datenbank)). Es gibt **keinen**
+geteilten Default-Workspace mehr: `getCurrentWorkspaceId()`
+(`src/lib/workspace.ts`) löst die Workspace-ID ausschließlich aus der
+server-seitigen Session auf (`src/lib/auth.ts`, Cookie `s58_session`,
+Session-Token-Hash in der DB) — niemals aus einer vom Client gelieferten ID.
+Ohne gültige Session gibt es keinen Zugriff auf `/api/**` (außer
+`/api/auth/*`, `/api/stripe/*`, `/api/locale`) oder auf die Dashboard-Seiten
+(`src/proxy.ts` erzwingt das für jeden Request).
+
+- `POST /api/auth/signup` — legt einen neuen Nutzer **und** einen neuen,
+  leeren Workspace an (Rolle `OWNER`).
+- `POST /api/auth/login` / `POST /api/auth/logout`
+- Passwörter: `node:crypto.scrypt`, Sessions: zufälliges 32-Byte-Token, in
+  der DB wird nur der SHA-256-Hash gespeichert (Modell `Session`).
+- Login/Signup sind zusätzlich rate-limitiert (`src/lib/rateLimit.ts`) gegen
+  Brute-Force-Versuche.
+
+Lokal testen: `npm run db:seed` legt einen Demo-Login an
+(`max.mustermann@secret58.media` / `secret58-demo`, siehe Konsolenausgabe
+des Seed-Skripts) — ausschließlich für den lokal geseedeten Demo-Workspace.
+
 ## Kauf-Freischaltung (Stripe) & App-Installation (PWA)
 
 SECRET 58 kann komplett offen betrieben werden (Standard, kein Setup nötig)
 oder hinter einer Bezahlschranke: erst nach echtem Stripe-Kauf bekommt ein
 Kunde Zugriff, der Betreiber selbst hat über einen eigenen Schlüssel immer
-Zugriff.
+Zugriff. Ein Kauf setzt in jedem Fall ein Konto voraus (`/signup`) — ohne
+Login weiß die App nicht, welchem Workspace sie die Freischaltung zuordnen
+soll; der „Jetzt kaufen“-Button auf `/buy` leitet nicht angemeldete
+Besucher automatisch zu `/signup?next=/buy` weiter.
 
-**Ein Paket, ein Preis.** SECRET 58 ("Social Media KI") wird als einzelnes
-Komplettpaket mit Vollzugriff verkauft — kein Kleines/Großes Paket, keine
-Staffelung, kein Abo. Empfohlener Preis: **797 € einmalig**
-(hinterlegt in [`src/lib/pricing.ts`](src/lib/pricing.ts), dort auch
-anpassbar). `/buy` zeigt diesen Preis bereits als Ankündigung an, auch
-bevor Stripe konfiguriert ist — verbindlich (inkl. funktionierendem
-Kaufen-Button) wird er erst mit einem passenden Stripe-Preis.
+**Zwei Pakete, ein Funktionsumfang.** SECRET 58 wird als zwei Pakete
+verkauft — **Pro** (590 € einmalig) und **Maxi** (797 € einmalig),
+zentral definiert in [`src/lib/packages.ts`](src/lib/packages.ts) (einzige
+Quelle der Wahrheit für Preis und Kontingente; Verkaufsseite, Checkout und
+Kontingent-Durchsetzung lesen ausschließlich von dort). Beide Pakete
+schalten denselben vollen Funktionsumfang frei (alle 14 Agenten, Voice
+Studio, Video Studio) — der Unterschied liegt ausschließlich in
+monatlichen Kontingenten für Content-Ideen, KI-Videos und
+Sprachausgaben (siehe [Kontingente](#monatliche-kontingente) unten).
+`/buy` zeigt beide Preise bereits als Ankündigung an, auch bevor Stripe
+konfiguriert ist — verbindlich (inkl. funktionierendem Kaufen-Button)
+wird ein Preis erst mit einem passenden, im Stripe-Dashboard angelegten
+Preis.
 
 **Wo trage ich den API-Schlüssel ein?** Genau wie bei jeder anderen
 Integration hier (ElevenLabs, Anthropic, …): in `.env` für die lokale
 Entwicklung, und im Render-Dashboard unter **Environment** für die Live-Seite
 (oder analog beim jeweils genutzten Hoster).
 
-1. **Stripe-Account** auf [stripe.com](https://stripe.com/) anlegen, im
-   Dashboard ein Produkt "Social Media KI" mit einem einmaligen Preis von
-   797 € (oder dem angepassten Wert aus `src/lib/pricing.ts`) anlegen.
+1. **Stripe-Account** auf [stripe.com](https://stripe.com/) anlegen und den
+   Secret Key (Entwickler → API-Schlüssel) in `.env` bei `STRIPE_SECRET_KEY`
+   eintragen (lokal in der Datei, live im Environment des Hosters —
+   niemals im Chat). Dann **zwei** Produkte mit je einmaligem Preis
+   anlegen: "SECRET 58 Pro" (590 €) und "SECRET 58 Maxi" (797 €) — entweder
+   manuell im Stripe-Dashboard, oder automatisiert mit:
+   ```
+   npm run stripe:setup-products
+   ```
+   Das Skript (`scripts/setup-stripe-products.ts`) liest Preis und Name
+   ausschließlich aus `src/lib/packages.ts`, legt beide Produkte/Preise an
+   und gibt die Price-IDs zum Eintragen aus — sicher wiederholt ausführbar,
+   legt bei erneutem Lauf keine Duplikate an (erkennt bestehende Produkte
+   über eine Metadata-Markierung wieder). Jedes Paket ist unabhängig
+   buchbar, es reicht auch, zunächst nur eines der beiden anzulegen.
 2. In `.env` (bzw. Render-Environment) setzen:
    - `STRIPE_SECRET_KEY` — der geheime API-Key aus dem Stripe-Dashboard
      (Entwickler → API-Schlüssel).
-   - `STRIPE_PRICE_ID` — die Preis-ID (`price_...`) des angelegten Produkts.
+   - `STRIPE_PRICE_ID_PRO` / `STRIPE_PRICE_ID_MAXI` — die Preis-IDs
+     (`price_...`) der beiden angelegten Produkte.
    - `STRIPE_WEBHOOK_SECRET` — Signing Secret des Webhooks, den du im
      Stripe-Dashboard auf `https://<deine-domain>/api/stripe/webhook`
-     für das Event `checkout.session.completed` anlegst.
-3. Sobald `STRIPE_SECRET_KEY`/`STRIPE_PRICE_ID` gesetzt sind, zeigt `/buy`
-   den echten Preis an und der „Jetzt kaufen“-Button leitet zu Stripe
-   Checkout weiter. Nach erfolgreicher Zahlung wird der Kunde automatisch
-   freigeschaltet (Cookie-basiert, kein separater Account nötig).
-4. **`OWNER_ACCESS_KEY` setzen, um die komplette Anwendung zu sperren** —
-   ein beliebiges, langes Geheimwort. Solange diese Variable **nicht**
-   gesetzt ist, bleibt die App für jeden frei zugänglich (auch ohne
-   Stripe-Konfiguration). Erst mit gesetztem `OWNER_ACCESS_KEY` wird jede
-   Seite außer `/buy` gesperrt, bis bezahlt wurde.
+     für die Events `checkout.session.completed` **und** `charge.refunded`
+     anlegst (Letzteres markiert die passende License automatisch als
+     `REFUNDED`, sichtbar im Betreiber-Dashboard, siehe unten).
+3. Sobald `STRIPE_SECRET_KEY` und die jeweilige Price-ID gesetzt sind,
+   zeigt `/buy` für dieses Paket den echten Preis an und der „Jetzt
+   kaufen“-Button leitet angemeldete Nutzer zu Stripe Checkout weiter
+   (nicht angemeldete zuerst zu `/signup?next=/buy`). Welches Paket
+   gekauft wurde, geht als `metadata.packageId` in die Checkout-Session
+   (`src/lib/stripe.ts`) und wird beim Freischalten auf die `License`
+   übernommen — nie aus Preis/Betrag erraten. Nach erfolgreicher Zahlung
+   wird genau der Workspace des kaufenden Kontos freigeschaltet —
+   `checkout.sessions` bekommt dafür `client_reference_id = <userId>` aus
+   der Server-Session mit, nie aus einem Client-Parameter. Kauft ein
+   Workspace später das andere Paket dazu (Wechsel/Upgrade), zählt die
+   neueste `ACTIVE`-Lizenz für Zugriff und Kontingent — ältere Lizenzen
+   bleiben als Historie erhalten.
+4. **`OWNER_ACCESS_KEY` setzen, um zusätzlich zur Anmeldung eine
+   Bezahlschranke zu aktivieren** — ein beliebiges, langes Geheimwort.
+   Solange diese Variable **nicht** gesetzt ist, reicht ein Konto
+   (Signup/Login) aus, um den eigenen Workspace zu nutzen (gut für lokale
+   Entwicklung/Demo). Erst mit gesetztem `OWNER_ACCESS_KEY` braucht ein
+   angemeldeter Nutzer zusätzlich eine `ACTIVE`-License für seinen
+   Workspace — Anmeldung ist davon unabhängig **immer** erforderlich.
 5. Der Betreiber (du) bleibt immer freigeschaltet über:
    `https://<deine-domain>/unlock?key=<OWNER_ACCESS_KEY>` — einmal im
    eigenen Browser öffnen, danach bleibt der Zugriff dauerhaft (Cookie,
-   1 Jahr gültig).
+   1 Jahr gültig). Das Betreiber-Cookie schaltet **nur** die eigene
+   Bezahlschranke frei, nicht fremde Kundendaten — siehe
+   [Betreiber-Dashboard](#betreiber-dashboard).
 
 Der Zugriffsschutz sitzt in `src/proxy.ts` (Next.js 16 Proxy/Middleware) und
-prüft bei jedem Request entweder das Owner-Cookie oder eine `License` mit
-Status `ACTIVE` in der Datenbank. Ohne `OWNER_ACCESS_KEY` ist die Prüfung
-komplett inaktiv (No-Op) — die App bleibt wie bisher startfähig ohne jede
-Zahlungs-Konfiguration.
+prüft bei jedem Request zunächst eine gültige Session (siehe
+[Authentifizierung](#authentifizierung--mandantentrennung)), danach —
+nur wenn `OWNER_ACCESS_KEY` gesetzt ist — zusätzlich das Owner-Cookie oder
+eine `License` mit Status `ACTIVE` für genau den Workspace der aktuellen
+Session (bei mehreren aktiven Lizenzen zählt die neueste).
+
+## Monatliche Kontingente
+
+Solange `OWNER_ACCESS_KEY` gesetzt ist (Bezahlschranke aktiv), gilt pro
+Workspace ein monatliches Kontingent — abhängig vom gebuchten Paket
+(`src/lib/packages.ts`):
+
+| Paket | Content-Ideen/Monat | KI-Videos/Monat | Sprachausgaben/Monat |
+| --- | --- | --- | --- |
+| Pro (590 €) | 40 | 3 | 20 |
+| Maxi (797 €) | 80 | 4 | 35 |
+
+Durchgesetzt in [`src/lib/quota.ts`](src/lib/quota.ts): vor jedem
+kostenpflichtigen Agenten-Aufruf (Ideen generieren, Video rendern,
+Voiceover erzeugen) wird gezählt, wie viele `agent_runs` dieser Art der
+Workspace seit Monatsbeginn schon hat (die bestehende `agent_runs`-
+Tabelle protokolliert ohnehin jeden Aufruf, siehe
+[Agenten](#agenten)) — ist das Kontingent erreicht, antwortet die
+Route mit `429` und einer klaren Fehlermeldung, **bevor** ein
+Provider-Request passiert. Kein automatisches Nachbuchen/Zusatzkosten.
+Alle anderen Agenten (Script, Hook, Hashtag, Thumbnail, Subtitle,
+Content-Brain, …) bleiben nur durch das bestehende Rate-Limiting
+geschützt, nicht zusätzlich durch ein Monatskontingent.
+
+**Herleitung der Zahlen** (nicht mehr frei geschätzt, siehe
+`src/lib/packages.ts` für dieselbe Rechnung im Code): Pro/Maxi sind
+**einmalige** Zahlungen, aber die Anbieterkosten (Claude/ElevenLabs/
+Videogenerator, zentral über Betreiber-Keys, Abschnitt 6 des Auftrags)
+laufen bei jeder Nutzung weiter — anders als beim geplanten
+Autopilot-Abo, wo die monatliche Zahlung die monatlichen Kosten deckt.
+Rechengrundlage: Einmalpreis über **12 Monate** verteilt (derselbe
+Zeitraum, der im Preismodell ohnehin als "Updates/Hosting inklusive"
+genannt wird), davon **~45 %** als Anbieter-Kostenbudget (Rest = Marge,
+vergleichbar mit der Autopilot-Marge von 58–60 %), verteilt auf die in
+[`docs/preisanalyse.html`](docs/preisanalyse.html) genannten
+Einheitspreise (≈0,07 €/Idee, ≈4,50 €/30-s-Video, ≈0,17 €/Sprachminute,
+≈1 Minute je Sprachausgabe angenommen). Video dominiert die Kosten
+massiv gegenüber Text/Sprache — deshalb bleibt das Video-Kontingent bei
+beiden Paketen bewusst klein; wer regelmäßig mehr Videos braucht, ist
+beim geplanten (noch nicht buchbaren) Autopilot-Abo richtig, das
+laufende Kosten laufend deckt statt aus einer Einmalzahlung.
+
+**Wichtig:** Nur die beiden Preise (590 €/797 €) sind vom Auftraggeber
+bestätigt — die Kontingent-Zahlen oben sind jetzt kostenbasiert
+hergeleitet (12-Monats-Horizont, ~45 % Kostenanteil, Anbieterpreise Stand
+der Preisanalyse), aber weiterhin kein vom Auftraggeber verbindlich
+bestätigter Wert. Die Annahmen sind explizit benannt, damit gezielt eine
+davon (z. B. der 12-Monats-Horizont) geändert werden kann, statt die
+Zahlen erneut zu schätzen.
+
+## Betreiber-Dashboard
+
+`/operator` — ausschließlich über das Owner-Cookie erreichbar (`/unlock?key=`,
+s.o.), komplett getrennt vom Kunden-Session-System. Zeigt aggregierte
+Paketzahlungen (Anzahl/Summe aktiver Lizenzen nach Währung **und nach
+Paket**, PENDING/REFUNDED-Zähler, die letzten 25 Lizenzen mit
+E-Mail/Paket/Betrag/Status) — **keine** privaten Kundeninhalte (Brand DNA,
+Kampagnen, Content etc.). Verfügbares Guthaben und tatsächlich ausgezahlte
+Beträge werden bewusst **nicht** angezeigt (siehe Hinweistext auf der
+Seite) — das liefert nur das Stripe-Dashboard selbst; eine Anbindung dafür
+ist nicht Teil dieses Stands.
+
+**Einrichtungsservice & Autopilot-Vorschau:** Zu Pro oder Maxi kann
+optional ein Einrichtungsservice (299 € einmalig) dazugebucht werden — dafür in
+Stripe ein zweites Produkt mit einmaligem Preis anlegen und
+`STRIPE_SETUP_PRICE_ID` setzen. Darunter zeigt `/buy` den geplanten
+Autopilot (Monatsabo S/M/L, Werte in `AUTOPILOT_TIERS` in
+`src/lib/pricing.ts`) als nicht buchbare Vorschau. Herleitung der Preise:
+[`docs/preisanalyse.html`](docs/preisanalyse.html).
 
 **PWA (installierbare App):** Die Anwendung ist als Progressive Web App
 ausgelegt (`public/manifest.webmanifest`, `public/sw.js`) — auf iOS/Android
@@ -319,9 +454,11 @@ Berechtigungen, Multi-Tenancy, Fehlerbehandlung).
 - [x] Agent Monitor funktioniert
 - [x] Learning Engine funktioniert (regelbasierte Empfehlungen aus echten Analytics-Daten)
 - [x] Multi-Tenant-**Datenmodell** vollständig vorbereitet (Workspace-Isolation in jeder Tabelle)
-- [ ] Multi-Tenant-**UI** (mehrere Workspaces/Login) — noch offen, siehe unten
-- [ ] Authentication/Login-UI — noch offen, siehe unten
+- [x] Multi-Tenant-**UI/Auth** — Signup/Login/Logout, jede Session isoliert auf genau einen Workspace, kein geteilter Default-Workspace mehr (siehe [Authentifizierung](#authentifizierung--mandantentrennung))
+- [x] Zwei Pakete Pro (590 €) / Maxi (797 €), zentral definiert (`src/lib/packages.ts`), inkl. monatlicher Kontingente (siehe [Monatliche Kontingente](#monatliche-kontingente))
+- [x] Betreiber-Dashboard (`/operator`, aggregierte Paketzahlungen nach Pro/Maxi aufgeschlüsselt, keine Kundendaten)
 - [x] Secrets sind geschützt (ausschließlich Env-Variablen, nie im Frontend/Log)
+- [x] Basis-Rate-Limiting (Login/Signup gegen Brute-Force, teure KI-Routen gegen Kostenmissbrauch) — In-Memory, siehe Grenzen unten
 - [ ] Automatisierte Tests — noch offen, siehe [Tests](#tests)
 - [x] Mobile UI funktioniert (responsives Sidebar/Topbar-Layout mit mobilem Menü)
 - [x] README vorhanden (dieses Dokument)
@@ -329,22 +466,56 @@ Berechtigungen, Multi-Tenancy, Fehlerbehandlung).
 
 ## Bekannte Grenzen & nächste Schritte
 
-Dieses Projekt wurde in einer einzigen Implementierungssession aus einem
-leeren Next.js-Grundgerüst aufgebaut. Um ehrlich zu bleiben (Abschnitt 42),
-sind folgende Punkte bewusst **nicht** als fertige Funktion ausgegeben:
+Um ehrlich zu bleiben (Abschnitt 42), sind folgende Punkte bewusst **nicht**
+als fertige Funktion ausgegeben:
 
-1. **Authentication/Login** — es gibt noch keine Login-Oberfläche; die App
-   nutzt einen einzelnen Default-Workspace (`src/lib/workspace.ts`). Das
-   Datenmodell ist vollständig multi-tenant-fähig; es fehlt die
-   Session-/Auth-Schicht (z.B. NextAuth) und die UI dafür.
-2. **OAuth für Social-Plattformen** — Zugangsdaten-Status wird geprüft, ein
-   echter Login-/Token-Flow pro Nutzer-Account fehlt noch.
-3. **Video-Rendering** — die Provider-Architektur steht, es ist aber kein
+1. **Kontingent-Zahlen sind kostenbasiert hergeleitet, aber kein
+   bestätigter Wert** — vom Auftraggeber bestätigt sind ausschließlich
+   die beiden Preise (590 € Pro / 797 € Maxi). Die monatlichen
+   Kontingente je Paket (Ideen/Videos/Sprachausgaben, `src/lib/
+   packages.ts`) wurden aus den Anbieter-Einheitspreisen der
+   Preisanalyse zurückgerechnet (12-Monats-Amortisation, ~45 %
+   Kostenanteil) statt frei geschätzt — die zugrunde liegenden Annahmen
+   sind aber selbst nicht vom Auftraggeber bestätigt. Insbesondere das
+   Video-Kontingent ist wegen der hohen Anbieterkosten pro Video bewusst
+   klein (3/4 pro Monat) — vor dem echten Verkaufsstart prüfen, ob das
+   für Kunden akzeptabel ist oder ob stattdessen auf das (noch nicht
+   buchbare) Autopilot-Abo verwiesen werden soll (siehe
+   [Monatliche Kontingente](#monatliche-kontingente) und
+   Projektbericht/Restliste).
+2. **Genesis-Sprachsteuerung** — existiert nicht im Code (keine Treffer für
+   "genesis" im gesamten Repository). Nicht umgesetzt in diesem Stand.
+3. **Website-Einbindung ("Meine Webseite verbinden")** — es gibt einen
+   internen Support-Chatbot (`src/components/chatbot/ChatWidget.tsx`), aber
+   keinen Self-Service-Bereich, über den Kundinnen/Kunden einen Assistenten
+   auf ihrer **eigenen** Webseite einbinden können. Nicht umgesetzt.
+4. **Eigene Geschäftseinnahmen der Kunden** — `/revenue` erfasst ausschließlich
+   **manuelle** Einträge (`RevenueEntry.origin = MANUAL`); es gibt weder eine
+   Anbindung bestehender Shops/Zahlungsanbieter noch eine
+   Stripe-Connect-Architektur für eigene Verkäufe der Kundinnen/Kunden
+   innerhalb von SECRET 58. Nicht umgesetzt.
+5. **Betreiber-Dashboard zeigt keine Auszahlungen/Guthaben** — nur
+   aggregierte Lizenzzahlungen aus der eigenen DB; Stripe-Auszahlungsdaten
+   sind nicht angebunden (siehe [Betreiber-Dashboard](#betreiber-dashboard)).
+6. **OAuth für Social-Plattformen** — echte Verbindung (Start/Callback) ist
+   implementiert (`src/lib/oauth/`, `src/app/api/oauth/`); `PublishingAgent`
+   veröffentlicht live nur bei Status `CONNECTED`.
+7. **Video-Rendering** — die Provider-Architektur steht, es ist aber kein
    Video-Provider tatsächlich angebunden (kein Account zum Testen vorhanden).
-4. **Trend Engine** — es ist keine Trend-Datenquelle angebunden; der Agent
+8. **Trend Engine** — es ist keine Trend-Datenquelle angebunden; der Agent
    zeigt konsequent den Konfigurationsstatus.
-5. **Automatisierte Tests** fehlen noch komplett.
-6. **Rate Limiting / CSRF** für API-Routen sind noch nicht implementiert
-   (Abschnitt 28) — für den produktiven Einsatz ergänzen.
+9. **Automatisierte Tests** fehlen noch komplett.
+10. **Rate Limiting ist In-Memory** (`src/lib/rateLimit.ts`) — korrekt für
+    einen einzelnen Prozess (passt zum geplanten Windows-VPS-Deployment),
+    zählt aber pro Instanz getrennt, falls je horizontal skaliert wird. Für
+    diesen Fall auf einen gemeinsamen Speicher (Redis o.ä.) umstellen.
+    **CSRF** für zustandsändernde API-Routen ist nicht implementiert.
+11. **Fehlerbehandlung bei fehlender Session** — `getCurrentWorkspaceId()`
+    wirft `AuthError`, wenn eine Route trotz `proxy.ts`-Schutz ohne Session
+    erreicht wird (sollte in der Praxis nicht vorkommen); das führt aktuell
+    zu einem generischen 500 statt einer sauberen 401-JSON-Antwort in allen
+    ~40 betroffenen Routen — kein Sicherheitsproblem (der Zugriff bleibt
+    blockiert), aber eine unschöne Fehlerantwort. Für eine einheitliche
+    401-Behandlung einen gemeinsamen Route-Wrapper ergänzen.
 
-Diese Punkte eignen sich als nächste Ausbauphasen (7–14 des Master-Prompts).
+Diese Punkte eignen sich als nächste Ausbauphasen.

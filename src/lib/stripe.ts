@@ -1,15 +1,30 @@
 import Stripe from "stripe";
+import { PACKAGES, type PackageId } from "@/lib/packages";
 
 /**
  * Stripe-Adapter für den Kauf-Freischalt-Flow (Abschnitt "Lizenzierung").
  * Wie jede andere Integration in dieser App: ausschließlich env-basiert,
  * niemals Keys im Code, App bleibt ohne diese Variablen startfähig — die
  * Verkaufsseite zeigt dann ehrlich "Zahlung noch nicht konfiguriert".
+ *
+ * Zwei Pakete (Pro/Maxi, siehe lib/packages.ts) = zwei Stripe-Preise
+ * (STRIPE_PRICE_ID_PRO / STRIPE_PRICE_ID_MAXI). Welches Paket gekauft
+ * wird, kommt ausschließlich aus der serverseitigen PACKAGES-Definition —
+ * nie aus einem vom Client mitgeschickten Preis.
  */
 let client: Stripe | null = null;
 
 export function isStripeConfigured(): boolean {
-  return Boolean(process.env.STRIPE_SECRET_KEY && process.env.STRIPE_PRICE_ID);
+  return Boolean(process.env.STRIPE_SECRET_KEY);
+}
+
+export function isPackagePriceConfigured(packageId: PackageId): boolean {
+  return Boolean(process.env.STRIPE_SECRET_KEY && process.env[PACKAGES[packageId].stripePriceEnvVar]);
+}
+
+/** Einrichtungsservice als optionaler Zusatz im Checkout (einmaliger Preis). */
+export function isSetupServiceConfigured(): boolean {
+  return isStripeConfigured() && Boolean(process.env.STRIPE_SETUP_PRICE_ID);
 }
 
 export function isStripeWebhookConfigured(): boolean {
@@ -27,16 +42,38 @@ function getClient(): Stripe {
 }
 
 export async function createCheckoutSession(input: {
+  packageId: PackageId;
   successUrl: string;
   cancelUrl: string;
+  includeSetupService?: boolean;
+  /**
+   * ID des eingeloggten Nutzers, der den Checkout startet. Wird als Stripe
+   * `client_reference_id` mitgegeben, damit der Webhook/Success-Handler die
+   * entstehende License gezielt dessen Workspace zuordnen kann, statt eine
+   * global geteilte Freischaltung zu erzeugen (Abschnitt 2 des Auftrags).
+   */
+  userId: string;
 }): Promise<string> {
-  if (!isStripeConfigured()) {
-    throw new Error("Stripe ist noch nicht konfiguriert (STRIPE_SECRET_KEY/STRIPE_PRICE_ID fehlt).");
+  if (!isPackagePriceConfigured(input.packageId)) {
+    const envVar = PACKAGES[input.packageId].stripePriceEnvVar;
+    throw new Error(`Stripe ist für dieses Paket noch nicht konfiguriert (STRIPE_SECRET_KEY/${envVar} fehlt).`);
   }
+
+  const priceId = process.env[PACKAGES[input.packageId].stripePriceEnvVar];
 
   const session = await getClient().checkout.sessions.create({
     mode: "payment",
-    line_items: [{ price: process.env.STRIPE_PRICE_ID, quantity: 1 }],
+    client_reference_id: input.userId,
+    // Herkunft der Freischaltung: der Webhook/Success-Handler liest das
+    // gekaufte Paket ausschließlich hieraus, nie aus der Preis-ID selbst
+    // (die kann der Betreiber im Stripe-Dashboard jederzeit austauschen).
+    metadata: { packageId: input.packageId },
+    line_items: [
+      { price: priceId, quantity: 1 },
+      ...(input.includeSetupService && isSetupServiceConfigured()
+        ? [{ price: process.env.STRIPE_SETUP_PRICE_ID, quantity: 1 }]
+        : []),
+    ],
     success_url: input.successUrl,
     cancel_url: input.cancelUrl,
   });
@@ -58,15 +95,17 @@ export async function retrieveCheckoutSession(sessionId: string) {
   return getClient().checkout.sessions.retrieve(sessionId);
 }
 
-export async function getConfiguredPrice(locale = "de"): Promise<{
+export async function getConfiguredPrice(
+  packageId: PackageId,
+  locale = "de"
+): Promise<{
   formatted: string;
   productName: string;
 } | null> {
-  if (!isStripeConfigured()) return null;
+  if (!isPackagePriceConfigured(packageId)) return null;
   try {
-    const price = await getClient().prices.retrieve(process.env.STRIPE_PRICE_ID!, {
-      expand: ["product"],
-    });
+    const priceId = process.env[PACKAGES[packageId].stripePriceEnvVar]!;
+    const price = await getClient().prices.retrieve(priceId, { expand: ["product"] });
     const amount = (price.unit_amount ?? 0) / 100;
     const formatted = new Intl.NumberFormat(locale, {
       style: "currency",
@@ -74,7 +113,9 @@ export async function getConfiguredPrice(locale = "de"): Promise<{
     }).format(amount);
     const product = price.product;
     const productName =
-      typeof product === "object" && product && "name" in product ? product.name : "SECRET 58";
+      typeof product === "object" && product && "name" in product
+        ? product.name
+        : `SECRET 58 ${PACKAGES[packageId].name}`;
     return { formatted, productName };
   } catch {
     return null;

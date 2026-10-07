@@ -11,7 +11,7 @@ export async function POST(
 ) {
   const { id } = await params;
   const workspaceId = await getCurrentWorkspaceId();
-  const item = await prisma.contentItem.findUnique({ where: { id } });
+  const item = await prisma.contentItem.findFirst({ where: { id, workspaceId } });
   if (!item) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
 
   const brand = await getBrandDNA(workspaceId);

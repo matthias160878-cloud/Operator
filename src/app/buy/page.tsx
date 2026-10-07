@@ -2,27 +2,18 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { CheckCircle2 } from "lucide-react";
-import { isStripeConfigured, getConfiguredPrice, isSetupServiceConfigured } from "@/lib/stripe";
-import {
-  getPackageName,
-  formatPackagePrice,
-  formatSetupServicePrice,
-  formatEur,
-  AUTOPILOT_TIERS,
-} from "@/lib/pricing";
+import { isPackagePriceConfigured, getConfiguredPrice, isSetupServiceConfigured } from "@/lib/stripe";
+import { formatSetupServicePrice, formatEur, AUTOPILOT_TIERS } from "@/lib/pricing";
+import { PACKAGES, PACKAGE_IDS, formatPackagePriceEur, type PackageId } from "@/lib/packages";
 import { isLocale, DEFAULT_LOCALE } from "@/i18n/config";
 import { BuyButton } from "@/components/buy/BuyButton";
 
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const localeRaw = await getLocale();
-  const locale = isLocale(localeRaw) ? localeRaw : DEFAULT_LOCALE;
-  const packageName = getPackageName(locale);
-  const priceDisplay = formatPackagePrice(locale);
   return {
-    title: `${packageName} — SECRET 58`,
-    description: `${priceDisplay} — SECRET 58`,
+    title: "SECRET 58 — Pro & Maxi",
+    description: "Zwei Pakete, ein Komplettumfang: SECRET 58 Pro und Maxi.",
   };
 }
 
@@ -30,63 +21,79 @@ export default async function BuyPage() {
   const localeRaw = await getLocale();
   const locale = isLocale(localeRaw) ? localeRaw : DEFAULT_LOCALE;
   const t = await getTranslations("buy");
-  const configured = isStripeConfigured();
-  const configuredPrice = await getConfiguredPrice(locale);
-  const packageName = getPackageName(locale);
-  // Ein Paket, ein Preis, kein Staffelsystem: solange Stripe noch nicht
-  // eingerichtet ist, zeigen wir den empfohlenen Preis als Ankündigung —
-  // der Kaufen-Button bleibt trotzdem ehrlich deaktiviert, bis Stripe
-  // wirklich konfiguriert ist.
-  const priceDisplay = configuredPrice?.formatted ?? formatPackagePrice(locale);
   const features = t.raw("features") as string[];
+
+  const packageData = await Promise.all(
+    PACKAGE_IDS.map(async (id) => {
+      const pkg = PACKAGES[id];
+      const configured = isPackagePriceConfigured(id);
+      const configuredPrice = await getConfiguredPrice(id, locale);
+      const priceDisplay = configuredPrice?.formatted ?? formatPackagePriceEur(id, locale);
+      return { id, pkg, configured, configuredPrice, priceDisplay };
+    })
+  );
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-10 bg-grid px-4 py-12">
-      <div className="card relative w-full max-w-xl overflow-hidden p-8 text-center">
-        <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-accent/25 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-accent-2/20 blur-3xl" />
-
+      <div className="mx-auto max-w-4xl text-center">
         <div className="relative mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full shadow-[0_0_40px_rgba(109,91,255,0.5)]">
           <Image src="/brand/brain-core.png" alt="SECRET 58" fill sizes="96px" className="object-cover" priority />
         </div>
-
-        <div className="relative">
-          <div className="text-xs uppercase tracking-[0.25em] text-accent-2">{t("kicker")}</div>
-          <h1 className="mt-2 text-2xl font-semibold text-foreground">
-            {t("title", { packageName })}
-          </h1>
-          <p className="mt-3 text-base font-medium text-accent-2">{t("claim")}</p>
-          <p className="mt-2 text-sm text-muted">{t("subtitle")}</p>
-
-          <ul className="mx-auto mt-6 max-w-sm space-y-2 text-left text-sm text-foreground">
-            {features.map((f) => (
-              <li key={f} className="flex items-start gap-2">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
-                {f}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-6 text-3xl font-semibold text-foreground">
-            {priceDisplay}
-            <span className="ml-1 text-sm font-normal text-muted">{t("priceOnetime")}</span>
-          </div>
-          {!configuredPrice && (
-            <p className="mt-1 text-xs text-muted">{t("priceRecommendedNote")}</p>
-          )}
-
-          <div className="mt-6 flex justify-center">
-            <BuyButton
-              configured={configured}
-              priceDisplay={priceDisplay}
-              setupServiceAvailable={isSetupServiceConfigured()}
-              setupServicePrice={formatSetupServicePrice(locale)}
-            />
-          </div>
-
-          <p className="mx-auto mt-4 max-w-sm text-xs text-muted">{t("costDisclosure")}</p>
-        </div>
+        <div className="text-xs uppercase tracking-[0.25em] text-accent-2">{t("kicker")}</div>
+        <h1 className="mt-2 text-2xl font-semibold text-foreground">SECRET 58 — Pro & Maxi</h1>
+        <p className="mt-3 text-base font-medium text-accent-2">{t("claim")}</p>
+        <p className="mx-auto mt-2 max-w-xl text-sm text-muted">{t("subtitle")}</p>
       </div>
+
+      <div className="grid w-full max-w-4xl gap-6 sm:grid-cols-2">
+        {packageData.map(({ id, pkg, configured, configuredPrice, priceDisplay }) => (
+          <div key={id} className="card relative overflow-hidden p-8 text-center">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-accent/25 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-accent-2/20 blur-3xl" />
+
+            <div className="relative">
+              <h2 className="text-xl font-semibold text-foreground">{pkg.name}</h2>
+
+              <ul className="mx-auto mt-5 max-w-sm space-y-2 text-left text-sm text-foreground">
+                {features.map((f) => (
+                  <li key={f} className="flex items-start gap-2">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                    {f}
+                  </li>
+                ))}
+                <li className="flex items-start gap-2 border-t border-border pt-2 mt-2 text-muted">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-2" />
+                  {t("packageQuota", {
+                    ideas: pkg.quotas.ideasPerMonth,
+                    videos: pkg.quotas.videosPerMonth,
+                    voice: pkg.quotas.voiceGenerationsPerMonth,
+                  })}
+                </li>
+              </ul>
+
+              <div className="mt-6 text-3xl font-semibold text-foreground">
+                {priceDisplay}
+                <span className="ml-1 text-sm font-normal text-muted">{t("priceOnetime")}</span>
+              </div>
+              {!configuredPrice && (
+                <p className="mt-1 text-xs text-muted">{t("priceRecommendedNote")}</p>
+              )}
+
+              <div className="mt-6 flex justify-center">
+                <BuyButton
+                  packageId={id as PackageId}
+                  configured={configured}
+                  priceDisplay={priceDisplay}
+                  setupServiceAvailable={isSetupServiceConfigured()}
+                  setupServicePrice={formatSetupServicePrice(locale)}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p className="mx-auto max-w-xl text-center text-xs text-muted">{t("costDisclosure")}</p>
 
       <section className="w-full max-w-4xl text-center">
         <div className="text-xs uppercase tracking-[0.25em] text-accent-2">{t("autopilot.kicker")}</div>

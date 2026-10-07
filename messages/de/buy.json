@@ -1,8 +1,7 @@
 {
   "kicker": "AI Social Command Center",
-  "title": "SECRET 58 — {packageName}",
-  "claim": "Kein Abo. Alle Agenten. Deine eigenen KI-Anbieter.",
-  "subtitle": "Eine Idee. Mehrere Plattformen. Maximale Reichweite. Ein einziges Komplettpaket — einmal zahlen, voller Zugriff auf die gesamte Anwendung.",
+  "claim": "Kein Abo bei anderen Anbietern nötig. Alle Agenten. Feste Kontingente.",
+  "subtitle": "Eine Idee. Mehrere Plattformen. Maximale Reichweite. Zwei Pakete, voller Funktionsumfang — einmal zahlen, voller Zugriff auf die gesamte Anwendung.",
   "features": [
     "Content Brain — eine Idee, alle Plattformen",
     "Alle KI-Agenten: Ideen, Trends, Script, Hook, Hashtags, Thumbnails, Untertitel, Publishing",
@@ -11,23 +10,24 @@
     "Content Factory mit Freigabe-Workflow und Content Kalender",
     "Analytics, Wachstums-Empfehlungen und Einnahmen-Tracking",
     "Posteingang mit KI-Antwortentwürfen",
-    "Freie Wahl der KI-Anbieter über eigene Zugänge — keine Kontingente"
+    "KI-Zugänge sind im Paket enthalten — kein eigenes Anbieter-Abo nötig"
   ],
+  "packageQuota": "{ideas} Content-Ideen · {videos} KI-Videos · {voice} Sprachausgaben pro Monat enthalten",
   "priceOnetime": "einmalig",
   "priceRecommendedNote": "Empfohlener Preis — wird verbindlich, sobald Stripe mit einem passenden Preis konfiguriert ist.",
   "buyButton": "Jetzt kaufen",
   "redirecting": "Weiterleitung zu Stripe …",
   "checkoutFailed": "Checkout fehlgeschlagen.",
   "unknownError": "Unbekannter Fehler.",
-  "notConfigured": "Zahlung ist noch nicht konfiguriert — der Betreiber muss zuerst in Stripe ein Produkt zu {price} anlegen und STRIPE_SECRET_KEY / STRIPE_PRICE_ID hinterlegen.",
-  "costDisclosure": "Hinweis: Dieser Preis ist einmalig für die Software. Einzelne Funktionen (z. B. KI-Textgenerierung, Sprachausgabe) benötigen eigene Zugänge bei Drittanbietern (z. B. Anthropic, ElevenLabs) — deren Kosten sind unabhängig von SECRET 58 und werden direkt beim jeweiligen Anbieter fällig, nicht hier berechnet. Details nach dem Kauf unter Integrationen.",
+  "notConfigured": "Zahlung ist noch nicht konfiguriert — der Betreiber muss dieses Paket zuerst in Stripe anlegen und die passende Price-ID hinterlegen.",
+  "costDisclosure": "Hinweis: Dieser Preis ist einmalig für die Software. KI-Zugänge (Text, Sprache) stellt der Betreiber zentral bereit und sind im Rahmen deines monatlichen Paket-Kontingents enthalten — du brauchst kein eigenes Abo bei Anthropic, OpenAI oder ElevenLabs. Ist das Kontingent in einem Monat aufgebraucht, informieren wir dich — es entstehen keine automatischen Zusatzkosten.",
   "setupServiceTitle": "Einrichtungsservice dazubuchen (+{price} einmalig)",
-  "setupServiceDescription": "Wir richten für dich API-Schlüssel, Brand DNA und die ersten Posts ein.",
+  "setupServiceDescription": "Wir richten für dich Brand DNA und die ersten Posts ein.",
   "setupServiceUnavailable": "Bald buchbar — der Betreiber muss den Service zuerst in Stripe hinterlegen.",
   "autopilot": {
     "kicker": "Demnächst",
     "title": "Autopilot — alles inklusive",
-    "subtitle": "Keine eigenen Zugänge nötig: Alle Anbieterkosten für Text, Stimme und Video sind enthalten. Gleicher Funktionsumfang wie das Komplettpaket — die Größen unterscheiden sich nur in der Menge.",
+    "subtitle": "Keine eigenen Zugänge nötig: Alle Anbieterkosten für Text, Stimme und Video sind enthalten. Gleicher Funktionsumfang wie Pro/Maxi — die Größen unterscheiden sich nur in der Menge.",
     "comingSoon": "Demnächst",
     "perMonth": "/ Monat",
     "tiers": {

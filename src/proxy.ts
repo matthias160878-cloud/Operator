@@ -80,8 +80,11 @@ export async function proxy(request: NextRequest) {
   }
 
   if (process.env.OWNER_ACCESS_KEY && !isOwnerRequest(request)) {
+    // Bei einem Paketwechsel (z.B. Pro -> Maxi) können mehrere ACTIVE-
+    // Lizenzen für denselben Workspace existieren — die neueste zählt.
     const license = await prisma.license.findFirst({
       where: { workspaceId: sessionUser.workspaceId, status: "ACTIVE" },
+      orderBy: { createdAt: "desc" },
     });
     if (!license) {
       return denied(request, "/buy");

@@ -503,6 +503,9 @@ model License {
   id                      String        @id @default(cuid())
   unlockToken             String        @unique
   status                  LicenseStatus @default(PENDING)
+  /// "pro" | "maxi" — siehe src/lib/packages.ts. Nullable für Alt-Lizenzen
+  /// aus der Zeit vor dem Zwei-Pakete-Modell.
+  packageId               String?
   customerEmail           String        @default("")
   stripeCheckoutSessionId String        @unique
   stripeCustomerId        String        @default("")

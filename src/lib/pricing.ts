@@ -1,34 +1,11 @@
 import type { Locale } from "@/i18n/config";
 
 /**
- * Ein Paket, ein Preis: SECRET 58 wird als einzelnes Komplettpaket verkauft,
- * kein Staffel-/Tarif-System. Dieser Wert ist der empfohlene Preis, mit dem
- * das Stripe-Produkt/Preis-Objekt angelegt werden sollte — sobald Stripe
- * konfiguriert ist, zeigt /buy den echten, dort hinterlegten Preis an.
+ * Preis-Hilfsfunktionen und der (weiterhin nicht buchbare) Autopilot-
+ * Vorschau-Teil. Die eigentliche Paketdefinition (Pro/Maxi, Preise,
+ * Kontingente) liegt zentral in `src/lib/packages.ts` — hier nur noch
+ * Dinge, die nicht paketspezifisch sind.
  */
-export const PACKAGE_NAME = "Social Media KI";
-export const PACKAGE_PRICE_EUR = 797;
-
-export const PACKAGE_PRICE_DISPLAY = new Intl.NumberFormat("de-DE", {
-  style: "currency",
-  currency: "EUR",
-  maximumFractionDigits: 0,
-}).format(PACKAGE_PRICE_EUR);
-
-const PACKAGE_NAME_BY_LOCALE: Record<Locale, string> = {
-  de: "Social Media KI",
-  en: "Social Media AI",
-  es: "IA para Redes Sociales",
-  fr: "IA Réseaux Sociaux",
-};
-
-export function getPackageName(locale: Locale): string {
-  return PACKAGE_NAME_BY_LOCALE[locale] ?? PACKAGE_NAME;
-}
-
-export function formatPackagePrice(locale: Locale): string {
-  return formatEur(locale, PACKAGE_PRICE_EUR);
-}
 
 /**
  * Optionaler Einrichtungsservice (einmalig): Der Betreiber richtet für die

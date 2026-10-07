@@ -50,7 +50,7 @@ export async function POST(
     return NextResponse.json({ error: "Ungültige Eingabe." }, { status: 400 });
   }
 
-  const source = await prisma.contentItem.findUnique({ where: { id } });
+  const source = await prisma.contentItem.findFirst({ where: { id, workspaceId } });
   if (!source) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
 
   const brand = await getBrandDNA(workspaceId);

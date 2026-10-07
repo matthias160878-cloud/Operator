@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
 import { formatEur } from "@/lib/pricing";
+import { PACKAGES, isPackageId, type PackageId } from "@/lib/packages";
 
 export const metadata = { title: "Betreiber-Dashboard — SECRET 58" };
 export const dynamic = "force-dynamic";
@@ -15,7 +16,10 @@ export const dynamic = "force-dynamic";
  */
 export default async function OperatorDashboard() {
   const [active, pending, refunded, recent] = await Promise.all([
-    prisma.license.findMany({ where: { status: "ACTIVE" }, select: { amountTotal: true, currency: true } }),
+    prisma.license.findMany({
+      where: { status: "ACTIVE" },
+      select: { amountTotal: true, currency: true, packageId: true },
+    }),
     prisma.license.count({ where: { status: "PENDING" } }),
     prisma.license.count({ where: { status: "REFUNDED" } }),
     prisma.license.findMany({
@@ -25,6 +29,7 @@ export default async function OperatorDashboard() {
         id: true,
         customerEmail: true,
         status: true,
+        packageId: true,
         amountTotal: true,
         currency: true,
         createdAt: true,
@@ -39,6 +44,17 @@ export default async function OperatorDashboard() {
       license.currency,
       (totalsByCurrency.get(license.currency) ?? 0) + license.amountTotal,
     );
+  }
+
+  // Aufschlüsselung nach Paket (Pro/Maxi) — nur aktive, nicht erstattete
+  // Lizenzen zählen als Umsatz, genau wie bei der Gesamtsumme oben.
+  const byPackage = new Map<PackageId | "unbekannt", { count: number; amountTotal: number }>();
+  for (const license of active) {
+    const key = isPackageId(license.packageId) ? license.packageId : "unbekannt";
+    const entry = byPackage.get(key) ?? { count: 0, amountTotal: 0 };
+    entry.count += 1;
+    entry.amountTotal += license.amountTotal;
+    byPackage.set(key, entry);
   }
 
   return (
@@ -65,6 +81,29 @@ export default async function OperatorDashboard() {
             <p className="text-xs uppercase tracking-wide text-muted">Erstattet</p>
             <p className="mt-2 text-2xl font-semibold text-foreground">{refunded}</p>
           </div>
+        </div>
+
+        <div className="card p-5">
+          <p className="text-xs uppercase tracking-wide text-muted">Nach Paket (aktive Lizenzen)</p>
+          {byPackage.size === 0 ? (
+            <p className="mt-2 text-sm text-muted">Noch keine aktiven Lizenzen.</p>
+          ) : (
+            <div className="mt-3 grid gap-3 sm:grid-cols-3">
+              {(["pro", "maxi", "unbekannt"] as const)
+                .filter((key) => byPackage.has(key))
+                .map((key) => {
+                  const entry = byPackage.get(key)!;
+                  const name = key === "unbekannt" ? "Unbekannt (Alt-Lizenz)" : PACKAGES[key].name;
+                  return (
+                    <div key={key} className="rounded-lg border border-border p-3">
+                      <p className="text-sm font-medium text-foreground">{name}</p>
+                      <p className="mt-1 text-lg font-semibold text-foreground">{entry.count}</p>
+                      <p className="text-xs text-muted">{formatEur("de", entry.amountTotal / 100)}</p>
+                    </div>
+                  );
+                })}
+            </div>
+          )}
         </div>
 
         <div className="card p-5">
@@ -100,6 +139,7 @@ export default async function OperatorDashboard() {
                 <tr>
                   <th className="pb-2 pr-4">Datum</th>
                   <th className="pb-2 pr-4">E-Mail</th>
+                  <th className="pb-2 pr-4">Paket</th>
                   <th className="pb-2 pr-4">Status</th>
                   <th className="pb-2 pr-4">Betrag</th>
                   <th className="pb-2">Workspace zugeordnet</th>
@@ -112,6 +152,9 @@ export default async function OperatorDashboard() {
                       {license.createdAt.toLocaleDateString("de-DE")}
                     </td>
                     <td className="py-2 pr-4 text-foreground">{license.customerEmail || "—"}</td>
+                    <td className="py-2 pr-4 text-foreground">
+                      {isPackageId(license.packageId) ? PACKAGES[license.packageId].name : "—"}
+                    </td>
                     <td className="py-2 pr-4 text-foreground">{license.status}</td>
                     <td className="py-2 pr-4 text-foreground">
                       {formatEur("de", license.amountTotal / 100)}
@@ -121,7 +164,7 @@ export default async function OperatorDashboard() {
                 ))}
                 {recent.length === 0 && (
                   <tr>
-                    <td colSpan={5} className="py-4 text-center text-muted">
+                    <td colSpan={6} className="py-4 text-center text-muted">
                       Noch keine Lizenzen.
                     </td>
                   </tr>

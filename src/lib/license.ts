@@ -1,6 +1,7 @@
 import crypto from "node:crypto";
 import type Stripe from "stripe";
 import { prisma } from "@/lib/db";
+import { isPackageId } from "@/lib/packages";
 
 export const ACCESS_COOKIE_NAME = "s58_access";
 
@@ -40,8 +41,16 @@ export async function activateLicenseFromSession(session: Stripe.Checkout.Sessio
     }
   }
 
+  // Welches Paket gekauft wurde, kommt ausschließlich aus der Checkout-
+  // Metadata, die `createCheckoutSession` serverseitig gesetzt hat — nie
+  // aus einem Betrag oder einer Preis-ID, die sich im Stripe-Dashboard
+  // jederzeit ändern kann.
+  const metadataPackageId = existing?.packageId ?? session.metadata?.packageId ?? null;
+  const packageId = isPackageId(metadataPackageId) ? metadataPackageId : null;
+
   const data = {
     status,
+    packageId,
     customerEmail: session.customer_details?.email ?? "",
     stripeCustomerId: typeof session.customer === "string" ? session.customer : "",
     stripePaymentIntentId:

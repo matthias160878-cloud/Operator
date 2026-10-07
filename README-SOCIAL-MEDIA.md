@@ -169,13 +169,19 @@ Login weiß die App nicht, welchem Workspace sie die Freischaltung zuordnen
 soll; der „Jetzt kaufen“-Button auf `/buy` leitet nicht angemeldete
 Besucher automatisch zu `/signup?next=/buy` weiter.
 
-**Ein Paket, ein Preis.** SECRET 58 ("Social Media KI") wird als einzelnes
-Komplettpaket mit Vollzugriff verkauft — kein Kleines/Großes Paket, keine
-Staffelung, kein Abo. Empfohlener Preis: **797 € einmalig**
-(hinterlegt in [`src/lib/pricing.ts`](src/lib/pricing.ts), dort auch
-anpassbar). `/buy` zeigt diesen Preis bereits als Ankündigung an, auch
-bevor Stripe konfiguriert ist — verbindlich (inkl. funktionierendem
-Kaufen-Button) wird er erst mit einem passenden Stripe-Preis.
+**Zwei Pakete, ein Funktionsumfang.** SECRET 58 wird als zwei Pakete
+verkauft — **Pro** (590 € einmalig) und **Maxi** (797 € einmalig),
+zentral definiert in [`src/lib/packages.ts`](src/lib/packages.ts) (einzige
+Quelle der Wahrheit für Preis und Kontingente; Verkaufsseite, Checkout und
+Kontingent-Durchsetzung lesen ausschließlich von dort). Beide Pakete
+schalten denselben vollen Funktionsumfang frei (alle 14 Agenten, Voice
+Studio, Video Studio) — der Unterschied liegt ausschließlich in
+monatlichen Kontingenten für Content-Ideen, KI-Videos und
+Sprachausgaben (siehe [Kontingente](#monatliche-kontingente) unten).
+`/buy` zeigt beide Preise bereits als Ankündigung an, auch bevor Stripe
+konfiguriert ist — verbindlich (inkl. funktionierendem Kaufen-Button)
+wird ein Preis erst mit einem passenden, im Stripe-Dashboard angelegten
+Preis.
 
 **Wo trage ich den API-Schlüssel ein?** Genau wie bei jeder anderen
 Integration hier (ElevenLabs, Anthropic, …): in `.env` für die lokale
@@ -183,24 +189,33 @@ Entwicklung, und im Render-Dashboard unter **Environment** für die Live-Seite
 (oder analog beim jeweils genutzten Hoster).
 
 1. **Stripe-Account** auf [stripe.com](https://stripe.com/) anlegen, im
-   Dashboard ein Produkt "Social Media KI" mit einem einmaligen Preis von
-   797 € (oder dem angepassten Wert aus `src/lib/pricing.ts`) anlegen.
+   Dashboard **zwei** Produkte mit je einmaligem Preis anlegen: "SECRET 58
+   Pro" (590 €) und "SECRET 58 Maxi" (797 €) — oder die angepassten Werte
+   aus `src/lib/packages.ts`. Jedes Paket ist unabhängig buchbar, es reicht
+   auch, zunächst nur eines der beiden Produkte anzulegen.
 2. In `.env` (bzw. Render-Environment) setzen:
    - `STRIPE_SECRET_KEY` — der geheime API-Key aus dem Stripe-Dashboard
      (Entwickler → API-Schlüssel).
-   - `STRIPE_PRICE_ID` — die Preis-ID (`price_...`) des angelegten Produkts.
+   - `STRIPE_PRICE_ID_PRO` / `STRIPE_PRICE_ID_MAXI` — die Preis-IDs
+     (`price_...`) der beiden angelegten Produkte.
    - `STRIPE_WEBHOOK_SECRET` — Signing Secret des Webhooks, den du im
      Stripe-Dashboard auf `https://<deine-domain>/api/stripe/webhook`
      für die Events `checkout.session.completed` **und** `charge.refunded`
      anlegst (Letzteres markiert die passende License automatisch als
      `REFUNDED`, sichtbar im Betreiber-Dashboard, siehe unten).
-3. Sobald `STRIPE_SECRET_KEY`/`STRIPE_PRICE_ID` gesetzt sind, zeigt `/buy`
-   den echten Preis an und der „Jetzt kaufen“-Button leitet angemeldete
-   Nutzer zu Stripe Checkout weiter (nicht angemeldete zuerst zu
-   `/signup?next=/buy`). Nach erfolgreicher Zahlung wird genau der
-   Workspace des kaufenden Kontos freigeschaltet — `checkout.sessions`
-   bekommt dafür `client_reference_id = <userId>` aus der Server-Session
-   mit (`src/lib/stripe.ts`), nie aus einem Client-Parameter.
+3. Sobald `STRIPE_SECRET_KEY` und die jeweilige Price-ID gesetzt sind,
+   zeigt `/buy` für dieses Paket den echten Preis an und der „Jetzt
+   kaufen“-Button leitet angemeldete Nutzer zu Stripe Checkout weiter
+   (nicht angemeldete zuerst zu `/signup?next=/buy`). Welches Paket
+   gekauft wurde, geht als `metadata.packageId` in die Checkout-Session
+   (`src/lib/stripe.ts`) und wird beim Freischalten auf die `License`
+   übernommen — nie aus Preis/Betrag erraten. Nach erfolgreicher Zahlung
+   wird genau der Workspace des kaufenden Kontos freigeschaltet —
+   `checkout.sessions` bekommt dafür `client_reference_id = <userId>` aus
+   der Server-Session mit, nie aus einem Client-Parameter. Kauft ein
+   Workspace später das andere Paket dazu (Wechsel/Upgrade), zählt die
+   neueste `ACTIVE`-Lizenz für Zugriff und Kontingent — ältere Lizenzen
+   bleiben als Historie erhalten.
 4. **`OWNER_ACCESS_KEY` setzen, um zusätzlich zur Anmeldung eine
    Bezahlschranke zu aktivieren** — ein beliebiges, langes Geheimwort.
    Solange diese Variable **nicht** gesetzt ist, reicht ein Konto
@@ -220,20 +235,50 @@ prüft bei jedem Request zunächst eine gültige Session (siehe
 [Authentifizierung](#authentifizierung--mandantentrennung)), danach —
 nur wenn `OWNER_ACCESS_KEY` gesetzt ist — zusätzlich das Owner-Cookie oder
 eine `License` mit Status `ACTIVE` für genau den Workspace der aktuellen
-Session.
+Session (bei mehreren aktiven Lizenzen zählt die neueste).
+
+## Monatliche Kontingente
+
+Solange `OWNER_ACCESS_KEY` gesetzt ist (Bezahlschranke aktiv), gilt pro
+Workspace ein monatliches Kontingent — abhängig vom gebuchten Paket
+(`src/lib/packages.ts`):
+
+| Paket | Content-Ideen/Monat | KI-Videos/Monat | Sprachausgaben/Monat |
+| --- | --- | --- | --- |
+| Pro (590 €) | 60 | 15 | 20 |
+| Maxi (797 €) | 150 | 40 | 50 |
+
+Durchgesetzt in [`src/lib/quota.ts`](src/lib/quota.ts): vor jedem
+kostenpflichtigen Agenten-Aufruf (Ideen generieren, Video rendern,
+Voiceover erzeugen) wird gezählt, wie viele `agent_runs` dieser Art der
+Workspace seit Monatsbeginn schon hat (die bestehende `agent_runs`-
+Tabelle protokolliert ohnehin jeden Aufruf, siehe
+[Agenten](#agenten)) — ist das Kontingent erreicht, antwortet die
+Route mit `429` und einer klaren Fehlermeldung, **bevor** ein
+Provider-Request passiert. Kein automatisches Nachbuchen/Zusatzkosten.
+Alle anderen Agenten (Script, Hook, Hashtag, Thumbnail, Subtitle,
+Content-Brain, …) bleiben nur durch das bestehende Rate-Limiting
+geschützt, nicht zusätzlich durch ein Monatskontingent.
+
+**Wichtig:** Nur die beiden Preise (590 €/797 €) sind vom Auftraggeber
+bestätigt — die Kontingent-Zahlen oben sind ein begründeter Startwert
+(gleiche Größenordnung wie die bereits committeten Autopilot-Kontingente),
+kein verbindlich festgelegter Wert. Vor dem echten Verkaufsstart prüfen/
+anpassen.
 
 ## Betreiber-Dashboard
 
 `/operator` — ausschließlich über das Owner-Cookie erreichbar (`/unlock?key=`,
 s.o.), komplett getrennt vom Kunden-Session-System. Zeigt aggregierte
-Paketzahlungen (Anzahl/Summe aktiver Lizenzen nach Währung, PENDING/REFUNDED-
-Zähler, die letzten 25 Lizenzen mit E-Mail/Betrag/Status) — **keine**
-privaten Kundeninhalte (Brand DNA, Kampagnen, Content etc.). Verfügbares
-Guthaben und tatsächlich ausgezahlte Beträge werden bewusst **nicht**
-angezeigt (siehe Hinweistext auf der Seite) — das liefert nur das
-Stripe-Dashboard selbst; eine Anbindung dafür ist nicht Teil dieses Stands.
+Paketzahlungen (Anzahl/Summe aktiver Lizenzen nach Währung **und nach
+Paket**, PENDING/REFUNDED-Zähler, die letzten 25 Lizenzen mit
+E-Mail/Paket/Betrag/Status) — **keine** privaten Kundeninhalte (Brand DNA,
+Kampagnen, Content etc.). Verfügbares Guthaben und tatsächlich ausgezahlte
+Beträge werden bewusst **nicht** angezeigt (siehe Hinweistext auf der
+Seite) — das liefert nur das Stripe-Dashboard selbst; eine Anbindung dafür
+ist nicht Teil dieses Stands.
 
-**Einrichtungsservice & Autopilot-Vorschau:** Unter dem Komplettpaket kann
+**Einrichtungsservice & Autopilot-Vorschau:** Zu Pro oder Maxi kann
 optional ein Einrichtungsservice (299 € einmalig) dazugebucht werden — dafür in
 Stripe ein zweites Produkt mit einmaligem Preis anlegen und
 `STRIPE_SETUP_PRICE_ID` setzen. Darunter zeigt `/buy` den geplanten
@@ -380,7 +425,8 @@ Berechtigungen, Multi-Tenancy, Fehlerbehandlung).
 - [x] Learning Engine funktioniert (regelbasierte Empfehlungen aus echten Analytics-Daten)
 - [x] Multi-Tenant-**Datenmodell** vollständig vorbereitet (Workspace-Isolation in jeder Tabelle)
 - [x] Multi-Tenant-**UI/Auth** — Signup/Login/Logout, jede Session isoliert auf genau einen Workspace, kein geteilter Default-Workspace mehr (siehe [Authentifizierung](#authentifizierung--mandantentrennung))
-- [x] Betreiber-Dashboard (`/operator`, aggregierte Paketzahlungen, keine Kundendaten)
+- [x] Zwei Pakete Pro (590 €) / Maxi (797 €), zentral definiert (`src/lib/packages.ts`), inkl. monatlicher Kontingente (siehe [Monatliche Kontingente](#monatliche-kontingente))
+- [x] Betreiber-Dashboard (`/operator`, aggregierte Paketzahlungen nach Pro/Maxi aufgeschlüsselt, keine Kundendaten)
 - [x] Secrets sind geschützt (ausschließlich Env-Variablen, nie im Frontend/Log)
 - [x] Basis-Rate-Limiting (Login/Signup gegen Brute-Force, teure KI-Routen gegen Kostenmissbrauch) — In-Memory, siehe Grenzen unten
 - [ ] Automatisierte Tests — noch offen, siehe [Tests](#tests)
@@ -393,12 +439,13 @@ Berechtigungen, Multi-Tenancy, Fehlerbehandlung).
 Um ehrlich zu bleiben (Abschnitt 42), sind folgende Punkte bewusst **nicht**
 als fertige Funktion ausgegeben:
 
-1. **Preismodell-Konflikt ungeklärt** — committed ist "ein Paket, ein Preis"
-   (797 €, `src/lib/pricing.ts`) plus eine nicht buchbare Autopilot-Vorschau
-   (S/M/L-Monatsabo). Ein separat diskutiertes "Pro/Maxi"-Zweistufenmodell
-   (590 €/797 €) ist **nirgends im Code**. Es wurde bewusst **nicht**
-   implementiert, um keine wirtschaftlich bindenden Konditionen zu
-   erfinden — siehe Projektbericht/Restliste für die nötige Entscheidung.
+1. **Kontingent-Zahlen sind ein Startwert, kein bestätigter Wert** — vom
+   Auftraggeber bestätigt sind ausschließlich die beiden Preise (590 €
+   Pro / 797 € Maxi). Die monatlichen Kontingente je Paket (Ideen/Videos/
+   Sprachausgaben, `src/lib/packages.ts`) wurden begründet, aber ohne
+   explizite Bestätigung festgelegt — vor dem echten Verkaufsstart prüfen/
+   anpassen (siehe [Monatliche Kontingente](#monatliche-kontingente) und
+   Projektbericht/Restliste).
 2. **Genesis-Sprachsteuerung** — existiert nicht im Code (keine Treffer für
    "genesis" im gesamten Repository). Nicht umgesetzt in diesem Stand.
 3. **Website-Einbindung ("Meine Webseite verbinden")** — es gibt einen

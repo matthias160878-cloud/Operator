@@ -1,8 +1,7 @@
 {
   "kicker": "AI Social Command Center",
-  "title": "SECRET 58 — {packageName}",
-  "claim": "Sin suscripción. Todos los agentes. Tus propios proveedores de IA.",
-  "subtitle": "Una idea. Varias plataformas. Máximo alcance. Un único paquete completo — pagas una vez, acceso total a toda la aplicación.",
+  "claim": "Sin suscripción a otros proveedores. Todos los agentes. Cuotas fijas.",
+  "subtitle": "Una idea. Varias plataformas. Máximo alcance. Dos paquetes, funcionalidad completa — pagas una vez, acceso total a toda la aplicación.",
   "features": [
     "Content Brain — una idea, todas las plataformas",
     "Todos los agentes de IA: ideas, tendencias, guion, gancho, hashtags, miniaturas, subtítulos, publicación",
@@ -11,23 +10,24 @@
     "Fábrica de contenido con flujo de aprobación y calendario de contenido",
     "Analítica, recomendaciones de crecimiento y seguimiento de ingresos",
     "Bandeja de entrada con respuestas redactadas por IA",
-    "Libre elección de proveedores de IA con tus propias cuentas — sin cuotas"
+    "El acceso a la IA está incluido en el paquete — no necesitas tu propia suscripción"
   ],
+  "packageQuota": "{ideas} ideas de contenido · {videos} vídeos con IA · {voice} locuciones al mes incluidos",
   "priceOnetime": "pago único",
   "priceRecommendedNote": "Precio recomendado — será vinculante en cuanto se configure un precio correspondiente en Stripe.",
   "buyButton": "Comprar ahora",
   "redirecting": "Redirigiendo a Stripe …",
   "checkoutFailed": "Error en el proceso de pago.",
   "unknownError": "Error desconocido.",
-  "notConfigured": "El pago aún no está configurado — primero el operador debe crear un producto de {price} en Stripe y definir STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
-  "costDisclosure": "Nota: este precio es un pago único por el software. Algunas funciones concretas (p. ej. generación de texto con IA, locución) requieren tus propias cuentas con proveedores externos (p. ej. Anthropic, ElevenLabs) — sus costes son independientes de SECRET 58 y los cobra directamente ese proveedor, no aquí. Detalles después de la compra en Integraciones.",
+  "notConfigured": "El pago aún no está configurado — primero el operador debe crear este paquete en Stripe y definir el precio correspondiente.",
+  "costDisclosure": "Nota: este precio es un pago único por el software. El acceso a la IA (texto, voz) lo proporciona el operador de forma centralizada y está incluido dentro de la cuota mensual de tu paquete — no necesitas tu propia suscripción con Anthropic, OpenAI o ElevenLabs. Si se agota la cuota de un mes, te avisamos — no se generan cargos adicionales automáticos.",
   "setupServiceTitle": "Añadir servicio de configuración (+{price} pago único)",
-  "setupServiceDescription": "Configuramos por ti las claves API, el Brand DNA y tus primeras publicaciones.",
+  "setupServiceDescription": "Configuramos por ti el Brand DNA y tus primeras publicaciones.",
   "setupServiceUnavailable": "Disponible pronto — el operador debe añadir primero el servicio en Stripe.",
   "autopilot": {
     "kicker": "Próximamente",
     "title": "Autopilot — todo incluido",
-    "subtitle": "Sin cuentas propias: todos los costes de proveedores para texto, voz y vídeo están incluidos. Las mismas funciones que el paquete completo — los tamaños solo se diferencian en el volumen.",
+    "subtitle": "Sin cuentas propias: todos los costes de proveedores para texto, voz y vídeo están incluidos. Las mismas funciones que Pro/Maxi — los tamaños solo se diferencian en el volumen.",
     "comingSoon": "Próximamente",
     "perMonth": "/ mes",
     "tiers": {

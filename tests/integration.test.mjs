@@ -234,6 +234,10 @@ test("Kauf Pro (Einmalzahlung): Erfolgs-URL allein schaltet nichts frei", async 
   assert.equal(call.params.mode, "payment");
   assert.equal(call.params["line_items[0][price]"], "price_pro");
   assert.equal(call.params.allow_promotion_codes, "true");
+  // Nettopreis + Umsatzsteuer je Land
+  assert.equal(call.params["automatic_tax[enabled]"], "true");
+  assert.equal(call.params.billing_address_collection, "required");
+  assert.equal(call.params["tax_id_collection[enabled]"], "true");
   checkoutA = r.data.url.split("/").pop();
   const status = await A.json(`/api/billing/status?checkout=${checkoutA}`);
   assert.equal(status.data.plan, null);
@@ -344,13 +348,16 @@ test("Maxi als Abo: Aktivierung, Verlängerung, Kündigung", async () => {
   assert.equal(plan.status, "ACTIVE");
   assert.equal(await prisma.operatorPayment.count({ where: { workspaceId: wsB } }), 0); // Abo-Zahlung kommt über invoice.paid
 
-  const invoice = { id: "in_B_1", object: "invoice", amount_paid: 79700, currency: "eur", customer: "cus_B",
+  const invoice = { id: "in_B_1", object: "invoice", amount_paid: 94843, currency: "eur", customer: "cus_B", total_taxes: [{ amount: 15143 }],
     parent: { type: "subscription_details", subscription_details: { subscription: "sub_B" } },
     lines: { data: [{ period: { end: Math.floor(Date.now() / 1000) + 30 * 86400 } }] } };
   const inv = event("invoice.paid", invoice);
   await webhook(inv);
   await webhook(inv);
-  assert.equal(await prisma.operatorPayment.count({ where: { workspaceId: wsB } }), 1);
+  const payB = await prisma.operatorPayment.findMany({ where: { workspaceId: wsB } });
+  assert.equal(payB.length, 1);
+  assert.equal(payB[0].amount, 94843); // 797,00 € netto + 19 % USt
+  assert.equal(payB[0].taxAmount, 15143);
 
   // Kontingent Maxi: 3 Webseiten
   for (const u of ["https://b1.example", "https://b2.example", "https://b3.example"]) {
@@ -458,7 +465,8 @@ test("Betreiber: geschützte Einrichtung, Dashboard ohne Kundeninhalte, kein Zug
   const html = await page.text();
   assert.ok(html.includes("123,45"), "verfügbares Stripe-Guthaben fehlt"); // aus balance.available
   assert.ok(html.includes("5,00"), "ausstehendes Guthaben fehlt");
-  assert.ok(html.includes("501,50") && html.includes("797,00"), "Paketzahlungen fehlen");
+  assert.ok(html.includes("501,50") && html.includes("948,43"), "Paketzahlungen fehlen");
+  assert.ok(html.includes("151,43"), "Umsatzsteueranteil fehlt");
   assert.ok(!html.includes("Geheime Idee von A") && !html.includes("Geheimes Skript A"));
 
   const asCustomer = await A.req("/operator");

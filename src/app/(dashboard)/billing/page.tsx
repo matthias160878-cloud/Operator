@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { getUsage } from "@/lib/entitlements";
-import { METRIC_LABELS, PLANS, PLAN_KEYS, formatCents, packageTermsConfirmed, parsePlanKey, type Metric } from "@/lib/plans";
+import { METRIC_LABELS, PLANS, PLAN_KEYS, VAT_NOTE, formatCents, packageTermsConfirmed, parsePlanKey, type Metric } from "@/lib/plans";
 import { getPlanPrice, isStripeConfigured, isStripeWebhookConfigured, type PlanPrice } from "@/lib/stripe";
 import { BillingClient, type PlanCard } from "@/components/billing/BillingClient";
 
@@ -45,9 +45,9 @@ export default async function BillingPage({ searchParams }: { searchParams: Prom
     return {
       key,
       name: def.name,
-      priceText: price ? formatCents(price.unitAmount, price.currency) : formatCents(def.displayAmountCents, def.displayCurrency),
+      priceText: formatCents(def.netAmountCents, def.displayCurrency),
       priceIsLive: Boolean(price),
-      intervalText: price ? intervalText(price) : "Anzeige unverbindlich — Konditionen noch nicht bestätigt",
+      intervalText: `${VAT_NOTE} · ${price ? intervalText(price) : "Abrechnungszeitraum wird noch festgelegt"}`,
       features: def.features,
       quotas: (Object.keys(def.quotas) as Metric[]).map((m) => ({
         label: METRIC_LABELS[m],

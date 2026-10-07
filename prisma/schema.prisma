@@ -602,7 +602,8 @@ model OperatorPayment {
   kind           String   // PAYMENT | REFUND
   workspaceId    String?
   plan           String?
-  amount         Int      // kleinste Währungseinheit; Erstattungen positiv, kind=REFUND
+  amount         Int      // kleinste Währungseinheit, brutto; Erstattungen positiv, kind=REFUND
+  taxAmount      Int      @default(0) // enthaltene Umsatzsteuer (bei Zahlungen)
   currency       String
   status         String
   livemode       Boolean  @default(false)

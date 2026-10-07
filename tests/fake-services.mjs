@@ -35,7 +35,7 @@ export function startFakeServices() {
         const id = p.split("/").pop();
         const recurring = id === "price_maxi" ? { interval: "month", interval_count: 1 } : null;
         return json(res, 200, {
-          id, object: "price", active: true, currency: "eur",
+          id, object: "price", active: true, currency: "eur", tax_behavior: "exclusive",
           unit_amount: id === "price_maxi" ? 79700 : 59000, recurring,
           product: { id: "prod_x", object: "product", name: id === "price_maxi" ? "Maxi" : "Pro" },
         });

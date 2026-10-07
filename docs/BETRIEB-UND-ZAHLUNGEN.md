@@ -34,10 +34,16 @@ darauf zu.
 * **Preis, Währung, Intervall** kommen aus dem Stripe-Preis
   (`STRIPE_PRICE_ID_PRO` / `STRIPE_PRICE_ID_MAXI`). Ist der Preis wiederkehrend,
   entsteht ein Abo, sonst eine Einmalzahlung. Der Code legt kein Intervall fest.
-* **590 € (Pro) / 797 € (Maxi)** sind nur Anzeige-Platzhalter. Sie stammen aus
-  dem Gespräch („nach 15 % Rabatt“) und sind nicht bestätigt. Im Repository war
-  bisher ein *einzelnes* Paket zu 797 € einmalig hinterlegt, mit dem Hinweis,
-  dass Kunden eigene KI-Zugänge nutzen. Das widerspricht dem neuen Modell.
+* **Preise (bestätigt am 7. Oktober 2026):** Pro **590 € netto**, Maxi **797 € netto**,
+  jeweils bereits nach 15 % Rabatt. Die Umsatzsteuer kommt je nach Land des
+  Kunden hinzu: Checkout mit `automatic_tax`, Pflicht-Rechnungsadresse und
+  USt-ID-Feld (Reverse Charge für Unternehmen berechnet Stripe Tax).
+  Der Stripe-Preis muss **genau** diesen Nettobetrag in EUR mit
+  `tax_behavior = exclusive` haben, sonst verweigert der Checkout.
+  Ein durchgestrichener „Statt“-Preis wird nicht angezeigt: Nach § 11 PAngV
+  zählt als Vergleich nur der niedrigste tatsächlich verlangte Preis der
+  letzten 30 Tage, und den gibt es noch nicht.
+* **Noch offen:** Abrechnungszeitraum (einmalig oder wiederkehrend) und Kontingente.
 * **Rabatte** nur über in Stripe angelegte Aktionscodes (`allow_promotion_codes`).
   Ein fester 15-%-Rabatt ist nicht eingebaut.
 * **Kontingente (vorläufig):** Pro = Mengen der früheren Autopilot-Stufe S,
@@ -216,7 +222,11 @@ Empfohlener Aufbau (Windows Server 2022/2025):
 
 ## 9. Stripe-Einrichtung (Betreiber, zuerst im Testmodus)
 
-1. Im Testmodus zwei Produkte *Pro* und *Maxi* mit je einem Preis anlegen.
+0. **Stripe Tax aktivieren** (Einstellungen → Steuern): Ursprungsadresse,
+   Steuerregistrierungen (z. B. Deutschland; OSS für EU-Privatkunden), Produktsteuercode
+   für Software/SaaS. Stripe Tax ist bei Stripe kostenpflichtig.
+1. Im Testmodus zwei Produkte *Pro* (590,00 €) und *Maxi* (797,00 €) mit je einem
+   Preis anlegen, **Steuerverhalten „exklusive Steuer“**.
    Einmalig oder wiederkehrend ist deine Entscheidung; die Anwendung folgt dem Preis.
    Die Preis-IDs in `STRIPE_PRICE_ID_PRO/MAXI` eintragen.
 2. Webhook-Endpunkt (dein Konto) auf `/api/stripe/webhook` mit diesen Events:

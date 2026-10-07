@@ -52,6 +52,8 @@ export interface PlanPrice {
   priceId: string;
   unitAmount: number;
   currency: string;
+  /** "exclusive" = Nettopreis, Umsatzsteuer kommt hinzu (gefordert). */
+  taxBehavior: string | null;
   /** null = einmalige Zahlung; sonst Intervall laut Stripe-Preis. */
   recurring: { interval: string; intervalCount: number } | null;
   productName: string;
@@ -73,6 +75,7 @@ export async function getPlanPrice(plan: PlanKey): Promise<PlanPrice | null> {
     priceId,
     unitAmount: price.unit_amount,
     currency: price.currency,
+    taxBehavior: price.tax_behavior ?? null,
     recurring: price.recurring
       ? { interval: price.recurring.interval, intervalCount: price.recurring.interval_count }
       : null,
@@ -111,6 +114,13 @@ export async function createPlanCheckout(input: {
   }
   const price = await getPlanPrice(input.plan);
   if (!price) throw new CheckoutRefused("Für dieses Paket ist in Stripe kein aktiver Preis hinterlegt.", 503);
+  // Schutz vor Fehlkonfiguration: Stripe-Preis muss dem bestätigten Nettopreis entsprechen.
+  if (price.taxBehavior !== "exclusive" || price.unitAmount !== PLANS[input.plan].netAmountCents || price.currency !== "eur") {
+    throw new CheckoutRefused(
+      "Der Stripe-Preis dieses Pakets ist nicht als Nettopreis in der vereinbarten Höhe angelegt. Der Betreiber muss ihn korrigieren.",
+      503
+    );
+  }
 
   const current = await prisma.workspacePlan.findUnique({ where: { workspaceId: input.workspaceId } });
   if (current && ["ACTIVE", "PAST_DUE", "PENDING"].includes(current.status)) {
@@ -148,13 +158,18 @@ export async function createPlanCheckout(input: {
     client_reference_id: input.workspaceId,
     metadata,
     ...(current?.stripeCustomerId
-      ? { customer: current.stripeCustomerId }
+      ? { customer: current.stripeCustomerId, customer_update: { address: "auto" as const, name: "auto" as const } }
       : mode === "payment"
         ? { customer_email: input.email, customer_creation: "always" as const }
         : { customer_email: input.email }),
     ...(mode === "payment" ? { payment_intent_data: { metadata } } : { subscription_data: { metadata } }),
     // Rabatte nur über in Stripe angelegte Aktionscodes — kein selbst erfundener Rabatt.
     allow_promotion_codes: true,
+    // Umsatzsteuer je nach Land des Kunden (Stripe Tax). Für Unternehmen mit
+    // USt-ID berechnet Stripe Tax ggf. Reverse Charge.
+    automatic_tax: { enabled: true },
+    billing_address_collection: "required",
+    tax_id_collection: { enabled: true },
     success_url: `${input.origin}/billing?checkout={CHECKOUT_SESSION_ID}`,
     cancel_url: `${input.origin}/billing?plan=${input.plan.toLowerCase()}&abgebrochen=1`,
   });

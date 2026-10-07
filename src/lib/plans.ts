@@ -7,10 +7,15 @@
  *    IMMER aus dem Stripe-Preisobjekt (STRIPE_PRICE_ID_PRO / _MAXI). Der Code
  *    erfindet kein Intervall: ein wiederkehrender Stripe-Preis führt zu einem
  *    Abo, ein einmaliger zu einer Einmalzahlung.
- *  - displayAmountCents sind nur Anzeige-Platzhalter für die Verkaufsseite,
- *    solange Stripe nicht konfiguriert ist. Sie stammen aus dem Gespräch
- *    (590 € / 797 € nach 15 % Rabatt) und sind NICHT bestätigt. Im Repository
- *    war bisher nur ein Einzelpaket zu 797 € einmalig hinterlegt.
+ *  - netAmountCents: vom Betreiber bestätigte NETTO-Preise (7. Oktober 2026):
+ *    Pro 590 €, Maxi 797 € — bereits nach 15 % Rabatt. Die Umsatzsteuer kommt
+ *    je nach Land des Kunden hinzu (Stripe Tax, automatische Berechnung).
+ *    Der Stripe-Preis muss genau diesen Nettobetrag mit tax_behavior
+ *    "exclusive" haben, sonst verweigert der Checkout (src/lib/stripe.ts).
+ *  - Ein durchgestrichener "Statt"-Preis wird bewusst NICHT angezeigt: Nach
+ *    § 11 PAngV darf als Vergleich nur der niedrigste tatsächlich verlangte
+ *    Preis der letzten 30 Tage dienen — ein solcher Preis existiert noch nicht.
+ *  - Abrechnungszeitraum (einmalig/monatlich) ist noch NICHT bestätigt.
  *  - Die Kontingente sind VORLÄUFIG. Pro übernimmt die Mengen der bisherigen
  *    Autopilot-Stufe S, Maxi die der Stufe M (src/lib/pricing.ts,
  *    docs/preisanalyse.html). Werte ohne Vorlage dort sind als solche markiert.
@@ -38,8 +43,8 @@ export const MONTHLY_METRICS: Metric[] = ["AI_TEXT", "IDEAS", "VOICEOVER", "VIDE
 export interface PlanDefinition {
   key: PlanKey;
   name: string;
-  /** Nur Anzeige ohne Stripe — unbestätigt, siehe Kopfkommentar. */
-  displayAmountCents: number;
+  /** Bestätigter Nettopreis in Cent (ohne Umsatzsteuer), siehe Kopfkommentar. */
+  netAmountCents: number;
   displayCurrency: "eur";
   priceEnvVar: string;
   quotas: Record<Metric, number>;
@@ -52,7 +57,7 @@ export const PLANS: Record<PlanKey, PlanDefinition> = {
   PRO: {
     key: "PRO",
     name: "Pro",
-    displayAmountCents: 59000,
+    netAmountCents: 59000,
     displayCurrency: "eur",
     priceEnvVar: "STRIPE_PRICE_ID_PRO",
     quotas: { BRANDS: 1, IDEAS: 30, VIDEO: 10, VOICEOVER: 10, AI_TEXT: 300, WIDGET_CHAT: 500, WEBSITES: 1 },
@@ -67,7 +72,7 @@ export const PLANS: Record<PlanKey, PlanDefinition> = {
   MAXI: {
     key: "MAXI",
     name: "Maxi",
-    displayAmountCents: 79700,
+    netAmountCents: 79700,
     displayCurrency: "eur",
     priceEnvVar: "STRIPE_PRICE_ID_MAXI",
     quotas: { BRANDS: 3, IDEAS: 90, VIDEO: 30, VOICEOVER: 30, AI_TEXT: 900, WIDGET_CHAT: 1500, WEBSITES: 3 },
@@ -107,6 +112,8 @@ export function planForStripePrice(priceId: string | null | undefined): PlanKey 
 export function packageTermsConfirmed(): boolean {
   return process.env.PACKAGE_TERMS_CONFIRMED === "true";
 }
+
+export const VAT_NOTE = "netto zzgl. Umsatzsteuer (je nach Land)";
 
 /** Anzeigebetrag für Cent-Werte. */
 export function formatCents(cents: number, currency: string, locale = "de-DE"): string {

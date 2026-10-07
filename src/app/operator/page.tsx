@@ -47,6 +47,7 @@ export default async function OperatorPage() {
         <div className="card p-4">
           <div className="text-xs text-muted">Umsatz (Paketzahlungen, brutto)</div>
           <div className="mt-1 text-lg text-foreground"><Money rows={o.gross} /></div>
+          <div className="mt-1 text-xs text-muted">davon Umsatzsteuer: <Money rows={o.tax.filter((t) => t.amount > 0)} empty="0" /></div>
         </div>
         <div className="card p-4">
           <div className="text-xs text-muted">Erstattungen</div>

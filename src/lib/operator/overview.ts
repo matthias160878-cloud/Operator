@@ -22,6 +22,8 @@ export async function getOperatorOverview() {
   const payments = await prisma.operatorPayment.findMany({ where: { livemode: live }, orderBy: { createdAt: "desc" } });
   const gross = sumBy(payments.filter((p) => p.kind === "PAYMENT"));
   const refunds = sumBy(payments.filter((p) => p.kind === "REFUND"));
+  // Enthaltene Umsatzsteuer — gehört ans Finanzamt, nicht zum Umsatz.
+  const tax = sumBy(payments.filter((p) => p.kind === "PAYMENT").map((p) => ({ currency: p.currency, amount: p.taxAmount })));
   const net = gross.map((g) => ({
     currency: g.currency,
     amount: g.amount - (refunds.find((r) => r.currency === g.currency)?.amount ?? 0),
@@ -60,6 +62,7 @@ export async function getOperatorOverview() {
   return {
     mode: stripeMode(),
     gross,
+    tax,
     refunds,
     net,
     recentPayments: payments.slice(0, 20).map((p) => ({

@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import { getSessionUser } from "@/lib/auth/session";
-import { METRIC_LABELS, PLANS, PLAN_KEYS, formatCents, packageTermsConfirmed, type Metric } from "@/lib/plans";
+import { METRIC_LABELS, PLANS, PLAN_KEYS, VAT_NOTE, formatCents, packageTermsConfirmed, type Metric } from "@/lib/plans";
 import { getPlanPrice } from "@/lib/stripe";
 
 export const dynamic = "force-dynamic";
@@ -48,14 +48,15 @@ export default async function BuyPage() {
             <div key={key} className="card flex flex-col p-6">
               <h2 className="text-lg font-semibold text-foreground">{def.name}</h2>
               <div className="mt-2 text-3xl font-semibold text-foreground">
-                {price ? formatCents(price.unitAmount, price.currency) : formatCents(def.displayAmountCents, def.displayCurrency)}
+                {formatCents(def.netAmountCents, def.displayCurrency)}
               </div>
               <div className="text-xs text-muted">
+                {VAT_NOTE} ·{" "}
                 {price
                   ? price.recurring
                     ? `wiederkehrend (${price.recurring.interval === "month" ? "monatlich" : price.recurring.interval === "year" ? "jährlich" : price.recurring.interval})`
                     : "einmalig"
-                  : "Unverbindliche Anzeige — Preis und Abrechnungszeitraum werden mit dem Zahlungsanbieter festgelegt"}
+                  : "Abrechnungszeitraum wird noch festgelegt"}
               </div>
               <ul className="mt-4 space-y-1.5 text-sm text-foreground">
                 {def.features.map((f) => (

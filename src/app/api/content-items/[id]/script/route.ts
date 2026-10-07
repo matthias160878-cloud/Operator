@@ -4,17 +4,18 @@ import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { getBrandDNA } from "@/lib/brand";
 import { runAgent } from "@/lib/agents/runner";
 import { generateScript } from "@/lib/agents/scriptAgent";
+import { route } from "@/lib/api";
 
 const VARIANT_LABELS = ["A", "B", "C", "D", "E", "F"];
 
-export async function POST(
+async function handlePOST(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
   const workspaceId = await getCurrentWorkspaceId();
-  const item = await prisma.contentItem.findUnique({
-    where: { id },
+  const item = await prisma.contentItem.findFirst({
+    where: { id, workspaceId },
     include: { scripts: true },
   });
   if (!item) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
@@ -33,3 +34,5 @@ export async function POST(
 
   return NextResponse.json({ script: variant });
 }
+
+export const POST = route(handlePOST);

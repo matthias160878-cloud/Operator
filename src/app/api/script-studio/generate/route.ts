@@ -5,6 +5,7 @@ import { getBrandDNA } from "@/lib/brand";
 import { runAgent } from "@/lib/agents/runner";
 import { generateHooks } from "@/lib/agents/hookAgent";
 import { generateScript } from "@/lib/agents/scriptAgent";
+import { route } from "@/lib/api";
 
 const PLATFORM_VALUES = [
   "YOUTUBE",
@@ -21,7 +22,7 @@ const bodySchema = z.object({
   platform: z.enum(PLATFORM_VALUES),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const body = await request.json().catch(() => null);
   const parsed = bodySchema.safeParse(body);
@@ -48,3 +49,5 @@ export async function POST(request: Request) {
 
   return NextResponse.json(result);
 }
+
+export const POST = route(handlePOST);

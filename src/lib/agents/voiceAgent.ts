@@ -10,13 +10,13 @@ export async function generateVoiceover(input: {
 }): Promise<{ assetId: string; url: string }> {
   if (!isElevenLabsConfigured()) {
     throw new Error(
-      "ElevenLabs ist noch nicht konfiguriert. Trage ELEVENLABS_API_KEY in .env ein."
+      "Die Sprachausgabe ist vom Betreiber noch nicht eingerichtet. Es wurde nichts erzeugt und kein Kontingent verbraucht."
     );
   }
 
   const audio = await textToSpeech(input.text, input.voiceId);
   const filename = `voiceover-${Date.now()}.mp3`;
-  const url = await saveMediaFile("audio", filename, audio);
+  const url = await saveMediaFile(input.workspaceId, "audio", filename, audio);
 
   const asset = await prisma.mediaAsset.create({
     data: {

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
+import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { ContentItemDetail } from "@/components/content-factory/ContentItemDetail";
 
 export const dynamic = "force-dynamic";
@@ -13,8 +14,8 @@ export default async function ContentItemPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const item = await prisma.contentItem.findUnique({
-    where: { id },
+  const item = await prisma.contentItem.findFirst({
+    where: { id, workspaceId: await getCurrentWorkspaceId() },
     include: { scripts: true, mediaAssets: true },
   });
 

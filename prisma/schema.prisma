@@ -144,6 +144,14 @@ model Workspace {
   auditLogs        AuditLog[]
   revenueEntries   RevenueEntry[]
   conversations    Conversation[]
+  plan             WorkspacePlan?
+  usageCounters    UsageCounter[]
+  checkouts        PlanCheckout[]
+  merchantAccount  MerchantAccount?
+  merchantProducts MerchantProduct[]
+  sellerProfile    SellerProfile?
+  customerSales    CustomerSale[]
+  websites         WebsiteConnection[]
 
   @@map("workspaces")
 }
@@ -156,8 +164,14 @@ model User {
   name        String
   role        Role      @default(EDITOR)
   createdAt   DateTime  @default(now())
+  /// scrypt-Hash (Format: scrypt$N$r$p$salt$hash). Null = Konto ohne Passwort (Altbestand/Demo).
+  passwordHash String?
+  /// Betreiberkonto (Umsatz-/Betriebsansicht). Wird nur über den geschützten
+  /// Einrichtungsablauf (/setup + OPERATOR_SETUP_TOKEN) gesetzt, nie per Formular.
+  isOperator  Boolean   @default(false)
 
   auditLogs AuditLog[]
+  sessions  Session[]
 
   @@map("users")
 }
@@ -488,4 +502,214 @@ model License {
   updatedAt               DateTime      @updatedAt
 
   @@map("licenses")
+}
+
+
+// ---------------------------------------------------------------------------
+// Anmeldung, Pakete, Kontingente, Zahlungen (Mehrkundenbetrieb)
+// ---------------------------------------------------------------------------
+
+/// Serverseitige Sitzung. Im Cookie steht nur ein Zufallstoken, in der
+/// Datenbank nur dessen SHA-256 — ein Datenbank-Leak liefert keine gültigen Cookies.
+model Session {
+  id         String   @id // sha256(token)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+/// Fester Zeitfenster-Zähler für Missbrauchsschutz (Anmeldung, Widget, Registrierung).
+model RateLimit {
+  key         String   @id
+  windowStart DateTime
+  count       Int      @default(0)
+
+  @@map("rate_limits")
+}
+
+/// Gebuchtes Paket eines Workspaces. Wird ausschließlich durch verifizierte
+/// Stripe-Webhooks verändert (oder durch Testdaten mit source=TEST).
+model WorkspacePlan {
+  id                   String    @id @default(cuid())
+  workspaceId          String    @unique
+  workspace            Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  plan                 String    // "PRO" | "MAXI"
+  /// NONE | PENDING | ACTIVE | PAST_DUE | CANCELED | REFUNDED | PAYMENT_FAILED
+  status               String    @default("NONE")
+  source               String    @default("STRIPE") // STRIPE | TEST
+  billingMode          String    @default("payment") // payment | subscription (aus dem Stripe-Preis, nicht erfunden)
+  stripeCustomerId     String?
+  stripeSubscriptionId String?   @unique
+  stripePriceId        String?
+  currentPeriodEnd     DateTime?
+  cancelAtPeriodEnd    Boolean   @default(false)
+  activatedAt          DateTime?
+  updatedAt            DateTime  @updatedAt
+
+  @@map("workspace_plans")
+}
+
+/// Serverseitig angelegte Checkout-Zuordnung. Der Webhook vertraut nur
+/// dieser Zeile (nicht den Metadaten aus dem Browser), um Paket und Workspace
+/// zu bestimmen.
+model PlanCheckout {
+  id              String    @id // Stripe Checkout Session ID
+  workspaceId     String
+  workspace       Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  userId          String
+  plan            String
+  stripePriceId   String
+  expectedAmount  Int       // kleinste Währungseinheit, vor Rabatt
+  currency        String
+  mode            String    // payment | subscription
+  status          String    @default("OPEN") // OPEN | COMPLETED | EXPIRED | FAILED
+  createdAt       DateTime  @default(now())
+
+  @@index([workspaceId])
+  @@map("plan_checkouts")
+}
+
+/// Kontingent-Verbrauch je Workspace, Kennzahl und Zeitraum (YYYY-MM, UTC).
+model UsageCounter {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  metric      String
+  period      String
+  used        Int       @default(0)
+
+  @@unique([workspaceId, metric, period])
+  @@map("usage_counters")
+}
+
+/// Jede Stripe-Event-ID wird genau einmal verarbeitet (Wiederholungsschutz).
+model StripeEvent {
+  id          String   @id
+  type        String
+  account     String?  // gesetzt bei Connect-Events
+  processedAt DateTime @default(now())
+
+  @@map("stripe_events")
+}
+
+/// Zahlungen an den Betreiber (Paketumsätze). Getrennt von CustomerSale.
+model OperatorPayment {
+  id             String   @id @default(cuid())
+  stripeObjectId String   @unique // pi_/in_/re_/cs_
+  kind           String   // PAYMENT | REFUND
+  workspaceId    String?
+  plan           String?
+  amount         Int      // kleinste Währungseinheit, brutto; Erstattungen positiv, kind=REFUND
+  taxAmount      Int      @default(0) // enthaltene Umsatzsteuer (bei Zahlungen)
+  currency       String
+  status         String
+  livemode       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  @@map("operator_payments")
+}
+
+// ---------------------------------------------------------------------------
+// Eigene Geschäftseinnahmen der Kunden (getrennt von Paketumsätzen)
+// ---------------------------------------------------------------------------
+
+/// Verbundenes Stripe-Händlerkonto (Connect) — genau eines je Workspace.
+model MerchantAccount {
+  id               String    @id @default(cuid())
+  workspaceId      String    @unique
+  workspace        Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  stripeAccountId  String    @unique
+  chargesEnabled   Boolean   @default(false)
+  payoutsEnabled   Boolean   @default(false)
+  detailsSubmitted Boolean   @default(false)
+  requirementsDue  String    @default("[]") // JSON string[]
+  defaultCurrency  String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@map("merchant_accounts")
+}
+
+model MerchantProduct {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  name        String
+  description String    @default("")
+  amount      Int       // kleinste Währungseinheit
+  currency    String    @default("eur")
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+
+  @@index([workspaceId])
+  @@map("merchant_products")
+}
+
+/// Ein tatsächlicher Verkauf eines Kunden. externalId ist je Workspace
+/// eindeutig — derselbe Verkauf kann so nicht doppelt (direkt + Import) zählen.
+model CustomerSale {
+  id             String    @id @default(cuid())
+  workspaceId    String
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  source         String    // SECRET58_CHECKOUT | IMPORT_CSV
+  externalId     String    // z. B. Stripe PaymentIntent pi_..., oder Bestellnummer des Shops
+  productName    String    @default("")
+  amount         Int
+  refundedAmount Int       @default(0)
+  currency       String
+  status         String    // PAID | PARTIALLY_REFUNDED | REFUNDED | PENDING | FAILED
+  isTestData     Boolean   @default(false)
+  occurredAt     DateTime  @default(now())
+  createdAt      DateTime  @default(now())
+
+  @@unique([workspaceId, externalId])
+  @@map("customer_sales")
+}
+
+// ---------------------------------------------------------------------------
+// "Meine Webseite verbinden" — Widget-Einbindung
+// ---------------------------------------------------------------------------
+
+model WebsiteConnection {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  origin      String    // https://example.com (Schema + Host, ohne Pfad)
+  verifyToken String
+  verifiedAt  DateTime?
+  assistant   String    @default("CHAT") // nur freigegebene Assistenten, siehe src/lib/website.ts
+  publicKey   String    @unique // öffentliche, widerrufbare Kennung — kein Geheimnis
+  revokedAt   DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([workspaceId])
+  @@map("website_connections")
+}
+
+/// Anbieterangaben des Kunden als Verkäufer (Impressum nach § 5 DDG, Links zu
+/// eigenen AGB/Datenschutz/Widerruf). Pflegt ausschließlich der Kunde selbst;
+/// ohne vollständige Angaben sind seine Angebotsseiten nicht erreichbar.
+model SellerProfile {
+  id             String    @id @default(cuid())
+  workspaceId    String    @unique
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  anbieter       String    @default("")
+  firma          String    @default("")
+  anschrift      String    @default("") // mehrzeilig
+  email          String    @default("")
+  telefon        String    @default("")
+  ustId          String    @default("")
+  register       String    @default("")
+  aufsicht       String    @default("")
+  verantwortlich String    @default("")
+  agbUrl         String    @default("")
+  datenschutzUrl String    @default("")
+  widerrufUrl    String    @default("")
+  updatedAt      DateTime  @updatedAt
+
+  @@map("seller_profiles")
 }

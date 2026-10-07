@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
+import { route } from "@/lib/api";
 
 const PLATFORM_VALUES = [
   "YOUTUBE",
@@ -25,7 +26,7 @@ const createSchema = z.object({
   recordedAt: z.string().optional(),
 });
 
-export async function GET() {
+async function handleGET() {
   const workspaceId = await getCurrentWorkspaceId();
   const entries = await prisma.revenueEntry.findMany({
     where: { workspaceId },
@@ -35,7 +36,7 @@ export async function GET() {
   return NextResponse.json({ entries });
 }
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const body = await request.json().catch(() => null);
   const parsed = createSchema.safeParse(body);
@@ -47,6 +48,10 @@ export async function POST(request: Request) {
   }
 
   const { recordedAt, ...rest } = parsed.data;
+  // Kampagnen-Bezug nur auf eigene Kampagnen — fremde IDs werden abgelehnt.
+  if (rest.campaignId && !(await prisma.campaign.findFirst({ where: { id: rest.campaignId, workspaceId } }))) {
+    return NextResponse.json({ error: "Kampagne nicht gefunden." }, { status: 404 });
+  }
 
   const entry = await prisma.revenueEntry.create({
     data: {
@@ -59,3 +64,6 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ entry });
 }
+
+export const GET = route(handleGET);
+export const POST = route(handlePOST);

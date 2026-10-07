@@ -1,62 +1,102 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { prisma } from "@/lib/db";
-import { ACCESS_COOKIE_NAME } from "@/lib/license";
+import { resolveSessionToken, SESSION_COOKIE } from "@/lib/auth/session";
 
 /**
- * Zugriffsschutz für die komplette Anwendung (Abschnitt "Lizenzierung").
+ * Zugriffsschutz für die gesamte Anwendung (Mehrkundenbetrieb).
  *
- * Läuft NUR, wenn `OWNER_ACCESS_KEY` gesetzt ist — ohne diese Variable
- * bleibt die App wie bisher frei zugänglich (wichtig für lokale
- * Entwicklung und damit ein frischer Checkout ohne Setup startfähig
- * bleibt). Sobald `OWNER_ACCESS_KEY` gesetzt ist, wird jede Seite außer
- * der Verkaufsseite/den Stripe-Routen gesperrt, bis entweder
- *  - der Betreiber über /unlock?key=<OWNER_ACCESS_KEY> freigeschaltet hat, oder
- *  - ein Besucher über Stripe bezahlt hat (License-Datensatz mit Status ACTIVE).
+ *  - Öffentlich: Verkaufsseite, Anmeldung/Registrierung, Betreiber-Einrichtung,
+ *    Stripe-Webhooks (signaturgeprüft), öffentliche Shop- und Widget-Endpunkte.
+ *  - Alles andere verlangt eine gültige Sitzung. Seiten leiten zur Anmeldung,
+ *    API-Aufrufe bekommen 401 — auch direkte Aufrufe ohne Browser.
+ *  - /operator und /api/operator nur für Betreiberkonten.
+ *  - Ändernde API-Aufrufe müssen vom eigenen Ursprung kommen (CSRF-Schutz),
+ *    ausgenommen signaturgeprüfte Webhooks und das öffentliche Widget.
+ *
+ * Die Berechtigung auf einzelne Datensätze prüfen zusätzlich die Route
+ * Handler selbst (src/lib/ownership.ts) — der Proxy ist nur die erste Linie.
  */
 const PUBLIC_PREFIXES = [
   "/buy",
-  "/unlock",
-  "/api/stripe",
+  "/login",
+  "/signup",
+  "/setup",
+  "/impressum",
+  "/shop/",
+  "/api/auth/",
+  "/api/stripe/webhook",
+  "/api/stripe/connect-webhook",
+  "/api/shop/",
+  "/api/widget/",
+  "/api/media-signed/",
   "/api/locale",
+  "/widget.js",
   "/_next",
   "/favicon.ico",
   "/manifest.webmanifest",
   "/sw.js",
   "/icons",
   "/brand/",
-  "/media",
   "/robots.txt",
 ];
 
+/** Diese Endpunkte werden von fremden Ursprüngen aufgerufen und prüfen sich selbst. */
+const CROSS_ORIGIN_ALLOWED = ["/api/stripe/webhook", "/api/stripe/connect-webhook", "/api/widget/"];
+
+function isPublic(pathname: string): boolean {
+  return PUBLIC_PREFIXES.some((prefix) => pathname === prefix.replace(/\/$/, "") || pathname.startsWith(prefix));
+}
+
+function sameOrigin(request: NextRequest): boolean {
+  const origin = request.headers.get("origin");
+  if (origin) {
+    try {
+      return new URL(origin).host === request.headers.get("host");
+    } catch {
+      return false;
+    }
+  }
+  // Ohne Origin-Kopfzeile: Fetch-Metadaten heranziehen, sonst ablehnen.
+  const site = request.headers.get("sec-fetch-site");
+  return site === "same-origin" || site === "none";
+}
+
 export async function proxy(request: NextRequest) {
-  if (!process.env.OWNER_ACCESS_KEY) {
-    return NextResponse.next();
-  }
-
   const { pathname } = request.nextUrl;
-  if (PUBLIC_PREFIXES.some((prefix) => pathname.startsWith(prefix))) {
-    return NextResponse.next();
+  const method = request.method.toUpperCase();
+  const mutating = !["GET", "HEAD", "OPTIONS"].includes(method);
+
+  if (
+    mutating &&
+    pathname.startsWith("/api/") &&
+    !CROSS_ORIGIN_ALLOWED.some((p) => pathname.startsWith(p)) &&
+    !sameOrigin(request)
+  ) {
+    return NextResponse.json({ error: "Anfrage von fremdem Ursprung abgelehnt." }, { status: 403 });
   }
 
-  const cookie = request.cookies.get(ACCESS_COOKIE_NAME)?.value;
+  if (isPublic(pathname)) return NextResponse.next();
 
-  if (cookie) {
-    if (cookie === `owner:${process.env.OWNER_ACCESS_KEY}`) {
-      return NextResponse.next();
+  const user = await resolveSessionToken(request.cookies.get(SESSION_COOKIE)?.value);
+  if (!user) {
+    if (pathname.startsWith("/api/")) {
+      return NextResponse.json({ error: "Anmeldung erforderlich." }, { status: 401 });
     }
-    if (!cookie.startsWith("owner:")) {
-      const license = await prisma.license.findUnique({ where: { unlockToken: cookie } });
-      if (license && license.status === "ACTIVE") {
-        return NextResponse.next();
-      }
-    }
+    const url = request.nextUrl.clone();
+    url.pathname = "/login";
+    url.search = pathname === "/" ? "" : `?next=${encodeURIComponent(pathname)}`;
+    return NextResponse.redirect(url);
   }
 
-  const url = request.nextUrl.clone();
-  url.pathname = "/buy";
-  url.search = "";
-  return NextResponse.redirect(url);
+  if ((pathname === "/operator" || pathname.startsWith("/operator/") || pathname.startsWith("/api/operator")) && !user.isOperator) {
+    if (pathname.startsWith("/api/")) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
+    const url = request.nextUrl.clone();
+    url.pathname = "/";
+    url.search = "";
+    return NextResponse.redirect(url);
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {

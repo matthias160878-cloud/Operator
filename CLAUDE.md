@@ -22,7 +22,13 @@ Die folgenden Abschnitte beziehen sich auf das Next.js-Teilprojekt (`src/`).
 - `npm run db:seed` — Demo-Daten laden (`prisma/seed.ts`)
 - `npm run db:studio` — Prisma Studio (DB-GUI) öffnen
 
-Es ist noch kein Test-Runner eingerichtet. Sobald Tests hinzugefügt werden, hier dokumentieren, wie man die gesamte Suite und einen einzelnen Test ausführt.
+- `npm run typecheck` — TypeScript-Prüfung
+- `npm test` — Unit-Tests (`tests/unit.test.ts`, node:test über tsx); einzelner Test: `npx tsx --test --test-name-pattern="Genesis" tests/unit.test.ts`
+- `npm run build && npm run test:integration` — Integrationstests gegen den Produktions-Build mit isolierter SQLite-Testdatenbank und lokalen Stripe-/KI-Attrappen (`tests/fake-services.mjs`); einzelner Test: `node --test --test-name-pattern="Widget" tests/integration.test.mjs`
+- `npm run preview:seed` — Testkonten für eine private, lokale Vorschau (nur gegen SQLite, nie Produktion)
+
+Mehrkundenbetrieb, Pakete, Zahlungen und Bereitstellung: [`docs/BETRIEB-UND-ZAHLUNGEN.md`](docs/BETRIEB-UND-ZAHLUNGEN.md).
+Workspace-ID immer über `getCurrentWorkspaceId()` (Sitzung) — nie aus Anfrageparametern; Datensätze per ID über `src/lib/ownership.ts` prüfen.
 
 ## Architektur
 

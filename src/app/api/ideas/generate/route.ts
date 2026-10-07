@@ -5,13 +5,14 @@ import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { getBrandDNA } from "@/lib/brand";
 import { runAgent } from "@/lib/agents/runner";
 import { generateIdeas } from "@/lib/agents/ideaAgent";
+import { route, isHttpError } from "@/lib/api";
 
 const bodySchema = z.object({
   topic: z.string().min(3),
   count: z.number().int().min(1).max(10).default(5),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const body = await request.json().catch(() => null);
   const parsed = bodySchema.safeParse(body);
@@ -53,9 +54,12 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ideas: created, provider });
   } catch (error) {
+    if (isHttpError(error)) throw error;
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unbekannter Fehler." },
       { status: 500 }
     );
   }
 }
+
+export const POST = route(handlePOST);

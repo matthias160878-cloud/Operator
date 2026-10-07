@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
+import { ownedContentItem } from "@/lib/ownership";
+import { route } from "@/lib/api";
 
 const patchSchema = z.object({
   title: z.string().optional(),
@@ -13,11 +15,12 @@ const patchSchema = z.object({
   thumbnailIdea: z.string().optional(),
 });
 
-export async function GET(
+async function handleGET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
+  await ownedContentItem(id);
   const item = await prisma.contentItem.findUnique({
     where: { id },
     include: { scripts: true, mediaAssets: true, analytics: true },
@@ -26,7 +29,7 @@ export async function GET(
   return NextResponse.json({ item });
 }
 
-export async function PATCH(
+async function handlePATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -36,6 +39,7 @@ export async function PATCH(
   if (!parsed.success) {
     return NextResponse.json({ error: "Ungültige Eingabe." }, { status: 400 });
   }
+  await ownedContentItem(id);
   const { hashtags, keywords, ...rest } = parsed.data;
   const item = await prisma.contentItem.update({
     where: { id },
@@ -48,11 +52,16 @@ export async function PATCH(
   return NextResponse.json({ item });
 }
 
-export async function DELETE(
+async function handleDELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
+  await ownedContentItem(id);
   await prisma.contentItem.delete({ where: { id } });
   return NextResponse.json({ ok: true });
 }
+
+export const GET = route(handleGET);
+export const PATCH = route(handlePATCH);
+export const DELETE = route(handleDELETE);

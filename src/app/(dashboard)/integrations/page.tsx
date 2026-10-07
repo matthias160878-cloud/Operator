@@ -10,6 +10,7 @@ import {
 } from "@/lib/integrations/links";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import type { IntegrationCategory } from "@/lib/integrations/types";
+import { requireSessionUser } from "@/lib/auth/session";
 
 const PRICING_STYLES: Record<PricingModel, string> = {
   free: "bg-success/15 text-success border-success/30",
@@ -32,6 +33,10 @@ export default async function IntegrationsPage() {
   };
   const ti = await getTranslations("common.integrationStatus");
   const statuses = await getAllIntegrationStatuses(ti);
+  // Anbieter-Schlüssel richtet ausschließlich der Betreiber ein. Kunden sehen
+  // nur den ehrlichen Einrichtungsstatus — ohne Aufforderung, eigene
+  // API-Schlüssel zu besorgen.
+  const { isOperator } = await requireSessionUser();
   const byCategory = new Map<IntegrationCategory, typeof statuses>();
   for (const s of statuses) {
     const list = byCategory.get(s.category) ?? [];
@@ -44,7 +49,15 @@ export default async function IntegrationsPage() {
       <div>
         <h1 className="text-xl font-semibold text-foreground">{t("title")}</h1>
         <p className="mt-1 text-sm text-muted">{t("description")}</p>
-        <p className="mt-1 text-xs text-muted">{t("costNote")}</p>
+        {isOperator ? (
+          <p className="mt-1 text-xs text-muted">{t("costNote")}</p>
+        ) : (
+          <p className="mt-1 text-xs text-muted">
+            KI- und Sprachanbieter stellt der Betreiber bereit; du brauchst dafür keine eigenen Schlüssel oder Abos.
+            „Nicht konfiguriert“ heißt: Der Betreiber hat diesen Dienst noch nicht eingerichtet. Social-Media-Konten
+            verbindest du sicher per Anmeldung beim jeweiligen Netzwerk unter „Social Media“.
+          </p>
+        )}
       </div>
 
       {Array.from(byCategory.entries()).map(([category, items]) => (
@@ -62,7 +75,7 @@ export default async function IntegrationsPage() {
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="text-sm text-foreground">{integ.name}</span>
-                      {pricing && (
+                      {isOperator && pricing && (
                         <span
                           className={clsx(
                             "inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium",
@@ -75,7 +88,7 @@ export default async function IntegrationsPage() {
                     </div>
                     <div className="text-xs text-muted">{integ.message}</div>
                     <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-xs">
-                      {integ.status === "NOT_CONFIGURED" && signupUrl && (
+                      {isOperator && integ.status === "NOT_CONFIGURED" && signupUrl && (
                         <a
                           href={signupUrl}
                           target="_blank"
@@ -85,7 +98,7 @@ export default async function IntegrationsPage() {
                           {t("links.getKey")} <ExternalLink className="h-3 w-3" />
                         </a>
                       )}
-                      {integ.status === "NOT_CONFIGURED" && (
+                      {isOperator && integ.status === "NOT_CONFIGURED" && (
                         <a
                           href={RENDER_ENV_DASHBOARD_URL}
                           target="_blank"
@@ -95,7 +108,7 @@ export default async function IntegrationsPage() {
                           {t("links.setInRender")} <ExternalLink className="h-3 w-3" />
                         </a>
                       )}
-                      {pricing?.pricingUrl && (
+                      {isOperator && pricing?.pricingUrl && (
                         <a
                           href={pricing.pricingUrl}
                           target="_blank"

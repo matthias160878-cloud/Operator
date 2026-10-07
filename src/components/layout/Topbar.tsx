@@ -8,15 +8,17 @@ import { Bell, Menu, Search, X } from "lucide-react";
 import clsx from "clsx";
 import { NAV_ITEMS } from "@/components/layout/nav-items";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { GenesisAssistant } from "@/components/genesis/GenesisAssistant";
+import { LogoutButton } from "@/components/auth/LogoutButton";
 
-export function Topbar() {
+export function Topbar({ initials, isOperator }: { initials: string; isOperator: boolean }) {
   const t = useTranslations("common");
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
   return (
     <>
-      <header className="flex items-center gap-3 border-b border-border bg-surface/60 px-4 py-3 backdrop-blur-xl lg:px-6">
+      <header className="relative z-40 flex items-center gap-3 border-b border-border bg-surface/60 px-4 py-3 backdrop-blur-xl lg:px-6">
         <button
           type="button"
           onClick={() => setMobileOpen(true)}
@@ -47,10 +49,17 @@ export function Topbar() {
             <Bell className="h-4 w-4" />
             <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-accent-2" />
           </button>
+          <GenesisAssistant />
           <LanguageSwitcher />
+          {isOperator && (
+            <Link href="/operator" className="hidden rounded-lg border border-border px-2.5 py-1.5 text-xs text-foreground sm:block">
+              Betreiber
+            </Link>
+          )}
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent-3 to-accent text-xs font-semibold text-white">
-            MM
+            {initials}
           </div>
+          <LogoutButton className="hidden rounded-lg border border-border px-2.5 py-1.5 text-xs text-muted hover:text-foreground sm:block" />
         </div>
       </header>
 
@@ -89,6 +98,9 @@ export function Topbar() {
                 );
               })}
             </nav>
+            <div className="border-t border-border p-3">
+              <LogoutButton className="w-full rounded-lg border border-border px-3 py-2 text-sm text-foreground" />
+            </div>
           </div>
         </div>
       )}

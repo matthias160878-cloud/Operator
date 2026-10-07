@@ -26,7 +26,10 @@
     "inbox": "Posteingang",
     "agents": "Agenten",
     "integrations": "Integrationen",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "billing": "Paket & Abrechnung",
+    "sales": "Verkauf & Shop",
+    "website": "Meine Webseite"
   },
   "topbar": {
     "menuOpen": "Menü öffnen",

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
+import { route } from "@/lib/api";
 
 const PLATFORM_VALUES = [
   "YOUTUBE",
@@ -18,7 +19,7 @@ const createSchema = z.object({
   initialMessage: z.string().min(1),
 });
 
-export async function GET() {
+async function handleGET() {
   const workspaceId = await getCurrentWorkspaceId();
   const conversations = await prisma.conversation.findMany({
     where: { workspaceId },
@@ -28,7 +29,7 @@ export async function GET() {
   return NextResponse.json({ conversations });
 }
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const body = await request.json().catch(() => null);
   const parsed = createSchema.safeParse(body);
@@ -58,3 +59,6 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ conversation });
 }
+
+export const GET = route(handleGET);
+export const POST = route(handlePOST);

@@ -26,7 +26,10 @@
     "inbox": "Bandeja de entrada",
     "agents": "Agentes",
     "integrations": "Integraciones",
-    "settings": "Ajustes"
+    "settings": "Ajustes",
+    "billing": "Plan y facturación",
+    "sales": "Ventas y tienda",
+    "website": "Mi sitio web"
   },
   "topbar": {
     "menuOpen": "Abrir menú",

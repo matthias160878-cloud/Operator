@@ -1,32 +1,32 @@
 import { NextResponse } from "next/server";
 import { constructWebhookEvent, isStripeWebhookConfigured } from "@/lib/stripe";
-import { activateLicenseFromSession } from "@/lib/license";
+import { processPlatformEvent } from "@/lib/billing/platformWebhook";
 
+/**
+ * Stripe-Webhook für die Paketabrechnung. Nur signaturgeprüfte Events
+ * werden verarbeitet; die Erfolgs-URL des Checkouts schaltet nichts frei.
+ */
 export async function POST(request: Request) {
   if (!isStripeWebhookConfigured()) {
-    return NextResponse.json(
-      { error: "Stripe-Webhook ist noch nicht konfiguriert (STRIPE_WEBHOOK_SECRET fehlt)." },
-      { status: 503 },
-    );
+    return NextResponse.json({ error: "Webhook nicht konfiguriert." }, { status: 503 });
   }
-
   const signature = request.headers.get("stripe-signature");
-  if (!signature) {
-    return NextResponse.json({ error: "Fehlende Stripe-Signatur." }, { status: 400 });
-  }
+  if (!signature) return NextResponse.json({ error: "Fehlende Signatur." }, { status: 400 });
 
   const rawBody = await request.text();
+  let event;
+  try {
+    event = constructWebhookEvent(rawBody, signature, process.env.STRIPE_WEBHOOK_SECRET);
+  } catch {
+    return NextResponse.json({ error: "Ungültige Signatur." }, { status: 400 });
+  }
 
   try {
-    const event = constructWebhookEvent(rawBody, signature);
-    if (event.type === "checkout.session.completed") {
-      await activateLicenseFromSession(event.data.object);
-    }
-    return NextResponse.json({ received: true });
+    const result = await processPlatformEvent(event);
+    return NextResponse.json({ received: true, result });
   } catch (err) {
-    return NextResponse.json(
-      { error: err instanceof Error ? err.message : "Webhook-Verarbeitung fehlgeschlagen." },
-      { status: 400 },
-    );
+    console.error("[stripe-webhook]", event.type, err instanceof Error ? err.message : err);
+    // 500 -> Stripe stellt erneut zu; die Transaktion wurde zurückgerollt.
+    return NextResponse.json({ error: "Verarbeitung fehlgeschlagen." }, { status: 500 });
   }
 }

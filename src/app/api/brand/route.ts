@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
+import { route } from "@/lib/api";
 
 const brandSchema = z.object({
   name: z.string().min(1),
@@ -23,13 +24,13 @@ const brandSchema = z.object({
   visualRules: z.string().default(""),
 });
 
-export async function GET() {
+async function handleGET() {
   const workspaceId = await getCurrentWorkspaceId();
   const brand = await prisma.brand.findUnique({ where: { workspaceId } });
   return NextResponse.json({ brand });
 }
 
-export async function PUT(request: Request) {
+async function handlePUT(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const body = await request.json().catch(() => null);
   const parsed = brandSchema.safeParse(body);
@@ -88,3 +89,6 @@ export async function PUT(request: Request) {
 
   return NextResponse.json({ brand });
 }
+
+export const GET = route(handleGET);
+export const PUT = route(handlePUT);

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
+import { route } from "@/lib/api";
 
 const createSchema = z.object({
   title: z.string().min(1),
@@ -14,7 +15,7 @@ const createSchema = z.object({
   estimatedMinutes: z.number().int().min(1).default(30),
 });
 
-export async function GET() {
+async function handleGET() {
   const workspaceId = await getCurrentWorkspaceId();
   const ideas = await prisma.contentIdea.findMany({
     where: { workspaceId },
@@ -23,7 +24,7 @@ export async function GET() {
   return NextResponse.json({ ideas });
 }
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const body = await request.json().catch(() => null);
   const parsed = createSchema.safeParse(body);
@@ -38,3 +39,6 @@ export async function POST(request: Request) {
   });
   return NextResponse.json({ idea });
 }
+
+export const GET = route(handleGET);
+export const POST = route(handlePOST);

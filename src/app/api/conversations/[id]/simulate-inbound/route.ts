@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
+import { ownedConversation } from "@/lib/ownership";
+import { route } from "@/lib/api";
 
 const bodySchema = z.object({ body: z.string().min(1) });
 
@@ -8,11 +10,12 @@ const bodySchema = z.object({ body: z.string().min(1) });
  * Fügt eine eingehende Nachricht manuell hinzu — es existiert keine echte
  * Plattform-Anbindung, über die Nachrichten tatsächlich eintreffen könnten.
  */
-export async function POST(
+async function handlePOST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
+  await ownedConversation(id);
   const parsed = bodySchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) {
     return NextResponse.json({ error: "Ungültige Eingabe." }, { status: 400 });
@@ -29,3 +32,5 @@ export async function POST(
 
   return NextResponse.json({ message });
 }
+
+export const POST = route(handlePOST);

@@ -7,11 +7,12 @@ import {
   randomState,
 } from "@/lib/oauth/providers";
 import { isTokenEncryptionConfigured } from "@/lib/crypto";
+import { route } from "@/lib/api";
 
 const STATE_COOKIE = "s58_oauth_state";
 const PKCE_COOKIE = "s58_oauth_pkce";
 
-export async function GET(
+async function handleGET(
   request: Request,
   { params }: { params: Promise<{ platform: string }> }
 ) {
@@ -65,3 +66,5 @@ export async function GET(
 
   return response;
 }
+
+export const GET = route(handleGET);

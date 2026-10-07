@@ -26,7 +26,10 @@
     "inbox": "Inbox",
     "agents": "Agents",
     "integrations": "Integrations",
-    "settings": "Settings"
+    "settings": "Settings",
+    "billing": "Plan & billing",
+    "sales": "Sales & shop",
+    "website": "My website"
   },
   "topbar": {
     "menuOpen": "Open menu",

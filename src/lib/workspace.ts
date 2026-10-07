@@ -1,76 +1,58 @@
 import { prisma } from "@/lib/db";
+import { requireSessionUser } from "@/lib/auth/session";
 
 /**
- * SECRET 58 ist als Multi-Tenant-System modelliert (siehe prisma/schema.prisma:
- * Workspace -> Users/Brand/Campaigns/... mit vollständiger Isolation pro Workspace).
- * Es gibt noch keine Login-/Auth-UI (Phase 14 ist als Nächstes geplant, siehe
- * README-SOCIAL-MEDIA.md). Bis dahin arbeitet die App mit genau einem
- * Default-Workspace, der beim ersten Aufruf angelegt wird. Jede spätere
- * Auth-Integration muss nur `getCurrentWorkspaceId()` durch eine echte
- * Session-Auflösung ersetzen — der Rest des Codes fragt ausschließlich über
- * diese Funktion nach der Workspace-ID und bleibt unverändert.
+ * Mehrkundenbetrieb: Die Workspace-ID kommt ausschließlich aus der
+ * angemeldeten Sitzung (Cookie -> Session -> User -> workspaceId), niemals
+ * aus Anfrage-Parametern oder Formularfeldern. Ohne Sitzung wirft diese
+ * Funktion AuthRequiredError; der Proxy (src/proxy.ts) fängt nicht
+ * angemeldete Anfragen vorher ab.
  */
-const DEFAULT_WORKSPACE_SLUG = "secret-58";
-
-let cachedWorkspaceId: string | null = null;
-
-export async function getDefaultWorkspace() {
-  if (cachedWorkspaceId) {
-    const existing = await prisma.workspace.findUnique({
-      where: { id: cachedWorkspaceId },
-    });
-    if (existing) return existing;
-  }
-
-  const workspace = await prisma.workspace.upsert({
-    where: { slug: DEFAULT_WORKSPACE_SLUG },
-    update: {},
-    create: {
-      name: "Secret 58 Media",
-      slug: DEFAULT_WORKSPACE_SLUG,
-      users: {
-        create: {
-          email: "max.mustermann@secret58.media",
-          name: "Max Mustermann",
-          role: "OWNER",
-        },
-      },
-      brand: {
-        create: {
-          name: "Secret 58",
-          description:
-            "KI-natives Social-Media-Studio für autonome Content-Produktion.",
-          targetAudience: "25-45 Jahre, Tech-Interessierte",
-          industry: "KI & Technologie",
-          language: "Deutsch",
-          tonality: "Professionell & Inspirierend",
-          humor: "Dezent",
-          formality: "Neutral, geduzt",
-          preferredWords: JSON.stringify(["autonom", "Wirkung", "Klarheit"]),
-          forbiddenWords: JSON.stringify(["revolutionär", "disruptiv"]),
-          preferredCtas: JSON.stringify([
-            "Jetzt mehr erfahren",
-            "Starte deine erste Kampagne",
-          ]),
-          brandValues: JSON.stringify(["Innovation", "Vertrauen", "Erfolg"]),
-          topics: JSON.stringify([
-            "KI-Agenten",
-            "Content-Automatisierung",
-            "Social Media Strategie",
-          ]),
-          colors: JSON.stringify(["#6D5BFF", "#22D3EE", "#0B0F1A"]),
-          fonts: JSON.stringify(["Geist Sans", "Geist Mono"]),
-          visualRules: "Dunkles UI, HUD-Elemente, klare Typografie.",
-        },
-      },
-    },
-  });
-
-  cachedWorkspaceId = workspace.id;
-  return workspace;
+export async function getCurrentWorkspaceId(): Promise<string> {
+  const user = await requireSessionUser();
+  return user.workspaceId;
 }
 
-export async function getCurrentWorkspaceId() {
-  const workspace = await getDefaultWorkspace();
-  return workspace.id;
+export async function getCurrentWorkspace() {
+  const workspaceId = await getCurrentWorkspaceId();
+  return prisma.workspace.findUniqueOrThrow({ where: { id: workspaceId } });
+}
+
+/**
+ * Legt für ein neues Konto einen eigenen, leeren Workspace an. Jede
+ * Registrierung bekommt einen eigenen Bereich — es gibt keinen geteilten
+ * Standard-Workspace mehr.
+ */
+export async function createWorkspaceForUser(input: {
+  email: string;
+  name: string;
+  passwordHash: string;
+  workspaceName: string;
+  isOperator?: boolean;
+}) {
+  const slugBase =
+    input.workspaceName
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 40) || "workspace";
+  const slug = `${slugBase}-${Math.random().toString(36).slice(2, 8)}`;
+  return prisma.workspace.create({
+    data: {
+      name: input.workspaceName,
+      slug,
+      users: {
+        create: {
+          email: input.email,
+          name: input.name,
+          role: "OWNER",
+          passwordHash: input.passwordHash,
+          isOperator: input.isOperator ?? false,
+        },
+      },
+      brand: { create: { name: input.workspaceName } },
+    },
+    include: { users: true },
+  });
 }

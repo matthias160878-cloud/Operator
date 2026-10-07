@@ -1,25 +1,36 @@
 import { NextResponse } from "next/server";
-import { createCheckoutSession, isStripeConfigured } from "@/lib/stripe";
+import { z } from "zod";
+import { requireSessionUser } from "@/lib/auth/session";
+import { CheckoutRefused, createPlanCheckout } from "@/lib/stripe";
+import { parsePlanKey } from "@/lib/plans";
+import { route } from "@/lib/api";
 
-export async function POST(request: Request) {
-  if (!isStripeConfigured()) {
-    return NextResponse.json(
-      { error: "Stripe ist noch nicht konfiguriert (STRIPE_SECRET_KEY/STRIPE_PRICE_ID fehlt)." },
-      { status: 503 },
-    );
+const schema = z.object({
+  plan: z.string(),
+  // Der Kunde muss den Kauf selbst bestätigen — Genesis/Sprachsteuerung setzt das nie.
+  confirmed: z.literal(true),
+});
+
+async function handlePOST(request: Request) {
+  const user = await requireSessionUser();
+  const parsed = schema.safeParse(await request.json().catch(() => null));
+  const plan = parsePlanKey(parsed.success ? parsed.data.plan : null);
+  if (!parsed.success || !plan) {
+    return NextResponse.json({ error: "Bitte Paket wählen und den Kauf ausdrücklich bestätigen." }, { status: 400 });
   }
-
   try {
-    const origin = new URL(request.url).origin;
-    const url = await createCheckoutSession({
-      successUrl: `${origin}/api/stripe/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancelUrl: `${origin}/buy`,
+    const url = await createPlanCheckout({
+      workspaceId: user.workspaceId,
+      userId: user.userId,
+      email: user.email,
+      plan,
+      origin: new URL(request.url).origin,
     });
     return NextResponse.json({ url });
   } catch (err) {
-    return NextResponse.json(
-      { error: err instanceof Error ? err.message : "Checkout fehlgeschlagen." },
-      { status: 500 },
-    );
+    if (err instanceof CheckoutRefused) return NextResponse.json({ error: err.message }, { status: err.status });
+    throw err;
   }
 }
+
+export const POST = route(handlePOST);

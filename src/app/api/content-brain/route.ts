@@ -3,6 +3,7 @@ import { z } from "zod";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { runAgent } from "@/lib/agents/runner";
 import { createCampaignFromIdea } from "@/lib/agents/contentBrainAgent";
+import { route, isHttpError } from "@/lib/api";
 
 const PLATFORM_VALUES = [
   "YOUTUBE",
@@ -18,12 +19,16 @@ const bodySchema = z.object({
   topic: z.string().min(3, "Bitte gib ein Thema mit mindestens 3 Zeichen ein."),
   targetAudience: z.string().default(""),
   goal: z.string().default(""),
-  platforms: z.array(z.enum(PLATFORM_VALUES)).min(1, "Wähle mindestens eine Plattform."),
+  platforms: z
+    .array(z.enum(PLATFORM_VALUES))
+    .min(1, "Wähle mindestens eine Plattform.")
+    .max(PLATFORM_VALUES.length)
+    .transform((p) => [...new Set(p)]),
   language: z.string().default("Deutsch"),
   itemsPerPlatform: z.number().int().min(1).max(5).default(1),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const body = await request.json().catch(() => null);
   const parsed = bodySchema.safeParse(body);
@@ -42,13 +47,17 @@ export async function POST(request: Request) {
       "content-brain",
       workspaceId,
       `Content-Plan für "${input.topic}"`,
-      () => createCampaignFromIdea({ workspaceId, ...input })
+      () => createCampaignFromIdea({ workspaceId, ...input }),
+      { metric: "AI_TEXT", amount: input.platforms.length * input.itemsPerPlatform }
     );
     return NextResponse.json(result);
   } catch (error) {
+    if (isHttpError(error)) throw error;
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unbekannter Fehler." },
       { status: 500 }
     );
   }
 }
+
+export const POST = route(handlePOST);

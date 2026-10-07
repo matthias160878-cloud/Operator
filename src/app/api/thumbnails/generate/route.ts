@@ -4,10 +4,11 @@ import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { getBrandDNA } from "@/lib/brand";
 import { runAgent } from "@/lib/agents/runner";
 import { generateThumbnailConcept } from "@/lib/agents/thumbnailAgent";
+import { route } from "@/lib/api";
 
 const bodySchema = z.object({ topic: z.string().min(3) });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const body = await request.json().catch(() => null);
   const parsed = bodySchema.safeParse(body);
@@ -22,3 +23,5 @@ export async function POST(request: Request) {
 
   return NextResponse.json(result);
 }
+
+export const POST = route(handlePOST);

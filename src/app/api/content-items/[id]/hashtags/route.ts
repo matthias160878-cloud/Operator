@@ -4,14 +4,15 @@ import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { getBrandDNA } from "@/lib/brand";
 import { runAgent } from "@/lib/agents/runner";
 import { generateHashtags } from "@/lib/agents/hashtagAgent";
+import { route } from "@/lib/api";
 
-export async function POST(
+async function handlePOST(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
   const workspaceId = await getCurrentWorkspaceId();
-  const item = await prisma.contentItem.findUnique({ where: { id } });
+  const item = await prisma.contentItem.findFirst({ where: { id, workspaceId } });
   if (!item) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
 
   const brand = await getBrandDNA(workspaceId);
@@ -29,3 +30,5 @@ export async function POST(
 
   return NextResponse.json({ item: updated });
 }
+
+export const POST = route(handlePOST);

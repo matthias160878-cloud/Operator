@@ -2,17 +2,34 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Bell, Menu, Search, X } from "lucide-react";
+import { Bell, LogOut, Menu, Search, X } from "lucide-react";
 import clsx from "clsx";
 import { NAV_ITEMS } from "@/components/layout/nav-items";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 
-export function Topbar() {
+function initialsOf(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+export function Topbar({ user }: { user: { name: string; email: string } }) {
   const t = useTranslations("common");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+
+  async function handleLogout() {
+    setLoggingOut(true);
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/login");
+    router.refresh();
+  }
 
   return (
     <>
@@ -48,8 +65,35 @@ export function Topbar() {
             <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-accent-2" />
           </button>
           <LanguageSwitcher />
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent-3 to-accent text-xs font-semibold text-white">
-            MM
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent-3 to-accent text-xs font-semibold text-white"
+              aria-label={user.name}
+            >
+              {initialsOf(user.name)}
+            </button>
+            {menuOpen && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setMenuOpen(false)} />
+                <div className="absolute right-0 top-10 z-50 w-56 rounded-lg border border-border bg-surface p-2 shadow-xl">
+                  <div className="px-2 py-1.5">
+                    <p className="truncate text-sm font-medium text-foreground">{user.name}</p>
+                    <p className="truncate text-xs text-muted">{user.email}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    disabled={loggingOut}
+                    className="mt-1 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm text-danger hover:bg-surface-2 disabled:opacity-50"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Abmelden
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </header>

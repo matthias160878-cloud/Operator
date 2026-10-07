@@ -3,6 +3,7 @@ import { z } from "zod";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { runAgent } from "@/lib/agents/runner";
 import { createCampaignFromIdea } from "@/lib/agents/contentBrainAgent";
+import { checkRateLimit } from "@/lib/rateLimit";
 
 const PLATFORM_VALUES = [
   "YOUTUBE",
@@ -25,6 +26,18 @@ const bodySchema = z.object({
 
 export async function POST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
+
+  // Kostenkontrolle (Abschnitt 6): Content Brain kann mehrere KI-Aufrufe pro
+  // Lauf auslösen — pro Workspace begrenzen, damit parallele/wiederholte
+  // Aufrufe keine unbegrenzten Anbieterkosten erzeugen.
+  const limit = checkRateLimit(`content-brain:${workspaceId}`, 10, 60 * 1000);
+  if (!limit.allowed) {
+    return NextResponse.json(
+      { error: "Zu viele Content-Brain-Läufe in kurzer Zeit. Bitte kurz warten." },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(limit.retryAfterMs / 1000)) } },
+    );
+  }
+
   const body = await request.json().catch(() => null);
   const parsed = bodySchema.safeParse(body);
 

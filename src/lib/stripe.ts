@@ -35,6 +35,13 @@ export async function createCheckoutSession(input: {
   successUrl: string;
   cancelUrl: string;
   includeSetupService?: boolean;
+  /**
+   * ID des eingeloggten Nutzers, der den Checkout startet. Wird als Stripe
+   * `client_reference_id` mitgegeben, damit der Webhook/Success-Handler die
+   * entstehende License gezielt dessen Workspace zuordnen kann, statt eine
+   * global geteilte Freischaltung zu erzeugen (Abschnitt 2 des Auftrags).
+   */
+  userId: string;
 }): Promise<string> {
   if (!isStripeConfigured()) {
     throw new Error("Stripe ist noch nicht konfiguriert (STRIPE_SECRET_KEY/STRIPE_PRICE_ID fehlt).");
@@ -42,6 +49,7 @@ export async function createCheckoutSession(input: {
 
   const session = await getClient().checkout.sessions.create({
     mode: "payment",
+    client_reference_id: input.userId,
     line_items: [
       { price: process.env.STRIPE_PRICE_ID, quantity: 1 },
       ...(input.includeSetupService && isSetupServiceConfigured()

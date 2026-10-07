@@ -144,22 +144,45 @@ model Workspace {
   auditLogs        AuditLog[]
   revenueEntries   RevenueEntry[]
   conversations    Conversation[]
+  licenses         License[]
 
   @@map("workspaces")
 }
 
 model User {
-  id          String    @id @default(cuid())
-  workspaceId String
-  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  email       String    @unique
-  name        String
-  role        Role      @default(EDITOR)
-  createdAt   DateTime  @default(now())
+  id           String    @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  email        String    @unique
+  name         String
+  passwordHash String
+  role         Role      @default(OWNER)
+  createdAt    DateTime  @default(now())
 
   auditLogs AuditLog[]
+  sessions  Session[]
+  licenses  License[]
 
   @@map("users")
+}
+
+// Server-seitige Sessions (Abschnitt "Authentifizierung" — auf Nutzerwunsch
+// ergänzt: Abschnitt 2 des Auftrags verlangt, dass jede Berechtigung aus der
+// authentifizierten Sitzung abgeleitet wird, nie aus einer vom Client
+// gelieferten Workspace-ID). Es wird nur ein SHA-256-Hash des Session-Tokens
+// gespeichert, nie das Token selbst — ein DB-Leak allein reicht nicht, um
+// eine Sitzung zu übernehmen. Serverseitig widerrufbar (Zeile löschen/
+// Ablaufdatum), im Gegensatz zu einem reinen JWT.
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("sessions")
 }
 
 model Brand {
@@ -467,13 +490,15 @@ model Message {
   @@map("messages")
 }
 
-// Lizenzierung (auf Nutzerwunsch ergänzt). Es gibt in dieser App noch kein
-// Kundenkonto-/Login-System — der Zugriffsschutz läuft deshalb bewusst
-// einfach über ein unlink­bares Freischalt-Token pro Kauf statt über echte
-// Nutzerkonten. Jeder erfolgreiche Stripe-Checkout erzeugt genau einen
-// License-Datensatz; das zugehörige Token landet als Cookie im Browser des
-// Käufers. Der Betreiber-Zugang läuft separat über OWNER_ACCESS_KEY (siehe
-// middleware.ts) und braucht keinen License-Datensatz.
+// Lizenzierung (auf Nutzerwunsch ergänzt). Seit Einführung echter Nutzerkonten
+// (Abschnitt "Authentifizierung") ist jede Lizenz an den eingeloggten Nutzer
+// gebunden, der den Checkout gestartet hat (`userId`/`workspaceId`, aus der
+// Server-Session gesetzt, nie aus Client-Daten) — das schaltet gezielt genau
+// dessen Workspace frei, nicht mehr eine global geteilte Instanz. Für vor der
+// Umstellung entstandene Lizenzen bleiben beide Felder leer (`null`); der
+// anonyme Freischalt-Cookie (`unlockToken`) bleibt als Fallback bestehen.
+// Der Betreiber-Zugang läuft separat über OWNER_ACCESS_KEY (siehe proxy.ts)
+// und braucht keinen License-Datensatz.
 model License {
   id                      String        @id @default(cuid())
   unlockToken             String        @unique
@@ -484,8 +509,13 @@ model License {
   stripePaymentIntentId   String        @default("")
   amountTotal             Int           @default(0)
   currency                String        @default("eur")
+  userId                  String?
+  user                    User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  workspaceId             String?
+  workspace               Workspace?    @relation(fields: [workspaceId], references: [id], onDelete: SetNull)
   createdAt               DateTime      @default(now())
   updatedAt               DateTime      @updatedAt
 
+  @@index([workspaceId])
   @@map("licenses")
 }

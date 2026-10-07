@@ -73,10 +73,12 @@ Frontend-Bundle, nie in Log-Ausgaben, nie in Fehlermeldungen.
   `prisma/schema.prisma` auf `postgresql`/`mysql` umstellen und
   `DATABASE_URL` entsprechend setzen — das Schema ist provider-agnostisch
   geschrieben (bis auf den Provider selbst).
-- Modelle: `Workspace`, `User`, `Brand` (Brand DNA), `Campaign`,
-  `ContentIdea`, `ContentItem`, `Script`, `Voice`, `MediaAsset`,
+- Modelle: `Workspace`, `User` (inkl. `passwordHash`), `Session`
+  (Server-Sessions, siehe Authentifizierung), `Brand` (Brand DNA),
+  `Campaign`, `ContentIdea`, `ContentItem`, `Script`, `Voice`, `MediaAsset`,
   `PlatformAccount`, `Analytics`, `AgentRun`, `IntegrationStatus`, `Setting`,
-  `AuditLog` — jede Tabelle trägt `workspaceId` für vollständige
+  `AuditLog`, `License` (an `User`/`Workspace` gebunden) — jede
+  Workspace-gebundene Tabelle trägt `workspaceId` für vollständige
   Multi-Tenant-Isolation (Abschnitt 29).
 - Befehle:
   ```bash
@@ -132,12 +134,40 @@ Verbindung vorzutäuschen. `PublishingAgent.publishContentItem()` prüft live,
 ob ein `PlatformAccount` den Status `CONNECTED` trägt, und veröffentlicht
 niemals automatisch ohne diese Prüfung.
 
+## Authentifizierung & Mandantentrennung
+
+Jede Kundin/jeder Kunde bekommt über **Registrieren** (`/signup`) einen
+eigenen, privaten Workspace — vollständig isoliert von allen anderen
+Workspaces (Datenmodell siehe [Datenbank](#datenbank)). Es gibt **keinen**
+geteilten Default-Workspace mehr: `getCurrentWorkspaceId()`
+(`src/lib/workspace.ts`) löst die Workspace-ID ausschließlich aus der
+server-seitigen Session auf (`src/lib/auth.ts`, Cookie `s58_session`,
+Session-Token-Hash in der DB) — niemals aus einer vom Client gelieferten ID.
+Ohne gültige Session gibt es keinen Zugriff auf `/api/**` (außer
+`/api/auth/*`, `/api/stripe/*`, `/api/locale`) oder auf die Dashboard-Seiten
+(`src/proxy.ts` erzwingt das für jeden Request).
+
+- `POST /api/auth/signup` — legt einen neuen Nutzer **und** einen neuen,
+  leeren Workspace an (Rolle `OWNER`).
+- `POST /api/auth/login` / `POST /api/auth/logout`
+- Passwörter: `node:crypto.scrypt`, Sessions: zufälliges 32-Byte-Token, in
+  der DB wird nur der SHA-256-Hash gespeichert (Modell `Session`).
+- Login/Signup sind zusätzlich rate-limitiert (`src/lib/rateLimit.ts`) gegen
+  Brute-Force-Versuche.
+
+Lokal testen: `npm run db:seed` legt einen Demo-Login an
+(`max.mustermann@secret58.media` / `secret58-demo`, siehe Konsolenausgabe
+des Seed-Skripts) — ausschließlich für den lokal geseedeten Demo-Workspace.
+
 ## Kauf-Freischaltung (Stripe) & App-Installation (PWA)
 
 SECRET 58 kann komplett offen betrieben werden (Standard, kein Setup nötig)
 oder hinter einer Bezahlschranke: erst nach echtem Stripe-Kauf bekommt ein
 Kunde Zugriff, der Betreiber selbst hat über einen eigenen Schlüssel immer
-Zugriff.
+Zugriff. Ein Kauf setzt in jedem Fall ein Konto voraus (`/signup`) — ohne
+Login weiß die App nicht, welchem Workspace sie die Freischaltung zuordnen
+soll; der „Jetzt kaufen“-Button auf `/buy` leitet nicht angemeldete
+Besucher automatisch zu `/signup?next=/buy` weiter.
 
 **Ein Paket, ein Preis.** SECRET 58 ("Social Media KI") wird als einzelnes
 Komplettpaket mit Vollzugriff verkauft — kein Kleines/Großes Paket, keine
@@ -161,26 +191,47 @@ Entwicklung, und im Render-Dashboard unter **Environment** für die Live-Seite
    - `STRIPE_PRICE_ID` — die Preis-ID (`price_...`) des angelegten Produkts.
    - `STRIPE_WEBHOOK_SECRET` — Signing Secret des Webhooks, den du im
      Stripe-Dashboard auf `https://<deine-domain>/api/stripe/webhook`
-     für das Event `checkout.session.completed` anlegst.
+     für die Events `checkout.session.completed` **und** `charge.refunded`
+     anlegst (Letzteres markiert die passende License automatisch als
+     `REFUNDED`, sichtbar im Betreiber-Dashboard, siehe unten).
 3. Sobald `STRIPE_SECRET_KEY`/`STRIPE_PRICE_ID` gesetzt sind, zeigt `/buy`
-   den echten Preis an und der „Jetzt kaufen“-Button leitet zu Stripe
-   Checkout weiter. Nach erfolgreicher Zahlung wird der Kunde automatisch
-   freigeschaltet (Cookie-basiert, kein separater Account nötig).
-4. **`OWNER_ACCESS_KEY` setzen, um die komplette Anwendung zu sperren** —
-   ein beliebiges, langes Geheimwort. Solange diese Variable **nicht**
-   gesetzt ist, bleibt die App für jeden frei zugänglich (auch ohne
-   Stripe-Konfiguration). Erst mit gesetztem `OWNER_ACCESS_KEY` wird jede
-   Seite außer `/buy` gesperrt, bis bezahlt wurde.
+   den echten Preis an und der „Jetzt kaufen“-Button leitet angemeldete
+   Nutzer zu Stripe Checkout weiter (nicht angemeldete zuerst zu
+   `/signup?next=/buy`). Nach erfolgreicher Zahlung wird genau der
+   Workspace des kaufenden Kontos freigeschaltet — `checkout.sessions`
+   bekommt dafür `client_reference_id = <userId>` aus der Server-Session
+   mit (`src/lib/stripe.ts`), nie aus einem Client-Parameter.
+4. **`OWNER_ACCESS_KEY` setzen, um zusätzlich zur Anmeldung eine
+   Bezahlschranke zu aktivieren** — ein beliebiges, langes Geheimwort.
+   Solange diese Variable **nicht** gesetzt ist, reicht ein Konto
+   (Signup/Login) aus, um den eigenen Workspace zu nutzen (gut für lokale
+   Entwicklung/Demo). Erst mit gesetztem `OWNER_ACCESS_KEY` braucht ein
+   angemeldeter Nutzer zusätzlich eine `ACTIVE`-License für seinen
+   Workspace — Anmeldung ist davon unabhängig **immer** erforderlich.
 5. Der Betreiber (du) bleibt immer freigeschaltet über:
    `https://<deine-domain>/unlock?key=<OWNER_ACCESS_KEY>` — einmal im
    eigenen Browser öffnen, danach bleibt der Zugriff dauerhaft (Cookie,
-   1 Jahr gültig).
+   1 Jahr gültig). Das Betreiber-Cookie schaltet **nur** die eigene
+   Bezahlschranke frei, nicht fremde Kundendaten — siehe
+   [Betreiber-Dashboard](#betreiber-dashboard).
 
 Der Zugriffsschutz sitzt in `src/proxy.ts` (Next.js 16 Proxy/Middleware) und
-prüft bei jedem Request entweder das Owner-Cookie oder eine `License` mit
-Status `ACTIVE` in der Datenbank. Ohne `OWNER_ACCESS_KEY` ist die Prüfung
-komplett inaktiv (No-Op) — die App bleibt wie bisher startfähig ohne jede
-Zahlungs-Konfiguration.
+prüft bei jedem Request zunächst eine gültige Session (siehe
+[Authentifizierung](#authentifizierung--mandantentrennung)), danach —
+nur wenn `OWNER_ACCESS_KEY` gesetzt ist — zusätzlich das Owner-Cookie oder
+eine `License` mit Status `ACTIVE` für genau den Workspace der aktuellen
+Session.
+
+## Betreiber-Dashboard
+
+`/operator` — ausschließlich über das Owner-Cookie erreichbar (`/unlock?key=`,
+s.o.), komplett getrennt vom Kunden-Session-System. Zeigt aggregierte
+Paketzahlungen (Anzahl/Summe aktiver Lizenzen nach Währung, PENDING/REFUNDED-
+Zähler, die letzten 25 Lizenzen mit E-Mail/Betrag/Status) — **keine**
+privaten Kundeninhalte (Brand DNA, Kampagnen, Content etc.). Verfügbares
+Guthaben und tatsächlich ausgezahlte Beträge werden bewusst **nicht**
+angezeigt (siehe Hinweistext auf der Seite) — das liefert nur das
+Stripe-Dashboard selbst; eine Anbindung dafür ist nicht Teil dieses Stands.
 
 **Einrichtungsservice & Autopilot-Vorschau:** Unter dem Komplettpaket kann
 optional ein Einrichtungsservice (299 € einmalig) dazugebucht werden — dafür in
@@ -328,9 +379,10 @@ Berechtigungen, Multi-Tenancy, Fehlerbehandlung).
 - [x] Agent Monitor funktioniert
 - [x] Learning Engine funktioniert (regelbasierte Empfehlungen aus echten Analytics-Daten)
 - [x] Multi-Tenant-**Datenmodell** vollständig vorbereitet (Workspace-Isolation in jeder Tabelle)
-- [ ] Multi-Tenant-**UI** (mehrere Workspaces/Login) — noch offen, siehe unten
-- [ ] Authentication/Login-UI — noch offen, siehe unten
+- [x] Multi-Tenant-**UI/Auth** — Signup/Login/Logout, jede Session isoliert auf genau einen Workspace, kein geteilter Default-Workspace mehr (siehe [Authentifizierung](#authentifizierung--mandantentrennung))
+- [x] Betreiber-Dashboard (`/operator`, aggregierte Paketzahlungen, keine Kundendaten)
 - [x] Secrets sind geschützt (ausschließlich Env-Variablen, nie im Frontend/Log)
+- [x] Basis-Rate-Limiting (Login/Signup gegen Brute-Force, teure KI-Routen gegen Kostenmissbrauch) — In-Memory, siehe Grenzen unten
 - [ ] Automatisierte Tests — noch offen, siehe [Tests](#tests)
 - [x] Mobile UI funktioniert (responsives Sidebar/Topbar-Layout mit mobilem Menü)
 - [x] README vorhanden (dieses Dokument)
@@ -338,22 +390,48 @@ Berechtigungen, Multi-Tenancy, Fehlerbehandlung).
 
 ## Bekannte Grenzen & nächste Schritte
 
-Dieses Projekt wurde in einer einzigen Implementierungssession aus einem
-leeren Next.js-Grundgerüst aufgebaut. Um ehrlich zu bleiben (Abschnitt 42),
-sind folgende Punkte bewusst **nicht** als fertige Funktion ausgegeben:
+Um ehrlich zu bleiben (Abschnitt 42), sind folgende Punkte bewusst **nicht**
+als fertige Funktion ausgegeben:
 
-1. **Authentication/Login** — es gibt noch keine Login-Oberfläche; die App
-   nutzt einen einzelnen Default-Workspace (`src/lib/workspace.ts`). Das
-   Datenmodell ist vollständig multi-tenant-fähig; es fehlt die
-   Session-/Auth-Schicht (z.B. NextAuth) und die UI dafür.
-2. **OAuth für Social-Plattformen** — Zugangsdaten-Status wird geprüft, ein
-   echter Login-/Token-Flow pro Nutzer-Account fehlt noch.
-3. **Video-Rendering** — die Provider-Architektur steht, es ist aber kein
+1. **Preismodell-Konflikt ungeklärt** — committed ist "ein Paket, ein Preis"
+   (797 €, `src/lib/pricing.ts`) plus eine nicht buchbare Autopilot-Vorschau
+   (S/M/L-Monatsabo). Ein separat diskutiertes "Pro/Maxi"-Zweistufenmodell
+   (590 €/797 €) ist **nirgends im Code**. Es wurde bewusst **nicht**
+   implementiert, um keine wirtschaftlich bindenden Konditionen zu
+   erfinden — siehe Projektbericht/Restliste für die nötige Entscheidung.
+2. **Genesis-Sprachsteuerung** — existiert nicht im Code (keine Treffer für
+   "genesis" im gesamten Repository). Nicht umgesetzt in diesem Stand.
+3. **Website-Einbindung ("Meine Webseite verbinden")** — es gibt einen
+   internen Support-Chatbot (`src/components/chatbot/ChatWidget.tsx`), aber
+   keinen Self-Service-Bereich, über den Kundinnen/Kunden einen Assistenten
+   auf ihrer **eigenen** Webseite einbinden können. Nicht umgesetzt.
+4. **Eigene Geschäftseinnahmen der Kunden** — `/revenue` erfasst ausschließlich
+   **manuelle** Einträge (`RevenueEntry.origin = MANUAL`); es gibt weder eine
+   Anbindung bestehender Shops/Zahlungsanbieter noch eine
+   Stripe-Connect-Architektur für eigene Verkäufe der Kundinnen/Kunden
+   innerhalb von SECRET 58. Nicht umgesetzt.
+5. **Betreiber-Dashboard zeigt keine Auszahlungen/Guthaben** — nur
+   aggregierte Lizenzzahlungen aus der eigenen DB; Stripe-Auszahlungsdaten
+   sind nicht angebunden (siehe [Betreiber-Dashboard](#betreiber-dashboard)).
+6. **OAuth für Social-Plattformen** — echte Verbindung (Start/Callback) ist
+   implementiert (`src/lib/oauth/`, `src/app/api/oauth/`); `PublishingAgent`
+   veröffentlicht live nur bei Status `CONNECTED`.
+7. **Video-Rendering** — die Provider-Architektur steht, es ist aber kein
    Video-Provider tatsächlich angebunden (kein Account zum Testen vorhanden).
-4. **Trend Engine** — es ist keine Trend-Datenquelle angebunden; der Agent
+8. **Trend Engine** — es ist keine Trend-Datenquelle angebunden; der Agent
    zeigt konsequent den Konfigurationsstatus.
-5. **Automatisierte Tests** fehlen noch komplett.
-6. **Rate Limiting / CSRF** für API-Routen sind noch nicht implementiert
-   (Abschnitt 28) — für den produktiven Einsatz ergänzen.
+9. **Automatisierte Tests** fehlen noch komplett.
+10. **Rate Limiting ist In-Memory** (`src/lib/rateLimit.ts`) — korrekt für
+    einen einzelnen Prozess (passt zum geplanten Windows-VPS-Deployment),
+    zählt aber pro Instanz getrennt, falls je horizontal skaliert wird. Für
+    diesen Fall auf einen gemeinsamen Speicher (Redis o.ä.) umstellen.
+    **CSRF** für zustandsändernde API-Routen ist nicht implementiert.
+11. **Fehlerbehandlung bei fehlender Session** — `getCurrentWorkspaceId()`
+    wirft `AuthError`, wenn eine Route trotz `proxy.ts`-Schutz ohne Session
+    erreicht wird (sollte in der Praxis nicht vorkommen); das führt aktuell
+    zu einem generischen 500 statt einer sauberen 401-JSON-Antwort in allen
+    ~40 betroffenen Routen — kein Sicherheitsproblem (der Zugriff bleibt
+    blockiert), aber eine unschöne Fehlerantwort. Für eine einheitliche
+    401-Behandlung einen gemeinsamen Route-Wrapper ergänzen.
 
-Diese Punkte eignen sich als nächste Ausbauphasen (7–14 des Master-Prompts).
+Diese Punkte eignen sich als nächste Ausbauphasen.

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Loader2, Rocket } from "lucide-react";
 
@@ -16,6 +17,7 @@ export function BuyButton({
   setupServicePrice: string;
 }) {
   const t = useTranslations("buy");
+  const router = useRouter();
   const [includeSetupService, setIncludeSetupService] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,6 +32,10 @@ export function BuyButton({
         body: JSON.stringify({ includeSetupService: setupServiceAvailable && includeSetupService }),
       });
       const data = await res.json();
+      if (res.status === 401 && data.code === "LOGIN_REQUIRED") {
+        router.push("/signup?next=/buy");
+        return;
+      }
       if (!res.ok || !data.url) throw new Error(data.error ?? t("checkoutFailed"));
       window.location.href = data.url;
     } catch (err) {

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { constructWebhookEvent, isStripeWebhookConfigured } from "@/lib/stripe";
-import { activateLicenseFromSession } from "@/lib/license";
+import { activateLicenseFromSession, markLicenseRefunded } from "@/lib/license";
 
 export async function POST(request: Request) {
   if (!isStripeWebhookConfigured()) {
@@ -21,6 +21,8 @@ export async function POST(request: Request) {
     const event = constructWebhookEvent(rawBody, signature);
     if (event.type === "checkout.session.completed") {
       await activateLicenseFromSession(event.data.object);
+    } else if (event.type === "charge.refunded") {
+      await markLicenseRefunded(event.data.object);
     }
     return NextResponse.json({ received: true });
   } catch (err) {

@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { PlatformGlyph } from "@/components/dashboard/PlatformGlyph";
 import { prisma } from "@/lib/db";
-import { getDefaultWorkspace } from "@/lib/workspace";
+import { getCurrentWorkspace } from "@/lib/workspace";
 import {
   getWorkspaceStats,
   getWeeklyProduction,
@@ -64,7 +64,7 @@ export default async function DashboardPage() {
   const tc = await getTranslations("common");
   const ti = await getTranslations("common.integrationStatus");
   const weekdayLabels = t.raw("weekdayLabels") as string[];
-  const workspace = await getDefaultWorkspace();
+  const workspace = await getCurrentWorkspace();
   const workspaceId = workspace.id;
   const week = currentWeekRange();
 

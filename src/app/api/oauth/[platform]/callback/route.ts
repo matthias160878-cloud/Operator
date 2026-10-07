@@ -4,11 +4,12 @@ import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { exchangeCodeForToken, getProvider } from "@/lib/oauth/providers";
 import { encryptToken } from "@/lib/crypto";
+import { route, isHttpError } from "@/lib/api";
 
 const STATE_COOKIE = "s58_oauth_state";
 const PKCE_COOKIE = "s58_oauth_pkce";
 
-export async function GET(
+async function handleGET(
   request: NextRequest,
   { params }: { params: Promise<{ platform: string }> }
 ) {
@@ -81,6 +82,7 @@ export async function GET(
     response.cookies.delete(PKCE_COOKIE);
     return response;
   } catch (err) {
+    if (isHttpError(err)) throw err;
     const message = err instanceof Error ? err.message : "Unbekannter Fehler beim Verbinden.";
     try {
       const workspaceId = await getCurrentWorkspaceId();
@@ -100,3 +102,5 @@ export async function GET(
     return response;
   }
 }
+
+export const GET = route(handleGET);

@@ -56,3 +56,8 @@ next-env.d.ts
 !/public/media/images/.gitkeep
 !/public/media/thumbnails/.gitkeep
 !/public/media/subtitles/.gitkeep
+
+# Private Kundendateien (siehe src/lib/mediaStorage.ts) — nie ins Repository
+/storage/
+*.db
+*.db-journal

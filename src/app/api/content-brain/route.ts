@@ -3,6 +3,7 @@ import { z } from "zod";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { runAgent } from "@/lib/agents/runner";
 import { createCampaignFromIdea } from "@/lib/agents/contentBrainAgent";
+import { route, isHttpError } from "@/lib/api";
 
 const PLATFORM_VALUES = [
   "YOUTUBE",
@@ -23,7 +24,7 @@ const bodySchema = z.object({
   itemsPerPlatform: z.number().int().min(1).max(5).default(1),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const body = await request.json().catch(() => null);
   const parsed = bodySchema.safeParse(body);
@@ -46,9 +47,12 @@ export async function POST(request: Request) {
     );
     return NextResponse.json(result);
   } catch (error) {
+    if (isHttpError(error)) throw error;
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unbekannter Fehler." },
       { status: 500 }
     );
   }
 }
+
+export const POST = route(handlePOST);

@@ -2,13 +2,14 @@ import Link from "next/link";
 import { Sparkles } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
-import { getDefaultWorkspace } from "@/lib/workspace";
+import { getCurrentWorkspace } from "@/lib/workspace";
+import { AccountDataPanel } from "@/components/settings/AccountDataPanel";
 
 export const dynamic = "force-dynamic";
 
 export default async function SettingsPage() {
   const t = await getTranslations("settings");
-  const workspace = await getDefaultWorkspace();
+  const workspace = await getCurrentWorkspace();
   const [users, counts] = await Promise.all([
     prisma.user.findMany({ where: { workspaceId: workspace.id } }),
     Promise.all([
@@ -105,6 +106,7 @@ export default async function SettingsPage() {
           {t("onboarding.reopen")}
         </Link>
       </div>
+      <AccountDataPanel />
     </div>
   );
 }

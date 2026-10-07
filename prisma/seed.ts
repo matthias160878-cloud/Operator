@@ -35,6 +35,12 @@ function randomBetween(min: number, max: number) {
 }
 
 async function main() {
+  // Mehrkundenbetrieb: Demo-Daten nur auf ausdrücklichen Wunsch (z. B. lokale
+  // Vorschau), nie automatisch in einer Produktionsdatenbank.
+  if (process.env.SEED_DEMO_DATA !== "true") {
+    console.log("SEED_DEMO_DATA ist nicht \"true\" — keine Demo-Daten angelegt.");
+    return;
+  }
   const existingDemo = await prisma.setting.findFirst({
     where: { key: "demoDataSeeded" },
   });

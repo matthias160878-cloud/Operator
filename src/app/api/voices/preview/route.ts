@@ -3,13 +3,14 @@ import { z } from "zod";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { runAgent } from "@/lib/agents/runner";
 import { generateVoiceover } from "@/lib/agents/voiceAgent";
+import { route, isHttpError } from "@/lib/api";
 
 const bodySchema = z.object({
   text: z.string().min(1).max(500),
   voiceId: z.string().min(1),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   const workspaceId = await getCurrentWorkspaceId();
   const body = await request.json().catch(() => null);
   const parsed = bodySchema.safeParse(body);
@@ -23,9 +24,12 @@ export async function POST(request: Request) {
     );
     return NextResponse.json(result);
   } catch (error) {
+    if (isHttpError(error)) throw error;
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unbekannter Fehler." },
       { status: 422 }
     );
   }
 }
+
+export const POST = route(handlePOST);

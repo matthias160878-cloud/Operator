@@ -4,14 +4,15 @@ import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { runAgent } from "@/lib/agents/runner";
 import { generateSubtitles } from "@/lib/agents/subtitleAgent";
 import { saveMediaFile } from "@/lib/mediaStorage";
+import { route } from "@/lib/api";
 
-export async function POST(
+async function handlePOST(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
   const workspaceId = await getCurrentWorkspaceId();
-  const item = await prisma.contentItem.findUnique({ where: { id } });
+  const item = await prisma.contentItem.findFirst({ where: { id, workspaceId } });
   if (!item) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
   if (!item.script.trim()) {
     return NextResponse.json({ error: "Dieses Content-Item hat noch kein Script." }, { status: 422 });
@@ -22,7 +23,7 @@ export async function POST(
   );
 
   const filename = `subtitles-${id}-${Date.now()}.srt`;
-  const url = await saveMediaFile("subtitles", filename, srt);
+  const url = await saveMediaFile(workspaceId, "subtitles", filename, srt);
 
   const asset = await prisma.mediaAsset.create({
     data: {
@@ -37,3 +38,5 @@ export async function POST(
 
   return NextResponse.json({ asset, srt });
 }
+
+export const POST = route(handlePOST);

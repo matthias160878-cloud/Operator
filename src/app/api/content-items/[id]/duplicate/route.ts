@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
+import { ownedContentItem } from "@/lib/ownership";
+import { route } from "@/lib/api";
 
-export async function POST(
+async function handlePOST(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const source = await prisma.contentItem.findUnique({ where: { id } });
-  if (!source) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
+  const source = await ownedContentItem(id);
 
   const copy = await prisma.contentItem.create({
     data: {
@@ -30,3 +31,5 @@ export async function POST(
 
   return NextResponse.json({ item: copy });
 }
+
+export const POST = route(handlePOST);

@@ -9,7 +9,11 @@
     "lint": "eslint",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/unit.test.ts",
+    "test:integration": "node --test --test-concurrency=1 tests/integration.test.mjs",
+    "preview:seed": "tsx scripts/preview-seed.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

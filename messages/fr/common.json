@@ -26,7 +26,10 @@
     "inbox": "Messagerie",
     "agents": "Agents",
     "integrations": "Intégrations",
-    "settings": "Paramètres"
+    "settings": "Paramètres",
+    "billing": "Offre et facturation",
+    "sales": "Ventes et boutique",
+    "website": "Mon site web"
   },
   "topbar": {
     "menuOpen": "Ouvrir le menu",

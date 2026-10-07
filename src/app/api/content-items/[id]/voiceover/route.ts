@@ -3,14 +3,15 @@ import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { runAgent } from "@/lib/agents/runner";
 import { generateVoiceover } from "@/lib/agents/voiceAgent";
+import { route, isHttpError } from "@/lib/api";
 
-export async function POST(
+async function handlePOST(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
   const workspaceId = await getCurrentWorkspaceId();
-  const item = await prisma.contentItem.findUnique({ where: { id } });
+  const item = await prisma.contentItem.findFirst({ where: { id, workspaceId } });
   if (!item) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
 
   try {
@@ -19,9 +20,12 @@ export async function POST(
     );
     return NextResponse.json(result);
   } catch (error) {
+    if (isHttpError(error)) throw error;
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unbekannter Fehler." },
       { status: 422 }
     );
   }
 }
+
+export const POST = route(handlePOST);

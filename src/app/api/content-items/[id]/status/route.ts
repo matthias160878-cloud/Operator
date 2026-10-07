@@ -3,6 +3,8 @@ import { z } from "zod";
 import { setContentStatus, scheduleContentItem, publishContentItem } from "@/lib/agents/publishingAgent";
 import { runAgent } from "@/lib/agents/runner";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
+import { ownedContentItem } from "@/lib/ownership";
+import { route } from "@/lib/api";
 
 const bodySchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("review") }),
@@ -13,12 +15,13 @@ const bodySchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("publish") }),
 ]);
 
-export async function POST(
+async function handlePOST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
   const workspaceId = await getCurrentWorkspaceId();
+  await ownedContentItem(id);
   const body = await request.json().catch(() => null);
   const parsed = bodySchema.safeParse(body);
   if (!parsed.success) {
@@ -49,3 +52,5 @@ export async function POST(
     }
   }
 }
+
+export const POST = route(handlePOST);

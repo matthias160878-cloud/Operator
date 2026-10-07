@@ -58,9 +58,9 @@ Siehe [`.env.example`](.env.example) für die vollständige Liste. Wichtig:
 | `YOUTUBE_CLIENT_ID/SECRET`, `INSTAGRAM_CLIENT_ID/SECRET`, `TIKTOK_CLIENT_KEY/SECRET`, `LINKEDIN_CLIENT_ID/SECRET`, `FACEBOOK_APP_ID/SECRET` | Nein | App-Zugangsdaten je Social-Plattform (Statusanzeige unter Integrationen/Social Media). Ein echter OAuth-Login-Flow ist vorbereitet, aber noch nicht implementiert (siehe unten). |
 | `CANVA_API_KEY`, `CAPCUT_API_KEY` | Nein | Design-/Video-Provider-Status |
 | `TREND_API_KEY`, `TREND_API_PROVIDER` | Nein | TrendAgent — ohne diese Variablen zeigt der Agent konsequent „Trend API nicht konfiguriert.“ statt erfundener Trends. |
-| `STRIPE_SETUP_PRICE_ID` | Nein | Optionaler Einrichtungsservice (299 € einmalig), auf `/buy` per Häkchen zum Komplettpaket dazubuchbar. Ohne diese Variable ist das Häkchen deaktiviert. |
-| `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, `STRIPE_WEBHOOK_SECRET` | Nein | Kauf-Freischaltung über Stripe Checkout (siehe „Kauf-Freischaltung“ unten). Ohne diese Variablen zeigt `/buy` „Zahlung noch nicht konfiguriert.“ |
-| `OWNER_ACCESS_KEY` | Nein | Sperrt bei Gesetztsein die **komplette Anwendung** hinter `/buy`, bis bezahlt wurde oder `/unlock?key=...` aufgerufen wird. Ohne diese Variable bleibt die App frei zugänglich. |
+| `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_ID_PRO`, `STRIPE_PRICE_ID_MAXI`, `PACKAGE_TERMS_CONFIRMED` | Nein | Paketverkauf Pro/Maxi — siehe [`docs/BETRIEB-UND-ZAHLUNGEN.md`](docs/BETRIEB-UND-ZAHLUNGEN.md). |
+| `STRIPE_CONNECT_WEBHOOK_SECRET` | Nein | Verkaufsbereich der Kunden (Stripe Connect). |
+| `OPERATOR_SETUP_TOKEN` | Für die Ersteinrichtung | Einmaliger Schlüssel für `/setup` (Betreiberkonto). |
 
 Secrets werden ausschließlich serverseitig über `process.env` gelesen — nie im
 Frontend-Bundle, nie in Log-Ausgaben, nie in Fehlermeldungen.
@@ -132,63 +132,14 @@ Verbindung vorzutäuschen. `PublishingAgent.publishContentItem()` prüft live,
 ob ein `PlatformAccount` den Status `CONNECTED` trägt, und veröffentlicht
 niemals automatisch ohne diese Prüfung.
 
-## Kauf-Freischaltung (Stripe) & App-Installation (PWA)
+## Konten, Pakete, Zahlungen (Mehrkundenbetrieb)
 
-SECRET 58 kann komplett offen betrieben werden (Standard, kein Setup nötig)
-oder hinter einer Bezahlschranke: erst nach echtem Stripe-Kauf bekommt ein
-Kunde Zugriff, der Betreiber selbst hat über einen eigenen Schlüssel immer
-Zugriff.
-
-**Ein Paket, ein Preis.** SECRET 58 ("Social Media KI") wird als einzelnes
-Komplettpaket mit Vollzugriff verkauft — kein Kleines/Großes Paket, keine
-Staffelung, kein Abo. Empfohlener Preis: **797 € einmalig**
-(hinterlegt in [`src/lib/pricing.ts`](src/lib/pricing.ts), dort auch
-anpassbar). `/buy` zeigt diesen Preis bereits als Ankündigung an, auch
-bevor Stripe konfiguriert ist — verbindlich (inkl. funktionierendem
-Kaufen-Button) wird er erst mit einem passenden Stripe-Preis.
-
-**Wo trage ich den API-Schlüssel ein?** Genau wie bei jeder anderen
-Integration hier (ElevenLabs, Anthropic, …): in `.env` für die lokale
-Entwicklung, und im Render-Dashboard unter **Environment** für die Live-Seite
-(oder analog beim jeweils genutzten Hoster).
-
-1. **Stripe-Account** auf [stripe.com](https://stripe.com/) anlegen, im
-   Dashboard ein Produkt "Social Media KI" mit einem einmaligen Preis von
-   797 € (oder dem angepassten Wert aus `src/lib/pricing.ts`) anlegen.
-2. In `.env` (bzw. Render-Environment) setzen:
-   - `STRIPE_SECRET_KEY` — der geheime API-Key aus dem Stripe-Dashboard
-     (Entwickler → API-Schlüssel).
-   - `STRIPE_PRICE_ID` — die Preis-ID (`price_...`) des angelegten Produkts.
-   - `STRIPE_WEBHOOK_SECRET` — Signing Secret des Webhooks, den du im
-     Stripe-Dashboard auf `https://<deine-domain>/api/stripe/webhook`
-     für das Event `checkout.session.completed` anlegst.
-3. Sobald `STRIPE_SECRET_KEY`/`STRIPE_PRICE_ID` gesetzt sind, zeigt `/buy`
-   den echten Preis an und der „Jetzt kaufen“-Button leitet zu Stripe
-   Checkout weiter. Nach erfolgreicher Zahlung wird der Kunde automatisch
-   freigeschaltet (Cookie-basiert, kein separater Account nötig).
-4. **`OWNER_ACCESS_KEY` setzen, um die komplette Anwendung zu sperren** —
-   ein beliebiges, langes Geheimwort. Solange diese Variable **nicht**
-   gesetzt ist, bleibt die App für jeden frei zugänglich (auch ohne
-   Stripe-Konfiguration). Erst mit gesetztem `OWNER_ACCESS_KEY` wird jede
-   Seite außer `/buy` gesperrt, bis bezahlt wurde.
-5. Der Betreiber (du) bleibt immer freigeschaltet über:
-   `https://<deine-domain>/unlock?key=<OWNER_ACCESS_KEY>` — einmal im
-   eigenen Browser öffnen, danach bleibt der Zugriff dauerhaft (Cookie,
-   1 Jahr gültig).
-
-Der Zugriffsschutz sitzt in `src/proxy.ts` (Next.js 16 Proxy/Middleware) und
-prüft bei jedem Request entweder das Owner-Cookie oder eine `License` mit
-Status `ACTIVE` in der Datenbank. Ohne `OWNER_ACCESS_KEY` ist die Prüfung
-komplett inaktiv (No-Op) — die App bleibt wie bisher startfähig ohne jede
-Zahlungs-Konfiguration.
-
-**Einrichtungsservice & Autopilot-Vorschau:** Unter dem Komplettpaket kann
-optional ein Einrichtungsservice (299 € einmalig) dazugebucht werden — dafür in
-Stripe ein zweites Produkt mit einmaligem Preis anlegen und
-`STRIPE_SETUP_PRICE_ID` setzen. Darunter zeigt `/buy` den geplanten
-Autopilot (Monatsabo S/M/L, Werte in `AUTOPILOT_TIERS` in
-`src/lib/pricing.ts`) als nicht buchbare Vorschau. Herleitung der Preise:
-[`docs/preisanalyse.html`](docs/preisanalyse.html).
+Seit Oktober 2026 hat jeder Kunde ein eigenes Konto und einen eigenen, privaten
+Arbeitsbereich. Pakete **Pro** und **Maxi**, Kontingente, Stripe-Abrechnung,
+Betreiber-Dashboard, Kundenverkäufe (Stripe Connect), Webseiten-Widget,
+Genesis-Sprachsteuerung und die Bereitstellung auf einem Windows-VPS sind in
+[`docs/BETRIEB-UND-ZAHLUNGEN.md`](docs/BETRIEB-UND-ZAHLUNGEN.md) beschrieben.
+Der frühere Freischalt-Weg über `OWNER_ACCESS_KEY` und `/unlock?key=…` ist entfernt.
 
 **PWA (installierbare App):** Die Anwendung ist als Progressive Web App
 ausgelegt (`public/manifest.webmanifest`, `public/sw.js`) — auf iOS/Android

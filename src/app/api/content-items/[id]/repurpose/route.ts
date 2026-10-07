@@ -8,6 +8,7 @@ import { runAgent } from "@/lib/agents/runner";
 import { generateHooks } from "@/lib/agents/hookAgent";
 import { generateScript } from "@/lib/agents/scriptAgent";
 import { generateHashtags } from "@/lib/agents/hashtagAgent";
+import { route } from "@/lib/api";
 
 const PLATFORM_VALUES = [
   "YOUTUBE",
@@ -38,7 +39,7 @@ const PLATFORM_FORMAT: Partial<Record<Platform, string>> = {
  * (z.B. einem YouTube-Video) werden für die gewählten Zielplattformen neue,
  * plattformgerechte Entwürfe erzeugt — nicht derselbe Text kopiert.
  */
-export async function POST(
+async function handlePOST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -50,7 +51,7 @@ export async function POST(
     return NextResponse.json({ error: "Ungültige Eingabe." }, { status: 400 });
   }
 
-  const source = await prisma.contentItem.findUnique({ where: { id } });
+  const source = await prisma.contentItem.findFirst({ where: { id, workspaceId } });
   if (!source) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
 
   const brand = await getBrandDNA(workspaceId);
@@ -104,3 +105,5 @@ export async function POST(
 
   return NextResponse.json({ items: created });
 }
+
+export const POST = route(handlePOST);

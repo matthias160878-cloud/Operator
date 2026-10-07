@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
+import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { ConversationDetail } from "@/components/inbox/ConversationDetail";
 
 export const dynamic = "force-dynamic";
@@ -14,8 +15,8 @@ export default async function ConversationPage({
 }) {
   const t = await getTranslations("inbox");
   const { id } = await params;
-  const conversation = await prisma.conversation.findUnique({
-    where: { id },
+  const conversation = await prisma.conversation.findFirst({
+    where: { id, workspaceId: await getCurrentWorkspaceId() },
     include: { messages: { orderBy: { createdAt: "asc" } } },
   });
 

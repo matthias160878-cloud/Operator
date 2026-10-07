@@ -47,10 +47,14 @@ export async function POST(request: Request) {
   const vorhanden = await prisma.license.findUnique({ where: { stripeCheckoutSessionId: key } });
 
   // Out-of-Order-Schutz: ein verspätet eintreffendes ÄLTERES Ereignis darf
-  // einen bereits angewandten NEUEREN Stand nicht überschreiben.
+  // einen bereits angewandten NEUEREN Stand nicht überschreiben. Echt
+  // GLEICHE Zeitstempel (gesendetUm hat nur Sekundenauflösung --- zwei
+  // Ereignisse innerhalb derselben Sekunde sind möglich) zählen bewusst
+  // NICHT als "älter": beide haben schon den eventId-Replay-Schutz
+  // bestanden, sind also garantiert zwei verschiedene, echte Ereignisse.
   if (vorhanden?.letzterAboEventZeitstempel) {
     const neuesEreignisZeit = new Date(ereignis.gesendetUm * 1000);
-    if (neuesEreignisZeit <= vorhanden.letzterAboEventZeitstempel) {
+    if (neuesEreignisZeit < vorhanden.letzterAboEventZeitstempel) {
       return NextResponse.json({ ok: true, hinweis: "älter als bereits angewandter Stand, ignoriert" });
     }
   }

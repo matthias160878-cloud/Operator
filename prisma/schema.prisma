@@ -150,14 +150,18 @@ model Workspace {
 }
 
 model User {
-  id           String    @id @default(cuid())
-  workspaceId  String
-  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  email        String    @unique
-  name         String
-  passwordHash String
-  role         Role      @default(OWNER)
-  createdAt    DateTime  @default(now())
+  id                       String    @id @default(cuid())
+  workspaceId              String
+  workspace                Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  email                    String    @unique
+  name                     String
+  passwordHash             String
+  role                     Role      @default(OWNER)
+  createdAt                DateTime  @default(now())
+  /// "kundenschluessel" der Zentrale (secret58-web) --- gesetzt, wenn dieses
+  /// Konto per Entitlement-Token entstand/verknüpft wurde, siehe
+  /// src/lib/entitlement.ts. Nie die E-Mail-Adresse der Zentrale.
+  externalKundenschluessel String?   @unique
 
   auditLogs AuditLog[]
   sessions  Session[]
@@ -335,18 +339,18 @@ model MediaAsset {
 }
 
 model PlatformAccount {
-  id               String        @id @default(cuid())
-  workspaceId      String
-  workspace        Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  platform         Platform
-  accountName      String        @default("")
-  status           AccountStatus @default(NOT_CONFIGURED)
-  lastPublishedAt  DateTime?
-  lastError        String?
-  createdAt        DateTime      @default(now())
-  accessTokenEnc   String?
-  refreshTokenEnc  String?
-  tokenExpiresAt   DateTime?
+  id                String        @id @default(cuid())
+  workspaceId       String
+  workspace         Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  platform          Platform
+  accountName       String        @default("")
+  status            AccountStatus @default(NOT_CONFIGURED)
+  lastPublishedAt   DateTime?
+  lastError         String?
+  createdAt         DateTime      @default(now())
+  accessTokenEnc    String?
+  refreshTokenEnc   String?
+  tokenExpiresAt    DateTime?
   externalAccountId String?
 
   @@unique([workspaceId, platform])
@@ -506,6 +510,12 @@ model License {
   /// "pro" | "maxi" — siehe src/lib/packages.ts. Nullable für Alt-Lizenzen
   /// aus der Zeit vor dem Zwei-Pakete-Modell.
   packageId               String?
+  /// "stripe" (hier bezahlt, Normalfall bisher) oder "zentrale" (Zugriff
+  /// über das Entitlement-Token von secret58-web übernommen, kein eigener
+  /// Kauf hier). Das Betreiber-Dashboard zählt nur "stripe" als Umsatz ---
+  /// sonst würde ein unentgeltlich übernommener Zugriff wie ein zweiter
+  /// Verkauf aussehen, siehe src/app/operator/page.tsx.
+  origin                  String        @default("stripe")
   customerEmail           String        @default("")
   stripeCheckoutSessionId String        @unique
   stripeCustomerId        String        @default("")
@@ -521,4 +531,19 @@ model License {
 
   @@index([workspaceId])
   @@map("licenses")
+}
+
+/// Replay-Schutz für Entitlement-Tokens aus der Zentrale (secret58-web):
+/// jedes `jti` wird hier genau einmal eingetragen, bevor die Einlösung
+/// fortfährt --- ein zweiter Versuch mit demselben Token (z.B. ein
+/// abgefangener Link) scheitert dann an diesem eindeutigen Index, nicht an
+/// einer zeitlichen Vermutung. Einträge veralten mit der Token-Gültigkeit
+/// (siehe src/lib/entitlement.ts) und müssen nicht aufgeräumt werden, um
+/// korrekt zu bleiben --- nur um die Tabelle klein zu halten.
+model EntitlementRedemption {
+  id         String   @id @default(cuid())
+  jti        String   @unique
+  redeemedAt DateTime @default(now())
+
+  @@map("entitlement_redemptions")
 }

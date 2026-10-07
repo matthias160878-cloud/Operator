@@ -30,6 +30,7 @@ const ALWAYS_PUBLIC_PREFIXES = [
   "/signup",
   "/buy",
   "/unlock",
+  "/entitlement",
   "/api/auth",
   "/api/stripe",
   "/api/locale",

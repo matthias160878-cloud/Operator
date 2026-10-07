@@ -27,6 +27,7 @@ const PUBLIC_PREFIXES = [
   "/api/stripe/connect-webhook",
   "/api/shop/",
   "/api/widget/",
+  "/api/media-signed/",
   "/api/locale",
   "/widget.js",
   "/_next",

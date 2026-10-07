@@ -51,7 +51,7 @@ export async function textToSpeech(
     );
   }
 
-  const res = await fetch(`${ELEVENLABS_BASE_URL}/text-to-speech/${voice}`, {
+  const res = await fetch(`${ELEVENLABS_BASE_URL}/text-to-speech/${encodeURIComponent(voice ?? "")}`, {
     method: "POST",
     headers: {
       "content-type": "application/json",

@@ -21,7 +21,8 @@ const PLATFORM_VALUES = [
 ] as const;
 
 const bodySchema = z.object({
-  targets: z.array(z.enum(PLATFORM_VALUES)).min(1),
+  // Begrenzt und ohne Doppelte — jede Zielplattform kostet eine Kontingent-Einheit.
+  targets: z.array(z.enum(PLATFORM_VALUES)).min(1).max(PLATFORM_VALUES.length).transform((t) => [...new Set(t)]),
 });
 
 const PLATFORM_FORMAT: Partial<Record<Platform, string>> = {
@@ -100,7 +101,8 @@ async function handlePOST(
         items.push(item);
       }
       return items;
-    }
+    },
+    { metric: "AI_TEXT", amount: parsed.data.targets.length }
   );
 
   return NextResponse.json({ items: created });

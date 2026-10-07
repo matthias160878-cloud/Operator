@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
+import { safeInternalPath } from "@/lib/safeRedirect";
 
 type Mode = "login" | "signup" | "setup";
 
@@ -12,8 +13,7 @@ const ENDPOINT: Record<Mode, string> = {
 };
 
 function safeNext(next: string | undefined, fallback: string): string {
-  // Nur interne Pfade — keine offene Weiterleitung auf fremde Seiten.
-  return next && next.startsWith("/") && !next.startsWith("//") ? next : fallback;
+  return safeInternalPath(next, window.location.origin, fallback);
 }
 
 export function AuthForm({ mode, next, plan }: { mode: Mode; next?: string; plan?: string }) {

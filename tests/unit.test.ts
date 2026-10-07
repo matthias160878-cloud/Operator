@@ -79,3 +79,32 @@ test("Passwörter: scrypt-Hash, Prüfung, Mindestlänge", async () => {
   assert.ok(passwordProblem("kurz"));
   assert.equal(passwordProblem("zwölf-zeichen"), null);
 });
+
+test("Weiterleitung nach Anmeldung: nur interne Pfade", async () => {
+  const { safeInternalPath } = await import("@/lib/safeRedirect");
+  const o = "https://app.example";
+  assert.equal(safeInternalPath("/ideas?x=1", o, "/"), "/ideas?x=1");
+  assert.equal(safeInternalPath("//evil.example", o, "/"), "/");
+  assert.equal(safeInternalPath("/\\evil.example", o, "/"), "/");
+  assert.equal(safeInternalPath("https://evil.example", o, "/"), "/");
+  assert.equal(safeInternalPath(undefined, o, "/"), "/");
+});
+
+test("Client-IP: nur der vom eigenen Proxy angehängte Eintrag zählt", async () => {
+  const { clientIp } = await import("@/lib/rateLimit");
+  const req = (xff: string) => new Request("http://x", { headers: { "x-forwarded-for": xff } });
+  delete process.env.TRUSTED_PROXY_HOPS;
+  assert.equal(clientIp(req("1.1.1.1, 9.9.9.9")), "9.9.9.9"); // erster Eintrag ist vom Client gefälscht
+  process.env.TRUSTED_PROXY_HOPS = "0";
+  assert.equal(clientIp(req("1.1.1.1")), "direct");
+  delete process.env.TRUSTED_PROXY_HOPS;
+});
+
+test("Signierte Medien-Links: nur passende, gültige Signatur", async () => {
+  process.env.MEDIA_URL_SECRET = "test-secret";
+  const { signedMediaUrl, mediaSignature } = await import("@/lib/mediaStorage");
+  const url = new URL(signedMediaUrl("https://app.example", "ws1", "/api/media/video/a.mp4", 60));
+  const exp = Number(url.searchParams.get("exp"));
+  assert.equal(url.searchParams.get("sig"), mediaSignature("ws1", "video", "a.mp4", exp));
+  assert.notEqual(url.searchParams.get("sig"), mediaSignature("ws2", "video", "a.mp4", exp));
+});

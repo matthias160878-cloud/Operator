@@ -53,7 +53,12 @@ export async function POST(request: Request, { params }: { params: Promise<{ key
   const headers = cors(site.origin);
 
   const ip = clientIp(request);
-  const allowed = (await hitRateLimit(`widget-ip:${key}:${ip}`, 20, 600)) && (await hitRateLimit(`widget-key:${key}`, 300, 3600));
+  // Je Besucher und zusätzlich je Kennung pro Stunde und Tag — begrenzt, wie schnell
+  // ein Dritter mit kopierter Kennung das Kontingent des Kunden verbrauchen kann.
+  const allowed =
+    (await hitRateLimit(`widget-ip:${key}:${ip}`, 20, 600)) &&
+    (await hitRateLimit(`widget-key-h:${key}`, 60, 3600)) &&
+    (await hitRateLimit(`widget-key-d:${key}`, 200, 86400));
   if (!allowed) return NextResponse.json({ error: "Zu viele Anfragen. Bitte später erneut." }, { status: 429, headers });
 
   const parsed = schema.safeParse(await request.json().catch(() => null));

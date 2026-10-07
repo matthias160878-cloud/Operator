@@ -12,6 +12,7 @@ export function startFakeServices() {
   let n = 0;
   const site = { verifyText: "", homepage: "<html><body>Hallo</body></html>" };
   const accounts = new Map();
+  const fakes_completed = new Set();
 
   const json = (res, status, body) => {
     res.writeHead(status, { "content-type": "application/json" });
@@ -43,6 +44,15 @@ export function startFakeServices() {
         n += 1;
         const id = `cs_test_${n}`;
         return json(res, 200, { id, object: "checkout.session", url: `https://checkout.stripe.test/${id}`, mode: params.mode });
+      }
+      if (req.method === "POST" && /^\/v1\/checkout\/sessions\/[^/]+\/expire$/.test(p)) {
+        const id = p.split("/")[4];
+        if (fakes_completed.has(id)) return json(res, 400, { error: { message: "session already complete" } });
+        return json(res, 200, { id, object: "checkout.session", status: "expired" });
+      }
+      if (req.method === "GET" && p.startsWith("/v1/checkout/sessions/")) {
+        const id = p.split("/")[4];
+        return json(res, 200, { id, object: "checkout.session", status: fakes_completed.has(id) ? "complete" : "open" });
       }
       if (req.method === "POST" && p === "/v1/billing_portal/sessions") return json(res, 200, { id: "bps_1", url: "https://billing.stripe.test/p" });
       if (req.method === "GET" && p === "/v1/balance") {
@@ -84,6 +94,7 @@ export function startFakeServices() {
           calls,
           site,
           accounts,
+          completed: fakes_completed,
           close: () => Promise.all([new Promise((r) => stripeServer.close(r)), new Promise((r) => siteServer.close(r))]),
         });
       });

@@ -1,3 +1,4 @@
+import { createHash, createHmac } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -62,3 +63,31 @@ export const MEDIA_CONTENT_TYPES: Record<string, string> = {
   ".srt": "text/plain; charset=utf-8",
   ".vtt": "text/vtt; charset=utf-8",
 };
+
+/** Interne URL /api/media/<ordner>/<datei> -> Teile; null bei fremdem Format. */
+export function parseMediaUrl(url: string): { folder: string; file: string } | null {
+  const m = /^\/api\/media\/([a-z]+)\/([A-Za-z0-9._-]+)$/.exec(url);
+  return m ? { folder: m[1], file: m[2] } : null;
+}
+
+function mediaSigningKey(): Buffer {
+  const secret = process.env.MEDIA_URL_SECRET || process.env.TOKEN_ENCRYPTION_KEY;
+  if (!secret) throw new Error("MEDIA_URL_SECRET (oder TOKEN_ENCRYPTION_KEY) fehlt — signierte Medien-Links nicht möglich.");
+  return createHash("sha256").update(`secret58-media:${secret}`).digest();
+}
+
+export function mediaSignature(workspaceId: string, folder: string, file: string, expires: number): string {
+  return createHmac("sha256", mediaSigningKey()).update(`${workspaceId}/${folder}/${file}/${expires}`).digest("base64url");
+}
+
+/**
+ * Kurzlebiger, signierter Link für Plattformen, die eine Datei selbst abholen
+ * (Instagram, TikTok). Gilt nur für genau diese Datei und läuft ab.
+ */
+export function signedMediaUrl(origin: string, workspaceId: string, url: string, ttlSeconds = 3600): string {
+  const parts = parseMediaUrl(url);
+  if (!parts) throw new Error("Unbekanntes Medien-URL-Format.");
+  const expires = Math.floor(Date.now() / 1000) + ttlSeconds;
+  const sig = mediaSignature(workspaceId, parts.folder, parts.file, expires);
+  return `${origin}/api/media-signed/${workspaceId}/${parts.folder}/${parts.file}?exp=${expires}&sig=${sig}`;
+}

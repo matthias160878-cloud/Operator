@@ -68,6 +68,7 @@ function idOf(value: string | { id: string } | null | undefined): string | null 
 async function onCheckoutPaidOrPending(tx: Tx, session: Stripe.Checkout.Session, livemode: boolean) {
   const checkout = await tx.planCheckout.findUnique({ where: { id: session.id } });
   if (!checkout) return; // nicht von uns angelegt -> nichts freischalten
+  if (checkout.status === "COMPLETED") return; // Ereignisse ohne feste Reihenfolge: bereits freigeschaltet
 
   const amountMatches =
     session.amount_subtotal === checkout.expectedAmount && (session.currency ?? "") === checkout.currency;
@@ -86,20 +87,37 @@ async function onCheckoutPaidOrPending(tx: Tx, session: Stripe.Checkout.Session,
   const customerId = idOf(session.customer);
   const subscriptionId = idOf(session.subscription);
 
-  if (session.payment_status !== "paid") {
+  // "no_payment_required": vollständig rabattiert (Aktionscode) — gilt als bezahlt,
+  // der Betrag wurde oben gegen die Bestellung geprüft.
+  if (session.payment_status !== "paid" && session.payment_status !== "no_payment_required") {
     // Asynchrone Zahlarten (z. B. Lastschrift): erst nach Zahlungseingang freischalten.
-    await tx.workspacePlan.upsert({
-      where: { workspaceId: checkout.workspaceId },
-      create: {
-        workspaceId: checkout.workspaceId,
-        plan: checkout.plan,
-        status: "PENDING",
-        billingMode: checkout.mode,
-        stripeCustomerId: customerId,
-        stripePriceId: checkout.stripePriceId,
-      },
-      update: { status: "PENDING", stripeCustomerId: customerId ?? undefined },
-    });
+    // Ein bereits aktives Paket bleibt bis dahin unverändert aktiv.
+    const existing = await tx.workspacePlan.findUnique({ where: { workspaceId: checkout.workspaceId } });
+    if (!existing) {
+      await tx.workspacePlan.create({
+        data: {
+          workspaceId: checkout.workspaceId,
+          plan: checkout.plan,
+          status: "PENDING",
+          billingMode: checkout.mode,
+          stripeCustomerId: customerId,
+          stripeSubscriptionId: subscriptionId,
+          stripePriceId: checkout.stripePriceId,
+        },
+      });
+    } else if (existing.status !== "ACTIVE" && checkout.status === "OPEN") {
+      await tx.workspacePlan.update({
+        where: { id: existing.id },
+        data: {
+          plan: checkout.plan,
+          status: "PENDING",
+          billingMode: checkout.mode,
+          stripeCustomerId: customerId ?? undefined,
+          stripeSubscriptionId: subscriptionId ?? undefined,
+          stripePriceId: checkout.stripePriceId,
+        },
+      });
+    }
     return;
   }
 
@@ -157,8 +175,9 @@ async function onCheckoutFailed(tx: Tx, session: Stripe.Checkout.Session) {
   const checkout = await tx.planCheckout.findUnique({ where: { id: session.id } });
   if (!checkout) return;
   await tx.planCheckout.update({ where: { id: checkout.id }, data: { status: "FAILED" } });
+  // Nur das aus dieser Bestellung stammende ausstehende Paket — ein aktives bleibt unberührt.
   await tx.workspacePlan.updateMany({
-    where: { workspaceId: checkout.workspaceId, status: "PENDING" },
+    where: { workspaceId: checkout.workspaceId, status: "PENDING", stripePriceId: checkout.stripePriceId },
     data: { status: "PAYMENT_FAILED" },
   });
 }
@@ -271,7 +290,7 @@ async function onChargeRefunded(tx: Tx, charge: Stripe.Charge, livemode: boolean
   });
 
   // Vollständig erstattete Einmalzahlung: Paket deaktivieren. Abo-Erstattungen entscheidet der Betreiber.
-  if (charge.refunded && original && plan && plan.billingMode === "payment") {
+  if (charge.refunded && original && plan && plan.billingMode === "payment" && original.plan === plan.plan) {
     await tx.workspacePlan.update({ where: { id: plan.id }, data: { status: "REFUNDED" } });
     await tx.auditLog.create({
       data: { workspaceId: plan.workspaceId, action: "billing.refunded", detail: `Zahlung ${paymentIntentId} vollständig erstattet` },

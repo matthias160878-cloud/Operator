@@ -19,7 +19,11 @@ const bodySchema = z.object({
   topic: z.string().min(3, "Bitte gib ein Thema mit mindestens 3 Zeichen ein."),
   targetAudience: z.string().default(""),
   goal: z.string().default(""),
-  platforms: z.array(z.enum(PLATFORM_VALUES)).min(1, "Wähle mindestens eine Plattform."),
+  platforms: z
+    .array(z.enum(PLATFORM_VALUES))
+    .min(1, "Wähle mindestens eine Plattform.")
+    .max(PLATFORM_VALUES.length)
+    .transform((p) => [...new Set(p)]),
   language: z.string().default("Deutsch"),
   itemsPerPlatform: z.number().int().min(1).max(5).default(1),
 });
@@ -43,7 +47,8 @@ async function handlePOST(request: Request) {
       "content-brain",
       workspaceId,
       `Content-Plan für "${input.topic}"`,
-      () => createCampaignFromIdea({ workspaceId, ...input })
+      () => createCampaignFromIdea({ workspaceId, ...input }),
+      { metric: "AI_TEXT", amount: input.platforms.length * input.itemsPerPlatform }
     );
     return NextResponse.json(result);
   } catch (error) {

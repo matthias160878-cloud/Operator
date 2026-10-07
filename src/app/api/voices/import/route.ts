@@ -19,7 +19,9 @@ async function handlePOST() {
     const existing = await prisma.voice.findMany({ where: { workspaceId } });
     const existingIds = new Set(existing.map((v) => v.providerVoiceId));
 
-    const toCreate = remoteVoices.filter((v) => !existingIds.has(v.voice_id));
+    // Nur allgemeine Standardstimmen von ElevenLabs — eigene/geklonte Stimmen des
+    // Betreiberkontos werden nicht an Kunden weitergegeben.
+    const toCreate = remoteVoices.filter((v) => v.category === "premade" && !existingIds.has(v.voice_id));
     const created = await prisma.$transaction(
       toCreate.map((v) =>
         prisma.voice.create({

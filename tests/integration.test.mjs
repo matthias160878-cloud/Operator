@@ -389,6 +389,61 @@ test("Erstattung einer Einmalzahlung deaktiviert das Paket und wird verbucht", a
   await prisma.workspacePlan.update({ where: { workspaceId: wsA }, data: { status: "ACTIVE" } });
 });
 
+test("Review-Befunde: Mehrfachaufträge, 100-%-Rabatt, Lastschrift-Upgrade, alte Erstattung, doppelte Checkouts, Stimmen", async () => {
+  const wsA = await workspaceIdOf("a@example.test");
+  const period = `${new Date().getUTCFullYear()}-${String(new Date().getUTCMonth() + 1).padStart(2, "0")}`;
+  const key = { workspaceId_metric_period: { workspaceId: wsA, metric: "AI_TEXT", period } };
+  // Content Brain: 3 Plattformen (eine doppelt) x 2 Beiträge = 6 Einheiten, nicht 1
+  await prisma.usageCounter.update({ where: key, data: { used: 0 } });
+  const cb = await A.json("/api/content-brain", { method: "POST", body: { topic: "Mehrfachauftrag", platforms: ["YOUTUBE", "TIKTOK", "TIKTOK", "INSTAGRAM"], itemsPerPlatform: 2 } });
+  assert.equal(cb.status, 200, JSON.stringify(cb.data));
+  assert.equal((await prisma.usageCounter.findUnique({ where: key })).used, 6);
+  const tooMany = await A.json("/api/content-brain", { method: "POST", body: { topic: "Zu viele", platforms: Array(50).fill("YOUTUBE") } });
+  assert.equal(tooMany.status, 400);
+
+  // Doppelter Checkout: der frühere offene wird beendet
+  const c = await signup("c@example.test", "Firma C");
+  const wsC = await workspaceIdOf("c@example.test");
+  const s1 = (await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "pro", confirmed: true } })).data.url.split("/").pop();
+  const s2 = (await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "pro", confirmed: true } })).data.url.split("/").pop();
+  assert.equal((await prisma.planCheckout.findUnique({ where: { id: s1 } })).status, "EXPIRED");
+  assert.equal((await prisma.planCheckout.findUnique({ where: { id: s2 } })).status, "OPEN");
+
+  // 100-%-Aktionscode: no_payment_required schaltet frei
+  await webhook(event("checkout.session.completed", { id: s2, object: "checkout.session", mode: "payment", payment_status: "no_payment_required",
+    amount_subtotal: 59000, amount_total: 0, currency: "eur", customer: "cus_C", payment_intent: null, subscription: null, metadata: {} }));
+  let planC = await prisma.workspacePlan.findUnique({ where: { workspaceId: wsC } });
+  assert.equal(planC.status, "ACTIVE");
+  assert.equal(planC.plan, "PRO");
+
+  // Upgrade auf Maxi per Lastschrift (noch unbezahlt): Pro bleibt aktiv; Fehlschlag entzieht nichts
+  await prisma.workspacePlan.update({ where: { workspaceId: wsC }, data: { stripeCustomerId: null } });
+  const s3 = (await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "maxi", confirmed: true } }));
+  // Maxi ist ein Abo-Preis, C hat ein aktives Einmal-Pro -> Kauf erlaubt
+  assert.equal(s3.status, 200, JSON.stringify(s3.data));
+  const s3id = s3.data.url.split("/").pop();
+  const sepa = { id: s3id, object: "checkout.session", mode: "subscription", payment_status: "unpaid", amount_subtotal: 79700, amount_total: 79700,
+    currency: "eur", customer: "cus_C", payment_intent: null, subscription: "sub_C", metadata: {} };
+  await webhook(event("checkout.session.completed", sepa));
+  planC = await prisma.workspacePlan.findUnique({ where: { workspaceId: wsC } });
+  assert.equal(planC.status, "ACTIVE");
+  assert.equal(planC.plan, "PRO");
+  await webhook(event("checkout.session.async_payment_failed", sepa));
+  planC = await prisma.workspacePlan.findUnique({ where: { workspaceId: wsC } });
+  assert.equal(planC.status, "ACTIVE");
+
+  // Erstattung einer alten Pro-Zahlung deaktiviert ein späteres Maxi nicht
+  await prisma.operatorPayment.create({ data: { stripeObjectId: "pi_C_old", kind: "PAYMENT", workspaceId: wsC, plan: "PRO", amount: 59000, currency: "eur", status: "succeeded" } });
+  await prisma.workspacePlan.update({ where: { workspaceId: wsC }, data: { plan: "MAXI" } });
+  await webhook(event("charge.refunded", { id: "ch_C_old", object: "charge", payment_intent: "pi_C_old", customer: "cus_C", amount: 59000, amount_refunded: 59000, refunded: true, currency: "eur" }));
+  planC = await prisma.workspacePlan.findUnique({ where: { workspaceId: wsC } });
+  assert.equal(planC.status, "ACTIVE");
+
+  // Stimmen: fremde/beliebige IDs werden nicht an den Anbieter weitergereicht
+  const voice = await A.json("/api/voices/preview", { method: "POST", body: { text: "Hallo", voiceId: "../../v1/user" } });
+  assert.ok([404, 422].includes(voice.status), String(voice.status));
+});
+
 test("Betreiber: geschützte Einrichtung, Dashboard ohne Kundeninhalte, kein Zugriff für Kunden", async () => {
   const op = new Client();
   const wrong = await op.json("/api/auth/setup-operator", { method: "POST", body: { setupToken: "x".repeat(40), email: "op@example.test", name: "Op", password: "betreiber-passwort-123" } });

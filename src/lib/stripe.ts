@@ -124,6 +124,22 @@ export async function createPlanCheckout(input: {
     }
   }
 
+  // Frühere, noch offene Checkouts beenden — sonst könnten zwei Tabs doppelt bezahlen.
+  const open = await prisma.planCheckout.findMany({ where: { workspaceId: input.workspaceId, status: "OPEN" } });
+  for (const previous of open) {
+    try {
+      await getStripe().checkout.sessions.expire(previous.id);
+      await prisma.planCheckout.update({ where: { id: previous.id }, data: { status: "EXPIRED" } });
+    } catch {
+      const current = await getStripe().checkout.sessions.retrieve(previous.id).catch(() => null);
+      if (current?.status === "expired") {
+        await prisma.planCheckout.update({ where: { id: previous.id }, data: { status: "EXPIRED" } });
+      } else {
+        throw new CheckoutRefused("Eine frühere Zahlung wird gerade abgeschlossen. Bitte warte die Bestätigung ab.");
+      }
+    }
+  }
+
   const mode: "payment" | "subscription" = price.recurring ? "subscription" : "payment";
   const metadata = { workspaceId: input.workspaceId, plan: input.plan, userId: input.userId };
   const session = await getStripe().checkout.sessions.create({

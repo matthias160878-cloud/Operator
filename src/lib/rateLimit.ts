@@ -28,9 +28,18 @@ export async function hitRateLimit(key: string, limit: number, windowSeconds: nu
   return counted.count === 1;
 }
 
-/** Client-Adresse für Missbrauchsschutz — hinter einem Reverse Proxy aus X-Forwarded-For. */
+/**
+ * Client-Adresse für Missbrauchsschutz. Der erste X-Forwarded-For-Eintrag
+ * stammt vom Client und ist fälschbar; maßgeblich ist der Eintrag, den der
+ * eigene Reverse Proxy angehängt hat. TRUSTED_PROXY_HOPS = Anzahl eigener
+ * Proxys vor der Anwendung (Standard 1, z. B. Caddy; 0 = direkt erreichbar).
+ */
 export function clientIp(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) return forwarded.split(",")[0].trim();
-  return request.headers.get("x-real-ip") ?? "unknown";
+  const hops = Number(process.env.TRUSTED_PROXY_HOPS ?? "1");
+  const entries = (request.headers.get("x-forwarded-for") ?? "")
+    .split(",")
+    .map((e) => e.trim())
+    .filter(Boolean);
+  if (hops > 0 && entries.length > 0) return entries[Math.max(0, entries.length - hops)];
+  return "direct";
 }

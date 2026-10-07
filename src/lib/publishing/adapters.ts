@@ -1,5 +1,4 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
+import { readMediaFile, parseMediaUrl, signedMediaUrl } from "@/lib/mediaStorage";
 import type { ContentItem, MediaAsset, PlatformAccount } from "@prisma/client";
 import { getValidAccessToken } from "./tokens";
 
@@ -18,9 +17,12 @@ function parseHashtags(json: string): string[] {
   }
 }
 
-async function readLocalMedia(relativeUrl: string): Promise<Buffer> {
-  const filePath = path.join(process.cwd(), "public", relativeUrl);
-  return readFile(filePath);
+/** Liest eine Datei aus der privaten Ablage des Workspaces, dem das Medium gehört. */
+async function readLocalMedia(asset: MediaAsset): Promise<Buffer> {
+  const parts = parseMediaUrl(asset.url);
+  const data = parts ? await readMediaFile(asset.workspaceId, parts.folder, parts.file) : null;
+  if (!data) throw new Error("Mediendatei nicht gefunden.");
+  return data;
 }
 
 function buildCaption(item: ContentItem): string {
@@ -46,7 +48,7 @@ export async function publishToYouTube(
     };
   }
   const accessToken = await getValidAccessToken(account);
-  const fileBuffer = await readLocalMedia(video.url);
+  const fileBuffer = await readLocalMedia(video);
 
   const metadata = {
     snippet: {
@@ -151,7 +153,7 @@ export async function publishToFacebook(
   const accessToken = await getValidAccessToken(account);
 
   if (video) {
-    const fileBuffer = await readLocalMedia(video.url);
+    const fileBuffer = await readLocalMedia(video);
     const form = new FormData();
     form.set("description", buildCaption(item));
     form.set("access_token", accessToken);
@@ -205,7 +207,7 @@ export async function publishToInstagram(
     throw new Error("Instagram-Konto-ID fehlt — Account erneut verbinden.");
   }
   const accessToken = await getValidAccessToken(account);
-  const videoUrl = `${publicOrigin}${video.url}`;
+  const videoUrl = signedMediaUrl(publicOrigin, video.workspaceId, video.url);
 
   const createRes = await fetch(
     `https://graph.instagram.com/v21.0/${account.externalAccountId}/media`,
@@ -273,7 +275,7 @@ export async function publishToTikTok(
     };
   }
   const accessToken = await getValidAccessToken(account);
-  const videoUrl = `${publicOrigin}${video.url}`;
+  const videoUrl = signedMediaUrl(publicOrigin, video.workspaceId, video.url);
 
   const res = await fetch("https://open.tiktokapis.com/v2/post/publish/video/init/", {
     method: "POST",

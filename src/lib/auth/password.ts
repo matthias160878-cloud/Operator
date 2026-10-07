@@ -26,8 +26,15 @@ export async function hashPassword(password: string): Promise<string> {
   return `scrypt$${N}$${R}$${P}$${salt.toString("base64")}$${hash.toString("base64")}`;
 }
 
+let dummyHash: Promise<string> | null = null;
+
 export async function verifyPassword(password: string, stored: string | null): Promise<boolean> {
-  if (!stored) return false;
+  if (!stored) {
+    // Gleiche Rechenzeit wie bei vorhandenem Konto — verrät nicht, ob die E-Mail registriert ist.
+    dummyHash ??= hashPassword("timing-ausgleich");
+    await verifyPassword(password, await dummyHash);
+    return false;
+  }
   const [scheme, n, r, p, saltB64, hashB64] = stored.split("$");
   if (scheme !== "scrypt" || !saltB64 || !hashB64) return false;
   const expected = Buffer.from(hashB64, "base64");

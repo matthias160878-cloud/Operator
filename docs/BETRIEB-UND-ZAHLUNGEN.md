@@ -149,9 +149,26 @@ Summen werden je Währung getrennt angezeigt, Testdaten (`livemode=false`) sind 
 * Die Domainprüfung ruft nur öffentliche Adressen ab: keine internen IPs, keine
   Weiterleitungen, Zeit- und Größenlimit.
 * Nicht-Browser-Clients können einen Origin-Header fälschen. Dagegen schützen
-  nur Ratenbegrenzung und Kontingent.
+  nur Ratenbegrenzung (20 je Besucher/10 min, 60 je Kennung/Stunde, 200 je
+  Kennung/Tag) und das Kontingent. Wer die Kennung kopiert, kann das Tageslimit
+  des Kunden dennoch ausschöpfen — ein Besucher-Token wäre der nächste Schritt (offen).
+* Restrisiko Domainprüfung: DNS-Auflösung und Abruf erfolgen getrennt
+  (theoretisch DNS-Rebinding); zurück kommt nur ja/nein. Akzeptiert, offen.
 * Ein **Telefonassistent ist nicht umgesetzt** (dafür wären Telefonie-Anbindung,
   Rufnummer, Einwilligungen und Datenschutzabläufe nötig).
+
+## 7a. Missbrauchsschutz
+
+* Ratenbegrenzung über die Datenbank. Die Client-Adresse ist der Eintrag, den der
+  eigene Reverse Proxy anhängt (`TRUSTED_PROXY_HOPS`, Standard 1). Der erste,
+  vom Client fälschbare Eintrag in `X-Forwarded-For` wird ignoriert.
+* Anmeldung: 30 Versuche je Adresse und 10 je E-Mail in 15 Minuten. Die
+  E-Mail-Grenze kann ein Angreifer nutzen, um ein Konto 15 Minuten zu sperren (offen: Zurücksetzen per E-Mail).
+* Antwortzeiten verraten nicht, ob eine E-Mail registriert ist.
+* Stimmen: nur Stimmen des eigenen Arbeitsbereichs; der Import übernimmt nur
+  Standardstimmen von ElevenLabs, keine geklonten Stimmen des Betreiberkontos.
+* Veröffentlichen von Videos: Instagram/TikTok erhalten einen signierten Link,
+  der eine Stunde gilt (`MEDIA_URL_SECRET`).
 
 ## 8. Bereitstellung auf einem Windows-VPS (vorbereitet, nicht ausgeführt)
 

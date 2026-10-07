@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/db";
 import { z } from "zod";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { runAgent } from "@/lib/agents/runner";
@@ -17,6 +18,10 @@ async function handlePOST(request: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: "Ungültige Eingabe." }, { status: 400 });
   }
+
+  // Nur Stimmen aus dem eigenen Arbeitsbereich — keine beliebigen IDs an den Betreiber-Zugang.
+  const voice = await prisma.voice.findFirst({ where: { workspaceId, providerVoiceId: parsed.data.voiceId } });
+  if (!voice) return NextResponse.json({ error: "Stimme nicht gefunden." }, { status: 404 });
 
   try {
     const result = await runAgent("voice", workspaceId, "Voice-Preview", () =>

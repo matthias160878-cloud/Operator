@@ -42,15 +42,17 @@ export async function runAgent<T>(
   workspaceId: string,
   task: string,
   fn: () => Promise<T>,
-  metricOverride?: Metric | null
+  quota?: Metric | null | { metric: Metric; amount: number }
 ): Promise<T> {
   const def = getAgentDefinition(key);
-  const metric = metricOverride === undefined ? AGENT_METRIC[key] ?? null : metricOverride;
+  // Mehrfach-Aufträge (z. B. mehrere Plattformen) verbrauchen je Einheit ein Kontingent.
+  const metric = quota === undefined ? AGENT_METRIC[key] ?? null : quota && typeof quota === "object" ? quota.metric : quota;
+  const amount = quota && typeof quota === "object" ? Math.max(1, quota.amount) : 1;
   // Paketberechtigung immer prüfen; Kontingent nur bei echtem Anbieter-Aufruf verbrauchen.
   let release: (() => Promise<void>) | null = null;
   if (metric) {
     const consume = providerConfiguredFor(metric);
-    release = await reserveQuota(workspaceId, metric, consume ? 1 : 0);
+    release = await reserveQuota(workspaceId, metric, consume ? amount : 0);
   }
 
   const run = await prisma.agentRun.create({

@@ -803,3 +803,24 @@ model WebsiteChatEntry {
   @@index([createdAt])
   @@map("website_chat_entries")
 }
+
+/// Newsletter-Anmeldungen der Startseite mit Double-Opt-in. Einwilligung
+/// (Zeitpunkt, Wortlaut) wird als Nachweis gespeichert; aktiv erst nach Klick
+/// auf den Bestätigungslink. Tokens nur als Hash gespeichert.
+model NewsletterSubscriber {
+  id               String    @id @default(cuid())
+  email            String    @unique
+  /// PENDING | ACTIVE | UNSUBSCRIBED
+  status           String    @default("PENDING")
+  confirmTokenHash String?   @unique
+  confirmExpiresAt DateTime?
+  unsubscribeHash  String    @unique
+  consentText      String
+  consentAt        DateTime
+  confirmedAt      DateTime?
+  unsubscribedAt   DateTime?
+  lastMailAt       DateTime?
+  createdAt        DateTime  @default(now())
+
+  @@map("newsletter_subscribers")
+}

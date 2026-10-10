@@ -29,6 +29,12 @@ export function startFakeServices() {
       const params = Object.fromEntries(new URLSearchParams(raw));
       calls.push({ method: req.method, path: url.pathname, params, raw, stripeAccount: req.headers["stripe-account"] ?? null });
       const p = url.pathname;
+      if (p === "/emails" && req.method === "POST") {
+        // E-Mail-Attrappe (Resend-Format): nur protokollieren, nichts versenden.
+        if (req.headers.authorization !== "Bearer re_test_fake") return json(res, 401, { message: "invalid key" });
+        calls[calls.length - 1].email = JSON.parse(raw);
+        return json(res, 200, { id: `mail_${calls.length}` });
+      }
       if (p.startsWith("/api/v3/")) {
         if (req.headers["x-api-key"] !== composio.apiKey) return json(res, 401, { error: { message: "invalid api key" } });
         const body = raw ? JSON.parse(raw) : {};

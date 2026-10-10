@@ -134,6 +134,9 @@ before(async () => {
     COMPOSIO_BASE_URL: `http://127.0.0.1:${fakes.stripePort}`,
     COMPOSIO_AUTH_CONFIG_INSTAGRAM: "ac_instagram",
     COMPOSIO_AUTH_CONFIG_YOUTUBE: "ac_youtube",
+    RESEND_API_KEY: "re_test_fake",
+    EMAIL_FROM: "Secret 58 <newsletter@example.test>",
+    EMAIL_API_BASE: `http://127.0.0.1:${fakes.stripePort}`,
   };
   server = spawn("npx", ["next", "start", "-p", String(PORT), "-H", "127.0.0.1"], { env, stdio: ["ignore", "pipe", "pipe"], detached: true });
   server.stderr.on("data", (d) => process.env.DEBUG_SERVER && process.stderr.write(d));
@@ -1008,7 +1011,7 @@ test("Startseite Schritt 2: Chat-Regeln, KI nur mit Freigabe, Skill-Anfrage, Ter
   // Kunden-Chatbot bleibt geschützt (kein Präfix-Leck über /api/chat)
   assert.equal((await post("/api/chatbot", { messages: [{ role: "user", content: "hi" }] })).status, 401);
 
-  assert.deepEqual(await (await fetch(`${BASE}/api/webseite/status`)).json(), { ki: false });
+  assert.deepEqual(await (await fetch(`${BASE}/api/webseite/status`)).json(), { ki: false, newsletter: true });
   const chat = (text) => post("/api/chat", { messages: [{ role: "user", content: text }] }, { "x-forwarded-for": "10.6.6.6" });
   const gesperrt = await (await chat("Können Sie meine Überweisung im Online-Banking machen?")).json();
   assert.equal(gesperrt.entscheidung, "abgelehnt");
@@ -1057,4 +1060,51 @@ test("Startseite Schritt 2: Chat-Regeln, KI nur mit Freigabe, Skill-Anfrage, Ter
   for (const m of html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)) {
     assert.equal((m[1].match(/\{/g) ?? []).length, (m[1].match(/\}/g) ?? []).length, "CSS-Klammern unausgeglichen");
   }
+});
+
+test("Newsletter: Double-Opt-in, gleiche Antwort für jede Adresse, Bestätigen und Abmelden per Link", async () => {
+  const anmelden = (email, einwilligung = true, ip = "10.4.4.4") =>
+    fetch(`${BASE}/api/newsletter/anmelden`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR, "x-forwarded-for": ip }, body: JSON.stringify({ email, einwilligung }) });
+  const mails = () => fakes.calls.filter((c) => c.path === "/emails" && c.email);
+
+  assert.equal((await anmelden("leser@example.test", false)).status, 400);
+  const vorher = mails().length;
+  const r = await anmelden("Leser@Example.test");
+  assert.equal(r.status, 200);
+  const antwort = (await r.json()).meldung;
+  assert.equal(mails().length, vorher + 1);
+  const mail = mails().at(-1).email;
+  assert.deepEqual(mail.to, ["leser@example.test"]);
+  const confirmUrl = mail.text.match(/https?:\/\/\S+\/api\/newsletter\/bestaetigen\?t=\S+/)[0];
+  const unsubUrl = mail.text.match(/https?:\/\/\S+\/api\/newsletter\/abmelden\?t=\S+/)[0];
+
+  let sub = await prisma.newsletterSubscriber.findUniqueOrThrow({ where: { email: "leser@example.test" } });
+  assert.equal(sub.status, "PENDING");
+  assert.match(sub.consentText, /Newsletter erhalten/);
+  assert.ok(!confirmUrl.includes(sub.confirmTokenHash), "Token darf nicht im Klartext gespeichert sein");
+
+  // Erneute Anmeldung innerhalb von 10 Minuten: gleiche Antwort, keine zweite Mail
+  const again = await anmelden("leser@example.test", true, "10.4.4.5");
+  assert.equal((await again.json()).meldung, antwort);
+  assert.equal(mails().length, vorher + 1);
+
+  const path = (u) => new URL(u).pathname + new URL(u).search;
+  const ok = await (await fetch(`${BASE}${path(confirmUrl)}`)).text();
+  assert.ok(ok.includes("Anmeldung bestätigt"));
+  sub = await prisma.newsletterSubscriber.findUniqueOrThrow({ where: { email: "leser@example.test" } });
+  assert.equal(sub.status, "ACTIVE");
+  assert.ok((await (await fetch(`${BASE}${path(confirmUrl)}`)).text()).includes("Link nicht gültig"), "Link darf nur einmal gelten");
+
+  // Bereits angemeldet: gleiche Antwort, keine Mail
+  const aktiv = await anmelden("leser@example.test", true, "10.4.4.6");
+  assert.equal((await aktiv.json()).meldung, antwort);
+  assert.equal(mails().length, vorher + 1);
+
+  const op = new Client();
+  await op.json("/api/auth/login", { method: "POST", body: { email: "op@example.test", password: "betreiber-passwort-123" } });
+  assert.ok((await (await op.req("/operator")).text()).includes("leser@example.test"));
+
+  assert.ok((await (await fetch(`${BASE}${path(unsubUrl)}`)).text()).includes("Abgemeldet"));
+  assert.equal((await prisma.newsletterSubscriber.findUniqueOrThrow({ where: { email: "leser@example.test" } })).status, "UNSUBSCRIBED");
+  assert.ok((await (await fetch(`${BASE}/api/newsletter/bestaetigen?t=falsch`)).text()).includes("Link nicht gültig"));
 });

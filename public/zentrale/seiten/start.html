@@ -838,14 +838,15 @@ h2.sec-title{
 }
 </style>
 <style id="app-ausgeblendet">
-/* Newsletter ausgeblendet, bis ein E-Mail-Versand für die Bestätigungs-Mail (Double-Opt-in) eingerichtet ist. */
-div:has(> #newsletterform) { display: none !important; }
+/* Newsletter nur sichtbar, wenn der E-Mail-Versand für die Bestätigungs-Mail (Double-Opt-in) eingerichtet ist. */
+html:not(.nl-an) div:has(> #newsletterform) { display: none !important; }
 </style>
 <script id="app-webseite-status">
-/* Skill-Anfrage nur anzeigen, wenn die KI auf der Startseite freigeschaltet ist (WEBSITE_KI=true). */
+/* Skill-Anfrage nur mit freigeschalteter KI (WEBSITE_KI=true), Newsletter nur mit E-Mail-Versand. */
 addEventListener("DOMContentLoaded", function () {
   fetch("/api/webseite/status", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
     if (!d.ki) { var f = document.getElementById("skillagentform"); if (f) f.style.display = "none"; }
+    if (d.newsletter) document.documentElement.classList.add("nl-an");
   }).catch(function () {});
 });
 </script>

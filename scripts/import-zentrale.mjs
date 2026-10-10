@@ -75,9 +75,9 @@ for (const [file, route] of Object.entries(PAGES)) {
  *  - Presse/Rechte/Sicherheit-Links entfernt (Seiten nicht übernommen)
  *  - Alle Funktionen laufen über Schnittstellen der App: /api/kontakt,
  *    /api/agenten, /api/demo/plan, /api/chat, /api/skill-agent,
- *    /api/termine/…; nur der Newsletter bleibt ausgeblendet (braucht
- *    E-Mail-Versand für die Bestätigung). Die Skill-Anfrage blendet sich
- *    aus, solange die KI auf der Startseite nicht freigeschaltet ist.
+ *    /api/termine/…, /api/newsletter/… (Double-Opt-in). Die Skill-Anfrage
+ *    erscheint nur mit freigeschalteter KI, der Newsletter nur mit
+ *    eingerichtetem E-Mail-Versand (/api/webseite/status).
  */
 const START_LINKS = [
   ...LINKS,
@@ -93,14 +93,15 @@ const START_LINKS = [
   ['        <a href="/sicherheit">Sicherheit</a>\n', ""], // lädt Daten vom alten Zentrale-Server
 ];
 const AUSGEBLENDET = `<style id="app-ausgeblendet">
-/* Newsletter ausgeblendet, bis ein E-Mail-Versand für die Bestätigungs-Mail (Double-Opt-in) eingerichtet ist. */
-div:has(> #newsletterform) { display: none !important; }
+/* Newsletter nur sichtbar, wenn der E-Mail-Versand für die Bestätigungs-Mail (Double-Opt-in) eingerichtet ist. */
+html:not(.nl-an) div:has(> #newsletterform) { display: none !important; }
 </style>
 <script id="app-webseite-status">
-/* Skill-Anfrage nur anzeigen, wenn die KI auf der Startseite freigeschaltet ist (WEBSITE_KI=true). */
+/* Skill-Anfrage nur mit freigeschalteter KI (WEBSITE_KI=true), Newsletter nur mit E-Mail-Versand. */
 addEventListener("DOMContentLoaded", function () {
   fetch("/api/webseite/status", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
     if (!d.ki) { var f = document.getElementById("skillagentform"); if (f) f.style.display = "none"; }
+    if (d.newsletter) document.documentElement.classList.add("nl-an");
   }).catch(function () {});
 });
 </script>

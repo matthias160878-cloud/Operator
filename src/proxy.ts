@@ -40,6 +40,7 @@ const PUBLIC_PREFIXES = [
   "/api/skill-agent",
   "/api/termine/",
   "/api/webseite/status",
+  "/api/newsletter/",
   "/widget.js",
   "/_next",
   "/favicon.ico",

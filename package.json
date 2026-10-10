@@ -13,7 +13,10 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/unit.test.ts",
     "test:integration": "node --test --test-concurrency=1 tests/integration.test.mjs",
-    "preview:seed": "tsx scripts/preview-seed.ts"
+    "preview:seed": "tsx scripts/preview-seed.ts",
+    "db:use-postgres": "node scripts/use-postgres.mjs",
+    "build:server": "node scripts/use-postgres.mjs && prisma generate && next build",
+    "start:server": "prisma db push --skip-generate && next start"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

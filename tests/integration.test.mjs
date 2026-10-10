@@ -4,6 +4,9 @@
  *
  *   npm run build && npm run test:integration
  *
+ * Gegen PostgreSQL (Build vorher mit `npm run build:server` auf derselben URL):
+ *   TEST_DATABASE_URL=postgresql://…/s58_test npm run test:integration
+ *
  * Geprüft wird über HTTP — inklusive Proxy, Sitzungen, Webhook-Signaturen.
  */
 import { test, before, after } from "node:test";
@@ -94,8 +97,12 @@ let A, B;
 before(async () => {
   fakes = await startFakeServices();
   workdir = mkdtempSync(path.join(tmpdir(), "s58-it-"));
-  const dbUrl = `file:${path.join(workdir, "test.db")}`;
-  execFileSync("npx", ["prisma", "db", "push", "--skip-generate"], { env: { ...process.env, DATABASE_URL: dbUrl }, stdio: "ignore" });
+  // Standard: SQLite-Datei. Mit TEST_DATABASE_URL (eigene, leere Test-Datenbank!)
+  // läuft dieselbe Suite gegen PostgreSQL (Datenbank muss leer sein).
+  const pgUrl = process.env.TEST_DATABASE_URL;
+  const dbUrl = pgUrl ?? `file:${path.join(workdir, "test.db")}`;
+  const pushArgs = ["prisma", "db", "push", "--skip-generate"];
+  execFileSync("npx", pushArgs, { env: { ...process.env, DATABASE_URL: dbUrl }, stdio: "ignore" });
   prisma = new PrismaClient({ datasources: { db: { url: dbUrl } } });
   const env = {
     ...process.env,
@@ -782,4 +789,11 @@ test("Composio: Kontolöschung entfernt verbundene Konten auch bei Composio", as
   const del = await c.json("/api/account/delete", { method: "POST", body: { password: "sehr-sicheres-passwort-123", confirm: "LÖSCHEN" } });
   assert.equal(del.status, 200);
   assert.equal(fakes.composio.accounts.has(accountId), false);
+});
+
+test("Health-Endpunkt: ohne Anmeldung erreichbar, meldet nur Zustand", async () => {
+  const r = await fetch(`${BASE}/api/health`);
+  assert.equal(r.status, 200);
+  const data = await r.json();
+  assert.deepEqual(data, { ok: true, checks: { datenbank: "ok", medienablage: "ok" } });
 });

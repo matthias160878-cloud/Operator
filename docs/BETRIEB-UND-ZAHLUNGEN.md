@@ -264,6 +264,38 @@ Empfohlener Aufbau (Windows Server 2022/2025):
    - Wiederherstellung regelmäßig testen
 8. **Updates:** `git pull`, `npm ci`, Migrationen, Build, Dienst neu starten.
 
+## 8a. Private Staging-Umgebung auf Render (PostgreSQL + persistente Medien)
+
+Lokal und in den Tests bleibt SQLite. Für den Serverbetrieb stellt
+`scripts/use-postgres.mjs` das Schema beim Build auf PostgreSQL um.
+
+| Einstellung | Wert |
+|---|---|
+| Build Command | `npm ci && npm run build:server` |
+| Start Command | `npm run start:server` (`prisma db push` ohne `--accept-data-loss`, dann `next start`) |
+| Health Check Path | `/api/health` (prüft Datenbank und Medienablage, gibt keine Inhalte preis) |
+| Persistent Disk | Mount `/var/data`, `MEDIA_STORAGE_DIR=/var/data/media` |
+| Datenbank | Render PostgreSQL 16, `DATABASE_URL` = **interne** Verbindungsadresse |
+
+Umgebungsvariablen nur im Render-Dashboard setzen, Geheimnisse dort mit „Generate“
+erzeugen, nie im Chat oder Repo: `DATABASE_URL`, `TOKEN_ENCRYPTION_KEY`,
+`MEDIA_URL_SECRET`, `OPERATOR_SETUP_TOKEN`. Ohne Geheimnis gesetzt:
+`NODE_ENV=production`, `PUBLIC_APP_URL`, `SITE_NOINDEX=true` (kein Suchmaschinen-Index),
+`SIGNUP_ALLOWED_EMAILS` (Komma-Liste; nur diese Adressen dürfen sich registrieren),
+`COMPOSIO_USER_PREFIX=s58test`. `PACKAGE_TERMS_CONFIRMED` bleibt im Staging ungesetzt
+(kein Verkauf).
+
+Sicherung und Wiederherstellung:
+
+- Render-PostgreSQL (kostenpflichtiger Plan) bietet Point-in-Time-Recovery im Dashboard;
+  zusätzlich vor jeder Schemaänderung `pg_dump -Fc` über die externe Adresse ziehen.
+- Persistente Disks werden von Render täglich als Snapshot gesichert (Wiederherstellung im Dashboard).
+- Geprüft am 10.10.2026 lokal mit PostgreSQL 16: `pg_dump -Fc` → Datenbank gelöscht →
+  `pg_restore --no-owner` → Anmeldung und Daten wieder vorhanden, `/api/health` ok.
+  Eine Wiederherstellung **auf Render** ist damit noch nicht geprüft.
+- Integrationssuite gegen PostgreSQL: leere Datenbank anlegen, `DATABASE_URL=… npm run build:server`,
+  dann `TEST_DATABASE_URL=… npm run test:integration` (am 10.10.2026: 25/25).
+
 ## 9. Stripe-Einrichtung (Betreiber, zuerst im Testmodus)
 
 0. **Stripe Tax aktivieren** (Einstellungen → Steuern): Ursprungsadresse,

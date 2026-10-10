@@ -23,6 +23,14 @@ async function handlePOST(request: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: "Bitte alle Felder ausfüllen und der Datenverarbeitung zustimmen." }, { status: 400 });
   }
+  // Private Vorschau/Staging: nur freigegebene Adressen dürfen sich registrieren.
+  const allowed = (process.env.SIGNUP_ALLOWED_EMAILS ?? "")
+    .split(",")
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+  if (allowed.length > 0 && !allowed.includes(parsed.data.email.trim().toLowerCase())) {
+    return NextResponse.json({ error: "Registrierung ist in dieser privaten Vorschau nur auf Einladung möglich." }, { status: 403 });
+  }
   const problem = passwordProblem(parsed.data.password);
   if (problem) return NextResponse.json({ error: problem }, { status: 400 });
 

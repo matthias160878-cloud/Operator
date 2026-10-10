@@ -30,6 +30,7 @@ const PUBLIC_PREFIXES = [
   "/api/widget/",
   "/api/media-signed/",
   "/api/locale",
+  "/api/health",
   "/widget.js",
   "/_next",
   "/favicon.ico",

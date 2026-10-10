@@ -10,6 +10,8 @@ const securityHeaders = [
   // Mikrofon nur für die eigene Seite (Genesis-Spracheingabe), Kamera/Ort nie.
   { key: "Permissions-Policy", value: "microphone=(self), camera=(), geolocation=()" },
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
+  // Private Vorschau/Staging nicht von Suchmaschinen erfassen lassen.
+  ...(process.env.SITE_NOINDEX === "true" ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] : []),
 ];
 
 const nextConfig: NextConfig = {

@@ -936,3 +936,33 @@ test("Zeitzone: Termine erscheinen in deutscher Zeit, nicht in Server-UTC", asyn
   assert.ok(html.includes("11:00"), "Termin wird nicht in Europe/Berlin angezeigt");
   assert.ok(!/15\.01\.2030,? 10:00/.test(html), "Termin erscheint in UTC");
 });
+
+test("Zentrale-Seiten: öffentlich erreichbar, Gestaltung geladen, kein interner Link ins Leere", async () => {
+  const pages = ["/ueber-uns", "/ki-dienstleistungen", "/ki-agenten", "/ki-automation", "/ki-beratung", "/ki-schulung", "/webdesign",
+    "/webseiten-aufbau", "/content-erstellung", "/social-media-betreuung", "/referenz", "/portfolio", "/preise", "/faq", "/kontakt",
+    "/demo", "/praesentationen", "/agb", "/datenschutz"];
+  const links = new Set();
+  for (const p of pages) {
+    const r = await fetch(`${BASE}${p}`, { redirect: "manual" });
+    assert.equal(r.status, 200, p);
+    const html = await r.text();
+    assert.ok(html.includes("— Secret 58</title>"), `Titel fehlt: ${p}`);
+    assert.ok(html.includes('href="/zentrale/assets/seite.css"'), `Gestaltung fehlt: ${p}`);
+    assert.ok(!html.includes("secret58-web.onrender.com"), `alte Adresse: ${p}`);
+    for (const m of html.matchAll(/href="(\/[^"#]*)"/g)) links.add(m[1]);
+  }
+  for (const link of links) {
+    const r = await fetch(`${BASE}${link}`, { redirect: "manual" });
+    assert.ok([200, 307, 308].includes(r.status), `Link ${link} → ${r.status}`);
+  }
+  assert.equal((await fetch(`${BASE}/zentrale/assets/seite.css`)).status, 200);
+  // Besucher auf "/" → Zentrale-Seiten; angemeldet → Arbeitsbereich
+  const home = await fetch(`${BASE}/`, { redirect: "manual" });
+  assert.equal(home.status, 307);
+  assert.match(home.headers.get("location"), /\/ki-dienstleistungen$/);
+  assert.equal((await A.req("/")).status, 200);
+  // App-Seiten mit gleichem Namen bleiben geschützt
+  for (const p of ["/social-media", "/schulung"]) {
+    assert.equal((await fetch(`${BASE}${p}`, { redirect: "manual" })).status, 307, p);
+  }
+});

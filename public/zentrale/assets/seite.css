@@ -1,0 +1,238 @@
+/* Gemeinsame Gestaltung der Unterseiten — gleiche Tokens wie die Startseite. */
+@font-face{
+  font-family:'Archivo';
+  font-style:normal;
+  font-weight:400 900;
+  font-stretch:62% 125%;
+  font-display:swap;
+  src:url('archivo-latin.woff2') format('woff2');
+}
+:root{
+  --ink:#05070F; --ink-2:#0A0F20; --line:#1C2542;
+  --paper:#ECE8DE; --dim:#8891A9; --amber:#F5AE3C;
+  --dim-2:#7480A2;
+  --maxw:52rem;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--ink); color:var(--paper);
+  font-family:'Archivo',system-ui,sans-serif; line-height:1.65;
+  font-size:1.0625rem;
+}
+.wrap{max-width:var(--maxw); margin-inline:auto; padding:clamp(1.25rem,5vw,2.5rem);}
+header.kopf{border-bottom:1px solid var(--line); background:var(--ink-2);}
+header.kopf .wrap{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-block:1rem; flex-wrap:wrap;}
+.marke{display:inline-flex; align-items:center; gap:.6rem; color:var(--paper); text-decoration:none; font-weight:800; letter-spacing:-.01em;}
+.marke span{color:var(--amber);}
+.zurueck{color:var(--dim); text-decoration:none; font-size:.92rem;}
+.zurueck:hover{color:var(--paper);}
+h1{font-size:clamp(1.8rem,4.5vw,2.6rem); line-height:1.12; letter-spacing:-.02em; margin:0 0 .5rem;}
+h2{font-size:1.2rem; margin:2.2rem 0 .6rem;}
+p,li{color:var(--dim);}
+a{color:var(--amber);}
+.lead{font-size:1.1rem; margin-top:0;}
+dl{display:grid; grid-template-columns:auto 1fr; gap:.5rem 1.5rem; margin:0;}
+dt{color:var(--paper); font-weight:600;}
+dd{margin:0; color:var(--dim);}
+@media (max-width:34rem){ dl{grid-template-columns:1fr; gap:.15rem;} dd{margin-bottom:.75rem;} }
+.hinweis{
+  border:1px dashed var(--amber); border-radius:12px;
+  background:rgba(245,174,60,.07); padding:1rem 1.15rem; margin:1.5rem 0;
+}
+.hinweis strong{color:var(--amber); display:block; margin-bottom:.25rem;}
+.hinweis p{color:var(--paper); margin:0;}
+.luecke{
+  background:rgba(245,174,60,.16); color:var(--amber);
+  padding:.05rem .4rem; border-radius:5px; font-weight:600;
+}
+/* Lange Wörter und Adressen dürfen umbrechen, sonst sprengen sie schmale Displays. */
+dd, p, li{overflow-wrap:anywhere;}
+footer.fuss{border-top:1px solid var(--line); margin-top:3rem; font-size:.88rem;}
+footer.fuss .wrap{display:flex; gap:1.25rem; flex-wrap:wrap;}
+footer.fuss a{color:var(--dim); text-decoration:none;}
+footer.fuss a:hover{color:var(--amber);}
+
+/* ---------- Konto: Registrieren, Anmelden ---------- */
+
+.konto{max-width:26rem; margin-inline:auto;}
+.konto h1{margin-bottom:.35rem;}
+.konto .lead{margin-bottom:2rem;}
+
+.feld{display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.1rem;}
+.feld label{color:var(--paper); font-size:.9rem; font-weight:600;}
+.feld input{
+  font:inherit; color:var(--paper);
+  background:var(--ink-2); border:1px solid var(--line); border-radius:10px;
+  padding:.7rem .85rem;
+}
+.feld input:focus-visible{outline:2px solid var(--amber); outline-offset:2px; border-color:var(--amber);}
+.feld input[aria-invalid="true"]{border-color:#E0644B;}
+.feld .hilfe{color:var(--dim); font-size:.82rem;}
+
+.knopf{
+  width:100%; font:inherit; font-weight:700; cursor:pointer;
+  background:var(--amber); color:#1A1512;
+  border:0; border-radius:999px; padding:.8rem 1.4rem;
+}
+.knopf:hover{background:#ffc061;}
+.knopf[disabled]{opacity:.6; cursor:progress;}
+.knopf.stumm{background:transparent; color:var(--paper); border:1px solid var(--line);}
+.knopf.stumm:hover{border-color:var(--amber); background:transparent;}
+
+.meldung{border-radius:10px; padding:.75rem .9rem; margin-bottom:1.1rem; font-size:.92rem;}
+.meldung[hidden]{display:none;}
+.meldung.fehler{background:rgba(224,100,75,.14); color:#FFB4A2; border:1px solid rgba(224,100,75,.45);}
+.meldung.erfolg{background:rgba(46,212,122,.12); color:#8DE8B4; border:1px solid rgba(46,212,122,.4);}
+
+.wechsel{margin-top:1.5rem; font-size:.92rem; color:var(--dim);}
+
+/* ---------- Dashboard ---------- */
+
+.dash-kopf{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap;}
+.dash-kopf p{margin:.25rem 0 0;}
+.bereiche{display:grid; gap:1.25rem; margin-top:2rem;}
+@media (min-width:56rem){ .bereiche{grid-template-columns:repeat(2,1fr);} .bereich.breit{grid-column:1 / -1;} }
+
+.bereich{
+  background:var(--ink-2); border:1px solid var(--line);
+  border-radius:14px; padding:1.4rem;
+  /* Rasterfelder haben von Haus aus min-width:auto und koennen deshalb nicht
+     schmaler werden als ihr breitestes Kind. Ein <select> mit langen Eintraegen
+     blaeht das Dashboard so ueber die Fensterbreite hinaus. min-width:0 erlaubt
+     das Schrumpfen.
+
+     Diese Regeln standen schon einmal hier (30f59d3) und sind mit dem
+     Seiten-Rueckbau verloren gegangen, weil der auch seite.css zurueckgesetzt
+     hat. Der Ueberlauf war danach wieder da, mit exakt derselben Zahl. */
+  min-width:0;
+}
+/* Und die Felder selbst duerfen ihren Kasten nicht sprengen. */
+.bereich input, .bereich select, .bereich textarea{ max-width:100%; min-width:0; box-sizing:border-box; }
+.bereich table{ display:block; overflow-x:auto; }
+/* Dieselbe Regel eine Ebene tiefer: viele Formulare im Dashboard setzen per
+   Inline-Stil feste Spalten (grid-template-columns:1fr 1fr). Auch deren Felder
+   muessen schrumpfen duerfen, sonst bleibt der Kasten zu breit. */
+.bereich form, .bereich form > div, .bereich form > div > *{ min-width:0; }
+/* Zeilen aus Feldern und Knopf umbrechen lassen, statt den Knopf hinauszuschieben. */
+.bereich form, .bereich form > div{ flex-wrap:wrap; }
+/* Unter 40rem wird aus jedem solchen Raster eine Spalte — mehrere Eingabefelder
+   nebeneinander sind auf einem Telefon ohnehin nicht zu bedienen. */
+@media (max-width:40rem){
+  .bereich form[style*="grid-template-columns"],
+  .bereich form > div[style*="grid-template-columns"],
+  .bereich > div[style*="grid-template-columns"]{ grid-template-columns:1fr !important; }
+}
+.bereich h2{margin:0 0 .2rem; font-size:1.05rem; color:var(--paper);}
+.bereich .worum{margin:0 0 1rem; font-size:.88rem;}
+.leer{
+  border:1px dashed var(--line); border-radius:10px;
+  padding:1.1rem; text-align:center; color:var(--dim); font-size:.9rem;
+}
+.leer strong{display:block; color:var(--paper); font-weight:600; margin-bottom:.2rem;}
+
+/* ---------- Sicherheitscode ---------- */
+
+.code-feld{
+  font-size:1.6rem; letter-spacing:.42em; text-align:center;
+  font-variant-numeric:tabular-nums; padding-inline:.85rem;
+}
+.alslink{
+  background:none; border:0; padding:0; font:inherit; cursor:pointer;
+  color:var(--amber); text-decoration:underline; text-underline-offset:3px;
+}
+.alslink[disabled]{opacity:.6; cursor:progress;}
+
+/* ---------- Hauptnavigation (Unterseiten) ---------- */
+
+header.kopf .kopf-wrap{display:flex; align-items:center; justify-content:space-between; gap:1.25rem; flex-wrap:wrap; padding-block:1rem;}
+.hauptnav{display:flex; flex-wrap:wrap; gap:.35rem 1.1rem; font-size:.92rem;}
+.hauptnav a{color:var(--dim); text-decoration:none;}
+.hauptnav a:hover, .hauptnav a:focus-visible{color:var(--paper);}
+.hauptnav a.nav-login{color:var(--amber);}
+
+/* ---------- Inhaltsseiten (die 18 Fundament-Seiten) ---------- */
+
+.seite-inhalt{max-width:44rem;}
+.brotkrumen{margin:0 0 1.25rem; font-size:.85rem; color:var(--dim);}
+.brotkrumen a{color:var(--dim);}
+.brotkrumen a:hover{color:var(--amber);}
+.seite-inhalt h2{color:var(--paper); font-size:1.35rem; margin:2.4rem 0 .7rem;}
+.seite-inhalt ul, .seite-inhalt ol{padding-left:1.2rem; margin:0 0 1rem;}
+.seite-inhalt li{margin-bottom:.4rem;}
+.karten{display:grid; gap:1.1rem; margin:1.5rem 0; grid-template-columns:1fr;}
+@media (min-width:40rem){ .karten{grid-template-columns:1fr 1fr;} }
+.karte{background:var(--ink-2); border:1px solid var(--line); border-radius:14px; padding:1.25rem 1.4rem;}
+/* h2 UND h3: die Ebene richtet sich nach der Gliederung der Seite, das
+   Aussehen nach der Karte. Seit Step 19 sind es auf zwei Seiten h2. */
+.karte h2,.karte h3{margin:0 0 .4rem; color:var(--paper); font-size:1.05rem;}
+.karte p{margin:0; font-size:.92rem;}
+.karte small{color:var(--amber); font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:.72rem;}
+.cta-box{
+  margin-top:2.6rem; padding:1.6rem 1.8rem; border-radius:16px;
+  background:rgba(245,174,60,.08); border:1px solid rgba(245,174,60,.35);
+}
+.cta-box h2{margin-top:0;}
+.cta-box .knopf-reihe{display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1rem;}
+.knopf-link{
+  display:inline-block; font:inherit; font-weight:700; text-decoration:none;
+  background:var(--amber); color:#1A1512; border-radius:999px; padding:.7rem 1.3rem;
+}
+.knopf-link:hover{background:#ffc061;}
+.knopf-link.stumm{background:transparent; color:var(--paper); border:1px solid var(--line);}
+.preis-tabelle{display:grid; gap:1.1rem; margin:1.5rem 0; grid-template-columns:1fr;}
+@media (min-width:48rem){ .preis-tabelle{grid-template-columns:repeat(3,1fr);} }
+.preis-karte{background:var(--ink-2); border:1px solid var(--line); border-radius:14px; padding:1.3rem;}
+.preis-karte.hervorgehoben{border-color:var(--amber);}
+.preis-karte .betrag{font-size:1.4rem; font-weight:800; color:var(--paper); margin:.3rem 0 .6rem;}
+.preis-karte .betrag span{font-size:.75rem; font-weight:400; color:var(--dim);}
+.preis-karte.ausgewaehlt{border-color:var(--amber); box-shadow:0 0 0 2px rgba(245,174,60,.25);}
+.abo-umschalter{display:flex; gap:.4rem; margin:.6rem 0;}
+.abo-wahl{font:inherit; font-size:.78rem; color:var(--dim); background:transparent; border:1px solid var(--line); border-radius:999px; padding:.3rem .7rem; cursor:pointer;}
+.abo-wahl.aktiv{color:var(--paper); border-color:var(--amber); background:rgba(245,174,60,.1);}
+.faq-eintrag{border-bottom:1px solid var(--line); padding:1rem 0;}
+.faq-eintrag summary{cursor:pointer; color:var(--paper); font-weight:600;}
+.faq-eintrag p{margin:.6rem 0 0;}
+
+/* ---------- Footer-Sitemap (die 18 Fundament-Seiten) ---------- */
+
+footer.fuss .sitemap{
+  display:grid; gap:1.4rem; grid-template-columns:repeat(2,1fr);
+  margin-bottom:1.5rem;
+}
+@media (min-width:40rem){ footer.fuss .sitemap{grid-template-columns:repeat(4,1fr);} }
+footer.fuss .sitemap b{display:block; color:var(--paper); font-size:.82rem; margin-bottom:.55rem;}
+footer.fuss .sitemap .fuss-links{display:flex; flex-direction:column; gap:.45rem;}
+footer.fuss .rechtszeile{border-top:1px solid var(--line); padding-top:1rem; display:flex; gap:1.25rem; flex-wrap:wrap;}
+
+/* ---------- Leistungsseiten ----------
+   Preisanker, Passt/Passt-nicht-Tabelle, Fragenliste und Merkkasten. Stand
+   zuerst achtmal als <style> in den Seiten selbst --- eine Aenderung haette
+   dann sieben Stellen uebersehen koennen. */
+.preisanker{display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:baseline;
+  border:1px solid var(--line); border-radius:10px; padding:1rem 1.2rem; margin:1.4rem 0;
+  background:var(--ink-2);}
+.preisanker b{font-size:1.25rem; color:var(--paper);}
+.vgl{width:100%; border-collapse:collapse; margin:1.2rem 0;}
+.vgl th,.vgl td{text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--line); vertical-align:top;}
+.vgl th{font-weight:600; color:var(--paper);}
+.vgl td{width:50%;}
+.vgl .gut{font-weight:600; color:var(--paper);}
+@media(max-width:40rem){ .vgl,.vgl tbody,.vgl tr,.vgl td,.vgl th{display:block; width:auto;}
+  .vgl tr{border-bottom:1px solid var(--line); padding:.4rem 0;}
+  .vgl td,.vgl th{border:0; padding:.25rem .2rem;} }
+.merk{border-left:3px solid var(--amber); padding:.2rem 0 .2rem 1rem; margin:1.4rem 0;}
+.frageliste{margin:1.2rem 0;}
+.frageliste details{border-bottom:1px solid var(--line); padding:.75rem 0;}
+.frageliste summary{font-weight:600; cursor:pointer; color:var(--paper);}
+.frageliste p{margin:.6rem 0 0;}
+.fall{border:1px solid var(--line); border-radius:10px; padding:1.4rem 1.5rem; margin:1.5rem 0; background:var(--ink-2);}
+.fall h2,.fall h3{margin:.2rem 0 .9rem; font-size:1.15rem;}
+.fall dl{display:grid; grid-template-columns:11rem 1fr; gap:.55rem 1.2rem; margin:0;}
+.fall dt{font-weight:600; color:var(--dim);}
+.fall dd{margin:0;}
+@media(max-width:44rem){ .fall dl{grid-template-columns:1fr; gap:.15rem} .fall dt{margin-top:.7rem} }
+.fall .zahl{font-size:1.5rem; font-weight:700;}
+.fall--offen{border-style:dashed; background:transparent;}
+.fall--offen .marke-offen{display:inline-block; font:600 12px/1 system-ui,sans-serif; letter-spacing:.06em;
+  text-transform:uppercase; background:#ffffff14; padding:.35rem .6rem; border-radius:4px; margin-bottom:.6rem;}
+.fall--offen dd{color:var(--dim); font-style:italic;}

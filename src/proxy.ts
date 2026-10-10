@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { resolveSessionToken, SESSION_COOKIE } from "@/lib/auth/session";
+import { VISITOR_HOME, ZENTRALE_PAGES } from "@/lib/zentralePages";
 
 /**
  * Zugriffsschutz für die gesamte Anwendung (Mehrkundenbetrieb).
@@ -47,6 +48,7 @@ const PUBLIC_PREFIXES = [
 const CROSS_ORIGIN_ALLOWED = ["/api/stripe/webhook", "/api/stripe/connect-webhook", "/api/widget/"];
 
 function isPublic(pathname: string): boolean {
+  if (pathname in ZENTRALE_PAGES) return true;
   return PUBLIC_PREFIXES.some((prefix) => pathname === prefix.replace(/\/$/, "") || pathname.startsWith(prefix));
 }
 
@@ -95,8 +97,14 @@ export async function proxy(request: NextRequest) {
       return NextResponse.json({ error: "Anmeldung erforderlich." }, { status: 401 });
     }
     const url = request.nextUrl.clone();
+    if (pathname === "/") {
+      // Besucher ohne Konto landen auf den Seiten der Zentrale, nicht im Login.
+      url.pathname = VISITOR_HOME;
+      url.search = "";
+      return NextResponse.redirect(url);
+    }
     url.pathname = "/login";
-    url.search = pathname === "/" ? "" : `?next=${encodeURIComponent(pathname)}`;
+    url.search = `?next=${encodeURIComponent(pathname)}`;
     return NextResponse.redirect(url);
   }
 

@@ -57,6 +57,8 @@ enum Platform {
   FACEBOOK
   BLOG
   NEWSLETTER
+  /// Kontaktformular der eigenen Webseite (Startseite der Zentrale) — nur Posteingang
+  WEBSITE
 }
 
 enum MediaType {

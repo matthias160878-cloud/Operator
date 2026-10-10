@@ -44,3 +44,9 @@ export const PLATFORM_LABELS: Record<string, string> = {
   BLOG: "Blog",
   NEWSLETTER: "Newsletter",
 };
+
+/** Herkunft einer Konversation im Posteingang (Plattformen plus Kontaktformular der Webseite). */
+export const CONVERSATION_SOURCE_LABELS: Record<string, string> = {
+  ...PLATFORM_LABELS,
+  WEBSITE: "Webseite (Kontaktformular)",
+};

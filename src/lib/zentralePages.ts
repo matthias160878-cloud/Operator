@@ -25,5 +25,5 @@ export const ZENTRALE_PAGES: Record<string, string> = {
   "/datenschutz": "datenschutz",
 };
 
-/** Einstieg für nicht angemeldete Besucher, solange die Zentrale-Startseite noch nicht übernommen ist. */
-export const VISITOR_HOME = "/ki-dienstleistungen";
+/** Startseite der Zentrale — „/“ für Besucher ohne Konto (angemeldet: Arbeitsbereich). */
+export const VISITOR_HOME_FILE = "/zentrale/seiten/start.html";

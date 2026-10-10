@@ -58,7 +58,7 @@ const LINKS = [
 
 mkdirSync(path.join(out, "seiten"), { recursive: true });
 mkdirSync(path.join(out, "assets"), { recursive: true });
-for (const asset of ["seite.css", "archivo-latin.woff2", "og-image.png"]) {
+for (const asset of ["seite.css", "archivo-latin.woff2", "og-image.png", "kern-bild.js", "demo-plan.js", "gehirn.jpg"]) {
   copyFileSync(path.join(src, "assets", asset), path.join(out, "assets", asset));
 }
 for (const [file, route] of Object.entries(PAGES)) {
@@ -67,3 +67,41 @@ for (const [file, route] of Object.entries(PAGES)) {
   writeFileSync(path.join(out, "seiten", `${file}.html`), html);
   console.log(`${file}.html → ${route}`);
 }
+
+/*
+ * Startseite (index.html → „/“ für Besucher ohne Konto). Zusätzlich:
+ *  - Asset-Pfade /assets/ → /zentrale/assets/
+ *  - Links auf Systemseiten der alten Zentrale auf App-Gegenstücke
+ *  - Presse/Rechte/Sicherheit-Links entfernt (Seiten nicht übernommen)
+ *  - Chat, Skill-Anfrage, Terminbuchung und Newsletter ausgeblendet, bis
+ *    ihre Schnittstellen in der App nachgebaut sind (Kontaktformular,
+ *    Kern-Bild und Demo-Planer laufen über /api/kontakt, /api/agenten,
+ *    /api/demo/plan der App).
+ */
+const START_LINKS = [
+  ...LINKS,
+  ['"/assets/', '"/zentrale/assets/'],
+  ["'/assets/", "'/zentrale/assets/"],
+  ['href="agenten.html"', 'href="/ki-agenten"'],
+  ['href="dashboard.html"', 'href="/login"'],
+  ['href="paket.html"', 'href="/buy"'],
+  ['href="social-media-ki.html"', 'href="/buy"'],
+  ['href="praesentationen.html"', 'href="/praesentationen"'],
+  ['        <a href="presse.html">Presse</a>\n', ""],
+  ['        <a href="rechte.html">Rechte</a>\n', ""],
+  ['        <a href="/sicherheit">Sicherheit</a>\n', ""], // lädt Daten vom alten Zentrale-Server
+];
+const AUSGEBLENDET = `<style id="app-ausgeblendet">
+/* Ausgeblendet, bis die Schnittstellen in der App nachgebaut sind (siehe scripts/import-zentrale.mjs). */
+#s58open, #s58panel, [data-openchat], .s58-contact-row:has([data-openchat]),
+#skillagentform, #terminbox, div:has(> #newsletterform) { display: none !important; }
+</style>
+</head>`;
+let start = readFileSync(path.join(src, "index.html"), "utf8");
+for (const [from, to] of START_LINKS) start = start.split(from).join(to);
+start = start.replace("</head>", AUSGEBLENDET);
+// Das Termin-Skript fragt schon beim Laden /api/termine/frei ab — bis zur
+// Terminbuchung in der App wird dieser <script>-Block nicht übernommen.
+start = start.replace(/<script>(?:(?!<\/script>)[\s\S])*?\/api\/termine\/frei[\s\S]*?<\/script>\n?/, "");
+writeFileSync(path.join(out, "seiten", "start.html"), start);
+console.log("index.html → / (Besucher)");

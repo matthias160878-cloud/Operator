@@ -956,13 +956,49 @@ test("Zentrale-Seiten: öffentlich erreichbar, Gestaltung geladen, kein interner
     assert.ok([200, 307, 308].includes(r.status), `Link ${link} → ${r.status}`);
   }
   assert.equal((await fetch(`${BASE}/zentrale/assets/seite.css`)).status, 200);
-  // Besucher auf "/" → Zentrale-Seiten; angemeldet → Arbeitsbereich
+  // Besucher auf "/" → Startseite der Zentrale; angemeldet → Arbeitsbereich
   const home = await fetch(`${BASE}/`, { redirect: "manual" });
-  assert.equal(home.status, 307);
-  assert.match(home.headers.get("location"), /\/ki-dienstleistungen$/);
-  assert.equal((await A.req("/")).status, 200);
+  assert.equal(home.status, 200);
+  const homeHtml = await home.text();
+  assert.ok(homeHtml.includes('id="kontaktform"') && homeHtml.includes("/zentrale/assets/kern-bild.js"), "Zentrale-Startseite fehlt");
+  assert.ok(homeHtml.includes('id="app-ausgeblendet"'), "nicht nachgebaute Teile müssen ausgeblendet sein");
+  for (const m of homeHtml.matchAll(/(?:href|src)="(\/[^"#]*)"/g)) links.add(m[1]);
+  for (const link of links) {
+    const r = await fetch(`${BASE}${link}`, { redirect: "manual" });
+    assert.ok([200, 307, 308].includes(r.status), `Startseiten-Link ${link} → ${r.status}`);
+  }
+  const angemeldet = await (await A.req("/")).text();
+  assert.ok(!angemeldet.includes('id="kontaktform"'), "angemeldet muss der Arbeitsbereich kommen");
   // App-Seiten mit gleichem Namen bleiben geschützt
   for (const p of ["/social-media", "/schulung"]) {
     assert.equal((await fetch(`${BASE}${p}`, { redirect: "manual" })).status, 307, p);
   }
+});
+
+test("Startseite: Kern-Bild-Daten, Demo-Planer und Kontaktformular bis in den Posteingang", async () => {
+  const kern = await (await fetch(`${BASE}/api/agenten?knapp=1`)).json();
+  assert.ok(kern.gesamt > 0 && kern.gesamt_alle >= kern.gesamt && kern.kategorien.length > 0, JSON.stringify(kern).slice(0, 200));
+  assert.equal((await fetch(`${BASE}/api/agenten`)).status, 404); // volle Registratur nicht öffentlich
+
+  const plan = await (await fetch(`${BASE}/api/demo/plan`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR },
+    body: JSON.stringify({ ziel: "Beantworte jeden Morgen die Kundenanfragen aus dem Postfach" }) })).json();
+  assert.equal(plan.ausgefuehrt, false);
+  assert.ok(plan.gesperrt || plan.schritte.length > 0, JSON.stringify(plan).slice(0, 200));
+  assert.ok(!/im Kundenbereich/.test(plan.hinweis ?? ""), "Hinweis darf keine Ausführung im Kundenbereich versprechen");
+  assert.equal((await fetch(`${BASE}/api/demo/plan`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR }, body: "{}" })).status, 400);
+
+  const leer = await fetch(`${BASE}/api/kontakt`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR }, body: JSON.stringify({ name: "x" }) });
+  assert.equal(leer.status, 400);
+  const fremd = await fetch(`${BASE}/api/kontakt`, { method: "POST", headers: { "content-type": "application/json", origin: "https://evil.example" },
+    body: JSON.stringify({ name: "Eva", email: "eva@example.test", nachricht: "Hallo" }) });
+  assert.equal(fremd.status, 403);
+  const ok = await fetch(`${BASE}/api/kontakt`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR, "x-forwarded-for": "10.7.7.7" },
+    body: JSON.stringify({ name: "Erika Muster", email: "erika@example.test", nachricht: "Wir verlieren jede Woche Stunden mit Angeboten." }) });
+  assert.equal(ok.status, 200);
+  const op = await prisma.user.findFirstOrThrow({ where: { isOperator: true } });
+  const conv = await prisma.conversation.findFirstOrThrow({ where: { workspaceId: op.workspaceId, platform: "WEBSITE" }, include: { messages: true } });
+  assert.equal(conv.participantHandle, "erika@example.test");
+  assert.match(conv.messages[0].body, /Stunden mit Angeboten/);
+  // Kein Kunde bekommt die Anfrage
+  assert.equal(await prisma.conversation.count({ where: { platform: "WEBSITE", workspaceId: { not: op.workspaceId } } }), 0);
 });

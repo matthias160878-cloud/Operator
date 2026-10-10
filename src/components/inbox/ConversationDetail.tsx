@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Loader2, Send, Sparkles } from "lucide-react";
 import type { Conversation, Message } from "@prisma/client";
-import { PLATFORM_LABELS } from "@/lib/format";
+import { CONVERSATION_SOURCE_LABELS } from "@/lib/format";
 
 const inputClass =
   "w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none";
@@ -83,7 +83,7 @@ export function ConversationDetail({
   return (
     <div className="space-y-5">
       <div className="card p-5">
-        <div className="mb-1 text-xs text-muted">{PLATFORM_LABELS[conversation.platform] ?? conversation.platform}</div>
+        <div className="mb-1 text-xs text-muted">{CONVERSATION_SOURCE_LABELS[conversation.platform] ?? conversation.platform}</div>
         <h1 className="text-lg font-semibold text-foreground">
           {conversation.participantName}
           {conversation.participantHandle && (

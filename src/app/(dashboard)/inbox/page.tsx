@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { NewConversationForm } from "@/components/inbox/NewConversationForm";
-import { PLATFORM_LABELS, relativeTime } from "@/lib/format";
+import { CONVERSATION_SOURCE_LABELS, relativeTime } from "@/lib/format";
 import { PlatformGlyph, type PlatformGlyphKey } from "@/components/dashboard/PlatformGlyph";
 
 export const dynamic = "force-dynamic";
@@ -52,7 +52,7 @@ export default async function InboxPage() {
                   <span className="shrink-0 text-xs text-muted">{relativeTime(c.lastMessageAt)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted">
-                  <span>{PLATFORM_LABELS[c.platform] ?? c.platform}</span>
+                  <span>{CONVERSATION_SOURCE_LABELS[c.platform] ?? c.platform}</span>
                   {last && <span className="truncate">· {last.body}</span>}
                 </div>
               </div>

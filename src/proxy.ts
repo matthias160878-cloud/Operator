@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { resolveSessionToken, SESSION_COOKIE } from "@/lib/auth/session";
-import { VISITOR_HOME, ZENTRALE_PAGES } from "@/lib/zentralePages";
+import { VISITOR_HOME_FILE, ZENTRALE_PAGES } from "@/lib/zentralePages";
 
 /**
  * Zugriffsschutz für die gesamte Anwendung (Mehrkundenbetrieb).
@@ -34,6 +34,9 @@ const PUBLIC_PREFIXES = [
   "/api/media-signed/",
   "/api/locale",
   "/api/health",
+  "/api/kontakt",
+  "/api/demo/plan",
+  "/api/agenten",
   "/widget.js",
   "/_next",
   "/favicon.ico",
@@ -98,10 +101,9 @@ export async function proxy(request: NextRequest) {
     }
     const url = request.nextUrl.clone();
     if (pathname === "/") {
-      // Besucher ohne Konto landen auf den Seiten der Zentrale, nicht im Login.
-      url.pathname = VISITOR_HOME;
-      url.search = "";
-      return NextResponse.redirect(url);
+      // Besucher ohne Konto sehen unter „/“ die Startseite der Zentrale.
+      url.pathname = VISITOR_HOME_FILE;
+      return NextResponse.rewrite(url);
     }
     url.pathname = "/login";
     url.search = `?next=${encodeURIComponent(pathname)}`;

@@ -797,3 +797,19 @@ test("Health-Endpunkt: ohne Anmeldung erreichbar, meldet nur Zustand", async () 
   const data = await r.json();
   assert.deepEqual(data, { ok: true, checks: { datenbank: "ok", medienablage: "ok" } });
 });
+
+test("Verkaufsseite (aus der Zentrale): Pakete aus der App, Kaufweg über Anmeldung, alte Adresse leitet um", async () => {
+  const html = await (await fetch(`${BASE}/buy?plan=maxi`)).text();
+  assert.ok(html.includes('class="zentrale"'), "Zentrale-Gestaltung fehlt");
+  assert.ok(html.includes("Social Media KI") && html.includes("Ehrliche Grenzen"));
+  assert.ok(/590,00\s*€/.test(html) && /797,00\s*€/.test(html), "Preise aus plans.ts fehlen");
+  assert.ok(html.includes('href="/signup?plan=pro"') && html.includes('href="/signup?plan=maxi"'), "Kaufweg ohne Anmeldung falsch");
+  assert.ok(/id="paket-maxi" class="preis-karte[^"]*ausgewaehlt/.test(html), "Vorauswahl wird nicht hervorgehoben");
+  assert.ok(!html.includes("jährlich"), "Jahresabo darf nicht angeboten werden, solange es nicht kaufbar ist");
+  const angemeldet = await (await A.req("/buy")).text();
+  assert.ok(angemeldet.includes('href="/billing?plan=pro"'));
+  const alt = await fetch(`${BASE}/social-media-ki?vorauswahl=pro`, { redirect: "manual" });
+  assert.equal(alt.status, 307);
+  assert.match(alt.headers.get("location"), /\/buy\?plan=pro/);
+  assert.equal((await fetch(`${BASE}/zentrale/archivo-latin.woff2`)).status, 200);
+});

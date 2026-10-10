@@ -18,6 +18,8 @@ import { resolveSessionToken, SESSION_COOKIE } from "@/lib/auth/session";
  */
 const PUBLIC_PREFIXES = [
   "/buy",
+  "/social-media-ki",
+  "/zentrale/",
   "/login",
   "/signup",
   "/setup",

@@ -164,6 +164,49 @@ Summen werden je Währung getrennt angezeigt, Testdaten (`livemode=false`) sind 
 * Ein **Telefonassistent ist nicht umgesetzt** (dafür wären Telefonie-Anbindung,
   Rufnummer, Einwilligungen und Datenschutzabläufe nötig).
 
+## 7b. Composio: „Konto verbinden“ (nur lesender Zugriffstest)
+
+Composio ist eine **zusätzliche** Anmeldemöglichkeit neben den nativen
+OAuth-Anbindungen (`src/lib/oauth/providers.ts`). Über Composio wird in
+SECRET 58 **nichts veröffentlicht**; es gibt nur Verbinden, Lesetest,
+Erneuern und Trennen. Eine Composio-Verbindung in Claude/Claude Code ist
+davon unabhängig und beweist keine Integration in diese Anwendung.
+
+| Funktion | Native OAuth | Composio |
+|---|---|---|
+| Plattformen | YouTube, TikTok, Instagram, Facebook, LinkedIn | Instagram, Facebook-Seite, LinkedIn, YouTube |
+| Zugangstoken | verschlüsselt in eigener DB (`TOKEN_ENCRYPTION_KEY`) | nur bei Composio; DB speichert Konto-ID + Status |
+| Veröffentlichen | vorbereitet, nur nach Freigabe | nicht vorgesehen |
+| Lesetest | — | ja (`/api/composio/[id]/test`) |
+
+Ablauf (`src/lib/composio/`, `src/app/api/composio/`):
+
+1. „Konto verbinden“ → `POST /api/composio/connect` → Composio
+   `POST /api/v3/connected_accounts/link` mit `user_id = <COMPOSIO_USER_PREFIX>-ws-<workspaceId>`
+   und einem einmaligen Sicherheitscode im Rückkehr-Link (nur HMAC-Hash in der DB, 15 Min. gültig).
+2. Rückkehr `GET /api/composio/callback` verlangt die Sitzung desselben Kunden
+   (ohne Sitzung: erst Anmeldung, dann derselbe Link), prüft Sicherheitscode,
+   Konto-ID und fragt das Konto bei Composio nach: `user_id` und Toolkit müssen
+   passen, Status muss `ACTIVE` sein. Sonst wird nichts zugeordnet.
+3. Erneuern behält die alte Verbindung, bis die neue aktiv ist, und löscht sie dann bei Composio.
+4. Trennen und Kontolöschung löschen die Verbindung auch bei Composio.
+5. Grenzen: 10 Verbindungsversuche/Stunde, 30 Lesetests/Tag je Arbeitsbereich. Audit-Log `composio.*`.
+
+Einrichtung (Betreiber, nur Server-Umgebung, nie im Repo/Chat):
+
+- `COMPOSIO_API_KEY` — Projekt-Schlüssel aus platform.composio.dev.
+- `COMPOSIO_AUTH_CONFIG_INSTAGRAM|FACEBOOK|LINKEDIN|YOUTUBE` — Auth-Config-IDs (`ac_…`);
+  ohne Eintrag erscheint die Plattform als „Noch nicht eingerichtet“.
+- `COMPOSIO_USER_PREFIX` — z. B. `s58test` (Staging) bzw. `s58live`, damit sich Umgebungen nicht mischen.
+- `PUBLIC_APP_URL` — **Pflicht hinter Render/Proxy**, sonst kann die Rückkehr-Adresse falsch sein.
+- Optional `COMPOSIO_READ_TOOL_<PLATTFORM>`: Lese-Werkzeug überschreiben. Dokumentiert bestätigt sind
+  `INSTAGRAM_GET_USER_INFO` und `YOUTUBE_GET_CHANNEL_STATISTICS`; `LINKEDIN_GET_MY_INFO` und
+  `FACEBOOK_LIST_MANAGED_PAGES` vor dem ersten echten Test im Composio-Dashboard prüfen.
+
+Ob der Schlüssel wirkt, zeigt „Integrationen“ (lesender Aufruf `GET /api/v3/auth_configs`).
+Geprüft ist der Ablauf nur gegen eine lokale Attrappe (`tests/fake-services.mjs`) — **kein echter
+Composio-Aufruf, kein echtes Plattformkonto**.
+
 ## 7a. Missbrauchsschutz
 
 * Ratenbegrenzung über die Datenbank. Die Client-Adresse ist der Eintrag, den der

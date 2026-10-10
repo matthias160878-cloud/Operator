@@ -79,6 +79,15 @@ export async function proxy(request: NextRequest) {
 
   const user = await resolveSessionToken(request.cookies.get(SESSION_COOKIE)?.value);
   if (!user) {
+    // Rückkehr von Composio ohne Sitzung (auf dem Handy öffnet die
+    // Plattform-App die Anmeldung oft in einem anderen Browser): erst
+    // anmelden, dann denselben Rückkehr-Link abschließen.
+    if (pathname === "/api/composio/callback" && method === "GET") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/login";
+      url.search = `?next=${encodeURIComponent(pathname + request.nextUrl.search)}`;
+      return NextResponse.redirect(url);
+    }
     if (pathname.startsWith("/api/")) {
       return NextResponse.json({ error: "Anmeldung erforderlich." }, { status: 401 });
     }

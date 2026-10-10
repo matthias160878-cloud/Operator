@@ -20,5 +20,42 @@
   "errorInvalidState": "Échec de la connexion (code de sécurité invalide). Veuillez réessayer.",
   "errorExchangeFailed": "Échec de la connexion. Vérifiez les identifiants et réessayez.",
   "errorUnknownPlatform": "Plateforme inconnue.",
-  "encryptionKeyMissingNotice": "Remarque : TOKEN_ENCRYPTION_KEY n'est pas encore configurée — les comptes ne pourront être connectés qu'une fois cette variable d'environnement définie dans Render."
+  "encryptionKeyMissingNotice": "Remarque : TOKEN_ENCRYPTION_KEY n'est pas encore configurée — les comptes ne pourront être connectés qu'une fois cette variable d'environnement définie dans Render.",
+  "composio": {
+    "title": "Connecter un compte via Composio",
+    "subtitle": "Alternative à la connexion directe : tu te connectes à la plateforme, Composio conserve l'accès, SECRET 58 associe seulement le compte à ton espace de travail. Pour l'instant connexion et test de lecture uniquement – rien n'est publié par ce biais.",
+    "serverNotSetUp": "Pas encore configuré : l'opérateur n'a pas encore activé Composio sur le serveur.",
+    "connectedBanner": "{platform} connecté via Composio. Lance maintenant le test de lecture.",
+    "accountLabel": "Compte",
+    "lastTestLabel": "Dernier test de lecture",
+    "lastErrorLabel": "Dernière erreur",
+    "statusNotSetUp": "Pas encore configuré",
+    "statusNotConnected": "Non connecté",
+    "statusPending": "Connexion commencée",
+    "statusFailed": "Échec de la connexion",
+    "statusConnectedUntested": "Connecté – test en attente",
+    "statusReadOk": "Connecté – lecture vérifiée",
+    "statusReadFailed": "Connecté – test échoué",
+    "notSetUpHint": "Composio n'est pas configuré sur le serveur pour cette plateforme.",
+    "connectButton": "Connecter le compte",
+    "renewButton": "Renouveler la connexion",
+    "testButton": "Lancer le test de lecture",
+    "disconnectButton": "Déconnecter",
+    "renewConfirm": "Se reconnecter ? La connexion actuelle reste active jusqu'à la fin de la nouvelle connexion.",
+    "disconnectConfirm": "Vraiment déconnecter {platform} ? La connexion est aussi supprimée chez Composio.",
+    "testOk": "L'accès en lecture fonctionne ({account}). Ce n'est pas un test de publication.",
+    "genericError": "Cela n'a pas fonctionné. Réessaie.",
+    "compareTitle": "Qu'est-ce qui passe par où ?",
+    "compareNative": "Connexion directe (ci-dessus) : connexion directe à YouTube, TikTok, Instagram, Facebook et LinkedIn ; la publication y est préparée et n'est utilisée qu'après ton accord.",
+    "compareComposio": "Composio (ici) : connexion via Composio pour Instagram, page Facebook, LinkedIn et YouTube ; pour l'instant test de lecture uniquement.",
+    "compareReadNotPublish": "Un test de lecture réussi prouve seulement l'accès – pas que la publication fonctionne.",
+    "errors": {
+      "invalid_state": "La réponse ne correspondait pas à ta connexion. Reconnecte-toi.",
+      "expired": "La connexion a pris trop de temps. Reconnecte-toi.",
+      "mismatch": "Le compte renvoyé n'appartient pas à cet espace de travail et n'a pas été associé.",
+      "not_active": "La plateforme n'a pas confirmé l'accès ou il a été refusé.",
+      "composio_error": "Composio était injoignable ou a signalé une erreur. Réessaie plus tard.",
+      "unknown": "Échec de la connexion."
+    }
+  }
 }

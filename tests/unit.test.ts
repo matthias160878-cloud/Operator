@@ -5,6 +5,9 @@ import { parseAmountToCents, parseSalesCsv } from "@/lib/connect/salesImport";
 import { normalizeOrigin } from "@/lib/website";
 import { PLANS, parsePlanKey, planForStripePrice } from "@/lib/plans";
 import { hashPassword, passwordProblem, verifyPassword } from "@/lib/auth/password";
+import { composioUserIdFor, hashState, sanitizeComposioMessage, stateMatches } from "@/lib/composio/client";
+import { extractLabel } from "@/lib/composio/service";
+import { COMPOSIO_TOOLKITS, getComposioToolkit, readToolFor } from "@/lib/composio/toolkits";
 
 test("Genesis: geforderte Befehle navigieren korrekt", () => {
   const cases: [string, string][] = [
@@ -132,4 +135,41 @@ test("Anbieterangaben der Kunden: Pflichtfelder und sichere Links", async () => 
   assert.equal(sellerProfileSchema.safeParse(base).success, true);
   assert.equal(sellerProfileSchema.safeParse({ ...base, agbUrl: "javascript:alert(1)" }).success, false);
   assert.equal(sellerProfileSchema.safeParse({ ...base, email: "keine-mail" }).success, false);
+});
+
+test("Composio: Kundenkennung, Sicherheitscode, bereinigte Fehler, Kontoname", () => {
+  delete process.env.COMPOSIO_USER_PREFIX;
+  assert.equal(composioUserIdFor("ws123"), "s58-ws-ws123");
+  process.env.COMPOSIO_USER_PREFIX = "s58test";
+  assert.equal(composioUserIdFor("ws123"), "s58test-ws-ws123");
+  process.env.COMPOSIO_USER_PREFIX = "bad prefix/../";
+  assert.equal(composioUserIdFor("x"), "badprefix-ws-x");
+  delete process.env.COMPOSIO_USER_PREFIX;
+
+  const hash = hashState("abc");
+  assert.ok(stateMatches("abc", hash));
+  assert.ok(!stateMatches("abd", hash));
+  assert.ok(!stateMatches(null, hash));
+  assert.ok(!stateMatches("abc", null));
+
+  const cleaned = sanitizeComposioMessage("invalid key ak_" + "x".repeat(30) + " and token " + "y".repeat(40));
+  assert.ok(!cleaned.includes("xxxxxxxxxxxx") && !cleaned.includes("yyyyyyyyyyyy"), cleaned);
+  assert.ok(sanitizeComposioMessage("a".repeat(500)).length <= 200);
+
+  assert.equal(extractLabel({ data: { username: "firma" } }), "firma");
+  assert.equal(extractLabel({ items: [{ snippet: { title: "Kanal" } }] }), "Kanal");
+  assert.equal(extractLabel(JSON.stringify({ name: "Seite" })), "Seite");
+  assert.equal(extractLabel(null), "");
+});
+
+test("Composio: nur bekannte Plattformen, Lese-Werkzeug nur gültig überschreibbar", () => {
+  assert.equal(getComposioToolkit("instagram")?.key, "INSTAGRAM");
+  assert.equal(getComposioToolkit("tiktok"), undefined);
+  for (const tk of COMPOSIO_TOOLKITS) assert.match(tk.readTool, /(GET|LIST)_/);
+  const li = getComposioToolkit("LINKEDIN")!;
+  process.env.COMPOSIO_READ_TOOL_LINKEDIN = "LINKEDIN_GET_PROFILE";
+  assert.equal(readToolFor(li), "LINKEDIN_GET_PROFILE");
+  process.env.COMPOSIO_READ_TOOL_LINKEDIN = "rm -rf /";
+  assert.equal(readToolFor(li), li.readTool);
+  delete process.env.COMPOSIO_READ_TOOL_LINKEDIN;
 });

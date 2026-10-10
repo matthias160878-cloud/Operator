@@ -122,6 +122,10 @@ before(async () => {
     ANTHROPIC_BASE_URL: `http://127.0.0.1:${fakes.stripePort}`,
     OPENAI_API_KEY: "",
     ALLOW_PRIVATE_SITE_FETCH: "true",
+    COMPOSIO_API_KEY: "ck_test_fake",
+    COMPOSIO_BASE_URL: `http://127.0.0.1:${fakes.stripePort}`,
+    COMPOSIO_AUTH_CONFIG_INSTAGRAM: "ac_instagram",
+    COMPOSIO_AUTH_CONFIG_YOUTUBE: "ac_youtube",
   };
   server = spawn("npx", ["next", "start", "-p", String(PORT), "-H", "127.0.0.1"], { env, stdio: ["ignore", "pipe", "pipe"], detached: true });
   server.stderr.on("data", (d) => process.env.DEBUG_SERVER && process.stderr.write(d));
@@ -619,4 +623,163 @@ test("Datenlöschung: eigener Arbeitsbereich wird vollständig entfernt", async 
   assert.equal(await prisma.workspace.findUnique({ where: { id: ws } }), null);
   assert.equal(await prisma.contentIdea.count({ where: { workspaceId: ws } }), 0);
   assert.equal((await c.req("/api/ideas")).status, 401);
+});
+
+// ---------------------------------------------------------------------------
+// Composio: Verbinden, Zuordnung zum richtigen Kunden, Lesetest, Erneuern, Trennen
+function composioCalls(pathPart, method) {
+  return fakes.calls.filter((c) => c.path.includes(pathPart) && (!method || c.method === method));
+}
+
+/** Startet die Verbindung und liefert die Rückkehr-Adresse (wie Composio sie aufrufen würde). */
+async function composioStart(client, toolkit) {
+  const r = await client.json("/api/composio/connect", { method: "POST", body: { toolkit } });
+  assert.equal(r.status, 200, JSON.stringify(r.data));
+  assert.match(r.data.redirectUrl, /^https:\/\/connect\.composio\.test\/link\/ca_test_\d+$/);
+  const linkCall = composioCalls("/api/v3/connected_accounts/link", "POST").at(-1);
+  const accountId = r.data.redirectUrl.split("/").pop();
+  const callback = new URL(linkCall.composioBody.callback_url);
+  callback.searchParams.set("status", "success");
+  callback.searchParams.set("connected_account_id", accountId);
+  return { accountId, callback: callback.pathname + callback.search, linkBody: linkCall.composioBody };
+}
+
+test("Composio: Seite zeigt Status ehrlich, Server-Schlüssel erscheint nie im Browser", async () => {
+  const page = await A.req("/social-media");
+  assert.equal(page.status, 200);
+  const html = await page.text();
+  assert.ok(html.includes("Konto verbinden über Composio"));
+  assert.ok(html.includes("Noch nicht eingerichtet"), "LinkedIn/Facebook ohne Auth-Config müssen als nicht eingerichtet erscheinen");
+  assert.ok(!html.includes("ck_test_fake") && !html.includes("ac_instagram"), "Schlüssel oder Auth-Config im HTML");
+  const nope = await A.json("/api/composio/connect", { method: "POST", body: { toolkit: "LINKEDIN" } });
+  assert.equal(nope.status, 502);
+  assert.match(nope.data.error, /noch nicht eingerichtet/);
+  const unknown = await A.json("/api/composio/connect", { method: "POST", body: { toolkit: "MYSPACE" } });
+  assert.equal(unknown.status, 400);
+  assert.equal((await new Client().req("/api/composio/connect", { method: "POST", body: { toolkit: "INSTAGRAM" } })).status, 401);
+});
+
+test("Composio: Verbinden ordnet das Konto genau dem eigenen Arbeitsbereich zu", async () => {
+  const wsA = await workspaceIdOf("a@example.test");
+  const { accountId, callback, linkBody } = await composioStart(A, "INSTAGRAM");
+  assert.equal(linkBody.user_id, `s58-ws-${wsA}`);
+  assert.equal(linkBody.auth_config_id, "ac_instagram");
+  assert.equal(linkBody.allow_multiple, false);
+  assert.ok(linkBody.callback_url.startsWith(`${BASE}/api/composio/callback?toolkit=INSTAGRAM&state=`), linkBody.callback_url);
+
+  // B kann A's Rückkehr-Adresse nicht für sich nutzen.
+  const stolen = await B.req(callback);
+  assert.equal(stolen.status, 307);
+  assert.match(stolen.headers.get("location"), /composio_error=invalid_state/);
+  // Ohne Sitzung (z. B. anderer Browser auf dem Handy): erst anmelden, dann derselbe Link.
+  const anon = await new Client().req(callback);
+  assert.equal(anon.status, 307);
+  const loginUrl = new URL(anon.headers.get("location"), BASE);
+  assert.equal(loginUrl.pathname, "/login");
+  assert.equal(loginUrl.searchParams.get("next"), callback);
+
+  const ok = await A.req(callback);
+  assert.equal(ok.status, 307);
+  assert.match(ok.headers.get("location"), /composio_connected=INSTAGRAM/);
+  const row = await prisma.composioConnection.findUniqueOrThrow({ where: { workspaceId_toolkit: { workspaceId: wsA, toolkit: "INSTAGRAM" } } });
+  assert.equal(row.status, "ACTIVE");
+  assert.equal(row.connectedAccountId, accountId);
+  assert.equal(row.stateHash, null);
+  // Zweite Verwendung derselben Rückkehr-Adresse ist wirkungslos.
+  assert.match((await A.req(callback)).headers.get("location"), /composio_error=invalid_state/);
+  assert.equal(await prisma.composioConnection.count({ where: { workspaceId: await workspaceIdOf("b@example.test") } }), 0);
+});
+
+test("Composio: fremdes oder nicht bestätigtes Konto wird nicht übernommen", async () => {
+  const wsA = await workspaceIdOf("a@example.test");
+  const wsB = await workspaceIdOf("b@example.test");
+  const { accountId, callback } = await composioStart(B, "INSTAGRAM");
+  fakes.composio.accounts.get(accountId).user_id = `s58-ws-${wsA}`; // Composio liefert ein Konto eines anderen Kunden
+  assert.match((await B.req(callback)).headers.get("location"), /composio_error=mismatch/);
+  let row = await prisma.composioConnection.findUniqueOrThrow({ where: { workspaceId_toolkit: { workspaceId: wsB, toolkit: "INSTAGRAM" } } });
+  assert.notEqual(row.status, "ACTIVE");
+  assert.equal(row.connectedAccountId, null);
+
+  fakes.composio.nextStatus = "FAILED";
+  try {
+    const second = await composioStart(B, "INSTAGRAM");
+    assert.match((await B.req(second.callback)).headers.get("location"), /composio_error=not_active/);
+  } finally {
+    fakes.composio.nextStatus = "ACTIVE";
+  }
+  row = await prisma.composioConnection.findUniqueOrThrow({ where: { id: row.id } });
+  assert.equal(row.status, "FAILED");
+  assert.ok(row.lastError);
+
+  // Manipulierte Konto-ID in der Rückkehr-Adresse
+  const third = await composioStart(B, "INSTAGRAM");
+  const forged = third.callback.replace(/connected_account_id=[^&]+/, "connected_account_id=ca_test_1");
+  assert.match((await B.req(forged)).headers.get("location"), /composio_error=mismatch/);
+});
+
+test("Composio: Lesetest, Kundentrennung, Erneuern und Trennen", async () => {
+  const wsA = await workspaceIdOf("a@example.test");
+  const row = await prisma.composioConnection.findUniqueOrThrow({ where: { workspaceId_toolkit: { workspaceId: wsA, toolkit: "INSTAGRAM" } } });
+
+  // B sieht und steuert A's Verbindung nicht.
+  assert.equal((await B.json(`/api/composio/${row.id}/test`, { method: "POST" })).status, 404);
+  assert.equal((await B.json(`/api/composio/${row.id}/disconnect`, { method: "POST" })).status, 404);
+
+  const test1 = await A.json(`/api/composio/${row.id}/test`, { method: "POST" });
+  assert.equal(test1.status, 200);
+  assert.equal(test1.data.ok, true);
+  assert.equal(test1.data.label, `konto_${row.connectedAccountId}`);
+  const exec = composioCalls("/api/v3/tools/execute/INSTAGRAM_GET_USER_INFO", "POST").at(-1);
+  assert.equal(exec.composioBody.connected_account_id, row.connectedAccountId);
+  assert.equal(exec.composioBody.user_id, `s58-ws-${wsA}`);
+  assert.equal(composioCalls("/api/v3/tools/execute/", "POST").filter((c) => !/GET|LIST|STATISTICS|INFO/.test(c.path)).length, 0, "nur Lese-Werkzeuge");
+
+  fakes.composio.failExecute = true;
+  try {
+    const test2 = await A.json(`/api/composio/${row.id}/test`, { method: "POST" });
+    assert.equal(test2.data.ok, false);
+    assert.match(test2.data.error, /insufficient scope/);
+  } finally {
+    fakes.composio.failExecute = false;
+  }
+  const html = await (await A.req("/social-media")).text();
+  assert.ok(html.includes("Lesetest fehlgeschlagen"));
+
+  // Erneuern: alte Verbindung bleibt bis zur erfolgreichen Rückkehr, danach gelöscht.
+  const oldId = row.connectedAccountId;
+  const renew = await composioStart(A, "INSTAGRAM");
+  assert.equal(renew.linkBody.allow_multiple, true);
+  assert.equal((await prisma.composioConnection.findUniqueOrThrow({ where: { id: row.id } })).connectedAccountId, oldId);
+  assert.match((await A.req(renew.callback)).headers.get("location"), /composio_connected=INSTAGRAM/);
+  const renewed = await prisma.composioConnection.findUniqueOrThrow({ where: { id: row.id } });
+  assert.equal(renewed.connectedAccountId, renew.accountId);
+  assert.equal(renewed.lastReadTestOk, null);
+  assert.ok(composioCalls(`/api/v3/connected_accounts/${oldId}`, "DELETE").length === 1);
+  assert.equal(fakes.composio.accounts.has(oldId), false);
+
+  const off = await A.json(`/api/composio/${row.id}/disconnect`, { method: "POST" });
+  assert.equal(off.status, 200);
+  const gone = await prisma.composioConnection.findUniqueOrThrow({ where: { id: row.id } });
+  assert.equal(gone.status, "DISCONNECTED");
+  assert.equal(gone.connectedAccountId, null);
+  assert.equal(fakes.composio.accounts.has(renew.accountId), false);
+  assert.equal((await A.json(`/api/composio/${row.id}/test`, { method: "POST" })).status, 409);
+  const audit = await prisma.auditLog.findMany({ where: { workspaceId: wsA, action: { startsWith: "composio." } } });
+  assert.ok(audit.some((a) => a.action === "composio.connected") && audit.some((a) => a.action === "composio.disconnected"));
+});
+
+test("Composio: Kontolöschung entfernt verbundene Konten auch bei Composio", async () => {
+  const c = new Client();
+  const su = await c.json("/api/auth/signup", {
+    method: "POST",
+    headers: { "x-forwarded-for": "10.9.9.9" }, // eigene Adresse, unabhängig von der Registrierungsgrenze der übrigen Tests
+    body: { email: "composio-weg@example.test", password: "sehr-sicheres-passwort-123", name: "W", workspaceName: "Composio Weg", acceptProcessing: true },
+  });
+  assert.equal(su.status, 200, JSON.stringify(su.data));
+  const { accountId, callback } = await composioStart(c, "YOUTUBE");
+  assert.match((await c.req(callback)).headers.get("location"), /composio_connected=YOUTUBE/);
+  assert.ok(fakes.composio.accounts.has(accountId));
+  const del = await c.json("/api/account/delete", { method: "POST", body: { password: "sehr-sicheres-passwort-123", confirm: "LÖSCHEN" } });
+  assert.equal(del.status, 200);
+  assert.equal(fakes.composio.accounts.has(accountId), false);
 });

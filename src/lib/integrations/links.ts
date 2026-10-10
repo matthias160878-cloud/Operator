@@ -13,6 +13,7 @@ export const API_KEY_SIGNUP_LINKS: Partial<Record<string, string>> = {
   tiktok: "https://developers.tiktok.com/",
   linkedin: "https://www.linkedin.com/developers/apps",
   facebook: "https://developers.facebook.com/apps/",
+  composio: "https://platform.composio.dev/",
   canva: "https://www.canva.com/developers/",
 };
 
@@ -61,6 +62,10 @@ export const INTEGRATION_PRICING: Partial<Record<string, IntegrationPricing>> = 
   instagram: {
     model: "free",
     pricingUrl: "https://developers.facebook.com/docs/graph-api/overview/rate-limiting",
+  },
+  composio: {
+    model: "subscription",
+    pricingUrl: "https://composio.dev/pricing",
   },
   facebook: {
     model: "free",

@@ -248,29 +248,31 @@ model ContentIdea {
 }
 
 model ContentItem {
-  id             String        @id @default(cuid())
-  workspaceId    String
-  workspace      Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  campaignId     String?
-  campaign       Campaign?     @relation(fields: [campaignId], references: [id], onDelete: SetNull)
-  ideaId         String?
-  idea           ContentIdea?  @relation(fields: [ideaId], references: [id], onDelete: SetNull)
-  title          String
-  platform       Platform
-  format         String        @default("")
-  status         ContentStatus @default(DRAFT)
-  hook           String        @default("")
-  script         String        @default("")
-  caption        String        @default("")
-  hashtags       String        @default("[]") // JSON string[]
-  keywords       String        @default("[]") // JSON string[]
-  language       String        @default("Deutsch")
-  thumbnailIdea  String        @default("")
-  rejectedReason String?
-  scheduledAt    DateTime?
-  publishedAt    DateTime?
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
+  id                  String        @id @default(cuid())
+  workspaceId         String
+  workspace           Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  campaignId          String?
+  campaign            Campaign?     @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  ideaId              String?
+  idea                ContentIdea?  @relation(fields: [ideaId], references: [id], onDelete: SetNull)
+  title               String
+  platform            Platform
+  format              String        @default("")
+  status              ContentStatus @default(DRAFT)
+  hook                String        @default("")
+  script              String        @default("")
+  caption             String        @default("")
+  hashtags            String        @default("[]") // JSON string[]
+  keywords            String        @default("[]") // JSON string[]
+  language            String        @default("Deutsch")
+  thumbnailIdea       String        @default("")
+  rejectedReason      String?
+  scheduledAt         DateTime?
+  publishedAt         DateTime?
+  /// Sperre gegen parallelen Doppelversand (gesetzt, solange veröffentlicht wird).
+  publishingStartedAt DateTime?
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
 
   scripts     Script[]
   mediaAssets MediaAsset[]

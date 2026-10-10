@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { interpretCommand } from "@/lib/genesis/commands";
 import { parseAmountToCents, parseSalesCsv } from "@/lib/connect/salesImport";
 import { normalizeOrigin } from "@/lib/website";
+import { isActionAllowed } from "@/lib/contentWorkflowRules";
 import { PLANS, lookupStripePrice, netAmountFor, parseBillingInterval, parsePlanKey, planForStripePrice, yearlyMonthlyEquivalent } from "@/lib/plans";
 import { hashPassword, passwordProblem, verifyPassword } from "@/lib/auth/password";
 import { composioUserIdFor, hashState, sanitizeComposioMessage, stateMatches } from "@/lib/composio/client";
@@ -190,4 +191,13 @@ test("Jahresabo: Beträge, Intervall-Eingaben und Preis-Zuordnung", () => {
   assert.equal(lookupStripePrice("unbekannt"), null);
   delete process.env.STRIPE_PRICE_ID_PRO;
   delete process.env.STRIPE_PRICE_ID_PRO_YEAR;
+});
+
+test("Freigabe-Regeln: Planen und Veröffentlichen nur nach Freigabe", () => {
+  for (const st of ["DRAFT", "IN_REVIEW", "REJECTED", "PUBLISHED", "ARCHIVED"] as const) {
+    assert.equal(isActionAllowed("publish", st), false, st);
+    assert.equal(isActionAllowed("schedule", st), false, st);
+  }
+  assert.ok(isActionAllowed("publish", "APPROVED") && isActionAllowed("publish", "SCHEDULED"));
+  assert.ok(isActionAllowed("approve", "IN_REVIEW") && !isActionAllowed("approve", "PUBLISHED"));
 });

@@ -853,3 +853,53 @@ test("Jahresabo: richtiger Stripe-Preis, Freischaltung per Webhook, Maxi ohne Ja
   const billing = await (await c.req("/billing")).text();
   assert.ok(billing.includes("Jahresabo"), "aktives Jahresabo wird nicht angezeigt");
 });
+
+test("Freigabe-Workflow: Planen/Veröffentlichen nur nach Freigabe, Änderung entzieht Freigabe, Doppelversand gesperrt", async () => {
+  const created = await A.json("/api/content-items", { method: "POST", body: { title: "Workflow-Test", platform: "YOUTUBE", script: "Hallo" } });
+  assert.equal(created.status, 200, JSON.stringify(created.data));
+  const id = created.data.item.id;
+  const status = (action, extra = {}) => A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action, ...extra } });
+  const future = new Date(Date.now() + 3 * 86400_000).toISOString();
+
+  // Ohne Freigabe: weder planen noch veröffentlichen
+  assert.equal((await status("schedule", { scheduledAt: future })).status, 409);
+  assert.equal((await status("publish")).status, 409);
+  assert.equal((await prisma.contentItem.findUniqueOrThrow({ where: { id } })).status, "DRAFT");
+
+  // Freigeben, dann ändern → Freigabe entzogen
+  assert.equal((await status("approve")).status, 200);
+  const edit = await A.json(`/api/content-items/${id}`, { method: "PATCH", body: { title: "Workflow-Test geändert" } });
+  assert.equal(edit.status, 200);
+  assert.equal(edit.data.approvalRevoked, true);
+  assert.equal(edit.data.item.status, "IN_REVIEW");
+  assert.equal((await status("schedule", { scheduledAt: future })).status, 409);
+
+  // Erneut freigeben und planen; Termin in der Vergangenheit abgelehnt
+  assert.equal((await status("approve")).status, 200);
+  assert.equal((await status("schedule", { scheduledAt: "2020-01-01T10:00:00Z" })).status, 400);
+  assert.equal((await status("schedule", { scheduledAt: future })).status, 200);
+  // Speichern ohne inhaltliche Änderung lässt die Freigabe bestehen
+  const same = await A.json(`/api/content-items/${id}`, { method: "PATCH", body: { title: "Workflow-Test geändert" } });
+  assert.equal(same.data.approvalRevoked, false);
+  assert.equal(same.data.item.status, "SCHEDULED");
+
+  // Doppelversand: laufende Sperre → 409; verfallene Sperre (> 10 Min.) → erlaubt
+  await prisma.contentItem.update({ where: { id }, data: { publishingStartedAt: new Date() } });
+  assert.equal((await status("publish")).status, 409);
+  await prisma.contentItem.update({ where: { id }, data: { publishingStartedAt: new Date(Date.now() - 11 * 60_000) } });
+  const pub = await status("publish");
+  assert.equal(pub.status, 200);
+  assert.equal(pub.data.published, false); // YouTube ist nicht verbunden — ehrliche Meldung, kein Schein-Erfolg
+  const after = await prisma.contentItem.findUniqueOrThrow({ where: { id } });
+  assert.equal(after.publishingStartedAt, null, "Sperre nach dem Versuch nicht freigegeben");
+  assert.equal(after.status, "SCHEDULED");
+
+  // KI-Hashtags ändern einen geplanten Beitrag → Freigabe entzogen
+  const tags = await A.json(`/api/content-items/${id}/hashtags`, { method: "POST" });
+  assert.equal(tags.status, 200, JSON.stringify(tags.data));
+  assert.equal(tags.data.approvalRevoked, true);
+  assert.equal((await prisma.contentItem.findUniqueOrThrow({ where: { id } })).status, "IN_REVIEW");
+
+  // B kann A's Beitrag weder freigeben noch veröffentlichen
+  assert.equal((await B.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "approve" } })).status, 404);
+});

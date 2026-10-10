@@ -5,6 +5,7 @@ import { runAgent } from "@/lib/agents/runner";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { ownedContentItem } from "@/lib/ownership";
 import { route } from "@/lib/api";
+import { assertActionAllowed, claimPublishLock, releasePublishLock, WorkflowError } from "@/lib/contentWorkflow";
 
 const bodySchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("review") }),
@@ -21,7 +22,7 @@ async function handlePOST(
 ) {
   const { id } = await params;
   const workspaceId = await getCurrentWorkspaceId();
-  await ownedContentItem(id);
+  const current = await ownedContentItem(id);
   const body = await request.json().catch(() => null);
   const parsed = bodySchema.safeParse(body);
   if (!parsed.success) {
@@ -29,6 +30,12 @@ async function handlePOST(
   }
 
   const input = parsed.data;
+  try {
+    assertActionAllowed(input.action, current.status);
+  } catch (err) {
+    if (err instanceof WorkflowError) return NextResponse.json({ error: err.message }, { status: err.status });
+    throw err;
+  }
 
   switch (input.action) {
     case "review":
@@ -39,16 +46,30 @@ async function handlePOST(
       return NextResponse.json({ item: await setContentStatus(id, "REJECTED", input.reason) });
     case "archive":
       return NextResponse.json({ item: await setContentStatus(id, "ARCHIVED") });
-    case "schedule":
-      return NextResponse.json({
-        item: await scheduleContentItem(id, new Date(input.scheduledAt)),
-      });
+    case "schedule": {
+      const when = new Date(input.scheduledAt);
+      if (Number.isNaN(when.getTime()) || when.getTime() < Date.now() - 60_000) {
+        return NextResponse.json({ error: "Bitte einen gültigen Termin in der Zukunft wählen." }, { status: 400 });
+      }
+      return NextResponse.json({ item: await scheduleContentItem(id, when) });
+    }
     case "publish": {
-      const publicOrigin = new URL(request.url).origin;
-      const result = await runAgent("publishing", workspaceId, `Veröffentliche Content-Item ${id}`, () =>
-        publishContentItem(id, publicOrigin)
-      );
-      return NextResponse.json(result);
+      // Nur ein Versand gleichzeitig; ein zweiter Klick oder Tab wird abgewiesen.
+      if (!(await claimPublishLock(id))) {
+        return NextResponse.json(
+          { error: "Dieser Beitrag wird gerade veröffentlicht oder ist nicht mehr freigegeben." },
+          { status: 409 }
+        );
+      }
+      try {
+        const publicOrigin = new URL(request.url).origin;
+        const result = await runAgent("publishing", workspaceId, `Veröffentliche Content-Item ${id}`, () =>
+          publishContentItem(id, publicOrigin)
+        );
+        return NextResponse.json(result);
+      } finally {
+        await releasePublishLock(id);
+      }
     }
   }
 }

@@ -82,6 +82,7 @@
       "selectAll": "Alle Plattformen auswählen",
       "clearAll": "Auswahl aufheben",
       "generateButton": "{count} Ableger erzeugen"
-    }
+    },
+    "approvalRevoked": "Freigabe entzogen: Der Beitrag wurde geändert und muss erneut geprüft und freigegeben werden."
   }
 }

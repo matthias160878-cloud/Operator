@@ -82,6 +82,7 @@
       "selectAll": "Select all platforms",
       "clearAll": "Clear selection",
       "generateButton": "Generate {count} spin-offs"
-    }
+    },
+    "approvalRevoked": "Approval revoked: the post was changed and must be reviewed and approved again."
   }
 }

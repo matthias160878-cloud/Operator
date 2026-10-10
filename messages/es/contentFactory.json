@@ -82,6 +82,7 @@
       "selectAll": "Seleccionar todas las plataformas",
       "clearAll": "Quitar selección",
       "generateButton": "Generar {count} derivados"
-    }
+    },
+    "approvalRevoked": "Aprobación retirada: la publicación se modificó y debe revisarse y aprobarse de nuevo."
   }
 }

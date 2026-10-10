@@ -83,6 +83,14 @@
       "clearAll": "Effacer la sélection",
       "generateButton": "Générer {count} déclinaisons"
     },
-    "approvalRevoked": "Validation retirée : la publication a été modifiée et doit être revue et validée à nouveau."
+    "approvalRevoked": "Validation retirée : la publication a été modifiée et doit être revue et validée à nouveau.",
+    "job": {
+      "QUEUED": "Publication automatique prévue le {when}.",
+      "RUNNING": "Publication en cours (prévue le {when}).",
+      "SUCCEEDED": "Publié comme prévu le {when}.",
+      "FAILED": "La publication prévue le {when} a échoué ; la publication est de nouveau « Validée ».",
+      "UNKNOWN": "Publication prévue le {when} : résultat incertain.",
+      "CANCELED": "La publication prévue ({when}) n'a pas été effectuée."
+    }
   }
 }

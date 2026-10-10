@@ -903,3 +903,24 @@ test("Freigabe-Workflow: Planen/Veröffentlichen nur nach Freigabe, Änderung en
   // B kann A's Beitrag weder freigeben noch veröffentlichen
   assert.equal((await B.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "approve" } })).status, 404);
 });
+
+test("Planen legt einen Versandauftrag an; Ablehnen verwirft ihn; Detailseite zeigt den Stand", async () => {
+  const created = await A.json("/api/content-items", { method: "POST", body: { title: "Auftrag-Test", platform: "LINKEDIN", script: "x" } });
+  const id = created.data.item.id;
+  const status = (action, extra = {}) => A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action, ...extra } });
+  assert.equal((await status("approve")).status, 200);
+  const when = new Date(Date.now() + 2 * 3600_000);
+  const s = await status("schedule", { scheduledAt: when.toISOString() });
+  assert.equal(s.status, 200);
+  const job = await prisma.publishJob.findUniqueOrThrow({ where: { id: s.data.jobId } });
+  assert.equal(job.status, "QUEUED");
+  assert.equal(job.scheduledFor.getTime(), when.getTime());
+  const html = await (await A.req(`/content-factory/${id}`)).text();
+  assert.ok(html.includes("Automatischer Versand geplant"), "Versandstatus fehlt auf der Detailseite");
+  // Neu planen ersetzt den Auftrag
+  const s2 = await status("schedule", { scheduledAt: new Date(Date.now() + 5 * 3600_000).toISOString() });
+  assert.equal((await prisma.publishJob.findUniqueOrThrow({ where: { id: job.id } })).status, "CANCELED");
+  assert.equal(await prisma.publishJob.count({ where: { contentItemId: id, status: "QUEUED" } }), 1);
+  assert.equal((await status("reject", { reason: "doch nicht" })).status, 200);
+  assert.equal((await prisma.publishJob.findUniqueOrThrow({ where: { id: s2.data.jobId } })).status, "CANCELED");
+});

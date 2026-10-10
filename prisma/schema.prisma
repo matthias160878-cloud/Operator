@@ -153,6 +153,7 @@ model Workspace {
   customerSales       CustomerSale[]
   websites            WebsiteConnection[]
   composioConnections ComposioConnection[]
+  publishJobs         PublishJob[]
 
   @@map("workspaces")
 }
@@ -271,6 +272,7 @@ model ContentItem {
   publishedAt         DateTime?
   /// Sperre gegen parallelen Doppelversand (gesetzt, solange veröffentlicht wird).
   publishingStartedAt DateTime?
+  publishJobs         PublishJob[]
   createdAt           DateTime      @default(now())
   updatedAt           DateTime      @updatedAt
 
@@ -739,4 +741,29 @@ model ComposioConnection {
 
   @@unique([workspaceId, toolkit])
   @@map("composio_connections")
+}
+
+/// Dauerhafter Versandauftrag für einen geplanten Beitrag (Worker:
+/// scripts/publish-worker.ts). Status: QUEUED → RUNNING → SUCCEEDED | FAILED;
+/// CANCELED wenn Termin/Freigabe sich geändert hat; UNKNOWN wenn ein Versand
+/// unterbrochen wurde und unklar ist, ob die Plattform veröffentlicht hat —
+/// solche Aufträge werden NIE automatisch wiederholt.
+model PublishJob {
+  id            String      @id @default(cuid())
+  workspaceId   String
+  workspace     Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  contentItemId String
+  contentItem   ContentItem @relation(fields: [contentItemId], references: [id], onDelete: Cascade)
+  scheduledFor  DateTime
+  status        String      @default("QUEUED")
+  attempts      Int         @default(0)
+  startedAt     DateTime?
+  finishedAt    DateTime?
+  message       String      @default("")
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([status, scheduledFor])
+  @@index([contentItemId])
+  @@map("publish_jobs")
 }

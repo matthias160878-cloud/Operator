@@ -287,6 +287,13 @@ erzeugen, nie im Chat oder Repo: `DATABASE_URL`, `TOKEN_ENCRYPTION_KEY`,
 `COMPOSIO_USER_PREFIX=s58test`. `PACKAGE_TERMS_CONFIRMED` bleibt im Staging ungesetzt
 (kein Verkauf).
 
+Versand zum Termin: entweder `PUBLISH_WORKER=inline` (im Webdienst; schläft im
+Gratistarif mit) oder ein eigener Render-Background-Worker mit Build
+`npm ci && npm run build:server`, Start `npm run worker` und denselben Variablen
+(`DATABASE_URL`, `TOKEN_ENCRYPTION_KEY`, `MEDIA_URL_SECRET`, `PUBLIC_APP_URL`).
+Nie beide gleichzeitig. `.npmrc` (`include=dev`) sorgt dafür, dass Prisma/tsx auch
+mit `NODE_ENV=production` installiert werden.
+
 Sicherung und Wiederherstellung:
 
 - Render-PostgreSQL (kostenpflichtiger Plan) bietet Point-in-Time-Recovery im Dashboard;

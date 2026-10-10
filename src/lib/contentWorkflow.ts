@@ -28,8 +28,24 @@ export async function revokeApprovalOnChange(contentItemId: string): Promise<boo
     where: { id: contentItemId, status: { in: ["APPROVED", "SCHEDULED"] } },
     data: { status: "IN_REVIEW" },
   });
+  if (res.count > 0) await cancelOpenJobs(contentItemId, "Freigabe entzogen: Beitrag wurde geändert.");
   return res.count > 0;
 }
+
+/** Plant den Versand (ersetzt einen noch offenen Auftrag desselben Beitrags). */
+export async function queuePublishJob(contentItemId: string, workspaceId: string, scheduledFor: Date) {
+  await cancelOpenJobs(contentItemId, "Neu geplant.");
+  return prisma.publishJob.create({ data: { contentItemId, workspaceId, scheduledFor } });
+}
+
+/** Offene Aufträge eines Beitrags verwerfen (Freigabe entzogen, abgelehnt, archiviert, neu geplant). */
+export async function cancelOpenJobs(contentItemId: string, message: string) {
+  await prisma.publishJob.updateMany({
+    where: { contentItemId, status: "QUEUED" },
+    data: { status: "CANCELED", finishedAt: new Date(), message },
+  });
+}
+
 
 const PUBLISH_LOCK_MS = 10 * 60 * 1000;
 

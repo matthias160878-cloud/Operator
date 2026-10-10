@@ -5,7 +5,14 @@ import { runAgent } from "@/lib/agents/runner";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { ownedContentItem } from "@/lib/ownership";
 import { route } from "@/lib/api";
-import { assertActionAllowed, claimPublishLock, releasePublishLock, WorkflowError } from "@/lib/contentWorkflow";
+import {
+  assertActionAllowed,
+  cancelOpenJobs,
+  claimPublishLock,
+  queuePublishJob,
+  releasePublishLock,
+  WorkflowError,
+} from "@/lib/contentWorkflow";
 
 const bodySchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("review") }),
@@ -43,15 +50,20 @@ async function handlePOST(
     case "approve":
       return NextResponse.json({ item: await setContentStatus(id, "APPROVED") });
     case "reject":
+      await cancelOpenJobs(id, "Beitrag abgelehnt.");
       return NextResponse.json({ item: await setContentStatus(id, "REJECTED", input.reason) });
     case "archive":
+      await cancelOpenJobs(id, "Beitrag archiviert.");
       return NextResponse.json({ item: await setContentStatus(id, "ARCHIVED") });
     case "schedule": {
       const when = new Date(input.scheduledAt);
       if (Number.isNaN(when.getTime()) || when.getTime() < Date.now() - 60_000) {
         return NextResponse.json({ error: "Bitte einen gültigen Termin in der Zukunft wählen." }, { status: 400 });
       }
-      return NextResponse.json({ item: await scheduleContentItem(id, when) });
+      const item = await scheduleContentItem(id, when);
+      // Dauerhafter Versandauftrag; der Worker sendet zum Termin nach erneuter Prüfung.
+      const job = await queuePublishJob(id, workspaceId, when);
+      return NextResponse.json({ item, jobId: job.id });
     }
     case "publish": {
       // Nur ein Versand gleichzeitig; ein zweiter Klick oder Tab wird abgewiesen.

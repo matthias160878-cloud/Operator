@@ -133,9 +133,16 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
           <button
             disabled={!allowed("schedule") || busy !== null}
             onClick={() => {
-              const when = prompt(t("detail.scheduleDatePrompt"), toLocalDatetimeInputValue(new Date()));
+              const when = prompt(t("detail.scheduleDatePrompt"), toLocalDatetimeInputValue(new Date(Date.now() + 60 * 60 * 1000)));
               if (!when) return;
-              runAction("schedule", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "schedule", scheduledAt: when }) }));
+              // Eingabe ist Ortszeit des Geräts — als UTC-Zeitpunkt senden, sonst
+              // verschiebt der Server (UTC) den Termin um die Zeitzonen-Differenz.
+              const local = new Date(when);
+              if (Number.isNaN(local.getTime())) {
+                setMessage(t("detail.actionFailed"));
+                return;
+              }
+              runAction("schedule", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "schedule", scheduledAt: local.toISOString() }) }));
             }}
             className="inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-xs text-accent disabled:opacity-40"
           >

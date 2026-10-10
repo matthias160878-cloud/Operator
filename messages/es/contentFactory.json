@@ -83,6 +83,14 @@
       "clearAll": "Quitar selección",
       "generateButton": "Generar {count} derivados"
     },
-    "approvalRevoked": "Aprobación retirada: la publicación se modificó y debe revisarse y aprobarse de nuevo."
+    "approvalRevoked": "Aprobación retirada: la publicación se modificó y debe revisarse y aprobarse de nuevo.",
+    "job": {
+      "QUEUED": "Publicación automática programada para {when}.",
+      "RUNNING": "Publicación en curso (programada {when}).",
+      "SUCCEEDED": "Publicado según lo programado ({when}).",
+      "FAILED": "La publicación programada ({when}) falló; la publicación vuelve a «Aprobada».",
+      "UNKNOWN": "Publicación programada ({when}): resultado incierto.",
+      "CANCELED": "La publicación programada ({when}) no se realizó."
+    }
   }
 }

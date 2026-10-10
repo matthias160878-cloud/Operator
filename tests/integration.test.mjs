@@ -924,3 +924,15 @@ test("Planen legt einen Versandauftrag an; Ablehnen verwirft ihn; Detailseite ze
   assert.equal((await status("reject", { reason: "doch nicht" })).status, 200);
   assert.equal((await prisma.publishJob.findUniqueOrThrow({ where: { id: s2.data.jobId } })).status, "CANCELED");
 });
+
+test("Zeitzone: Termine erscheinen in deutscher Zeit, nicht in Server-UTC", async () => {
+  const created = await A.json("/api/content-items", { method: "POST", body: { title: "Zeitzonen-Test", platform: "LINKEDIN", script: "x" } });
+  const id = created.data.item.id;
+  await A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "approve" } });
+  // 15.01.2030 10:00 UTC = 11:00 Uhr in Berlin (Winterzeit)
+  const s = await A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "schedule", scheduledAt: "2030-01-15T10:00:00.000Z" } });
+  assert.equal(s.status, 200);
+  const html = await (await A.req(`/content-factory/${id}`)).text();
+  assert.ok(html.includes("11:00"), "Termin wird nicht in Europe/Berlin angezeigt");
+  assert.ok(!/15\.01\.2030,? 10:00/.test(html), "Termin erscheint in UTC");
+});

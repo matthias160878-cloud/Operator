@@ -1,5 +1,6 @@
 "use client";
 
+import { APP_TIME_ZONE } from "@/lib/timezone";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -126,7 +127,7 @@ export function ConversationDetail({
               )}
 
               <div className="mt-1.5 flex items-center gap-2 text-[10px] text-muted">
-                <span>{new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short" }).format(m.createdAt)}</span>
+                <span>{new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short", timeZone: APP_TIME_ZONE }).format(m.createdAt)}</span>
                 {m.direction === "OUTBOUND" && <span>· {m.status}</span>}
               </div>
 

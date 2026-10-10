@@ -1,5 +1,6 @@
 "use client";
 
+import { APP_TIME_ZONE } from "@/lib/timezone";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -58,7 +59,7 @@ export function ContentItemsTable({ items }: { items: ContentItem[] }) {
                 <StatusBadge status={item.status} />
               </td>
               <td className="px-4 py-3 text-muted">
-                {new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }).format(
+                {new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit", timeZone: APP_TIME_ZONE }).format(
                   item.updatedAt
                 )}
               </td>

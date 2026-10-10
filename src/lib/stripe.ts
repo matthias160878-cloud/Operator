@@ -1,7 +1,7 @@
 import Stripe from "stripe";
 import { prisma } from "@/lib/db";
 import { legalInfoComplete } from "@/lib/legal";
-import { PLANS, packageTermsConfirmed, stripePriceIdFor, type PlanKey } from "@/lib/plans";
+import { PLANS, netAmountFor, packageTermsConfirmed, stripePriceIdFor, type BillingInterval, type PlanKey } from "@/lib/plans";
 
 /**
  * Stripe-Adapter für die Paketabrechnung des Betreibers.
@@ -63,8 +63,8 @@ export interface PlanPrice {
 const priceCache = new Map<string, { at: number; value: PlanPrice }>();
 
 /** Liest den echten, in Stripe hinterlegten Preis — Betrag, Währung und Intervall kommen von dort. */
-export async function getPlanPrice(plan: PlanKey): Promise<PlanPrice | null> {
-  const priceId = stripePriceIdFor(plan);
+export async function getPlanPrice(plan: PlanKey, interval: BillingInterval = "month"): Promise<PlanPrice | null> {
+  const priceId = stripePriceIdFor(plan, interval);
   if (!isStripeConfigured() || !priceId) return null;
   const cached = priceCache.get(priceId);
   if (cached && Date.now() - cached.at < 5 * 60_000) return cached.value;
@@ -102,8 +102,10 @@ export async function createPlanCheckout(input: {
   userId: string;
   email: string;
   plan: PlanKey;
+  interval?: BillingInterval;
   origin: string;
 }): Promise<string> {
+  const interval: BillingInterval = input.interval ?? "month";
   if (!packageTermsConfirmed()) {
     throw new CheckoutRefused(
       "Der Verkauf ist noch nicht freigegeben: Die Paketkonditionen sind vom Betreiber noch nicht bestätigt.",
@@ -116,14 +118,21 @@ export async function createPlanCheckout(input: {
   if (!isStripeConfigured() || !isStripeWebhookConfigured()) {
     throw new CheckoutRefused("Die Zahlung ist noch nicht eingerichtet.", 503);
   }
-  const price = await getPlanPrice(input.plan);
-  if (!price) throw new CheckoutRefused("Für dieses Paket ist in Stripe kein aktiver Preis hinterlegt.", 503);
-  // Schutz vor Fehlkonfiguration: Stripe-Preis muss dem bestätigten Nettopreis
-  // entsprechen und monatlich wiederkehren.
-  const monthly = price.recurring?.interval === "month" && price.recurring.intervalCount === 1;
-  if (!monthly || price.taxBehavior !== "exclusive" || price.unitAmount !== PLANS[input.plan].netAmountCents || price.currency !== "eur") {
+  const price = await getPlanPrice(input.plan, interval);
+  if (!price) {
     throw new CheckoutRefused(
-      "Der Stripe-Preis dieses Pakets ist nicht als monatlicher Nettopreis in der vereinbarten Höhe angelegt. Der Betreiber muss ihn korrigieren.",
+      interval === "year"
+        ? "Das Jahresabo für dieses Paket ist in Stripe noch nicht eingerichtet."
+        : "Für dieses Paket ist in Stripe kein aktiver Preis hinterlegt.",
+      503
+    );
+  }
+  // Schutz vor Fehlkonfiguration: Stripe-Preis muss dem bestätigten Nettopreis
+  // für genau dieses Intervall entsprechen (Jahr = 12 Monate minus 15 %).
+  const intervalOk = price.recurring?.interval === interval && price.recurring.intervalCount === 1;
+  if (!intervalOk || price.taxBehavior !== "exclusive" || price.unitAmount !== netAmountFor(input.plan, interval) || price.currency !== "eur") {
+    throw new CheckoutRefused(
+      `Der Stripe-Preis dieses Pakets ist nicht als ${interval === "year" ? "jährlicher" : "monatlicher"} Nettopreis in der vereinbarten Höhe angelegt. Der Betreiber muss ihn korrigieren.`,
       503
     );
   }
@@ -157,7 +166,7 @@ export async function createPlanCheckout(input: {
   }
 
   const mode: "payment" | "subscription" = price.recurring ? "subscription" : "payment";
-  const metadata = { workspaceId: input.workspaceId, plan: input.plan, userId: input.userId };
+  const metadata = { workspaceId: input.workspaceId, plan: input.plan, interval, userId: input.userId };
   const session = await getStripe().checkout.sessions.create({
     mode,
     line_items: [{ price: price.priceId, quantity: 1 }],
@@ -177,7 +186,7 @@ export async function createPlanCheckout(input: {
     billing_address_collection: "required",
     tax_id_collection: { enabled: true },
     success_url: `${input.origin}/billing?checkout={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${input.origin}/billing?plan=${input.plan.toLowerCase()}&abgebrochen=1`,
+    cancel_url: `${input.origin}/billing?plan=${input.plan.toLowerCase()}&intervall=${interval}&abgebrochen=1`,
   });
   if (!session.url) throw new Error("Stripe hat keine Checkout-URL zurückgegeben.");
 

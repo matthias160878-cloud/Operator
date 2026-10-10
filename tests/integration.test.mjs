@@ -117,6 +117,7 @@ before(async () => {
     STRIPE_CONNECT_WEBHOOK_SECRET: WHSEC_CONNECT,
     STRIPE_PRICE_ID_PRO: "price_pro",
     STRIPE_PRICE_ID_MAXI: "price_maxi",
+    STRIPE_PRICE_ID_PRO_YEAR: "price_pro_year",
     PACKAGE_TERMS_CONFIRMED: "true",
     // Testangaben — keine echten Anbieterdaten
     IMPRESSUM_NAME: "Test Anbieter",
@@ -805,11 +806,50 @@ test("Verkaufsseite (aus der Zentrale): Pakete aus der App, Kaufweg über Anmeld
   assert.ok(/590,00\s*€/.test(html) && /797,00\s*€/.test(html), "Preise aus plans.ts fehlen");
   assert.ok(html.includes('href="/signup?plan=pro"') && html.includes('href="/signup?plan=maxi"'), "Kaufweg ohne Anmeldung falsch");
   assert.ok(/id="paket-maxi" class="preis-karte[^"]*ausgewaehlt/.test(html), "Vorauswahl wird nicht hervorgehoben");
-  assert.ok(!html.includes("jährlich"), "Jahresabo darf nicht angeboten werden, solange es nicht kaufbar ist");
+  // Jahrespreise für Pro im Test eingerichtet, für Maxi nicht → nur Pro zeigt das Jahresabo.
+  assert.ok(/6\.018,00\s*€/.test(html), "Jahrespreis Pro fehlt");
+  assert.ok(!/8\.129,40\s*€/.test(html), "Jahrespreis Maxi darf ohne eingerichteten Stripe-Preis nicht erscheinen");
   const angemeldet = await (await A.req("/buy")).text();
   assert.ok(angemeldet.includes('href="/billing?plan=pro"'));
   const alt = await fetch(`${BASE}/social-media-ki?vorauswahl=pro`, { redirect: "manual" });
   assert.equal(alt.status, 307);
   assert.match(alt.headers.get("location"), /\/buy\?plan=pro/);
   assert.equal((await fetch(`${BASE}/zentrale/archivo-latin.woff2`)).status, 200);
+});
+
+test("Jahresabo: richtiger Stripe-Preis, Freischaltung per Webhook, Maxi ohne Jahrespreis gesperrt", async () => {
+  const c = new Client();
+  const su = await c.json("/api/auth/signup", {
+    method: "POST",
+    headers: { "x-forwarded-for": "10.9.9.10" },
+    body: { email: "jahr@example.test", password: "sehr-sicheres-passwort-123", name: "J", workspaceName: "Jahresfirma", acceptProcessing: true },
+  });
+  assert.equal(su.status, 200, JSON.stringify(su.data));
+  const ws = await workspaceIdOf("jahr@example.test");
+
+  assert.equal((await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "pro", interval: "woche", confirmed: true } })).status, 400);
+  const maxi = await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "maxi", interval: "year", confirmed: true } });
+  assert.equal(maxi.status, 503);
+  assert.match(maxi.data.error, /Jahresabo .* noch nicht eingerichtet/);
+
+  const r = await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "pro", interval: "year", confirmed: true } });
+  assert.equal(r.status, 200, JSON.stringify(r.data));
+  const call = fakes.calls.filter((x) => x.path === "/v1/checkout/sessions" && x.method === "POST").at(-1);
+  assert.equal(call.params["line_items[0][price]"], "price_pro_year");
+  assert.equal(call.params["mode"], "subscription");
+  assert.equal(call.params["subscription_data[metadata][interval]"], "year");
+  const sessionId = r.data.url.split("/").pop();
+  const order = await prisma.planCheckout.findUniqueOrThrow({ where: { id: sessionId } });
+  assert.equal(order.expectedAmount, 601800);
+
+  const done = await webhook(event("checkout.session.completed", {
+    id: sessionId, object: "checkout.session", mode: "subscription", payment_status: "paid", amount_subtotal: 601800,
+    amount_total: 716142, currency: "eur", customer: "cus_J", payment_intent: null, subscription: "sub_J", metadata: {},
+  }));
+  assert.equal((await done.json()).result, "processed");
+  const plan = await prisma.workspacePlan.findUniqueOrThrow({ where: { workspaceId: ws } });
+  assert.equal(plan.plan, "PRO");
+  assert.equal(plan.stripePriceId, "price_pro_year");
+  const billing = await (await c.req("/billing")).text();
+  assert.ok(billing.includes("Jahresabo"), "aktives Jahresabo wird nicht angezeigt");
 });

@@ -83,3 +83,4 @@
 .zentrale footer.fuss .wrap { display: flex; gap: 1.25rem; flex-wrap: wrap; }
 .zentrale footer.fuss a { color: var(--dim); text-decoration: none; }
 .zentrale footer.fuss a:hover { color: var(--amber); }
+.zentrale .preis-karte .jahr { font-size: .85rem; margin: -.3rem 0 .6rem; }

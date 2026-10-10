@@ -2,7 +2,19 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getSessionUser } from "@/lib/auth/session";
 import { legalInfoComplete, legalLinks } from "@/lib/legal";
-import { METRIC_LABELS, PLANS, PLAN_KEYS, VAT_NOTE, formatCents, packageTermsConfirmed, type Metric } from "@/lib/plans";
+import {
+  METRIC_LABELS,
+  PLANS,
+  PLAN_KEYS,
+  VAT_NOTE,
+  YEARLY_DISCOUNT_PERCENT,
+  formatCents,
+  netAmountFor,
+  packageTermsConfirmed,
+  stripePriceIdFor,
+  yearlyMonthlyEquivalent,
+  type Metric,
+} from "@/lib/plans";
 import { getPlanPrice } from "@/lib/stripe";
 import "./zentrale.css";
 
@@ -19,7 +31,8 @@ export const metadata: Metadata = {
  * (secret58-web, social-media-ki.html) — Aussehen der Zentrale, Inhalte
  * angepasst an das, was diese Anwendung tatsächlich verkauft:
  *  - Pakete, Leistungen und Kontingente aus src/lib/plans.ts,
- *  - Abrechnungsintervall aus dem Stripe-Preis (derzeit nur monatlich kaufbar),
+ *  - Monatsabo; Jahresabo (15 % Rabatt) nur angezeigt, wenn der Jahrespreis in
+ *    Stripe eingerichtet ist oder die Seite als Vorschau (Verkauf gesperrt) läuft,
  *  - Kauf erst nach Anmeldung unter /billing mit ausdrücklicher Bestätigung.
  * ?plan=pro|maxi (oder ?vorauswahl= aus der Zentrale/Genesis) hebt ein Paket
  * nur hervor — ein Kauf wird hier nie ausgelöst.
@@ -67,7 +80,7 @@ export default async function BuyPage({
         </p>
 
         <div className="preisanker">
-          <span>Zwei Pakete im Monatsabo, Zugriff nach bestätigter Zahlung</span>
+          <span>Zwei Pakete im Monats- oder Jahresabo, Zugriff nach bestätigter Zahlung</span>
           <span>Jederzeit zum Ende des Abrechnungszeitraums kündbar</span>
           <span>Eigener, privater Arbeitsbereich je Kunde</span>
         </div>
@@ -78,6 +91,7 @@ export default async function BuyPage({
             const def = PLANS[key];
             const price = prices[i];
             const highlighted = key === "MAXI";
+            const showYear = Boolean(stripePriceIdFor(key, "year")) || !saleOpen;
             const interval =
               price?.recurring?.interval === "year" ? "Jahr" : price?.recurring?.interval === "month" || !price ? "Monat" : null;
             const href = user ? `/billing?plan=${key.toLowerCase()}` : `/signup?plan=${key.toLowerCase()}`;
@@ -96,6 +110,13 @@ export default async function BuyPage({
                   {formatCents(def.netAmountCents, def.displayCurrency)}{" "}
                   <span>{interval ? `netto / ${interval}, zzgl. Steuer` : VAT_NOTE}</span>
                 </div>
+                {showYear && (
+                  <p className="jahr">
+                    oder <b>{formatCents(netAmountFor(key, "year"), def.displayCurrency)}</b> netto / Jahr im Jahresabo,
+                    als Jahresbetrag im Voraus bezahlt. Entspricht {formatCents(yearlyMonthlyEquivalent(key), def.displayCurrency)}{" "}
+                    / Monat, {YEARLY_DISCOUNT_PERCENT} % günstiger als 12 Monatszahlungen.
+                  </p>
+                )}
                 <ul>
                   {def.features.map((f) => (
                     <li key={f}>{f}</li>

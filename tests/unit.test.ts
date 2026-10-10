@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { interpretCommand } from "@/lib/genesis/commands";
 import { parseAmountToCents, parseSalesCsv } from "@/lib/connect/salesImport";
 import { normalizeOrigin } from "@/lib/website";
-import { PLANS, parsePlanKey, planForStripePrice } from "@/lib/plans";
+import { PLANS, lookupStripePrice, netAmountFor, parseBillingInterval, parsePlanKey, planForStripePrice, yearlyMonthlyEquivalent } from "@/lib/plans";
 import { hashPassword, passwordProblem, verifyPassword } from "@/lib/auth/password";
 import { composioUserIdFor, hashState, sanitizeComposioMessage, stateMatches } from "@/lib/composio/client";
 import { extractLabel } from "@/lib/composio/service";
@@ -172,4 +172,22 @@ test("Composio: nur bekannte Plattformen, Lese-Werkzeug nur gültig überschreib
   process.env.COMPOSIO_READ_TOOL_LINKEDIN = "rm -rf /";
   assert.equal(readToolFor(li), li.readTool);
   delete process.env.COMPOSIO_READ_TOOL_LINKEDIN;
+});
+
+test("Jahresabo: Beträge, Intervall-Eingaben und Preis-Zuordnung", () => {
+  assert.equal(netAmountFor("PRO", "month"), 59000);
+  assert.equal(netAmountFor("PRO", "year"), 601800); // 6.018,00 €
+  assert.equal(netAmountFor("MAXI", "year"), 812940); // 8.129,40 €
+  assert.equal(yearlyMonthlyEquivalent("PRO"), 50150);
+  assert.equal(parseBillingInterval(undefined), "month");
+  assert.equal(parseBillingInterval("year"), "year");
+  assert.equal(parseBillingInterval("jahr"), "year");
+  assert.equal(parseBillingInterval("woche"), null);
+  process.env.STRIPE_PRICE_ID_PRO = "p_m";
+  process.env.STRIPE_PRICE_ID_PRO_YEAR = "p_y";
+  assert.deepEqual(lookupStripePrice("p_y"), { plan: "PRO", interval: "year" });
+  assert.equal(planForStripePrice("p_m"), "PRO");
+  assert.equal(lookupStripePrice("unbekannt"), null);
+  delete process.env.STRIPE_PRICE_ID_PRO;
+  delete process.env.STRIPE_PRICE_ID_PRO_YEAR;
 });

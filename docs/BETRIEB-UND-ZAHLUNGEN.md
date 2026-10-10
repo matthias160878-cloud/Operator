@@ -31,7 +31,9 @@ Die zentrale Definition steht in `src/lib/plans.ts`. Verkaufsseite (`/buy`),
 Paketseite (`/billing`), Checkout, Berechtigungen und Kontingente greifen alle
 darauf zu.
 
-* **Abgerechnet wird über den Stripe-Preis** (`STRIPE_PRICE_ID_PRO` / `STRIPE_PRICE_ID_MAXI`).
+* **Abgerechnet wird über den Stripe-Preis** (`STRIPE_PRICE_ID_PRO` / `_MAXI` monatlich,
+  `STRIPE_PRICE_ID_PRO_YEAR` / `_MAXI_YEAR` jährlich). Kontingente gelten auch im Jahresabo
+  je Kalendermonat; nicht genutzte Mengen verfallen am Monatsende.
   Die Anwendung prüft vor jedem Checkout, dass er zu den bestätigten Konditionen passt.
   (Die Webhook-Verarbeitung kann technisch auch Einmalzahlungen, sie werden aber nicht verkauft.)
 * **Preise (bestätigt am 7. Oktober 2026):** Pro **590 € netto**, Maxi **797 € netto**,
@@ -301,9 +303,19 @@ Sicherung und Wiederherstellung:
 0. **Stripe Tax aktivieren** (Einstellungen → Steuern): Ursprungsadresse,
    Steuerregistrierungen (z. B. Deutschland; OSS für EU-Privatkunden), Produktsteuercode
    für Software/SaaS. Stripe Tax ist bei Stripe kostenpflichtig.
-1. Im Testmodus zwei Produkte *Pro* (590,00 €) und *Maxi* (797,00 €) mit je einem
-   **monatlich wiederkehrenden** Preis anlegen, **Steuerverhalten „exklusive Steuer“**.
-   Die Preis-IDs in `STRIPE_PRICE_ID_PRO/MAXI` eintragen.
+1. Im Testmodus zwei Produkte *Pro* und *Maxi* mit je **zwei wiederkehrenden Preisen**
+   anlegen, alle in EUR mit **Steuerverhalten „exklusive Steuer“**:
+
+   | Variable | Preis | Intervall |
+   |---|---|---|
+   | `STRIPE_PRICE_ID_PRO` | 590,00 € | monatlich |
+   | `STRIPE_PRICE_ID_MAXI` | 797,00 € | monatlich |
+   | `STRIPE_PRICE_ID_PRO_YEAR` | 6.018,00 € | jährlich |
+   | `STRIPE_PRICE_ID_MAXI_YEAR` | 8.129,40 € | jährlich |
+
+   Jahrespreis = 12 Monatsbeträge minus 15 %. Der Checkout verweigert jeden Preis, dessen
+   Betrag, Währung, Steuerart oder Intervall nicht genau passt. Fehlt ein Jahrespreis, ist
+   nur das Jahresabo dieses Pakets gesperrt („noch nicht eingerichtet“).
 2. Webhook-Endpunkt (dein Konto) auf `/api/stripe/webhook` mit diesen Events:
    - `checkout.session.completed`
    - `checkout.session.async_payment_succeeded`

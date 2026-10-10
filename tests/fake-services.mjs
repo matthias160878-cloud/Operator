@@ -65,10 +65,12 @@ export function startFakeServices() {
       if (req.method === "GET" && p.startsWith("/v1/prices/")) {
         const id = p.split("/").pop();
         // Bestätigt: beide Pakete monatlich; "price_once" nur für den Ablehnungstest.
-        const recurring = id === "price_once" ? null : { interval: "month", interval_count: 1 };
+        // Jahresabo: 12 × Monatspreis minus 15 %.
+        const yearly = { price_pro_year: 601800 };
+        const recurring = id === "price_once" ? null : { interval: id in yearly ? "year" : "month", interval_count: 1 };
         return json(res, 200, {
           id, object: "price", active: true, currency: "eur", tax_behavior: "exclusive",
-          unit_amount: id === "price_maxi" ? 79700 : 59000, recurring,
+          unit_amount: id in yearly ? yearly[id] : id === "price_maxi" ? 79700 : 59000, recurring,
           product: { id: "prod_x", object: "product", name: id === "price_maxi" ? "Maxi" : "Pro" },
         });
       }

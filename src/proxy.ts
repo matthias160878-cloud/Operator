@@ -37,6 +37,9 @@ const PUBLIC_PREFIXES = [
   "/api/kontakt",
   "/api/demo/plan",
   "/api/agenten",
+  "/api/skill-agent",
+  "/api/termine/",
+  "/api/webseite/status",
   "/widget.js",
   "/_next",
   "/favicon.ico",
@@ -50,8 +53,11 @@ const PUBLIC_PREFIXES = [
 /** Diese Endpunkte werden von fremden Ursprüngen aufgerufen und prüfen sich selbst. */
 const CROSS_ORIGIN_ALLOWED = ["/api/stripe/webhook", "/api/stripe/connect-webhook", "/api/widget/"];
 
+/** Nur exakt diese Pfade (ein Präfix würde z. B. /api/chatbot mit öffnen). */
+const PUBLIC_EXACT = new Set(["/api/chat"]);
+
 function isPublic(pathname: string): boolean {
-  if (pathname in ZENTRALE_PAGES) return true;
+  if (pathname in ZENTRALE_PAGES || PUBLIC_EXACT.has(pathname)) return true;
   return PUBLIC_PREFIXES.some((prefix) => pathname === prefix.replace(/\/$/, "") || pathname.startsWith(prefix));
 }
 

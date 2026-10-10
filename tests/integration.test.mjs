@@ -1002,3 +1002,59 @@ test("Startseite: Kern-Bild-Daten, Demo-Planer und Kontaktformular bis in den Po
   // Kein Kunde bekommt die Anfrage
   assert.equal(await prisma.conversation.count({ where: { platform: "WEBSITE", workspaceId: { not: op.workspaceId } } }), 0);
 });
+
+test("Startseite Schritt 2: Chat-Regeln, KI nur mit Freigabe, Skill-Anfrage, Terminbuchung bis zur Bestätigung", async () => {
+  const post = (p, body, extra = {}) => fetch(`${BASE}${p}`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR, ...extra }, body: JSON.stringify(body) });
+  // Kunden-Chatbot bleibt geschützt (kein Präfix-Leck über /api/chat)
+  assert.equal((await post("/api/chatbot", { messages: [{ role: "user", content: "hi" }] })).status, 401);
+
+  assert.deepEqual(await (await fetch(`${BASE}/api/webseite/status`)).json(), { ki: false });
+  const chat = (text) => post("/api/chat", { messages: [{ role: "user", content: text }] }, { "x-forwarded-for": "10.6.6.6" });
+  const gesperrt = await (await chat("Können Sie meine Überweisung im Online-Banking machen?")).json();
+  assert.equal(gesperrt.entscheidung, "abgelehnt");
+  const termin = await (await chat("Ich möchte einen Termin vereinbaren")).json();
+  assert.equal(termin.entscheidung, "verwiesen");
+  const ohneKi = await chat("Was kostet ein KI-Agent?");
+  assert.equal(ohneKi.status, 503); // Seite antwortet dann aus ihrer hinterlegten Liste
+  assert.equal((await ohneKi.json()).error, "kein_schluessel");
+  assert.equal((await post("/api/skill-agent", { beschreibung: "Angebote schreiben" })).status, 503);
+  assert.equal((await post("/api/chat", { messages: "kaputt" })).status, 400);
+
+  // Termine: nur Betreiber legt an
+  const op = new Client();
+  assert.equal((await op.json("/api/auth/login", { method: "POST", body: { email: "op@example.test", password: "betreiber-passwort-123" } })).status, 200);
+  assert.equal((await A.json("/api/operator/termine", { method: "POST", body: { datum: "2030-03-10", uhrzeit: "10:00" } })).status, 404);
+  assert.equal((await op.json("/api/operator/termine", { method: "POST", body: { datum: "2020-01-01", uhrzeit: "10:00" } })).status, 400);
+  assert.equal((await op.json("/api/operator/termine", { method: "POST", body: { datum: "2030-03-10", uhrzeit: "25:00" } })).status, 400);
+  const neu = await op.json("/api/operator/termine", { method: "POST", body: { datum: "2030-03-10", uhrzeit: "10:00", notiz: "intern" } });
+  assert.equal(neu.status, 200);
+  assert.equal(new Date(neu.data.termin.startsAt).toISOString(), "2030-03-10T09:00:00.000Z"); // 10:00 Berlin (Winterzeit)
+
+  const frei = await (await fetch(`${BASE}/api/termine/frei`)).json();
+  const slot = frei.termine.find((t) => t.id === neu.data.termin.id);
+  assert.deepEqual(slot, { id: neu.data.termin.id, datum: "2030-03-10", uhrzeit: "10:00" }); // keine Notiz nach außen
+
+  const anfrage = (name) => post(`/api/termine/${slot.id}/anfragen`, { name, email: `${name.toLowerCase()}@example.test`, nachricht: "Gern vormittags" }, { "x-forwarded-for": `10.5.5.${name.length}` });
+  const [r1, r2] = await Promise.all([anfrage("Paula"), anfrage("Konstantin")]);
+  assert.deepEqual([r1.status, r2.status].sort(), [200, 409], "nur eine Anfrage darf den Termin bekommen");
+  assert.ok(!(await (await fetch(`${BASE}/api/termine/frei`)).json()).termine.some((t) => t.id === slot.id));
+
+  const opUser = await prisma.user.findFirstOrThrow({ where: { isOperator: true } });
+  const conv = await prisma.conversation.findFirst({ where: { workspaceId: opUser.workspaceId, platform: "WEBSITE", messages: { some: { body: { contains: "Terminanfrage für 2030-03-10 um 10:00" } } } } });
+  assert.ok(conv, "Terminanfrage fehlt im Posteingang des Betreibers");
+
+  const opPage = await (await op.req("/operator")).text();
+  assert.ok(opPage.includes("Termine für Erstgespräche") && opPage.includes("10.03.2030"));
+  assert.equal((await op.json(`/api/operator/termine/${slot.id}`, { method: "POST", body: { action: "bestaetigen" } })).status, 200);
+  assert.equal((await prisma.websiteAppointment.findUniqueOrThrow({ where: { id: slot.id } })).status, "BESTAETIGT");
+  assert.equal((await A.json(`/api/operator/termine/${slot.id}`, { method: "POST", body: { action: "loeschen" } })).status, 404);
+  assert.equal((await op.json(`/api/operator/termine/${slot.id}`, { method: "POST", body: { action: "loeschen" } })).status, 200);
+
+  // Startseite: Termin-Skript wieder aktiv, Newsletter weiter aus
+  const html = await (await fetch(`${BASE}/`)).text();
+  assert.ok(html.includes("/api/termine/frei") && html.includes("app-webseite-status") && html.includes("div:has(> #newsletterform)"));
+  // CSS-Blöcke der Startseite geschlossen (Zentrale-Fehler: offener @media-Block machte den Desktop ungestaltet)
+  for (const m of html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)) {
+    assert.equal((m[1].match(/\{/g) ?? []).length, (m[1].match(/\}/g) ?? []).length, "CSS-Klammern unausgeglichen");
+  }
+});

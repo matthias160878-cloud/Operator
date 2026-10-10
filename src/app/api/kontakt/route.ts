@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { clientIp, hitRateLimit } from "@/lib/rateLimit";
+import { operatorWorkspaceId } from "@/lib/operatorWorkspace";
 
 /**
  * Kontaktformular der Startseite (Zentrale). Öffentlich. Die Anfrage landet
@@ -15,16 +16,6 @@ const schema = z.object({
   nachricht: z.string().trim().min(1).max(5000),
   kampagne: z.string().trim().max(100).optional().default(""),
 });
-
-async function operatorWorkspaceId(): Promise<string | null> {
-  const configured = process.env.SECRET58_OPERATOR_WORKSPACE_ID?.trim();
-  if (configured) {
-    const ws = await prisma.workspace.findUnique({ where: { id: configured }, select: { id: true } });
-    if (ws) return ws.id;
-  }
-  const operator = await prisma.user.findFirst({ where: { isOperator: true }, orderBy: { createdAt: "asc" } });
-  return operator?.workspaceId ?? null;
-}
 
 export async function POST(request: Request) {
   if (!(await hitRateLimit(`kontakt:${clientIp(request)}`, 5, 3600))) {

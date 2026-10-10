@@ -608,6 +608,7 @@ h2.sec-title{
 .brain-sec .cap{position:absolute; left:50%; bottom:4%; transform:translateX(-50%); margin:0; font-size:.8rem; color:var(--dim); white-space:nowrap; z-index:2;}
 @media(max-width:52rem){
   .brain-sec .port{max-width:8.5rem; font-size:.68rem; padding:.32rem .5rem;}
+}
 
 /* ============================================================
    Ablauf
@@ -837,10 +838,17 @@ h2.sec-title{
 }
 </style>
 <style id="app-ausgeblendet">
-/* Ausgeblendet, bis die Schnittstellen in der App nachgebaut sind (siehe scripts/import-zentrale.mjs). */
-#s58open, #s58panel, [data-openchat], .s58-contact-row:has([data-openchat]),
-#skillagentform, #terminbox, div:has(> #newsletterform) { display: none !important; }
+/* Newsletter ausgeblendet, bis ein E-Mail-Versand für die Bestätigungs-Mail (Double-Opt-in) eingerichtet ist. */
+div:has(> #newsletterform) { display: none !important; }
 </style>
+<script id="app-webseite-status">
+/* Skill-Anfrage nur anzeigen, wenn die KI auf der Startseite freigeschaltet ist (WEBSITE_KI=true). */
+addEventListener("DOMContentLoaded", function () {
+  fetch("/api/webseite/status", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d.ki) { var f = document.getElementById("skillagentform"); if (f) f.style.display = "none"; }
+  }).catch(function () {});
+});
+</script>
 </head>
 <body>
 <a class="skip" href="#leistungen">Zum Inhalt springen</a>
@@ -1902,6 +1910,75 @@ h2.sec-title{
       status.textContent='Keine Verbindung zum Server. Bitte später noch einmal versuchen.';
     } finally {
       knopf.disabled=false;
+    }
+  });
+})();
+</script>
+<script>
+(function(){
+  const freiZiel=document.getElementById('termin-frei-liste');
+  const anfrageForm=document.getElementById('terminanfrageform');
+  if(!freiZiel || !anfrageForm) return;
+  const esc=(s)=>String(s).replace(/[&<>]/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const idFeld=document.getElementById('ta-id');
+  const gewaehltAnzeige=document.getElementById('ta-gewaehlt');
+  const status=document.getElementById('ta-status');
+  const knopf=document.getElementById('ta-senden');
+
+  fetch('/api/termine/frei')
+    .then((r)=>(r.ok ? r.json() : Promise.reject(r.status)))
+    .then((d)=>{
+      const liste=d.termine || [];
+      if(!liste.length){
+        freiZiel.innerHTML='<p style="margin:0;font-size:.88rem;color:var(--dim)">Aktuell keine freien Zeitfenster — bitte direkt schreiben.</p>';
+        return;
+      }
+      freiZiel.innerHTML=liste.map((t)=>
+        '<button type="button" class="s58-btn termin-slot" data-id="'+esc(t.id)+'" data-label="'+esc(t.datum)+' um '+esc(t.uhrzeit)+' Uhr" style="width:auto;margin:.2rem .3rem .2rem 0;">'+esc(t.datum)+' · '+esc(t.uhrzeit)+'</button>'
+      ).join('');
+      freiZiel.querySelectorAll('.termin-slot').forEach((btn)=>{
+        btn.addEventListener('click', ()=>{
+          idFeld.value=btn.dataset.id;
+          gewaehltAnzeige.textContent='Gewählt: '+btn.dataset.label;
+          anfrageForm.style.display='grid';
+          anfrageForm.scrollIntoView({behavior:'smooth', block:'center'});
+        });
+      });
+    })
+    .catch(()=>{
+      freiZiel.innerHTML='<p style="margin:0;font-size:.88rem;color:var(--dim)">Freie Termine konnten nicht geladen werden.</p>';
+    });
+
+  anfrageForm.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const daten={
+      name: document.getElementById('ta-name').value.trim(),
+      email: document.getElementById('ta-email').value.trim(),
+      nachricht: document.getElementById('ta-nachricht').value.trim()
+    };
+    if(!daten.name || !daten.email){
+      status.textContent='Bitte Name und E-Mail-Adresse angeben.';
+      return;
+    }
+    knopf.disabled=true;
+    const alterText=knopf.textContent;
+    knopf.textContent='Wird angefragt …';
+    status.textContent='';
+    try{
+      const antwort=await fetch('/api/termine/'+encodeURIComponent(idFeld.value)+'/anfragen',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(daten)});
+      const ergebnis=await antwort.json().catch(()=>({}));
+      if(antwort.ok){
+        status.textContent=ergebnis.meldung || 'Danke, die Anfrage ist angekommen.';
+        anfrageForm.reset();
+        anfrageForm.style.display='none';
+      } else {
+        status.textContent=ergebnis.meldung || 'Das hat nicht geklappt. Bitte noch einmal versuchen.';
+      }
+    } catch {
+      status.textContent='Keine Verbindung zum Server. Bitte später noch einmal versuchen.';
+    } finally {
+      knopf.disabled=false;
+      knopf.textContent=alterText;
     }
   });
 })();

@@ -769,3 +769,37 @@ model PublishJob {
   @@index([contentItemId])
   @@map("publish_jobs")
 }
+
+/// Terminfenster für Erstgespräche (Startseite der Zentrale). Der Betreiber
+/// legt freie Termine an; Besucher fragen einen an; der Betreiber bestätigt
+/// oder gibt ihn wieder frei. datum/uhrzeit wie in der Zentrale (Ortszeit
+/// Europe/Berlin), startsAt für Sortierung und „nicht in der Vergangenheit“.
+model WebsiteAppointment {
+  id             String    @id @default(cuid())
+  datum          String
+  uhrzeit        String
+  startsAt       DateTime
+  notiz          String    @default("")
+  /// FREI | ANGEFRAGT | BESTAETIGT
+  status         String    @default("FREI")
+  kundeName      String?
+  kundeEmail     String?
+  kundeNachricht String    @default("")
+  angefragtAm    DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@index([status, startsAt])
+  @@map("website_appointments")
+}
+
+/// Fragen an den Webseiten-Chat (nur mit freigeschalteter KI), damit echte
+/// Fragen im Betreiberbereich sichtbar sind.
+model WebsiteChatEntry {
+  id        String   @id @default(cuid())
+  frage     String
+  antwort   String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("website_chat_entries")
+}

@@ -73,10 +73,11 @@ for (const [file, route] of Object.entries(PAGES)) {
  *  - Asset-Pfade /assets/ → /zentrale/assets/
  *  - Links auf Systemseiten der alten Zentrale auf App-Gegenstücke
  *  - Presse/Rechte/Sicherheit-Links entfernt (Seiten nicht übernommen)
- *  - Chat, Skill-Anfrage, Terminbuchung und Newsletter ausgeblendet, bis
- *    ihre Schnittstellen in der App nachgebaut sind (Kontaktformular,
- *    Kern-Bild und Demo-Planer laufen über /api/kontakt, /api/agenten,
- *    /api/demo/plan der App).
+ *  - Alle Funktionen laufen über Schnittstellen der App: /api/kontakt,
+ *    /api/agenten, /api/demo/plan, /api/chat, /api/skill-agent,
+ *    /api/termine/…; nur der Newsletter bleibt ausgeblendet (braucht
+ *    E-Mail-Versand für die Bestätigung). Die Skill-Anfrage blendet sich
+ *    aus, solange die KI auf der Startseite nicht freigeschaltet ist.
  */
 const START_LINKS = [
   ...LINKS,
@@ -92,16 +93,27 @@ const START_LINKS = [
   ['        <a href="/sicherheit">Sicherheit</a>\n', ""], // lädt Daten vom alten Zentrale-Server
 ];
 const AUSGEBLENDET = `<style id="app-ausgeblendet">
-/* Ausgeblendet, bis die Schnittstellen in der App nachgebaut sind (siehe scripts/import-zentrale.mjs). */
-#s58open, #s58panel, [data-openchat], .s58-contact-row:has([data-openchat]),
-#skillagentform, #terminbox, div:has(> #newsletterform) { display: none !important; }
+/* Newsletter ausgeblendet, bis ein E-Mail-Versand für die Bestätigungs-Mail (Double-Opt-in) eingerichtet ist. */
+div:has(> #newsletterform) { display: none !important; }
 </style>
+<script id="app-webseite-status">
+/* Skill-Anfrage nur anzeigen, wenn die KI auf der Startseite freigeschaltet ist (WEBSITE_KI=true). */
+addEventListener("DOMContentLoaded", function () {
+  fetch("/api/webseite/status", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d.ki) { var f = document.getElementById("skillagentform"); if (f) f.style.display = "none"; }
+  }).catch(function () {});
+});
+</script>
 </head>`;
 let start = readFileSync(path.join(src, "index.html"), "utf8");
+// Fehler der Zentrale (seit 17.09., ed64696): dieser @media-Block wird nie
+// geschlossen — dadurch gilt am Desktop die gesamte Gestaltung ab „Ablauf“
+// (inkl. Chat und Seitenfuß) nicht. Eine fehlende Klammer ergänzen.
+const OFFENER_BLOCK = "@media(max-width:52rem){\n  .brain-sec .port{max-width:8.5rem; font-size:.68rem; padding:.32rem .5rem;}\n";
+if (!start.includes(OFFENER_BLOCK)) throw new Error("Bekannter CSS-Fehler nicht gefunden — Startseite geändert? Bitte prüfen.");
+start = start.replace(OFFENER_BLOCK, OFFENER_BLOCK + "}\n");
 for (const [from, to] of START_LINKS) start = start.split(from).join(to);
 start = start.replace("</head>", AUSGEBLENDET);
-// Das Termin-Skript fragt schon beim Laden /api/termine/frei ab — bis zur
-// Terminbuchung in der App wird dieser <script>-Block nicht übernommen.
-start = start.replace(/<script>(?:(?!<\/script>)[\s\S])*?\/api\/termine\/frei[\s\S]*?<\/script>\n?/, "");
+
 writeFileSync(path.join(out, "seiten", "start.html"), start);
 console.log("index.html → / (Besucher)");

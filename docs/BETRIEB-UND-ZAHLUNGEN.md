@@ -18,7 +18,7 @@ Rechtsberatung und ersetzt weder AGB noch Datenschutzerklärung.
 | KI-Kontext | Agenten erhalten nur Daten des eigenen Workspaces. Der Webseiten-Assistent erhält nur öffentliche Markenangaben. |
 | Hintergrundjobs | Es gibt keine zeitgesteuerten Hintergrundjobs; alle Agenten laufen in Anfragen des angemeldeten Kunden. |
 | Export / Löschung | `Einstellungen → Meine Daten`: JSON-Export, endgültige Löschung des Arbeitsbereichs inkl. Dateien (Passwort + „LÖSCHEN“). |
-| Betreiber | Konto nur über `/setup` mit `OPERATOR_SETUP_TOKEN` (mind. 32 Zeichen), nur solange noch kein Betreiber existiert. Kein einfaches Admin-Passwort. |
+| Betreiber | Konto nur über `/setup` mit `OPERATOR_SETUP_TOKEN` (mind. 32 Zeichen), nur solange noch kein Betreiber existiert. Alternativ (Datenbank von außen nicht erreichbar, z. B. Render): bereits registriertes Konto über `OPERATOR_PROMOTE_EMAIL` beim Serverstart befördern — ebenfalls nur, solange es keinen Betreiber gibt. Kein einfaches Admin-Passwort. |
 | Support-Zugriff | **Nicht umgesetzt.** Der Betreiber hat keine Ansicht auf Kundeninhalte. Ein autorisierter, befristeter und protokollierter Supportzugang wäre eine eigene Erweiterung. |
 
 Bestehende Kundenkonten aus dem früheren Einzelzugang (`OWNER_ACCESS_KEY`,

@@ -16,7 +16,7 @@
     "preview:seed": "tsx scripts/preview-seed.ts",
     "db:use-postgres": "node scripts/use-postgres.mjs",
     "build:server": "node scripts/use-postgres.mjs && prisma generate && next build",
-    "start:server": "prisma db push --skip-generate && next start",
+    "start:server": "prisma db push --skip-generate && node scripts/promote-operator.mjs && next start",
     "worker": "tsx scripts/publish-worker.ts",
     "test:worker": "tsx --test --test-concurrency=1 tests/worker.test.ts"
   },

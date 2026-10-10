@@ -20,5 +20,42 @@
   "errorInvalidState": "Verbindung fehlgeschlagen (ungültiger Sicherheitscode). Bitte erneut versuchen.",
   "errorExchangeFailed": "Verbindung fehlgeschlagen. Zugangsdaten prüfen und erneut versuchen.",
   "errorUnknownPlatform": "Unbekannte Plattform.",
-  "encryptionKeyMissingNotice": "Hinweis: TOKEN_ENCRYPTION_KEY ist noch nicht gesetzt — Konten können erst verbunden werden, sobald diese Umgebungsvariable in Render eingetragen ist."
+  "encryptionKeyMissingNotice": "Hinweis: TOKEN_ENCRYPTION_KEY ist noch nicht gesetzt — Konten können erst verbunden werden, sobald diese Umgebungsvariable in Render eingetragen ist.",
+  "composio": {
+    "title": "Konto verbinden über Composio",
+    "subtitle": "Alternative zur direkten Anbindung: Du meldest dich bei der Plattform an, Composio verwahrt den Zugang, SECRET 58 ordnet das Konto nur deinem Arbeitsbereich zu. Aktuell nur Verbinden und lesender Zugriffstest – darüber wird nichts veröffentlicht.",
+    "serverNotSetUp": "Noch nicht eingerichtet: Der Betreiber hat Composio auf dem Server noch nicht aktiviert. Verbinden ist erst danach möglich.",
+    "connectedBanner": "{platform} über Composio verbunden. Starte jetzt den Lesetest.",
+    "accountLabel": "Konto",
+    "lastTestLabel": "Letzter Lesetest",
+    "lastErrorLabel": "Letzter Fehler",
+    "statusNotSetUp": "Noch nicht eingerichtet",
+    "statusNotConnected": "Nicht verbunden",
+    "statusPending": "Anmeldung begonnen",
+    "statusFailed": "Verbindung fehlgeschlagen",
+    "statusConnectedUntested": "Verbunden – Lesetest offen",
+    "statusReadOk": "Verbunden – Lesen geprüft",
+    "statusReadFailed": "Verbunden – Lesetest fehlgeschlagen",
+    "notSetUpHint": "Für diese Plattform fehlt die Composio-Einrichtung auf dem Server.",
+    "connectButton": "Konto verbinden",
+    "renewButton": "Verbindung erneuern",
+    "testButton": "Lesetest starten",
+    "disconnectButton": "Verbindung trennen",
+    "renewConfirm": "Neu anmelden? Die bisherige Verbindung bleibt bestehen, bis die neue Anmeldung abgeschlossen ist.",
+    "disconnectConfirm": "{platform} wirklich trennen? Die Verbindung wird auch bei Composio gelöscht.",
+    "testOk": "Lesezugriff funktioniert ({account}). Das ist noch kein Veröffentlichungstest.",
+    "genericError": "Das hat nicht geklappt. Bitte erneut versuchen.",
+    "compareTitle": "Was läuft worüber?",
+    "compareNative": "Direkte Anbindung (oben): Anmeldung direkt bei YouTube, TikTok, Instagram, Facebook und LinkedIn; der Veröffentlichungsweg ist dort vorbereitet und wird nur nach deiner Freigabe genutzt.",
+    "compareComposio": "Composio (hier): Anmeldung über Composio für Instagram, Facebook-Seite, LinkedIn und YouTube; derzeit nur lesender Zugriffstest.",
+    "compareReadNotPublish": "Ein erfolgreicher Lesetest beweist nur den Zugriff – nicht, dass Veröffentlichen funktioniert.",
+    "errors": {
+      "invalid_state": "Die Rückmeldung passte nicht zu deiner Anmeldung (Sicherheitscode). Bitte erneut verbinden.",
+      "expired": "Die Anmeldung hat zu lange gedauert. Bitte erneut verbinden.",
+      "mismatch": "Das zurückgemeldete Konto gehört nicht zu diesem Arbeitsbereich und wurde nicht übernommen.",
+      "not_active": "Die Plattform hat den Zugriff nicht bestätigt oder er wurde abgelehnt.",
+      "composio_error": "Composio war nicht erreichbar oder hat einen Fehler gemeldet. Bitte später erneut versuchen.",
+      "unknown": "Verbindung fehlgeschlagen."
+    }
+  }
 }

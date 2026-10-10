@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { resolveSessionToken, SESSION_COOKIE } from "@/lib/auth/session";
+import { VISITOR_HOME_FILE, ZENTRALE_PAGES } from "@/lib/zentralePages";
 
 /**
  * Zugriffsschutz für die gesamte Anwendung (Mehrkundenbetrieb).
@@ -18,6 +19,8 @@ import { resolveSessionToken, SESSION_COOKIE } from "@/lib/auth/session";
  */
 const PUBLIC_PREFIXES = [
   "/buy",
+  "/social-media-ki",
+  "/zentrale/",
   "/login",
   "/signup",
   "/setup",
@@ -30,6 +33,14 @@ const PUBLIC_PREFIXES = [
   "/api/widget/",
   "/api/media-signed/",
   "/api/locale",
+  "/api/health",
+  "/api/kontakt",
+  "/api/demo/plan",
+  "/api/agenten",
+  "/api/skill-agent",
+  "/api/termine/",
+  "/api/webseite/status",
+  "/api/newsletter/",
   "/widget.js",
   "/_next",
   "/favicon.ico",
@@ -43,7 +54,11 @@ const PUBLIC_PREFIXES = [
 /** Diese Endpunkte werden von fremden Ursprüngen aufgerufen und prüfen sich selbst. */
 const CROSS_ORIGIN_ALLOWED = ["/api/stripe/webhook", "/api/stripe/connect-webhook", "/api/widget/"];
 
+/** Nur exakt diese Pfade (ein Präfix würde z. B. /api/chatbot mit öffnen). */
+const PUBLIC_EXACT = new Set(["/api/chat"]);
+
 function isPublic(pathname: string): boolean {
+  if (pathname in ZENTRALE_PAGES || PUBLIC_EXACT.has(pathname)) return true;
   return PUBLIC_PREFIXES.some((prefix) => pathname === prefix.replace(/\/$/, "") || pathname.startsWith(prefix));
 }
 
@@ -79,12 +94,26 @@ export async function proxy(request: NextRequest) {
 
   const user = await resolveSessionToken(request.cookies.get(SESSION_COOKIE)?.value);
   if (!user) {
+    // Rückkehr von Composio ohne Sitzung (auf dem Handy öffnet die
+    // Plattform-App die Anmeldung oft in einem anderen Browser): erst
+    // anmelden, dann denselben Rückkehr-Link abschließen.
+    if (pathname === "/api/composio/callback" && method === "GET") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/login";
+      url.search = `?next=${encodeURIComponent(pathname + request.nextUrl.search)}`;
+      return NextResponse.redirect(url);
+    }
     if (pathname.startsWith("/api/")) {
       return NextResponse.json({ error: "Anmeldung erforderlich." }, { status: 401 });
     }
     const url = request.nextUrl.clone();
+    if (pathname === "/") {
+      // Besucher ohne Konto sehen unter „/“ die Startseite der Zentrale.
+      url.pathname = VISITOR_HOME_FILE;
+      return NextResponse.rewrite(url);
+    }
     url.pathname = "/login";
-    url.search = pathname === "/" ? "" : `?next=${encodeURIComponent(pathname)}`;
+    url.search = `?next=${encodeURIComponent(pathname)}`;
     return NextResponse.redirect(url);
   }
 

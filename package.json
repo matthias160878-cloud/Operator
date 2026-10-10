@@ -11,9 +11,14 @@
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/unit.test.ts",
+    "test": "tsx --test tests/unit.test.ts && npm run test:worker",
     "test:integration": "node --test --test-concurrency=1 tests/integration.test.mjs",
-    "preview:seed": "tsx scripts/preview-seed.ts"
+    "preview:seed": "tsx scripts/preview-seed.ts",
+    "db:use-postgres": "node scripts/use-postgres.mjs",
+    "build:server": "node scripts/use-postgres.mjs && prisma generate && next build",
+    "start:server": "prisma db push --skip-generate && node scripts/promote-operator.mjs && next start",
+    "worker": "tsx scripts/publish-worker.ts",
+    "test:worker": "tsx --test --test-concurrency=1 tests/worker.test.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -22,7 +27,7 @@
     "@prisma/client": "^6.19.3",
     "clsx": "^2.1.1",
     "lucide-react": "^1.47.0",
-    "next": "16.3.5",
+    "next": "16.3.8",
     "next-intl": "^4.14.6",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -36,7 +41,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.3.5",
+    "eslint-config-next": "16.3.8",
     "prisma": "^6.19.3",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",

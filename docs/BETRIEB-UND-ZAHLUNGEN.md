@@ -18,7 +18,7 @@ Rechtsberatung und ersetzt weder AGB noch Datenschutzerklärung.
 | KI-Kontext | Agenten erhalten nur Daten des eigenen Workspaces. Der Webseiten-Assistent erhält nur öffentliche Markenangaben. |
 | Hintergrundjobs | Es gibt keine zeitgesteuerten Hintergrundjobs; alle Agenten laufen in Anfragen des angemeldeten Kunden. |
 | Export / Löschung | `Einstellungen → Meine Daten`: JSON-Export, endgültige Löschung des Arbeitsbereichs inkl. Dateien (Passwort + „LÖSCHEN“). |
-| Betreiber | Konto nur über `/setup` mit `OPERATOR_SETUP_TOKEN` (mind. 32 Zeichen), nur solange noch kein Betreiber existiert. Kein einfaches Admin-Passwort. |
+| Betreiber | Konto nur über `/setup` mit `OPERATOR_SETUP_TOKEN` (mind. 32 Zeichen), nur solange noch kein Betreiber existiert. Alternativ (Datenbank von außen nicht erreichbar, z. B. Render): bereits registriertes Konto über `OPERATOR_PROMOTE_EMAIL` beim Serverstart befördern — ebenfalls nur, solange es keinen Betreiber gibt. Kein einfaches Admin-Passwort. |
 | Support-Zugriff | **Nicht umgesetzt.** Der Betreiber hat keine Ansicht auf Kundeninhalte. Ein autorisierter, befristeter und protokollierter Supportzugang wäre eine eigene Erweiterung. |
 
 Bestehende Kundenkonten aus dem früheren Einzelzugang (`OWNER_ACCESS_KEY`,
@@ -31,7 +31,9 @@ Die zentrale Definition steht in `src/lib/plans.ts`. Verkaufsseite (`/buy`),
 Paketseite (`/billing`), Checkout, Berechtigungen und Kontingente greifen alle
 darauf zu.
 
-* **Abgerechnet wird über den Stripe-Preis** (`STRIPE_PRICE_ID_PRO` / `STRIPE_PRICE_ID_MAXI`).
+* **Abgerechnet wird über den Stripe-Preis** (`STRIPE_PRICE_ID_PRO` / `_MAXI` monatlich,
+  `STRIPE_PRICE_ID_PRO_YEAR` / `_MAXI_YEAR` jährlich). Kontingente gelten auch im Jahresabo
+  je Kalendermonat; nicht genutzte Mengen verfallen am Monatsende.
   Die Anwendung prüft vor jedem Checkout, dass er zu den bestätigten Konditionen passt.
   (Die Webhook-Verarbeitung kann technisch auch Einmalzahlungen, sie werden aber nicht verkauft.)
 * **Preise (bestätigt am 7. Oktober 2026):** Pro **590 € netto**, Maxi **797 € netto**,
@@ -164,6 +166,49 @@ Summen werden je Währung getrennt angezeigt, Testdaten (`livemode=false`) sind 
 * Ein **Telefonassistent ist nicht umgesetzt** (dafür wären Telefonie-Anbindung,
   Rufnummer, Einwilligungen und Datenschutzabläufe nötig).
 
+## 7b. Composio: „Konto verbinden“ (nur lesender Zugriffstest)
+
+Composio ist eine **zusätzliche** Anmeldemöglichkeit neben den nativen
+OAuth-Anbindungen (`src/lib/oauth/providers.ts`). Über Composio wird in
+SECRET 58 **nichts veröffentlicht**; es gibt nur Verbinden, Lesetest,
+Erneuern und Trennen. Eine Composio-Verbindung in Claude/Claude Code ist
+davon unabhängig und beweist keine Integration in diese Anwendung.
+
+| Funktion | Native OAuth | Composio |
+|---|---|---|
+| Plattformen | YouTube, TikTok, Instagram, Facebook, LinkedIn | Instagram, Facebook-Seite, LinkedIn, YouTube |
+| Zugangstoken | verschlüsselt in eigener DB (`TOKEN_ENCRYPTION_KEY`) | nur bei Composio; DB speichert Konto-ID + Status |
+| Veröffentlichen | vorbereitet, nur nach Freigabe | nicht vorgesehen |
+| Lesetest | — | ja (`/api/composio/[id]/test`) |
+
+Ablauf (`src/lib/composio/`, `src/app/api/composio/`):
+
+1. „Konto verbinden“ → `POST /api/composio/connect` → Composio
+   `POST /api/v3/connected_accounts/link` mit `user_id = <COMPOSIO_USER_PREFIX>-ws-<workspaceId>`
+   und einem einmaligen Sicherheitscode im Rückkehr-Link (nur HMAC-Hash in der DB, 15 Min. gültig).
+2. Rückkehr `GET /api/composio/callback` verlangt die Sitzung desselben Kunden
+   (ohne Sitzung: erst Anmeldung, dann derselbe Link), prüft Sicherheitscode,
+   Konto-ID und fragt das Konto bei Composio nach: `user_id` und Toolkit müssen
+   passen, Status muss `ACTIVE` sein. Sonst wird nichts zugeordnet.
+3. Erneuern behält die alte Verbindung, bis die neue aktiv ist, und löscht sie dann bei Composio.
+4. Trennen und Kontolöschung löschen die Verbindung auch bei Composio.
+5. Grenzen: 10 Verbindungsversuche/Stunde, 30 Lesetests/Tag je Arbeitsbereich. Audit-Log `composio.*`.
+
+Einrichtung (Betreiber, nur Server-Umgebung, nie im Repo/Chat):
+
+- `COMPOSIO_API_KEY` — Projekt-Schlüssel aus platform.composio.dev.
+- `COMPOSIO_AUTH_CONFIG_INSTAGRAM|FACEBOOK|LINKEDIN|YOUTUBE` — Auth-Config-IDs (`ac_…`);
+  ohne Eintrag erscheint die Plattform als „Noch nicht eingerichtet“.
+- `COMPOSIO_USER_PREFIX` — z. B. `s58test` (Staging) bzw. `s58live`, damit sich Umgebungen nicht mischen.
+- `PUBLIC_APP_URL` — **Pflicht hinter Render/Proxy**, sonst kann die Rückkehr-Adresse falsch sein.
+- Optional `COMPOSIO_READ_TOOL_<PLATTFORM>`: Lese-Werkzeug überschreiben. Dokumentiert bestätigt sind
+  `INSTAGRAM_GET_USER_INFO` und `YOUTUBE_GET_CHANNEL_STATISTICS`; `LINKEDIN_GET_MY_INFO` und
+  `FACEBOOK_LIST_MANAGED_PAGES` vor dem ersten echten Test im Composio-Dashboard prüfen.
+
+Ob der Schlüssel wirkt, zeigt „Integrationen“ (lesender Aufruf `GET /api/v3/auth_configs`).
+Geprüft ist der Ablauf nur gegen eine lokale Attrappe (`tests/fake-services.mjs`) — **kein echter
+Composio-Aufruf, kein echtes Plattformkonto**.
+
 ## 7a. Missbrauchsschutz
 
 * Ratenbegrenzung über die Datenbank. Die Client-Adresse ist der Eintrag, den der
@@ -221,14 +266,63 @@ Empfohlener Aufbau (Windows Server 2022/2025):
    - Wiederherstellung regelmäßig testen
 8. **Updates:** `git pull`, `npm ci`, Migrationen, Build, Dienst neu starten.
 
+## 8a. Private Staging-Umgebung auf Render (PostgreSQL + persistente Medien)
+
+Lokal und in den Tests bleibt SQLite. Für den Serverbetrieb stellt
+`scripts/use-postgres.mjs` das Schema beim Build auf PostgreSQL um.
+
+| Einstellung | Wert |
+|---|---|
+| Build Command | `npm ci && npm run build:server` |
+| Start Command | `npm run start:server` (`prisma db push` ohne `--accept-data-loss`, dann `next start`) |
+| Health Check Path | `/api/health` (prüft Datenbank und Medienablage, gibt keine Inhalte preis) |
+| Persistent Disk | Mount `/var/data`, `MEDIA_STORAGE_DIR=/var/data/media` |
+| Datenbank | Render PostgreSQL 16, `DATABASE_URL` = **interne** Verbindungsadresse |
+
+Umgebungsvariablen nur im Render-Dashboard setzen, Geheimnisse dort mit „Generate“
+erzeugen, nie im Chat oder Repo: `DATABASE_URL`, `TOKEN_ENCRYPTION_KEY`,
+`MEDIA_URL_SECRET`, `OPERATOR_SETUP_TOKEN`. Ohne Geheimnis gesetzt:
+`NODE_ENV=production`, `PUBLIC_APP_URL`, `SITE_NOINDEX=true` (kein Suchmaschinen-Index),
+`SIGNUP_ALLOWED_EMAILS` (Komma-Liste; nur diese Adressen dürfen sich registrieren),
+`COMPOSIO_USER_PREFIX=s58test`. `PACKAGE_TERMS_CONFIRMED` bleibt im Staging ungesetzt
+(kein Verkauf).
+
+Versand zum Termin: entweder `PUBLISH_WORKER=inline` (im Webdienst; schläft im
+Gratistarif mit) oder ein eigener Render-Background-Worker mit Build
+`npm ci && npm run build:server`, Start `npm run worker` und denselben Variablen
+(`DATABASE_URL`, `TOKEN_ENCRYPTION_KEY`, `MEDIA_URL_SECRET`, `PUBLIC_APP_URL`).
+Nie beide gleichzeitig. `.npmrc` (`include=dev`) sorgt dafür, dass Prisma/tsx auch
+mit `NODE_ENV=production` installiert werden.
+
+Sicherung und Wiederherstellung:
+
+- Render-PostgreSQL (kostenpflichtiger Plan) bietet Point-in-Time-Recovery im Dashboard;
+  zusätzlich vor jeder Schemaänderung `pg_dump -Fc` über die externe Adresse ziehen.
+- Persistente Disks werden von Render täglich als Snapshot gesichert (Wiederherstellung im Dashboard).
+- Geprüft am 10.10.2026 lokal mit PostgreSQL 16: `pg_dump -Fc` → Datenbank gelöscht →
+  `pg_restore --no-owner` → Anmeldung und Daten wieder vorhanden, `/api/health` ok.
+  Eine Wiederherstellung **auf Render** ist damit noch nicht geprüft.
+- Integrationssuite gegen PostgreSQL: leere Datenbank anlegen, `DATABASE_URL=… npm run build:server`,
+  dann `TEST_DATABASE_URL=… npm run test:integration` (am 10.10.2026: 25/25).
+
 ## 9. Stripe-Einrichtung (Betreiber, zuerst im Testmodus)
 
 0. **Stripe Tax aktivieren** (Einstellungen → Steuern): Ursprungsadresse,
    Steuerregistrierungen (z. B. Deutschland; OSS für EU-Privatkunden), Produktsteuercode
    für Software/SaaS. Stripe Tax ist bei Stripe kostenpflichtig.
-1. Im Testmodus zwei Produkte *Pro* (590,00 €) und *Maxi* (797,00 €) mit je einem
-   **monatlich wiederkehrenden** Preis anlegen, **Steuerverhalten „exklusive Steuer“**.
-   Die Preis-IDs in `STRIPE_PRICE_ID_PRO/MAXI` eintragen.
+1. Im Testmodus zwei Produkte *Pro* und *Maxi* mit je **zwei wiederkehrenden Preisen**
+   anlegen, alle in EUR mit **Steuerverhalten „exklusive Steuer“**:
+
+   | Variable | Preis | Intervall |
+   |---|---|---|
+   | `STRIPE_PRICE_ID_PRO` | 590,00 € | monatlich |
+   | `STRIPE_PRICE_ID_MAXI` | 797,00 € | monatlich |
+   | `STRIPE_PRICE_ID_PRO_YEAR` | 6.018,00 € | jährlich |
+   | `STRIPE_PRICE_ID_MAXI_YEAR` | 8.129,40 € | jährlich |
+
+   Jahrespreis = 12 Monatsbeträge minus 15 %. Der Checkout verweigert jeden Preis, dessen
+   Betrag, Währung, Steuerart oder Intervall nicht genau passt. Fehlt ein Jahrespreis, ist
+   nur das Jahresabo dieses Pakets gesperrt („noch nicht eingerichtet“).
 2. Webhook-Endpunkt (dein Konto) auf `/api/stripe/webhook` mit diesen Events:
    - `checkout.session.completed`
    - `checkout.session.async_payment_succeeded`

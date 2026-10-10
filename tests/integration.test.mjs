@@ -4,6 +4,9 @@
  *
  *   npm run build && npm run test:integration
  *
+ * Gegen PostgreSQL (Build vorher mit `npm run build:server` auf derselben URL):
+ *   TEST_DATABASE_URL=postgresql://…/s58_test npm run test:integration
+ *
  * Geprüft wird über HTTP — inklusive Proxy, Sitzungen, Webhook-Signaturen.
  */
 import { test, before, after } from "node:test";
@@ -94,8 +97,12 @@ let A, B;
 before(async () => {
   fakes = await startFakeServices();
   workdir = mkdtempSync(path.join(tmpdir(), "s58-it-"));
-  const dbUrl = `file:${path.join(workdir, "test.db")}`;
-  execFileSync("npx", ["prisma", "db", "push", "--skip-generate"], { env: { ...process.env, DATABASE_URL: dbUrl }, stdio: "ignore" });
+  // Standard: SQLite-Datei. Mit TEST_DATABASE_URL (eigene, leere Test-Datenbank!)
+  // läuft dieselbe Suite gegen PostgreSQL (Datenbank muss leer sein).
+  const pgUrl = process.env.TEST_DATABASE_URL;
+  const dbUrl = pgUrl ?? `file:${path.join(workdir, "test.db")}`;
+  const pushArgs = ["prisma", "db", "push", "--skip-generate"];
+  execFileSync("npx", pushArgs, { env: { ...process.env, DATABASE_URL: dbUrl }, stdio: "ignore" });
   prisma = new PrismaClient({ datasources: { db: { url: dbUrl } } });
   const env = {
     ...process.env,
@@ -110,6 +117,7 @@ before(async () => {
     STRIPE_CONNECT_WEBHOOK_SECRET: WHSEC_CONNECT,
     STRIPE_PRICE_ID_PRO: "price_pro",
     STRIPE_PRICE_ID_MAXI: "price_maxi",
+    STRIPE_PRICE_ID_PRO_YEAR: "price_pro_year",
     PACKAGE_TERMS_CONFIRMED: "true",
     // Testangaben — keine echten Anbieterdaten
     IMPRESSUM_NAME: "Test Anbieter",
@@ -122,6 +130,13 @@ before(async () => {
     ANTHROPIC_BASE_URL: `http://127.0.0.1:${fakes.stripePort}`,
     OPENAI_API_KEY: "",
     ALLOW_PRIVATE_SITE_FETCH: "true",
+    COMPOSIO_API_KEY: "ck_test_fake",
+    COMPOSIO_BASE_URL: `http://127.0.0.1:${fakes.stripePort}`,
+    COMPOSIO_AUTH_CONFIG_INSTAGRAM: "ac_instagram",
+    COMPOSIO_AUTH_CONFIG_YOUTUBE: "ac_youtube",
+    RESEND_API_KEY: "re_test_fake",
+    EMAIL_FROM: "Secret 58 <newsletter@example.test>",
+    EMAIL_API_BASE: `http://127.0.0.1:${fakes.stripePort}`,
   };
   server = spawn("npx", ["next", "start", "-p", String(PORT), "-H", "127.0.0.1"], { env, stdio: ["ignore", "pipe", "pipe"], detached: true });
   server.stderr.on("data", (d) => process.env.DEBUG_SERVER && process.stderr.write(d));
@@ -619,4 +634,477 @@ test("Datenlöschung: eigener Arbeitsbereich wird vollständig entfernt", async 
   assert.equal(await prisma.workspace.findUnique({ where: { id: ws } }), null);
   assert.equal(await prisma.contentIdea.count({ where: { workspaceId: ws } }), 0);
   assert.equal((await c.req("/api/ideas")).status, 401);
+});
+
+// ---------------------------------------------------------------------------
+// Composio: Verbinden, Zuordnung zum richtigen Kunden, Lesetest, Erneuern, Trennen
+function composioCalls(pathPart, method) {
+  return fakes.calls.filter((c) => c.path.includes(pathPart) && (!method || c.method === method));
+}
+
+/** Startet die Verbindung und liefert die Rückkehr-Adresse (wie Composio sie aufrufen würde). */
+async function composioStart(client, toolkit) {
+  const r = await client.json("/api/composio/connect", { method: "POST", body: { toolkit } });
+  assert.equal(r.status, 200, JSON.stringify(r.data));
+  assert.match(r.data.redirectUrl, /^https:\/\/connect\.composio\.test\/link\/ca_test_\d+$/);
+  const linkCall = composioCalls("/api/v3/connected_accounts/link", "POST").at(-1);
+  const accountId = r.data.redirectUrl.split("/").pop();
+  const callback = new URL(linkCall.composioBody.callback_url);
+  callback.searchParams.set("status", "success");
+  callback.searchParams.set("connected_account_id", accountId);
+  return { accountId, callback: callback.pathname + callback.search, linkBody: linkCall.composioBody };
+}
+
+test("Composio: Seite zeigt Status ehrlich, Server-Schlüssel erscheint nie im Browser", async () => {
+  const page = await A.req("/social-media");
+  assert.equal(page.status, 200);
+  const html = await page.text();
+  assert.ok(html.includes("Konto verbinden über Composio"));
+  assert.ok(html.includes("Noch nicht eingerichtet"), "LinkedIn/Facebook ohne Auth-Config müssen als nicht eingerichtet erscheinen");
+  assert.ok(!html.includes("ck_test_fake") && !html.includes("ac_instagram"), "Schlüssel oder Auth-Config im HTML");
+  const nope = await A.json("/api/composio/connect", { method: "POST", body: { toolkit: "LINKEDIN" } });
+  assert.equal(nope.status, 502);
+  assert.match(nope.data.error, /noch nicht eingerichtet/);
+  const unknown = await A.json("/api/composio/connect", { method: "POST", body: { toolkit: "MYSPACE" } });
+  assert.equal(unknown.status, 400);
+  assert.equal((await new Client().req("/api/composio/connect", { method: "POST", body: { toolkit: "INSTAGRAM" } })).status, 401);
+});
+
+test("Composio: Verbinden ordnet das Konto genau dem eigenen Arbeitsbereich zu", async () => {
+  const wsA = await workspaceIdOf("a@example.test");
+  const { accountId, callback, linkBody } = await composioStart(A, "INSTAGRAM");
+  assert.equal(linkBody.user_id, `s58-ws-${wsA}`);
+  assert.equal(linkBody.auth_config_id, "ac_instagram");
+  assert.equal(linkBody.allow_multiple, false);
+  assert.ok(linkBody.callback_url.startsWith(`${BASE}/api/composio/callback?toolkit=INSTAGRAM&state=`), linkBody.callback_url);
+
+  // B kann A's Rückkehr-Adresse nicht für sich nutzen.
+  const stolen = await B.req(callback);
+  assert.equal(stolen.status, 307);
+  assert.match(stolen.headers.get("location"), /composio_error=invalid_state/);
+  // Ohne Sitzung (z. B. anderer Browser auf dem Handy): erst anmelden, dann derselbe Link.
+  const anon = await new Client().req(callback);
+  assert.equal(anon.status, 307);
+  const loginUrl = new URL(anon.headers.get("location"), BASE);
+  assert.equal(loginUrl.pathname, "/login");
+  assert.equal(loginUrl.searchParams.get("next"), callback);
+
+  const ok = await A.req(callback);
+  assert.equal(ok.status, 307);
+  assert.match(ok.headers.get("location"), /composio_connected=INSTAGRAM/);
+  const row = await prisma.composioConnection.findUniqueOrThrow({ where: { workspaceId_toolkit: { workspaceId: wsA, toolkit: "INSTAGRAM" } } });
+  assert.equal(row.status, "ACTIVE");
+  assert.equal(row.connectedAccountId, accountId);
+  assert.equal(row.stateHash, null);
+  // Zweite Verwendung derselben Rückkehr-Adresse ist wirkungslos.
+  assert.match((await A.req(callback)).headers.get("location"), /composio_error=invalid_state/);
+  assert.equal(await prisma.composioConnection.count({ where: { workspaceId: await workspaceIdOf("b@example.test") } }), 0);
+});
+
+test("Composio: fremdes oder nicht bestätigtes Konto wird nicht übernommen", async () => {
+  const wsA = await workspaceIdOf("a@example.test");
+  const wsB = await workspaceIdOf("b@example.test");
+  const { accountId, callback } = await composioStart(B, "INSTAGRAM");
+  fakes.composio.accounts.get(accountId).user_id = `s58-ws-${wsA}`; // Composio liefert ein Konto eines anderen Kunden
+  assert.match((await B.req(callback)).headers.get("location"), /composio_error=mismatch/);
+  let row = await prisma.composioConnection.findUniqueOrThrow({ where: { workspaceId_toolkit: { workspaceId: wsB, toolkit: "INSTAGRAM" } } });
+  assert.notEqual(row.status, "ACTIVE");
+  assert.equal(row.connectedAccountId, null);
+
+  fakes.composio.nextStatus = "FAILED";
+  try {
+    const second = await composioStart(B, "INSTAGRAM");
+    assert.match((await B.req(second.callback)).headers.get("location"), /composio_error=not_active/);
+  } finally {
+    fakes.composio.nextStatus = "ACTIVE";
+  }
+  row = await prisma.composioConnection.findUniqueOrThrow({ where: { id: row.id } });
+  assert.equal(row.status, "FAILED");
+  assert.ok(row.lastError);
+
+  // Manipulierte Konto-ID in der Rückkehr-Adresse
+  const third = await composioStart(B, "INSTAGRAM");
+  const forged = third.callback.replace(/connected_account_id=[^&]+/, "connected_account_id=ca_test_1");
+  assert.match((await B.req(forged)).headers.get("location"), /composio_error=mismatch/);
+});
+
+test("Composio: Lesetest, Kundentrennung, Erneuern und Trennen", async () => {
+  const wsA = await workspaceIdOf("a@example.test");
+  const row = await prisma.composioConnection.findUniqueOrThrow({ where: { workspaceId_toolkit: { workspaceId: wsA, toolkit: "INSTAGRAM" } } });
+
+  // B sieht und steuert A's Verbindung nicht.
+  assert.equal((await B.json(`/api/composio/${row.id}/test`, { method: "POST" })).status, 404);
+  assert.equal((await B.json(`/api/composio/${row.id}/disconnect`, { method: "POST" })).status, 404);
+
+  const test1 = await A.json(`/api/composio/${row.id}/test`, { method: "POST" });
+  assert.equal(test1.status, 200);
+  assert.equal(test1.data.ok, true);
+  assert.equal(test1.data.label, `konto_${row.connectedAccountId}`);
+  const exec = composioCalls("/api/v3/tools/execute/INSTAGRAM_GET_USER_INFO", "POST").at(-1);
+  assert.equal(exec.composioBody.connected_account_id, row.connectedAccountId);
+  assert.equal(exec.composioBody.user_id, `s58-ws-${wsA}`);
+  assert.equal(composioCalls("/api/v3/tools/execute/", "POST").filter((c) => !/GET|LIST|STATISTICS|INFO/.test(c.path)).length, 0, "nur Lese-Werkzeuge");
+
+  fakes.composio.failExecute = true;
+  try {
+    const test2 = await A.json(`/api/composio/${row.id}/test`, { method: "POST" });
+    assert.equal(test2.data.ok, false);
+    assert.match(test2.data.error, /insufficient scope/);
+  } finally {
+    fakes.composio.failExecute = false;
+  }
+  const html = await (await A.req("/social-media")).text();
+  assert.ok(html.includes("Lesetest fehlgeschlagen"));
+
+  // Erneuern: alte Verbindung bleibt bis zur erfolgreichen Rückkehr, danach gelöscht.
+  const oldId = row.connectedAccountId;
+  const renew = await composioStart(A, "INSTAGRAM");
+  assert.equal(renew.linkBody.allow_multiple, true);
+  assert.equal((await prisma.composioConnection.findUniqueOrThrow({ where: { id: row.id } })).connectedAccountId, oldId);
+  assert.match((await A.req(renew.callback)).headers.get("location"), /composio_connected=INSTAGRAM/);
+  const renewed = await prisma.composioConnection.findUniqueOrThrow({ where: { id: row.id } });
+  assert.equal(renewed.connectedAccountId, renew.accountId);
+  assert.equal(renewed.lastReadTestOk, null);
+  assert.ok(composioCalls(`/api/v3/connected_accounts/${oldId}`, "DELETE").length === 1);
+  assert.equal(fakes.composio.accounts.has(oldId), false);
+
+  const off = await A.json(`/api/composio/${row.id}/disconnect`, { method: "POST" });
+  assert.equal(off.status, 200);
+  const gone = await prisma.composioConnection.findUniqueOrThrow({ where: { id: row.id } });
+  assert.equal(gone.status, "DISCONNECTED");
+  assert.equal(gone.connectedAccountId, null);
+  assert.equal(fakes.composio.accounts.has(renew.accountId), false);
+  assert.equal((await A.json(`/api/composio/${row.id}/test`, { method: "POST" })).status, 409);
+  const audit = await prisma.auditLog.findMany({ where: { workspaceId: wsA, action: { startsWith: "composio." } } });
+  assert.ok(audit.some((a) => a.action === "composio.connected") && audit.some((a) => a.action === "composio.disconnected"));
+});
+
+test("Composio: Kontolöschung entfernt verbundene Konten auch bei Composio", async () => {
+  const c = new Client();
+  const su = await c.json("/api/auth/signup", {
+    method: "POST",
+    headers: { "x-forwarded-for": "10.9.9.9" }, // eigene Adresse, unabhängig von der Registrierungsgrenze der übrigen Tests
+    body: { email: "composio-weg@example.test", password: "sehr-sicheres-passwort-123", name: "W", workspaceName: "Composio Weg", acceptProcessing: true },
+  });
+  assert.equal(su.status, 200, JSON.stringify(su.data));
+  const { accountId, callback } = await composioStart(c, "YOUTUBE");
+  assert.match((await c.req(callback)).headers.get("location"), /composio_connected=YOUTUBE/);
+  assert.ok(fakes.composio.accounts.has(accountId));
+  const del = await c.json("/api/account/delete", { method: "POST", body: { password: "sehr-sicheres-passwort-123", confirm: "LÖSCHEN" } });
+  assert.equal(del.status, 200);
+  assert.equal(fakes.composio.accounts.has(accountId), false);
+});
+
+test("Health-Endpunkt: ohne Anmeldung erreichbar, meldet nur Zustand", async () => {
+  const r = await fetch(`${BASE}/api/health`);
+  assert.equal(r.status, 200);
+  const data = await r.json();
+  assert.deepEqual(data, { ok: true, checks: { datenbank: "ok", medienablage: "ok" } });
+});
+
+test("Verkaufsseite (aus der Zentrale): Pakete aus der App, Kaufweg über Anmeldung, alte Adresse leitet um", async () => {
+  const html = await (await fetch(`${BASE}/buy?plan=maxi`)).text();
+  assert.ok(html.includes('class="zentrale"'), "Zentrale-Gestaltung fehlt");
+  assert.ok(html.includes("Social Media KI") && html.includes("Ehrliche Grenzen"));
+  assert.ok(/590,00\s*€/.test(html) && /797,00\s*€/.test(html), "Preise aus plans.ts fehlen");
+  assert.ok(html.includes('href="/signup?plan=pro"') && html.includes('href="/signup?plan=maxi"'), "Kaufweg ohne Anmeldung falsch");
+  assert.ok(/id="paket-maxi" class="preis-karte[^"]*ausgewaehlt/.test(html), "Vorauswahl wird nicht hervorgehoben");
+  // Jahrespreise für Pro im Test eingerichtet, für Maxi nicht → nur Pro zeigt das Jahresabo.
+  assert.ok(/6\.018,00\s*€/.test(html), "Jahrespreis Pro fehlt");
+  assert.ok(!/8\.129,40\s*€/.test(html), "Jahrespreis Maxi darf ohne eingerichteten Stripe-Preis nicht erscheinen");
+  const angemeldet = await (await A.req("/buy")).text();
+  assert.ok(angemeldet.includes('href="/billing?plan=pro"'));
+  const alt = await fetch(`${BASE}/social-media-ki?vorauswahl=pro`, { redirect: "manual" });
+  assert.equal(alt.status, 307);
+  assert.match(alt.headers.get("location"), /\/buy\?plan=pro/);
+  assert.equal((await fetch(`${BASE}/zentrale/archivo-latin.woff2`)).status, 200);
+});
+
+test("Jahresabo: richtiger Stripe-Preis, Freischaltung per Webhook, Maxi ohne Jahrespreis gesperrt", async () => {
+  const c = new Client();
+  const su = await c.json("/api/auth/signup", {
+    method: "POST",
+    headers: { "x-forwarded-for": "10.9.9.10" },
+    body: { email: "jahr@example.test", password: "sehr-sicheres-passwort-123", name: "J", workspaceName: "Jahresfirma", acceptProcessing: true },
+  });
+  assert.equal(su.status, 200, JSON.stringify(su.data));
+  const ws = await workspaceIdOf("jahr@example.test");
+
+  assert.equal((await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "pro", interval: "woche", confirmed: true } })).status, 400);
+  const maxi = await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "maxi", interval: "year", confirmed: true } });
+  assert.equal(maxi.status, 503);
+  assert.match(maxi.data.error, /Jahresabo .* noch nicht eingerichtet/);
+
+  const r = await c.json("/api/stripe/checkout", { method: "POST", body: { plan: "pro", interval: "year", confirmed: true } });
+  assert.equal(r.status, 200, JSON.stringify(r.data));
+  const call = fakes.calls.filter((x) => x.path === "/v1/checkout/sessions" && x.method === "POST").at(-1);
+  assert.equal(call.params["line_items[0][price]"], "price_pro_year");
+  assert.equal(call.params["mode"], "subscription");
+  assert.equal(call.params["subscription_data[metadata][interval]"], "year");
+  const sessionId = r.data.url.split("/").pop();
+  const order = await prisma.planCheckout.findUniqueOrThrow({ where: { id: sessionId } });
+  assert.equal(order.expectedAmount, 601800);
+
+  const done = await webhook(event("checkout.session.completed", {
+    id: sessionId, object: "checkout.session", mode: "subscription", payment_status: "paid", amount_subtotal: 601800,
+    amount_total: 716142, currency: "eur", customer: "cus_J", payment_intent: null, subscription: "sub_J", metadata: {},
+  }));
+  assert.equal((await done.json()).result, "processed");
+  const plan = await prisma.workspacePlan.findUniqueOrThrow({ where: { workspaceId: ws } });
+  assert.equal(plan.plan, "PRO");
+  assert.equal(plan.stripePriceId, "price_pro_year");
+  const billing = await (await c.req("/billing")).text();
+  assert.ok(billing.includes("Jahresabo"), "aktives Jahresabo wird nicht angezeigt");
+});
+
+test("Freigabe-Workflow: Planen/Veröffentlichen nur nach Freigabe, Änderung entzieht Freigabe, Doppelversand gesperrt", async () => {
+  const created = await A.json("/api/content-items", { method: "POST", body: { title: "Workflow-Test", platform: "YOUTUBE", script: "Hallo" } });
+  assert.equal(created.status, 200, JSON.stringify(created.data));
+  const id = created.data.item.id;
+  const status = (action, extra = {}) => A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action, ...extra } });
+  const future = new Date(Date.now() + 3 * 86400_000).toISOString();
+
+  // Ohne Freigabe: weder planen noch veröffentlichen
+  assert.equal((await status("schedule", { scheduledAt: future })).status, 409);
+  assert.equal((await status("publish")).status, 409);
+  assert.equal((await prisma.contentItem.findUniqueOrThrow({ where: { id } })).status, "DRAFT");
+
+  // Freigeben, dann ändern → Freigabe entzogen
+  assert.equal((await status("approve")).status, 200);
+  const edit = await A.json(`/api/content-items/${id}`, { method: "PATCH", body: { title: "Workflow-Test geändert" } });
+  assert.equal(edit.status, 200);
+  assert.equal(edit.data.approvalRevoked, true);
+  assert.equal(edit.data.item.status, "IN_REVIEW");
+  assert.equal((await status("schedule", { scheduledAt: future })).status, 409);
+
+  // Erneut freigeben und planen; Termin in der Vergangenheit abgelehnt
+  assert.equal((await status("approve")).status, 200);
+  assert.equal((await status("schedule", { scheduledAt: "2020-01-01T10:00:00Z" })).status, 400);
+  assert.equal((await status("schedule", { scheduledAt: future })).status, 200);
+  // Speichern ohne inhaltliche Änderung lässt die Freigabe bestehen
+  const same = await A.json(`/api/content-items/${id}`, { method: "PATCH", body: { title: "Workflow-Test geändert" } });
+  assert.equal(same.data.approvalRevoked, false);
+  assert.equal(same.data.item.status, "SCHEDULED");
+
+  // Doppelversand: laufende Sperre → 409; verfallene Sperre (> 10 Min.) → erlaubt
+  await prisma.contentItem.update({ where: { id }, data: { publishingStartedAt: new Date() } });
+  assert.equal((await status("publish")).status, 409);
+  await prisma.contentItem.update({ where: { id }, data: { publishingStartedAt: new Date(Date.now() - 11 * 60_000) } });
+  const pub = await status("publish");
+  assert.equal(pub.status, 200);
+  assert.equal(pub.data.published, false); // YouTube ist nicht verbunden — ehrliche Meldung, kein Schein-Erfolg
+  const after = await prisma.contentItem.findUniqueOrThrow({ where: { id } });
+  assert.equal(after.publishingStartedAt, null, "Sperre nach dem Versuch nicht freigegeben");
+  assert.equal(after.status, "SCHEDULED");
+
+  // KI-Hashtags ändern einen geplanten Beitrag → Freigabe entzogen
+  const tags = await A.json(`/api/content-items/${id}/hashtags`, { method: "POST" });
+  assert.equal(tags.status, 200, JSON.stringify(tags.data));
+  assert.equal(tags.data.approvalRevoked, true);
+  assert.equal((await prisma.contentItem.findUniqueOrThrow({ where: { id } })).status, "IN_REVIEW");
+
+  // B kann A's Beitrag weder freigeben noch veröffentlichen
+  assert.equal((await B.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "approve" } })).status, 404);
+});
+
+test("Planen legt einen Versandauftrag an; Ablehnen verwirft ihn; Detailseite zeigt den Stand", async () => {
+  const created = await A.json("/api/content-items", { method: "POST", body: { title: "Auftrag-Test", platform: "LINKEDIN", script: "x" } });
+  const id = created.data.item.id;
+  const status = (action, extra = {}) => A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action, ...extra } });
+  assert.equal((await status("approve")).status, 200);
+  const when = new Date(Date.now() + 2 * 3600_000);
+  const s = await status("schedule", { scheduledAt: when.toISOString() });
+  assert.equal(s.status, 200);
+  const job = await prisma.publishJob.findUniqueOrThrow({ where: { id: s.data.jobId } });
+  assert.equal(job.status, "QUEUED");
+  assert.equal(job.scheduledFor.getTime(), when.getTime());
+  const html = await (await A.req(`/content-factory/${id}`)).text();
+  assert.ok(html.includes("Automatischer Versand geplant"), "Versandstatus fehlt auf der Detailseite");
+  // Neu planen ersetzt den Auftrag
+  const s2 = await status("schedule", { scheduledAt: new Date(Date.now() + 5 * 3600_000).toISOString() });
+  assert.equal((await prisma.publishJob.findUniqueOrThrow({ where: { id: job.id } })).status, "CANCELED");
+  assert.equal(await prisma.publishJob.count({ where: { contentItemId: id, status: "QUEUED" } }), 1);
+  assert.equal((await status("reject", { reason: "doch nicht" })).status, 200);
+  assert.equal((await prisma.publishJob.findUniqueOrThrow({ where: { id: s2.data.jobId } })).status, "CANCELED");
+});
+
+test("Zeitzone: Termine erscheinen in deutscher Zeit, nicht in Server-UTC", async () => {
+  const created = await A.json("/api/content-items", { method: "POST", body: { title: "Zeitzonen-Test", platform: "LINKEDIN", script: "x" } });
+  const id = created.data.item.id;
+  await A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "approve" } });
+  // 15.01.2030 10:00 UTC = 11:00 Uhr in Berlin (Winterzeit)
+  const s = await A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "schedule", scheduledAt: "2030-01-15T10:00:00.000Z" } });
+  assert.equal(s.status, 200);
+  const html = await (await A.req(`/content-factory/${id}`)).text();
+  assert.ok(html.includes("11:00"), "Termin wird nicht in Europe/Berlin angezeigt");
+  assert.ok(!/15\.01\.2030,? 10:00/.test(html), "Termin erscheint in UTC");
+});
+
+test("Zentrale-Seiten: öffentlich erreichbar, Gestaltung geladen, kein interner Link ins Leere", async () => {
+  const pages = ["/ueber-uns", "/ki-dienstleistungen", "/ki-agenten", "/ki-automation", "/ki-beratung", "/ki-schulung", "/webdesign",
+    "/webseiten-aufbau", "/content-erstellung", "/social-media-betreuung", "/referenz", "/portfolio", "/preise", "/faq", "/kontakt",
+    "/demo", "/praesentationen", "/agb", "/datenschutz"];
+  const links = new Set();
+  for (const p of pages) {
+    const r = await fetch(`${BASE}${p}`, { redirect: "manual" });
+    assert.equal(r.status, 200, p);
+    const html = await r.text();
+    assert.ok(html.includes("— Secret 58</title>"), `Titel fehlt: ${p}`);
+    assert.ok(html.includes('href="/zentrale/assets/seite.css"'), `Gestaltung fehlt: ${p}`);
+    assert.ok(!html.includes("secret58-web.onrender.com"), `alte Adresse: ${p}`);
+    for (const m of html.matchAll(/href="(\/[^"#]*)"/g)) links.add(m[1]);
+  }
+  for (const link of links) {
+    const r = await fetch(`${BASE}${link}`, { redirect: "manual" });
+    assert.ok([200, 307, 308].includes(r.status), `Link ${link} → ${r.status}`);
+  }
+  assert.equal((await fetch(`${BASE}/zentrale/assets/seite.css`)).status, 200);
+  // Besucher auf "/" → Startseite der Zentrale; angemeldet → Arbeitsbereich
+  const home = await fetch(`${BASE}/`, { redirect: "manual" });
+  assert.equal(home.status, 200);
+  const homeHtml = await home.text();
+  assert.ok(homeHtml.includes('id="kontaktform"') && homeHtml.includes("/zentrale/assets/kern-bild.js"), "Zentrale-Startseite fehlt");
+  assert.ok(homeHtml.includes('id="app-ausgeblendet"'), "nicht nachgebaute Teile müssen ausgeblendet sein");
+  for (const m of homeHtml.matchAll(/(?:href|src)="(\/[^"#]*)"/g)) links.add(m[1]);
+  for (const link of links) {
+    const r = await fetch(`${BASE}${link}`, { redirect: "manual" });
+    assert.ok([200, 307, 308].includes(r.status), `Startseiten-Link ${link} → ${r.status}`);
+  }
+  const angemeldet = await (await A.req("/")).text();
+  assert.ok(!angemeldet.includes('id="kontaktform"'), "angemeldet muss der Arbeitsbereich kommen");
+  // App-Seiten mit gleichem Namen bleiben geschützt
+  for (const p of ["/social-media", "/schulung"]) {
+    assert.equal((await fetch(`${BASE}${p}`, { redirect: "manual" })).status, 307, p);
+  }
+});
+
+test("Startseite: Kern-Bild-Daten, Demo-Planer und Kontaktformular bis in den Posteingang", async () => {
+  const kern = await (await fetch(`${BASE}/api/agenten?knapp=1`)).json();
+  assert.ok(kern.gesamt > 0 && kern.gesamt_alle >= kern.gesamt && kern.kategorien.length > 0, JSON.stringify(kern).slice(0, 200));
+  assert.equal((await fetch(`${BASE}/api/agenten`)).status, 404); // volle Registratur nicht öffentlich
+
+  const plan = await (await fetch(`${BASE}/api/demo/plan`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR },
+    body: JSON.stringify({ ziel: "Beantworte jeden Morgen die Kundenanfragen aus dem Postfach" }) })).json();
+  assert.equal(plan.ausgefuehrt, false);
+  assert.ok(plan.gesperrt || plan.schritte.length > 0, JSON.stringify(plan).slice(0, 200));
+  assert.ok(!/im Kundenbereich/.test(plan.hinweis ?? ""), "Hinweis darf keine Ausführung im Kundenbereich versprechen");
+  assert.equal((await fetch(`${BASE}/api/demo/plan`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR }, body: "{}" })).status, 400);
+
+  const leer = await fetch(`${BASE}/api/kontakt`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR }, body: JSON.stringify({ name: "x" }) });
+  assert.equal(leer.status, 400);
+  const fremd = await fetch(`${BASE}/api/kontakt`, { method: "POST", headers: { "content-type": "application/json", origin: "https://evil.example" },
+    body: JSON.stringify({ name: "Eva", email: "eva@example.test", nachricht: "Hallo" }) });
+  assert.equal(fremd.status, 403);
+  const ok = await fetch(`${BASE}/api/kontakt`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR, "x-forwarded-for": "10.7.7.7" },
+    body: JSON.stringify({ name: "Erika Muster", email: "erika@example.test", nachricht: "Wir verlieren jede Woche Stunden mit Angeboten." }) });
+  assert.equal(ok.status, 200);
+  const op = await prisma.user.findFirstOrThrow({ where: { isOperator: true } });
+  const conv = await prisma.conversation.findFirstOrThrow({ where: { workspaceId: op.workspaceId, platform: "WEBSITE" }, include: { messages: true } });
+  assert.equal(conv.participantHandle, "erika@example.test");
+  assert.match(conv.messages[0].body, /Stunden mit Angeboten/);
+  // Kein Kunde bekommt die Anfrage
+  assert.equal(await prisma.conversation.count({ where: { platform: "WEBSITE", workspaceId: { not: op.workspaceId } } }), 0);
+});
+
+test("Startseite Schritt 2: Chat-Regeln, KI nur mit Freigabe, Skill-Anfrage, Terminbuchung bis zur Bestätigung", async () => {
+  const post = (p, body, extra = {}) => fetch(`${BASE}${p}`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR, ...extra }, body: JSON.stringify(body) });
+  // Kunden-Chatbot bleibt geschützt (kein Präfix-Leck über /api/chat)
+  assert.equal((await post("/api/chatbot", { messages: [{ role: "user", content: "hi" }] })).status, 401);
+
+  assert.deepEqual(await (await fetch(`${BASE}/api/webseite/status`)).json(), { ki: false, newsletter: true });
+  const chat = (text) => post("/api/chat", { messages: [{ role: "user", content: text }] }, { "x-forwarded-for": "10.6.6.6" });
+  const gesperrt = await (await chat("Können Sie meine Überweisung im Online-Banking machen?")).json();
+  assert.equal(gesperrt.entscheidung, "abgelehnt");
+  const termin = await (await chat("Ich möchte einen Termin vereinbaren")).json();
+  assert.equal(termin.entscheidung, "verwiesen");
+  const ohneKi = await chat("Was kostet ein KI-Agent?");
+  assert.equal(ohneKi.status, 503); // Seite antwortet dann aus ihrer hinterlegten Liste
+  assert.equal((await ohneKi.json()).error, "kein_schluessel");
+  assert.equal((await post("/api/skill-agent", { beschreibung: "Angebote schreiben" })).status, 503);
+  assert.equal((await post("/api/chat", { messages: "kaputt" })).status, 400);
+
+  // Termine: nur Betreiber legt an
+  const op = new Client();
+  assert.equal((await op.json("/api/auth/login", { method: "POST", body: { email: "op@example.test", password: "betreiber-passwort-123" } })).status, 200);
+  assert.equal((await A.json("/api/operator/termine", { method: "POST", body: { datum: "2030-03-10", uhrzeit: "10:00" } })).status, 404);
+  assert.equal((await op.json("/api/operator/termine", { method: "POST", body: { datum: "2020-01-01", uhrzeit: "10:00" } })).status, 400);
+  assert.equal((await op.json("/api/operator/termine", { method: "POST", body: { datum: "2030-03-10", uhrzeit: "25:00" } })).status, 400);
+  const neu = await op.json("/api/operator/termine", { method: "POST", body: { datum: "2030-03-10", uhrzeit: "10:00", notiz: "intern" } });
+  assert.equal(neu.status, 200);
+  assert.equal(new Date(neu.data.termin.startsAt).toISOString(), "2030-03-10T09:00:00.000Z"); // 10:00 Berlin (Winterzeit)
+
+  const frei = await (await fetch(`${BASE}/api/termine/frei`)).json();
+  const slot = frei.termine.find((t) => t.id === neu.data.termin.id);
+  assert.deepEqual(slot, { id: neu.data.termin.id, datum: "2030-03-10", uhrzeit: "10:00" }); // keine Notiz nach außen
+
+  const anfrage = (name) => post(`/api/termine/${slot.id}/anfragen`, { name, email: `${name.toLowerCase()}@example.test`, nachricht: "Gern vormittags" }, { "x-forwarded-for": `10.5.5.${name.length}` });
+  const [r1, r2] = await Promise.all([anfrage("Paula"), anfrage("Konstantin")]);
+  assert.deepEqual([r1.status, r2.status].sort(), [200, 409], "nur eine Anfrage darf den Termin bekommen");
+  assert.ok(!(await (await fetch(`${BASE}/api/termine/frei`)).json()).termine.some((t) => t.id === slot.id));
+
+  const opUser = await prisma.user.findFirstOrThrow({ where: { isOperator: true } });
+  const conv = await prisma.conversation.findFirst({ where: { workspaceId: opUser.workspaceId, platform: "WEBSITE", messages: { some: { body: { contains: "Terminanfrage für 2030-03-10 um 10:00" } } } } });
+  assert.ok(conv, "Terminanfrage fehlt im Posteingang des Betreibers");
+
+  const opPage = await (await op.req("/operator")).text();
+  assert.ok(opPage.includes("Termine für Erstgespräche") && opPage.includes("10.03.2030"));
+  assert.equal((await op.json(`/api/operator/termine/${slot.id}`, { method: "POST", body: { action: "bestaetigen" } })).status, 200);
+  assert.equal((await prisma.websiteAppointment.findUniqueOrThrow({ where: { id: slot.id } })).status, "BESTAETIGT");
+  assert.equal((await A.json(`/api/operator/termine/${slot.id}`, { method: "POST", body: { action: "loeschen" } })).status, 404);
+  assert.equal((await op.json(`/api/operator/termine/${slot.id}`, { method: "POST", body: { action: "loeschen" } })).status, 200);
+
+  // Startseite: Termin-Skript wieder aktiv, Newsletter weiter aus
+  const html = await (await fetch(`${BASE}/`)).text();
+  assert.ok(html.includes("/api/termine/frei") && html.includes("app-webseite-status") && html.includes("div:has(> #newsletterform)"));
+  // CSS-Blöcke der Startseite geschlossen (Zentrale-Fehler: offener @media-Block machte den Desktop ungestaltet)
+  for (const m of html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)) {
+    assert.equal((m[1].match(/\{/g) ?? []).length, (m[1].match(/\}/g) ?? []).length, "CSS-Klammern unausgeglichen");
+  }
+});
+
+test("Newsletter: Double-Opt-in, gleiche Antwort für jede Adresse, Bestätigen und Abmelden per Link", async () => {
+  const anmelden = (email, einwilligung = true, ip = "10.4.4.4") =>
+    fetch(`${BASE}/api/newsletter/anmelden`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR, "x-forwarded-for": ip }, body: JSON.stringify({ email, einwilligung }) });
+  const mails = () => fakes.calls.filter((c) => c.path === "/emails" && c.email);
+
+  assert.equal((await anmelden("leser@example.test", false)).status, 400);
+  const vorher = mails().length;
+  const r = await anmelden("Leser@Example.test");
+  assert.equal(r.status, 200);
+  const antwort = (await r.json()).meldung;
+  assert.equal(mails().length, vorher + 1);
+  const mail = mails().at(-1).email;
+  assert.deepEqual(mail.to, ["leser@example.test"]);
+  const confirmUrl = mail.text.match(/https?:\/\/\S+\/api\/newsletter\/bestaetigen\?t=\S+/)[0];
+  const unsubUrl = mail.text.match(/https?:\/\/\S+\/api\/newsletter\/abmelden\?t=\S+/)[0];
+
+  let sub = await prisma.newsletterSubscriber.findUniqueOrThrow({ where: { email: "leser@example.test" } });
+  assert.equal(sub.status, "PENDING");
+  assert.match(sub.consentText, /Newsletter erhalten/);
+  assert.ok(!confirmUrl.includes(sub.confirmTokenHash), "Token darf nicht im Klartext gespeichert sein");
+
+  // Erneute Anmeldung innerhalb von 10 Minuten: gleiche Antwort, keine zweite Mail
+  const again = await anmelden("leser@example.test", true, "10.4.4.5");
+  assert.equal((await again.json()).meldung, antwort);
+  assert.equal(mails().length, vorher + 1);
+
+  const path = (u) => new URL(u).pathname + new URL(u).search;
+  const ok = await (await fetch(`${BASE}${path(confirmUrl)}`)).text();
+  assert.ok(ok.includes("Anmeldung bestätigt"));
+  sub = await prisma.newsletterSubscriber.findUniqueOrThrow({ where: { email: "leser@example.test" } });
+  assert.equal(sub.status, "ACTIVE");
+  assert.ok((await (await fetch(`${BASE}${path(confirmUrl)}`)).text()).includes("Link nicht gültig"), "Link darf nur einmal gelten");
+
+  // Bereits angemeldet: gleiche Antwort, keine Mail
+  const aktiv = await anmelden("leser@example.test", true, "10.4.4.6");
+  assert.equal((await aktiv.json()).meldung, antwort);
+  assert.equal(mails().length, vorher + 1);
+
+  const op = new Client();
+  await op.json("/api/auth/login", { method: "POST", body: { email: "op@example.test", password: "betreiber-passwort-123" } });
+  assert.ok((await (await op.req("/operator")).text()).includes("leser@example.test"));
+
+  assert.ok((await (await fetch(`${BASE}${path(unsubUrl)}`)).text()).includes("Abgemeldet"));
+  assert.equal((await prisma.newsletterSubscriber.findUniqueOrThrow({ where: { email: "leser@example.test" } })).status, "UNSUBSCRIBED");
+  assert.ok((await (await fetch(`${BASE}/api/newsletter/bestaetigen?t=falsch`)).text()).includes("Link nicht gültig"));
 });

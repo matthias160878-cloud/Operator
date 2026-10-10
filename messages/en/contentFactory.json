@@ -82,6 +82,15 @@
       "selectAll": "Select all platforms",
       "clearAll": "Clear selection",
       "generateButton": "Generate {count} spin-offs"
+    },
+    "approvalRevoked": "Approval revoked: the post was changed and must be reviewed and approved again.",
+    "job": {
+      "QUEUED": "Automatic publishing scheduled for {when}.",
+      "RUNNING": "Publishing in progress (scheduled {when}).",
+      "SUCCEEDED": "Published as scheduled at {when}.",
+      "FAILED": "Scheduled publishing at {when} failed; the post is back to \"Approved\".",
+      "UNKNOWN": "Scheduled publishing at {when}: outcome unclear.",
+      "CANCELED": "Scheduled publishing ({when}) was not carried out."
     }
   }
 }

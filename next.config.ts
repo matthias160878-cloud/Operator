@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
+import { ZENTRALE_PAGES } from "./src/lib/zentralePages";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -10,10 +11,19 @@ const securityHeaders = [
   // Mikrofon nur für die eigene Seite (Genesis-Spracheingabe), Kamera/Ort nie.
   { key: "Permissions-Policy", value: "microphone=(self), camera=(), geolocation=()" },
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
+  // Private Vorschau/Staging nicht von Suchmaschinen erfassen lassen.
+  ...(process.env.SITE_NOINDEX === "true" ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] : []),
 ];
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Inhaltsseiten der Zentrale unter ihren gewohnten Adressen (statisches HTML).
+  async rewrites() {
+    return Object.entries(ZENTRALE_PAGES).map(([source, file]) => ({
+      source,
+      destination: `/zentrale/seiten/${file}.html`,
+    }));
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

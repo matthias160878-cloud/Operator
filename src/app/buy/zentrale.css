@@ -1,0 +1,86 @@
+/*
+ * Gestaltung der Zentrale (secret58-web, assets/seite.css, Stand
+ * claude/abo-umstellung-promo) für die Verkaufsseite. Alle Regeln sind unter
+ * .zentrale eingegrenzt, damit sie das Command-Center-Theme der App nicht
+ * berühren. Farben, Schrift und Abstände unverändert übernommen.
+ */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/zentrale/archivo-latin.woff2") format("woff2");
+}
+.zentrale {
+  --ink: #05070f; --ink-2: #0a0f20; --line: #1c2542;
+  --paper: #ece8de; --dim: #8891a9; --amber: #f5ae3c;
+  --maxw: 52rem;
+  min-height: 100vh; width: 100%;
+  background: var(--ink); color: var(--paper);
+  font-family: "Archivo", system-ui, sans-serif; line-height: 1.65; font-size: 1.0625rem;
+}
+.zentrale *, .zentrale *::before, .zentrale *::after { box-sizing: border-box; }
+.zentrale .wrap { max-width: var(--maxw); margin-inline: auto; padding: clamp(1.25rem, 5vw, 2.5rem); }
+.zentrale h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.12; letter-spacing: -.02em; margin: 0 0 .5rem; font-weight: 800; }
+.zentrale h2 { font-size: 1.2rem; margin: 2.2rem 0 .6rem; font-weight: 700; }
+.zentrale h3 { font-weight: 700; }
+.zentrale p, .zentrale li { color: var(--dim); overflow-wrap: anywhere; }
+.zentrale a { color: var(--amber); }
+.zentrale .lead { font-size: 1.1rem; margin-top: 0; }
+
+.zentrale header.kopf { border-bottom: 1px solid var(--line); background: var(--ink-2); }
+.zentrale header.kopf .kopf-wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; flex-wrap: wrap; padding-block: 1rem; }
+.zentrale .marke { display: inline-flex; align-items: center; gap: .6rem; color: var(--paper); text-decoration: none; font-weight: 800; letter-spacing: -.01em; }
+.zentrale .marke span { color: var(--amber); }
+.zentrale .hauptnav { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; font-size: .92rem; }
+.zentrale .hauptnav a { color: var(--dim); text-decoration: none; }
+.zentrale .hauptnav a:hover, .zentrale .hauptnav a:focus-visible { color: var(--paper); }
+.zentrale .hauptnav a.nav-login { color: var(--amber); }
+
+.zentrale .seite-inhalt { max-width: 44rem; }
+.zentrale .brotkrumen { margin: 0 0 1.25rem; font-size: .85rem; color: var(--dim); }
+.zentrale .brotkrumen a { color: var(--dim); }
+.zentrale .seite-inhalt h2 { color: var(--paper); font-size: 1.35rem; margin: 2.4rem 0 .7rem; }
+.zentrale .seite-inhalt ul { padding-left: 1.2rem; margin: 0 0 1rem; list-style: disc; }
+.zentrale .seite-inhalt li { margin-bottom: .4rem; }
+.zentrale b, .zentrale strong { color: var(--paper); }
+
+.zentrale .preisanker { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; align-items: baseline; border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.2rem; margin: 1.4rem 0; background: var(--ink-2); color: var(--dim); font-size: .95rem; }
+.zentrale .hinweis { border: 1px dashed var(--amber); border-radius: 12px; background: rgba(245, 174, 60, .07); padding: 1rem 1.15rem; margin: 1.5rem 0; }
+.zentrale .hinweis strong { color: var(--amber); display: block; margin-bottom: .25rem; }
+.zentrale .hinweis p { color: var(--paper); margin: 0; }
+.zentrale .note { font-size: .92rem; }
+
+.zentrale .preis-tabelle { display: grid; gap: 1.1rem; margin: 1.5rem 0; grid-template-columns: 1fr; }
+@media (min-width: 40rem) { .zentrale .preis-tabelle { grid-template-columns: 1fr 1fr; } }
+.zentrale .preis-karte { background: var(--ink-2); border: 1px solid var(--line); border-radius: 14px; padding: 1.3rem; display: flex; flex-direction: column; }
+.zentrale .preis-karte.hervorgehoben { border-color: var(--amber); }
+.zentrale .preis-karte.ausgewaehlt { border-color: var(--amber); box-shadow: 0 0 0 2px rgba(245, 174, 60, .25); }
+.zentrale .preis-karte small { color: var(--amber); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; font-size: .72rem; }
+.zentrale .preis-karte h3 { margin: .2rem 0 0; color: var(--paper); font-size: 1.15rem; }
+.zentrale .preis-karte .betrag { font-size: 1.4rem; font-weight: 800; color: var(--paper); margin: .3rem 0 .6rem; }
+.zentrale .preis-karte .betrag span { font-size: .75rem; font-weight: 400; color: var(--dim); }
+.zentrale .preis-karte ul { padding-left: 1.1rem; margin: .4rem 0 1rem; list-style: disc; font-size: .92rem; }
+.zentrale .preis-karte .klein { color: var(--dim); font-size: .78rem; margin: .6rem 0 0; }
+.zentrale .preis-karte .knopf-link { margin-top: auto; }
+
+.zentrale .karten { display: grid; gap: 1.1rem; margin: 1.5rem 0; grid-template-columns: 1fr; }
+@media (min-width: 40rem) { .zentrale .karten { grid-template-columns: 1fr 1fr; } }
+.zentrale .karte { background: var(--ink-2); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem 1.4rem; }
+.zentrale .karte h3 { margin: 0 0 .4rem; color: var(--paper); font-size: 1.05rem; }
+.zentrale .karte p { margin: 0; font-size: .92rem; }
+
+.zentrale .cta-box { margin-top: 2.6rem; padding: 1.6rem 1.8rem; border-radius: 16px; background: rgba(245, 174, 60, .08); border: 1px solid rgba(245, 174, 60, .35); }
+.zentrale .cta-box h2 { margin-top: 0; }
+.zentrale .knopf-reihe { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+.zentrale .knopf-link { display: inline-block; font: inherit; font-weight: 700; text-decoration: none; text-align: center; background: var(--amber); color: #1a1512; border-radius: 999px; padding: .7rem 1.3rem; min-height: 44px; }
+.zentrale .knopf-link:hover { background: #ffc061; }
+.zentrale .knopf-link.stumm { background: transparent; color: var(--paper); border: 1px solid var(--line); }
+.zentrale .knopf-link.gesperrt { background: transparent; color: var(--dim); border: 1px dashed var(--line); cursor: not-allowed; }
+
+.zentrale footer.fuss { border-top: 1px solid var(--line); margin-top: 3rem; font-size: .88rem; }
+.zentrale footer.fuss .wrap { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.zentrale footer.fuss a { color: var(--dim); text-decoration: none; }
+.zentrale footer.fuss a:hover { color: var(--amber); }
+.zentrale .preis-karte .jahr { font-size: .85rem; margin: -.3rem 0 .6rem; }

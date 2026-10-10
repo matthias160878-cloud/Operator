@@ -89,6 +89,29 @@ export const INTEGRATIONS: IntegrationDefinition[] = [
     requiredEnv: ["FACEBOOK_APP_ID", "FACEBOOK_APP_SECRET"],
   },
   {
+    key: "composio",
+    name: "Composio (Konto verbinden, nur Lesetest)",
+    category: "PLATFORM",
+    requiredEnv: ["COMPOSIO_API_KEY"],
+    verify: async (t) => {
+      // Prüft nur, ob Composio den Server-Schlüssel annimmt (lesender Aufruf).
+      const base = (process.env.COMPOSIO_BASE_URL?.trim() || "https://backend.composio.dev").replace(/\/+$/, "");
+      try {
+        const res = await withTimeout(
+          fetch(`${base}/api/v3/auth_configs?limit=1`, {
+            headers: { "x-api-key": process.env.COMPOSIO_API_KEY ?? "" },
+            cache: "no-store",
+          }),
+          4000
+        );
+        if (res.ok) return { ok: true };
+        return { ok: false, message: t("verifyFailedStatus", { service: "Composio", status: res.status }) };
+      } catch {
+        return { ok: false, message: t("verifyUnreachable", { service: "Composio" }) };
+      }
+    },
+  },
+  {
     key: "canva",
     name: "Canva",
     category: "DESIGN",

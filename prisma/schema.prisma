@@ -57,6 +57,8 @@ enum Platform {
   FACEBOOK
   BLOG
   NEWSLETTER
+  /// Kontaktformular der eigenen Webseite (Startseite der Zentrale) — nur Posteingang
+  WEBSITE
 }
 
 enum MediaType {
@@ -130,45 +132,47 @@ model Workspace {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  users            User[]
-  brand            Brand?
-  campaigns        Campaign[]
-  contentIdeas     ContentIdea[]
-  contentItems     ContentItem[]
-  voices           Voice[]
-  mediaAssets      MediaAsset[]
-  platformAccounts PlatformAccount[]
-  agentRuns        AgentRun[]
-  integrations     IntegrationStatus[]
-  settings         Setting[]
-  auditLogs        AuditLog[]
-  revenueEntries   RevenueEntry[]
-  conversations    Conversation[]
-  plan             WorkspacePlan?
-  usageCounters    UsageCounter[]
-  checkouts        PlanCheckout[]
-  merchantAccount  MerchantAccount?
-  merchantProducts MerchantProduct[]
-  sellerProfile    SellerProfile?
-  customerSales    CustomerSale[]
-  websites         WebsiteConnection[]
+  users               User[]
+  brand               Brand?
+  campaigns           Campaign[]
+  contentIdeas        ContentIdea[]
+  contentItems        ContentItem[]
+  voices              Voice[]
+  mediaAssets         MediaAsset[]
+  platformAccounts    PlatformAccount[]
+  agentRuns           AgentRun[]
+  integrations        IntegrationStatus[]
+  settings            Setting[]
+  auditLogs           AuditLog[]
+  revenueEntries      RevenueEntry[]
+  conversations       Conversation[]
+  plan                WorkspacePlan?
+  usageCounters       UsageCounter[]
+  checkouts           PlanCheckout[]
+  merchantAccount     MerchantAccount?
+  merchantProducts    MerchantProduct[]
+  sellerProfile       SellerProfile?
+  customerSales       CustomerSale[]
+  websites            WebsiteConnection[]
+  composioConnections ComposioConnection[]
+  publishJobs         PublishJob[]
 
   @@map("workspaces")
 }
 
 model User {
-  id          String    @id @default(cuid())
-  workspaceId String
-  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  email       String    @unique
-  name        String
-  role        Role      @default(EDITOR)
-  createdAt   DateTime  @default(now())
+  id           String    @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  email        String    @unique
+  name         String
+  role         Role      @default(EDITOR)
+  createdAt    DateTime  @default(now())
   /// scrypt-Hash (Format: scrypt$N$r$p$salt$hash). Null = Konto ohne Passwort (Altbestand/Demo).
   passwordHash String?
   /// Betreiberkonto (Umsatz-/Betriebsansicht). Wird nur über den geschützten
   /// Einrichtungsablauf (/setup + OPERATOR_SETUP_TOKEN) gesetzt, nie per Formular.
-  isOperator  Boolean   @default(false)
+  isOperator   Boolean   @default(false)
 
   auditLogs AuditLog[]
   sessions  Session[]
@@ -247,29 +251,32 @@ model ContentIdea {
 }
 
 model ContentItem {
-  id             String        @id @default(cuid())
-  workspaceId    String
-  workspace      Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  campaignId     String?
-  campaign       Campaign?     @relation(fields: [campaignId], references: [id], onDelete: SetNull)
-  ideaId         String?
-  idea           ContentIdea?  @relation(fields: [ideaId], references: [id], onDelete: SetNull)
-  title          String
-  platform       Platform
-  format         String        @default("")
-  status         ContentStatus @default(DRAFT)
-  hook           String        @default("")
-  script         String        @default("")
-  caption        String        @default("")
-  hashtags       String        @default("[]") // JSON string[]
-  keywords       String        @default("[]") // JSON string[]
-  language       String        @default("Deutsch")
-  thumbnailIdea  String        @default("")
-  rejectedReason String?
-  scheduledAt    DateTime?
-  publishedAt    DateTime?
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
+  id                  String        @id @default(cuid())
+  workspaceId         String
+  workspace           Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  campaignId          String?
+  campaign            Campaign?     @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  ideaId              String?
+  idea                ContentIdea?  @relation(fields: [ideaId], references: [id], onDelete: SetNull)
+  title               String
+  platform            Platform
+  format              String        @default("")
+  status              ContentStatus @default(DRAFT)
+  hook                String        @default("")
+  script              String        @default("")
+  caption             String        @default("")
+  hashtags            String        @default("[]") // JSON string[]
+  keywords            String        @default("[]") // JSON string[]
+  language            String        @default("Deutsch")
+  thumbnailIdea       String        @default("")
+  rejectedReason      String?
+  scheduledAt         DateTime?
+  publishedAt         DateTime?
+  /// Sperre gegen parallelen Doppelversand (gesetzt, solange veröffentlicht wird).
+  publishingStartedAt DateTime?
+  publishJobs         PublishJob[]
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
 
   scripts     Script[]
   mediaAssets MediaAsset[]
@@ -326,18 +333,18 @@ model MediaAsset {
 }
 
 model PlatformAccount {
-  id               String        @id @default(cuid())
-  workspaceId      String
-  workspace        Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  platform         Platform
-  accountName      String        @default("")
-  status           AccountStatus @default(NOT_CONFIGURED)
-  lastPublishedAt  DateTime?
-  lastError        String?
-  createdAt        DateTime      @default(now())
-  accessTokenEnc   String?
-  refreshTokenEnc  String?
-  tokenExpiresAt   DateTime?
+  id                String        @id @default(cuid())
+  workspaceId       String
+  workspace         Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  platform          Platform
+  accountName       String        @default("")
+  status            AccountStatus @default(NOT_CONFIGURED)
+  lastPublishedAt   DateTime?
+  lastError         String?
+  createdAt         DateTime      @default(now())
+  accessTokenEnc    String?
+  refreshTokenEnc   String?
+  tokenExpiresAt    DateTime?
   externalAccountId String?
 
   @@unique([workspaceId, platform])
@@ -504,7 +511,6 @@ model License {
   @@map("licenses")
 }
 
-
 // ---------------------------------------------------------------------------
 // Anmeldung, Pakete, Kontingente, Zahlungen (Mehrkundenbetrieb)
 // ---------------------------------------------------------------------------
@@ -512,11 +518,11 @@ model License {
 /// Serverseitige Sitzung. Im Cookie steht nur ein Zufallstoken, in der
 /// Datenbank nur dessen SHA-256 — ein Datenbank-Leak liefert keine gültigen Cookies.
 model Session {
-  id         String   @id // sha256(token)
-  userId     String
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  expiresAt  DateTime
-  createdAt  DateTime @default(now())
+  id        String   @id // sha256(token)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
 
   @@index([userId])
   @@map("sessions")
@@ -537,7 +543,7 @@ model WorkspacePlan {
   id                   String    @id @default(cuid())
   workspaceId          String    @unique
   workspace            Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  plan                 String    // "PRO" | "MAXI"
+  plan                 String // "PRO" | "MAXI"
   /// NONE | PENDING | ACTIVE | PAST_DUE | CANCELED | REFUNDED | PAYMENT_FAILED
   status               String    @default("NONE")
   source               String    @default("STRIPE") // STRIPE | TEST
@@ -557,17 +563,17 @@ model WorkspacePlan {
 /// dieser Zeile (nicht den Metadaten aus dem Browser), um Paket und Workspace
 /// zu bestimmen.
 model PlanCheckout {
-  id              String    @id // Stripe Checkout Session ID
-  workspaceId     String
-  workspace       Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  userId          String
-  plan            String
-  stripePriceId   String
-  expectedAmount  Int       // kleinste Währungseinheit, vor Rabatt
-  currency        String
-  mode            String    // payment | subscription
-  status          String    @default("OPEN") // OPEN | COMPLETED | EXPIRED | FAILED
-  createdAt       DateTime  @default(now())
+  id             String    @id // Stripe Checkout Session ID
+  workspaceId    String
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  userId         String
+  plan           String
+  stripePriceId  String
+  expectedAmount Int // kleinste Währungseinheit, vor Rabatt
+  currency       String
+  mode           String // payment | subscription
+  status         String    @default("OPEN") // OPEN | COMPLETED | EXPIRED | FAILED
+  createdAt      DateTime  @default(now())
 
   @@index([workspaceId])
   @@map("plan_checkouts")
@@ -590,7 +596,7 @@ model UsageCounter {
 model StripeEvent {
   id          String   @id
   type        String
-  account     String?  // gesetzt bei Connect-Events
+  account     String? // gesetzt bei Connect-Events
   processedAt DateTime @default(now())
 
   @@map("stripe_events")
@@ -600,10 +606,10 @@ model StripeEvent {
 model OperatorPayment {
   id             String   @id @default(cuid())
   stripeObjectId String   @unique // pi_/in_/re_/cs_
-  kind           String   // PAYMENT | REFUND
+  kind           String // PAYMENT | REFUND
   workspaceId    String?
   plan           String?
-  amount         Int      // kleinste Währungseinheit, brutto; Erstattungen positiv, kind=REFUND
+  amount         Int // kleinste Währungseinheit, brutto; Erstattungen positiv, kind=REFUND
   taxAmount      Int      @default(0) // enthaltene Umsatzsteuer (bei Zahlungen)
   currency       String
   status         String
@@ -640,7 +646,7 @@ model MerchantProduct {
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   name        String
   description String    @default("")
-  amount      Int       // kleinste Währungseinheit
+  amount      Int // kleinste Währungseinheit
   currency    String    @default("eur")
   active      Boolean   @default(true)
   createdAt   DateTime  @default(now())
@@ -655,13 +661,13 @@ model CustomerSale {
   id             String    @id @default(cuid())
   workspaceId    String
   workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  source         String    // SECRET58_CHECKOUT | IMPORT_CSV
-  externalId     String    // z. B. Stripe PaymentIntent pi_..., oder Bestellnummer des Shops
+  source         String // SECRET58_CHECKOUT | IMPORT_CSV
+  externalId     String // z. B. Stripe PaymentIntent pi_..., oder Bestellnummer des Shops
   productName    String    @default("")
   amount         Int
   refundedAmount Int       @default(0)
   currency       String
-  status         String    // PAID | PARTIALLY_REFUNDED | REFUNDED | PENDING | FAILED
+  status         String // PAID | PARTIALLY_REFUNDED | REFUNDED | PENDING | FAILED
   isTestData     Boolean   @default(false)
   occurredAt     DateTime  @default(now())
   createdAt      DateTime  @default(now())
@@ -678,7 +684,7 @@ model WebsiteConnection {
   id          String    @id @default(cuid())
   workspaceId String
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  origin      String    // https://example.com (Schema + Host, ohne Pfad)
+  origin      String // https://example.com (Schema + Host, ohne Pfad)
   verifyToken String
   verifiedAt  DateTime?
   assistant   String    @default("CHAT") // nur freigegebene Assistenten, siehe src/lib/website.ts
@@ -712,4 +718,109 @@ model SellerProfile {
   updatedAt      DateTime  @updatedAt
 
   @@map("seller_profiles")
+}
+
+/// Über Composio verbundene Plattform-Konten (je Workspace und Toolkit genau
+/// ein Eintrag). Zugangstoken liegen ausschließlich bei Composio; hier stehen
+/// nur die Konto-Kennung, der Status und das Ergebnis des letzten Lesetests.
+model ComposioConnection {
+  id                 String    @id @default(cuid())
+  workspaceId        String
+  workspace          Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  toolkit            String
+  /// NONE | PENDING | ACTIVE | FAILED | EXPIRED | DISCONNECTED
+  status             String    @default("NONE")
+  connectedAccountId String?
+  pendingAccountId   String?
+  stateHash          String?
+  pendingExpiresAt   DateTime?
+  accountLabel       String    @default("")
+  lastReadTestAt     DateTime?
+  lastReadTestOk     Boolean?
+  lastError          String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@unique([workspaceId, toolkit])
+  @@map("composio_connections")
+}
+
+/// Dauerhafter Versandauftrag für einen geplanten Beitrag (Worker:
+/// scripts/publish-worker.ts). Status: QUEUED → RUNNING → SUCCEEDED | FAILED;
+/// CANCELED wenn Termin/Freigabe sich geändert hat; UNKNOWN wenn ein Versand
+/// unterbrochen wurde und unklar ist, ob die Plattform veröffentlicht hat —
+/// solche Aufträge werden NIE automatisch wiederholt.
+model PublishJob {
+  id            String      @id @default(cuid())
+  workspaceId   String
+  workspace     Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  contentItemId String
+  contentItem   ContentItem @relation(fields: [contentItemId], references: [id], onDelete: Cascade)
+  scheduledFor  DateTime
+  status        String      @default("QUEUED")
+  attempts      Int         @default(0)
+  startedAt     DateTime?
+  finishedAt    DateTime?
+  message       String      @default("")
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([status, scheduledFor])
+  @@index([contentItemId])
+  @@map("publish_jobs")
+}
+
+/// Terminfenster für Erstgespräche (Startseite der Zentrale). Der Betreiber
+/// legt freie Termine an; Besucher fragen einen an; der Betreiber bestätigt
+/// oder gibt ihn wieder frei. datum/uhrzeit wie in der Zentrale (Ortszeit
+/// Europe/Berlin), startsAt für Sortierung und „nicht in der Vergangenheit“.
+model WebsiteAppointment {
+  id             String    @id @default(cuid())
+  datum          String
+  uhrzeit        String
+  startsAt       DateTime
+  notiz          String    @default("")
+  /// FREI | ANGEFRAGT | BESTAETIGT
+  status         String    @default("FREI")
+  kundeName      String?
+  kundeEmail     String?
+  kundeNachricht String    @default("")
+  angefragtAm    DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@index([status, startsAt])
+  @@map("website_appointments")
+}
+
+/// Fragen an den Webseiten-Chat (nur mit freigeschalteter KI), damit echte
+/// Fragen im Betreiberbereich sichtbar sind.
+model WebsiteChatEntry {
+  id        String   @id @default(cuid())
+  frage     String
+  antwort   String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("website_chat_entries")
+}
+
+/// Newsletter-Anmeldungen der Startseite mit Double-Opt-in. Einwilligung
+/// (Zeitpunkt, Wortlaut) wird als Nachweis gespeichert; aktiv erst nach Klick
+/// auf den Bestätigungslink. Tokens nur als Hash gespeichert.
+model NewsletterSubscriber {
+  id               String    @id @default(cuid())
+  email            String    @unique
+  /// PENDING | ACTIVE | UNSUBSCRIBED
+  status           String    @default("PENDING")
+  confirmTokenHash String?   @unique
+  confirmExpiresAt DateTime?
+  unsubscribeHash  String    @unique
+  consentText      String
+  consentAt        DateTime
+  confirmedAt      DateTime?
+  unsubscribedAt   DateTime?
+  lastMailAt       DateTime?
+  createdAt        DateTime  @default(now())
+
+  @@map("newsletter_subscribers")
 }

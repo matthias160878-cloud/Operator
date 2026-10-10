@@ -82,6 +82,15 @@
       "selectAll": "Alle Plattformen auswählen",
       "clearAll": "Auswahl aufheben",
       "generateButton": "{count} Ableger erzeugen"
+    },
+    "approvalRevoked": "Freigabe entzogen: Der Beitrag wurde geändert und muss erneut geprüft und freigegeben werden.",
+    "job": {
+      "QUEUED": "Automatischer Versand geplant für {when}.",
+      "RUNNING": "Versand läuft (Termin {when}).",
+      "SUCCEEDED": "Zum Termin {when} veröffentlicht.",
+      "FAILED": "Versand zum Termin {when} fehlgeschlagen, Beitrag ist wieder „Freigegeben“.",
+      "UNKNOWN": "Versand zum Termin {when}: Ausgang unklar.",
+      "CANCELED": "Geplanter Versand ({when}) wurde nicht ausgeführt."
     }
   }
 }

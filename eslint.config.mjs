@@ -7,6 +7,9 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // Override default ignores of eslint-config-next.
   globalIgnores([
+    // Unverändert aus der Zentrale übernommen (src/lib/zentrale/README.md, public/zentrale/).
+    "src/lib/zentrale/**/*.js",
+    "public/zentrale/**",
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",

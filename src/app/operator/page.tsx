@@ -6,6 +6,10 @@ import { formatCents, packageTermsConfirmed } from "@/lib/plans";
 import { LogoutButton } from "@/components/auth/LogoutButton";
 import { legalInfoComplete } from "@/lib/legal";
 import { LegalFooter } from "@/components/legal/LegalFooter";
+import { prisma } from "@/lib/db";
+import { websiteAiEnabled } from "@/lib/websiteAi";
+import { isEmailConfigured } from "@/lib/email";
+import { AppointmentsPanel } from "@/components/operator/AppointmentsPanel";
 
 export const dynamic = "force-dynamic";
 
@@ -20,10 +24,26 @@ function Money({ rows, empty = "—" }: { rows: MoneyByCurrency[]; empty?: strin
   );
 }
 
+/** Künftige und noch nicht freie Termine (ab gestern), für den Betreiberbereich. */
+function upcomingAppointments() {
+  return prisma.websiteAppointment.findMany({
+    where: { OR: [{ startsAt: { gt: new Date(Date.now() - 86400_000) } }, { status: { not: "FREI" } }] },
+    orderBy: { startsAt: "asc" },
+    take: 100,
+  });
+}
+
 export default async function OperatorPage() {
   const user = await getSessionUser();
   if (!user?.isOperator) redirect("/");
   const o = await getOperatorOverview();
+  const [termine, chatFragen, newsletterStand, newsletterAktiv] = await Promise.all([
+    upcomingAppointments(),
+    prisma.websiteChatEntry.findMany({ orderBy: { createdAt: "desc" }, take: 10 }),
+    prisma.newsletterSubscriber.groupBy({ by: ["status"], _count: { _all: true } }),
+    prisma.newsletterSubscriber.findMany({ where: { status: "ACTIVE" }, orderBy: { confirmedAt: "desc" }, take: 50 }),
+  ]);
+  const nlCount = (st: string) => newsletterStand.find((n) => n.status === st)?._count._all ?? 0;
 
   return (
     <div className="mx-auto w-full max-w-5xl space-y-5 px-4 py-8">
@@ -123,6 +143,45 @@ export default async function OperatorPage() {
             ))}
           </ul>
         </div>
+      </section>
+      <AppointmentsPanel
+        rows={termine.map((t) => ({
+          id: t.id, datum: t.datum, uhrzeit: t.uhrzeit, notiz: t.notiz, status: t.status,
+          kundeName: t.kundeName, kundeEmail: t.kundeEmail, kundeNachricht: t.kundeNachricht,
+        }))}
+      />
+      <section className="card p-5">
+        <h2 className="text-sm font-semibold text-foreground">Fragen im Webseiten-Chat</h2>
+        <p className="text-xs text-muted">
+          KI-Antworten auf der Startseite: {websiteAiEnabled() ? "eingeschaltet (WEBSITE_KI=true, Tageslimit aktiv)" : "aus — der Chat antwortet aus seiner hinterlegten Liste, die Skill-Anfrage ist ausgeblendet"}.
+        </p>
+        <ul className="mt-2 space-y-2 text-sm">
+          {chatFragen.length === 0 && <li className="text-muted">Noch keine Fragen gespeichert.</li>}
+          {chatFragen.map((c) => (
+            <li key={c.id} className="rounded-lg border border-border bg-surface-2 px-3 py-2">
+              <div className="text-foreground">{c.frage}</div>
+              <div className="mt-1 text-xs text-muted">{c.antwort}</div>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className="card p-5">
+        <h2 className="text-sm font-semibold text-foreground">Newsletter (Startseite)</h2>
+        <p className="text-xs text-muted">
+          E-Mail-Versand: {isEmailConfigured() ? "eingerichtet — Anmeldung mit Bestätigungs-Mail (Double-Opt-in)" : "nicht eingerichtet (RESEND_API_KEY, EMAIL_FROM) — Anmeldeformular ausgeblendet"}.
+          Angemeldet: {nlCount("ACTIVE")} · unbestätigt: {nlCount("PENDING")} · abgemeldet: {nlCount("UNSUBSCRIBED")}.
+          Ausgaben werden aus dieser App noch nicht verschickt.
+        </p>
+        {newsletterAktiv.length > 0 && (
+          <ul className="mt-2 space-y-1 text-sm">
+            {newsletterAktiv.map((n) => (
+              <li key={n.id} className="flex flex-wrap justify-between gap-2">
+                <span className="text-foreground">{n.email}</span>
+                <span className="text-xs text-muted">bestätigt {n.confirmedAt?.toLocaleDateString("de-DE")}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
       <LegalFooter />
     </div>

@@ -1,7 +1,21 @@
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { getUsage } from "@/lib/entitlements";
-import { METRIC_LABELS, PLANS, PLAN_KEYS, VAT_NOTE, formatCents, packageTermsConfirmed, parsePlanKey, type Metric } from "@/lib/plans";
+import {
+  METRIC_LABELS,
+  PLANS,
+  PLAN_KEYS,
+  VAT_NOTE,
+  YEARLY_DISCOUNT_PERCENT,
+  formatCents,
+  lookupStripePrice,
+  netAmountFor,
+  packageTermsConfirmed,
+  parseBillingInterval,
+  parsePlanKey,
+  yearlyMonthlyEquivalent,
+  type Metric,
+} from "@/lib/plans";
 import { getPlanPrice, isStripeConfigured, isStripeWebhookConfigured, type PlanPrice } from "@/lib/stripe";
 import { BillingClient, type PlanCard } from "@/components/billing/BillingClient";
 import { legalInfoComplete } from "@/lib/legal";
@@ -26,20 +40,24 @@ function intervalText(price: PlanPrice | null): string {
   return n === 1 ? `pro ${unit}` : `alle ${n} ${unit}e`;
 }
 
-export default async function BillingPage({ searchParams }: { searchParams: Promise<{ plan?: string; checkout?: string }> }) {
-  const { plan: planParam, checkout } = await searchParams;
+export default async function BillingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ plan?: string; checkout?: string; intervall?: string }>;
+}) {
+  const { plan: planParam, checkout, intervall } = await searchParams;
   const workspaceId = await getCurrentWorkspaceId();
   const [current, usage] = await Promise.all([prisma.workspacePlan.findUnique({ where: { workspaceId } }), getUsage(workspaceId)]);
 
-  const prices = await Promise.all(
-    PLAN_KEYS.map(async (key) => {
-      try {
-        return await getPlanPrice(key);
-      } catch {
-        return null;
-      }
-    })
-  );
+  const safePrice = async (key: (typeof PLAN_KEYS)[number], interval: "month" | "year") => {
+    try {
+      return await getPlanPrice(key, interval);
+    } catch {
+      return null;
+    }
+  };
+  const prices = await Promise.all(PLAN_KEYS.map((key) => safePrice(key, "month")));
+  const yearPrices = await Promise.all(PLAN_KEYS.map((key) => safePrice(key, "year")));
   const cards: PlanCard[] = PLAN_KEYS.map((key, i) => {
     const def = PLANS[key];
     const price = prices[i];
@@ -49,6 +67,12 @@ export default async function BillingPage({ searchParams }: { searchParams: Prom
       priceText: formatCents(def.netAmountCents, def.displayCurrency),
       priceIsLive: Boolean(price),
       intervalText: `${VAT_NOTE} · ${price ? intervalText(price) : "monatlich"}`,
+      yearPriceText: formatCents(netAmountFor(key, "year"), def.displayCurrency),
+      yearIntervalText: `${VAT_NOTE} · ${yearPrices[i] ? intervalText(yearPrices[i]) : "jährlich"} · entspricht ${formatCents(
+        yearlyMonthlyEquivalent(key),
+        def.displayCurrency
+      )} / Monat (${YEARLY_DISCOUNT_PERCENT} % günstiger als 12 Monatszahlungen)`,
+      yearAvailable: Boolean(yearPrices[i]),
       features: def.features,
       quotas: (Object.keys(def.quotas) as Metric[]).map((m) => ({
         label: METRIC_LABELS[m],
@@ -103,6 +127,8 @@ export default async function BillingPage({ searchParams }: { searchParams: Prom
       <BillingClient
         cards={cards}
         preselected={parsePlanKey(planParam)}
+        preselectedInterval={parseBillingInterval(intervall) ?? "month"}
+        activeInterval={current?.status === "ACTIVE" ? (lookupStripePrice(current.stripePriceId)?.interval ?? null) : null}
         checkoutId={checkout ?? null}
         salesOpen={salesOpen}
         hasSubscription={current?.billingMode === "subscription" && Boolean(current.stripeCustomerId)}
@@ -111,8 +137,8 @@ export default async function BillingPage({ searchParams }: { searchParams: Prom
       />
       <p className="text-xs text-muted">
         Kontingente sind feste Obergrenzen je Kalendermonat (Marken und Webseiten: gleichzeitig). Es gibt keine
-        automatische kostenpflichtige Überschreitung. Das Abo verlängert sich monatlich und ist über „Abo &amp; Rechnungen
-        verwalten“ kündbar.
+        automatische kostenpflichtige Überschreitung, auch nicht beim Jahresabo. Das Abo verlängert sich je nach Wahl
+        monatlich oder jährlich und ist über „Abo &amp; Rechnungen verwalten“ zum Ende der Laufzeit kündbar.
       </p>
     </div>
   );

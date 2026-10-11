@@ -10,6 +10,14 @@ export async function register() {
   // Kalender-Tageszuordnung nicht in UTC rechnen (Render-Standard).
   const { APP_TIME_ZONE } = await import("@/lib/timezone");
   if (!process.env.TZ) process.env.TZ = APP_TIME_ZONE;
+  // Startmeldung zur Konfiguration — nur ob etwas gesetzt ist, nie die Werte.
+  const { isComposioConfigured } = await import("@/lib/composio/client");
+  const { COMPOSIO_TOOLKITS, authConfigIdFor } = await import("@/lib/composio/toolkits");
+  const plattformen = COMPOSIO_TOOLKITS.filter((t) => authConfigIdFor(t)).map((t) => t.key).join(", ") || "keine";
+  console.log(
+    `[start] Composio: Schlüssel ${isComposioConfigured() ? "gesetzt" : "fehlt"}, Plattformen: ${plattformen}; ` +
+      `PUBLIC_APP_URL ${process.env.PUBLIC_APP_URL?.trim() ? "gesetzt" : "fehlt"}`
+  );
   if (process.env.PUBLISH_WORKER !== "inline") return;
   const { startPublishWorker } = await import("@/lib/publishWorker");
   const origin = process.env.PUBLIC_APP_URL?.trim().replace(/\/+$/, "") ?? "";

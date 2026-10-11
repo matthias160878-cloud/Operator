@@ -11,8 +11,8 @@ export async function register() {
   const { APP_TIME_ZONE } = await import("@/lib/timezone");
   if (!process.env.TZ) process.env.TZ = APP_TIME_ZONE;
   // Startmeldung zur Konfiguration — nur ob etwas gesetzt ist, nie die Werte.
-  const { isComposioConfigured } = await import("@/lib/composio/client");
-  const { COMPOSIO_TOOLKITS, authConfigIdFor } = await import("@/lib/composio/toolkits");
+  const { isComposioConfigured, authConfigIdFor } = await import("@/lib/composio/client");
+  const { COMPOSIO_TOOLKITS } = await import("@/lib/composio/toolkits");
   const plattformen = COMPOSIO_TOOLKITS.filter((t) => authConfigIdFor(t)).map((t) => t.key).join(", ") || "keine";
   console.log(
     `[start] Composio: Schlüssel ${isComposioConfigured() ? "gesetzt" : "fehlt"}, Plattformen: ${plattformen}; ` +

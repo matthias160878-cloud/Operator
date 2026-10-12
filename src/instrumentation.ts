@@ -10,6 +10,9 @@ export async function register() {
   // Kalender-Tageszuordnung nicht in UTC rechnen (Render-Standard).
   const { APP_TIME_ZONE } = await import("@/lib/timezone");
   if (!process.env.TZ) process.env.TZ = APP_TIME_ZONE;
+  // In der App hinterlegte Zugänge (Betreiberbereich → Zugänge) übernehmen.
+  const { applyOperatorSettings } = await import("@/lib/operatorSettings");
+  await applyOperatorSettings().catch((err) => console.error("[zugaenge] Übernahme fehlgeschlagen:", err instanceof Error ? err.message : err));
   // Startmeldung zur Konfiguration — nur ob etwas gesetzt ist, nie die Werte.
   const { isComposioConfigured, authConfigIdFor } = await import("@/lib/composio/client");
   const { COMPOSIO_TOOLKITS } = await import("@/lib/composio/toolkits");

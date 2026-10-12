@@ -37,7 +37,9 @@
       "approve": "Freigeben",
       "reject": "Ablehnen",
       "schedule": "Einplanen",
-      "publish": "Veröffentlichen"
+      "publish": "Veröffentlichen",
+      "copy": "Beitrag kopieren",
+      "markPublished": "Manuell veröffentlicht"
     },
     "rejectReasonPrompt": "Ablehnungsgrund (optional):",
     "scheduleDatePrompt": "Veröffentlichungsdatum (YYYY-MM-DDTHH:mm):",
@@ -91,6 +93,9 @@
       "FAILED": "Versand zum Termin {when} fehlgeschlagen, Beitrag ist wieder „Freigegeben“.",
       "UNKNOWN": "Versand zum Termin {when}: Ausgang unklar.",
       "CANCELED": "Geplanter Versand ({when}) wurde nicht ausgeführt."
-    }
+    },
+    "copied": "Text und Hashtags kopiert — jetzt in der Plattform-App einfügen.",
+    "copyFailed": "Kopieren nicht möglich — bitte Text manuell markieren.",
+    "markPublishedConfirm": "Beitrag selbst gepostet? Er wird als veröffentlicht markiert; ein geplanter Versand wird verworfen."
   }
 }

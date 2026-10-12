@@ -423,6 +423,17 @@ model AuditLog {
   @@map("audit_logs")
 }
 
+/// Vom Betreiber in der App hinterlegte Zugänge (verschlüsselt mit
+/// TOKEN_ENCRYPTION_KEY). Umgebungsvariablen des Servers haben Vorrang.
+model OperatorSecret {
+  key         String   @id
+  valueEnc    String
+  updatedAt   DateTime @updatedAt
+  updatedById String?
+
+  @@map("operator_secrets")
+}
+
 // Einnahmen (Abschnitt "Revenue" — nicht Teil des ursprünglichen Master-Prompts,
 // auf Nutzerwunsch ergänzt). Plattformen geben Einnahmen überwiegend NICHT über
 // eine öffentliche API heraus (TikTok/Meta gar nicht, YouTube nur eingeschränkt

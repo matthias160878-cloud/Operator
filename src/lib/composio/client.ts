@@ -117,6 +117,15 @@ async function call<T>(method: string, path: string, body?: unknown): Promise<T>
   return data as T;
 }
 
+/**
+ * Leichter Prüfaufruf: Ist der Server-Schlüssel gültig? Liest nur die Liste
+ * der Auth-Configs (ohne Kundenbezug), schreibt nichts.
+ */
+export async function composioPing(): Promise<{ ok: true; authConfigs: number }> {
+  const data = await call<{ items?: unknown[] }>("GET", "/api/v3/auth_configs?limit=20");
+  return { ok: true, authConfigs: Array.isArray(data?.items) ? data.items.length : 0 };
+}
+
 export interface ComposioLink {
   connectedAccountId: string;
   redirectUrl: string;

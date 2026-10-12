@@ -37,7 +37,9 @@
       "approve": "Approve",
       "reject": "Reject",
       "schedule": "Schedule",
-      "publish": "Publish"
+      "publish": "Publish",
+      "copy": "Copy post",
+      "markPublished": "Published manually"
     },
     "rejectReasonPrompt": "Reason for rejection (optional):",
     "scheduleDatePrompt": "Publish date (YYYY-MM-DDTHH:mm):",
@@ -91,6 +93,9 @@
       "FAILED": "Scheduled publishing at {when} failed; the post is back to \"Approved\".",
       "UNKNOWN": "Scheduled publishing at {when}: outcome unclear.",
       "CANCELED": "Scheduled publishing ({when}) was not carried out."
-    }
+    },
+    "copied": "Text and hashtags copied — paste them in the platform app.",
+    "copyFailed": "Copy failed — please select the text manually.",
+    "markPublishedConfirm": "Posted it yourself? It will be marked as published; any scheduled send is cancelled."
   }
 }

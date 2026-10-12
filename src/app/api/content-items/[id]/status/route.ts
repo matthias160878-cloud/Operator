@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { setContentStatus, scheduleContentItem, publishContentItem } from "@/lib/agents/publishingAgent";
+import { setContentStatus, scheduleContentItem, publishContentItem, markPublishedManually } from "@/lib/agents/publishingAgent";
 import { runAgent } from "@/lib/agents/runner";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { ownedContentItem } from "@/lib/ownership";
@@ -21,6 +21,7 @@ const bodySchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("archive") }),
   z.object({ action: z.literal("schedule"), scheduledAt: z.string() }),
   z.object({ action: z.literal("publish") }),
+  z.object({ action: z.literal("markPublished") }),
 ]);
 
 async function handlePOST(
@@ -64,6 +65,12 @@ async function handlePOST(
       // Dauerhafter Versandauftrag; der Worker sendet zum Termin nach erneuter Prüfung.
       const job = await queuePublishJob(id, workspaceId, when);
       return NextResponse.json({ item, jobId: job.id });
+    }
+    case "markPublished": {
+      // Manuell gepostet (Beitrag kopiert, selbst in der Plattform-App veröffentlicht).
+      // Kein Aufruf nach außen; offener Versandauftrag wird verworfen.
+      await cancelOpenJobs(id, "Manuell veröffentlicht.");
+      return NextResponse.json({ item: await markPublishedManually(id) });
     }
     case "publish": {
       // Nur ein Versand gleichzeitig; ein zweiter Klick oder Tab wird abgewiesen.

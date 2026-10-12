@@ -134,6 +134,7 @@ before(async () => {
     COMPOSIO_BASE_URL: `http://127.0.0.1:${fakes.stripePort}`,
     COMPOSIO_AUTH_CONFIG_INSTAGRAM: "ac_instagram",
     COMPOSIO_AUTH_CONFIG_YOUTUBE: "ac_youtube",
+    TOKEN_ENCRYPTION_KEY: "test-schluessel-nur-fuer-die-integrationstests",
     RESEND_API_KEY: "re_test_fake",
     EMAIL_FROM: "Secret 58 <newsletter@example.test>",
     EMAIL_API_BASE: `http://127.0.0.1:${fakes.stripePort}`,
@@ -1107,4 +1108,85 @@ test("Newsletter: Double-Opt-in, gleiche Antwort für jede Adresse, Bestätigen 
   assert.ok((await (await fetch(`${BASE}${path(unsubUrl)}`)).text()).includes("Abgemeldet"));
   assert.equal((await prisma.newsletterSubscriber.findUniqueOrThrow({ where: { email: "leser@example.test" } })).status, "UNSUBSCRIBED");
   assert.ok((await (await fetch(`${BASE}/api/newsletter/bestaetigen?t=falsch`)).text()).includes("Link nicht gültig"));
+});
+
+test("Zugänge: Betreiber hinterlegt Schlüssel in der App, Server-Werte haben Vorrang, Kunden sehen nichts", async () => {
+  const op = new Client();
+  assert.equal((await op.json("/api/auth/login", { method: "POST", body: { email: "op@example.test", password: "betreiber-passwort-123" } })).status, 200);
+
+  // Kunden: kein Zugriff (Proxy sperrt /api/operator und /operator)
+  assert.equal((await A.req("/api/operator/zugaenge")).status, 404);
+  assert.equal((await A.req("/operator/zugaenge")).status, 307);
+  assert.equal((await new Client().req("/api/operator/zugaenge")).status, 401);
+
+  const status = await op.json("/api/operator/zugaenge");
+  assert.equal(status.status, 200);
+  assert.equal(status.data.speicherbar, true);
+  const byKey = Object.fromEntries(status.data.zugaenge.map((z) => [z.key, z]));
+  assert.equal(byKey.COMPOSIO_API_KEY.source, "server");
+  assert.equal(byKey.COMPOSIO_AUTH_CONFIG_LINKEDIN.source, "fehlt");
+  assert.ok(!JSON.stringify(status.data).includes("ck_test_fake"), "Schlüsselwert darf nie zurückgegeben werden");
+
+  // Vom Server gesetzt → nicht überschreibbar
+  assert.equal((await op.json("/api/operator/zugaenge", { method: "POST", body: { key: "COMPOSIO_API_KEY", value: "ak_anders" } })).status, 409);
+  // Unbekannt / falsches Format
+  assert.equal((await op.json("/api/operator/zugaenge", { method: "POST", body: { key: "DATABASE_URL", value: "x" } })).status, 400);
+  assert.equal((await op.json("/api/operator/zugaenge", { method: "POST", body: { key: "COMPOSIO_AUTH_CONFIG_LINKEDIN", value: "falsch" } })).status, 400);
+  assert.equal((await op.json("/api/operator/zugaenge", { method: "POST", body: { key: "WEBSITE_KI", value: "ja" } })).status, 400);
+
+  // LinkedIn-Auth-Config in der App hinterlegen → sofort wirksam, verschlüsselt gespeichert
+  const set = await op.json("/api/operator/zugaenge", { method: "POST", body: { key: "COMPOSIO_AUTH_CONFIG_LINKEDIN", value: " ac_linkedin_test_1 " } });
+  assert.equal(set.status, 200, JSON.stringify(set.data));
+  assert.equal(set.data.source, "app");
+  const row = await prisma.operatorSecret.findUniqueOrThrow({ where: { key: "COMPOSIO_AUTH_CONFIG_LINKEDIN" } });
+  assert.ok(!row.valueEnc.includes("ac_linkedin_test_1"), "Wert muss verschlüsselt liegen");
+  const after = await op.json("/api/operator/zugaenge");
+  const li = after.data.zugaenge.find((z) => z.key === "COMPOSIO_AUTH_CONFIG_LINKEDIN");
+  assert.equal(li.source, "app");
+  assert.equal(li.value, "ac_linkedin_test_1"); // nicht geheim → zur Kontrolle sichtbar
+  const page = await (await op.req("/operator/zugaenge")).text();
+  assert.ok(page.includes("in der App gespeichert") && page.includes("in der Server-Umgebung gesetzt"));
+  assert.ok(!page.includes("ck_test_fake"));
+
+  // Ohne Neustart nutzbar: Kunde kann LinkedIn jetzt verbinden
+  const start = await A.json("/api/composio/connect", { method: "POST", body: { toolkit: "LINKEDIN" } });
+  assert.equal(start.status, 200, JSON.stringify(start.data));
+  assert.equal(composioCalls("/api/v3/connected_accounts/link", "POST").at(-1).composioBody.auth_config_id, "ac_linkedin_test_1");
+
+  // Verbindung prüfen (lesend)
+  const check = await op.json("/api/operator/zugaenge/pruefen", { method: "POST", body: { bereich: "composio" } });
+  assert.equal(check.status, 200);
+  assert.equal(check.data.ok, true);
+  assert.equal((await A.req("/api/operator/zugaenge/pruefen", { method: "POST", body: { bereich: "composio" } })).status, 404);
+
+  // Protokoll nennt nur den Schlüsselnamen
+  const audit = await prisma.auditLog.findFirst({ where: { action: "operator.zugang.gesetzt" }, orderBy: { createdAt: "desc" } });
+  assert.equal(audit.detail, "COMPOSIO_AUTH_CONFIG_LINKEDIN");
+
+  // Entfernen → wieder „fehlt“, Verbinden wieder abgelehnt
+  assert.equal((await op.json("/api/operator/zugaenge", { method: "POST", body: { key: "COMPOSIO_AUTH_CONFIG_LINKEDIN", value: "" } })).status, 200);
+  assert.equal(await prisma.operatorSecret.count({ where: { key: "COMPOSIO_AUTH_CONFIG_LINKEDIN" } }), 0);
+  assert.equal((await A.json("/api/composio/connect", { method: "POST", body: { toolkit: "LINKEDIN" } })).status, 502);
+});
+
+test("Notweg ohne Plattform: Beitrag als manuell veröffentlicht markieren", async () => {
+  const created = await A.json("/api/content-items", { method: "POST", body: { title: "Manuell", platform: "LINKEDIN" } });
+  const id = created.data.item?.id ?? created.data.id;
+  // Erst nach Freigabe erlaubt
+  assert.equal((await A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "markPublished" } })).status, 409);
+  await A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "approve" } });
+  const sched = await A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "schedule", scheduledAt: "2031-01-15T10:00:00.000Z" } });
+  assert.equal(sched.status, 200);
+  // Fremder Arbeitsbereich: nein
+  assert.equal((await B.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "markPublished" } })).status, 404);
+  const done = await A.json(`/api/content-items/${id}/status`, { method: "POST", body: { action: "markPublished" } });
+  assert.equal(done.status, 200, JSON.stringify(done.data));
+  assert.equal(done.data.item.status, "PUBLISHED");
+  assert.ok(done.data.item.publishedAt);
+  // Versandauftrag verworfen, kein Plattform-Aufruf
+  const job = await prisma.publishJob.findFirst({ where: { contentItemId: id }, orderBy: { createdAt: "desc" } });
+  assert.equal(job.status, "CANCELED");
+  assert.equal(composioCalls("/api/v3/tools/execute").length, composioCalls("/api/v3/tools/execute").length);
+  const detail = await (await A.req(`/content-factory/${id}`)).text();
+  assert.ok(detail.includes("Beitrag kopieren"));
 });

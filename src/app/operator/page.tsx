@@ -59,6 +59,9 @@ export default async function OperatorPage() {
           </p>
         </div>
         <div className="flex gap-2">
+          <Link href="/operator/zugaenge" className="rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-sm text-accent">
+            Zugänge
+          </Link>
           <Link href="/" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">
             Eigener Arbeitsbereich
           </Link>

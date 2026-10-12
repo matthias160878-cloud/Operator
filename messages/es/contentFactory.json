@@ -37,7 +37,9 @@
       "approve": "Aprobar",
       "reject": "Rechazar",
       "schedule": "Programar",
-      "publish": "Publicar"
+      "publish": "Publicar",
+      "copy": "Copiar publicación",
+      "markPublished": "Publicado manualmente"
     },
     "rejectReasonPrompt": "Motivo del rechazo (opcional):",
     "scheduleDatePrompt": "Fecha de publicación (AAAA-MM-DDTHH:mm):",
@@ -91,6 +93,9 @@
       "FAILED": "La publicación programada ({when}) falló; la publicación vuelve a «Aprobada».",
       "UNKNOWN": "Publicación programada ({when}): resultado incierto.",
       "CANCELED": "La publicación programada ({when}) no se realizó."
-    }
+    },
+    "copied": "Texto y hashtags copiados: pégalos en la app de la plataforma.",
+    "copyFailed": "No se pudo copiar; selecciona el texto manualmente.",
+    "markPublishedConfirm": "¿Lo publicaste tú mismo? Se marcará como publicado; se cancela cualquier envío programado."
   }
 }

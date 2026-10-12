@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import {
   CheckCircle2,
   Clock,
+  Copy,
   FileText,
   Loader2,
   Mic,
@@ -147,6 +148,32 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
             className="inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-xs text-accent disabled:opacity-40"
           >
             <Send className="h-3.5 w-3.5" /> {t("detail.actions.schedule")}
+          </button>
+          <button
+            type="button"
+            disabled={busy !== null}
+            onClick={async () => {
+              const text = [caption.trim(), hashtags.map((h) => (h.startsWith("#") ? h : `#${h}`)).join(" ")].filter(Boolean).join("\n\n");
+              try {
+                await navigator.clipboard.writeText(text);
+                setMessage(t("detail.copied"));
+              } catch {
+                setMessage(t("detail.copyFailed"));
+              }
+            }}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs text-foreground disabled:opacity-40"
+          >
+            <Copy className="h-3.5 w-3.5" /> {t("detail.actions.copy")}
+          </button>
+          <button
+            disabled={!allowed("markPublished") || busy !== null}
+            onClick={() => {
+              if (!confirm(t("detail.markPublishedConfirm"))) return;
+              runAction("markPublished", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "markPublished" }) }));
+            }}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-success/40 bg-success/10 px-3 py-1.5 text-xs text-success disabled:opacity-40"
+          >
+            <CheckCircle2 className="h-3.5 w-3.5" /> {t("detail.actions.markPublished")}
           </button>
           <button
             disabled={!allowed("publish") || busy !== null}

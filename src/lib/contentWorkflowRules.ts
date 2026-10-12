@@ -1,7 +1,7 @@
 import type { ContentStatus } from "@prisma/client";
 
 /** Erlaubte Status-Übergänge der Content Factory — gemeinsam für Server und Oberfläche. */
-export type WorkflowAction = "review" | "approve" | "reject" | "archive" | "schedule" | "publish";
+export type WorkflowAction = "review" | "approve" | "reject" | "archive" | "schedule" | "publish" | "markPublished";
 
 export const ALLOWED_FROM: Record<WorkflowAction, ContentStatus[]> = {
   review: ["DRAFT", "REJECTED"],
@@ -10,6 +10,8 @@ export const ALLOWED_FROM: Record<WorkflowAction, ContentStatus[]> = {
   archive: ["DRAFT", "IN_REVIEW", "APPROVED", "SCHEDULED", "REJECTED", "PUBLISHED"],
   schedule: ["APPROVED", "SCHEDULED"],
   publish: ["APPROVED", "SCHEDULED"],
+  // Notweg ohne Plattform-Anbindung: Beitrag kopieren, selbst posten, hier abhaken.
+  markPublished: ["APPROVED", "SCHEDULED"],
 };
 
 export const REFUSAL: Record<WorkflowAction, string> = {
@@ -19,6 +21,7 @@ export const REFUSAL: Record<WorkflowAction, string> = {
   archive: "Dieser Beitrag ist bereits archiviert.",
   schedule: "Planen geht erst nach der Freigabe.",
   publish: "Veröffentlichen geht erst nach der Freigabe.",
+  markPublished: "Als veröffentlicht markieren geht erst nach der Freigabe.",
 };
 
 export function isActionAllowed(action: WorkflowAction, status: ContentStatus): boolean {

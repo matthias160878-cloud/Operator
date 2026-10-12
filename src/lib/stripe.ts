@@ -25,6 +25,11 @@ export function stripeMode(): "live" | "test" | null {
   return key.startsWith("sk_live_") || key.startsWith("rk_live_") ? "live" : "test";
 }
 
+/** Verwirft den zwischengespeicherten Client (nach Schlüsselwechsel über „Zugänge“). */
+export function resetStripeClient(): void {
+  client = null;
+}
+
 export function getStripe(): Stripe {
   if (!process.env.STRIPE_SECRET_KEY) {
     throw new Error("Stripe ist noch nicht konfiguriert (STRIPE_SECRET_KEY fehlt).");

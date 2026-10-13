@@ -21,6 +21,8 @@ export async function register() {
     `[start] Composio: Schlüssel ${isComposioConfigured() ? "gesetzt" : "fehlt"}, Plattformen: ${plattformen}; ` +
       `PUBLIC_APP_URL ${process.env.PUBLIC_APP_URL?.trim() ? "gesetzt" : "fehlt"}`
   );
+  const { currentTextProvider } = await import("@/lib/ai/textGenerator");
+  console.log(`[start] KI-Anbieter: ${currentTextProvider()}; Webseiten-Chat mit KI: ${process.env.WEBSITE_KI === "true" ? "an" : "aus"}`);
   if (process.env.PUBLISH_WORKER !== "inline") return;
   const { startPublishWorker } = await import("@/lib/publishWorker");
   const origin = process.env.PUBLIC_APP_URL?.trim().replace(/\/+$/, "") ?? "";

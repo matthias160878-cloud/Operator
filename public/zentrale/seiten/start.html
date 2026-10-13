@@ -840,6 +840,8 @@ h2.sec-title{
 <style id="app-ausgeblendet">
 /* Newsletter nur sichtbar, wenn der E-Mail-Versand für die Bestätigungs-Mail (Double-Opt-in) eingerichtet ist. */
 html:not(.nl-an) div:has(> #newsletterform) { display: none !important; }
+/* Logo in der Bildsektion auf schmalen Bildschirmen ganz zeigen statt beschneiden (Wunsch des Betreibers, 13.10.2026). */
+@media (max-width: 40rem) { .brain-sec img { object-fit: contain; } }
 </style>
 <script id="app-webseite-status">
 /* Skill-Anfrage nur mit freigeschalteter KI (WEBSITE_KI=true), Newsletter nur mit E-Mail-Versand. */

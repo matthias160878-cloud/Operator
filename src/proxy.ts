@@ -48,6 +48,7 @@ const PUBLIC_PREFIXES = [
   "/sw.js",
   "/icons",
   "/brand/",
+  "/splash/",
   "/robots.txt",
 ];
 

@@ -1269,3 +1269,16 @@ test("Composio: TikTok wie die anderen Plattformen — verbinden, Lesetest, Tren
   assert.equal((await prisma.composioConnection.findUniqueOrThrow({ where: { id: row.id } })).status, "DISCONNECTED");
   assert.equal(composioCalls(`/api/v3/connected_accounts/${row.connectedAccountId}`, "DELETE").length, 1, "Konto auch bei Composio gelöscht");
 });
+
+test("Bilder vorne: App-Symbole, Startbilder und Logo der Anmeldeseite sind ohne Anmeldung erreichbar", async () => {
+  for (const [p, type] of [["/icons/icon-512.png", "image/png"], ["/icons/icon-192-maskable.png", "image/png"], ["/splash/1170x2532.jpg", "image/jpeg"], ["/brand/logo-voll.png", "image/png"]]) {
+    const res = await fetch(`${BASE}${p}`, { redirect: "manual" });
+    assert.equal(res.status, 200, p);
+    assert.match(res.headers.get("content-type") ?? "", new RegExp(type), p);
+  }
+  const login = await (await fetch(`${BASE}/login`)).text();
+  assert.ok(login.includes("logo-voll.png"), "Logo auf der Anmeldeseite");
+  const root = await (await fetch(`${BASE}/login`)).text();
+  assert.ok(root.includes("/splash/1170x2532.jpg"), "Startbild-Verweis im Seitenkopf");
+  assert.equal((await fetch(`${BASE}/api/chatbot`, { redirect: "manual" })).status, 401);
+});

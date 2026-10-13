@@ -105,6 +105,7 @@ addEventListener("DOMContentLoaded", function () {
   }).catch(function () {});
 });
 </script>
+<script src="/zentrale/assets/stimme.js" defer></script>
 </head>`;
 let start = readFileSync(path.join(src, "index.html"), "utf8");
 // Fehler der Zentrale (seit 17.09., ed64696): dieser @media-Block wird nie

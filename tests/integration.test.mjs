@@ -1201,3 +1201,50 @@ test("Notweg ohne Plattform: Beitrag als manuell veröffentlicht markieren", asy
   const detail = await (await A.req(`/content-factory/${id}`)).text();
   assert.ok(detail.includes("Beitrag kopieren"));
 });
+
+test("Promocodes: Betreiber erzeugt, Kunde löst einmal dauerhaft ein, kein Durchprobieren, bezahltes Abo bleibt", async () => {
+  const op = new Client();
+  assert.equal((await op.json("/api/auth/login", { method: "POST", body: { email: "op@example.test", password: "betreiber-passwort-123" } })).status, 200);
+  assert.equal((await A.req("/api/operator/promocodes", { method: "POST", body: { plan: "MAXI", anzahl: 1 } })).status, 404);
+  assert.equal((await op.json("/api/operator/promocodes", { method: "POST", body: { plan: "GOLD", anzahl: 1 } })).status, 400);
+  const made = await op.json("/api/operator/promocodes", { method: "POST", body: { plan: "MAXI", anzahl: 2, label: "Test" } });
+  assert.equal(made.status, 200, JSON.stringify(made.data));
+  assert.equal(made.data.codes.length, 2);
+  assert.match(made.data.codes[0], /^S58-[A-Z2-9]{4}-[A-Z2-9]{4}-[A-Z2-9]{4}$/);
+  const [c1, c2] = made.data.codes;
+  // Klartext liegt nicht in der DB, Liste zeigt nur die Endung
+  assert.equal(await prisma.promoCode.count({ where: { codeHash: c1 } }), 0);
+  const list = await op.json("/api/operator/promocodes");
+  assert.ok(list.data.codes.every((c) => c.hint.startsWith("…") && c.hint.length === 5));
+  assert.ok(!JSON.stringify(list.data).includes(c1));
+  const opPage = await (await op.req("/operator")).text();
+  assert.ok(opPage.includes("Promocodes") && !opPage.includes(c1));
+
+  // Kunde ohne Paket löst ein → Maxi dauerhaft aktiv, KI-Funktionen nutzbar
+  const k = new Client();
+  assert.equal((await k.json("/api/auth/signup", { method: "POST", body: { email: "promo@example.test", password: "sehr-sicheres-passwort-123", name: "P", workspaceName: "P", acceptProcessing: true }, headers: { "x-forwarded-for": "10.8.8.8" } })).status, 200);
+  assert.equal((await k.json("/api/chatbot", { method: "POST", body: { messages: [{ role: "user", content: "hi" }] } })).status, 402);
+  assert.equal((await k.json("/api/promocode/einloesen", { method: "POST", body: { code: "S58-FALSCH-CODE-1234" } })).status, 404);
+  const ok = await k.json("/api/promocode/einloesen", { method: "POST", body: { code: ` ${c1.toLowerCase()} ` } });
+  assert.equal(ok.status, 200, JSON.stringify(ok.data));
+  assert.equal(ok.data.plan, "MAXI");
+  const ws = (await prisma.user.findUniqueOrThrow({ where: { email: "promo@example.test" } })).workspaceId;
+  const plan = await prisma.workspacePlan.findUniqueOrThrow({ where: { workspaceId: ws } });
+  assert.deepEqual([plan.plan, plan.status, plan.source, plan.billingMode, plan.currentPeriodEnd], ["MAXI", "ACTIVE", "PROMO", "promo", null]);
+  assert.equal((await k.json("/api/chatbot", { method: "POST", body: { messages: [{ role: "user", content: "hi" }] } })).status, 200);
+  const billing = await (await k.req("/billing")).text();
+  assert.ok(billing.includes("per Promocode freigeschaltet"));
+  // Derselbe Code ein zweites Mal (anderer Kunde) → verbraucht
+  assert.equal((await B.json("/api/promocode/einloesen", { method: "POST", body: { code: c1 } })).status, 409);
+  assert.equal((await prisma.promoCode.findFirstOrThrow({ where: { hint: c1.slice(-4) } })).usedCount, 1);
+  // Bezahltes Stripe-Abo (A) wird nicht ersetzt, Code bleibt unverbraucht
+  const planA = await prisma.workspacePlan.findUnique({ where: { workspaceId: (await prisma.user.findUniqueOrThrow({ where: { email: "a@example.test" } })).workspaceId } });
+  if (planA?.status === "ACTIVE" && planA.source === "STRIPE") {
+    assert.equal((await A.json("/api/promocode/einloesen", { method: "POST", body: { code: c2 } })).status, 409);
+    assert.equal((await prisma.promoCode.findFirstOrThrow({ where: { hint: c2.slice(-4) } })).usedCount, 0);
+  }
+  // Durchprobieren wird gebremst
+  let last = 0;
+  for (let i = 0; i < 12; i++) last = (await k.json("/api/promocode/einloesen", { method: "POST", body: { code: `S58-AAAA-BBBB-${String(i).padStart(4, "0")}` } })).status;
+  assert.equal(last, 429);
+});

@@ -10,6 +10,8 @@ import { prisma } from "@/lib/db";
 import { websiteAiEnabled } from "@/lib/websiteAi";
 import { isEmailConfigured } from "@/lib/email";
 import { AppointmentsPanel } from "@/components/operator/AppointmentsPanel";
+import { PromoCodesPanel } from "@/components/operator/PromoCodesPanel";
+import { listPromoCodes } from "@/lib/promoCodes";
 
 export const dynamic = "force-dynamic";
 
@@ -37,11 +39,12 @@ export default async function OperatorPage() {
   const user = await getSessionUser();
   if (!user?.isOperator) redirect("/");
   const o = await getOperatorOverview();
-  const [termine, chatFragen, newsletterStand, newsletterAktiv] = await Promise.all([
+  const [termine, chatFragen, newsletterStand, newsletterAktiv, promoCodes] = await Promise.all([
     upcomingAppointments(),
     prisma.websiteChatEntry.findMany({ orderBy: { createdAt: "desc" }, take: 10 }),
     prisma.newsletterSubscriber.groupBy({ by: ["status"], _count: { _all: true } }),
     prisma.newsletterSubscriber.findMany({ where: { status: "ACTIVE" }, orderBy: { confirmedAt: "desc" }, take: 50 }),
+    listPromoCodes(),
   ]);
   const nlCount = (st: string) => newsletterStand.find((n) => n.status === st)?._count._all ?? 0;
 
@@ -186,6 +189,7 @@ export default async function OperatorPage() {
           </ul>
         )}
       </section>
+      <PromoCodesPanel initial={promoCodes.map((c) => ({ ...c, createdAt: c.createdAt.toISOString() }))} />
       <LegalFooter />
     </div>
   );

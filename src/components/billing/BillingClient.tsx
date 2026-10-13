@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
 export interface PlanCard {
@@ -40,6 +41,10 @@ export function BillingClient({
   hasCustomer,
   activePlan,
 }: Props) {
+  const router = useRouter();
+  const [promo, setPromo] = useState("");
+  const [promoBusy, setPromoBusy] = useState(false);
+  const [promoNote, setPromoNote] = useState<{ ok: boolean; text: string } | null>(null);
   const [selected, setSelected] = useState<"PRO" | "MAXI" | null>(preselected);
   const [interval, setBillingInterval] = useState<"month" | "year">(preselectedInterval);
   const selectedCard = cards.find((c) => c.key === selected) ?? null;
@@ -79,6 +84,30 @@ export function BillingClient({
       stop = true;
     };
   }, [checkoutId]);
+
+  async function promoEinloesen() {
+    const code = promo.trim();
+    if (!code) return;
+    setPromoBusy(true);
+    setPromoNote(null);
+    try {
+      const res = await fetch("/api/promocode/einloesen", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { name?: string; error?: string };
+      if (!res.ok) {
+        setPromoNote({ ok: false, text: data.error ?? "Der Code konnte nicht eingelöst werden." });
+        return;
+      }
+      setPromo("");
+      setPromoNote({ ok: true, text: `${data.name ?? "Paket"} ist jetzt dauerhaft freigeschaltet.` });
+      router.refresh();
+    } finally {
+      setPromoBusy(false);
+    }
+  }
 
   async function go(path: string, body?: unknown) {
     setError(null);
@@ -220,6 +249,44 @@ export function BillingClient({
         )}
         {error && <p role="alert" className="text-sm text-red-300">{error}</p>}
       </div>
+
+      {!hasSubscription && (
+        <div className="card space-y-2 p-5">
+          <h2 className="text-sm font-semibold text-foreground">Promocode einlösen</h2>
+          <p className="text-xs text-muted">
+            Hast du einen Promocode vom Betreiber? Er schaltet das zugehörige Paket dauerhaft frei — ohne Zahlung, ohne Abo.
+          </p>
+          <form
+            className="flex flex-wrap gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              void promoEinloesen();
+            }}
+          >
+            <input
+              value={promo}
+              onChange={(e) => setPromo(e.target.value)}
+              placeholder="S58-XXXX-XXXX-XXXX"
+              aria-label="Promocode"
+              autoComplete="off"
+              spellCheck={false}
+              className="min-h-11 min-w-[14rem] flex-1 rounded-lg border border-border bg-surface-2 px-3 py-2 font-mono text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none"
+            />
+            <button
+              type="submit"
+              disabled={promoBusy || !promo.trim()}
+              className="min-h-11 rounded-lg border border-accent/40 bg-accent/10 px-4 py-2 text-sm font-semibold text-accent disabled:opacity-40"
+            >
+              {promoBusy ? "Prüfe …" : "Einlösen"}
+            </button>
+          </form>
+          {promoNote && (
+            <p role={promoNote.ok ? "status" : "alert"} className={`text-sm ${promoNote.ok ? "text-success" : "text-red-300"}`}>
+              {promoNote.text}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

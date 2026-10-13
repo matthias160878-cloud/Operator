@@ -835,3 +835,33 @@ model NewsletterSubscriber {
 
   @@map("newsletter_subscribers")
 }
+
+/// Vom Betreiber erzeugter Promocode: schaltet ein Paket dauerhaft frei (ohne
+/// Stripe). Nur der Hash wird gespeichert; der Klartext erscheint einmal beim Anlegen.
+model PromoCode {
+  id          String   @id @default(cuid())
+  codeHash    String   @unique
+  /// letzte 4 Zeichen zur Wiedererkennung in der Liste
+  hint        String
+  plan        String // "PRO" | "MAXI"
+  label       String   @default("")
+  maxUses     Int      @default(1)
+  usedCount   Int      @default(0)
+  expiresAt   DateTime?
+  createdById String?
+  createdAt   DateTime @default(now())
+  redemptions PromoRedemption[]
+
+  @@map("promo_codes")
+}
+
+model PromoRedemption {
+  id          String    @id @default(cuid())
+  promoCodeId String
+  promoCode   PromoCode @relation(fields: [promoCodeId], references: [id], onDelete: Cascade)
+  workspaceId String
+  redeemedAt  DateTime  @default(now())
+
+  @@unique([promoCodeId, workspaceId])
+  @@map("promo_redemptions")
+}

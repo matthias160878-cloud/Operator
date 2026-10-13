@@ -106,7 +106,7 @@ export default async function BillingPage({
         <h2 className="text-sm font-semibold text-foreground">Aktueller Status</h2>
         <p className="mt-1 text-sm text-foreground">
           {current ? `${PLANS[current.plan as keyof typeof PLANS]?.name ?? current.plan}: ${STATUS_TEXT[current.status] ?? current.status}` : STATUS_TEXT.NONE}
-          {current?.source === "TEST" ? " (Testdaten)" : ""}
+          {current?.source === "TEST" ? " (Testdaten)" : current?.source === "PROMO" ? " (per Promocode freigeschaltet, dauerhaft)" : ""}
         </p>
         {current?.cancelAtPeriodEnd && current.currentPeriodEnd && (
           <p className="mt-1 text-xs text-muted">Endet am {current.currentPeriodEnd.toLocaleDateString("de-DE")}.</p>

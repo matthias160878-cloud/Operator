@@ -32,6 +32,12 @@ export const INTEGRATIONS: IntegrationDefinition[] = [
     requiredEnv: ["OPENAI_API_KEY"],
   },
   {
+    key: "gemini",
+    name: "Google Gemini",
+    category: "AI",
+    requiredEnv: ["GEMINI_API_KEY"],
+  },
+  {
     key: "elevenlabs",
     name: "ElevenLabs",
     category: "VOICE",

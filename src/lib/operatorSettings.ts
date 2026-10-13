@@ -36,7 +36,7 @@ export const SETTING_GROUPS: Record<SettingGroup, { title: string; text: string 
   },
   ki: {
     title: "KI-Texte und Webseiten-Chat",
-    text: "Ohne Schlüssel arbeitet die App mit Vorlagen. Der Webseiten-Chat nutzt KI nur, wenn zusätzlich WEBSITE_KI auf „true“ steht.",
+    text: "Anthropic (Claude), OpenAI (GPT) oder Google Gemini — einer reicht, mehrere sind Ersatz füreinander. Ohne Schlüssel arbeitet die App mit Vorlagen. Der Webseiten-Chat nutzt KI nur, wenn zusätzlich WEBSITE_KI auf „true“ steht.",
   },
   email: {
     title: "E-Mail (Newsletter-Bestätigung)",
@@ -59,6 +59,9 @@ export const SETTINGS: SettingDef[] = [
 
   { key: "ANTHROPIC_API_KEY", label: "Anthropic API-Schlüssel (Claude)", group: "ki", secret: true, hint: "Beginnt mit „sk-ant-“. Wird bevorzugt genutzt.", pattern: /^sk-ant-[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „sk-ant-“ beginnen" },
   { key: "OPENAI_API_KEY", label: "OpenAI API-Schlüssel (GPT)", group: "ki", secret: true, hint: "Beginnt mit „sk-“. Ersatz, wenn kein Anthropic-Schlüssel gesetzt ist.", pattern: /^sk-[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „sk-“ beginnen" },
+  { key: "GEMINI_API_KEY", label: "Google Gemini API-Schlüssel", group: "ki", secret: true, hint: "Beginnt mit „AIza“. Dritter Anbieter.", pattern: /^AIza[A-Za-z0-9_-]{20,}$/, patternHint: "muss mit „AIza“ beginnen" },
+  { key: "GEMINI_MODEL", label: "Gemini-Modell", group: "ki", secret: false, hint: "leer = aktuelles Flash-Modell (gemini-flash-latest); z. B. gemini-3.5-flash", pattern: /^[a-z0-9.-]{3,60}$/, patternHint: "nur Kleinbuchstaben, Ziffern, Punkt, Bindestrich" },
+  { key: "AI_PROVIDER", label: "Bevorzugter KI-Anbieter", group: "ki", secret: false, hint: "anthropic, openai oder gemini — leer = erster Anbieter mit Schlüssel", pattern: /^(anthropic|openai|gemini)$/, patternHint: "anthropic, openai oder gemini" },
   { key: "WEBSITE_KI", label: "Webseiten-Chat mit KI", group: "ki", secret: false, hint: "„true“ = an, leer = aus (Tageslimit WEBSITE_KI_TAGESLIMIT, Standard 200)", pattern: /^(true|false)$/, patternHint: "nur „true“ oder „false“" },
 
   { key: "RESEND_API_KEY", label: "Resend API-Schlüssel", group: "email", secret: true, hint: "Beginnt mit „re_“.", pattern: /^re_[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „re_“ beginnen" },

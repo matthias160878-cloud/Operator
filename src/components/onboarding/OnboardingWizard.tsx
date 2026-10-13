@@ -13,7 +13,7 @@ type StepKey = "welcome" | "aiProvider" | "platform" | "voice" | "done";
 const STEP_ORDER: StepKey[] = ["welcome", "aiProvider", "platform", "voice", "done"];
 
 const STEP_INTEGRATION_KEYS: Partial<Record<StepKey, string[]>> = {
-  aiProvider: ["anthropic", "openai"],
+  aiProvider: ["anthropic", "openai", "gemini"],
   platform: ["youtube", "instagram", "tiktok", "linkedin", "facebook"],
   voice: ["elevenlabs"],
 };

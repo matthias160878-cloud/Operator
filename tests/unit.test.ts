@@ -6,6 +6,7 @@ import { normalizeOrigin } from "@/lib/website";
 import { isActionAllowed } from "@/lib/contentWorkflowRules";
 import { PLANS, lookupStripePrice, netAmountFor, parseBillingInterval, parsePlanKey, planForStripePrice, yearlyMonthlyEquivalent } from "@/lib/plans";
 import { hashPassword, passwordProblem, verifyPassword } from "@/lib/auth/password";
+import { currentTextProvider, generateText } from "@/lib/ai/textGenerator";
 import { composioUserIdFor, hashState, sanitizeComposioMessage, stateMatches } from "@/lib/composio/client";
 import { extractLabel } from "@/lib/composio/service";
 import { COMPOSIO_TOOLKITS, getComposioToolkit, readToolFor } from "@/lib/composio/toolkits";
@@ -201,4 +202,51 @@ test("Freigabe-Regeln: Planen und Veröffentlichen nur nach Freigabe", () => {
   }
   assert.ok(isActionAllowed("publish", "APPROVED") && isActionAllowed("publish", "SCHEDULED"));
   assert.ok(isActionAllowed("approve", "IN_REVIEW") && !isActionAllowed("approve", "PUBLISHED"));
+});
+
+test("KI-Anbieter: Reihenfolge, Vorzug über AI_PROVIDER, Gemini-Aufruf", async () => {
+  const saved = { ...process.env };
+  const reset = () => { for (const k of ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GEMINI_API_KEY", "AI_PROVIDER", "GEMINI_BASE_URL", "GEMINI_MODEL"]) delete process.env[k]; };
+  try {
+    reset();
+    assert.equal(currentTextProvider(), "template");
+    process.env.GEMINI_API_KEY = "AIza-test";
+    assert.equal(currentTextProvider(), "gemini");
+    process.env.OPENAI_API_KEY = "sk-test";
+    assert.equal(currentTextProvider(), "openai", "OpenAI vor Gemini");
+    process.env.ANTHROPIC_API_KEY = "sk-ant-test";
+    assert.equal(currentTextProvider(), "anthropic", "Anthropic zuerst");
+    process.env.AI_PROVIDER = "gemini";
+    assert.equal(currentTextProvider(), "gemini", "Vorzug greift");
+    process.env.AI_PROVIDER = "openai";
+    delete process.env.OPENAI_API_KEY;
+    assert.equal(currentTextProvider(), "anthropic", "Vorzug ohne Schlüssel wird ignoriert");
+
+    // Gemini-Aufruf gegen eine lokale Attrappe: Anfrageform und Antwortauswertung
+    const { createServer } = await import("node:http");
+    const seen: { url?: string; body?: Record<string, unknown>; key?: string } = {};
+    const srv = createServer((req, res) => {
+      let raw = ""; req.on("data", (c) => (raw += c)); req.on("end", () => {
+        seen.url = req.url; seen.body = JSON.parse(raw); seen.key = String(req.headers["x-goog-api-key"]);
+        res.setHeader("content-type", "application/json");
+        res.end(JSON.stringify({ candidates: [{ content: { parts: [{ text: "Hallo " }, { text: "aus Gemini" }] } }] }));
+      });
+    });
+    await new Promise<void>((r) => srv.listen(0, "127.0.0.1", r));
+    const port = (srv.address() as { port: number }).port;
+    process.env.AI_PROVIDER = "gemini"; process.env.GEMINI_API_KEY = "AIza-test"; process.env.GEMINI_MODEL = "gemini-test-1";
+    process.env.GEMINI_BASE_URL = `http://127.0.0.1:${port}`;
+    const out = await generateText({ system: "Sei knapp.", messages: [{ role: "user", content: "Hi" }, { role: "assistant", content: "Hallo" }, { role: "user", content: "Wie geht's?" }], maxTokens: 50 });
+    srv.close();
+    assert.deepEqual(out, { text: "Hallo aus Gemini", provider: "gemini" });
+    assert.equal(seen.url, "/v1beta/models/gemini-test-1:generateContent");
+    assert.equal(seen.key, "AIza-test");
+    const body = seen.body as { system_instruction: { parts: { text: string }[] }; contents: { role: string }[]; generationConfig: { maxOutputTokens: number } };
+    assert.equal(body.system_instruction.parts[0].text, "Sei knapp.");
+    assert.deepEqual(body.contents.map((c) => c.role), ["user", "model", "user"]);
+    assert.equal(body.generationConfig.maxOutputTokens, 50);
+  } finally {
+    reset();
+    for (const k of ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GEMINI_API_KEY", "AI_PROVIDER", "GEMINI_BASE_URL", "GEMINI_MODEL"]) if (saved[k] !== undefined) process.env[k] = saved[k];
+  }
 });

@@ -120,10 +120,6 @@ export async function createCampaignFromIdea(
   return {
     campaignId: campaign.id,
     contentItemIds,
-    provider: providers.has("anthropic")
-      ? "anthropic"
-      : providers.has("openai")
-        ? "openai"
-        : "template",
+    provider: (["anthropic", "openai", "gemini"] as const).find((p) => providers.has(p)) ?? "template",
   };
 }

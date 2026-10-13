@@ -91,6 +91,11 @@ const START_LINKS = [
   ['        <a href="presse.html">Presse</a>\n', ""],
   ['        <a href="rechte.html">Rechte</a>\n', ""],
   ['        <a href="/sicherheit">Sicherheit</a>\n', ""], // lädt Daten vom alten Zentrale-Server
+  // Wunsch des Betreibers (13.10.2026): Logo statt Gehirn-Bild in der Bildsektion.
+  [
+    '<img src="/zentrale/assets/gehirn.jpg" width="1800" height="1009" loading="lazy" decoding="async" alt="Leuchtendes Gehirn über einer Datenplattform">',
+    '<img src="/zentrale/assets/logo-secret58.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Logo secret58.com — die 58 in Silber und Blau">',
+  ],
 ];
 const AUSGEBLENDET = `<style id="app-ausgeblendet">
 /* Newsletter nur sichtbar, wenn der E-Mail-Versand für die Bestätigungs-Mail (Double-Opt-in) eingerichtet ist. */

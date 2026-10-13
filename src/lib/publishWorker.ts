@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/db";
-import { getActivePlan } from "@/lib/entitlements";
+import { hasUsableEntitlement } from "@/lib/entitlements";
 import { runAgent } from "@/lib/agents/runner";
 import { publishContentItem } from "@/lib/agents/publishingAgent";
 import { claimPublishLock, releasePublishLock } from "@/lib/contentWorkflow";
@@ -60,7 +60,7 @@ export async function processJob(jobId: string, publicOrigin: string, now = new 
     await finish(job.id, "CANCELED", "Nicht gesendet: Beitrag ist nicht mehr zu diesem Termin geplant oder nicht mehr freigegeben.");
     return "CANCELED";
   }
-  if (!(await getActivePlan(job.workspaceId))) {
+  if (!(await hasUsableEntitlement(job.workspaceId))) {
     await finish(job.id, "FAILED", "Nicht gesendet: Kein aktives Paket.");
     await prisma.contentItem.update({ where: { id: item.id }, data: { status: "APPROVED" } });
     return "FAILED";

@@ -496,6 +496,17 @@ test("Betreiber: geschützte Einrichtung, Dashboard ohne Kundeninhalte, kein Zug
 
   const asCustomer = await A.req("/operator");
   assert.equal(asCustomer.status, 307);
+
+  // Betreiber braucht kein Paket: KI-Hilfe-Chat läuft über eigene Zugänge, zählt gegen kein Kontingent
+  const opChat = await op.json("/api/chatbot", { method: "POST", body: { messages: [{ role: "user", content: "Wie plane ich einen Beitrag?" }], locale: "de" } });
+  assert.equal(opChat.status, 200, JSON.stringify(opChat.data));
+  assert.ok(opChat.data.reply);
+  const opWs = (await prisma.user.findUniqueOrThrow({ where: { email: "op@example.test" } })).workspaceId;
+  assert.equal(await prisma.usageCounter.count({ where: { workspaceId: opWs } }), 0, "Betreiber darf kein Kontingent verbrauchen");
+  // Kunde ohne Paket bleibt gesperrt
+  const noPlan = new Client();
+  await noPlan.json("/api/auth/signup", { method: "POST", body: { email: "ohnepaket@example.test", password: "sehr-sicheres-passwort-123", name: "O", workspaceName: "O", acceptProcessing: true }, headers: { "x-forwarded-for": "10.9.9.9" } });
+  assert.equal((await noPlan.json("/api/chatbot", { method: "POST", body: { messages: [{ role: "user", content: "hi" }] } })).status, 402);
 });
 
 test("Händlerkonten, Verkäufe und Importe bleiben getrennt und doppelt-sicher", async () => {

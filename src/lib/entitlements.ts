@@ -20,6 +20,20 @@ export async function getActivePlan(workspaceId: string): Promise<ActivePlan | n
   return { plan: row.plan, status: row.status, source: row.source };
 }
 
+/**
+ * Betreiber-Arbeitsbereich: Das Betreiberkonto nutzt seine eigenen Zugänge
+ * (KI, Plattformen) und zahlt sie selbst — es braucht kein Paket und zählt
+ * gegen kein Kontingent. Kundenkonten bleiben an Paket und Kontingent gebunden.
+ */
+export async function isOperatorWorkspace(workspaceId: string): Promise<boolean> {
+  return (await prisma.user.count({ where: { workspaceId, isOperator: true } })) > 0;
+}
+
+/** Paket aktiv ODER Betreiber-Arbeitsbereich — Grundlage für KI-Funktionen und Versand. */
+export async function hasUsableEntitlement(workspaceId: string): Promise<boolean> {
+  return (await isOperatorWorkspace(workspaceId)) || (await getActivePlan(workspaceId)) !== null;
+}
+
 export class QuotaError extends Error {
   constructor(
     message: string,
@@ -42,6 +56,8 @@ export class QuotaError extends Error {
  * ausgeschöpft, wird die Anfrage abgelehnt.
  */
 export async function reserveQuota(workspaceId: string, metric: Metric, amount = 1): Promise<() => Promise<void>> {
+  // Betreiber: kein Paket nötig, kein Kontingent (eigene Zugänge, eigene Kosten).
+  if (await isOperatorWorkspace(workspaceId)) return async () => undefined;
   const active = await getActivePlan(workspaceId);
   if (!active) {
     throw new QuotaError(

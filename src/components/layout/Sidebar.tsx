@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Brain } from "lucide-react";
 import { NAV_ITEMS } from "@/components/layout/nav-items";
 import clsx from "clsx";
 
@@ -15,8 +14,8 @@ export function Sidebar() {
   return (
     <aside className="hidden lg:flex w-64 shrink-0 flex-col border-r border-border bg-surface/60 backdrop-blur-xl">
       <div className="flex items-center gap-2 px-5 py-5 border-b border-border">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-accent-2 shadow-[0_0_20px_rgba(109,91,255,0.45)]">
-          <Brain className="h-5 w-5 text-white" />
+        <div className="relative h-9 w-9 overflow-hidden rounded-lg shadow-[0_0_20px_rgba(109,91,255,0.45)]">
+          <Image src="/brand/logo-58.png" alt="" fill sizes="36px" className="object-cover" />
         </div>
         <div className="leading-tight">
           <div className="font-semibold tracking-wide text-foreground">{t("appName")}</div>
@@ -53,7 +52,7 @@ export function Sidebar() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(109,91,255,0.25),transparent_65%)]" />
           <div className="relative h-16 w-16 overflow-hidden rounded-full shadow-[0_0_30px_rgba(109,91,255,0.5)]">
             <Image
-              src="/brand/brain-core.png"
+              src="/brand/logo-58.png"
               alt="SECRET 58"
               fill
               sizes="64px"

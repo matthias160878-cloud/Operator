@@ -165,7 +165,8 @@ test("Composio: Kundenkennung, Sicherheitscode, bereinigte Fehler, Kontoname", (
 
 test("Composio: nur bekannte Plattformen, Lese-Werkzeug nur gültig überschreibbar", () => {
   assert.equal(getComposioToolkit("instagram")?.key, "INSTAGRAM");
-  assert.equal(getComposioToolkit("tiktok"), undefined);
+  assert.equal(getComposioToolkit("tiktok")?.key, "TIKTOK");
+  assert.equal(getComposioToolkit("twitter"), undefined);
   for (const tk of COMPOSIO_TOOLKITS) assert.match(tk.readTool, /(GET|LIST)_/);
   const li = getComposioToolkit("LINKEDIN")!;
   process.env.COMPOSIO_READ_TOOL_LINKEDIN = "LINKEDIN_GET_PROFILE";

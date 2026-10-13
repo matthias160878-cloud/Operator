@@ -10,7 +10,7 @@
  * Composio-Dashboard zu prüfen; er lässt sich ohne Code-Änderung über
  * COMPOSIO_READ_TOOL_<TOOLKIT> überschreiben.
  */
-export type ComposioToolkitKey = "INSTAGRAM" | "FACEBOOK" | "LINKEDIN" | "YOUTUBE";
+export type ComposioToolkitKey = "INSTAGRAM" | "FACEBOOK" | "LINKEDIN" | "YOUTUBE" | "TIKTOK";
 
 export interface ComposioToolkit {
   key: ComposioToolkitKey;
@@ -60,6 +60,18 @@ export const COMPOSIO_TOOLKITS: ComposioToolkit[] = [
     readTool: "YOUTUBE_GET_CHANNEL_STATISTICS",
     readToolDocumented: true,
     readArguments: { mine: true, part: "snippet,statistics" },
+  },
+  {
+    // TikTok: Composio bietet keine verwaltete Anmeldung — die Auth-Config
+    // braucht eine eigene TikTok-Entwickler-App (Login Kit + Content Posting
+    // API, von TikTok geprüft). Werkzeugname laut Composio-Werkzeugliste (13.10.2026).
+    key: "TIKTOK",
+    slug: "tiktok",
+    label: "TikTok",
+    authConfigEnv: "COMPOSIO_AUTH_CONFIG_TIKTOK",
+    readTool: "TIKTOK_GET_USER_BASIC_INFO",
+    readToolDocumented: true,
+    readArguments: {},
   },
 ];
 

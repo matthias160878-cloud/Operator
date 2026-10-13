@@ -54,6 +54,7 @@ export const SETTINGS: SettingDef[] = [
   { key: "COMPOSIO_AUTH_CONFIG_INSTAGRAM", label: "Auth-Config Instagram", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen" },
   { key: "COMPOSIO_AUTH_CONFIG_FACEBOOK", label: "Auth-Config Facebook", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen" },
   { key: "COMPOSIO_AUTH_CONFIG_YOUTUBE", label: "Auth-Config YouTube", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen" },
+  { key: "COMPOSIO_AUTH_CONFIG_TIKTOK", label: "Auth-Config TikTok", group: "composio", secret: false, hint: "ac_… (braucht eigene TikTok-Entwickler-App mit Login Kit + Content Posting API)", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen" },
   { key: "COMPOSIO_USER_PREFIX", label: "Kundenkennung-Präfix", group: "composio", secret: false, hint: "z. B. s58test (Test) oder s58live (Betrieb)", pattern: /^[A-Za-z0-9-]{2,20}$/, patternHint: "nur Buchstaben, Ziffern, Bindestrich" },
 
   { key: "ANTHROPIC_API_KEY", label: "Anthropic API-Schlüssel", group: "ki", secret: true, hint: "Beginnt mit „sk-ant-“.", pattern: /^sk-ant-[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „sk-ant-“ beginnen" },

@@ -134,6 +134,7 @@ before(async () => {
     COMPOSIO_BASE_URL: `http://127.0.0.1:${fakes.stripePort}`,
     COMPOSIO_AUTH_CONFIG_INSTAGRAM: "ac_instagram",
     COMPOSIO_AUTH_CONFIG_YOUTUBE: "ac_youtube",
+    COMPOSIO_AUTH_CONFIG_TIKTOK: "ac_tiktok",
     TOKEN_ENCRYPTION_KEY: "test-schluessel-nur-fuer-die-integrationstests",
     RESEND_API_KEY: "re_test_fake",
     EMAIL_FROM: "Secret 58 <newsletter@example.test>",
@@ -1247,4 +1248,24 @@ test("Promocodes: Betreiber erzeugt, Kunde löst einmal dauerhaft ein, kein Durc
   let last = 0;
   for (let i = 0; i < 12; i++) last = (await k.json("/api/promocode/einloesen", { method: "POST", body: { code: `S58-AAAA-BBBB-${String(i).padStart(4, "0")}` } })).status;
   assert.equal(last, 429);
+});
+
+test("Composio: TikTok wie die anderen Plattformen — verbinden, Lesetest, Trennen", async () => {
+  const wsB = await workspaceIdOf("b@example.test");
+  const start = await composioStart(B, "TIKTOK");
+  assert.equal(start.linkBody.auth_config_id, "ac_tiktok");
+  assert.equal(start.linkBody.user_id, `s58-ws-${wsB}`);
+  const back = await B.req(start.callback);
+  assert.equal(back.status, 307);
+  const row = await prisma.composioConnection.findUniqueOrThrow({ where: { workspaceId_toolkit: { workspaceId: wsB, toolkit: "TIKTOK" } } });
+  assert.equal(row.connectedAccountId, start.accountId);
+  const test = await B.json(`/api/composio/${row.id}/test`, { method: "POST" });
+  assert.equal(test.status, 200, JSON.stringify(test.data));
+  assert.equal(test.data.ok, true);
+  assert.ok(composioCalls("/api/v3/tools/execute/TIKTOK_GET_USER_BASIC_INFO", "POST").length >= 1, "TikTok-Lesewerkzeug");
+  const html = await (await B.req("/social-media")).text();
+  assert.ok(html.includes("TikTok"));
+  assert.equal((await B.json(`/api/composio/${row.id}/disconnect`, { method: "POST" })).status, 200);
+  assert.equal((await prisma.composioConnection.findUniqueOrThrow({ where: { id: row.id } })).status, "DISCONNECTED");
+  assert.equal(composioCalls(`/api/v3/connected_accounts/${row.connectedAccountId}`, "DELETE").length, 1, "Konto auch bei Composio gelöscht");
 });

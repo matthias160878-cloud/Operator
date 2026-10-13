@@ -42,7 +42,7 @@ export function startFakeServices() {
         if (req.method === "POST" && p === "/api/v3/connected_accounts/link") {
           composio.n += 1;
           const id = `ca_test_${composio.n}`;
-          const toolkit = { ac_instagram: "instagram", ac_youtube: "youtube" }[body.auth_config_id] ?? "unknown";
+          const toolkit = { ac_instagram: "instagram", ac_youtube: "youtube", ac_tiktok: "tiktok" }[body.auth_config_id] ?? "unknown";
           composio.accounts.set(id, { id, user_id: body.user_id, status: composio.nextStatus, toolkit: { slug: toolkit } });
           return json(res, 200, { id: `lnk_${composio.n}`, connected_account_id: id, redirect_url: `https://connect.composio.test/link/${id}` });
         }

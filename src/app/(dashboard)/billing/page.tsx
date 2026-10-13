@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
-import { getUsage } from "@/lib/entitlements";
+import { getUsage, isOperatorWorkspace } from "@/lib/entitlements";
 import {
   METRIC_LABELS,
   PLANS,
@@ -47,7 +47,11 @@ export default async function BillingPage({
 }) {
   const { plan: planParam, checkout, intervall } = await searchParams;
   const workspaceId = await getCurrentWorkspaceId();
-  const [current, usage] = await Promise.all([prisma.workspacePlan.findUnique({ where: { workspaceId } }), getUsage(workspaceId)]);
+  const [current, usage, operator] = await Promise.all([
+    prisma.workspacePlan.findUnique({ where: { workspaceId } }),
+    getUsage(workspaceId),
+    isOperatorWorkspace(workspaceId),
+  ]);
 
   const safePrice = async (key: (typeof PLAN_KEYS)[number], interval: "month" | "year") => {
     try {
@@ -105,7 +109,9 @@ export default async function BillingPage({
       <div className="card p-5">
         <h2 className="text-sm font-semibold text-foreground">Aktueller Status</h2>
         <p className="mt-1 text-sm text-foreground">
-          {current ? `${PLANS[current.plan as keyof typeof PLANS]?.name ?? current.plan}: ${STATUS_TEXT[current.status] ?? current.status}` : STATUS_TEXT.NONE}
+          {operator
+            ? "Betreiberkonto: alle Funktionen frei, kein Paket und kein Kontingent nötig (eigene Zugänge)."
+            : current ? `${PLANS[current.plan as keyof typeof PLANS]?.name ?? current.plan}: ${STATUS_TEXT[current.status] ?? current.status}` : STATUS_TEXT.NONE}
           {current?.source === "TEST" ? " (Testdaten)" : current?.source === "PROMO" ? " (per Promocode freigeschaltet, dauerhaft)" : ""}
         </p>
         {current?.cancelAtPeriodEnd && current.currentPeriodEnd && (

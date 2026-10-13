@@ -57,7 +57,8 @@ export const SETTINGS: SettingDef[] = [
   { key: "COMPOSIO_AUTH_CONFIG_TIKTOK", label: "Auth-Config TikTok", group: "composio", secret: false, hint: "ac_… (braucht eigene TikTok-Entwickler-App mit Login Kit + Content Posting API)", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen" },
   { key: "COMPOSIO_USER_PREFIX", label: "Kundenkennung-Präfix", group: "composio", secret: false, hint: "z. B. s58test (Test) oder s58live (Betrieb)", pattern: /^[A-Za-z0-9-]{2,20}$/, patternHint: "nur Buchstaben, Ziffern, Bindestrich" },
 
-  { key: "ANTHROPIC_API_KEY", label: "Anthropic API-Schlüssel", group: "ki", secret: true, hint: "Beginnt mit „sk-ant-“.", pattern: /^sk-ant-[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „sk-ant-“ beginnen" },
+  { key: "ANTHROPIC_API_KEY", label: "Anthropic API-Schlüssel (Claude)", group: "ki", secret: true, hint: "Beginnt mit „sk-ant-“. Wird bevorzugt genutzt.", pattern: /^sk-ant-[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „sk-ant-“ beginnen" },
+  { key: "OPENAI_API_KEY", label: "OpenAI API-Schlüssel (GPT)", group: "ki", secret: true, hint: "Beginnt mit „sk-“. Ersatz, wenn kein Anthropic-Schlüssel gesetzt ist.", pattern: /^sk-[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „sk-“ beginnen" },
   { key: "WEBSITE_KI", label: "Webseiten-Chat mit KI", group: "ki", secret: false, hint: "„true“ = an, leer = aus (Tageslimit WEBSITE_KI_TAGESLIMIT, Standard 200)", pattern: /^(true|false)$/, patternHint: "nur „true“ oder „false“" },
 
   { key: "RESEND_API_KEY", label: "Resend API-Schlüssel", group: "email", secret: true, hint: "Beginnt mit „re_“.", pattern: /^re_[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „re_“ beginnen" },

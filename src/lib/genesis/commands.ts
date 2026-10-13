@@ -83,6 +83,7 @@ export function interpretCommand(raw: string): GenesisAction {
 }
 
 export const GENESIS_EXAMPLES = [
+  "Wie plane ich einen Beitrag?",
   "Öffne Social Media AI",
   "Wähle Pro",
   "Wähle Maxi",

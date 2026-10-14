@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Video trajnimi",
+  "subtitlesLabel": "Titra",
+  "subtitlesOff": "Joaktive",
+  "soundLabel": "Zëri",
+  "soundOn": "Zëri i leximit aktiv",
+  "soundOff": "Zëri i leximit joaktiv",
+  "soundHint": "Zëri i leximit vjen nga shfletuesi yt. Cilat gjuhë janë të disponueshme varet nga pajisja jote.",
+  "soundMissing": "Për këtë gjuhë nuk është instaluar asnjë zë në pajisjen tënde. Titrat funksionojnë prapë.",
+  "draftNote": "Draft: regjistrim i aplikacionit real me të dhëna testimi. Titrat janë përkthyer me makinë.",
+  "whatLabel": "Çfarë është, çfarë funksioni ka dhe si e përdor.",
+  "videosTitle": "Video shpjeguese për çdo seksion",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Hapat e parë",
+      "cues": {
+        "c1": "Mirë se vjen në trajnim: Hapat e parë. Gjithçka që sheh është aplikacioni real me të dhëna testimi.",
+        "c2": "Majtas është navigimi. Çdo seksion i aplikacionit ka këtu një hyrje.",
+        "c3": "Hapi 1: Kontrollo te “Integrimet” cilat shërbime janë të lidhura.",
+        "c4": "Çdo rresht tregon statusin real, të kontrolluar – kurrë një lidhje të shtirrur.",
+        "c5": "“I pakonfiguruar” do të thotë: ky shërbim ende nuk është konfiguruar. Pa ofrues AI aplikacioni punon në modalitetin e shablloneve.",
+        "c6": "Hapi 2: Futi markën tënde te “Brand DNA”. Toni, audienca e synuar dhe vlerat rrjedhin në çdo tekst të gjeneruar.",
+        "c7": "Shembull: plotëso sektorin dhe audiencën e synuar dhe ruaj poshtë.",
+        "c8": "Hapi 3: Te “Ide & Frymëzim” lër të krijohet ideja e parë. Shkruaj një temë dhe kliko “Gjenero ide”.",
+        "c9": "Idetë shfaqen si karta. Në modalitetin e shablloneve janë shembuj, me ofrues AI bëhen individuale.",
+        "c10": "Gjithçka mbetet draft derisa ta miratosh. Për çdo seksion ka një video shpjeguese të veçantë."
+      }
+    },
+    "dashboard": {
+      "title": "Paneli",
+      "cues": {
+        "c1": "Paneli është faqja jote kryesore: pasqyra e gjithçkaje që ndodh në hapësirën tënde të punës.",
+        "c2": "Lart shikon agjentët aktivë, prodhimin e përmbajtjes dhe postimet e planifikuara.",
+        "c3": "Më poshtë janë aktivitetet e fundit dhe shkurtoret për Content Factory dhe Brand DNA.",
+        "c4": "Me “Java” ndryshon periudhën e treguesve.",
+        "c5": "Si ta përdorësh: Hap panelin çdo ditë, kontrollo draftet e hapura dhe kalo që këtu drejtpërdrejt te seksioni përkatës."
+      }
+    },
+    "schulung": {
+      "title": "Trajnim",
+      "cues": {
+        "c1": "Trajnimi është udhëzuesi yt në aplikacion. Ai shpjegon çdo seksion hap pas hapi.",
+        "c2": "Çdo temë ka një përshkrim, hapa të numëruar dhe një lidhje që hap faqen përkatëse.",
+        "c3": "Këtu shfaqen edhe këto video shpjeguese, një për çdo seksion.",
+        "c4": "Si ta përdorësh: zgjidh temën, lexo hapat, hap faqen dhe provoje menjëherë."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory është banaku i punës për të gjitha njësitë e tua të përmbajtjes në një vend.",
+        "c2": "Funksioni: krijo, dyfisho, rishkruaj njësi, pasuroji me voiceover dhe titra dhe kalo ato nëpër rrjedhën e miratimit.",
+        "c3": "Filtrat lart tregojnë statuset: Draft, Në shqyrtim, Miratuar, Planifikuar, Publikuar dhe Arkivuar.",
+        "c4": "Si funksionon: Me “Njësi e re përmbajtjeje” krijon një njësi.",
+        "c5": "Hap një njësi për të përpunuar skriptin, voiceover-in, titrat, hashtag-et dhe miniaturën.",
+        "c6": "Miratimi është gjithmonë një hap manual. Asgjë nuk publikohet pa konfirmimin tënd."
+      }
+    },
+    "ideas": {
+      "title": "Ide & Frymëzim",
+      "cues": {
+        "c1": "Këtu mbledh ide: grupe temash, seri dhe formate për përmbajtjen e ardhshme.",
+        "c2": "Funksioni: IdeaAgent krijon ide për një temë, ose ti shton idetë e tua me dorë.",
+        "c3": "Si funksionon: shkruaj temën, zgjidh platformën, qëllimin dhe formatin dhe kliko “Gjenero ide”.",
+        "c4": "Çdo ide bëhet një kartë me titull, kënd dhe prioritet.",
+        "c5": "Me “Me dorë” krijon një ide tënden.",
+        "c6": "Idetë e mira i merr si pikënisje për Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain e kthen një ide në një plan të plotë përmbajtjeje.",
+        "c2": "Funksioni: Ai merr parasysh Brand DNA-në tënde dhe krijon për çdo platformë të zgjedhur hook-e, skripte, hashtag-e dhe koncepte miniaturash si draft.",
+        "c3": "Si funksionon: shkruaj temën dhe audiencën e synuar.",
+        "c4": "Zgjidh qëllimin dhe gjuhën, pastaj kliko platformat. Këtu shtohet TikTok.",
+        "c5": "Me rrëshqitësin përcakton sa njësi përmbajtjeje krijohen për platformë.",
+        "c6": "Një klik te “Gjenero planin e përmbajtjes” nis ekzekutimin.",
+        "c7": "Fushata shfaqet poshtë. Të gjitha njësitë janë drafte dhe ndodhen në Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA përshkruan markën tënde: emrin, sektorin, audiencën e synuar, tonin dhe vlerat.",
+        "c2": "Funksioni: Këto të dhëna rrjedhin automatikisht te Content Brain si dhe te agjentët e skripteve, hook-eve dhe hashtag-eve.",
+        "c3": "Si funksionon: plotëso fushat, për shembull sektorin dhe audiencën e synuar.",
+        "c4": "Më poshtë mirëmban fjalët e preferuara dhe të ndaluara, thirrjet për veprim dhe vlerat e markës.",
+        "c5": "Në fund kliko “Ruaj Brand DNA”."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio është punishtja për skripte dhe hook-e.",
+        "c2": "Funksioni: Ndërton skripte sipas strukturës hook, problem, dobi, shembull, rezultat dhe thirrje për veprim dhe jep disa variante hook-esh.",
+        "c3": "Si funksionon: shkruaj temën dhe zgjidh platformën.",
+        "c4": "Pastaj kliko “Gjenero skript & hook-e”.",
+        "c5": "Rezultati është një draft që e përdor më tej te Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio menaxhon zërat dhe krijon voiceover.",
+        "c2": "Funksioni: mirëmban Voice Library, krijon parapamje dhe importon zëra. Lidhja funksionon përmes ElevenLabs.",
+        "c3": "Si funksionon: krijo një zë me dorë ose importoje nga ElevenLabs. Importi kërkon një lidhje të konfiguruar.",
+        "c4": "Me një tekst dhe një zë krijon një parapamje dhe e luan."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio është pipeline-i i videove i aplikacionit.",
+        "c2": "Funksioni: menaxheri i formateve, ofrues videosh të këmbyeshëm si dhe lidhja e voiceover-it dhe e titrave.",
+        "c3": "Faqja tregon cilët ofrues janë konfiguruar. Ata që nuk janë konfiguruar shënohen me ndershmëri si të tillë.",
+        "c4": "Si funksionon: videot i krijon për çdo njësi përmbajtjeje te Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio jep koncepte miniaturash dhe asete imazhesh.",
+        "c2": "Funksioni: Agjenti i miniaturave propozon titull, ide imazhi, tekst dhe layout. Integrimi me Canva është parashikuar këtu.",
+        "c3": "Si funksionon: shkruaj temën e miniaturës.",
+        "c4": "Kliko “Gjenero konceptin”.",
+        "c5": "Koncepti të shërben si model për imazhin tënd."
+      }
+    },
+    "socialMedia": {
+      "title": "Rrjetet sociale",
+      "cues": {
+        "c1": "Këtu lidh llogaritë e platformave dhe shikon statusin e tyre.",
+        "c2": "Funksioni: Qasjet menaxhohen nga ana e serverit dhe ruhen të enkriptuara. Përmes Composio hyn në platformë.",
+        "c3": "Çdo kartë tregon platformën, llogarinë, statusin dhe testin e fundit të leximit.",
+        "c4": "“Ende i pakonfiguruar” do të thotë: operatori ende nuk e ka aktivizuar lidhjen në server.",
+        "c5": "Si funksionon: sapo të konfigurohet, kliko “Lidh” te platforma dhe hyr. Lexohet vetëm, nuk publikohet asgjë."
+      }
+    },
+    "calendar": {
+      "title": "Kalendari i përmbajtjes",
+      "cues": {
+        "c1": "Kalendari i përmbajtjes tregon përmbajtjen e planifikuar dhe të publikuar në një vështrim.",
+        "c2": "Funksioni: Të gjitha njësitë e përmbajtjes me datë publikimi shfaqen këtu, të filtrueshme sipas platformës.",
+        "c3": "Si funksionon: planifiko një njësi te Content Factory me datë, pastaj shfaqet këtu.",
+        "c4": "Para çdo publikimi aplikacioni kontrollon drejtpërdrejt nëse platforma e synuar është e lidhur."
+      }
+    },
+    "analytics": {
+      "title": "Analytics",
+      "cues": {
+        "c1": "Analytics tregon treguesit e performancës sate.",
+        "c2": "Funksioni: Vetëm të dhëna që ekzistojnë realisht, të importuara ose të regjistruara nga ti. Asgjë nuk është e shpikur.",
+        "c3": "Shikon zhvillimin me kalimin e kohës, përmbajtjen më të suksesshme dhe rekomandimet e Learning Agent.",
+        "c4": "Si funksionon: sapo të lidhen platformat ose të futësh të dhëna, grafikët plotësohen."
+      }
+    },
+    "growth": {
+      "title": "Rritja",
+      "cues": {
+        "c1": "Faqja e rritjes jep rekomandime për më shumë shtrirje.",
+        "c2": "Funksioni: Nga të dhënat e tua reale të Analytics llogarit kohët më të mira të postimit, hashtag-et dhe formatet e suksesshme.",
+        "c3": "Si funksionon: zgjidh platformën dhe lexo rekomandimet.",
+        "c4": "Këto janë rekomandime, jo automatizim. Ndjekësit ose ndërveprimet nuk rriten artificialisht."
+      }
+    },
+    "revenue": {
+      "title": "Të ardhurat",
+      "cues": {
+        "c1": "Te Të ardhurat bashkon fitimet e tua nga platformat dhe fushatat.",
+        "c2": "Funksioni: Shumat shfaqen vetëm kur i fut ti. Nuk ka shifra të shpikura.",
+        "c3": "Si funksionon: kliko “Regjistro të ardhura”, zgjidh platformën dhe llojin dhe shkruaj shumën.",
+        "c4": "Pagesa kryhet gjithmonë drejtpërdrejt përmes platformës. SECRET 58 nuk kryen pagesa."
+      }
+    },
+    "sales": {
+      "title": "Shitje & Dyqani",
+      "cues": {
+        "c1": "“Shitje & Dyqani” tregon të ardhurat e tua të biznesit.",
+        "c2": "Funksioni: Ato janë të ndara nga paketa jote SECRET 58. Numërohen vetëm shitjet reale, të dhënat e testimit janë të shënuara.",
+        "c3": "Lart janë shumat sipas monedhës, poshtë të dhënat e tua si ofrues për të dhënat ligjore.",
+        "c4": "Opsioni B: të shesësh përmes SECRET 58. Opsioni A: të importosh një dyqan ekzistues.",
+        "c5": "Si funksionon: plotëso të dhënat e ofruesit dhe ruaj, pastaj zgjidh rrugën e shitjes."
+      }
+    },
+    "website": {
+      "title": "Faqja ime e internetit",
+      "cues": {
+        "c1": "Këtu e integron asistentin e faqes së internetit në faqen tënde.",
+        "c2": "Funksioni: Asistenti u përgjigjet pyetjeve të vizitorëve të tu.",
+        "c3": "Ne nuk e ndryshojmë faqen tënde automatikisht. Kodin e fut vetë ose ia lë dizajnerit të faqes.",
+        "c4": "Si funksionon: shkruaj adresën e faqes dhe kliko “Shto faqen e internetit”.",
+        "c5": "Pastaj kopjo kodin e shfaqur në faqen tënde."
+      }
+    },
+    "inbox": {
+      "title": "Kutia postare",
+      "cues": {
+        "c1": "Kutia postare mbledh mesazhe dhe komente nga të gjitha platformat.",
+        "c2": "Funksioni: MessageAgent propozon përgjigje. Dërgohet vetëm ajo që miraton ti.",
+        "c3": "Si funksionon: për sa kohë nuk është lidhur asnjë platformë drejtpërdrejt, kliko “Simulo një bisedë”.",
+        "c4": "Kontrollo propozimin e përgjigjes, përshtate dhe miratoje."
+      }
+    },
+    "agents": {
+      "title": "Agjentët",
+      "cues": {
+        "c1": "Agent Monitor tregon të gjithë agjentët e SECRET 58.",
+        "c2": "Funksioni: statusi, detyra e fundit dhe rezultati i çdo agjenti. Çdo ekzekutim regjistrohet.",
+        "c3": "Në historikun e ekzekutimeve shikon çfarë është ekzekutuar kur dhe nëse ka funksionuar.",
+        "c4": "Si ta përdorësh: kontrollo këtu kur diçka nuk është krijuar siç pritej."
+      }
+    },
+    "integrations": {
+      "title": "Integrimet",
+      "cues": {
+        "c1": "Këtu shikon statusin e drejtpërdrejtë të të gjitha shërbimeve të jashtme.",
+        "c2": "Funksioni: Çdo rresht bazohet në qasjet e vendosura realisht. Nuk ka lidhje të shtirrura.",
+        "c3": "Grupet janë: Ofruesit e AI, Voice, Platforma sociale, Dizajn, Video dhe Trende.",
+        "c4": "Si funksionon: te “I pakonfiguruar”, “Merr çelësin API” të çon te faqja e ofruesit.",
+        "c5": "Ofruesit e jashtëm kanë çmimet e veta. Te çdo shërbim shfaqet cili model vlen."
+      }
+    },
+    "billing": {
+      "title": "Paketa & Faturimi",
+      "cues": {
+        "c1": "Te “Paketa & Faturimi” shikon paketën tënde dhe mund ta ndryshosh.",
+        "c2": "Funksioni: Funksionet e AI funksionojnë përmes qasjeve të operatorit. Nuk të duhet abonim i yti për AI.",
+        "c3": "Ka Pro dhe Maxi, mujore ose vjetore. Çmimet shfaqen neto në karta.",
+        "c4": "Blihet vetëm me një klik të shprehur te “Porosit me detyrim pagese”.",
+        "c5": "Nëse ke një kod promocional, e përdor në fushën poshtë."
+      }
+    },
+    "settings": {
+      "title": "Cilësimet",
+      "cues": {
+        "c1": "Te Cilësimet menaxhon hapësirën e punës, përdoruesit dhe informacionet e sistemit.",
+        "c2": "Funksioni: hapësira e punës, rolet, statusi i sistemit, asistenti i konfigurimit dhe të dhënat e tua me informim dhe fshirje.",
+        "c3": "Si funksionon: shfleto seksionet. Fshirja e hapësirës së punës kërkon një konfirmim shtesë.",
+        "c4": "Kontrollo këtu rregullisht të dhënat e tua dhe asistentin e konfigurimit."
+      }
+    }
+  }
+}

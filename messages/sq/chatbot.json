@@ -1,0 +1,14 @@
+{
+  "title": "Asistenti AI",
+  "welcome": "Përshëndetje! Më pyet çdo gjë rreth SECRET 58 — si ta konfigurosh diçka, ku ta gjesh, ose si funksionon një seksion.",
+  "inputPlaceholder": "Shkruaj pyetjen …",
+  "thinking": "Po mendon …",
+  "openButton": "Hap asistentin AI",
+  "close": "Mbyll",
+  "sendButton": "Dërgo",
+  "micButton": "Hyrje me zë",
+  "speakToggle": "Lexo përgjigjet me zë",
+  "notConfigured": "Asistenti AI ende nuk është konfiguruar — për këtë duhet vendosur një ofrues AI (Anthropic ose OpenAI).",
+  "openIntegrations": "Te Integrimet",
+  "error": "Asistenti AI nuk mundi të përgjigjej tani. Provo përsëri më vonë."
+}

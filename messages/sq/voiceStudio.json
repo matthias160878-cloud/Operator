@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "Motori i zërit ElevenLabs — menaxho Voice Library, krijo parapamje voiceover dhe importo zëra.",
+  "envWarning": "ElevenLabs ende nuk është konfiguruar. Shkruaj <envKey>ELEVENLABS_API_KEY</envKey> te <envFile>.env</envFile> për të përdorur voiceover dhe importin e zërave. Voice Library mund të përdoret prapë për planifikim.",
+  "addManual": "Krijo një zë me dorë",
+  "importFromElevenLabs": "Importo nga ElevenLabs",
+  "form": {
+    "namePlaceholder": "Emri",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Gjuha",
+    "submit": "Shto"
+  },
+  "confirmDelete": "Të fshihet vërtet zëri?",
+  "importFailed": "Importi dështoi.",
+  "previewFailed": "Parapamja dështoi.",
+  "unknownError": "Gabim i panjohur.",
+  "empty": "Ende nuk ka zëra në Library.",
+  "active": "Aktiv",
+  "inactive": "Joaktiv",
+  "remove": "Hiq",
+  "preview": {
+    "heading": "Parapamje e zërit",
+    "defaultText": "Përshëndetje, ky është një shembull për këtë zë.",
+    "selectPlaceholder": "Zgjidh zërin…",
+    "play": "Luaj parapamjen"
+  }
+}

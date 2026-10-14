@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Marka jote. Stili yt. Kudo. Këto të dhëna rrjedhin automatikisht te Content Brain dhe te agjentët e skripteve, hook-eve dhe hashtag-eve.",
+  "form": {
+    "nameLabel": "Emri i markës",
+    "industryLabel": "Sektori",
+    "descriptionLabel": "Përshkrimi",
+    "descriptionHint": "Çfarë e dallon markën?",
+    "audienceLabel": "Audienca e synuar",
+    "languageLabel": "Gjuha",
+    "tonalityLabel": "Toni",
+    "humorLabel": "Humori",
+    "formalityLabel": "Formaliteti",
+    "preferredWordsLabel": "Fjalë të preferuara",
+    "forbiddenWordsLabel": "Fjalë të ndaluara",
+    "preferredCtasLabel": "CTA të preferuara",
+    "brandValuesLabel": "Vlerat e markës",
+    "topicsLabel": "Temat",
+    "csvHint": "të ndara me presje",
+    "colorsLabel": "Ngjyrat",
+    "colorsHint": "të ndara me presje, p.sh. #6D5BFF",
+    "fontsLabel": "Shkronjat",
+    "visualRulesLabel": "Rregullat vizuale",
+    "saveError": "Ruajtja dështoi.",
+    "unknownError": "Gabim i panjohur.",
+    "saving": "Duke ruajtur…",
+    "save": "Ruaj Brand DNA",
+    "savedAt": "U ruajt në {time}"
+  }
+}

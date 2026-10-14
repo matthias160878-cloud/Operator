@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Volume2, VolumeX } from "lucide-react";
 import { LOCALES, LOCALE_LABELS, speechLang, type Locale } from "@/i18n/config";
@@ -29,17 +29,27 @@ export function TrainingVideo({ videoKey, title }: { videoKey: string; title: st
   const [soundOn, setSoundOn] = useState(false);
   const [voiceMissing, setVoiceMissing] = useState(false);
   const [missingVideo, setMissingVideo] = useState(false);
+  const [near, setNear] = useState(false);
+  const boxRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const lastCue = useRef<string>("");
 
   useEffect(() => {
+    const el = boxRef.current; if (!el) return;
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { setNear(true); io.disconnect(); } }, { rootMargin: "300px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!near) return;
     let alive = true;
     fetch(`/api/schulung/untertitel/${videoKey}/${lang}`)
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((d: { cues: Cue[] }) => { if (alive) { setCues(d.cues); setMissingVideo(false); } })
       .catch(() => { if (alive) { setCues([]); setMissingVideo(true); } });
     return () => { alive = false; };
-  }, [videoKey, lang]);
+  }, [videoKey, lang, near]);
 
   const vttUrl = useMemo(
     () => (cues.length ? URL.createObjectURL(new Blob([toVtt(cues)], { type: "text/vtt" })) : ""),
@@ -56,7 +66,11 @@ export function TrainingVideo({ videoKey, title }: { videoKey: string; title: st
     return () => tl.removeEventListener("addtrack", apply);
   }, [subsOn, vttUrl]);
 
-  const speakSupported = typeof window !== "undefined" && "speechSynthesis" in window;
+  const speakSupported = useSyncExternalStore(
+    () => () => {},
+    () => "speechSynthesis" in window,
+    () => false,
+  );
   const speak = useCallback((text: string) => {
     if (!speakSupported) return;
     const synth = window.speechSynthesis;
@@ -86,7 +100,7 @@ export function TrainingVideo({ videoKey, title }: { videoKey: string; title: st
 
   const langs = useMemo(() => LOCALES.map((c) => ({ code: c, label: `${LOCALE_LABELS[c].flag} ${LOCALE_LABELS[c].name}` })), []);
 
-  if (missingVideo && !cues.length) {
+  if (missingVideo && !cues.length && near) {
     return (
       <div className="flex aspect-video w-full items-center justify-center rounded-lg border border-dashed border-border bg-surface-2 text-xs text-muted">
         {t("noVideo")}
@@ -96,7 +110,7 @@ export function TrainingVideo({ videoKey, title }: { videoKey: string; title: st
 
   return (
     <div className="space-y-2">
-      <div className="aspect-video w-full overflow-hidden rounded-lg border border-border bg-black">
+      <div ref={boxRef} className="aspect-video w-full overflow-hidden rounded-lg border border-border bg-black">
         <video
           ref={videoRef}
           controls

@@ -1,0 +1,26 @@
+{
+ "key": "videoStudio",
+ "duration": 29.2,
+ "cues": [
+  {
+   "id": "c1",
+   "start": 2.26,
+   "end": 6.1
+  },
+  {
+   "id": "c2",
+   "start": 6.1,
+   "end": 14.18
+  },
+  {
+   "id": "c3",
+   "start": 14.18,
+   "end": 23.22
+  },
+  {
+   "id": "c4",
+   "start": 23.22,
+   "end": 28.74
+  }
+ ]
+}

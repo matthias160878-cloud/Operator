@@ -6,10 +6,11 @@ import { isTrainingVideoKey, type TrainingCueTiming } from "@/lib/training/video
 
 export const dynamic = "force-dynamic";
 
-async function loadTexts(lang: string): Promise<Record<string, { title: string; cues: Record<string, string> }>> {
+function loadTexts(lang: string): Record<string, { title: string; cues: Record<string, string> }> {
   for (const l of [lang, "en", DEFAULT_LOCALE]) {
     try {
-      return (await import(`../../../../../../messages/${l}/schulungVideos.json`)).default.videos;
+      const file = path.join(process.cwd(), "messages", l, "schulungVideos.json");
+      return JSON.parse(fs.readFileSync(file, "utf8")).videos;
     } catch {
       /* nächste Sprache */
     }
@@ -27,7 +28,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ key: st
   } catch {
     return NextResponse.json({ error: "Video noch nicht vorhanden." }, { status: 404 });
   }
-  const texts = (await loadTexts(lang))[key]?.cues ?? {};
+  const texts = loadTexts(lang)[key]?.cues ?? {};
   const cues = timing.cues.map((c) => ({ ...c, text: texts[c.id] ?? "" })).filter((c) => c.text);
   return NextResponse.json({ lang, cues }, { headers: { "Cache-Control": "private, max-age=300" } });
 }

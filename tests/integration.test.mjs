@@ -1350,6 +1350,17 @@ test("App installieren: Manifest, Symbole, Service Worker, Offline-Seite und Tex
   assert.ok(buy.includes("paket-pro") && buy.includes("paket-maxi") && buy.includes("data-s58-install") && buy.includes("apple-touch-icon.png"), "Social-Media-KI-Seite: Pakete, App-Symbol und Installieren-Platz");
 });
 
+test("Verlauf der Zentrale: historische Kopien sind ohne Anmeldung erreichbar", async () => {
+  const idx = await fetch(`${BASE}/verlauf`);
+  assert.equal(idx.status, 200);
+  const html = await idx.text();
+  assert.ok(html.includes("Verlauf der Zentrale") && html.includes("/verlauf/2026-09-17-1913/index.html"));
+  const page = await fetch(`${BASE}/verlauf/2026-09-17-1913/index.html`);
+  assert.equal(page.status, 200);
+  assert.ok((await page.text()).includes("Historische Kopie"));
+  assert.equal((await fetch(`${BASE}/verlauf/2026-09-17-1913/webdesign.html`)).status, 200);
+});
+
 test("Hermes: standardmäßig aus, Betreiber-Pilot, öffentlicher Chat nur mit allen Freigaben und bestandener Prüfung", async () => {
   const h = fakes.hermes;
   const pub = h["hermes-public"], pil = h["hermes-pilot"];

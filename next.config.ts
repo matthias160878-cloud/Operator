@@ -19,10 +19,14 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Inhaltsseiten der Zentrale unter ihren gewohnten Adressen (statisches HTML).
   async rewrites() {
-    return Object.entries(ZENTRALE_PAGES).map(([source, file]) => ({
-      source,
-      destination: `/zentrale/seiten/${file}.html`,
-    }));
+    return [
+      ...Object.entries(ZENTRALE_PAGES).map(([source, file]) => ({
+        source,
+        destination: `/zentrale/seiten/${file}.html`,
+      })),
+      // Historische Kopien der Zentrale (statisches HTML unter public/verlauf).
+      { source: "/verlauf", destination: "/verlauf/index.html" },
+    ];
   },
   async headers() {
     return [

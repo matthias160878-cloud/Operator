@@ -10,6 +10,7 @@ const eslintConfig = defineConfig([
     // Unverändert aus der Zentrale übernommen (src/lib/zentrale/README.md, public/zentrale/).
     "src/lib/zentrale/**/*.js",
     "public/zentrale/**",
+    "public/verlauf/**",
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",

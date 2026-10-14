@@ -1353,6 +1353,7 @@ test("App installieren: Manifest, Symbole, Service Worker, Offline-Seite und Tex
   assert.ok(home.includes('id="social-media-ki"') && home.includes("/buy?plan=pro") && home.includes("/buy?plan=maxi") && home.includes("590 €") && home.includes("797 €"), "Hauptseite zeigt Pro/Maxi mit Link zum Kauf");
   const buy = await (await fetch(`${BASE}/buy`)).text();
   assert.ok(buy.includes("paket-pro") && buy.includes("paket-maxi") && buy.includes("data-s58-install") && buy.includes("apple-touch-icon.png"), "Social-Media-KI-Seite: Pakete, App-Symbol und Installieren-Platz");
+  assert.ok(buy.includes("Autopilot S") && buy.includes("Autopilot L") && buy.includes("Noch nicht buchbar") && buy.includes("vorläufig"), "Autopilot als Demnächst, nicht buchbar");
 });
 
 test("Verlauf der Zentrale: historische Kopien sind ohne Anmeldung erreichbar", async () => {

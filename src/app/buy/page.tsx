@@ -20,6 +20,13 @@ import "./zentrale.css";
 
 export const dynamic = "force-dynamic";
 
+/** Geplante Autopilot-Größen (noch nicht buchbar, Preise vorläufig) — wie in der Hauptseite. */
+const AUTOPILOT = [
+  { name: "Autopilot S", preis: "149 €", agency: false, punkte: ["1 Marke", "30 Content-Ideen pro Monat", "10 KI-Videos (à 30 s) pro Monat", "10 Minuten Sprachausgabe pro Monat"] },
+  { name: "Autopilot M", preis: "399 €", agency: false, punkte: ["3 Marken", "90 Content-Ideen pro Monat", "30 KI-Videos (à 30 s) pro Monat", "30 Minuten Sprachausgabe pro Monat"] },
+  { name: "Autopilot L", preis: "999 €", agency: true, punkte: ["10 Marken", "250 Content-Ideen pro Monat", "80 KI-Videos (à 30 s) pro Monat", "90 Minuten Sprachausgabe pro Monat"] },
+];
+
 export const metadata: Metadata = {
   title: "Social Media KI — SECRET 58",
   description:
@@ -152,6 +159,37 @@ export default async function BuyPage({
             <p>Der Kauf ist auf dieser Fassung noch nicht freigeschaltet. Pakete und Preise werden nur angezeigt.</p>
           </div>
         )}
+
+        <h2 id="autopilot">Demnächst: Autopilot</h2>
+        <p className="note">
+          Alles inklusive, ohne eigene Zugänge: Anbieterkosten für Text, Stimme und Video sind enthalten. Gleicher
+          Funktionsumfang wie Pro und Maxi, die Größen unterscheiden sich nur in der Menge. Geplante Preise, noch nicht
+          buchbar. Der Autopilot startet, sobald die KI-Videogeneratoren angebunden sind.
+        </p>
+        <div className="preis-tabelle" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(13rem, 1fr))" }}>
+          {AUTOPILOT.map((a) => (
+            <div key={a.name} className="preis-karte">
+              <small>Demnächst{a.agency ? " · Agentur" : ""}</small>
+              <h3>{a.name}</h3>
+              <div className="betrag">
+                {a.preis} <span>/ Monat, vorläufig</span>
+              </div>
+              <ul>
+                {a.punkte.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
+              <span className="knopf-link gesperrt" aria-disabled="true">
+                Noch nicht buchbar
+              </span>
+            </div>
+          ))}
+        </div>
+        <p className="note">
+          Zusatzpakete (vorläufig, nur auf ausdrücklichen Kauf, nie automatisch): Video-Paket +300 Sekunden 99 €
+          einmalig, Premium-Video 4K +60 Sekunden 149 € einmalig, Einrichtungsservice 299 € einmalig. Ob die Preise
+          netto gelten, wird vor dem Start festgelegt.
+        </p>
 
         <div className="hinweis" id="app" style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}

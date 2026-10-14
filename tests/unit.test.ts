@@ -280,3 +280,10 @@ test("Schulungsvideos: Texte und Zeitmarken stimmen überein", async () => {
     assert.ok(fs.existsSync(path.join(process.cwd(), "public/schulung/videos", `${key}.mp4`)), `mp4 ${key}`);
   }
 });
+
+test("Übersetzungen: alle Sprachen vollständig (Dateien, Schlüssel, Platzhalter)", async () => {
+  const { execFileSync } = await import("node:child_process");
+  const out = execFileSync("node", ["scripts/schulung/pruefen-sprachen.mjs"], { encoding: "utf8" });
+  assert.ok(!out.includes("✗"), out);
+  assert.ok((out.match(/✓/g) ?? []).length >= 33);
+});

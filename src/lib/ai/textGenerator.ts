@@ -70,7 +70,13 @@ async function callAnthropic(input: GenerateTextInput): Promise<string> {
   });
 
   if (!res.ok) {
-    throw new Error(`Anthropic API antwortete mit Status ${res.status}.`);
+    // Fehlertext des Anbieters (z. B. „credit balance too low“, „model not found“) mitgeben,
+    // damit die Ursache im Log steht; er enthält keinen Schlüssel.
+    const detail = await res
+      .json()
+      .then((b: { error?: { message?: string } }) => b?.error?.message?.slice(0, 200))
+      .catch(() => undefined);
+    throw new Error(`Anthropic API antwortete mit Status ${res.status}.${detail ? ` ${detail}` : ""}`);
   }
 
   const data = (await res.json()) as {

@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Концепти прев'ю, графічні ресурси та інтеграція з Canva.",
+  "imageAssetsTitle": "Графічні ресурси",
+  "imageAssetsEmpty": "Графічних ресурсів ще немає.",
+  "thumbnailAgent": {
+    "title": "Агент прев'ю",
+    "description": "Створює текстовий концепт (назва, візуальна ідея, макет, CTA) — підготовлений для підключення генератора зображень. Зображення поки що не створюється.",
+    "inputPlaceholder": "Тема для прев'ю",
+    "submitButton": "Згенерувати концепт",
+    "errorGenerationFailed": "Не вдалося згенерувати.",
+    "errorUnknown": "Невідома помилка.",
+    "fieldTitle": "Назва",
+    "fieldVisualIdea": "Візуальна ідея",
+    "fieldText": "Текст",
+    "fieldLayout": "Макет",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Опис зображення"
+  }
+}

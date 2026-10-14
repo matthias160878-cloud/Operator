@@ -1,0 +1,31 @@
+{
+ "pageTitle": "Content kalendar",
+ "subtitle": "Pregled planiranog i objavljenog sadržaja.",
+ "weekdays": [
+  "Pon",
+  "Uto",
+  "Sri",
+  "Čet",
+  "Pet",
+  "Sub",
+  "Ned"
+ ],
+ "months": [
+  "Januar",
+  "Februar",
+  "Mart",
+  "April",
+  "Maj",
+  "Juni",
+  "Juli",
+  "August",
+  "Septembar",
+  "Oktobar",
+  "Novembar",
+  "Decembar"
+ ],
+ "allPlatforms": "Sve platforme",
+ "moreItems": "+{count} više",
+ "listTitle": "Lista za ovaj mjesec",
+ "emptyMonth": "Nema planiranih objava u ovom mjesecu."
+}

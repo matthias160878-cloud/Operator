@@ -1,0 +1,104 @@
+{
+ "viewAll": "Prikaži sve",
+ "demoBanner": {
+  "before": "Demo podaci su aktivni — kampanje, stavke sadržaja i Analytics su primjeri iz ",
+  "after": ", a ne stvarni podaci platformi."
+ },
+ "hero": {
+  "subtitle": "Jedna ideja. Više platformi. Maksimalan doseg.",
+  "newCampaign": "Nova kampanja",
+  "createContent": "Kreiraj sadržaj",
+  "findIdeas": "Pronađi ideje",
+  "aiAgents": "AI agenti"
+ },
+ "orbit": {
+  "xNotConnected": "X (nije povezan)",
+  "brainAlt": "SECRET 58 AI mozak"
+ },
+ "activeAgents": {
+  "title": "Aktivni agenti",
+  "empty": "Još nema pokretanja agenata."
+ },
+ "kpi": {
+  "contentCreated": "Kreiran sadržaj",
+  "videosCreated": "Kreirani videi",
+  "postsCreated": "Kreirane objave",
+  "published": "Objave",
+  "views": "Pregledi",
+  "avgEngagement": "Ø angažman",
+  "totalRevenue": "Ukupni prihodi",
+  "noComparisonWeek": "Još nema prethodne sedmice kao osnove za poređenje — stope promjene pojavit će se kada budu dostupni podaci za najmanje dvije sedmice."
+ },
+ "production": {
+  "title": "Produkcija sadržaja",
+  "thisWeek": "Ove sedmice"
+ },
+ "scheduled": {
+  "title": "Zakazane objave",
+  "empty": "Nema zakazanih objava."
+ },
+ "activity": {
+  "title": "Posljednje aktivnosti",
+  "empty": "Još nema aktivnosti."
+ },
+ "contentFactory": {
+  "description": "Samo od jedne ideje kreiraj kompletne kampanje sadržaja za sve platforme.",
+  "cta": "Počni odmah →",
+  "popularTemplates": "Popularni šabloni",
+  "templateYoutubeVideo": "YouTube video",
+  "templateTiktokSeries": "TikTok serija",
+  "templateInstagramReel": "Instagram Reel",
+  "templateLinkedinPost": "LinkedIn objava",
+  "templateBlogPost": "Blog članak",
+  "viewAllTemplates": "Svi šabloni →"
+ },
+ "brandDna": {
+  "tonality": "Ton",
+  "targetAudience": "Ciljna grupa",
+  "industry": "Branša",
+  "language": "Jezik",
+  "empty": "Brand DNA još nije unesen."
+ },
+ "campaigns": {
+  "title": "Aktuelne kampanje",
+  "empty": "Još nema kampanja."
+ },
+ "platforms": {
+  "title": "Platforme",
+  "manage": "Upravljaj"
+ },
+ "integrations": {
+  "connectedCount": "{connected}/{total} povezano"
+ },
+ "agentMonitor": {
+  "title": "Agent Monitor",
+  "empty": "Još nema pokretanja."
+ },
+ "topPerformer": {
+  "title": "Top performer",
+  "last7Days": "Posljednjih 7 dana",
+  "empty": "Još nema podataka o učinku.",
+  "views": "Pregledi",
+  "likes": "Lajkovi",
+  "comments": "Komentari",
+  "shares": "Dijeljenja",
+  "engagementRate": "+Stopa angažmana {value}"
+ },
+ "calendar": {
+  "open": "Otvori",
+  "viewMonth": "Mjesec",
+  "viewWeek": "Sedmica",
+  "viewDay": "Dan",
+  "viewCampaign": "Kampanja",
+  "moreItems": "+{count} više"
+ },
+ "weekdayLabels": [
+  "Pon",
+  "Uto",
+  "Sri",
+  "Čet",
+  "Pet",
+  "Sub",
+  "Ned"
+ ]
+}

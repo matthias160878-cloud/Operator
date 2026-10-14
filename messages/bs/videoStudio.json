@@ -1,0 +1,10 @@
+{
+ "pageTitle": "Video Studio",
+ "subtitle": "Video pipeline neovisan o provajderu: Format Manager, zamjenjivi video provajderi, povezivanje voiceovera i titlova (vidi Content Factory po stavci sadržaja).",
+ "providerCardTitle": "Video provajderi",
+ "providerNotePrefix": "Dodatni provajderi (AI video API-ji, biblioteke stock videa) mogu se dodati preko istog",
+ "providerNoteSuffix": "-sučelja, bez diranja postojećeg koda.",
+ "formatManagerTitle": "Format Manager",
+ "assetsTitle": "Video asseti",
+ "assetsEmpty": "Još nijedan video nije renderovan — renderovanje ide preko stavki sadržaja u Content Factory, čim se konfiguriše video provajder."
+}

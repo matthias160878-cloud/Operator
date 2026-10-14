@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Senin markan. Senin tarzın. Her yerde. Bu bilgiler otomatik olarak Content Brain'e, script, hook ve hashtag ajanına aktarılır.",
+  "form": {
+    "nameLabel": "Marka adı",
+    "industryLabel": "Sektör",
+    "descriptionLabel": "Açıklama",
+    "descriptionHint": "Markayı özel kılan nedir?",
+    "audienceLabel": "Hedef kitle",
+    "languageLabel": "Dil",
+    "tonalityLabel": "Ton",
+    "humorLabel": "Mizah",
+    "formalityLabel": "Resmiyet",
+    "preferredWordsLabel": "Tercih edilen kelimeler",
+    "forbiddenWordsLabel": "Yasaklı kelimeler",
+    "preferredCtasLabel": "Tercih edilen CTA'lar",
+    "brandValuesLabel": "Marka değerleri",
+    "topicsLabel": "Konular",
+    "csvHint": "virgülle ayrılmış",
+    "colorsLabel": "Renkler",
+    "colorsHint": "virgülle ayrılmış, ör. #6D5BFF",
+    "fontsLabel": "Yazı tipleri",
+    "visualRulesLabel": "Görsel kurallar",
+    "saveError": "Kaydedilemedi.",
+    "unknownError": "Bilinmeyen hata.",
+    "saving": "Kaydediliyor…",
+    "save": "Brand DNA'yı kaydet",
+    "savedAt": "Saat {time} itibarıyla kaydedildi"
+  }
+}

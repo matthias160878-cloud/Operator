@@ -1,0 +1,14 @@
+{
+  "title": "Analitik",
+  "subtitle": "Gerçekten mevcut verilerden performans göstergeleri — platformlar bağlandığında bu görünüm gerçek değerlerle dolar.",
+  "statViewsTotal": "Toplam görüntülenme",
+  "statLikesTotal": "Toplam beğeni",
+  "statComments": "Yorumlar",
+  "statShares": "Paylaşımlar",
+  "chartTitle": "Zaman içinde içerik performansı",
+  "chartLegend": "Görüntülenme (mor) · Etkileşim % (turkuaz)",
+  "chartEmpty": "Henüz analitik verisi yok.",
+  "bestPerformingTitle": "En iyi performans gösteren içerik",
+  "bestPerformingEmpty": "Henüz veri yok.",
+  "learningAgentTitle": "Learning Agent — Öneriler"
+}

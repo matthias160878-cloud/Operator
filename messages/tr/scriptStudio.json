@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Script ve hook motoru: platforma uygun script'leri Hook → Problem → Value → Example → Payoff → CTA yapısına göre ve birden çok hook varyantı üretir.",
+  "form": {
+    "topicLabel": "Konu",
+    "topicPlaceholder": "ör. Yapay zekâ ajanlarının zaman kazandırdığı 5 yol",
+    "platformLabel": "Platform",
+    "generateButton": "Script ve hook üret",
+    "generateFailed": "Üretim başarısız oldu.",
+    "unknownError": "Bilinmeyen hata."
+  },
+  "hookTypes": {
+    "direkt": "Doğrudan",
+    "neugierig": "Merak uyandıran",
+    "story": "Hikâye",
+    "problem": "Problem",
+    "zahlen": "Sayılar",
+    "kontroversSachlich": "Tartışmalı (nesnel)",
+    "educational": "Eğitici"
+  },
+  "hooksHeading": "Hook varyantları",
+  "engine": {
+    "label": "Motor: {provider}",
+    "templateMode": "Şablon modu (yapılandırılmış yapay zekâ sağlayıcısı yok)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "İçerik öğesi olarak kaydet",
+    "saving": "Kaydediliyor…"
+  }
+}

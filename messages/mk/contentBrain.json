@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Една идеја влегува — излегува целосен план за содржина прилагоден на платформите. ContentBrainAgent го зема предвид твојот Brand DNA и за секоја избрана платформа создава соодветни хукови, скрипти, хаштагови и концепти за слики (thumbnails) како нацрт.",
+  "campaignsHeading": "Кампањи",
+  "noCampaigns": "Сè уште нема создадено кампањи.",
+  "campaignSummary": "{count} ставки за содржина · {audience}",
+  "form": {
+    "textEngineLabel": "Текстуален мотор:",
+    "templateMode": "Режим со шаблон (не е конфигуриран AI провајдер)",
+    "modeTemplate": "Шаблон",
+    "topicLabel": "Тема / идеја",
+    "topicPlaceholder": "на пр. Објасни зошто автономните AI агенти го менуваат светот на работата.",
+    "audienceLabel": "Целна публика",
+    "audiencePlaceholder": "на пр. 25-45, заинтересирани за технологија",
+    "goalLabel": "Цел",
+    "languageLabel": "Јазик",
+    "platformsLabel": "Платформи",
+    "itemsPerPlatformLabel": "Ставки за содржина по платформа ({count})",
+    "generateError": "Генерирањето не успеа.",
+    "unknownError": "Непозната грешка.",
+    "submitLoading": "Content Brain работи…",
+    "submitIdle": "Генерирај план за содржина",
+    "resultHeading": "Кампањата е создадена — {count} ставки за содржина се зачувани како нацрт.",
+    "resultDescription": "Генерирано во режим {mode}. Сите содржини почнуваат како DRAFT — прегледај ги и уреди ги во Content Factory.",
+    "resultLink": "Кон Content Factory →"
+  }
+}

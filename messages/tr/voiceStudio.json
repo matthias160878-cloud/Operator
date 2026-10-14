@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs ses motoru — ses kütüphanesini yönet, seslendirme önizlemeleri üret ve sesleri içe aktar.",
+  "envWarning": "ElevenLabs henüz yapılandırılmadı. Seslendirme ve ses içe aktarmayı kullanmak için <envKey>ELEVENLABS_API_KEY</envKey> değerini <envFile>.env</envFile> dosyasına gir. Ses kütüphanesi yine de planlama için kullanılabilir.",
+  "addManual": "Sesi elle ekle",
+  "importFromElevenLabs": "ElevenLabs'tan içe aktar",
+  "form": {
+    "namePlaceholder": "Ad",
+    "voiceIdPlaceholder": "Ses kimliği (ElevenLabs)",
+    "languagePlaceholder": "Dil",
+    "submit": "Ekle"
+  },
+  "confirmDelete": "Ses gerçekten silinsin mi?",
+  "importFailed": "İçe aktarma başarısız oldu.",
+  "previewFailed": "Önizleme başarısız oldu.",
+  "unknownError": "Bilinmeyen hata.",
+  "empty": "Kütüphanede henüz ses yok.",
+  "active": "Etkin",
+  "inactive": "Etkin değil",
+  "remove": "Kaldır",
+  "preview": {
+    "heading": "Ses önizlemesi",
+    "defaultText": "Merhaba, bu sesin bir örneğidir.",
+    "selectPlaceholder": "Ses seç…",
+    "play": "Önizlemeyi oynat"
+  }
+}

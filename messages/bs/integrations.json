@@ -1,0 +1,24 @@
+{
+ "title": "Integracije",
+ "description": "Status uživo svih vanjskih servisa — isključivo na osnovu stvarno postavljenih varijabli okruženja. Bez lažnih veza.",
+ "categories": {
+  "AI": "AI provajderi",
+  "VOICE": "Voice",
+  "PLATFORM": "Društvene platforme",
+  "DESIGN": "Dizajn",
+  "VIDEO": "Video",
+  "TREND": "Trendovi"
+ },
+ "costNote": "Kupovna cijena SECRET 58 je jednokratna i pokriva softver. Svaki vanjski servis ovdje ima vlastiti, nezavisan model troškova kod dotičnog pružatelja — SECRET 58 za to nikada ne naplaćuje dodatno.",
+ "links": {
+  "getKey": "Nabavi API ključ",
+  "setInRender": "Unesi u Render",
+  "viewPricing": "Pogledaj cijene"
+ },
+ "pricing": {
+  "free": "Besplatno",
+  "payAsYouGo": "Prema korištenju",
+  "subscription": "Pretplata",
+  "unknown": "Cijenu provjeri kod pružatelja"
+ }
+}

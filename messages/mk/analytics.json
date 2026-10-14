@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Показатели за перформансите од реално достапни податоци — штом ќе се поврзат платформите, овој приказ ќе се пополни со вистински вредности.",
+  "statViewsTotal": "Прегледи вкупно",
+  "statLikesTotal": "Допаѓања вкупно",
+  "statComments": "Коментари",
+  "statShares": "Споделувања",
+  "chartTitle": "Перформанси на содржината низ времето",
+  "chartLegend": "Прегледи (виолетово) · Ангажман % (тиркизно)",
+  "chartEmpty": "Сè уште нема податоци за Analytics.",
+  "bestPerformingTitle": "Најуспешна содржина",
+  "bestPerformingEmpty": "Сè уште нема податоци.",
+  "learningAgentTitle": "Learning Agent — препораки"
+}

@@ -1,0 +1,96 @@
+{
+  "viewAll": "Прикажи сè",
+  "demoBanner": {
+    "before": "Активни се демо податоци — кампањите, ставките за содржина и Analytics се примерни податоци од ",
+    "after": ", а не вистински бројки од платформи."
+  },
+  "hero": {
+    "subtitle": "Една идеја. Повеќе платформи. Максимален досег.",
+    "newCampaign": "Нова кампања",
+    "createContent": "Создај содржина",
+    "findIdeas": "Најди идеи",
+    "aiAgents": "AI агенти"
+  },
+  "orbit": {
+    "xNotConnected": "X (не е поврзано)",
+    "brainAlt": "AI мозок на SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Активни агенти",
+    "empty": "Сè уште нема извршувања на агенти."
+  },
+  "kpi": {
+    "contentCreated": "Создадена содржина",
+    "videosCreated": "Создадени видеа",
+    "postsCreated": "Создадени објави",
+    "published": "Објавувања",
+    "views": "Прегледи",
+    "avgEngagement": "Ø ангажман",
+    "totalRevenue": "Вкупни приходи",
+    "noComparisonWeek": "Сè уште нема претходна недела за споредба — стапките на промена ќе се појават штом ќе има податоци за најмалку две недели."
+  },
+  "production": {
+    "title": "Производство на содржина",
+    "thisWeek": "Оваа недела"
+  },
+  "scheduled": {
+    "title": "Закажани објави",
+    "empty": "Нема закажани објави."
+  },
+  "activity": {
+    "title": "Последни активности",
+    "empty": "Сè уште нема активности."
+  },
+  "contentFactory": {
+    "description": "Со само една идеја создај комплетни кампањи за содржина за сите платформи.",
+    "cta": "Започни сега →",
+    "popularTemplates": "Популарни шаблони",
+    "templateYoutubeVideo": "YouTube видео",
+    "templateTiktokSeries": "TikTok серија",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn објава",
+    "templateBlogPost": "Блог-статија",
+    "viewAllTemplates": "Сите шаблони →"
+  },
+  "brandDna": {
+    "tonality": "Тон",
+    "targetAudience": "Целна публика",
+    "industry": "Дејност",
+    "language": "Јазик",
+    "empty": "Сè уште нема внесено Brand DNA."
+  },
+  "campaigns": {
+    "title": "Тековни кампањи",
+    "empty": "Сè уште нема кампањи."
+  },
+  "platforms": {
+    "title": "Платформи",
+    "manage": "Управувај"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} поврзани"
+  },
+  "agentMonitor": {
+    "title": "Agent Monitor",
+    "empty": "Сè уште нема извршувања."
+  },
+  "topPerformer": {
+    "title": "Најуспешни",
+    "last7Days": "Последни 7 дена",
+    "empty": "Сè уште нема податоци за перформансите.",
+    "views": "Прегледи",
+    "likes": "Допаѓања",
+    "comments": "Коментари",
+    "shares": "Споделувања",
+    "engagementRate": "+Стапка на ангажман {value}"
+  },
+  "calendar": {
+    "open": "Отвори",
+    "viewMonth": "Месец",
+    "viewWeek": "Недела",
+    "viewDay": "Ден",
+    "viewCampaign": "Кампања",
+    "moreItems": "+{count} повеќе"
+  },
+  "weekdayLabels": ["Пон", "Вто", "Сре", "Чет", "Пет", "Саб", "Нед"]
+}

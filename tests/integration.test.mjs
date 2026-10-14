@@ -1310,6 +1310,11 @@ test("Schulungsvideos: Untertitel in gewählter Sprache nur mit Anmeldung, Fallb
   assert.notEqual(de.data.cues[0].text, pl.data.cues[0].text, "Sprachen unterscheiden sich");
   assert.equal((await c.json("/api/schulung/untertitel/start/xx")).status, 404);
   assert.equal((await c.json("/api/schulung/untertitel/gibtsnicht/de")).status, 404);
+  const seite = await (await c.req("/schulung")).text();
+  assert.ok(!seite.includes("Video folgt"), "keine leeren Videoplätze mehr");
+  for (const k of ["start", "contentBrain", "calendar", "analytics", "inbox", "revenue", "integrations"]) {
+    assert.ok(seite.includes(`id="video-${k}"`) && seite.includes(`href="#video-${k}"`), `Video ${k} verlinkt`);
+  }
   const vid = await c.req("/schulung/videos/start.mp4");
   assert.equal(vid.status, 200);
   assert.match(vid.headers.get("content-type") ?? "", /video\/mp4/);

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, GraduationCap, PartyPopper } from "lucide-react";
-import { VideoSlot } from "@/components/schulung/VideoSlot";
 import { TrainingVideo } from "@/components/schulung/TrainingVideo";
 import { TRAINING_VIDEO_KEYS } from "@/lib/training/videos";
 import { TRAINING_TOPICS } from "@/lib/training/topics";
@@ -46,7 +45,7 @@ export default async function SchulungPage({
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {TRAINING_VIDEO_KEYS.map((key) => (
-            <div key={key} className="card space-y-3 p-4">
+            <div key={key} id={`video-${key}`} className="card scroll-mt-20 space-y-3 p-4">
               <h3 className="text-sm font-semibold text-foreground">{tv(`videos.${key}.title`)}</h3>
               <TrainingVideo videoKey={key} title={tv(`videos.${key}.title`)} />
             </div>
@@ -56,7 +55,7 @@ export default async function SchulungPage({
 
       <div className="space-y-4">
         {TRAINING_TOPICS.map((topic) => (
-          <div key={topic.key} className="card grid gap-4 p-5 md:grid-cols-2">
+          <div key={topic.key} className="card p-5">
             <div>
               <h2 className="text-sm font-semibold text-foreground">
                 {t(`topics.${topic.key}.title`)}
@@ -75,20 +74,23 @@ export default async function SchulungPage({
                   </li>
                 ))}
               </ol>
-              {topic.href && (
-                <Link
-                  href={topic.href}
-                  className="mt-3 inline-flex items-center gap-1 text-sm text-accent-2 hover:underline"
+              <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
+                {topic.href && (
+                  <Link
+                    href={topic.href}
+                    className="inline-flex items-center gap-1 text-sm text-accent-2 hover:underline"
+                  >
+                    {t("openPage")} <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                )}
+                <a
+                  href={`#video-${topic.videoKey}`}
+                  className="inline-flex items-center gap-1 text-sm text-accent-2 hover:underline"
                 >
-                  {t("openPage")} <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              )}
+                  {tv(`videos.${topic.videoKey}.title`)} <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
             </div>
-            <VideoSlot
-              videoUrl={topic.videoUrl}
-              title={t(`topics.${topic.key}.title`)}
-              pendingLabel={t("videoPending")}
-            />
           </div>
         ))}
       </div>

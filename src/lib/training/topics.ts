@@ -1,23 +1,23 @@
 /**
- * Themen der Schulungsseite (/schulung). `videoUrl` ist bewusst leer, bis
- * ein echtes Video existiert — die Seite zeigt dann ehrlich "Video folgt"
- * statt eine Aufnahme vorzutäuschen. Sobald ein Video aufgenommen ist,
- * hier die YouTube-/Vimeo-Einbettungs-URL eintragen (z. B.
- * "https://www.youtube.com/embed/VIDEO_ID"), mehr ist nicht nötig.
+ * Themen der Schulungsseite (/schulung): schriftliche Schritte je Bereich. Das passende
+ * Erklärvideo (public/schulung/videos/<videoKey>.mp4, siehe src/lib/training/videos.ts)
+ * steht im Abschnitt „Erklärvideos“ weiter oben; die Karte verlinkt darauf.
  */
+import type { TrainingVideoKey } from "./videos";
+
 export interface TrainingTopic {
   key: string;
   href?: string;
-  videoUrl?: string;
+  videoKey: TrainingVideoKey;
 }
 
 export const TRAINING_TOPICS: TrainingTopic[] = [
-  { key: "firstSteps", href: "/integrations" },
-  { key: "contentBrainToFactory", href: "/content-brain" },
-  { key: "studios", href: "/script-studio" },
-  { key: "calendarPublishing", href: "/calendar" },
-  { key: "analyticsGrowth", href: "/analytics" },
-  { key: "inbox", href: "/inbox" },
-  { key: "revenue", href: "/revenue" },
-  { key: "integrations", href: "/integrations" },
+  { key: "firstSteps", href: "/integrations", videoKey: "start" },
+  { key: "contentBrainToFactory", href: "/content-brain", videoKey: "contentBrain" },
+  { key: "studios", href: "/script-studio", videoKey: "scriptStudio" },
+  { key: "calendarPublishing", href: "/calendar", videoKey: "calendar" },
+  { key: "analyticsGrowth", href: "/analytics", videoKey: "analytics" },
+  { key: "inbox", href: "/inbox", videoKey: "inbox" },
+  { key: "revenue", href: "/revenue", videoKey: "revenue" },
+  { key: "integrations", href: "/integrations", videoKey: "integrations" },
 ];

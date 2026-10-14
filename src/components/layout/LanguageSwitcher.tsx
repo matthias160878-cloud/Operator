@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
         disabled={isPending}
         aria-label={t("language")}
         aria-expanded={open}
-        className="hidden items-center gap-1 rounded-lg border border-border px-2 py-1 text-xs text-muted hover:text-foreground sm:flex disabled:opacity-60"
+        className="flex items-center gap-1 rounded-lg border border-border px-2 py-1 text-xs text-muted hover:text-foreground disabled:opacity-60"
       >
         {LOCALE_LABELS[locale].flag} {locale.toUpperCase()}
         <ChevronDown className="h-3 w-3" />

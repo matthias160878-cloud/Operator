@@ -15,7 +15,7 @@ import { decryptToken, encryptToken, isTokenEncryptionConfigured } from "@/lib/c
  * Werte werden nie an den Browser gegeben (geheime gar nicht, andere nur zur
  * Anzeige), nie geloggt.
  */
-export type SettingGroup = "composio" | "ki" | "email" | "zahlung";
+export type SettingGroup = "composio" | "ki" | "email" | "zahlung" | "hermes";
 
 export interface SettingDef {
   key: string;
@@ -42,6 +42,10 @@ export const SETTING_GROUPS: Record<SettingGroup, { title: string; text: string 
     title: "E-Mail (Newsletter-Bestätigung)",
     text: "Resend-Schlüssel und Absender. Die Absenderdomain muss bei Resend bestätigt sein. Erst dann erscheint das Newsletter-Formular.",
   },
+  hermes: {
+    title: "Hermes (interner Pilot und öffentlicher Besucherchat)",
+    text: "Alles standardmäßig aus. Der öffentliche Chat braucht einen EIGENEN Hermes-Dienst/ein eigenes Profil ohne Werkzeuge und läuft erst nach Datenschutz-Freigabe, Bestätigung und bestandener Prüfung. Anleitung: docs/HERMES.md.",
+  },
   zahlung: {
     title: "Zahlung (Stripe)",
     text: "Testmodus zuerst (sk_test_…). Preise müssen in Stripe als Nettopreise (Steuer exklusiv) in EUR angelegt sein; die App prüft Betrag und Intervall.",
@@ -63,6 +67,18 @@ export const SETTINGS: SettingDef[] = [
   { key: "GEMINI_MODEL", label: "Gemini-Modell", group: "ki", secret: false, hint: "leer = aktuelles Flash-Modell (gemini-flash-latest); z. B. gemini-3.5-flash", pattern: /^[a-z0-9.-]{3,60}$/, patternHint: "nur Kleinbuchstaben, Ziffern, Punkt, Bindestrich" },
   { key: "AI_PROVIDER", label: "Bevorzugter KI-Anbieter", group: "ki", secret: false, hint: "anthropic, openai oder gemini — leer = erster Anbieter mit Schlüssel", pattern: /^(anthropic|openai|gemini)$/, patternHint: "anthropic, openai oder gemini" },
   { key: "WEBSITE_KI", label: "Webseiten-Chat mit KI", group: "ki", secret: false, hint: "„true“ = an, leer = aus (Tageslimit WEBSITE_KI_TAGESLIMIT, Standard 200)", pattern: /^(true|false)$/, patternHint: "nur „true“ oder „false“" },
+
+  { key: "HERMES_PILOT_ENABLED", label: "Hermes-Pilot (intern) an", group: "hermes", secret: false, hint: "„true“ schaltet den internen Pilot für Betreiber frei", pattern: /^(true|false)$/, patternHint: "nur „true“ oder „false“" },
+  { key: "HERMES_API_URL", label: "Hermes-Pilot: Adresse", group: "hermes", secret: false, hint: "https://… (Hermes-API-Server, ggf. mit /p/<profil>)", pattern: /^https:\/\/[^\s?#@]+$/, patternHint: "https-Adresse ohne Zugangsdaten und Parameter" },
+  { key: "HERMES_API_KEY", label: "Hermes-Pilot: Schlüssel", group: "hermes", secret: true, hint: "API_SERVER_KEY des internen Hermes-Dienstes" },
+  { key: "HERMES_MODEL", label: "Hermes-Pilot: Modellname", group: "hermes", secret: false, hint: "leer = hermes-agent", pattern: /^[A-Za-z0-9._:\/-]{2,80}$/, patternHint: "Buchstaben, Ziffern, . _ : / -" },
+  { key: "HERMES_PUBLIC_CHAT_ENABLED", label: "Hermes öffentlicher Chat an", group: "hermes", secret: false, hint: "„true“ — wirkt nur zusammen mit allen anderen Bedingungen", pattern: /^(true|false)$/, patternHint: "nur „true“ oder „false“" },
+  { key: "HERMES_PUBLIC_CHAT_PRIVACY_APPROVED", label: "Datenschutzhinweis für Hermes ergänzt", group: "hermes", secret: false, hint: "„true“ erst, wenn der Datenschutzhinweis den eingesetzten Chat-/KI-Dienst nennt", pattern: /^(true|false)$/, patternHint: "nur „true“ oder „false“" },
+  { key: "HERMES_PUBLIC_TOOLS_ATTESTED", label: "Öffentliches Profil ohne Werkzeuge geprüft", group: "hermes", secret: false, hint: "„true“ erst nach eigener Prüfung des Profils (kein Terminal, keine Dateien, kein Browser, kein Speicher)", pattern: /^(true|false)$/, patternHint: "nur „true“ oder „false“" },
+  { key: "HERMES_PUBLIC_API_URL", label: "Hermes öffentlich: Adresse", group: "hermes", secret: false, hint: "https://… — anderer Dienst/anderes Profil als der Pilot", pattern: /^https:\/\/[^\s?#@]+$/, patternHint: "https-Adresse ohne Zugangsdaten und Parameter" },
+  { key: "HERMES_PUBLIC_API_KEY", label: "Hermes öffentlich: Schlüssel", group: "hermes", secret: true, hint: "eigener API_SERVER_KEY, verschieden vom Pilot-Schlüssel" },
+  { key: "HERMES_PUBLIC_MODEL", label: "Hermes öffentlich: Modellname", group: "hermes", secret: false, hint: "leer = hermes-agent", pattern: /^[A-Za-z0-9._:\/-]{2,80}$/, patternHint: "Buchstaben, Ziffern, . _ : / -" },
+  { key: "HERMES_PUBLIC_RATE_LIMIT_SECRET", label: "Hermes öffentlich: Limit-Geheimnis", group: "hermes", secret: true, hint: "zufällig, mind. 16 Zeichen — damit Besucheradressen nur als Hash gezählt werden", pattern: /^[A-Za-z0-9_\-+=\/]{16,100}$/, patternHint: "mind. 16 Zeichen (Buchstaben, Ziffern, _ - + = /)" },
 
   { key: "RESEND_API_KEY", label: "Resend API-Schlüssel", group: "email", secret: true, hint: "Beginnt mit „re_“.", pattern: /^re_[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „re_“ beginnen" },
   { key: "EMAIL_FROM", label: "Absender", group: "email", secret: false, hint: "z. B. SECRET 58 <newsletter@secret58.com>", pattern: /^[^<>@\s][^<>@]*<[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+>$|^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/, patternHint: "Form: Name <adresse@domain.de> oder adresse@domain.de" },

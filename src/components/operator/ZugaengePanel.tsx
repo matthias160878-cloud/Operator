@@ -8,7 +8,7 @@ import { SETTING_GROUPS } from "@/lib/operatorSettings";
 const inputClass =
   "w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none";
 
-const GROUP_ORDER: SettingGroup[] = ["composio", "ki", "email", "zahlung"];
+const GROUP_ORDER: SettingGroup[] = ["composio", "ki", "hermes", "email", "zahlung"];
 const PRUEFBAR: Partial<Record<SettingGroup, "composio" | "email" | "zahlung">> = { composio: "composio", email: "email", zahlung: "zahlung" };
 
 function sourceText(s: SettingStatus): string {

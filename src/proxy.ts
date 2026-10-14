@@ -59,7 +59,7 @@ const PUBLIC_PREFIXES = [
 const CROSS_ORIGIN_ALLOWED = ["/api/stripe/webhook", "/api/stripe/connect-webhook", "/api/widget/"];
 
 /** Nur exakt diese Pfade (ein Präfix würde z. B. /api/chatbot mit öffnen). */
-const PUBLIC_EXACT = new Set(["/api/chat"]);
+const PUBLIC_EXACT = new Set(["/api/chat", "/api/public-hermes-chat"]);
 
 function isPublic(pathname: string): boolean {
   if (pathname in ZENTRALE_PAGES || PUBLIC_EXACT.has(pathname)) return true;

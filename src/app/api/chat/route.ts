@@ -4,6 +4,8 @@ import { generateText, type ChatMessage } from "@/lib/ai/textGenerator";
 import { clientIp, hitRateLimit } from "@/lib/rateLimit";
 import { websiteAiBudgetAvailable, websiteAiEnabled } from "@/lib/websiteAi";
 import { SYSTEMPROMPT } from "@/lib/zentrale/prompts";
+import { publicHermesAvailable } from "@/lib/hermes/publicSafety";
+import { hermesPublicAnswer, sanitizeHistory } from "@/lib/hermes/publicChat";
 // Unverändert aus der Zentrale übernommen (src/lib/zentrale/README.md).
 import { pruefe as gatePruefe, zustaendig } from "@/lib/zentrale/agenten/gate.js";
 
@@ -54,6 +56,16 @@ export async function POST(request: Request) {
       entscheidung: "verwiesen",
       stufe: 0,
     });
+  }
+  // Hermes (nur wenn vollständig freigegeben UND die Sicherheitsprüfung besteht), sonst der bisherige KI-Weg.
+  const hermesHistory = sanitizeHistory(verlauf);
+  if (hermesHistory.ok && (await publicHermesAvailable())) {
+    try {
+      const reply = await hermesPublicAnswer(hermesHistory.history);
+      return NextResponse.json({ reply });
+    } catch (err) {
+      console.error("[webchat] Hermes nicht nutzbar, weiter mit dem KI-Anbieter:", err instanceof Error ? err.message : "unbekannt");
+    }
   }
   if (!websiteAiEnabled()) return NextResponse.json({ error: "kein_schluessel" }, { status: 503 });
   if (!(await websiteAiBudgetAvailable())) return NextResponse.json({ error: "ausgelastet" }, { status: 429 });

@@ -287,3 +287,36 @@ test("Übersetzungen: alle Sprachen vollständig (Dateien, Schlüssel, Platzhalt
   assert.ok(!out.includes("✗"), out);
   assert.ok((out.match(/✓/g) ?? []).length >= 33);
 });
+
+test("Hermes: Adressprüfung, Werkzeugprüfung (fail-closed), Eingabeprüfung, Besucher-Hash", async () => {
+  const { parseHermesUrl } = await import("@/lib/hermes/config");
+  const { evaluateToolsets, visitorKey } = await import("@/lib/hermes/publicSafety");
+  const { sanitizeHistory } = await import("@/lib/hermes/publicChat");
+  assert.ok(parseHermesUrl("https://hermes.example.com"));
+  assert.ok(parseHermesUrl("https://hermes.example.com/p/oeffentlich"));
+  assert.equal(parseHermesUrl("http://hermes.example.com"), null);
+  assert.equal(parseHermesUrl("https://user:pw@hermes.example.com"), null);
+  assert.equal(parseHermesUrl("https://hermes.example.com/?token=1"), null);
+  assert.equal(parseHermesUrl(""), null);
+  assert.equal(parseHermesUrl("ftp://x.example.com"), null);
+  const ts = (items: unknown) => evaluateToolsets({ toolsets: items });
+  assert.equal(ts([{ name: "clarify", enabled: true }, { name: "todo", enabled: true }, { name: "terminal", enabled: false }]).safe, true);
+  assert.equal(ts([{ name: "terminal", enabled: true }]).safe, false);
+  assert.equal(ts([{ name: "memory", enabled: true }]).safe, false);
+  assert.equal(ts([{ name: "clarify" }]).safe, false, "ohne enabled = unklar = unsicher");
+  assert.equal(ts([]).safe, false);
+  assert.equal(evaluateToolsets({}).safe, false);
+  assert.equal(evaluateToolsets(null).safe, false);
+  assert.equal(evaluateToolsets([{ name: "web", enabled: true }]).safe, false);
+  assert.equal(evaluateToolsets([{ id: "TODO", enabled: true }]).safe, true);
+  assert.equal(sanitizeHistory([]).ok, false);
+  assert.equal(sanitizeHistory([{ role: "user", content: "Hallo\u0000 Welt" }]).ok && (sanitizeHistory([{ role: "user", content: "Hallo\u0000 Welt" }]) as { history: { content: string }[] }).history[0].content, "Hallo Welt");
+  assert.equal(sanitizeHistory([{ role: "assistant", content: "x" }]).ok, false);
+  assert.equal(sanitizeHistory([{ role: "tool", content: "x" }]).ok, false);
+  assert.equal(sanitizeHistory([{ role: "user", content: "a".repeat(601) }]).ok, false);
+  assert.equal(sanitizeHistory(Array.from({ length: 41 }, () => ({ role: "user", content: "x" }))).ok, false);
+  const k = visitorKey("203.0.113.7", "geheimnis-geheimnis-1");
+  assert.match(k, /^[0-9a-f]{32}$/);
+  assert.ok(!k.includes("203"));
+  assert.notEqual(k, visitorKey("203.0.113.8", "geheimnis-geheimnis-1"));
+});

@@ -16,6 +16,13 @@ export function startFakeServices() {
   // Composio-Attrappe: verbundene Konten, nächster Status, Fehlerschalter.
   const composio = { accounts: new Map(), nextStatus: "ACTIVE", failExecute: false, apiKey: "ck_test_fake", n: 0 };
 
+  // Hermes-Attrappe (OpenAI-kompatibler API-Server): zwei Profile mit eigenem Schlüssel; Verhalten per /__hermes/<profil> steuerbar.
+  const hermes = {
+    "hermes-public": { key: "hp_test_key", toolsets: "safe", toolCalls: false, reply: "Antwort von Hermes (öffentlich).", chats: [], requests: 0 },
+    "hermes-pilot": { key: "hi_test_key", toolsets: "unsafe", toolCalls: false, reply: "Antwort von Hermes (Pilot).", chats: [], requests: 0 },
+  };
+  const TOOLSET_NAMES = ["terminal", "file", "browser", "memory", "clarify", "todo"];
+
   const json = (res, status, body) => {
     res.writeHead(status, { "content-type": "application/json" });
     res.end(JSON.stringify(body));
@@ -29,6 +36,30 @@ export function startFakeServices() {
       const params = Object.fromEntries(new URLSearchParams(raw));
       calls.push({ method: req.method, path: url.pathname, params, raw, stripeAccount: req.headers["stripe-account"] ?? null });
       const p = url.pathname;
+      const hc = p.match(/^\/__hermes\/(hermes-public|hermes-pilot)$/);
+      if (hc && req.method === "POST") {
+        Object.assign(hermes[hc[1]], JSON.parse(raw || "{}"));
+        return json(res, 200, { ok: true });
+      }
+      const hm = p.match(/^\/(hermes-public|hermes-pilot)(\/.*)$/);
+      if (hm) {
+        const prof = hermes[hm[1]];
+        prof.requests += 1;
+        if (req.headers.authorization !== `Bearer ${prof.key}`) return json(res, 401, { error: "unauthorized" });
+        if (hm[2] === "/health") return json(res, 200, { status: "ok" });
+        if (hm[2] === "/v1/toolsets") {
+          if (prof.toolsets === "garbage") return json(res, 200, { foo: 1 });
+          if (prof.toolsets === "empty") return json(res, 200, { toolsets: [] });
+          const on = prof.toolsets === "safe" ? ["clarify", "todo"] : TOOLSET_NAMES;
+          return json(res, 200, { toolsets: TOOLSET_NAMES.map((name) => ({ name, enabled: on.includes(name), configured: true })) });
+        }
+        if (hm[2] === "/v1/chat/completions" && req.method === "POST") {
+          prof.chats.push({ body: JSON.parse(raw), headers: req.headers });
+          if (prof.toolCalls) return json(res, 200, { choices: [{ finish_reason: "tool_calls", message: { role: "assistant", content: null, tool_calls: [{ id: "c1", type: "function", function: { name: "terminal", arguments: "{}" } }] } }] });
+          return json(res, 200, { choices: [{ finish_reason: "stop", message: { role: "assistant", content: prof.reply } }] });
+        }
+        return json(res, 404, { error: "not found" });
+      }
       if (p === "/emails" && req.method === "POST") {
         // E-Mail-Attrappe (Resend-Format): nur protokollieren, nichts versenden.
         if (req.headers.authorization !== "Bearer re_test_fake") return json(res, 401, { message: "invalid key" });
@@ -135,6 +166,7 @@ export function startFakeServices() {
           site,
           accounts,
           composio,
+          hermes,
           completed: fakes_completed,
           close: () => Promise.all([new Promise((r) => stripeServer.close(r)), new Promise((r) => siteServer.close(r))]),
         });

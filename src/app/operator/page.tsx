@@ -65,6 +65,9 @@ export default async function OperatorPage() {
           <Link href="/operator/zugaenge" className="rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-sm text-accent">
             Zugänge
           </Link>
+          <Link href="/operator/hermes-pilot" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">
+            Hermes (Pilot)
+          </Link>
           <Link href="/" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">
             Eigener Arbeitsbereich
           </Link>

@@ -1,6 +1,6 @@
 {
   "title": "Training",
-  "subtitle": "Step-by-step guides for every area of SECRET 58 — always here to look up. Videos will be added as soon as they're recorded.",
+  "subtitle": "Step-by-step guides and explainer videos for every area of SECRET 58 — always available here for reference.",
   "welcomeBanner": {
     "title": "Welcome to SECRET 58!",
     "body": "Thanks for your purchase. Before you dive in, take a quick look at \"First steps\" below — so the AI agents work with your real data from the start."
@@ -13,7 +13,7 @@
       "title": "First steps",
       "description": "Do these three things first, then every AI agent works with real data instead of placeholders.",
       "steps": [
-        "Under \"Integrations\", connect at least one AI provider (Anthropic or OpenAI) — click \"Get API key\" on the row, create the key with the provider, then add it via \"Set in Render\".",
+        "Under \"Integrations\", check whether an AI provider is set up. The AI features run through the operator's access, so you do not need your own AI subscription. Without an AI provider, the app works in template mode.",
         "Under \"Brand DNA\", fill in your own brand (tone, audience, values) — every AI agent uses this for the text it generates.",
         "Under \"Ideas & Inspiration\" or \"Content Brain\", generate your first idea or campaign."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Every row shows the real, live-checked status — never a faked connection.",
         "For \"Not configured\", \"Get API key\" leads to the provider's official page.",
-        "\"Set in Render\" leads directly to the environment variables where the key is stored — there is deliberately no key input form inside the app itself, for security.",
-        "Costs: the SECRET 58 purchase price is one-time. Every external provider has its own, independent cost model (free / pay-as-you-go / subscription) — the Integrations page shows which model applies to each service, with a link to that provider's current pricing."
+        "Access credentials are never stored in the browser, only protected on the server. If an access is missing, the operator sets it up.",
+        "Costs: Pro and Maxi are subscriptions, monthly or yearly. Current prices are shown under \"Plan & billing\". Every external provider has its own independent cost model (free / usage-based / subscription) — the Integrations page shows which model applies to each service, with a link to the provider's current prices."
       ]
     }
   }

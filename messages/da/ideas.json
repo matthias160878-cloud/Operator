@@ -1,0 +1,22 @@
+{
+  "title": "Idéer & inspiration",
+  "subtitle": "Emneklynger, serier og formater til kommende content — genereret af IdeaAgent eller tilføjet manuelt.",
+  "board": {
+    "topicLabel": "Emne til nye idéer",
+    "topicPlaceholder": "f.eks. Produktivitet med AI-agenter",
+    "generateButton": "Generer idéer",
+    "manualButton": "Manuelt",
+    "manualTitlePlaceholder": "Idéens titel",
+    "addButton": "Tilføj",
+    "generateError": "Fejl ved generering af idéer.",
+    "unknownError": "Ukendt fejl.",
+    "emptyState": "Ingen idéer endnu — generer nogle eller opret dem manuelt.",
+    "minutesUnit": "~{count} min.",
+    "statusNew": "Ny",
+    "statusInProgress": "I gang",
+    "statusUsed": "Brugt",
+    "statusArchived": "Arkiveret",
+    "sourceAiGenerated": "AI-genereret",
+    "sourceManual": "Manuel"
+  }
+}

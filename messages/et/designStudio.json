@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Pisipildikontseptsioonid, pildivarad ja Canva integratsioon.",
+  "imageAssetsTitle": "Pildivarad",
+  "imageAssetsEmpty": "Pildivarasid pole veel.",
+  "thumbnailAgent": {
+    "title": "Pisipildi agent",
+    "description": "Loob tekstikontseptsiooni (pealkiri, visuaalne idee, paigutus, CTA) — ette valmistatud pildigeneraatori ühendamiseks. Pilti ei looda veel.",
+    "inputPlaceholder": "Pisipildi teema",
+    "submitButton": "Genereeri kontseptsioon",
+    "errorGenerationFailed": "Genereerimine ebaõnnestus.",
+    "errorUnknown": "Tundmatu viga.",
+    "fieldTitle": "Pealkiri",
+    "fieldVisualIdea": "Visuaalne idee",
+    "fieldText": "Tekst",
+    "fieldLayout": "Paigutus",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Pildi kirjeldus"
+  }
+}

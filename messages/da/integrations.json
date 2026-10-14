@@ -1,0 +1,24 @@
+{
+  "title": "Integrationer",
+  "description": "Livestatus for alle eksterne tjenester — udelukkende baseret på de miljøvariabler, der faktisk er sat. Ingen foregivne forbindelser.",
+  "categories": {
+    "AI": "AI-udbydere",
+    "VOICE": "Voice",
+    "PLATFORM": "Sociale platforme",
+    "DESIGN": "Design",
+    "VIDEO": "Video",
+    "TREND": "Trends"
+  },
+  "costNote": "Købsprisen for SECRET 58 er en engangsbetaling og dækker softwaren. Hver ekstern tjeneste her har sin egen, uafhængige prismodel hos den pågældende udbyder — SECRET 58 fakturerer aldrig ekstra for dem.",
+  "links": {
+    "getKey": "Hent API-nøgle",
+    "setInRender": "Indtast i Render",
+    "viewPricing": "Se priser"
+  },
+  "pricing": {
+    "free": "Gratis",
+    "payAsYouGo": "Forbrugsbaseret",
+    "subscription": "Abonnement",
+    "unknown": "Tjek prisen hos udbyderen"
+  }
+}

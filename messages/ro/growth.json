@@ -1,0 +1,15 @@
+{
+  "title": "Creștere",
+  "subtitle": "Recomandări pentru acoperire și creștere — derivate din datele reale de analiză ale conținutului tău de până acum: cele mai bune momente de postare, cele mai de succes hashtag-uri și formate.",
+  "warning": "Intenționat <strong>nu</strong> este inclus: urmărirea/aprecierea/comentarea automată pentru creșterea artificială a numărului de urmăritori. Aceasta încalcă condițiile de utilizare ale YouTube, Instagram, TikTok, LinkedIn și Facebook și poate duce la blocarea contului. Această pagină oferă exclusiv recomandări bazate pe date pentru propriul tău conținut.",
+  "filterAll": "Toate platformele",
+  "emptyState": "Încă nu există date de analiză pentru {platform}. Imediat ce conținutul publicat adună date de performanță, apar aici recomandări.",
+  "emptyStateDefaultScope": "acest workspace",
+  "bestPostingTimesTitle": "Cele mai bune momente de postare",
+  "postingTime": "{day} · ora {hour}",
+  "avgLabel": "Ø {percent} ({count})",
+  "topHashtagsTitle": "Cele mai de succes hashtag-uri",
+  "topHashtagsEmpty": "Nu există date despre hashtag-uri.",
+  "hashtagTooltip": "Ø {percent} engagement, folosit de {count}×",
+  "topFormatsTitle": "Cele mai bune formate"
+}

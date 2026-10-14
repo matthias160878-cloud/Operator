@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Μηχανή σεναρίων και hooks: δημιουργεί σενάρια προσαρμοσμένα σε κάθε πλατφόρμα με τη δομή Hook → Πρόβλημα → Value → Παράδειγμα → Payoff → CTA, καθώς και πολλές παραλλαγές hook.",
+  "form": {
+    "topicLabel": "Θέμα",
+    "topicPlaceholder": "π.χ. 5 τρόποι με τους οποίους οι πράκτορες AI εξοικονομούν χρόνο",
+    "platformLabel": "Πλατφόρμα",
+    "generateButton": "Δημιουργία σεναρίου & hooks",
+    "generateFailed": "Η δημιουργία απέτυχε.",
+    "unknownError": "Άγνωστο σφάλμα."
+  },
+  "hookTypes": {
+    "direkt": "Άμεσο",
+    "neugierig": "Περιέργεια",
+    "story": "Ιστορία",
+    "problem": "Πρόβλημα",
+    "zahlen": "Αριθμοί",
+    "kontroversSachlich": "Αμφιλεγόμενο (τεκμηριωμένο)",
+    "educational": "Εκπαιδευτικό"
+  },
+  "hooksHeading": "Παραλλαγές hook",
+  "engine": {
+    "label": "Μηχανή: {provider}",
+    "templateMode": "Λειτουργία προτύπων (δεν έχει ρυθμιστεί πάροχος AI)"
+  },
+  "script": {
+    "heading": "Σενάριο",
+    "save": "Αποθήκευση ως στοιχείο περιεχομένου",
+    "saving": "Αποθήκευση…"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Thumbnail-konsepter, bildeelementer og Canva-integrasjonen.",
+  "imageAssetsTitle": "Bildeelementer",
+  "imageAssetsEmpty": "Ingen bildeelementer tilgjengelig ennå.",
+  "thumbnailAgent": {
+    "title": "Thumbnail-agent",
+    "description": "Lager et tekstkonsept (tittel, visuell idé, layout, CTA) — forberedt for tilkobling av en bildegenerator. Det genereres ikke noe bilde ennå.",
+    "inputPlaceholder": "Tema for thumbnailen",
+    "submitButton": "Generer konsept",
+    "errorGenerationFailed": "Genereringen mislyktes.",
+    "errorUnknown": "Ukjent feil.",
+    "fieldTitle": "Tittel",
+    "fieldVisualIdea": "Visuell idé",
+    "fieldText": "Tekst",
+    "fieldLayout": "Layout",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Bildebeskrivelse"
+  }
+}

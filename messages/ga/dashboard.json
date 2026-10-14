@@ -1,0 +1,96 @@
+{
+  "viewAll": "Féach ar gach ceann",
+  "demoBanner": {
+    "before": "Sonraí taispeántais gníomhach — is sonraí samplacha ó ",
+    "after": " iad na feachtais, na míreanna inneachair agus an anailísíocht, ní fíoruimhreacha ardáin."
+  },
+  "hero": {
+    "subtitle": "Smaoineamh amháin. Ardáin iolracha. Uasmhéid sroichte.",
+    "newCampaign": "Feachtas nua",
+    "createContent": "Cruthaigh inneachar",
+    "findIdeas": "Aimsigh smaointe",
+    "aiAgents": "Gníomhairí AI"
+  },
+  "orbit": {
+    "xNotConnected": "X (gan nascadh)",
+    "brainAlt": "Inchinn AI SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Gníomhairí gníomhacha",
+    "empty": "Gan aon rith gníomhaire go fóill."
+  },
+  "kpi": {
+    "contentCreated": "Inneachar cruthaithe",
+    "videosCreated": "Físeáin cruthaithe",
+    "postsCreated": "Postálacha cruthaithe",
+    "published": "Foilsithe",
+    "views": "Radhairc",
+    "avgEngagement": "Ø Rannpháirtíocht",
+    "totalRevenue": "Ioncam iomlán",
+    "noComparisonWeek": "Níl aon seachtain roimhe sin ann mar bhonn comparáide go fóill — beidh rátaí athraithe le feiceáil a luaithe a bheidh sonraí ann do dhá sheachtain ar a laghad."
+  },
+  "production": {
+    "title": "Táirgeadh inneachair",
+    "thisWeek": "An tseachtain seo"
+  },
+  "scheduled": {
+    "title": "Postálacha pleanáilte",
+    "empty": "Gan aon phostálacha pleanáilte."
+  },
+  "activity": {
+    "title": "Gníomhaíocht dheireanach",
+    "empty": "Gan aon ghníomhaíocht go fóill."
+  },
+  "contentFactory": {
+    "description": "Cruthaigh feachtais inneachair iomlána do gach ardán le smaoineamh amháin.",
+    "cta": "Tosaigh anois →",
+    "popularTemplates": "Teimpléid choitianta",
+    "templateYoutubeVideo": "Físeán YouTube",
+    "templateTiktokSeries": "Sraith TikTok",
+    "templateInstagramReel": "Reel Instagram",
+    "templateLinkedinPost": "Postáil LinkedIn",
+    "templateBlogPost": "Alt blagála",
+    "viewAllTemplates": "Gach teimpléad →"
+  },
+  "brandDna": {
+    "tonality": "Tonn",
+    "targetAudience": "Spriocghrúpa",
+    "industry": "Tionscal",
+    "language": "Teanga",
+    "empty": "Níor cuireadh aon Brand DNA isteach go fóill."
+  },
+  "campaigns": {
+    "title": "Feachtais reatha",
+    "empty": "Gan aon fheachtas go fóill."
+  },
+  "platforms": {
+    "title": "Ardáin",
+    "manage": "Bainistigh"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} nasctha"
+  },
+  "agentMonitor": {
+    "title": "Monatóir Gníomhairí",
+    "empty": "Gan aon rith go fóill."
+  },
+  "topPerformer": {
+    "title": "An té is fearr feidhmíocht",
+    "last7Days": "Na 7 lá seo caite",
+    "empty": "Gan aon sonraí feidhmíochta go fóill.",
+    "views": "Radhairc",
+    "likes": "Taitneamh",
+    "comments": "Tuairimí",
+    "shares": "Comhroinnt",
+    "engagementRate": "+Ráta rannpháirtíochta {value}"
+  },
+  "calendar": {
+    "open": "Oscail",
+    "viewMonth": "Mí",
+    "viewWeek": "Seachtain",
+    "viewDay": "Lá",
+    "viewCampaign": "Feachtas",
+    "moreItems": "+{count} eile"
+  },
+  "weekdayLabels": ["Luan", "Mái", "Céa", "Déar", "Aoi", "Sat", "Domh"]
+}

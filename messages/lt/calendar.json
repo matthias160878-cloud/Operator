@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Turinio kalendorius",
+  "subtitle": "Suplanuotas ir paskelbtas turinys iš karto matomas.",
+  "weekdays": ["Pr", "An", "Tr", "Kt", "Pn", "Št", "Sk"],
+  "months": [
+    "Sausis", "Vasaris", "Kovas", "Balandis", "Gegužė", "Birželis",
+    "Liepa", "Rugpjūtis", "Rugsėjis", "Spalis", "Lapkritis", "Gruodis"
+  ],
+  "allPlatforms": "Visos platformos",
+  "moreItems": "+{count} daugiau",
+  "listTitle": "Šio mėnesio sąrašas",
+  "emptyMonth": "Šį mėnesį suplanuotų įrašų nėra."
+}

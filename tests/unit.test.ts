@@ -250,3 +250,33 @@ test("KI-Anbieter: Reihenfolge, Vorzug über AI_PROVIDER, Gemini-Aufruf", async 
     for (const k of ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GEMINI_API_KEY", "AI_PROVIDER", "GEMINI_BASE_URL", "GEMINI_MODEL"]) if (saved[k] !== undefined) process.env[k] = saved[k];
   }
 });
+
+test("Sprachen: Auswahl deckt Europa ab, Browsersprache wird zugeordnet, Vorlesesprache", async () => {
+  const { LOCALES, LOCALE_LABELS, isLocale, resolveLocaleFromAcceptLanguage, speechLang } = await import("@/i18n/config");
+  assert.ok(LOCALES.length >= 30);
+  for (const c of ["de", "en", "fr", "es", "it", "pl", "pt", "nl", "bg", "el", "hu", "ga", "mt", "uk", "tr", "no", "sr"]) assert.ok(isLocale(c), c);
+  for (const c of LOCALES) assert.ok(LOCALE_LABELS[c]?.name && LOCALE_LABELS[c]?.flag, `Label für ${c}`);
+  assert.equal(resolveLocaleFromAcceptLanguage("nb-NO,nb;q=0.9,en;q=0.5"), "no");
+  assert.equal(resolveLocaleFromAcceptLanguage("pl-PL,pl;q=0.9"), "pl");
+  assert.equal(resolveLocaleFromAcceptLanguage("ja-JP"), "de");
+  assert.equal(speechLang("no"), "nb-NO");
+  assert.equal(speechLang("pl"), "pl");
+});
+
+test("Schulungsvideos: Texte und Zeitmarken stimmen überein", async () => {
+  const fs = await import("node:fs");
+  const path = await import("node:path");
+  const { TRAINING_VIDEO_KEYS } = await import("@/lib/training/videos");
+  const de = JSON.parse(fs.readFileSync(path.join(process.cwd(), "messages/de/schulungVideos.json"), "utf8"));
+  assert.deepEqual(de.order, [...TRAINING_VIDEO_KEYS]);
+  for (const key of TRAINING_VIDEO_KEYS) {
+    const timingFile = path.join(process.cwd(), "public/schulung/videos", `${key}.json`);
+    if (!fs.existsSync(timingFile)) continue; // Video noch nicht aufgenommen
+    const timing = JSON.parse(fs.readFileSync(timingFile, "utf8"));
+    const ids = Object.keys(de.videos[key].cues);
+    assert.deepEqual(timing.cues.map((c: { id: string }) => c.id), ids, `Cues ${key}`);
+    let last = 0;
+    for (const c of timing.cues) { assert.ok(c.start >= last && c.end > c.start, `Zeit ${key} ${c.id}`); last = c.start; }
+    assert.ok(fs.existsSync(path.join(process.cwd(), "public/schulung/videos", `${key}.mp4`)), `mp4 ${key}`);
+  }
+});

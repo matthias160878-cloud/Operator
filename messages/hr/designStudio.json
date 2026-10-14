@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Koncepti thumbnaila, slikovni materijali i integracija s Canvom.",
+  "imageAssetsTitle": "Slikovni materijali",
+  "imageAssetsEmpty": "Još nema slikovnih materijala.",
+  "thumbnailAgent": {
+    "title": "Thumbnail agent",
+    "description": "Izrađuje tekstualni koncept (naslov, vizualna ideja, raspored, CTA) — pripremljen za povezivanje generatora slika. Slika se još ne generira.",
+    "inputPlaceholder": "Tema za thumbnail",
+    "submitButton": "Generiraj koncept",
+    "errorGenerationFailed": "Generiranje nije uspjelo.",
+    "errorUnknown": "Nepoznata pogreška.",
+    "fieldTitle": "Naslov",
+    "fieldVisualIdea": "Vizualna ideja",
+    "fieldText": "Tekst",
+    "fieldLayout": "Raspored",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Opis slike"
+  }
+}

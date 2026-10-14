@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Kunċetti ta' thumbnail, assi tal-immaġini u l-integrazzjoni ma' Canva.",
+  "imageAssetsTitle": "Assi tal-immaġini",
+  "imageAssetsEmpty": "Għad m'hemm l-ebda assi tal-immaġini.",
+  "thumbnailAgent": {
+    "title": "Thumbnail-Agent",
+    "description": "Joħloq kunċett bit-test (titlu, idea viżwali, layout, CTA) — mħejji għall-konnessjoni ta' ġeneratur tal-immaġini. Għadha ma tinħoloq l-ebda immaġni.",
+    "inputPlaceholder": "Suġġett għat-thumbnail",
+    "submitButton": "Iġġenera kunċett",
+    "errorGenerationFailed": "Il-ġenerazzjoni falliet.",
+    "errorUnknown": "Żball mhux magħruf.",
+    "fieldTitle": "Titlu",
+    "fieldVisualIdea": "Idea viżwali",
+    "fieldText": "Test",
+    "fieldLayout": "Layout",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Deskrizzjoni tal-immaġni"
+  }
+}

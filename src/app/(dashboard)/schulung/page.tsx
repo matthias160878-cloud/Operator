@@ -2,6 +2,8 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, GraduationCap, PartyPopper } from "lucide-react";
 import { VideoSlot } from "@/components/schulung/VideoSlot";
+import { TrainingVideo } from "@/components/schulung/TrainingVideo";
+import { TRAINING_VIDEO_KEYS } from "@/lib/training/videos";
 import { TRAINING_TOPICS } from "@/lib/training/topics";
 
 export const dynamic = "force-dynamic";
@@ -12,6 +14,7 @@ export default async function SchulungPage({
   searchParams: Promise<{ willkommen?: string }>;
 }) {
   const t = await getTranslations("schulung");
+  const tv = await getTranslations("schulungVideos");
   const { willkommen } = await searchParams;
 
   return (
@@ -35,6 +38,21 @@ export default async function SchulungPage({
           <p className="mt-1 text-sm text-muted">{t("subtitle")}</p>
         </div>
       </div>
+
+      <section className="space-y-3" aria-labelledby="erklaervideos">
+        <div>
+          <h2 id="erklaervideos" className="text-base font-semibold text-foreground">{tv("videosTitle")}</h2>
+          <p className="mt-1 text-sm text-muted">{tv("whatLabel")} {tv("draftNote")}</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {TRAINING_VIDEO_KEYS.map((key) => (
+            <div key={key} className="card space-y-3 p-4">
+              <h3 className="text-sm font-semibold text-foreground">{tv(`videos.${key}.title`)}</h3>
+              <TrainingVideo videoKey={key} title={tv(`videos.${key}.title`)} />
+            </div>
+          ))}
+        </div>
+      </section>
 
       <div className="space-y-4">
         {TRAINING_TOPICS.map((topic) => (

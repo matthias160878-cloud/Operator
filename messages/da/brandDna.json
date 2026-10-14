@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Dit brand. Din stil. Overalt. Disse oplysninger indgår automatisk i Content Brain samt script-, hook- og hashtag-agenten.",
+  "form": {
+    "nameLabel": "Brandnavn",
+    "industryLabel": "Branche",
+    "descriptionLabel": "Beskrivelse",
+    "descriptionHint": "Hvad kendetegner brandet?",
+    "audienceLabel": "Målgruppe",
+    "languageLabel": "Sprog",
+    "tonalityLabel": "Tonefald",
+    "humorLabel": "Humor",
+    "formalityLabel": "Formalitet",
+    "preferredWordsLabel": "Foretrukne ord",
+    "forbiddenWordsLabel": "Forbudte ord",
+    "preferredCtasLabel": "Foretrukne CTA'er",
+    "brandValuesLabel": "Brandværdier",
+    "topicsLabel": "Emner",
+    "csvHint": "kommasepareret",
+    "colorsLabel": "Farver",
+    "colorsHint": "kommasepareret, f.eks. #6D5BFF",
+    "fontsLabel": "Skrifttyper",
+    "visualRulesLabel": "Visuelle regler",
+    "saveError": "Kunne ikke gemme.",
+    "unknownError": "Ukendt fejl.",
+    "saving": "Gemmer…",
+    "save": "Gem Brand DNA",
+    "savedAt": "Gemt kl. {time}"
+  }
+}

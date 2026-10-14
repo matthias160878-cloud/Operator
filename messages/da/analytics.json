@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Præstationstal ud fra faktisk tilgængelige data — så snart platforme er forbundet, fyldes denne visning med rigtige værdier.",
+  "statViewsTotal": "Visninger i alt",
+  "statLikesTotal": "Likes i alt",
+  "statComments": "Kommentarer",
+  "statShares": "Delinger",
+  "chartTitle": "Content-præstation over tid",
+  "chartLegend": "Visninger (violet) · Engagement % (turkis)",
+  "chartEmpty": "Ingen analytics-data endnu.",
+  "bestPerformingTitle": "Bedst præsterende content",
+  "bestPerformingEmpty": "Ingen data endnu.",
+  "learningAgentTitle": "Learning Agent — anbefalinger"
+}

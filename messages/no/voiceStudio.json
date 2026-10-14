@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — administrer stemmebiblioteket, lag voiceover-forhåndsvisninger og importer stemmer.",
+  "envWarning": "ElevenLabs er ikke konfigurert ennå. Legg inn <envKey>ELEVENLABS_API_KEY</envKey> i <envFile>.env</envFile> for å bruke voiceover og stemmeimport. Stemmebiblioteket kan likevel brukes til planlegging.",
+  "addManual": "Opprett stemme manuelt",
+  "importFromElevenLabs": "Importer fra ElevenLabs",
+  "form": {
+    "namePlaceholder": "Navn",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Språk",
+    "submit": "Legg til"
+  },
+  "confirmDelete": "Vil du virkelig slette stemmen?",
+  "importFailed": "Importen mislyktes.",
+  "previewFailed": "Forhåndsvisningen mislyktes.",
+  "unknownError": "Ukjent feil.",
+  "empty": "Ingen stemmer i biblioteket ennå.",
+  "active": "Aktiv",
+  "inactive": "Inaktiv",
+  "remove": "Fjern",
+  "preview": {
+    "heading": "Stemmeforhåndsvisning",
+    "defaultText": "Hei, dette er et eksempel på denne stemmen.",
+    "selectPlaceholder": "Velg stemme…",
+    "play": "Spill av forhåndsvisning"
+  }
+}

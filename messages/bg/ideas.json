@@ -1,0 +1,22 @@
+{
+  "title": "Идеи и вдъхновение",
+  "subtitle": "Тематични клъстери, серии и формати за предстоящо съдържание — генерирани от IdeaAgent или въведени ръчно.",
+  "board": {
+    "topicLabel": "Тема за нови идеи",
+    "topicPlaceholder": "напр. Продуктивност с ИИ агенти",
+    "generateButton": "Генерирай идеи",
+    "manualButton": "Ръчно",
+    "manualTitlePlaceholder": "Заглавие на идеята",
+    "addButton": "Добави",
+    "generateError": "Грешка при генерирането на идеи.",
+    "unknownError": "Неизвестна грешка.",
+    "emptyState": "Все още няма идеи — генерирай или добави ръчно.",
+    "minutesUnit": "~{count} мин.",
+    "statusNew": "Нова",
+    "statusInProgress": "В работа",
+    "statusUsed": "Използвана",
+    "statusArchived": "Архивирана",
+    "sourceAiGenerated": "Генерирана от ИИ",
+    "sourceManual": "Ръчно"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "title": "Instruire",
+  "subtitle": "Ghiduri pas cu pas pentru fiecare secțiune din SECRET 58 — poți reveni oricând aici. Videoclipurile vor fi adăugate imediat ce sunt înregistrate.",
+  "welcomeBanner": {
+    "title": "Bun venit la SECRET 58!",
+    "body": "Mulțumim pentru achiziție. Înainte de a începe, merită să arunci o privire scurtă la „Primii pași” de mai jos — pentru ca agenții IA să lucreze de la început cu datele tale reale."
+  },
+  "videoPending": "Videoclipul urmează",
+  "stepsLabel": "Pași",
+  "openPage": "Deschide pagina",
+  "topics": {
+    "firstSteps": {
+      "title": "Primii pași",
+      "description": "Rezolvă mai întâi aceste trei lucruri, apoi toți agenții IA vor lucra cu date reale, nu cu substituenți.",
+      "steps": [
+        "La „Integrări” conectează cel puțin un furnizor de IA (Anthropic sau OpenAI) — pentru asta apasă în dreapta sus, pe rândul respectiv, pe „Obține cheia API”, creează cheia la furnizor și salveaz-o prin „Introdu în Render”.",
+        "La „Brand DNA” completează propriul brand (ton, public țintă, valori) — agenții IA folosesc aceste date pentru fiecare text generat.",
+        "La „Idei și inspirație” sau „Content Brain” lasă-te să generezi prima idee, respectiv prima campanie."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Așa devine o idee conținut finalizat și aprobat.",
+      "steps": [
+        "În Content Brain creează o campanie nouă cu temă și platforme țintă — din ea rezultă automat mai multe elemente de conținut.",
+        "În Content Factory, fiecare element de conținut trece prin stări: Ciornă → În verificare → Aprobat → Planificat → Publicat.",
+        "Aprobarea este un pas manual și obligatoriu — nimic nu se publică automat fără confirmare.",
+        "În vizualizarea de detalii a unui element de conținut poți regenera separat script-ul, voiceover-ul, subtitrările, hashtag-urile și miniatura."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video și Design Studio",
+      "description": "Instrumentele specializate pentru fiecare componentă a conținutului.",
+      "steps": [
+        "Script Studio: generează script-uri după structura Hook → Problemă → Valoare → Exemplu → Rezultat → CTA.",
+        "Voice Studio: importă sau creează o voce ElevenLabs proprie, apoi generează voiceover direct dintr-un script.",
+        "Design Studio: agentul pentru miniaturi propune titlu, idee vizuală, text, layout și descrierea imaginii.",
+        "Video Studio: arată starea actuală a conectării furnizorilor video (manager de formate, starea furnizorilor)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Content Kalender și publicare",
+      "description": "Unde ajung postările planificate — și de ce o postare chiar pleacă (sau nu).",
+      "steps": [
+        "În Content Kalender apar toate elementele de conținut cu dată de publicare planificată.",
+        "Înainte de fiecare publicare, PublishingAgent verifică live dacă platforma țintă este într-adevăr marcată ca „Conectat” la „Social Media”.",
+        "Fără o conexiune reală cu platforma se afișează sincer o eroare, în loc să se simuleze o publicare."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics și creștere",
+      "description": "Cifre reale despre propria performanță — și recomandări în loc de automatizare.",
+      "steps": [
+        "Analytics arată exclusiv date de performanță reale, importate sau introduse manual.",
+        "Pagina Creștere calculează din aceste date cele mai bune momente de postare, hashtag-urile și formatele de succes.",
+        "Important: intenționat nu există nicio creștere automatizată a urmăritorilor/engagement-ului (fără comportament de bot) — aceasta ar încălca condițiile de utilizare ale oricărei platforme."
+      ]
+    },
+    "inbox": {
+      "title": "Inbox",
+      "description": "Ciorne de răspuns generate de IA pentru mesaje — cu aprobare înainte de trimitere.",
+      "steps": [
+        "Fiindcă (încă) nu este conectată nicio platformă prin OAuth, conversațiile sunt create momentan manual, în loc să fie preluate live.",
+        "MessageAgent propune un răspuns pe baza Brand DNA și a istoricului conversației.",
+        "Ciorna trebuie verificată și aprobată manual înainte de a fi considerată trimisă — o trimitere reală eșuează sincer fără conexiune cu platforma, în loc să simuleze succesul."
+      ]
+    },
+    "revenue": {
+      "title": "Urmărirea veniturilor",
+      "description": "Imagine de ansamblu asupra tuturor veniturilor din platforme, într-un singur loc — plata se face totuși prin platformele însele.",
+      "steps": [
+        "Veniturile se introduc manual, deoarece TikTok/Meta nu oferă un API public pentru venituri, iar YouTube necesită pentru asta acces la programul de parteneri (încă neconectat).",
+        "Plata efectivă se face întotdeauna direct prin platforma respectivă (de ex. YouTube prin Google AdSense) — SECRET 58 nu procesează plăți."
+      ]
+    },
+    "integrations": {
+      "title": "Integrări și chei API",
+      "description": "De unde provine fiecare stare de conexiune și unde se introduce cheia potrivită.",
+      "steps": [
+        "Fiecare rând arată starea reală, verificată live — niciodată o conexiune simulată.",
+        "La „Neconfigurat”, „Obține cheia API” duce la pagina oficială a furnizorului.",
+        "„Introdu în Render” duce direct la variabilele de mediu, unde se salvează cheia — un formular de introducere în aplicația însăși nu există, intenționat, din motive de securitate.",
+        "Costuri: prețul de achiziție SECRET 58 este unic. Fiecare furnizor extern are propriul model de costuri, independent (gratuit / în funcție de utilizare / abonament) — pe pagina Integrări, la fiecare serviciu este indicat modelul aplicabil, cu link către prețurile actuale de la furnizor."
+      ]
+    }
+  }
+}

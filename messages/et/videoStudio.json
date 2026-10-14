@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Pakkujast sõltumatu videotoru: vormingute haldus, vahetatavad videopakkujad, häälkõne ja subtiitrite ühendus (vt Content Factory iga sisuühiku juures).",
+  "providerCardTitle": "Videopakkujad",
+  "providerNotePrefix": "Täiendavaid pakkujaid (tehisintellekti video-API-d, videovaramute teegid) saab lisada sama",
+  "providerNoteSuffix": "-liidese kaudu, olemasolevat koodi puutumata.",
+  "formatManagerTitle": "Vormingute haldus",
+  "assetsTitle": "Videovarad",
+  "assetsEmpty": "Videoid pole veel renderdatud — renderdamine toimub Content Factorys sisuühikute kaudu, kui videopakkuja on seadistatud."
+}

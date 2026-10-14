@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Tavo prekės ženklas. Tavo stilius. Visur. Šie duomenys automatiškai naudojami Content Brain, scenarijų, hook ir žymų (hashtag) agentuose.",
+  "form": {
+    "nameLabel": "Prekės ženklo pavadinimas",
+    "industryLabel": "Sritis",
+    "descriptionLabel": "Aprašymas",
+    "descriptionHint": "Kuo išsiskiria prekės ženklas?",
+    "audienceLabel": "Tikslinė auditorija",
+    "languageLabel": "Kalba",
+    "tonalityLabel": "Tonas",
+    "humorLabel": "Humoras",
+    "formalityLabel": "Oficialumas",
+    "preferredWordsLabel": "Pageidaujami žodžiai",
+    "forbiddenWordsLabel": "Draudžiami žodžiai",
+    "preferredCtasLabel": "Pageidaujami CTA",
+    "brandValuesLabel": "Prekės ženklo vertybės",
+    "topicsLabel": "Temos",
+    "csvHint": "atskirta kableliais",
+    "colorsLabel": "Spalvos",
+    "colorsHint": "atskirta kableliais, pvz. #6D5BFF",
+    "fontsLabel": "Šriftai",
+    "visualRulesLabel": "Vizualinės taisyklės",
+    "saveError": "Nepavyko išsaugoti.",
+    "unknownError": "Nežinoma klaida.",
+    "saving": "Saugoma…",
+    "save": "Išsaugoti Brand DNA",
+    "savedAt": "Išsaugota {time}"
+  }
+}

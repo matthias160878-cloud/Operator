@@ -1,0 +1,96 @@
+{
+  "viewAll": "Alles weergeven",
+  "demoBanner": {
+    "before": "Demodata actief — campagnes, content-items en analytics zijn voorbeeldgegevens uit ",
+    "after": ", geen echte platformcijfers."
+  },
+  "hero": {
+    "subtitle": "Eén idee. Meerdere platforms. Maximaal bereik.",
+    "newCampaign": "Nieuwe campagne",
+    "createContent": "Content maken",
+    "findIdeas": "Ideeën vinden",
+    "aiAgents": "AI-agents"
+  },
+  "orbit": {
+    "xNotConnected": "X (niet gekoppeld)",
+    "brainAlt": "SECRET 58 AI-brein"
+  },
+  "activeAgents": {
+    "title": "Actieve agents",
+    "empty": "Nog geen agent-runs."
+  },
+  "kpi": {
+    "contentCreated": "Content gemaakt",
+    "videosCreated": "Video's gemaakt",
+    "postsCreated": "Posts gemaakt",
+    "published": "Publicaties",
+    "views": "Views",
+    "avgEngagement": "Ø Engagement",
+    "totalRevenue": "Totale inkomsten",
+    "noComparisonWeek": "Nog geen vorige week als vergelijkingsbasis beschikbaar — veranderingspercentages verschijnen zodra er data over minstens twee weken is."
+  },
+  "production": {
+    "title": "Contentproductie",
+    "thisWeek": "Deze week"
+  },
+  "scheduled": {
+    "title": "Geplande berichten",
+    "empty": "Geen geplande berichten."
+  },
+  "activity": {
+    "title": "Recente activiteit",
+    "empty": "Nog geen activiteit."
+  },
+  "contentFactory": {
+    "description": "Maak met slechts één idee complete contentcampagnes voor alle platforms.",
+    "cta": "Nu starten →",
+    "popularTemplates": "Populaire sjablonen",
+    "templateYoutubeVideo": "YouTube-video",
+    "templateTiktokSeries": "TikTok-serie",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn-post",
+    "templateBlogPost": "Blogartikel",
+    "viewAllTemplates": "Alle sjablonen →"
+  },
+  "brandDna": {
+    "tonality": "Toonzetting",
+    "targetAudience": "Doelgroep",
+    "industry": "Branche",
+    "language": "Taal",
+    "empty": "Nog geen Brand DNA ingesteld."
+  },
+  "campaigns": {
+    "title": "Huidige campagnes",
+    "empty": "Nog geen campagnes."
+  },
+  "platforms": {
+    "title": "Platforms",
+    "manage": "Beheren"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} verbonden"
+  },
+  "agentMonitor": {
+    "title": "Agent Monitor",
+    "empty": "Nog geen runs."
+  },
+  "topPerformer": {
+    "title": "Topprestatie",
+    "last7Days": "Laatste 7 dagen",
+    "empty": "Nog geen prestatiedata.",
+    "views": "Views",
+    "likes": "Likes",
+    "comments": "Reacties",
+    "shares": "Shares",
+    "engagementRate": "+Engagement rate {value}"
+  },
+  "calendar": {
+    "open": "Openen",
+    "viewMonth": "Maand",
+    "viewWeek": "Week",
+    "viewDay": "Dag",
+    "viewCampaign": "Campagne",
+    "moreItems": "+{count} meer"
+  },
+  "weekdayLabels": ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"]
+}

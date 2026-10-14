@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Zasnove sličic, slikovna sredstva in integracija Canva.",
+  "imageAssetsTitle": "Slikovna sredstva",
+  "imageAssetsEmpty": "Slikovnih sredstev še ni.",
+  "thumbnailAgent": {
+    "title": "Agent za sličice",
+    "description": "Ustvari besedilno zasnovo (naslov, vizualna ideja, postavitev, CTA) — pripravljeno za povezavo z generatorjem slik. Slika se še ne ustvari.",
+    "inputPlaceholder": "Tema za sličico",
+    "submitButton": "Generiraj zasnovo",
+    "errorGenerationFailed": "Generiranje ni uspelo.",
+    "errorUnknown": "Neznana napaka.",
+    "fieldTitle": "Naslov",
+    "fieldVisualIdea": "Vizualna ideja",
+    "fieldText": "Besedilo",
+    "fieldLayout": "Postavitev",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Opis slike"
+  }
+}

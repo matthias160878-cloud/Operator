@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "Inneall guth ElevenLabs — bainistigh an Voice Library, cruthaigh réamhamhairc voiceover agus iompórtáil guthanna.",
+  "envWarning": "Níl ElevenLabs cumraithe go fóill. Cuir <envKey>ELEVENLABS_API_KEY</envKey> isteach in <envFile>.env</envFile> chun voiceover agus iompórtáil guthanna a úsáid. Is féidir an Voice Library a úsáid fós chun pleanála.",
+  "addManual": "Cruthaigh guth de láimh",
+  "importFromElevenLabs": "Iompórtáil ó ElevenLabs",
+  "form": {
+    "namePlaceholder": "Ainm",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Teanga",
+    "submit": "Cuir leis"
+  },
+  "confirmDelete": "An bhfuil tú cinnte gur mhaith leat an guth a scriosadh?",
+  "importFailed": "Theip ar an iompórtáil.",
+  "previewFailed": "Theip ar an réamhamharc.",
+  "unknownError": "Earráid anaithnid.",
+  "empty": "Gan aon ghuthanna sa leabharlann go fóill.",
+  "active": "Gníomhach",
+  "inactive": "Neamhghníomhach",
+  "remove": "Bain",
+  "preview": {
+    "heading": "Réamhamharc guth",
+    "defaultText": "Dia duit, seo sampla den ghuth seo.",
+    "selectPlaceholder": "Roghnaigh guth…",
+    "play": "Seinn réamhamharc"
+  }
+}

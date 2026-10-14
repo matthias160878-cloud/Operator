@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Miniatiūrų koncepcijos, vaizdų ištekliai ir Canva integracija.",
+  "imageAssetsTitle": "Vaizdų ištekliai",
+  "imageAssetsEmpty": "Vaizdų išteklių dar nėra.",
+  "thumbnailAgent": {
+    "title": "Miniatiūrų agentas",
+    "description": "Sukuria tekstinę koncepciją (pavadinimas, vizualinė idėja, maketas, CTA) — paruošta vaizdų generatoriaus prijungimui. Vaizdas kol kas nekuriamas.",
+    "inputPlaceholder": "Miniatiūros tema",
+    "submitButton": "Generuoti koncepciją",
+    "errorGenerationFailed": "Generavimas nepavyko.",
+    "errorUnknown": "Nežinoma klaida.",
+    "fieldTitle": "Pavadinimas",
+    "fieldVisualIdea": "Vizualinė idėja",
+    "fieldText": "Tekstas",
+    "fieldLayout": "Maketas",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Vaizdo aprašymas"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Entra un'idea, esce un piano di contenuti completo e su misura per ogni piattaforma. L'agente ContentBrainAgent tiene conto del tuo Brand DNA e crea come bozza hook, script, hashtag e concept di miniature adatti a ogni piattaforma scelta.",
+  "campaignsHeading": "Campagne",
+  "noCampaigns": "Ancora nessuna campagna creata.",
+  "campaignSummary": "{count} contenuti · {audience}",
+  "form": {
+    "textEngineLabel": "Motore di testo:",
+    "templateMode": "Modalità template (nessun fornitore di IA configurato)",
+    "modeTemplate": "Template",
+    "topicLabel": "Tema / Idea",
+    "topicPlaceholder": "ad es. Spiega perché gli agenti IA autonomi stanno cambiando il mondo del lavoro.",
+    "audienceLabel": "Target",
+    "audiencePlaceholder": "ad es. 25-45 anni, appassionati di tecnologia",
+    "goalLabel": "Obiettivo",
+    "languageLabel": "Lingua",
+    "platformsLabel": "Piattaforme",
+    "itemsPerPlatformLabel": "Contenuti per piattaforma ({count})",
+    "generateError": "Generazione non riuscita.",
+    "unknownError": "Errore sconosciuto.",
+    "submitLoading": "Content Brain al lavoro…",
+    "submitIdle": "Genera piano di contenuti",
+    "resultHeading": "Campagna creata — {count} contenuti salvati come bozza.",
+    "resultDescription": "Generato in modalità {mode}. Tutti i contenuti partono come DRAFT: controllali e modificali in Content Factory.",
+    "resultLink": "Vai a Content Factory →"
+  }
+}

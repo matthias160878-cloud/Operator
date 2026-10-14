@@ -1,0 +1,59 @@
+{
+ "wizard": {
+  "stepIndicator": "Krok {current} z {total}",
+  "close": "Zavrieť",
+  "back": "Späť",
+  "next": "Ďalej",
+  "skip": "Preskočiť",
+  "finish": "Hotovo, začíname",
+  "checking": "Kontroluje sa …",
+  "checkAgain": "Skontrolovať teraz",
+  "connected": "Pripojené",
+  "notConnected": "Zatiaľ nepripojené",
+  "skippedNote": "Preskočené — môžeš to kedykoľvek doplniť v časti „Integrácie“.",
+  "envHint": "Upozornenie: Po uložení v Render zvyčajne trvá 1–2 minúty, kým sa služba reštartuje a zmena nadobudne platnosť. Ak „Skontrolovať teraz“ zatiaľ nič nenájde, chvíľu počkaj a klikni znova.",
+  "reopenHint": "Tohto asistenta môžeš kedykoľvek otvoriť znova: v Nastaveniach pod „Asistent nastavenia“."
+ },
+ "steps": {
+  "welcome": {
+   "title": "Vitaj v SECRET 58",
+   "body": "Skôr než začneme, spolu nastavíme to najnutnejšie — v celkom malých, jednotlivých krokoch. Môžeš kedykoľvek pozastaviť a neskôr pokračovať na tom istom mieste."
+  },
+  "aiProvider": {
+   "title": "Krok 1: Pripoj poskytovateľa AI",
+   "body": "Na texty, skripty, háčiky a hashtagy softvér potrebuje poskytovateľa AI. Vyber jedného z dvoch — stačí jeden.",
+   "steps": [
+    "Dolu pri Anthropic alebo OpenAI klikni na „Získať kľúč API“.",
+    "Ak treba, vytvor si tam bezplatný účet.",
+    "Vytvor tam nový kľúč API a skopíruj ho.",
+    "Klikni na „Zadať v Render“, vlož kľúč tam ako premennú prostredia a ulož.",
+    "Vráť sa sem a dolu klikni na „Skontrolovať teraz“."
+   ],
+   "costHint": "Náklady vznikajú až pri skutočnom používaní, priamo u príslušného poskytovateľa — nikdy nie cez SECRET 58."
+  },
+  "platform": {
+   "title": "Krok 2: Pripoj platformu sociálnych médií (voliteľné)",
+   "body": "Voliteľné, ale odporúčané: pripoj aspoň jednu platformu, na ktorej budeš neskôr chcieť publikovať. Tento krok môžeš doplniť aj neskôr.",
+   "steps": [
+    "Dolu vyber platformu, ktorú chceš používať.",
+    "Klikni na „Získať kľúč API“ a postupuj podľa pokynov poskytovateľa.",
+    "Klikni na „Zadať v Render“ a ulož tam prístupové údaje.",
+    "Vráť sa sem a klikni na „Skontrolovať teraz“."
+   ]
+  },
+  "voice": {
+   "title": "Krok 3: Pripoj hlasový výstup (voliteľné)",
+   "body": "Potrebné len vtedy, ak chceš automaticky vytvárať hovorený voiceover pre svoje videá. Bez tohto kroku všetko ostatné funguje aj tak.",
+   "steps": [
+    "Klikni na „Získať kľúč API“ pri ElevenLabs.",
+    "Vytvor si tam účet a kľúč API.",
+    "Klikni na „Zadať v Render“ a ulož tam kľúč.",
+    "Vráť sa sem a klikni na „Skontrolovať teraz“."
+   ]
+  },
+  "done": {
+   "title": "Hotovo!",
+   "body": "Teraz môžeš začať. Všetko, čo sa preskočilo, nájdeš a doplníš kedykoľvek v časti „Integrácie“ — alebo tohto asistenta otvoríš znova cez „Nastavenia“."
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Mehanizem za scenarije in Hooke: ustvarja scenarije, prilagojene platformam, po strukturi Hook → Problem → Value → Example → Payoff → CTA ter več različic Hooka.",
+  "form": {
+    "topicLabel": "Tema",
+    "topicPlaceholder": "npr. 5 načinov, kako UI agenti prihranijo čas",
+    "platformLabel": "Platforma",
+    "generateButton": "Generiraj Script in Hooke",
+    "generateFailed": "Generiranje ni uspelo.",
+    "unknownError": "Neznana napaka."
+  },
+  "hookTypes": {
+    "direkt": "Neposreden",
+    "neugierig": "Radoveden",
+    "story": "Zgodba",
+    "problem": "Problem",
+    "zahlen": "Številke",
+    "kontroversSachlich": "Kontroverzen (stvaren)",
+    "educational": "Izobraževalen"
+  },
+  "hooksHeading": "Različice Hooka",
+  "engine": {
+    "label": "Motor: {provider}",
+    "templateMode": "Način predlog (ponudnik UI ni nastavljen)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Shrani kot vsebinski element",
+    "saving": "Shranjujem …"
+  }
+}

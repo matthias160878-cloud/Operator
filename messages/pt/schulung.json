@@ -1,0 +1,87 @@
+{
+  "title": "Formação",
+  "subtitle": "Guias passo a passo sobre cada área do SECRET 58 — consultáveis aqui em qualquer altura. Os vídeos serão acrescentados assim que estiverem gravados.",
+  "welcomeBanner": {
+    "title": "Bem-vindo ao SECRET 58!",
+    "body": "Obrigado pela tua compra. Antes de começar, vale a pena dar uma vista de olhos a «Primeiros passos», abaixo — para que os agentes de IA trabalhem desde o início com os teus dados reais."
+  },
+  "videoPending": "Vídeo em breve",
+  "stepsLabel": "Passos",
+  "openPage": "Abrir página",
+  "topics": {
+    "firstSteps": {
+      "title": "Primeiros passos",
+      "description": "Faz primeiro estas três coisas; depois todos os agentes de IA trabalham com dados reais em vez de marcadores de posição.",
+      "steps": [
+        "Em «Integrações», liga pelo menos um fornecedor de IA (Anthropic ou OpenAI) — para isso, clica em «Obter chave de API» na respetiva linha, no canto superior direito, cria a chave no fornecedor e regista-a através de «Registar no Render».",
+        "Em «Brand DNA», preenche a tua própria marca (tom, público-alvo, valores) — os agentes de IA usam isso em cada texto gerado.",
+        "Em «Ideias e inspiração» ou «Content Brain», pede para gerar a primeira ideia ou campanha."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Assim uma ideia se transforma em conteúdo final e aprovado.",
+      "steps": [
+        "No Content Brain, cria uma nova campanha com tema e plataformas de destino — daí surgem automaticamente vários itens de conteúdo.",
+        "Na Content Factory, cada item de conteúdo passa por estes estados: Rascunho → Em revisão → Aprovado → Agendado → Publicado.",
+        "A aprovação é um passo manual e obrigatório — nada é publicado automaticamente sem confirmação.",
+        "Na vista de detalhe de um item de conteúdo, podes gerar de novo, em separado, o script, a voz off, as legendas, as hashtags e a miniatura."
+      ]
+    },
+    "studios": {
+      "title": "Script Studio, Voice Studio, Video Studio e Design Studio",
+      "description": "As ferramentas especializadas para cada elemento do conteúdo.",
+      "steps": [
+        "Script Studio: cria scripts segundo a estrutura Hook → Problema → Valor → Exemplo → Resultado → CTA.",
+        "Voice Studio: importa ou cria a tua própria voz da ElevenLabs e depois gera a voz off diretamente a partir de um script.",
+        "Design Studio: o agente de miniaturas sugere título, ideia visual, texto, layout e descrição da imagem.",
+        "Video Studio: mostra o estado atual da ligação aos fornecedores de vídeo (gestor de formatos, estado dos fornecedores)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Calendário de conteúdo e publicação",
+      "description": "Onde ficam as publicações agendadas — e porque é que uma publicação realmente sai (ou não).",
+      "steps": [
+        "No Calendário de conteúdo aparecem todos os itens de conteúdo com data de publicação agendada.",
+        "Antes de cada publicação, o PublishingAgent verifica em direto se a plataforma de destino está mesmo marcada como «Ligado» em «Redes sociais».",
+        "Sem uma ligação real à plataforma, é mostrado honestamente um erro, em vez de fingir uma publicação."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics e crescimento",
+      "description": "Números reais sobre o teu próprio desempenho — e recomendações em vez de automatização.",
+      "steps": [
+        "O Analytics mostra exclusivamente dados de desempenho reais, importados ou registados manualmente.",
+        "A página de crescimento calcula, a partir desses dados, as melhores horas de publicação, as hashtags e os formatos com mais sucesso.",
+        "Importante: deliberadamente, não há aumento automatizado de seguidores/envolvimento (nenhum comportamento de bot) — isso violaria os termos de utilização de todas as plataformas."
+      ]
+    },
+    "inbox": {
+      "title": "Caixa de entrada",
+      "description": "Rascunhos de resposta por IA para mensagens — com aprovação antes do envio.",
+      "steps": [
+        "Como (ainda) nenhuma plataforma está ligada por OAuth, as conversas são atualmente criadas manualmente em vez de obtidas em direto.",
+        "O MessageAgent sugere uma resposta com base no Brand DNA e no histórico da conversa.",
+        "O rascunho tem de ser revisto e aprovado manualmente antes de contar como enviado — um envio real falha honestamente sem ligação à plataforma, em vez de fingir sucesso."
+      ]
+    },
+    "revenue": {
+      "title": "Acompanhamento de receitas",
+      "description": "Visão geral de todas as receitas das plataformas num só lugar — o pagamento continua a ser feito pelas próprias plataformas.",
+      "steps": [
+        "As receitas são introduzidas manualmente, porque o TikTok/Meta não oferecem uma API pública de receitas e o YouTube requer para isso acesso ao Programa de Parceiros (ainda não ligado).",
+        "O pagamento efetivo é sempre feito diretamente pela respetiva plataforma (p. ex. o YouTube através do Google AdSense) — o SECRET 58 não processa pagamentos."
+      ]
+    },
+    "integrations": {
+      "title": "Integrações e chaves de API",
+      "description": "De onde vem cada estado de ligação e onde se regista a chave certa.",
+      "steps": [
+        "Cada linha mostra o estado real, verificado em direto — nunca uma ligação simulada.",
+        "Em «Não configurado», «Obter chave de API» leva à página oficial do fornecedor.",
+        "«Registar no Render» leva diretamente às variáveis de ambiente, onde a chave é guardada — por razões de segurança, deliberadamente não existe um formulário de introdução na própria app.",
+        "Custos: o preço de compra do SECRET 58 é único. Cada fornecedor externo tem o seu próprio modelo de custos, independente (gratuito / consoante a utilização / subscrição) — na página Integrações, cada serviço indica qual o modelo aplicável, com ligação aos preços atuais junto do fornecedor."
+      ]
+    }
+  }
+}

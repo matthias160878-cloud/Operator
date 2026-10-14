@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Prestandanyckeltal från faktiskt tillgängliga data — så fort plattformar är anslutna fylls den här vyn med verkliga värden.",
+  "statViewsTotal": "Visningar totalt",
+  "statLikesTotal": "Likes totalt",
+  "statComments": "Kommentarer",
+  "statShares": "Delningar",
+  "chartTitle": "Innehållets prestanda över tid",
+  "chartLegend": "Visningar (lila) · Engagemang % (turkos)",
+  "chartEmpty": "Inga analysdata ännu.",
+  "bestPerformingTitle": "Bäst presterande innehåll",
+  "bestPerformingEmpty": "Inga data ännu.",
+  "learningAgentTitle": "Learning Agent — rekommendationer"
+}

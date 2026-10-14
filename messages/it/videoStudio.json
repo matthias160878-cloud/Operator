@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Pipeline video indipendente dal fornitore: Format Manager, fornitori video intercambiabili, collegamento per voiceover e sottotitoli (vedi Content Factory per ogni contenuto).",
+  "providerCardTitle": "Fornitori video",
+  "providerNotePrefix": "Altri fornitori (API video IA, librerie di video stock) si possono aggiungere tramite la stessa interfaccia",
+  "providerNoteSuffix": ", senza toccare il codice esistente.",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Risorse video",
+  "assetsEmpty": "Ancora nessun video renderizzato: il rendering avviene tramite i contenuti in Content Factory, non appena è configurato un fornitore video."
+}

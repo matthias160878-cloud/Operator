@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Videoclip de instruire",
+  "subtitlesLabel": "Subtitrări",
+  "subtitlesOff": "Oprit",
+  "soundLabel": "Sunet",
+  "soundOn": "Voce de citire pornită",
+  "soundOff": "Voce de citire oprită",
+  "soundHint": "Vocea de citire provine din browserul tău. Limbile disponibile depind de dispozitivul tău.",
+  "soundMissing": "Pentru această limbă nu este instalată nicio voce pe dispozitivul tău. Subtitrările funcționează oricum.",
+  "draftNote": "Ciornă: înregistrare a aplicației reale cu date de test. Subtitrări traduse automat.",
+  "whatLabel": "Ce este, ce funcție are și cum o execuți.",
+  "videosTitle": "Videoclipuri explicative pentru fiecare secțiune",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Primii pași",
+      "cues": {
+        "c1": "Bun venit la instruire: Primii pași. Tot ce vezi este aplicația reală, cu date de test.",
+        "c2": "În stânga este navigarea. Fiecare secțiune a aplicației are aici o intrare.",
+        "c3": "Pasul 1: verifică la „Integrări” ce servicii sunt conectate.",
+        "c4": "Fiecare rând arată starea reală, verificată – niciodată o conexiune simulată.",
+        "c5": "„Neconfigurat” înseamnă: acest serviciu nu este încă configurat. Fără furnizor de IA, aplicația lucrează în modul șablon.",
+        "c6": "Pasul 2: introdu brandul tău la „Brand DNA”. Tonul, publicul țintă și valorile se regăsesc în fiecare text generat.",
+        "c7": "Exemplu: completează domeniul și publicul țintă și salvează jos.",
+        "c8": "Pasul 3: generează prima idee la „Idei și inspirație”. Introdu o temă și apasă pe „Generează idei”.",
+        "c9": "Ideile apar sub formă de carduri. În modul șablon sunt exemple, cu un furnizor de IA devin personalizate.",
+        "c10": "Totul rămâne ciornă până când aprobi. Pentru fiecare secțiune există un videoclip explicativ propriu."
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "cues": {
+        "c1": "Dashboard-ul este pagina ta de start: privire de ansamblu asupra a tot ce se întâmplă în spațiul tău de lucru.",
+        "c2": "Sus vezi agenții activi, producția de conținut și postările planificate.",
+        "c3": "Mai jos se află ultimele activități și scurtături către Content Factory și Brand DNA.",
+        "c4": "Cu „Săptămână” schimbi perioada indicatorilor.",
+        "c5": "Cum îl folosești: deschide zilnic Dashboard-ul, verifică ciornele deschise și sari de aici direct în secțiunea potrivită."
+      }
+    },
+    "schulung": {
+      "title": "Instruire",
+      "cues": {
+        "c1": "Instruirea este ghidul tău în aplicație. Explică fiecare secțiune pas cu pas.",
+        "c2": "Fiecare temă are o descriere, pași numerotați și un link care deschide pagina potrivită.",
+        "c3": "Aici apar și aceste videoclipuri explicative, câte unul pentru fiecare secțiune.",
+        "c4": "Cum o folosești: alege o temă, citește pașii, deschide pagina și încearcă pe loc."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory este atelierul pentru toate elementele tale de conținut, într-un singur loc.",
+        "c2": "Funcție: creezi, duplici, rescrii elemente, le îmbogățești cu voiceover și subtitrări și le treci prin fluxul de aprobare.",
+        "c3": "Filtrele de sus arată stările: Ciornă, În verificare, Aprobat, Planificat, Publicat și Arhivat.",
+        "c4": "Cum procedezi: cu „Element de conținut nou” creezi un element.",
+        "c5": "Deschide un element pentru a edita script-ul, voiceover-ul, subtitrările, hashtag-urile și miniatura.",
+        "c6": "Aprobarea este întotdeauna un pas manual. Nimic nu se publică fără confirmarea ta."
+      }
+    },
+    "ideas": {
+      "title": "Idei și inspirație",
+      "cues": {
+        "c1": "Aici aduni idei: clustere de teme, serii și formate pentru conținutul viitor.",
+        "c2": "Funcție: IdeaAgent generează idei pe o temă, sau îți introduci singur ideile, manual.",
+        "c3": "Cum procedezi: introdu tema, alege platforma, obiectivul și formatul și apasă pe „Generează idei”.",
+        "c4": "Fiecare idee devine un card cu titlu, punct de atac și prioritate.",
+        "c5": "Cu „Manual” creezi o idee proprie.",
+        "c6": "Ideile bune le iei ca punct de plecare pentru Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain transformă o idee într-un plan de conținut complet.",
+        "c2": "Funcție: ține cont de Brand DNA și creează, ca ciornă, pentru fiecare platformă aleasă hook-uri, script-uri, hashtag-uri și concepte de miniatură.",
+        "c3": "Cum procedezi: introdu tema și publicul țintă.",
+        "c4": "Alege obiectivul și limba, apoi apasă pe platforme. Aici se adaugă TikTok.",
+        "c5": "Cu glisorul stabilești câte elemente de conținut se creează per platformă.",
+        "c6": "Un clic pe „Generează planul de conținut” pornește rularea.",
+        "c7": "Campania apare jos. Toate elementele sunt ciorne și se află în Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA descrie brandul tău: nume, domeniu, public țintă, ton și valori.",
+        "c2": "Funcție: aceste informații ajung automat în Content Brain, precum și în agenții de script, hook și hashtag.",
+        "c3": "Cum procedezi: completează câmpurile, de exemplu domeniul și publicul țintă.",
+        "c4": "Mai jos gestionezi cuvintele preferate și interzise, îndemnurile la acțiune și valorile brandului.",
+        "c5": "La final apasă pe „Salvează Brand DNA”."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio este atelierul pentru script-uri și hook-uri.",
+        "c2": "Funcție: construiește script-uri după structura Hook, Problemă, Beneficiu, Exemplu, Rezultat și Îndemn la acțiune și oferă mai multe variante de hook.",
+        "c3": "Cum procedezi: introdu tema și alege platforma.",
+        "c4": "Apoi apasă pe „Generează script și hook-uri”.",
+        "c5": "Rezultatul este o ciornă pe care o folosești mai departe în Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio gestionează voci și generează voiceover.",
+        "c2": "Funcție: întreții Voice Library, generezi previzualizări și imporți voci. Conectarea se face prin ElevenLabs.",
+        "c3": "Cum procedezi: creează o voce manual sau importă una din ElevenLabs. Importul necesită o conexiune configurată.",
+        "c4": "Cu un text și o voce generezi o previzualizare și o redai."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio este fluxul video al aplicației.",
+        "c2": "Funcție: manager de formate, furnizori video interschimbabili, precum și conectarea voiceover-ului și a subtitrărilor.",
+        "c3": "Pagina arată ce furnizori sunt configurați. Cei neconfigurați sunt marcați sincer ca atare.",
+        "c4": "Cum procedezi: videoclipurile le generezi pentru fiecare element de conținut în Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio oferă concepte de miniatură și resurse de imagine.",
+        "c2": "Funcție: agentul pentru miniaturi propune titlu, idee de imagine, text și layout. Integrarea Canva este prevăzută aici.",
+        "c3": "Cum procedezi: introdu tema miniaturii.",
+        "c4": "Apasă pe „Generează concept”.",
+        "c5": "Conceptul îți servește drept model pentru imaginea ta."
+      }
+    },
+    "socialMedia": {
+      "title": "Social Media",
+      "cues": {
+        "c1": "Aici conectezi conturile tale de pe platforme și vezi starea lor.",
+        "c2": "Funcție: accesele sunt gestionate pe server și stocate criptat. Prin Composio te autentifici la platformă.",
+        "c3": "Fiecare card arată platforma, contul, starea și ultimul test de citire.",
+        "c4": "„Încă neconfigurat” înseamnă: operatorul nu a activat încă pe server conectarea.",
+        "c5": "Cum procedezi: după configurare, apeși la platformă pe „Conectează” și te autentifici. Se citește doar, nu se publică nimic."
+      }
+    },
+    "calendar": {
+      "title": "Content Kalender",
+      "cues": {
+        "c1": "Content Kalender arată dintr-o privire conținutul planificat și publicat.",
+        "c2": "Funcție: toate elementele de conținut cu dată de publicare apar aici, filtrabile după platformă.",
+        "c3": "Cum procedezi: planifică un element în Content Factory cu o dată, apoi apare aici.",
+        "c4": "Înainte de fiecare publicare, aplicația verifică live dacă platforma țintă este conectată."
+      }
+    },
+    "analytics": {
+      "title": "Analytics",
+      "cues": {
+        "c1": "Analytics îți arată indicatorii de performanță.",
+        "c2": "Funcție: doar date efectiv existente, importate sau introduse de tine. Nimic nu este inventat.",
+        "c3": "Vezi evoluția în timp, cel mai performant conținut și recomandările Learning Agent.",
+        "c4": "Cum procedezi: imediat ce platformele sunt conectate sau introduci date, graficele se umplu."
+      }
+    },
+    "growth": {
+      "title": "Creștere",
+      "cues": {
+        "c1": "Pagina Creștere oferă recomandări pentru mai multă acoperire.",
+        "c2": "Funcție: din datele tale reale de analiză calculează cele mai bune momente de postare, hashtag-urile și formatele de succes.",
+        "c3": "Cum procedezi: alege platforma și citește recomandările.",
+        "c4": "Sunt recomandări, nu automatizare. Urmăritorii sau interacțiunile nu sunt crescute artificial."
+      }
+    },
+    "revenue": {
+      "title": "Venituri",
+      "cues": {
+        "c1": "La Venituri îți centralizezi câștigurile din platforme și campanii.",
+        "c2": "Funcție: sumele apar abia după ce le introduci. Nu există cifre inventate.",
+        "c3": "Cum procedezi: apasă pe „Înregistrează un venit”, alege platforma și tipul și introdu suma.",
+        "c4": "Plata se face întotdeauna direct prin platformă. SECRET 58 nu procesează plăți."
+      }
+    },
+    "sales": {
+      "title": "Vânzări și magazin",
+      "cues": {
+        "c1": "„Vânzări și magazin” arată veniturile tale proprii din afaceri.",
+        "c2": "Funcție: sunt separate de pachetul tău SECRET 58. Se numără doar vânzările efective, datele de test sunt marcate.",
+        "c3": "Sus se află totalurile pe monedă, dedesubt datele tale de furnizor pentru datele legale.",
+        "c4": "Opțiunea B: vinzi prin SECRET 58. Opțiunea A: imporți un magazin existent.",
+        "c5": "Cum procedezi: completează și salvează datele de furnizor, apoi alege calea de vânzare."
+      }
+    },
+    "website": {
+      "title": "Site-ul meu",
+      "cues": {
+        "c1": "Aici integrezi asistentul de site pe propriul tău site.",
+        "c2": "Funcție: asistentul răspunde la întrebările vizitatorilor tăi.",
+        "c3": "Nu modificăm automat site-ul tău. Inserezi tu codul sau îl lași să fie inserat de webdesignerul tău.",
+        "c4": "Cum procedezi: introdu adresa web și apasă pe „Adaugă site”.",
+        "c5": "Apoi copiezi codul afișat în site-ul tău."
+      }
+    },
+    "inbox": {
+      "title": "Inbox",
+      "cues": {
+        "c1": "Inbox adună mesajele și comentariile de pe toate platformele.",
+        "c2": "Funcție: MessageAgent propune răspunsuri. Se trimite doar ce aprobi tu.",
+        "c3": "Cum procedezi: cât timp nicio platformă nu este conectată live, apeși pe „Simulează o conversație”.",
+        "c4": "Verifică propunerea de răspuns, adaptează-l și aprobă-l."
+      }
+    },
+    "agents": {
+      "title": "Agenți",
+      "cues": {
+        "c1": "Agent Monitor arată toți agenții SECRET 58.",
+        "c2": "Funcție: starea, ultima sarcină și rezultatul fiecărui agent. Fiecare rulare este înregistrată.",
+        "c3": "În istoricul rulărilor vezi ce a rulat când și dacă a reușit.",
+        "c4": "Cum îl folosești: verifică aici când ceva nu a fost generat conform așteptărilor."
+      }
+    },
+    "integrations": {
+      "title": "Integrări",
+      "cues": {
+        "c1": "Aici vezi starea live a tuturor serviciilor externe.",
+        "c2": "Funcție: fiecare rând se bazează pe accesele efectiv setate. Nu există conexiuni simulate.",
+        "c3": "Grupurile sunt: furnizori IA, Voice, platforme sociale, Design, Video și Tendințe.",
+        "c4": "Cum procedezi: la „Neconfigurat”, „Obține cheia API” duce la pagina furnizorului.",
+        "c5": "Furnizorii externi au prețurile lor proprii. La fiecare serviciu este indicat modelul aplicabil."
+      }
+    },
+    "billing": {
+      "title": "Pachet și facturare",
+      "cues": {
+        "c1": "La „Pachet și facturare” îți vezi pachetul și îl poți schimba.",
+        "c2": "Funcție: funcțiile IA rulează prin accesele operatorului. Nu ai nevoie de un abonament IA propriu.",
+        "c3": "Există Pro și Maxi, lunar sau anual. Prețurile sunt afișate nete pe carduri.",
+        "c4": "Se cumpără doar printr-un clic explicit pe „Comandă cu obligație de plată”.",
+        "c5": "Dacă ai un cod promoțional, îl introduci în câmpul de dedesubt."
+      }
+    },
+    "settings": {
+      "title": "Setări",
+      "cues": {
+        "c1": "În Setări gestionezi spațiul de lucru, utilizatorii și informațiile de sistem.",
+        "c2": "Funcție: workspace, roluri, starea sistemului, asistentul de configurare și datele tale, cu acces și ștergere.",
+        "c3": "Cum procedezi: derulează prin secțiuni. Ștergerea spațiului de lucru cere o confirmare suplimentară.",
+        "c4": "Verifică aici periodic datele tale și asistentul de configurare."
+      }
+    }
+  }
+}

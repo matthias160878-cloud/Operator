@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Školicí video",
+  "subtitlesLabel": "Titulky",
+  "subtitlesOff": "Vypnuto",
+  "soundLabel": "Zvuk",
+  "soundOn": "Předčítaný hlas zapnut",
+  "soundOff": "Předčítaný hlas vypnut",
+  "soundHint": "Předčítaný hlas pochází z tvého prohlížeče. Které jazyky jsou k dispozici, závisí na tvém zařízení.",
+  "soundMissing": "Pro tento jazyk není na tvém zařízení nainstalován žádný hlas. Titulky přesto fungují.",
+  "draftNote": "Koncept: nahrávka skutečné aplikace s testovacími daty. Titulky přeloženy strojově.",
+  "whatLabel": "Co to je, jakou to má funkci a jak to provedeš.",
+  "videosTitle": "Vysvětlující videa ke každé oblasti",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "První kroky",
+      "cues": {
+        "c1": "Vítej ve školení: První kroky. Vše, co vidíš, je skutečná aplikace s testovacími daty.",
+        "c2": "Vlevo je navigace. Každá oblast aplikace má tady svou položku.",
+        "c3": "Krok 1: V části „Integrace“ zkontroluj, které služby jsou připojeny.",
+        "c4": "Každý řádek zobrazuje skutečný, ověřený stav – nikdy předstírané připojení.",
+        "c5": "„Není nastaveno“ znamená: Tato služba ještě není nastavena. Bez poskytovatele AI aplikace pracuje v režimu šablon.",
+        "c6": "Krok 2: Zadej svou značku v části „Brand DNA“. Tón, cílová skupina a hodnoty vstupují do každého vygenerovaného textu.",
+        "c7": "Příklad: vyplň obor a cílovou skupinu a dole ulož.",
+        "c8": "Krok 3: V části „Nápady a inspirace“ si nech vytvořit první nápad. Zadej téma a klikni na „Vygenerovat nápady“.",
+        "c9": "Nápady se zobrazí jako karty. V režimu šablon jde o ukázky, s poskytovatelem AI budou individuální.",
+        "c10": "Vše zůstává konceptem, dokud to neschválíš. Ke každé oblasti existuje vlastní vysvětlující video."
+      }
+    },
+    "dashboard": {
+      "title": "Přehled",
+      "cues": {
+        "c1": "Přehled je tvoje úvodní stránka: pohled na vše, co se ve tvém pracovním prostoru děje.",
+        "c2": "Nahoře vidíš aktivní agenty, produkci obsahu a naplánované příspěvky.",
+        "c3": "Níže najdeš poslední aktivity a zkratky do Content Factory a Brand DNA.",
+        "c4": "Tlačítkem „Týden“ přepneš období ukazatelů.",
+        "c5": "Jak to používat: Otevři přehled každý den, zkontroluj otevřené koncepty a odtud skoč přímo do příslušné oblasti."
+      }
+    },
+    "schulung": {
+      "title": "Školení",
+      "cues": {
+        "c1": "Školení je tvůj návod v aplikaci. Vysvětluje každou oblast krok za krokem.",
+        "c2": "Každé téma má popis, číslované kroky a odkaz, který otevře příslušnou stránku.",
+        "c3": "Zobrazují se tu i tato vysvětlující videa, ke každé oblasti jedno.",
+        "c4": "Jak to používat: Vyber téma, přečti si kroky, otevři stránku a rovnou to vyzkoušej."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory je pracovní stůl pro všechny tvoje položky obsahu na jednom místě.",
+        "c2": "Funkce: vytvářet položky, duplikovat je, přepisovat, obohacovat o voiceover a titulky a vést je procesem schvalování.",
+        "c3": "Filtry nahoře ukazují stavy: Koncept, V kontrole, Schváleno, Naplánováno, Publikováno a Archivováno.",
+        "c4": "Jak na to: Tlačítkem „Nová položka obsahu“ položku založíš.",
+        "c5": "Otevři položku a uprav skript, voiceover, titulky, hashtagy a thumbnail.",
+        "c6": "Schválení je vždy ruční krok. Nic se nepublikuje bez tvého potvrzení."
+      }
+    },
+    "ideas": {
+      "title": "Nápady a inspirace",
+      "cues": {
+        "c1": "Tady sbíráš nápady: tematické okruhy, série a formáty pro budoucí obsah.",
+        "c2": "Funkce: IdeaAgent vytváří nápady k tématu, nebo si vlastní nápady zadáš ručně.",
+        "c3": "Jak na to: Zadej téma, vyber platformu, cíl a formát a klikni na „Vygenerovat nápady“.",
+        "c4": "Každý nápad se stane kartou s názvem, úvodním háčkem a prioritou.",
+        "c5": "Tlačítkem „Ručně“ založíš vlastní nápad.",
+        "c6": "Dobré nápady si vezmi jako výchozí bod pro Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain udělá z nápadu kompletní plán obsahu.",
+        "c2": "Funkce: Bere v úvahu tvoji Brand DNA a pro každou zvolenou platformu vytvoří hooky, skripty, hashtagy a koncepty thumbnailů jako koncept.",
+        "c3": "Jak na to: Zadej téma a cílovou skupinu.",
+        "c4": "Vyber cíl a jazyk, pak klikni na platformy. Tady přibude TikTok.",
+        "c5": "Posuvníkem určíš, kolik položek obsahu na platformu vznikne.",
+        "c6": "Kliknutím na „Vygenerovat plán obsahu“ spustíš běh.",
+        "c7": "Kampaň se zobrazí dole. Všechny položky jsou koncepty a leží v Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA popisuje tvoji značku: název, obor, cílovou skupinu, tón a hodnoty.",
+        "c2": "Funkce: Tyto údaje automaticky vstupují do Content Brain i do agentů pro skripty, hooky a hashtagy.",
+        "c3": "Jak na to: Vyplň pole, například obor a cílovou skupinu.",
+        "c4": "Níže spravuješ preferovaná a zakázaná slova, výzvy k akci a hodnoty značky.",
+        "c5": "Nakonec klikni na „Uložit Brand DNA“."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio je dílna na skripty a hooky.",
+        "c2": "Funkce: Staví skripty podle struktury Hook, Problém, Přínos, Příklad, Výsledek a Výzva k akci a dodává několik variant hooků.",
+        "c3": "Jak na to: Zadej téma a vyber platformu.",
+        "c4": "Pak klikni na „Vygenerovat skript a hooky“.",
+        "c5": "Výsledek je koncept, který dále použiješ v Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio spravuje hlasy a vytváří voiceover.",
+        "c2": "Funkce: Správa knihovny hlasů, vytváření náhledů a import hlasů. Napojení běží přes ElevenLabs.",
+        "c3": "Jak na to: Hlas přidej ručně nebo ho importuj z ElevenLabs. Import vyžaduje nastavené napojení.",
+        "c4": "S textem a hlasem vytvoříš náhled a přehraješ ho."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio je video pipeline aplikace.",
+        "c2": "Funkce: Format Manager, vyměnitelní poskytovatelé videa a napojení voiceoveru a titulků.",
+        "c3": "Stránka ukazuje, kteří poskytovatelé jsou nastaveni. Ti nenastavení jsou poctivě označeni jako takoví.",
+        "c4": "Jak na to: Videa vytváříš u jednotlivých položek obsahu v Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio dodává koncepty thumbnailů a obrazové assety.",
+        "c2": "Funkce: Thumbnail agent navrhuje název, nápad na obrázek, text a rozvržení. Integrace Canva je zde plánována.",
+        "c3": "Jak na to: Zadej téma thumbnailu.",
+        "c4": "Klikni na „Vygenerovat koncept“.",
+        "c5": "Koncept ti slouží jako předloha pro tvůj obrázek."
+      }
+    },
+    "socialMedia": {
+      "title": "Sociální sítě",
+      "cues": {
+        "c1": "Tady připojuješ své účty na platformách a vidíš jejich stav.",
+        "c2": "Funkce: Přístupy se spravují na straně serveru a ukládají se zašifrovaně. Přes Composio se k platformě přihlásíš.",
+        "c3": "Každá karta ukazuje platformu, účet, stav a poslední čtecí test.",
+        "c4": "„Zatím nenastaveno“ znamená: Provozovatel napojení na serveru ještě neaktivoval.",
+        "c5": "Jak na to: Jakmile bude nastaveno, klikni u platformy na „Připojit“ a přihlas se. Pouze se čte, nic se nepublikuje."
+      }
+    },
+    "calendar": {
+      "title": "Kalendář obsahu",
+      "cues": {
+        "c1": "Kalendář obsahu ukazuje přehled naplánovaného a publikovaného obsahu.",
+        "c2": "Funkce: Zobrazují se tu všechny položky obsahu s datem publikování, s možností filtrovat podle platformy.",
+        "c3": "Jak na to: Naplánuj položku v Content Factory s datem, pak se objeví tady.",
+        "c4": "Před každým publikováním aplikace živě ověří, zda je cílová platforma připojena."
+      }
+    },
+    "analytics": {
+      "title": "Analytika",
+      "cues": {
+        "c1": "Analytika ukazuje tvoje výkonnostní ukazatele.",
+        "c2": "Funkce: Jen skutečně dostupná data, importovaná nebo tebou zadaná. Nic není vymyšlené.",
+        "c3": "Vidíš vývoj v čase, nejlépe fungující obsah a doporučení od Learning Agenta.",
+        "c4": "Jak na to: Jakmile připojíš platformy nebo zadáš data, grafy se zaplní."
+      }
+    },
+    "growth": {
+      "title": "Růst",
+      "cues": {
+        "c1": "Stránka Růst dává doporučení pro větší dosah.",
+        "c2": "Funkce: Z tvých skutečných dat analytiky vypočítá nejlepší časy publikování, úspěšné hashtagy a formáty.",
+        "c3": "Jak na to: Vyber platformu a přečti si doporučení.",
+        "c4": "Jsou to doporučení, žádná automatika. Počet sledujících ani interakcí se uměle nezvyšuje."
+      }
+    },
+    "revenue": {
+      "title": "Příjmy",
+      "cues": {
+        "c1": "V části Příjmy sloučíš své tržby napříč platformami a kampaněmi.",
+        "c2": "Funkce: Částky se objeví, teprve když je zadáš. Žádná vymyšlená čísla neexistují.",
+        "c3": "Jak na to: Klikni na „Zadat příjem“, vyber platformu a druh a zadej částku.",
+        "c4": "Vyplácí se vždy přímo přes platformu. SECRET 58 žádné výplaty nezprostředkovává."
+      }
+    },
+    "sales": {
+      "title": "Prodej a obchod",
+      "cues": {
+        "c1": "„Prodej a obchod“ ukazuje tvoje vlastní obchodní příjmy.",
+        "c2": "Funkce: Jsou oddělené od tvého balíčku SECRET 58. Počítají se jen skutečné prodeje, testovací data jsou označena.",
+        "c3": "Nahoře jsou součty podle měn, pod nimi tvoje údaje o provozovateli pro impressum.",
+        "c4": "Varianta B: prodávat přes SECRET 58. Varianta A: importovat existující obchod.",
+        "c5": "Jak na to: Vyplň údaje o provozovateli a ulož, pak vyber způsob prodeje."
+      }
+    },
+    "website": {
+      "title": "Můj web",
+      "cues": {
+        "c1": "Tady vložíš webového asistenta na svůj vlastní web.",
+        "c2": "Funkce: Asistent odpovídá na otázky tvých návštěvníků.",
+        "c3": "Tvůj web automaticky neměníme. Kód vložíš sám/sama, nebo ho nech vložit svého webdesignéra.",
+        "c4": "Jak na to: Zadej webovou adresu a klikni na „Přidat web“.",
+        "c5": "Poté zkopíruješ zobrazený kód do svého webu."
+      }
+    },
+    "inbox": {
+      "title": "Doručená pošta",
+      "cues": {
+        "c1": "Doručená pošta shromažďuje zprávy a komentáře ze všech platforem.",
+        "c2": "Funkce: MessageAgent navrhuje odpovědi. Odešle se jen to, co schválíš.",
+        "c3": "Jak na to: Dokud není žádná platforma připojena živě, klikni na „Nasimulovat konverzaci“.",
+        "c4": "Zkontroluj navrženou odpověď, uprav ji a schval ji."
+      }
+    },
+    "agents": {
+      "title": "Agenti",
+      "cues": {
+        "c1": "Monitor agentů ukazuje všechny agenty SECRET 58.",
+        "c2": "Funkce: Stav, poslední úloha a výsledek každého agenta. Každý běh se zaznamenává.",
+        "c3": "V historii běhů vidíš, co kdy běželo a zda se to povedlo.",
+        "c4": "Jak to používat: Zkontroluj tady, když se něco nevytvořilo, jak jsi čekal/a."
+      }
+    },
+    "integrations": {
+      "title": "Integrace",
+      "cues": {
+        "c1": "Tady vidíš živý stav všech externích služeb.",
+        "c2": "Funkce: Každý řádek vychází ze skutečně nastavených přístupů. Žádná předstíraná připojení neexistují.",
+        "c3": "Skupiny jsou: poskytovatelé AI, hlas, sociální platformy, design, video a trendy.",
+        "c4": "Jak na to: U stavu „Není nastaveno“ vede „Získat API klíč“ na stránku poskytovatele.",
+        "c5": "Externí poskytovatelé mají vlastní ceny. U každé služby je uvedeno, jaký model platí."
+      }
+    },
+    "billing": {
+      "title": "Balíček a fakturace",
+      "cues": {
+        "c1": "V části „Balíček a fakturace“ vidíš svůj balíček a můžeš ho změnit.",
+        "c2": "Funkce: AI funkce běží přes přístupy provozovatele. Vlastní předplatné AI nepotřebuješ.",
+        "c3": "K dispozici jsou Pro a Maxi, měsíčně nebo ročně. Ceny jsou na kartách uvedeny bez daně.",
+        "c4": "Koupí se jen výslovným kliknutím na „Objednat se závazkem platby“.",
+        "c5": "Pokud máš promokód, uplatníš ho v poli pod tím."
+      }
+    },
+    "settings": {
+      "title": "Nastavení",
+      "cues": {
+        "c1": "V nastavení spravuješ pracovní prostor, uživatele a systémové informace.",
+        "c2": "Funkce: Workspace, role, stav systému, asistent nastavení a tvoje data s možností výpisu a smazání.",
+        "c3": "Jak na to: Projdi si sekce. Smazání pracovního prostoru vyžaduje další potvrzení.",
+        "c4": "Pravidelně tu kontroluj svá data a asistenta nastavení."
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Prestatiecijfers op basis van daadwerkelijk aanwezige data — zodra platforms zijn gekoppeld, vult dit overzicht zich met echte waarden.",
+  "statViewsTotal": "Views totaal",
+  "statLikesTotal": "Likes totaal",
+  "statComments": "Reacties",
+  "statShares": "Shares",
+  "chartTitle": "Contentprestaties in de tijd",
+  "chartLegend": "Views (paars) · Engagement % (turquoise)",
+  "chartEmpty": "Nog geen analytics-data beschikbaar.",
+  "bestPerformingTitle": "Best presterende content",
+  "bestPerformingEmpty": "Nog geen data.",
+  "learningAgentTitle": "Learning Agent — aanbevelingen"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Assistent tal-AI",
+  "welcome": "Bonġu! Staqsini kull ma tixtieq dwar SECRET 58 — kif tissettja xi ħaġa, fejn issib xi ħaġa, jew kif taħdem żona.",
+  "inputPlaceholder": "Ikteb mistoqsija …",
+  "thinking": "Qed naħseb …",
+  "openButton": "Iftaħ l-assistent tal-AI",
+  "close": "Agħlaq",
+  "sendButton": "Ibgħat",
+  "micButton": "Input bil-vuċi",
+  "speakToggle": "Aqra t-tweġibiet b'leħen għoli",
+  "notConfigured": "L-assistent tal-AI għadu mhux ikkonfigurat — għal dan irid jiġi rreġistrat fornitur tal-AI (Anthropic jew OpenAI).",
+  "openIntegrations": "Mur għall-Integrazzjonijiet",
+  "error": "L-assistent tal-AI ma setax iwieġeb issa. Jekk jogħġbok erġa' pprova aktar tard."
+}

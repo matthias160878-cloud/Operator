@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Yksi idea sisään — täydellinen, alustakohtainen sisältösuunnitelma ulos. ContentBrainAgent huomioi Brand DNA:si ja luo jokaiselle valitulle alustalle sopivat hookit, skriptit, hashtagit ja pikkukuvakonseptit luonnoksina.",
+  "campaignsHeading": "Kampanjat",
+  "noCampaigns": "Kampanjoita ei ole vielä luotu.",
+  "campaignSummary": "{count} sisältöä · {audience}",
+  "form": {
+    "textEngineLabel": "Tekstimoottori:",
+    "templateMode": "Mallipohjatila (tekoälypalvelua ei ole määritetty)",
+    "modeTemplate": "Mallipohja",
+    "topicLabel": "Aihe / idea",
+    "topicPlaceholder": "esim. Selitä, miksi autonomiset tekoälyagentit muuttavat työelämää.",
+    "audienceLabel": "Kohderyhmä",
+    "audiencePlaceholder": "esim. 25–45-vuotiaat, teknologiasta kiinnostuneet",
+    "goalLabel": "Tavoite",
+    "languageLabel": "Kieli",
+    "platformsLabel": "Alustat",
+    "itemsPerPlatformLabel": "Sisältöjä alustaa kohti ({count})",
+    "generateError": "Generointi epäonnistui.",
+    "unknownError": "Tuntematon virhe.",
+    "submitLoading": "Content Brain työskentelee…",
+    "submitIdle": "Luo sisältösuunnitelma",
+    "resultHeading": "Kampanja luotu — {count} sisältöä tallennettu luonnoksina.",
+    "resultDescription": "Luotu {mode}-tilassa. Kaikki sisällöt alkavat tilassa DRAFT — tarkista ja muokkaa niitä Content Factoryssa.",
+    "resultLink": "Siirry Content Factoryyn →"
+  }
+}

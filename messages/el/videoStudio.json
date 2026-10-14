@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Ροή βίντεο ανεξάρτητη από πάροχο: Format Manager, εναλλάξιμοι πάροχοι βίντεο, σύνδεση voiceover και υποτίτλων (δες Content Factory ανά στοιχείο περιεχομένου).",
+  "providerCardTitle": "Πάροχοι βίντεο",
+  "providerNotePrefix": "Περισσότεροι πάροχοι (API βίντεο AI, βιβλιοθήκες stock βίντεο) μπορούν να προστεθούν μέσω της ίδιας διεπαφής",
+  "providerNoteSuffix": ", χωρίς να αγγίξεις τον υπάρχοντα κώδικα.",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Στοιχεία βίντεο",
+  "assetsEmpty": "Δεν έχουν αποδοθεί ακόμα βίντεο — η απόδοση γίνεται μέσω των στοιχείων περιεχομένου στο Content Factory, μόλις ρυθμιστεί ένας πάροχος βίντεο."
+}

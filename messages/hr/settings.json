@@ -1,0 +1,27 @@
+{
+  "title": "Postavke",
+  "description": "Radni prostor, korisnici i informacije o sustavu. Pristupni podaci upravljaju se isključivo putem varijabli okruženja (vidi <code>.env.example</code>).",
+  "workspace": {
+    "title": "Radni prostor",
+    "name": "Naziv",
+    "slug": "Slug",
+    "createdAt": "Stvoreno"
+  },
+  "users": {
+    "title": "Korisnici i uloge",
+    "note": "Višekorisnički model podataka u potpunosti je pripremljen (izolacija radnog prostora za sve tablice). Stvarno sučelje za prijavu/autentifikaciju s više korisnika sljedeći je korak razvoja — trenutačno aplikacija radi upravo s ovim zadanim radnim prostorom."
+  },
+  "system": {
+    "title": "Sustav",
+    "contentItems": "Stavke sadržaja",
+    "campaigns": "Kampanje",
+    "mediaAssets": "Medijski materijali",
+    "agentRuns": "Pokretanja agenata",
+    "dbNote": "Baza podataka: SQLite (lokalno, <code>prisma/dev.db</code>) putem Prisma ORM-a. Za produkciju prebaci <codeSpaced>DATABASE_URL</codeSpaced> na Postgres/MySQL (prilagodi pružatelja u <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Asistent za postavljanje",
+    "description": "Mali prozori s uputama korak po korak za AI pružatelje, platforme društvenih mreža i govorni izlaz koji se pojavljuju pri prvom otvaranju.",
+    "reopen": "Ponovno otvori asistenta za postavljanje"
+  }
+}

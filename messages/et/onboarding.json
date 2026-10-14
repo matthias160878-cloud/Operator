@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Samm {current} / {total}",
+    "close": "Sulge",
+    "back": "Tagasi",
+    "next": "Edasi",
+    "skip": "Jäta vahele",
+    "finish": "Valmis, alustame",
+    "checking": "Kontrollin …",
+    "checkAgain": "Kontrolli nüüd",
+    "connected": "Ühendatud",
+    "notConnected": "Pole veel ühendatud",
+    "skippedNote": "Vahele jäetud — saad selle igal ajal jaotises „Integratsioonid“ järele teha.",
+    "envHint": "Märkus: pärast Renderis salvestamist kulub tavaliselt 1–2 minutit, enne kui teenus taaskäivitub ja muudatus jõustub. Kui „Kontrolli nüüd“ ei leia veel midagi, oota hetk ja klõpsa uuesti.",
+    "reopenHint": "Selle abilise saad igal ajal uuesti avada: Seadetes jaotises „Seadistusabiline“."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Tere tulemast SECRET 58-sse",
+      "body": "Enne kui alustame, seadistame koos kõige vajaliku — üsna väikeste, üksikute sammudena. Võid igal ajal pausi teha ja hiljem samast kohast jätkata."
+    },
+    "aiProvider": {
+      "title": "Samm 1: ühenda tehisintellekti pakkuja",
+      "body": "Tekstide, skriptide, haakide ja märksõnade jaoks vajab tarkvara tehisintellekti pakkujat. Vali üks kahest — üks piisab.",
+      "steps": [
+        "Klõpsa all Anthropicu või OpenAI juures nuppu „Hangi API võti“.",
+        "Loo seal vajadusel tasuta konto.",
+        "Loo seal uus API võti ja kopeeri see.",
+        "Klõpsa „Sisesta Renderis“, kleebi võti sinna keskkonnamuutujana ja salvesta.",
+        "Tule siia tagasi ja klõpsa all nuppu „Kontrolli nüüd“."
+      ],
+      "costHint": "Kulud tekivad alles tegeliku kasutuse korral, otse vastava pakkuja juures — mitte kunagi SECRET 58 kaudu."
+    },
+    "platform": {
+      "title": "Samm 2: ühenda sotsiaalmeedia platvorm (valikuline)",
+      "body": "Valikuline, kuid soovitatav: ühenda vähemalt üks platvorm, kus tahad hiljem avaldada. Selle sammu võid ka hiljem teha.",
+      "steps": [
+        "Vali all platvorm, mida soovid kasutada.",
+        "Klõpsa „Hangi API võti“ ja järgi pakkuja juhiseid.",
+        "Klõpsa „Sisesta Renderis“ ja salvesta ligipääsuandmed sinna.",
+        "Tule siia tagasi ja klõpsa „Kontrolli nüüd“."
+      ]
+    },
+    "voice": {
+      "title": "Samm 3: ühenda kõneväljund (valikuline)",
+      "body": "Vajalik ainult siis, kui tahad oma videotele automaatselt häälkõnet luua. Ilma selle sammuta toimib kõik muu siiski.",
+      "steps": [
+        "Klõpsa ElevenLabsi juures „Hangi API võti“.",
+        "Loo seal konto ja API võti.",
+        "Klõpsa „Sisesta Renderis“ ja salvesta võti sinna.",
+        "Tule siia tagasi ja klõpsa „Kontrolli nüüd“."
+      ]
+    },
+    "done": {
+      "title": "Valmis!",
+      "body": "Nüüd võid alustada. Kõik, mille jätsid vahele, leiad ja täiendad igal ajal jaotises „Integratsioonid“ — või ava see abiline uuesti kaudu „Seaded“."
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Integracije",
+  "description": "Stanje vseh zunanjih storitev v živo — izključno na podlagi dejansko nastavljenih okoljskih spremenljivk. Brez navideznih povezav.",
+  "categories": {
+    "AI": "Ponudniki UI",
+    "VOICE": "Glas",
+    "PLATFORM": "Družbena omrežja",
+    "DESIGN": "Oblikovanje",
+    "VIDEO": "Video",
+    "TREND": "Trendi"
+  },
+  "costNote": "Kupnina za SECRET 58 je enkratna in pokriva programsko opremo. Vsaka zunanja storitev tu ima svoj, neodvisen model stroškov pri posameznem ponudniku — SECRET 58 za to nikoli ne zaračuna dodatno.",
+  "links": {
+    "getKey": "Pridobi ključ API",
+    "setInRender": "Vnesi v Render",
+    "viewPricing": "Poglej cene"
+  },
+  "pricing": {
+    "free": "Brezplačno",
+    "payAsYouGo": "Glede na porabo",
+    "subscription": "Naročnina",
+    "unknown": "Ceno preveri pri ponudniku"
+  }
+}

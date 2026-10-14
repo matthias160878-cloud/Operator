@@ -1,0 +1,21 @@
+{
+  "title": "Praćenje agenata",
+  "description": "Svi agenti SECRET 58 sa statusom, posljednjim zadatkom i rezultatom. Svako pokretanje se bilježi.",
+  "table": {
+    "agent": "Agent",
+    "description": "Opis",
+    "status": "Status",
+    "lastTask": "Posljednji zadatak"
+  },
+  "history": {
+    "title": "Povijest pokretanja",
+    "agent": "Agent",
+    "task": "Zadatak",
+    "status": "Status",
+    "start": "Početak",
+    "end": "Kraj",
+    "resultError": "Rezultat / pogreška",
+    "empty": "Još nema pokretanja agenata.",
+    "completed": "Dovršeno"
+  }
+}

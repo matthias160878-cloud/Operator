@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — gestionează Voice Library, generează previzualizări voiceover și importă voci.",
+  "envWarning": "ElevenLabs nu este încă configurat. Introdu <envKey>ELEVENLABS_API_KEY</envKey> în <envFile>.env</envFile> pentru a folosi voiceover și importul de voci. Voice Library poate fi folosită totuși pentru planificare.",
+  "addManual": "Creează o voce manual",
+  "importFromElevenLabs": "Importă din ElevenLabs",
+  "form": {
+    "namePlaceholder": "Nume",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Limbă",
+    "submit": "Adaugă"
+  },
+  "confirmDelete": "Sigur vrei să ștergi vocea?",
+  "importFailed": "Importul a eșuat.",
+  "previewFailed": "Previzualizarea a eșuat.",
+  "unknownError": "Eroare necunoscută.",
+  "empty": "Încă nu există voci în Library.",
+  "active": "Activ",
+  "inactive": "Inactiv",
+  "remove": "Elimină",
+  "preview": {
+    "heading": "Previzualizare voce",
+    "defaultText": "Salut, acesta este un exemplu pentru această voce.",
+    "selectPlaceholder": "Alege o voce…",
+    "play": "Redă previzualizarea"
+  }
+}

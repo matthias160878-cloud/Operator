@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Indicatori de performanță din date efectiv disponibile — imediat ce platformele sunt conectate, această vizualizare se umple cu valori reale.",
+  "statViewsTotal": "Total vizualizări",
+  "statLikesTotal": "Total aprecieri",
+  "statComments": "Comentarii",
+  "statShares": "Distribuiri",
+  "chartTitle": "Performanța conținutului în timp",
+  "chartLegend": "Vizualizări (violet) · Engagement % (turcoaz)",
+  "chartEmpty": "Încă nu există date de analiză.",
+  "bestPerformingTitle": "Cel mai performant conținut",
+  "bestPerformingEmpty": "Încă nu există date.",
+  "learningAgentTitle": "Learning Agent — Recomandări"
+}

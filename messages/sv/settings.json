@@ -1,0 +1,27 @@
+{
+  "title": "Inställningar",
+  "description": "Arbetsyta, användare och systeminformation. Åtkomstuppgifter hanteras uteslutande via miljövariabler (se <code>.env.example</code>).",
+  "workspace": {
+    "title": "Arbetsyta",
+    "name": "Namn",
+    "slug": "Slug",
+    "createdAt": "Skapad den"
+  },
+  "users": {
+    "title": "Användare & roller",
+    "note": "Multi-tenant-datamodellen är helt förberedd (isolering av arbetsytor för alla tabeller). Ett riktigt inloggnings-/autentiseringsgränssnitt med flera användare är nästa utbyggnadssteg — för närvarande arbetar appen med just den här standardarbetsytan."
+  },
+  "system": {
+    "title": "System",
+    "contentItems": "Innehållsobjekt",
+    "campaigns": "Kampanjer",
+    "mediaAssets": "Mediaresurser",
+    "agentRuns": "Agentkörningar",
+    "dbNote": "Databas: SQLite (lokal, <code>prisma/dev.db</code>) via Prisma ORM. För produktion ställ om <codeSpaced>DATABASE_URL</codeSpaced> till Postgres/MySQL (anpassa leverantören i <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Installationsassistent",
+    "description": "De små steg-för-steg-fönstren för AI-leverantörer, plattformar för sociala medier och talsyntes som visas vid första öppnandet.",
+    "reopen": "Öppna installationsassistenten igen"
+  }
+}

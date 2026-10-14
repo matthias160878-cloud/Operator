@@ -1,0 +1,87 @@
+{
+  "title": "Taħriġ",
+  "subtitle": "Gwidi pass pass għal kull żona ta' SECRET 58 — dejjem disponibbli hawn biex tikkonsulta. Il-vidjows jiżdiedu hekk kif jiġu rreġistrati.",
+  "welcomeBanner": {
+    "title": "Merħba f'SECRET 58!",
+    "body": "Grazzi tax-xiri. Qabel ma tibda, jixraq li tħares lejn “L-ewwel passi” hawn taħt — biex l-agenti tal-AI jaħdmu mid-dejta reali tiegħek mill-bidu."
+  },
+  "videoPending": "Il-vidjow jiġi dalwaqt",
+  "stepsLabel": "Passi",
+  "openPage": "Iftaħ il-paġna",
+  "topics": {
+    "firstSteps": {
+      "title": "L-ewwel passi",
+      "description": "Agħmel dawn it-tliet affarijiet l-ewwel, u mbagħad l-agenti tal-AI kollha jaħdmu b'dejta reali minflok placeholders.",
+      "steps": [
+        "Taħt “Integrazzjonijiet” qabbad mill-inqas fornitur tal-AI wieħed (Anthropic jew OpenAI) — għal dan ikklikkja fuq “Ikseb iċ-ċavetta API” fir-ringiela rispettiva fuq il-lemin, oħloq iċ-ċavetta mal-fornitur u rreġistraha permezz ta' “Daħħal f'Render”.",
+        "Taħt “Brand DNA” imla l-marka tiegħek stess (ton, udjenza fil-mira, valuri) — l-agenti tal-AI jużaw dan għal kull test iġġenerat.",
+        "Taħt “Idejat u Ispirazzjoni” jew “Content Brain” ħalli jinħolqu l-ewwel idea jew kampanja."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Hekk idea ssir kontenut lest u approvat.",
+      "steps": [
+        "F'Content Brain oħloq kampanja ġdida b'suġġett u pjattaformi fil-mira — minn hemm jinħolqu awtomatikament diversi items ta' kontenut.",
+        "F'Content Factory kull item ta' kontenut jgħaddi minn status: Abbozz → Qed jiġi eżaminat → Approvat → Ippjanat → Ippubblikat.",
+        "L-approvazzjoni hija pass manwali u obbligatorju — xejn ma jiġi ppubblikat awtomatikament mingħajr konferma.",
+        "Fid-dettall ta' item ta' kontenut jistgħu jiġu ġġenerati mill-ġdid individwalment l-iscript, il-voiceover, is-sottotitli, il-hashtags u t-thumbnail."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video u Design Studio",
+      "description": "L-għodod speċjalizzati għal kull komponent tal-kontenut.",
+      "steps": [
+        "Script Studio: joħloq scripts skont l-istruttura Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: importa jew oħloq vuċi proprja ta' ElevenLabs, imbagħad oħloq voiceover direttament minn Script.",
+        "Design Studio: it-Thumbnail-Agent jipproponi titlu, idea viżwali, test, layout u deskrizzjoni tal-immaġni.",
+        "Video Studio: juri l-istat kurrenti tal-konnessjoni tal-fornituri tal-vidjow (Format Manager, status tal-fornitur)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Kalendarju tal-Kontenut u Pubblikazzjoni",
+      "description": "Fejn jispiċċaw il-posts ippjanati — u għaliex post verament joħroġ (jew le).",
+      "steps": [
+        "Fil-Kalendarju tal-Kontenut jidhru l-items kollha ta' kontenut b'data ta' pubblikazzjoni ppjanata.",
+        "Qabel kull pubblikazzjoni, il-PublishingAgent jivverifika live jekk il-pjattaforma fil-mira taħt “Social Media” hijiex tassew immarkata bħala “Konness”.",
+        "Mingħajr konnessjoni reali ma' pjattaforma jintwera żball onest minflok ma tiġi ffinta pubblikazzjoni."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics u Tkabbir",
+      "description": "Numri reali dwar il-prestazzjoni tiegħek stess — u rakkomandazzjonijiet minflok awtomatizzazzjoni.",
+      "steps": [
+        "Analytics juri biss dejta tal-prestazzjoni reali, importata jew imdaħħla manwalment.",
+        "Il-paġna tat-Tkabbir tikkalkula minn din id-dejta l-aqwa ħinijiet biex tippostja, hashtags b'suċċess u formats.",
+        "Importanti: apposta m'hemm l-ebda żieda awtomatizzata ta' segwaċi/engagement (l-ebda mgħiba ta' bot) — dan ikun kontra t-termini tal-użu ta' kull pjattaforma."
+      ]
+    },
+    "inbox": {
+      "title": "Inbox",
+      "description": "Abbozzi ta' tweġibiet bl-AI għal messaġġi — b'approvazzjoni qabel l-ibgħat.",
+      "steps": [
+        "Peress li (għadha) ma hemm l-ebda pjattaforma konnessa permezz ta' OAuth, il-konversazzjonijiet bħalissa jinħolqu manwalment minflok ma jinġabru live.",
+        "MessageAgent jipproponi tweġiba abbażi tal-Brand DNA u l-andament tal-konversazzjoni.",
+        "L-abbozz irid jiġi eżaminat u approvat manwalment qabel ma jitqies bħala mibgħut — ibgħat reali mingħajr konnessjoni ma' pjattaforma tfalli onestament, minflok ma tiffinta suċċess."
+      ]
+    },
+    "revenue": {
+      "title": "Traċċar tad-dħul",
+      "description": "Ħarsa ġenerali lejn id-dħul kollu tal-pjattaformi f'post wieħed — il-ħlas xorta jsir mill-pjattaformi nfushom.",
+      "steps": [
+        "Id-dħul jiddaħħal manwalment, peress li TikTok/Meta ma joffru l-ebda API pubblika tad-dħul u YouTube għal dan jeħtieġ aċċess għall-Partner Program (għadu mhux konness).",
+        "Il-ħlas effettiv isir dejjem direttament mill-pjattaforma rispettiva (eż. YouTube permezz ta' Google AdSense) — SECRET 58 ma jmexxi l-ebda ħlas."
+      ]
+    },
+    "integrations": {
+      "title": "Integrazzjonijiet u ċwievet API",
+      "description": "Minn fejn jiġi kull status ta' konnessjoni u fejn jiddaħħlu ċ-ċwievet xierqa.",
+      "steps": [
+        "Kull ringiela turi l-istatus reali, ivverifikat live — qatt konnessjoni ffintata.",
+        "Fil-każ ta' “Mhux ikkonfigurat”, “Ikseb iċ-ċavetta API” iwassal għall-paġna uffiċjali tal-fornitur.",
+        "“Daħħal f'Render” iwassal direttament għall-varjabbli tal-ambjent fejn tiġi rreġistrata ċ-ċavetta — apposta, għal raġunijiet ta' sigurtà, m'hemm l-ebda formola tad-dħul fl-app stess.",
+        "Spejjeż: Il-prezz tax-xiri ta' SECRET 58 huwa darba biss. Kull fornitur estern għandu l-mudell tal-ispejjeż tiegħu stess, indipendenti (b'xejn / skont l-użu / abbonament) — fuq il-paġna tal-Integrazzjonijiet, għal kull servizz jingħad liema mudell japplika, b'rabta mal-prezzijiet kurrenti mal-fornitur."
+      ]
+    }
+  }
+}

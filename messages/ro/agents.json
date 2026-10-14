@@ -1,0 +1,21 @@
+{
+  "title": "Agent Monitor",
+  "description": "Toți agenții SECRET 58 cu stare, ultima sarcină și rezultat. Fiecare rulare este înregistrată.",
+  "table": {
+    "agent": "Agent",
+    "description": "Descriere",
+    "status": "Stare",
+    "lastTask": "Ultima sarcină"
+  },
+  "history": {
+    "title": "Istoric rulări",
+    "agent": "Agent",
+    "task": "Sarcină",
+    "status": "Stare",
+    "start": "Start",
+    "end": "Sfârșit",
+    "resultError": "Rezultat / eroare",
+    "empty": "Încă nu există rulări de agenți.",
+    "completed": "Finalizat"
+  }
+}

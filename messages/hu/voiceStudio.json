@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs hangmotor — hangkönyvtár kezelése, hangalámondás-előnézetek készítése és hangok importálása.",
+  "envWarning": "Az ElevenLabs még nincs beállítva. Add meg az <envKey>ELEVENLABS_API_KEY</envKey> értéket az <envFile>.env</envFile> fájlban a hangalámondás és a hangimport használatához. A hangkönyvtár ettől még használható tervezéshez.",
+  "addManual": "Hang felvétele kézzel",
+  "importFromElevenLabs": "Importálás az ElevenLabsből",
+  "form": {
+    "namePlaceholder": "Név",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Nyelv",
+    "submit": "Hozzáadás"
+  },
+  "confirmDelete": "Biztosan törlöd a hangot?",
+  "importFailed": "Az importálás nem sikerült.",
+  "previewFailed": "Az előnézet nem sikerült.",
+  "unknownError": "Ismeretlen hiba.",
+  "empty": "Még nincsenek hangok a könyvtárban.",
+  "active": "Aktív",
+  "inactive": "Inaktív",
+  "remove": "Eltávolítás",
+  "preview": {
+    "heading": "Hangelőnézet",
+    "defaultText": "Szia, ez egy példa erre a hangra.",
+    "selectPlaceholder": "Válassz hangot…",
+    "play": "Előnézet lejátszása"
+  }
+}

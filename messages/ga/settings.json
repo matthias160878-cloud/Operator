@@ -1,0 +1,27 @@
+{
+  "title": "Socruithe",
+  "description": "Spás oibre, úsáideoirí agus faisnéis chórais. Déantar sonraí rochtana a bhainistiú go heisiach trí athróga timpeallachta (féach <code>.env.example</code>).",
+  "workspace": {
+    "title": "Spás oibre",
+    "name": "Ainm",
+    "slug": "Slug",
+    "createdAt": "Cruthaithe ar"
+  },
+  "users": {
+    "title": "Úsáideoirí & Róil",
+    "note": "Tá an tsamhail sonraí il-tionónta réitithe go hiomlán (leithlisiú spáis oibre do gach tábla). Is é an chéad chéim eile fíorchomhéadan logála isteach/fíordheimhnithe le húsáideoirí iolracha — faoi láthair oibríonn an aip leis an spás oibre réamhshocraithe seo go díreach."
+  },
+  "system": {
+    "title": "Córas",
+    "contentItems": "Míreanna inneachair",
+    "campaigns": "Feachtais",
+    "mediaAssets": "Sócmhainní meán",
+    "agentRuns": "Rith gníomhairí",
+    "dbNote": "Bunachar sonraí: SQLite (áitiúil, <code>prisma/dev.db</code>) trí Prisma ORM. Le haghaidh táirgeachta athraigh <codeSpaced>DATABASE_URL</codeSpaced> go Postgres/MySQL (coigeartaigh an soláthraí i <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Cúntóir socraithe",
+    "description": "Na fuinneoga beaga céim ar chéim le haghaidh soláthraithe AI, ardán meán sóisialta agus aschur cainte a bhíonn le feiceáil an chéad uair a osclaítear an aip.",
+    "reopen": "Oscail an cúntóir socraithe arís"
+  }
+}

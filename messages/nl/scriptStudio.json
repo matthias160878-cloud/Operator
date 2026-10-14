@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Script- en hook-engine: maakt platformgerichte scripts volgens de structuur Hook → Probleem → Waarde → Voorbeeld → Resultaat → CTA, plus meerdere hookvarianten.",
+  "form": {
+    "topicLabel": "Onderwerp",
+    "topicPlaceholder": "bijv. 5 manieren waarop AI-agents tijd besparen",
+    "platformLabel": "Platform",
+    "generateButton": "Script & hooks genereren",
+    "generateFailed": "Genereren mislukt.",
+    "unknownError": "Onbekende fout."
+  },
+  "hookTypes": {
+    "direkt": "Direct",
+    "neugierig": "Nieuwsgierig",
+    "story": "Verhaal",
+    "problem": "Probleem",
+    "zahlen": "Cijfers",
+    "kontroversSachlich": "Controversieel (zakelijk)",
+    "educational": "Educatief"
+  },
+  "hooksHeading": "Hookvarianten",
+  "engine": {
+    "label": "Engine: {provider}",
+    "templateMode": "Sjabloonmodus (geen AI-provider geconfigureerd)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Opslaan als content-item",
+    "saving": "Opslaan…"
+  }
+}

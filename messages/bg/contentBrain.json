@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Влиза една идея — излиза пълен план за съдържание, съобразен с платформите. ContentBrainAgent взема предвид твоя Brand DNA и създава за всяка избрана платформа подходящи hooks, скриптове, хаштагове и концепции за миниатюри като чернова.",
+  "campaignsHeading": "Кампании",
+  "noCampaigns": "Все още няма създадени кампании.",
+  "campaignSummary": "{count} единици съдържание · {audience}",
+  "form": {
+    "textEngineLabel": "Текстов двигател:",
+    "templateMode": "Режим на шаблони (не е конфигуриран доставчик на ИИ)",
+    "modeTemplate": "Шаблон",
+    "topicLabel": "Тема / идея",
+    "topicPlaceholder": "напр. Обясни защо автономните ИИ агенти променят света на труда.",
+    "audienceLabel": "Целева група",
+    "audiencePlaceholder": "напр. 25–45 г., любители на технологиите",
+    "goalLabel": "Цел",
+    "languageLabel": "Език",
+    "platformsLabel": "Платформи",
+    "itemsPerPlatformLabel": "Единици съдържание на платформа ({count})",
+    "generateError": "Генерирането не успя.",
+    "unknownError": "Неизвестна грешка.",
+    "submitLoading": "Content Brain работи…",
+    "submitIdle": "Генерирай план за съдържание",
+    "resultHeading": "Кампанията е създадена — {count} единици съдържание са добавени като чернова.",
+    "resultDescription": "Генерирано в режим {mode}. Цялото съдържание започва като DRAFT — прегледай и редактирай го в Content Factory.",
+    "resultLink": "Към Content Factory →"
+  }
+}

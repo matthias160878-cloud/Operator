@@ -1,0 +1,22 @@
+{
+  "title": "Idei și inspirație",
+  "subtitle": "Clustere de teme, serii și formate pentru conținutul viitor — generate de IdeaAgent sau introduse manual.",
+  "board": {
+    "topicLabel": "Tema pentru idei noi",
+    "topicPlaceholder": "de ex. Productivitate cu agenți IA",
+    "generateButton": "Generează idei",
+    "manualButton": "Manual",
+    "manualTitlePlaceholder": "Titlul ideii",
+    "addButton": "Adaugă",
+    "generateError": "Eroare la generarea ideilor.",
+    "unknownError": "Eroare necunoscută.",
+    "emptyState": "Încă nu există idei — generează câteva sau adaugă manual.",
+    "minutesUnit": "~{count} min.",
+    "statusNew": "Nou",
+    "statusInProgress": "În lucru",
+    "statusUsed": "Folosit",
+    "statusArchived": "Arhivat",
+    "sourceAiGenerated": "Generat de IA",
+    "sourceManual": "Manual"
+  }
+}

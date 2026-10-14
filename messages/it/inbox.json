@@ -1,0 +1,26 @@
+{
+  "title": "Posta in arrivo",
+  "description": "Messaggi e commenti da tutte le piattaforme. MessageAgent propone le risposte: viene inviato solo ciò che approvi. Non esiste ancora una vera connessione OAuth con una piattaforma, quindi le conversazioni vengono simulate manualmente qui invece di essere recuperate in tempo reale.",
+  "emptyState": "Ancora nessuna conversazione: simulane una per iniziare.",
+  "backToInbox": "Torna alla posta in arrivo",
+  "newConversation": {
+    "simulateButton": "Simula conversazione",
+    "simulateHint": "Poiché non esiste una vera connessione con una piattaforma, qui puoi simulare un messaggio in arrivo per provare la bozza di risposta generata dall'IA.",
+    "close": "Chiudi",
+    "namePlaceholder": "Nome",
+    "handlePlaceholder": "@handle (facoltativo)",
+    "messagePlaceholder": "Testo del messaggio …",
+    "createButton": "Crea"
+  },
+  "detail": {
+    "draftFailed": "Bozza non riuscita.",
+    "save": "Salva",
+    "edit": "Modifica",
+    "approveAndSend": "Approva e invia",
+    "requestDraft": "Richiedi bozza di risposta IA",
+    "openDraftExists": "C'è già una bozza aperta qui sopra: prima modificala/inviala.",
+    "simulateMoreHint": "Simula un altro messaggio in arrivo (test senza vera connessione alla piattaforma):",
+    "messagePlaceholder": "Testo del messaggio …",
+    "addButton": "Aggiungi"
+  }
+}

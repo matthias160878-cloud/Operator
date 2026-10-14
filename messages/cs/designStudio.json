@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Koncepty thumbnailů, obrazové assety a integrace Canva.",
+  "imageAssetsTitle": "Obrazové assety",
+  "imageAssetsEmpty": "Zatím nejsou k dispozici žádné obrazové assety.",
+  "thumbnailAgent": {
+    "title": "Thumbnail agent",
+    "description": "Vytvoří textový koncept (název, vizuální nápad, rozvržení, CTA) — připravený pro napojení generátoru obrázků. Zatím se žádný obrázek nevytváří.",
+    "inputPlaceholder": "Téma thumbnailu",
+    "submitButton": "Vygenerovat koncept",
+    "errorGenerationFailed": "Generování se nezdařilo.",
+    "errorUnknown": "Neznámá chyba.",
+    "fieldTitle": "Název",
+    "fieldVisualIdea": "Vizuální nápad",
+    "fieldText": "Text",
+    "fieldLayout": "Rozvržení",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Popis obrázku"
+  }
+}

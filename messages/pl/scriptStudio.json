@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Silnik skryptów i hooków: tworzy skrypty dopasowane do platform według struktury Hook → Problem → Value → Example → Payoff → CTA oraz kilka wariantów hooka.",
+  "form": {
+    "topicLabel": "Temat",
+    "topicPlaceholder": "np. 5 sposobów, jak agenci AI oszczędzają czas",
+    "platformLabel": "Platforma",
+    "generateButton": "Generuj skrypt i hooki",
+    "generateFailed": "Generowanie nie powiodło się.",
+    "unknownError": "Nieznany błąd."
+  },
+  "hookTypes": {
+    "direkt": "Bezpośredni",
+    "neugierig": "Wzbudzający ciekawość",
+    "story": "Historia",
+    "problem": "Problem",
+    "zahlen": "Liczby",
+    "kontroversSachlich": "Kontrowersyjny (rzeczowo)",
+    "educational": "Edukacyjny"
+  },
+  "hooksHeading": "Warianty hooka",
+  "engine": {
+    "label": "Silnik: {provider}",
+    "templateMode": "Tryb szablonu (nie skonfigurowano dostawcy AI)"
+  },
+  "script": {
+    "heading": "Skrypt",
+    "save": "Zapisz jako element treści",
+    "saving": "Zapisywanie…"
+  }
+}

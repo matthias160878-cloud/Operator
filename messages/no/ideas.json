@@ -1,0 +1,22 @@
+{
+  "title": "Ideer og inspirasjon",
+  "subtitle": "Temaklynger, serier og formater for kommende innhold — generert av IdeaAgent eller lagt inn manuelt.",
+  "board": {
+    "topicLabel": "Tema for nye ideer",
+    "topicPlaceholder": "f.eks. Produktivitet med KI-agenter",
+    "generateButton": "Generer ideer",
+    "manualButton": "Manuelt",
+    "manualTitlePlaceholder": "Idétittel",
+    "addButton": "Legg til",
+    "generateError": "Feil under ideegenerering.",
+    "unknownError": "Ukjent feil.",
+    "emptyState": "Ingen ideer ennå — generer noen eller legg inn manuelt.",
+    "minutesUnit": "~{count} min.",
+    "statusNew": "Ny",
+    "statusInProgress": "Under arbeid",
+    "statusUsed": "Brukt",
+    "statusArchived": "Arkivert",
+    "sourceAiGenerated": "KI-generert",
+    "sourceManual": "Manuell"
+  }
+}

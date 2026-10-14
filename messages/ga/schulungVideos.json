@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Físeán oiliúna",
+  "subtitlesLabel": "Fotheidil",
+  "subtitlesOff": "As",
+  "soundLabel": "Fuaim",
+  "soundOn": "Guth léitheoireachta air",
+  "soundOff": "Guth léitheoireachta as",
+  "soundHint": "Tagann an guth léitheoireachta ó do bhrabhsálaí. Braitheann na teangacha atá ar fáil ar do ghléas.",
+  "soundMissing": "Níl aon ghuth suiteáilte don teanga seo ar do ghléas. Oibríonn na fotheidil fós.",
+  "draftNote": "Dréacht: taifeadadh den fhíoraip le sonraí tástála. Fotheidil aistrithe go meaisín.",
+  "whatLabel": "Cad é, cén fheidhm atá leis agus conas a dhéanann tú é.",
+  "videosTitle": "Físeáin mhínithe do gach limistéar",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Céimeanna tosaigh",
+      "cues": {
+        "c1": "Fáilte chuig an oiliúint: Céimeanna tosaigh. Is é an fhíoraip le sonraí tástála gach rud a fheiceann tú.",
+        "c2": "Ar chlé tá an nascleanúint. Tá iontráil anseo do gach limistéar den aip.",
+        "c3": "Céim 1: Seiceáil faoi “Comhtháthuithe” cé acu seirbhísí atá nasctha.",
+        "c4": "Taispeánann gach sraith an stádas fíor, seiceáilte – gan aon nasc bréagach go deo.",
+        "c5": "Ciallaíonn “Gan cumrú”: níl an tseirbhís seo socraithe go fóill. Gan soláthraí AI oibríonn an aip sa mhód teimpléid.",
+        "c6": "Céim 2: Cuir isteach do bhranda faoi “Brand DNA”. Téann tonn, spriocghrúpa agus luachanna isteach i ngach téacs a ghintear.",
+        "c7": "Sampla: líon isteach an tionscal agus an spriocghrúpa agus sábháil thíos.",
+        "c8": "Céim 3: Faoi “Smaointe & Inspioráid” gin an chéad smaoineamh. Cuir téama isteach agus cliceáil ar “Gin smaointe”.",
+        "c9": "Feictear na smaointe mar chártaí. Sa mhód teimpléid is samplaí iad, le soláthraí AI beidh siad pearsanta.",
+        "c10": "Fanann gach rud ina dhréacht go bhformheasfaidh tú é. Tá físeán míniúcháin ar leith ann do gach limistéar."
+      }
+    },
+    "dashboard": {
+      "title": "Painéal",
+      "cues": {
+        "c1": "Is é an Painéal do leathanach baile: forbhreathnú ar gach a bhfuil ag tarlú i do spás oibre.",
+        "c2": "Ag an mbarr feiceann tú gníomhairí gníomhacha, táirgeadh inneachair agus postálacha pleanáilte.",
+        "c3": "Níos ísle síos tá an ghníomhaíocht dheireanach agus aicearraí chuig Content Factory agus Brand DNA.",
+        "c4": "Le “Seachtain” athraíonn tú tréimhse na dtáscairí.",
+        "c5": "Seo mar a úsáideann tú é: oscail an Painéal gach lá, seiceáil dréachtaí oscailte agus léim as seo go díreach chuig an limistéar cuí."
+      }
+    },
+    "schulung": {
+      "title": "Oiliúint",
+      "cues": {
+        "c1": "Is í an Oiliúint do threoir sa aip. Míníonn sí gach limistéar céim ar chéim.",
+        "c2": "Tá cur síos, céimeanna uimhrithe agus nasc ag gach téama a osclaíonn an leathanach cuí.",
+        "c3": "Feictear na físeáin mhínithe seo anseo freisin, ceann do gach limistéar.",
+        "c4": "Seo mar a úsáideann tú é: roghnaigh téama, léigh na céimeanna, oscail an leathanach agus bain triail as láithreach."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Is í an Content Factory an binse oibre do do mhíreanna inneachair ar fad in aon áit.",
+        "c2": "Feidhm: míreanna a chruthú, a dhúbailt, a athscríobh, voiceover agus fotheidil a chur leo agus iad a threorú tríd an sreabhadh oibre formheasa.",
+        "c3": "Taispeánann na scagairí ag an mbarr na stádais: Dréacht, Á athbhreithniú, Formheasta, Pleanáilte, Foilsithe agus Cartlannaithe.",
+        "c4": "Seo mar a oibríonn sé: le “Mír inneachair nua” cruthaíonn tú mír.",
+        "c5": "Oscail mír chun script, voiceover, fotheidil, hashtaganna agus mionsamhail a chur in eagar.",
+        "c6": "Is céim láimhe i gcónaí é an formheas. Ní fhoilsítear faic gan do dheimhniú."
+      }
+    },
+    "ideas": {
+      "title": "Smaointe & Inspioráid",
+      "cues": {
+        "c1": "Anseo bailíonn tú smaointe: braislí téamaí, sraitheanna agus formáidí d’inneachar atá le teacht.",
+        "c2": "Feidhm: cruthaíonn an IdeaAgent smaointe ar théama, nó cuireann tú isteach do smaointe féin de láimh.",
+        "c3": "Seo mar a oibríonn sé: cuir téama isteach, roghnaigh ardán, sprioc agus formáid agus cliceáil ar “Gin smaointe”.",
+        "c4": "Éiríonn gach smaoineamh ina chárta le teideal, grabóir agus tosaíocht.",
+        "c5": "Le “De láimh” cruthaíonn tú smaoineamh féin.",
+        "c6": "Úsáideann tú smaointe maithe mar phointe tosaigh don Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Déanann an Content Brain plean inneachair iomlán as smaoineamh.",
+        "c2": "Feidhm: cuireann sé do Brand DNA san áireamh agus cruthaíonn sé hooks, scripteanna, hashtaganna agus coincheapa mionsamhlacha mar dhréacht do gach ardán roghnaithe.",
+        "c3": "Seo mar a oibríonn sé: cuir téama agus spriocghrúpa isteach.",
+        "c4": "Roghnaigh sprioc agus teanga, ansin cliceáil ar na hardáin. Anseo cuirtear TikTok leis.",
+        "c5": "Leis an sleamhnán socraíonn tú cé mhéad mír inneachair a chruthófar do gach ardán.",
+        "c6": "Tosaíonn cliceáil ar “Gin plean inneachair” an rith.",
+        "c7": "Feictear an feachtas thíos. Is dréachtaí gach mír agus tá siad sa Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Déanann an Brand DNA cur síos ar do bhranda: ainm, tionscal, spriocghrúpa, tonn agus luachanna.",
+        "c2": "Feidhm: téann na sonraí seo go huathoibríoch isteach i Content Brain agus sna gníomhairí scripte, hook agus hashtag.",
+        "c3": "Seo mar a oibríonn sé: líon isteach na réimsí, mar shampla tionscal agus spriocghrúpa.",
+        "c4": "Níos ísle síos cothaíonn tú focail is fearr agus focail toirmiscthe, glaonna ar ghníomh agus luachanna an bhranda.",
+        "c5": "Ag an deireadh cliceálann tú ar “Sábháil Brand DNA”."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Is é an Script Studio an cheardlann do scripteanna agus hooks.",
+        "c2": "Feidhm: tógann sé scripteanna de réir an struchtúir Hook, Fadhb, Tairbhe, Sampla, Toradh agus Glao ar ghníomh agus soláthraíonn sé roinnt leaganacha hook.",
+        "c3": "Seo mar a oibríonn sé: cuir téama isteach agus roghnaigh an t-ardán.",
+        "c4": "Ansin cliceáil ar “Gin script & hooks”.",
+        "c5": "Is dréacht é an toradh a leanann tú ag úsáid sa Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Bainistíonn an Voice Studio guthanna agus cruthaíonn sé voiceover.",
+        "c2": "Feidhm: an Voice Library a chothú, réamhamhairc a chruthú agus guthanna a iompórtáil. Ritheann an nasc trí ElevenLabs.",
+        "c3": "Seo mar a oibríonn sé: cruthaigh guth de láimh nó iompórtáil ó ElevenLabs é. Teastaíonn nasc socraithe don iompórtáil.",
+        "c4": "Le téacs agus guth cruthaíonn tú réamhamharc agus seinneann tú é."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Is é an Video Studio píblíne físe na haipe.",
+        "c2": "Feidhm: Format Manager, soláthraithe físe in-malartaithe agus nasc voiceover agus fotheidil.",
+        "c3": "Taispeánann an leathanach cé acu soláthraithe atá socraithe. Marcáiltear iad nach bhfuil socraithe go hionraic mar sin.",
+        "c4": "Seo mar a oibríonn sé: cruthaíonn tú físeáin do gach mír inneachair sa Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Soláthraíonn an Design Studio coincheapa mionsamhlacha agus sócmhainní íomhá.",
+        "c2": "Feidhm: molann an gníomhaire mionsamhlacha teideal, smaoineamh íomhá, téacs agus leagan amach. Tá comhtháthú Canva beartaithe anseo.",
+        "c3": "Seo mar a oibríonn sé: cuir téama don mhionsamhail isteach.",
+        "c4": "Cliceáil ar “Gin coincheap”.",
+        "c5": "Feidhmíonn an coincheap mar theimpléad do d’íomhá."
+      }
+    },
+    "socialMedia": {
+      "title": "Meáin shóisialta",
+      "cues": {
+        "c1": "Anseo nascann tú do chuntais ardáin agus feiceann tú a stádas.",
+        "c2": "Feidhm: bainistítear rochtana ar thaobh an fhreastalaí agus stóráiltear go criptithe iad. Logálann tú isteach ar an ardán trí Composio.",
+        "c3": "Taispeánann gach cárta an t-ardán, an cuntas, an stádas agus an tástáil léite dheireanach.",
+        "c4": "Ciallaíonn “Gan socrú go fóill”: níl an nasc gníomhachtaithe ag an oibreoir ar an bhfreastalaí go fóill.",
+        "c5": "Seo mar a oibríonn sé: a luaithe a bheidh sé socraithe, cliceálann tú ar “Nasc” ag an ardán agus logálann tú isteach. Ní léitear ach, ní fhoilsítear faic."
+      }
+    },
+    "calendar": {
+      "title": "Féilire Inneachair",
+      "cues": {
+        "c1": "Taispeánann an Féilire Inneachair forbhreathnú ar inneachar pleanáilte agus foilsithe.",
+        "c2": "Feidhm: feictear gach mír inneachair a bhfuil dáta foilsithe aici anseo, in-scagtha de réir ardáin.",
+        "c3": "Seo mar a oibríonn sé: pleanáil mír sa Content Factory le dáta, ansin feictear anseo í.",
+        "c4": "Roimh gach foilsiú seiceálann an aip beo an bhfuil an t-ardán sprice nasctha."
+      }
+    },
+    "analytics": {
+      "title": "Anailísíocht",
+      "cues": {
+        "c1": "Taispeánann an Anailísíocht do tháscairí feidhmíochta.",
+        "c2": "Feidhm: sonraí atá ann i ndáiríre amháin, iompórtáilte nó taifeadta agat. Níl faic cumtha.",
+        "c3": "Feiceann tú an fhorbairt thar am, an t-inneachar is fearr feidhmíocht agus moltaí an Learning Agent.",
+        "c4": "Seo mar a oibríonn sé: a luaithe a bheidh ardáin nasctha nó a chuirfidh tú sonraí isteach, líonfar na cairteacha."
+      }
+    },
+    "growth": {
+      "title": "Fás",
+      "cues": {
+        "c1": "Tugann an leathanach Fáis moltaí le haghaidh sroicheadh níos mó.",
+        "c2": "Feidhm: ríomhann sé na hamanna postála is fearr, hashtaganna rathúla agus formáidí ó do fhíorshonraí anailísíochta.",
+        "c3": "Seo mar a oibríonn sé: roghnaigh ardán agus léigh na moltaí.",
+        "c4": "Moltaí atá ann, ní uathoibriú. Ní mhéadaítear leantóirí ná idirghníomhaíochtaí go saorga."
+      }
+    },
+    "revenue": {
+      "title": "Ioncam",
+      "cues": {
+        "c1": "Faoi Ioncam tugann tú d’fháltais le chéile ar fud ardán agus feachtas.",
+        "c2": "Feidhm: ní bheidh méideanna le feiceáil ach nuair a chuireann tú isteach iad. Níl aon uimhreacha cumtha ann.",
+        "c3": "Seo mar a oibríonn sé: cliceáil ar “Taifead ioncam”, roghnaigh ardán agus cineál agus cuir isteach an méid.",
+        "c4": "Íoctar i gcónaí go díreach tríd an ardán. Ní láimhseálann SECRET 58 aon íocaíochtaí."
+      }
+    },
+    "sales": {
+      "title": "Díolacháin & Siopa",
+      "cues": {
+        "c1": "Taispeánann “Díolacháin & Siopa” d’ioncam gnó féin.",
+        "c2": "Feidhm: tá sé scartha ó do phacáiste SECRET 58. Ní chomhaireamhtar ach díolacháin iarbhír, marcáiltear sonraí tástála.",
+        "c3": "Ag an mbarr tá na suimeanna do gach airgeadra, thíos faoi sin do shonraí soláthraí don fhógra dlíthiúil.",
+        "c4": "Rogha B: díol trí SECRET 58. Rogha A: siopa atá ann cheana a iompórtáil.",
+        "c5": "Seo mar a oibríonn sé: líon isteach agus sábháil na sonraí soláthraí, ansin roghnaigh an bealach díolacháin."
+      }
+    },
+    "website": {
+      "title": "Mo shuíomh gréasáin",
+      "cues": {
+        "c1": "Anseo cuimsíonn tú an cúntóir suímh ghréasáin i do shuíomh gréasáin féin.",
+        "c2": "Feidhm: freagraíonn an cúntóir ceisteanna do chuairteoirí.",
+        "c3": "Ní athraímid do shuíomh gréasáin go huathoibríoch. Cuireann tú an cód isteach tú féin nó iarrann tú ar do dhearthóir gréasáin é a chur isteach.",
+        "c4": "Seo mar a oibríonn sé: cuir an seoladh gréasáin isteach agus cliceáil ar “Cuir suíomh gréasáin leis”.",
+        "c5": "Ina dhiaidh sin cóipeálann tú an cód a thaispeántar isteach i do shuíomh gréasáin."
+      }
+    },
+    "inbox": {
+      "title": "Bosca isteach",
+      "cues": {
+        "c1": "Bailíonn an Bosca isteach teachtaireachtaí agus tuairimí ó gach ardán.",
+        "c2": "Feidhm: molann an MessageAgent freagraí. Ní sheoltar ach an méid a fhormheasann tú.",
+        "c3": "Seo mar a oibríonn sé: fad nach bhfuil ardán nasctha beo, cliceálann tú ar “Insamhail comhrá”.",
+        "c4": "Seiceáil an moladh freagra, coigeartaigh é agus formheas é."
+      }
+    },
+    "agents": {
+      "title": "Gníomhairí",
+      "cues": {
+        "c1": "Taispeánann an Monatóir Gníomhairí gach gníomhaire de chuid SECRET 58.",
+        "c2": "Feidhm: stádas, an tasc deireanach agus toradh gach gníomhaire. Logáiltear gach rith.",
+        "c3": "I Stair na rith feiceann tú cad a ritheadh agus cathain agus ar éirigh leis.",
+        "c4": "Seo mar a úsáideann tú é: seiceáil anseo nuair nach ndearnadh rud mar a bhíothas ag súil leis."
+      }
+    },
+    "integrations": {
+      "title": "Comhtháthuithe",
+      "cues": {
+        "c1": "Anseo feiceann tú stádas beo na seirbhísí seachtracha ar fad.",
+        "c2": "Feidhm: tá gach sraith bunaithe ar na rochtana atá socraithe i ndáiríre. Níl aon naisc bhréagacha ann.",
+        "c3": "Seo na grúpaí: Soláthraithe AI, Guth, Ardáin shóisialta, Dearadh, Físeán agus Treochtaí.",
+        "c4": "Seo mar a oibríonn sé: ag “Gan cumrú” seolann “Faigh eochair API” chuig leathanach an tsoláthraí thú.",
+        "c5": "Tá a bpraghsanna féin ag soláthraithe seachtracha. Luaitear le gach seirbhís cén múnla atá i bhfeidhm."
+      }
+    },
+    "billing": {
+      "title": "Pacáiste & Billeáil",
+      "cues": {
+        "c1": "Faoi “Pacáiste & Billeáil” feiceann tú do phacáiste agus is féidir leat é a athrú.",
+        "c2": "Feidhm: ritheann na feidhmeanna AI trí rochtana an oibreora. Níl síntiús AI féin de dhíth ort.",
+        "c3": "Tá Pro agus Maxi ann, míosúil nó bliantúil. Taispeántar na praghsanna glan ar na cártaí.",
+        "c4": "Ní cheannaítear ach le cliceáil dhearfa ar “Ordaigh le híocaíocht éigeantach”.",
+        "c5": "Má tá cód promo agat, úsáideann tú é sa réimse thíos faoi."
+      }
+    },
+    "settings": {
+      "title": "Socruithe",
+      "cues": {
+        "c1": "Sna Socruithe bainistíonn tú spás oibre, úsáideoirí agus faisnéis chórais.",
+        "c2": "Feidhm: spás oibre, róil, stádas córais, cúntóir socraithe agus do shonraí le faisnéis agus scriosadh.",
+        "c3": "Seo mar a oibríonn sé: scrollaigh trí na codanna. Teastaíonn deimhniú breise chun an spás oibre a scriosadh.",
+        "c4": "Seiceáil do shonraí agus an cúntóir socraithe anseo go rialta."
+      }
+    }
+  }
+}

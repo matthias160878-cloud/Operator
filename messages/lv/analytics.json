@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Veiktspējas rādītāji no faktiski pieejamiem datiem — tiklīdz platformas ir pievienotas, šis skats piepildīsies ar reālām vērtībām.",
+  "statViewsTotal": "Skatījumi kopā",
+  "statLikesTotal": "Patīk atzīmes kopā",
+  "statComments": "Komentāri",
+  "statShares": "Kopīgojumi",
+  "chartTitle": "Satura veiktspēja laika gaitā",
+  "chartLegend": "Skatījumi (violets) · Iesaiste % (tirkīzzils)",
+  "chartEmpty": "Analytics datu vēl nav.",
+  "bestPerformingTitle": "Veiksmīgākais saturs",
+  "bestPerformingEmpty": "Datu vēl nav.",
+  "learningAgentTitle": "Learning Agent — ieteikumi"
+}

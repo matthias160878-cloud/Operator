@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Opplæringsvideo",
+  "subtitlesLabel": "Undertekster",
+  "subtitlesOff": "Av",
+  "soundLabel": "Lyd",
+  "soundOn": "Opplesningsstemme på",
+  "soundOff": "Opplesningsstemme av",
+  "soundHint": "Opplesningsstemmen kommer fra nettleseren din. Hvilke språk som er tilgjengelige, avhenger av enheten din.",
+  "soundMissing": "For dette språket er det ikke installert noen stemme på enheten din. Underteksten fungerer likevel.",
+  "draftNote": "Utkast: Opptak av den ekte appen med testdata. Undertekster maskinoversatt.",
+  "whatLabel": "Hva det er, hvilken funksjon det har og hvordan du bruker det.",
+  "videosTitle": "Forklaringsvideoer for hvert område",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Kom i gang",
+      "cues": {
+        "c1": "Velkommen til opplæringen: Kom i gang. Alt du ser, er den ekte appen med testdata.",
+        "c2": "Til venstre er navigasjonen. Hvert område i appen har en oppføring her.",
+        "c3": "Trinn 1: Sjekk under «Integrasjoner» hvilke tjenester som er koblet til.",
+        "c4": "Hver rad viser den ekte, kontrollerte statusen – aldri en oppdiktet tilkobling.",
+        "c5": "«Ikke konfigurert» betyr: Denne tjenesten er ikke satt opp ennå. Uten KI-leverandør jobber appen i malmodus.",
+        "c6": "Trinn 2: Legg inn merkevaren din under «Brand DNA». Tone, målgruppe og verdier brukes i hver generert tekst.",
+        "c7": "Eksempel: Fyll ut bransje og målgruppe og lagre nederst.",
+        "c8": "Trinn 3: La den første ideen genereres under «Ideer og inspirasjon». Skriv inn et tema og klikk på «Generer ideer».",
+        "c9": "Ideene vises som kort. I malmodus er det eksempler, med KI-leverandør blir de individuelle.",
+        "c10": "Alt forblir et utkast til du godkjenner det. For hvert område finnes det en egen forklaringsvideo."
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "cues": {
+        "c1": "Dashboardet er startsiden din: oversikten over alt som skjer i arbeidsområdet ditt.",
+        "c2": "Øverst ser du aktive agenter, innholdsproduksjon og planlagte innlegg.",
+        "c3": "Lenger ned står de siste aktivitetene og snarveier til Content Factory og Brand DNA.",
+        "c4": "Med «Uke» bytter du tidsrommet for nøkkeltallene.",
+        "c5": "Slik bruker du det: Åpne dashboardet daglig, sjekk åpne utkast og hopp herfra rett til det aktuelle området."
+      }
+    },
+    "schulung": {
+      "title": "Opplæring",
+      "cues": {
+        "c1": "Opplæringen er veiledningen din i appen. Den forklarer hvert område trinn for trinn.",
+        "c2": "Hvert tema har en beskrivelse, nummererte trinn og en lenke som åpner den aktuelle siden.",
+        "c3": "Her vises også disse forklaringsvideoene, én for hvert område.",
+        "c4": "Slik bruker du det: Velg et tema, les trinnene, åpne siden og prøv det med en gang."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory er arbeidsbenken for alle innholdselementene dine på ett sted.",
+        "c2": "Funksjon: Opprett, dupliser og skriv om elementer, utvid dem med voiceover og undertekster og før dem gjennom godkjenningsflyten.",
+        "c3": "Filtrene øverst viser statusene: Utkast, Til vurdering, Godkjent, Planlagt, Publisert og Arkivert.",
+        "c4": "Slik gjør du det: Med «Nytt innholdselement» oppretter du et element.",
+        "c5": "Åpne et element for å redigere script, voiceover, undertekster, hashtags og thumbnail.",
+        "c6": "Godkjenning er alltid et manuelt trinn. Ingenting publiseres uten din bekreftelse."
+      }
+    },
+    "ideas": {
+      "title": "Ideer og inspirasjon",
+      "cues": {
+        "c1": "Her samler du ideer: temaklynger, serier og formater for kommende innhold.",
+        "c2": "Funksjon: IdeaAgent lager ideer til et tema, eller du legger inn egne ideer for hånd.",
+        "c3": "Slik gjør du det: Skriv inn tema, velg plattform, mål og format, og klikk på «Generer ideer».",
+        "c4": "Hver idé blir et kort med tittel, vinkling og prioritet.",
+        "c5": "Med «Manuelt» oppretter du en egen idé.",
+        "c6": "Gode ideer tar du som utgangspunkt for Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain gjør en idé om til en komplett innholdsplan.",
+        "c2": "Funksjon: Den tar hensyn til din Brand DNA og lager hooks, scripts, hashtags og thumbnail-konsepter som utkast for hver valgt plattform.",
+        "c3": "Slik gjør du det: Skriv inn tema og målgruppe.",
+        "c4": "Velg mål og språk, og klikk deretter på plattformene. Her legges TikTok til.",
+        "c5": "Med glidebryteren bestemmer du hvor mange innholdselementer som lages per plattform.",
+        "c6": "Et klikk på «Generer innholdsplan» starter kjøringen.",
+        "c7": "Kampanjen vises nederst. Alle elementer er utkast og ligger i Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA beskriver merkevaren din: navn, bransje, målgruppe, tone og verdier.",
+        "c2": "Funksjon: Disse opplysningene brukes automatisk i Content Brain og i script-, hook- og hashtag-agentene.",
+        "c3": "Slik gjør du det: Fyll ut feltene, for eksempel bransje og målgruppe.",
+        "c4": "Lenger ned vedlikeholder du foretrukne og forbudte ord, oppfordringer til handling og merkeverdier.",
+        "c5": "Til slutt klikker du på «Lagre Brand DNA»."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio er verkstedet for script og hooks.",
+        "c2": "Funksjon: Det bygger script etter strukturen hook, problem, nytte, eksempel, resultat og oppfordring til handling, og gir flere hook-varianter.",
+        "c3": "Slik gjør du det: Skriv inn tema og velg plattform.",
+        "c4": "Klikk deretter på «Generer script og hooks».",
+        "c5": "Resultatet er et utkast som du bruker videre i Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio administrerer stemmer og lager voiceover.",
+        "c2": "Funksjon: Vedlikehold stemmebiblioteket, lag forhåndsvisninger og importer stemmer. Tilkoblingen går via ElevenLabs.",
+        "c3": "Slik gjør du det: Opprett en stemme manuelt eller importer fra ElevenLabs. Importen krever en oppsatt tilkobling.",
+        "c4": "Med en tekst og en stemme lager du en forhåndsvisning og spiller den av."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio er videopipelinen i appen.",
+        "c2": "Funksjon: Formatbehandler, utskiftbare videoleverandører samt tilkobling av voiceover og undertekster.",
+        "c3": "Siden viser hvilke leverandører som er satt opp. De som ikke er satt opp, merkes ærlig som det.",
+        "c4": "Slik gjør du det: Du lager videoer per innholdselement i Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio leverer thumbnail-konsepter og bildeelementer.",
+        "c2": "Funksjon: Thumbnail-agenten foreslår tittel, bildeidé, tekst og layout. Canva-integrasjonen er planlagt her.",
+        "c3": "Slik gjør du det: Skriv inn et tema for thumbnailen.",
+        "c4": "Klikk på «Generer konsept».",
+        "c5": "Konseptet fungerer som mal for bildet ditt."
+      }
+    },
+    "socialMedia": {
+      "title": "Sosiale medier",
+      "cues": {
+        "c1": "Her kobler du til plattformkontoene dine og ser statusen deres.",
+        "c2": "Funksjon: Tilganger administreres på serversiden og lagres kryptert. Via Composio logger du inn på plattformen.",
+        "c3": "Hvert kort viser plattform, konto, status og siste lesetest.",
+        "c4": "«Ikke satt opp ennå» betyr: Operatøren har ikke aktivert tilkoblingen på serveren ennå.",
+        "c5": "Slik gjør du det: Så snart den er satt opp, klikker du på «Koble til» ved plattformen og logger inn. Det leses bare, ingenting publiseres."
+      }
+    },
+    "calendar": {
+      "title": "Innholdskalender",
+      "cues": {
+        "c1": "Innholdskalenderen viser planlagt og publisert innhold i oversikt.",
+        "c2": "Funksjon: Alle innholdselementer med publiseringsdato vises her, filtrerbare etter plattform.",
+        "c3": "Slik gjør du det: Planlegg et element i Content Factory med dato, så vises det her.",
+        "c4": "Før hver publisering sjekker appen live om målplattformen er tilkoblet."
+      }
+    },
+    "analytics": {
+      "title": "Analytics",
+      "cues": {
+        "c1": "Analytics viser ytelsestallene dine.",
+        "c2": "Funksjon: Bare faktisk tilgjengelige data, importert eller registrert av deg. Ingenting er oppdiktet.",
+        "c3": "Du ser utviklingen over tid, det best presterende innholdet og anbefalinger fra Learning Agent.",
+        "c4": "Slik gjør du det: Så snart plattformer er koblet til eller du legger inn data, fylles diagrammene."
+      }
+    },
+    "growth": {
+      "title": "Vekst",
+      "cues": {
+        "c1": "Vekstsiden gir anbefalinger for mer rekkevidde.",
+        "c2": "Funksjon: Ut fra dine ekte analytics-data beregner den beste publiseringstidspunkter, vellykkede hashtags og formater.",
+        "c3": "Slik gjør du det: Velg plattform og les anbefalingene.",
+        "c4": "Dette er anbefalinger, ingen automatikk. Følgere eller interaksjoner økes ikke kunstig."
+      }
+    },
+    "revenue": {
+      "title": "Inntekter",
+      "cues": {
+        "c1": "Under Inntekter samler du inntektene dine på tvers av plattformer og kampanjer.",
+        "c2": "Funksjon: Beløp vises først når du registrerer dem. Det finnes ingen oppdiktede tall.",
+        "c3": "Slik gjør du det: Klikk på «Registrer inntekt», velg plattform og type og skriv inn beløpet.",
+        "c4": "Utbetaling skjer alltid direkte via plattformen. SECRET 58 håndterer ingen utbetalinger."
+      }
+    },
+    "sales": {
+      "title": "Salg og butikk",
+      "cues": {
+        "c1": "«Salg og butikk» viser dine egne forretningsinntekter.",
+        "c2": "Funksjon: De er adskilt fra SECRET 58-pakken din. Det telles bare faktiske salg, testdata er merket.",
+        "c3": "Øverst står summene per valuta, under dem dine leverandøropplysninger for den juridiske informasjonen.",
+        "c4": "Alternativ B: Selg via SECRET 58. Alternativ A: Importer en eksisterende butikk.",
+        "c5": "Slik gjør du det: Fyll ut leverandøropplysningene og lagre, og velg deretter salgsveien."
+      }
+    },
+    "website": {
+      "title": "Nettsiden min",
+      "cues": {
+        "c1": "Her kobler du nettsideassistenten inn på din egen nettside.",
+        "c2": "Funksjon: Assistenten svarer på spørsmål fra besøkende.",
+        "c3": "Vi endrer ikke nettsiden din automatisk. Du limer inn koden selv eller lar webdesigneren din gjøre det.",
+        "c4": "Slik gjør du det: Skriv inn nettadressen og klikk på «Legg til nettside».",
+        "c5": "Deretter kopierer du koden som vises, inn på nettsiden din."
+      }
+    },
+    "inbox": {
+      "title": "Innboks",
+      "cues": {
+        "c1": "Innboksen samler meldinger og kommentarer fra alle plattformer.",
+        "c2": "Funksjon: MessageAgent foreslår svar. Bare det du godkjenner, blir sendt.",
+        "c3": "Slik gjør du det: Så lenge ingen plattform er koblet til live, klikker du på «Simuler samtale».",
+        "c4": "Se over svarforslaget, tilpass det og godkjenn det."
+      }
+    },
+    "agents": {
+      "title": "Agenter",
+      "cues": {
+        "c1": "Agent Monitor viser alle SECRET 58-agentene.",
+        "c2": "Funksjon: Status, siste oppgave og resultat for hver agent. Hver kjøring logges.",
+        "c3": "I kjørehistorikken ser du hva som har kjørt når, og om det gikk bra.",
+        "c4": "Slik bruker du det: Sjekk her hvis noe ikke ble generert som forventet."
+      }
+    },
+    "integrations": {
+      "title": "Integrasjoner",
+      "cues": {
+        "c1": "Her ser du live-statusen til alle eksterne tjenester.",
+        "c2": "Funksjon: Hver rad er basert på tilgangene som faktisk er satt. Det finnes ingen oppdiktede tilkoblinger.",
+        "c3": "Gruppene er: KI-leverandører, Voice, Sosiale plattformer, Design, Video og Trender.",
+        "c4": "Slik gjør du det: Ved «Ikke konfigurert» fører «Hent API-nøkkel» til leverandørens side.",
+        "c5": "Eksterne leverandører har sine egne priser. Ved hver tjeneste står det hvilken modell som gjelder."
+      }
+    },
+    "billing": {
+      "title": "Pakke og fakturering",
+      "cues": {
+        "c1": "Under «Pakke og fakturering» ser du pakken din og kan bytte den.",
+        "c2": "Funksjon: KI-funksjonene går via operatørens tilganger. Du trenger ikke noe eget KI-abonnement.",
+        "c3": "Det finnes Pro og Maxi, månedlig eller årlig. Prisene står netto på kortene.",
+        "c4": "Det kjøpes bare ved et uttrykkelig klikk på «Bestill med betalingsplikt».",
+        "c5": "Har du en kampanjekode, løser du den inn i feltet under."
+      }
+    },
+    "settings": {
+      "title": "Innstillinger",
+      "cues": {
+        "c1": "I innstillingene administrerer du arbeidsområde, brukere og systeminformasjon.",
+        "c2": "Funksjon: Workspace, roller, systemstatus, oppsettsassistent og dine data med innsyn og sletting.",
+        "c3": "Slik gjør du det: Bla gjennom avsnittene. Sletting av arbeidsområdet krever en ekstra bekreftelse.",
+        "c4": "Kontroller dataene dine og oppsettsassistenten her jevnlig."
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Agent Monitor",
+  "description": "Az összes SECRET 58 agent állapotukkal, utolsó feladatukkal és eredményükkel. Minden futás naplózva van.",
+  "table": {
+    "agent": "Agent",
+    "description": "Leírás",
+    "status": "Állapot",
+    "lastTask": "Utolsó feladat"
+  },
+  "history": {
+    "title": "Futási előzmények",
+    "agent": "Agent",
+    "task": "Feladat",
+    "status": "Állapot",
+    "start": "Kezdés",
+    "end": "Befejezés",
+    "resultError": "Eredmény / hiba",
+    "empty": "Még nincs agent-futás.",
+    "completed": "Befejezve"
+  }
+}

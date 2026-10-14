@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Kalendář obsahu",
+  "subtitle": "Přehled naplánovaného a publikovaného obsahu.",
+  "weekdays": ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"],
+  "months": [
+    "Leden", "Únor", "Březen", "Duben", "Květen", "Červen",
+    "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"
+  ],
+  "allPlatforms": "Všechny platformy",
+  "moreItems": "+{count} dalších",
+  "listTitle": "Seznam tohoto měsíce",
+  "emptyMonth": "V tomto měsíci nejsou naplánované žádné příspěvky."
+}

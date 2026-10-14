@@ -1,0 +1,24 @@
+{
+  "title": "Integrace",
+  "description": "Živý stav všech externích služeb — výhradně na základě skutečně nastavených proměnných prostředí. Žádná předstíraná připojení.",
+  "categories": {
+    "AI": "Poskytovatelé AI",
+    "VOICE": "Hlas",
+    "PLATFORM": "Sociální platformy",
+    "DESIGN": "Design",
+    "VIDEO": "Video",
+    "TREND": "Trendy"
+  },
+  "costNote": "Kupní cena SECRET 58 je jednorázová a pokrývá software. Každá externí služba zde má vlastní, nezávislý cenový model u příslušného poskytovatele — SECRET 58 za ně nikdy nefakturuje nic navíc.",
+  "links": {
+    "getKey": "Získat API klíč",
+    "setInRender": "Zadat v Render",
+    "viewPricing": "Zobrazit ceny"
+  },
+  "pricing": {
+    "free": "Zdarma",
+    "payAsYouGo": "Dle využití",
+    "subscription": "Předplatné",
+    "unknown": "Cenu ověř u poskytovatele"
+  }
+}

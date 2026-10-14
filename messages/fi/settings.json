@@ -1,0 +1,27 @@
+{
+  "title": "Asetukset",
+  "description": "Työtila, käyttäjät ja järjestelmätiedot. Tunnuksia hallitaan yksinomaan ympäristömuuttujien kautta (katso <code>.env.example</code>).",
+  "workspace": {
+    "title": "Työtila",
+    "name": "Nimi",
+    "slug": "Slug",
+    "createdAt": "Luotu"
+  },
+  "users": {
+    "title": "Käyttäjät ja roolit",
+    "note": "Monivuokraajatietomalli on täysin valmisteltu (työtilojen eristys kaikille tauluille). Oikea kirjautumis-/tunnistautumisnäkymä usealle käyttäjälle on seuraava kehitysvaihe — tällä hetkellä sovellus toimii täsmälleen tällä oletustyötilalla."
+  },
+  "system": {
+    "title": "Järjestelmä",
+    "contentItems": "Sisällöt",
+    "campaigns": "Kampanjat",
+    "mediaAssets": "Mediamateriaalit",
+    "agentRuns": "Agenttiajot",
+    "dbNote": "Tietokanta: SQLite (paikallinen, <code>prisma/dev.db</code>) Prisma ORM:n kautta. Tuotantoa varten vaihda <codeSpaced>DATABASE_URL</codeSpaced> Postgresiin/MySQL:ään (muokkaa providerin arvoa tiedostossa <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Käyttöönottoavustaja",
+    "description": "Pienet vaiheittaiset ikkunat tekoälypalveluille, sosiaalisen median alustoille ja puhesynteesille, jotka näkyvät ensimmäisellä avauskerralla.",
+    "reopen": "Avaa käyttöönottoavustaja uudelleen"
+  }
+}

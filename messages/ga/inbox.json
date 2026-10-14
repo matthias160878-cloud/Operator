@@ -1,0 +1,26 @@
+{
+  "title": "Bosca isteach",
+  "description": "Teachtaireachtaí & tuairimí ar fud gach ardáin. Molann an MessageAgent freagraí — ní sheoltar ach an méid a fhormheasann tú. Níl fíornasc OAuth le hardán ar bith ann go fóill, mar sin déantar comhráite a insamhladh de láimh anseo in ionad iad a fháil beo.",
+  "emptyState": "Gan aon chomhrá go fóill — insamhail ceann chun tosú.",
+  "backToInbox": "Ar ais go dtí an bosca isteach",
+  "newConversation": {
+    "simulateButton": "Insamhail comhrá",
+    "simulateHint": "Ós rud é nach bhfuil fíornasc ardáin ann, is féidir leat teachtaireacht isteach a insamhladh anseo chun triail a bhaint as an dréacht freagra AI.",
+    "close": "Dún",
+    "namePlaceholder": "Ainm",
+    "handlePlaceholder": "@handle (roghnach)",
+    "messagePlaceholder": "Téacs na teachtaireachta …",
+    "createButton": "Cruthaigh"
+  },
+  "detail": {
+    "draftFailed": "Theip ar an dréacht.",
+    "save": "Sábháil",
+    "edit": "Cuir in eagar",
+    "approveAndSend": "Formheas & seol",
+    "requestDraft": "Iarr dréacht freagra AI",
+    "openDraftExists": "Tá dréacht oscailte thuas cheana — cuir in eagar/seol é ar dtús.",
+    "simulateMoreHint": "Insamhail teachtaireacht isteach eile (tástáil gan fíornasc ardáin):",
+    "messagePlaceholder": "Téacs na teachtaireachta …",
+    "addButton": "Cuir leis"
+  }
+}

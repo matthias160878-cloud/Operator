@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "A tua marca. O teu estilo. Em todo o lado. Estes dados fluem automaticamente para o Content Brain e para os agentes de script, hook e hashtags.",
+  "form": {
+    "nameLabel": "Nome da marca",
+    "industryLabel": "Setor",
+    "descriptionLabel": "Descrição",
+    "descriptionHint": "O que distingue a marca?",
+    "audienceLabel": "Público-alvo",
+    "languageLabel": "Idioma",
+    "tonalityLabel": "Tonalidade",
+    "humorLabel": "Humor",
+    "formalityLabel": "Formalidade",
+    "preferredWordsLabel": "Palavras preferidas",
+    "forbiddenWordsLabel": "Palavras proibidas",
+    "preferredCtasLabel": "CTAs preferidos",
+    "brandValuesLabel": "Valores da marca",
+    "topicsLabel": "Temas",
+    "csvHint": "separados por vírgulas",
+    "colorsLabel": "Cores",
+    "colorsHint": "separadas por vírgulas, p. ex. #6D5BFF",
+    "fontsLabel": "Tipos de letra",
+    "visualRulesLabel": "Regras visuais",
+    "saveError": "Falha ao guardar.",
+    "unknownError": "Erro desconhecido.",
+    "saving": "A guardar…",
+    "save": "Guardar Brand DNA",
+    "savedAt": "Guardado às {time}"
+  }
+}

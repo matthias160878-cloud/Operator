@@ -1,0 +1,27 @@
+{
+  "title": "Ustawienia",
+  "description": "Przestrzeń robocza, użytkownicy i informacje o systemie. Dane dostępowe są zarządzane wyłącznie przez zmienne środowiskowe (zob. <code>.env.example</code>).",
+  "workspace": {
+    "title": "Przestrzeń robocza",
+    "name": "Nazwa",
+    "slug": "Slug",
+    "createdAt": "Utworzono"
+  },
+  "users": {
+    "title": "Użytkownicy i role",
+    "note": "Model danych wielu najemców jest w pełni przygotowany (izolacja przestrzeni roboczych dla wszystkich tabel). Prawdziwy interfejs logowania/uwierzytelniania z wieloma użytkownikami to następny etap rozwoju — obecnie aplikacja pracuje dokładnie z tą domyślną przestrzenią roboczą."
+  },
+  "system": {
+    "title": "System",
+    "contentItems": "Elementy treści",
+    "campaigns": "Kampanie",
+    "mediaAssets": "Zasoby multimedialne",
+    "agentRuns": "Uruchomienia agentów",
+    "dbNote": "Baza danych: SQLite (lokalna, <code>prisma/dev.db</code>) przez Prisma ORM. Na produkcji zmień <codeSpaced>DATABASE_URL</codeSpaced> na Postgres/MySQL (dostosuj dostawcę w <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Asystent konfiguracji",
+    "description": "Małe okna krok po kroku dla dostawców AI, platform społecznościowych i syntezy mowy, które pojawiają się przy pierwszym otwarciu.",
+    "reopen": "Otwórz asystenta konfiguracji ponownie"
+  }
+}

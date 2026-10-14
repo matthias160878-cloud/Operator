@@ -1,0 +1,24 @@
+{
+  "title": "Integracje",
+  "description": "Status na żywo wszystkich zewnętrznych usług — wyłącznie na podstawie rzeczywiście ustawionych zmiennych środowiskowych. Żadnych udawanych połączeń.",
+  "categories": {
+    "AI": "Dostawcy AI",
+    "VOICE": "Voice",
+    "PLATFORM": "Platformy społecznościowe",
+    "DESIGN": "Design",
+    "VIDEO": "Wideo",
+    "TREND": "Trendy"
+  },
+  "costNote": "Cena zakupu SECRET 58 jest jednorazowa i obejmuje oprogramowanie. Każda zewnętrzna usługa tutaj ma własny, niezależny model kosztów u danego dostawcy — SECRET 58 nigdy nie wystawia za nią dodatkowych rachunków.",
+  "links": {
+    "getKey": "Pobierz klucz API",
+    "setInRender": "Wpisz w Render",
+    "viewPricing": "Zobacz ceny"
+  },
+  "pricing": {
+    "free": "Bezpłatnie",
+    "payAsYouGo": "Wg zużycia",
+    "subscription": "Abonament",
+    "unknown": "Sprawdź cenę u dostawcy"
+  }
+}

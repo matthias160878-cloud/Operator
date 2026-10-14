@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Geen abonnement. Alle agents. Je eigen AI-aanbieders.",
+  "subtitle": "Eén idee. Meerdere platforms. Maximaal bereik. Eén compleet pakket — eenmalig betalen, volledige toegang tot de hele applicatie.",
+  "features": [
+    "Content Brain — één idee, alle platforms",
+    "Alle AI-agents: ideeën, trends, script, hook, hashtags, thumbnails, ondertitels, publiceren",
+    "Voice Studio met ElevenLabs-stemmen",
+    "Video Studio met formatbeheer — koppeling met AI-videogenerators in ontwikkeling",
+    "Content Factory met goedkeuringsworkflow en contentkalender",
+    "Analytics, groeiaanbevelingen en inkomstentracking",
+    "Inbox met AI-antwoordconcepten",
+    "Vrije keuze van AI-aanbieders via eigen toegangen — geen tegoeden"
+  ],
+  "priceOnetime": "eenmalig",
+  "priceRecommendedNote": "Aanbevolen prijs — wordt definitief zodra Stripe met een passende prijs is geconfigureerd.",
+  "buyButton": "Nu kopen",
+  "redirecting": "Doorsturen naar Stripe …",
+  "checkoutFailed": "Afrekenen mislukt.",
+  "unknownError": "Onbekende fout.",
+  "notConfigured": "Betaling is nog niet geconfigureerd — de beheerder moet eerst in Stripe een product van {price} aanmaken en STRIPE_SECRET_KEY / STRIPE_PRICE_ID instellen.",
+  "costDisclosure": "Let op: deze prijs is eenmalig voor de software. Afzonderlijke functies (bijv. AI-tekstgeneratie, spraakuitvoer) hebben eigen toegangen bij externe aanbieders nodig (bijv. Anthropic, ElevenLabs) — die kosten staan los van SECRET 58 en worden rechtstreeks bij de betreffende aanbieder verschuldigd, niet hier in rekening gebracht. Details na de aankoop onder Integraties.",
+  "setupServiceTitle": "Installatieservice erbij boeken (+{price} eenmalig)",
+  "setupServiceDescription": "Wij richten voor jou API-sleutels, Brand DNA en de eerste posts in.",
+  "setupServiceUnavailable": "Binnenkort boekbaar — de beheerder moet de service eerst in Stripe instellen.",
+  "autopilot": {
+    "kicker": "Binnenkort",
+    "title": "Autopilot — alles inbegrepen",
+    "subtitle": "Geen eigen toegangen nodig: alle aanbiederskosten voor tekst, stem en video zijn inbegrepen. Dezelfde functionaliteit als het complete pakket — de varianten verschillen alleen in hoeveelheid.",
+    "comingSoon": "Binnenkort",
+    "perMonth": "/ maand",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Bureau"
+    },
+    "brands": "{count, plural, one {# merk} other {# merken}}",
+    "ideas": "{count} contentideeën per maand",
+    "videos": "{count} AI-video's (van 30 s) per maand",
+    "voiceMinutes": "{count} minuten spraakuitvoer per maand",
+    "note": "Geplande prijzen, nog niet boekbaar. Autopilot start zodra de AI-videogenerators zijn gekoppeld."
+  }
+}

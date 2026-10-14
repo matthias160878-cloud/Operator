@@ -1,0 +1,27 @@
+{
+  "title": "Innstillinger",
+  "description": "Workspace, brukere og systeminformasjon. Tilgangsdata administreres utelukkende via miljøvariabler (se <code>.env.example</code>).",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Navn",
+    "slug": "Slug",
+    "createdAt": "Opprettet"
+  },
+  "users": {
+    "title": "Brukere og roller",
+    "note": "Multi-tenant-datamodellen er fullstendig forberedt (workspace-isolasjon for alle tabeller). Et ekte innloggings-/autentiseringsgrensesnitt med flere brukere er neste utbyggingstrinn — foreløpig jobber appen med nøyaktig denne standard-workspacen."
+  },
+  "system": {
+    "title": "System",
+    "contentItems": "Innholdselementer",
+    "campaigns": "Kampanjer",
+    "mediaAssets": "Medieelementer",
+    "agentRuns": "Agentkjøringer",
+    "dbNote": "Database: SQLite (lokal, <code>prisma/dev.db</code>) via Prisma ORM. For produksjon må <codeSpaced>DATABASE_URL</codeSpaced> byttes til Postgres/MySQL (tilpass leverandøren i <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Oppsettsassistent",
+    "description": "De små trinn-for-trinn-vinduene for KI-leverandører, sosiale medieplattformer og talesyntese som vises første gang du åpner appen.",
+    "reopen": "Åpne oppsettsassistenten på nytt"
+  }
+}

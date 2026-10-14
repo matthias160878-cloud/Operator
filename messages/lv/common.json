@@ -1,0 +1,93 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Vairāk nekā saturs.",
+    "footerLine2": "Pilnīga satura mašīna.",
+    "workspace": "Darbvieta",
+    "role": "Administrators"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "schulung": "Apmācība",
+    "contentFactory": "Content Factory",
+    "ideas": "Idejas un iedvesma",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Sociālie mediji",
+    "calendar": "Content kalendārs",
+    "analytics": "Analytics",
+    "growth": "Izaugsme",
+    "revenue": "Ieņēmumi",
+    "inbox": "Iesūtne",
+    "agents": "Aģenti",
+    "integrations": "Integrācijas",
+    "settings": "Iestatījumi",
+    "billing": "Pakete un norēķini",
+    "sales": "Pārdošana un veikals",
+    "website": "Mana tīmekļa vietne"
+  },
+  "topbar": {
+    "menuOpen": "Atvērt izvēlni",
+    "menuClose": "Aizvērt izvēlni",
+    "searchPlaceholder": "Meklēt saturu, projektus, kampaņas …",
+    "notifications": "Paziņojumi",
+    "language": "Valoda"
+  },
+  "footer": {
+    "help": "Palīdzība",
+    "privacy": "Privātums",
+    "imprint": "Impressum",
+    "systemOnline": "Sistēma darbojas"
+  },
+  "actions": {
+    "save": "Saglabāt",
+    "cancel": "Atcelt",
+    "delete": "Dzēst",
+    "edit": "Rediģēt",
+    "create": "Izveidot",
+    "close": "Aizvērt",
+    "back": "Atpakaļ",
+    "loading": "Ielādē …"
+  },
+  "status": {
+    "connected": "Pievienots",
+    "notConfigured": "Nav nokonfigurēts",
+    "error": "Kļūda"
+  },
+  "statusBadge": {
+    "CONNECTED": "Pievienots",
+    "ACTIVE": "Aktīvs",
+    "COMPLETED": "Pabeigts",
+    "RUNNING": "Darbojas",
+    "SUCCESS": "Veiksmīgi",
+    "PUBLISHED": "Publicēts",
+    "APPROVED": "Apstiprināts",
+    "SCHEDULED": "Ieplānots",
+    "WAITING": "Gaida",
+    "IN_REVIEW": "Pārbaudē",
+    "NOT_CONFIGURED": "Nav nokonfigurēts",
+    "IDLE": "Gatavs",
+    "DRAFT": "Melnraksts",
+    "ARCHIVED": "Arhivēts",
+    "ERROR": "Kļūda",
+    "REJECTED": "Noraidīts",
+    "RECEIVED": "Saņemts",
+    "PENDING": "Gaida apstiprinājumu"
+  },
+  "integrationStatus": {
+    "notConfigured": "Nav nokonfigurēts — trūkst mainīgo: {vars}.",
+    "verifyFailedGeneric": "Savienojums neizdevās.",
+    "verifyFailedStatus": "{service} atbildēja ar statusu {status}.",
+    "verifyUnreachable": "{service} nebija sasniedzams.",
+    "connected": "Pievienots."
+  },
+  "mediaPreview": {
+    "expand": "Rādīt lielāku",
+    "close": "Aizvērt"
+  }
+}

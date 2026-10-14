@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Jokios prenumeratos. Visi agentai. Tavo paties DI tiekėjai.",
+  "subtitle": "Viena idėja. Kelios platformos. Maksimalus aprėptis. Vienas pilnas paketas — sumoki vieną kartą ir gauni visą prieigą prie visos programos.",
+  "features": [
+    "Content Brain — viena idėja, visos platformos",
+    "Visi DI agentai: idėjos, tendencijos, scenarijus, hook, žymos (hashtag), miniatiūros, subtitrai, publikavimas",
+    "Voice Studio su ElevenLabs balsais",
+    "Video Studio su formatų tvarkykle — DI vaizdo generatorių prijungimas kuriamas",
+    "Content Factory su patvirtinimo eiga ir turinio kalendoriumi",
+    "Analitika, augimo rekomendacijos ir pajamų stebėjimas",
+    "Gautieji su DI atsakymų juodraščiais",
+    "Laisvas DI tiekėjų pasirinkimas per savo prieigas — jokių kvotų"
+  ],
+  "priceOnetime": "vienkartinis",
+  "priceRecommendedNote": "Rekomenduojama kaina — taps privaloma, kai Stripe bus sukonfigūruotas su tinkama kaina.",
+  "buyButton": "Pirkti dabar",
+  "redirecting": "Nukreipiama į Stripe …",
+  "checkoutFailed": "Atsiskaitymas nepavyko.",
+  "unknownError": "Nežinoma klaida.",
+  "notConfigured": "Mokėjimas dar nesukonfigūruotas — operatorius pirmiausia turi Stripe sukurti produktą už {price} ir nurodyti STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Pastaba: ši kaina yra vienkartinė už programinę įrangą. Atskiroms funkcijoms (pvz., DI tekstų generavimui, balso išvesčiai) reikalingos atskiros prieigos pas trečiųjų šalių tiekėjus (pvz., Anthropic, ElevenLabs) — jų išlaidos nepriklauso nuo SECRET 58 ir mokamos tiesiogiai atitinkamam tiekėjui, čia jos neskaičiuojamos. Daugiau informacijos po pirkimo skiltyje Integracijos.",
+  "setupServiceTitle": "Pridėti paruošimo paslaugą (+{price} vienkartinis)",
+  "setupServiceDescription": "Mes tau paruošime API raktus, Brand DNA ir pirmuosius įrašus.",
+  "setupServiceUnavailable": "Netrukus bus galima užsakyti — operatorius pirmiausia turi paslaugą sukurti Stripe.",
+  "autopilot": {
+    "kicker": "Netrukus",
+    "title": "Autopilot — viskas įskaičiuota",
+    "subtitle": "Jokių savo prieigų: įtrauktos visos tiekėjų išlaidos tekstui, balsui ir vaizdo įrašams. Tokios pačios funkcijos kaip pilname pakete — dydžiai skiriasi tik apimtimi.",
+    "comingSoon": "Netrukus",
+    "perMonth": "/ mėn.",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agentūra"
+    },
+    "brands": "{count, plural, one {# prekės ženklas} other {# prekės ženklai}}",
+    "ideas": "{count} turinio idėjų per mėnesį",
+    "videos": "{count} DI vaizdo įrašų (po 30 s) per mėnesį",
+    "voiceMinutes": "{count} minučių balso išvesties per mėnesį",
+    "note": "Planuojamos kainos, dar negalima užsakyti. Autopilot startuos, kai bus prijungti DI vaizdo generatoriai."
+  }
+}

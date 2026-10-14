@@ -1,0 +1,87 @@
+{
+  "title": "Apmācība",
+  "subtitle": "Soli pa solim pamācības par katru SECRET 58 sadaļu — vienmēr šeit pieejamas uzziņai. Video tiks pievienoti, tiklīdz tie būs ierakstīti.",
+  "welcomeBanner": {
+    "title": "Laipni lūdzam SECRET 58!",
+    "body": "Paldies par pirkumu. Pirms sākam, vērts īsi ieskatīties zemāk esošajā sadaļā „Pirmie soļi“ — lai MI aģenti no paša sākuma strādātu ar taviem īstajiem datiem."
+  },
+  "videoPending": "Video drīzumā",
+  "stepsLabel": "Soļi",
+  "openPage": "Atvērt lapu",
+  "topics": {
+    "firstSteps": {
+      "title": "Pirmie soļi",
+      "description": "Vispirms izdari šīs trīs lietas, tad visi MI aģenti strādās ar īstiem datiem, nevis vietturiem.",
+      "steps": [
+        "Sadaļā „Integrācijas“ pievieno vismaz vienu MI pakalpojumu sniedzēju (Anthropic vai OpenAI) — šim nolūkam attiecīgajā rindā augšējā labajā stūrī noklikšķini uz „Iegūt API atslēgu“, izveido atslēgu pie pakalpojumu sniedzēja un saglabā to ar „Ievadīt Render“.",
+        "Sadaļā „Brand DNA“ aizpildi savu zīmolu (tonis, mērķauditorija, vērtības) — MI aģenti to izmanto katram ģenerētajam tekstam.",
+        "Sadaļā „Idejas un iedvesma“ vai „Content Brain“ ļauj izveidot pirmo ideju vai kampaņu."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Šādi no idejas top gatavs, apstiprināts saturs.",
+      "steps": [
+        "Content Brain izveido jaunu kampaņu ar tēmu un mērķa platformām — no tās automātiski rodas vairākas satura vienības.",
+        "Content Factory katra satura vienība iziet cauri statusiem: Melnraksts → Pārbaudē → Apstiprināts → Ieplānots → Publicēts.",
+        "Apstiprināšana ir manuāls solis un obligāta — nekas netiek publicēts automātiski bez apstiprinājuma.",
+        "Satura vienības detalizētajā skatā skriptu, balss ierakstu, subtitrus, tēmturus un sīktēlu var ģenerēt atsevišķi no jauna."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video un Design Studio",
+      "description": "Specializētie rīki katram satura elementam.",
+      "steps": [
+        "Script Studio: izveido skriptus pēc struktūras Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: importē vai izveido savu ElevenLabs balsi, pēc tam izveido balss ierakstu tieši no skripta.",
+        "Design Studio: sīktēlu aģents iesaka nosaukumu, vizuālo ideju, tekstu, izkārtojumu un attēla aprakstu.",
+        "Video Studio: rāda video pakalpojumu sniedzēju pieslēguma pašreizējo stāvokli (formātu pārvaldnieks, pakalpojumu sniedzēju statuss)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Content kalendārs un publicēšana",
+      "description": "Kur nonāk ieplānotie ieraksti — un kāpēc ieraksts tiešām tiek publicēts (vai arī nē).",
+      "steps": [
+        "Content kalendārā parādās visas satura vienības ar ieplānotu publicēšanas datumu.",
+        "Pirms katras publicēšanas PublishingAgent tiešraidē pārbauda, vai mērķa platforma sadaļā „Sociālie mediji“ tiešām ir atzīmēta kā „Pievienots“.",
+        "Bez īsta platformas savienojuma tiek godīgi parādīta kļūda, nevis izlikta publicēšana."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics un izaugsme",
+      "description": "Īsti skaitļi par savu veiktspēju — un ieteikumi automatizācijas vietā.",
+      "steps": [
+        "Analytics rāda tikai īstus, importētus vai manuāli ievadītus veiktspējas datus.",
+        "Izaugsmes lapa no šiem datiem aprēķina labākos publicēšanas laikus, veiksmīgos tēmturus un formātus.",
+        "Svarīgi: apzināti nav automatizēta sekotāju/iesaistes palielināšana (nekādas botu uzvedības) — tas pārkāptu katras platformas lietošanas noteikumus."
+      ]
+    },
+    "inbox": {
+      "title": "Iesūtne",
+      "description": "MI atbilžu melnraksti ziņām — ar apstiprināšanu pirms nosūtīšanas.",
+      "steps": [
+        "Tā kā (pagaidām) neviena platforma nav savienota ar OAuth, sarunas pašlaik tiek izveidotas manuāli, nevis ielādētas tiešraidē.",
+        "MessageAgent iesaka atbildi, pamatojoties uz Brand DNA un sarunas gaitu.",
+        "Melnraksts jāpārbauda un manuāli jāapstiprina, pirms tas tiek uzskatīts par nosūtītu — īsta nosūtīšana bez platformas savienojuma godīgi neizdodas, nevis izliekas par veiksmīgu."
+      ]
+    },
+    "revenue": {
+      "title": "Ieņēmumu uzskaite",
+      "description": "Pārskats par visiem platformu ieņēmumiem vienuviet — izmaksa tāpat notiek caur pašām platformām.",
+      "steps": [
+        "Ieņēmumi tiek ievadīti manuāli, jo TikTok/Meta nepiedāvā publisku ieņēmumu API, bet YouTube šim nolūkam vajag piekļuvi Partneru programmai (vēl nav pieslēgta).",
+        "Faktiskā izmaksa vienmēr notiek tieši caur attiecīgo platformu (piem., YouTube caur Google AdSense) — SECRET 58 neapstrādā nekādas izmaksas."
+      ]
+    },
+    "integrations": {
+      "title": "Integrācijas un API atslēgas",
+      "description": "No kurienes nāk katrs savienojuma statuss un kur ievadāma attiecīgā atslēga.",
+      "steps": [
+        "Katra rinda rāda īsto, tiešraidē pārbaudīto statusu — nekad izliktu savienojumu.",
+        "Pie „Nav nokonfigurēts“ poga „Iegūt API atslēgu“ ved uz pakalpojumu sniedzēja oficiālo lapu.",
+        "„Ievadīt Render“ ved tieši uz vides mainīgajiem, kur tiek saglabāta atslēga — ievades veidlapa pašā lietotnē drošības apsvērumu dēļ apzināti nav paredzēta.",
+        "Izmaksas: SECRET 58 pirkuma cena ir vienreizēja. Katram ārējam pakalpojumu sniedzējam ir savs, neatkarīgs izmaksu modelis (bezmaksas / pēc lietojuma / abonements) — Integrāciju lapā pie katra pakalpojuma norādīts, kāds modelis ir spēkā, ar saiti uz aktuālajām cenām pie pakalpojumu sniedzēja."
+      ]
+    }
+  }
+}

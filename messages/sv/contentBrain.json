@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "In med en idé — ut kommer en komplett, plattformsanpassad innehållsplan. ContentBrainAgent tar hänsyn till din Brand DNA och skapar passande hooks, manus, hashtags och miniatyrbildskoncept som utkast för varje vald plattform.",
+  "campaignsHeading": "Kampanjer",
+  "noCampaigns": "Inga kampanjer skapade än.",
+  "campaignSummary": "{count} innehållsobjekt · {audience}",
+  "form": {
+    "textEngineLabel": "Textmotor:",
+    "templateMode": "Mallläge (ingen AI-leverantör konfigurerad)",
+    "modeTemplate": "Mall",
+    "topicLabel": "Ämne / idé",
+    "topicPlaceholder": "t.ex. Förklara varför autonoma AI-agenter förändrar arbetslivet.",
+    "audienceLabel": "Målgrupp",
+    "audiencePlaceholder": "t.ex. 25-45, teknikintresserade",
+    "goalLabel": "Mål",
+    "languageLabel": "Språk",
+    "platformsLabel": "Plattformar",
+    "itemsPerPlatformLabel": "Innehållsobjekt per plattform ({count})",
+    "generateError": "Genereringen misslyckades.",
+    "unknownError": "Okänt fel.",
+    "submitLoading": "Content Brain arbetar…",
+    "submitIdle": "Generera innehållsplan",
+    "resultHeading": "Kampanj skapad — {count} innehållsobjekt sparade som utkast.",
+    "resultDescription": "Genererat i {mode}-läge. Allt innehåll startar som DRAFT — granska och redigera det i Content Factory.",
+    "resultLink": "Till Content Factory →"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Η μάρκα σου. Το στυλ σου. Παντού. Αυτά τα στοιχεία περνούν αυτόματα στο Content Brain και στους πράκτορες Script, Hook και Hashtag.",
+  "form": {
+    "nameLabel": "Όνομα μάρκας",
+    "industryLabel": "Κλάδος",
+    "descriptionLabel": "Περιγραφή",
+    "descriptionHint": "Τι κάνει τη μάρκα ξεχωριστή;",
+    "audienceLabel": "Κοινό-στόχος",
+    "languageLabel": "Γλώσσα",
+    "tonalityLabel": "Ύφος",
+    "humorLabel": "Χιούμορ",
+    "formalityLabel": "Επισημότητα",
+    "preferredWordsLabel": "Προτιμώμενες λέξεις",
+    "forbiddenWordsLabel": "Απαγορευμένες λέξεις",
+    "preferredCtasLabel": "Προτιμώμενα CTA",
+    "brandValuesLabel": "Αξίες της μάρκας",
+    "topicsLabel": "Θέματα",
+    "csvHint": "χωρισμένα με κόμμα",
+    "colorsLabel": "Χρώματα",
+    "colorsHint": "χωρισμένα με κόμμα, π.χ. #6D5BFF",
+    "fontsLabel": "Γραμματοσειρές",
+    "visualRulesLabel": "Οπτικοί κανόνες",
+    "saveError": "Η αποθήκευση απέτυχε.",
+    "unknownError": "Άγνωστο σφάλμα.",
+    "saving": "Αποθήκευση…",
+    "save": "Αποθήκευση Brand DNA",
+    "savedAt": "Αποθηκεύτηκε στις {time}"
+  }
+}

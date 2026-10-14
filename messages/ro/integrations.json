@@ -1,0 +1,24 @@
+{
+  "title": "Integrări",
+  "description": "Starea live a tuturor serviciilor externe — exclusiv pe baza variabilelor de mediu efectiv setate. Fără conexiuni false.",
+  "categories": {
+    "AI": "Furnizori IA",
+    "VOICE": "Voice",
+    "PLATFORM": "Platforme sociale",
+    "DESIGN": "Design",
+    "VIDEO": "Video",
+    "TREND": "Tendințe"
+  },
+  "costNote": "Prețul de achiziție SECRET 58 este unic și acoperă software-ul. Fiecare serviciu extern de aici are propriul model de costuri, independent, la furnizorul respectiv — SECRET 58 nu facturează niciodată suplimentar pentru ele.",
+  "links": {
+    "getKey": "Obține cheia API",
+    "setInRender": "Introdu în Render",
+    "viewPricing": "Vezi prețurile"
+  },
+  "pricing": {
+    "free": "Gratuit",
+    "payAsYouGo": "În funcție de utilizare",
+    "subscription": "Abonament",
+    "unknown": "Verifică prețul la furnizor"
+  }
+}

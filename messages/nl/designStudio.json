@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Thumbnailconcepten, beeldassets en de Canva-integratie.",
+  "imageAssetsTitle": "Beeldassets",
+  "imageAssetsEmpty": "Nog geen beeldassets beschikbaar.",
+  "thumbnailAgent": {
+    "title": "Thumbnail-agent",
+    "description": "Maakt een tekstconcept (titel, visueel idee, lay-out, CTA) — voorbereid voor de koppeling met een beeldgenerator. Er wordt nog geen afbeelding gemaakt.",
+    "inputPlaceholder": "Onderwerp voor de thumbnail",
+    "submitButton": "Concept genereren",
+    "errorGenerationFailed": "Genereren mislukt.",
+    "errorUnknown": "Onbekende fout.",
+    "fieldTitle": "Titel",
+    "fieldVisualIdea": "Visueel idee",
+    "fieldText": "Tekst",
+    "fieldLayout": "Lay-out",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Beeldbeschrijving"
+  }
+}

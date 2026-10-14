@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Potok wideo niezależny od dostawcy: Format Manager, wymienni dostawcy wideo, podłączenie lektora i napisów (zob. Content Factory dla każdego elementu treści).",
+  "providerCardTitle": "Dostawcy wideo",
+  "providerNotePrefix": "Kolejnych dostawców (API wideo AI, biblioteki wideo stockowych) można dodać przez ten sam interfejs",
+  "providerNoteSuffix": ", bez ruszania istniejącego kodu.",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Zasoby wideo",
+  "assetsEmpty": "Nie wyrenderowano jeszcze żadnych filmów — renderowanie odbywa się przez elementy treści w Content Factory, gdy tylko skonfigurowany zostanie dostawca wideo."
+}

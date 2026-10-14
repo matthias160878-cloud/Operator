@@ -1,0 +1,10 @@
+{
+ "pageTitle": "Content Kalendár",
+ "subtitle": "Prehľad plánovaného a publikovaného obsahu.",
+ "weekdays": ["Po", "Ut", "St", "Št", "Pi", "So", "Ne"],
+ "months": ["Január", "Február", "Marec", "Apríl", "Máj", "Jún", "Júl", "August", "September", "Október", "November", "December"],
+ "allPlatforms": "Všetky platformy",
+ "moreItems": "+{count} ďalších",
+ "listTitle": "Zoznam tohto mesiaca",
+ "emptyMonth": "V tomto mesiaci nie sú naplánované žiadne príspevky."
+}

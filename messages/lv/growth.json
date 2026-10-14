@@ -1,0 +1,15 @@
+{
+  "title": "Izaugsme",
+  "subtitle": "Ieteikumi sasniegumam un izaugsmei — iegūti no tava līdzšinējā satura reālajiem Analytics datiem: labākie publicēšanas laiki, veiksmīgākie tēmturi un formāti.",
+  "warning": "Apzināti <strong>nav</strong> iekļauta: automatizēta sekošana/patīk atzīmēšana/komentēšana, lai mākslīgi palielinātu sekotāju skaitu. Tas YouTube, Instagram, TikTok, LinkedIn un Facebook pārkāpj lietošanas noteikumus un var novest pie konta bloķēšanas. Šī lapa sniedz tikai uz datiem balstītus ieteikumus tavam saturam.",
+  "filterAll": "Visas platformas",
+  "emptyState": "Analytics datu par {platform} vēl nav. Tiklīdz publicētais saturs sāks uzkrāt veiktspējas datus, šeit parādīsies ieteikumi.",
+  "emptyStateDefaultScope": "šo darbvietu",
+  "bestPostingTimesTitle": "Labākie publicēšanas laiki",
+  "postingTime": "{day} · plkst. {hour}",
+  "avgLabel": "Vid. {percent} ({count})",
+  "topHashtagsTitle": "Veiksmīgākie tēmturi",
+  "topHashtagsEmpty": "Tēmturu datu nav.",
+  "hashtagTooltip": "Vid. {percent} iesaiste, izmantots {count}×",
+  "topFormatsTitle": "Labākie formāti"
+}

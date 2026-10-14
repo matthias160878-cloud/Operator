@@ -1,0 +1,27 @@
+{
+  "title": "Impostazioni",
+  "description": "Workspace, utenti e informazioni di sistema. Le credenziali vengono gestite esclusivamente tramite variabili d'ambiente (vedi <code>.env.example</code>).",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Nome",
+    "slug": "Slug",
+    "createdAt": "Creato il"
+  },
+  "users": {
+    "title": "Utenti e ruoli",
+    "note": "Il modello dati multi-tenant è completamente predisposto (isolamento del workspace per tutte le tabelle). Una vera interfaccia di login/autenticazione con più utenti è il prossimo passo di sviluppo: al momento l'app lavora esattamente con questo workspace predefinito."
+  },
+  "system": {
+    "title": "Sistema",
+    "contentItems": "Contenuti",
+    "campaigns": "Campagne",
+    "mediaAssets": "Risorse multimediali",
+    "agentRuns": "Esecuzioni degli agenti",
+    "dbNote": "Database: SQLite (locale, <code>prisma/dev.db</code>) tramite Prisma ORM. Per la produzione passare <codeSpaced>DATABASE_URL</codeSpaced> a Postgres/MySQL (adattare il provider in <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Assistente di configurazione",
+    "description": "Le piccole finestre passo passo per fornitori di IA, piattaforme social e sintesi vocale che compaiono alla prima apertura.",
+    "reopen": "Riapri l'assistente di configurazione"
+  }
+}

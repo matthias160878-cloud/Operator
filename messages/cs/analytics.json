@@ -1,0 +1,14 @@
+{
+  "title": "Analytika",
+  "subtitle": "Výkonnostní ukazatele ze skutečně dostupných dat — jakmile připojíš platformy, zaplní se tento přehled reálnými hodnotami.",
+  "statViewsTotal": "Zobrazení celkem",
+  "statLikesTotal": "Lajky celkem",
+  "statComments": "Komentáře",
+  "statShares": "Sdílení",
+  "chartTitle": "Výkon obsahu v čase",
+  "chartLegend": "Zobrazení (fialová) · Engagement % (tyrkysová)",
+  "chartEmpty": "Zatím nejsou k dispozici žádná data analytiky.",
+  "bestPerformingTitle": "Nejlépe fungující obsah",
+  "bestPerformingEmpty": "Zatím žádná data.",
+  "learningAgentTitle": "Learning Agent — doporučení"
+}

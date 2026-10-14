@@ -1,0 +1,22 @@
+{
+  "title": "Idéer & inspiration",
+  "subtitle": "Ämneskluster, serier och format för kommande innehåll — genererade av IdeaAgent eller inlagda manuellt.",
+  "board": {
+    "topicLabel": "Ämne för nya idéer",
+    "topicPlaceholder": "t.ex. Produktivitet med AI-agenter",
+    "generateButton": "Generera idéer",
+    "manualButton": "Manuellt",
+    "manualTitlePlaceholder": "Idétitel",
+    "addButton": "Lägg till",
+    "generateError": "Fel vid idégenereringen.",
+    "unknownError": "Okänt fel.",
+    "emptyState": "Inga idéer än — generera några eller lägg till manuellt.",
+    "minutesUnit": "~{count} min",
+    "statusNew": "Ny",
+    "statusInProgress": "Pågår",
+    "statusUsed": "Använd",
+    "statusArchived": "Arkiverad",
+    "sourceAiGenerated": "AI-genererad",
+    "sourceManual": "Manuell"
+  }
+}

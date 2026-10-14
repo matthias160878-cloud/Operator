@@ -1,0 +1,24 @@
+{
+  "title": "Integrācijas",
+  "description": "Visu ārējo pakalpojumu tiešraides statuss — tikai pēc faktiski iestatītajiem vides mainīgajiem. Nekādu izlikto savienojumu.",
+  "categories": {
+    "AI": "MI pakalpojumu sniedzēji",
+    "VOICE": "Balss",
+    "PLATFORM": "Sociālās platformas",
+    "DESIGN": "Dizains",
+    "VIDEO": "Video",
+    "TREND": "Tendences"
+  },
+  "costNote": "SECRET 58 pirkuma cena ir vienreizēja un sedz programmatūru. Katram šeit minētajam ārējam pakalpojumam ir savs, neatkarīgs izmaksu modelis pie attiecīgā pakalpojumu sniedzēja — SECRET 58 par tiem nekad neizraksta papildu rēķinu.",
+  "links": {
+    "getKey": "Iegūt API atslēgu",
+    "setInRender": "Ievadīt Render",
+    "viewPricing": "Skatīt cenas"
+  },
+  "pricing": {
+    "free": "Bezmaksas",
+    "payAsYouGo": "Pēc lietojuma",
+    "subscription": "Abonements",
+    "unknown": "Pārbaudi cenu pie pakalpojumu sniedzēja"
+  }
+}

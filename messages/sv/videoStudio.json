@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Leverantörsoberoende videopipeline: Format Manager, utbytbara videoleverantörer, anslutning av voiceover och undertexter (se Content Factory per innehållsobjekt).",
+  "providerCardTitle": "Videoleverantörer",
+  "providerNotePrefix": "Fler leverantörer (AI-video-API:er, bibliotek för stockvideo) kan läggas till via samma",
+  "providerNoteSuffix": "-gränssnitt, utan att röra befintlig kod.",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Videoresurser",
+  "assetsEmpty": "Inga videor renderade än — renderingen går via innehållsobjekt i Content Factory så fort en videoleverantör är konfigurerad."
+}

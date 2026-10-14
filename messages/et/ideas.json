@@ -1,0 +1,22 @@
+{
+  "title": "Ideed ja inspiratsioon",
+  "subtitle": "Teemaklastrid, sarjad ja vormingud tulevase sisu jaoks — genereerib IdeaAgent või lisatud käsitsi.",
+  "board": {
+    "topicLabel": "Uute ideede teema",
+    "topicPlaceholder": "nt Tootlikkus tehisintellekti agentidega",
+    "generateButton": "Genereeri ideid",
+    "manualButton": "Käsitsi",
+    "manualTitlePlaceholder": "Idee pealkiri",
+    "addButton": "Lisa",
+    "generateError": "Viga ideede genereerimisel.",
+    "unknownError": "Tundmatu viga.",
+    "emptyState": "Ideid pole veel — genereeri mõni või lisa käsitsi.",
+    "minutesUnit": "~{count} min",
+    "statusNew": "Uus",
+    "statusInProgress": "Töös",
+    "statusUsed": "Kasutatud",
+    "statusArchived": "Arhiveeritud",
+    "sourceAiGenerated": "Tehisintellekti loodud",
+    "sourceManual": "Käsitsi"
+  }
+}

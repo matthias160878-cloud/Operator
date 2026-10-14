@@ -1,0 +1,87 @@
+{
+  "title": "Oiliúint",
+  "subtitle": "Treoracha céim ar chéim do gach limistéar de SECRET 58 — ar fáil le haghaidh tagartha am ar bith. Cuirfear físeáin leis a luaithe a bheidh siad taifeadta.",
+  "welcomeBanner": {
+    "title": "Fáilte go SECRET 58!",
+    "body": "Go raibh maith agat as do cheannach. Sula dtosóimid, is fiú súil ghasta a thabhairt ar “Céimeanna tosaigh” thíos — ionas go n-oibreoidh na gníomhairí AI le do shonraí fíora ón tús."
+  },
+  "videoPending": "Físeán le teacht",
+  "stepsLabel": "Céimeanna",
+  "openPage": "Oscail an leathanach",
+  "topics": {
+    "firstSteps": {
+      "title": "Céimeanna tosaigh",
+      "description": "Déan na trí rud seo ar dtús, agus oibreoidh na gníomhairí AI ar fad le fíorshonraí seachas le ionadchoimeádáin.",
+      "steps": [
+        "Faoi “Comhtháthuithe” nasc soláthraí AI amháin ar a laghad (Anthropic nó OpenAI) — cliceáil ar “Faigh eochair API” ar an tsraith faoi seach ag barr na láimhe deise, cruthaigh an eochair ag an soláthraí agus cuir isteach í trí “Cuir isteach i Render”.",
+        "Faoi “Brand DNA” líon isteach do bhranda féin (tonn, spriocghrúpa, luachanna) — úsáideann na gníomhairí AI é seo do gach téacs a ghintear.",
+        "Faoi “Smaointe & Inspioráid” nó “Content Brain” lig dóibh an chéad smaoineamh nó feachtas a chruthú."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Seo mar a éiríonn inneachar críochnaithe, formheasta as smaoineamh.",
+      "steps": [
+        "Cruthaigh feachtas nua sa Content Brain le téama agus ardáin sprice — cruthófar roinnt míreanna inneachair uathoibríoch uaidh.",
+        "Sa Content Factory téann gach mír inneachair trí stádais: Dréacht → Á athbhreithniú → Formheasta → Pleanáilte → Foilsithe.",
+        "Is céim láimhe agus éigeantach é an formheas — ní fhoilsítear faic go huathoibríoch gan deimhniú.",
+        "Sa radharc mionsonraí de mhír inneachair is féidir script, voiceover, fotheidil, hashtaganna agus mionsamhail a ghiniúint arís ina n-aonar."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video & Design Studio",
+      "description": "Na huirlisí speisialaithe do gach bloc inneachair.",
+      "steps": [
+        "Script Studio: cruthaíonn sé scripteanna de réir struchtúr Hook → Fadhb → Luach → Sampla → Tairbhe → CTA.",
+        "Voice Studio: iompórtáil nó cruthaigh guth ElevenLabs féin, ansin gin voiceover go díreach ó script.",
+        "Design Studio: molann an gníomhaire mionsamhlacha teideal, smaoineamh amhairc, téacs, leagan amach agus cur síos ar an íomhá.",
+        "Video Studio: léiríonn sé an staid reatha de nasc an tsoláthraí físe (Format Manager, stádas an tsoláthraí)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Féilire Inneachair & Foilsiú",
+      "description": "Cá dtéann postálacha pleanáilte — agus cén fáth a n-imíonn post i ndáiríre (nó nach n-imíonn).",
+      "steps": [
+        "Sa Féilire Inneachair feictear gach mír inneachair a bhfuil dáta foilsithe pleanáilte aici.",
+        "Roimh gach foilsiú seiceálann an PublishingAgent beo an bhfuil an t-ardán sprice marcáilte i ndáiríre mar “Nasctha” faoi “Meáin shóisialta”.",
+        "Gan fíornasc ardáin taispeántar earráid go hionraic in ionad foilsiú a ligean air."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Anailísíocht & Fás",
+      "description": "Fíoruimhreacha faoi do fheidhmíocht féin — agus moltaí in ionad uathoibrithe.",
+      "steps": [
+        "Ní thaispeánann an Anailísíocht ach fíorshonraí feidhmíochta, iompórtáilte nó taifeadta de láimh.",
+        "Ríomhann an leathanach Fáis na hamanna postála is fearr, hashtaganna rathúla agus formáidí ó na sonraí seo.",
+        "Tábhachtach: níl aon mhéadú uathoibrithe leantóirí/rannpháirtíochta ann d’aon turas (gan iompar róbat) — sháraigh sé sin téarmaí úsáide gach ardáin."
+      ]
+    },
+    "inbox": {
+      "title": "Bosca isteach",
+      "description": "Dréachtaí freagra AI do theachtaireachtaí — le formheas roimh sheoladh.",
+      "steps": [
+        "Ós rud é nach bhfuil ardán nasctha trí OAuth (go fóill), cruthaítear comhráite de láimh faoi láthair in ionad iad a fháil beo.",
+        "Molann an MessageAgent freagra bunaithe ar Brand DNA agus ar sheicheamh an chomhrá.",
+        "Ní mór an dréacht a sheiceáil agus a fhormheas de láimh sula mbreathnaítear air mar sheolta — teipeann fíorsheoladh go hionraic gan nasc ardáin, in ionad rath a ligean air."
+      ]
+    },
+    "revenue": {
+      "title": "Rianú ioncaim",
+      "description": "Forbhreathnú ar ioncam gach ardáin in aon áit — ach íoctar fós trí na hardáin féin.",
+      "steps": [
+        "Cuirtear ioncam isteach de láimh, mar nach dtairgeann TikTok/Meta API poiblí díolacháin agus teastaíonn rochtain ar an gclár comhpháirtíochta ó YouTube chuige sin (gan nascadh go fóill).",
+        "Ritheann an íocaíocht iarbhír i gcónaí go díreach tríd an ardán faoi seach (m.sh. YouTube trí Google AdSense) — ní láimhseálann SECRET 58 aon íocaíochtaí."
+      ]
+    },
+    "integrations": {
+      "title": "Comhtháthuithe & Eochracha API",
+      "description": "Cá as a dtagann gach stádas naisc agus cá gcuirtear isteach an eochair cheart.",
+      "steps": [
+        "Taispeánann gach sraith an stádas fíor, seiceáilte beo — gan aon nasc bréagach go deo.",
+        "Ag “Gan cumrú” seolann “Faigh eochair API” chuig leathanach oifigiúil an tsoláthraí thú.",
+        "Seolann “Cuir isteach i Render” go díreach thú chuig na hathróga timpeallachta ina gcuirtear an eochair; níl foirm ionchuir san aip féin d’aon turas ar chúiseanna slándála.",
+        "Costais: is íocaíocht aonuaire é praghas ceannaigh SECRET 58. Tá a mhúnla costais féin, neamhspleách, ag gach soláthraí seachtrach (saor in aisce / bunaithe ar úsáid / síntiús) — ar an leathanach Comhtháthuithe luaitear le gach seirbhís an múnla atá i bhfeidhm, le nasc chuig na praghsanna reatha ag an soláthraí."
+      ]
+    }
+  }
+}

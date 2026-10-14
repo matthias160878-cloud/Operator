@@ -1,0 +1,14 @@
+{
+  "title": "AI-assistent",
+  "welcome": "Hallo! Vraag me alles over SECRET 58 — hoe je iets instelt, waar je iets vindt of hoe een onderdeel werkt.",
+  "inputPlaceholder": "Typ je vraag …",
+  "thinking": "Denkt na …",
+  "openButton": "AI-assistent openen",
+  "close": "Sluiten",
+  "sendButton": "Verzenden",
+  "micButton": "Spraakinvoer",
+  "speakToggle": "Antwoorden voorlezen",
+  "notConfigured": "De AI-assistent is nog niet geconfigureerd — hiervoor moet een AI-provider (Anthropic of OpenAI) worden ingesteld.",
+  "openIntegrations": "Naar Integraties",
+  "error": "De AI-assistent kon nu niet antwoorden. Probeer het later opnieuw."
+}

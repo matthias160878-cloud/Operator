@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Pakalpojumu sniedzējiem neatkarīgs video konveijers: formātu pārvaldnieks, aizvietojami video pakalpojumu sniedzēji, balss ieraksta un subtitru pieslēgšana (skatīt Content Factory katrai satura vienībai).",
+  "providerCardTitle": "Video pakalpojumu sniedzēji",
+  "providerNotePrefix": "Citus pakalpojumu sniedzējus (MI video API, krājuma video bibliotēkas) var pievienot ar to pašu",
+  "providerNoteSuffix": " saskarni, nepieskaroties esošajam kodam.",
+  "formatManagerTitle": "Formātu pārvaldnieks",
+  "assetsTitle": "Video resursi",
+  "assetsEmpty": "Video vēl nav renderēti — renderēšana notiek caur satura vienībām Content Factory, tiklīdz ir nokonfigurēts video pakalpojumu sniedzējs."
+}

@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Ilma tellimuseta. Kõik agendid. Sinu enda tehisintellekti pakkujad.",
+  "subtitle": "Üks idee. Mitu platvormi. Maksimaalne ulatus. Üks terviklik pakett — maksad üks kord, saad täieliku ligipääsu kogu rakendusele.",
+  "features": [
+    "Content Brain — üks idee, kõik platvormid",
+    "Kõik tehisintellekti agendid: ideed, trendid, skript, haak, märksõnad, pisipildid, subtiitrid, avaldamine",
+    "Voice Studio ElevenLabsi häältega",
+    "Video Studio vormingute haldusega — tehisintellekti videogeneraatorite ühendamine on töös",
+    "Content Factory kinnitusprotsessi ja sisukalendriga",
+    "Analüütika, kasvusoovitused ja tulude jälgimine",
+    "Postkast tehisintellekti vastusevisanditega",
+    "Tehisintellekti pakkujate vaba valik oma ligipääsudega — ilma kvootideta"
+  ],
+  "priceOnetime": "ühekordne",
+  "priceRecommendedNote": "Soovituslik hind — muutub siduvaks, kui Stripe on sobiva hinnaga seadistatud.",
+  "buyButton": "Osta kohe",
+  "redirecting": "Suunan Stripe'i …",
+  "checkoutFailed": "Makse ebaõnnestus.",
+  "unknownError": "Tundmatu viga.",
+  "notConfigured": "Makse pole veel seadistatud — haldur peab esmalt looma Stripes toote hinnaga {price} ja sisestama STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Märkus: see hind on tarkvara eest ühekordne. Üksikud funktsioonid (nt tehisintellekti tekstiloome, kõneväljund) vajavad kolmandate osapoolte juures oma ligipääse (nt Anthropic, ElevenLabs) — nende kulud on SECRET 58-st sõltumatud ja tasutakse otse vastavale pakkujale, mitte siin. Üksikasjad pärast ostu jaotises Integratsioonid.",
+  "setupServiceTitle": "Lisa seadistusteenus (+{price} ühekordselt)",
+  "setupServiceDescription": "Seadistame sinu eest API võtmed, Brand DNA ja esimesed postitused.",
+  "setupServiceUnavailable": "Varsti tellitav — haldur peab teenuse esmalt Stripes registreerima.",
+  "autopilot": {
+    "kicker": "Peagi",
+    "title": "Autopilot — kõik kaasas",
+    "subtitle": "Oma ligipääse pole vaja: kõik teksti, hääle ja video pakkujate kulud on sisse arvestatud. Funktsioonide hulk on sama mis täispaketil — suurused erinevad ainult mahu poolest.",
+    "comingSoon": "Peagi",
+    "perMonth": "/ kuu",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agentuur"
+    },
+    "brands": "{count, plural, one {# bränd} other {# brändi}}",
+    "ideas": "{count} sisuideed kuus",
+    "videos": "{count} tehisintellekti videot (à 30 s) kuus",
+    "voiceMinutes": "{count} minutit kõneväljundit kuus",
+    "note": "Kavandatud hinnad, veel tellimatud. Autopilot käivitub, kui tehisintellekti videogeneraatorid on ühendatud."
+  }
+}

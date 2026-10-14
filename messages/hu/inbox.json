@@ -1,0 +1,26 @@
+{
+  "title": "Beérkezett üzenetek",
+  "description": "Üzenetek és hozzászólások az összes platformról. A MessageAgent válaszokat javasol — csak az kerül elküldésre, amit jóváhagysz. Még nincs valódi OAuth-kapcsolat egyetlen platformmal sem, ezért a beszélgetések itt kézzel szimulálhatók, nem élőben kerülnek lekérésre.",
+  "emptyState": "Még nincsenek beszélgetések — szimulálj egyet az induláshoz.",
+  "backToInbox": "Vissza a beérkezett üzenetekhez",
+  "newConversation": {
+    "simulateButton": "Beszélgetés szimulálása",
+    "simulateHint": "Mivel nincs valódi platformkapcsolat, itt szimulálhatsz egy bejövő üzenetet, hogy kipróbáld az MI-válaszvázlatot.",
+    "close": "Bezárás",
+    "namePlaceholder": "Név",
+    "handlePlaceholder": "@handle (opcionális)",
+    "messagePlaceholder": "Üzenet szövege …",
+    "createButton": "Létrehozás"
+  },
+  "detail": {
+    "draftFailed": "A vázlat elkészítése nem sikerült.",
+    "save": "Mentés",
+    "edit": "Szerkesztés",
+    "approveAndSend": "Jóváhagyás és küldés",
+    "requestDraft": "MI-válaszvázlat kérése",
+    "openDraftExists": "Fent már van egy nyitott vázlat — először szerkeszd/küldd el azt.",
+    "simulateMoreHint": "Újabb bejövő üzenet szimulálása (teszt valódi platformkapcsolat nélkül):",
+    "messagePlaceholder": "Üzenet szövege …",
+    "addButton": "Hozzáadás"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Bez abonementa. Visi aģenti. Tavi paša MI pakalpojumu sniedzēji.",
+  "subtitle": "Viena ideja. Vairākas platformas. Maksimāls sasniegums. Viens pilns komplekts — maksā vienreiz, saņem pilnu piekļuvi visai lietotnei.",
+  "features": [
+    "Content Brain — viena ideja, visas platformas",
+    "Visi MI aģenti: idejas, tendences, skripti, āķi, tēmturi, sīktēli, subtitri, publicēšana",
+    "Voice Studio ar ElevenLabs balsīm",
+    "Video Studio ar formātu pārvaldnieku — MI video ģeneratoru pieslēgšana tiek izstrādāta",
+    "Content Factory ar apstiprināšanas darbplūsmu un Content kalendāru",
+    "Analytics, izaugsmes ieteikumi un ieņēmumu uzskaite",
+    "Iesūtne ar MI atbilžu melnrakstiem",
+    "Brīva MI pakalpojumu sniedzēju izvēle ar saviem piekļuves datiem — bez kvotām"
+  ],
+  "priceOnetime": "vienreizēji",
+  "priceRecommendedNote": "Ieteicamā cena — kļūs saistoša, tiklīdz Stripe būs nokonfigurēts ar atbilstošu cenu.",
+  "buyButton": "Pirkt tagad",
+  "redirecting": "Pāradresē uz Stripe …",
+  "checkoutFailed": "Norēķins neizdevās.",
+  "unknownError": "Nezināma kļūda.",
+  "notConfigured": "Maksājums vēl nav nokonfigurēts — operatoram vispirms jāizveido Stripe produkts par {price} un jāiestata STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Piezīme: šī cena ir vienreizēja maksa par programmatūru. Atsevišķām funkcijām (piem., MI teksta ģenerēšanai, runas izvadei) nepieciešama sava piekļuve pie trešo pušu pakalpojumu sniedzējiem (piem., Anthropic, ElevenLabs) — to izmaksas nav atkarīgas no SECRET 58 un tiek maksātas tieši attiecīgajam pakalpojumu sniedzējam, nevis šeit. Sīkāka informācija pēc pirkuma sadaļā Integrācijas.",
+  "setupServiceTitle": "Pievienot iestatīšanas pakalpojumu (+{price} vienreizēji)",
+  "setupServiceDescription": "Mēs tev iestatīsim API atslēgas, Brand DNA un pirmās ziņas.",
+  "setupServiceUnavailable": "Drīz būs pasūtāms — operatoram vispirms jāieliek pakalpojums Stripe.",
+  "autopilot": {
+    "kicker": "Drīzumā",
+    "title": "Autopilot — viss iekļauts",
+    "subtitle": "Savas piekļuves nav vajadzīgas: visas pakalpojumu sniedzēju izmaksas par tekstu, balsi un video ir iekļautas. Tāds pats funkciju apjoms kā pilnajam komplektam — izmēri atšķiras tikai pēc apjoma.",
+    "comingSoon": "Drīzumā",
+    "perMonth": "/ mēnesī",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Aģentūra"
+    },
+    "brands": "{count, plural, one {# zīmols} other {# zīmoli}}",
+    "ideas": "{count} satura idejas mēnesī",
+    "videos": "{count} MI video (pa 30 s) mēnesī",
+    "voiceMinutes": "{count} minūtes runas izvades mēnesī",
+    "note": "Plānotās cenas, vēl nav pasūtāmas. Autopilot sāksies, tiklīdz būs pieslēgti MI video ģeneratori."
+  }
+}

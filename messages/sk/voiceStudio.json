@@ -1,0 +1,27 @@
+{
+ "title": "Voice Studio",
+ "subtitle": "Hlasový engine ElevenLabs — spravuj knižnicu hlasov, vytváraj ukážky voiceoveru a importuj hlasy.",
+ "envWarning": "ElevenLabs zatiaľ nie je nakonfigurovaný. Zadaj <envKey>ELEVENLABS_API_KEY</envKey> do <envFile>.env</envFile> na používanie voiceoveru a importu hlasov. Knižnicu hlasov možno napriek tomu využiť na plánovanie.",
+ "addManual": "Vytvoriť hlas ručne",
+ "importFromElevenLabs": "Importovať z ElevenLabs",
+ "form": {
+  "namePlaceholder": "Meno",
+  "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+  "languagePlaceholder": "Jazyk",
+  "submit": "Pridať"
+ },
+ "confirmDelete": "Naozaj odstrániť hlas?",
+ "importFailed": "Import zlyhal.",
+ "previewFailed": "Ukážka zlyhala.",
+ "unknownError": "Neznáma chyba.",
+ "empty": "V knižnici zatiaľ nie sú žiadne hlasy.",
+ "active": "Aktívny",
+ "inactive": "Neaktívny",
+ "remove": "Odstrániť",
+ "preview": {
+  "heading": "Ukážka hlasu",
+  "defaultText": "Ahoj, toto je ukážka tohto hlasu.",
+  "selectPlaceholder": "Vyber hlas…",
+  "play": "Prehrať ukážku"
+ }
+}

@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Video pipeline neovisan o pružatelju: upravitelj formata, zamjenjivi video pružatelji, povezivanje voiceovera i titlova (vidi Content Factory po stavci sadržaja).",
+  "providerCardTitle": "Video pružatelji",
+  "providerNotePrefix": "Dodatni pružatelji (AI video API-ji, knjižnice stock videa) mogu se dodati putem istog sučelja",
+  "providerNoteSuffix": ", bez diranja postojećeg koda.",
+  "formatManagerTitle": "Upravitelj formata",
+  "assetsTitle": "Video materijali",
+  "assetsEmpty": "Još nema renderiranih videa — renderiranje ide preko stavki sadržaja u Content Factory čim se konfigurira video pružatelj."
+}

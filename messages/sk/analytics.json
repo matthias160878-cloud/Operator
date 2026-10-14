@@ -1,0 +1,14 @@
+{
+ "title": "Analytics",
+ "subtitle": "Výkonnostné ukazovatele zo skutočne dostupných údajov — keď pripojíš platformy, tento prehľad sa naplní reálnymi hodnotami.",
+ "statViewsTotal": "Zobrazenia spolu",
+ "statLikesTotal": "Páči sa mi to spolu",
+ "statComments": "Komentáre",
+ "statShares": "Zdieľania",
+ "chartTitle": "Výkonnosť obsahu v čase",
+ "chartLegend": "Zobrazenia (fialová) · Zapojenie % (tyrkysová)",
+ "chartEmpty": "Zatiaľ nie sú k dispozícii žiadne údaje analytiky.",
+ "bestPerformingTitle": "Najvýkonnejší obsah",
+ "bestPerformingEmpty": "Zatiaľ žiadne údaje.",
+ "learningAgentTitle": "Learning Agent — odporúčania"
+}

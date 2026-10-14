@@ -1,0 +1,24 @@
+{
+  "title": "Integrációk",
+  "description": "Az összes külső szolgáltatás élő állapota — kizárólag a ténylegesen beállított környezeti változók alapján. Nincsenek színlelt kapcsolatok.",
+  "categories": {
+    "AI": "MI-szolgáltatók",
+    "VOICE": "Hang",
+    "PLATFORM": "Közösségi platformok",
+    "DESIGN": "Dizájn",
+    "VIDEO": "Videó",
+    "TREND": "Trendek"
+  },
+  "costNote": "A SECRET 58 vételára egyszeri, és a szoftvert fedezi. Az itt szereplő minden külső szolgáltatásnak saját, független költségmodellje van az adott szolgáltatónál — a SECRET 58 ezért soha nem számláz külön.",
+  "links": {
+    "getKey": "API-kulcs beszerzése",
+    "setInRender": "Megadás a Renderben",
+    "viewPricing": "Árak megtekintése"
+  },
+  "pricing": {
+    "free": "Ingyenes",
+    "payAsYouGo": "Használatalapú",
+    "subscription": "Előfizetés",
+    "unknown": "Az árat nézd meg a szolgáltatónál"
+  }
+}

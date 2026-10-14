@@ -1,0 +1,27 @@
+{
+  "title": "Iestatījumi",
+  "description": "Darbvieta, lietotāji un sistēmas informācija. Piekļuves dati tiek pārvaldīti tikai ar vides mainīgajiem (skatīt <code>.env.example</code>).",
+  "workspace": {
+    "title": "Darbvieta",
+    "name": "Nosaukums",
+    "slug": "Slug",
+    "createdAt": "Izveidots"
+  },
+  "users": {
+    "title": "Lietotāji un lomas",
+    "note": "Daudznomnieku datu modelis ir pilnībā sagatavots (darbvietu izolācija visām tabulām). Īsts pieteikšanās/autentifikācijas interfeiss ar vairākiem lietotājiem ir nākamais izstrādes solis — pašlaik lietotne darbojas tieši ar šo noklusējuma darbvietu."
+  },
+  "system": {
+    "title": "Sistēma",
+    "contentItems": "Satura vienības",
+    "campaigns": "Kampaņas",
+    "mediaAssets": "Multivides resursi",
+    "agentRuns": "Aģentu palaišanas",
+    "dbNote": "Datubāze: SQLite (lokāla, <code>prisma/dev.db</code>) ar Prisma ORM. Produkcijai pārslēdz <codeSpaced>DATABASE_URL</codeSpaced> uz Postgres/MySQL (pielāgo pakalpojumu sniedzēju failā <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Iestatīšanas asistents",
+    "description": "Mazie soli pa solim logi MI pakalpojumu sniedzējiem, sociālo mediju platformām un runas izvadei, kas parādās pirmajā atvēršanas reizē.",
+    "reopen": "Atvērt iestatīšanas asistentu vēlreiz"
+  }
+}

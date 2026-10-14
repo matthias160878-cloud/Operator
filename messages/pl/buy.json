@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Bez abonamentu. Wszyscy agenci. Twoi własni dostawcy AI.",
+  "subtitle": "Jeden pomysł. Wiele platform. Maksymalny zasięg. Jeden kompletny pakiet — płacisz raz i masz pełny dostęp do całej aplikacji.",
+  "features": [
+    "Content Brain — jeden pomysł, wszystkie platformy",
+    "Wszyscy agenci AI: pomysły, trendy, skrypt, hook, hashtagi, miniatury, napisy, publikowanie",
+    "Voice Studio z głosami ElevenLabs",
+    "Video Studio z menedżerem formatów — podłączanie generatorów wideo AI w toku",
+    "Content Factory z procesem akceptacji i kalendarzem treści",
+    "Analityka, rekomendacje wzrostu i śledzenie przychodów",
+    "Skrzynka odbiorcza z propozycjami odpowiedzi od AI",
+    "Dowolny wybór dostawców AI przez własne dostępy — bez limitów"
+  ],
+  "priceOnetime": "jednorazowo",
+  "priceRecommendedNote": "Cena rekomendowana — stanie się wiążąca, gdy Stripe zostanie skonfigurowany z odpowiednią ceną.",
+  "buyButton": "Kup teraz",
+  "redirecting": "Przekierowanie do Stripe …",
+  "checkoutFailed": "Płatność nie powiodła się.",
+  "unknownError": "Nieznany błąd.",
+  "notConfigured": "Płatność nie jest jeszcze skonfigurowana — operator musi najpierw utworzyć w Stripe produkt za {price} i podać STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Uwaga: ta cena jest jednorazowa i dotyczy oprogramowania. Poszczególne funkcje (np. generowanie tekstu przez AI, synteza mowy) wymagają własnych dostępów u zewnętrznych dostawców (np. Anthropic, ElevenLabs) — ich koszty są niezależne od SECRET 58 i są naliczane bezpośrednio przez danego dostawcę, nie tutaj. Szczegóły po zakupie w sekcji Integracje.",
+  "setupServiceTitle": "Dodaj usługę konfiguracji (+{price} jednorazowo)",
+  "setupServiceDescription": "Skonfigurujemy dla Ciebie klucze API, Brand DNA i pierwsze posty.",
+  "setupServiceUnavailable": "Wkrótce do zamówienia — operator musi najpierw dodać usługę w Stripe.",
+  "autopilot": {
+    "kicker": "Wkrótce",
+    "title": "Autopilot — wszystko w cenie",
+    "subtitle": "Nie potrzebujesz własnych dostępów: wszystkie koszty dostawców tekstu, głosu i wideo są wliczone. Ten sam zakres funkcji co pakiet kompletny — rozmiary różnią się tylko ilością.",
+    "comingSoon": "Wkrótce",
+    "perMonth": "/ miesiąc",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agencja"
+    },
+    "brands": "{count, plural, one {# marka} other {# marek}}",
+    "ideas": "{count} pomysłów na treści miesięcznie",
+    "videos": "{count} filmów AI (po 30 s) miesięcznie",
+    "voiceMinutes": "{count} minut syntezy mowy miesięcznie",
+    "note": "Planowane ceny, jeszcze niedostępne do zamówienia. Autopilot wystartuje, gdy generatory wideo AI zostaną podłączone."
+  }
+}

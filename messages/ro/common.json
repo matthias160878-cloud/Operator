@@ -1,0 +1,93 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Mai mult decât conținut.",
+    "footerLine2": "O mașinărie completă de conținut.",
+    "workspace": "Workspace",
+    "role": "Administrator"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "schulung": "Instruire",
+    "contentFactory": "Content Factory",
+    "ideas": "Idei și inspirație",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Social Media",
+    "calendar": "Content Kalender",
+    "analytics": "Analytics",
+    "growth": "Creștere",
+    "revenue": "Venituri",
+    "inbox": "Inbox",
+    "agents": "Agenți",
+    "integrations": "Integrări",
+    "settings": "Setări",
+    "billing": "Pachet și facturare",
+    "sales": "Vânzări și magazin",
+    "website": "Site-ul meu"
+  },
+  "topbar": {
+    "menuOpen": "Deschide meniul",
+    "menuClose": "Închide meniul",
+    "searchPlaceholder": "Caută conținut, proiecte, campanii …",
+    "notifications": "Notificări",
+    "language": "Limbă"
+  },
+  "footer": {
+    "help": "Ajutor",
+    "privacy": "Confidențialitate",
+    "imprint": "Date legale",
+    "systemOnline": "Sistem online"
+  },
+  "actions": {
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "delete": "Șterge",
+    "edit": "Editează",
+    "create": "Creează",
+    "close": "Închide",
+    "back": "Înapoi",
+    "loading": "Se încarcă …"
+  },
+  "status": {
+    "connected": "Conectat",
+    "notConfigured": "Neconfigurat",
+    "error": "Eroare"
+  },
+  "statusBadge": {
+    "CONNECTED": "Conectat",
+    "ACTIVE": "Activ",
+    "COMPLETED": "Finalizat",
+    "RUNNING": "Rulează",
+    "SUCCESS": "Reușit",
+    "PUBLISHED": "Publicat",
+    "APPROVED": "Aprobat",
+    "SCHEDULED": "Planificat",
+    "WAITING": "În așteptare",
+    "IN_REVIEW": "În verificare",
+    "NOT_CONFIGURED": "Neconfigurat",
+    "IDLE": "Pregătit",
+    "DRAFT": "Ciornă",
+    "ARCHIVED": "Arhivat",
+    "ERROR": "Eroare",
+    "REJECTED": "Respins",
+    "RECEIVED": "Primit",
+    "PENDING": "În curs"
+  },
+  "integrationStatus": {
+    "notConfigured": "Neconfigurat — variabile lipsă: {vars}.",
+    "verifyFailedGeneric": "Conexiunea a eșuat.",
+    "verifyFailedStatus": "{service} a răspuns cu starea {status}.",
+    "verifyUnreachable": "{service} nu a putut fi contactat.",
+    "connected": "Conectat."
+  },
+  "mediaPreview": {
+    "expand": "Afișează mai mare",
+    "close": "Închide"
+  }
+}

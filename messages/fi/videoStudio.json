@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Palveluntarjoajasta riippumaton videoputki: Format Manager, vaihdettavat videopalvelut, voiceoverin ja tekstitysten liittäminen (katso Content Factory sisältökohtaisesti).",
+  "providerCardTitle": "Videopalvelut",
+  "providerNotePrefix": "Lisää palveluita (tekoälyvideo-API:t, arkistovideokirjastot) voi lisätä saman",
+  "providerNoteSuffix": "-rajapinnan kautta koskematta olemassa olevaan koodiin.",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Videomateriaalit",
+  "assetsEmpty": "Videoita ei ole vielä renderöity — renderöinti tapahtuu Content Factoryn sisältöjen kautta, kun videopalvelu on määritetty."
+}

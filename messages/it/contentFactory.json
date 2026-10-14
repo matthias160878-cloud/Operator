@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Tutti i contenuti in un unico posto: creali, duplicali, riscrivili, arricchiscili con voiceover/sottotitoli e fai passare tutto dal flusso di approvazione.",
+  "statusTabs": {
+    "all": "Tutti",
+    "draft": "Bozza",
+    "inReview": "In revisione",
+    "approved": "Approvato",
+    "scheduled": "Pianificato",
+    "published": "Pubblicato",
+    "archived": "Archiviato"
+  },
+  "newItem": {
+    "openButton": "Nuovo contenuto",
+    "titleLabel": "Titolo",
+    "platformLabel": "Piattaforma",
+    "create": "Crea",
+    "closeAria": "Chiudi"
+  },
+  "table": {
+    "empty": "Ancora nessun contenuto: creane uno manualmente o tramite Content Brain.",
+    "title": "Titolo",
+    "platform": "Piattaforma",
+    "format": "Formato",
+    "status": "Stato",
+    "updated": "Aggiornato",
+    "actions": "Azioni",
+    "duplicate": "Duplica",
+    "delete": "Elimina",
+    "confirmDelete": "Eliminare davvero il contenuto?"
+  },
+  "detail": {
+    "backLink": "Torna a Content Factory",
+    "actionFailed": "Azione non riuscita.",
+    "actions": {
+      "review": "Invia in revisione",
+      "approve": "Approva",
+      "reject": "Rifiuta",
+      "schedule": "Pianifica",
+      "publish": "Pubblica",
+      "copy": "Copia il post",
+      "markPublished": "Pubblicato manualmente"
+    },
+    "rejectReasonPrompt": "Motivo del rifiuto (facoltativo):",
+    "scheduleDatePrompt": "Data di pubblicazione (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Titolo",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Didascalia"
+    },
+    "save": "Salva",
+    "saving": "Salvataggio in corso…",
+    "hashtags": {
+      "heading": "Hashtag e parole chiave",
+      "regenerate": "Rigenera",
+      "empty": "Ancora nessun hashtag generato."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Genera",
+      "empty": "Ancora nessun voiceover generato."
+    },
+    "subtitles": {
+      "heading": "Sottotitoli",
+      "generate": "Genera (SRT)",
+      "download": "Scarica {file}",
+      "empty": "Ancora nessun sottotitolo generato."
+    },
+    "video": {
+      "heading": "Rendering video",
+      "request": "Richiedi rendering",
+      "note": "Pipeline video indipendente dal fornitore (sezione 11/12): al momento non è configurato alcun fornitore video (vedi Integrazioni)."
+    },
+    "scriptVariants": {
+      "heading": "Varianti dello script",
+      "newVariant": "Nuova variante",
+      "empty": "Ancora nessuna variante.",
+      "variantSummary": "Variante {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Crea da questo contenuto derivati su misura per altri canali. Più canali = più possibilità che le persone vedano il video.",
+      "selectAll": "Seleziona tutte le piattaforme",
+      "clearAll": "Deseleziona tutto",
+      "generateButton": "Crea {count} derivati"
+    },
+    "approvalRevoked": "Approvazione revocata: il post è stato modificato e deve essere rivisto e approvato di nuovo.",
+    "job": {
+      "QUEUED": "Invio automatico pianificato per {when}.",
+      "RUNNING": "Invio in corso (scadenza {when}).",
+      "SUCCEEDED": "Pubblicato alla scadenza {when}.",
+      "FAILED": "Invio alla scadenza {when} non riuscito, il post è di nuovo «Approvato».",
+      "UNKNOWN": "Invio alla scadenza {when}: esito incerto.",
+      "CANCELED": "L'invio pianificato ({when}) non è stato eseguito."
+    },
+    "copied": "Testo e hashtag copiati: ora incollali nell'app della piattaforma.",
+    "copyFailed": "Impossibile copiare: seleziona il testo manualmente.",
+    "markPublishedConfirm": "Hai pubblicato il post tu stesso? Verrà contrassegnato come pubblicato; un invio pianificato verrà annullato."
+  }
+}

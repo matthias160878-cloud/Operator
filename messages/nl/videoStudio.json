@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Providerneutrale videopipeline: formatbeheer, uitwisselbare videoproviders, koppeling met voice-over en ondertitels (zie Content Factory per content-item).",
+  "providerCardTitle": "Videoproviders",
+  "providerNotePrefix": "Verdere providers (AI-video-API's, stockvideobibliotheken) kunnen via dezelfde",
+  "providerNoteSuffix": "-interface worden toegevoegd, zonder bestaande code aan te raken.",
+  "formatManagerTitle": "Formatbeheer",
+  "assetsTitle": "Video-assets",
+  "assetsEmpty": "Nog geen video's gerenderd — rendering loopt via content-items in de Content Factory, zodra een videoprovider is geconfigureerd."
+}

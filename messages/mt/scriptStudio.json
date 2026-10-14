@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Magna tal-Script u tal-Hook: toħloq scripts adattati għall-pjattaforma skont l-istruttura Hook → Problem → Value → Example → Payoff → CTA kif ukoll diversi varjanti ta' hook.",
+  "form": {
+    "topicLabel": "Suġġett",
+    "topicPlaceholder": "eż. 5 modi kif l-agenti tal-AI jiffrankaw il-ħin",
+    "platformLabel": "Pjattaforma",
+    "generateButton": "Iġġenera Script u Hooks",
+    "generateFailed": "Il-ġenerazzjoni falliet.",
+    "unknownError": "Żball mhux magħruf."
+  },
+  "hookTypes": {
+    "direkt": "Dirett",
+    "neugierig": "Kurjuż",
+    "story": "Storja",
+    "problem": "Problema",
+    "zahlen": "Numri",
+    "kontroversSachlich": "Kontroversjali (fattwali)",
+    "educational": "Edukattiv"
+  },
+  "hooksHeading": "Varjanti tal-hook",
+  "engine": {
+    "label": "Magna: {provider}",
+    "templateMode": "Modalità Template (l-ebda fornitur tal-AI ikkonfigurat)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Aħżen bħala item ta' kontenut",
+    "saving": "Qed jinħażen…"
+  }
+}

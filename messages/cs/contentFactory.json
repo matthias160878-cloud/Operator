@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Všechny položky obsahu na jednom místě — vytvářej, duplikuj, přepisuj, obohacuj o voiceover/titulky a veď je procesem schvalování.",
+  "statusTabs": {
+    "all": "Vše",
+    "draft": "Koncept",
+    "inReview": "V kontrole",
+    "approved": "Schváleno",
+    "scheduled": "Naplánováno",
+    "published": "Publikováno",
+    "archived": "Archivováno"
+  },
+  "newItem": {
+    "openButton": "Nová položka obsahu",
+    "titleLabel": "Název",
+    "platformLabel": "Platforma",
+    "create": "Vytvořit",
+    "closeAria": "Zavřít"
+  },
+  "table": {
+    "empty": "Zatím žádné položky obsahu — vytvoř ji ručně nebo přes Content Brain.",
+    "title": "Název",
+    "platform": "Platforma",
+    "format": "Formát",
+    "status": "Stav",
+    "updated": "Aktualizováno",
+    "actions": "Akce",
+    "duplicate": "Duplikovat",
+    "delete": "Smazat",
+    "confirmDelete": "Opravdu smazat položku obsahu?"
+  },
+  "detail": {
+    "backLink": "Zpět do Content Factory",
+    "actionFailed": "Akce se nezdařila.",
+    "actions": {
+      "review": "K přezkoumání",
+      "approve": "Schválit",
+      "reject": "Zamítnout",
+      "schedule": "Naplánovat",
+      "publish": "Publikovat",
+      "copy": "Zkopírovat příspěvek",
+      "markPublished": "Publikováno ručně"
+    },
+    "rejectReasonPrompt": "Důvod zamítnutí (nepovinné):",
+    "scheduleDatePrompt": "Datum publikování (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Název",
+      "hook": "Hook",
+      "script": "Skript",
+      "caption": "Popisek"
+    },
+    "save": "Uložit",
+    "saving": "Ukládá se…",
+    "hashtags": {
+      "heading": "Hashtagy a klíčová slova",
+      "regenerate": "Vygenerovat znovu",
+      "empty": "Zatím nebyly vygenerovány žádné hashtagy."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Vytvořit",
+      "empty": "Zatím nebyl vytvořen žádný voiceover."
+    },
+    "subtitles": {
+      "heading": "Titulky",
+      "generate": "Vytvořit (SRT)",
+      "download": "Stáhnout {file}",
+      "empty": "Zatím nebyly vytvořeny žádné titulky."
+    },
+    "video": {
+      "heading": "Renderování videa",
+      "request": "Požádat o renderování",
+      "note": "Video pipeline nezávislá na poskytovateli (oddíl 11/12) — momentálně není nastaven žádný poskytovatel videa (viz Integrace)."
+    },
+    "scriptVariants": {
+      "heading": "Varianty skriptu",
+      "newVariant": "Nová varianta",
+      "empty": "Zatím žádné varianty.",
+      "variantSummary": "Varianta {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Vytvoř z této položky obsahu odvozeniny přizpůsobené dalším kanálům. Víc kanálů = větší šance, že lidé video uvidí.",
+      "selectAll": "Vybrat všechny platformy",
+      "clearAll": "Zrušit výběr",
+      "generateButton": "Vytvořit odvozenin: {count}"
+    },
+    "approvalRevoked": "Schválení bylo odebráno: Příspěvek byl změněn a musí být znovu zkontrolován a schválen.",
+    "job": {
+      "QUEUED": "Automatické odeslání je naplánováno na {when}.",
+      "RUNNING": "Odesílání probíhá (termín {when}).",
+      "SUCCEEDED": "Publikováno v termínu {when}.",
+      "FAILED": "Odeslání v termínu {when} se nezdařilo, příspěvek je opět „Schválen“.",
+      "UNKNOWN": "Odeslání v termínu {when}: výsledek je nejasný.",
+      "CANCELED": "Naplánované odeslání ({when}) nebylo provedeno."
+    },
+    "copied": "Text a hashtagy zkopírovány — teď je vlož do aplikace platformy.",
+    "copyFailed": "Kopírování není možné — označ prosím text ručně.",
+    "markPublishedConfirm": "Zveřejnil/a jsi příspěvek sám/sama? Bude označen jako publikovaný; naplánované odeslání se zruší."
+  }
+}

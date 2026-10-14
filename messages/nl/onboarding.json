@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Stap {current} van {total}",
+    "close": "Sluiten",
+    "back": "Terug",
+    "next": "Volgende",
+    "skip": "Overslaan",
+    "finish": "Klaar, aan de slag",
+    "checking": "Wordt gecontroleerd …",
+    "checkAgain": "Nu controleren",
+    "connected": "Verbonden",
+    "notConnected": "Nog niet verbonden",
+    "skippedNote": "Overgeslagen — je kunt dit op elk moment alsnog doen onder “Integraties”.",
+    "envHint": "Let op: na het opslaan in Render duurt het meestal 1–2 minuten voordat de dienst opnieuw start en de wijziging van kracht wordt. Als “Nu controleren” nog niets vindt, wacht dan even en klik opnieuw.",
+    "reopenHint": "Je kunt deze assistent op elk moment opnieuw openen: in de instellingen onder “Installatie-assistent”."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Welkom bij SECRET 58",
+      "body": "Voordat het begint, richten we samen het hoognodige in — in hele kleine, afzonderlijke stappen. Je kunt op elk moment pauzeren en later op dezelfde plek verdergaan."
+    },
+    "aiProvider": {
+      "title": "Stap 1: AI-aanbieder koppelen",
+      "body": "Voor teksten, scripts, hooks en hashtags heeft de software een AI-aanbieder nodig. Kies er een van de twee — één is genoeg.",
+      "steps": [
+        "Klik hieronder bij Anthropic of OpenAI op “API-sleutel ophalen”.",
+        "Maak daar, indien nodig, een gratis account aan.",
+        "Maak daar een nieuwe API-sleutel aan en kopieer die.",
+        "Klik op “In Render invoeren”, plak de sleutel daar als omgevingsvariabele en sla op.",
+        "Kom hier terug en klik hieronder op “Nu controleren”."
+      ],
+      "costHint": "Kosten ontstaan pas bij daadwerkelijk gebruik, rechtstreeks bij de betreffende aanbieder — nooit via SECRET 58."
+    },
+    "platform": {
+      "title": "Stap 2: Socialemediaplatform koppelen (optioneel)",
+      "body": "Optioneel, maar aanbevolen: koppel minstens één platform waarop je later wilt publiceren. Je kunt deze stap ook later doen.",
+      "steps": [
+        "Kies hieronder een platform dat je wilt gebruiken.",
+        "Klik op “API-sleutel ophalen” en volg de instructies van de aanbieder.",
+        "Klik op “In Render invoeren” en sla de toegangsgegevens daar op.",
+        "Kom hier terug en klik op “Nu controleren”."
+      ]
+    },
+    "voice": {
+      "title": "Stap 3: Spraakuitvoer koppelen (optioneel)",
+      "body": "Alleen nodig als je automatisch ingesproken voice-overs voor je video's wilt maken. Zonder deze stap werkt al het andere gewoon.",
+      "steps": [
+        "Klik op “API-sleutel ophalen” bij ElevenLabs.",
+        "Maak daar een account en een API-sleutel aan.",
+        "Klik op “In Render invoeren” en sla de sleutel daar op.",
+        "Kom hier terug en klik op “Nu controleren”."
+      ]
+    },
+    "done": {
+      "title": "Klaar!",
+      "body": "Je kunt nu aan de slag. Alles wat je hebt overgeslagen vind en vul je op elk moment aan in het onderdeel “Integraties” — of open deze assistent opnieuw via “Instellingen”."
+    }
+  }
+}

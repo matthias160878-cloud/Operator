@@ -1,0 +1,22 @@
+{
+  "title": "Ideat ja inspiraatio",
+  "subtitle": "Aiheklustereita, sarjoja ja formaatteja tulevalle sisällölle — IdeaAgentin luomia tai käsin lisättyjä.",
+  "board": {
+    "topicLabel": "Aihe uusille ideoille",
+    "topicPlaceholder": "esim. Tuottavuus tekoälyagenteilla",
+    "generateButton": "Luo ideoita",
+    "manualButton": "Käsin",
+    "manualTitlePlaceholder": "Idean otsikko",
+    "addButton": "Lisää",
+    "generateError": "Virhe ideoiden luonnissa.",
+    "unknownError": "Tuntematon virhe.",
+    "emptyState": "Ei vielä ideoita — luo niitä tai lisää käsin.",
+    "minutesUnit": "~{count} min",
+    "statusNew": "Uusi",
+    "statusInProgress": "Työn alla",
+    "statusUsed": "Käytetty",
+    "statusArchived": "Arkistoitu",
+    "sourceAiGenerated": "Tekoälyn luoma",
+    "sourceManual": "Käsin"
+  }
+}

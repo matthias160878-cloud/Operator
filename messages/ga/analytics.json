@@ -1,0 +1,14 @@
+{
+  "title": "Anailísíocht",
+  "subtitle": "Táscairí feidhmíochta ó shonraí atá ann i ndáiríre — a luaithe a nascfar ardáin, líonfar an radharc seo le fíorluachanna.",
+  "statViewsTotal": "Iomlán na radhairc",
+  "statLikesTotal": "Iomlán na dtaitneamh",
+  "statComments": "Tuairimí",
+  "statShares": "Comhroinnt",
+  "chartTitle": "Feidhmíocht inneachair thar am",
+  "chartLegend": "Radhairc (corcra) · Rannpháirtíocht % (turcóis)",
+  "chartEmpty": "Gan aon sonraí anailísíochta go fóill.",
+  "bestPerformingTitle": "An t-inneachar is fearr feidhmíocht",
+  "bestPerformingEmpty": "Gan aon sonraí go fóill.",
+  "learningAgentTitle": "Learning Agent — Moltaí"
+}

@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Ei tilausta. Kaikki agentit. Omat tekoälypalvelusi.",
+  "subtitle": "Yksi idea. Useita alustoja. Maksimaalinen kattavuus. Yksi kokonaispaketti — maksat kerran ja saat täyden pääsyn koko sovellukseen.",
+  "features": [
+    "Content Brain — yksi idea, kaikki alustat",
+    "Kaikki tekoälyagentit: ideat, trendit, skripti, hook, hashtagit, pikkukuvat, tekstitykset, julkaisu",
+    "Voice Studio ElevenLabs-äänillä",
+    "Video Studio formaattienhallinnalla — tekoälyvideogeneraattoreiden liittäminen työn alla",
+    "Content Factory hyväksyntätyönkululla ja sisältökalenterilla",
+    "Analytiikka, kasvusuositukset ja tulojen seuranta",
+    "Saapuneet-kansio tekoälyn vastausluonnoksilla",
+    "Vapaa valinta tekoälypalveluista omilla tunnuksilla — ei kiintiöitä"
+  ],
+  "priceOnetime": "kertamaksu",
+  "priceRecommendedNote": "Suositushinta — tulee sitovaksi, kun Stripe on määritetty sopivalla hinnalla.",
+  "buyButton": "Osta nyt",
+  "redirecting": "Siirrytään Stripeen …",
+  "checkoutFailed": "Kassalle siirtyminen epäonnistui.",
+  "unknownError": "Tuntematon virhe.",
+  "notConfigured": "Maksua ei ole vielä määritetty — ylläpitäjän täytyy ensin luoda Stripeen tuote hintaan {price} ja tallentaa STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Huom.: Tämä hinta on kertamaksu ohjelmistosta. Yksittäiset toiminnot (esim. tekoälytekstin generointi, puhesynteesi) vaativat omat tunnukset kolmansilta osapuolilta (esim. Anthropic, ElevenLabs) — niiden kustannukset ovat SECRET 58:sta riippumattomia ja ne laskutetaan suoraan kyseiseltä palveluntarjoajalta, ei täällä. Lisätietoja oston jälkeen kohdassa Integraatiot.",
+  "setupServiceTitle": "Lisää käyttöönottopalvelu (+{price} kertamaksu)",
+  "setupServiceDescription": "Otamme puolestasi käyttöön API-avaimet, Brand DNA:n ja ensimmäiset postaukset.",
+  "setupServiceUnavailable": "Tulossa pian — ylläpitäjän täytyy ensin lisätä palvelu Stripeen.",
+  "autopilot": {
+    "kicker": "Tulossa pian",
+    "title": "Autopilot — kaikki mukana",
+    "subtitle": "Omia tunnuksia ei tarvita: kaikki tekstin, äänen ja videon palveluntarjoajakustannukset sisältyvät hintaan. Sama toiminnallisuus kuin kokonaispaketissa — koot eroavat vain määrissä.",
+    "comingSoon": "Tulossa pian",
+    "perMonth": "/ kk",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Toimisto"
+    },
+    "brands": "{count, plural, one {# brändi} other {# brändiä}}",
+    "ideas": "{count} sisältöideaa kuukaudessa",
+    "videos": "{count} tekoälyvideota (à 30 s) kuukaudessa",
+    "voiceMinutes": "{count} minuuttia puhesynteesiä kuukaudessa",
+    "note": "Suunnitellut hinnat, ei vielä tilattavissa. Autopilot käynnistyy, kun tekoälyvideogeneraattorit on liitetty."
+  }
+}

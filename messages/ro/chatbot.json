@@ -1,0 +1,14 @@
+{
+  "title": "Asistent IA",
+  "welcome": "Salut! Întreabă-mă orice despre SECRET 58 — cum configurezi ceva, unde găsești ceva sau cum funcționează o secțiune.",
+  "inputPlaceholder": "Scrie o întrebare …",
+  "thinking": "Se gândește …",
+  "openButton": "Deschide asistentul IA",
+  "close": "Închide",
+  "sendButton": "Trimite",
+  "micButton": "Introducere vocală",
+  "speakToggle": "Citește răspunsurile cu voce tare",
+  "notConfigured": "Asistentul IA nu este încă configurat — pentru asta trebuie introdus un furnizor de IA (Anthropic sau OpenAI).",
+  "openIntegrations": "Către Integrări",
+  "error": "Asistentul IA nu a putut răspunde acum. Încearcă din nou mai târziu."
+}

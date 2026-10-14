@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Trainingsvideo",
+  "subtitlesLabel": "Ondertitels",
+  "subtitlesOff": "Uit",
+  "soundLabel": "Geluid",
+  "soundOn": "Voorleesstem aan",
+  "soundOff": "Voorleesstem uit",
+  "soundHint": "De voorleesstem komt uit je browser. Welke talen beschikbaar zijn, hangt af van je apparaat.",
+  "soundMissing": "Voor deze taal is op je apparaat geen stem geïnstalleerd. De ondertitels werken wel.",
+  "draftNote": "Concept: opname van de echte app met testdata. Ondertitels automatisch vertaald.",
+  "whatLabel": "Wat het is, welke functie het heeft en hoe je het uitvoert.",
+  "videosTitle": "Uitlegvideo's voor elk onderdeel",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Eerste stappen",
+      "cues": {
+        "c1": "Welkom bij de training: Eerste stappen. Alles wat je ziet is de echte app met testdata.",
+        "c2": "Links staat de navigatie. Elk onderdeel van de app heeft hier een item.",
+        "c3": "Stap 1: Controleer onder “Integraties” welke diensten zijn verbonden.",
+        "c4": "Elke rij toont de echte, gecontroleerde status – nooit een schijnverbinding.",
+        "c5": "“Niet geconfigureerd” betekent: deze dienst is nog niet ingesteld. Zonder AI-aanbieder werkt de app in sjabloonmodus.",
+        "c6": "Stap 2: Voer je merk in onder “Brand DNA”. Toon, doelgroep en waarden vloeien door in elke gegenereerde tekst.",
+        "c7": "Voorbeeld: vul branche en doelgroep in en sla onderaan op.",
+        "c8": "Stap 3: Laat onder “Ideeën & inspiratie” het eerste idee maken. Voer een onderwerp in en klik op “Ideeën genereren”.",
+        "c9": "De ideeën verschijnen als kaarten. In sjabloonmodus zijn het voorbeelden, met een AI-aanbieder worden ze individueel.",
+        "c10": "Alles blijft een concept totdat je het goedkeurt. Voor elk onderdeel is er een eigen uitlegvideo."
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "cues": {
+        "c1": "Het dashboard is je startpagina: het overzicht van alles wat er in je werkruimte gebeurt.",
+        "c2": "Bovenaan zie je actieve agents, contentproductie en geplande berichten.",
+        "c3": "Verderop staan de recente activiteiten en snelkoppelingen naar Content Factory en Brand DNA.",
+        "c4": "Met “Week” schakel je de periode van de kengetallen om.",
+        "c5": "Zo gebruik je het: open het dashboard dagelijks, controleer openstaande concepten en spring van hieruit direct naar het juiste onderdeel."
+      }
+    },
+    "schulung": {
+      "title": "Training",
+      "cues": {
+        "c1": "De training is je handleiding in de app. Ze legt elk onderdeel stap voor stap uit.",
+        "c2": "Elk onderwerp heeft een beschrijving, genummerde stappen en een link die de bijbehorende pagina opent.",
+        "c3": "Hier verschijnen ook deze uitlegvideo's, één voor elk onderdeel.",
+        "c4": "Zo gebruik je het: kies een onderwerp, lees de stappen, open de pagina en probeer het meteen uit."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "De Content Factory is de werkbank voor al je content-items op één plek.",
+        "c2": "Functie: items aanmaken, dupliceren, herschrijven, verrijken met voice-over en ondertitels en door de goedkeuringsworkflow leiden.",
+        "c3": "De filters bovenaan tonen de statussen: Concept, In beoordeling, Goedgekeurd, Gepland, Gepubliceerd en Gearchiveerd.",
+        "c4": "Zo werkt het: met “Nieuw content-item” maak je een item aan.",
+        "c5": "Open een item om script, voice-over, ondertitels, hashtags en thumbnail te bewerken.",
+        "c6": "Goedkeuring is altijd een handmatige stap. Er wordt niets gepubliceerd zonder jouw bevestiging."
+      }
+    },
+    "ideas": {
+      "title": "Ideeën & inspiratie",
+      "cues": {
+        "c1": "Hier verzamel je ideeën: themaclusters, series en formaten voor toekomstige content.",
+        "c2": "Functie: de IdeaAgent maakt ideeën bij een onderwerp, of je legt zelf ideeën met de hand vast.",
+        "c3": "Zo werkt het: voer een onderwerp in, kies platform, doel en formaat en klik op “Ideeën genereren”.",
+        "c4": "Elk idee wordt een kaart met titel, ophaker en prioriteit.",
+        "c5": "Met “Handmatig” voeg je een eigen idee toe.",
+        "c6": "Goede ideeën gebruik je als uitgangspunt voor Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain maakt van een idee een compleet contentplan.",
+        "c2": "Functie: het houdt rekening met je Brand DNA en maakt voor elk gekozen platform hooks, scripts, hashtags en thumbnailconcepten als concept.",
+        "c3": "Zo werkt het: voer onderwerp en doelgroep in.",
+        "c4": "Kies doel en taal en klik dan de platforms aan. Hier komt TikTok erbij.",
+        "c5": "Met de schuifregelaar bepaal je hoeveel content-items per platform ontstaan.",
+        "c6": "Een klik op “Contentplan genereren” start de run.",
+        "c7": "De campagne verschijnt onderaan. Alle items zijn concepten en staan in de Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "De Brand DNA beschrijft je merk: naam, branche, doelgroep, toon en waarden.",
+        "c2": "Functie: deze gegevens vloeien automatisch door naar Content Brain en naar de script-, hook- en hashtag-agents.",
+        "c3": "Zo werkt het: vul de velden in, bijvoorbeeld branche en doelgroep.",
+        "c4": "Verderop beheer je voorkeurs- en verboden woorden, oproepen tot actie en merkwaarden.",
+        "c5": "Klik tot slot op “Brand DNA opslaan”."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio is de werkplaats voor scripts en hooks.",
+        "c2": "Functie: het bouwt scripts volgens de structuur hook, probleem, voordeel, voorbeeld, resultaat en oproep tot actie en levert meerdere hookvarianten.",
+        "c3": "Zo werkt het: voer een onderwerp in en kies het platform.",
+        "c4": "Klik dan op “Script & hooks genereren”.",
+        "c5": "Het resultaat is een concept dat je in de Content Factory verder gebruikt."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio beheert stemmen en maakt voice-overs.",
+        "c2": "Functie: Voice Library onderhouden, previews maken en stemmen importeren. De koppeling loopt via ElevenLabs.",
+        "c3": "Zo werkt het: voeg een stem handmatig toe of importeer er een uit ElevenLabs. Voor de import is een ingestelde koppeling nodig.",
+        "c4": "Met een tekst en een stem maak je een preview en speel je die af."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio is de videopipeline van de app.",
+        "c2": "Functie: formatbeheer, uitwisselbare videoaanbieders en koppeling van voice-over en ondertitels.",
+        "c3": "De pagina toont welke aanbieders zijn ingesteld. Niet-ingestelde aanbieders worden eerlijk als zodanig gemarkeerd.",
+        "c4": "Zo werkt het: video's maak je per content-item in de Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio levert thumbnailconcepten en beeldassets.",
+        "c2": "Functie: de thumbnail-agent stelt titel, beeldidee, tekst en lay-out voor. De Canva-integratie is hier voorzien.",
+        "c3": "Zo werkt het: voer het onderwerp voor de thumbnail in.",
+        "c4": "Klik op “Concept genereren”.",
+        "c5": "Het concept dient als voorbeeld voor je afbeelding."
+      }
+    },
+    "socialMedia": {
+      "title": "Social media",
+      "cues": {
+        "c1": "Hier verbind je je platformaccounts en zie je hun status.",
+        "c2": "Functie: toegangen worden serverzijdig beheerd en versleuteld opgeslagen. Via Composio meld je je aan bij het platform.",
+        "c3": "Elke kaart toont platform, account, status en laatste leestest.",
+        "c4": "“Nog niet ingesteld” betekent: de beheerder heeft de koppeling op de server nog niet geactiveerd.",
+        "c5": "Zo werkt het: zodra ingesteld, klik je bij het platform op “Verbinden” en meld je je aan. Er wordt alleen gelezen, niets gepubliceerd."
+      }
+    },
+    "calendar": {
+      "title": "Contentkalender",
+      "cues": {
+        "c1": "De contentkalender toont geplande en gepubliceerde content in één overzicht.",
+        "c2": "Functie: alle content-items met publicatiedatum verschijnen hier, filterbaar op platform.",
+        "c3": "Zo werkt het: plan een item in de Content Factory met een datum, dan verschijnt het hier.",
+        "c4": "Vóór elke publicatie controleert de app live of het doelplatform is verbonden."
+      }
+    },
+    "analytics": {
+      "title": "Analytics",
+      "cues": {
+        "c1": "Analytics toont je prestatiecijfers.",
+        "c2": "Functie: alleen daadwerkelijk aanwezige data, geïmporteerd of door jou vastgelegd. Niets is verzonnen.",
+        "c3": "Je ziet de ontwikkeling in de tijd, de best presterende content en aanbevelingen van de Learning Agent.",
+        "c4": "Zo werkt het: zodra platforms zijn verbonden of je data invoert, vullen de diagrammen zich."
+      }
+    },
+    "growth": {
+      "title": "Groei",
+      "cues": {
+        "c1": "De groeipagina geeft aanbevelingen voor meer bereik.",
+        "c2": "Functie: uit je echte analytics-data berekent ze de beste posttijden, succesvolle hashtags en formaten.",
+        "c3": "Zo werkt het: kies een platform en lees de aanbevelingen.",
+        "c4": "Dit zijn aanbevelingen, geen automatisme. Volgers of interacties worden niet kunstmatig verhoogd."
+      }
+    },
+    "revenue": {
+      "title": "Inkomsten",
+      "cues": {
+        "c1": "Onder Inkomsten breng je je opbrengsten over platforms en campagnes samen.",
+        "c2": "Functie: bedragen verschijnen pas als je ze invoert. Er zijn geen verzonnen cijfers.",
+        "c3": "Zo werkt het: klik op “Inkomsten vastleggen”, kies platform en soort en voer het bedrag in.",
+        "c4": "Uitbetaling gebeurt altijd rechtstreeks via het platform. SECRET 58 handelt geen uitbetalingen af."
+      }
+    },
+    "sales": {
+      "title": "Verkoop & shop",
+      "cues": {
+        "c1": "“Verkoop & shop” toont je eigen zakelijke inkomsten.",
+        "c2": "Functie: ze staan los van je SECRET 58-pakket. Alleen daadwerkelijke verkopen worden geteld, testdata is gemarkeerd.",
+        "c3": "Bovenaan staan de totalen per valuta, daaronder je aanbiedersgegevens voor het colofon.",
+        "c4": "Optie B: verkopen via SECRET 58. Optie A: een bestaande shop importeren.",
+        "c5": "Zo werkt het: vul de aanbiedersgegevens in en sla op, kies dan de verkoopweg."
+      }
+    },
+    "website": {
+      "title": "Mijn website",
+      "cues": {
+        "c1": "Hier integreer je de website-assistent op je eigen website.",
+        "c2": "Functie: de assistent beantwoordt vragen van je bezoekers.",
+        "c3": "Wij passen je website niet automatisch aan. Je plakt de code zelf in of laat dit door je webontwerper doen.",
+        "c4": "Zo werkt het: voer het webadres in en klik op “Website toevoegen”.",
+        "c5": "Kopieer daarna de getoonde code naar je website."
+      }
+    },
+    "inbox": {
+      "title": "Inbox",
+      "cues": {
+        "c1": "De inbox verzamelt berichten en reacties van alle platforms.",
+        "c2": "Functie: de MessageAgent stelt antwoorden voor. Er wordt alleen verzonden wat jij goedkeurt.",
+        "c3": "Zo werkt het: zolang er geen platform live is verbonden, klik je op “Gesprek simuleren”.",
+        "c4": "Controleer het antwoordvoorstel, pas het aan en keur het goed."
+      }
+    },
+    "agents": {
+      "title": "Agents",
+      "cues": {
+        "c1": "De Agent Monitor toont alle SECRET 58-agents.",
+        "c2": "Functie: status, laatste taak en resultaat van elke agent. Elke run wordt gelogd.",
+        "c3": "In de run-geschiedenis zie je wat wanneer is gelopen en of het gelukt is.",
+        "c4": "Zo gebruik je het: kijk hier als iets niet zoals verwacht is gemaakt."
+      }
+    },
+    "integrations": {
+      "title": "Integraties",
+      "cues": {
+        "c1": "Hier zie je de live status van alle externe diensten.",
+        "c2": "Functie: elke rij is gebaseerd op de daadwerkelijk ingestelde toegangen. Er zijn geen schijnverbindingen.",
+        "c3": "De groepen zijn: AI-providers, Voice, socialemediaplatforms, Design, Video en Trends.",
+        "c4": "Zo werkt het: bij “Niet geconfigureerd” leidt “API-sleutel ophalen” naar de pagina van de aanbieder.",
+        "c5": "Externe aanbieders hebben hun eigen prijzen. Bij elke dienst staat welk model geldt."
+      }
+    },
+    "billing": {
+      "title": "Pakket & facturering",
+      "cues": {
+        "c1": "Onder “Pakket & facturering” zie je je pakket en kun je het wijzigen.",
+        "c2": "Functie: de AI-functies lopen via de toegangen van de beheerder. Je hebt geen eigen AI-abonnement nodig.",
+        "c3": "Er is Pro en Maxi, maandelijks of jaarlijks. De prijzen staan netto op de kaarten.",
+        "c4": "Er wordt alleen gekocht door een uitdrukkelijke klik op “Bestellen met betalingsverplichting”.",
+        "c5": "Heb je een promocode, dan los je die in het veld eronder in."
+      }
+    },
+    "settings": {
+      "title": "Instellingen",
+      "cues": {
+        "c1": "In de instellingen beheer je werkruimte, gebruikers en systeeminformatie.",
+        "c2": "Functie: workspace, rollen, systeemstatus, installatie-assistent en jouw gegevens met inzage en verwijdering.",
+        "c3": "Zo werkt het: scroll door de onderdelen. Het verwijderen van de werkruimte vereist een extra bevestiging.",
+        "c4": "Controleer hier regelmatig je gegevens en de installatie-assistent."
+      }
+    }
+  }
+}

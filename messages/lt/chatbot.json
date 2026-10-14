@@ -1,0 +1,14 @@
+{
+  "title": "DI asistentas",
+  "welcome": "Sveiki! Klausk manęs bet ko apie SECRET 58 — kaip ką nors nustatyti, kur ką rasti ar kaip veikia tam tikra skiltis.",
+  "inputPlaceholder": "Įvesk klausimą …",
+  "thinking": "Galvoja …",
+  "openButton": "Atidaryti DI asistentą",
+  "close": "Uždaryti",
+  "sendButton": "Siųsti",
+  "micButton": "Balso įvestis",
+  "speakToggle": "Skaityti atsakymus balsu",
+  "notConfigured": "DI asistentas dar nesukonfigūruotas — tam reikia nurodyti DI tiekėją (Anthropic arba OpenAI).",
+  "openIntegrations": "Į integracijas",
+  "error": "DI asistentas šiuo metu negalėjo atsakyti. Pabandyk vėliau dar kartą."
+}

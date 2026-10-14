@@ -1,0 +1,14 @@
+{
+  "title": "Analitika",
+  "subtitle": "Veiklos rodikliai iš tikrai turimų duomenų — kai tik platformos bus prijungtos, šis rodinys prisipildys tikrų reikšmių.",
+  "statViewsTotal": "Peržiūros iš viso",
+  "statLikesTotal": "Patiktukai iš viso",
+  "statComments": "Komentarai",
+  "statShares": "Pasidalijimai",
+  "chartTitle": "Turinio veikla laikui bėgant",
+  "chartLegend": "Peržiūros (violetinė) · įsitraukimas % (turkio)",
+  "chartEmpty": "Analitikos duomenų dar nėra.",
+  "bestPerformingTitle": "Geriausiai veikiantis turinys",
+  "bestPerformingEmpty": "Duomenų dar nėra.",
+  "learningAgentTitle": "Learning Agent — rekomendacijos"
+}

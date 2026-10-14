@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Tava zīmols. Tavs stils. Visur. Šie dati automātiski tiek nodoti Content Brain, skriptu, āķu un tēmturu aģentiem.",
+  "form": {
+    "nameLabel": "Zīmola nosaukums",
+    "industryLabel": "Nozare",
+    "descriptionLabel": "Apraksts",
+    "descriptionHint": "Kas padara zīmolu īpašu?",
+    "audienceLabel": "Mērķauditorija",
+    "languageLabel": "Valoda",
+    "tonalityLabel": "Tonalitāte",
+    "humorLabel": "Humors",
+    "formalityLabel": "Formalitāte",
+    "preferredWordsLabel": "Vēlamie vārdi",
+    "forbiddenWordsLabel": "Aizliegtie vārdi",
+    "preferredCtasLabel": "Vēlamie CTA",
+    "brandValuesLabel": "Zīmola vērtības",
+    "topicsLabel": "Tēmas",
+    "csvHint": "atdalīts ar komatiem",
+    "colorsLabel": "Krāsas",
+    "colorsHint": "atdalīts ar komatiem, piem., #6D5BFF",
+    "fontsLabel": "Fonti",
+    "visualRulesLabel": "Vizuālie noteikumi",
+    "saveError": "Saglabāšana neizdevās.",
+    "unknownError": "Nezināma kļūda.",
+    "saving": "Saglabā…",
+    "save": "Saglabāt Brand DNA",
+    "savedAt": "Saglabāts plkst. {time}"
+  }
+}

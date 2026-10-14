@@ -1,0 +1,31 @@
+{
+  "pageTitle": "Innehållskalender",
+  "subtitle": "Planerat och publicerat innehåll i överblick.",
+  "weekdays": [
+    "Mån",
+    "Tis",
+    "Ons",
+    "Tors",
+    "Fre",
+    "Lör",
+    "Sön"
+  ],
+  "months": [
+    "Januari",
+    "Februari",
+    "Mars",
+    "April",
+    "Maj",
+    "Juni",
+    "Juli",
+    "Augusti",
+    "September",
+    "Oktober",
+    "November",
+    "December"
+  ],
+  "allPlatforms": "Alla plattformar",
+  "moreItems": "+{count} till",
+  "listTitle": "Den här månadens lista",
+  "emptyMonth": "Inga planerade inlägg den här månaden."
+}

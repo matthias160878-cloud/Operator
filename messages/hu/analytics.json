@@ -1,0 +1,14 @@
+{
+  "title": "Analitika",
+  "subtitle": "Teljesítménymutatók a ténylegesen meglévő adatokból — amint összekötöd a platformokat, ez a nézet valódi értékekkel töltődik fel.",
+  "statViewsTotal": "Megtekintések összesen",
+  "statLikesTotal": "Kedvelések összesen",
+  "statComments": "Hozzászólások",
+  "statShares": "Megosztások",
+  "chartTitle": "Tartalom teljesítménye időben",
+  "chartLegend": "Megtekintések (lila) · Elköteleződés % (türkiz)",
+  "chartEmpty": "Még nincsenek analitikai adatok.",
+  "bestPerformingTitle": "Legjobban teljesítő tartalmak",
+  "bestPerformingEmpty": "Még nincs adat.",
+  "learningAgentTitle": "Learning Agent — ajánlások"
+}

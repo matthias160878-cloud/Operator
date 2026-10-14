@@ -1361,6 +1361,17 @@ test("Verlauf der Zentrale: historische Kopien sind ohne Anmeldung erreichbar", 
   assert.equal((await fetch(`${BASE}/verlauf/2026-09-17-1913/webdesign.html`)).status, 200);
 });
 
+test("Hauptseite (Secret 58 Zentrale): Kopie unter /hauptseite ist ohne Anmeldung erreichbar", async () => {
+  const idx = await fetch(`${BASE}/hauptseite/index.html`);
+  assert.equal(idx.status, 200);
+  const html = await idx.text();
+  assert.ok(html.includes("Secret 58 Zentrale") && html.includes("secret58-staging.onrender.com"), "Social-Media-KI-Anbindung zeigt auf die App");
+  assert.ok(!html.includes("localhost:3000"), "keine Entwicklungsadresse");
+  for (const f of ["start.html", "hintergrund.js", "fonts.css", "bilder/agenten-zentrale.jpg"]) {
+    assert.equal((await fetch(`${BASE}/hauptseite/${f}`)).status, 200, f);
+  }
+});
+
 test("Hermes: standardmäßig aus, Betreiber-Pilot, öffentlicher Chat nur mit allen Freigaben und bestandener Prüfung", async () => {
   const h = fakes.hermes;
   const pub = h["hermes-public"], pil = h["hermes-pilot"];

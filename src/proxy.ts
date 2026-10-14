@@ -22,6 +22,7 @@ const PUBLIC_PREFIXES = [
   "/social-media-ki",
   "/zentrale/",
   "/verlauf",
+  "/hauptseite",
   "/login",
   "/signup",
   "/setup",

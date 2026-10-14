@@ -197,3 +197,15 @@ sein (Stand: Unit 16/16, Worker 6/6, Integration 35/35, ESLint 0 Fehler,
 Immer melden: **getestet** (mit Nachweis) / **vorbereitet** / **fehlt**,
 meine Aufgaben, Vorschau-URL, Branch, Commit. Keine Garantien, keine
 Beschönigung.
+
+## Hauptseite www.secret58.com (unantastbar)
+
+Die Hauptseite von SECRET 58 ist die **„Secret 58 Zentrale“** (claude.ai-Artifact, Eigentümer: Matthias Lippek):
+<https://claude.ai/artifact/Kha1HUHqEmbZLRgNErWC6Q> — Unterseiten per `#/<seite>`, z. B. `#/social-media-ki`, `#/ki-agenten`, `#/preise`.
+
+- Sie ist die Seite, von der alles ausgeht. Sagt Matthias „secret58.com“, „www.secret58.com“ oder „meine Hauptseite“, wird **immer diese Seite** gezeigt (Link angeben).
+- **Oberfläche und Inhalt dieser Seite werden nie verändert** (kein Republish, keine Änderung an Gestaltung, Texten oder Technik), außer Matthias ordnet es ausdrücklich an. Änderungen nur an Kopien.
+- Die Seite ist eine Demo mit Beispieldaten (rein im Browser, ohne Server). Was nicht angebunden ist, ist als Demo / vorbereitet / noch nicht eingerichtet zu kennzeichnen.
+- Umstellung der echten Domain secret58.com (liegt bei IONOS) erst nach ausdrücklicher Freigabe eines geprüften Ergebnisses.
+- Bekannt (Stand 14.10.2026): Die Buttons „Zum Dashboard“ und „Kaufen“ auf `#/social-media-ki` zeigen auf `http://localhost:3000` (nur auf dem Entwicklungsrechner nutzbar); „Live-Fassung“ zeigt auf `secret58-command-center.onrender.com` (leitet auf den Login). Preis dort: 797 €/Monat „Vollzugang“, nicht Pro/Maxi.
+

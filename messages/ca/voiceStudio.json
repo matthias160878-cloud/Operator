@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "Motor de veu d'ElevenLabs: gestiona la biblioteca de veus, genera previsualitzacions de veu en off i importa veus.",
+  "envWarning": "ElevenLabs encara no està configurat. Introdueix <envKey>ELEVENLABS_API_KEY</envKey> a <envFile>.env</envFile> per utilitzar la veu en off i la importació de veus. La biblioteca de veus es pot fer servir igualment per a la planificació.",
+  "addManual": "Crea una veu manualment",
+  "importFromElevenLabs": "Importa d'ElevenLabs",
+  "form": {
+    "namePlaceholder": "Nom",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Idioma",
+    "submit": "Afegeix"
+  },
+  "confirmDelete": "Segur que vols eliminar la veu?",
+  "importFailed": "La importació ha fallat.",
+  "previewFailed": "La previsualització ha fallat.",
+  "unknownError": "Error desconegut.",
+  "empty": "Encara no hi ha veus a la biblioteca.",
+  "active": "Actiu",
+  "inactive": "Inactiu",
+  "remove": "Elimina",
+  "preview": {
+    "heading": "Previsualització de veu",
+    "defaultText": "Hola, aquest és un exemple d'aquesta veu.",
+    "selectPlaceholder": "Tria una veu…",
+    "play": "Reprodueix la previsualització"
+  }
+}

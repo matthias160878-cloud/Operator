@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Canal de vídeo independent del proveïdor: gestor de formats, proveïdors de vídeo intercanviables, connexió de veu en off i subtítols (vegeu Content Factory per a cada element de contingut).",
+  "providerCardTitle": "Proveïdors de vídeo",
+  "providerNotePrefix": "Es poden afegir més proveïdors (API de vídeo amb IA, biblioteques de vídeo d'arxiu) mitjançant la mateixa interfície",
+  "providerNoteSuffix": ", sense tocar el codi existent.",
+  "formatManagerTitle": "Gestor de formats",
+  "assetsTitle": "Recursos de vídeo",
+  "assetsEmpty": "Encara no s'ha renderitzat cap vídeo: la renderització es fa mitjançant els elements de contingut de Content Factory, quan hi hagi un proveïdor de vídeo configurat."
+}

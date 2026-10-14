@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Conceptes de miniatura, recursos d'imatge i la integració amb Canva.",
+  "imageAssetsTitle": "Recursos d'imatge",
+  "imageAssetsEmpty": "Encara no hi ha recursos d'imatge.",
+  "thumbnailAgent": {
+    "title": "Agent de miniatures",
+    "description": "Genera un concepte de text (títol, idea visual, disseny, CTA) preparat per connectar un generador d'imatges. Encara no es genera cap imatge.",
+    "inputPlaceholder": "Tema de la miniatura",
+    "submitButton": "Genera concepte",
+    "errorGenerationFailed": "La generació ha fallat.",
+    "errorUnknown": "Error desconegut.",
+    "fieldTitle": "Títol",
+    "fieldVisualIdea": "Idea visual",
+    "fieldText": "Text",
+    "fieldLayout": "Disseny",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Descripció de la imatge"
+  }
+}

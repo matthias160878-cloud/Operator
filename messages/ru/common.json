@@ -1,0 +1,93 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Больше, чем контент.",
+    "footerLine2": "Полноценная контент-машина.",
+    "workspace": "Рабочее пространство",
+    "role": "Администратор"
+  },
+  "nav": {
+    "dashboard": "Дашборд",
+    "schulung": "Обучение",
+    "contentFactory": "Content Factory",
+    "ideas": "Идеи и вдохновение",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Соцсети",
+    "calendar": "Контент-календарь",
+    "analytics": "Аналитика",
+    "growth": "Рост",
+    "revenue": "Доходы",
+    "inbox": "Входящие",
+    "agents": "Агенты",
+    "integrations": "Интеграции",
+    "settings": "Настройки",
+    "billing": "Пакет и оплата",
+    "sales": "Продажи и магазин",
+    "website": "Мой сайт"
+  },
+  "topbar": {
+    "menuOpen": "Открыть меню",
+    "menuClose": "Закрыть меню",
+    "searchPlaceholder": "Поиск по материалам, проектам, кампаниям …",
+    "notifications": "Уведомления",
+    "language": "Язык"
+  },
+  "footer": {
+    "help": "Помощь",
+    "privacy": "Конфиденциальность",
+    "imprint": "Выходные данные",
+    "systemOnline": "Система онлайн"
+  },
+  "actions": {
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "create": "Создать",
+    "close": "Закрыть",
+    "back": "Назад",
+    "loading": "Загрузка …"
+  },
+  "status": {
+    "connected": "Подключено",
+    "notConfigured": "Не настроено",
+    "error": "Ошибка"
+  },
+  "statusBadge": {
+    "CONNECTED": "Подключено",
+    "ACTIVE": "Активно",
+    "COMPLETED": "Завершено",
+    "RUNNING": "Выполняется",
+    "SUCCESS": "Успешно",
+    "PUBLISHED": "Опубликовано",
+    "APPROVED": "Одобрено",
+    "SCHEDULED": "Запланировано",
+    "WAITING": "Ожидает",
+    "IN_REVIEW": "На проверке",
+    "NOT_CONFIGURED": "Не настроено",
+    "IDLE": "Готов",
+    "DRAFT": "Черновик",
+    "ARCHIVED": "В архиве",
+    "ERROR": "Ошибка",
+    "REJECTED": "Отклонено",
+    "RECEIVED": "Получено",
+    "PENDING": "В ожидании"
+  },
+  "integrationStatus": {
+    "notConfigured": "Не настроено — отсутствуют переменные: {vars}.",
+    "verifyFailedGeneric": "Не удалось подключиться.",
+    "verifyFailedStatus": "{service} ответил со статусом {status}.",
+    "verifyUnreachable": "Не удалось связаться с {service}.",
+    "connected": "Подключено."
+  },
+  "mediaPreview": {
+    "expand": "Показать крупнее",
+    "close": "Закрыть"
+  }
+}

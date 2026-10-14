@@ -1,0 +1,21 @@
+{
+  "title": "Monitor d'agents",
+  "description": "Tots els agents de SECRET 58 amb estat, darrera tasca i resultat. Cada execució es registra.",
+  "table": {
+    "agent": "Agent",
+    "description": "Descripció",
+    "status": "Estat",
+    "lastTask": "Darrera tasca"
+  },
+  "history": {
+    "title": "Historial d'execucions",
+    "agent": "Agent",
+    "task": "Tasca",
+    "status": "Estat",
+    "start": "Inici",
+    "end": "Final",
+    "resultError": "Resultat / Error",
+    "empty": "Encara no hi ha execucions d'agents.",
+    "completed": "Completada"
+  }
+}

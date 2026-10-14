@@ -1,0 +1,22 @@
+{
+  "title": "Идеи и вдохновение",
+  "subtitle": "Кластеры тем, серии и форматы для будущего контента — создаются IdeaAgent или добавляются вручную.",
+  "board": {
+    "topicLabel": "Тема для новых идей",
+    "topicPlaceholder": "например: продуктивность с ИИ-агентами",
+    "generateButton": "Сгенерировать идеи",
+    "manualButton": "Вручную",
+    "manualTitlePlaceholder": "Название идеи",
+    "addButton": "Добавить",
+    "generateError": "Ошибка при генерации идей.",
+    "unknownError": "Неизвестная ошибка.",
+    "emptyState": "Идей пока нет — сгенерируй или добавь вручную.",
+    "minutesUnit": "~{count} мин.",
+    "statusNew": "Новая",
+    "statusInProgress": "В работе",
+    "statusUsed": "Использована",
+    "statusArchived": "В архиве",
+    "sourceAiGenerated": "Создано ИИ",
+    "sourceManual": "Вручную"
+  }
+}

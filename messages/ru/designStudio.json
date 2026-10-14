@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Концепции обложек, графические ресурсы и интеграция с Canva.",
+  "imageAssetsTitle": "Графические ресурсы",
+  "imageAssetsEmpty": "Графических ресурсов пока нет.",
+  "thumbnailAgent": {
+    "title": "Агент обложек",
+    "description": "Создаёт текстовую концепцию (название, визуальная идея, макет, призыв к действию) — подготовлено для подключения генератора изображений. Изображение пока не создаётся.",
+    "inputPlaceholder": "Тема обложки",
+    "submitButton": "Сгенерировать концепцию",
+    "errorGenerationFailed": "Не удалось сгенерировать.",
+    "errorUnknown": "Неизвестная ошибка.",
+    "fieldTitle": "Название",
+    "fieldVisualIdea": "Визуальная идея",
+    "fieldText": "Текст",
+    "fieldLayout": "Макет",
+    "fieldCta": "Призыв к действию",
+    "fieldImageDescription": "Описание изображения"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Indicadors de rendiment a partir de dades realment disponibles: quan es connectin les plataformes, aquesta vista s'omplirà amb valors reals.",
+  "statViewsTotal": "Visualitzacions totals",
+  "statLikesTotal": "M'agrada totals",
+  "statComments": "Comentaris",
+  "statShares": "Comparticions",
+  "chartTitle": "Rendiment del contingut al llarg del temps",
+  "chartLegend": "Visualitzacions (violeta) · Engagement % (turquesa)",
+  "chartEmpty": "Encara no hi ha dades d'analytics.",
+  "bestPerformingTitle": "Contingut amb millor rendiment",
+  "bestPerformingEmpty": "Encara no hi ha dades.",
+  "learningAgentTitle": "Learning Agent — Recomanacions"
+}

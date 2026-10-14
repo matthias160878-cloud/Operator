@@ -1,0 +1,24 @@
+{
+  "title": "Integracions",
+  "description": "Estat en directe de tots els serveis externs, exclusivament a partir de les variables d'entorn realment definides. Sense connexions simulades.",
+  "categories": {
+    "AI": "Proveïdors d'IA",
+    "VOICE": "Voice",
+    "PLATFORM": "Plataformes socials",
+    "DESIGN": "Disseny",
+    "VIDEO": "Vídeo",
+    "TREND": "Tendències"
+  },
+  "costNote": "El preu de compra de SECRET 58 és únic i cobreix el programari. Cada servei extern d'aquí té el seu propi model de costos, independent, amb el proveïdor corresponent: SECRET 58 mai no et factura res addicional per això.",
+  "links": {
+    "getKey": "Obtén la clau d'API",
+    "setInRender": "Introdueix-la a Render",
+    "viewPricing": "Mostra els preus"
+  },
+  "pricing": {
+    "free": "Gratuït",
+    "payAsYouGo": "Segons l'ús",
+    "subscription": "Subscripció",
+    "unknown": "Consulta el preu amb el proveïdor"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "viewAll": "Mostra-ho tot",
+  "demoBanner": {
+    "before": "Dades de demostració actives: les campanyes, els elements de contingut i l'analytics són dades d'exemple de ",
+    "after": ", no xifres reals de les plataformes."
+  },
+  "hero": {
+    "subtitle": "Una idea. Diverses plataformes. Màxim abast.",
+    "newCampaign": "Nova campanya",
+    "createContent": "Crea contingut",
+    "findIdeas": "Troba idees",
+    "aiAgents": "Agents d'IA"
+  },
+  "orbit": {
+    "xNotConnected": "X (no connectat)",
+    "brainAlt": "Cervell d'IA de SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Agents actius",
+    "empty": "Encara no hi ha execucions d'agents."
+  },
+  "kpi": {
+    "contentCreated": "Contingut creat",
+    "videosCreated": "Vídeos creats",
+    "postsCreated": "Publicacions creades",
+    "published": "Publicacions fetes",
+    "views": "Visualitzacions",
+    "avgEngagement": "Engagement mitjà",
+    "totalRevenue": "Ingressos totals",
+    "noComparisonWeek": "Encara no hi ha cap setmana anterior com a base de comparació: les taxes de variació apareixeran quan hi hagi dades d'almenys dues setmanes."
+  },
+  "production": {
+    "title": "Producció de contingut",
+    "thisWeek": "Aquesta setmana"
+  },
+  "scheduled": {
+    "title": "Publicacions planificades",
+    "empty": "No hi ha publicacions planificades."
+  },
+  "activity": {
+    "title": "Activitat recent",
+    "empty": "Encara no hi ha activitat."
+  },
+  "contentFactory": {
+    "description": "Crea campanyes de contingut completes per a totes les plataformes amb una sola idea.",
+    "cta": "Comença ara →",
+    "popularTemplates": "Plantilles populars",
+    "templateYoutubeVideo": "Vídeo de YouTube",
+    "templateTiktokSeries": "Sèrie de TikTok",
+    "templateInstagramReel": "Reel d'Instagram",
+    "templateLinkedinPost": "Publicació de LinkedIn",
+    "templateBlogPost": "Article de blog",
+    "viewAllTemplates": "Totes les plantilles →"
+  },
+  "brandDna": {
+    "tonality": "To",
+    "targetAudience": "Públic objectiu",
+    "industry": "Sector",
+    "language": "Idioma",
+    "empty": "Encara no hi ha cap Brand DNA definit."
+  },
+  "campaigns": {
+    "title": "Campanyes actuals",
+    "empty": "Encara no hi ha campanyes."
+  },
+  "platforms": {
+    "title": "Plataformes",
+    "manage": "Gestiona"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} connectades"
+  },
+  "agentMonitor": {
+    "title": "Monitor d'agents",
+    "empty": "Encara no hi ha execucions."
+  },
+  "topPerformer": {
+    "title": "Millor rendiment",
+    "last7Days": "Darrers 7 dies",
+    "empty": "Encara no hi ha dades de rendiment.",
+    "views": "Visualitzacions",
+    "likes": "M'agrada",
+    "comments": "Comentaris",
+    "shares": "Comparticions",
+    "engagementRate": "+Taxa d'engagement {value}"
+  },
+  "calendar": {
+    "open": "Obre",
+    "viewMonth": "Mes",
+    "viewWeek": "Setmana",
+    "viewDay": "Dia",
+    "viewCampaign": "Campanya",
+    "moreItems": "+{count} més"
+  },
+  "weekdayLabels": [
+    "Dl",
+    "Dt",
+    "Dc",
+    "Dj",
+    "Dv",
+    "Ds",
+    "Dg"
+  ]
+}

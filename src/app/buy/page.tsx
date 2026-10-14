@@ -15,7 +15,7 @@ import {
   yearlyMonthlyEquivalent,
   type Metric,
 } from "@/lib/plans";
-import { getPlanPrice } from "@/lib/stripe";
+import { getPlanPrice, isStripeConfigured, isStripeWebhookConfigured } from "@/lib/stripe";
 import "./zentrale.css";
 
 export const dynamic = "force-dynamic";
@@ -46,7 +46,7 @@ export default async function BuyPage({
   const preselected = (plan ?? vorauswahl ?? "").toUpperCase();
   const user = await getSessionUser();
   const prices = await Promise.all(PLAN_KEYS.map((k) => getPlanPrice(k).catch(() => null)));
-  const saleOpen = packageTermsConfirmed() && legalInfoComplete();
+  const saleOpen = packageTermsConfirmed() && legalInfoComplete() && isStripeConfigured() && isStripeWebhookConfigured();
   const { agb, datenschutz } = legalLinks();
 
   return (

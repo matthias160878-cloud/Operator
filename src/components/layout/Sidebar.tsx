@@ -7,7 +7,17 @@ import { useTranslations } from "next-intl";
 import { NAV_ITEMS } from "@/components/layout/nav-items";
 import clsx from "clsx";
 
-export function Sidebar() {
+export function Sidebar({
+  userName,
+  initials,
+  workspaceName,
+  isAdmin,
+}: {
+  userName: string;
+  initials: string;
+  workspaceName: string;
+  isAdmin: boolean;
+}) {
   const t = useTranslations("common");
   const pathname = usePathname();
 
@@ -74,15 +84,15 @@ export function Sidebar() {
             <span className="status-dot bg-success" />
             {t("sidebar.workspace")}
           </div>
-          <div className="mt-1 text-sm font-medium text-foreground">Secret 58 Media</div>
+          <div className="mt-1 truncate text-sm font-medium text-foreground" title={workspaceName}>{workspaceName}</div>
         </div>
         <div className="flex items-center gap-2 px-1">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent-3 to-accent text-xs font-semibold text-white">
-            MM
+            {initials}
           </div>
           <div className="leading-tight">
-            <div className="text-sm text-foreground">Max Mustermann</div>
-            <div className="text-xs text-muted">{t("sidebar.role")}</div>
+            <div className="max-w-[9.5rem] truncate text-sm text-foreground" title={userName}>{userName}</div>
+            {isAdmin && <div className="text-xs text-muted">{t("sidebar.role")}</div>}
           </div>
         </div>
       </div>

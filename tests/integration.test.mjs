@@ -78,11 +78,12 @@ class Client {
   }
 }
 
-async function signup(email, workspaceName) {
+async function signup(email, workspaceName, ip) {
   const c = new Client();
   const r = await c.json("/api/auth/signup", {
     method: "POST",
     body: { email, password: "sehr-sicheres-passwort-123", name: workspaceName, workspaceName, acceptProcessing: true },
+    ...(ip ? { headers: { "x-forwarded-for": ip } } : {}),
   });
   assert.equal(r.status, 200, JSON.stringify(r.data));
   return c;
@@ -1281,4 +1282,28 @@ test("Bilder vorne: App-Symbole, Startbilder und Logo der Anmeldeseite sind ohne
   const root = await (await fetch(`${BASE}/login`)).text();
   assert.ok(root.includes("/splash/1170x2532.jpg"), "Startbild-Verweis im Seitenkopf");
   assert.equal((await fetch(`${BASE}/api/chatbot`, { redirect: "manual" })).status, 401);
+});
+
+test("Seitenleiste zeigt Nutzer und Arbeitsbereich des Kontos, keine Platzhalter", async () => {
+  const c = await signup("seitenleiste@example.test", "Beispiel GmbH", "10.61.0.1");
+  const html = await (await c.req("/ideas")).text();
+  assert.ok(html.includes("Beispiel GmbH"), "Name/Arbeitsbereich aus dem Konto");
+  assert.ok(!html.includes("Max Mustermann"), "kein fest eingebauter Name");
+  assert.ok(!html.includes("Secret 58 Media"), "kein fest eingebauter Arbeitsbereich");
+  assert.ok(html.includes(">BG<"), "Initialen aus dem Namen");
+});
+
+test("Schulungsvideos: Untertitel in gewählter Sprache nur mit Anmeldung, Fallback und Fehlerfälle", async () => {
+  assert.equal((await new Client().json("/api/schulung/untertitel/start/pl")).status, 401);
+  const c = await signup("videos@example.test", "Videos Test", "10.61.0.2");
+  const pl = await c.json("/api/schulung/untertitel/start/pl");
+  assert.equal(pl.status, 200);
+  assert.ok(pl.data.cues.length >= 8 && pl.data.cues.every((x) => x.text && x.end > x.start));
+  const de = await c.json("/api/schulung/untertitel/start/de");
+  assert.notEqual(de.data.cues[0].text, pl.data.cues[0].text, "Sprachen unterscheiden sich");
+  assert.equal((await c.json("/api/schulung/untertitel/start/xx")).status, 404);
+  assert.equal((await c.json("/api/schulung/untertitel/gibtsnicht/de")).status, 404);
+  const vid = await c.req("/schulung/videos/start.mp4");
+  assert.equal(vid.status, 200);
+  assert.match(vid.headers.get("content-type") ?? "", /video\/mp4/);
 });

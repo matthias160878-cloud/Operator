@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Þjálfunarmyndskeið",
+  "subtitlesLabel": "Texti",
+  "subtitlesOff": "Slökkt",
+  "soundLabel": "Hljóð",
+  "soundOn": "Upplestrarrödd á",
+  "soundOff": "Upplestrarrödd slökkt",
+  "soundHint": "Upplestrarröddin kemur úr vafranum þínum. Hvaða tungumál eru í boði fer eftir tækinu þínu.",
+  "soundMissing": "Engin rödd er uppsett á tækinu þínu fyrir þetta tungumál. Textinn virkar samt.",
+  "draftNote": "Drög: Upptaka af raunverulegu forriti með prófunargögnum. Texti vélþýddur.",
+  "whatLabel": "Hvað þetta er, hvaða hlutverk það hefur og hvernig þú notar það.",
+  "videosTitle": "Kennslumyndskeið um hvert svæði",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Fyrstu skref",
+      "cues": {
+        "c1": "Velkomin í þjálfunina: Fyrstu skref. Allt sem þú sérð er raunverulega forritið með prófunargögnum.",
+        "c2": "Vinstra megin er leiðsögnin. Hvert svæði forritsins á þar færslu.",
+        "c3": "Skref 1: Athugaðu undir „Samþættingar“ hvaða þjónusta er tengd.",
+        "c4": "Hver lína sýnir raunverulega, staðfesta stöðu – aldrei uppgerðartengingu.",
+        "c5": "„Ekki stillt“ þýðir: Þessi þjónusta er ekki enn sett upp. Án gervigreindarveitu vinnur forritið í sniðmátsstillingu.",
+        "c6": "Skref 2: Skráðu vörumerkið þitt undir „Brand DNA“. Tónn, markhópur og gildi fara inn í hvern texta sem er búinn til.",
+        "c7": "Dæmi: Fylltu út atvinnugrein og markhóp og vistaðu neðst.",
+        "c8": "Skref 3: Láttu búa til fyrstu hugmyndina undir „Hugmyndir og innblástur“. Sláðu inn efni og smelltu á „Búa til hugmyndir“.",
+        "c9": "Hugmyndirnar birtast sem spjöld. Í sniðmátsstillingu eru þær dæmi, með gervigreindarveitu verða þær sérsniðnar.",
+        "c10": "Allt er áfram drög þar til þú samþykkir það. Hvert svæði hefur sitt eigið kennslumyndskeið."
+      }
+    },
+    "dashboard": {
+      "title": "Yfirlit",
+      "cues": {
+        "c1": "Yfirlitið er upphafssíðan þín: yfirsýn yfir allt sem gerist á vinnusvæðinu þínu.",
+        "c2": "Efst sérðu virka fulltrúa, efnisframleiðslu og áætlaðar færslur.",
+        "c3": "Neðar eru nýjustu athafnir og flýtileiðir í Content Factory og Brand DNA.",
+        "c4": "Með „Vika“ breytirðu tímabili mælikvarðanna.",
+        "c5": "Svona notarðu það: Opnaðu yfirlitið daglega, athugaðu opin drög og farðu héðan beint á viðeigandi svæði."
+      }
+    },
+    "schulung": {
+      "title": "Þjálfun",
+      "cues": {
+        "c1": "Þjálfunin er leiðbeiningin þín í forritinu. Hún útskýrir hvert svæði skref fyrir skref.",
+        "c2": "Hvert efni hefur lýsingu, númeruð skref og hlekk sem opnar viðeigandi síðu.",
+        "c3": "Hér birtast einnig þessi kennslumyndskeið, eitt fyrir hvert svæði.",
+        "c4": "Svona notarðu það: Veldu efni, lestu skrefin, opnaðu síðuna og prófaðu strax."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory er vinnuborðið fyrir öll efnisatriðin þín á einum stað.",
+        "c2": "Hlutverk: Búa til, afrita og endurskrifa atriði, bæta við talsetningu og texta við myndskeið og leiða þau í gegnum samþykktarferlið.",
+        "c3": "Síurnar efst sýna stöðurnar: Drög, Í yfirferð, Samþykkt, Áætlað, Birt og Í safni.",
+        "c4": "Svona gerirðu það: Með „Nýtt efnisatriði“ stofnarðu atriði.",
+        "c5": "Opnaðu atriði til að breyta handriti, talsetningu, texta við myndskeið, myllumerkjum og smámynd.",
+        "c6": "Samþykki er alltaf handvirkt skref. Ekkert er birt án staðfestingar frá þér."
+      }
+    },
+    "ideas": {
+      "title": "Hugmyndir og innblástur",
+      "cues": {
+        "c1": "Hér safnarðu hugmyndum: efnisklösum, seríum og sniðum fyrir komandi efni.",
+        "c2": "Hlutverk: IdeaAgent býr til hugmyndir um efni, eða þú skráir eigin hugmyndir í höndunum.",
+        "c3": "Svona gerirðu það: Sláðu inn efni, veldu miðil, markmið og snið og smelltu á „Búa til hugmyndir“.",
+        "c4": "Hver hugmynd verður spjald með titli, krækju og forgangi.",
+        "c5": "Með „Handvirkt“ skráirðu eigin hugmynd.",
+        "c6": "Góðar hugmyndir notarðu sem upphafspunkt fyrir Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain gerir heildstæða efnisáætlun úr einni hugmynd.",
+        "c2": "Hlutverk: Hann tekur mið af Brand DNA og býr til krækjur, handrit, myllumerki og smámyndahugmyndir sem drög fyrir hvern valinn miðil.",
+        "c3": "Svona gerirðu það: Sláðu inn efni og markhóp.",
+        "c4": "Veldu markmið og tungumál og smelltu síðan á miðlana. Hér bætist TikTok við.",
+        "c5": "Með sleðanum ákveður þú hve mörg efnisatriði verða til á hvern miðil.",
+        "c6": "Smellur á „Búa til efnisáætlun“ ræsir keyrsluna.",
+        "c7": "Herferðin birtist neðst. Öll atriði eru drög og liggja í Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA lýsir vörumerkinu þínu: nafni, atvinnugrein, markhópi, tóni og gildum.",
+        "c2": "Hlutverk: Þessar upplýsingar fara sjálfkrafa inn í Content Brain og í handrits-, krækju- og myllumerkjafulltrúana.",
+        "c3": "Svona gerirðu það: Fylltu út reitina, til dæmis atvinnugrein og markhóp.",
+        "c4": "Neðar heldurðu utan um æskileg og bönnuð orð, hvatningar til aðgerða og gildi vörumerkisins.",
+        "c5": "Að lokum smellirðu á „Vista Brand DNA“."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio er verkstæðið fyrir handrit og krækjur.",
+        "c2": "Hlutverk: Það byggir handrit eftir uppbyggingunni krækja, vandamál, ávinningur, dæmi, niðurstaða og hvatning til aðgerða og skilar mörgum krækjuafbrigðum.",
+        "c3": "Svona gerirðu það: Sláðu inn efni og veldu miðil.",
+        "c4": "Smelltu síðan á „Búa til handrit og krækjur“.",
+        "c5": "Niðurstaðan eru drög sem þú heldur áfram með í Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio heldur utan um raddir og býr til talsetningu.",
+        "c2": "Hlutverk: Viðhalda raddasafni, búa til forskoðanir og flytja inn raddir. Tengingin fer í gegnum ElevenLabs.",
+        "c3": "Svona gerirðu það: Stofnaðu rödd handvirkt eða fluttu inn frá ElevenLabs. Innflutningur krefst uppsettrar tengingar.",
+        "c4": "Með texta og rödd býrðu til forskoðun og spilar hana."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio er myndskeiðaferli forritsins.",
+        "c2": "Hlutverk: Sniðastjóri, skiptanlegar myndskeiðaveitur og tenging við talsetningu og texta við myndskeið.",
+        "c3": "Síðan sýnir hvaða veitur eru settar upp. Þær sem eru ekki uppsettar eru heiðarlega merktar sem slíkar.",
+        "c4": "Svona gerirðu það: Myndskeið býrðu til fyrir hvert efnisatriði í Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio skilar smámyndahugmyndum og myndaeignum.",
+        "c2": "Hlutverk: Smámyndafulltrúinn leggur til titil, myndhugmynd, texta og uppsetningu. Canva-samþættingin er fyrirhuguð hér.",
+        "c3": "Svona gerirðu það: Sláðu inn efni smámyndarinnar.",
+        "c4": "Smelltu á „Búa til hugmynd“.",
+        "c5": "Hugmyndin þjónar sem sniðmát fyrir myndina þína."
+      }
+    },
+    "socialMedia": {
+      "title": "Samfélagsmiðlar",
+      "cues": {
+        "c1": "Hér tengirðu reikningana þína á miðlunum og sérð stöðu þeirra.",
+        "c2": "Hlutverk: Aðgangur er stýrður á þjóninum og vistaður dulkóðaður. Í gegnum Composio skráirðu þig inn á miðilinn.",
+        "c3": "Hvert spjald sýnir miðil, reikning, stöðu og síðustu lesprófun.",
+        "c4": "„Ekki enn sett upp“ þýðir: Rekstraraðilinn hefur ekki enn virkjað tenginguna á þjóninum.",
+        "c5": "Svona gerirðu það: Þegar búið er að setja upp smellirðu á „Tengja“ við miðilinn og skráir þig inn. Aðeins er lesið, ekkert er birt."
+      }
+    },
+    "calendar": {
+      "title": "Efnisdagatal",
+      "cues": {
+        "c1": "Efnisdagatalið sýnir yfirlit yfir áætlað og birt efni.",
+        "c2": "Hlutverk: Öll efnisatriði með birtingardag birtast hér, hægt að sía eftir miðli.",
+        "c3": "Svona gerirðu það: Áætlaðu atriði í Content Factory með dagsetningu, þá birtist það hér.",
+        "c4": "Fyrir hverja birtingu athugar forritið í beinni hvort markmiðsmiðillinn sé tengdur."
+      }
+    },
+    "analytics": {
+      "title": "Greining",
+      "cues": {
+        "c1": "Greining sýnir frammistöðumælikvarðana þína.",
+        "c2": "Hlutverk: Aðeins gögn sem eru raunverulega til, innflutt eða skráð af þér. Ekkert er tilbúið.",
+        "c3": "Þú sérð þróun yfir tíma, best heppnaða efnið og ráðleggingar Námsfulltrúans.",
+        "c4": "Svona gerirðu það: Um leið og miðlar eru tengdir eða þú skráir gögn fyllast línuritin."
+      }
+    },
+    "growth": {
+      "title": "Vöxtur",
+      "cues": {
+        "c1": "Vaxtarsíðan gefur ráðleggingar um meiri útbreiðslu.",
+        "c2": "Hlutverk: Út frá raunverulegum greiningargögnum þínum reiknar hún út bestu birtingartíma, árangursrík myllumerki og snið.",
+        "c3": "Svona gerirðu það: Veldu miðil og lestu ráðleggingarnar.",
+        "c4": "Þetta eru ráðleggingar, ekki sjálfvirkni. Fylgjendum eða samskiptum er ekki fjölgað gervilega."
+      }
+    },
+    "revenue": {
+      "title": "Tekjur",
+      "cues": {
+        "c1": "Undir Tekjur safnarðu saman tekjum af miðlum og herferðum.",
+        "c2": "Hlutverk: Upphæðir birtast ekki fyrr en þú skráir þær. Engar tilbúnar tölur eru til.",
+        "c3": "Svona gerirðu það: Smelltu á „Skrá tekjur“, veldu miðil og tegund og sláðu inn upphæðina.",
+        "c4": "Útgreiðsla fer alltaf beint í gegnum miðilinn. SECRET 58 annast engar útgreiðslur."
+      }
+    },
+    "sales": {
+      "title": "Sala og verslun",
+      "cues": {
+        "c1": "„Sala og verslun“ sýnir þínar eigin viðskiptatekjur.",
+        "c2": "Hlutverk: Þær eru aðskildar frá SECRET 58 pakkanum þínum. Aðeins raunveruleg sala er talin, prófunargögn eru merkt.",
+        "c3": "Efst eru heildartölur eftir gjaldmiðli, þar undir upplýsingar þínar sem seljanda fyrir útgefandaupplýsingar.",
+        "c4": "Valkostur B: Selja í gegnum SECRET 58. Valkostur A: flytja inn núverandi verslun.",
+        "c5": "Svona gerirðu það: Fylltu út upplýsingar seljanda og vistaðu, veldu síðan söluleiðina."
+      }
+    },
+    "website": {
+      "title": "Vefsíðan mín",
+      "cues": {
+        "c1": "Hér felurðu vefsíðuaðstoðarmanninn inn á þinni eigin vefsíðu.",
+        "c2": "Hlutverk: Aðstoðarmaðurinn svarar spurningum gesta þinna.",
+        "c3": "Við breytum ekki vefsíðunni þinni sjálfkrafa. Þú setur kóðann sjálf(ur) inn eða lætur vefhönnuðinn þinn gera það.",
+        "c4": "Svona gerirðu það: Sláðu inn vefslóðina og smelltu á „Bæta við vefsíðu“.",
+        "c5": "Síðan afritarðu kóðann sem birtist inn á vefsíðuna þína."
+      }
+    },
+    "inbox": {
+      "title": "Pósthólf",
+      "cues": {
+        "c1": "Pósthólfið safnar skilaboðum og athugasemdum af öllum miðlum.",
+        "c2": "Hlutverk: MessageAgent leggur til svör. Aðeins það sem þú samþykkir er sent.",
+        "c3": "Svona gerirðu það: Á meðan enginn miðill er tengdur í beinni smellirðu á „Herma samtal“.",
+        "c4": "Farðu yfir tillöguna að svari, lagaðu hana og samþykktu."
+      }
+    },
+    "agents": {
+      "title": "Fulltrúar",
+      "cues": {
+        "c1": "Eftirlit með fulltrúum sýnir alla SECRET 58 fulltrúa.",
+        "c2": "Hlutverk: Staða, síðasta verkefni og niðurstaða hvers fulltrúa. Hver keyrsla er skráð.",
+        "c3": "Í keyrslusögunni sérðu hvað keyrði hvenær og hvort það tókst.",
+        "c4": "Svona notarðu það: Athugaðu hér ef eitthvað var ekki búið til eins og búist var við."
+      }
+    },
+    "integrations": {
+      "title": "Samþættingar",
+      "cues": {
+        "c1": "Hér sérðu stöðu allra utanaðkomandi þjónusta í beinni.",
+        "c2": "Hlutverk: Hver lína byggir á aðgangi sem er raunverulega stilltur. Engar uppgerðartengingar eru til.",
+        "c3": "Flokkarnir eru: Gervigreindarveitur, Rödd, Samfélagsmiðlar, Hönnun, Myndskeið og Stefnur.",
+        "c4": "Svona gerirðu það: Við „Ekki stillt“ leiðir „Sækja API-lykil“ á síðu veitandans.",
+        "c5": "Utanaðkomandi veitendur hafa sitt eigið verð. Hjá hverri þjónustu kemur fram hvaða líkan gildir."
+      }
+    },
+    "billing": {
+      "title": "Pakki og reikningar",
+      "cues": {
+        "c1": "Undir „Pakki og reikningar“ sérðu pakkann þinn og getur skipt um.",
+        "c2": "Hlutverk: Gervigreindaraðgerðirnar keyra í gegnum aðgang rekstraraðilans. Þú þarft enga eigin gervigreindaráskrift.",
+        "c3": "Í boði eru Pro og Maxi, mánaðarlega eða árlega. Verðin eru án skatta á spjöldunum.",
+        "c4": "Aðeins er keypt með skýrum smelli á „Panta með greiðsluskyldu“.",
+        "c5": "Ef þú ert með afsláttarkóða innleysirðu hann í reitnum fyrir neðan."
+      }
+    },
+    "settings": {
+      "title": "Stillingar",
+      "cues": {
+        "c1": "Í stillingunum stjórnarðu vinnusvæði, notendum og kerfisupplýsingum.",
+        "c2": "Hlutverk: Vinnusvæði, hlutverk, kerfisstaða, uppsetningaraðstoð og gögnin þín með upplýsingagjöf og eyðingu.",
+        "c3": "Svona gerirðu það: Flettu í gegnum hlutana. Eyðing vinnusvæðisins krefst viðbótarstaðfestingar.",
+        "c4": "Athugaðu hér reglulega gögnin þín og uppsetningaraðstoðina."
+      }
+    }
+  }
+}

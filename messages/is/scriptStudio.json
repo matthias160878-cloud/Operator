@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Handrits- og krækjuvél: býr til handrit löguð að miðlum eftir uppbyggingunni Hook → Problem → Value → Example → Payoff → CTA ásamt mörgum krækjuafbrigðum.",
+  "form": {
+    "topicLabel": "Efni",
+    "topicPlaceholder": "t.d. 5 leiðir sem gervigreindarfulltrúar spara tíma",
+    "platformLabel": "Miðill",
+    "generateButton": "Búa til handrit og krækjur",
+    "generateFailed": "Gerð mistókst.",
+    "unknownError": "Óþekkt villa."
+  },
+  "hookTypes": {
+    "direkt": "Beint",
+    "neugierig": "Forvitnilegt",
+    "story": "Saga",
+    "problem": "Vandamál",
+    "zahlen": "Tölur",
+    "kontroversSachlich": "Umdeilt (málefnalegt)",
+    "educational": "Fræðandi"
+  },
+  "hooksHeading": "Krækjuafbrigði",
+  "engine": {
+    "label": "Vél: {provider}",
+    "templateMode": "Sniðmátsstilling (engin gervigreindarveita stillt)"
+  },
+  "script": {
+    "heading": "Handrit",
+    "save": "Vista sem efnisatriði",
+    "saving": "Vistar…"
+  }
+}

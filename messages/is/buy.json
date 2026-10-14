@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Engin áskrift. Allir fulltrúar. Þínir eigin gervigreindarveitendur.",
+  "subtitle": "Ein hugmynd. Margir miðlar. Hámarks útbreiðsla. Einn heildarpakki — borgaðu einu sinni, fullur aðgangur að öllu forritinu.",
+  "features": [
+    "Content Brain — ein hugmynd, allir miðlar",
+    "Allir gervigreindarfulltrúar: hugmyndir, stefnur, handrit, krækjur, myllumerki, smámyndir, texti við myndskeið, birting",
+    "Voice Studio með ElevenLabs-röddum",
+    "Video Studio með sniðastjóra — tenging við gervigreindarmyndskeiðaframleiðendur í vinnslu",
+    "Content Factory með samþykktarferli og efnisdagatali",
+    "Greining, vaxtarráðleggingar og tekjuskráning",
+    "Pósthólf með gervigreindardrögum að svörum",
+    "Frjálst val á gervigreindarveitum með eigin aðgangi — engir kvótar"
+  ],
+  "priceOnetime": "eingreiðsla",
+  "priceRecommendedNote": "Ráðlagt verð — verður bindandi þegar Stripe er stillt með viðeigandi verði.",
+  "buyButton": "Kaupa núna",
+  "redirecting": "Áframsending til Stripe …",
+  "checkoutFailed": "Greiðsla mistókst.",
+  "unknownError": "Óþekkt villa.",
+  "notConfigured": "Greiðsla er ekki enn stillt — rekstraraðilinn þarf fyrst að stofna vöru á {price} í Stripe og setja inn STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Athugið: Þetta verð er eingreiðsla fyrir hugbúnaðinn. Einstakar aðgerðir (t.d. textagerð með gervigreind, talgervill) krefjast eigin aðgangs hjá þriðju aðilum (t.d. Anthropic, ElevenLabs) — kostnaður við þær er óháður SECRET 58 og greiðist beint til viðkomandi veitanda, ekki hér. Nánari upplýsingar eftir kaup undir Samþættingar.",
+  "setupServiceTitle": "Bæta við uppsetningarþjónustu (+{price} eingreiðsla)",
+  "setupServiceDescription": "Við setjum upp API-lykla, Brand DNA og fyrstu færslurnar fyrir þig.",
+  "setupServiceUnavailable": "Væntanlegt til bókunar — rekstraraðilinn þarf fyrst að skrá þjónustuna í Stripe.",
+  "autopilot": {
+    "kicker": "Væntanlegt",
+    "title": "Autopilot — allt innifalið",
+    "subtitle": "Enginn eigin aðgangur nauðsynlegur: allur kostnaður veitenda fyrir texta, rödd og myndskeið er innifalinn. Sama virkni og í heildarpakkanum — stærðirnar eru aðeins mismunandi að magni.",
+    "comingSoon": "Væntanlegt",
+    "perMonth": "/ mánuð",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Stofa"
+    },
+    "brands": "{count, plural, one {# vörumerki} other {# vörumerki}}",
+    "ideas": "{count} efnishugmyndir á mánuði",
+    "videos": "{count} gervigreindarmyndskeið (30 s hvert) á mánuði",
+    "voiceMinutes": "{count} mínútur af talgervli á mánuði",
+    "note": "Fyrirhuguð verð, ekki enn hægt að bóka. Autopilot fer af stað þegar gervigreindarmyndskeiðaframleiðendurnir hafa verið tengdir."
+  }
+}

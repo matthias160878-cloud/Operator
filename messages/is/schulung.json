@@ -1,0 +1,87 @@
+{
+  "title": "Þjálfun",
+  "subtitle": "Leiðbeiningar skref fyrir skref um hvert svæði í SECRET 58 — alltaf hægt að fletta upp hér. Myndskeið bætast við þegar þau hafa verið tekin upp.",
+  "welcomeBanner": {
+    "title": "Velkomin(n) í SECRET 58!",
+    "body": "Takk fyrir kaupin. Áður en lengra er haldið er þess virði að líta stuttlega á „Fyrstu skref“ hér fyrir neðan — svo gervigreindarfulltrúarnir vinni með raunveruleg gögn frá byrjun."
+  },
+  "videoPending": "Myndskeið væntanlegt",
+  "stepsLabel": "Skref",
+  "openPage": "Opna síðu",
+  "topics": {
+    "firstSteps": {
+      "title": "Fyrstu skref",
+      "description": "Gerðu þessa þrjá hluti fyrst, þá vinna allir gervigreindarfulltrúar með raunveruleg gögn í stað staðgengla.",
+      "steps": [
+        "Tengdu að minnsta kosti eina gervigreindarveitu undir „Samþættingar“ (Anthropic eða OpenAI) — smelltu efst til hægri í viðkomandi línu á „Sækja API-lykil“, búðu til lykilinn hjá veitandanum og skráðu hann með „Skrá í Render“.",
+        "Fylltu út þitt eigið vörumerki undir „Brand DNA“ (tónn, markhópur, gildi) — gervigreindarfulltrúarnir nota það í hverjum texta sem þeir búa til.",
+        "Láttu búa til fyrstu hugmyndina eða herferðina undir „Hugmyndir og innblástur“ eða „Content Brain“."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Svona verður hugmynd að fullbúnu, samþykktu efni.",
+      "steps": [
+        "Stofnaðu nýja herferð með efni og markmiðsmiðlum í Content Brain — út frá henni verða sjálfkrafa til mörg efnisatriði.",
+        "Í Content Factory fer hvert efnisatriði í gegnum stöður: Drög → Í yfirferð → Samþykkt → Áætlað → Birt.",
+        "Samþykki er handvirkt skref og skylda — ekkert er birt sjálfkrafa án staðfestingar.",
+        "Í nánari sýn efnisatriðis er hægt að búa til handrit, talsetningu, texta við myndskeið, myllumerki og smámynd aftur hvert fyrir sig."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video og Design Studio",
+      "description": "Sérhæfðu verkfærin fyrir hvern efnisþátt.",
+      "steps": [
+        "Script Studio: býr til handrit eftir uppbyggingunni Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: fluttu inn eða stofnaðu eigin ElevenLabs-rödd og búðu síðan til talsetningu beint úr handriti.",
+        "Design Studio: smámyndafulltrúinn leggur til titil, sjónræna hugmynd, texta, uppsetningu og myndlýsingu.",
+        "Video Studio: sýnir núverandi stöðu tengingar við myndskeiðaveitur (sniðastjóri, staða veitna)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Efnisdagatal og birting",
+      "description": "Hvar áætlaðar færslur enda — og hvers vegna færsla fer í raun út (eða ekki).",
+      "steps": [
+        "Í efnisdagatalinu birtast öll efnisatriði með áætlaðan birtingardag.",
+        "Fyrir hverja birtingu athugar PublishingAgent í beinni hvort markmiðsmiðillinn sé í raun merktur „Tengt“ undir „Samfélagsmiðlar“.",
+        "Án raunverulegrar tengingar við miðil birtist villa í stað þess að þykjast birta."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Greining og vöxtur",
+      "description": "Raunverulegar tölur um eigin frammistöðu — og ráðleggingar í stað sjálfvirkni.",
+      "steps": [
+        "Greining sýnir eingöngu raunveruleg, innflutt eða handvirkt skráð frammistöðugögn.",
+        "Vaxtarsíðan reiknar út frá þessum gögnum bestu birtingartíma, árangursrík myllumerki og snið.",
+        "Mikilvægt: vísvitandi er engin sjálfvirk fjölgun fylgjenda/þátttöku (engin vélmennahegðun) — það bryti gegn notkunarskilmálum allra miðla."
+      ]
+    },
+    "inbox": {
+      "title": "Pósthólf",
+      "description": "Gervigreindardrög að svörum við skilaboðum — með samþykki fyrir sendingu.",
+      "steps": [
+        "Þar sem (enn) enginn miðill er tengdur með OAuth eru samtöl nú stofnuð handvirkt í stað þess að vera sótt í beinni.",
+        "MessageAgent leggur til svar út frá Brand DNA og samtalssögu.",
+        "Drögin þarf að fara yfir og samþykkja handvirkt áður en þau teljast send — raunveruleg sending mistekst án tengingar við miðil, í stað þess að þykjast hafa tekist."
+      ]
+    },
+    "revenue": {
+      "title": "Tekjuskráning",
+      "description": "Yfirlit yfir allar tekjur af miðlum á einum stað — útgreiðsla fer samt áfram í gegnum miðlana sjálfa.",
+      "steps": [
+        "Tekjur eru skráðar handvirkt, þar sem TikTok/Meta bjóða ekki opið tekju-API og YouTube krefst aðgangs að samstarfsáætlun (ekki enn tengt).",
+        "Raunveruleg útgreiðsla fer alltaf beint í gegnum viðkomandi miðil (t.d. YouTube í gegnum Google AdSense) — SECRET 58 annast engar útgreiðslur."
+      ]
+    },
+    "integrations": {
+      "title": "Samþættingar og API-lyklar",
+      "description": "Hvaðan hver tengingarstaða kemur og hvar viðeigandi lykill er skráður.",
+      "steps": [
+        "Hver lína sýnir raunverulega stöðu sem er athuguð í beinni — aldrei uppgerðartengingu.",
+        "Við „Ekki stillt“ leiðir „Sækja API-lykil“ á opinbera síðu veitandans.",
+        "„Skrá í Render“ leiðir beint á umhverfisbreyturnar þar sem lykillinn er skráður — innsláttarform í forritinu sjálfu er vísvitandi ekki til staðar af öryggisástæðum.",
+        "Kostnaður: Kaupverð SECRET 58 er eingreiðsla. Sérhver utanaðkomandi veitandi hefur sitt eigið, óháða kostnaðarlíkan (ókeypis / eftir notkun / áskrift) — á Samþættingar-síðunni kemur fram hjá hverri þjónustu hvaða líkan gildir, með hlekk á núgildandi verð hjá veitandanum."
+      ]
+    }
+  }
+}

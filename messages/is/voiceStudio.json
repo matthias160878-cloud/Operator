@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs raddvél — stjórnaðu raddasafni, búðu til forskoðun á talsetningu og fluttu inn raddir.",
+  "envWarning": "ElevenLabs er ekki enn stillt. Skráðu <envKey>ELEVENLABS_API_KEY</envKey> í <envFile>.env</envFile> til að nota talsetningu og innflutning radda. Raddasafnið má samt nota til skipulagningar.",
+  "addManual": "Stofna rödd handvirkt",
+  "importFromElevenLabs": "Flytja inn frá ElevenLabs",
+  "form": {
+    "namePlaceholder": "Nafn",
+    "voiceIdPlaceholder": "Raddauðkenni (ElevenLabs)",
+    "languagePlaceholder": "Tungumál",
+    "submit": "Bæta við"
+  },
+  "confirmDelete": "Viltu í alvöru eyða röddinni?",
+  "importFailed": "Innflutningur mistókst.",
+  "previewFailed": "Forskoðun mistókst.",
+  "unknownError": "Óþekkt villa.",
+  "empty": "Engar raddir í safninu enn.",
+  "active": "Virk",
+  "inactive": "Óvirk",
+  "remove": "Fjarlægja",
+  "preview": {
+    "heading": "Forskoðun raddar",
+    "defaultText": "Halló, þetta er dæmi um þessa rödd.",
+    "selectPlaceholder": "Veldu rödd…",
+    "play": "Spila forskoðun"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Eftirlit með fulltrúum",
+  "description": "Allir SECRET 58 fulltrúar með stöðu, síðasta verkefni og niðurstöðu. Hver keyrsla er skráð.",
+  "table": {
+    "agent": "Fulltrúi",
+    "description": "Lýsing",
+    "status": "Staða",
+    "lastTask": "Síðasta verkefni"
+  },
+  "history": {
+    "title": "Keyrslusaga",
+    "agent": "Fulltrúi",
+    "task": "Verkefni",
+    "status": "Staða",
+    "start": "Upphaf",
+    "end": "Lok",
+    "resultError": "Niðurstaða / villa",
+    "empty": "Engar keyrslur fulltrúa enn.",
+    "completed": "Lokið"
+  }
+}

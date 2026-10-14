@@ -1,0 +1,14 @@
+{
+  "title": "Greining",
+  "subtitle": "Frammistöðumælikvarðar úr gögnum sem eru raunverulega til — þegar kerfi eru tengd fyllist þessi sýn af raunverulegum gildum.",
+  "statViewsTotal": "Áhorf samtals",
+  "statLikesTotal": "Læk samtals",
+  "statComments": "Athugasemdir",
+  "statShares": "Deilingar",
+  "chartTitle": "Frammistaða efnis yfir tíma",
+  "chartLegend": "Áhorf (fjólublátt) · Þátttaka % (blágrænt)",
+  "chartEmpty": "Engin greiningargögn til enn.",
+  "bestPerformingTitle": "Best heppnaða efnið",
+  "bestPerformingEmpty": "Engin gögn enn.",
+  "learningAgentTitle": "Námsfulltrúi — ráðleggingar"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Gervigreindaraðstoðarmaður",
+  "welcome": "Halló! Spurðu mig um allt sem tengist SECRET 58 — hvernig þú setur eitthvað upp, hvar þú finnur það eða hvernig einstakt svæði virkar.",
+  "inputPlaceholder": "Skrifaðu spurningu …",
+  "thinking": "Hugsar …",
+  "openButton": "Opna gervigreindaraðstoðarmann",
+  "close": "Loka",
+  "sendButton": "Senda",
+  "micButton": "Raddinntak",
+  "speakToggle": "Lesa svör upp",
+  "notConfigured": "Gervigreindaraðstoðarmaðurinn er ekki enn stilltur — til þess þarf að skrá gervigreindarveitu (Anthropic eða OpenAI).",
+  "openIntegrations": "Fara í Samþættingar",
+  "error": "Gervigreindaraðstoðarmaðurinn gat ekki svarað núna. Reyndu aftur síðar."
+}

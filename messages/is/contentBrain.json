@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Ein hugmynd inn — heildstæð efnisáætlun út, löguð að hverjum miðli. ContentBrainAgent tekur mið af Brand DNA og býr til viðeigandi krækjur, handrit, myllumerki og smámyndahugmyndir sem drög fyrir hvern valinn miðil.",
+  "campaignsHeading": "Herferðir",
+  "noCampaigns": "Engar herferðir búnar til enn.",
+  "campaignSummary": "{count} efnisatriði · {audience}",
+  "form": {
+    "textEngineLabel": "Textavél:",
+    "templateMode": "Sniðmátsstilling (engin gervigreindarveita stillt)",
+    "modeTemplate": "Sniðmát",
+    "topicLabel": "Efni / hugmynd",
+    "topicPlaceholder": "t.d. Útskýrðu hvers vegna sjálfstæðir gervigreindarfulltrúar breyta vinnumarkaðnum.",
+    "audienceLabel": "Markhópur",
+    "audiencePlaceholder": "t.d. 25-45 ára, áhugafólk um tækni",
+    "goalLabel": "Markmið",
+    "languageLabel": "Tungumál",
+    "platformsLabel": "Miðlar",
+    "itemsPerPlatformLabel": "Efnisatriði á hvern miðil ({count})",
+    "generateError": "Gerð mistókst.",
+    "unknownError": "Óþekkt villa.",
+    "submitLoading": "Content Brain er að vinna…",
+    "submitIdle": "Búa til efnisáætlun",
+    "resultHeading": "Herferð búin til — {count} efnisatriði vistuð sem drög.",
+    "resultDescription": "Búið til í {mode}-stillingu. Allt efni byrjar sem DRAFT — farðu yfir það og breyttu því í Content Factory.",
+    "resultLink": "Fara í Content Factory →"
+  }
+}

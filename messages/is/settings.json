@@ -1,0 +1,27 @@
+{
+  "title": "Stillingar",
+  "description": "Vinnusvæði, notendur og kerfisupplýsingar. Aðgangsgögn eru eingöngu stýrð með umhverfisbreytum (sjá <code>.env.example</code>).",
+  "workspace": {
+    "title": "Vinnusvæði",
+    "name": "Nafn",
+    "slug": "Slug",
+    "createdAt": "Stofnað"
+  },
+  "users": {
+    "title": "Notendur og hlutverk",
+    "note": "Gagnalíkan fyrir marga leigjendur er fullkomlega undirbúið (einangrun vinnusvæða í öllum töflum). Raunverulegt innskráningar-/auðkenningarviðmót með mörgum notendum er næsta uppbyggingarskref — eins og er vinnur forritið með nákvæmlega þetta sjálfgefna vinnusvæði."
+  },
+  "system": {
+    "title": "Kerfi",
+    "contentItems": "Efnisatriði",
+    "campaigns": "Herferðir",
+    "mediaAssets": "Miðlaeignir",
+    "agentRuns": "Keyrslur fulltrúa",
+    "dbNote": "Gagnagrunnur: SQLite (staðbundinn, <code>prisma/dev.db</code>) í gegnum Prisma ORM. Fyrir framleiðslu skal breyta <codeSpaced>DATABASE_URL</codeSpaced> í Postgres/MySQL (aðlaga veitu í <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Uppsetningaraðstoð",
+    "description": "Litlu gluggarnir með skrefum fyrir skref fyrir gervigreindarveitur, samfélagsmiðla og talgervil sem birtast við fyrstu opnun.",
+    "reopen": "Opna uppsetningaraðstoð aftur"
+  }
+}

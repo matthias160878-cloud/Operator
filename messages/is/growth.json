@@ -1,0 +1,15 @@
+{
+  "title": "Vöxtur",
+  "subtitle": "Ráðleggingar um útbreiðslu og vöxt — leiddar af raunverulegum greiningargögnum fyrra efnis þíns: bestu birtingartímar, árangursríkustu myllumerki og snið.",
+  "warning": "Vísvitandi <strong>ekki</strong> innifalið: sjálfvirkt að fylgja/læka/gera athugasemdir til að fjölga fylgjendum gervilega. Það brýtur notkunarskilmála YouTube, Instagram, TikTok, LinkedIn og Facebook og getur leitt til lokunar reiknings. Þessi síða gefur eingöngu gagnadrifnar ráðleggingar fyrir þitt eigið efni.",
+  "filterAll": "Allir miðlar",
+  "emptyState": "Engin greiningargögn til enn fyrir {platform}. Þegar birt efni safnar frammistöðugögnum birtast ráðleggingar hér.",
+  "emptyStateDefaultScope": "þetta vinnusvæði",
+  "bestPostingTimesTitle": "Bestu birtingartímar",
+  "postingTime": "{day} · kl. {hour}",
+  "avgLabel": "Meðaltal {percent} ({count})",
+  "topHashtagsTitle": "Árangursríkustu myllumerki",
+  "topHashtagsEmpty": "Engin myllumerkjagögn til.",
+  "hashtagTooltip": "Meðaltal {percent} þátttaka, notað {count}×",
+  "topFormatsTitle": "Bestu snið"
+}

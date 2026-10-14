@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Efnisdagatal",
+  "subtitle": "Yfirlit yfir fyrirhugað og birt efni.",
+  "weekdays": ["Má", "Þr", "Mi", "Fi", "Fö", "La", "Su"],
+  "months": [
+    "janúar", "febrúar", "mars", "apríl", "maí", "júní",
+    "júlí", "ágúst", "september", "október", "nóvember", "desember"
+  ],
+  "allPlatforms": "Allir miðlar",
+  "moreItems": "+{count} til viðbótar",
+  "listTitle": "Listi þessa mánaðar",
+  "emptyMonth": "Engar fyrirhugaðar færslur í þessum mánuði."
+}

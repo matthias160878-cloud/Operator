@@ -124,6 +124,7 @@ sein (Stand: Unit 16/16, Worker 6/6, Integration 35/35, ESLint 0 Fehler,
     https://claude.ai/artifact/V4kpwncb3K4EGjDB9wa3FV
 
 ### Nachtrag 14.10.2026 (erledigt, nicht erneut bauen)
+- Hauptseite `/#social-media-ki` und `/buy#app`: Pro/Maxi-Kaufweg (gesperrt bis Freigabe), App-Symbol, „App installieren“; Sprachumschalter auch auf dem Handy.
 - 34 Sprachen in der App (maschinell übersetzt, Prüfskript `scripts/schulung/pruefen-sprachen.mjs`); Zentrale-Seiten nur Deutsch.
 - 23 Erklärvideos mit Untertiteln in allen Sprachen + Vorlesestimme (`public/schulung/videos`, `TrainingVideo`).
 - „App installieren“ (Zentrale + App), Offline-Seite, Service Worker mit Allowlist.

@@ -1,0 +1,20 @@
+{
+  "button": "Installa l-app",
+  "buttonHint": "Installa SECRET 58 bħala app fuq dan l-apparat",
+  "close": "Agħlaq",
+  "canceled": "L-installazzjoni ġiet ikkanċellata. Tista’ tibdiha mill-ġdid fi kwalunkwe ħin.",
+  "iosTitle": "Installa fuq iPhone jew iPad",
+  "iosStep1": "Iftaħ din il-paġna f’Safari.",
+  "iosStep2": "Agħfas fuq “Aqsam” (il-kwadru bil-vleġġa li tgħodd ’il fuq).",
+  "iosStep3": "Agħżel “Żid mal-Home Screen” u kkonferma b’“Żid”.",
+  "iosShort": "Safari: Aqsam → Żid mal-Home Screen",
+  "iosNotSafari": "Fuq l-iPhone u l-iPad, l-installazzjoni taħdem biss f’Safari. Jekk jogħġbok iftaħ din il-paġna f’Safari.",
+  "otherTitle": "Kif tinstalla l-app",
+  "otherChromium": "Iftaħ il-menu tal-browser (tliet punti) u agħżel “Installa l-app” jew “Żid mal-iskrin tal-bidu”.",
+  "otherSafariMac": "F’Safari fuq il-Mac: menu “Fajl” → “Żid mad-Dock”.",
+  "otherFirefox": "Firefox fuq il-kompjuter ma jistax jinstalla web apps. Uża Chrome, Edge jew Safari.",
+  "otherGeneric": "Dan il-browser bħalissa ma joffrix djalogu ta’ installazzjoni. Dan jista’ jkun minħabba li l-app diġà hija installata jew minħabba li l-browser ma jappoġġjax l-installazzjoni. Ipprova f’Chrome, Edge jew Safari.",
+  "insecureTitle": "L-installazzjoni mhix possibbli hawn",
+  "insecureText": "L-installazzjoni teħtieġ websajt ippubblikat permezz ta’ HTTPS. Ma taħdimx minn fajl lokali jew mingħajr HTTPS. Fuq il-kompjuter tiegħek taħdem permezz ta’ “localhost” f’ambjent ta’ żvilupp.",
+  "installedNote": "L-app ġiet installata."
+}

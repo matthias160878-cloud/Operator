@@ -1307,3 +1307,35 @@ test("Schulungsvideos: Untertitel in gewählter Sprache nur mit Anmeldung, Fallb
   assert.equal(vid.status, 200);
   assert.match(vid.headers.get("content-type") ?? "", /video\/mp4/);
 });
+
+test("App installieren: Manifest, Symbole, Service Worker, Offline-Seite und Texte sind ohne Anmeldung erreichbar", async () => {
+  const man = await (await fetch(`${BASE}/manifest.webmanifest`)).json();
+  assert.equal(man.short_name, "SECRET 58");
+  assert.equal(man.start_url, "/");
+  assert.equal(man.scope, "/");
+  assert.equal(man.display, "standalone");
+  assert.equal(man.theme_color, "#05070f");
+  const has = (size, purpose) => man.icons.some((i) => i.sizes === size && i.purpose === purpose);
+  assert.ok(has("192x192", "any") && has("512x512", "any") && has("512x512", "maskable") && has("192x192", "maskable"));
+  for (const icon of man.icons) assert.equal((await fetch(`${BASE}${icon.src}`)).status, 200, icon.src);
+  assert.equal((await fetch(`${BASE}/icons/apple-touch-icon.png`)).status, 200);
+  const sw = await fetch(`${BASE}/sw.js`);
+  assert.equal(sw.status, 200);
+  assert.match(sw.headers.get("content-type") ?? "", /javascript/);
+  const swText = await sw.text();
+  assert.ok(swText.includes("/offline.html") && swText.includes('redirect: "error"'), "Offline-Seite wird ohne Weiterleitung vorgeladen");
+  assert.ok(!/caches\.put\(\s*request/.test(swText), "keine Antworten fremder Anfragen im Cache");
+  const off = await fetch(`${BASE}/offline.html`, { redirect: "manual" });
+  assert.equal(off.status, 200);
+  assert.ok((await off.text()).includes("Keine Verbindung"));
+  assert.equal((await fetch(`${BASE}/installieren.js`)).status, 200);
+  for (const lang of ["de", "en", "pl", "uk", "ga"]) {
+    const t = await (await fetch(`${BASE}/api/installieren/${lang}`)).json();
+    assert.ok(t.button && t.iosStep3 && t.insecureText, lang);
+  }
+  assert.equal((await fetch(`${BASE}/api/installieren/xx`)).status, 404);
+  const home = await (await fetch(`${BASE}/`)).text();
+  assert.ok(home.includes('rel="manifest"') && home.includes("/installieren.js") && home.includes("data-s58-install"), "Zentrale-Startseite installierbar");
+  const login = await (await fetch(`${BASE}/login`)).text();
+  assert.ok(login.includes("manifest.webmanifest") && login.includes("/installieren.js"), "Anmeldeseite verweist auf Manifest und Installieren-Skript");
+});

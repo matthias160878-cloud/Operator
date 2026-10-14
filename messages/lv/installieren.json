@@ -1,0 +1,20 @@
+{
+  "button": "Instalēt lietotni",
+  "buttonHint": "Instalēt SECRET 58 kā lietotni šajā ierīcē",
+  "close": "Aizvērt",
+  "canceled": "Instalēšana atcelta. Tu vari to atkal sākt jebkurā laikā.",
+  "iosTitle": "Instalēšana iPhone vai iPad ierīcē",
+  "iosStep1": "Atver šo lapu pārlūkā Safari.",
+  "iosStep2": "Pieskaries pogai „Kopīgot” (kvadrāts ar augšup vērstu bultiņu).",
+  "iosStep3": "Izvēlies „Pievienot sākuma ekrānam” un apstiprini ar „Pievienot”.",
+  "iosShort": "Safari: Kopīgot → Pievienot sākuma ekrānam",
+  "iosNotSafari": "iPhone un iPad ierīcēs instalēšana darbojas tikai pārlūkā Safari. Lūdzu, atver šo lapu pārlūkā Safari.",
+  "otherTitle": "Kā instalēt lietotni",
+  "otherChromium": "Atver pārlūka izvēlni (trīs punkti) un izvēlies „Instalēt lietotni” vai „Pievienot sākuma ekrānam”.",
+  "otherSafariMac": "Safari pārlūkā Mac datorā: izvēlne „Fails” → „Pievienot Dokam”.",
+  "otherFirefox": "Firefox datorā nevar instalēt tīmekļa lietotnes. Izmanto Chrome, Edge vai Safari.",
+  "otherGeneric": "Šobrīd šis pārlūks nepiedāvā instalēšanas dialoglodziņu. Iemesls var būt tas, ka lietotne jau ir instalēta vai pārlūks neatbalsta instalēšanu. Mēģini Chrome, Edge vai Safari.",
+  "insecureTitle": "Instalēšana šeit nav iespējama",
+  "insecureText": "Instalēšanai nepieciešama publicēta vietne ar HTTPS. No lokāla faila vai bez HTTPS tas nedarbojas. Savā datorā tas darbojas, izmantojot „localhost” izstrādes vidē.",
+  "installedNote": "Lietotne ir instalēta."
+}

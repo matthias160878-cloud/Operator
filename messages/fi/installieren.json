@@ -1,0 +1,20 @@
+{
+  "button": "Asenna sovellus",
+  "buttonHint": "Asenna SECRET 58 sovelluksena tälle laitteelle",
+  "close": "Sulje",
+  "canceled": "Asennus peruttu. Voit aloittaa sen uudelleen milloin tahansa.",
+  "iosTitle": "Asenna iPhoneen tai iPadiin",
+  "iosStep1": "Avaa tämä sivu Safarissa.",
+  "iosStep2": "Napauta ”Jaa” (neliö, jossa on ylöspäin osoittava nuoli).",
+  "iosStep3": "Valitse ”Lisää Koti-valikkoon” ja vahvista valitsemalla ”Lisää”.",
+  "iosShort": "Safari: Jaa → Lisää Koti-valikkoon",
+  "iosNotSafari": "iPhonessa ja iPadissa asennus onnistuu vain Safarissa. Avaa tämä sivu Safarissa.",
+  "otherTitle": "Näin asennat sovelluksen",
+  "otherChromium": "Avaa selaimen valikko (kolme pistettä) ja valitse ”Asenna sovellus” tai ”Lisää aloitusnäyttöön”.",
+  "otherSafariMac": "Safarissa Macilla: valikko ”Arkisto” → ”Lisää Dockiin”.",
+  "otherFirefox": "Firefox ei voi asentaa verkkosovelluksia tietokoneella. Käytä Chromea, Edgeä tai Safaria.",
+  "otherGeneric": "Tämä selain ei tarjoa asennusikkunaa juuri nyt. Syynä voi olla, että sovellus on jo asennettu tai että selain ei tue asennusta. Kokeile Chromea, Edgeä tai Safaria.",
+  "insecureTitle": "Asennus ei ole täällä mahdollista",
+  "insecureText": "Asennus vaatii julkaistun verkkosivuston HTTPS-yhteydellä. Se ei onnistu paikallisesta tiedostosta eikä ilman HTTPS:ää. Omalla tietokoneellasi se toimii kehitysympäristössä ”localhost”-osoitteen kautta.",
+  "installedNote": "Sovellus on asennettu."
+}

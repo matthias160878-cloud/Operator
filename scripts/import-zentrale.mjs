@@ -12,6 +12,7 @@
  */
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { patchAll } from "./zentrale-pwa.mjs";
 
 const src = process.argv[2];
 if (!src) {
@@ -126,3 +127,6 @@ start = start.replace("</head>", AUSGEBLENDET);
 
 writeFileSync(path.join(out, "seiten", "start.html"), start);
 console.log("index.html → / (Besucher)");
+
+// Installierbare App: Manifest, Symbol und „App installieren“ auf allen Zentrale-Seiten.
+patchAll(path.join(out, "seiten"));

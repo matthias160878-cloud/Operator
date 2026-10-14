@@ -1,0 +1,20 @@
+{
+  "button": "Nainstalovat aplikaci",
+  "buttonHint": "Nainstalovat SECRET 58 jako aplikaci do zařízení",
+  "close": "Zavřít",
+  "canceled": "Instalace byla zrušena. Můžeš ji kdykoli spustit znovu.",
+  "iosTitle": "Instalace na iPhonu nebo iPadu",
+  "iosStep1": "Otevři tuto stránku v Safari.",
+  "iosStep2": "Klepni na „Sdílet“ (čtverec se šipkou nahoru).",
+  "iosStep3": "Vyber „Přidat na plochu“ a potvrď tlačítkem „Přidat“.",
+  "iosShort": "Safari: Sdílet → Přidat na plochu",
+  "iosNotSafari": "Na iPhonu a iPadu funguje instalace pouze v Safari. Otevři prosím tuto stránku v Safari.",
+  "otherTitle": "Jak aplikaci nainstalovat",
+  "otherChromium": "Otevři nabídku prohlížeče (tři tečky) a vyber „Nainstalovat aplikaci“ nebo „Přidat na plochu“.",
+  "otherSafariMac": "V Safari na Macu: nabídka „Soubor“ → „Přidat do Docku“.",
+  "otherFirefox": "Firefox na počítači nemůže instalovat webové aplikace. Použij Chrome, Edge nebo Safari.",
+  "otherGeneric": "Tento prohlížeč momentálně nenabízí instalační dialog. Aplikace už může být nainstalovaná, nebo prohlížeč instalaci nepodporuje. Zkus to v Chrome, Edge nebo Safari.",
+  "insecureTitle": "Instalace zde není možná",
+  "insecureText": "Instalace vyžaduje nasazený web přes HTTPS. Z lokálního souboru ani bez HTTPS nefunguje. Na vlastním počítači funguje přes „localhost“ ve vývojovém prostředí.",
+  "installedNote": "Aplikace byla nainstalována."
+}

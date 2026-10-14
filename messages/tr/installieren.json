@@ -1,0 +1,20 @@
+{
+  "button": "Uygulamayı yükle",
+  "buttonHint": "SECRET 58’i bu cihaza uygulama olarak yükle",
+  "close": "Kapat",
+  "canceled": "Yükleme iptal edildi. İstediğin zaman yeniden başlatabilirsin.",
+  "iosTitle": "iPhone veya iPad’e yükleme",
+  "iosStep1": "Bu sayfayı Safari’de aç.",
+  "iosStep2": "“Paylaş”a dokun (yukarı oklu kare).",
+  "iosStep3": "“Ana Ekrana Ekle”yi seç ve “Ekle” ile onayla.",
+  "iosShort": "Safari: Paylaş → Ana Ekrana Ekle",
+  "iosNotSafari": "iPhone ve iPad’de yükleme yalnızca Safari’de çalışır. Lütfen bu sayfayı Safari’de aç.",
+  "otherTitle": "Uygulamayı nasıl yüklersin",
+  "otherChromium": "Tarayıcı menüsünü (üç nokta) aç ve “Uygulamayı yükle” veya “Ana ekrana ekle”yi seç.",
+  "otherSafariMac": "Mac’te Safari’de: “Dosya” menüsü → “Dock’a Ekle”.",
+  "otherFirefox": "Bilgisayardaki Firefox web uygulamalarını yükleyemez. Chrome, Edge veya Safari kullan.",
+  "otherGeneric": "Bu tarayıcı şu anda bir yükleme penceresi sunmuyor. Uygulama zaten yüklenmiş olabilir ya da tarayıcı yüklemeyi desteklemiyor olabilir. Chrome, Edge veya Safari’de dene.",
+  "insecureTitle": "Burada yükleme mümkün değil",
+  "insecureText": "Yükleme için HTTPS üzerinden yayınlanmış bir web sitesi gerekir. Yerel bir dosyadan veya HTTPS olmadan çalışmaz. Kendi bilgisayarında bir geliştirme ortamında “localhost” üzerinden çalışır.",
+  "installedNote": "Uygulama yüklendi."
+}

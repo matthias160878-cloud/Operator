@@ -1,0 +1,20 @@
+{
+  "button": "Instalo aplikacionin",
+  "buttonHint": "Instalo SECRET 58 si aplikacion në këtë pajisje",
+  "close": "Mbyll",
+  "canceled": "Instalimi u anulua. Mund ta nisësh përsëri në çdo kohë.",
+  "iosTitle": "Instalo në iPhone ose iPad",
+  "iosStep1": "Hape këtë faqe në Safari.",
+  "iosStep2": "Prek «Ndaj» (katrori me shigjetën lart).",
+  "iosStep3": "Zgjidh «Shto në ekranin bazë» dhe konfirmo me «Shto».",
+  "iosShort": "Safari: Ndaj → Shto në ekranin bazë",
+  "iosNotSafari": "Në iPhone dhe iPad instalimi funksionon vetëm në Safari. Të lutem, hape këtë faqe në Safari.",
+  "otherTitle": "Si ta instalosh aplikacionin",
+  "otherChromium": "Hap menynë e shfletuesit (tri pikat) dhe zgjidh «Instalo aplikacionin» ose «Shto në ekranin bazë».",
+  "otherSafariMac": "Në Safari në Mac: menyja «Skedari» → «Shto te Dock».",
+  "otherFirefox": "Firefox në kompjuter nuk mund të instalojë aplikacione ueb. Përdor Chrome, Edge ose Safari.",
+  "otherGeneric": "Ky shfletues aktualisht nuk ofron dritare instalimi. Mund të jetë që aplikacioni është instaluar tashmë ose që shfletuesi nuk e mbështet instalimin. Provo në Chrome, Edge ose Safari.",
+  "insecureTitle": "Instalimi nuk është i mundur këtu",
+  "insecureText": "Instalimi kërkon një faqe interneti të publikuar përmes HTTPS. Nuk funksionon nga një skedar lokal ose pa HTTPS. Në kompjuterin tënd funksionon përmes «localhost» në një mjedis zhvillimi.",
+  "installedNote": "Aplikacioni u instalua."
+}

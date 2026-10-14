@@ -51,6 +51,7 @@ export function Topbar({ initials, isOperator }: { initials: string; isOperator:
           </button>
           <GenesisAssistant />
           <LanguageSwitcher />
+          <div data-s58-install className="hidden sm:block" suppressHydrationWarning />
           {isOperator && (
             <Link href="/operator" className="hidden rounded-lg border border-border px-2.5 py-1.5 text-xs text-foreground sm:block">
               Betreiber
@@ -76,6 +77,7 @@ export function Topbar({ initials, isOperator }: { initials: string; isOperator:
                 <X className="h-5 w-5 text-muted" />
               </button>
             </div>
+            <div data-s58-install className="px-4 pt-3" suppressHydrationWarning />
             <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-0.5">
               {NAV_ITEMS.map((item) => {
                 const active = pathname === item.href;

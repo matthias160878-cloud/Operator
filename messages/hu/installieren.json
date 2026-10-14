@@ -1,0 +1,20 @@
+{
+  "button": "Alkalmazás telepítése",
+  "buttonHint": "A SECRET 58 telepítése alkalmazásként ezen az eszközön",
+  "close": "Bezárás",
+  "canceled": "A telepítés megszakadt. Bármikor újraindíthatod.",
+  "iosTitle": "Telepítés iPhone-ra vagy iPadre",
+  "iosStep1": "Nyisd meg ezt az oldalt Safariban.",
+  "iosStep2": "Koppints a „Megosztás” gombra (a felfelé mutató nyilat tartalmazó négyzet).",
+  "iosStep3": "Válaszd a „Főképernyőhöz adás” lehetőséget, és erősítsd meg a „Hozzáadás” gombbal.",
+  "iosShort": "Safari: Megosztás → Főképernyőhöz adás",
+  "iosNotSafari": "iPhone-on és iPaden a telepítés csak Safariban működik. Nyisd meg ezt az oldalt Safariban.",
+  "otherTitle": "Így telepítheted az alkalmazást",
+  "otherChromium": "Nyisd meg a böngészőmenüt (három pont), és válaszd az „Alkalmazás telepítése” vagy a „Hozzáadás a kezdőképernyőhöz” lehetőséget.",
+  "otherSafariMac": "Safariban Macen: „Fájl” menü → „Hozzáadás a Dockhoz”.",
+  "otherFirefox": "A számítógépes Firefox nem tud webalkalmazásokat telepíteni. Használj Chrome-ot, Edge-et vagy Safarit.",
+  "otherGeneric": "Ez a böngésző jelenleg nem kínál telepítési párbeszédablakot. Ennek oka lehet, hogy az alkalmazás már telepítve van, vagy a böngésző nem támogatja a telepítést. Próbáld ki Chrome-ban, Edge-ben vagy Safariban.",
+  "insecureTitle": "A telepítés itt nem lehetséges",
+  "insecureText": "A telepítéshez HTTPS-en keresztül közzétett weboldal szükséges. Helyi fájlból vagy HTTPS nélkül nem működik. A saját gépeden fejlesztői környezetben a „localhost” címen keresztül működik.",
+  "installedNote": "Az alkalmazás telepítve lett."
+}

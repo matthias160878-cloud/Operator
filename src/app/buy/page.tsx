@@ -153,6 +153,16 @@ export default async function BuyPage({
           </div>
         )}
 
+        <div className="hinweis" id="app" style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/icons/apple-touch-icon.png" alt="SECRET 58 App-Symbol" width={72} height={72} style={{ borderRadius: 16 }} />
+          <div style={{ flex: "1 1 14rem" }}>
+            <strong>Als App installieren</strong>
+            <p>Öffnen Sie Social Media KI wie eine App auf Handy oder Computer, ohne App-Store.</p>
+          </div>
+          <span data-s58-install suppressHydrationWarning />
+        </div>
+
         <div className="hinweis">
           <strong>Nicht zu verwechseln mit unserer Beratungsleistung „Social Media“</strong>
           <p>

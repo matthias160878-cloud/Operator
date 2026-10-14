@@ -1,4 +1,4 @@
-# Übergabe-Prompt SECRET 58 (Stand 11.10.2026)
+# Übergabe-Prompt SECRET 58 (Stand 14.10.2026)
 
 Diesen Text als erste Nachricht in eine neue Claude-Code-Sitzung (Repository
 `matthias160878-cloud/Operator`) einfügen. Er enthält den geprüften Stand,
@@ -122,6 +122,16 @@ sein (Stand: Unit 16/16, Worker 6/6, Integration 35/35, ESLint 0 Fehler,
     `docs/BETRIEB-UND-ZAHLUNGEN.md` (7b Composio, 8a Staging, Worker,
     Jahrespreise), `.env.example` vollständig. Rundgang-Galerie:
     https://claude.ai/artifact/V4kpwncb3K4EGjDB9wa3FV
+
+### Nachtrag 14.10.2026 (erledigt, nicht erneut bauen)
+- 34 Sprachen in der App (maschinell übersetzt, Prüfskript `scripts/schulung/pruefen-sprachen.mjs`); Zentrale-Seiten nur Deutsch.
+- 23 Erklärvideos mit Untertiteln in allen Sprachen + Vorlesestimme (`public/schulung/videos`, `TrainingVideo`).
+- „App installieren“ (Zentrale + App), Offline-Seite, Service Worker mit Allowlist.
+- Hermes vorbereitet, alles aus (`docs/HERMES.md`); öffentlicher Chat fail-closed.
+- Seitenleiste zeigt echten Nutzer; Schulungstexte ohne „einmalig“/Render-Anleitung.
+- Unklar geblieben: Welche Seite die „zuletzt bearbeitete Hauptwebseite“ des Betreibers ist. Gearbeitet wurde an der Staging-App
+  (Repo Operator). Eine Seite mit 3D-/Hologramm-Design und die Dateien `zentrale.html` / „2-Zentrale-Verkaufsseite.html“ liegen in
+  keinem Repository (Quellpaket beim Betreiber). Nicht mit der Hauptseite zusammenführen.
 
 ## 4. Staging (läuft)
 

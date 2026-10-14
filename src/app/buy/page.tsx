@@ -166,7 +166,15 @@ export default async function BuyPage({
           Funktionsumfang wie Pro und Maxi, die Größen unterscheiden sich nur in der Menge. Geplante Preise, noch nicht
           buchbar. Der Autopilot startet, sobald die KI-Videogeneratoren angebunden sind.
         </p>
-        <div className="preis-tabelle" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(13rem, 1fr))" }}>
+        <div
+          className="preis-tabelle"
+          style={{
+            gridTemplateColumns: "repeat(auto-fit, minmax(13rem, 1fr))",
+            width: "min(62rem, calc(100vw - 2rem))",
+            marginLeft: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
           {AUTOPILOT.map((a) => (
             <div key={a.name} className="preis-karte">
               <small>Demnächst{a.agency ? " · Agentur" : ""}</small>

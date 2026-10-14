@@ -1,6 +1,6 @@
 {
   "title": "Utbildning",
-  "subtitle": "Steg-för-steg-guider till varje område i SECRET 58 — alltid tillgängliga här för att slå upp. Videor läggs till så fort de är inspelade.",
+  "subtitle": "Steg-för-steg-guider och förklaringsvideor för varje område i SECRET 58 — alltid tillgängliga här att slå upp.",
   "welcomeBanner": {
     "title": "Välkommen till SECRET 58!",
     "body": "Tack för ditt köp. Innan det börjar lönar det sig att ta en kort titt på ”Kom igång” nedan — så att AI-agenterna arbetar med dina verkliga data från början."
@@ -13,7 +13,7 @@
       "title": "Kom igång",
       "description": "Gör de här tre sakerna först, så arbetar alla AI-agenter med verkliga data i stället för platshållare.",
       "steps": [
-        "Anslut minst en AI-leverantör under ”Integrationer” (Anthropic eller OpenAI) — klicka för det uppe till höger på respektive rad på ”Hämta API-nyckel”, skapa nyckeln hos leverantören och lägg in den via ”Lägg in i Render”.",
+        "Under ”Integrationer”, kontrollera om en AI-leverantör är konfigurerad. AI-funktionerna körs via operatörens åtkomster, så du behöver ingen egen AI-prenumeration. Utan AI-leverantör fungerar appen i mallläge.",
         "Fyll i ditt eget varumärke under ”Brand DNA” (ton, målgrupp, värden) — AI-agenterna använder det för varje genererad text.",
         "Låt skapa den första idén respektive kampanjen under ”Idéer & inspiration” eller ”Content Brain”."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Varje rad visar den verkliga, live-kontrollerade statusen — aldrig en fingerad anslutning.",
         "Vid ”Inte konfigurerad” leder ”Hämta API-nyckel” till leverantörens officiella sida.",
-        "”Lägg in i Render” leder direkt till miljövariablerna där nyckeln läggs in — något inmatningsformulär i själva appen finns av säkerhetsskäl medvetet inte.",
-        "Kostnader: Köpspriset för SECRET 58 är en engångsavgift. Varje extern leverantör har sin egen, oberoende kostnadsmodell (gratis / användningsbaserad / prenumeration) — på sidan Integrationer står det för varje tjänst vilken modell som gäller, med länk till aktuella priser hos leverantören."
+        "Åtkomstuppgifter sparas aldrig i webbläsaren, bara skyddat på servern. Saknas en åtkomst konfigurerar operatören den.",
+        "Kostnader: Pro och Maxi är prenumerationer, månadsvis eller årsvis. De aktuella priserna finns under ”Paket & fakturering”. Varje extern leverantör har sin egen, oberoende kostnadsmodell (gratis / användningsbaserad / prenumeration) — på sidan Integrationer visas för varje tjänst vilken modell som gäller, med en länk till leverantörens aktuella priser."
       ]
     }
   }

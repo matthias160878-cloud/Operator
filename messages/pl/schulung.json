@@ -1,6 +1,6 @@
 {
   "title": "Szkolenie",
-  "subtitle": "Instrukcje krok po kroku do każdego obszaru SECRET 58 — zawsze możesz tu do nich zajrzeć. Filmy zostaną dodane, gdy zostaną nagrane.",
+  "subtitle": "Instrukcje krok po kroku i filmy wyjaśniające do każdego obszaru SECRET 58 — zawsze możesz tu do nich zajrzeć.",
   "welcomeBanner": {
     "title": "Witaj w SECRET 58!",
     "body": "Dziękujemy za zakup. Zanim zaczniesz, warto rzucić okiem na „Pierwsze kroki” poniżej — aby agenci AI od początku pracowali na Twoich prawdziwych danych."
@@ -13,7 +13,7 @@
       "title": "Pierwsze kroki",
       "description": "Zrób najpierw te trzy rzeczy, a wszyscy agenci AI będą pracować na prawdziwych danych zamiast na wypełniaczach.",
       "steps": [
-        "W „Integracjach” połącz co najmniej jednego dostawcę AI (Anthropic lub OpenAI) — w tym celu kliknij w odpowiednim wierszu po prawej stronie „Pobierz klucz API”, utwórz klucz u dostawcy i zapisz go przez „Wpisz w Render”.",
+        "W sekcji „Integracje” sprawdź, czy skonfigurowano dostawcę AI. Funkcje AI działają przez dostępy operatora, więc nie potrzebujesz własnej subskrypcji AI. Bez dostawcy AI aplikacja działa w trybie szablonów.",
         "W „Brand DNA” uzupełnij własną markę (ton, grupa docelowa, wartości) — agenci AI używają tego przy każdym generowanym tekście.",
         "W „Pomysły i inspiracje” lub „Content Brain” wygeneruj pierwszy pomysł lub pierwszą kampanię."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Każdy wiersz pokazuje prawdziwy, sprawdzany na żywo status — nigdy udawane połączenie.",
         "Przy „Nie skonfigurowano” „Pobierz klucz API” prowadzi do oficjalnej strony dostawcy.",
-        "„Wpisz w Render” prowadzi bezpośrednio do zmiennych środowiskowych, gdzie zapisuje się klucz — formularza do wpisania w samej aplikacji celowo nie ma ze względów bezpieczeństwa.",
-        "Koszty: cena zakupu SECRET 58 jest jednorazowa. Każdy zewnętrzny dostawca ma własny, niezależny model kosztów (bezpłatny / wg zużycia / abonament) — na stronie Integracje przy każdej usłudze widać, jaki model obowiązuje, z linkiem do aktualnych cen u dostawcy."
+        "Dane dostępowe nigdy nie są zapisywane w przeglądarce, tylko w chroniony sposób na serwerze. Jeśli brakuje dostępu, konfiguruje go operator.",
+        "Koszty: Pro i Maxi to subskrypcje, miesięczne lub roczne. Aktualne ceny znajdziesz w sekcji „Pakiet i rozliczenia”. Każdy zewnętrzny dostawca ma własny, niezależny model kosztów (bezpłatny / według zużycia / subskrypcja) — na stronie Integracje przy każdej usłudze widać, który model obowiązuje, wraz z linkiem do aktualnych cen u dostawcy."
       ]
     }
   }

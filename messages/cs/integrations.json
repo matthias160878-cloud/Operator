@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trendy"
   },
-  "costNote": "Kupní cena SECRET 58 je jednorázová a pokrývá software. Každá externí služba zde má vlastní, nezávislý cenový model u příslušného poskytovatele — SECRET 58 za ně nikdy nefakturuje nic navíc.",
+  "costNote": "Tvůj balíček SECRET 58 (Pro nebo Maxi) je předplatné, viz „Balíček a fakturace“. Každá externí služba zde má vlastní, nezávislý model nákladů u příslušného poskytovatele — SECRET 58 za ně nikdy neúčtuje nic navíc.",
   "links": {
     "getKey": "Získat API klíč",
     "setInRender": "Zadat v Render",

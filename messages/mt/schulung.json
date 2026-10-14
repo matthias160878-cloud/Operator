@@ -1,6 +1,6 @@
 {
   "title": "Taħriġ",
-  "subtitle": "Gwidi pass pass għal kull żona ta' SECRET 58 — dejjem disponibbli hawn biex tikkonsulta. Il-vidjows jiżdiedu hekk kif jiġu rreġistrati.",
+  "subtitle": "Gwidi pass pass u vidjows ta' spjegazzjoni għal kull żona ta' SECRET 58 — dejjem disponibbli hawn biex tikkonsulta.",
   "welcomeBanner": {
     "title": "Merħba f'SECRET 58!",
     "body": "Grazzi tax-xiri. Qabel ma tibda, jixraq li tħares lejn “L-ewwel passi” hawn taħt — biex l-agenti tal-AI jaħdmu mid-dejta reali tiegħek mill-bidu."
@@ -13,7 +13,7 @@
       "title": "L-ewwel passi",
       "description": "Agħmel dawn it-tliet affarijiet l-ewwel, u mbagħad l-agenti tal-AI kollha jaħdmu b'dejta reali minflok placeholders.",
       "steps": [
-        "Taħt “Integrazzjonijiet” qabbad mill-inqas fornitur tal-AI wieħed (Anthropic jew OpenAI) — għal dan ikklikkja fuq “Ikseb iċ-ċavetta API” fir-ringiela rispettiva fuq il-lemin, oħloq iċ-ċavetta mal-fornitur u rreġistraha permezz ta' “Daħħal f'Render”.",
+        "Taħt “Integrazzjonijiet” iċċekkja jekk hux imwaqqaf fornitur tal-AI. Il-funzjonijiet tal-AI jaħdmu permezz tal-aċċessi tal-operatur, għalhekk ma teħtieġx abbonament tal-AI tiegħek. Mingħajr fornitur tal-AI, l-app taħdem fil-modalità tal-mudelli.",
         "Taħt “Brand DNA” imla l-marka tiegħek stess (ton, udjenza fil-mira, valuri) — l-agenti tal-AI jużaw dan għal kull test iġġenerat.",
         "Taħt “Idejat u Ispirazzjoni” jew “Content Brain” ħalli jinħolqu l-ewwel idea jew kampanja."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Kull ringiela turi l-istatus reali, ivverifikat live — qatt konnessjoni ffintata.",
         "Fil-każ ta' “Mhux ikkonfigurat”, “Ikseb iċ-ċavetta API” iwassal għall-paġna uffiċjali tal-fornitur.",
-        "“Daħħal f'Render” iwassal direttament għall-varjabbli tal-ambjent fejn tiġi rreġistrata ċ-ċavetta — apposta, għal raġunijiet ta' sigurtà, m'hemm l-ebda formola tad-dħul fl-app stess.",
-        "Spejjeż: Il-prezz tax-xiri ta' SECRET 58 huwa darba biss. Kull fornitur estern għandu l-mudell tal-ispejjeż tiegħu stess, indipendenti (b'xejn / skont l-użu / abbonament) — fuq il-paġna tal-Integrazzjonijiet, għal kull servizz jingħad liema mudell japplika, b'rabta mal-prezzijiet kurrenti mal-fornitur."
+        "Id-dettalji tal-aċċess qatt ma jinħażnu fil-browser, imma biss protetti fuq is-server. Jekk aċċess ikun nieqes, l-operatur iwaqqfu.",
+        "Spejjeż: Pro u Maxi huma abbonamenti, ta' kull xahar jew ta' kull sena. Il-prezzijiet kurrenti jinsabu taħt “Pakkett u Fatturar”. Kull fornitur estern għandu l-mudell tal-ispejjeż tiegħu stess, indipendenti (b'xejn / skont l-użu / abbonament) — fuq il-paġna tal-Integrazzjonijiet, għal kull servizz jingħad liema mudell japplika, b'rabta mal-prezzijiet kurrenti mal-fornitur."
       ]
     }
   }

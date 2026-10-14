@@ -9,7 +9,7 @@
     "VIDEO": "Vaizdo įrašai",
     "TREND": "Tendencijos"
   },
-  "costNote": "SECRET 58 pirkimo kaina yra vienkartinė ir apima programinę įrangą. Kiekviena čia nurodyta išorinė paslauga turi savo, nepriklausomą kainodarą pas atitinkamą tiekėją — SECRET 58 už jas niekada papildomai neišrašo sąskaitų.",
+  "costNote": "Tavo SECRET 58 paketas (Pro arba Maxi) yra prenumerata, žr. „Paketas ir apmokėjimas“. Kiekviena čia nurodyta išorinė paslauga turi savo, nepriklausomą kainodarą pas atitinkamą tiekėją — SECRET 58 už jas niekada papildomai neišrašo sąskaitų.",
   "links": {
     "getKey": "Gauti API raktą",
     "setInRender": "Įrašyti Render",

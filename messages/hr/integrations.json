@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trendovi"
   },
-  "costNote": "Kupovna cijena SECRET 58 je jednokratna i pokriva softver. Svaka vanjska usluga ovdje ima vlastiti, neovisan model troškova kod pojedinog pružatelja — SECRET 58 za njih nikada ne naplaćuje dodatno.",
+  "costNote": "Tvoj paket SECRET 58 (Pro ili Maxi) pretplata je, vidi „Paket i naplata“. Svaka vanjska usluga ovdje ima vlastiti, neovisan model troškova kod dotičnog pružatelja — SECRET 58 za njih nikad ne naplaćuje dodatno.",
   "links": {
     "getKey": "Nabavi API ključ",
     "setInRender": "Unesi u Render",

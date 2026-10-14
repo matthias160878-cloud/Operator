@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Tendences"
   },
-  "costNote": "SECRET 58 pirkuma cena ir vienreizēja un sedz programmatūru. Katram šeit minētajam ārējam pakalpojumam ir savs, neatkarīgs izmaksu modelis pie attiecīgā pakalpojumu sniedzēja — SECRET 58 par tiem nekad neizraksta papildu rēķinu.",
+  "costNote": "Tava SECRET 58 pakete (Pro vai Maxi) ir abonements, skatīt „Pakete un norēķini“. Katram šeit minētajam ārējam pakalpojumam ir savs, neatkarīgs izmaksu modelis pie attiecīgā pakalpojumu sniedzēja — SECRET 58 par tiem nekad neizraksta papildu rēķinu.",
   "links": {
     "getKey": "Iegūt API atslēgu",
     "setInRender": "Ievadīt Render",

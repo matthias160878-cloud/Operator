@@ -1,6 +1,6 @@
 {
   "title": "Eğitim",
-  "subtitle": "SECRET 58'in her bölümü için adım adım kılavuzlar — istediğin zaman buradan bakabilirsin. Videolar, kaydedildikçe eklenecek.",
+  "subtitle": "SECRET 58'in her alanı için adım adım kılavuzlar ve anlatım videoları — istediğin zaman buradan bakabilirsin.",
   "welcomeBanner": {
     "title": "SECRET 58'e hoş geldin!",
     "body": "Satın aldığın için teşekkürler. Başlamadan önce aşağıdaki “İlk adımlar”a kısaca göz atmaya değer — böylece yapay zekâ ajanları en baştan gerçek verilerinle çalışır."
@@ -13,7 +13,7 @@
       "title": "İlk adımlar",
       "description": "Önce bu üç şeyi yap; ardından tüm yapay zekâ ajanları yer tutucular yerine gerçek verilerle çalışır.",
       "steps": [
-        "“Entegrasyonlar” bölümünde en az bir yapay zekâ sağlayıcısı bağla (Anthropic veya OpenAI) — bunun için ilgili satırda sağ üstteki “API anahtarı al”a tıkla, anahtarı sağlayıcıda oluştur ve “Render'a gir” ile kaydet.",
+        "“Entegrasyonlar” bölümünde bir yapay zekâ sağlayıcısının kurulu olup olmadığını kontrol et. Yapay zekâ işlevleri işletmecinin erişimleri üzerinden çalışır, kendi yapay zekâ aboneliğine ihtiyacın yok. Yapay zekâ sağlayıcısı olmadan uygulama şablon modunda çalışır.",
         "“Brand DNA” bölümünde kendi markanı doldur (ton, hedef kitle, değerler) — yapay zekâ ajanları bunu ürettikleri her metin için kullanır.",
         "“Fikirler ve ilham” ya da “Content Brain” bölümünde ilk fikri veya kampanyayı ürettir."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Her satır gerçek, canlı kontrol edilmiş durumu gösterir — asla sahte bir bağlantıyı değil.",
         "“Yapılandırılmadı” durumunda “API anahtarı al”, sağlayıcının resmî sayfasına götürür.",
-        "“Render'a gir”, anahtarın kaydedildiği ortam değişkenlerine doğrudan götürür — güvenlik nedeniyle uygulamanın kendisinde bilerek bir giriş formu yoktur.",
-        "Maliyet: SECRET 58 satın alma bedeli tek seferliktir. Her harici sağlayıcının kendi, bağımsız maliyet modeli vardır (ücretsiz / kullanıma göre / abonelik) — Entegrasyonlar sayfasında her hizmetin hangi modele sahip olduğu, sağlayıcıdaki güncel fiyatlara bağlantıyla birlikte yazar."
+        "Erişim bilgileri hiçbir zaman tarayıcıda saklanmaz, yalnızca sunucuda korumalı olarak tutulur. Bir erişim eksikse işletmeci kurar.",
+        "Maliyetler: Pro ve Maxi aylık veya yıllık aboneliklerdir. Güncel fiyatlar “Paket ve faturalama” bölümünde yer alır. Her harici sağlayıcının kendi bağımsız maliyet modeli vardır (ücretsiz / kullanıma bağlı / abonelik) — Entegrasyonlar sayfasında her hizmet için hangi modelin geçerli olduğu, sağlayıcının güncel fiyatlarına bağlantıyla birlikte gösterilir."
       ]
     }
   }

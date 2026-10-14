@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Guies pas a pas i vídeos explicatius sobre cada àrea de SECRET 58 — sempre els pots consultar aquí.",
+ "schulung.topics.firstSteps.steps.0": "A «Integracions» comprova si hi ha un proveïdor d'IA configurat. Les funcions d'IA funcionen amb els accessos de l'operador, així que no necessites cap subscripció pròpia d'IA. Sense proveïdor d'IA, l'aplicació treballa en mode de plantilles.",
+ "schulung.topics.integrations.steps.2": "Les dades d'accés no es desen mai al navegador, només protegides al servidor. Si falta un accés, el configura l'operador.",
+ "schulung.topics.integrations.steps.3": "Costos: Pro i Maxi són subscripcions, mensuals o anuals. Els preus actuals són a «Paquet i facturació». Cada proveïdor extern té el seu propi model de costos, independent (gratuït / segons l'ús / subscripció) — a la pàgina Integracions, cada servei indica quin model s'aplica, amb un enllaç als preus actuals del proveïdor.",
+ "integrations.costNote": "El teu paquet de SECRET 58 (Pro o Maxi) és una subscripció, consulta «Paquet i facturació». Cada servei extern d'aquí té el seu propi model de costos, independent, amb el proveïdor corresponent — SECRET 58 mai no et cobra res addicional per ells."
+}

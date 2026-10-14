@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trend"
   },
-  "costNote": "Il prezzo di acquisto di SECRET 58 è una tantum e copre il software. Ogni servizio esterno qui elencato ha un proprio modello di costo indipendente presso il rispettivo fornitore: SECRET 58 non addebita mai nulla in più per questi servizi.",
+  "costNote": "Il tuo pacchetto SECRET 58 (Pro o Maxi) è un abbonamento, vedi «Pacchetto e fatturazione». Ogni servizio esterno qui elencato ha un proprio modello di costo indipendente presso il rispettivo fornitore: SECRET 58 non addebita mai nulla in più per questi servizi.",
   "links": {
     "getKey": "Ottieni la chiave API",
     "setInRender": "Inserisci in Render",

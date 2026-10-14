@@ -1,6 +1,6 @@
 {
   "title": "Træning",
-  "subtitle": "Trin-for-trin-vejledninger til hvert område af SECRET 58 — kan altid slås op her. Videoer tilføjes, så snart de er optaget.",
+  "subtitle": "Trin-for-trin-vejledninger og forklaringsvideoer til hvert område i SECRET 58 — altid tilgængelige her, når du vil slå noget op.",
   "welcomeBanner": {
     "title": "Velkommen til SECRET 58!",
     "body": "Tak for dit køb. Før du går i gang, er det værd at kigge kort på »Første skridt« nedenfor — så AI-agenterne arbejder med dine rigtige data fra begyndelsen."
@@ -13,7 +13,7 @@
       "title": "Første skridt",
       "description": "Gør disse tre ting først, så arbejder alle AI-agenter med rigtige data i stedet for pladsholdere.",
       "steps": [
-        "Forbind mindst én AI-udbyder under »Integrationer« (Anthropic eller OpenAI) — klik øverst til højre på den pågældende række på »Hent API-nøgle«, opret nøglen hos udbyderen, og gem den via »Indtast i Render«.",
+        "Under „Integrationer“ kan du tjekke, om en AI-udbyder er sat op. AI-funktionerne kører via operatørens adgange, så du behøver ikke dit eget AI-abonnement. Uden AI-udbyder arbejder appen i skabelontilstand.",
         "Udfyld dit eget brand under »Brand DNA« (tone, målgruppe, værdier) — AI-agenterne bruger det til hver eneste genererede tekst.",
         "Lad den første idé eller kampagne blive oprettet under »Idéer & inspiration« eller »Content Brain«."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Hver række viser den rigtige, live-tjekkede status — aldrig en foregivet forbindelse.",
         "Ved »Ikke konfigureret« fører »Hent API-nøgle« til udbyderens officielle side.",
-        "»Indtast i Render« fører direkte til miljøvariablerne, hvor nøglen gemmes — en indtastningsformular i selve appen findes bevidst ikke af sikkerhedshensyn.",
-        "Omkostninger: Købsprisen for SECRET 58 er en engangsbetaling. Hver ekstern udbyder har sin egen, uafhængige prismodel (gratis / forbrugsbaseret / abonnement) — på siden Integrationer står det ved hver tjeneste, hvilken model der gælder, med link til de aktuelle priser hos udbyderen."
+        "Adgangsdata gemmes aldrig i browseren, kun beskyttet på serveren. Mangler der en adgang, sætter operatøren den op.",
+        "Omkostninger: Pro og Maxi er abonnementer, månedlige eller årlige. De aktuelle priser findes under „Pakke & fakturering“. Hver ekstern udbyder har sin egen, uafhængige omkostningsmodel (gratis / brugsbaseret / abonnement) — på siden Integrationer står der ved hver tjeneste, hvilken model der gælder, med et link til udbyderens aktuelle priser."
       ]
     }
   }

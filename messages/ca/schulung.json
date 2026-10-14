@@ -1,6 +1,6 @@
 {
   "title": "Formació",
-  "subtitle": "Guies pas a pas de cada àrea de SECRET 58, sempre a l'abast per consultar. Els vídeos s'afegiran quan estiguin gravats.",
+  "subtitle": "Guies pas a pas i vídeos explicatius sobre cada àrea de SECRET 58 — sempre els pots consultar aquí.",
   "welcomeBanner": {
     "title": "Us donem la benvinguda a SECRET 58!",
     "body": "Gràcies per la teva compra. Abans de començar, val la pena fer un cop d'ull a «Primers passos» a sota, perquè els agents d'IA treballin des del principi amb les teves dades reals."
@@ -13,7 +13,7 @@
       "title": "Primers passos",
       "description": "Fes primer aquestes tres coses i tots els agents d'IA treballaran amb dades reals en lloc de marcadors de posició.",
       "steps": [
-        "A «Integracions», connecta almenys un proveïdor d'IA (Anthropic o OpenAI): a dalt a la dreta de la fila corresponent, fes clic a «Obtén la clau d'API», crea la clau al proveïdor i desa-la amb «Introdueix-la a Render».",
+        "A «Integracions» comprova si hi ha un proveïdor d'IA configurat. Les funcions d'IA funcionen amb els accessos de l'operador, així que no necessites cap subscripció pròpia d'IA. Sense proveïdor d'IA, l'aplicació treballa en mode de plantilles.",
         "A «Brand DNA», omple la teva marca (to, públic objectiu, valors): els agents d'IA ho fan servir per a cada text generat.",
         "A «Idees i inspiració» o «Content Brain», fes generar la primera idea o campanya."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Cada fila mostra l'estat real, comprovat en directe: mai una connexió simulada.",
         "Si diu «No configurat», «Obtén la clau d'API» porta a la pàgina oficial del proveïdor.",
-        "«Introdueix-la a Render» porta directament a les variables d'entorn, on es desa la clau: per seguretat, deliberadament no hi ha cap formulari d'entrada a l'aplicació mateixa.",
-        "Costos: el preu de compra de SECRET 58 és únic. Cada proveïdor extern té el seu propi model de costos, independent (gratuït / segons l'ús / subscripció): a la pàgina d'Integracions, cada servei indica quin model s'aplica, amb un enllaç als preus actuals del proveïdor."
+        "Les dades d'accés no es desen mai al navegador, només protegides al servidor. Si falta un accés, el configura l'operador.",
+        "Costos: Pro i Maxi són subscripcions, mensuals o anuals. Els preus actuals són a «Paquet i facturació». Cada proveïdor extern té el seu propi model de costos, independent (gratuït / segons l'ús / subscripció) — a la pàgina Integracions, cada servei indica quin model s'aplica, amb un enllaç als preus actuals del proveïdor."
       ]
     }
   }

@@ -1,6 +1,6 @@
 {
   "title": "Formazione",
-  "subtitle": "Guide passo passo per ogni area di SECRET 58, sempre consultabili qui. I video verranno aggiunti appena registrati.",
+  "subtitle": "Guide passo passo e video esplicativi per ogni area di SECRET 58, sempre consultabili qui.",
   "welcomeBanner": {
     "title": "Benvenuto in SECRET 58!",
     "body": "Grazie per il tuo acquisto. Prima di iniziare vale la pena dare una breve occhiata a «Primi passi» qui sotto, così gli agenti IA lavorano fin dall'inizio con i tuoi dati reali."
@@ -13,7 +13,7 @@
       "title": "Primi passi",
       "description": "Fai prima queste tre cose, poi tutti gli agenti IA lavoreranno con dati reali invece che con segnaposto.",
       "steps": [
-        "In «Integrazioni» collega almeno un fornitore di IA (Anthropic oppure OpenAI): per farlo clicca in alto a destra sulla rispettiva riga su «Ottieni la chiave API», crea la chiave presso il fornitore e salvala tramite «Inserisci in Render».",
+        "In «Integrazioni» controlla se è configurato un fornitore di IA. Le funzioni IA passano dagli accessi del gestore, quindi non ti serve un abbonamento IA personale. Senza un fornitore di IA l'app lavora in modalità modelli.",
         "In «Brand DNA» compila i dati del tuo marchio (tono, target, valori): gli agenti IA li usano per ogni testo generato.",
         "In «Idee e ispirazione» o «Content Brain» fai generare la prima idea o campagna."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Ogni riga mostra lo stato reale, verificato in tempo reale: mai una connessione simulata.",
         "Con «Non configurato», «Ottieni la chiave API» porta alla pagina ufficiale del fornitore.",
-        "«Inserisci in Render» porta direttamente alle variabili d'ambiente dove salvare la chiave: per motivi di sicurezza non esiste volutamente un modulo di inserimento nell'app stessa.",
-        "Costi: il prezzo di acquisto di SECRET 58 è una tantum. Ogni fornitore esterno ha un proprio modello di costo indipendente (gratuito / a consumo / abbonamento): nella pagina Integrazioni, per ogni servizio è indicato quale modello vale, con un link ai prezzi aggiornati presso il fornitore."
+        "Le credenziali di accesso non vengono mai salvate nel browser, ma solo in forma protetta sul server. Se manca un accesso, lo configura il gestore.",
+        "Costi: Pro e Maxi sono abbonamenti, mensili o annuali. I prezzi aggiornati si trovano in «Pacchetto e fatturazione». Ogni fornitore esterno ha un proprio modello di costo indipendente (gratuito / a consumo / abbonamento): nella pagina Integrazioni, per ogni servizio è indicato quale modello vale, con un link ai prezzi aggiornati presso il fornitore."
       ]
     }
   }

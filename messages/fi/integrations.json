@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trendit"
   },
-  "costNote": "SECRET 58:n ostohinta on kertamaksu ja kattaa ohjelmiston. Jokaisella täällä olevalla ulkoisella palvelulla on oma, riippumaton hinnoittelumallinsa kyseisellä palveluntarjoajalla — SECRET 58 ei koskaan laskuta niistä erikseen.",
+  "costNote": "SECRET 58 -pakettisi (Pro tai Maxi) on tilaus, katso ”Paketti ja laskutus”. Jokaisella täällä olevalla ulkoisella palvelulla on oma, riippumaton hinnoittelumallinsa kyseisellä palveluntarjoajalla — SECRET 58 ei koskaan laskuta niistä erikseen.",
   "links": {
     "getKey": "Hae API-avain",
     "setInRender": "Tallenna Renderiin",

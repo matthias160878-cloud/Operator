@@ -1,6 +1,6 @@
 {
   "title": "Oiliúint",
-  "subtitle": "Treoracha céim ar chéim do gach limistéar de SECRET 58 — ar fáil le haghaidh tagartha am ar bith. Cuirfear físeáin leis a luaithe a bheidh siad taifeadta.",
+  "subtitle": "Treoracha céim ar chéim agus físeáin mhíniúcháin do gach limistéar de SECRET 58 — ar fáil anseo i gcónaí le haghaidh tagartha.",
   "welcomeBanner": {
     "title": "Fáilte go SECRET 58!",
     "body": "Go raibh maith agat as do cheannach. Sula dtosóimid, is fiú súil ghasta a thabhairt ar “Céimeanna tosaigh” thíos — ionas go n-oibreoidh na gníomhairí AI le do shonraí fíora ón tús."
@@ -13,7 +13,7 @@
       "title": "Céimeanna tosaigh",
       "description": "Déan na trí rud seo ar dtús, agus oibreoidh na gníomhairí AI ar fad le fíorshonraí seachas le ionadchoimeádáin.",
       "steps": [
-        "Faoi “Comhtháthuithe” nasc soláthraí AI amháin ar a laghad (Anthropic nó OpenAI) — cliceáil ar “Faigh eochair API” ar an tsraith faoi seach ag barr na láimhe deise, cruthaigh an eochair ag an soláthraí agus cuir isteach í trí “Cuir isteach i Render”.",
+        "Faoi “Comhtháthuithe” seiceáil an bhfuil soláthraí AI socraithe. Ritheann na gnéithe AI trí rochtain an oibreora, mar sin níl síntiús AI uait féin. Gan soláthraí AI, oibríonn an aip i mód teimpléid.",
         "Faoi “Brand DNA” líon isteach do bhranda féin (tonn, spriocghrúpa, luachanna) — úsáideann na gníomhairí AI é seo do gach téacs a ghintear.",
         "Faoi “Smaointe & Inspioráid” nó “Content Brain” lig dóibh an chéad smaoineamh nó feachtas a chruthú."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Taispeánann gach sraith an stádas fíor, seiceáilte beo — gan aon nasc bréagach go deo.",
         "Ag “Gan cumrú” seolann “Faigh eochair API” chuig leathanach oifigiúil an tsoláthraí thú.",
-        "Seolann “Cuir isteach i Render” go díreach thú chuig na hathróga timpeallachta ina gcuirtear an eochair; níl foirm ionchuir san aip féin d’aon turas ar chúiseanna slándála.",
-        "Costais: is íocaíocht aonuaire é praghas ceannaigh SECRET 58. Tá a mhúnla costais féin, neamhspleách, ag gach soláthraí seachtrach (saor in aisce / bunaithe ar úsáid / síntiús) — ar an leathanach Comhtháthuithe luaitear le gach seirbhís an múnla atá i bhfeidhm, le nasc chuig na praghsanna reatha ag an soláthraí."
+        "Ní stóráiltear sonraí rochtana sa bhrabhsálaí riamh, ach amháin ar an bhfreastalaí faoi chosaint. Má bhíonn rochtain ar iarraidh, socraíonn an t-oibreoir í.",
+        "Costais: is síntiúis iad Pro agus Maxi, míosúil nó bliantúil. Tá na praghsanna reatha le fáil faoi “Pacáiste & Billeáil”. Tá a mhúnla costais féin, neamhspleách, ag gach soláthraí seachtrach (saor in aisce / bunaithe ar úsáid / síntiús) — ar an leathanach Comhtháthuithe luaitear le gach seirbhís an múnla atá i bhfeidhm, le nasc chuig na praghsanna reatha ag an soláthraí."
       ]
     }
   }

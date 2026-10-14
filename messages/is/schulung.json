@@ -1,6 +1,6 @@
 {
   "title": "Þjálfun",
-  "subtitle": "Leiðbeiningar skref fyrir skref um hvert svæði í SECRET 58 — alltaf hægt að fletta upp hér. Myndskeið bætast við þegar þau hafa verið tekin upp.",
+  "subtitle": "Leiðbeiningar skref fyrir skref og útskýringarmyndbönd um hvert svæði í SECRET 58 — alltaf aðgengileg hér til uppflettingar.",
   "welcomeBanner": {
     "title": "Velkomin(n) í SECRET 58!",
     "body": "Takk fyrir kaupin. Áður en lengra er haldið er þess virði að líta stuttlega á „Fyrstu skref“ hér fyrir neðan — svo gervigreindarfulltrúarnir vinni með raunveruleg gögn frá byrjun."
@@ -13,7 +13,7 @@
       "title": "Fyrstu skref",
       "description": "Gerðu þessa þrjá hluti fyrst, þá vinna allir gervigreindarfulltrúar með raunveruleg gögn í stað staðgengla.",
       "steps": [
-        "Tengdu að minnsta kosti eina gervigreindarveitu undir „Samþættingar“ (Anthropic eða OpenAI) — smelltu efst til hægri í viðkomandi línu á „Sækja API-lykil“, búðu til lykilinn hjá veitandanum og skráðu hann með „Skrá í Render“.",
+        "Athugaðu undir „Samþættingar“ hvort gervigreindarveita sé uppsett. Gervigreindareiginleikarnir keyra í gegnum aðgang rekstraraðilans, svo þú þarft ekki þína eigin gervigreindaráskrift. Án gervigreindarveitu virkar appið í sniðmátshamnum.",
         "Fylltu út þitt eigið vörumerki undir „Brand DNA“ (tónn, markhópur, gildi) — gervigreindarfulltrúarnir nota það í hverjum texta sem þeir búa til.",
         "Láttu búa til fyrstu hugmyndina eða herferðina undir „Hugmyndir og innblástur“ eða „Content Brain“."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Hver lína sýnir raunverulega stöðu sem er athuguð í beinni — aldrei uppgerðartengingu.",
         "Við „Ekki stillt“ leiðir „Sækja API-lykil“ á opinbera síðu veitandans.",
-        "„Skrá í Render“ leiðir beint á umhverfisbreyturnar þar sem lykillinn er skráður — innsláttarform í forritinu sjálfu er vísvitandi ekki til staðar af öryggisástæðum.",
-        "Kostnaður: Kaupverð SECRET 58 er eingreiðsla. Sérhver utanaðkomandi veitandi hefur sitt eigið, óháða kostnaðarlíkan (ókeypis / eftir notkun / áskrift) — á Samþættingar-síðunni kemur fram hjá hverri þjónustu hvaða líkan gildir, með hlekk á núgildandi verð hjá veitandanum."
+        "Aðgangsupplýsingar eru aldrei vistaðar í vafranum, heldur aðeins varðar á þjóninum. Ef aðgang vantar setur rekstraraðilinn hann upp.",
+        "Kostnaður: Pro og Maxi eru áskriftir, mánaðarlegar eða árlegar. Gildandi verð má finna undir „Pakki og reikningar“. Hver ytri veita er með sitt eigið, óháða kostnaðarlíkan (ókeypis / eftir notkun / áskrift) — á síðunni Samþættingar kemur fram fyrir hverja þjónustu hvaða líkan gildir, með tengli á gildandi verð hjá veitunni."
       ]
     }
   }

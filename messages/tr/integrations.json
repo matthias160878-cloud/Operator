@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trendler"
   },
-  "costNote": "SECRET 58 satın alma bedeli tek seferliktir ve yazılımı kapsar. Buradaki her harici hizmetin ilgili sağlayıcıda kendi, bağımsız maliyet modeli vardır — SECRET 58 bunun için asla ek ücret yansıtmaz.",
+  "costNote": "SECRET 58 paketin (Pro veya Maxi) bir aboneliktir, bkz. “Paket ve faturalama”. Buradaki her harici hizmetin ilgili sağlayıcı nezdinde kendi bağımsız maliyet modeli vardır — SECRET 58 bunlar için asla ek ücret yansıtmaz.",
   "links": {
     "getKey": "API anahtarı al",
     "setInRender": "Render'a gir",

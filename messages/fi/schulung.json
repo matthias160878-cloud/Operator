@@ -1,6 +1,6 @@
 {
   "title": "Koulutus",
-  "subtitle": "Vaiheittaiset ohjeet jokaiseen SECRET 58:n osioon — voit tarkistaa ne täältä milloin tahansa. Videot lisätään, kun ne on kuvattu.",
+  "subtitle": "Vaiheittaiset ohjeet ja selitysvideot jokaiseen SECRET 58:n osioon — voit tarkistaa ne täältä milloin tahansa.",
   "welcomeBanner": {
     "title": "Tervetuloa SECRET 58:aan!",
     "body": "Kiitos ostoksestasi. Ennen aloitusta kannattaa vilkaista alla olevaa ”Ensimmäiset askeleet” — jotta tekoälyagentit työskentelevät alusta asti oikean datasi kanssa."
@@ -13,7 +13,7 @@
       "title": "Ensimmäiset askeleet",
       "description": "Tee nämä kolme asiaa ensin, niin kaikki tekoälyagentit työskentelevät oikean datan kanssa paikkamerkkien sijaan.",
       "steps": [
-        "Yhdistä kohdassa ”Integraatiot” vähintään yksi tekoälypalvelu (Anthropic tai OpenAI) — klikkaa sen rivin oikeassa yläkulmassa ”Hae API-avain”, luo avain palveluntarjoajalla ja tallenna se kohdan ”Tallenna Renderiin” kautta.",
+        "Tarkista kohdasta ”Integraatiot”, onko tekoälypalvelu otettu käyttöön. Tekoälytoiminnot toimivat ylläpitäjän käyttöoikeuksilla, joten et tarvitse omaa tekoälytilausta. Ilman tekoälypalvelua sovellus toimii mallipohjatilassa.",
         "Täytä kohdassa ”Brand DNA” oman brändisi tiedot (sävy, kohderyhmä, arvot) — tekoälyagentit käyttävät niitä jokaisessa luomassaan tekstissä.",
         "Luo kohdassa ”Ideat ja inspiraatio” tai ”Content Brain” ensimmäinen idea tai kampanja."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Jokainen rivi näyttää todellisen, livenä tarkistetun tilan — ei koskaan teeskenneltyä yhteyttä.",
         "Kun tila on ”Ei määritetty”, ”Hae API-avain” johtaa palveluntarjoajan viralliselle sivulle.",
-        "”Tallenna Renderiin” johtaa suoraan ympäristömuuttujiin, joihin avain tallennetaan — syöttölomaketta itse sovelluksessa ei tietoturvasyistä tarkoituksella ole.",
-        "Kustannukset: SECRET 58:n ostohinta on kertamaksu. Jokaisella ulkoisella palveluntarjoajalla on oma, riippumaton hinnoittelumallinsa (ilmainen / käyttöön perustuva / tilaus) — Integraatiot-sivulla jokaisen palvelun kohdalla kerrotaan, mikä malli on voimassa, ja linkki palveluntarjoajan ajankohtaisiin hintoihin."
+        "Käyttöoikeustietoja ei koskaan tallenneta selaimeen, vaan ainoastaan suojattuna palvelimelle. Jos käyttöoikeus puuttuu, ylläpitäjä ottaa sen käyttöön.",
+        "Kustannukset: Pro ja Maxi ovat tilauksia, kuukausittain tai vuosittain. Ajankohtaiset hinnat näkyvät kohdassa ”Paketti ja laskutus”. Jokaisella ulkoisella palveluntarjoajalla on oma, riippumaton hinnoittelumallinsa (ilmainen / käyttöön perustuva / tilaus) — Integraatiot-sivulla jokaisen palvelun kohdalla kerrotaan, mikä malli on voimassa, ja linkki palveluntarjoajan ajankohtaisiin hintoihin."
       ]
     }
   }

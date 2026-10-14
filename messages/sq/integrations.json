@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trende"
   },
-  "costNote": "Çmimi i blerjes së SECRET 58 është një herë dhe mbulon softuerin. Çdo shërbim i jashtëm këtu ka modelin e vet të pavarur të kostos te ofruesi përkatës — SECRET 58 nuk të faturon kurrë shtesë për to.",
+  "costNote": "Paketa jote SECRET 58 (Pro ose Maxi) është abonim, shih “Paketa & Faturimi”. Çdo shërbim i jashtëm këtu ka modelin e vet të pavarur të kostos te ofruesi përkatës — SECRET 58 nuk ngarkon kurrë shtesë për to.",
   "links": {
     "getKey": "Merr çelësin API",
     "setInRender": "Vendose në Render",

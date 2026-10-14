@@ -1,24 +1,24 @@
 {
- "title": "Integrácie",
- "description": "Stav všetkých externých služieb naživo — výlučne na základe skutočne nastavených premenných prostredia. Žiadne predstierané pripojenia.",
- "categories": {
-  "AI": "Poskytovatelia AI",
-  "VOICE": "Voice",
-  "PLATFORM": "Sociálne platformy",
-  "DESIGN": "Dizajn",
-  "VIDEO": "Video",
-  "TREND": "Trendy"
- },
- "costNote": "Kúpna cena SECRET 58 je jednorazová a pokrýva softvér. Každá externá služba tu má vlastný, nezávislý cenový model u príslušného poskytovateľa — SECRET 58 za ne nikdy nefakturuje navyše.",
- "links": {
-  "getKey": "Získať kľúč API",
-  "setInRender": "Zadať v Render",
-  "viewPricing": "Zobraziť ceny"
- },
- "pricing": {
-  "free": "Zadarmo",
-  "payAsYouGo": "Podľa používania",
-  "subscription": "Predplatné",
-  "unknown": "Cenu si overte u poskytovateľa"
- }
+  "title": "Integrácie",
+  "description": "Stav všetkých externých služieb naživo — výlučne na základe skutočne nastavených premenných prostredia. Žiadne predstierané pripojenia.",
+  "categories": {
+    "AI": "Poskytovatelia AI",
+    "VOICE": "Voice",
+    "PLATFORM": "Sociálne platformy",
+    "DESIGN": "Dizajn",
+    "VIDEO": "Video",
+    "TREND": "Trendy"
+  },
+  "costNote": "Tvoj balík SECRET 58 (Pro alebo Maxi) je predplatné, pozri „Balík a fakturácia“. Každá externá služba tu má vlastný, nezávislý model nákladov u príslušného poskytovateľa — SECRET 58 za ne nikdy neúčtuje nič navyše.",
+  "links": {
+    "getKey": "Získať kľúč API",
+    "setInRender": "Zadať v Render",
+    "viewPricing": "Zobraziť ceny"
+  },
+  "pricing": {
+    "free": "Zadarmo",
+    "payAsYouGo": "Podľa používania",
+    "subscription": "Predplatné",
+    "unknown": "Cenu si overte u poskytovateľa"
+  }
 }

@@ -1,87 +1,87 @@
 {
- "title": "Obuka",
- "subtitle": "Upute korak po korak za svaki dio SECRET 58 — uvijek ih možeš ovdje pogledati. Videi se dodaju čim budu snimljeni.",
- "welcomeBanner": {
-  "title": "Dobro došao/la u SECRET 58!",
-  "body": "Hvala na kupovini. Prije nego što počneš, vrijedi ukratko pogledati „Prvi koraci“ ispod — kako bi AI agenti od početka radili s tvojim stvarnim podacima."
- },
- "videoPending": "Video uskoro",
- "stepsLabel": "Koraci",
- "openPage": "Otvori stranicu",
- "topics": {
-  "firstSteps": {
-   "title": "Prvi koraci",
-   "description": "Prvo obavi ove tri stvari, pa će svi AI agenti raditi sa stvarnim podacima umjesto sa rezervnim tekstovima.",
-   "steps": [
-    "Pod „Integracije“ poveži najmanje jednog AI provajdera (Anthropic ili OpenAI) — za to gore desno u odgovarajućem redu klikni na „Nabavi API ključ“, kreiraj ključ kod pružatelja i unesi ga preko „Unesi u Render“.",
-    "Pod „Brand DNA“ popuni vlastiti brend (ton, ciljna grupa, vrijednosti) — AI agenti to koriste za svaki generisani tekst.",
-    "Pod „Ideje i inspiracija“ ili „Content Brain“ daj da se kreira prva ideja odnosno kampanja."
-   ]
+  "title": "Obuka",
+  "subtitle": "Upute korak po korak i video-objašnjenja za svako područje SECRET 58 — uvijek ih možeš pogledati ovdje.",
+  "welcomeBanner": {
+    "title": "Dobro došao/la u SECRET 58!",
+    "body": "Hvala na kupovini. Prije nego što počneš, vrijedi ukratko pogledati „Prvi koraci“ ispod — kako bi AI agenti od početka radili s tvojim stvarnim podacima."
   },
-  "contentBrainToFactory": {
-   "title": "Content Brain → Content Factory",
-   "description": "Ovako se od ideje dobija gotov, odobren sadržaj.",
-   "steps": [
-    "U Content Brain kreiraj novu kampanju s temom i ciljnim platformama — iz toga automatski nastaje više stavki sadržaja.",
-    "U Content Factory svaka stavka sadržaja prolazi kroz statuse: Nacrt → Na pregledu → Odobreno → Zakazano → Objavljeno.",
-    "Odobrenje je ručni korak i obavezno je — ništa se ne objavljuje automatski bez potvrde.",
-    "U detaljnom prikazu stavke sadržaja skripta, voiceover, titlovi, hashtagovi i thumbnail mogu se pojedinačno naknadno generisati."
-   ]
-  },
-  "studios": {
-   "title": "Script, Voice, Video i Design Studio",
-   "description": "Specijalizirani alati za svaki element sadržaja.",
-   "steps": [
-    "Script Studio: kreira skripte prema strukturi Hook → Problem → Value → Example → Payoff → CTA.",
-    "Voice Studio: uvezi ili kreiraj vlastiti ElevenLabs glas, zatim kreiraj voiceover direktno iz skripte.",
-    "Design Studio: thumbnail agent predlaže naslov, vizualnu ideju, tekst, layout i opis slike.",
-    "Video Studio: prikazuje trenutno stanje povezivanja video provajdera (Format Manager, status provajdera)."
-   ]
-  },
-  "calendarPublishing": {
-   "title": "Content kalendar i objavljivanje",
-   "description": "Gdje završavaju zakazane objave — i zašto se objava zaista objavi (ili ne).",
-   "steps": [
-    "U Content kalendaru se pojavljuju sve stavke sadržaja sa zakazanim datumom objave.",
-    "Prije svake objave PublishingAgent uživo provjerava je li ciljna platforma pod „Društvene mreže“ zaista označena kao „Povezano“.",
-    "Bez stvarne veze s platformom iskreno se prikazuje greška umjesto da se glumi objava."
-   ]
-  },
-  "analyticsGrowth": {
-   "title": "Analytics i rast",
-   "description": "Stvarni brojevi o vlastitom učinku — i preporuke umjesto automatizacije.",
-   "steps": [
-    "Analytics prikazuje isključivo stvarne, uvezene ili ručno unesene podatke o učinku.",
-    "Stranica Rast iz tih podataka izračunava najbolja vremena objavljivanja, uspješne hashtagove i formate.",
-    "Važno: namjerno nema automatskog povećanja broja pratilaca/angažmana (nema ponašanja botova) — to bi kršilo uslove korištenja svake platforme."
-   ]
-  },
-  "inbox": {
-   "title": "Prijemno sanduče",
-   "description": "AI nacrti odgovora na poruke — s odobrenjem prije slanja.",
-   "steps": [
-    "Pošto (još) nijedna platforma nije povezana putem OAuth-a, razgovori se trenutno kreiraju ručno umjesto da se preuzimaju uživo.",
-    "MessageAgent predlaže odgovor na osnovu Brand DNA i toka razgovora.",
-    "Nacrt se mora ručno pregledati i odobriti prije nego što se smatra poslanim — stvarno slanje bez veze s platformom iskreno ne uspijeva umjesto da glumi uspjeh."
-   ]
-  },
-  "revenue": {
-   "title": "Praćenje prihoda",
-   "description": "Pregled svih prihoda s platformi na jednom mjestu — isplata ipak ide preko samih platformi.",
-   "steps": [
-    "Prihodi se unose ručno, jer TikTok/Meta ne nude javni API za prihode, a YouTube za to traži pristup Partner programu (još nije povezan).",
-    "Stvarna isplata uvijek ide direktno preko dotične platforme (npr. YouTube preko Google AdSense) — SECRET 58 ne obavlja isplate."
-   ]
-  },
-  "integrations": {
-   "title": "Integracije i API ključevi",
-   "description": "Odakle dolazi svaki status veze i gdje se unosi odgovarajući ključ.",
-   "steps": [
-    "Svaki red prikazuje stvaran status provjeren uživo — nikada lažnu vezu.",
-    "Kod „Nije konfigurisano“, „Nabavi API ključ“ vodi na zvaničnu stranicu pružatelja.",
-    "„Unesi u Render“ vodi direktno na varijable okruženja gdje se ključ sprema — obrazac za unos u samoj aplikaciji namjerno ne postoji iz sigurnosnih razloga.",
-    "Troškovi: kupovna cijena SECRET 58 je jednokratna. Svaki vanjski pružatelj ima vlastiti, nezavisan model troškova (besplatno / prema korištenju / pretplata) — na stranici Integracije kod svakog servisa piše koji model važi, s linkom na aktuelne cijene kod pružatelja."
-   ]
+  "videoPending": "Video uskoro",
+  "stepsLabel": "Koraci",
+  "openPage": "Otvori stranicu",
+  "topics": {
+    "firstSteps": {
+      "title": "Prvi koraci",
+      "description": "Prvo obavi ove tri stvari, pa će svi AI agenti raditi sa stvarnim podacima umjesto sa rezervnim tekstovima.",
+      "steps": [
+        "Pod „Integracije“ provjeri je li postavljen neki AI provajder. AI funkcije rade preko pristupa operatera, pa ti nije potrebna vlastita AI pretplata. Bez AI provajdera aplikacija radi u načinu rada sa šablonima.",
+        "Pod „Brand DNA“ popuni vlastiti brend (ton, ciljna grupa, vrijednosti) — AI agenti to koriste za svaki generisani tekst.",
+        "Pod „Ideje i inspiracija“ ili „Content Brain“ daj da se kreira prva ideja odnosno kampanja."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Ovako se od ideje dobija gotov, odobren sadržaj.",
+      "steps": [
+        "U Content Brain kreiraj novu kampanju s temom i ciljnim platformama — iz toga automatski nastaje više stavki sadržaja.",
+        "U Content Factory svaka stavka sadržaja prolazi kroz statuse: Nacrt → Na pregledu → Odobreno → Zakazano → Objavljeno.",
+        "Odobrenje je ručni korak i obavezno je — ništa se ne objavljuje automatski bez potvrde.",
+        "U detaljnom prikazu stavke sadržaja skripta, voiceover, titlovi, hashtagovi i thumbnail mogu se pojedinačno naknadno generisati."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video i Design Studio",
+      "description": "Specijalizirani alati za svaki element sadržaja.",
+      "steps": [
+        "Script Studio: kreira skripte prema strukturi Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: uvezi ili kreiraj vlastiti ElevenLabs glas, zatim kreiraj voiceover direktno iz skripte.",
+        "Design Studio: thumbnail agent predlaže naslov, vizualnu ideju, tekst, layout i opis slike.",
+        "Video Studio: prikazuje trenutno stanje povezivanja video provajdera (Format Manager, status provajdera)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Content kalendar i objavljivanje",
+      "description": "Gdje završavaju zakazane objave — i zašto se objava zaista objavi (ili ne).",
+      "steps": [
+        "U Content kalendaru se pojavljuju sve stavke sadržaja sa zakazanim datumom objave.",
+        "Prije svake objave PublishingAgent uživo provjerava je li ciljna platforma pod „Društvene mreže“ zaista označena kao „Povezano“.",
+        "Bez stvarne veze s platformom iskreno se prikazuje greška umjesto da se glumi objava."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics i rast",
+      "description": "Stvarni brojevi o vlastitom učinku — i preporuke umjesto automatizacije.",
+      "steps": [
+        "Analytics prikazuje isključivo stvarne, uvezene ili ručno unesene podatke o učinku.",
+        "Stranica Rast iz tih podataka izračunava najbolja vremena objavljivanja, uspješne hashtagove i formate.",
+        "Važno: namjerno nema automatskog povećanja broja pratilaca/angažmana (nema ponašanja botova) — to bi kršilo uslove korištenja svake platforme."
+      ]
+    },
+    "inbox": {
+      "title": "Prijemno sanduče",
+      "description": "AI nacrti odgovora na poruke — s odobrenjem prije slanja.",
+      "steps": [
+        "Pošto (još) nijedna platforma nije povezana putem OAuth-a, razgovori se trenutno kreiraju ručno umjesto da se preuzimaju uživo.",
+        "MessageAgent predlaže odgovor na osnovu Brand DNA i toka razgovora.",
+        "Nacrt se mora ručno pregledati i odobriti prije nego što se smatra poslanim — stvarno slanje bez veze s platformom iskreno ne uspijeva umjesto da glumi uspjeh."
+      ]
+    },
+    "revenue": {
+      "title": "Praćenje prihoda",
+      "description": "Pregled svih prihoda s platformi na jednom mjestu — isplata ipak ide preko samih platformi.",
+      "steps": [
+        "Prihodi se unose ručno, jer TikTok/Meta ne nude javni API za prihode, a YouTube za to traži pristup Partner programu (još nije povezan).",
+        "Stvarna isplata uvijek ide direktno preko dotične platforme (npr. YouTube preko Google AdSense) — SECRET 58 ne obavlja isplate."
+      ]
+    },
+    "integrations": {
+      "title": "Integracije i API ključevi",
+      "description": "Odakle dolazi svaki status veze i gdje se unosi odgovarajući ključ.",
+      "steps": [
+        "Svaki red prikazuje stvaran status provjeren uživo — nikada lažnu vezu.",
+        "Kod „Nije konfigurisano“, „Nabavi API ključ“ vodi na zvaničnu stranicu pružatelja.",
+        "Pristupni podaci se nikada ne pohranjuju u pregledniku, nego samo zaštićeno na serveru. Ako pristup nedostaje, postavlja ga operater.",
+        "Troškovi: Pro i Maxi su pretplate, mjesečne ili godišnje. Aktuelne cijene nalaze se pod „Paket i naplata“. Svaki vanjski provajder ima svoj, nezavisan model troškova (besplatno / prema korištenju / pretplata) — na stranici „Integracije“ uz svaku uslugu piše koji model vrijedi, s linkom na aktuelne cijene kod provajdera."
+      ]
+    }
   }
- }
 }

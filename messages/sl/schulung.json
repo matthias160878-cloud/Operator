@@ -1,6 +1,6 @@
 {
   "title": "Usposabljanje",
-  "subtitle": "Navodila po korakih za vsako področje SECRET 58 — kadar koli jih lahko pogledaš tukaj. Videi bodo dodani, ko bodo posneti.",
+  "subtitle": "Navodila po korakih in razlagalni videoposnetki za vsako področje aplikacije SECRET 58 — vedno jih lahko pogledaš tukaj.",
   "welcomeBanner": {
     "title": "Dobrodošel v SECRET 58!",
     "body": "Hvala za nakup. Preden začneš, se splača na hitro pogledati „Prvi koraki“ spodaj — da bodo UI agenti od začetka delali z tvojimi pravimi podatki."
@@ -13,7 +13,7 @@
       "title": "Prvi koraki",
       "description": "Najprej opravi teh troje, potem bodo vsi UI agenti delali s pravimi podatki namesto z nadomestnimi.",
       "steps": [
-        "V razdelku „Integracije“ poveži vsaj enega ponudnika UI (Anthropic ali OpenAI) — za to zgoraj desno v ustrezni vrstici klikni „Pridobi ključ API“, ključ ustvari pri ponudniku in ga shrani prek „Vnesi v Render“.",
+        "Pod „Integracije“ preveri, ali je nastavljen ponudnik umetne inteligence. Funkcije umetne inteligence delujejo prek dostopov upravljavca, zato ne potrebuješ lastne naročnine na umetno inteligenco. Brez ponudnika umetne inteligence aplikacija deluje v načinu predlog.",
         "V razdelku „Brand DNA“ izpolni lastno znamko (ton, ciljna skupina, vrednote) — UI agenti to uporabljajo za vsako generirano besedilo.",
         "V razdelku „Ideje in navdih“ ali „Content Brain“ naj se ustvari prva ideja oz. kampanja."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Vsaka vrstica prikazuje resničen, v živo preverjen status — nikoli navidezne povezave.",
         "Pri „Ni nastavljeno“ „Pridobi ključ API“ vodi na uradno stran ponudnika.",
-        "„Vnesi v Render“ vodi neposredno do okoljskih spremenljivk, kjer se ključ shrani — vnosnega obrazca v sami aplikaciji iz varnostnih razlogov namenoma ni.",
-        "Stroški: kupnina za SECRET 58 je enkratna. Vsak zunanji ponudnik ima svoj, neodvisen model stroškov (brezplačno / glede na porabo / naročnina) — na strani Integracije je pri vsaki storitvi navedeno, kateri model velja, s povezavo do aktualnih cen pri ponudniku."
+        "Dostopni podatki se nikoli ne shranjujejo v brskalniku, temveč le zaščiteno na strežniku. Če dostop manjka, ga nastavi upravljavec.",
+        "Stroški: Pro in Maxi sta naročnini, mesečni ali letni. Aktualne cene so pod „Paket in obračun“. Vsak zunanji ponudnik ima svoj, neodvisen model stroškov (brezplačno / glede na porabo / naročnina) — na strani Integracije je pri vsaki storitvi navedeno, kateri model velja, s povezavo do aktualnih cen pri ponudniku."
       ]
     }
   }

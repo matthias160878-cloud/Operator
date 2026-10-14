@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Žingsnis po žingsnio instrukcijos ir paaiškinamieji vaizdo įrašai apie kiekvieną SECRET 58 skiltį — bet kada čia galima pasižiūrėti.",
+ "schulung.topics.firstSteps.steps.0": "Skiltyje „Integracijos“ patikrink, ar nustatytas DI tiekėjas. DI funkcijos veikia per operatoriaus prieigas, todėl tau nereikia savo DI prenumeratos. Be DI tiekėjo programa veikia šablonų režimu.",
+ "schulung.topics.integrations.steps.2": "Prieigos duomenys niekada nesaugomi naršyklėje, tik apsaugoti serveryje. Jei trūksta prieigos, ją nustato operatorius.",
+ "schulung.topics.integrations.steps.3": "Išlaidos: Pro ir Maxi yra prenumeratos, mėnesinės arba metinės. Dabartinės kainos pateiktos skiltyje „Paketas ir apmokėjimas“. Kiekvienas išorinis tiekėjas turi savo, nepriklausomą kainodarą (nemokama / pagal naudojimą / prenumerata) — Integracijų puslapyje prie kiekvienos paslaugos nurodyta, koks modelis taikomas, su nuoroda į dabartines kainas pas tiekėją.",
+ "integrations.costNote": "Tavo SECRET 58 paketas (Pro arba Maxi) yra prenumerata, žr. „Paketas ir apmokėjimas“. Kiekviena čia nurodyta išorinė paslauga turi savo, nepriklausomą kainodarą pas atitinkamą tiekėją — SECRET 58 už jas niekada papildomai neišrašo sąskaitų."
+}

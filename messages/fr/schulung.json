@@ -1,6 +1,6 @@
 {
   "title": "Formation",
-  "subtitle": "Guides pas à pas pour chaque domaine de SECRET 58 — toujours consultables ici. Les vidéos seront ajoutées dès qu'elles seront enregistrées.",
+  "subtitle": "Guides pas à pas et vidéos explicatives pour chaque domaine de SECRET 58 — à consulter ici à tout moment.",
   "welcomeBanner": {
     "title": "Bienvenue chez SECRET 58 !",
     "body": "Merci pour votre achat. Avant de commencer, jetez un œil aux \"Premiers pas\" ci-dessous — pour que les agents IA travaillent dès le départ avec vos vraies données."
@@ -13,7 +13,7 @@
       "title": "Premiers pas",
       "description": "Faites ces trois choses en premier, ensuite chaque agent IA travaille avec de vraies données plutôt qu'avec des exemples.",
       "steps": [
-        "Sous \"Intégrations\", connectez au moins un fournisseur d'IA (Anthropic ou OpenAI) — cliquez sur \"Obtenir la clé API\" sur la ligne concernée, créez la clé chez le fournisseur, puis ajoutez-la via \"Configurer dans Render\".",
+        "Dans « Intégrations », vérifie si un fournisseur d’IA est configuré. Les fonctions d’IA passent par les accès de l’exploitant, tu n’as donc pas besoin de ton propre abonnement d’IA. Sans fournisseur d’IA, l’app fonctionne en mode modèles.",
         "Sous \"ADN de marque\", renseignez votre marque (ton, public, valeurs) — chaque agent IA s'en sert pour le texte qu'il génère.",
         "Sous \"Idées & inspiration\" ou \"Content Brain\", générez votre première idée ou campagne."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Chaque ligne affiche le statut réel, vérifié en direct — jamais une connexion simulée.",
         "Pour \"Non configuré\", \"Obtenir la clé API\" mène à la page officielle du fournisseur.",
-        "\"Configurer dans Render\" mène directement aux variables d'environnement où la clé est stockée — il n'y a volontairement aucun formulaire de saisie de clé dans l'application elle-même, pour des raisons de sécurité.",
-        "Coûts : le prix d'achat de SECRET 58 est unique. Chaque fournisseur externe a son propre modèle de coûts indépendant (gratuit / à l'usage / abonnement) — la page Intégrations indique le modèle applicable à chaque service, avec un lien vers les tarifs actuels du fournisseur."
+        "Les identifiants ne sont jamais enregistrés dans le navigateur, mais uniquement protégés sur le serveur. Si un accès manque, l’exploitant le configure.",
+        "Coûts : Pro et Maxi sont des abonnements, mensuels ou annuels. Les prix actuels figurent sous « Offre et facturation ». Chaque fournisseur externe a son propre modèle de coûts, indépendant (gratuit / selon l’usage / abonnement) — la page Intégrations indique pour chaque service quel modèle s’applique, avec un lien vers les prix actuels du fournisseur."
       ]
     }
   }

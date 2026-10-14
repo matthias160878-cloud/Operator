@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trendi"
   },
-  "costNote": "Kupnina za SECRET 58 je enkratna in pokriva programsko opremo. Vsaka zunanja storitev tu ima svoj, neodvisen model stroškov pri posameznem ponudniku — SECRET 58 za to nikoli ne zaračuna dodatno.",
+  "costNote": "Tvoj paket SECRET 58 (Pro ali Maxi) je naročnina, glej „Paket in obračun“. Vsaka zunanja storitev tukaj ima svoj, neodvisen model stroškov pri posameznem ponudniku — SECRET 58 zanje nikoli ne zaračuna dodatno.",
   "links": {
     "getKey": "Pridobi ključ API",
     "setInRender": "Vnesi v Render",

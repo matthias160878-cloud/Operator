@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trender"
   },
-  "costNote": "Köpspriset för SECRET 58 är en engångsavgift och täcker programvaran. Varje extern tjänst här har sin egen, oberoende kostnadsmodell hos respektive leverantör — SECRET 58 fakturerar aldrig något extra för dem.",
+  "costNote": "Ditt SECRET 58-paket (Pro eller Maxi) är en prenumeration, se ”Paket & fakturering”. Varje extern tjänst här har sin egen, oberoende kostnadsmodell hos respektive leverantör — SECRET 58 fakturerar aldrig extra för dem.",
   "links": {
     "getKey": "Hämta API-nyckel",
     "setInRender": "Lägg in i Render",

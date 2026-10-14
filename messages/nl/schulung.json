@@ -1,6 +1,6 @@
 {
   "title": "Training",
-  "subtitle": "Stapsgewijze handleidingen voor elk onderdeel van SECRET 58 — altijd hier op te zoeken. Video's worden toegevoegd zodra ze zijn opgenomen.",
+  "subtitle": "Stapsgewijze handleidingen en uitlegvideo’s voor elk onderdeel van SECRET 58 — hier altijd terug te vinden.",
   "welcomeBanner": {
     "title": "Welkom bij SECRET 58!",
     "body": "Bedankt voor je aankoop. Voordat het begint, loont het om hieronder even naar “Eerste stappen” te kijken — zodat de AI-agents vanaf het begin met jouw echte gegevens werken."
@@ -13,7 +13,7 @@
       "title": "Eerste stappen",
       "description": "Doe deze drie dingen eerst, dan werken alle AI-agents met echte gegevens in plaats van met plaatshouders.",
       "steps": [
-        "Koppel onder “Integraties” minstens één AI-provider (Anthropic of OpenAI) — klik daarvoor rechtsboven in de betreffende rij op “API-sleutel ophalen”, maak de sleutel bij de aanbieder aan en sla hem op via “In Render invoeren”.",
+        "Controleer onder „Integraties“ of er een AI-aanbieder is ingesteld. De AI-functies lopen via de toegangen van de beheerder, dus je hebt geen eigen AI-abonnement nodig. Zonder AI-aanbieder werkt de app in sjabloonmodus.",
         "Vul onder “Brand DNA” je eigen merk in (toon, doelgroep, waarden) — de AI-agents gebruiken dat voor elke gegenereerde tekst.",
         "Laat onder “Ideeën & inspiratie” of “Content Brain” het eerste idee of de eerste campagne maken."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Elke rij toont de echte, live gecontroleerde status — nooit een schijnverbinding.",
         "Bij “Niet geconfigureerd” leidt “API-sleutel ophalen” naar de officiële pagina van de aanbieder.",
-        "“In Render invoeren” leidt rechtstreeks naar de omgevingsvariabelen waar de sleutel wordt opgeslagen — een invoerformulier in de app zelf is om veiligheidsredenen bewust niet aanwezig.",
-        "Kosten: de aankoopprijs van SECRET 58 is eenmalig. Elke externe aanbieder heeft een eigen, onafhankelijk kostenmodel (gratis / op basis van gebruik / abonnement) — op de pagina Integraties staat bij elke dienst welk model geldt, met een link naar de actuele prijzen bij de aanbieder."
+        "Toegangsgegevens worden nooit in de browser opgeslagen, maar alleen beschermd op de server. Ontbreekt er een toegang, dan stelt de beheerder die in.",
+        "Kosten: Pro en Maxi zijn abonnementen, maandelijks of jaarlijks. De actuele prijzen staan onder „Pakket & facturering“. Elke externe aanbieder heeft zijn eigen, onafhankelijke kostenmodel (gratis / gebruiksgebaseerd / abonnement) — op de pagina Integraties staat bij elke dienst welk model geldt, met een link naar de actuele prijzen bij de aanbieder."
       ]
     }
   }

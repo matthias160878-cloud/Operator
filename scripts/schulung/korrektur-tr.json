@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "SECRET 58'in her alanı için adım adım kılavuzlar ve anlatım videoları — istediğin zaman buradan bakabilirsin.",
+ "schulung.topics.firstSteps.steps.0": "“Entegrasyonlar” bölümünde bir yapay zekâ sağlayıcısının kurulu olup olmadığını kontrol et. Yapay zekâ işlevleri işletmecinin erişimleri üzerinden çalışır, kendi yapay zekâ aboneliğine ihtiyacın yok. Yapay zekâ sağlayıcısı olmadan uygulama şablon modunda çalışır.",
+ "schulung.topics.integrations.steps.2": "Erişim bilgileri hiçbir zaman tarayıcıda saklanmaz, yalnızca sunucuda korumalı olarak tutulur. Bir erişim eksikse işletmeci kurar.",
+ "schulung.topics.integrations.steps.3": "Maliyetler: Pro ve Maxi aylık veya yıllık aboneliklerdir. Güncel fiyatlar “Paket ve faturalama” bölümünde yer alır. Her harici sağlayıcının kendi bağımsız maliyet modeli vardır (ücretsiz / kullanıma bağlı / abonelik) — Entegrasyonlar sayfasında her hizmet için hangi modelin geçerli olduğu, sağlayıcının güncel fiyatlarına bağlantıyla birlikte gösterilir.",
+ "integrations.costNote": "SECRET 58 paketin (Pro veya Maxi) bir aboneliktir, bkz. “Paket ve faturalama”. Buradaki her harici hizmetin ilgili sağlayıcı nezdinde kendi bağımsız maliyet modeli vardır — SECRET 58 bunlar için asla ek ücret yansıtmaz."
+}

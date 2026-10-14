@@ -1,6 +1,6 @@
 {
   "title": "Formação",
-  "subtitle": "Guias passo a passo sobre cada área do SECRET 58 — consultáveis aqui em qualquer altura. Os vídeos serão acrescentados assim que estiverem gravados.",
+  "subtitle": "Guias passo a passo e vídeos explicativos sobre cada área do SECRET 58 — sempre disponíveis aqui para consulta.",
   "welcomeBanner": {
     "title": "Bem-vindo ao SECRET 58!",
     "body": "Obrigado pela tua compra. Antes de começar, vale a pena dar uma vista de olhos a «Primeiros passos», abaixo — para que os agentes de IA trabalhem desde o início com os teus dados reais."
@@ -13,7 +13,7 @@
       "title": "Primeiros passos",
       "description": "Faz primeiro estas três coisas; depois todos os agentes de IA trabalham com dados reais em vez de marcadores de posição.",
       "steps": [
-        "Em «Integrações», liga pelo menos um fornecedor de IA (Anthropic ou OpenAI) — para isso, clica em «Obter chave de API» na respetiva linha, no canto superior direito, cria a chave no fornecedor e regista-a através de «Registar no Render».",
+        "Em “Integrações”, verifica se está configurado um fornecedor de IA. As funcionalidades de IA funcionam através dos acessos do operador, por isso não precisas de uma subscrição de IA própria. Sem fornecedor de IA, a app funciona no modo de modelos.",
         "Em «Brand DNA», preenche a tua própria marca (tom, público-alvo, valores) — os agentes de IA usam isso em cada texto gerado.",
         "Em «Ideias e inspiração» ou «Content Brain», pede para gerar a primeira ideia ou campanha."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Cada linha mostra o estado real, verificado em direto — nunca uma ligação simulada.",
         "Em «Não configurado», «Obter chave de API» leva à página oficial do fornecedor.",
-        "«Registar no Render» leva diretamente às variáveis de ambiente, onde a chave é guardada — por razões de segurança, deliberadamente não existe um formulário de introdução na própria app.",
-        "Custos: o preço de compra do SECRET 58 é único. Cada fornecedor externo tem o seu próprio modelo de custos, independente (gratuito / consoante a utilização / subscrição) — na página Integrações, cada serviço indica qual o modelo aplicável, com ligação aos preços atuais junto do fornecedor."
+        "Os dados de acesso nunca são guardados no navegador, apenas de forma protegida no servidor. Se faltar um acesso, o operador configura-o.",
+        "Custos: Pro e Maxi são subscrições, mensais ou anuais. Os preços atuais estão em “Pacote e faturação”. Cada fornecedor externo tem o seu próprio modelo de custos, independente (gratuito / consoante a utilização / subscrição) — na página Integrações, cada serviço indica qual o modelo aplicável, com uma ligação para os preços atuais do fornecedor."
       ]
     }
   }

@@ -1,6 +1,6 @@
 {
   "title": "Oktatás",
-  "subtitle": "Lépésről lépésre útmutatók a SECRET 58 minden területéhez — bármikor itt nézhetsz utána. A videók akkor kerülnek fel, amint felvettük őket.",
+  "subtitle": "Lépésről lépésre útmutatók és magyarázó videók a SECRET 58 minden területéhez — bármikor itt nézhetsz utána.",
   "welcomeBanner": {
     "title": "Üdvözlünk a SECRET 58-ban!",
     "body": "Köszönjük a vásárlást. Mielőtt elindulsz, érdemes gyorsan megnézned lent az „Első lépések” részt — hogy az MI-agentek az elejétől fogva a valódi adataiddal dolgozzanak."
@@ -13,7 +13,7 @@
       "title": "Első lépések",
       "description": "Ezt a hármat intézd el először, és onnantól az összes MI-agent valódi adatokkal dolgozik helyőrzők helyett.",
       "steps": [
-        "Az „Integrációk” alatt csatlakoztass legalább egy MI-szolgáltatót (Anthropic vagy OpenAI) — ehhez az adott sor jobb felső részén kattints az „API-kulcs beszerzése” gombra, hozd létre a kulcsot a szolgáltatónál, és add meg a „Megadás a Renderben” segítségével.",
+        "Az „Integrációk” alatt ellenőrizd, be van-e állítva MI-szolgáltató. Az MI-funkciók az üzemeltető hozzáférésein keresztül futnak, ezért nincs szükséged saját MI-előfizetésre. MI-szolgáltató nélkül az alkalmazás sablonmódban működik.",
         "A „Brand DNA” alatt töltsd ki a saját márkádat (hangnem, célközönség, értékek) — az MI-agentek ezt használják minden generált szöveghez.",
         "Az „Ötletek és inspiráció” vagy a „Content Brain” alatt generáltasd le az első ötletet, illetve kampányt."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Minden sor a valódi, élőben ellenőrzött állapotot mutatja — soha nem színlelt kapcsolatot.",
         "„Nincs beállítva” esetén az „API-kulcs beszerzése” a szolgáltató hivatalos oldalára vezet.",
-        "A „Megadás a Renderben” közvetlenül a környezeti változókhoz visz, ahol a kulcsot rögzíteni kell — magában az alkalmazásban biztonsági okokból szándékosan nincs beviteli űrlap.",
-        "Költségek: a SECRET 58 vételára egyszeri. Minden külső szolgáltatónak saját, független költségmodellje van (ingyenes / használatalapú / előfizetés) — az Integrációk oldalon minden szolgáltatásnál látható, melyik modell érvényes, az aktuális árakra mutató linkkel a szolgáltatónál."
+        "A hozzáférési adatokat a rendszer soha nem a böngészőben tárolja, hanem csak védetten a szerveren. Ha hiányzik egy hozzáférés, az üzemeltető állítja be.",
+        "Költségek: a Pro és a Maxi előfizetés, havi vagy éves. Az aktuális árak a „Csomag és számlázás” alatt találhatók. Minden külső szolgáltatónak saját, független költségmodellje van (ingyenes / használatalapú / előfizetés) — az Integrációk oldalon minden szolgáltatásnál látható, melyik modell érvényes, az aktuális árakra mutató linkkel a szolgáltatónál."
       ]
     }
   }

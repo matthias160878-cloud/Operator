@@ -9,7 +9,7 @@
     "VIDEO": "Vídeo",
     "TREND": "Tendències"
   },
-  "costNote": "El preu de compra de SECRET 58 és únic i cobreix el programari. Cada servei extern d'aquí té el seu propi model de costos, independent, amb el proveïdor corresponent: SECRET 58 mai no et factura res addicional per això.",
+  "costNote": "El teu paquet de SECRET 58 (Pro o Maxi) és una subscripció, consulta «Paquet i facturació». Cada servei extern d'aquí té el seu propi model de costos, independent, amb el proveïdor corresponent — SECRET 58 mai no et cobra res addicional per ells.",
   "links": {
     "getKey": "Obtén la clau d'API",
     "setInRender": "Introdueix-la a Render",

@@ -1,6 +1,6 @@
 {
   "title": "Apmācība",
-  "subtitle": "Soli pa solim pamācības par katru SECRET 58 sadaļu — vienmēr šeit pieejamas uzziņai. Video tiks pievienoti, tiklīdz tie būs ierakstīti.",
+  "subtitle": "Soli pa solim pamācības un skaidrojošie video par katru SECRET 58 sadaļu — vienmēr šeit pieejami uzziņai.",
   "welcomeBanner": {
     "title": "Laipni lūdzam SECRET 58!",
     "body": "Paldies par pirkumu. Pirms sākam, vērts īsi ieskatīties zemāk esošajā sadaļā „Pirmie soļi“ — lai MI aģenti no paša sākuma strādātu ar taviem īstajiem datiem."
@@ -13,7 +13,7 @@
       "title": "Pirmie soļi",
       "description": "Vispirms izdari šīs trīs lietas, tad visi MI aģenti strādās ar īstiem datiem, nevis vietturiem.",
       "steps": [
-        "Sadaļā „Integrācijas“ pievieno vismaz vienu MI pakalpojumu sniedzēju (Anthropic vai OpenAI) — šim nolūkam attiecīgajā rindā augšējā labajā stūrī noklikšķini uz „Iegūt API atslēgu“, izveido atslēgu pie pakalpojumu sniedzēja un saglabā to ar „Ievadīt Render“.",
+        "Sadaļā „Integrācijas“ pārbaudi, vai ir iestatīts MI pakalpojumu sniedzējs. MI funkcijas darbojas ar operatora piekļuvēm, tāpēc tev nav vajadzīgs savs MI abonements. Bez MI pakalpojumu sniedzēja lietotne darbojas veidņu režīmā.",
         "Sadaļā „Brand DNA“ aizpildi savu zīmolu (tonis, mērķauditorija, vērtības) — MI aģenti to izmanto katram ģenerētajam tekstam.",
         "Sadaļā „Idejas un iedvesma“ vai „Content Brain“ ļauj izveidot pirmo ideju vai kampaņu."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Katra rinda rāda īsto, tiešraidē pārbaudīto statusu — nekad izliktu savienojumu.",
         "Pie „Nav nokonfigurēts“ poga „Iegūt API atslēgu“ ved uz pakalpojumu sniedzēja oficiālo lapu.",
-        "„Ievadīt Render“ ved tieši uz vides mainīgajiem, kur tiek saglabāta atslēga — ievades veidlapa pašā lietotnē drošības apsvērumu dēļ apzināti nav paredzēta.",
-        "Izmaksas: SECRET 58 pirkuma cena ir vienreizēja. Katram ārējam pakalpojumu sniedzējam ir savs, neatkarīgs izmaksu modelis (bezmaksas / pēc lietojuma / abonements) — Integrāciju lapā pie katra pakalpojuma norādīts, kāds modelis ir spēkā, ar saiti uz aktuālajām cenām pie pakalpojumu sniedzēja."
+        "Piekļuves dati nekad netiek glabāti pārlūkprogrammā, bet tikai aizsargāti serverī. Ja piekļuves trūkst, to iestata operators.",
+        "Izmaksas: Pro un Maxi ir abonementi, mēneša vai gada. Aktuālās cenas ir sadaļā „Pakete un norēķini“. Katram ārējam pakalpojumu sniedzējam ir savs, neatkarīgs izmaksu modelis (bezmaksas / pēc lietojuma / abonements) — Integrāciju lapā pie katra pakalpojuma norādīts, kāds modelis ir spēkā, ar saiti uz aktuālajām cenām pie pakalpojumu sniedzēja."
       ]
     }
   }

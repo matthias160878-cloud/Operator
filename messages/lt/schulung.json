@@ -1,6 +1,6 @@
 {
   "title": "Mokymai",
-  "subtitle": "Žingsnis po žingsnio instrukcijos apie kiekvieną SECRET 58 skiltį — bet kada čia galima pasižiūrėti. Vaizdo įrašai bus pridėti, kai tik bus nufilmuoti.",
+  "subtitle": "Žingsnis po žingsnio instrukcijos ir paaiškinamieji vaizdo įrašai apie kiekvieną SECRET 58 skiltį — bet kada čia galima pasižiūrėti.",
   "welcomeBanner": {
     "title": "Sveiki atvykę į SECRET 58!",
     "body": "Ačiū už pirkimą. Prieš pradedant verta trumpai pažvelgti į „Pirmuosius žingsnius“ žemiau — kad DI agentai nuo pat pradžių dirbtų su tavo tikrais duomenimis."
@@ -13,7 +13,7 @@
       "title": "Pirmieji žingsniai",
       "description": "Pirmiausia atlik šiuos tris dalykus, tada visi DI agentai dirbs su tikrais duomenimis, o ne su vietos žymėjimais.",
       "steps": [
-        "Skiltyje „Integracijos“ prijunk bent vieną DI tiekėją (Anthropic arba OpenAI) — tam viršuje dešinėje atitinkamoje eilutėje spustelėk „Gauti API raktą“, sukurk raktą pas tiekėją ir išsaugok jį per „Įrašyti Render“.",
+        "Skiltyje „Integracijos“ patikrink, ar nustatytas DI tiekėjas. DI funkcijos veikia per operatoriaus prieigas, todėl tau nereikia savo DI prenumeratos. Be DI tiekėjo programa veikia šablonų režimu.",
         "Skiltyje „Brand DNA“ užpildyk savo prekės ženklą (tonas, tikslinė auditorija, vertybės) — DI agentai tai naudoja kiekvienam sugeneruotam tekstui.",
         "Skiltyje „Idėjos ir įkvėpimas“ arba „Content Brain“ leisk sukurti pirmąją idėją arba kampaniją."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Kiekvienoje eilutėje rodoma tikra, realiuoju laiku patikrinta būsena — niekada apsimestinis ryšys.",
         "Kai rodoma „Nesukonfigūruota“, „Gauti API raktą“ nuveda į oficialų tiekėjo puslapį.",
-        "„Įrašyti Render“ nuveda tiesiai į aplinkos kintamuosius, kur išsaugomas raktas — įvesties formos pačioje programoje saugumo sumetimais sąmoningai nėra.",
-        "Išlaidos: SECRET 58 pirkimo kaina yra vienkartinė. Kiekvienas išorinis tiekėjas turi savo, nepriklausomą kainodarą (nemokama / pagal naudojimą / prenumerata) — Integracijų puslapyje prie kiekvienos paslaugos nurodyta, koks modelis taikomas, su nuoroda į dabartines kainas pas tiekėją."
+        "Prieigos duomenys niekada nesaugomi naršyklėje, tik apsaugoti serveryje. Jei trūksta prieigos, ją nustato operatorius.",
+        "Išlaidos: Pro ir Maxi yra prenumeratos, mėnesinės arba metinės. Dabartinės kainos pateiktos skiltyje „Paketas ir apmokėjimas“. Kiekvienas išorinis tiekėjas turi savo, nepriklausomą kainodarą (nemokama / pagal naudojimą / prenumerata) — Integracijų puslapyje prie kiekvienos paslaugos nurodyta, koks modelis taikomas, su nuoroda į dabartines kainas pas tiekėją."
       ]
     }
   }

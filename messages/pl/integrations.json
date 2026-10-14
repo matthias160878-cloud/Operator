@@ -9,7 +9,7 @@
     "VIDEO": "Wideo",
     "TREND": "Trendy"
   },
-  "costNote": "Cena zakupu SECRET 58 jest jednorazowa i obejmuje oprogramowanie. Każda zewnętrzna usługa tutaj ma własny, niezależny model kosztów u danego dostawcy — SECRET 58 nigdy nie wystawia za nią dodatkowych rachunków.",
+  "costNote": "Twój pakiet SECRET 58 (Pro lub Maxi) to subskrypcja, zobacz „Pakiet i rozliczenia”. Każda zewnętrzna usługa tutaj ma własny, niezależny model kosztów u danego dostawcy — SECRET 58 nigdy nie wystawia za nie dodatkowych rachunków.",
   "links": {
     "getKey": "Pobierz klucz API",
     "setInRender": "Wpisz w Render",

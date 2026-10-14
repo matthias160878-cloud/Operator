@@ -1,6 +1,6 @@
 {
   "title": "Instruire",
-  "subtitle": "Ghiduri pas cu pas pentru fiecare secțiune din SECRET 58 — poți reveni oricând aici. Videoclipurile vor fi adăugate imediat ce sunt înregistrate.",
+  "subtitle": "Ghiduri pas cu pas și videoclipuri explicative pentru fiecare zonă din SECRET 58 — le poți consulta oricând aici.",
   "welcomeBanner": {
     "title": "Bun venit la SECRET 58!",
     "body": "Mulțumim pentru achiziție. Înainte de a începe, merită să arunci o privire scurtă la „Primii pași” de mai jos — pentru ca agenții IA să lucreze de la început cu datele tale reale."
@@ -13,7 +13,7 @@
       "title": "Primii pași",
       "description": "Rezolvă mai întâi aceste trei lucruri, apoi toți agenții IA vor lucra cu date reale, nu cu substituenți.",
       "steps": [
-        "La „Integrări” conectează cel puțin un furnizor de IA (Anthropic sau OpenAI) — pentru asta apasă în dreapta sus, pe rândul respectiv, pe „Obține cheia API”, creează cheia la furnizor și salveaz-o prin „Introdu în Render”.",
+        "La „Integrări”, verifică dacă este configurat un furnizor de IA. Funcțiile IA rulează prin accesele operatorului, așa că nu ai nevoie de un abonament IA propriu. Fără furnizor de IA, aplicația funcționează în modul șabloane.",
         "La „Brand DNA” completează propriul brand (ton, public țintă, valori) — agenții IA folosesc aceste date pentru fiecare text generat.",
         "La „Idei și inspirație” sau „Content Brain” lasă-te să generezi prima idee, respectiv prima campanie."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Fiecare rând arată starea reală, verificată live — niciodată o conexiune simulată.",
         "La „Neconfigurat”, „Obține cheia API” duce la pagina oficială a furnizorului.",
-        "„Introdu în Render” duce direct la variabilele de mediu, unde se salvează cheia — un formular de introducere în aplicația însăși nu există, intenționat, din motive de securitate.",
-        "Costuri: prețul de achiziție SECRET 58 este unic. Fiecare furnizor extern are propriul model de costuri, independent (gratuit / în funcție de utilizare / abonament) — pe pagina Integrări, la fiecare serviciu este indicat modelul aplicabil, cu link către prețurile actuale de la furnizor."
+        "Datele de acces nu sunt niciodată salvate în browser, ci doar protejat pe server. Dacă lipsește un acces, îl configurează operatorul.",
+        "Costuri: Pro și Maxi sunt abonamente, lunare sau anuale. Prețurile actuale se află la „Pachet și facturare”. Fiecare furnizor extern are propriul model de costuri, independent (gratuit / în funcție de utilizare / abonament) — pe pagina Integrări, la fiecare serviciu se vede ce model se aplică, cu link către prețurile actuale ale furnizorului."
       ]
     }
   }

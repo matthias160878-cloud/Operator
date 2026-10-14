@@ -1,6 +1,6 @@
 {
   "title": "Trajnim",
-  "subtitle": "Udhëzime hap pas hapi për çdo seksion të SECRET 58 — mund t'i shfletosh këtu kurdo. Videot shtohen sapo të regjistrohen.",
+  "subtitle": "Udhëzime hap pas hapi dhe video shpjeguese për çdo fushë të SECRET 58 — mund t'i shikosh këtu në çdo kohë.",
   "welcomeBanner": {
     "title": "Mirë se vjen në SECRET 58!",
     "body": "Faleminderit për blerjen. Para se të nisësh, ia vlen një vështrim i shpejtë te “Hapat e parë” më poshtë — që agjentët e AI të punojnë që nga fillimi me të dhënat e tua reale."
@@ -13,7 +13,7 @@
       "title": "Hapat e parë",
       "description": "Bëj fillimisht këto tri gjëra, pastaj të gjithë agjentët e AI punojnë me të dhëna reale në vend të vendmbajtësve.",
       "steps": [
-        "Te “Integrimet” lidh të paktën një ofrues AI (Anthropic ose OpenAI) — për këtë kliko lart djathtas në rreshtin përkatës “Merr çelësin API”, krijo çelësin te ofruesi dhe vendose përmes “Vendose në Render”.",
+        "Te “Integrimet” kontrollo nëse është konfiguruar një ofrues i IA-së. Funksionet e IA-së punojnë përmes qasjeve të operatorit, ndaj nuk të duhet abonim i vetin për IA. Pa ofrues të IA-së, aplikacioni punon në modalitetin e shablloneve.",
         "Te “Brand DNA” plotëso markën tënde (ton, audiencë e synuar, vlera) — agjentët e AI e përdorin këtë për çdo tekst të gjeneruar.",
         "Te “Ide & Frymëzim” ose “Content Brain” lër të krijohet ideja e parë ose fushata e parë."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Çdo rresht tregon statusin real, të kontrolluar drejtpërdrejt — kurrë një lidhje të shtirrur.",
         "Te “I pakonfiguruar”, “Merr çelësin API” të çon te faqja zyrtare e ofruesit.",
-        "“Vendose në Render” të çon drejtpërdrejt te variablat e mjedisit, ku vendoset çelësi — një formular futjeje në vetë aplikacionin qëllimisht nuk ekziston, për arsye sigurie.",
-        "Kostot: Çmimi i blerjes së SECRET 58 është një herë. Çdo ofrues i jashtëm ka modelin e vet të pavarur të kostos (falas / sipas përdorimit / abonim) — në faqen e Integrimeve te çdo shërbim shfaqet cili model vlen, me lidhje te çmimet aktuale te ofruesi."
+        "Të dhënat e qasjes nuk ruhen kurrë në shfletues, por vetëm të mbrojtura në server. Nëse mungon një qasje, e konfiguron operatori.",
+        "Kostot: Pro dhe Maxi janë abonime, mujore ose vjetore. Çmimet aktuale gjenden te “Paketa & Faturimi”. Çdo ofrues i jashtëm ka modelin e vet të pavarur të kostos (falas / sipas përdorimit / abonim) — në faqen Integrimet, te çdo shërbim shfaqet cili model vlen, me lidhje te çmimet aktuale të ofruesit."
       ]
     }
   }

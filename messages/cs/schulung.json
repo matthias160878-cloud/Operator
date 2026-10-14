@@ -1,6 +1,6 @@
 {
   "title": "Školení",
-  "subtitle": "Návody krok za krokem ke každé oblasti SECRET 58 — kdykoli je tu najdeš. Videa budou doplněna, jakmile budou natočena.",
+  "subtitle": "Návody krok za krokem a vysvětlující videa ke každé oblasti SECRET 58 — kdykoli si je tu můžeš projít.",
   "welcomeBanner": {
     "title": "Vítej v SECRET 58!",
     "body": "Děkujeme za nákup. Než začneš, vyplatí se krátce nahlédnout do části „První kroky“ níže — aby AI agenti od začátku pracovali s tvými skutečnými daty."
@@ -13,7 +13,7 @@
       "title": "První kroky",
       "description": "Udělej nejdřív tyto tři věci, pak budou všichni AI agenti pracovat se skutečnými daty místo zástupných.",
       "steps": [
-        "V části „Integrace“ připoj alespoň jednoho poskytovatele AI (Anthropic nebo OpenAI) — klikni vpravo nahoře na příslušném řádku na „Získat API klíč“, vytvoř klíč u poskytovatele a ulož ho přes „Zadat v Render“.",
+        "V části „Integrace“ zkontroluj, zda je nastaven poskytovatel AI. Funkce AI běží přes přístupy provozovatele, takže nepotřebuješ vlastní předplatné AI. Bez poskytovatele AI aplikace pracuje v režimu šablon.",
         "V části „Brand DNA“ vyplň svou vlastní značku (tón, cílová skupina, hodnoty) — AI agenti to použijí pro každý vygenerovaný text.",
         "V části „Nápady a inspirace“ nebo „Content Brain“ nech vytvořit první nápad, resp. kampaň."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Každý řádek zobrazuje skutečný, živě ověřený stav — nikdy předstírané připojení.",
         "U stavu „Není nastaveno“ vede „Získat API klíč“ na oficiální stránku poskytovatele.",
-        "„Zadat v Render“ vede přímo k proměnným prostředí, kam se klíč ukládá — formulář pro zadání přímo v aplikaci z bezpečnostních důvodů záměrně neexistuje.",
-        "Náklady: Kupní cena SECRET 58 je jednorázová. Každý externí poskytovatel má vlastní, nezávislý cenový model (zdarma / dle využití / předplatné) — na stránce Integrace je u každé služby uvedeno, jaký model platí, s odkazem na aktuální ceny u poskytovatele."
+        "Přístupové údaje se nikdy neukládají v prohlížeči, ale pouze chráněně na serveru. Pokud přístup chybí, nastaví ho provozovatel.",
+        "Náklady: Pro a Maxi jsou předplatné, měsíční nebo roční. Aktuální ceny najdeš v části „Balíček a fakturace“. Každý externí poskytovatel má vlastní, nezávislý model nákladů (zdarma / podle využití / předplatné) — na stránce Integrace je u každé služby uvedeno, který model platí, s odkazem na aktuální ceny u poskytovatele."
       ]
     }
   }

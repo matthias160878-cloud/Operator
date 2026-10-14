@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Instrukcje krok po kroku i filmy wyjaśniające do każdego obszaru SECRET 58 — zawsze możesz tu do nich zajrzeć.",
+ "schulung.topics.firstSteps.steps.0": "W sekcji „Integracje” sprawdź, czy skonfigurowano dostawcę AI. Funkcje AI działają przez dostępy operatora, więc nie potrzebujesz własnej subskrypcji AI. Bez dostawcy AI aplikacja działa w trybie szablonów.",
+ "schulung.topics.integrations.steps.2": "Dane dostępowe nigdy nie są zapisywane w przeglądarce, tylko w chroniony sposób na serwerze. Jeśli brakuje dostępu, konfiguruje go operator.",
+ "schulung.topics.integrations.steps.3": "Koszty: Pro i Maxi to subskrypcje, miesięczne lub roczne. Aktualne ceny znajdziesz w sekcji „Pakiet i rozliczenia”. Każdy zewnętrzny dostawca ma własny, niezależny model kosztów (bezpłatny / według zużycia / subskrypcja) — na stronie Integracje przy każdej usłudze widać, który model obowiązuje, wraz z linkiem do aktualnych cen u dostawcy.",
+ "integrations.costNote": "Twój pakiet SECRET 58 (Pro lub Maxi) to subskrypcja, zobacz „Pakiet i rozliczenia”. Każda zewnętrzna usługa tutaj ma własny, niezależny model kosztów u danego dostawcy — SECRET 58 nigdy nie wystawia za nie dodatkowych rachunków."
+}

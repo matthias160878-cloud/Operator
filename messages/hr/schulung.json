@@ -1,6 +1,6 @@
 {
   "title": "Edukacija",
-  "subtitle": "Upute korak po korak za svako područje SECRET 58 — uvijek ih možeš ovdje pogledati. Videi će biti dodani čim budu snimljeni.",
+  "subtitle": "Upute korak po korak i videozapisi s objašnjenjima za svako područje aplikacije SECRET 58 — uvijek ih možeš pogledati ovdje.",
   "welcomeBanner": {
     "title": "Dobro došao/la u SECRET 58!",
     "body": "Hvala na kupnji. Prije nego što počneš, isplati se kratko pogledati „Prvi koraci“ u nastavku — kako bi AI agenti od početka radili s tvojim stvarnim podacima."
@@ -13,7 +13,7 @@
       "title": "Prvi koraci",
       "description": "Prvo obavi ove tri stvari, a zatim svi AI agenti rade sa stvarnim podacima umjesto s rezerviranim tekstovima.",
       "steps": [
-        "Pod „Integracije“ poveži barem jednog AI pružatelja (Anthropic ili OpenAI) — za to gore desno u pripadajućem retku klikni na „Nabavi API ključ“, stvori ključ kod pružatelja i unesi ga preko „Unesi u Render“.",
+        "Pod „Integracije“ provjeri je li postavljen pružatelj umjetne inteligencije. Funkcije umjetne inteligencije rade preko pristupa operatora, pa ti ne treba vlastita pretplata na umjetnu inteligenciju. Bez pružatelja umjetne inteligencije aplikacija radi u načinu predložaka.",
         "Pod „Brand DNA“ ispuni podatke o vlastitom brendu (ton, ciljna skupina, vrijednosti) — AI agenti to koriste za svaki generirani tekst.",
         "Pod „Ideje i inspiracija“ ili „Content Brain“ daj da se generira prva ideja odnosno kampanja."
       ]
@@ -79,8 +79,8 @@
       "steps": [
         "Svaki redak prikazuje stvaran status provjeren uživo — nikada lažnu vezu.",
         "Kod „Nije konfigurirano“ gumb „Nabavi API ključ“ vodi na službenu stranicu pružatelja.",
-        "„Unesi u Render“ vodi izravno na varijable okruženja u koje se ključ unosi — obrazac za unos u samoj aplikaciji namjerno ne postoji iz sigurnosnih razloga.",
-        "Troškovi: kupovna cijena SECRET 58 je jednokratna. Svaki vanjski pružatelj ima vlastiti, neovisan model troškova (besplatno / prema potrošnji / pretplata) — na stranici Integracije kod svake usluge piše koji model vrijedi, s poveznicom na aktualne cijene kod pružatelja."
+        "Pristupni podaci nikad se ne spremaju u pregledniku, nego samo zaštićeno na poslužitelju. Ako pristup nedostaje, postavlja ga operator.",
+        "Troškovi: Pro i Maxi su pretplate, mjesečne ili godišnje. Aktualne cijene nalaze se pod „Paket i naplata“. Svaki vanjski pružatelj ima vlastiti, neovisan model troškova (besplatno / prema korištenju / pretplata) — na stranici Integracije za svaku je uslugu navedeno koji model vrijedi, s poveznicom na aktualne cijene kod pružatelja."
       ]
     }
   }

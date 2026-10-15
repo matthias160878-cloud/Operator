@@ -1377,6 +1377,7 @@ test("Hauptseite (Secret 58 Zentrale): Kopie unter /hauptseite ist ohne Anmeldun
     assert.equal((await fetch(`${BASE}/hauptseite/${f}`)).status, 200, f);
   }
   assert.ok(html.includes("fetch('/api/kontakt'") && !html.includes("Demo: Anfrage wäre jetzt"), "Kontaktformular der Kopie sendet an die App");
+  assert.ok(html.includes("Demo: Hier wird nichts bestellt und nichts bezahlt"), "Bestellbereich der Kopie ist als Demo gekennzeichnet");
 });
 
 test("Hermes: standardmäßig aus, Betreiber-Pilot, öffentlicher Chat nur mit allen Freigaben und bestandener Prüfung", async () => {

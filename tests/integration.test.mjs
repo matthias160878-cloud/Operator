@@ -1360,8 +1360,8 @@ test("Designkonzept Make it real: Unterseite, Motiv und Karten in Referenzen, We
   const sub = await fetch(`${BASE}/hauptseite/referenzen/make-it-real/index.html`);
   assert.equal(sub.status, 200);
   const html = await sub.text();
-  assert.ok(html.includes("Think bold.") && html.includes("Zurück zu SECRET 58 · Referenzen") && html.includes("Designkonzept"), "Überschrift, Rücklink, Kennzeichnung");
-  assert.ok(html.includes("Es wird nichts versendet") && html.includes("projektidee.txt") && html.includes("prefers-reduced-motion"), "Dialog ehrlich beschriftet, Download, reduzierte Animation");
+  assert.ok(html.includes("Think bold.") && html.includes("Zurück zu SECRET 58 · Referenzen") && html.includes("Designkonzept") && html.includes("projekt=make-it-real"), "Überschrift, Rücklink, Kennzeichnung, Kontaktparameter");
+  assert.ok(html.includes("Es wird keine Anfrage versendet") && html.includes("Mein-Projektimpuls.txt") && html.includes("prefers-reduced-motion"), "Dialog ehrlich beschriftet, Download, reduzierte Animation");
   for (const f of ["kolibri.jpg", "kolibri-vorschau.jpg"]) assert.equal((await fetch(`${BASE}/hauptseite/referenzen/make-it-real/${f}`)).status, 200, f);
   const idx = await (await fetch(`${BASE}/hauptseite/index.html`)).text();
   assert.equal(idx.split("kolibriKarte()").length - 1, 4, "Definition plus Karten in Referenzen, Webdesign und Portfolio");

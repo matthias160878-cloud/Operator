@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" role="img" aria-labelledby="t d">
+<title id="t">Kolibri im Flug</title><desc id="d">Stilisierter Kolibri mit farbigen Pigmenten, Eigenentwurf für das Designkonzept Make it real.</desc>
+<defs>
+<linearGradient id="kb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c1,#2ef2d8)"/><stop offset="1" stop-color="var(--c2,#9b5cff)"/></linearGradient>
+<linearGradient id="kw" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--c2,#9b5cff)"/><stop offset="1" stop-color="var(--c1,#2ef2d8)"/></linearGradient>
+<radialGradient id="kg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="var(--c1,#2ef2d8)" stop-opacity=".55"/><stop offset="1" stop-color="var(--c1,#2ef2d8)" stop-opacity="0"/></radialGradient>
+</defs>
+<circle cx="330" cy="280" r="260" fill="url(#kg)"/>
+<g class="fluegel hinten" fill="url(#kw)" opacity=".7"><path d="M330 250 C 270 140 170 70 70 60 C 120 130 190 200 300 280 Z"/><path d="M330 250 C 300 150 250 90 200 40 C 215 120 250 200 315 275 Z" opacity=".7"/></g>
+<g class="fluegel vorn" fill="url(#kw)"><path d="M350 255 C 420 150 520 90 610 80 C 560 150 480 215 370 285 Z"/><path d="M350 255 C 390 160 450 100 505 55 C 490 135 450 210 375 280 Z" opacity=".75"/></g>
+<path d="M250 330 C 200 380 160 450 120 530 C 190 495 250 440 290 380 Z" fill="url(#kb)" opacity=".85"/>
+<path d="M300 380 C 270 450 255 500 250 545 C 295 505 325 450 335 395 Z" fill="url(#kb)" opacity=".7"/>
+<path d="M240 300 C 235 230 300 190 360 215 C 420 240 430 320 380 360 C 330 400 250 380 240 300 Z" fill="url(#kb)"/>
+<path d="M360 215 C 392 196 428 200 446 224 C 420 222 398 232 384 250 Z" fill="var(--c2,#9b5cff)" opacity=".9"/>
+<path d="M440 232 L 600 292 L 440 252 Z" fill="#e9eefc"/>
+<circle cx="408" cy="236" r="9" fill="#0a0d1c"/><circle cx="411" cy="233" r="3" fill="#fff"/>
+<path d="M300 300 C 320 340 350 350 380 330" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round"/>
+<g class="pigmente">
+<circle cx="90" cy="120" r="7" fill="var(--c1,#2ef2d8)"/><circle cx="150" cy="90" r="4" fill="var(--c2,#9b5cff)"/><circle cx="60" cy="200" r="5" fill="var(--c2,#9b5cff)"/>
+<circle cx="560" cy="150" r="6" fill="var(--c2,#9b5cff)"/><circle cx="600" cy="210" r="4" fill="var(--c1,#2ef2d8)"/><circle cx="520" cy="60" r="5" fill="var(--c1,#2ef2d8)"/>
+<circle cx="110" cy="360" r="5" fill="var(--c1,#2ef2d8)"/><circle cx="70" cy="300" r="3" fill="#fff"/><circle cx="560" cy="360" r="7" fill="var(--c2,#9b5cff)"/>
+<circle cx="500" cy="440" r="4" fill="var(--c1,#2ef2d8)"/><circle cx="170" cy="470" r="6" fill="var(--c2,#9b5cff)"/><circle cx="440" cy="500" r="3" fill="#fff"/>
+</g></svg>

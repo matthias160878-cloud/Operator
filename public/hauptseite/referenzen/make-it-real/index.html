@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Make it real. – Designkonzept · SECRET 58</title>
+<meta name="description" content="Designkonzept von SECRET 58: interaktive Landingpage mit Kolibri-Motiv, drei Farbstimmungen und einem Ideen-Dialog.">
+<style>
+:root{--c1:#2ef2d8;--c2:#9b5cff;--bg:#070a18;--panel:#0e1330;--fg:#eef1ff;--dim:#a6aed4;--line:rgba(255,255,255,.14);--r:16px}
+[data-mood="violett"]{--c1:#b57bff;--c2:#ff5cc8}
+[data-mood="aurora"]{--c1:#2ef2d8;--c2:#ff5cc8}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;background:radial-gradient(1200px 700px at 75% -10%,color-mix(in srgb,var(--c2) 28%,transparent),transparent),radial-gradient(900px 600px at 0% 40%,color-mix(in srgb,var(--c1) 20%,transparent),transparent),var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh;padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--c1);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;color:#000;padding:8px 12px;border-radius:8px;z-index:20}.skip:focus{left:8px}
+.top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:14px clamp(16px,4vw,48px);border-bottom:1px solid var(--line);background:rgba(7,10,24,.7);backdrop-filter:blur(10px);position:sticky;top:0;z-index:10}
+.zurueck{font-size:.9rem;color:var(--dim);text-decoration:none}.zurueck:hover{color:var(--fg);text-decoration:underline}
+.marke{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c1);border:1px solid color-mix(in srgb,var(--c1) 55%,transparent);padding:4px 10px;border-radius:99px}
+main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 64px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(16px,4vw,56px);align-items:center;padding:clamp(28px,6vw,72px) 0}
+@media(max-width:820px){.hero{grid-template-columns:1fr}.motiv{order:-1;max-width:420px;margin:0 auto}}
+.kicker{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+h1{font-size:clamp(2.4rem,7.5vw,5rem);line-height:1.02;margin:.25em 0 .3em;letter-spacing:-.02em}
+h1 .glow{background:linear-gradient(100deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--dim);max-width:52ch;font-size:1.1rem}
+.aktionen{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 6px}
+.btn{font:inherit;font-weight:700;cursor:pointer;border-radius:99px;padding:13px 22px;border:1px solid transparent;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;background:linear-gradient(100deg,var(--c1),var(--c2));color:#08101f}
+.btn.leise{background:transparent;color:var(--fg);border-color:var(--line)}.btn.leise:hover{border-color:var(--c1)}
+.btn:hover{filter:brightness(1.08)}
+.motiv svg{width:100%;height:auto;display:block;filter:drop-shadow(0 20px 60px color-mix(in srgb,var(--c2) 45%,transparent))}
+.motiv{animation:schweben 6s ease-in-out infinite}
+.fluegel.vorn{transform-origin:350px 270px;animation:schlag .5s ease-in-out infinite alternate}
+.fluegel.hinten{transform-origin:330px 260px;animation:schlag .5s ease-in-out infinite alternate-reverse}
+.pigmente circle{animation:glimmen 3.4s ease-in-out infinite}.pigmente circle:nth-child(2n){animation-delay:-1.2s}.pigmente circle:nth-child(3n){animation-delay:-2.1s}
+@keyframes schweben{50%{transform:translateY(-12px)}}
+@keyframes schlag{to{transform:rotate(-7deg)}}
+@keyframes glimmen{50%{opacity:.25}}
+.stimmung{border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;background:rgba(14,19,48,.6);margin:12px 0 40px}
+.stimmung legend{padding:0 8px;color:var(--dim);font-size:.85rem}
+.stimmung .reihe{display:flex;gap:10px;flex-wrap:wrap}
+.stimmung label{cursor:pointer}
+.stimmung input{position:absolute;opacity:0}
+.stimmung span{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border-radius:99px;border:1px solid var(--line);min-height:44px}
+.stimmung span i{width:18px;height:18px;border-radius:50%;display:inline-block}
+.stimmung input:checked+span{border-color:var(--c1);background:color-mix(in srgb,var(--c1) 14%,transparent)}
+.stimmung input:focus-visible+span{outline:3px solid var(--c1);outline-offset:2px}
+.karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:44px}
+.karte{border:1px solid var(--line);border-radius:var(--r);padding:22px;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.01))}
+.karte h2{margin:.2em 0 .3em;font-size:1.15rem}.karte p{margin:0;color:var(--dim)}
+.karte b{color:var(--c1);font-size:.8rem;letter-spacing:.12em}
+.hinweis{border:1px dashed var(--line);border-radius:var(--r);padding:16px 18px;color:var(--dim);font-size:.95rem}
+.hinweis strong{color:var(--fg)}
+footer{max-width:1180px;margin:0 auto;padding:24px clamp(16px,4vw,48px) 40px;color:var(--dim);font-size:.9rem;border-top:1px solid var(--line)}
+dialog{border:1px solid var(--line);border-radius:20px;background:var(--panel);color:var(--fg);width:min(560px,calc(100vw - 24px));padding:0}
+dialog::backdrop{background:rgba(3,5,14,.7);backdrop-filter:blur(4px)}
+dialog form{padding:22px 24px 24px;display:grid;gap:14px}
+dialog h2{margin:0;font-size:1.4rem}
+dialog label{font-size:.9rem;color:var(--dim);display:grid;gap:6px}
+dialog textarea,dialog input[type=text]{font:inherit;color:var(--fg);background:#080c22;border:1px solid var(--line);border-radius:12px;padding:12px;width:100%}
+dialog textarea{min-height:140px;resize:vertical}
+.dk{display:flex;gap:10px;flex-wrap:wrap}
+.status{min-height:1.4em;color:var(--c1);font-size:.92rem}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body data-mood="tuerkis">
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<header class="top">
+  <a class="zurueck" href="../../index.html#/referenzen">← Zurück zu SECRET 58 · Referenzen</a>
+  <span class="marke">Designkonzept · Interaktive Landingpage</span>
+</header>
+<main id="inhalt">
+  <section class="hero" aria-labelledby="titel">
+    <div>
+      <p class="kicker">Make it real. – Ideen bekommen Flügel</p>
+      <h1 id="titel">Think bold. <span class="glow">Make it real.</span></h1>
+      <p class="lead">Aus einer Idee wird ein Auftritt, der auffällt: leuchtende Farben, ein markanter Kolibri und eine Seite, die sich auf Smartphone und Desktop gleich gut anfühlt.</p>
+      <div class="aktionen">
+        <button class="btn" id="idee-auf" type="button" aria-haspopup="dialog">Projektidee festhalten</button>
+        <a class="btn leise" id="anfrage" href="../../index.html#/kontakt?bereich=webdesign">Ähnliche Webseite anfragen</a>
+      </div>
+    </div>
+    <div class="motiv"><img src="kolibri.svg" width="640" height="560" alt="Stilisierter Kolibri mit farbigen Pigmenten" id="kolibri"></div>
+  </section>
+
+  <fieldset class="stimmung">
+    <legend>Farbstimmung wählen</legend>
+    <div class="reihe">
+      <label><input type="radio" name="stimmung" value="tuerkis" checked><span><i style="background:linear-gradient(135deg,#2ef2d8,#9b5cff)"></i>Türkis-Nacht</span></label>
+      <label><input type="radio" name="stimmung" value="violett"><span><i style="background:linear-gradient(135deg,#b57bff,#ff5cc8)"></i>Violett-Glut</span></label>
+      <label><input type="radio" name="stimmung" value="aurora"><span><i style="background:linear-gradient(135deg,#2ef2d8,#ff5cc8)"></i>Aurora</span></label>
+    </div>
+  </fieldset>
+
+  <section class="karten" aria-label="Gestaltungsprinzipien">
+    <article class="karte"><b>01</b><h2>Mutig in Farbe</h2><p>Dunkler Grund, leuchtendes Türkis und Violett. Drei Stimmungen lassen sich per Klick oder Tastatur wechseln.</p></article>
+    <article class="karte"><b>02</b><h2>Ein Motiv, das bleibt</h2><p>Der Kolibri ist das Herzstück: leicht, schnell und voller Farbe. Er schwebt, sofern Bewegung erwünscht ist.</p></article>
+    <article class="karte"><b>03</b><h2>Für jedes Gerät</h2><p>Gestaltet für Smartphone und Desktop, mit klaren Kontrasten und großen Bedienflächen.</p></article>
+  </section>
+
+  <p class="hinweis"><strong>Eigenes Designkonzept von SECRET 58.</strong> Dies ist kein Kundenauftrag und zeigt keine echten Kunden, Bewertungen oder Zahlen. Der Dialog „Projektidee festhalten“ sendet nichts: Die Idee bleibt auf Ihrem Gerät und lässt sich als Textdatei speichern.</p>
+</main>
+<footer><a class="zurueck" href="../../index.html#/referenzen">← Zurück zu SECRET 58 · Referenzen</a></footer>
+
+<dialog id="dlg" aria-labelledby="dlg-t">
+  <form method="dialog" id="idee-form">
+    <h2 id="dlg-t">Projektidee festhalten</h2>
+    <p style="margin:0;color:var(--dim);font-size:.95rem">Schreiben Sie Ihre Idee auf und speichern Sie sie als Textdatei. <strong style="color:var(--fg)">Es wird nichts versendet</strong> – alles bleibt auf Ihrem Gerät.</p>
+    <label>Name des Projekts (optional)<input type="text" id="i-name" autocomplete="off" maxlength="80"></label>
+    <label>Ihre Idee<textarea id="i-text" maxlength="3000" placeholder="Was soll Flügel bekommen?"></textarea></label>
+    <p class="status" id="i-status" role="status" aria-live="polite"></p>
+    <div class="dk">
+      <button class="btn" type="button" id="i-dl">Als Textdatei speichern</button>
+      <button class="btn leise" type="button" id="i-zu">Schließen</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+(function(){
+  var body=document.body,dlg=document.getElementById('dlg'),auf=document.getElementById('idee-auf'),
+      text=document.getElementById('i-text'),nm=document.getElementById('i-name'),st=document.getElementById('i-status'),
+      anfrage=document.getElementById('anfrage');
+  /* Farbstimmungen: Auswahl merkt sich nur der Browser des Besuchers (ohne Pflicht). */
+  function stimmung(v){body.setAttribute('data-mood',v);try{localStorage.setItem('mir-stimmung',v)}catch(e){}}
+  try{var g=localStorage.getItem('mir-stimmung');if(g){var r=document.querySelector('input[name=stimmung][value='+g+']');if(r){r.checked=true;stimmung(g)}}}catch(e){}
+  document.querySelectorAll('input[name=stimmung]').forEach(function(r){r.addEventListener('change',function(){stimmung(r.value)})});
+  /* Kolibri färbt sich über CSS-Variablen: als eingebettetes Bild nicht möglich, daher Inline-Ersatz laden. */
+  fetch('kolibri.svg').then(function(x){return x.text()}).then(function(s){var d=document.createElement('div');d.innerHTML=s;var svg=d.querySelector('svg');if(svg){svg.setAttribute('width','640');svg.setAttribute('height','560');var img=document.getElementById('kolibri');svg.setAttribute('role','img');svg.setAttribute('aria-label','Stilisierter Kolibri mit farbigen Pigmenten');img.replaceWith(svg)}}).catch(function(){});
+  /* Anfrage mit vorausgefülltem Text im Kontaktbereich der Hauptseite. */
+  anfrage.href='../../index.html#/kontakt?'+new URLSearchParams({bereich:'webdesign',text:'Ich möchte eine Webseite ähnlich wie das Designkonzept „Make it real. – Kreative Landingpage“.'}).toString();
+  var letzter=null;
+  function oeffnen(){letzter=document.activeElement;st.textContent='';if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');text.focus()}
+  function schliessen(){if(dlg.close)dlg.close();else dlg.removeAttribute('open');if(letzter&&letzter.focus)letzter.focus()}
+  auf.addEventListener('click',oeffnen);
+  document.getElementById('i-zu').addEventListener('click',schliessen);
+  dlg.addEventListener('cancel',function(){/* Escape schließt nativ; Fokus zurück */setTimeout(function(){if(letzter&&letzter.focus)letzter.focus()},0)});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)schliessen()});
+  document.getElementById('i-dl').addEventListener('click',function(){
+    var t=text.value.trim();
+    if(!t){st.textContent='Bitte zuerst eine Idee eintragen.';text.focus();return}
+    var n=nm.value.trim()||'Meine Projektidee';
+    var inhalt='Projektidee: '+n+'\nFestgehalten am: '+new Date().toLocaleDateString('de-DE')+'\nStimmung: '+body.getAttribute('data-mood')+'\n\n'+t+'\n\n— Aus dem Designkonzept „Make it real.“ von SECRET 58. Diese Datei wurde lokal erzeugt, es wurde nichts versendet.\n';
+    var b=new Blob([inhalt],{type:'text/plain;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');
+    a.href=u;a.download='projektidee.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},1000);
+    st.textContent='Als Datei „projektidee.txt“ gespeichert. Es wurde nichts gesendet.';
+  });
+})();
+</script>
+</body>
+</html>

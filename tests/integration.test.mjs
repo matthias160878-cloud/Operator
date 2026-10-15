@@ -1362,7 +1362,7 @@ test("Designkonzept Make it real: Unterseite, Motiv und Karten in Referenzen, We
   const html = await sub.text();
   assert.ok(html.includes("Think bold.") && html.includes("Zurück zu SECRET 58 · Referenzen") && html.includes("Designkonzept"), "Überschrift, Rücklink, Kennzeichnung");
   assert.ok(html.includes("Es wird nichts versendet") && html.includes("projektidee.txt") && html.includes("prefers-reduced-motion"), "Dialog ehrlich beschriftet, Download, reduzierte Animation");
-  for (const f of ["kolibri.svg", "kolibri-vorschau.jpg"]) assert.equal((await fetch(`${BASE}/hauptseite/referenzen/make-it-real/${f}`)).status, 200, f);
+  for (const f of ["kolibri.jpg", "kolibri-vorschau.jpg"]) assert.equal((await fetch(`${BASE}/hauptseite/referenzen/make-it-real/${f}`)).status, 200, f);
   const idx = await (await fetch(`${BASE}/hauptseite/index.html`)).text();
   assert.equal(idx.split("kolibriKarte()").length - 1, 4, "Definition plus Karten in Referenzen, Webdesign und Portfolio");
   assert.ok(idx.includes("referenzen/make-it-real/index.html") && idx.includes("Ähnliche Webseite anfragen") && idx.includes("Eigenes Designkonzept, kein Kundenauftrag"));

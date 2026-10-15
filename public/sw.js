@@ -7,7 +7,7 @@
  * - Beim Aktivieren werden ausschließlich veraltete Caches dieser Anwendung (Präfix „secret58-“) gelöscht.
  */
 const PREFIX = "secret58-";
-const CACHE = PREFIX + "oeffentlich-v4";
+const CACHE = PREFIX + "oeffentlich-v5";
 const OFFLINE_URL = "/offline.html";
 const PRECACHE = [OFFLINE_URL, "/icons/icon-192.png", "/icons/icon-512.png", "/brand/logo-voll.png"];
 

@@ -32,7 +32,7 @@ import { getRevenueSummary } from "@/lib/revenue";
 import { StatCard } from "@/components/ui/StatCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { ProductionChart } from "@/components/dashboard/ProductionChart";
-import Image from "next/image";
+import { BrainOrbit, type OrbitPlatform } from "@/components/dashboard/BrainOrbit";
 import {
   formatNumber,
   formatPercent,
@@ -120,6 +120,18 @@ export default async function DashboardPage() {
     (i) => i.status === "CONNECTED"
   ).length;
 
+  const platformConnected = new Map(
+    platformAccounts.map((acc) => [acc.platform, acc.status === "CONNECTED"])
+  );
+  const orbitPlatforms: OrbitPlatform[] = [
+    { key: "YOUTUBE", label: "YouTube", connected: platformConnected.get("YOUTUBE") ?? false },
+    { key: "INSTAGRAM", label: "Instagram", connected: platformConnected.get("INSTAGRAM") ?? false },
+    { key: "TIKTOK", label: "TikTok", connected: platformConnected.get("TIKTOK") ?? false },
+    { key: "LINKEDIN", label: "LinkedIn", connected: platformConnected.get("LINKEDIN") ?? false },
+    { key: "FACEBOOK", label: "Facebook", connected: platformConnected.get("FACEBOOK") ?? false },
+    { key: "X", label: t("orbit.xNotConnected"), connected: false },
+  ];
+
   return (
     <div className="space-y-5">
       {demoSetting && (
@@ -174,15 +186,7 @@ export default async function DashboardPage() {
               </div>
             </div>
 
-            <Image
-              src="/brand/logo-voll.png"
-              alt="SECRET 58 — secret58.com"
-              width={960}
-              height={640}
-              sizes="(max-width: 1024px) 80vw, 320px"
-              className="mx-auto h-auto w-full max-w-[20rem] shrink-0 rounded-xl"
-              priority
-            />
+            <BrainOrbit platforms={orbitPlatforms} />
           </div>
         </div>
 

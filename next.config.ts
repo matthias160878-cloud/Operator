@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
       })),
       // Historische Kopien der Zentrale (statisches HTML unter public/verlauf).
       { source: "/verlauf", destination: "/verlauf/index.html" },
+      { source: "/hauptseite", destination: "/hauptseite/index.html" },
     ];
   },
   async headers() {

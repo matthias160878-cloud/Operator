@@ -1362,12 +1362,13 @@ test("Designkonzept Make it real: Unterseite, Motiv und Karten in Referenzen, We
   const sub = await fetch(`${BASE}/hauptseite/referenzen/make-it-real/index.html`);
   assert.equal(sub.status, 200);
   const html = await sub.text();
-  assert.ok(html.includes("Think bold.") && html.includes("Zurück zu SECRET 58 · Referenzen") && html.includes("Designkonzept") && html.includes("projekt=make-it-real"), "Überschrift, Rücklink, Kennzeichnung, Kontaktparameter");
-  assert.ok(html.includes("Es wird keine Anfrage versendet") && html.includes("Mein-Projektimpuls.txt") && html.includes("prefers-reduced-motion"), "Dialog ehrlich beschriftet, Download, reduzierte Animation");
+  assert.ok(html.includes("Think bold.") && html.includes("Zurück zur SECRET-58-Zentrale") && html.includes("Eigenes Designkonzept, kein Kundenauftrag") && html.includes("#/kontakt?bereich=webdesign&text="), "Überschrift, Rücklink, Kennzeichnung, vorausgefüllter Kontaktlink");
+  assert.ok(html.includes("keine automatische KI-Erstellung") && html.includes("keine Cloud-Speicherung") && html.includes("Umsetzungsauftrag-") && html.includes("prefers-reduced-motion") && html.includes("data-cycle") && html.includes("INTERVAL=2000"), "Werkstatt ehrlich beschriftet, Auftrags-Download, Farbwechsel im Zwei-Sekunden-Takt mit Pause, reduzierte Bewegung");
+  assert.ok(["#/impressum", "#/datenschutz", "#/agb", "#/kontakt"].every((l) => html.includes(l)), "Kontakt- und Rechtstextlinks");
   for (const f of ["kolibri.jpg", "kolibri-vorschau.jpg"]) assert.equal((await fetch(`${BASE}/hauptseite/referenzen/make-it-real/${f}`)).status, 200, f);
   const idx = await (await fetch(`${BASE}/hauptseite/index.html`)).text();
   assert.equal(idx.split("kolibriKarte()").length - 1, 4, "Definition plus Karten in Referenzen, Webdesign und Portfolio");
-  assert.ok(idx.includes('href="/hauptseite/referenzen/make-it-real/index.html">Demo ansehen') && idx.includes("Designkonzept / Demo-Projekt") && idx.includes("Ähnliche Webseite anfragen") && idx.includes("Eigenes Designkonzept, kein Kundenauftrag"));
+  assert.ok(idx.includes('href="referenzen/make-it-real/index.html">Kolibri-Konzept ansehen') && idx.includes("Designkonzept / Demo-Projekt") && idx.includes("Ähnliche Webseite anfragen") && idx.includes("Eigenes Designkonzept, kein Kundenauftrag"));
 });
 
 test("Verlauf der Zentrale: historische Kopien sind ohne Anmeldung erreichbar", async () => {

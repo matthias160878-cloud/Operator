@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f5ef">
+<title>Klarbuch – Steuer-und-Treuhand-Landingpage – Eigenes Designkonzept, kein Kundenauftrag</title>
+<meta name="description" content="Landingpage-Konzept für Steuer- und Finanzdienstleistungen: ruhig, vertrauenswürdig, mit klarem Erstgespräch. Eigenes Designkonzept von SECRET 58, kein Kundenauftrag.">
+<style>:root{--bg:#f7f5ef;--ink:#14243a;--card:#fff;--alt:#eceae0;--line:#d8d4c4;--accent:#14243a;--accent2:#2f6b57;--onaccent:#f7f5ef;--navbg:rgba(247,245,239,.94);--head:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;--body:system-ui,-apple-system,'Segoe UI',sans-serif;--hw:600;--r:6px;--ctabg:#14243a;--ctaink:#f7f5ef;--ctabtn:#f7f5ef;--ctabtnink:#14243a}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}a{color:inherit}
+h1,h2,h3{font-family:var(--head);line-height:1.12;margin:0 0 .5em;font-weight:var(--hw)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:3px}
+.topbar{background:#101010;color:#f2f2f2;padding:10px 5%;display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;font:13px/1.4 system-ui,sans-serif}
+.topbar a{text-decoration:none;color:#f2f2f2}.topbar a:hover{text-decoration:underline}
+.topbar .tag{border:1px solid #777;border-radius:30px;padding:4px 12px}
+header.nav{position:sticky;top:0;z-index:10;background:var(--navbg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 5%}
+.logo{font-family:var(--head);font-weight:700;font-size:20px;text-decoration:none;letter-spacing:var(--ls,0)}
+.nav nav{display:flex;gap:22px;align-items:center;font-size:14px;flex-wrap:wrap}.nav nav a{text-decoration:none;opacity:.85}.nav nav a:hover{opacity:1;text-decoration:underline}
+.btn{display:inline-block;background:var(--accent);color:var(--onaccent);text-decoration:none;font-weight:700;padding:14px 24px;border-radius:var(--r);border:2px solid var(--accent);font-size:15px;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 5%}
+section{padding:84px 0}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin-bottom:14px;display:block}
+h1{font-size:clamp(36px,6vw,68px);letter-spacing:-.02em}h2{font-size:clamp(28px,4vw,44px)}
+.lead{font-size:clamp(17px,2vw,20px);max-width:620px;opacity:.9}
+.grid{display:grid;gap:22px}.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.card h3{font-size:21px}.card p{margin:0;opacity:.88}
+.steps{counter-reset:s;display:grid;gap:18px;padding:0;list-style:none}
+.steps li{counter-increment:s;display:grid;grid-template-columns:54px 1fr;gap:16px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.steps li::before{content:counter(s);font-family:var(--head);font-size:30px;color:var(--accent2);line-height:1}
+.steps b{display:block;font-size:18px;margin-bottom:4px}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:700}details p{margin:10px 0 0;opacity:.9}
+.cta{text-align:center;background:var(--ctabg);color:var(--ctaink)}.cta .lead{margin:0 auto 28px}
+.cta .btn{background:var(--ctabtn);color:var(--ctabtnink);border-color:var(--ctabtn)}
+.note{font-size:13px;opacity:.75;max-width:720px}
+footer{padding:34px 5%;border-top:1px solid var(--line);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;align-items:center}
+footer a{text-decoration:none;opacity:.85}footer a:hover{text-decoration:underline}
+@media(max-width:700px){section{padding:56px 0}.nav nav a.hide-sm{display:none}.steps li{grid-template-columns:40px 1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+.hero{padding:90px 0 80px;border-bottom:1px solid var(--line)}.hero .wrap{max-width:900px}
+.hero h1{font-size:clamp(36px,5.6vw,62px)}.hero .btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.ledger{margin-top:48px;border:1px solid var(--line);background:var(--card);border-radius:6px;overflow:hidden;font-size:15px}
+.ledger div{display:grid;grid-template-columns:1fr auto;gap:12px;padding:14px 20px;border-top:1px solid var(--line)}.ledger div:first-child{border-top:0;background:var(--alt);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.ledger em{font-style:normal;color:var(--accent2);font-weight:700}
+.cta .btn:hover{filter:none;background:#fff}</style></head><body>
+<aside class="topbar"><a href="../../index.html#/referenzen">← Zurück zur SECRET-58-Zentrale · Referenzen</a><span class="tag">Eigenes Designkonzept, kein Kundenauftrag</span><a href="../../index.html#/kontakt?bereich=webdesign&text=Ich%20m%C3%B6chte%20eine%20Webseite%20%C3%A4hnlich%20wie%20das%20Designkonzept%20%E2%80%9EKlarbuch%20%E2%80%93%20Steuer-und-Treuhand-Landingpage%E2%80%9C.">Ähnliche Webseite anfragen ↗</a></aside>
+<header class="nav"><a class="logo" href="#top">Klarbuch</a><nav aria-label="Hauptnavigation"><a class="hide-sm" href="#leistungen">Leistungen</a><a class="hide-sm" href="#ablauf">Zusammenarbeit</a><a class="hide-sm" href="#faq">Fragen</a><a class="btn" style="padding:10px 18px;font-size:14px" href="#kontakt">Erstgespräch</a></nav></header>
+<main id="top">
+<section class="hero"><div class="wrap"><span class="eyebrow">Steuer · Buchhaltung · Beratung</span><h1>Ordnung in Ihren Zahlen – verständlich erklärt.</h1><p class="lead">Wir übersetzen Belege, Fristen und Fachbegriffe in klare Schritte, damit Sie Entscheidungen ruhig und informiert treffen können.</p><div class="btns"><a class="btn" href="#kontakt">Erstgespräch anfragen</a><a class="btn ghost" href="#ablauf">Zusammenarbeit ansehen</a></div><div class="ledger" role="img" aria-label="Beispielhafte Übersicht mit erfundenen Aufgaben"><div><span>Beispiel · Monatsübersicht</span><span>Status</span></div><div><span>Belege sortieren</span><em>erledigt</em></div><div><span>Umsatzsteuer-Voranmeldung</span><em>vorbereitet</em></div><div><span>Jahresabschluss – Rückfragen</span><em>offen</em></div></div></div></section>
+<section id="leistungen"><div class="wrap"><span class="eyebrow">Leistungen</span><h2>Worum wir uns kümmern</h2><div class="grid g3" style="margin-top:30px"><div class="card"><h3>Laufende Buchhaltung</h3><p>Belege erfassen, Konten abstimmen, Monatsübersichten bereitstellen.</p></div><div class="card"><h3>Steuererklärungen</h3><p>Vorbereitung und Abgabe mit nachvollziehbarer Erklärung.</p></div><div class="card"><h3>Gründung &amp; Beratung</h3><p>Rechtsform, Anmeldung und erste Schritte – einfach erklärt.</p></div><div class="card"><h3>Fristen im Blick</h3><p>Eine übersichtliche Terminliste statt Zettelwirtschaft.</p></div></div></div></section>
+<section style="background:var(--alt)"><div class="wrap" style="max-width:820px"><span class="eyebrow">Haltung</span><h2>Ehrlich, verständlich, verlässlich.</h2><p class="lead">Wir versprechen nur, was wir halten können, nennen Kosten vorab und erklären jeden Schritt – ohne Fachchinesisch.</p><p class="note">Hinweis: Dieses Konzept zeigt Stil und Aufbau einer Dienstleister-Seite. Es enthält keine Steuer- oder Rechtsberatung.</p></div></section>
+<section id="ablauf" style="background:var(--alt)"><div class="wrap"><span class="eyebrow">Zusammenarbeit</span><h2>So arbeiten wir zusammen</h2><ol class="steps" style="margin-top:30px"><li><div><b>Erstgespräch</b>Kurzes Kennenlernen und Klärung Ihrer Situation.</div></li><li><div><b>Angebot</b>Leistungsumfang und Kosten schriftlich und vorab.</div></li><li><div><b>Übergabe</b>Sie geben Unterlagen, wir ordnen und prüfen sie.</div></li><li><div><b>Laufende Betreuung</b>Feste Ansprechperson und regelmäßige Übersichten.</div></li></ol></div></section>
+<section id="faq"><div class="wrap" style="max-width:820px"><span class="eyebrow">Häufige Fragen</span><h2>Was Sie vorab wissen sollten</h2><details><summary>Kostet das Erstgespräch etwas?</summary><p>Im Konzept ist es als unverbindliche Anfrage dargestellt; echte Konditionen würden Sie festlegen.</p></details><details><summary>Gibt es Klarbuch wirklich?</summary><p>Nein, Klarbuch ist ein erfundenes Designkonzept von SECRET 58.</p></details><details><summary>Welche Angaben braucht eine echte Seite?</summary><p>Leistungen, Kontaktdaten, Impressum, Datenschutz und – falls vorhanden – berufsrechtliche Angaben.</p></details></div></section>
+<section class="cta" id="kontakt"><div class="wrap"><h2>Vertrauen beginnt mit einer klaren Seite.</h2><p class="lead">Dieses Konzept zeigt, wie eine Dienstleister-Seite ruhig und verständlich wirken kann.</p><a class="btn" href="../../index.html#/kontakt?bereich=webdesign&text=Ich%20m%C3%B6chte%20eine%20Webseite%20%C3%A4hnlich%20wie%20das%20Designkonzept%20%E2%80%9EKlarbuch%20%E2%80%93%20Steuer-und-Treuhand-Landingpage%E2%80%9C.">Ähnliche Webseite anfragen ↗</a></div></section>
+</main>
+<footer><span><b>Klarbuch</b> · Eigenes Designkonzept, kein Kundenauftrag von SECRET 58. Name, Texte und Angebote sind frei erfunden – es gibt keine Kunden, Preise oder Bewertungen.</span><span><a href="../../index.html#/kontakt">Kontakt</a> · <a href="../../index.html#/impressum">Impressum</a> · <a href="../../index.html#/datenschutz">Datenschutz</a> · <a href="../../index.html#/agb">AGB</a> · <a href="../../index.html#/start">Zur Zentrale</a></span></footer>
+</body></html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d1117">
+<title>Taktwerk – KI-Backoffice-Landingpage – Eigenes Designkonzept, kein Kundenauftrag</title>
+<meta name="description" content="Landingpage-Konzept für ein digitales Service-Angebot: dunkel, technisch, mit klarer Nutzenführung. Eigenes Designkonzept von SECRET 58, kein Kundenauftrag.">
+<style>:root{--bg:#0d1117;--ink:#e8eef5;--card:#151b24;--alt:#10161e;--line:#263040;--accent:#c6f432;--accent2:#c6f432;--onaccent:#0d1117;--navbg:rgba(13,17,23,.9);--head:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--body:system-ui,-apple-system,'Segoe UI',sans-serif;--hw:700;--r:10px;--ls:-.02em;--ctabg:#c6f432;--ctaink:#0d1117;--ctabtn:#0d1117;--ctabtnink:#c6f432}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}a{color:inherit}
+h1,h2,h3{font-family:var(--head);line-height:1.12;margin:0 0 .5em;font-weight:var(--hw)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:3px}
+.topbar{background:#101010;color:#f2f2f2;padding:10px 5%;display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;font:13px/1.4 system-ui,sans-serif}
+.topbar a{text-decoration:none;color:#f2f2f2}.topbar a:hover{text-decoration:underline}
+.topbar .tag{border:1px solid #777;border-radius:30px;padding:4px 12px}
+header.nav{position:sticky;top:0;z-index:10;background:var(--navbg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 5%}
+.logo{font-family:var(--head);font-weight:700;font-size:20px;text-decoration:none;letter-spacing:var(--ls,0)}
+.nav nav{display:flex;gap:22px;align-items:center;font-size:14px;flex-wrap:wrap}.nav nav a{text-decoration:none;opacity:.85}.nav nav a:hover{opacity:1;text-decoration:underline}
+.btn{display:inline-block;background:var(--accent);color:var(--onaccent);text-decoration:none;font-weight:700;padding:14px 24px;border-radius:var(--r);border:2px solid var(--accent);font-size:15px;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 5%}
+section{padding:84px 0}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin-bottom:14px;display:block}
+h1{font-size:clamp(36px,6vw,68px);letter-spacing:-.02em}h2{font-size:clamp(28px,4vw,44px)}
+.lead{font-size:clamp(17px,2vw,20px);max-width:620px;opacity:.9}
+.grid{display:grid;gap:22px}.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.card h3{font-size:21px}.card p{margin:0;opacity:.88}
+.steps{counter-reset:s;display:grid;gap:18px;padding:0;list-style:none}
+.steps li{counter-increment:s;display:grid;grid-template-columns:54px 1fr;gap:16px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.steps li::before{content:counter(s);font-family:var(--head);font-size:30px;color:var(--accent2);line-height:1}
+.steps b{display:block;font-size:18px;margin-bottom:4px}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:700}details p{margin:10px 0 0;opacity:.9}
+.cta{text-align:center;background:var(--ctabg);color:var(--ctaink)}.cta .lead{margin:0 auto 28px}
+.cta .btn{background:var(--ctabtn);color:var(--ctabtnink);border-color:var(--ctabtn)}
+.note{font-size:13px;opacity:.75;max-width:720px}
+footer{padding:34px 5%;border-top:1px solid var(--line);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;align-items:center}
+footer a{text-decoration:none;opacity:.85}footer a:hover{text-decoration:underline}
+@media(max-width:700px){section{padding:56px 0}.nav nav a.hide-sm{display:none}.steps li{grid-template-columns:40px 1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+.hero{padding:80px 0 90px;text-align:center}.hero .lead{margin:0 auto}.hero .btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:30px 0 50px}
+.term{max-width:760px;margin:0 auto;text-align:left;background:#0a0e14;border:1px solid var(--line);border-radius:12px;overflow:hidden;font:13px/1.8 ui-monospace,Menlo,Consolas,monospace}
+.term .bar{display:flex;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line)}.term .bar i{width:11px;height:11px;border-radius:50%;background:#2c3646}
+.term pre{margin:0;padding:18px 20px;white-space:pre-wrap;overflow-wrap:anywhere}.term .k{color:var(--accent)}.term .m{color:#7d8da3}
+h1{font-size:clamp(34px,5.4vw,60px)}.cta h2,.cta .lead{color:#0d1117}
+.cta .btn:hover{filter:none;background:#1c2530}</style></head><body>
+<aside class="topbar"><a href="../../index.html#/referenzen">← Zurück zur SECRET-58-Zentrale · Referenzen</a><span class="tag">Eigenes Designkonzept, kein Kundenauftrag</span><a href="../../index.html#/kontakt?bereich=webdesign&text=Ich%20m%C3%B6chte%20eine%20Webseite%20%C3%A4hnlich%20wie%20das%20Designkonzept%20%E2%80%9ETaktwerk%20%E2%80%93%20KI-Backoffice-Landingpage%E2%80%9C.">Ähnliche Webseite anfragen ↗</a></aside>
+<header class="nav"><a class="logo" href="#top">taktwerk</a><nav aria-label="Hauptnavigation"><a class="hide-sm" href="#leistungen">Funktionen</a><a class="hide-sm" href="#ablauf">Einführung</a><a class="hide-sm" href="#faq">Fragen</a><a class="btn" style="padding:10px 18px;font-size:14px" href="#kontakt">Demo anfragen</a></nav></header>
+<main id="top">
+<section class="hero"><div class="wrap"><span class="eyebrow">Digitales Backoffice für kleine Teams</span><h1>Weniger Papierkram.<br>Mehr Zeit fürs Geschäft.</h1><p class="lead">Taktwerk sortiert Anfragen, Rechnungen und Termine in einem ruhigen Ablauf – Sie behalten jederzeit die Kontrolle und entscheiden selbst.</p><div class="btns"><a class="btn" href="#kontakt">Demo anfragen</a><a class="btn ghost" href="#leistungen">Funktionen ansehen</a></div><div class="term" role="img" aria-label="Beispielhafte Darstellung eines Tagesablaufs im Backoffice"><div class="bar"><i></i><i></i><i></i></div><pre><span class="m"># Beispiel · erfundene Daten</span>
+<span class="k">08:00</span> 3 neue Anfragen sortiert → Vorschlag zur Freigabe
+<span class="k">09:30</span> Rechnungsentwurf bereit → wartet auf Ihr OK
+<span class="k">11:00</span> Terminwunsch erkannt → 2 Zeitfenster vorgeschlagen
+<span class="k">16:00</span> Tagesübersicht erstellt → Sie entscheiden</pre></div></div></section>
+<section id="leistungen"><div class="wrap"><span class="eyebrow">Funktionen</span><h2>Drei Aufgaben, ein Ablauf</h2><div class="grid g3" style="margin-top:30px"><div class="card"><h3>Anfragen ordnen</h3><p>Eingänge werden gesammelt, gruppiert und mit Antwortvorschlag versehen.</p></div><div class="card"><h3>Rechnungen vorbereiten</h3><p>Entwürfe aus Ihren Angaben – versendet wird erst nach Ihrer Freigabe.</p></div><div class="card"><h3>Termine abstimmen</h3><p>Zeitfenster vorschlagen, Zusagen festhalten, Erinnerungen planen.</p></div></div></div></section>
+<section><div class="wrap grid g3"><div class="card"><h3>Sie behalten die Kontrolle</h3><p>Nichts Wichtiges passiert ohne Ihre Freigabe.</p></div><div class="card"><h3>Klare Regeln</h3><p>Sie legen fest, was automatisch vorbereitet werden darf.</p></div><div class="card"><h3>Datenschutz zuerst</h3><p>Wir erklären offen, welche Daten wo verarbeitet werden.</p></div></div></section>
+<section id="ablauf" style="background:var(--alt)"><div class="wrap"><span class="eyebrow">Einführung</span><h2>In vier Schritten startklar</h2><ol class="steps" style="margin-top:30px"><li><div><b>Ist-Aufnahme</b>Wir schauen gemeinsam, was bei Ihnen täglich anfällt.</div></li><li><div><b>Regeln festlegen</b>Was ist Routine, was braucht Ihre Entscheidung?</div></li><li><div><b>Testlauf</b>Ein kurzer Probebetrieb mit Beispieldaten.</div></li><li><div><b>Start &amp; Begleitung</b>Einführung im Alltag mit Ansprechpartner.</div></li></ol></div></section>
+<section id="faq"><div class="wrap" style="max-width:820px"><span class="eyebrow">Häufige Fragen</span><h2>Fragen vor dem Start</h2><details><summary>Entscheidet die Software allein?</summary><p>Nein. Das Konzept sieht Vorschläge und Freigaben vor, keine unkontrollierten Aktionen.</p></details><details><summary>Gibt es dieses Produkt wirklich?</summary><p>Nein. Taktwerk ist ein Designkonzept von SECRET 58, um den Stil einer Service-Landingpage zu zeigen.</p></details><details><summary>Kann SECRET 58 so etwas bauen?</summary><p>Ja – als Webseite und, auf Wunsch, mit passenden Abläufen. Fragen Sie uns nach dem Umfang.</p></details></div></section>
+<section class="cta" id="kontakt"><div class="wrap"><h2>Ihr digitales Angebot verdient eine klare Seite.</h2><p class="lead">Dieses Konzept zeigt, wie sich ein erklärungsbedürftiges Angebot verständlich darstellen lässt.</p><a class="btn" href="../../index.html#/kontakt?bereich=webdesign&text=Ich%20m%C3%B6chte%20eine%20Webseite%20%C3%A4hnlich%20wie%20das%20Designkonzept%20%E2%80%9ETaktwerk%20%E2%80%93%20KI-Backoffice-Landingpage%E2%80%9C.">Ähnliche Webseite anfragen ↗</a></div></section>
+</main>
+<footer><span><b>taktwerk</b> · Eigenes Designkonzept, kein Kundenauftrag von SECRET 58. Name, Texte und Angebote sind frei erfunden – es gibt keine Kunden, Preise oder Bewertungen.</span><span><a href="../../index.html#/kontakt">Kontakt</a> · <a href="../../index.html#/impressum">Impressum</a> · <a href="../../index.html#/datenschutz">Datenschutz</a> · <a href="../../index.html#/agb">AGB</a> · <a href="../../index.html#/start">Zur Zentrale</a></span></footer>
+</body></html>

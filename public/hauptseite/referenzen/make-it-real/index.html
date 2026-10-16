@@ -1,16 +1,427 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1030"><meta name="description" content="Mutige Ideen. Ausdrucksstarkes Design. Entdecke Make it real – ein kreatives Konzept voller Farbe und Bewegung."><title>Make it real. — Ideen bekommen Flügel</title><style>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1030"><meta name="description" content="Make it real. – eigenes Designkonzept von SECRET 58 (kein Kundenauftrag): kreative Landingpage mit ruhigem Kolibri-Motiv und wechselnder Farbstimmung."><title>Make it real. — Ideen bekommen Flügel</title><style>
 :root{--bg:#0b1030;--ink:#f3f4e8;--muted:#b4bddc;--cyan:#86e6cf;--purple:#b9a8ff}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;background:linear-gradient(180deg,#0b1030 0%,#18276a 22%,#2a4486 48%,#2a4a8e 66%,#1a2a66 88%,#0b1030 100%);color:var(--ink);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}button,a,input,textarea{outline-offset:6px}button{cursor:pointer}header{height:94px;display:flex;align-items:center;justify-content:space-between;max-width:1440px;margin:auto;padding:0 6%;position:relative;z-index:3}.logo{font-size:23px;letter-spacing:-1px;font-weight:800}.logo i{display:inline-block;width:13px;height:13px;margin-right:10px;background:var(--cyan);transform:rotate(-30deg);border-radius:60% 0}nav{display:flex;align-items:center;gap:34px;font-size:13px}nav a{color:#d3dafb}nav a:hover{color:var(--cyan)}.navcta{border:1px solid #6a79b8;padding:13px 21px;border-radius:30px;color:white}.hero{max-width:1440px;margin:auto;min-height:790px;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;padding:65px 6% 115px}.hero-art{position:absolute;right:0;top:-60px;width:66%;height:930px;z-index:-2;background:url('kolibri.jpg') center 40%/cover no-repeat;mask-image:linear-gradient(to right,transparent,#000 32%);-webkit-mask-image:linear-gradient(to right,transparent,#000 32%)}.hero:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0b1030 0%,#0b1030b0 30%,transparent 65%),linear-gradient(0deg,#0b1030,transparent 28%)}.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:10px;display:flex;align-items:center;gap:12px;color:#c7d0da}.eyebrow:before{content:'';height:1px;width:27px;background:var(--cyan)}h1{font-size:clamp(76px,8.8vw,128px);letter-spacing:-8px;line-height:.96;margin:34px 0 26px;font-weight:800}h1 span{color:var(--cyan)}.hero p{font-size:17px;line-height:1.8;color:#dfe4fb;max-width:350px}.actions{display:flex;gap:26px;align-items:center;margin-top:34px}.primary{background:var(--cyan);color:#07141a;border:0;border-radius:40px;padding:18px 25px;font-weight:700;font-size:13px;display:inline-flex;gap:36px;align-items:center;transition:transform .2s,background .2s}.primary:hover{transform:translateY(-3px);background:#8cf6ff}.textlink{font-size:13px;border-bottom:1px solid #69717d;padding:10px 0}.hero-foot{position:absolute;bottom:35px;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:2px;color:var(--muted)}.hero-foot span:last-child{color:#c2b1e7}.strip{border-top:1px solid #4a5a9e;border-bottom:1px solid #4a5a9e;display:flex;justify-content:space-around;gap:20px;padding:25px 6%;font-size:11px;letter-spacing:3px;color:#b1b9c3}.strip b{color:var(--cyan);font-size:15px}section{max-width:1440px;margin:auto;padding:110px 6%}.sectiontop{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin:26px 0 48px}h2{font-size:clamp(38px,4.5vw,64px);line-height:1.08;letter-spacing:-2.8px;margin:0;font-weight:500}.sectiontop p{max-width:330px;color:var(--muted);line-height:1.8;font-size:14px;margin:0}.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.offer{border-top:1px solid #5666a8;padding:27px 0}.offer small{color:var(--cyan);font-size:11px}.offer h3{font-weight:500;font-size:25px;margin:45px 0 18px;letter-spacing:-.7px}.offer p{color:var(--muted);font-size:14px;line-height:1.8;max-width:290px}.offer .tag{display:inline-block;margin-top:24px;font-size:10px;letter-spacing:1px;color:#c2c9d2}.experience{padding-top:30px}.visual{min-height:480px;display:grid;grid-template-columns:1fr 1fr;border-radius:5px;overflow:hidden;background:#1a2866;border:1px solid #4a5a9e}.art-window{background:url('kolibri.jpg') center 42%/cover;min-height:480px;position:relative;transition:filter .6s}.art-window:after{content:'DEINE IDEE. DEINE FARBEN.';position:absolute;bottom:25px;left:25px;font-size:10px;letter-spacing:2px;background:#0b10308a;padding:12px}.visual-copy{padding:65px 50px;display:flex;flex-direction:column;justify-content:center}.visual-copy h2{font-size:42px}.visual-copy p{color:var(--muted);line-height:1.8;font-size:14px;margin:24px 0}.palette{display:flex;gap:12px}.swatch{height:34px;width:34px;border:4px solid #1a2866;outline:1px solid #58606d;border-radius:50%;transition:transform .2s}.swatch[aria-pressed=true]{outline:2px solid white;transform:scale(1.1)}.palette-label{font-size:11px;margin-top:18px;color:#c4cbd7}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:55px;margin-top:50px}.steps small{color:var(--purple);font-size:12px}.steps h3{font-weight:500;font-size:22px}.steps p{font-size:14px;line-height:1.8;color:var(--muted)}.cta{text-align:center;border-top:1px solid #4a5a9e;background:radial-gradient(ellipse at 50% 100%,#4f8fb8 0%,transparent 65%);padding-top:85px;padding-bottom:90px}.cta .eyebrow{justify-content:center}.cta h2{margin:25px auto 30px;font-size:clamp(48px,6vw,80px)}.cta h2 em{font-family:Georgia,serif;color:var(--cyan);font-weight:400}.cta p{font-size:14px;color:var(--muted);margin:20px 0 32px}footer{padding:30px 6%;border-top:1px solid #4a5a9e;display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:11px;color:var(--muted)}footer .logo{font-size:18px;color:white}dialog{background:#141d55;color:white;border:1px solid #5666a8;border-radius:16px;width:min(550px,92vw);padding:35px}dialog::backdrop{background:#000b;backdrop-filter:blur(9px)}dialog h2{font-size:34px;margin:20px 0}dialog p{color:#b6c0cd;line-height:1.6;font-size:13px}.close{float:right;background:none;color:white;border:0;font-size:24px}label{font-size:12px;display:block;margin:20px 0 8px}input,textarea{width:100%;background:#0b1030;border:1px solid #5666a8;color:white;border-radius:7px;padding:13px}textarea{min-height:100px;resize:vertical}dialog .primary{margin-top:20px}.note{font-size:11px!important}#feedback{color:var(--cyan)}@media(min-width:1500px){.hero-art{width:62%}}@media(max-width:760px){header{height:78px}nav{gap:16px}nav>a:not(.navcta){display:none}.logo{font-size:20px}.navcta{font-size:11px;padding:10px 15px}.hero{min-height:790px;align-items:flex-start;padding-top:65px;padding-bottom:85px}.hero-art{width:100%;height:740px;top:120px;right:-12%;opacity:.67;mask-image:linear-gradient(to bottom,transparent,black 20%);-webkit-mask-image:linear-gradient(to bottom,transparent,black 20%)}.hero:after{background:linear-gradient(90deg,#0b1030b0,transparent),linear-gradient(0deg,#0b1030,transparent 35%)}h1{font-size:84px;letter-spacing:-5px}.hero p{max-width:285px;font-size:15px}.actions{gap:18px}.primary{padding:16px 20px;gap:22px}.hero-foot{font-size:8px;letter-spacing:1px}.strip{font-size:8px;letter-spacing:1px;gap:10px}.strip b{font-size:10px}section{padding:70px 6%}.sectiontop{display:block}.sectiontop p{margin-top:25px}.offers,.steps{grid-template-columns:1fr;gap:15px}.offer h3{margin-top:23px}.offer .tag{margin-top:10px}.visual{grid-template-columns:1fr}.art-window{min-height:370px}.visual-copy{padding:35px 28px}.visual-copy h2{font-size:35px}.steps{gap:25px}.steps h3{margin:12px 0}.cta{padding:65px 6%}footer{flex-wrap:wrap;font-size:10px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-</style></head><body><aside style="padding:14px 6%;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;border-bottom:1px solid #4a5a9e;font-size:12px"><a href="../../index.html#/referenzen">← Zurück zu SECRET 58 · Referenzen</a><span>Designkonzept – Beispiel für eine mögliche Umsetzung</span><a href="../../index.html#/kontakt?bereich=webdesign&projekt=make-it-real" style="color:#38e2ee">Ähnliche Webseite anfragen ↗</a></aside>
-<header><a class="logo" href="#" aria-label="Make it real Startseite"><i></i>make it real.</a><nav aria-label="Hauptnavigation"><a href="#idee">Die Idee</a><a href="#inspiration">Inspiration</a><a href="#weg">Der Weg</a><a class="navcta" href="#start">Lass uns starten ↗</a></nav></header>
-<main><div class="hero"><div class="hero-art" role="img" aria-label="Leuchtend türkiser und violetter Kolibri in einer Explosion aus Farbpigmenten"></div><div><div class="eyebrow">Für Ideen, die mehr wollen</div><h1>Think bold.<br>Make it <span>real.</span></h1><p>Manche Ideen sind zu gut, um nur im Kopf zu bleiben. Gib deiner Vision Farbe. Und Flügel.</p><div class="actions"><a class="primary" href="#start">Deine Idee starten <span>↗</span></a><a class="textlink" href="#inspiration">Inspiration entdecken ↓</a></div></div><div class="hero-foot"><span>SCROLLEN & NEUE PERSPEKTIVEN ENTDECKEN ↓</span><span>VON DER NATUR INSPIRIERT. FREI GEDACHT.</span></div></div>
+
+/* ---- Ergänzungen: Farbwechsel, Werkstatt ---- */
+.hero-art,.art-window{transition:filter 1.4s ease-in-out;transform:none;animation:none}
+h1 span,.strip b,.offer small{transition:color 1.4s ease-in-out}
+.primary{transition:background 1.4s ease-in-out}.primary:hover{transform:none}
+.swatch{cursor:pointer;padding:0}.swatch:focus-visible,.cyclebtn:focus-visible,.primary:focus-visible,.wbtn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.mood-bar{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:34px}.mood-bar .lbl{font-size:10px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase}
+.cyclebtn{background:transparent;color:var(--ink);border:1px solid #6a79b8;border-radius:30px;padding:10px 16px;font-size:12px}.cyclebtn:hover{border-color:var(--cyan)}.cyclebtn[disabled]{opacity:.55;cursor:not-allowed}
+.mood-note{font-size:11px;color:var(--muted);margin:10px 0 0;min-height:16px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.topbar{padding:14px 6%;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;border-bottom:1px solid #4a5a9e;font-size:12px;align-items:center}.topbar a:hover{color:var(--cyan)}.topbar .tag{border:1px solid #6a79b8;border-radius:30px;padding:5px 12px;color:#e6eaff}
+.werk{border-top:1px solid #4a5a9e}.werk-note{background:#141d55;border:1px solid #5666a8;border-radius:10px;padding:16px 18px;font-size:13px;line-height:1.7;color:#d6dcf6;margin:0 0 34px;max-width:900px}
+.werk-grid{display:grid;grid-template-columns:290px 1fr;gap:34px;align-items:start}
+.werk-side,.werk-block{background:#141d55;border:1px solid #4a5a9e;border-radius:12px;padding:22px}.werk-main{display:grid;gap:22px;min-width:0}
+.werk h3{font-size:20px;font-weight:500;margin:0 0 16px;letter-spacing:-.4px}.werk h4{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin:22px 0 8px;font-weight:700}
+.wbtn{background:transparent;color:var(--ink);border:1px solid #6a79b8;border-radius:30px;padding:10px 16px;font-size:12px}.wbtn:hover{border-color:var(--cyan)}.wbtn.solid{background:var(--cyan);color:#07141a;border-color:var(--cyan);font-weight:700}.wbtn.danger:hover{border-color:#ff9db0;color:#ffb8c6}.wbtn.sm{padding:6px 12px;font-size:11px}
+.werk label{font-size:12px;display:block;margin:16px 0 7px}.werk .chk{display:flex;gap:10px;align-items:center;margin:7px 0;font-size:13px}.werk input[type=checkbox]{width:18px;height:18px;flex:none;accent-color:#86e6cf;padding:0}
+select{width:100%;background:#0b1030;border:1px solid #5666a8;color:white;border-radius:7px;padding:13px}
+.proj-list{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:8px}.proj-list button{width:100%;text-align:left;background:#0b1030;border:1px solid #4a5a9e;color:var(--ink);border-radius:8px;padding:11px 12px;font-size:13px}.proj-list button[aria-current=true]{border-color:var(--cyan);box-shadow:inset 3px 0 0 var(--cyan)}.proj-list small{display:block;color:var(--muted);margin-top:3px;font-size:11px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.feat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}
+.idea-list,.task-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}.idea-list li,.task-list li{background:#0b1030;border:1px solid #3a4a8e;border-radius:8px;padding:10px 12px;display:flex;gap:10px;align-items:center;justify-content:space-between;font-size:14px;line-height:1.5}.idea-list .txt{flex:1;min-width:0;overflow-wrap:anywhere}.idea-list input{margin:0}
+.task-list li{justify-content:flex-start}.task-list li.done .txt{text-decoration:line-through;color:var(--muted)}.task-list .txt{flex:1;overflow-wrap:anywhere}
+.progress{height:8px;background:#0b1030;border:1px solid #3a4a8e;border-radius:6px;overflow:hidden;margin:12px 0 4px}.progress i{display:block;height:100%;background:var(--cyan);width:0}
+.werk-status{min-height:20px;font-size:13px;color:var(--cyan);margin:18px 0 0}.empty{color:var(--muted);font-size:13px;line-height:1.7;margin:6px 0}
+@media(max-width:900px){.werk-grid{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.mood-bar{margin-top:26px}.werk-side,.werk-block{padding:16px}.idea-list li{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.hero-art,.art-window,h1 span,.strip b,.offer small,.primary{transition:none!important}}
+</style></head><body><aside class="topbar"><a href="../../index.html#/referenzen">← Zurück zur SECRET-58-Zentrale · Referenzen</a><span class="tag">Eigenes Designkonzept, kein Kundenauftrag</span><a href="../../index.html#/kontakt?bereich=webdesign&text=Ich%20m%C3%B6chte%20eine%20Webseite%20%C3%A4hnlich%20wie%20das%20Designkonzept%20%E2%80%9EMake%20it%20real.%20%E2%80%93%20Kreative%20Landingpage%E2%80%9C." style="color:#86e6cf">Ähnliche Webseite anfragen ↗</a></aside>
+<header><a class="logo" href="#" aria-label="Make it real Startseite"><i></i>make it real.</a><nav aria-label="Hauptnavigation"><a href="#idee">Die Idee</a><a href="#inspiration">Inspiration</a><a href="#weg">Der Weg</a><a href="#werkstatt">Werkstatt</a><a class="navcta" href="#werkstatt">Lass uns starten ↗</a></nav></header>
+<main><div class="hero"><div class="hero-art" data-tint role="img" aria-label="Leuchtend türkiser und violetter Kolibri in einer Explosion aus Farbpigmenten"></div><div><div class="eyebrow">Für Ideen, die mehr wollen</div><h1>Think bold.<br>Make it <span>real.</span></h1><p>Manche Ideen sind zu gut, um nur im Kopf zu bleiben. Gib deiner Vision Farbe. Und Flügel.</p><div class="actions"><a class="primary" href="#werkstatt">Deine Idee starten <span>↗</span></a><a class="textlink" href="#inspiration">Inspiration entdecken ↓</a></div><div class="mood-bar" role="group" aria-label="Farbstimmung des Motivs"><span class="lbl">Farbstimmung</span><div class="palette"><button type="button" class="swatch" style="background:#86e6cf" data-mood="0" aria-label="Türkis" aria-pressed="true"></button><button type="button" class="swatch" style="background:#b9a8ff" data-mood="1" aria-label="Violett" aria-pressed="false"></button><button type="button" class="swatch" style="background:#e8c76a" data-mood="2" aria-label="Gold" aria-pressed="false"></button></div><button type="button" class="cyclebtn" data-cycle aria-pressed="false">Farbwechsel pausieren</button></div></div><div class="hero-foot"><span>SCROLLEN & NEUE PERSPEKTIVEN ENTDECKEN ↓</span><span>VON DER NATUR INSPIRIERT. FREI GEDACHT.</span></div></div>
 <div class="strip"><span>GROSS DENKEN</span><b>✳</b><span>MUTIG GESTALTEN</span><b>✳</b><span>ECHT WERDEN LASSEN</span></div>
 <section id="idee"><div class="eyebrow">Mehr als eine schöne Idee</div><div class="sectiontop"><h2>Es beginnt mit einem Funken.<br>Es bleibt ein Eindruck.</h2><p>Wie ein Kolibri: voller Energie, unverwechselbar und immer in Bewegung. Genau so darf sich deine nächste Idee anfühlen.</p></div><div class="offers"><article class="offer"><small>01 / KLARHEIT</small><h3>Deine Vision. Auf den Punkt.</h3><p>Was möchtest du verändern? Für wen? Aus einem ersten Gedanken wird eine klare Richtung.</p><span class="tag">IDEE & KONZEPT ↗</span></article><article class="offer"><small>02 / AUSDRUCK</small><h3>Mut zur eigenen Farbe.</h3><p>Farben, Formen und Worte, die zusammenpassen. Ein Auftritt, der deine Persönlichkeit sichtbar macht.</p><span class="tag">DESIGN & IDENTITÄT ↗</span></article><article class="offer"><small>03 / BEWEGUNG</small><h3>Vom Kopf in die Welt.</h3><p>Eine Seite zum Entdecken. Eine Geschichte zum Weitererzählen. Ein nächster Schritt, der sich richtig anfühlt.</p><span class="tag">WEB & ERLEBNIS ↗</span></article></div></section>
-<section class="experience" id="inspiration"><div class="visual"><div class="art-window" id="art" role="img" aria-label="Kolibri-Farbexperiment"></div><div class="visual-copy"><div class="eyebrow">Ein Motiv. Neue Möglichkeiten.</div><h2 style="margin-top:25px">Weniger gewöhnlich.<br>Mehr du.</h2><p>Ein kleiner Perspektivwechsel kann alles verändern. Entdecke drei Farbstimmungen und finde deinen ersten Impuls.</p><div class="palette" aria-label="Farbstimmung wählen"><button class="swatch" style="background:#86e6cf" aria-label="Electric Ocean" aria-pressed="true" data-filter="none" data-name="Electric Ocean · Klar. Lebendig. Grenzenlos."></button><button class="swatch" style="background:#d9c8f5" aria-label="Purple Dream" aria-pressed="false" data-filter="hue-rotate(45deg) saturate(1.3)" data-name="Purple Dream · Mutig. Kreativ. Unerwartet."></button><button class="swatch" style="background:#ecd9a0" aria-label="Golden Hour" aria-pressed="false" data-filter="hue-rotate(155deg) saturate(.9)" data-name="Golden Hour · Warm. Strahlend. Voller Energie."></button></div><div class="palette-label" id="mood" aria-live="polite">Electric Ocean · Klar. Lebendig. Grenzenlos.</div></div></div></section>
+<section class="experience" id="inspiration"><div class="visual"><div class="art-window" id="art" data-tint role="img" aria-label="Kolibri-Farbexperiment"></div><div class="visual-copy"><div class="eyebrow">Ein Motiv. Neue Möglichkeiten.</div><h2 style="margin-top:25px">Weniger gewöhnlich.<br>Mehr du.</h2><p>Ein kleiner Perspektivwechsel kann alles verändern. Das Motiv bleibt ruhig – nur die Farbstimmung wechselt alle zwei Sekunden zwischen Türkis, Violett und Gold. Pausiere den Wechsel oder wähle deine Farbe selbst.</p><div class="mood-bar" style="margin-top:0" role="group" aria-label="Farbstimmung wählen"><div class="palette"><button type="button" class="swatch" style="background:#86e6cf" data-mood="0" aria-label="Türkis" aria-pressed="true"></button><button type="button" class="swatch" style="background:#b9a8ff" data-mood="1" aria-label="Violett" aria-pressed="false"></button><button type="button" class="swatch" style="background:#e8c76a" data-mood="2" aria-label="Gold" aria-pressed="false"></button></div><button type="button" class="cyclebtn" data-cycle aria-pressed="false">Farbwechsel pausieren</button></div><div class="palette-label" data-mood-label>Türkis · Klar. Lebendig. Grenzenlos.</div><p class="mood-note" data-cycle-note></p><p class="sr-only" id="moodStatus" role="status"></p></div></div></section>
 <section id="weg"><div class="eyebrow">Von „Was wäre, wenn?“ zu „Wow.“</div><div class="sectiontop"><h2>Große Ideen.<br>Ein klarer nächster Schritt.</h2></div><div class="steps"><article><small>01 — ENTDECKEN</small><h3>Gib der Idee Raum.</h3><p>Sammle, was dich inspiriert. Ein Bild, ein Gefühl, ein Ziel. Der Anfang muss noch nicht perfekt sein.</p></article><article><small>02 — FORMEN</small><h3>Mach sie greifbar.</h3><p>Wähle eine Richtung und konzentriere dich auf das Wesentliche. Was soll jemand sehen, fühlen und tun?</p></article><article><small>03 — STARTEN</small><h3>Bring sie ins Rollen.</h3><p>Halte deinen ersten konkreten Schritt fest. Aus „irgendwann“ wird ein Projekt mit einer Richtung.</p></article></div></section>
-<section class="cta" id="start"><div class="eyebrow">Dein nächstes Kapitel</div><h2>Bereit, deiner Idee<br><em>Flügel zu geben?</em></h2><p>Ein Gedanke reicht für den Anfang. Was hast du im Kopf?</p><a class="primary" href="../../index.html#/kontakt?bereich=webdesign&projekt=make-it-real" style="margin:0 12px 16px">Ähnliche Webseite anfragen ↗</a><br><button class="primary" id="openBrief">Meine Idee festhalten <span>↗</span></button></section></main>
-<footer><a class="logo" href="#">make it real.</a><span>Eine Idee. Unendliche Möglichkeiten.</span><span>SECRET 58 · Designkonzept</span></footer>
-<dialog id="brief"><button class="close" aria-label="Schließen">×</button><div class="eyebrow">Der erste Schritt gehört dir</div><h2>Was möchtest du<br>wirklich machen?</h2><p>Erstelle deinen Projektimpuls und lade ihn als Textdatei herunter.</p><form id="briefForm"><label for="title">Dein Projektname</label><input id="title" maxlength="120" required placeholder="Meine nächste große Idee"><label for="idea">Deine Idee in wenigen Worten</label><textarea id="idea" maxlength="4000" required placeholder="Ich möchte …"></textarea><button class="primary" type="submit">Projektimpuls herunterladen ↗</button><p class="note">Deine Angaben werden nur hier im Browser verarbeitet. Es wird keine Anfrage versendet.</p><p id="feedback" role="status"></p></form></dialog>
+<section class="werk" id="werkstatt"><div class="eyebrow">Projektwerkstatt</div><div class="sectiontop"><h2>Aus einer Idee wird<br>ein Plan.</h2><p>Halte Projekt, Ideen und Aufgaben fest – direkt hier in deinem Browser.</p></div>
+<p class="werk-note"><b>So arbeitet die Werkstatt:</b> Alles läuft lokal in deinem Browser mit festen Vorlagen. Es gibt keine automatische KI-Erstellung und keine Cloud-Speicherung, und es wird nichts versendet. Deine Projekte bleiben auf diesem Gerät – lösche den Browserspeicher, sind sie weg. Lade deshalb regelmäßig eine Sicherung herunter.</p>
+<div class="werk-grid">
+<div class="werk-side"><h3>Deine Projekte</h3><ul class="proj-list" id="projList"></ul><div class="row"><button type="button" class="wbtn solid" id="projNew">Neues Projekt</button></div>
+<h4>Sicherung</h4><div class="row"><button type="button" class="wbtn" id="exportBtn">Sicherung exportieren (JSON)</button><button type="button" class="wbtn" id="importBtn">Sicherung importieren</button></div><input type="file" id="importFile" accept="application/json,.json" class="sr-only" tabindex="-1" aria-label="Sicherungsdatei auswählen"></div>
+<div class="werk-main" id="werkMain">
+<div class="werk-block" id="projEmpty"><h3>Noch kein Projekt</h3><p class="empty">Lege dein erstes Projekt an oder importiere eine Sicherung.</p></div>
+<form class="werk-block" id="projForm" hidden autocomplete="off" novalidate><h3>Projekt</h3>
+<label for="pName">Projektname</label><input id="pName" maxlength="120" placeholder="z. B. Webseite für mein Café">
+<label for="pType">Projekttyp</label><select id="pType"></select>
+<label for="pAudience">Zielgruppe</label><input id="pAudience" maxlength="500" placeholder="Für wen ist das Projekt?">
+<label for="pGoal">Ziel</label><textarea id="pGoal" maxlength="1000" placeholder="Was soll das Projekt erreichen?"></textarea>
+<h4>Gewünschte Funktionen</h4><div class="feat-grid" id="pFeatures"></div>
+<div class="row" style="margin-top:20px"><button type="button" class="wbtn danger" id="projDelete">Projekt löschen</button></div></form>
+<div class="werk-block" id="ideaBlock" hidden><h3>Ideen</h3><form id="ideaForm" class="row" autocomplete="off" novalidate><label for="ideaInput" class="sr-only">Neue Idee</label><input id="ideaInput" maxlength="1000" placeholder="Neue Idee notieren …" style="flex:1;min-width:200px"><button type="submit" class="wbtn solid">Idee hinzufügen</button></form><ul class="idea-list" id="ideaList"></ul></div>
+<div class="werk-block" id="taskBlock" hidden><h3>Aufgaben</h3><p class="empty" style="margin-top:0">Die Liste entsteht aus Vorlagen passend zu Projekttyp und gewünschten Funktionen. Bereits abgehakte Aufgaben bleiben beim erneuten Erstellen abgehakt.</p><div class="row"><button type="button" class="wbtn solid" id="taskGen">Aufgabenliste aus Vorlage erstellen</button></div><div class="progress" aria-hidden="true"><i id="taskBar"></i></div><div class="empty" id="taskCount" style="margin:0"></div><div id="taskGroups"></div></div>
+<div class="werk-block" id="orderBlock" hidden><h3>Umsetzungsauftrag für Claude Code</h3><p class="empty" style="margin-top:0">Erzeugt eine Textdatei mit Projekt, Ideen, offenen Aufgaben und Rahmenregeln. Du gibst sie selbst an Claude Code weiter – hier wird nichts gesendet.</p><div class="row"><button type="button" class="wbtn solid" id="orderBtn">Auftrag als Textdatei herunterladen</button></div></div>
+</div></div><p class="werk-status" id="werkStatus" role="status" aria-live="polite"></p></section>
+<section class="cta" id="start"><div class="eyebrow">Dein nächstes Kapitel</div><h2>Bereit, deiner Idee<br><em>Flügel zu geben?</em></h2><p>Ein Gedanke reicht für den Anfang. Du willst eine ähnliche Webseite? Schick uns eine Anfrage – das Formular ist bereits vorbereitet.</p><a class="primary" href="../../index.html#/kontakt?bereich=webdesign&text=Ich%20m%C3%B6chte%20eine%20Webseite%20%C3%A4hnlich%20wie%20das%20Designkonzept%20%E2%80%9EMake%20it%20real.%20%E2%80%93%20Kreative%20Landingpage%E2%80%9C." style="margin:0 12px 16px">Ähnliche Webseite anfragen ↗</a><a class="primary" href="#werkstatt" style="margin:0 12px 16px;background:transparent;color:var(--ink);border:1px solid #6a79b8">Zur Projektwerkstatt ↓</a></section></main>
+<footer><a class="logo" href="#">make it real.</a><span>Eine Idee. Unendliche Möglichkeiten.</span><span>SECRET 58 · Designkonzept · <a href="../../index.html#/kontakt">Kontakt</a> · <a href="../../index.html#/impressum">Impressum</a> · <a href="../../index.html#/datenschutz">Datenschutz</a> · <a href="../../index.html#/agb">AGB</a> · <a href="../../index.html#/start">Zur Zentrale</a></span></footer>
+
 <script>
-const dialog=document.querySelector('#brief');document.querySelector('#openBrief').onclick=()=>dialog.showModal();document.querySelector('.close').onclick=()=>dialog.close();dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});document.querySelectorAll('.swatch').forEach(b=>b.onclick=()=>{document.querySelectorAll('.swatch').forEach(s=>s.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');document.querySelector('#art').style.filter=b.dataset.filter;document.querySelector('#mood').textContent=b.dataset.name});document.querySelector('#briefForm').onsubmit=e=>{e.preventDefault();const title=document.querySelector('#title').value.trim(),idea=document.querySelector('#idea').value.trim();if(!title||!idea){document.querySelector('#feedback').textContent='Bitte gib einen Projektnamen und deine Idee ein.';return}const content='MAKE IT REAL. — DEIN PROJEKTIMPULS\n\nProjekt: '+title+'\n\nMeine Idee:\n'+idea+'\n\nFarbstimmung: '+document.querySelector('#mood').textContent+'\n\nMein nächster Schritt:\n___________________________________\n';const url=URL.createObjectURL(new Blob([content],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='Mein-Projektimpuls.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);document.querySelector('#feedback').textContent='Dein Projektimpuls wurde zum Download bereitgestellt.'};
+(function(){
+'use strict';
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+/* ---------- Farbstimmung: Motiv bleibt still, nur der Farbton wechselt ---------- */
+var MOODS=[
+ {name:'Türkis',text:'Türkis · Klar. Lebendig. Grenzenlos.',filter:'none',accent:'#86e6cf'},
+ {name:'Violett',text:'Violett · Mutig. Kreativ. Unerwartet.',filter:'hue-rotate(45deg) saturate(1.3)',accent:'#b9a8ff'},
+ {name:'Gold',text:'Gold · Warm. Strahlend. Voller Energie.',filter:'hue-rotate(155deg) saturate(.9)',accent:'#e8c76a'}
+];
+var INTERVAL=2000;
+var mq=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
+var idx=0,timer=null,paused=false;
+function announce(t){var n=$('#moodStatus');if(n)n.textContent=t}
+function apply(i){
+ idx=i;var m=MOODS[i];
+ $$('[data-tint]').forEach(function(el){el.style.filter=m.filter});
+ document.documentElement.style.setProperty('--cyan',m.accent);
+ $$('[data-mood-label]').forEach(function(el){el.textContent=m.text});
+ $$('.swatch[data-mood]').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.mood===i))});
+}
+function stop(){if(timer){clearInterval(timer);timer=null}}
+function start(){stop();timer=setInterval(function(){apply((idx+1)%MOODS.length)},INTERVAL)}
+function renderCycle(){
+ var red=!!mq.matches;
+ $$('[data-cycle]').forEach(function(b){
+  b.disabled=red;
+  b.setAttribute('aria-pressed',String(paused));
+  b.textContent=paused?'Farbwechsel fortsetzen':'Farbwechsel pausieren';
+ });
+ $$('[data-cycle-note]').forEach(function(n){n.textContent=red?'Automatischer Farbwechsel ist aus, weil dein System reduzierte Bewegung wünscht. Du kannst die Farbe trotzdem selbst wählen.':(paused?'Der Wechsel ist pausiert.':'Der Wechsel läuft automatisch alle 2 Sekunden.')});
+}
+function setPaused(p,say){
+ paused=p;if(p)stop();else start();renderCycle();
+ if(say)announce(p?'Farbwechsel pausiert.':'Farbwechsel läuft.');
+}
+$$('.swatch[data-mood]').forEach(function(b){b.addEventListener('click',function(){
+ apply(+b.dataset.mood);setPaused(true,false);announce('Farbe '+MOODS[idx].name+' gewählt, automatischer Wechsel pausiert.');
+})});
+$$('[data-cycle]').forEach(function(b){b.addEventListener('click',function(){if(mq.matches)return;setPaused(!paused,true)})});
+function onMotionChange(){
+ if(mq.matches){setPaused(true,false)}else{setPaused(false,false)}
+}
+if(mq.addEventListener)mq.addEventListener('change',onMotionChange);else if(mq.addListener)mq.addListener(onMotionChange);
+apply(0);paused=!!mq.matches;if(!paused)start();renderCycle();
+
+/* ---------- Projektwerkstatt (lokal im Browser, mit Vorlagen) ---------- */
+var KEY='secret58-make-it-real-werkstatt-v1';
+var TYPES=[['landingpage','Landingpage'],['firmenwebseite','Firmenwebseite'],['shop','Online-Shop'],['portfolio','Portfolio'],['blog','Blog / Magazin'],['webapp','Web-App / Werkzeug'],['sonstiges','Sonstiges']];
+var FEATURES=[['kontakt','Kontaktformular'],['termin','Terminbuchung'],['galerie','Bildergalerie'],['blog','Blog / Neuigkeiten'],['shop','Shop mit Bezahlung'],['login','Login-Bereich'],['newsletter','Newsletter-Anmeldung'],['mehrsprachig','Mehrere Sprachen'],['seo','Suchmaschinen-Grundlagen'],['rechtstexte','Impressum und Datenschutz']];
+var GROUPS=['Grundlagen','Gestaltung','Funktionen','Start'];
+var LABEL_TYPE={};TYPES.forEach(function(t){LABEL_TYPE[t[0]]=t[1]});
+var LABEL_FEAT={};FEATURES.forEach(function(f){LABEL_FEAT[f[0]]=f[1]});
+
+var COMMON=[
+ ['Grundlagen','Zielgruppe und Ziel in je zwei Sätzen schärfen'],
+ ['Grundlagen','Inhalte und Bilder sammeln, die schon vorhanden sind'],
+ ['Gestaltung','Farben, Schrift und Bildsprache festlegen'],
+ ['Gestaltung','Darstellung auf Handy und Desktop prüfen'],
+ ['Start','Texte auf Rechtschreibung und Tonalität prüfen'],
+ ['Start','Ladezeit und Bildgrößen prüfen'],
+ ['Start','Veröffentlichung erst nach eigener Freigabe']
+];
+var BY_TYPE={
+ landingpage:[['Grundlagen','Ein Hauptziel der Seite in einem Satz festlegen'],['Grundlagen','Handlungsaufruf (Button) und Zielseite bestimmen'],['Gestaltung','Aufbau skizzieren: Einstieg, Nutzen, Beweis, Aufruf']],
+ firmenwebseite:[['Grundlagen','Seitenstruktur festlegen (Start, Leistungen, Über uns, Kontakt)'],['Gestaltung','Startseite und eine Unterseite als Muster entwerfen'],['Start','Kontaktdaten und Öffnungszeiten prüfen']],
+ shop:[['Grundlagen','Sortiment, Preise und Versandarten festhalten'],['Gestaltung','Produktseite und Warenkorb entwerfen'],['Start','Rechtliche Pflichtangaben für den Verkauf prüfen lassen']],
+ portfolio:[['Grundlagen','Die besten Arbeiten auswählen und kurz beschreiben'],['Gestaltung','Raster für Arbeitsproben entwerfen'],['Start','Bildrechte der gezeigten Arbeiten klären']],
+ blog:[['Grundlagen','Themen und Rhythmus der Beiträge festlegen'],['Gestaltung','Beitragsseite und Übersicht entwerfen'],['Start','Zwei bis drei erste Beiträge vorbereiten']],
+ webapp:[['Grundlagen','Wichtigste Abläufe der Nutzer als Schritte aufschreiben'],['Gestaltung','Bedienoberfläche als Skizze entwerfen'],['Start','Fehlerfälle und Randfälle durchspielen']],
+ sonstiges:[['Grundlagen','Beschreiben, was am Ende fertig sein soll']]
+};
+var BY_FEATURE={
+ kontakt:[['Funktionen','Kontaktformular mit Pflichtfeldern und Fehlermeldungen anlegen'],['Funktionen','Empfängeradresse und Datenschutzhinweis klären'],['Start','Absenden mit einem echten Test prüfen']],
+ termin:[['Funktionen','Verfügbare Zeiten und Dauer der Termine festlegen'],['Funktionen','Bestätigung und Absage für Termine planen']],
+ galerie:[['Funktionen','Bilder auswählen, benennen und für das Web verkleinern'],['Funktionen','Beschreibungstexte für Bilder schreiben']],
+ blog:[['Funktionen','Beitragsvorlage mit Titel, Datum und Bild anlegen']],
+ shop:[['Funktionen','Zahlungsanbieter vergleichen – Auswahl nur nach eigener Freigabe'],['Funktionen','Bestellablauf und Bestätigungsmail planen'],['Start','AGB, Widerruf und Versandinfos bereitstellen']],
+ login:[['Funktionen','Festlegen, wer sich anmelden darf und was er sieht'],['Funktionen','Passwort-Zurücksetzen und Sicherheit planen']],
+ newsletter:[['Funktionen','Anmeldeformular mit Einwilligungstext planen'],['Funktionen','Abmeldung in jeder Nachricht vorsehen']],
+ mehrsprachig:[['Funktionen','Sprachen festlegen und Texte übersetzen lassen'],['Funktionen','Sprachumschalter entwerfen']],
+ seo:[['Funktionen','Seitentitel und Beschreibungen pro Seite schreiben'],['Funktionen','Bilder mit Alternativtexten versehen']],
+ rechtstexte:[['Start','Impressum und Datenschutzerklärung bereitstellen und prüfen lassen']]
+};
+
+var storageOk=true;
+var state={activeId:null,projects:[]};
+var editingIdea=null;
+
+function uid(){return 'p'+Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+function validId(v){return typeof v==='string'&&/^[A-Za-z0-9_-]{1,64}$/.test(v)?v:uid()}
+function str(v,n){return typeof v==='string'?v.replace(/\r/g,'').slice(0,n):''}
+function now(){return new Date().toISOString()}
+
+function sanitizeProject(p){
+ if(!p||typeof p!=='object')return null;
+ var feats=Array.isArray(p.features)?p.features:[];
+ var seen={};
+ var proj={
+  id:validId(p.id),
+  name:str(p.name,120).trim()||'Unbenanntes Projekt',
+  type:LABEL_TYPE[p.type]?p.type:'sonstiges',
+  audience:str(p.audience,500),
+  goal:str(p.goal,1000),
+  features:FEATURES.map(function(f){return f[0]}).filter(function(k){return feats.indexOf(k)>-1}),
+  ideas:[],tasks:[],
+  updated:str(p.updated,40)||now()
+ };
+ (Array.isArray(p.ideas)?p.ideas:[]).slice(0,200).forEach(function(i){
+  var t=str(i&&i.text,1000).trim();if(!t)return;
+  var id=validId(i.id);while(seen[id])id=uid();seen[id]=1;proj.ideas.push({id:id,text:t});
+ });
+ (Array.isArray(p.tasks)?p.tasks:[]).slice(0,200).forEach(function(k){
+  var t=str(k&&k.text,300).trim();if(!t)return;
+  var id=validId(k.id);while(seen[id])id=uid();seen[id]=1;
+  proj.tasks.push({id:id,group:GROUPS.indexOf(k.group)>-1?k.group:'Grundlagen',text:t,done:k.done===true});
+ });
+ return proj;
+}
+function load(){
+ try{
+  var probe='__s58_probe__';localStorage.setItem(probe,'1');localStorage.removeItem(probe);
+ }catch(e){storageOk=false;return}
+ try{
+  var raw=localStorage.getItem(KEY);if(!raw)return;
+  var d=JSON.parse(raw);
+  var list=(d&&Array.isArray(d.projects)?d.projects:[]).slice(0,50).map(sanitizeProject).filter(Boolean);
+  state.projects=list;
+  state.activeId=list.some(function(p){return p.id===d.activeId})?d.activeId:(list[0]?list[0].id:null);
+ }catch(e){state={activeId:null,projects:[]}}
+}
+function save(){
+ if(!storageOk)return false;
+ try{localStorage.setItem(KEY,JSON.stringify({version:1,activeId:state.activeId,projects:state.projects}));return true}
+ catch(e){storageOk=false;say('Speichern im Browser ist nicht möglich. Lade eine Sicherung herunter, damit nichts verloren geht.');return false}
+}
+function active(){for(var i=0;i<state.projects.length;i++)if(state.projects[i].id===state.activeId)return state.projects[i];return null}
+function say(t){var n=$('#werkStatus');if(n)n.textContent=t}
+function touch(p){p.updated=now()}
+function el(tag,attrs,kids){
+ var n=document.createElement(tag);
+ Object.keys(attrs||{}).forEach(function(k){
+  if(k==='text')n.textContent=attrs[k];else if(k==='class')n.className=attrs[k];else n.setAttribute(k,attrs[k]);
+ });
+ (kids||[]).forEach(function(c){n.appendChild(c)});return n;
+}
+function fmt(iso){try{return new Date(iso).toLocaleDateString('de-DE')}catch(e){return ''}}
+
+/* --- Aufgaben aus Vorlagen --- */
+function templateTasks(p){
+ var out=[];var seen={};
+ function add(list){list.forEach(function(t){var k=t[0]+'|'+t[1];if(!seen[k]){seen[k]=1;out.push({group:t[0],text:t[1]})}})}
+ add(BY_TYPE[p.type]||[]);add(COMMON);
+ p.features.forEach(function(f){add(BY_FEATURE[f]||[])});
+ out.sort(function(a,b){return GROUPS.indexOf(a.group)-GROUPS.indexOf(b.group)});
+ return out;
+}
+function generateTasks(p){
+ var doneKeys={};p.tasks.forEach(function(t){if(t.done)doneKeys[t.group+'|'+t.text]=1});
+ p.tasks=templateTasks(p).map(function(t){return {id:uid(),group:t.group,text:t.text,done:!!doneKeys[t.group+'|'+t.text]}});
+ touch(p);
+}
+
+/* --- Darstellung --- */
+function renderProjects(){
+ var ul=$('#projList');ul.textContent='';
+ if(!state.projects.length){var li=el('li',{class:'empty',text:'Noch keine Projekte.'});ul.appendChild(li);return}
+ state.projects.forEach(function(p){
+  var b=el('button',{type:'button','data-open':p.id,'aria-current':String(p.id===state.activeId)},[
+   el('span',{text:p.name}),el('small',{text:(LABEL_TYPE[p.type]||'')+' · '+fmt(p.updated)})]);
+  ul.appendChild(el('li',{},[b]));
+ });
+}
+function renderForm(){
+ var p=active();
+ $('#projEmpty').hidden=!!p;$('#projForm').hidden=!p;$('#ideaBlock').hidden=!p;$('#taskBlock').hidden=!p;$('#orderBlock').hidden=!p;
+ if(!p)return;
+ $('#pName').value=p.name;$('#pType').value=p.type;$('#pAudience').value=p.audience;$('#pGoal').value=p.goal;
+ $$('#pFeatures input').forEach(function(c){c.checked=p.features.indexOf(c.value)>-1});
+}
+function renderIdeas(){
+ var p=active();var ul=$('#ideaList');ul.textContent='';if(!p)return;
+ if(!p.ideas.length){ul.appendChild(el('li',{class:'empty',text:'Noch keine Ideen notiert.'}));return}
+ p.ideas.forEach(function(i){
+  var li=el('li');
+  if(editingIdea===i.id){
+   var inp=el('input',{type:'text',maxlength:'1000','aria-label':'Idee bearbeiten','data-edit-input':i.id});inp.value=i.text;
+   li.appendChild(inp);
+   li.appendChild(el('button',{type:'button',class:'wbtn sm solid','data-idea-save':i.id,text:'Speichern'}));
+   li.appendChild(el('button',{type:'button',class:'wbtn sm','data-idea-cancel':i.id,text:'Abbrechen'}));
+  }else{
+   li.appendChild(el('span',{class:'txt',text:i.text}));
+   li.appendChild(el('button',{type:'button',class:'wbtn sm','data-idea-edit':i.id,'aria-label':'Idee bearbeiten: '+i.text,text:'Bearbeiten'}));
+   li.appendChild(el('button',{type:'button',class:'wbtn sm danger','data-idea-del':i.id,'aria-label':'Idee löschen: '+i.text,text:'Löschen'}));
+  }
+  ul.appendChild(li);
+ });
+ var f=$('[data-edit-input]');if(f){f.focus();f.setSelectionRange(f.value.length,f.value.length)}
+}
+function renderTasks(){
+ var p=active();var box=$('#taskGroups');box.textContent='';if(!p)return;
+ var total=p.tasks.length,done=p.tasks.filter(function(t){return t.done}).length;
+ $('#taskBar').style.width=(total?Math.round(done/total*100):0)+'%';
+ $('#taskCount').textContent=total?(done+' von '+total+' Aufgaben erledigt'):'Noch keine Aufgabenliste. Erstelle sie aus der Vorlage.';
+ GROUPS.forEach(function(g){
+  var items=p.tasks.filter(function(t){return t.group===g});if(!items.length)return;
+  box.appendChild(el('h4',{text:g}));
+  var ul=el('ul',{class:'task-list'});
+  items.forEach(function(t){
+   var cb=el('input',{type:'checkbox',id:'t-'+t.id,'data-task':t.id});cb.checked=t.done;
+   var lab=el('label',{for:'t-'+t.id,class:'txt',text:t.text});lab.style.cssText='margin:0;font-size:14px;cursor:pointer';
+   var li=el('li',{class:t.done?'done':''},[cb,lab]);
+   li.querySelector('label').className='txt';ul.appendChild(li);
+  });
+  box.appendChild(ul);
+ });
+}
+function renderAll(){renderProjects();renderForm();renderIdeas();renderTasks()}
+
+/* --- Aufbau von Auswahlfeldern --- */
+TYPES.forEach(function(t){$('#pType').appendChild(el('option',{value:t[0],text:t[1]}))});
+FEATURES.forEach(function(f){
+ var id='f-'+f[0];
+ var cb=el('input',{type:'checkbox',id:id,value:f[0]});
+ $('#pFeatures').appendChild(el('label',{class:'chk',for:id},[cb,el('span',{text:f[1]})]));
+});
+
+/* --- Ereignisse --- */
+function newProject(){
+ if(state.projects.length>=50){say('Es sind höchstens 50 Projekte möglich.');return}
+ var p=sanitizeProject({id:uid(),name:'Neues Projekt',type:'landingpage',features:[],ideas:[],tasks:[]});
+ state.projects.unshift(p);state.activeId=p.id;editingIdea=null;save();renderAll();
+ say('Neues Projekt angelegt'+(storageOk?' und im Browser gespeichert.':'. Speichern im Browser ist nicht möglich.'));
+ var n=$('#pName');n.focus();n.select();
+}
+$('#projNew').addEventListener('click',newProject);
+$('#projList').addEventListener('click',function(e){
+ var b=e.target.closest('[data-open]');if(!b)return;
+ state.activeId=b.getAttribute('data-open');editingIdea=null;save();renderAll();
+});
+function updateFromForm(){
+ var p=active();if(!p)return;
+ p.name=$('#pName').value.slice(0,120);p.type=$('#pType').value;p.audience=$('#pAudience').value.slice(0,500);p.goal=$('#pGoal').value.slice(0,1000);
+ p.features=$$('#pFeatures input:checked').map(function(c){return c.value});
+ touch(p);if(save())say('Gespeichert (nur in diesem Browser).');renderProjects();
+}
+$('#projForm').addEventListener('input',updateFromForm);
+$('#projForm').addEventListener('submit',function(e){e.preventDefault()});
+$('#projDelete').addEventListener('click',function(){
+ var p=active();if(!p)return;
+ if(!window.confirm('Projekt „'+(p.name||'ohne Namen')+'“ samt Ideen und Aufgaben endgültig löschen?'))return;
+ state.projects=state.projects.filter(function(x){return x.id!==p.id});
+ state.activeId=state.projects[0]?state.projects[0].id:null;editingIdea=null;save();renderAll();say('Projekt gelöscht.');
+});
+$('#ideaForm').addEventListener('submit',function(e){
+ e.preventDefault();var p=active();if(!p)return;
+ var inp=$('#ideaInput');var t=inp.value.trim();
+ if(!t){say('Bitte zuerst eine Idee eingeben.');return}
+ if(p.ideas.length>=200){say('Es sind höchstens 200 Ideen pro Projekt möglich.');return}
+ p.ideas.push({id:uid(),text:t.slice(0,1000)});touch(p);inp.value='';save();renderIdeas();renderProjects();say('Idee hinzugefügt.');inp.focus();
+});
+$('#ideaList').addEventListener('click',function(e){
+ var p=active();if(!p)return;var b=e.target.closest('button');if(!b)return;
+ var id;
+ if((id=b.getAttribute('data-idea-edit'))){editingIdea=id;renderIdeas();return}
+ if((id=b.getAttribute('data-idea-cancel'))){editingIdea=null;renderIdeas();return}
+ if((id=b.getAttribute('data-idea-save'))){
+  var inp=$('[data-edit-input]');var t=inp?inp.value.trim():'';
+  if(!t){say('Eine Idee darf nicht leer sein. Zum Entfernen „Löschen“ wählen.');return}
+  p.ideas.forEach(function(i){if(i.id===id)i.text=t.slice(0,1000)});editingIdea=null;touch(p);save();renderIdeas();say('Idee geändert.');return;
+ }
+ if((id=b.getAttribute('data-idea-del'))){
+  p.ideas=p.ideas.filter(function(i){return i.id!==id});if(editingIdea===id)editingIdea=null;touch(p);save();renderIdeas();say('Idee gelöscht.');
+ }
+});
+$('#ideaList').addEventListener('keydown',function(e){
+ if(!e.target.matches('[data-edit-input]'))return;
+ if(e.key==='Enter'){e.preventDefault();var s=$('[data-idea-save]');if(s)s.click()}
+ if(e.key==='Escape'){editingIdea=null;renderIdeas()}
+});
+$('#taskGen').addEventListener('click',function(){
+ var p=active();if(!p)return;generateTasks(p);save();renderTasks();renderProjects();say('Aufgabenliste aus Vorlage erstellt ('+p.tasks.length+' Aufgaben).');
+});
+$('#taskGroups').addEventListener('change',function(e){
+ var cb=e.target.closest('[data-task]');var p=active();if(!cb||!p)return;
+ p.tasks.forEach(function(t){if(t.id===cb.getAttribute('data-task'))t.done=cb.checked});touch(p);save();renderTasks();
+});
+
+/* --- Sicherung --- */
+function download(name,text,type){
+ var url=URL.createObjectURL(new Blob([text],{type:type}));
+ var a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(function(){URL.revokeObjectURL(url)},3000);
+}
+function slug(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40)||'projekt'}
+$('#exportBtn').addEventListener('click',function(){
+ if(!state.projects.length){say('Es gibt noch nichts zu sichern.');return}
+ var data={app:'make-it-real-werkstatt',version:1,exportedAt:now(),activeId:state.activeId,projects:state.projects};
+ download('make-it-real-werkstatt-sicherung-'+now().slice(0,10)+'.json',JSON.stringify(data,null,2),'application/json');
+ say('Sicherung heruntergeladen ('+state.projects.length+' Projekt'+(state.projects.length===1?'':'e')+').');
+});
+$('#importBtn').addEventListener('click',function(){$('#importFile').click()});
+$('#importFile').addEventListener('change',function(e){
+ var f=e.target.files&&e.target.files[0];if(!f)return;
+ if(f.size>2*1024*1024){say('Die Datei ist zu groß für eine Sicherung (höchstens 2 MB).');e.target.value='';return}
+ var r=new FileReader();
+ r.onload=function(){
+  try{
+   var d=JSON.parse(String(r.result));
+   if(!d||d.app!=='make-it-real-werkstatt'||!Array.isArray(d.projects))throw new Error('format');
+   var incoming=d.projects.slice(0,50).map(sanitizeProject).filter(Boolean);
+   if(!incoming.length)throw new Error('leer');
+   var added=0,updated=0;
+   incoming.forEach(function(p){
+    var k=-1;state.projects.forEach(function(x,n){if(x.id===p.id)k=n});
+    if(k>-1){state.projects[k]=p;updated++}else{if(state.projects.length<50){state.projects.push(p);added++}}
+   });
+   if(!active())state.activeId=state.projects[0]?state.projects[0].id:null;
+   editingIdea=null;save();renderAll();
+   say('Sicherung importiert: '+added+' neu, '+updated+' aktualisiert.');
+  }catch(err){say('Die Datei ist keine gültige Werkstatt-Sicherung. Es wurde nichts verändert.')}
+  e.target.value='';
+ };
+ r.onerror=function(){say('Die Datei konnte nicht gelesen werden.');e.target.value=''};
+ r.readAsText(f);
+});
+
+/* --- Auftrag für Claude Code (Textdatei) --- */
+$('#orderBtn').addEventListener('click',function(){
+ var p=active();if(!p)return;
+ var L=[];
+ L.push('UMSETZUNGSAUFTRAG FÜR CLAUDE CODE');
+ L.push('Erstellt am '+new Date().toLocaleDateString('de-DE')+' mit der Projektwerkstatt „Make it real.“ (lokale Vorlage, keine KI-Erstellung)');
+ L.push('');
+ L.push('PROJEKT');
+ L.push('Name: '+(p.name||'–'));
+ L.push('Typ: '+(LABEL_TYPE[p.type]||'–'));
+ L.push('Zielgruppe: '+(p.audience||'–'));
+ L.push('Ziel: '+(p.goal||'–'));
+ L.push('');
+ L.push('GEWÜNSCHTE FUNKTIONEN');
+ if(p.features.length)p.features.forEach(function(f){L.push('- '+LABEL_FEAT[f])});else L.push('- keine ausgewählt');
+ L.push('');
+ L.push('IDEEN');
+ if(p.ideas.length)p.ideas.forEach(function(i,n){L.push((n+1)+'. '+i.text.replace(/\n+/g,' '))});else L.push('- keine notiert');
+ L.push('');
+ L.push('AUFGABEN');
+ if(p.tasks.length){GROUPS.forEach(function(g){var it=p.tasks.filter(function(t){return t.group===g});if(!it.length)return;L.push(g+':');it.forEach(function(t){L.push('  ['+(t.done?'x':' ')+'] '+t.text)})})}
+ else L.push('- Noch keine Aufgabenliste erstellt');
+ L.push('');
+ L.push('RAHMENREGELN');
+ L.push('- Zuerst Projektanweisungen (CLAUDE.md) lesen und den Git-Stand prüfen; vorhandene Änderungen sichern, auf einem eigenen Branch arbeiten, keine neueren Arbeiten überschreiben.');
+ L.push('- Nur das Beschriebene umsetzen; keine neuen kostenpflichtigen Dienste.');
+ L.push('- Keine Änderungen an Domains, Zugangsdaten, Zahlungsfunktionen oder Datenbanken ohne ausdrückliche Freigabe.');
+ L.push('- Vorhandene Projektprüfungen ausführen und genau dokumentieren, was tatsächlich getestet wurde.');
+ L.push('- Veröffentlichen nur nach ausdrücklicher Freigabe; keine erfolgreiche Veröffentlichung ohne Nachweis behaupten.');
+ L.push('- Fehlende Berechtigungen konkret benennen.');
+ L.push('');
+ download('Umsetzungsauftrag-'+slug(p.name)+'.txt',L.join('\r\n'),'text/plain;charset=utf-8');
+ say('Auftrag als Textdatei heruntergeladen. Gib die Datei selbst an Claude Code weiter – hier wurde nichts gesendet.');
+});
+
+load();renderAll();
+if(!storageOk)say('Hinweis: Dein Browser erlaubt kein lokales Speichern. Die Werkstatt funktioniert, aber nur bis zum Neuladen – lade Sicherungen herunter.');
+})();
+
 </script></body></html>

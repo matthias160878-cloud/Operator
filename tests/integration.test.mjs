@@ -1356,6 +1356,21 @@ test("App installieren: Manifest, Symbole, Service Worker, Offline-Seite und Tex
   assert.ok(buy.includes("Autopilot S") && buy.includes("Autopilot L") && buy.includes("Noch nicht buchbar") && buy.includes("vorläufig"), "Autopilot als Demnächst, nicht buchbar");
 });
 
+test("Drei weitere Designkonzepte (Holzwerk Nord, Taktwerk, Klarbuch): Seiten, Vorschaubilder und Karten", async () => {
+  for (const [slug, marke] of [["holzwerk", "Holzwerk Nord"], ["taktwerk", "taktwerk"], ["klarbuch", "Klarbuch"]]) {
+    const r = await fetch(`${BASE}/hauptseite/referenzen/${slug}/index.html`);
+    assert.equal(r.status, 200, slug);
+    const h = await r.text();
+    assert.ok(h.includes(marke) && h.includes("Zurück zur SECRET-58-Zentrale") && h.includes("Eigenes Designkonzept, kein Kundenauftrag") && h.includes("#/kontakt?bereich=webdesign&text=") && h.includes("frei erfunden"), `${slug}: Rücklink, Kennzeichnung, Kontaktlink, Hinweis auf erfundene Angaben`);
+    assert.ok(["#/impressum", "#/datenschutz", "#/agb", "#/kontakt"].every((l) => h.includes(l)), `${slug}: Rechtstextlinks`);
+    assert.ok(!/<script/i.test(h), `${slug}: kein Skript, keine externen Abhängigkeiten`);
+    assert.equal((await fetch(`${BASE}/hauptseite/referenzen/${slug}/vorschau.jpg`)).status, 200, `${slug}: Vorschaubild`);
+  }
+  const idx = await (await fetch(`${BASE}/hauptseite/index.html`)).text();
+  assert.equal(idx.split("konzeptKarten()").length - 1, 4, "Definition plus Karten in Referenzen, Webdesign und Portfolio");
+  assert.ok(idx.includes("referenzen/${k[0]}/index.html") && idx.includes("Eigenes Designkonzept, kein Kundenauftrag"));
+});
+
 test("Designkonzept Make it real: Unterseite, Motiv und Karten in Referenzen, Webdesign und Portfolio", async () => {
   const kurz = await fetch(`${BASE}/hauptseite`, { redirect: "manual" });
   assert.equal(kurz.status, 200, "/hauptseite ohne Dateiname muss die Hauptseite zeigen");

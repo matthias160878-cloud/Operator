@@ -1371,10 +1371,15 @@ test("Designkonzept Make it real: Unterseite, Motiv und Karten in Referenzen, We
   assert.ok((await ort.text()).includes("Verlassene Orte"));
   assert.equal((await fetch(`${BASE}/hauptseite/referenzen/make-it-real-2/vorschau.jpg`)).status, 200);
   assert.equal((await fetch(`${BASE}/hauptseite/referenzen/make-it-real-2/ruinen/var/02-himmel.webp`)).status, 200);
+  const beauty = await fetch(`${BASE}/hauptseite/referenzen/beauty-konzept/index.html`);
+  assert.equal(beauty.status, 200, "Referenz 3 (Beauty-Konzept) muss ohne Anmeldung erreichbar sein");
+  assert.ok((await beauty.text()).includes("Studio"));
+  for (const f of ["vorschau.jpg", "fotos/01.jpg", "var/01-a.webp"]) assert.equal((await fetch(`${BASE}/hauptseite/referenzen/beauty-konzept/${f}`)).status, 200, f);
   const idx = await (await fetch(`${BASE}/hauptseite/index.html`)).text();
   assert.equal(idx.split("kolibriKarte()").length - 1, 4, "Definition plus Karten in Referenzen, Webdesign und Portfolio");
   assert.ok(idx.includes('href="referenzen/make-it-real/index.html">Kolibri-Konzept ansehen') && idx.includes("Designkonzept / Demo-Projekt") && idx.includes("Ähnliche Webseite anfragen") && idx.includes("Eigenes Designkonzept, kein Kundenauftrag"));
   assert.ok(idx.includes("referenzen/make-it-real-2/index.html") && idx.includes("Kolibri-Konzept 2 ansehen"), "Referenz 2 muss auf der Hauptseite verlinkt sein");
+  assert.ok(idx.includes("referenzen/beauty-konzept/index.html") && idx.includes("Beauty-Konzept ansehen"), "Referenz 3 muss auf der Hauptseite verlinkt sein");
 });
 
 test("Verlauf der Zentrale: historische Kopien sind ohne Anmeldung erreichbar", async () => {

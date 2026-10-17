@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "Motor de voz da ElevenLabs — gerir a biblioteca de vozes, gerar pré-visualizações de voz off e importar vozes.",
+  "envWarning": "A ElevenLabs ainda não está configurada. Regista <envKey>ELEVENLABS_API_KEY</envKey> em <envFile>.env</envFile> para usar voz off e importação de vozes. A biblioteca de vozes pode, ainda assim, ser usada para planeamento.",
+  "addManual": "Criar voz manualmente",
+  "importFromElevenLabs": "Importar da ElevenLabs",
+  "form": {
+    "namePlaceholder": "Nome",
+    "voiceIdPlaceholder": "ID da voz (ElevenLabs)",
+    "languagePlaceholder": "Idioma",
+    "submit": "Adicionar"
+  },
+  "confirmDelete": "Eliminar mesmo a voz?",
+  "importFailed": "Falha na importação.",
+  "previewFailed": "Falha na pré-visualização.",
+  "unknownError": "Erro desconhecido.",
+  "empty": "Ainda não há vozes na biblioteca.",
+  "active": "Ativa",
+  "inactive": "Inativa",
+  "remove": "Remover",
+  "preview": {
+    "heading": "Pré-visualização da voz",
+    "defaultText": "Olá, este é um exemplo para esta voz.",
+    "selectPlaceholder": "Escolher voz…",
+    "play": "Reproduzir pré-visualização"
+  }
+}

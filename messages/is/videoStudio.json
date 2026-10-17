@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Myndskeiðaferli óháð veitu: sniðastjóri, skiptanlegar myndskeiðaveitur, tenging við talsetningu og texta við myndskeið (sjá Content Factory fyrir hvert efnisatriði).",
+  "providerCardTitle": "Myndskeiðaveitur",
+  "providerNotePrefix": "Fleiri veitur (gervigreindar-myndskeiða-API, myndasöfn með myndskeiðum) má bæta við í gegnum sama",
+  "providerNoteSuffix": "-viðmót án þess að snerta núverandi kóða.",
+  "formatManagerTitle": "Sniðastjóri",
+  "assetsTitle": "Myndskeiðaeignir",
+  "assetsEmpty": "Engin myndskeið unnin enn — vinnsla fer fram í gegnum efnisatriði í Content Factory þegar myndskeiðaveita hefur verið stillt."
+}

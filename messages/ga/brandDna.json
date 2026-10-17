@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Do bhranda. Do stíl. Gach áit. Téann na sonraí seo go huathoibríoch isteach i Content Brain agus sna gníomhairí scripte, hooks agus hashtaganna.",
+  "form": {
+    "nameLabel": "Ainm an bhranda",
+    "industryLabel": "Tionscal",
+    "descriptionLabel": "Cur síos",
+    "descriptionHint": "Cad a fhágann gur branda ar leith é?",
+    "audienceLabel": "Spriocghrúpa",
+    "languageLabel": "Teanga",
+    "tonalityLabel": "Tonn",
+    "humorLabel": "Greann",
+    "formalityLabel": "Foirmiúlacht",
+    "preferredWordsLabel": "Focail is fearr",
+    "forbiddenWordsLabel": "Focail toirmiscthe",
+    "preferredCtasLabel": "CTAnna is fearr",
+    "brandValuesLabel": "Luachanna an bhranda",
+    "topicsLabel": "Topaicí",
+    "csvHint": "scartha le camóga",
+    "colorsLabel": "Dathanna",
+    "colorsHint": "scartha le camóga, m.sh. #6D5BFF",
+    "fontsLabel": "Clófhoirne",
+    "visualRulesLabel": "Rialacha amhairc",
+    "saveError": "Theip ar an sábháil.",
+    "unknownError": "Earráid anaithnid.",
+    "saving": "Ag sábháil…",
+    "save": "Sábháil Brand DNA",
+    "savedAt": "Sábháilte ag {time}"
+  }
+}

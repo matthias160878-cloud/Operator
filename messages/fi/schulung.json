@@ -1,0 +1,86 @@
+{
+  "title": "Koulutus",
+  "subtitle": "Vaiheittaiset ohjeet ja selitysvideot jokaiseen SECRET 58:n osioon — voit tarkistaa ne täältä milloin tahansa.",
+  "welcomeBanner": {
+    "title": "Tervetuloa SECRET 58:aan!",
+    "body": "Kiitos ostoksestasi. Ennen aloitusta kannattaa vilkaista alla olevaa ”Ensimmäiset askeleet” — jotta tekoälyagentit työskentelevät alusta asti oikean datasi kanssa."
+  },
+  "stepsLabel": "Vaiheet",
+  "openPage": "Avaa sivu",
+  "topics": {
+    "firstSteps": {
+      "title": "Ensimmäiset askeleet",
+      "description": "Tee nämä kolme asiaa ensin, niin kaikki tekoälyagentit työskentelevät oikean datan kanssa paikkamerkkien sijaan.",
+      "steps": [
+        "Tarkista kohdasta ”Integraatiot”, onko tekoälypalvelu otettu käyttöön. Tekoälytoiminnot toimivat ylläpitäjän käyttöoikeuksilla, joten et tarvitse omaa tekoälytilausta. Ilman tekoälypalvelua sovellus toimii mallipohjatilassa.",
+        "Täytä kohdassa ”Brand DNA” oman brändisi tiedot (sävy, kohderyhmä, arvot) — tekoälyagentit käyttävät niitä jokaisessa luomassaan tekstissä.",
+        "Luo kohdassa ”Ideat ja inspiraatio” tai ”Content Brain” ensimmäinen idea tai kampanja."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Näin ideasta tulee valmista, hyväksyttyä sisältöä.",
+      "steps": [
+        "Luo Content Brainissa uusi kampanja aiheella ja kohdealustoilla — siitä syntyy automaattisesti useita sisältöjä.",
+        "Content Factoryssa jokainen sisältö käy läpi tilat: Luonnos → Tarkistuksessa → Hyväksytty → Ajastettu → Julkaistu.",
+        "Hyväksyntä on manuaalinen vaihe ja pakollinen — mitään ei julkaista automaattisesti ilman vahvistusta.",
+        "Sisällön yksityiskohtaisessa näkymässä voit luoda skriptin, voiceoverin, tekstitykset, hashtagit ja pikkukuvan erikseen uudelleen."
+      ]
+    },
+    "studios": {
+      "title": "Script-, Voice-, Video- ja Design Studio",
+      "description": "Erikoistyökalut jokaiselle sisällön osalle.",
+      "steps": [
+        "Script Studio: luo skriptejä rakenteella Hook → Ongelma → Hyöty → Esimerkki → Lopputulos → CTA.",
+        "Voice Studio: tuo tai luo oma ElevenLabs-ääni ja luo sen jälkeen voiceover suoraan skriptistä.",
+        "Design Studio: pikkukuva-agentti ehdottaa otsikon, visuaalisen idean, tekstin, asettelun ja kuvauksen kuvasta.",
+        "Video Studio: näyttää videopalveluiden liittämisen nykytilan (formaattienhallinta, palvelun tila)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Sisältökalenteri ja julkaisu",
+      "description": "Minne ajastetut julkaisut päätyvät — ja miksi postaus todella lähtee (tai ei lähde).",
+      "steps": [
+        "Sisältökalenterissa näkyvät kaikki sisällöt, joilla on ajastettu julkaisupäivä.",
+        "Ennen jokaista julkaisua PublishingAgent tarkistaa livenä, onko kohdealusta kohdassa ”Sosiaalinen media” todella merkitty tilaan ”Yhdistetty”.",
+        "Ilman oikeaa alustayhteyttä näytetään rehellisesti virhe sen sijaan, että julkaisua teeskenneltäisiin."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytiikka ja kasvu",
+      "description": "Oikeita lukuja omasta suorituskyvystäsi — ja suosituksia automaation sijaan.",
+      "steps": [
+        "Analytiikka näyttää yksinomaan todellista, tuotua tai käsin kirjattua suorituskykydataa.",
+        "Kasvu-sivu laskee tästä datasta parhaat julkaisuajat, menestyneet hashtagit ja formaatit.",
+        "Tärkeää: automaattista seuraaja- tai sitoutumismäärän kasvattamista (botti-toimintaa) ei tarkoituksella ole — se rikkoisi jokaisen alustan käyttöehtoja."
+      ]
+    },
+    "inbox": {
+      "title": "Saapuneet",
+      "description": "Tekoälyn vastausluonnokset viesteihin — hyväksynnällä ennen lähetystä.",
+      "steps": [
+        "Koska yhtään alustaa ei (vielä) ole yhdistetty OAuthilla, keskustelut luodaan tällä hetkellä käsin sen sijaan, että ne haettaisiin livenä.",
+        "MessageAgent ehdottaa vastauksen Brand DNA:n ja keskusteluhistorian perusteella.",
+        "Luonnos täytyy tarkistaa ja hyväksyä käsin, ennen kuin se katsotaan lähetetyksi — todellinen lähetys epäonnistuu ilman alustayhteyttä rehellisesti sen sijaan, että onnistumista teeskenneltäisiin."
+      ]
+    },
+    "revenue": {
+      "title": "Tulojen seuranta",
+      "description": "Yleiskatsaus kaikkiin alustatuloihin yhdessä paikassa — maksu tulee silti alustojen kautta.",
+      "steps": [
+        "Tulot kirjataan käsin, koska TikTok/Meta eivät tarjoa julkista tulorajapintaa ja YouTube vaatii siihen kumppaniohjelman käyttöoikeuden (ei vielä yhdistetty).",
+        "Varsinainen maksu tapahtuu aina suoraan kyseisen alustan kautta (esim. YouTube Google AdSensen kautta) — SECRET 58 ei hoida maksuja."
+      ]
+    },
+    "integrations": {
+      "title": "Integraatiot ja API-avaimet",
+      "description": "Mistä jokainen yhteyden tila tulee ja mihin sopiva avain tallennetaan.",
+      "steps": [
+        "Jokainen rivi näyttää todellisen, livenä tarkistetun tilan — ei koskaan teeskenneltyä yhteyttä.",
+        "Kun tila on ”Ei määritetty”, ”Hae API-avain” johtaa palveluntarjoajan viralliselle sivulle.",
+        "Käyttöoikeustietoja ei koskaan tallenneta selaimeen, vaan ainoastaan suojattuna palvelimelle. Jos käyttöoikeus puuttuu, ylläpitäjä ottaa sen käyttöön.",
+        "Kustannukset: Pro ja Maxi ovat tilauksia, kuukausittain tai vuosittain. Ajankohtaiset hinnat näkyvät kohdassa ”Paketti ja laskutus”. Jokaisella ulkoisella palveluntarjoajalla on oma, riippumaton hinnoittelumallinsa (ilmainen / käyttöön perustuva / tilaus) — Integraatiot-sivulla jokaisen palvelun kohdalla kerrotaan, mikä malli on voimassa, ja linkki palveluntarjoajan ajankohtaisiin hintoihin."
+      ]
+    }
+  }
+}

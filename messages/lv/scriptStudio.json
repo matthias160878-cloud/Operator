@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Skriptu un āķu dzinējs: izveido platformām piemērotus skriptus pēc struktūras Hook → Problem → Value → Example → Payoff → CTA, kā arī vairākus āķu variantus.",
+  "form": {
+    "topicLabel": "Tēma",
+    "topicPlaceholder": "piem., 5 veidi, kā MI aģenti ietaupa laiku",
+    "platformLabel": "Platforma",
+    "generateButton": "Ģenerēt skriptu un āķus",
+    "generateFailed": "Ģenerēšana neizdevās.",
+    "unknownError": "Nezināma kļūda."
+  },
+  "hookTypes": {
+    "direkt": "Tiešs",
+    "neugierig": "Ziņkārīgs",
+    "story": "Stāsts",
+    "problem": "Problēma",
+    "zahlen": "Skaitļi",
+    "kontroversSachlich": "Pretrunīgs (lietišķs)",
+    "educational": "Izglītojošs"
+  },
+  "hooksHeading": "Āķu varianti",
+  "engine": {
+    "label": "Dzinējs: {provider}",
+    "templateMode": "Sagataves režīms (MI pakalpojumu sniedzējs nav nokonfigurēts)"
+  },
+  "script": {
+    "heading": "Skripts",
+    "save": "Saglabāt kā satura vienību",
+    "saving": "Saglabā…"
+  }
+}

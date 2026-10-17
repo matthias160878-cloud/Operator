@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Твой бренд. Твой стиль. Везде. Эти данные автоматически попадают в Content Brain, а также к агентам сценариев, хуков и хештегов.",
+  "form": {
+    "nameLabel": "Название бренда",
+    "industryLabel": "Отрасль",
+    "descriptionLabel": "Описание",
+    "descriptionHint": "Чем выделяется бренд?",
+    "audienceLabel": "Целевая аудитория",
+    "languageLabel": "Язык",
+    "tonalityLabel": "Тональность",
+    "humorLabel": "Юмор",
+    "formalityLabel": "Формальность",
+    "preferredWordsLabel": "Предпочитаемые слова",
+    "forbiddenWordsLabel": "Запрещённые слова",
+    "preferredCtasLabel": "Предпочитаемые призывы к действию",
+    "brandValuesLabel": "Ценности бренда",
+    "topicsLabel": "Темы",
+    "csvHint": "через запятую",
+    "colorsLabel": "Цвета",
+    "colorsHint": "через запятую, например #6D5BFF",
+    "fontsLabel": "Шрифты",
+    "visualRulesLabel": "Визуальные правила",
+    "saveError": "Не удалось сохранить.",
+    "unknownError": "Неизвестная ошибка.",
+    "saving": "Сохранение…",
+    "save": "Сохранить Brand DNA",
+    "savedAt": "Сохранено в {time}"
+  }
+}

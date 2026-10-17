@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "İçeri bir fikir — dışarı eksiksiz, platforma uygun bir içerik planı. ContentBrainAgent, Brand DNA'ni dikkate alır ve seçtiğin her platform için uygun hook'ları, script'leri, hashtag'leri ve küçük resim konseptlerini taslak olarak üretir.",
+  "campaignsHeading": "Kampanyalar",
+  "noCampaigns": "Henüz kampanya oluşturulmadı.",
+  "campaignSummary": "{count} içerik öğesi · {audience}",
+  "form": {
+    "textEngineLabel": "Metin motoru:",
+    "templateMode": "Şablon modu (yapılandırılmış yapay zekâ sağlayıcısı yok)",
+    "modeTemplate": "Şablon",
+    "topicLabel": "Konu / fikir",
+    "topicPlaceholder": "ör. Otonom yapay zekâ ajanlarının çalışma hayatını neden değiştirdiğini anlat.",
+    "audienceLabel": "Hedef kitle",
+    "audiencePlaceholder": "ör. 25-45 yaş, teknolojiyle ilgilenenler",
+    "goalLabel": "Hedef",
+    "languageLabel": "Dil",
+    "platformsLabel": "Platformlar",
+    "itemsPerPlatformLabel": "Platform başına içerik öğesi ({count})",
+    "generateError": "Üretim başarısız oldu.",
+    "unknownError": "Bilinmeyen hata.",
+    "submitLoading": "Content Brain çalışıyor…",
+    "submitIdle": "İçerik planı üret",
+    "resultHeading": "Kampanya oluşturuldu — {count} içerik öğesi taslak olarak oluşturuldu.",
+    "resultDescription": "{mode} modunda üretildi. Tüm içerikler DRAFT olarak başlar — Content Factory'de incele ve düzenle.",
+    "resultLink": "Content Factory'ye git →"
+  }
+}

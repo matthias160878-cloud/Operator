@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revokeApprovalOnChange } from "@/lib/contentWorkflow";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { runAgent } from "@/lib/agents/runner";
@@ -18,7 +19,8 @@ async function handlePOST(
     const result = await runAgent("voice", workspaceId, `Voiceover für "${item.title}"`, () =>
       generateVoiceover({ workspaceId, contentItemId: id, text: item.script || item.hook })
     );
-    return NextResponse.json(result);
+    const approvalRevoked = await revokeApprovalOnChange(id);
+    return NextResponse.json({ ...result, approvalRevoked });
   } catch (error) {
     if (isHttpError(error)) throw error;
     return NextResponse.json(

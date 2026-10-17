@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Ytelsestall fra faktisk tilgjengelige data — så snart plattformer er koblet til, fylles denne visningen med ekte verdier.",
+  "statViewsTotal": "Visninger totalt",
+  "statLikesTotal": "Likes totalt",
+  "statComments": "Kommentarer",
+  "statShares": "Delinger",
+  "chartTitle": "Innholdsytelse over tid",
+  "chartLegend": "Visninger (fiolett) · Engasjement % (turkis)",
+  "chartEmpty": "Ingen analytics-data tilgjengelig ennå.",
+  "bestPerformingTitle": "Best presterende innhold",
+  "bestPerformingEmpty": "Ingen data ennå.",
+  "learningAgentTitle": "Learning Agent — anbefalinger"
+}

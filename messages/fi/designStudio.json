@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Pikkukuvakonseptit, kuvamateriaalit ja Canva-integraatio.",
+  "imageAssetsTitle": "Kuvamateriaalit",
+  "imageAssetsEmpty": "Kuvamateriaaleja ei ole vielä.",
+  "thumbnailAgent": {
+    "title": "Pikkukuva-agentti",
+    "description": "Luo tekstikonseptin (otsikko, visuaalinen idea, asettelu, CTA) — valmisteltu kuvageneraattorin liittämistä varten. Kuvaa ei vielä luoda.",
+    "inputPlaceholder": "Pikkukuvan aihe",
+    "submitButton": "Luo konsepti",
+    "errorGenerationFailed": "Generointi epäonnistui.",
+    "errorUnknown": "Tuntematon virhe.",
+    "fieldTitle": "Otsikko",
+    "fieldVisualIdea": "Visuaalinen idea",
+    "fieldText": "Teksti",
+    "fieldLayout": "Asettelu",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Kuvaus kuvasta"
+  }
+}

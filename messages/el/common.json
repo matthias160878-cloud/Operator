@@ -1,0 +1,93 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Κάτι παραπάνω από περιεχόμενο.",
+    "footerLine2": "Μια ολόκληρη μηχανή περιεχομένου.",
+    "workspace": "Χώρος εργασίας",
+    "role": "Διαχειριστής"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "schulung": "Εκπαίδευση",
+    "contentFactory": "Content Factory",
+    "ideas": "Ιδέες & Έμπνευση",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Social Media",
+    "calendar": "Ημερολόγιο περιεχομένου",
+    "analytics": "Analytics",
+    "growth": "Ανάπτυξη",
+    "revenue": "Έσοδα",
+    "inbox": "Εισερχόμενα",
+    "agents": "Πράκτορες",
+    "integrations": "Ενσωματώσεις",
+    "settings": "Ρυθμίσεις",
+    "billing": "Πακέτο & Χρέωση",
+    "sales": "Πωλήσεις & Shop",
+    "website": "Ο ιστότοπός μου"
+  },
+  "topbar": {
+    "menuOpen": "Άνοιγμα μενού",
+    "menuClose": "Κλείσιμο μενού",
+    "searchPlaceholder": "Αναζήτηση περιεχομένου, έργων, καμπανιών …",
+    "notifications": "Ειδοποιήσεις",
+    "language": "Γλώσσα"
+  },
+  "footer": {
+    "help": "Βοήθεια",
+    "privacy": "Απόρρητο",
+    "imprint": "Νομικές πληροφορίες",
+    "systemOnline": "Σύστημα online"
+  },
+  "actions": {
+    "save": "Αποθήκευση",
+    "cancel": "Ακύρωση",
+    "delete": "Διαγραφή",
+    "edit": "Επεξεργασία",
+    "create": "Δημιουργία",
+    "close": "Κλείσιμο",
+    "back": "Πίσω",
+    "loading": "Φόρτωση …"
+  },
+  "status": {
+    "connected": "Συνδεδεμένο",
+    "notConfigured": "Δεν έχει ρυθμιστεί",
+    "error": "Σφάλμα"
+  },
+  "statusBadge": {
+    "CONNECTED": "Συνδεδεμένο",
+    "ACTIVE": "Ενεργό",
+    "COMPLETED": "Ολοκληρώθηκε",
+    "RUNNING": "Εκτελείται",
+    "SUCCESS": "Επιτυχία",
+    "PUBLISHED": "Δημοσιεύτηκε",
+    "APPROVED": "Εγκρίθηκε",
+    "SCHEDULED": "Προγραμματισμένο",
+    "WAITING": "Σε αναμονή",
+    "IN_REVIEW": "Σε έλεγχο",
+    "NOT_CONFIGURED": "Δεν έχει ρυθμιστεί",
+    "IDLE": "Έτοιμο",
+    "DRAFT": "Πρόχειρο",
+    "ARCHIVED": "Αρχειοθετημένο",
+    "ERROR": "Σφάλμα",
+    "REJECTED": "Απορρίφθηκε",
+    "RECEIVED": "Ελήφθη",
+    "PENDING": "Σε εκκρεμότητα"
+  },
+  "integrationStatus": {
+    "notConfigured": "Δεν έχει ρυθμιστεί — λείπουν μεταβλητές: {vars}.",
+    "verifyFailedGeneric": "Η σύνδεση απέτυχε.",
+    "verifyFailedStatus": "Το {service} απάντησε με κατάσταση {status}.",
+    "verifyUnreachable": "Δεν ήταν δυνατή η επικοινωνία με το {service}.",
+    "connected": "Συνδεδεμένο."
+  },
+  "mediaPreview": {
+    "expand": "Μεγέθυνση",
+    "close": "Κλείσιμο"
+  }
+}

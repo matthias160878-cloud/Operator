@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Leiðbeiningar skref fyrir skref og útskýringarmyndbönd um hvert svæði í SECRET 58 — alltaf aðgengileg hér til uppflettingar.",
+ "schulung.topics.firstSteps.steps.0": "Athugaðu undir „Samþættingar“ hvort gervigreindarveita sé uppsett. Gervigreindareiginleikarnir keyra í gegnum aðgang rekstraraðilans, svo þú þarft ekki þína eigin gervigreindaráskrift. Án gervigreindarveitu virkar appið í sniðmátshamnum.",
+ "schulung.topics.integrations.steps.2": "Aðgangsupplýsingar eru aldrei vistaðar í vafranum, heldur aðeins varðar á þjóninum. Ef aðgang vantar setur rekstraraðilinn hann upp.",
+ "schulung.topics.integrations.steps.3": "Kostnaður: Pro og Maxi eru áskriftir, mánaðarlegar eða árlegar. Gildandi verð má finna undir „Pakki og reikningar“. Hver ytri veita er með sitt eigið, óháða kostnaðarlíkan (ókeypis / eftir notkun / áskrift) — á síðunni Samþættingar kemur fram fyrir hverja þjónustu hvaða líkan gildir, með tengli á gildandi verð hjá veitunni.",
+ "integrations.costNote": "Þinn SECRET 58 pakki (Pro eða Maxi) er áskrift, sjá „Pakki og reikningar“. Hver ytri þjónusta hér er með sitt eigið, óháð kostnaðarlíkan hjá viðkomandi veitu — SECRET 58 rukkar aldrei aukalega fyrir þær."
+}

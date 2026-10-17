@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Upute korak po korak i videozapisi s objašnjenjima za svako područje aplikacije SECRET 58 — uvijek ih možeš pogledati ovdje.",
+ "schulung.topics.firstSteps.steps.0": "Pod „Integracije“ provjeri je li postavljen pružatelj umjetne inteligencije. Funkcije umjetne inteligencije rade preko pristupa operatora, pa ti ne treba vlastita pretplata na umjetnu inteligenciju. Bez pružatelja umjetne inteligencije aplikacija radi u načinu predložaka.",
+ "schulung.topics.integrations.steps.2": "Pristupni podaci nikad se ne spremaju u pregledniku, nego samo zaštićeno na poslužitelju. Ako pristup nedostaje, postavlja ga operator.",
+ "schulung.topics.integrations.steps.3": "Troškovi: Pro i Maxi su pretplate, mjesečne ili godišnje. Aktualne cijene nalaze se pod „Paket i naplata“. Svaki vanjski pružatelj ima vlastiti, neovisan model troškova (besplatno / prema korištenju / pretplata) — na stranici Integracije za svaku je uslugu navedeno koji model vrijedi, s poveznicom na aktualne cijene kod pružatelja.",
+ "integrations.costNote": "Tvoj paket SECRET 58 (Pro ili Maxi) pretplata je, vidi „Paket i naplata“. Svaka vanjska usluga ovdje ima vlastiti, neovisan model troškova kod dotičnog pružatelja — SECRET 58 za njih nikad ne naplaćuje dodatno."
+}

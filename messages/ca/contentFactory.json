@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Tots els elements de contingut en un sol lloc: crea, duplica, reescriu, enriqueix amb veu en off/subtítols i fes-los passar pel flux d'aprovació.",
+  "statusTabs": {
+    "all": "Tots",
+    "draft": "Esborrany",
+    "inReview": "En revisió",
+    "approved": "Aprovat",
+    "scheduled": "Planificat",
+    "published": "Publicat",
+    "archived": "Arxivat"
+  },
+  "newItem": {
+    "openButton": "Nou element de contingut",
+    "titleLabel": "Títol",
+    "platformLabel": "Plataforma",
+    "create": "Crea",
+    "closeAria": "Tanca"
+  },
+  "table": {
+    "empty": "Encara no hi ha elements de contingut: crea'n un manualment o amb Content Brain.",
+    "title": "Títol",
+    "platform": "Plataforma",
+    "format": "Format",
+    "status": "Estat",
+    "updated": "Actualitzat",
+    "actions": "Accions",
+    "duplicate": "Duplica",
+    "delete": "Elimina",
+    "confirmDelete": "Segur que vols eliminar l'element de contingut?"
+  },
+  "detail": {
+    "backLink": "Torna a Content Factory",
+    "actionFailed": "L'acció ha fallat.",
+    "actions": {
+      "review": "Envia a revisió",
+      "approve": "Aprova",
+      "reject": "Rebutja",
+      "schedule": "Planifica",
+      "publish": "Publica",
+      "copy": "Copia la publicació",
+      "markPublished": "Publicat manualment"
+    },
+    "rejectReasonPrompt": "Motiu del rebuig (opcional):",
+    "scheduleDatePrompt": "Data de publicació (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Títol",
+      "hook": "Hook",
+      "script": "Guió",
+      "caption": "Caption"
+    },
+    "save": "Desa",
+    "saving": "Desant…",
+    "hashtags": {
+      "heading": "Hashtags i paraules clau",
+      "regenerate": "Torna a generar",
+      "empty": "Encara no s'han generat hashtags."
+    },
+    "voiceover": {
+      "heading": "Veu en off",
+      "generate": "Genera",
+      "empty": "Encara no s'ha generat cap veu en off."
+    },
+    "subtitles": {
+      "heading": "Subtítols",
+      "generate": "Genera (SRT)",
+      "download": "Descarrega {file}",
+      "empty": "Encara no s'han generat subtítols."
+    },
+    "video": {
+      "heading": "Renderització de vídeo",
+      "request": "Sol·licita la renderització",
+      "note": "Canal de vídeo independent del proveïdor (secció 11/12): ara mateix no hi ha cap proveïdor de vídeo configurat (vegeu Integracions)."
+    },
+    "scriptVariants": {
+      "heading": "Variants del guió",
+      "newVariant": "Nova variant",
+      "empty": "Encara no hi ha variants.",
+      "variantSummary": "Variant {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Genera a partir d'aquest element de contingut derivats adaptats a cada plataforma per a més canals. Més canals = més possibilitats que la gent vegi el vídeo.",
+      "selectAll": "Selecciona totes les plataformes",
+      "clearAll": "Esborra la selecció",
+      "generateButton": "Genera {count} derivats"
+    },
+    "approvalRevoked": "Aprovació retirada: la publicació s'ha modificat i s'ha de tornar a revisar i aprovar.",
+    "job": {
+      "QUEUED": "Enviament automàtic planificat per a {when}.",
+      "RUNNING": "Enviament en curs (data {when}).",
+      "SUCCEEDED": "Publicat a la data {when}.",
+      "FAILED": "L'enviament a la data {when} ha fallat; la publicació torna a estar «Aprovat».",
+      "UNKNOWN": "Enviament a la data {when}: resultat poc clar.",
+      "CANCELED": "L'enviament planificat ({when}) no s'ha executat."
+    },
+    "copied": "Text i hashtags copiats: ara enganxa'ls a l'aplicació de la plataforma.",
+    "copyFailed": "No s'ha pogut copiar: selecciona el text manualment.",
+    "markPublishedConfirm": "Has publicat tu mateix la publicació? Es marcarà com a publicada i es descartarà un enviament planificat."
+  }
+}

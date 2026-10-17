@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Flux video independent de furnizor: Format Manager, furnizori video interschimbabili, conectarea voiceover-ului și a subtitrărilor (vezi Content Factory, pentru fiecare element de conținut).",
+  "providerCardTitle": "Furnizori video",
+  "providerNotePrefix": "Alți furnizori (API-uri video IA, biblioteci de videoclipuri stock) pot fi adăugați prin aceeași interfață",
+  "providerNoteSuffix": ", fără a modifica codul existent.",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Resurse video",
+  "assetsEmpty": "Încă nu au fost randate videoclipuri — randarea se face prin elementele de conținut din Content Factory, imediat ce un furnizor video este configurat."
+}

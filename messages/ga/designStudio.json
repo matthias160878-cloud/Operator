@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Coincheapa mionsamhlacha, sócmhainní íomhá agus comhtháthú Canva.",
+  "imageAssetsTitle": "Sócmhainní íomhá",
+  "imageAssetsEmpty": "Gan aon sócmhainní íomhá go fóill.",
+  "thumbnailAgent": {
+    "title": "Gníomhaire mionsamhlacha",
+    "description": "Cruthaíonn sé coincheap téacs (teideal, smaoineamh amhairc, leagan amach, CTA) — réitithe le haghaidh nasctha le gineadóir íomhánna. Ní ghintear íomhá go fóill.",
+    "inputPlaceholder": "Téama don mhionsamhail",
+    "submitButton": "Gin coincheap",
+    "errorGenerationFailed": "Theip ar an nginiúint.",
+    "errorUnknown": "Earráid anaithnid.",
+    "fieldTitle": "Teideal",
+    "fieldVisualIdea": "Smaoineamh amhairc",
+    "fieldText": "Téacs",
+    "fieldLayout": "Leagan amach",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Cur síos ar an íomhá"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Nastavitve",
+  "description": "Delovni prostor, uporabniki in sistemske informacije. Dostopni podatki se upravljajo izključno prek okoljskih spremenljivk (glej <code>.env.example</code>).",
+  "workspace": {
+    "title": "Delovni prostor",
+    "name": "Ime",
+    "slug": "Slug",
+    "createdAt": "Ustvarjeno"
+  },
+  "users": {
+    "title": "Uporabniki in vloge",
+    "note": "Večnajemniški podatkovni model je povsem pripravljen (izolacija delovnih prostorov za vse tabele). Prava prijavna/avtentikacijska površina z več uporabniki je naslednji korak razvoja — trenutno aplikacija deluje z natanko tem privzetim delovnim prostorom."
+  },
+  "system": {
+    "title": "Sistem",
+    "contentItems": "Vsebinski elementi",
+    "campaigns": "Kampanje",
+    "mediaAssets": "Medijska sredstva",
+    "agentRuns": "Zagoni agentov",
+    "dbNote": "Podatkovna zbirka: SQLite (lokalno, <code>prisma/dev.db</code>) prek Prisma ORM. Za produkcijo <codeSpaced>DATABASE_URL</codeSpaced> preklopi na Postgres/MySQL (ponudnika v <codeSpaced>prisma/schema.prisma</codeSpaced> prilagodi)."
+  },
+  "onboarding": {
+    "title": "Pomočnik za nastavitev",
+    "description": "Majhna okna po korakih za ponudnike UI, platforme družbenih omrežij in govorni izhod, ki se prikažejo ob prvem odprtju.",
+    "reopen": "Znova odpri pomočnika za nastavitev"
+  }
+}

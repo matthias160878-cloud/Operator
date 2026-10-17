@@ -1,0 +1,86 @@
+{
+  "title": "Opplæring",
+  "subtitle": "Trinnvise veiledninger og forklaringsvideoer for hvert område i SECRET 58 — alltid tilgjengelig her for oppslag.",
+  "welcomeBanner": {
+    "title": "Velkommen til SECRET 58!",
+    "body": "Takk for kjøpet. Før du setter i gang, lønner det seg å ta en rask titt på «Kom i gang» nedenfor — slik at KI-agentene jobber med dine ekte data fra første stund."
+  },
+  "stepsLabel": "Trinn",
+  "openPage": "Åpne siden",
+  "topics": {
+    "firstSteps": {
+      "title": "Kom i gang",
+      "description": "Gjør disse tre tingene først, så jobber alle KI-agentene med ekte data i stedet for plassholdere.",
+      "steps": [
+        "Under «Integrasjoner» sjekker du om en KI-leverandør er satt opp. KI-funksjonene går via operatørens tilganger, så du trenger ikke noe eget KI-abonnement. Uten KI-leverandør fungerer appen i malmodus.",
+        "Fyll ut din egen merkevare under «Brand DNA» (tone, målgruppe, verdier) — KI-agentene bruker det i hver tekst de genererer.",
+        "La den første ideen eller kampanjen genereres under «Ideer og inspirasjon» eller «Content Brain»."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Slik blir en idé til ferdig, godkjent innhold.",
+      "steps": [
+        "Opprett en ny kampanje i Content Brain med tema og målplattformer — da oppstår automatisk flere innholdselementer.",
+        "I Content Factory går hvert innholdselement gjennom en status: Utkast → Til vurdering → Godkjent → Planlagt → Publisert.",
+        "Godkjenning er et manuelt og obligatorisk trinn — ingenting publiseres automatisk uten bekreftelse.",
+        "I detaljvisningen til et innholdselement kan script, voiceover, undertekster, hashtags og thumbnail genereres på nytt hver for seg."
+      ]
+    },
+    "studios": {
+      "title": "Script-, Voice-, Video- og Design Studio",
+      "description": "De spesialiserte verktøyene for hver innholdsbit.",
+      "steps": [
+        "Script Studio: lager script etter strukturen Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: importer eller opprett din egen ElevenLabs-stemme, og lag deretter voiceover direkte fra et script.",
+        "Design Studio: thumbnail-agenten foreslår tittel, visuell idé, tekst, layout og bildebeskrivelse.",
+        "Video Studio: viser status for tilkoblingen til videoleverandører (formatbehandler, leverandørstatus)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Innholdskalender og publisering",
+      "description": "Hvor planlagte innlegg havner — og hvorfor et innlegg faktisk blir publisert (eller ikke).",
+      "steps": [
+        "I innholdskalenderen vises alle innholdselementer med planlagt publiseringsdato.",
+        "Før hver publisering sjekker PublishingAgent live om målplattformen under «Sosiale medier» virkelig er merket som «Tilkoblet».",
+        "Uten en ekte plattformtilkobling vises det ærlig en feil i stedet for å late som om noe ble publisert."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics og vekst",
+      "description": "Ekte tall om din egen ytelse — og anbefalinger i stedet for automatisering.",
+      "steps": [
+        "Analytics viser utelukkende ekte, importerte eller manuelt registrerte ytelsesdata.",
+        "Vekstsiden beregner beste publiseringstidspunkter, vellykkede hashtags og formater ut fra disse dataene.",
+        "Viktig: det finnes bevisst ingen automatisk økning av følgere/engasjement (ingen botadferd) — det ville brutt vilkårene til alle plattformer."
+      ]
+    },
+    "inbox": {
+      "title": "Innboks",
+      "description": "KI-svarutkast til meldinger — med godkjenning før utsending.",
+      "steps": [
+        "Siden ingen plattform (ennå) er koblet til via OAuth, opprettes samtaler for øyeblikket manuelt i stedet for å hentes live.",
+        "MessageAgent foreslår et svar basert på Brand DNA og samtaleforløpet.",
+        "Utkastet må vurderes og godkjennes manuelt før det regnes som sendt — en ekte utsending mislykkes ærlig uten plattformtilkobling i stedet for å late som om den lyktes."
+      ]
+    },
+    "revenue": {
+      "title": "Inntektssporing",
+      "description": "Oversikt over alle plattforminntekter på ett sted — utbetalingen skjer likevel via selve plattformene.",
+      "steps": [
+        "Inntekter registreres manuelt, siden TikTok/Meta ikke tilbyr noe offentlig inntekts-API og YouTube krever tilgang til partnerprogrammet (ennå ikke tilkoblet).",
+        "Selve utbetalingen skjer alltid direkte via den enkelte plattformen (f.eks. YouTube via Google AdSense) — SECRET 58 håndterer ingen utbetalinger."
+      ]
+    },
+    "integrations": {
+      "title": "Integrasjoner og API-nøkler",
+      "description": "Hvor hver tilkoblingsstatus kommer fra, og hvor den riktige nøkkelen legges inn.",
+      "steps": [
+        "Hver rad viser den ekte, live-kontrollerte statusen — aldri en oppdiktet tilkobling.",
+        "Ved «Ikke konfigurert» fører «Hent API-nøkkel» til leverandørens offisielle side.",
+        "Tilgangsdata lagres aldri i nettleseren, bare beskyttet på serveren. Mangler en tilgang, setter operatøren den opp.",
+        "Kostnader: Pro og Maxi er abonnementer, månedlig eller årlig. De gjeldende prisene står under «Pakke og fakturering». Hver eksterne leverandør har sin egen, uavhengige kostnadsmodell (gratis / bruksbasert / abonnement) — på Integrasjoner-siden står det for hver tjeneste hvilken modell som gjelder, med lenke til leverandørens gjeldende priser."
+      ]
+    }
+  }
+}

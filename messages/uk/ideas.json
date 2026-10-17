@@ -1,0 +1,22 @@
+{
+  "title": "Ідеї та натхнення",
+  "subtitle": "Тематичні кластери, серії та формати для майбутнього контенту — згенеровані IdeaAgent або додані вручну.",
+  "board": {
+    "topicLabel": "Тема для нових ідей",
+    "topicPlaceholder": "напр. Продуктивність із ШІ-агентами",
+    "generateButton": "Згенерувати ідеї",
+    "manualButton": "Вручну",
+    "manualTitlePlaceholder": "Назва ідеї",
+    "addButton": "Додати",
+    "generateError": "Помилка під час генерації ідей.",
+    "unknownError": "Невідома помилка.",
+    "emptyState": "Ідей ще немає — згенеруй їх або додай вручну.",
+    "minutesUnit": "~{count} хв",
+    "statusNew": "Нова",
+    "statusInProgress": "У роботі",
+    "statusUsed": "Використана",
+    "statusArchived": "В архіві",
+    "sourceAiGenerated": "Згенеровано ШІ",
+    "sourceManual": "Вручну"
+  }
+}

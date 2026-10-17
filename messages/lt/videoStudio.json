@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Nuo tiekėjo nepriklausomas vaizdo įrašų srautas: formatų tvarkyklė, keičiami vaizdo įrašų tiekėjai, balso įrašo ir subtitrų prijungimas (žr. Content Factory kiekvienam turinio elementui).",
+  "providerCardTitle": "Vaizdo įrašų tiekėjai",
+  "providerNotePrefix": "Kitus tiekėjus (DI vaizdo įrašų API, stokinių vaizdo įrašų bibliotekas) galima pridėti per tą pačią",
+  "providerNoteSuffix": "sąsają, nelieičiant esamo kodo.",
+  "formatManagerTitle": "Formatų tvarkyklė",
+  "assetsTitle": "Vaizdo įrašų ištekliai",
+  "assetsEmpty": "Vaizdo įrašų dar nesugeneruota — generavimas vyksta per turinio elementus Content Factory, kai tik bus sukonfigūruotas vaizdo įrašų tiekėjas."
+}

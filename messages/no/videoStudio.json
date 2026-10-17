@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Leverandøruavhengig videopipeline: formatbehandler, utskiftbare videoleverandører, tilkobling av voiceover og undertekster (se Content Factory per innholdselement).",
+  "providerCardTitle": "Videoleverandører",
+  "providerNotePrefix": "Flere leverandører (KI-video-API-er, stockvideobibliotek) kan legges til via samme",
+  "providerNoteSuffix": "-grensesnitt uten å røre eksisterende kode.",
+  "formatManagerTitle": "Formatbehandler",
+  "assetsTitle": "Videoelementer",
+  "assetsEmpty": "Ingen videoer rendret ennå — rendering skjer via innholdselementer i Content Factory så snart en videoleverandør er konfigurert."
+}

@@ -1,0 +1,22 @@
+{
+ "title": "Nápady a inšpirácia",
+ "subtitle": "Tematické okruhy, série a formáty pre budúci obsah — vygenerované IdeaAgentom alebo zadané ručne.",
+ "board": {
+  "topicLabel": "Téma pre nové nápady",
+  "topicPlaceholder": "napr. Produktivita s agentmi AI",
+  "generateButton": "Vygenerovať nápady",
+  "manualButton": "Ručne",
+  "manualTitlePlaceholder": "Názov nápadu",
+  "addButton": "Pridať",
+  "generateError": "Chyba pri generovaní nápadov.",
+  "unknownError": "Neznáma chyba.",
+  "emptyState": "Zatiaľ žiadne nápady — vygeneruj ich alebo ich pridaj ručne.",
+  "minutesUnit": "~{count} min.",
+  "statusNew": "Nový",
+  "statusInProgress": "Rozpracovaný",
+  "statusUsed": "Použitý",
+  "statusArchived": "Archivovaný",
+  "sourceAiGenerated": "Vygenerované AI",
+  "sourceManual": "Ručne"
+ }
+}

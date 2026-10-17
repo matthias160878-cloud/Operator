@@ -1,0 +1,93 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Rohkem kui sisu.",
+    "footerLine2": "Terviklik sisumasin.",
+    "workspace": "Tööruum",
+    "role": "Administraator"
+  },
+  "nav": {
+    "dashboard": "Töölaud",
+    "schulung": "Koolitus",
+    "contentFactory": "Content Factory",
+    "ideas": "Ideed ja inspiratsioon",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Sotsiaalmeedia",
+    "calendar": "Sisukalender",
+    "analytics": "Analüütika",
+    "growth": "Kasv",
+    "revenue": "Tulud",
+    "inbox": "Postkast",
+    "agents": "Agendid",
+    "integrations": "Integratsioonid",
+    "settings": "Seaded",
+    "billing": "Pakett ja arveldus",
+    "sales": "Müük ja pood",
+    "website": "Minu veebileht"
+  },
+  "topbar": {
+    "menuOpen": "Ava menüü",
+    "menuClose": "Sulge menüü",
+    "searchPlaceholder": "Otsi sisu, projekte, kampaaniaid …",
+    "notifications": "Teavitused",
+    "language": "Keel"
+  },
+  "footer": {
+    "help": "Abi",
+    "privacy": "Privaatsus",
+    "imprint": "Väljaandja andmed",
+    "systemOnline": "Süsteem on võrgus"
+  },
+  "actions": {
+    "save": "Salvesta",
+    "cancel": "Tühista",
+    "delete": "Kustuta",
+    "edit": "Muuda",
+    "create": "Loo",
+    "close": "Sulge",
+    "back": "Tagasi",
+    "loading": "Laadin …"
+  },
+  "status": {
+    "connected": "Ühendatud",
+    "notConfigured": "Seadistamata",
+    "error": "Viga"
+  },
+  "statusBadge": {
+    "CONNECTED": "Ühendatud",
+    "ACTIVE": "Aktiivne",
+    "COMPLETED": "Lõpetatud",
+    "RUNNING": "Töötab",
+    "SUCCESS": "Õnnestus",
+    "PUBLISHED": "Avaldatud",
+    "APPROVED": "Kinnitatud",
+    "SCHEDULED": "Planeeritud",
+    "WAITING": "Ootel",
+    "IN_REVIEW": "Ülevaatusel",
+    "NOT_CONFIGURED": "Seadistamata",
+    "IDLE": "Valmis",
+    "DRAFT": "Visand",
+    "ARCHIVED": "Arhiveeritud",
+    "ERROR": "Viga",
+    "REJECTED": "Tagasi lükatud",
+    "RECEIVED": "Saadud",
+    "PENDING": "Ootel"
+  },
+  "integrationStatus": {
+    "notConfigured": "Seadistamata — puuduvad muutujad: {vars}.",
+    "verifyFailedGeneric": "Ühendus ebaõnnestus.",
+    "verifyFailedStatus": "{service} vastas olekuga {status}.",
+    "verifyUnreachable": "Teenust {service} ei õnnestunud kätte saada.",
+    "connected": "Ühendatud."
+  },
+  "mediaPreview": {
+    "expand": "Näita suuremana",
+    "close": "Sulge"
+  }
+}

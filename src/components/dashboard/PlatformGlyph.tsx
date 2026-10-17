@@ -6,7 +6,8 @@ export type PlatformGlyphKey =
   | "TIKTOK"
   | "LINKEDIN"
   | "FACEBOOK"
-  | "X";
+  | "X"
+  | "WEBSITE";
 
 /**
  * Minimalistische, selbst gezeichnete Icon-Glyphen für die Plattform-Badges.
@@ -84,6 +85,12 @@ const GLYPHS: Record<PlatformGlyphKey, (props: SVGProps<SVGSVGElement>) => React
       />
     </IconBase>
   ),
+  WEBSITE: (props) => (
+    <IconBase {...props}>
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z" stroke="currentColor" strokeWidth="1.6" />
+    </IconBase>
+  ),
 };
 
 export function PlatformGlyph({
@@ -93,6 +100,7 @@ export function PlatformGlyph({
   platform: PlatformGlyphKey;
   className?: string;
 }) {
-  const Glyph = GLYPHS[platform];
+  // Unbekannte Quellen (z. B. Blog, Newsletter) bekommen das Webseiten-Symbol statt eines Absturzes.
+  const Glyph = GLYPHS[platform] ?? GLYPHS.WEBSITE;
   return <Glyph className={className} />;
 }

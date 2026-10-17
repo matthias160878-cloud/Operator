@@ -1,0 +1,20 @@
+{
+ "pageTitle": "Design Studio",
+ "subtitle": "Koncepty miniatúr, obrazové podklady a integrácia Canva.",
+ "imageAssetsTitle": "Obrazové podklady",
+ "imageAssetsEmpty": "Zatiaľ nie sú k dispozícii žiadne obrazové podklady.",
+ "thumbnailAgent": {
+  "title": "Agent pre miniatúry",
+  "description": "Vytvorí textový koncept (názov, vizuálny nápad, rozloženie, CTA) — pripravený na pripojenie generátora obrázkov. Zatiaľ sa nevytvára žiadny obrázok.",
+  "inputPlaceholder": "Téma miniatúry",
+  "submitButton": "Vygenerovať koncept",
+  "errorGenerationFailed": "Generovanie zlyhalo.",
+  "errorUnknown": "Neznáma chyba.",
+  "fieldTitle": "Názov",
+  "fieldVisualIdea": "Vizuálny nápad",
+  "fieldText": "Text",
+  "fieldLayout": "Rozloženie",
+  "fieldCta": "CTA",
+  "fieldImageDescription": "Popis obrázka"
+ }
+}

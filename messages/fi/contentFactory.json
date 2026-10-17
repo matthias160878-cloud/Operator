@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Kaikki sisällöt yhdessä paikassa — luo, monista, kirjoita uusiksi, rikasta ääniraidalla ja tekstityksillä ja vie hyväksyntätyönkulun läpi.",
+  "statusTabs": {
+    "all": "Kaikki",
+    "draft": "Luonnos",
+    "inReview": "Tarkistuksessa",
+    "approved": "Hyväksytty",
+    "scheduled": "Ajastettu",
+    "published": "Julkaistu",
+    "archived": "Arkistoitu"
+  },
+  "newItem": {
+    "openButton": "Uusi sisältö",
+    "titleLabel": "Otsikko",
+    "platformLabel": "Alusta",
+    "create": "Luo",
+    "closeAria": "Sulje"
+  },
+  "table": {
+    "empty": "Ei vielä sisältöjä — luo yksi käsin tai Content Brainin kautta.",
+    "title": "Otsikko",
+    "platform": "Alusta",
+    "format": "Formaatti",
+    "status": "Tila",
+    "updated": "Päivitetty",
+    "actions": "Toiminnot",
+    "duplicate": "Monista",
+    "delete": "Poista",
+    "confirmDelete": "Poistetaanko sisältö varmasti?"
+  },
+  "detail": {
+    "backLink": "Takaisin Content Factoryyn",
+    "actionFailed": "Toiminto epäonnistui.",
+    "actions": {
+      "review": "Tarkistettavaksi",
+      "approve": "Hyväksy",
+      "reject": "Hylkää",
+      "schedule": "Ajasta",
+      "publish": "Julkaise",
+      "copy": "Kopioi julkaisu",
+      "markPublished": "Julkaistu käsin"
+    },
+    "rejectReasonPrompt": "Hylkäyksen syy (valinnainen):",
+    "scheduleDatePrompt": "Julkaisupäivä (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Otsikko",
+      "hook": "Hook",
+      "script": "Skripti",
+      "caption": "Kuvateksti"
+    },
+    "save": "Tallenna",
+    "saving": "Tallennetaan…",
+    "hashtags": {
+      "heading": "Hashtagit ja avainsanat",
+      "regenerate": "Luo uudelleen",
+      "empty": "Hashtageja ei ole vielä luotu."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Luo",
+      "empty": "Voiceoveria ei ole vielä luotu."
+    },
+    "subtitles": {
+      "heading": "Tekstitykset",
+      "generate": "Luo (SRT)",
+      "download": "Lataa {file}",
+      "empty": "Tekstityksiä ei ole vielä luotu."
+    },
+    "video": {
+      "heading": "Videon renderöinti",
+      "request": "Pyydä renderöintiä",
+      "note": "Palveluntarjoajasta riippumaton videoputki (osio 11/12) — tällä hetkellä videopalvelua ei ole määritetty (katso Integraatiot)."
+    },
+    "scriptVariants": {
+      "heading": "Skriptivariantit",
+      "newVariant": "Uusi variantti",
+      "empty": "Ei vielä variantteja.",
+      "variantSummary": "Variantti {label}"
+    },
+    "repurpose": {
+      "heading": "Käytä sisältö uudelleen",
+      "description": "Luo tästä sisällöstä alustakohtaisia johdannaisia muille kanaville. Mitä useampi kanava, sitä enemmän mahdollisuuksia, että ihmiset näkevät videon.",
+      "selectAll": "Valitse kaikki alustat",
+      "clearAll": "Poista valinta",
+      "generateButton": "Luo {count} johdannaista"
+    },
+    "approvalRevoked": "Hyväksyntä peruttu: julkaisua on muutettu, ja se täytyy tarkistaa ja hyväksyä uudelleen.",
+    "job": {
+      "QUEUED": "Automaattinen lähetys ajastettu: {when}.",
+      "RUNNING": "Lähetys käynnissä (ajankohta {when}).",
+      "SUCCEEDED": "Julkaistu ajankohtana {when}.",
+      "FAILED": "Lähetys ajankohtana {when} epäonnistui, julkaisu on taas tilassa ”Hyväksytty”.",
+      "UNKNOWN": "Lähetys ajankohtana {when}: lopputulos epäselvä.",
+      "CANCELED": "Ajastettua lähetystä ({when}) ei suoritettu."
+    },
+    "copied": "Teksti ja hashtagit kopioitu — liitä ne nyt alustan sovellukseen.",
+    "copyFailed": "Kopiointi ei onnistu — valitse teksti käsin.",
+    "markPublishedConfirm": "Postasitko julkaisun itse? Se merkitään julkaistuksi, ja ajastettu lähetys perutaan."
+  }
+}

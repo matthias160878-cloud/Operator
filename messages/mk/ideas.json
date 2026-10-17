@@ -1,0 +1,22 @@
+{
+  "title": "Идеи и инспирација",
+  "subtitle": "Тематски групи, серии и формати за идната содржина — генерирани од IdeaAgent или внесени рачно.",
+  "board": {
+    "topicLabel": "Тема за нови идеи",
+    "topicPlaceholder": "на пр. Продуктивност со AI агенти",
+    "generateButton": "Генерирај идеи",
+    "manualButton": "Рачно",
+    "manualTitlePlaceholder": "Наслов на идејата",
+    "addButton": "Додај",
+    "generateError": "Грешка при генерирање идеи.",
+    "unknownError": "Непозната грешка.",
+    "emptyState": "Сè уште нема идеи — генерирај или додај рачно.",
+    "minutesUnit": "~{count} мин.",
+    "statusNew": "Нова",
+    "statusInProgress": "Во работа",
+    "statusUsed": "Искористена",
+    "statusArchived": "Архивирана",
+    "sourceAiGenerated": "Генерирана со AI",
+    "sourceManual": "Рачно"
+  }
+}

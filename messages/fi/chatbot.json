@@ -1,0 +1,14 @@
+{
+  "title": "Tekoälyavustaja",
+  "welcome": "Hei! Kysy minulta mitä tahansa SECRET 58:sta — miten otat jotain käyttöön, mistä jokin löytyy tai miten jokin osio toimii.",
+  "inputPlaceholder": "Kirjoita kysymys …",
+  "thinking": "Miettii …",
+  "openButton": "Avaa tekoälyavustaja",
+  "close": "Sulje",
+  "sendButton": "Lähetä",
+  "micButton": "Puhesyöte",
+  "speakToggle": "Lue vastaukset ääneen",
+  "notConfigured": "Tekoälyavustajaa ei ole vielä määritetty — sitä varten täytyy tallentaa tekoälypalvelu (Anthropic tai OpenAI).",
+  "openIntegrations": "Siirry Integraatioihin",
+  "error": "Tekoälyavustaja ei voinut juuri nyt vastata. Yritä myöhemmin uudelleen."
+}

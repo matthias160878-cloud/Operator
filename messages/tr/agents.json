@@ -1,0 +1,21 @@
+{
+  "title": "Agent Monitor",
+  "description": "Tüm SECRET 58 ajanları; durumları, son görevleri ve sonuçlarıyla. Her çalıştırma kaydedilir.",
+  "table": {
+    "agent": "Ajan",
+    "description": "Açıklama",
+    "status": "Durum",
+    "lastTask": "Son görev"
+  },
+  "history": {
+    "title": "Çalıştırma geçmişi",
+    "agent": "Ajan",
+    "task": "Görev",
+    "status": "Durum",
+    "start": "Başlangıç",
+    "end": "Bitiş",
+    "resultError": "Sonuç / Hata",
+    "empty": "Henüz ajan çalıştırması yok.",
+    "completed": "Tamamlandı"
+  }
+}

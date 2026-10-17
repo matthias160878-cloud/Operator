@@ -1,0 +1,26 @@
+{
+  "title": "Inbox",
+  "description": "Messaġġi u kummenti minn kull pjattaforma. MessageAgent jissuġġerixxi tweġibiet — jintbagħat biss dak li int tapprova. Għad m'hemm l-ebda konnessjoni OAuth reali ma' pjattaforma, għalhekk il-konversazzjonijiet jiġu simulati manwalment hawn minflok ma jinġabru live.",
+  "emptyState": "Għad m'hemm l-ebda konversazzjonijiet — issimula waħda biex tibda.",
+  "backToInbox": "Lura għall-Inbox",
+  "newConversation": {
+    "simulateButton": "Issimula konversazzjoni",
+    "simulateHint": "Peress li m'hemm l-ebda konnessjoni reali ma' pjattaforma, tista' hawn issimula messaġġ li jidħol biex tipprova l-abbozz tat-tweġiba bl-AI.",
+    "close": "Agħlaq",
+    "namePlaceholder": "Isem",
+    "handlePlaceholder": "@handle (mhux obbligatorju)",
+    "messagePlaceholder": "Test tal-messaġġ …",
+    "createButton": "Oħloq"
+  },
+  "detail": {
+    "draftFailed": "L-abbozz falla.",
+    "save": "Aħżen",
+    "edit": "Editja",
+    "approveAndSend": "Approva u ibgħat",
+    "requestDraft": "Itlob abbozz ta' tweġiba bl-AI",
+    "openDraftExists": "Diġà hemm abbozz miftuħ hawn fuq — l-ewwel editja/ibgħat.",
+    "simulateMoreHint": "Issimula messaġġ ieħor li jidħol (test mingħajr konnessjoni reali ma' pjattaforma):",
+    "messagePlaceholder": "Test tal-messaġġ …",
+    "addButton": "Żid"
+  }
+}

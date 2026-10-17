@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Концепти за слики (thumbnails), графички ресурси и интеграцијата со Canva.",
+  "imageAssetsTitle": "Графички ресурси",
+  "imageAssetsEmpty": "Сè уште нема графички ресурси.",
+  "thumbnailAgent": {
+    "title": "Агент за слики (thumbnails)",
+    "description": "Создава текстуален концепт (наслов, визуелна идеја, распоред, CTA) — подготвен за поврзување на генератор на слики. Сè уште не се создава слика.",
+    "inputPlaceholder": "Тема за сликата (thumbnail)",
+    "submitButton": "Генерирај концепт",
+    "errorGenerationFailed": "Генерирањето не успеа.",
+    "errorUnknown": "Непозната грешка.",
+    "fieldTitle": "Наслов",
+    "fieldVisualIdea": "Визуелна идеја",
+    "fieldText": "Текст",
+    "fieldLayout": "Распоред",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Опис на сликата"
+  }
+}

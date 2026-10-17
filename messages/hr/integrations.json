@@ -1,0 +1,24 @@
+{
+  "title": "Integracije",
+  "description": "Status svih vanjskih usluga uživo — isključivo na temelju stvarno postavljenih varijabli okruženja. Nema lažnih veza.",
+  "categories": {
+    "AI": "AI pružatelji",
+    "VOICE": "Glas",
+    "PLATFORM": "Društvene platforme",
+    "DESIGN": "Dizajn",
+    "VIDEO": "Video",
+    "TREND": "Trendovi"
+  },
+  "costNote": "Tvoj paket SECRET 58 (Pro ili Maxi) pretplata je, vidi „Paket i naplata“. Svaka vanjska usluga ovdje ima vlastiti, neovisan model troškova kod dotičnog pružatelja — SECRET 58 za njih nikad ne naplaćuje dodatno.",
+  "links": {
+    "getKey": "Nabavi API ključ",
+    "setInRender": "Unesi u Render",
+    "viewPricing": "Pogledaj cijene"
+  },
+  "pricing": {
+    "free": "Besplatno",
+    "payAsYouGo": "Prema potrošnji",
+    "subscription": "Pretplata",
+    "unknown": "Provjeri cijenu kod pružatelja"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Crescita",
+  "subtitle": "Raccomandazioni per portata e crescita, ricavate dai dati di analytics reali dei tuoi contenuti finora: migliori orari di pubblicazione, hashtag e formati di maggior successo.",
+  "warning": "Volutamente <strong>non</strong> inclusi: seguire/mettere mi piace/commentare in modo automatizzato per aumentare artificialmente i follower. Su YouTube, Instagram, TikTok, LinkedIn e Facebook ciò viola i termini di utilizzo e può portare alla sospensione dell'account. Questa pagina fornisce esclusivamente raccomandazioni basate sui dati per i tuoi contenuti.",
+  "filterAll": "Tutte le piattaforme",
+  "emptyState": "Ancora nessun dato di analytics per {platform}. Appena i contenuti pubblicati raccoglieranno dati di performance, qui compariranno le raccomandazioni.",
+  "emptyStateDefaultScope": "questo workspace",
+  "bestPostingTimesTitle": "Migliori orari di pubblicazione",
+  "postingTime": "{day} · ore {hour}",
+  "avgLabel": "Media {percent} ({count})",
+  "topHashtagsTitle": "Hashtag di maggior successo",
+  "topHashtagsEmpty": "Nessun dato sugli hashtag disponibile.",
+  "hashtagTooltip": "Media {percent} di engagement, usato {count}×",
+  "topFormatsTitle": "Migliori formati"
+}

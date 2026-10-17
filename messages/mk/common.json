@@ -1,0 +1,93 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Повеќе од содржина.",
+    "footerLine2": "Една комплетна машина за содржини.",
+    "workspace": "Работен простор",
+    "role": "Администратор"
+  },
+  "nav": {
+    "dashboard": "Контролна табла",
+    "schulung": "Обука",
+    "contentFactory": "Content Factory",
+    "ideas": "Идеи и инспирација",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Социјални мрежи",
+    "calendar": "Календар на содржини",
+    "analytics": "Analytics",
+    "growth": "Раст",
+    "revenue": "Приходи",
+    "inbox": "Сандаче",
+    "agents": "Агенти",
+    "integrations": "Интеграции",
+    "settings": "Поставки",
+    "billing": "Пакет и наплата",
+    "sales": "Продажба и продавница",
+    "website": "Мојата веб-страница"
+  },
+  "topbar": {
+    "menuOpen": "Отвори мени",
+    "menuClose": "Затвори мени",
+    "searchPlaceholder": "Пребарај содржини, проекти, кампањи …",
+    "notifications": "Известувања",
+    "language": "Јазик"
+  },
+  "footer": {
+    "help": "Помош",
+    "privacy": "Приватност",
+    "imprint": "Импресум",
+    "systemOnline": "Системот е достапен"
+  },
+  "actions": {
+    "save": "Зачувај",
+    "cancel": "Откажи",
+    "delete": "Избриши",
+    "edit": "Уреди",
+    "create": "Создај",
+    "close": "Затвори",
+    "back": "Назад",
+    "loading": "Се вчитува …"
+  },
+  "status": {
+    "connected": "Поврзано",
+    "notConfigured": "Не е конфигурирано",
+    "error": "Грешка"
+  },
+  "statusBadge": {
+    "CONNECTED": "Поврзано",
+    "ACTIVE": "Активно",
+    "COMPLETED": "Завршено",
+    "RUNNING": "Се извршува",
+    "SUCCESS": "Успешно",
+    "PUBLISHED": "Објавено",
+    "APPROVED": "Одобрено",
+    "SCHEDULED": "Закажано",
+    "WAITING": "Чека",
+    "IN_REVIEW": "Во проверка",
+    "NOT_CONFIGURED": "Не е конфигурирано",
+    "IDLE": "Подготвено",
+    "DRAFT": "Нацрт",
+    "ARCHIVED": "Архивирано",
+    "ERROR": "Грешка",
+    "REJECTED": "Одбиено",
+    "RECEIVED": "Примено",
+    "PENDING": "Во очекување"
+  },
+  "integrationStatus": {
+    "notConfigured": "Не е конфигурирано — недостасуваат променливи: {vars}.",
+    "verifyFailedGeneric": "Врската не успеа.",
+    "verifyFailedStatus": "{service} одговори со статус {status}.",
+    "verifyUnreachable": "{service} не можеше да се достигне.",
+    "connected": "Поврзано."
+  },
+  "mediaPreview": {
+    "expand": "Прикажи поголемо",
+    "close": "Затвори"
+  }
+}

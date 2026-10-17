@@ -1,0 +1,22 @@
+{
+  "title": "Idejas un iedvesma",
+  "subtitle": "Tēmu kopas, sērijas un formāti nākamajam saturam — ģenerē IdeaAgent vai ievadīti manuāli.",
+  "board": {
+    "topicLabel": "Tēma jaunām idejām",
+    "topicPlaceholder": "piem., Produktivitāte ar MI aģentiem",
+    "generateButton": "Ģenerēt idejas",
+    "manualButton": "Manuāli",
+    "manualTitlePlaceholder": "Idejas nosaukums",
+    "addButton": "Pievienot",
+    "generateError": "Kļūda idejas ģenerēšanā.",
+    "unknownError": "Nezināma kļūda.",
+    "emptyState": "Ideju vēl nav — ģenerē tās vai izveido manuāli.",
+    "minutesUnit": "~{count} min",
+    "statusNew": "Jauna",
+    "statusInProgress": "Izstrādē",
+    "statusUsed": "Izmantota",
+    "statusArchived": "Arhivēta",
+    "sourceAiGenerated": "MI ģenerēta",
+    "sourceManual": "Manuāla"
+  }
+}

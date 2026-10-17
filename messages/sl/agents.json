@@ -1,0 +1,21 @@
+{
+  "title": "Nadzor agentov",
+  "description": "Vsi agenti SECRET 58 s statusom, zadnjo nalogo in rezultatom. Vsak zagon se beleži.",
+  "table": {
+    "agent": "Agent",
+    "description": "Opis",
+    "status": "Status",
+    "lastTask": "Zadnja naloga"
+  },
+  "history": {
+    "title": "Zgodovina zagonov",
+    "agent": "Agent",
+    "task": "Naloga",
+    "status": "Status",
+    "start": "Začetek",
+    "end": "Konec",
+    "resultError": "Rezultat / napaka",
+    "empty": "Še ni zagonov agentov.",
+    "completed": "Dokončano"
+  }
+}

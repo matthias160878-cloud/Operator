@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Entra uma ideia — sai um plano de conteúdo completo e adequado a cada plataforma. O ContentBrainAgent tem em conta o teu Brand DNA e cria, como rascunho, hooks, scripts, hashtags e conceitos de miniatura para cada plataforma escolhida.",
+  "campaignsHeading": "Campanhas",
+  "noCampaigns": "Ainda não foram criadas campanhas.",
+  "campaignSummary": "{count} itens de conteúdo · {audience}",
+  "form": {
+    "textEngineLabel": "Motor de texto:",
+    "templateMode": "Modo de modelo (nenhum fornecedor de IA configurado)",
+    "modeTemplate": "Modelo",
+    "topicLabel": "Tema / ideia",
+    "topicPlaceholder": "p. ex. Explica por que razão os agentes de IA autónomos estão a mudar o mundo do trabalho.",
+    "audienceLabel": "Público-alvo",
+    "audiencePlaceholder": "p. ex. 25-45, interessados em tecnologia",
+    "goalLabel": "Objetivo",
+    "languageLabel": "Idioma",
+    "platformsLabel": "Plataformas",
+    "itemsPerPlatformLabel": "Itens de conteúdo por plataforma ({count})",
+    "generateError": "Falha na geração.",
+    "unknownError": "Erro desconhecido.",
+    "submitLoading": "O Content Brain está a trabalhar…",
+    "submitIdle": "Gerar plano de conteúdo",
+    "resultHeading": "Campanha criada — {count} itens de conteúdo guardados como rascunho.",
+    "resultDescription": "Gerado no modo {mode}. Todos os conteúdos começam como DRAFT — revê-os e edita-os na Content Factory.",
+    "resultLink": "Ir para a Content Factory →"
+  }
+}

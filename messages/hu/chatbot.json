@@ -1,0 +1,14 @@
+{
+  "title": "MI-asszisztens",
+  "welcome": "Szia! Kérdezz tőlem bármit a SECRET 58-ról — hogyan állíts be valamit, hol találsz meg valamit, vagy hogyan működik egy terület.",
+  "inputPlaceholder": "Írd be a kérdésed …",
+  "thinking": "Gondolkodik …",
+  "openButton": "MI-asszisztens megnyitása",
+  "close": "Bezárás",
+  "sendButton": "Küldés",
+  "micButton": "Hangbevitel",
+  "speakToggle": "Válaszok felolvasása",
+  "notConfigured": "Az MI-asszisztens még nincs beállítva — ehhez meg kell adni egy MI-szolgáltatót (Anthropic vagy OpenAI).",
+  "openIntegrations": "Az Integrációkhoz",
+  "error": "Az MI-asszisztens most nem tudott válaszolni. Kérjük, próbáld újra később."
+}

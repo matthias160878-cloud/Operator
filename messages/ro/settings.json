@@ -1,0 +1,27 @@
+{
+  "title": "Setări",
+  "description": "Workspace, utilizatori și informații de sistem. Datele de acces sunt gestionate exclusiv prin variabile de mediu (vezi <code>.env.example</code>).",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Nume",
+    "slug": "Slug",
+    "createdAt": "Creat la"
+  },
+  "users": {
+    "title": "Utilizatori și roluri",
+    "note": "Modelul de date multi-tenant este complet pregătit (izolare workspace pentru toate tabelele). O interfață reală de autentificare cu mai mulți utilizatori este următorul pas de extindere — momentan aplicația lucrează exact cu acest workspace implicit."
+  },
+  "system": {
+    "title": "Sistem",
+    "contentItems": "Elemente de conținut",
+    "campaigns": "Campanii",
+    "mediaAssets": "Resurse media",
+    "agentRuns": "Rulări de agenți",
+    "dbNote": "Bază de date: SQLite (locală, <code>prisma/dev.db</code>) prin Prisma ORM. Pentru producție, schimbă <codeSpaced>DATABASE_URL</codeSpaced> la Postgres/MySQL (adaptează providerul în <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Asistent de configurare",
+    "description": "Ferestrele mici, pas cu pas, pentru furnizori de IA, platforme de social media și sinteză vocală, care apar la prima deschidere.",
+    "reopen": "Redeschide asistentul de configurare"
+  }
+}

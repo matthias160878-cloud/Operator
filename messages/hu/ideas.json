@@ -1,0 +1,22 @@
+{
+  "title": "Ötletek és inspiráció",
+  "subtitle": "Témakörök, sorozatok és formátumok a következő tartalmakhoz — az IdeaAgent generálja, vagy kézzel rögzíthetők.",
+  "board": {
+    "topicLabel": "Téma az új ötletekhez",
+    "topicPlaceholder": "pl. Termelékenység MI-agentekkel",
+    "generateButton": "Ötletek generálása",
+    "manualButton": "Kézzel",
+    "manualTitlePlaceholder": "Az ötlet címe",
+    "addButton": "Hozzáadás",
+    "generateError": "Hiba az ötletgenerálás során.",
+    "unknownError": "Ismeretlen hiba.",
+    "emptyState": "Még nincsenek ötletek — generálj párat, vagy vedd fel kézzel.",
+    "minutesUnit": "~{count} perc",
+    "statusNew": "Új",
+    "statusInProgress": "Folyamatban",
+    "statusUsed": "Felhasználva",
+    "statusArchived": "Archiválva",
+    "sourceAiGenerated": "MI-generált",
+    "sourceManual": "Kézi"
+  }
+}

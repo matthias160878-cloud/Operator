@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Δείκτες απόδοσης από δεδομένα που υπάρχουν πραγματικά — μόλις συνδεθούν πλατφόρμες, αυτή η προβολή γεμίζει με πραγματικές τιμές.",
+  "statViewsTotal": "Σύνολο προβολών",
+  "statLikesTotal": "Σύνολο likes",
+  "statComments": "Σχόλια",
+  "statShares": "Κοινοποιήσεις",
+  "chartTitle": "Απόδοση περιεχομένου στο χρόνο",
+  "chartLegend": "Προβολές (μωβ) · Engagement % (τιρκουάζ)",
+  "chartEmpty": "Δεν υπάρχουν ακόμα δεδομένα Analytics.",
+  "bestPerformingTitle": "Περιεχόμενο με την καλύτερη απόδοση",
+  "bestPerformingEmpty": "Δεν υπάρχουν ακόμα δεδομένα.",
+  "learningAgentTitle": "Learning Agent — Συστάσεις"
+}

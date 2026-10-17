@@ -1,0 +1,21 @@
+{
+  "title": "Agent Monitor",
+  "description": "Kaikki SECRET 58 -agentit tilan, viimeisimmän tehtävän ja tuloksen kanssa. Jokainen ajo kirjataan lokiin.",
+  "table": {
+    "agent": "Agentti",
+    "description": "Kuvaus",
+    "status": "Tila",
+    "lastTask": "Viimeisin tehtävä"
+  },
+  "history": {
+    "title": "Ajohistoria",
+    "agent": "Agentti",
+    "task": "Tehtävä",
+    "status": "Tila",
+    "start": "Alku",
+    "end": "Loppu",
+    "resultError": "Tulos / virhe",
+    "empty": "Ei vielä agenttiajoja.",
+    "completed": "Valmis"
+  }
+}

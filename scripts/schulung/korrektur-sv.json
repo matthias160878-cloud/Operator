@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Steg-för-steg-guider och förklaringsvideor för varje område i SECRET 58 — alltid tillgängliga här att slå upp.",
+ "schulung.topics.firstSteps.steps.0": "Under ”Integrationer”, kontrollera om en AI-leverantör är konfigurerad. AI-funktionerna körs via operatörens åtkomster, så du behöver ingen egen AI-prenumeration. Utan AI-leverantör fungerar appen i mallläge.",
+ "schulung.topics.integrations.steps.2": "Åtkomstuppgifter sparas aldrig i webbläsaren, bara skyddat på servern. Saknas en åtkomst konfigurerar operatören den.",
+ "schulung.topics.integrations.steps.3": "Kostnader: Pro och Maxi är prenumerationer, månadsvis eller årsvis. De aktuella priserna finns under ”Paket & fakturering”. Varje extern leverantör har sin egen, oberoende kostnadsmodell (gratis / användningsbaserad / prenumeration) — på sidan Integrationer visas för varje tjänst vilken modell som gäller, med en länk till leverantörens aktuella priser.",
+ "integrations.costNote": "Ditt SECRET 58-paket (Pro eller Maxi) är en prenumeration, se ”Paket & fakturering”. Varje extern tjänst här har sin egen, oberoende kostnadsmodell hos respektive leverantör — SECRET 58 fakturerar aldrig extra för dem."
+}

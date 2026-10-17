@@ -1,0 +1,27 @@
+{
+  "title": "Ayarlar",
+  "description": "Çalışma alanı, kullanıcılar ve sistem bilgileri. Erişim bilgileri yalnızca ortam değişkenleriyle yönetilir (bkz. <code>.env.example</code>).",
+  "workspace": {
+    "title": "Çalışma alanı",
+    "name": "Ad",
+    "slug": "Slug",
+    "createdAt": "Oluşturulma tarihi"
+  },
+  "users": {
+    "title": "Kullanıcılar ve roller",
+    "note": "Çok kiracılı veri modeli tamamen hazırlandı (tüm tablolar için çalışma alanı yalıtımı). Birden çok kullanıcılı gerçek bir giriş/kimlik doğrulama arayüzü bir sonraki geliştirme adımıdır — şu anda uygulama tam olarak bu varsayılan çalışma alanıyla çalışıyor."
+  },
+  "system": {
+    "title": "Sistem",
+    "contentItems": "İçerik öğeleri",
+    "campaigns": "Kampanyalar",
+    "mediaAssets": "Medya varlıkları",
+    "agentRuns": "Ajan çalıştırmaları",
+    "dbNote": "Veritabanı: Prisma ORM üzerinden SQLite (yerel, <code>prisma/dev.db</code>). Üretim için <codeSpaced>DATABASE_URL</codeSpaced> değerini Postgres/MySQL'e çevir (<codeSpaced>prisma/schema.prisma</codeSpaced> içindeki sağlayıcıyı uyarla)."
+  },
+  "onboarding": {
+    "title": "Kurulum asistanı",
+    "description": "İlk açılışta görünen, yapay zekâ sağlayıcıları, sosyal medya platformları ve sesli çıktı için küçük adım adım pencereler.",
+    "reopen": "Kurulum asistanını yeniden aç"
+  }
+}

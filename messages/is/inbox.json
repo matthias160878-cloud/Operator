@@ -1,0 +1,26 @@
+{
+  "title": "Pósthólf",
+  "description": "Skilaboð og athugasemdir af öllum miðlum. MessageAgent leggur til svör — aðeins það sem þú samþykkir er sent. Engin raunveruleg OAuth-tenging við miðil er enn til staðar, því eru samtöl hér hermd handvirkt í stað þess að vera sótt í beinni.",
+  "emptyState": "Engin samtöl enn — hermdu eitt til að byrja.",
+  "backToInbox": "Til baka í pósthólf",
+  "newConversation": {
+    "simulateButton": "Herma samtal",
+    "simulateHint": "Þar sem engin raunveruleg tenging við miðil er til staðar geturðu hermt eftir innkomnum skilaboðum hér til að prófa gervigreindardrög að svari.",
+    "close": "Loka",
+    "namePlaceholder": "Nafn",
+    "handlePlaceholder": "@notandanafn (valfrjálst)",
+    "messagePlaceholder": "Texti skilaboða …",
+    "createButton": "Búa til"
+  },
+  "detail": {
+    "draftFailed": "Drög mistókust.",
+    "save": "Vista",
+    "edit": "Breyta",
+    "approveAndSend": "Samþykkja og senda",
+    "requestDraft": "Biðja um gervigreindardrög að svari",
+    "openDraftExists": "Opin drög eru þegar til hér að ofan — breyttu þeim/sendu þau fyrst.",
+    "simulateMoreHint": "Herma eftir fleiri innkomnum skilaboðum (prófun án raunverulegrar tengingar við miðil):",
+    "messagePlaceholder": "Texti skilaboða …",
+    "addButton": "Bæta við"
+  }
+}

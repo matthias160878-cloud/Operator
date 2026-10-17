@@ -1,0 +1,31 @@
+{
+  "pageTitle": "Content Kalender",
+  "subtitle": "Visió general del contingut planificat i publicat.",
+  "weekdays": [
+    "Dl",
+    "Dt",
+    "Dc",
+    "Dj",
+    "Dv",
+    "Ds",
+    "Dg"
+  ],
+  "months": [
+    "Gener",
+    "Febrer",
+    "Març",
+    "Abril",
+    "Maig",
+    "Juny",
+    "Juliol",
+    "Agost",
+    "Setembre",
+    "Octubre",
+    "Novembre",
+    "Desembre"
+  ],
+  "allPlatforms": "Totes les plataformes",
+  "moreItems": "+{count} més",
+  "listTitle": "Llista d'aquest mes",
+  "emptyMonth": "No hi ha publicacions planificades aquest mes."
+}

@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Tot conținutul într-un singur loc — creează, duplică, rescrie, îmbogățește cu voiceover/subtitrări și trece-l prin fluxul de aprobare.",
+  "statusTabs": {
+    "all": "Toate",
+    "draft": "Ciornă",
+    "inReview": "În verificare",
+    "approved": "Aprobat",
+    "scheduled": "Planificat",
+    "published": "Publicat",
+    "archived": "Arhivat"
+  },
+  "newItem": {
+    "openButton": "Element de conținut nou",
+    "titleLabel": "Titlu",
+    "platformLabel": "Platformă",
+    "create": "Creează",
+    "closeAria": "Închide"
+  },
+  "table": {
+    "empty": "Încă nu există elemente de conținut — creează unul manual sau prin Content Brain.",
+    "title": "Titlu",
+    "platform": "Platformă",
+    "format": "Format",
+    "status": "Stare",
+    "updated": "Actualizat",
+    "actions": "Acțiuni",
+    "duplicate": "Duplică",
+    "delete": "Șterge",
+    "confirmDelete": "Sigur vrei să ștergi elementul de conținut?"
+  },
+  "detail": {
+    "backLink": "Înapoi la Content Factory",
+    "actionFailed": "Acțiunea a eșuat.",
+    "actions": {
+      "review": "Trimite la verificare",
+      "approve": "Aprobă",
+      "reject": "Respinge",
+      "schedule": "Planifică",
+      "publish": "Publică",
+      "copy": "Copiază postarea",
+      "markPublished": "Publicat manual"
+    },
+    "rejectReasonPrompt": "Motivul respingerii (opțional):",
+    "scheduleDatePrompt": "Data publicării (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Titlu",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caption"
+    },
+    "save": "Salvează",
+    "saving": "Se salvează…",
+    "hashtags": {
+      "heading": "Hashtag-uri și cuvinte-cheie",
+      "regenerate": "Generează din nou",
+      "empty": "Încă nu au fost generate hashtag-uri."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Generează",
+      "empty": "Încă nu a fost generat niciun voiceover."
+    },
+    "subtitles": {
+      "heading": "Subtitrări",
+      "generate": "Generează (SRT)",
+      "download": "Descarcă {file}",
+      "empty": "Încă nu au fost generate subtitrări."
+    },
+    "video": {
+      "heading": "Randare video",
+      "request": "Solicită randarea",
+      "note": "Flux video independent de furnizor (secțiunea 11/12) — momentan nu este configurat niciun furnizor video (vezi Integrări)."
+    },
+    "scriptVariants": {
+      "heading": "Variante de script",
+      "newVariant": "Variantă nouă",
+      "empty": "Încă nu există variante.",
+      "variantSummary": "Varianta {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Creează din acest element de conținut versiuni adaptate fiecărei platforme pentru alte canale. Mai multe canale = mai multe șanse ca oamenii să vadă videoclipul.",
+      "selectAll": "Selectează toate platformele",
+      "clearAll": "Anulează selecția",
+      "generateButton": "Generează {count} versiuni"
+    },
+    "approvalRevoked": "Aprobare retrasă: postarea a fost modificată și trebuie verificată și aprobată din nou.",
+    "job": {
+      "QUEUED": "Trimitere automată planificată pentru {when}.",
+      "RUNNING": "Trimiterea este în curs (termen {when}).",
+      "SUCCEEDED": "Publicat la termenul {when}.",
+      "FAILED": "Trimiterea la termenul {when} a eșuat, postarea este din nou „Aprobat”.",
+      "UNKNOWN": "Trimitere la termenul {when}: rezultat neclar.",
+      "CANCELED": "Trimiterea planificată ({when}) nu a fost executată."
+    },
+    "copied": "Text și hashtag-uri copiate — acum lipește-le în aplicația platformei.",
+    "copyFailed": "Copierea nu este posibilă — selectează textul manual.",
+    "markPublishedConfirm": "Ai postat tu însuți? Postarea va fi marcată ca publicată; o trimitere planificată va fi anulată."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Agentų monitorius",
+  "description": "Visi SECRET 58 agentai su būsena, paskutine užduotimi ir rezultatu. Kiekvienas paleidimas įrašomas į žurnalą.",
+  "table": {
+    "agent": "Agentas",
+    "description": "Aprašymas",
+    "status": "Būsena",
+    "lastTask": "Paskutinė užduotis"
+  },
+  "history": {
+    "title": "Paleidimų istorija",
+    "agent": "Agentas",
+    "task": "Užduotis",
+    "status": "Būsena",
+    "start": "Pradžia",
+    "end": "Pabaiga",
+    "resultError": "Rezultatas / klaida",
+    "empty": "Agentų paleidimų dar nėra.",
+    "completed": "Baigta"
+  }
+}

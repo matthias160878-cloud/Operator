@@ -1,0 +1,14 @@
+{
+  "title": "Analityka",
+  "subtitle": "Wskaźniki wydajności z rzeczywiście dostępnych danych — gdy podłączysz platformy, ten widok wypełni się prawdziwymi wartościami.",
+  "statViewsTotal": "Wyświetlenia łącznie",
+  "statLikesTotal": "Polubienia łącznie",
+  "statComments": "Komentarze",
+  "statShares": "Udostępnienia",
+  "chartTitle": "Wyniki treści w czasie",
+  "chartLegend": "Wyświetlenia (fioletowy) · Zaangażowanie % (turkusowy)",
+  "chartEmpty": "Brak danych analitycznych.",
+  "bestPerformingTitle": "Najlepsze treści",
+  "bestPerformingEmpty": "Brak danych.",
+  "learningAgentTitle": "Learning Agent — rekomendacje"
+}

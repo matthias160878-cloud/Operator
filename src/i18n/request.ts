@@ -40,6 +40,7 @@ export default getRequestConfig(async () => {
     "settings",
     "buy",
     "schulung",
+    "schulungVideos",
     "chatbot",
     "onboarding",
   ];
@@ -50,11 +51,16 @@ export default getRequestConfig(async () => {
       messages[ns] = (await import(`../../messages/${locale}/${ns}.json`)).default;
     } catch {
       // Namespace für diese Sprache noch nicht übersetzt — Fallback auf
-      // Deutsch, statt die Seite mit fehlenden Keys abstürzen zu lassen.
+      // Englisch, dann Deutsch, statt die Seite mit fehlenden Keys abstürzen
+      // zu lassen.
       try {
-        messages[ns] = (await import(`../../messages/de/${ns}.json`)).default;
+        messages[ns] = (await import(`../../messages/en/${ns}.json`)).default;
       } catch {
-        messages[ns] = {};
+        try {
+          messages[ns] = (await import(`../../messages/de/${ns}.json`)).default;
+        } catch {
+          messages[ns] = {};
+        }
       }
     }
   }

@@ -1,0 +1,26 @@
+{
+  "title": "Inkorg",
+  "description": "Meddelanden och kommentarer från alla plattformar. MessageAgent föreslår svar — det enda som skickas är det du godkänner. Det finns ännu ingen riktig OAuth-anslutning till någon plattform, därför simuleras konversationer här manuellt i stället för att hämtas live.",
+  "emptyState": "Inga konversationer än — simulera en för att komma igång.",
+  "backToInbox": "Tillbaka till inkorgen",
+  "newConversation": {
+    "simulateButton": "Simulera konversation",
+    "simulateHint": "Eftersom det inte finns någon riktig plattformsanslutning kan du här simulera ett inkommande meddelande för att testa AI-svarsutkastet.",
+    "close": "Stäng",
+    "namePlaceholder": "Namn",
+    "handlePlaceholder": "@handle (valfritt)",
+    "messagePlaceholder": "Meddelandetext …",
+    "createButton": "Skapa"
+  },
+  "detail": {
+    "draftFailed": "Utkastet misslyckades.",
+    "save": "Spara",
+    "edit": "Redigera",
+    "approveAndSend": "Godkänn & skicka",
+    "requestDraft": "Begär AI-svarsutkast",
+    "openDraftExists": "Det finns redan ett öppet utkast ovan — redigera/skicka det först.",
+    "simulateMoreHint": "Simulera ytterligare ett inkommande meddelande (test utan riktig plattformsanslutning):",
+    "messagePlaceholder": "Meddelandetext …",
+    "addButton": "Lägg till"
+  }
+}

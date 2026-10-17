@@ -1,0 +1,26 @@
+{
+  "title": "Postkast",
+  "description": "Sõnumid ja kommentaarid kõigilt platvormidelt. MessageAgent pakub vastuseid — saadetakse ainult see, mille sina kinnitad. Päris OAuth-ühendust platvormiga veel pole, seetõttu simuleeritakse vestlusi siin käsitsi, mitte ei tooda neid otse.",
+  "emptyState": "Vestlusi pole veel — alustamiseks simuleeri üks.",
+  "backToInbox": "Tagasi postkasti",
+  "newConversation": {
+    "simulateButton": "Simuleeri vestlust",
+    "simulateHint": "Kuna päris platvormi ühendust pole, saad siin simuleerida sissetuleva sõnumi, et proovida tehisintellekti vastusevisandit.",
+    "close": "Sulge",
+    "namePlaceholder": "Nimi",
+    "handlePlaceholder": "@kasutajanimi (valikuline)",
+    "messagePlaceholder": "Sõnumi tekst …",
+    "createButton": "Loo"
+  },
+  "detail": {
+    "draftFailed": "Visand ebaõnnestus.",
+    "save": "Salvesta",
+    "edit": "Muuda",
+    "approveAndSend": "Kinnita ja saada",
+    "requestDraft": "Telli tehisintellekti vastusevisand",
+    "openDraftExists": "Ülal on juba avatud visand — esmalt muuda/saada see.",
+    "simulateMoreHint": "Simuleeri veel üks sissetulev sõnum (test ilma päris platvormi ühenduseta):",
+    "messagePlaceholder": "Sõnumi tekst …",
+    "addButton": "Lisa"
+  }
+}

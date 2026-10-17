@@ -37,7 +37,9 @@
       "approve": "Freigeben",
       "reject": "Ablehnen",
       "schedule": "Einplanen",
-      "publish": "Veröffentlichen"
+      "publish": "Veröffentlichen",
+      "copy": "Beitrag kopieren",
+      "markPublished": "Manuell veröffentlicht"
     },
     "rejectReasonPrompt": "Ablehnungsgrund (optional):",
     "scheduleDatePrompt": "Veröffentlichungsdatum (YYYY-MM-DDTHH:mm):",
@@ -82,6 +84,18 @@
       "selectAll": "Alle Plattformen auswählen",
       "clearAll": "Auswahl aufheben",
       "generateButton": "{count} Ableger erzeugen"
-    }
+    },
+    "approvalRevoked": "Freigabe entzogen: Der Beitrag wurde geändert und muss erneut geprüft und freigegeben werden.",
+    "job": {
+      "QUEUED": "Automatischer Versand geplant für {when}.",
+      "RUNNING": "Versand läuft (Termin {when}).",
+      "SUCCEEDED": "Zum Termin {when} veröffentlicht.",
+      "FAILED": "Versand zum Termin {when} fehlgeschlagen, Beitrag ist wieder „Freigegeben“.",
+      "UNKNOWN": "Versand zum Termin {when}: Ausgang unklar.",
+      "CANCELED": "Geplanter Versand ({when}) wurde nicht ausgeführt."
+    },
+    "copied": "Text und Hashtags kopiert — jetzt in der Plattform-App einfügen.",
+    "copyFailed": "Kopieren nicht möglich — bitte Text manuell markieren.",
+    "markPublishedConfirm": "Beitrag selbst gepostet? Er wird als veröffentlicht markiert; ein geplanter Versand wird verworfen."
   }
 }

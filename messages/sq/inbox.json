@@ -1,0 +1,26 @@
+{
+  "title": "Kutia postare",
+  "description": "Mesazhe & komente nga të gjitha platformat. MessageAgent propozon përgjigje — dërgohet vetëm ajo që miraton ti. Ende nuk ka lidhje reale OAuth me asnjë platformë, prandaj bisedat këtu simulohen me dorë në vend që të merren drejtpërdrejt.",
+  "emptyState": "Ende nuk ka biseda — simulo një për të nisur.",
+  "backToInbox": "Kthehu te kutia postare",
+  "newConversation": {
+    "simulateButton": "Simulo një bisedë",
+    "simulateHint": "Meqë nuk ka lidhje reale me platformën, këtu mund të simulosh një mesazh hyrës për të provuar draftin e përgjigjes nga AI.",
+    "close": "Mbyll",
+    "namePlaceholder": "Emri",
+    "handlePlaceholder": "@handle (opsionale)",
+    "messagePlaceholder": "Teksti i mesazhit …",
+    "createButton": "Krijo"
+  },
+  "detail": {
+    "draftFailed": "Drafti dështoi.",
+    "save": "Ruaj",
+    "edit": "Ndrysho",
+    "approveAndSend": "Mirato & dërgo",
+    "requestDraft": "Kërko draft përgjigjeje nga AI",
+    "openDraftExists": "Ka tashmë një draft të hapur sipër — së pari ndryshoje/dërgoje.",
+    "simulateMoreHint": "Simulo një mesazh tjetër hyrës (provë pa lidhje reale me platformën):",
+    "messagePlaceholder": "Teksti i mesazhit …",
+    "addButton": "Shto"
+  }
+}

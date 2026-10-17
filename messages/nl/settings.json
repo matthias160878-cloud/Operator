@@ -1,0 +1,27 @@
+{
+  "title": "Instellingen",
+  "description": "Workspace, gebruikers en systeeminformatie. Toegangsgegevens worden uitsluitend beheerd via omgevingsvariabelen (zie <code>.env.example</code>).",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Naam",
+    "slug": "Slug",
+    "createdAt": "Aangemaakt op"
+  },
+  "users": {
+    "title": "Gebruikers & rollen",
+    "note": "Het multi-tenant-datamodel is volledig voorbereid (workspace-isolatie voor alle tabellen). Een echte login-/auth-interface met meerdere gebruikers is de volgende uitbreidingsstap — momenteel werkt de app met precies deze standaardworkspace."
+  },
+  "system": {
+    "title": "Systeem",
+    "contentItems": "Content-items",
+    "campaigns": "Campagnes",
+    "mediaAssets": "Media-assets",
+    "agentRuns": "Agent-runs",
+    "dbNote": "Database: SQLite (lokaal, <code>prisma/dev.db</code>) via Prisma ORM. Zet voor productie <codeSpaced>DATABASE_URL</codeSpaced> om naar Postgres/MySQL (pas de provider in <codeSpaced>prisma/schema.prisma</codeSpaced> aan)."
+  },
+  "onboarding": {
+    "title": "Installatie-assistent",
+    "description": "De kleine stapsgewijze vensters voor AI-aanbieders, socialemediaplatforms en spraakuitvoer die bij de eerste keer openen verschijnen.",
+    "reopen": "Installatie-assistent opnieuw openen"
+  }
+}

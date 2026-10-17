@@ -1,0 +1,96 @@
+{
+  "viewAll": "Prikaži vse",
+  "demoBanner": {
+    "before": "Demo podatki aktivni — kampanje, vsebinski elementi in analitika so vzorčni podatki iz ",
+    "after": ", ne resnične številke platform."
+  },
+  "hero": {
+    "subtitle": "Ena ideja. Več platform. Največji doseg.",
+    "newCampaign": "Nova kampanja",
+    "createContent": "Ustvari vsebino",
+    "findIdeas": "Poišči ideje",
+    "aiAgents": "UI agenti"
+  },
+  "orbit": {
+    "xNotConnected": "X (ni povezan)",
+    "brainAlt": "UI možgani SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Aktivni agenti",
+    "empty": "Še ni zagonov agentov."
+  },
+  "kpi": {
+    "contentCreated": "Ustvarjene vsebine",
+    "videosCreated": "Ustvarjeni videi",
+    "postsCreated": "Ustvarjene objave",
+    "published": "Objave",
+    "views": "Ogledi",
+    "avgEngagement": "Povpr. angažiranost",
+    "totalRevenue": "Prihodki skupaj",
+    "noComparisonWeek": "Prejšnjega tedna za primerjavo še ni — stopnje sprememb se prikažejo, ko bodo na voljo podatki za vsaj dva tedna."
+  },
+  "production": {
+    "title": "Produkcija vsebin",
+    "thisWeek": "Ta teden"
+  },
+  "scheduled": {
+    "title": "Načrtovane objave",
+    "empty": "Ni načrtovanih objav."
+  },
+  "activity": {
+    "title": "Zadnje dejavnosti",
+    "empty": "Dejavnosti še ni."
+  },
+  "contentFactory": {
+    "description": "Z eno samo idejo ustvari celotne vsebinske kampanje za vse platforme.",
+    "cta": "Začni zdaj →",
+    "popularTemplates": "Priljubljene predloge",
+    "templateYoutubeVideo": "YouTube video",
+    "templateTiktokSeries": "TikTok serija",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn objava",
+    "templateBlogPost": "Blogovski prispevek",
+    "viewAllTemplates": "Vse predloge →"
+  },
+  "brandDna": {
+    "tonality": "Ton",
+    "targetAudience": "Ciljna skupina",
+    "industry": "Panoga",
+    "language": "Jezik",
+    "empty": "Brand DNA še ni vnesen."
+  },
+  "campaigns": {
+    "title": "Trenutne kampanje",
+    "empty": "Kampanj še ni."
+  },
+  "platforms": {
+    "title": "Platforme",
+    "manage": "Upravljaj"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} povezanih"
+  },
+  "agentMonitor": {
+    "title": "Nadzor agentov",
+    "empty": "Zagonov še ni."
+  },
+  "topPerformer": {
+    "title": "Najuspešnejše",
+    "last7Days": "Zadnjih 7 dni",
+    "empty": "Podatkov o uspešnosti še ni.",
+    "views": "Ogledi",
+    "likes": "Všečki",
+    "comments": "Komentarji",
+    "shares": "Deljenja",
+    "engagementRate": "+Stopnja angažiranosti {value}"
+  },
+  "calendar": {
+    "open": "Odpri",
+    "viewMonth": "Mesec",
+    "viewWeek": "Teden",
+    "viewDay": "Dan",
+    "viewCampaign": "Kampanja",
+    "moreItems": "+{count} več"
+  },
+  "weekdayLabels": ["Pon", "Tor", "Sre", "Čet", "Pet", "Sob", "Ned"]
+}

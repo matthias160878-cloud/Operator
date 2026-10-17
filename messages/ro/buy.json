@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Fără abonament. Toți agenții. Proprii tăi furnizori de IA.",
+  "subtitle": "O idee. Mai multe platforme. Acoperire maximă. Un singur pachet complet — plătești o dată, acces deplin la întreaga aplicație.",
+  "features": [
+    "Content Brain — o idee, toate platformele",
+    "Toți agenții IA: idei, tendințe, script, hook, hashtag-uri, miniaturi, subtitrări, publicare",
+    "Voice Studio cu voci ElevenLabs",
+    "Video Studio cu manager de formate — conectarea generatoarelor video IA este în lucru",
+    "Content Factory cu flux de aprobare și Content Kalender",
+    "Analytics, recomandări de creștere și urmărirea veniturilor",
+    "Inbox cu ciorne de răspuns generate de IA",
+    "Alegere liberă a furnizorilor de IA prin accesele tale proprii — fără cote"
+  ],
+  "priceOnetime": "o singură dată",
+  "priceRecommendedNote": "Preț recomandat — devine obligatoriu imediat ce Stripe este configurat cu un preț corespunzător.",
+  "buyButton": "Cumpără acum",
+  "redirecting": "Redirecționare către Stripe …",
+  "checkoutFailed": "Finalizarea comenzii a eșuat.",
+  "unknownError": "Eroare necunoscută.",
+  "notConfigured": "Plata nu este încă configurată — operatorul trebuie să creeze mai întâi în Stripe un produs la {price} și să introducă STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Notă: acest preț este unic pentru software. Anumite funcții (de ex. generarea de text cu IA, sinteza vocală) necesită accesuri proprii la furnizori terți (de ex. Anthropic, ElevenLabs) — costurile lor sunt independente de SECRET 58 și se datorează direct furnizorului respectiv, nu sunt calculate aici. Detalii după achiziție la Integrări.",
+  "setupServiceTitle": "Adaugă serviciul de configurare (+{price} o singură dată)",
+  "setupServiceDescription": "Îți configurăm cheile API, Brand DNA și primele postări.",
+  "setupServiceUnavailable": "În curând disponibil — operatorul trebuie să înregistreze mai întâi serviciul în Stripe.",
+  "autopilot": {
+    "kicker": "În curând",
+    "title": "Autopilot — totul inclus",
+    "subtitle": "Nu sunt necesare accesuri proprii: toate costurile furnizorilor pentru text, voce și video sunt incluse. Aceleași funcții ca pachetul complet — mărimile diferă doar prin cantitate.",
+    "comingSoon": "În curând",
+    "perMonth": "/ lună",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agenție"
+    },
+    "brands": "{count, plural, one {# brand} other {# branduri}}",
+    "ideas": "{count} idei de conținut pe lună",
+    "videos": "{count} videoclipuri IA (de 30 s) pe lună",
+    "voiceMinutes": "{count} minute de sinteză vocală pe lună",
+    "note": "Prețuri planificate, încă nerezervabile. Autopilot pornește imediat ce generatoarele video IA sunt conectate."
+  }
+}

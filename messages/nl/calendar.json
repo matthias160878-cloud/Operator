@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Contentkalender",
+  "subtitle": "Geplande en gepubliceerde content in één overzicht.",
+  "weekdays": ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+  "months": [
+    "Januari", "Februari", "Maart", "April", "Mei", "Juni",
+    "Juli", "Augustus", "September", "Oktober", "November", "December"
+  ],
+  "allPlatforms": "Alle platforms",
+  "moreItems": "+{count} meer",
+  "listTitle": "Lijst van deze maand",
+  "emptyMonth": "Geen geplande berichten in deze maand."
+}

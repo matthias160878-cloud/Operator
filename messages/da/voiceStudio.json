@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — administrer Voice Library, opret voiceover-previews og importér stemmer.",
+  "envWarning": "ElevenLabs er endnu ikke konfigureret. Indtast <envKey>ELEVENLABS_API_KEY</envKey> i <envFile>.env</envFile> for at bruge voiceover og stemmeimport. Voice Library kan stadig bruges til planlægning.",
+  "addManual": "Opret stemme manuelt",
+  "importFromElevenLabs": "Importér fra ElevenLabs",
+  "form": {
+    "namePlaceholder": "Navn",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Sprog",
+    "submit": "Tilføj"
+  },
+  "confirmDelete": "Vil du virkelig slette stemmen?",
+  "importFailed": "Importen mislykkedes.",
+  "previewFailed": "Preview mislykkedes.",
+  "unknownError": "Ukendt fejl.",
+  "empty": "Ingen stemmer i biblioteket endnu.",
+  "active": "Aktiv",
+  "inactive": "Inaktiv",
+  "remove": "Fjern",
+  "preview": {
+    "heading": "Stemme-preview",
+    "defaultText": "Hej, det her er et eksempel på denne stemme.",
+    "selectPlaceholder": "Vælg stemme…",
+    "play": "Afspil preview"
+  }
+}

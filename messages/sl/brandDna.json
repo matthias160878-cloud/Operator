@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Tvoja znamka. Tvoj slog. Povsod. Ti podatki samodejno vplivajo na Content Brain ter agente Script, Hook in Hashtag.",
+  "form": {
+    "nameLabel": "Ime znamke",
+    "industryLabel": "Panoga",
+    "descriptionLabel": "Opis",
+    "descriptionHint": "Kaj izpostavlja znamko?",
+    "audienceLabel": "Ciljna skupina",
+    "languageLabel": "Jezik",
+    "tonalityLabel": "Ton",
+    "humorLabel": "Humor",
+    "formalityLabel": "Formalnost",
+    "preferredWordsLabel": "Zaželene besede",
+    "forbiddenWordsLabel": "Prepovedane besede",
+    "preferredCtasLabel": "Zaželeni CTA-ji",
+    "brandValuesLabel": "Vrednote znamke",
+    "topicsLabel": "Teme",
+    "csvHint": "ločeno z vejicami",
+    "colorsLabel": "Barve",
+    "colorsHint": "ločeno z vejicami, npr. #6D5BFF",
+    "fontsLabel": "Pisave",
+    "visualRulesLabel": "Vizualna pravila",
+    "saveError": "Shranjevanje ni uspelo.",
+    "unknownError": "Neznana napaka.",
+    "saving": "Shranjujem …",
+    "save": "Shrani Brand DNA",
+    "savedAt": "Shranjeno ob {time}"
+  }
+}

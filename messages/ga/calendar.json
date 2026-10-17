@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Féilire Inneachair",
+  "subtitle": "Forbhreathnú ar inneachar pleanáilte agus foilsithe.",
+  "weekdays": ["Luan", "Mái", "Céa", "Déar", "Aoi", "Sat", "Domh"],
+  "months": [
+    "Eanáir", "Feabhra", "Márta", "Aibreán", "Bealtaine", "Meitheamh",
+    "Iúil", "Lúnasa", "Meán Fómhair", "Deireadh Fómhair", "Samhain", "Nollaig"
+  ],
+  "allPlatforms": "Gach ardán",
+  "moreItems": "+{count} eile",
+  "listTitle": "Liosta na míosa seo",
+  "emptyMonth": "Gan aon phostálacha pleanáilte sa mhí seo."
+}

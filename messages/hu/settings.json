@@ -1,0 +1,27 @@
+{
+  "title": "Beállítások",
+  "description": "Munkaterület, felhasználók és rendszerinformációk. A hozzáférési adatokat kizárólag környezeti változókon keresztül kezeljük (lásd <code>.env.example</code>).",
+  "workspace": {
+    "title": "Munkaterület",
+    "name": "Név",
+    "slug": "Slug",
+    "createdAt": "Létrehozva"
+  },
+  "users": {
+    "title": "Felhasználók és szerepkörök",
+    "note": "A többbérlős adatmodell teljesen előkészített (munkaterület-izoláció minden táblához). A valódi, több felhasználós bejelentkezési/hitelesítési felület a következő fejlesztési lépés — jelenleg az alkalmazás pontosan ezzel az alapértelmezett munkaterülettel működik."
+  },
+  "system": {
+    "title": "Rendszer",
+    "contentItems": "Tartalomelemek",
+    "campaigns": "Kampányok",
+    "mediaAssets": "Médiaanyagok",
+    "agentRuns": "Agent-futások",
+    "dbNote": "Adatbázis: SQLite (helyi, <code>prisma/dev.db</code>) Prisma ORM-en keresztül. Éles üzemhez állítsd át a <codeSpaced>DATABASE_URL</codeSpaced> értékét Postgres/MySQL-re (a szolgáltatót módosítsd itt: <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Üzembe helyezési segéd",
+    "description": "A kis, lépésről lépésre haladó ablakok MI-szolgáltatókhoz, közösségi platformokhoz és hangkimenethez, amelyek az első megnyitáskor jelennek meg.",
+    "reopen": "Üzembe helyezési segéd újranyitása"
+  }
+}

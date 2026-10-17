@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Video cevovod, neodvisen od ponudnika: Format Manager, zamenljivi video ponudniki, povezava voiceovera in podnapisov (glej Content Factory za vsak vsebinski element).",
+  "providerCardTitle": "Video ponudniki",
+  "providerNotePrefix": "Dodatne ponudnike (API-je za UI video, knjižnice stock videa) je mogoče dodati prek istega vmesnika",
+  "providerNoteSuffix": ", ne da bi se dotaknili obstoječe kode.",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Video sredstva",
+  "assetsEmpty": "Videov še ni upodobljenih — upodabljanje poteka prek vsebinskih elementov v Content Factory, ko je nastavljen video ponudnik."
+}

@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Skripti- ja haakimootor: loob platvormile sobivad skriptid struktuuriga Hook → Problem → Value → Example → Payoff → CTA ning mitu haagivarianti.",
+  "form": {
+    "topicLabel": "Teema",
+    "topicPlaceholder": "nt 5 viisi, kuidas tehisintellekti agendid aega säästavad",
+    "platformLabel": "Platvorm",
+    "generateButton": "Genereeri skript ja haagid",
+    "generateFailed": "Genereerimine ebaõnnestus.",
+    "unknownError": "Tundmatu viga."
+  },
+  "hookTypes": {
+    "direkt": "Otsene",
+    "neugierig": "Uudishimu äratav",
+    "story": "Lugu",
+    "problem": "Probleem",
+    "zahlen": "Numbrid",
+    "kontroversSachlich": "Vastuoluline (asjalik)",
+    "educational": "Õpetlik"
+  },
+  "hooksHeading": "Haagivariandid",
+  "engine": {
+    "label": "Mootor: {provider}",
+    "templateMode": "Mallirežiim (tehisintellekti pakkuja pole seadistatud)"
+  },
+  "script": {
+    "heading": "Skript",
+    "save": "Salvesta sisuühikuna",
+    "saving": "Salvestan…"
+  }
+}

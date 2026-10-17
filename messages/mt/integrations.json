@@ -1,0 +1,24 @@
+{
+  "title": "Integrazzjonijiet",
+  "description": "L-istatus live tas-servizzi esterni kollha — esklussivament abbażi tal-varjabbli tal-ambjent li verament ġew issettjati. L-ebda konnessjonijiet foloz.",
+  "categories": {
+    "AI": "Fornituri tal-AI",
+    "VOICE": "Voice",
+    "PLATFORM": "Pjattaformi Social",
+    "DESIGN": "Disinn",
+    "VIDEO": "Vidjow",
+    "TREND": "Xejriet"
+  },
+  "costNote": "Il-pakkett SECRET 58 tiegħek (Pro jew Maxi) huwa abbonament, ara “Pakkett u Fatturar”. Kull servizz estern hawn għandu l-mudell tal-ispejjeż tiegħu stess, indipendenti, għand il-fornitur rispettiv — SECRET 58 qatt ma jiffattura xi ħaġa żejda għalih.",
+  "links": {
+    "getKey": "Ikseb iċ-ċavetta API",
+    "setInRender": "Daħħal f'Render",
+    "viewPricing": "Ara l-prezzijiet"
+  },
+  "pricing": {
+    "free": "B'xejn",
+    "payAsYouGo": "Skont l-użu",
+    "subscription": "Abbonament",
+    "unknown": "Iċċekkja l-prezz mal-fornitur"
+  }
+}

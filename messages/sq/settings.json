@@ -1,0 +1,27 @@
+{
+  "title": "Cilësimet",
+  "description": "Hapësira e punës, përdoruesit dhe informacionet e sistemit. Të dhënat e qasjes menaxhohen vetëm përmes variablave të mjedisit (shih <code>.env.example</code>).",
+  "workspace": {
+    "title": "Hapësira e punës",
+    "name": "Emri",
+    "slug": "Slug",
+    "createdAt": "Krijuar më"
+  },
+  "users": {
+    "title": "Përdoruesit & Rolet",
+    "note": "Modeli i të dhënave multi-tenant është përgatitur plotësisht (izolim i hapësirës së punës për të gjitha tabelat). Një ndërfaqe e vërtetë login-i/autentikimi me disa përdorues është hapi tjetër i zgjerimit — aktualisht aplikacioni punon me pikërisht këtë hapësirë pune standarde."
+  },
+  "system": {
+    "title": "Sistemi",
+    "contentItems": "Njësi përmbajtjeje",
+    "campaigns": "Fushata",
+    "mediaAssets": "Asete mediash",
+    "agentRuns": "Ekzekutime agjentësh",
+    "dbNote": "Baza e të dhënave: SQLite (lokale, <code>prisma/dev.db</code>) përmes Prisma ORM. Për prodhim ndrysho <codeSpaced>DATABASE_URL</codeSpaced> në Postgres/MySQL (përshtat ofruesin te <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Asistenti i konfigurimit",
+    "description": "Dritaret e vogla hap pas hapi për ofruesit e AI, platformat e rrjeteve sociale dhe zërin sintetik, që shfaqen kur e hap për herë të parë.",
+    "reopen": "Hap sërish asistentin e konfigurimit"
+  }
+}

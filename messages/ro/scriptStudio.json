@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Motor de script-uri și hook-uri: creează script-uri adaptate platformei după structura Hook → Problemă → Valoare → Exemplu → Rezultat → CTA, plus mai multe variante de hook.",
+  "form": {
+    "topicLabel": "Temă",
+    "topicPlaceholder": "de ex. 5 moduri în care agenții IA economisesc timp",
+    "platformLabel": "Platformă",
+    "generateButton": "Generează script și hook-uri",
+    "generateFailed": "Generarea a eșuat.",
+    "unknownError": "Eroare necunoscută."
+  },
+  "hookTypes": {
+    "direkt": "Direct",
+    "neugierig": "Curios",
+    "story": "Poveste",
+    "problem": "Problemă",
+    "zahlen": "Cifre",
+    "kontroversSachlich": "Controversat (obiectiv)",
+    "educational": "Educațional"
+  },
+  "hooksHeading": "Variante de hook",
+  "engine": {
+    "label": "Motor: {provider}",
+    "templateMode": "Mod șablon (niciun furnizor de IA configurat)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Salvează ca element de conținut",
+    "saving": "Se salvează…"
+  }
+}

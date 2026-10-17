@@ -1,0 +1,20 @@
+{
+  "button": "Instaliraj aplikaciju",
+  "buttonHint": "Instaliraj SECRET 58 kao aplikaciju na ovom uređaju",
+  "close": "Zatvori",
+  "canceled": "Instalacija je otkazana. Možeš je ponovo pokrenuti kad god želiš.",
+  "iosTitle": "Instalacija na iPhone ili iPad",
+  "iosStep1": "Otvori ovu stranicu u Safariju.",
+  "iosStep2": "Dodirni „Dijeli“ (kvadrat sa strelicom prema gore).",
+  "iosStep3": "Odaberi „Dodaj na početni ekran“ i potvrdi sa „Dodaj“.",
+  "iosShort": "Safari: Dijeli → Dodaj na početni ekran",
+  "iosNotSafari": "Na iPhoneu i iPadu instalacija radi samo u Safariju. Molim te, otvori ovu stranicu u Safariju.",
+  "otherTitle": "Kako instalirati aplikaciju",
+  "otherChromium": "Otvori meni preglednika (tri tačke) i odaberi „Instaliraj aplikaciju“ ili „Dodaj na početni ekran“.",
+  "otherSafariMac": "U Safariju na Macu: meni „Datoteka“ → „Dodaj u Dock“.",
+  "otherFirefox": "Firefox na računaru ne može instalirati web aplikacije. Koristi Chrome, Edge ili Safari.",
+  "otherGeneric": "Ovaj preglednik trenutno ne nudi dijalog za instalaciju. Moguće je da je aplikacija već instalirana ili da preglednik ne podržava instalaciju. Pokušaj u Chromeu, Edgeu ili Safariju.",
+  "insecureTitle": "Instalacija ovdje nije moguća",
+  "insecureText": "Za instalaciju je potrebna objavljena web stranica preko HTTPS-a. Iz lokalne datoteke ili bez HTTPS-a ne radi. Na vlastitom računaru radi preko „localhost“ u razvojnom okruženju.",
+  "installedNote": "Aplikacija je instalirana."
+}

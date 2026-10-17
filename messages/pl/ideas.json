@@ -1,0 +1,22 @@
+{
+  "title": "Pomysły i inspiracje",
+  "subtitle": "Klastry tematów, serie i formaty dla nadchodzących treści — generowane przez IdeaAgent lub dodane ręcznie.",
+  "board": {
+    "topicLabel": "Temat dla nowych pomysłów",
+    "topicPlaceholder": "np. Produktywność z agentami AI",
+    "generateButton": "Generuj pomysły",
+    "manualButton": "Ręcznie",
+    "manualTitlePlaceholder": "Tytuł pomysłu",
+    "addButton": "Dodaj",
+    "generateError": "Błąd podczas generowania pomysłów.",
+    "unknownError": "Nieznany błąd.",
+    "emptyState": "Brak pomysłów — wygeneruj je lub dodaj ręcznie.",
+    "minutesUnit": "~{count} min",
+    "statusNew": "Nowy",
+    "statusInProgress": "W toku",
+    "statusUsed": "Wykorzystany",
+    "statusArchived": "Zarchiwizowany",
+    "sourceAiGenerated": "Wygenerowany przez AI",
+    "sourceManual": "Ręcznie"
+  }
+}

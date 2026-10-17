@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Koncepte miniaturash, asete imazhesh dhe integrimi me Canva.",
+  "imageAssetsTitle": "Asetet e imazheve",
+  "imageAssetsEmpty": "Ende nuk ka asete imazhesh.",
+  "thumbnailAgent": {
+    "title": "Agjenti i miniaturave",
+    "description": "Krijon një koncept tekstual (titull, ide vizuale, layout, CTA) — i përgatitur për lidhjen me një gjenerator imazhesh. Ende nuk krijohet asnjë imazh.",
+    "inputPlaceholder": "Tema e miniaturës",
+    "submitButton": "Gjenero konceptin",
+    "errorGenerationFailed": "Gjenerimi dështoi.",
+    "errorUnknown": "Gabim i panjohur.",
+    "fieldTitle": "Titulli",
+    "fieldVisualIdea": "Ideja vizuale",
+    "fieldText": "Teksti",
+    "fieldLayout": "Layout",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Përshkrimi i imazhit"
+  }
+}

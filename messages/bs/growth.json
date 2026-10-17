@@ -1,0 +1,15 @@
+{
+ "title": "Rast",
+ "subtitle": "Preporuke za doseg i rast — izvedene iz stvarnih Analytics podataka tvog dosadašnjeg sadržaja: najbolja vremena objavljivanja, najuspješniji hashtagovi i formati.",
+ "warning": "Namjerno <strong>nije</strong> uključeno: automatsko praćenje/lajkanje/komentarisanje radi vještačkog povećanja broja pratilaca. To krši uslove korištenja na YouTube, Instagram, TikTok, LinkedIn i Facebook i može dovesti do blokade naloga. Ova stranica daje isključivo preporuke zasnovane na podacima za tvoj vlastiti sadržaj.",
+ "filterAll": "Sve platforme",
+ "emptyState": "Još nema Analytics podataka za {platform}. Čim objavljeni sadržaj počne prikupljati podatke o učinku, ovdje će se pojaviti preporuke.",
+ "emptyStateDefaultScope": "ovaj radni prostor",
+ "bestPostingTimesTitle": "Najbolja vremena objavljivanja",
+ "postingTime": "{day} · {hour} h",
+ "avgLabel": "Ø {percent} ({count})",
+ "topHashtagsTitle": "Najuspješniji hashtagovi",
+ "topHashtagsEmpty": "Nema podataka o hashtagovima.",
+ "hashtagTooltip": "Ø {percent} angažmana, korišteno {count}×",
+ "topFormatsTitle": "Najbolji formati"
+}

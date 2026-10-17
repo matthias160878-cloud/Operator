@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Sinu bränd. Sinu stiil. Igal pool. Need andmed liiguvad automaatselt Content Brainisse ning skripti-, haakide- ja märksõnaagenti.",
+  "form": {
+    "nameLabel": "Brändi nimi",
+    "industryLabel": "Valdkond",
+    "descriptionLabel": "Kirjeldus",
+    "descriptionHint": "Mis teeb brändi eriliseks?",
+    "audienceLabel": "Sihtrühm",
+    "languageLabel": "Keel",
+    "tonalityLabel": "Tonaalsus",
+    "humorLabel": "Huumor",
+    "formalityLabel": "Formaalsus",
+    "preferredWordsLabel": "Eelistatud sõnad",
+    "forbiddenWordsLabel": "Keelatud sõnad",
+    "preferredCtasLabel": "Eelistatud CTA-d",
+    "brandValuesLabel": "Brändi väärtused",
+    "topicsLabel": "Teemad",
+    "csvHint": "komaga eraldatud",
+    "colorsLabel": "Värvid",
+    "colorsHint": "komaga eraldatud, nt #6D5BFF",
+    "fontsLabel": "Kirjatüübid",
+    "visualRulesLabel": "Visuaalsed reeglid",
+    "saveError": "Salvestamine ebaõnnestus.",
+    "unknownError": "Tundmatu viga.",
+    "saving": "Salvestan…",
+    "save": "Salvesta Brand DNA",
+    "savedAt": "Salvestatud kell {time}"
+  }
+}

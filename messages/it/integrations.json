@@ -1,0 +1,24 @@
+{
+  "title": "Integrazioni",
+  "description": "Stato in tempo reale di tutti i servizi esterni, basato esclusivamente sulle variabili d'ambiente effettivamente impostate. Nessuna connessione simulata.",
+  "categories": {
+    "AI": "Fornitori di IA",
+    "VOICE": "Voce",
+    "PLATFORM": "Piattaforme social",
+    "DESIGN": "Design",
+    "VIDEO": "Video",
+    "TREND": "Trend"
+  },
+  "costNote": "Il tuo pacchetto SECRET 58 (Pro o Maxi) è un abbonamento, vedi «Pacchetto e fatturazione». Ogni servizio esterno qui elencato ha un proprio modello di costo indipendente presso il rispettivo fornitore: SECRET 58 non addebita mai nulla in più per questi servizi.",
+  "links": {
+    "getKey": "Ottieni la chiave API",
+    "setInRender": "Inserisci in Render",
+    "viewPricing": "Vedi i prezzi"
+  },
+  "pricing": {
+    "free": "Gratuito",
+    "payAsYouGo": "A consumo",
+    "subscription": "Abbonamento",
+    "unknown": "Verifica il prezzo presso il fornitore"
+  }
+}

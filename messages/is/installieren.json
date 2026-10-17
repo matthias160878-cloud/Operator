@@ -1,0 +1,20 @@
+{
+  "button": "Setja upp forrit",
+  "buttonHint": "Setja SECRET 58 upp sem forrit á þessu tæki",
+  "close": "Loka",
+  "canceled": "Hætt var við uppsetninguna. Þú getur hafið hana aftur hvenær sem er.",
+  "iosTitle": "Uppsetning á iPhone eða iPad",
+  "iosStep1": "Opnaðu þessa síðu í Safari.",
+  "iosStep2": "Ýttu á „Deila“ (ferningurinn með örinni sem vísar upp).",
+  "iosStep3": "Veldu „Bæta við heimaskjá“ og staðfestu með „Bæta við“.",
+  "iosShort": "Safari: Deila → Bæta við heimaskjá",
+  "iosNotSafari": "Á iPhone og iPad virkar uppsetning aðeins í Safari. Opnaðu þessa síðu í Safari.",
+  "otherTitle": "Svona setur þú upp forritið",
+  "otherChromium": "Opnaðu valmynd vafrans (þrír punktar) og veldu „Setja upp forrit“ eða „Bæta á heimaskjá“.",
+  "otherSafariMac": "Í Safari á Mac: valmyndin „Skrá“ → „Bæta við Dock“.",
+  "otherFirefox": "Firefox í tölvu getur ekki sett upp vefforrit. Notaðu Chrome, Edge eða Safari.",
+  "otherGeneric": "Þessi vafri býður ekki upp á uppsetningarglugga núna. Það getur stafað af því að forritið er þegar uppsett eða að vafrinn styður ekki uppsetningu. Prófaðu í Chrome, Edge eða Safari.",
+  "insecureTitle": "Uppsetning er ekki möguleg hér",
+  "insecureText": "Uppsetning krefst birts vefsvæðis yfir HTTPS. Hún virkar ekki úr staðbundinni skrá eða án HTTPS. Á þinni eigin tölvu virkar hún í gegnum „localhost“ í þróunarumhverfi.",
+  "installedNote": "Forritið hefur verið sett upp."
+}

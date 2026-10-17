@@ -15,8 +15,13 @@
  *  - Ein durchgestrichener "Statt"-Preis wird bewusst NICHT angezeigt: Nach
  *    § 11 PAngV darf als Vergleich nur der niedrigste tatsächlich verlangte
  *    Preis der letzten 30 Tage dienen — ein solcher Preis existiert noch nicht.
- *  - Abrechnung: monatliches Abo (bestätigt am 7. Oktober 2026). Der Checkout
- *    verweigert Stripe-Preise, die nicht monatlich wiederkehren.
+ *  - Abrechnung: Monatsabo (bestätigt am 7. Oktober 2026) oder Jahresabo
+ *    mit 15 % Rabatt auf zwölf Monatsbeträge (Pro 6.018 €, Maxi 8.129,40 €
+ *    netto/Jahr; Stand der Unterlagen vom 10. Oktober 2026). Je Paket und
+ *    Intervall ein eigener Stripe-Preis (STRIPE_PRICE_ID_PRO, _MAXI,
+ *    _PRO_YEAR, _MAXI_YEAR). Der Checkout verweigert Preise, deren Betrag,
+ *    Währung, Steuerart oder Intervall nicht genau passen. Die Kontingente
+ *    gelten auch beim Jahresabo je Kalendermonat.
  *  - Kontingente je Monat (bestätigt am 7. Oktober 2026): Pro = bisherige
  *    Autopilot-Stufe S plus 300 KI-Texte, 500 Widget-Antworten, 1 Webseite;
  *    Maxi = dreifache Mengen.
@@ -85,6 +90,32 @@ export const PLANS: Record<PlanKey, PlanDefinition> = {
 
 export const PLAN_KEYS = Object.keys(PLANS) as PlanKey[];
 
+export type BillingInterval = "month" | "year";
+export const BILLING_INTERVALS: BillingInterval[] = ["month", "year"];
+export const YEARLY_DISCOUNT_PERCENT = 15;
+
+export function parseBillingInterval(value: unknown): BillingInterval | null {
+  if (value === undefined || value === null || value === "") return "month";
+  if (value === "month" || value === "monat" || value === "monthly") return "month";
+  if (value === "year" || value === "jahr" || value === "yearly") return "year";
+  return null;
+}
+
+/** Nettobetrag je Intervall: Jahr = 12 Monatsbeträge abzüglich 15 %. */
+export function netAmountFor(plan: PlanKey, interval: BillingInterval): number {
+  const monthly = PLANS[plan].netAmountCents;
+  return interval === "month" ? monthly : Math.round((monthly * 12 * (100 - YEARLY_DISCOUNT_PERCENT)) / 100);
+}
+
+/** Rechnerischer Monatsbetrag beim Jahresabo (nur Anzeige). */
+export function yearlyMonthlyEquivalent(plan: PlanKey): number {
+  return Math.round(netAmountFor(plan, "year") / 12);
+}
+
+function priceEnvVarFor(plan: PlanKey, interval: BillingInterval): string {
+  return interval === "month" ? PLANS[plan].priceEnvVar : `${PLANS[plan].priceEnvVar}_YEAR`;
+}
+
 export function isPlanKey(value: unknown): value is PlanKey {
   return typeof value === "string" && value in PLANS;
 }
@@ -96,14 +127,23 @@ export function parsePlanKey(value: unknown): PlanKey | null {
   return isPlanKey(upper) ? upper : null;
 }
 
-export function stripePriceIdFor(plan: PlanKey): string | null {
-  return process.env[PLANS[plan].priceEnvVar] || null;
+export function stripePriceIdFor(plan: PlanKey, interval: BillingInterval = "month"): string | null {
+  return process.env[priceEnvVarFor(plan, interval)] || null;
+}
+
+/** Paket und Intervall zu einer Stripe-Preis-ID (für Webhook und Anzeige). */
+export function lookupStripePrice(priceId: string | null | undefined): { plan: PlanKey; interval: BillingInterval } | null {
+  if (!priceId) return null;
+  for (const plan of PLAN_KEYS) {
+    for (const interval of BILLING_INTERVALS) {
+      if (stripePriceIdFor(plan, interval) === priceId) return { plan, interval };
+    }
+  }
+  return null;
 }
 
 export function planForStripePrice(priceId: string | null | undefined): PlanKey | null {
-  if (!priceId) return null;
-  for (const key of PLAN_KEYS) if (stripePriceIdFor(key) === priceId) return key;
-  return null;
+  return lookupStripePrice(priceId)?.plan ?? null;
 }
 
 export function packageTermsConfirmed(): boolean {

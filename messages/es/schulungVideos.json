@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Vídeo de formación",
+  "subtitlesLabel": "Subtítulos",
+  "subtitlesOff": "Desactivados",
+  "soundLabel": "Sonido",
+  "soundOn": "Voz activada",
+  "soundOff": "Voz desactivada",
+  "soundHint": "La voz procede de tu navegador. Los idiomas disponibles dependen de tu dispositivo.",
+  "soundMissing": "No hay ninguna voz instalada para este idioma en tu dispositivo. Los subtítulos funcionan igualmente.",
+  "draftNote": "Borrador: grabación de la app real con datos de prueba. Subtítulos traducidos automáticamente.",
+  "whatLabel": "Qué es, qué función tiene y cómo se usa.",
+  "videosTitle": "Vídeos explicativos de cada área",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Primeros pasos",
+      "cues": {
+        "c1": "Te damos la bienvenida a la formación: primeros pasos. Todo lo que ves es la app real con datos de prueba.",
+        "c2": "A la izquierda está la navegación. Cada área de la app tiene aquí una entrada.",
+        "c3": "Paso 1: Comprueba en «Integraciones» qué servicios están conectados.",
+        "c4": "Cada fila muestra el estado real y verificado, nunca una conexión simulada.",
+        "c5": "«No configurado» significa que este servicio aún no está configurado. Sin proveedor de IA, la app trabaja en modo plantilla.",
+        "c6": "Paso 2: Introduce tu marca en «Brand DNA». El tono, el público objetivo y los valores se incorporan a cada texto generado.",
+        "c7": "Ejemplo: rellena el sector y el público objetivo y guarda abajo.",
+        "c8": "Paso 3: Genera tu primera idea en «Ideas e inspiración». Escribe un tema y haz clic en «Generar ideas».",
+        "c9": "Las ideas aparecen como tarjetas. En modo plantilla son ejemplos; con un proveedor de IA se vuelven personalizadas.",
+        "c10": "Todo es un borrador hasta que lo apruebes. Cada área tiene su propio vídeo explicativo."
+      }
+    },
+    "dashboard": {
+      "title": "Panel",
+      "cues": {
+        "c1": "El panel es tu página de inicio: la visión general de todo lo que ocurre en tu espacio de trabajo.",
+        "c2": "Arriba ves los agentes activos, la producción de contenido y las publicaciones programadas.",
+        "c3": "Más abajo están las últimas actividades y los accesos directos a Content Factory y Brand DNA.",
+        "c4": "Con «Semana» cambias el periodo de los indicadores.",
+        "c5": "Cómo se usa: abre el panel a diario, revisa los borradores pendientes y salta desde aquí directamente al área correspondiente."
+      }
+    },
+    "schulung": {
+      "title": "Formación",
+      "cues": {
+        "c1": "La formación es tu guía dentro de la app. Explica cada área paso a paso.",
+        "c2": "Cada tema tiene una descripción, pasos numerados y un enlace que abre la página correspondiente.",
+        "c3": "Aquí también aparecen estos vídeos explicativos, uno por cada área.",
+        "c4": "Cómo se usa: elige un tema, lee los pasos, abre la página y pruébalo enseguida."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory es el banco de trabajo con todos tus elementos de contenido en un solo lugar.",
+        "c2": "Función: crear, duplicar y reescribir elementos, completarlos con locución y subtítulos y llevarlos por el flujo de aprobación.",
+        "c3": "Los filtros de arriba muestran los estados: Borrador, En revisión, Aprobado, Programado, Publicado y Archivado.",
+        "c4": "Cómo se hace: con «Nuevo elemento de contenido» creas un elemento.",
+        "c5": "Abre un elemento para editar el guion, la locución, los subtítulos, los hashtags y la miniatura.",
+        "c6": "La aprobación es siempre un paso manual. No se publica nada sin tu confirmación."
+      }
+    },
+    "ideas": {
+      "title": "Ideas e inspiración",
+      "cues": {
+        "c1": "Aquí reúnes ideas: grupos de temas, series y formatos para el contenido futuro.",
+        "c2": "Función: el IdeaAgent genera ideas sobre un tema, o tú anotas tus propias ideas a mano.",
+        "c3": "Cómo se hace: escribe un tema, elige plataforma, objetivo y formato y haz clic en «Generar ideas».",
+        "c4": "Cada idea se convierte en una tarjeta con título, gancho y prioridad.",
+        "c5": "Con «Manual» creas una idea propia.",
+        "c6": "Las buenas ideas las usas como punto de partida para Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain convierte una idea en un plan de contenido completo.",
+        "c2": "Función: tiene en cuenta tu Brand DNA y genera, como borrador, hooks, guiones, hashtags y conceptos de miniatura para cada plataforma elegida.",
+        "c3": "Cómo se hace: escribe el tema y el público objetivo.",
+        "c4": "Elige el objetivo y el idioma y luego haz clic en las plataformas. Aquí se añade TikTok.",
+        "c5": "Con el control deslizante defines cuántos elementos de contenido se crean por plataforma.",
+        "c6": "Un clic en «Generar plan de contenido» inicia el proceso.",
+        "c7": "La campaña aparece abajo. Todos los elementos son borradores y están en Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA describe tu marca: nombre, sector, público objetivo, tono y valores.",
+        "c2": "Función: estos datos se incorporan automáticamente a Content Brain y a los agentes de guiones, hooks y hashtags.",
+        "c3": "Cómo se hace: rellena los campos, por ejemplo sector y público objetivo.",
+        "c4": "Más abajo gestionas las palabras preferidas y prohibidas, las llamadas a la acción y los valores de marca.",
+        "c5": "Para terminar, haz clic en «Guardar Brand DNA»."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio es el taller de guiones y hooks.",
+        "c2": "Función: construye guiones con la estructura gancho, problema, beneficio, ejemplo, resultado y llamada a la acción, y ofrece varias variantes de hook.",
+        "c3": "Cómo se hace: escribe un tema y elige la plataforma.",
+        "c4": "Después haz clic en «Generar guion y hooks».",
+        "c5": "El resultado es un borrador que sigues usando en Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio gestiona voces y genera locuciones.",
+        "c2": "Función: mantener la biblioteca de voces, generar vistas previas e importar voces. La conexión funciona a través de ElevenLabs.",
+        "c3": "Cómo se hace: crea una voz manualmente o impórtala desde ElevenLabs. La importación necesita una conexión configurada.",
+        "c4": "Con un texto y una voz generas una vista previa y la reproduces."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio es el flujo de producción de vídeo de la app.",
+        "c2": "Función: gestor de formatos, proveedores de vídeo intercambiables y conexión de locución y subtítulos.",
+        "c3": "La página muestra qué proveedores están configurados. Los que no lo están se marcan honestamente como tales.",
+        "c4": "Cómo se hace: los vídeos se generan por elemento de contenido en Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio ofrece conceptos de miniatura y recursos de imagen.",
+        "c2": "Función: el agente de miniaturas propone título, idea visual, texto y diseño. Aquí está prevista la integración con Canva.",
+        "c3": "Cómo se hace: escribe el tema de la miniatura.",
+        "c4": "Haz clic en «Generar concepto».",
+        "c5": "El concepto te sirve de plantilla para tu imagen."
+      }
+    },
+    "socialMedia": {
+      "title": "Redes sociales",
+      "cues": {
+        "c1": "Aquí conectas las cuentas de tus plataformas y ves su estado.",
+        "c2": "Función: los accesos se gestionan en el servidor y se guardan cifrados. Inicias sesión en la plataforma a través de Composio.",
+        "c3": "Cada tarjeta muestra plataforma, cuenta, estado y la última prueba de lectura.",
+        "c4": "«Aún no configurado» significa que el operador todavía no ha activado la conexión en el servidor.",
+        "c5": "Cómo se hace: una vez configurado, haz clic en «Conectar» en la plataforma e inicia sesión. Solo se lee, no se publica nada."
+      }
+    },
+    "calendar": {
+      "title": "Calendario de contenido",
+      "cues": {
+        "c1": "El calendario de contenido muestra de un vistazo los contenidos programados y publicados.",
+        "c2": "Función: aquí aparecen todos los elementos de contenido con fecha de publicación, filtrables por plataforma.",
+        "c3": "Cómo se hace: programa un elemento con fecha en Content Factory y aparecerá aquí.",
+        "c4": "Antes de cada publicación, la app comprueba en directo si la plataforma de destino está conectada."
+      }
+    },
+    "analytics": {
+      "title": "Analytics",
+      "cues": {
+        "c1": "Analytics muestra tus indicadores de rendimiento.",
+        "c2": "Función: solo datos realmente existentes, importados o registrados por ti. No hay nada inventado.",
+        "c3": "Ves la evolución a lo largo del tiempo, el contenido con mejor rendimiento y las recomendaciones del Learning Agent.",
+        "c4": "Cómo se hace: en cuanto conectes plataformas o introduzcas datos, los gráficos se irán llenando."
+      }
+    },
+    "growth": {
+      "title": "Crecimiento",
+      "cues": {
+        "c1": "La página de crecimiento ofrece recomendaciones para lograr más alcance.",
+        "c2": "Función: a partir de tus datos reales de Analytics calcula los mejores momentos para publicar y los hashtags y formatos que funcionan.",
+        "c3": "Cómo se hace: elige una plataforma y lee las recomendaciones.",
+        "c4": "Son recomendaciones, no un automatismo. Los seguidores o las interacciones no se aumentan artificialmente."
+      }
+    },
+    "revenue": {
+      "title": "Ingresos",
+      "cues": {
+        "c1": "En Ingresos reúnes tus ganancias de plataformas y campañas.",
+        "c2": "Función: los importes solo aparecen cuando los introduces. No hay cifras inventadas.",
+        "c3": "Cómo se hace: haz clic en «Registrar ingreso», elige plataforma y tipo e introduce el importe.",
+        "c4": "Los pagos siempre se realizan directamente a través de la plataforma. SECRET 58 no gestiona pagos."
+      }
+    },
+    "sales": {
+      "title": "Ventas y tienda",
+      "cues": {
+        "c1": "«Ventas y tienda» muestra los ingresos de tu propio negocio.",
+        "c2": "Función: están separados de tu plan de SECRET 58. Solo se cuentan ventas reales; los datos de prueba están marcados.",
+        "c3": "Arriba están los totales por moneda y debajo tus datos de proveedor para el aviso legal.",
+        "c4": "Opción B: vender a través de SECRET 58. Opción A: importar una tienda existente.",
+        "c5": "Cómo se hace: rellena y guarda los datos de proveedor y luego elige la vía de venta."
+      }
+    },
+    "website": {
+      "title": "Mi sitio web",
+      "cues": {
+        "c1": "Aquí integras el asistente web en tu propio sitio web.",
+        "c2": "Función: el asistente responde a las preguntas de tus visitantes.",
+        "c3": "No modificamos tu sitio web automáticamente. Tú mismo insertas el código o se lo pides a tu diseñador web.",
+        "c4": "Cómo se hace: escribe la dirección web y haz clic en «Añadir sitio web».",
+        "c5": "Después copia el código que se muestra en tu sitio web."
+      }
+    },
+    "inbox": {
+      "title": "Bandeja de entrada",
+      "cues": {
+        "c1": "La bandeja de entrada reúne mensajes y comentarios de todas las plataformas.",
+        "c2": "Función: el MessageAgent propone respuestas. Solo se envía lo que tú apruebes.",
+        "c3": "Cómo se hace: mientras no haya ninguna plataforma conectada en directo, haz clic en «Simular conversación».",
+        "c4": "Revisa la respuesta propuesta, adáptala y apruébala."
+      }
+    },
+    "agents": {
+      "title": "Agentes",
+      "cues": {
+        "c1": "El Agent Monitor muestra todos los agentes de SECRET 58.",
+        "c2": "Función: estado, última tarea y resultado de cada agente. Cada ejecución queda registrada.",
+        "c3": "En el historial de ejecuciones ves qué se ejecutó y cuándo, y si funcionó.",
+        "c4": "Cómo se usa: consulta aquí cuando algo no se haya generado como esperabas."
+      }
+    },
+    "integrations": {
+      "title": "Integraciones",
+      "cues": {
+        "c1": "Aquí ves el estado en directo de todos los servicios externos.",
+        "c2": "Función: cada fila se basa en los accesos realmente configurados. No hay conexiones simuladas.",
+        "c3": "Los grupos son: proveedores de IA, voz, plataformas sociales, diseño, vídeo y tendencias.",
+        "c4": "Cómo se hace: con «No configurado», «Obtener clave API» te lleva a la página del proveedor.",
+        "c5": "Los proveedores externos tienen sus propios precios. En cada servicio se indica qué modelo se aplica."
+      }
+    },
+    "billing": {
+      "title": "Plan y facturación",
+      "cues": {
+        "c1": "En «Plan y facturación» ves tu plan y puedes cambiarlo.",
+        "c2": "Función: las funciones de IA funcionan con los accesos del operador. No necesitas una suscripción de IA propia.",
+        "c3": "Hay Pro y Maxi, mensual o anual. Los precios aparecen sin impuestos en las tarjetas.",
+        "c4": "Solo se compra con un clic explícito en «Pedido con obligación de pago».",
+        "c5": "Si tienes un código promocional, canjéalo en el campo de debajo."
+      }
+    },
+    "settings": {
+      "title": "Ajustes",
+      "cues": {
+        "c1": "En los ajustes gestionas el espacio de trabajo, los usuarios y la información del sistema.",
+        "c2": "Función: espacio de trabajo, roles, estado del sistema, asistente de configuración y tus datos con acceso y eliminación.",
+        "c3": "Cómo se hace: recorre las secciones. Eliminar el espacio de trabajo requiere una confirmación adicional.",
+        "c4": "Revisa aquí con regularidad tus datos y el asistente de configuración."
+      }
+    }
+  }
+}

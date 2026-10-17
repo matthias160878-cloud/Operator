@@ -1,0 +1,15 @@
+{
+  "title": "Vækst",
+  "subtitle": "Anbefalinger til rækkevidde og vækst — udledt af de rigtige analytics-data fra dit hidtidige indhold: bedste opslagstidspunkter, mest succesfulde hashtags og formater.",
+  "warning": "Bevidst <strong>ikke</strong> med: automatisk følgning/liking/kommentering for kunstigt at øge antallet af følgere. Det overtræder brugsvilkårene hos YouTube, Instagram, TikTok, LinkedIn og Facebook og kan føre til kontosuspendering. Denne side giver udelukkende databaserede anbefalinger til dit eget content.",
+  "filterAll": "Alle platforme",
+  "emptyState": "Ingen analytics-data for {platform} endnu. Så snart udgivet indhold indsamler præstationsdata, vises anbefalinger her.",
+  "emptyStateDefaultScope": "dette workspace",
+  "bestPostingTimesTitle": "Bedste opslagstidspunkter",
+  "postingTime": "{day} · kl. {hour}",
+  "avgLabel": "Ø {percent} ({count})",
+  "topHashtagsTitle": "Mest succesfulde hashtags",
+  "topHashtagsEmpty": "Ingen hashtag-data tilgængelige.",
+  "hashtagTooltip": "Ø {percent} engagement, brugt {count}×",
+  "topFormatsTitle": "Bedste formater"
+}

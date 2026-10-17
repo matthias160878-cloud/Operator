@@ -1,0 +1,26 @@
+{
+  "title": "Gelen kutusu",
+  "description": "Tüm platformlardan mesajlar ve yorumlar. MessageAgent yanıt önerir — yalnızca onayladığın gönderilir. Henüz herhangi bir platforma gerçek bir OAuth bağlantısı yok; bu yüzden görüşmeler burada canlı çekilmek yerine elle simüle edilir.",
+  "emptyState": "Henüz görüşme yok — başlamak için bir tane simüle et.",
+  "backToInbox": "Gelen kutusuna geri dön",
+  "newConversation": {
+    "simulateButton": "Görüşme simüle et",
+    "simulateHint": "Gerçek bir platform bağlantısı olmadığından, yapay zekâ yanıt taslağını denemek için burada gelen bir mesajı simüle edebilirsin.",
+    "close": "Kapat",
+    "namePlaceholder": "Ad",
+    "handlePlaceholder": "@kullanıcıadı (isteğe bağlı)",
+    "messagePlaceholder": "Mesaj metni …",
+    "createButton": "Oluştur"
+  },
+  "detail": {
+    "draftFailed": "Taslak oluşturulamadı.",
+    "save": "Kaydet",
+    "edit": "Düzenle",
+    "approveAndSend": "Onayla ve gönder",
+    "requestDraft": "Yapay zekâ yanıt taslağı iste",
+    "openDraftExists": "Yukarıda zaten açık bir taslak var — önce onu düzenle/gönder.",
+    "simulateMoreHint": "Gelen başka bir mesajı simüle et (gerçek platform bağlantısı olmadan test):",
+    "messagePlaceholder": "Mesaj metni …",
+    "addButton": "Ekle"
+  }
+}

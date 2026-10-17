@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Din merkevare. Din stil. Overalt. Disse opplysningene brukes automatisk i Content Brain, script-, hook- og hashtag-agenten.",
+  "form": {
+    "nameLabel": "Merkenavn",
+    "industryLabel": "Bransje",
+    "descriptionLabel": "Beskrivelse",
+    "descriptionHint": "Hva kjennetegner merket?",
+    "audienceLabel": "Målgruppe",
+    "languageLabel": "Språk",
+    "tonalityLabel": "Tone",
+    "humorLabel": "Humor",
+    "formalityLabel": "Formalitet",
+    "preferredWordsLabel": "Foretrukne ord",
+    "forbiddenWordsLabel": "Forbudte ord",
+    "preferredCtasLabel": "Foretrukne CTA-er",
+    "brandValuesLabel": "Merkeverdier",
+    "topicsLabel": "Temaer",
+    "csvHint": "kommaseparert",
+    "colorsLabel": "Farger",
+    "colorsHint": "kommaseparert, f.eks. #6D5BFF",
+    "fontsLabel": "Skrifttyper",
+    "visualRulesLabel": "Visuelle regler",
+    "saveError": "Lagring mislyktes.",
+    "unknownError": "Ukjent feil.",
+    "saving": "Lagrer…",
+    "save": "Lagre Brand DNA",
+    "savedAt": "Lagret kl. {time}"
+  }
+}

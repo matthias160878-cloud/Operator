@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Lépésről lépésre útmutatók és magyarázó videók a SECRET 58 minden területéhez — bármikor itt nézhetsz utána.",
+ "schulung.topics.firstSteps.steps.0": "Az „Integrációk” alatt ellenőrizd, be van-e állítva MI-szolgáltató. Az MI-funkciók az üzemeltető hozzáférésein keresztül futnak, ezért nincs szükséged saját MI-előfizetésre. MI-szolgáltató nélkül az alkalmazás sablonmódban működik.",
+ "schulung.topics.integrations.steps.2": "A hozzáférési adatokat a rendszer soha nem a böngészőben tárolja, hanem csak védetten a szerveren. Ha hiányzik egy hozzáférés, az üzemeltető állítja be.",
+ "schulung.topics.integrations.steps.3": "Költségek: a Pro és a Maxi előfizetés, havi vagy éves. Az aktuális árak a „Csomag és számlázás” alatt találhatók. Minden külső szolgáltatónak saját, független költségmodellje van (ingyenes / használatalapú / előfizetés) — az Integrációk oldalon minden szolgáltatásnál látható, melyik modell érvényes, az aktuális árakra mutató linkkel a szolgáltatónál.",
+ "integrations.costNote": "A SECRET 58 csomagod (Pro vagy Maxi) előfizetés, lásd „Csomag és számlázás”. Az itt szereplő minden külső szolgáltatásnak saját, független költségmodellje van az adott szolgáltatónál — a SECRET 58 ezekért soha nem számláz külön."
+}

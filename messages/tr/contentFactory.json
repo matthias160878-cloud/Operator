@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Tüm içerik öğeleri tek yerde — oluştur, çoğalt, yeniden yaz, seslendirme/altyazıyla zenginleştir ve onay akışından geçir.",
+  "statusTabs": {
+    "all": "Tümü",
+    "draft": "Taslak",
+    "inReview": "İncelemede",
+    "approved": "Onaylandı",
+    "scheduled": "Planlandı",
+    "published": "Yayınlandı",
+    "archived": "Arşivlendi"
+  },
+  "newItem": {
+    "openButton": "Yeni içerik öğesi",
+    "titleLabel": "Başlık",
+    "platformLabel": "Platform",
+    "create": "Oluştur",
+    "closeAria": "Kapat"
+  },
+  "table": {
+    "empty": "Henüz içerik öğesi yok — elle ya da Content Brain üzerinden bir tane oluştur.",
+    "title": "Başlık",
+    "platform": "Platform",
+    "format": "Biçim",
+    "status": "Durum",
+    "updated": "Güncellendi",
+    "actions": "İşlemler",
+    "duplicate": "Çoğalt",
+    "delete": "Sil",
+    "confirmDelete": "İçerik öğesi gerçekten silinsin mi?"
+  },
+  "detail": {
+    "backLink": "Content Factory'ye geri dön",
+    "actionFailed": "İşlem başarısız oldu.",
+    "actions": {
+      "review": "İncelemeye gönder",
+      "approve": "Onayla",
+      "reject": "Reddet",
+      "schedule": "Planla",
+      "publish": "Yayınla",
+      "copy": "Gönderiyi kopyala",
+      "markPublished": "Elle yayınlandı"
+    },
+    "rejectReasonPrompt": "Reddetme nedeni (isteğe bağlı):",
+    "scheduleDatePrompt": "Yayın tarihi (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Başlık",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caption"
+    },
+    "save": "Kaydet",
+    "saving": "Kaydediliyor…",
+    "hashtags": {
+      "heading": "Hashtag'ler ve anahtar kelimeler",
+      "regenerate": "Yeniden üret",
+      "empty": "Henüz hashtag üretilmedi."
+    },
+    "voiceover": {
+      "heading": "Seslendirme",
+      "generate": "Oluştur",
+      "empty": "Henüz seslendirme oluşturulmadı."
+    },
+    "subtitles": {
+      "heading": "Altyazılar",
+      "generate": "Oluştur (SRT)",
+      "download": "{file} dosyasını indir",
+      "empty": "Henüz altyazı oluşturulmadı."
+    },
+    "video": {
+      "heading": "Video render",
+      "request": "Render iste",
+      "note": "Sağlayıcıdan bağımsız video hattı (bölüm 11/12) — şu anda yapılandırılmış bir video sağlayıcısı yok (bkz. Entegrasyonlar)."
+    },
+    "scriptVariants": {
+      "heading": "Script varyantları",
+      "newVariant": "Yeni varyant",
+      "empty": "Henüz varyant yok.",
+      "variantSummary": "Varyant {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Bu içerik öğesinden diğer kanallar için platforma uygun türevler oluştur. Daha fazla kanal = insanların videoyu görme şansı daha yüksek.",
+      "selectAll": "Tüm platformları seç",
+      "clearAll": "Seçimi kaldır",
+      "generateButton": "{count} türev oluştur"
+    },
+    "approvalRevoked": "Onay geri alındı: Gönderi değiştirildi ve yeniden incelenip onaylanmalı.",
+    "job": {
+      "QUEUED": "Otomatik gönderim {when} için planlandı.",
+      "RUNNING": "Gönderim sürüyor (zaman: {when}).",
+      "SUCCEEDED": "{when} zamanında yayınlandı.",
+      "FAILED": "{when} zamanındaki gönderim başarısız oldu, gönderi yeniden “Onaylandı” durumunda.",
+      "UNKNOWN": "{when} zamanındaki gönderim: sonuç belirsiz.",
+      "CANCELED": "Planlanan gönderim ({when}) gerçekleştirilmedi."
+    },
+    "copied": "Metin ve hashtag'ler kopyalandı — şimdi platform uygulamasına yapıştır.",
+    "copyFailed": "Kopyalanamadı — lütfen metni elle seç.",
+    "markPublishedConfirm": "Gönderiyi kendin mi paylaştın? Yayınlandı olarak işaretlenecek; planlanan gönderim iptal edilecek."
+  }
+}

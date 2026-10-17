@@ -1,0 +1,26 @@
+{
+  "title": "Caixa de entrada",
+  "description": "Mensagens e comentários de todas as plataformas. O MessageAgent sugere respostas — só é enviado o que aprovares. Ainda não existe uma ligação OAuth real a nenhuma plataforma, por isso as conversas são aqui simuladas manualmente em vez de obtidas em direto.",
+  "emptyState": "Ainda não há conversas — simula uma para começar.",
+  "backToInbox": "Voltar à caixa de entrada",
+  "newConversation": {
+    "simulateButton": "Simular conversa",
+    "simulateHint": "Como não existe uma ligação real a uma plataforma, podes aqui simular uma mensagem recebida para experimentar o rascunho de resposta por IA.",
+    "close": "Fechar",
+    "namePlaceholder": "Nome",
+    "handlePlaceholder": "@handle (opcional)",
+    "messagePlaceholder": "Texto da mensagem …",
+    "createButton": "Criar"
+  },
+  "detail": {
+    "draftFailed": "Falha no rascunho.",
+    "save": "Guardar",
+    "edit": "Editar",
+    "approveAndSend": "Aprovar e enviar",
+    "requestDraft": "Pedir rascunho de resposta por IA",
+    "openDraftExists": "Já existe um rascunho aberto acima — edita-o/envia-o primeiro.",
+    "simulateMoreHint": "Simular outra mensagem recebida (teste sem ligação real à plataforma):",
+    "messagePlaceholder": "Texto da mensagem …",
+    "addButton": "Adicionar"
+  }
+}

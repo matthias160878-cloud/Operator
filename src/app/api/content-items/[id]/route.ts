@@ -3,6 +3,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { ownedContentItem } from "@/lib/ownership";
 import { route } from "@/lib/api";
+import { revokeApprovalOnChange } from "@/lib/contentWorkflow";
 
 const patchSchema = z.object({
   title: z.string().optional(),
@@ -39,17 +40,19 @@ async function handlePATCH(
   if (!parsed.success) {
     return NextResponse.json({ error: "Ungültige Eingabe." }, { status: 400 });
   }
-  await ownedContentItem(id);
+  const before = await ownedContentItem(id);
   const { hashtags, keywords, ...rest } = parsed.data;
-  const item = await prisma.contentItem.update({
-    where: { id },
-    data: {
-      ...rest,
-      ...(hashtags ? { hashtags: JSON.stringify(hashtags) } : {}),
-      ...(keywords ? { keywords: JSON.stringify(keywords) } : {}),
-    },
-  });
-  return NextResponse.json({ item });
+  const data = {
+    ...rest,
+    ...(hashtags ? { hashtags: JSON.stringify(hashtags) } : {}),
+    ...(keywords ? { keywords: JSON.stringify(keywords) } : {}),
+  };
+  const changed = Object.entries(data).some(([k, v]) => (before as Record<string, unknown>)[k] !== v);
+  await prisma.contentItem.update({ where: { id }, data });
+  // Inhaltliche Änderung nach der Freigabe: Freigabe entziehen, erneut prüfen.
+  const approvalRevoked = changed ? await revokeApprovalOnChange(id) : false;
+  const item = await prisma.contentItem.findUniqueOrThrow({ where: { id } });
+  return NextResponse.json({ item, approvalRevoked });
 }
 
 async function handleDELETE(

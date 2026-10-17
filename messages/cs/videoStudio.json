@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Video pipeline nezávislá na poskytovateli: Format Manager, vyměnitelní poskytovatelé videa, napojení voiceoveru a titulků (viz Content Factory u každé položky obsahu).",
+  "providerCardTitle": "Poskytovatelé videa",
+  "providerNotePrefix": "Další poskytovatele (AI video API, knihovny stockových videí) lze doplnit přes stejné rozhraní",
+  "providerNoteSuffix": ", aniž by bylo nutné sahat na stávající kód.",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Video assety",
+  "assetsEmpty": "Zatím nebyla vyrenderována žádná videa — renderování probíhá přes položky obsahu v Content Factory, jakmile bude nastaven poskytovatel videa."
+}

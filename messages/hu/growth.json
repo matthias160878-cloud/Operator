@@ -1,0 +1,15 @@
+{
+  "title": "Növekedés",
+  "subtitle": "Ajánlások az eléréshez és a növekedéshez — az eddigi tartalmaid valódi analitikai adataiból levezetve: legjobb posztolási időpontok, legsikeresebb hashtagek és formátumok.",
+  "warning": "Szándékosan <strong>nem</strong> tartalmaz: automatizált követést/kedvelést/kommentelést a követők mesterséges növelésére. Ez a YouTube, Instagram, TikTok, LinkedIn és Facebook felhasználási feltételeibe ütközik, és a fiók felfüggesztéséhez vezethet. Ez az oldal kizárólag adatalapú ajánlásokat ad a saját tartalmaidhoz.",
+  "filterAll": "Minden platform",
+  "emptyState": "Még nincsenek analitikai adatok ehhez: {platform}. Amint a közzétett tartalmak teljesítményadatokat gyűjtenek, itt megjelennek az ajánlások.",
+  "emptyStateDefaultScope": "ez a munkaterület",
+  "bestPostingTimesTitle": "Legjobb posztolási időpontok",
+  "postingTime": "{day} · {hour} óra",
+  "avgLabel": "Ø {percent} ({count})",
+  "topHashtagsTitle": "Legsikeresebb hashtagek",
+  "topHashtagsEmpty": "Nincsenek hashtagadatok.",
+  "hashtagTooltip": "Ø {percent} elköteleződés, {count}× használva",
+  "topFormatsTitle": "Legjobb formátumok"
+}

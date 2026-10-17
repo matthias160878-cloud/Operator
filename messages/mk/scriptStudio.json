@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Мотор за скрипти и хукови: создава скрипти прилагодени на платформите според структурата Hook → Problem → Value → Example → Payoff → CTA, како и повеќе варијанти на хук.",
+  "form": {
+    "topicLabel": "Тема",
+    "topicPlaceholder": "на пр. 5 начини како AI агентите штедат време",
+    "platformLabel": "Платформа",
+    "generateButton": "Генерирај скрипта и хукови",
+    "generateFailed": "Генерирањето не успеа.",
+    "unknownError": "Непозната грешка."
+  },
+  "hookTypes": {
+    "direkt": "Директен",
+    "neugierig": "Предизвикува љубопитност",
+    "story": "Приказна",
+    "problem": "Проблем",
+    "zahlen": "Бројки",
+    "kontroversSachlich": "Контроверзен (стручен)",
+    "educational": "Едукативен"
+  },
+  "hooksHeading": "Варијанти на хук",
+  "engine": {
+    "label": "Мотор: {provider}",
+    "templateMode": "Режим со шаблон (не е конфигуриран AI провајдер)"
+  },
+  "script": {
+    "heading": "Скрипта",
+    "save": "Зачувај како ставка за содржина",
+    "saving": "Се зачувува…"
+  }
+}

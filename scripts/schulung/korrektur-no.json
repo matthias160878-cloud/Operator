@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Trinnvise veiledninger og forklaringsvideoer for hvert område i SECRET 58 — alltid tilgjengelig her for oppslag.",
+ "schulung.topics.firstSteps.steps.0": "Under «Integrasjoner» sjekker du om en KI-leverandør er satt opp. KI-funksjonene går via operatørens tilganger, så du trenger ikke noe eget KI-abonnement. Uten KI-leverandør fungerer appen i malmodus.",
+ "schulung.topics.integrations.steps.2": "Tilgangsdata lagres aldri i nettleseren, bare beskyttet på serveren. Mangler en tilgang, setter operatøren den opp.",
+ "schulung.topics.integrations.steps.3": "Kostnader: Pro og Maxi er abonnementer, månedlig eller årlig. De gjeldende prisene står under «Pakke og fakturering». Hver eksterne leverandør har sin egen, uavhengige kostnadsmodell (gratis / bruksbasert / abonnement) — på Integrasjoner-siden står det for hver tjeneste hvilken modell som gjelder, med lenke til leverandørens gjeldende priser.",
+ "integrations.costNote": "Din SECRET 58-pakke (Pro eller Maxi) er et abonnement, se «Pakke og fakturering». Hver eksterne tjeneste her har sin egen, uavhengige kostnadsmodell hos den aktuelle leverandøren — SECRET 58 fakturerer aldri ekstra for dem."
+}

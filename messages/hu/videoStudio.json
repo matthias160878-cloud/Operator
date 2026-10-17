@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Szolgáltatófüggetlen videócsővezeték: formátumkezelő, cserélhető videószolgáltatók, hangalámondás- és feliratkapcsolat (lásd Content Factory, tartalomelemenként).",
+  "providerCardTitle": "Videószolgáltatók",
+  "providerNotePrefix": "További szolgáltatók (MI-videó-API-k, stockvideó-könyvtárak) ugyanazon a",
+  "providerNoteSuffix": "-felületen keresztül adhatók hozzá, a meglévő kód érintése nélkül.",
+  "formatManagerTitle": "Formátumkezelő",
+  "assetsTitle": "Videóanyagok",
+  "assetsEmpty": "Még nincs renderelt videó — a renderelés a Content Factory tartalomelemein keresztül történik, amint be van állítva egy videószolgáltató."
+}

@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Твоята марка. Твоят стил. Навсякъде. Тези данни автоматично се използват от Content Brain, агента за скриптове, агента за кукички (hooks) и агента за хаштагове.",
+  "form": {
+    "nameLabel": "Име на марката",
+    "industryLabel": "Отрасъл",
+    "descriptionLabel": "Описание",
+    "descriptionHint": "Какво отличава марката?",
+    "audienceLabel": "Целева група",
+    "languageLabel": "Език",
+    "tonalityLabel": "Тон",
+    "humorLabel": "Хумор",
+    "formalityLabel": "Официалност",
+    "preferredWordsLabel": "Предпочитани думи",
+    "forbiddenWordsLabel": "Забранени думи",
+    "preferredCtasLabel": "Предпочитани CTA",
+    "brandValuesLabel": "Ценности на марката",
+    "topicsLabel": "Теми",
+    "csvHint": "разделени със запетая",
+    "colorsLabel": "Цветове",
+    "colorsHint": "разделени със запетая, напр. #6D5BFF",
+    "fontsLabel": "Шрифтове",
+    "visualRulesLabel": "Визуални правила",
+    "saveError": "Запазването не успя.",
+    "unknownError": "Неизвестна грешка.",
+    "saving": "Запазва се…",
+    "save": "Запази Brand DNA",
+    "savedAt": "Запазено в {time}"
+  }
+}

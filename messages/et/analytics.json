@@ -1,0 +1,14 @@
+{
+  "title": "Analüütika",
+  "subtitle": "Tulemuslikkuse näitajad tegelikult olemasolevatest andmetest — kui platvormid on ühendatud, täitub see vaade päris väärtustega.",
+  "statViewsTotal": "Vaatamisi kokku",
+  "statLikesTotal": "Meeldimisi kokku",
+  "statComments": "Kommentaare",
+  "statShares": "Jagamisi",
+  "chartTitle": "Sisu tulemuslikkus ajas",
+  "chartLegend": "Vaatamised (lilla) · Haaratus % (türkiis)",
+  "chartEmpty": "Analüütikaandmeid pole veel.",
+  "bestPerformingTitle": "Enim tulemuslik sisu",
+  "bestPerformingEmpty": "Andmeid pole veel.",
+  "learningAgentTitle": "Learning Agent — soovitused"
+}

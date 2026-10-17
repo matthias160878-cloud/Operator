@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Концепции за миниатюри, изображения и интеграцията с Canva.",
+  "imageAssetsTitle": "Изображения",
+  "imageAssetsEmpty": "Все още няма изображения.",
+  "thumbnailAgent": {
+    "title": "Агент за миниатюри",
+    "description": "Създава текстова концепция (заглавие, визуална идея, оформление, CTA) — подготвена за свързване с генератор на изображения. Все още не се създава изображение.",
+    "inputPlaceholder": "Тема за миниатюрата",
+    "submitButton": "Генерирай концепция",
+    "errorGenerationFailed": "Генерирането не успя.",
+    "errorUnknown": "Неизвестна грешка.",
+    "fieldTitle": "Заглавие",
+    "fieldVisualIdea": "Визуална идея",
+    "fieldText": "Текст",
+    "fieldLayout": "Оформление",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Описание на изображението"
+  }
+}

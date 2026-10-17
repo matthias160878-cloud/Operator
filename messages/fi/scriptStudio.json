@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Skripti- ja hook-moottori: luo alustakohtaisia skriptejä rakenteella Hook → Ongelma → Hyöty → Esimerkki → Lopputulos → CTA sekä useita hook-variantteja.",
+  "form": {
+    "topicLabel": "Aihe",
+    "topicPlaceholder": "esim. 5 tapaa, joilla tekoälyagentit säästävät aikaa",
+    "platformLabel": "Alusta",
+    "generateButton": "Luo skripti ja hookit",
+    "generateFailed": "Generointi epäonnistui.",
+    "unknownError": "Tuntematon virhe."
+  },
+  "hookTypes": {
+    "direkt": "Suora",
+    "neugierig": "Uteliaisuutta herättävä",
+    "story": "Tarina",
+    "problem": "Ongelma",
+    "zahlen": "Luvut",
+    "kontroversSachlich": "Kiistanalainen (asiallinen)",
+    "educational": "Opettavainen"
+  },
+  "hooksHeading": "Hook-variantit",
+  "engine": {
+    "label": "Moottori: {provider}",
+    "templateMode": "Mallipohjatila (tekoälypalvelua ei ole määritetty)"
+  },
+  "script": {
+    "heading": "Skripti",
+    "save": "Tallenna sisällöksi",
+    "saving": "Tallennetaan…"
+  }
+}

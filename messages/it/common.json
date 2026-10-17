@@ -1,0 +1,93 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Più che contenuti.",
+    "footerLine2": "Una macchina per contenuti completa.",
+    "workspace": "Workspace",
+    "role": "Amministratore"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "schulung": "Formazione",
+    "contentFactory": "Content Factory",
+    "ideas": "Idee e ispirazione",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Social media",
+    "calendar": "Calendario dei contenuti",
+    "analytics": "Analytics",
+    "growth": "Crescita",
+    "revenue": "Entrate",
+    "inbox": "Posta in arrivo",
+    "agents": "Agenti",
+    "integrations": "Integrazioni",
+    "settings": "Impostazioni",
+    "billing": "Pacchetto e fatturazione",
+    "sales": "Vendite e shop",
+    "website": "Il mio sito web"
+  },
+  "topbar": {
+    "menuOpen": "Apri il menu",
+    "menuClose": "Chiudi il menu",
+    "searchPlaceholder": "Cerca contenuti, progetti, campagne …",
+    "notifications": "Notifiche",
+    "language": "Lingua"
+  },
+  "footer": {
+    "help": "Aiuto",
+    "privacy": "Privacy",
+    "imprint": "Note legali",
+    "systemOnline": "Sistema online"
+  },
+  "actions": {
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "create": "Crea",
+    "close": "Chiudi",
+    "back": "Indietro",
+    "loading": "Caricamento …"
+  },
+  "status": {
+    "connected": "Connesso",
+    "notConfigured": "Non configurato",
+    "error": "Errore"
+  },
+  "statusBadge": {
+    "CONNECTED": "Connesso",
+    "ACTIVE": "Attivo",
+    "COMPLETED": "Completato",
+    "RUNNING": "In corso",
+    "SUCCESS": "Riuscito",
+    "PUBLISHED": "Pubblicato",
+    "APPROVED": "Approvato",
+    "SCHEDULED": "Pianificato",
+    "WAITING": "In attesa",
+    "IN_REVIEW": "In revisione",
+    "NOT_CONFIGURED": "Non configurato",
+    "IDLE": "Pronto",
+    "DRAFT": "Bozza",
+    "ARCHIVED": "Archiviato",
+    "ERROR": "Errore",
+    "REJECTED": "Rifiutato",
+    "RECEIVED": "Ricevuto",
+    "PENDING": "In sospeso"
+  },
+  "integrationStatus": {
+    "notConfigured": "Non configurato — variabili mancanti: {vars}.",
+    "verifyFailedGeneric": "Connessione non riuscita.",
+    "verifyFailedStatus": "{service} ha risposto con stato {status}.",
+    "verifyUnreachable": "{service} non è raggiungibile.",
+    "connected": "Connesso."
+  },
+  "mediaPreview": {
+    "expand": "Ingrandisci",
+    "close": "Chiudi"
+  }
+}

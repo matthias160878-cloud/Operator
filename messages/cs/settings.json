@@ -1,0 +1,27 @@
+{
+  "title": "Nastavení",
+  "description": "Pracovní prostor, uživatelé a systémové informace. Přístupové údaje se spravují výhradně přes proměnné prostředí (viz <code>.env.example</code>).",
+  "workspace": {
+    "title": "Pracovní prostor",
+    "name": "Název",
+    "slug": "Slug",
+    "createdAt": "Vytvořeno dne"
+  },
+  "users": {
+    "title": "Uživatelé a role",
+    "note": "Víceklientský datový model je plně připraven (izolace pracovních prostorů pro všechny tabulky). Skutečné přihlašovací rozhraní s více uživateli je dalším krokem rozvoje — aktuálně aplikace pracuje právě s tímto výchozím pracovním prostorem."
+  },
+  "system": {
+    "title": "Systém",
+    "contentItems": "Položky obsahu",
+    "campaigns": "Kampaně",
+    "mediaAssets": "Mediální assety",
+    "agentRuns": "Běhy agentů",
+    "dbNote": "Databáze: SQLite (lokální, <code>prisma/dev.db</code>) přes Prisma ORM. Pro produkci přepni <codeSpaced>DATABASE_URL</codeSpaced> na Postgres/MySQL (uprav providera v <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Asistent nastavení",
+    "description": "Malá okna s postupem krok za krokem pro poskytovatele AI, platformy sociálních sítí a hlasový výstup, která se zobrazí při prvním otevření.",
+    "reopen": "Znovu otevřít asistenta nastavení"
+  }
+}

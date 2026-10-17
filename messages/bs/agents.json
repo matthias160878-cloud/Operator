@@ -1,0 +1,21 @@
+{
+ "title": "Agent Monitor",
+ "description": "Svi SECRET 58 agenti sa statusom, posljednjim zadatkom i rezultatom. Svako pokretanje se bilježi.",
+ "table": {
+  "agent": "Agent",
+  "description": "Opis",
+  "status": "Status",
+  "lastTask": "Posljednji zadatak"
+ },
+ "history": {
+  "title": "Historija pokretanja",
+  "agent": "Agent",
+  "task": "Zadatak",
+  "status": "Status",
+  "start": "Početak",
+  "end": "Kraj",
+  "resultError": "Rezultat / greška",
+  "empty": "Još nema pokretanja agenata.",
+  "completed": "Završeno"
+ }
+}

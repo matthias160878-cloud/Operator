@@ -1,0 +1,21 @@
+{
+  "title": "Agent Monitor",
+  "description": "Alle SECRET 58-agenter med status, siste oppgave og resultat. Hver kjøring logges.",
+  "table": {
+    "agent": "Agent",
+    "description": "Beskrivelse",
+    "status": "Status",
+    "lastTask": "Siste oppgave"
+  },
+  "history": {
+    "title": "Kjørehistorikk",
+    "agent": "Agent",
+    "task": "Oppgave",
+    "status": "Status",
+    "start": "Start",
+    "end": "Slutt",
+    "resultError": "Resultat / feil",
+    "empty": "Ingen agentkjøringer ennå.",
+    "completed": "Fullført"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Smámyndahugmyndir, myndaeignir og Canva-samþætting.",
+  "imageAssetsTitle": "Myndaeignir",
+  "imageAssetsEmpty": "Engar myndaeignir til enn.",
+  "thumbnailAgent": {
+    "title": "Smámyndafulltrúi",
+    "description": "Býr til textahugmynd (titill, sjónræn hugmynd, uppsetning, CTA) — undirbúið fyrir tengingu við myndgerðarforrit. Engin mynd er búin til enn.",
+    "inputPlaceholder": "Efni smámyndarinnar",
+    "submitButton": "Búa til hugmynd",
+    "errorGenerationFailed": "Gerð mistókst.",
+    "errorUnknown": "Óþekkt villa.",
+    "fieldTitle": "Titill",
+    "fieldVisualIdea": "Sjónræn hugmynd",
+    "fieldText": "Texti",
+    "fieldLayout": "Uppsetning",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Myndlýsing"
+  }
+}

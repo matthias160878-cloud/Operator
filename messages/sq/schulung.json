@@ -1,0 +1,86 @@
+{
+  "title": "Trajnim",
+  "subtitle": "Udhëzime hap pas hapi dhe video shpjeguese për çdo fushë të SECRET 58 — mund t'i shikosh këtu në çdo kohë.",
+  "welcomeBanner": {
+    "title": "Mirë se vjen në SECRET 58!",
+    "body": "Faleminderit për blerjen. Para se të nisësh, ia vlen një vështrim i shpejtë te “Hapat e parë” më poshtë — që agjentët e AI të punojnë që nga fillimi me të dhënat e tua reale."
+  },
+  "stepsLabel": "Hapat",
+  "openPage": "Hap faqen",
+  "topics": {
+    "firstSteps": {
+      "title": "Hapat e parë",
+      "description": "Bëj fillimisht këto tri gjëra, pastaj të gjithë agjentët e AI punojnë me të dhëna reale në vend të vendmbajtësve.",
+      "steps": [
+        "Te “Integrimet” kontrollo nëse është konfiguruar një ofrues i IA-së. Funksionet e IA-së punojnë përmes qasjeve të operatorit, ndaj nuk të duhet abonim i vetin për IA. Pa ofrues të IA-së, aplikacioni punon në modalitetin e shablloneve.",
+        "Te “Brand DNA” plotëso markën tënde (ton, audiencë e synuar, vlera) — agjentët e AI e përdorin këtë për çdo tekst të gjeneruar.",
+        "Te “Ide & Frymëzim” ose “Content Brain” lër të krijohet ideja e parë ose fushata e parë."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Kështu nga një ide bëhet përmbajtje e gatshme dhe e miratuar.",
+      "steps": [
+        "Te Content Brain krijo një fushatë të re me temë dhe platforma të synuara — prej saj krijohen automatikisht disa njësi përmbajtjeje.",
+        "Te Content Factory çdo njësi përmbajtjeje kalon nëpër statuse: Draft → Në shqyrtim → Miratuar → Planifikuar → Publikuar.",
+        "Miratimi është një hap manual dhe i detyrueshëm — asgjë nuk publikohet automatikisht pa konfirmim.",
+        "Në pamjen e detajuar të një njësie përmbajtjeje mund të gjenerosh veç e veç skriptin, voiceover-in, titrat, hashtag-et dhe miniaturën."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video & Design Studio",
+      "description": "Mjetet e specializuara për çdo pjesë të përmbajtjes.",
+      "steps": [
+        "Script Studio: krijon skripte sipas strukturës Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: importo ose krijo një zë tëndin ElevenLabs, pastaj krijo voiceover drejtpërdrejt nga një skript.",
+        "Design Studio: agjenti i miniaturave propozon titull, ide vizuale, tekst, layout dhe përshkrim imazhi.",
+        "Video Studio: tregon gjendjen aktuale të lidhjes me ofruesit e videove (menaxheri i formateve, statusi i ofruesit)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Kalendari i përmbajtjes & Publikimi",
+      "description": "Ku përfundojnë postimet e planifikuara — dhe pse një postim del vërtet (ose jo).",
+      "steps": [
+        "Në Kalendarin e përmbajtjes shfaqen të gjitha njësitë e përmbajtjes me datë publikimi të planifikuar.",
+        "Para çdo publikimi, PublishingAgent kontrollon drejtpërdrejt nëse platforma e synuar te “Rrjetet sociale” është vërtet e shënuar “I lidhur”.",
+        "Pa lidhje reale me platformën shfaqet me ndershmëri një gabim, në vend që të shtirret një publikim."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics & Rritja",
+      "description": "Shifra reale për performancën tënde — dhe rekomandime në vend të automatizimit.",
+      "steps": [
+        "Analytics shfaq vetëm të dhëna performance reale, të importuara ose të regjistruara me dorë.",
+        "Faqja e rritjes llogarit nga këto të dhëna kohët më të mira të postimit, hashtag-et dhe formatet e suksesshme.",
+        "E rëndësishme: qëllimisht nuk ka rritje të automatizuar të ndjekësve/engagement-it (pa sjellje bot) — kjo do të shkelte kushtet e përdorimit të çdo platforme."
+      ]
+    },
+    "inbox": {
+      "title": "Kutia postare",
+      "description": "Drafte përgjigjesh nga AI për mesazhet — me miratim para dërgimit.",
+      "steps": [
+        "Meqë (ende) nuk është lidhur asnjë platformë përmes OAuth, bisedat aktualisht krijohen me dorë në vend që të merren drejtpërdrejt.",
+        "MessageAgent propozon një përgjigje mbi bazën e Brand DNA dhe historikut të bisedës.",
+        "Drafti duhet të kontrollohet e miratohet me dorë para se të konsiderohet i dërguar — një dërgim real dështon me ndershmëri pa lidhje me platformën, në vend që të shtirret suksesi."
+      ]
+    },
+    "revenue": {
+      "title": "Gjurmimi i të ardhurave",
+      "description": "Përmbledhje e të gjitha të ardhurave nga platformat në një vend — pagesa prapë kryhet përmes vetë platformave.",
+      "steps": [
+        "Të ardhurat futen me dorë, sepse TikTok/Meta nuk ofrojnë API publike për të ardhurat dhe YouTube kërkon për këtë qasje në Partner Program (ende i palidhur).",
+        "Pagesa reale kryhet gjithmonë drejtpërdrejt përmes platformës përkatëse (p.sh. YouTube përmes Google AdSense) — SECRET 58 nuk kryen pagesa."
+      ]
+    },
+    "integrations": {
+      "title": "Integrimet & çelësat API",
+      "description": "Nga vjen çdo status lidhjeje dhe ku futet çelësi përkatës.",
+      "steps": [
+        "Çdo rresht tregon statusin real, të kontrolluar drejtpërdrejt — kurrë një lidhje të shtirrur.",
+        "Te “I pakonfiguruar”, “Merr çelësin API” të çon te faqja zyrtare e ofruesit.",
+        "Të dhënat e qasjes nuk ruhen kurrë në shfletues, por vetëm të mbrojtura në server. Nëse mungon një qasje, e konfiguron operatori.",
+        "Kostot: Pro dhe Maxi janë abonime, mujore ose vjetore. Çmimet aktuale gjenden te “Paketa & Faturimi”. Çdo ofrues i jashtëm ka modelin e vet të pavarur të kostos (falas / sipas përdorimit / abonim) — në faqen Integrimet, te çdo shërbim shfaqet cili model vlen, me lidhje te çmimet aktuale të ofruesit."
+      ]
+    }
+  }
+}

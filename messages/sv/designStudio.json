@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Miniatyrbildskoncept, bildresurser och Canva-integrationen.",
+  "imageAssetsTitle": "Bildresurser",
+  "imageAssetsEmpty": "Inga bildresurser finns än.",
+  "thumbnailAgent": {
+    "title": "Miniatyrbildsagent",
+    "description": "Skapar ett textkoncept (titel, visuell idé, layout, CTA) — förberett för anslutning av en bildgenerator. Någon bild skapas ännu inte.",
+    "inputPlaceholder": "Ämne för miniatyrbilden",
+    "submitButton": "Generera koncept",
+    "errorGenerationFailed": "Genereringen misslyckades.",
+    "errorUnknown": "Okänt fel.",
+    "fieldTitle": "Titel",
+    "fieldVisualIdea": "Visuell idé",
+    "fieldText": "Text",
+    "fieldLayout": "Layout",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Bildbeskrivning"
+  }
+}

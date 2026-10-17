@@ -1,0 +1,24 @@
+{
+  "title": "Samþættingar",
+  "description": "Staða allra utanaðkomandi þjónusta í beinni — eingöngu byggð á umhverfisbreytum sem eru raunverulega stilltar. Engar uppgerðartengingar.",
+  "categories": {
+    "AI": "Gervigreindarveitur",
+    "VOICE": "Rödd",
+    "PLATFORM": "Samfélagsmiðlar",
+    "DESIGN": "Hönnun",
+    "VIDEO": "Myndskeið",
+    "TREND": "Stefnur"
+  },
+  "costNote": "Þinn SECRET 58 pakki (Pro eða Maxi) er áskrift, sjá „Pakki og reikningar“. Hver ytri þjónusta hér er með sitt eigið, óháð kostnaðarlíkan hjá viðkomandi veitu — SECRET 58 rukkar aldrei aukalega fyrir þær.",
+  "links": {
+    "getKey": "Sækja API-lykil",
+    "setInRender": "Skrá í Render",
+    "viewPricing": "Skoða verð"
+  },
+  "pricing": {
+    "free": "Ókeypis",
+    "payAsYouGo": "Eftir notkun",
+    "subscription": "Áskrift",
+    "unknown": "Athugaðu verð hjá veitanda"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Bélyegkép-koncepciók, képi anyagok és a Canva-integráció.",
+  "imageAssetsTitle": "Képi anyagok",
+  "imageAssetsEmpty": "Még nincsenek képi anyagok.",
+  "thumbnailAgent": {
+    "title": "Bélyegkép-agent",
+    "description": "Szöveges koncepciót készít (cím, vizuális ötlet, elrendezés, CTA) — előkészítve egy képgenerátor csatlakoztatására. Egyelőre nem készül kép.",
+    "inputPlaceholder": "A bélyegkép témája",
+    "submitButton": "Koncepció generálása",
+    "errorGenerationFailed": "A generálás nem sikerült.",
+    "errorUnknown": "Ismeretlen hiba.",
+    "fieldTitle": "Cím",
+    "fieldVisualIdea": "Vizuális ötlet",
+    "fieldText": "Szöveg",
+    "fieldLayout": "Elrendezés",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Képleírás"
+  }
+}

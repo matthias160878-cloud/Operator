@@ -1,0 +1,96 @@
+{
+  "viewAll": "Прикажи све",
+  "demoBanner": {
+    "before": "Демо подаци су активни — кампање, ставке садржаја и аналитика су примери из ",
+    "after": ", а не стварни бројеви платформи."
+  },
+  "hero": {
+    "subtitle": "Једна идеја. Више платформи. Максималан домет.",
+    "newCampaign": "Нова кампања",
+    "createContent": "Креирај садржај",
+    "findIdeas": "Нађи идеје",
+    "aiAgents": "AI агенти"
+  },
+  "orbit": {
+    "xNotConnected": "X (није повезан)",
+    "brainAlt": "SECRET 58 AI мозак"
+  },
+  "activeAgents": {
+    "title": "Активни агенти",
+    "empty": "Још нема покретања агената."
+  },
+  "kpi": {
+    "contentCreated": "Креиран садржај",
+    "videosCreated": "Креирани видеи",
+    "postsCreated": "Креиране објаве",
+    "published": "Објаве",
+    "views": "Прикази",
+    "avgEngagement": "Ø ангажман",
+    "totalRevenue": "Приходи укупно",
+    "noComparisonWeek": "Још нема претходне недеље као основе за поређење — стопе промене појављују се када буде података за најмање две недеље."
+  },
+  "production": {
+    "title": "Производња садржаја",
+    "thisWeek": "Ове недеље"
+  },
+  "scheduled": {
+    "title": "Заказане објаве",
+    "empty": "Нема заказаних објава."
+  },
+  "activity": {
+    "title": "Последње активности",
+    "empty": "Још нема активности."
+  },
+  "contentFactory": {
+    "description": "Направи само од једне идеје комплетне кампање садржаја за све платформе.",
+    "cta": "Почни сада →",
+    "popularTemplates": "Популарни шаблони",
+    "templateYoutubeVideo": "YouTube видео",
+    "templateTiktokSeries": "TikTok серија",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn објава",
+    "templateBlogPost": "Блог чланак",
+    "viewAllTemplates": "Сви шаблони →"
+  },
+  "brandDna": {
+    "tonality": "Тон",
+    "targetAudience": "Циљна група",
+    "industry": "Област",
+    "language": "Језик",
+    "empty": "Још није унет Brand DNA."
+  },
+  "campaigns": {
+    "title": "Актуелне кампање",
+    "empty": "Још нема кампања."
+  },
+  "platforms": {
+    "title": "Платформе",
+    "manage": "Управљај"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} повезано"
+  },
+  "agentMonitor": {
+    "title": "Монитор агената",
+    "empty": "Још нема покретања."
+  },
+  "topPerformer": {
+    "title": "Најуспешнији",
+    "last7Days": "Последњих 7 дана",
+    "empty": "Још нема података о учинку.",
+    "views": "Прикази",
+    "likes": "Лајкови",
+    "comments": "Коментари",
+    "shares": "Дељења",
+    "engagementRate": "+Стопа ангажмана {value}"
+  },
+  "calendar": {
+    "open": "Отвори",
+    "viewMonth": "Месец",
+    "viewWeek": "Недеља",
+    "viewDay": "Дан",
+    "viewCampaign": "Кампања",
+    "moreItems": "+{count} још"
+  },
+  "weekdayLabels": ["По", "Ут", "Ср", "Че", "Пе", "Су", "Не"]
+}

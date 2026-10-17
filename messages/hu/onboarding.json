@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "{current}. lépés / {total}",
+    "close": "Bezárás",
+    "back": "Vissza",
+    "next": "Tovább",
+    "skip": "Kihagyás",
+    "finish": "Kész, kezdjük",
+    "checking": "Ellenőrzés …",
+    "checkAgain": "Ellenőrzés most",
+    "connected": "Csatlakoztatva",
+    "notConnected": "Még nincs csatlakoztatva",
+    "skippedNote": "Kihagyva — bármikor pótolhatod az „Integrációk” menüpontban.",
+    "envHint": "Megjegyzés: A Renderben történt mentés után általában 1–2 percig tart, amíg a szolgáltatás újraindul, és a módosítás életbe lép. Ha az „Ellenőrzés most” még nem talál semmit, várj egy kicsit, és kattints újra.",
+    "reopenHint": "Ezt a segédet bármikor újra megnyithatod: a Beállításokban az „Üzembe helyezési segéd” alatt."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Üdvözlünk a SECRET 58-ban",
+      "body": "Mielőtt elindulunk, közösen beállítjuk a legszükségesebbeket — egészen apró, különálló lépésekben. Bármikor szüneteltethetsz, és később ugyanott folytathatod."
+    },
+    "aiProvider": {
+      "title": "1. lépés: MI-szolgáltató csatlakoztatása",
+      "body": "A szövegekhez, scriptekhez, hookokhoz és hashtagekhez a szoftvernek MI-szolgáltatóra van szüksége. Válassz a kettő közül — elég egy.",
+      "steps": [
+        "Kattints lent az Anthropic vagy az OpenAI mellett az „API-kulcs beszerzése” gombra.",
+        "Ha szükséges, hozz létre ott egy ingyenes fiókot.",
+        "Generálj ott egy új API-kulcsot, és másold ki.",
+        "Kattints a „Megadás a Renderben” gombra, illeszd be ott a kulcsot környezeti változóként, és mentsd el.",
+        "Térj vissza ide, és kattints lent az „Ellenőrzés most” gombra."
+      ],
+      "costHint": "A költségek csak tényleges használatkor merülnek fel, közvetlenül az adott szolgáltatónál — soha nem a SECRET 58-on keresztül."
+    },
+    "platform": {
+      "title": "2. lépés: Közösségi platform csatlakoztatása (opcionális)",
+      "body": "Opcionális, de ajánlott: csatlakoztass legalább egy platformot, amelyen később közzé szeretnél tenni. Ezt a lépést később is pótolhatod.",
+      "steps": [
+        "Válassz lent egy platformot, amelyet használni szeretnél.",
+        "Kattints az „API-kulcs beszerzése” gombra, és kövesd a szolgáltató utasításait.",
+        "Kattints a „Megadás a Renderben” gombra, és mentsd el ott a hozzáférési adatokat.",
+        "Térj vissza ide, és kattints az „Ellenőrzés most” gombra."
+      ]
+    },
+    "voice": {
+      "title": "3. lépés: Hangkimenet csatlakoztatása (opcionális)",
+      "body": "Csak akkor szükséges, ha automatikusan felolvasott hangalámondást szeretnél a videóidhoz. E lépés nélkül minden más ettől még működik.",
+      "steps": [
+        "Kattints az „API-kulcs beszerzése” gombra az ElevenLabsnél.",
+        "Hozz létre ott egy fiókot és egy API-kulcsot.",
+        "Kattints a „Megadás a Renderben” gombra, és mentsd el ott a kulcsot.",
+        "Térj vissza ide, és kattints az „Ellenőrzés most” gombra."
+      ]
+    },
+    "done": {
+      "title": "Kész!",
+      "body": "Most már kezdhetsz. Mindent, amit kihagytál, bármikor megtalálsz és kiegészíthetsz az „Integrációk” területen — vagy újra megnyithatod ezt a segédet a „Beállítások” menüből."
+    }
+  }
+}

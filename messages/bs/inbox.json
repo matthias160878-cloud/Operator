@@ -1,0 +1,26 @@
+{
+ "title": "Prijemno sanduče",
+ "description": "Poruke i komentari sa svih platformi. MessageAgent predlaže odgovore — šalje se samo ono što ti odobriš. Još ne postoji stvarna OAuth veza ni sa jednom platformom, pa se razgovori ovdje simuliraju ručno umjesto da se preuzimaju uživo.",
+ "emptyState": "Još nema razgovora — simuliraj jedan da započneš.",
+ "backToInbox": "Nazad na prijemno sanduče",
+ "newConversation": {
+  "simulateButton": "Simuliraj razgovor",
+  "simulateHint": "Pošto ne postoji stvarna veza s platformom, ovdje možeš simulirati dolaznu poruku da isprobaš AI nacrt odgovora.",
+  "close": "Zatvori",
+  "namePlaceholder": "Ime",
+  "handlePlaceholder": "@handle (opcionalno)",
+  "messagePlaceholder": "Tekst poruke …",
+  "createButton": "Kreiraj"
+ },
+ "detail": {
+  "draftFailed": "Nacrt nije uspio.",
+  "save": "Spremi",
+  "edit": "Uredi",
+  "approveAndSend": "Odobri i pošalji",
+  "requestDraft": "Zatraži AI nacrt odgovora",
+  "openDraftExists": "Gore već postoji otvoren nacrt — prvo ga uredi/pošalji.",
+  "simulateMoreHint": "Simuliraj još jednu dolaznu poruku (test bez stvarne veze s platformom):",
+  "messagePlaceholder": "Tekst poruke …",
+  "addButton": "Dodaj"
+ }
+}

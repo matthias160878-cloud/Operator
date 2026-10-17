@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Pa abonim. Të gjithë agjentët. Ofruesit e tu të AI.",
+  "subtitle": "Një ide. Disa platforma. Maksimumi i shtrirjes. Një paketë e vetme e plotë — paguaj një herë, qasje e plotë në të gjithë aplikacionin.",
+  "features": [
+    "Content Brain — një ide, të gjitha platformat",
+    "Të gjithë agjentët e AI: ide, trende, skript, hook, hashtag-e, miniatura, titra, publikim",
+    "Voice Studio me zëra ElevenLabs",
+    "Video Studio me menaxher formatesh — lidhja e gjeneratorëve të videove me AI është në punim e sipër",
+    "Content Factory me rrjedhë miratimi dhe Kalendar përmbajtjeje",
+    "Analytics, rekomandime rritjeje dhe gjurmim të të ardhurave",
+    "Kuti postare me draftet e përgjigjeve nga AI",
+    "Zgjedhje e lirë e ofruesve të AI përmes qasjeve të tua — pa kuota"
+  ],
+  "priceOnetime": "një herë",
+  "priceRecommendedNote": "Çmim i rekomanduar — bëhet i detyrueshëm sapo Stripe të konfigurohet me një çmim përkatës.",
+  "buyButton": "Bli tani",
+  "redirecting": "Duke të përcjellë te Stripe …",
+  "checkoutFailed": "Pagesa dështoi.",
+  "unknownError": "Gabim i panjohur.",
+  "notConfigured": "Pagesa ende nuk është konfiguruar — operatori duhet së pari të krijojë në Stripe një produkt me çmim {price} dhe të vendosë STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Shënim: Ky çmim është një herë për softuerin. Funksione të veçanta (p.sh. gjenerimi i tekstit me AI, zëri sintetik) kërkojnë qasje të tua te palë të treta (p.sh. Anthropic, ElevenLabs) — kostot e tyre janë të pavarura nga SECRET 58 dhe paguhen drejtpërdrejt te ofruesi përkatës, nuk llogariten këtu. Detaje pas blerjes te Integrimet.",
+  "setupServiceTitle": "Shto shërbimin e konfigurimit (+{price} një herë)",
+  "setupServiceDescription": "Ne konfigurojmë për ty çelësat API, Brand DNA dhe postimet e para.",
+  "setupServiceUnavailable": "Së shpejti i disponueshëm — operatori duhet së pari ta regjistrojë shërbimin në Stripe.",
+  "autopilot": {
+    "kicker": "Së shpejti",
+    "title": "Autopilot — gjithçka e përfshirë",
+    "subtitle": "Nuk nevojitet asnjë qasje e jotja: të gjitha kostot e ofruesve për tekst, zë dhe video janë të përfshira. Të njëjtat funksione si paketa e plotë — madhësitë ndryshojnë vetëm në sasi.",
+    "comingSoon": "Së shpejti",
+    "perMonth": "/ muaj",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agjenci"
+    },
+    "brands": "{count, plural, one {# markë} other {# marka}}",
+    "ideas": "{count} ide përmbajtjeje në muaj",
+    "videos": "{count} video AI (nga 30 s) në muaj",
+    "voiceMinutes": "{count} minuta zë sintetik në muaj",
+    "note": "Çmime të planifikuara, ende të pablera. Autopilot nis sapo të lidhen gjeneratorët e videove me AI."
+  }
+}

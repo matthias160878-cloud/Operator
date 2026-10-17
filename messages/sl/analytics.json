@@ -1,0 +1,14 @@
+{
+  "title": "Analitika",
+  "subtitle": "Kazalniki uspešnosti iz dejansko razpoložljivih podatkov — ko povežeš platforme, se ta pogled napolni z resničnimi vrednostmi.",
+  "statViewsTotal": "Ogledi skupaj",
+  "statLikesTotal": "Všečki skupaj",
+  "statComments": "Komentarji",
+  "statShares": "Deljenja",
+  "chartTitle": "Uspešnost vsebin skozi čas",
+  "chartLegend": "Ogledi (vijolična) · Angažiranost % (turkizna)",
+  "chartEmpty": "Podatkov analitike še ni.",
+  "bestPerformingTitle": "Najuspešnejše vsebine",
+  "bestPerformingEmpty": "Podatkov še ni.",
+  "learningAgentTitle": "Learning Agent — priporočila"
+}

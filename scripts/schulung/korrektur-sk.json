@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Návody krok za krokom a vysvetľujúce videá ku každej oblasti SECRET 58 — kedykoľvek tu môžeš nahliadnuť.",
+ "schulung.topics.firstSteps.steps.0": "V sekcii „Integrácie“ skontroluj, či je nastavený poskytovateľ AI. Funkcie AI bežia cez prístupy prevádzkovateľa, takže nepotrebuješ vlastné predplatné AI. Bez poskytovateľa AI aplikácia funguje v režime šablón.",
+ "schulung.topics.integrations.steps.2": "Prístupové údaje sa nikdy neukladajú v prehliadači, iba chránene na serveri. Ak prístup chýba, nastaví ho prevádzkovateľ.",
+ "schulung.topics.integrations.steps.3": "Náklady: Pro a Maxi sú predplatné, mesačné alebo ročné. Aktuálne ceny nájdeš v sekcii „Balík a fakturácia“. Každý externý poskytovateľ má vlastný, nezávislý model nákladov (zadarmo / podľa využitia / predplatné) — na stránke Integrácie je pri každej službe uvedené, ktorý model platí, s odkazom na aktuálne ceny u poskytovateľa.",
+ "integrations.costNote": "Tvoj balík SECRET 58 (Pro alebo Maxi) je predplatné, pozri „Balík a fakturácia“. Každá externá služba tu má vlastný, nezávislý model nákladov u príslušného poskytovateľa — SECRET 58 za ne nikdy neúčtuje nič navyše."
+}

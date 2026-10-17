@@ -1,0 +1,96 @@
+{
+  "viewAll": "Rodyti visus",
+  "demoBanner": {
+    "before": "Demonstraciniai duomenys aktyvūs — kampanijos, turinio elementai ir analitika yra pavyzdiniai duomenys iš ",
+    "after": ", ne tikri platformų skaičiai."
+  },
+  "hero": {
+    "subtitle": "Viena idėja. Kelios platformos. Maksimalus aprėptis.",
+    "newCampaign": "Nauja kampanija",
+    "createContent": "Kurti turinį",
+    "findIdeas": "Rasti idėjų",
+    "aiAgents": "DI agentai"
+  },
+  "orbit": {
+    "xNotConnected": "X (neprijungta)",
+    "brainAlt": "SECRET 58 DI smegenys"
+  },
+  "activeAgents": {
+    "title": "Aktyvūs agentai",
+    "empty": "Agentų paleidimų dar nėra."
+  },
+  "kpi": {
+    "contentCreated": "Sukurtas turinys",
+    "videosCreated": "Sukurti vaizdo įrašai",
+    "postsCreated": "Sukurti įrašai",
+    "published": "Paskelbimai",
+    "views": "Peržiūros",
+    "avgEngagement": "Vid. įsitraukimas",
+    "totalRevenue": "Pajamos iš viso",
+    "noComparisonWeek": "Praėjusios savaitės palyginimui duomenų dar nėra — pokyčių rodikliai atsiras, kai bus bent dviejų savaičių duomenys."
+  },
+  "production": {
+    "title": "Turinio gamyba",
+    "thisWeek": "Šią savaitę"
+  },
+  "scheduled": {
+    "title": "Suplanuoti įrašai",
+    "empty": "Suplanuotų įrašų nėra."
+  },
+  "activity": {
+    "title": "Paskutinė veikla",
+    "empty": "Veiklos dar nėra."
+  },
+  "contentFactory": {
+    "description": "Su vos viena idėja sukurk pilnas turinio kampanijas visoms platformoms.",
+    "cta": "Pradėti dabar →",
+    "popularTemplates": "Populiarūs šablonai",
+    "templateYoutubeVideo": "YouTube vaizdo įrašas",
+    "templateTiktokSeries": "TikTok serija",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn įrašas",
+    "templateBlogPost": "Tinklaraščio straipsnis",
+    "viewAllTemplates": "Visi šablonai →"
+  },
+  "brandDna": {
+    "tonality": "Tonas",
+    "targetAudience": "Tikslinė auditorija",
+    "industry": "Sritis",
+    "language": "Kalba",
+    "empty": "Brand DNA dar neįvesta."
+  },
+  "campaigns": {
+    "title": "Naujausios kampanijos",
+    "empty": "Kampanijų dar nėra."
+  },
+  "platforms": {
+    "title": "Platformos",
+    "manage": "Tvarkyti"
+  },
+  "integrations": {
+    "connectedCount": "Prijungta: {connected}/{total}"
+  },
+  "agentMonitor": {
+    "title": "Agentų monitorius",
+    "empty": "Paleidimų dar nėra."
+  },
+  "topPerformer": {
+    "title": "Geriausi rezultatai",
+    "last7Days": "Paskutinės 7 dienos",
+    "empty": "Veiklos duomenų dar nėra.",
+    "views": "Peržiūros",
+    "likes": "Patiktukai",
+    "comments": "Komentarai",
+    "shares": "Pasidalijimai",
+    "engagementRate": "+Įsitraukimo rodiklis {value}"
+  },
+  "calendar": {
+    "open": "Atidaryti",
+    "viewMonth": "Mėnuo",
+    "viewWeek": "Savaitė",
+    "viewDay": "Diena",
+    "viewCampaign": "Kampanija",
+    "moreItems": "+{count} daugiau"
+  },
+  "weekdayLabels": ["Pr", "An", "Tr", "Kt", "Pn", "Št", "Sk"]
+}

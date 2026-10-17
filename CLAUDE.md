@@ -2,6 +2,17 @@
 
 Diese Datei gibt Claude Code (claude.ai/code) Hinweise für die Arbeit mit dem Code in diesem Repository.
 
+## Hauptseite www.secret58.com (unantastbar)
+
+Die Hauptseite von SECRET 58 ist die **„Secret 58 Zentrale“** (claude.ai-Artifact, Eigentümer: Matthias Lippek):
+<https://claude.ai/artifact/Kha1HUHqEmbZLRgNErWC6Q> — Unterseiten per `#/<seite>`, z. B. `#/social-media-ki`, `#/ki-agenten`, `#/preise`.
+
+- Sie ist die Seite, von der alles ausgeht. Sagt Matthias „secret58.com“, „www.secret58.com“ oder „meine Hauptseite“, wird **immer diese Seite** gezeigt (Link angeben).
+- **Oberfläche und Inhalt dieser Seite werden nie verändert** (kein Republish, keine Änderung an Gestaltung, Texten oder Technik), außer Matthias ordnet es ausdrücklich an. Änderungen nur an Kopien.
+- Die Seite ist eine Demo mit Beispieldaten (rein im Browser, ohne Server). Was nicht angebunden ist, ist als Demo / vorbereitet / noch nicht eingerichtet zu kennzeichnen.
+- Umstellung der echten Domain secret58.com (liegt bei IONOS) erst nach ausdrücklicher Freigabe eines geprüften Ergebnisses.
+- Stand 14.10.2026: Der Bereich `#/social-media-ki` ist auf Anordnung von Matthias an die Staging-App angebunden (Buttons → `secret58-staging.onrender.com/buy` und `/login`, Preise Pro 590 €/Maxi 797 € netto, Aktionszeiträume mit Codes, Autopilot S/M/L als „Demnächst“, Block „Stand der Anbindungen“). Kopie der Seite: `public/hauptseite/` (Staging: `/hauptseite/index.html`). Die Codes müssen vor Aktionsbeginn in der App angelegt werden.
+
 ## Repository-Status
 
 Dieses Repository enthält zwei unabhängige Teilprojekte:

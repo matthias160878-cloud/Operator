@@ -1,0 +1,96 @@
+{
+  "viewAll": "Sýna allt",
+  "demoBanner": {
+    "before": "Sýnigögn virk — herferðir, efnisatriði og greining eru dæmigögn úr ",
+    "after": ", ekki raunverulegar tölur af miðlum."
+  },
+  "hero": {
+    "subtitle": "Ein hugmynd. Margir miðlar. Hámarks útbreiðsla.",
+    "newCampaign": "Ný herferð",
+    "createContent": "Búa til efni",
+    "findIdeas": "Finna hugmyndir",
+    "aiAgents": "Gervigreindarfulltrúar"
+  },
+  "orbit": {
+    "xNotConnected": "X (ekki tengt)",
+    "brainAlt": "SECRET 58 gervigreindarheili"
+  },
+  "activeAgents": {
+    "title": "Virkir fulltrúar",
+    "empty": "Engar keyrslur fulltrúa enn."
+  },
+  "kpi": {
+    "contentCreated": "Efni búið til",
+    "videosCreated": "Myndskeið búin til",
+    "postsCreated": "Færslur búnar til",
+    "published": "Birtingar",
+    "views": "Áhorf",
+    "avgEngagement": "Meðalþátttaka",
+    "totalRevenue": "Tekjur samtals",
+    "noComparisonWeek": "Engin fyrri vika til samanburðar enn — breytingahlutföll birtast þegar gögn ná yfir að minnsta kosti tvær vikur."
+  },
+  "production": {
+    "title": "Efnisframleiðsla",
+    "thisWeek": "Þessi vika"
+  },
+  "scheduled": {
+    "title": "Áætlaðar færslur",
+    "empty": "Engar áætlaðar færslur."
+  },
+  "activity": {
+    "title": "Nýleg virkni",
+    "empty": "Engin virkni enn."
+  },
+  "contentFactory": {
+    "description": "Búðu til heilar efnisherferðir fyrir alla miðla út frá einni hugmynd.",
+    "cta": "Byrja núna →",
+    "popularTemplates": "Vinsæl sniðmát",
+    "templateYoutubeVideo": "YouTube-myndskeið",
+    "templateTiktokSeries": "TikTok-sería",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn-færsla",
+    "templateBlogPost": "Bloggfærsla",
+    "viewAllTemplates": "Öll sniðmát →"
+  },
+  "brandDna": {
+    "tonality": "Tónn",
+    "targetAudience": "Markhópur",
+    "industry": "Atvinnugrein",
+    "language": "Tungumál",
+    "empty": "Ekkert Brand DNA skráð enn."
+  },
+  "campaigns": {
+    "title": "Nýjustu herferðir",
+    "empty": "Engar herferðir enn."
+  },
+  "platforms": {
+    "title": "Miðlar",
+    "manage": "Stjórna"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} tengt"
+  },
+  "agentMonitor": {
+    "title": "Eftirlit með fulltrúum",
+    "empty": "Engar keyrslur enn."
+  },
+  "topPerformer": {
+    "title": "Best heppnað",
+    "last7Days": "Síðustu 7 dagar",
+    "empty": "Engin frammistöðugögn enn.",
+    "views": "Áhorf",
+    "likes": "Læk",
+    "comments": "Athugasemdir",
+    "shares": "Deilingar",
+    "engagementRate": "+Þátttökuhlutfall {value}"
+  },
+  "calendar": {
+    "open": "Opna",
+    "viewMonth": "Mánuður",
+    "viewWeek": "Vika",
+    "viewDay": "Dagur",
+    "viewCampaign": "Herferð",
+    "moreItems": "+{count} til viðbótar"
+  },
+  "weekdayLabels": ["Má", "Þr", "Mi", "Fi", "Fö", "La", "Su"]
+}

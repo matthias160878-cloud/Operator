@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Pasul {current} din {total}",
+    "close": "Închide",
+    "back": "Înapoi",
+    "next": "Continuă",
+    "skip": "Omite",
+    "finish": "Gata, să începem",
+    "checking": "Se verifică …",
+    "checkAgain": "Verifică acum",
+    "connected": "Conectat",
+    "notConnected": "Încă neconectat",
+    "skippedNote": "Omis — poți recupera oricând la „Integrări”.",
+    "envHint": "Notă: după salvarea în Render durează de obicei 1–2 minute până când serviciul repornește și modificarea are efect. Dacă „Verifică acum” nu găsește încă nimic, așteaptă puțin și apasă din nou.",
+    "reopenHint": "Poți redeschide acest asistent oricând: în Setări, la „Asistent de configurare”."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Bun venit la SECRET 58",
+      "body": "Înainte de a începe, configurăm împreună strictul necesar — în pași foarte mici, unul câte unul. Poți face pauză oricând și continua mai târziu din același loc."
+    },
+    "aiProvider": {
+      "title": "Pasul 1: Conectează un furnizor de IA",
+      "body": "Pentru texte, script-uri, hook-uri și hashtag-uri, software-ul are nevoie de un furnizor de IA. Alege unul dintre cei doi — este suficient unul.",
+      "steps": [
+        "Mai jos, la Anthropic sau OpenAI, apasă pe „Obține cheia API”.",
+        "Creează acolo, dacă e nevoie, un cont gratuit.",
+        "Generează acolo o cheie API nouă și copiaz-o.",
+        "Apasă pe „Introdu în Render”, lipește cheia acolo ca variabilă de mediu și salvează.",
+        "Revino aici și apasă mai jos pe „Verifică acum”."
+      ],
+      "costHint": "Costurile apar abia la utilizarea efectivă, direct la furnizorul respectiv — niciodată prin SECRET 58."
+    },
+    "platform": {
+      "title": "Pasul 2: Conectează o platformă de social media (opțional)",
+      "body": "Opțional, dar recomandat: conectează cel puțin o platformă pe care vrei să publici ulterior. Poți face acest pas și mai târziu.",
+      "steps": [
+        "Alege mai jos o platformă pe care vrei să o folosești.",
+        "Apasă pe „Obține cheia API” și urmează instrucțiunile furnizorului.",
+        "Apasă pe „Introdu în Render” și salvează acolo datele de acces.",
+        "Revino aici și apasă pe „Verifică acum”."
+      ]
+    },
+    "voice": {
+      "title": "Pasul 3: Conectează sinteza vocală (opțional)",
+      "body": "Necesar doar dacă vrei să generezi automat voiceover vorbit pentru videoclipurile tale. Fără acest pas, restul funcționează oricum.",
+      "steps": [
+        "Apasă pe „Obține cheia API” la ElevenLabs.",
+        "Creează acolo un cont și o cheie API.",
+        "Apasă pe „Introdu în Render” și salvează acolo cheia.",
+        "Revino aici și apasă pe „Verifică acum”."
+      ]
+    },
+    "done": {
+      "title": "Gata!",
+      "body": "Poți începe acum. Tot ce ai omis găsești și completezi oricând în secțiunea „Integrări” — sau redeschizi acest asistent din „Setări”."
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "viewAll": "Ver tudo",
+  "demoBanner": {
+    "before": "Dados de demonstração ativos — campanhas, itens de conteúdo e analytics são dados de exemplo de ",
+    "after": ", não são números reais das plataformas."
+  },
+  "hero": {
+    "subtitle": "Uma ideia. Várias plataformas. Máximo alcance.",
+    "newCampaign": "Nova campanha",
+    "createContent": "Criar conteúdo",
+    "findIdeas": "Encontrar ideias",
+    "aiAgents": "Agentes de IA"
+  },
+  "orbit": {
+    "xNotConnected": "X (não ligado)",
+    "brainAlt": "Cérebro de IA do SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Agentes ativos",
+    "empty": "Ainda não há execuções de agentes."
+  },
+  "kpi": {
+    "contentCreated": "Conteúdo criado",
+    "videosCreated": "Vídeos criados",
+    "postsCreated": "Publicações criadas",
+    "published": "Publicações feitas",
+    "views": "Visualizações",
+    "avgEngagement": "Ø Envolvimento",
+    "totalRevenue": "Total de receitas",
+    "noComparisonWeek": "Ainda não há semana anterior como base de comparação — as taxas de variação aparecem quando houver dados de pelo menos duas semanas."
+  },
+  "production": {
+    "title": "Produção de conteúdo",
+    "thisWeek": "Esta semana"
+  },
+  "scheduled": {
+    "title": "Publicações agendadas",
+    "empty": "Não há publicações agendadas."
+  },
+  "activity": {
+    "title": "Atividades recentes",
+    "empty": "Ainda não há atividades."
+  },
+  "contentFactory": {
+    "description": "Com uma única ideia, cria campanhas de conteúdo completas para todas as plataformas.",
+    "cta": "Começar agora →",
+    "popularTemplates": "Modelos populares",
+    "templateYoutubeVideo": "Vídeo do YouTube",
+    "templateTiktokSeries": "Série do TikTok",
+    "templateInstagramReel": "Reel do Instagram",
+    "templateLinkedinPost": "Publicação do LinkedIn",
+    "templateBlogPost": "Artigo de blogue",
+    "viewAllTemplates": "Todos os modelos →"
+  },
+  "brandDna": {
+    "tonality": "Tonalidade",
+    "targetAudience": "Público-alvo",
+    "industry": "Setor",
+    "language": "Idioma",
+    "empty": "Ainda não há Brand DNA registado."
+  },
+  "campaigns": {
+    "title": "Campanhas recentes",
+    "empty": "Ainda não há campanhas."
+  },
+  "platforms": {
+    "title": "Plataformas",
+    "manage": "Gerir"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} ligadas"
+  },
+  "agentMonitor": {
+    "title": "Monitor de agentes",
+    "empty": "Ainda não há execuções."
+  },
+  "topPerformer": {
+    "title": "Melhor desempenho",
+    "last7Days": "Últimos 7 dias",
+    "empty": "Ainda não há dados de desempenho.",
+    "views": "Visualizações",
+    "likes": "Gostos",
+    "comments": "Comentários",
+    "shares": "Partilhas",
+    "engagementRate": "+Taxa de envolvimento {value}"
+  },
+  "calendar": {
+    "open": "Abrir",
+    "viewMonth": "Mês",
+    "viewWeek": "Semana",
+    "viewDay": "Dia",
+    "viewCampaign": "Campanha",
+    "moreItems": "+{count} mais"
+  },
+  "weekdayLabels": [
+    "Seg",
+    "Ter",
+    "Qua",
+    "Qui",
+    "Sex",
+    "Sáb",
+    "Dom"
+  ]
+}

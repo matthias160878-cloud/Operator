@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Udbyderuafhængig videopipeline: Format Manager, udskiftelige videoudbydere, tilslutning af voiceover og undertekster (se Content Factory for hvert content-element).",
+  "providerCardTitle": "Videoudbydere",
+  "providerNotePrefix": "Flere udbydere (AI-video-API'er, stockvideobiblioteker) kan tilføjes via samme",
+  "providerNoteSuffix": "-grænseflade uden at røre eksisterende kode.",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Videoassets",
+  "assetsEmpty": "Ingen videoer renderet endnu — rendering sker via content-elementer i Content Factory, så snart en videoudbyder er konfigureret."
+}

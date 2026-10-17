@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Mehanizam za skripte i hookove: izrađuje skripte prilagođene platformama prema strukturi Hook → Problem → Value → Example → Payoff → CTA te više varijanti hooka.",
+  "form": {
+    "topicLabel": "Tema",
+    "topicPlaceholder": "npr. 5 načina na koje AI agenti štede vrijeme",
+    "platformLabel": "Platforma",
+    "generateButton": "Generiraj skriptu i hookove",
+    "generateFailed": "Generiranje nije uspjelo.",
+    "unknownError": "Nepoznata pogreška."
+  },
+  "hookTypes": {
+    "direkt": "Izravno",
+    "neugierig": "Znatiželjno",
+    "story": "Priča",
+    "problem": "Problem",
+    "zahlen": "Brojke",
+    "kontroversSachlich": "Kontroverzno (stvarno)",
+    "educational": "Edukativno"
+  },
+  "hooksHeading": "Varijante hooka",
+  "engine": {
+    "label": "Pogon: {provider}",
+    "templateMode": "Način predloška (nije konfiguriran AI pružatelj)"
+  },
+  "script": {
+    "heading": "Skripta",
+    "save": "Spremi kao stavku sadržaja",
+    "saving": "Sprema se…"
+  }
+}

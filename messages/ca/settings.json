@@ -1,0 +1,27 @@
+{
+  "title": "Configuració",
+  "description": "Espai de treball, usuaris i informació del sistema. Les dades d'accés es gestionen exclusivament mitjançant variables d'entorn (vegeu <code>.env.example</code>).",
+  "workspace": {
+    "title": "Espai de treball",
+    "name": "Nom",
+    "slug": "Slug",
+    "createdAt": "Creat el"
+  },
+  "users": {
+    "title": "Usuaris i rols",
+    "note": "El model de dades multiinquilí està totalment preparat (aïllament de l'espai de treball per a totes les taules). Una interfície real d'inici de sessió/autenticació amb diversos usuaris és el pas següent d'ampliació; ara mateix l'aplicació treballa exactament amb aquest espai de treball per defecte."
+  },
+  "system": {
+    "title": "Sistema",
+    "contentItems": "Elements de contingut",
+    "campaigns": "Campanyes",
+    "mediaAssets": "Recursos multimèdia",
+    "agentRuns": "Execucions d'agents",
+    "dbNote": "Base de dades: SQLite (local, <code>prisma/dev.db</code>) mitjançant Prisma ORM. Per a producció, canvia <codeSpaced>DATABASE_URL</codeSpaced> a Postgres/MySQL (adapta el proveïdor a <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Assistent de configuració",
+    "description": "Les petites finestres pas a pas per a proveïdors d'IA, plataformes de xarxes socials i sortida de veu que apareixen en obrir-ho per primera vegada.",
+    "reopen": "Torna a obrir l'assistent de configuració"
+  }
+}

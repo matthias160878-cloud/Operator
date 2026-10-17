@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Én idé inn — en komplett, plattformtilpasset innholdsplan ut. ContentBrainAgent tar hensyn til din Brand DNA og lager passende hooks, scripts, hashtags og thumbnail-konsepter som utkast for hver valgt plattform.",
+  "campaignsHeading": "Kampanjer",
+  "noCampaigns": "Ingen kampanjer opprettet ennå.",
+  "campaignSummary": "{count} innholdselementer · {audience}",
+  "form": {
+    "textEngineLabel": "Tekstmotor:",
+    "templateMode": "Malmodus (ingen KI-leverandør konfigurert)",
+    "modeTemplate": "Mal",
+    "topicLabel": "Tema / idé",
+    "topicPlaceholder": "f.eks. Forklar hvorfor autonome KI-agenter forandrer arbeidslivet.",
+    "audienceLabel": "Målgruppe",
+    "audiencePlaceholder": "f.eks. 25-45, teknologiinteresserte",
+    "goalLabel": "Mål",
+    "languageLabel": "Språk",
+    "platformsLabel": "Plattformer",
+    "itemsPerPlatformLabel": "Innholdselementer per plattform ({count})",
+    "generateError": "Genereringen mislyktes.",
+    "unknownError": "Ukjent feil.",
+    "submitLoading": "Content Brain jobber…",
+    "submitIdle": "Generer innholdsplan",
+    "resultHeading": "Kampanje opprettet — {count} innholdselementer lagt inn som utkast.",
+    "resultDescription": "Generert i {mode}-modus. Alt innhold starter som DRAFT — se gjennom og rediger det i Content Factory.",
+    "resultLink": "Til Content Factory →"
+  }
+}

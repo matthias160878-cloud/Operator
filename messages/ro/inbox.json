@@ -1,0 +1,26 @@
+{
+  "title": "Inbox",
+  "description": "Mesaje și comentarii de pe toate platformele. MessageAgent propune răspunsuri — se trimite doar ce aprobi tu. Încă nu există o conexiune OAuth reală cu o platformă, de aceea conversațiile sunt simulate manual aici, în loc să fie preluate live.",
+  "emptyState": "Încă nu există conversații — simulează una pentru a începe.",
+  "backToInbox": "Înapoi la Inbox",
+  "newConversation": {
+    "simulateButton": "Simulează o conversație",
+    "simulateHint": "Fiindcă nu există o conexiune reală cu o platformă, poți simula aici un mesaj primit, pentru a încerca ciorna de răspuns generată de IA.",
+    "close": "Închide",
+    "namePlaceholder": "Nume",
+    "handlePlaceholder": "@handle (opțional)",
+    "messagePlaceholder": "Textul mesajului …",
+    "createButton": "Creează"
+  },
+  "detail": {
+    "draftFailed": "Ciorna a eșuat.",
+    "save": "Salvează",
+    "edit": "Editează",
+    "approveAndSend": "Aprobă și trimite",
+    "requestDraft": "Solicită o ciornă de răspuns IA",
+    "openDraftExists": "Există deja o ciornă deschisă mai sus — editează-o/trimite-o mai întâi.",
+    "simulateMoreHint": "Simulează un alt mesaj primit (test fără conexiune reală cu platforma):",
+    "messagePlaceholder": "Textul mesajului …",
+    "addButton": "Adaugă"
+  }
+}

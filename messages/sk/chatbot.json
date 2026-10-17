@@ -1,0 +1,14 @@
+{
+ "title": "Asistent AI",
+ "welcome": "Ahoj! Opýtaj sa ma na čokoľvek o SECRET 58 — ako niečo nastaviť, kde niečo nájdeš alebo ako funguje niektorá sekcia.",
+ "inputPlaceholder": "Zadaj otázku …",
+ "thinking": "Rozmýšľa …",
+ "openButton": "Otvoriť asistenta AI",
+ "close": "Zavrieť",
+ "sendButton": "Odoslať",
+ "micButton": "Hlasový vstup",
+ "speakToggle": "Čítať odpovede nahlas",
+ "notConfigured": "Asistent AI ešte nie je nakonfigurovaný — musí sa preň uložiť poskytovateľ AI (Anthropic alebo OpenAI).",
+ "openIntegrations": "Prejsť do Integrácií",
+ "error": "Asistent AI teraz nemohol odpovedať. Skús to prosím neskôr."
+}

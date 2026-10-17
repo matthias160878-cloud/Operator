@@ -1,0 +1,93 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Aktar minn kontenut.",
+    "footerLine2": "Magna sħiħa tal-kontenut.",
+    "workspace": "Workspace",
+    "role": "Amministratur"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "schulung": "Taħriġ",
+    "contentFactory": "Content Factory",
+    "ideas": "Idejat u Ispirazzjoni",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Social Media",
+    "calendar": "Kalendarju tal-Kontenut",
+    "analytics": "Analytics",
+    "growth": "Tkabbir",
+    "revenue": "Dħul",
+    "inbox": "Inbox",
+    "agents": "Agenti",
+    "integrations": "Integrazzjonijiet",
+    "settings": "Settings",
+    "billing": "Pakkett u Fatturar",
+    "sales": "Bejgħ u Shop",
+    "website": "Is-sit tiegħi"
+  },
+  "topbar": {
+    "menuOpen": "Iftaħ il-menu",
+    "menuClose": "Agħlaq il-menu",
+    "searchPlaceholder": "Fittex kontenut, proġetti, kampanji …",
+    "notifications": "Notifiki",
+    "language": "Lingwa"
+  },
+  "footer": {
+    "help": "Għajnuna",
+    "privacy": "Privatezza",
+    "imprint": "Impressum",
+    "systemOnline": "Is-sistema online"
+  },
+  "actions": {
+    "save": "Aħżen",
+    "cancel": "Ikkanċella",
+    "delete": "Ħassar",
+    "edit": "Editja",
+    "create": "Oħloq",
+    "close": "Agħlaq",
+    "back": "Lura",
+    "loading": "Qed jitgħabba …"
+  },
+  "status": {
+    "connected": "Konness",
+    "notConfigured": "Mhux ikkonfigurat",
+    "error": "Żball"
+  },
+  "statusBadge": {
+    "CONNECTED": "Konness",
+    "ACTIVE": "Attiv",
+    "COMPLETED": "Tlesta",
+    "RUNNING": "Qed jaħdem",
+    "SUCCESS": "Suċċess",
+    "PUBLISHED": "Ippubblikat",
+    "APPROVED": "Approvat",
+    "SCHEDULED": "Ippjanat",
+    "WAITING": "Qed jistenna",
+    "IN_REVIEW": "Qed jiġi eżaminat",
+    "NOT_CONFIGURED": "Mhux ikkonfigurat",
+    "IDLE": "Lest",
+    "DRAFT": "Abbozz",
+    "ARCHIVED": "Arkivjat",
+    "ERROR": "Żball",
+    "REJECTED": "Miċħud",
+    "RECEIVED": "Riċevut",
+    "PENDING": "Pendenti"
+  },
+  "integrationStatus": {
+    "notConfigured": "Mhux ikkonfigurat — varjabbli nieqsa: {vars}.",
+    "verifyFailedGeneric": "Il-konnessjoni falliet.",
+    "verifyFailedStatus": "{service} wieġeb bl-istatus {status}.",
+    "verifyUnreachable": "{service} ma setax jintlaħaq.",
+    "connected": "Konness."
+  },
+  "mediaPreview": {
+    "expand": "Uri akbar",
+    "close": "Agħlaq"
+  }
+}

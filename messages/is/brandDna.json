@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Vörumerkið þitt. Stíllinn þinn. Alls staðar. Þessar upplýsingar fara sjálfkrafa inn í Content Brain og handrits-, krækju- og myllumerkjafulltrúana.",
+  "form": {
+    "nameLabel": "Nafn vörumerkis",
+    "industryLabel": "Atvinnugrein",
+    "descriptionLabel": "Lýsing",
+    "descriptionHint": "Hvað einkennir vörumerkið?",
+    "audienceLabel": "Markhópur",
+    "languageLabel": "Tungumál",
+    "tonalityLabel": "Tónn",
+    "humorLabel": "Húmor",
+    "formalityLabel": "Formfesta",
+    "preferredWordsLabel": "Æskileg orð",
+    "forbiddenWordsLabel": "Bönnuð orð",
+    "preferredCtasLabel": "Æskilegar CTA-hvatningar",
+    "brandValuesLabel": "Gildi vörumerkis",
+    "topicsLabel": "Efnisflokkar",
+    "csvHint": "aðskilið með kommum",
+    "colorsLabel": "Litir",
+    "colorsHint": "aðskilið með kommum, t.d. #6D5BFF",
+    "fontsLabel": "Letur",
+    "visualRulesLabel": "Sjónrænar reglur",
+    "saveError": "Vistun mistókst.",
+    "unknownError": "Óþekkt villa.",
+    "saving": "Vistar…",
+    "save": "Vista Brand DNA",
+    "savedAt": "Vistað kl. {time}"
+  }
+}

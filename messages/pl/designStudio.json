@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Koncepcje miniatur, zasoby graficzne i integracja z Canva.",
+  "imageAssetsTitle": "Zasoby graficzne",
+  "imageAssetsEmpty": "Brak zasobów graficznych.",
+  "thumbnailAgent": {
+    "title": "Agent miniatur",
+    "description": "Tworzy koncepcję tekstową (tytuł, pomysł wizualny, układ, CTA) — przygotowaną pod podłączenie generatora obrazów. Obraz nie jest jeszcze generowany.",
+    "inputPlaceholder": "Temat miniatury",
+    "submitButton": "Generuj koncepcję",
+    "errorGenerationFailed": "Generowanie nie powiodło się.",
+    "errorUnknown": "Nieznany błąd.",
+    "fieldTitle": "Tytuł",
+    "fieldVisualIdea": "Pomysł wizualny",
+    "fieldText": "Tekst",
+    "fieldLayout": "Układ",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Opis obrazu"
+  }
+}

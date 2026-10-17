@@ -1,0 +1,24 @@
+{
+  "title": "Integratsioonid",
+  "description": "Kõigi väliste teenuste reaalajas olek — ainult tegelikult seatud keskkonnamuutujate põhjal. Näiliselt ühendusi pole.",
+  "categories": {
+    "AI": "Tehisintellekti pakkujad",
+    "VOICE": "Hääl",
+    "PLATFORM": "Sotsiaalplatvormid",
+    "DESIGN": "Disain",
+    "VIDEO": "Video",
+    "TREND": "Trendid"
+  },
+  "costNote": "Sinu SECRET 58 pakett (Pro või Maxi) on tellimus, vaata „Pakett ja arveldus“. Igal siinsel välisel teenusel on oma sõltumatu kulumudel vastava pakkuja juures — SECRET 58 ei arvesta nende eest kunagi lisatasu.",
+  "links": {
+    "getKey": "Hangi API võti",
+    "setInRender": "Sisesta Renderis",
+    "viewPricing": "Vaata hindu"
+  },
+  "pricing": {
+    "free": "Tasuta",
+    "payAsYouGo": "Kasutuspõhine",
+    "subscription": "Tellimus",
+    "unknown": "Kontrolli hinda pakkuja juures"
+  }
+}

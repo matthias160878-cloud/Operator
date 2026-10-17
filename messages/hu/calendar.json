@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Tartalomnaptár",
+  "subtitle": "Tervezett és közzétett tartalmak áttekintése.",
+  "weekdays": ["H", "K", "Sze", "Cs", "P", "Szo", "V"],
+  "months": [
+    "január", "február", "március", "április", "május", "június",
+    "július", "augusztus", "szeptember", "október", "november", "december"
+  ],
+  "allPlatforms": "Minden platform",
+  "moreItems": "+{count} további",
+  "listTitle": "E havi lista",
+  "emptyMonth": "Ebben a hónapban nincs tervezett bejegyzés."
+}

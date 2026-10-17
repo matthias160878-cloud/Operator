@@ -1,0 +1,21 @@
+{
+  "title": "Agendi monitor",
+  "description": "Kõik SECRET 58 agendid koos oleku, viimase ülesande ja tulemusega. Iga käivitus logitakse.",
+  "table": {
+    "agent": "Agent",
+    "description": "Kirjeldus",
+    "status": "Olek",
+    "lastTask": "Viimane ülesanne"
+  },
+  "history": {
+    "title": "Käivituste ajalugu",
+    "agent": "Agent",
+    "task": "Ülesanne",
+    "status": "Olek",
+    "start": "Algus",
+    "end": "Lõpp",
+    "resultError": "Tulemus / viga",
+    "empty": "Agentide käivitusi pole veel.",
+    "completed": "Lõpetatud"
+  }
+}

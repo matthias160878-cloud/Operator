@@ -1,0 +1,27 @@
+{
+  "title": "Settings",
+  "description": "Workspace, utenti u informazzjoni tas-sistema. Id-dettalji tal-aċċess jiġu mmaniġġjati esklussivament permezz ta' varjabbli tal-ambjent (ara <code>.env.example</code>).",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Isem",
+    "slug": "Slug",
+    "createdAt": "Maħluq fi"
+  },
+  "users": {
+    "title": "Utenti u Rwoli",
+    "note": "Il-mudell tad-dejta multi-tenant huwa kompletament imħejji (iżolament tal-workspace għat-tabelli kollha). Interface reali ta' login/auth b'diversi utenti huwa l-pass li jmiss tal-iżvilupp — bħalissa l-app taħdem eżattament b'dan il-workspace default."
+  },
+  "system": {
+    "title": "Sistema",
+    "contentItems": "Items ta' kontenut",
+    "campaigns": "Kampanji",
+    "mediaAssets": "Assi tal-midja",
+    "agentRuns": "Eżekuzzjonijiet ta' agenti",
+    "dbNote": "Database: SQLite (lokali, <code>prisma/dev.db</code>) permezz ta' Prisma ORM. Għall-produzzjoni biddel <codeSpaced>DATABASE_URL</codeSpaced> għal Postgres/MySQL (adatta l-provider f'<codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Assistent tal-konfigurazzjoni",
+    "description": "It-twieqi żgħar pass pass għall-fornituri tal-AI, il-pjattaformi tas-social media u l-output tal-vuċi li jidhru meta tiftaħ għall-ewwel darba.",
+    "reopen": "Erġa' iftaħ l-assistent tal-konfigurazzjoni"
+  }
+}

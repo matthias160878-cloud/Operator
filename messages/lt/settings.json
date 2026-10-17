@@ -1,0 +1,27 @@
+{
+  "title": "Nustatymai",
+  "description": "Darbo erdvė, naudotojai ir sistemos informacija. Prieigos duomenys valdomi tik per aplinkos kintamuosius (žr. <code>.env.example</code>).",
+  "workspace": {
+    "title": "Darbo erdvė",
+    "name": "Pavadinimas",
+    "slug": "Slug",
+    "createdAt": "Sukurta"
+  },
+  "users": {
+    "title": "Naudotojai ir vaidmenys",
+    "note": "Daugiakliento (multi-tenant) duomenų modelis visiškai paruoštas (darbo erdvių izoliacija visoms lentelėms). Tikra prisijungimo / autentifikacijos sąsaja su keliais naudotojais yra kitas plėtros žingsnis — šiuo metu programa dirba būtent su šia numatytąja darbo erdve."
+  },
+  "system": {
+    "title": "Sistema",
+    "contentItems": "Turinio elementai",
+    "campaigns": "Kampanijos",
+    "mediaAssets": "Medijos ištekliai",
+    "agentRuns": "Agentų paleidimai",
+    "dbNote": "Duomenų bazė: SQLite (vietinė, <code>prisma/dev.db</code>) per Prisma ORM. Produkcijai <codeSpaced>DATABASE_URL</codeSpaced> perjunk į Postgres/MySQL (tiekėją pakeisk faile <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  },
+  "onboarding": {
+    "title": "Paruošimo asistentas",
+    "description": "Maži žingsnis po žingsnio langai DI tiekėjams, socialinių tinklų platformoms ir balso išvesčiai, kurie pasirodo pirmą kartą atidarius.",
+    "reopen": "Iš naujo atidaryti paruošimo asistentą"
+  }
+}

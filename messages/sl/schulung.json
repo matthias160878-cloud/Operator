@@ -1,0 +1,86 @@
+{
+  "title": "Usposabljanje",
+  "subtitle": "Navodila po korakih in razlagalni videoposnetki za vsako področje aplikacije SECRET 58 — vedno jih lahko pogledaš tukaj.",
+  "welcomeBanner": {
+    "title": "Dobrodošel v SECRET 58!",
+    "body": "Hvala za nakup. Preden začneš, se splača na hitro pogledati „Prvi koraki“ spodaj — da bodo UI agenti od začetka delali z tvojimi pravimi podatki."
+  },
+  "stepsLabel": "Koraki",
+  "openPage": "Odpri stran",
+  "topics": {
+    "firstSteps": {
+      "title": "Prvi koraki",
+      "description": "Najprej opravi teh troje, potem bodo vsi UI agenti delali s pravimi podatki namesto z nadomestnimi.",
+      "steps": [
+        "Pod „Integracije“ preveri, ali je nastavljen ponudnik umetne inteligence. Funkcije umetne inteligence delujejo prek dostopov upravljavca, zato ne potrebuješ lastne naročnine na umetno inteligenco. Brez ponudnika umetne inteligence aplikacija deluje v načinu predlog.",
+        "V razdelku „Brand DNA“ izpolni lastno znamko (ton, ciljna skupina, vrednote) — UI agenti to uporabljajo za vsako generirano besedilo.",
+        "V razdelku „Ideje in navdih“ ali „Content Brain“ naj se ustvari prva ideja oz. kampanja."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Tako iz ideje nastane končna, odobrena vsebina.",
+      "steps": [
+        "V Content Brain ustvari novo kampanjo s temo in ciljnimi platformami — iz tega samodejno nastane več vsebinskih elementov.",
+        "V Content Factory vsak vsebinski element prehaja skozi statuse: Osnutek → V pregledu → Odobreno → Načrtovano → Objavljeno.",
+        "Odobritev je ročen korak in obvezna — nič se ne objavi samodejno brez potrditve.",
+        "V podrobnem pogledu vsebinskega elementa lahko scenarij, voiceover, podnapise, heštage in sličico generiraš posebej."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video in Design Studio",
+      "description": "Specializirana orodja za vsak gradnik vsebine.",
+      "steps": [
+        "Script Studio: ustvarja scenarije po strukturi Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: uvozi ali ustvari lasten glas ElevenLabs, nato ustvari voiceover neposredno iz scenarija.",
+        "Design Studio: agent za sličice predlaga naslov, vizualno idejo, besedilo, postavitev in opis slike.",
+        "Video Studio: prikazuje trenutno stanje povezave z video ponudniki (upravitelj formatov, stanje ponudnikov)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Content Kalender in objavljanje",
+      "description": "Kje pristanejo načrtovane objave — in zakaj se objava res pošlje (ali pa ne).",
+      "steps": [
+        "V Content Kalender se prikažejo vsi vsebinski elementi z načrtovanim datumom objave.",
+        "Pred vsako objavo PublishingAgent v živo preveri, ali je ciljna platforma v razdelku „Družbena omrežja“ res označena kot „Povezano“.",
+        "Brez prave povezave s platformo se pošteno prikaže napaka, namesto da bi se objava le simulirala."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analitika in rast",
+      "description": "Resnične številke o lastni uspešnosti — in priporočila namesto avtomatizacije.",
+      "steps": [
+        "Analitika prikazuje izključno resnične, uvožene ali ročno vnesene podatke o uspešnosti.",
+        "Stran Rast iz teh podatkov izračuna najboljše čase objavljanja, uspešne heštage in formate.",
+        "Pomembno: namenoma ni samodejnega povečevanja sledilcev/angažiranosti (brez vedenja botov) — to bi kršilo pogoje uporabe vsake platforme."
+      ]
+    },
+    "inbox": {
+      "title": "Nabiralnik",
+      "description": "Osnutki odgovorov UI na sporočila — z odobritvijo pred pošiljanjem.",
+      "steps": [
+        "Ker (še) nobena platforma ni povezana prek OAuth, se pogovori trenutno ustvarjajo ročno, namesto da bi se pridobivali v živo.",
+        "MessageAgent predlaga odgovor na podlagi Brand DNA in poteka pogovora.",
+        "Osnutek je treba ročno pregledati in odobriti, preden velja za poslanega — pravo pošiljanje brez povezave s platformo pošteno spodleti, namesto da bi se izkazalo za uspešno."
+      ]
+    },
+    "revenue": {
+      "title": "Sledenje prihodkom",
+      "description": "Pregled vseh prihodkov platform na enem mestu — izplačilo vseeno poteka prek samih platform.",
+      "steps": [
+        "Prihodki se vnašajo ročno, ker TikTok/Meta ne nudita javnega API-ja za prihodke, YouTube pa za to potrebuje dostop do partnerskega programa (še ni povezan).",
+        "Dejansko izplačilo vedno poteka neposredno prek posamezne platforme (npr. YouTube prek Google AdSense) — SECRET 58 ne izvaja izplačil."
+      ]
+    },
+    "integrations": {
+      "title": "Integracije in ključi API",
+      "description": "Od kod prihaja vsak status povezave in kam se vnese ustrezen ključ.",
+      "steps": [
+        "Vsaka vrstica prikazuje resničen, v živo preverjen status — nikoli navidezne povezave.",
+        "Pri „Ni nastavljeno“ „Pridobi ključ API“ vodi na uradno stran ponudnika.",
+        "Dostopni podatki se nikoli ne shranjujejo v brskalniku, temveč le zaščiteno na strežniku. Če dostop manjka, ga nastavi upravljavec.",
+        "Stroški: Pro in Maxi sta naročnini, mesečni ali letni. Aktualne cene so pod „Paket in obračun“. Vsak zunanji ponudnik ima svoj, neodvisen model stroškov (brezplačno / glede na porabo / naročnina) — na strani Integracije je pri vsaki storitvi navedeno, kateri model velja, s povezavo do aktualnih cen pri ponudniku."
+      ]
+    }
+  }
+}

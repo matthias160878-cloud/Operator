@@ -1,0 +1,14 @@
+{
+  "title": "UI asistent",
+  "welcome": "Živjo! Vprašaj me karkoli o SECRET 58 — kako kaj nastaviš, kje kaj najdeš ali kako deluje posamezno področje.",
+  "inputPlaceholder": "Vnesi vprašanje …",
+  "thinking": "Razmišlja …",
+  "openButton": "Odpri UI asistenta",
+  "close": "Zapri",
+  "sendButton": "Pošlji",
+  "micButton": "Glasovni vnos",
+  "speakToggle": "Preberi odgovore",
+  "notConfigured": "UI asistent še ni nastavljen — za to je treba vnesti ponudnika UI (Anthropic ali OpenAI).",
+  "openIntegrations": "Na Integracije",
+  "error": "UI asistent trenutno ni mogel odgovoriti. Poskusi znova pozneje."
+}

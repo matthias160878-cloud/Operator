@@ -1,0 +1,22 @@
+{
+  "title": "Ιδέες & Έμπνευση",
+  "subtitle": "Ομάδες θεμάτων, σειρές και μορφές για το επόμενο περιεχόμενο — δημιουργούνται από τον IdeaAgent ή καταγράφονται χειροκίνητα.",
+  "board": {
+    "topicLabel": "Θέμα για νέες ιδέες",
+    "topicPlaceholder": "π.χ. Παραγωγικότητα με πράκτορες AI",
+    "generateButton": "Δημιουργία ιδεών",
+    "manualButton": "Χειροκίνητα",
+    "manualTitlePlaceholder": "Τίτλος ιδέας",
+    "addButton": "Προσθήκη",
+    "generateError": "Σφάλμα κατά τη δημιουργία ιδεών.",
+    "unknownError": "Άγνωστο σφάλμα.",
+    "emptyState": "Δεν υπάρχουν ακόμα ιδέες — δημιούργησε μερικές ή πρόσθεσέ τες χειροκίνητα.",
+    "minutesUnit": "~{count} λεπτά",
+    "statusNew": "Νέα",
+    "statusInProgress": "Σε εξέλιξη",
+    "statusUsed": "Χρησιμοποιήθηκε",
+    "statusArchived": "Αρχειοθετημένη",
+    "sourceAiGenerated": "Δημιουργήθηκε από AI",
+    "sourceManual": "Χειροκίνητα"
+  }
+}

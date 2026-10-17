@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Kalendarz treści",
+  "subtitle": "Zaplanowane i opublikowane treści w skrócie.",
+  "weekdays": ["Pn", "Wt", "Śr", "Cz", "Pt", "So", "Nd"],
+  "months": [
+    "Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec",
+    "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"
+  ],
+  "allPlatforms": "Wszystkie platformy",
+  "moreItems": "+{count} więcej",
+  "listTitle": "Lista z tego miesiąca",
+  "emptyMonth": "Brak zaplanowanych postów w tym miesiącu."
+}

@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Krok {current} z {total}",
+    "close": "Zamknij",
+    "back": "Wstecz",
+    "next": "Dalej",
+    "skip": "Pomiń",
+    "finish": "Gotowe, zaczynam",
+    "checking": "Sprawdzanie …",
+    "checkAgain": "Sprawdź teraz",
+    "connected": "Połączono",
+    "notConnected": "Jeszcze nie połączono",
+    "skippedNote": "Pominięto — możesz to nadrobić w dowolnej chwili w sekcji „Integracje”.",
+    "envHint": "Wskazówka: po zapisaniu w Render zwykle trwa 1–2 minuty, zanim usługa się zrestartuje i zmiana zacznie działać. Jeśli „Sprawdź teraz” jeszcze nic nie znajduje, chwilę poczekaj i kliknij ponownie.",
+    "reopenHint": "Możesz otworzyć tego asystenta ponownie w dowolnej chwili: w Ustawieniach pod „Asystent konfiguracji”."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Witaj w SECRET 58",
+      "body": "Zanim zaczniemy, wspólnie skonfigurujemy to, co niezbędne — w bardzo małych, pojedynczych krokach. W każdej chwili możesz zrobić przerwę i później wrócić w to samo miejsce."
+    },
+    "aiProvider": {
+      "title": "Krok 1: Połącz dostawcę AI",
+      "body": "Do tekstów, skryptów, hooków i hashtagów oprogramowanie potrzebuje dostawcy AI. Wybierz jednego z dwóch — wystarczy jeden.",
+      "steps": [
+        "Poniżej kliknij „Pobierz klucz API” przy Anthropic lub OpenAI.",
+        "W razie potrzeby załóż tam bezpłatne konto.",
+        "Wygeneruj tam nowy klucz API i skopiuj go.",
+        "Kliknij „Wpisz w Render”, wklej klucz jako zmienną środowiskową i zapisz.",
+        "Wróć tutaj i kliknij poniżej „Sprawdź teraz”."
+      ],
+      "costHint": "Koszty powstają dopiero przy faktycznym użyciu, bezpośrednio u danego dostawcy — nigdy przez SECRET 58."
+    },
+    "platform": {
+      "title": "Krok 2: Połącz platformę społecznościową (opcjonalnie)",
+      "body": "Opcjonalnie, ale zalecane: połącz co najmniej jedną platformę, na której chcesz później publikować. Ten krok możesz też nadrobić później.",
+      "steps": [
+        "Wybierz poniżej platformę, z której chcesz korzystać.",
+        "Kliknij „Pobierz klucz API” i postępuj zgodnie z instrukcjami dostawcy.",
+        "Kliknij „Wpisz w Render” i zapisz tam dane dostępowe.",
+        "Wróć tutaj i kliknij „Sprawdź teraz”."
+      ]
+    },
+    "voice": {
+      "title": "Krok 3: Połącz syntezę mowy (opcjonalnie)",
+      "body": "Potrzebne tylko wtedy, gdy chcesz automatycznie generować lektora do swoich filmów. Bez tego kroku wszystko inne i tak działa.",
+      "steps": [
+        "Kliknij „Pobierz klucz API” przy ElevenLabs.",
+        "Załóż tam konto i klucz API.",
+        "Kliknij „Wpisz w Render” i zapisz tam klucz.",
+        "Wróć tutaj i kliknij „Sprawdź teraz”."
+      ]
+    },
+    "done": {
+      "title": "Gotowe!",
+      "body": "Możesz już zaczynać. Wszystko, co pominąłeś, znajdziesz i uzupełnisz w dowolnej chwili w sekcji „Integracje” — albo otworzysz tego asystenta ponownie przez „Ustawienia”."
+    }
+  }
+}

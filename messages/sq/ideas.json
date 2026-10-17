@@ -1,0 +1,22 @@
+{
+  "title": "Ide & Frymëzim",
+  "subtitle": "Grupe temash, seri dhe formate për përmbajtjen e ardhshme — të gjeneruara nga IdeaAgent ose të shtuara me dorë.",
+  "board": {
+    "topicLabel": "Tema për ide të reja",
+    "topicPlaceholder": "p.sh. Produktivitet me agjentë AI",
+    "generateButton": "Gjenero ide",
+    "manualButton": "Me dorë",
+    "manualTitlePlaceholder": "Titulli i idesë",
+    "addButton": "Shto",
+    "generateError": "Gabim gjatë gjenerimit të ideve.",
+    "unknownError": "Gabim i panjohur.",
+    "emptyState": "Ende nuk ka ide — gjenero disa ose shtoji me dorë.",
+    "minutesUnit": "~{count} min.",
+    "statusNew": "E re",
+    "statusInProgress": "Në punë",
+    "statusUsed": "E përdorur",
+    "statusArchived": "Arkivuar",
+    "sourceAiGenerated": "Gjeneruar nga AI",
+    "sourceManual": "Me dorë"
+  }
+}

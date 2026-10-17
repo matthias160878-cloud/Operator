@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import {
   CheckCircle2,
   Clock,
+  Copy,
   FileText,
   Loader2,
   Mic,
@@ -18,6 +19,7 @@ import {
 } from "lucide-react";
 import type { ContentItem, MediaAsset, Script } from "@prisma/client";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { isActionAllowed, type WorkflowAction } from "@/lib/contentWorkflowRules";
 import { VideoPreview } from "@/components/ui/VideoPreview";
 import { PLATFORM_LABELS } from "@/lib/format";
 
@@ -56,14 +58,20 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
 
   async function save() {
     setSaving(true);
-    await fetch(`/api/content-items/${item.id}`, {
+    setMessage(null);
+    const res = await fetch(`/api/content-items/${item.id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ title, hook, script, caption }),
     });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) setMessage(data.error ?? t("detail.actionFailed"));
+    else if (data.approvalRevoked) setMessage(t("detail.approvalRevoked"));
     setSaving(false);
     router.refresh();
   }
+
+  const allowed = (action: WorkflowAction) => isActionAllowed(action, item.status);
 
   async function runAction(action: string, fn: () => Promise<Response>) {
     setBusy(action);
@@ -75,6 +83,8 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
         setMessage(data.error ?? t("detail.actionFailed"));
       } else if (data.message) {
         setMessage(data.message);
+      } else if (data.approvalRevoked) {
+        setMessage(t("detail.approvalRevoked"));
       }
       router.refresh();
     } finally {
@@ -98,39 +108,77 @@ export function ContentItemDetail({ item }: { item: ItemWithRelations }) {
         </div>
         <div className="flex flex-wrap gap-2">
           <button
+            disabled={!allowed("review") || busy !== null}
             onClick={() => runAction("review", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "review" }) }))}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs text-foreground"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs text-foreground disabled:opacity-40"
           >
             <Clock className="h-3.5 w-3.5" /> {t("detail.actions.review")}
           </button>
           <button
+            disabled={!allowed("approve") || busy !== null}
             onClick={() => runAction("approve", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "approve" }) }))}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-success/40 bg-success/10 px-3 py-1.5 text-xs text-success"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-success/40 bg-success/10 px-3 py-1.5 text-xs text-success disabled:opacity-40"
           >
             <CheckCircle2 className="h-3.5 w-3.5" /> {t("detail.actions.approve")}
           </button>
           <button
+            disabled={!allowed("reject") || busy !== null}
             onClick={() => {
               const reason = prompt(t("detail.rejectReasonPrompt")) ?? "";
               runAction("reject", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "reject", reason }) }));
             }}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-danger/40 bg-danger/10 px-3 py-1.5 text-xs text-danger"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-danger/40 bg-danger/10 px-3 py-1.5 text-xs text-danger disabled:opacity-40"
           >
             <XCircle className="h-3.5 w-3.5" /> {t("detail.actions.reject")}
           </button>
           <button
+            disabled={!allowed("schedule") || busy !== null}
             onClick={() => {
-              const when = prompt(t("detail.scheduleDatePrompt"), toLocalDatetimeInputValue(new Date()));
+              const when = prompt(t("detail.scheduleDatePrompt"), toLocalDatetimeInputValue(new Date(Date.now() + 60 * 60 * 1000)));
               if (!when) return;
-              runAction("schedule", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "schedule", scheduledAt: when }) }));
+              // Eingabe ist Ortszeit des Geräts — als UTC-Zeitpunkt senden, sonst
+              // verschiebt der Server (UTC) den Termin um die Zeitzonen-Differenz.
+              const local = new Date(when);
+              if (Number.isNaN(local.getTime())) {
+                setMessage(t("detail.actionFailed"));
+                return;
+              }
+              runAction("schedule", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "schedule", scheduledAt: local.toISOString() }) }));
             }}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-xs text-accent"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-xs text-accent disabled:opacity-40"
           >
             <Send className="h-3.5 w-3.5" /> {t("detail.actions.schedule")}
           </button>
           <button
+            type="button"
+            disabled={busy !== null}
+            onClick={async () => {
+              const text = [caption.trim(), hashtags.map((h) => (h.startsWith("#") ? h : `#${h}`)).join(" ")].filter(Boolean).join("\n\n");
+              try {
+                await navigator.clipboard.writeText(text);
+                setMessage(t("detail.copied"));
+              } catch {
+                setMessage(t("detail.copyFailed"));
+              }
+            }}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs text-foreground disabled:opacity-40"
+          >
+            <Copy className="h-3.5 w-3.5" /> {t("detail.actions.copy")}
+          </button>
+          <button
+            disabled={!allowed("markPublished") || busy !== null}
+            onClick={() => {
+              if (!confirm(t("detail.markPublishedConfirm"))) return;
+              runAction("markPublished", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "markPublished" }) }));
+            }}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-success/40 bg-success/10 px-3 py-1.5 text-xs text-success disabled:opacity-40"
+          >
+            <CheckCircle2 className="h-3.5 w-3.5" /> {t("detail.actions.markPublished")}
+          </button>
+          <button
+            disabled={!allowed("publish") || busy !== null}
             onClick={() => runAction("publish", () => fetch(`/api/content-items/${item.id}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "publish" }) }))}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-white"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-white disabled:opacity-40"
           >
             {busy === "publish" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Send className="h-3.5 w-3.5" />}
             {t("detail.actions.publish")}

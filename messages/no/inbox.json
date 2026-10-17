@@ -1,0 +1,26 @@
+{
+  "title": "Innboks",
+  "description": "Meldinger og kommentarer fra alle plattformer. MessageAgent foreslår svar — bare det du godkjenner, blir sendt. Det finnes ennå ingen ekte OAuth-tilkobling til en plattform, derfor simuleres samtaler manuelt her i stedet for å hentes live.",
+  "emptyState": "Ingen samtaler ennå — simuler en for å komme i gang.",
+  "backToInbox": "Tilbake til innboksen",
+  "newConversation": {
+    "simulateButton": "Simuler samtale",
+    "simulateHint": "Siden det ikke finnes noen ekte plattformtilkobling, kan du her simulere en innkommende melding for å prøve ut KI-svarutkastet.",
+    "close": "Lukk",
+    "namePlaceholder": "Navn",
+    "handlePlaceholder": "@handle (valgfritt)",
+    "messagePlaceholder": "Meldingstekst …",
+    "createButton": "Opprett"
+  },
+  "detail": {
+    "draftFailed": "Utkastet mislyktes.",
+    "save": "Lagre",
+    "edit": "Rediger",
+    "approveAndSend": "Godkjenn og send",
+    "requestDraft": "Be om KI-svarutkast",
+    "openDraftExists": "Det finnes allerede et åpent utkast øverst — rediger/send det først.",
+    "simulateMoreHint": "Simuler en ny innkommende melding (test uten ekte plattformtilkobling):",
+    "messagePlaceholder": "Meldingstekst …",
+    "addButton": "Legg til"
+  }
+}

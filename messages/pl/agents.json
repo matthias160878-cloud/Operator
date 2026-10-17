@@ -1,0 +1,21 @@
+{
+  "title": "Monitor agentów",
+  "description": "Wszyscy agenci SECRET 58 ze statusem, ostatnim zadaniem i wynikiem. Każde uruchomienie jest rejestrowane.",
+  "table": {
+    "agent": "Agent",
+    "description": "Opis",
+    "status": "Status",
+    "lastTask": "Ostatnie zadanie"
+  },
+  "history": {
+    "title": "Historia uruchomień",
+    "agent": "Agent",
+    "task": "Zadanie",
+    "status": "Status",
+    "start": "Start",
+    "end": "Koniec",
+    "resultError": "Wynik / błąd",
+    "empty": "Brak uruchomień agentów.",
+    "completed": "Zakończono"
+  }
+}

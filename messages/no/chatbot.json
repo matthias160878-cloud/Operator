@@ -1,0 +1,14 @@
+{
+  "title": "KI-assistent",
+  "welcome": "Hei! Spør meg om alt rundt SECRET 58 — hvordan du setter opp noe, hvor du finner noe, eller hvordan et område fungerer.",
+  "inputPlaceholder": "Skriv inn spørsmål …",
+  "thinking": "Tenker …",
+  "openButton": "Åpne KI-assistenten",
+  "close": "Lukk",
+  "sendButton": "Send",
+  "micButton": "Taleinndata",
+  "speakToggle": "Les opp svar",
+  "notConfigured": "KI-assistenten er ikke konfigurert ennå — det krever at en KI-leverandør (Anthropic eller OpenAI) legges inn.",
+  "openIntegrations": "Til Integrasjoner",
+  "error": "KI-assistenten kunne ikke svare akkurat nå. Prøv igjen senere."
+}

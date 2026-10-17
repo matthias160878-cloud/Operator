@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Scenarijų ir hook variklis: kuria platformoms pritaikytus scenarijus pagal struktūrą Hook → Problema → Vertė → Pavyzdys → Atpildas → CTA bei kelis hook variantus.",
+  "form": {
+    "topicLabel": "Tema",
+    "topicPlaceholder": "pvz. 5 būdai, kaip DI agentai taupo laiką",
+    "platformLabel": "Platforma",
+    "generateButton": "Generuoti scenarijų ir hook",
+    "generateFailed": "Generavimas nepavyko.",
+    "unknownError": "Nežinoma klaida."
+  },
+  "hookTypes": {
+    "direkt": "Tiesioginis",
+    "neugierig": "Intriguojantis",
+    "story": "Istorija",
+    "problem": "Problema",
+    "zahlen": "Skaičiai",
+    "kontroversSachlich": "Prieštaringas (dalykiškas)",
+    "educational": "Edukacinis"
+  },
+  "hooksHeading": "Hook variantai",
+  "engine": {
+    "label": "Variklis: {provider}",
+    "templateMode": "Šablono režimas (DI tiekėjas nesukonfigūruotas)"
+  },
+  "script": {
+    "heading": "Scenarijus",
+    "save": "Išsaugoti kaip turinio elementą",
+    "saving": "Saugoma…"
+  }
+}

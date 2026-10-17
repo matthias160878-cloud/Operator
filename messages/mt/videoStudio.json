@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Pipeline tal-vidjow indipendenti mill-fornitur: Format Manager, fornituri tal-vidjow li jistgħu jinbidlu, konnessjoni tal-voiceover u tas-sottotitli (ara Content Factory għal kull item ta' kontenut).",
+  "providerCardTitle": "Fornituri tal-vidjow",
+  "providerNotePrefix": "Fornituri oħra (APIs tal-vidjow bl-AI, libreriji ta' vidjows stock) jistgħu jiżdiedu permezz tal-istess interface ta'",
+  "providerNoteSuffix": ", mingħajr ma jintmess il-kodiċi eżistenti.",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Assi tal-vidjow",
+  "assetsEmpty": "Għad m'hemm l-ebda vidjows rendered — ir-rendering jgħaddi mill-items ta' kontenut f'Content Factory, hekk kif jiġi kkonfigurat fornitur tal-vidjow."
+}

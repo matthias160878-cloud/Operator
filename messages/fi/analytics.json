@@ -1,0 +1,14 @@
+{
+  "title": "Analytiikka",
+  "subtitle": "Suorituskykylukuja todellisesti saatavilla olevasta datasta — kun alustat on yhdistetty, tämä näkymä täyttyy oikeilla arvoilla.",
+  "statViewsTotal": "Katselut yhteensä",
+  "statLikesTotal": "Tykkäykset yhteensä",
+  "statComments": "Kommentit",
+  "statShares": "Jaot",
+  "chartTitle": "Sisällön suorituskyky ajan yli",
+  "chartLegend": "Katselut (violetti) · Sitoutuminen % (turkoosi)",
+  "chartEmpty": "Analytiikkadataa ei ole vielä.",
+  "bestPerformingTitle": "Parhaiten menestynyt sisältö",
+  "bestPerformingEmpty": "Ei vielä dataa.",
+  "learningAgentTitle": "Learning Agent — suositukset"
+}

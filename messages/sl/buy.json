@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Brez naročnine. Vsi agenti. Tvoji lastni ponudniki UI.",
+  "subtitle": "Ena ideja. Več platform. Največji doseg. En sam celoten paket — plačaš enkrat, dobiš poln dostop do celotne aplikacije.",
+  "features": [
+    "Content Brain — ena ideja, vse platforme",
+    "Vsi UI agenti: ideje, trendi, scenarij, Hook, heštagi, sličice, podnapisi, objavljanje",
+    "Voice Studio z glasovi ElevenLabs",
+    "Video Studio z upraviteljem formatov — povezava z UI generatorji videa je v pripravi",
+    "Content Factory s potekom potrjevanja in Content Kalender",
+    "Analitika, priporočila za rast in sledenje prihodkom",
+    "Nabiralnik z osnutki odgovorov UI",
+    "Prosta izbira ponudnikov UI prek lastnih dostopov — brez kvot"
+  ],
+  "priceOnetime": "enkratno",
+  "priceRecommendedNote": "Priporočena cena — postane zavezujoča, ko je Stripe nastavljen z ustrezno ceno.",
+  "buyButton": "Kupi zdaj",
+  "redirecting": "Preusmerjanje na Stripe …",
+  "checkoutFailed": "Blagajna ni uspela.",
+  "unknownError": "Neznana napaka.",
+  "notConfigured": "Plačilo še ni nastavljeno — upravljavec mora najprej v Stripe ustvariti izdelek za {price} ter vnesti STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Opomba: ta cena je enkratna za programsko opremo. Posamezne funkcije (npr. generiranje besedila z UI, govorni izhod) potrebujejo lastne dostope pri zunanjih ponudnikih (npr. Anthropic, ElevenLabs) — njihovi stroški niso odvisni od SECRET 58 in jih zaračuna neposredno posamezni ponudnik, ne tukaj. Podrobnosti po nakupu v razdelku Integracije.",
+  "setupServiceTitle": "Dodaj storitev namestitve (+{price} enkratno)",
+  "setupServiceDescription": "Namesto tebe nastavimo ključe API, Brand DNA in prve objave.",
+  "setupServiceUnavailable": "Kmalu na voljo — upravljavec mora storitev najprej vnesti v Stripe.",
+  "autopilot": {
+    "kicker": "Kmalu",
+    "title": "Autopilot — vse vključeno",
+    "subtitle": "Lastni dostopi niso potrebni: vsi stroški ponudnikov za besedilo, glas in video so vključeni. Enak obseg funkcij kot celoten paket — velikosti se razlikujejo le po količini.",
+    "comingSoon": "Kmalu",
+    "perMonth": "/ mesec",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agencija"
+    },
+    "brands": "{count, plural, one {# znamka} other {# znamk}}",
+    "ideas": "{count} vsebinskih idej na mesec",
+    "videos": "{count} UI videov (po 30 s) na mesec",
+    "voiceMinutes": "{count} minut govornega izhoda na mesec",
+    "note": "Načrtovane cene, še niso na voljo za naročilo. Autopilot se začne, ko bodo povezani UI generatorji videa."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Pass {current} minn {total}",
+    "close": "Agħlaq",
+    "back": "Lura",
+    "next": "Li jmiss",
+    "skip": "Aqbeż",
+    "finish": "Lest, ibda",
+    "checking": "Qed jiġi vverifikat …",
+    "checkAgain": "Iċċekkja issa",
+    "connected": "Konness",
+    "notConnected": "Għadu mhux konness",
+    "skippedNote": "Maqbuż — tista' tagħmlu fi kwalunkwe ħin taħt “Integrazzjonijiet”.",
+    "envHint": "Nota: Wara li taħżen f'Render, normalment jieħu 1–2 minuti biex is-servizz jerġa' jibda u t-tibdil jidħol fis-seħħ. Jekk “Iċċekkja issa” għadu ma jsib xejn, stenna ftit u erġa' ikklikkja.",
+    "reopenHint": "Tista' terġa' tiftaħ dan l-assistent fi kwalunkwe ħin: fis-Settings taħt “Assistent tal-konfigurazzjoni”."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Merħba f'SECRET 58",
+      "body": "Qabel ma nibdew, nissettjjaw flimkien dak li hu meħtieġ — f'passi żgħar u individwali. Tista' tieqaf fi kwalunkwe ħin u tkompli aktar tard mill-istess punt."
+    },
+    "aiProvider": {
+      "title": "Pass 1: Qabbad fornitur tal-AI",
+      "body": "Għat-testi, l-iscripts, il-hooks u l-hashtags is-software teħtieġ fornitur tal-AI. Agħżel wieħed miż-żewġ fornituri — wieħed biżżejjed.",
+      "steps": [
+        "Ikklikkja hawn taħt fuq “Ikseb iċ-ċavetta API” ta' Anthropic jew OpenAI.",
+        "Oħloq hemmhekk kont b'xejn, jekk meħtieġ.",
+        "Oħloq hemmhekk ċavetta API ġdida u kkopjaha.",
+        "Ikklikkja fuq “Daħħal f'Render”, waħħal iċ-ċavetta hemmhekk bħala varjabbli tal-ambjent u aħżen.",
+        "Erġa' lura hawn u ikklikkja hawn taħt fuq “Iċċekkja issa”."
+      ],
+      "costHint": "L-ispejjeż jinqalgħu biss meta tuża s-servizz verament, direttament mal-fornitur rispettiv — qatt permezz ta' SECRET 58."
+    },
+    "platform": {
+      "title": "Pass 2: Qabbad pjattaforma tas-social media (mhux obbligatorju)",
+      "body": "Mhux obbligatorju, imma rakkomandat: Qabbad mill-inqas pjattaforma waħda fejn tixtieq tippubblika aktar tard. Tista' wkoll tagħmel dan il-pass aktar tard.",
+      "steps": [
+        "Agħżel hawn taħt pjattaforma li tixtieq tuża.",
+        "Ikklikkja fuq “Ikseb iċ-ċavetta API” u segwi l-istruzzjonijiet tal-fornitur.",
+        "Ikklikkja fuq “Daħħal f'Render” u aħżen id-dettalji tal-aċċess hemmhekk.",
+        "Erġa' lura hawn u ikklikkja fuq “Iċċekkja issa”."
+      ]
+    },
+    "voice": {
+      "title": "Pass 3: Qabbad l-output tal-vuċi (mhux obbligatorju)",
+      "body": "Meħtieġ biss jekk tixtieq toħloq voiceovers mitkellma awtomatikament għall-vidjows tiegħek. Mingħajr dan il-pass kollox ieħor jaħdem xorta.",
+      "steps": [
+        "Ikklikkja fuq “Ikseb iċ-ċavetta API” ta' ElevenLabs.",
+        "Oħloq hemmhekk kont u ċavetta API.",
+        "Ikklikkja fuq “Daħħal f'Render” u aħżen iċ-ċavetta hemmhekk.",
+        "Erġa' lura hawn u ikklikkja fuq “Iċċekkja issa”."
+      ]
+    },
+    "done": {
+      "title": "Lest!",
+      "body": "Issa tista' tibda. Kull ma qbiżt issibu u żżidu fi kwalunkwe ħin fiż-żona “Integrazzjonijiet” — jew terġa' tiftaħ dan l-assistent minn “Settings”."
+    }
+  }
+}

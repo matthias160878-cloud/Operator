@@ -10,6 +10,9 @@ import { PLATFORM_LABELS } from "@/lib/format";
 import { getProvider, isProviderConfigured } from "@/lib/oauth/providers";
 import { isTokenEncryptionConfigured } from "@/lib/crypto";
 import { DisconnectButton } from "@/components/social-media/DisconnectButton";
+import { ComposioPanel, type ComposioCardView } from "@/components/social-media/ComposioPanel";
+import { COMPOSIO_TOOLKITS } from "@/lib/composio/toolkits";
+import { isComposioConfigured, isToolkitConfigured } from "@/lib/composio/client";
 
 export const dynamic = "force-dynamic";
 
@@ -24,9 +27,22 @@ const PLATFORM_INTEGRATION_KEY: Record<string, string> = {
 export default async function SocialMediaPage({
   searchParams,
 }: {
-  searchParams: Promise<{ connected?: string; oauth_error?: string; platform?: string }>;
+  searchParams: Promise<{
+    connected?: string;
+    oauth_error?: string;
+    platform?: string;
+    composio_connected?: string;
+    composio_error?: string;
+    toolkit?: string;
+  }>;
 }) {
-  const { connected, oauth_error: oauthError, platform: errorPlatform } = await searchParams;
+  const {
+    connected,
+    oauth_error: oauthError,
+    platform: errorPlatform,
+    composio_connected: composioConnected,
+    composio_error: composioError,
+  } = await searchParams;
   const t = await getTranslations("socialMedia");
   const ti = await getTranslations("common.integrationStatus");
   const locale = await getLocale();
@@ -43,6 +59,27 @@ export default async function SocialMediaPage({
   );
   const credentialByKey = new Map(credentialStatuses.map((s) => [s.key, s]));
   const encryptionReady = isTokenEncryptionConfigured();
+
+  const tc = await getTranslations("socialMedia.composio");
+  const composioRows = await prisma.composioConnection.findMany({ where: { workspaceId } });
+  const dateFormat = new Intl.DateTimeFormat(locale, { dateStyle: "short", timeStyle: "short" });
+  const composioCards: ComposioCardView[] = COMPOSIO_TOOLKITS.map((tk) => {
+    const row = composioRows.find((r) => r.toolkit === tk.key);
+    return {
+      toolkit: tk.key,
+      label: tk.label,
+      configured: isToolkitConfigured(tk),
+      connectionId: row?.id ?? null,
+      status: row?.status ?? "NONE",
+      accountLabel: row?.accountLabel ?? "",
+      lastReadTestAt: row?.lastReadTestAt ? dateFormat.format(row.lastReadTestAt) : null,
+      lastReadTestOk: row?.lastReadTestOk ?? null,
+      lastError: row?.lastError ?? null,
+    };
+  });
+  const composioErrorKey = ["invalid_state", "expired", "mismatch", "not_active", "composio_error"].includes(composioError ?? "")
+    ? composioError!
+    : "unknown";
 
   return (
     <div className="space-y-5">
@@ -169,6 +206,39 @@ export default async function SocialMediaPage({
           );
         })}
       </div>
+
+      <section id="composio" className="scroll-mt-20 space-y-3 pt-2">
+        <div>
+          <h2 className="text-lg font-semibold text-foreground">{tc("title")}</h2>
+          <p className="mt-1 max-w-2xl text-sm text-muted">{tc("subtitle")}</p>
+        </div>
+        {composioConnected && (
+          <div role="status" className="rounded-lg border border-success/30 bg-success/10 px-4 py-2 text-sm text-success">
+            {tc("connectedBanner", {
+              platform: COMPOSIO_TOOLKITS.find((x) => x.key === composioConnected)?.label ?? composioConnected,
+            })}
+          </div>
+        )}
+        {composioError && (
+          <div role="alert" className="rounded-lg border border-danger/30 bg-danger/10 px-4 py-2 text-sm text-danger">
+            {tc(`errors.${composioErrorKey}`)}
+          </div>
+        )}
+        {!isComposioConfigured() && (
+          <div className="rounded-lg border border-warning/30 bg-warning/10 px-4 py-2 text-xs text-warning">
+            {tc("serverNotSetUp")}
+          </div>
+        )}
+        <ComposioPanel cards={composioCards} />
+        <div className="card space-y-2 p-4 text-xs text-muted sm:p-5">
+          <h3 className="text-sm font-semibold text-foreground">{tc("compareTitle")}</h3>
+          <ul className="list-disc space-y-1 pl-4">
+            <li>{tc("compareNative")}</li>
+            <li>{tc("compareComposio")}</li>
+            <li>{tc("compareReadNotPublish")}</li>
+          </ul>
+        </div>
+      </section>
     </div>
   );
 }

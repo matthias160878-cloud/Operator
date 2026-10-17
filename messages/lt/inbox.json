@@ -1,0 +1,26 @@
+{
+  "title": "Gautieji",
+  "description": "Žinutės ir komentarai iš visų platformų. MessageAgent siūlo atsakymus — siunčiama tik tai, ką patvirtini. Tikro OAuth ryšio su platforma dar nėra, todėl pokalbiai čia imituojami rankiniu būdu, o ne gaunami tiesiogiai.",
+  "emptyState": "Pokalbių dar nėra — imituok vieną, kad pradėtum.",
+  "backToInbox": "Atgal į gautuosius",
+  "newConversation": {
+    "simulateButton": "Imituoti pokalbį",
+    "simulateHint": "Kadangi tikro ryšio su platforma nėra, čia gali imituoti gaunamą žinutę ir išbandyti DI atsakymo juodraštį.",
+    "close": "Uždaryti",
+    "namePlaceholder": "Vardas",
+    "handlePlaceholder": "@handle (neprivaloma)",
+    "messagePlaceholder": "Žinutės tekstas …",
+    "createButton": "Sukurti"
+  },
+  "detail": {
+    "draftFailed": "Juodraščio sukurti nepavyko.",
+    "save": "Išsaugoti",
+    "edit": "Redaguoti",
+    "approveAndSend": "Patvirtinti ir siųsti",
+    "requestDraft": "Užsakyti DI atsakymo juodraštį",
+    "openDraftExists": "Viršuje jau yra atviras juodraštis — pirmiausia jį redaguok / išsiųsk.",
+    "simulateMoreHint": "Imituoti kitą gaunamą žinutę (bandymas be tikro ryšio su platforma):",
+    "messagePlaceholder": "Žinutės tekstas …",
+    "addButton": "Pridėti"
+  }
+}

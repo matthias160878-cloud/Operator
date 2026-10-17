@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Script- és hookmotor: platformra szabott scripteket készít a Hook → Probléma → Érték → Példa → Hozadék → CTA felépítés szerint, valamint több hookváltozatot.",
+  "form": {
+    "topicLabel": "Téma",
+    "topicPlaceholder": "pl. 5 mód, ahogy az MI-agentek időt spórolnak",
+    "platformLabel": "Platform",
+    "generateButton": "Script és hookok generálása",
+    "generateFailed": "A generálás nem sikerült.",
+    "unknownError": "Ismeretlen hiba."
+  },
+  "hookTypes": {
+    "direkt": "Közvetlen",
+    "neugierig": "Kíváncsiságkeltő",
+    "story": "Történet",
+    "problem": "Probléma",
+    "zahlen": "Számok",
+    "kontroversSachlich": "Vitatott (tárgyilagos)",
+    "educational": "Oktató"
+  },
+  "hooksHeading": "Hookváltozatok",
+  "engine": {
+    "label": "Motor: {provider}",
+    "templateMode": "Sablon mód (nincs beállítva MI-szolgáltató)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Mentés tartalomelemként",
+    "saving": "Mentés…"
+  }
+}

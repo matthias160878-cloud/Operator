@@ -1,0 +1,101 @@
+{
+ "title": "Content Factory",
+ "subtitle": "Sve stavke sadržaja na jednom mjestu — kreiraj, dupliciraj, prepiši, obogati voiceoverom/titlovima i provedi kroz tok odobravanja.",
+ "statusTabs": {
+  "all": "Sve",
+  "draft": "Nacrt",
+  "inReview": "Na pregledu",
+  "approved": "Odobreno",
+  "scheduled": "Zakazano",
+  "published": "Objavljeno",
+  "archived": "Arhivirano"
+ },
+ "newItem": {
+  "openButton": "Nova stavka sadržaja",
+  "titleLabel": "Naslov",
+  "platformLabel": "Platforma",
+  "create": "Kreiraj",
+  "closeAria": "Zatvori"
+ },
+ "table": {
+  "empty": "Još nema stavki sadržaja — kreiraj jednu ručno ili preko Content Brain.",
+  "title": "Naslov",
+  "platform": "Platforma",
+  "format": "Format",
+  "status": "Status",
+  "updated": "Ažurirano",
+  "actions": "Radnje",
+  "duplicate": "Dupliciraj",
+  "delete": "Obriši",
+  "confirmDelete": "Zaista obrisati stavku sadržaja?"
+ },
+ "detail": {
+  "backLink": "Nazad na Content Factory",
+  "actionFailed": "Radnja nije uspjela.",
+  "actions": {
+   "review": "Na pregled",
+   "approve": "Odobri",
+   "reject": "Odbij",
+   "schedule": "Zakaži",
+   "publish": "Objavi",
+   "copy": "Kopiraj objavu",
+   "markPublished": "Objavljeno ručno"
+  },
+  "rejectReasonPrompt": "Razlog odbijanja (opcionalno):",
+  "scheduleDatePrompt": "Datum objave (YYYY-MM-DDTHH:mm):",
+  "fields": {
+   "title": "Naslov",
+   "hook": "Hook",
+   "script": "Skripta",
+   "caption": "Opis"
+  },
+  "save": "Spremi",
+  "saving": "Sprema se…",
+  "hashtags": {
+   "heading": "Hashtagovi i ključne riječi",
+   "regenerate": "Generiši ponovo",
+   "empty": "Još nema generisanih hashtagova."
+  },
+  "voiceover": {
+   "heading": "Voiceover",
+   "generate": "Kreiraj",
+   "empty": "Voiceover još nije kreiran."
+  },
+  "subtitles": {
+   "heading": "Titlovi",
+   "generate": "Kreiraj (SRT)",
+   "download": "Preuzmi {file}",
+   "empty": "Titlovi još nisu kreirani."
+  },
+  "video": {
+   "heading": "Renderovanje videa",
+   "request": "Zatraži renderovanje",
+   "note": "Video pipeline neovisan o provajderu (odjeljak 11/12) — trenutno nije konfigurisan nijedan video provajder (vidi Integracije)."
+  },
+  "scriptVariants": {
+   "heading": "Varijante skripte",
+   "newVariant": "Nova varijanta",
+   "empty": "Još nema varijanti.",
+   "variantSummary": "Varijanta {label}"
+  },
+  "repurpose": {
+   "heading": "Repurpose Content",
+   "description": "Iz ove stavke sadržaja kreiraj izvedene verzije prilagođene platformama za dodatne kanale. Više kanala = veća šansa da ljudi vide video.",
+   "selectAll": "Odaberi sve platforme",
+   "clearAll": "Poništi odabir",
+   "generateButton": "Kreiraj {count} izvedenih verzija"
+  },
+  "approvalRevoked": "Odobrenje povučeno: objava je izmijenjena i mora ponovo biti pregledana i odobrena.",
+  "job": {
+   "QUEUED": "Automatsko slanje zakazano za {when}.",
+   "RUNNING": "Slanje je u toku (termin {when}).",
+   "SUCCEEDED": "Objavljeno u terminu {when}.",
+   "FAILED": "Slanje u terminu {when} nije uspjelo, objava je opet „Odobrena“.",
+   "UNKNOWN": "Slanje u terminu {when}: ishod nije jasan.",
+   "CANCELED": "Zakazano slanje ({when}) nije izvršeno."
+  },
+  "copied": "Tekst i hashtagovi kopirani — sada ih zalijepi u aplikaciju platforme.",
+  "copyFailed": "Kopiranje nije moguće — označi tekst ručno.",
+  "markPublishedConfirm": "Jesi li sam objavio/la? Objava će biti označena kao objavljena; zakazano slanje se odbacuje."
+ }
+}

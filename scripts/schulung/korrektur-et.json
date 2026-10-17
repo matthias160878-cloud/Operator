@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Samm-sammulised juhendid ja selgitusvideod SECRET 58 igale valdkonnale — alati siin järelevaatamiseks.",
+ "schulung.topics.firstSteps.steps.0": "Kontrolli jaotises „Integratsioonid“, kas tehisintellekti pakkuja on seadistatud. TI-funktsioonid töötavad operaatori juurdepääsude kaudu, seega sul pole vaja oma TI-tellimust. Ilma TI-pakkujata töötab rakendus mallirežiimis.",
+ "schulung.topics.integrations.steps.2": "Juurdepääsuandmeid ei salvestata kunagi brauserisse, vaid ainult kaitstult serveris. Kui juurdepääs puudub, seadistab selle operaator.",
+ "schulung.topics.integrations.steps.3": "Kulud: Pro ja Maxi on tellimused, kuised või aastased. Praegused hinnad on jaotises „Pakett ja arveldus“. Igal välisel pakkujal on oma sõltumatu kulumudel (tasuta / kasutuspõhine / tellimus) — lehel Integratsioonid on iga teenuse juures märgitud, milline mudel kehtib, koos lingiga pakkuja praegustele hindadele.",
+ "integrations.costNote": "Sinu SECRET 58 pakett (Pro või Maxi) on tellimus, vaata „Pakett ja arveldus“. Igal siinsel välisel teenusel on oma sõltumatu kulumudel vastava pakkuja juures — SECRET 58 ei arvesta nende eest kunagi lisatasu."
+}

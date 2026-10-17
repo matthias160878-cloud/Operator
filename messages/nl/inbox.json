@@ -1,0 +1,26 @@
+{
+  "title": "Inbox",
+  "description": "Berichten en reacties van alle platforms. De MessageAgent stelt antwoorden voor — er wordt alleen verzonden wat jij goedkeurt. Er is nog geen echte OAuth-koppeling met een platform, daarom worden gesprekken hier handmatig gesimuleerd in plaats van live opgehaald.",
+  "emptyState": "Nog geen gesprekken — simuleer er een om te beginnen.",
+  "backToInbox": "Terug naar de inbox",
+  "newConversation": {
+    "simulateButton": "Gesprek simuleren",
+    "simulateHint": "Omdat er geen echte platformkoppeling is, kun je hier een binnenkomend bericht simuleren om het AI-antwoordconcept uit te proberen.",
+    "close": "Sluiten",
+    "namePlaceholder": "Naam",
+    "handlePlaceholder": "@handle (optioneel)",
+    "messagePlaceholder": "Berichttekst …",
+    "createButton": "Aanmaken"
+  },
+  "detail": {
+    "draftFailed": "Concept mislukt.",
+    "save": "Opslaan",
+    "edit": "Bewerken",
+    "approveAndSend": "Goedkeuren & verzenden",
+    "requestDraft": "AI-antwoordconcept aanvragen",
+    "openDraftExists": "Er staat hierboven al een openstaand concept — bewerk of verzend dat eerst.",
+    "simulateMoreHint": "Nog een binnenkomend bericht simuleren (test zonder echte platformkoppeling):",
+    "messagePlaceholder": "Berichttekst …",
+    "addButton": "Toevoegen"
+  }
+}

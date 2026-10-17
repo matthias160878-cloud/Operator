@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Pas {current} de {total}",
+    "close": "Tanca",
+    "back": "Enrere",
+    "next": "Següent",
+    "skip": "Omet",
+    "finish": "Fet, comencem",
+    "checking": "S'està comprovant …",
+    "checkAgain": "Comprova ara",
+    "connected": "Connectat",
+    "notConnected": "Encara no connectat",
+    "skippedNote": "Omès: ho pots fer en qualsevol moment a «Integracions».",
+    "envHint": "Nota: després de desar a Render, el servei sol trigar 1–2 minuts a reiniciar-se i que el canvi tingui efecte. Si «Comprova ara» encara no troba res, espera una mica i torna-hi.",
+    "reopenHint": "Pots tornar a obrir aquest assistent en qualsevol moment: a Configuració, a «Assistent de configuració»."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Us donem la benvinguda a SECRET 58",
+      "body": "Abans de començar, configurarem junts el que és imprescindible, en passos molt petits i d'un en un. Pots fer una pausa en qualsevol moment i continuar després des del mateix punt."
+    },
+    "aiProvider": {
+      "title": "Pas 1: connecta un proveïdor d'IA",
+      "body": "Per a textos, guions, hooks i hashtags, el programari necessita un proveïdor d'IA. Tria'n un dels dos: amb un n'hi ha prou.",
+      "steps": [
+        "A sota, fes clic a «Obtén la clau d'API» d'Anthropic o d'OpenAI.",
+        "Si cal, crea-hi un compte gratuït.",
+        "Genera-hi una clau d'API nova i copia-la.",
+        "Fes clic a «Introdueix-la a Render», enganxa-hi la clau com a variable d'entorn i desa.",
+        "Torna aquí i fes clic a «Comprova ara» a sota."
+      ],
+      "costHint": "Els costos només apareixen quan l'uses realment, directament amb el proveïdor corresponent, mai a través de SECRET 58."
+    },
+    "platform": {
+      "title": "Pas 2: connecta una plataforma de xarxes socials (opcional)",
+      "body": "Opcional, però recomanat: connecta almenys una plataforma on vulguis publicar més endavant. També pots fer aquest pas més tard.",
+      "steps": [
+        "A sota, tria una plataforma que vulguis fer servir.",
+        "Fes clic a «Obtén la clau d'API» i segueix les instruccions del proveïdor.",
+        "Fes clic a «Introdueix-la a Render» i desa-hi les dades d'accés.",
+        "Torna aquí i fes clic a «Comprova ara»."
+      ]
+    },
+    "voice": {
+      "title": "Pas 3: connecta la sortida de veu (opcional)",
+      "body": "Només cal si vols generar automàticament veus en off parlades per als teus vídeos. Sense aquest pas, tota la resta funciona igualment.",
+      "steps": [
+        "Fes clic a «Obtén la clau d'API» a ElevenLabs.",
+        "Crea-hi un compte i una clau d'API.",
+        "Fes clic a «Introdueix-la a Render» i desa-hi la clau.",
+        "Torna aquí i fes clic a «Comprova ara»."
+      ]
+    },
+    "done": {
+      "title": "Fet!",
+      "body": "Ja pots començar. Tot el que hagis omès ho trobaràs i ho podràs completar en qualsevol moment a l'apartat «Integracions», o bé tornar a obrir aquest assistent des de «Configuració»."
+    }
+  }
+}

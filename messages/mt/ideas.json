@@ -1,0 +1,22 @@
+{
+  "title": "Idejat u Ispirazzjoni",
+  "subtitle": "Clusters ta' suġġetti, serje u formats għall-kontenut li jmiss — iġġenerati mill-IdeaAgent jew imdaħħla manwalment.",
+  "board": {
+    "topicLabel": "Suġġett għal idejat ġodda",
+    "topicPlaceholder": "eż. Produttività b'agenti tal-AI",
+    "generateButton": "Iġġenera idejat",
+    "manualButton": "Manwalment",
+    "manualTitlePlaceholder": "Titlu tal-idea",
+    "addButton": "Żid",
+    "generateError": "Żball fil-ġenerazzjoni tal-idejat.",
+    "unknownError": "Żball mhux magħruf.",
+    "emptyState": "Għad m'hemm l-ebda idejat — iġġenera xi wħud jew oħloq manwalment.",
+    "minutesUnit": "~{count} min.",
+    "statusNew": "Ġdid",
+    "statusInProgress": "Għaddej",
+    "statusUsed": "Użat",
+    "statusArchived": "Arkivjat",
+    "sourceAiGenerated": "Iġġenerat bl-AI",
+    "sourceManual": "Manwalment"
+  }
+}

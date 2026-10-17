@@ -1,0 +1,104 @@
+{
+  "viewAll": "Показать все",
+  "demoBanner": {
+    "before": "Демо-данные активны — кампании, материалы и аналитика — это примеры из ",
+    "after": ", а не реальные показатели платформ."
+  },
+  "hero": {
+    "subtitle": "Одна идея. Несколько платформ. Максимальный охват.",
+    "newCampaign": "Новая кампания",
+    "createContent": "Создать контент",
+    "findIdeas": "Найти идеи",
+    "aiAgents": "ИИ-агенты"
+  },
+  "orbit": {
+    "xNotConnected": "X (не подключено)",
+    "brainAlt": "ИИ-мозг SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Активные агенты",
+    "empty": "Запусков агентов пока нет."
+  },
+  "kpi": {
+    "contentCreated": "Создано контента",
+    "videosCreated": "Создано видео",
+    "postsCreated": "Создано постов",
+    "published": "Публикации",
+    "views": "Просмотры",
+    "avgEngagement": "Ø вовлечённость",
+    "totalRevenue": "Общий доход",
+    "noComparisonWeek": "Данных за прошлую неделю для сравнения пока нет — показатели изменений появятся, когда накопятся данные минимум за две недели."
+  },
+  "production": {
+    "title": "Производство контента",
+    "thisWeek": "На этой неделе"
+  },
+  "scheduled": {
+    "title": "Запланированные публикации",
+    "empty": "Нет запланированных публикаций."
+  },
+  "activity": {
+    "title": "Последние действия",
+    "empty": "Действий пока нет."
+  },
+  "contentFactory": {
+    "description": "Создавай полноценные контент-кампании для всех платформ всего из одной идеи.",
+    "cta": "Начать →",
+    "popularTemplates": "Популярные шаблоны",
+    "templateYoutubeVideo": "Видео для YouTube",
+    "templateTiktokSeries": "Серия для TikTok",
+    "templateInstagramReel": "Reel для Instagram",
+    "templateLinkedinPost": "Пост для LinkedIn",
+    "templateBlogPost": "Статья для блога",
+    "viewAllTemplates": "Все шаблоны →"
+  },
+  "brandDna": {
+    "tonality": "Тональность",
+    "targetAudience": "Целевая аудитория",
+    "industry": "Отрасль",
+    "language": "Язык",
+    "empty": "Brand DNA ещё не задан."
+  },
+  "campaigns": {
+    "title": "Текущие кампании",
+    "empty": "Кампаний пока нет."
+  },
+  "platforms": {
+    "title": "Платформы",
+    "manage": "Управлять"
+  },
+  "integrations": {
+    "connectedCount": "Подключено: {connected}/{total}"
+  },
+  "agentMonitor": {
+    "title": "Монитор агентов",
+    "empty": "Запусков пока нет."
+  },
+  "topPerformer": {
+    "title": "Лучшие результаты",
+    "last7Days": "Последние 7 дней",
+    "empty": "Данных об эффективности пока нет.",
+    "views": "Просмотры",
+    "likes": "Лайки",
+    "comments": "Комментарии",
+    "shares": "Репосты",
+    "engagementRate": "+Уровень вовлечённости {value}"
+  },
+  "calendar": {
+    "open": "Открыть",
+    "viewMonth": "Месяц",
+    "viewWeek": "Неделя",
+    "viewDay": "День",
+    "viewCampaign": "Кампания",
+    "moreItems": "+ ещё {count}"
+  },
+  "weekdayLabels": [
+    "Пн",
+    "Вт",
+    "Ср",
+    "Чт",
+    "Пт",
+    "Сб",
+    "Вс"
+  ]
+}

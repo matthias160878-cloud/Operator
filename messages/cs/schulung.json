@@ -1,0 +1,86 @@
+{
+  "title": "Školení",
+  "subtitle": "Návody krok za krokem a vysvětlující videa ke každé oblasti SECRET 58 — kdykoli si je tu můžeš projít.",
+  "welcomeBanner": {
+    "title": "Vítej v SECRET 58!",
+    "body": "Děkujeme za nákup. Než začneš, vyplatí se krátce nahlédnout do části „První kroky“ níže — aby AI agenti od začátku pracovali s tvými skutečnými daty."
+  },
+  "stepsLabel": "Kroky",
+  "openPage": "Otevřít stránku",
+  "topics": {
+    "firstSteps": {
+      "title": "První kroky",
+      "description": "Udělej nejdřív tyto tři věci, pak budou všichni AI agenti pracovat se skutečnými daty místo zástupných.",
+      "steps": [
+        "V části „Integrace“ zkontroluj, zda je nastaven poskytovatel AI. Funkce AI běží přes přístupy provozovatele, takže nepotřebuješ vlastní předplatné AI. Bez poskytovatele AI aplikace pracuje v režimu šablon.",
+        "V části „Brand DNA“ vyplň svou vlastní značku (tón, cílová skupina, hodnoty) — AI agenti to použijí pro každý vygenerovaný text.",
+        "V části „Nápady a inspirace“ nebo „Content Brain“ nech vytvořit první nápad, resp. kampaň."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Takto se z nápadu stane hotový, schválený obsah.",
+      "steps": [
+        "V Content Brain vytvoř novou kampaň s tématem a cílovými platformami — automaticky z ní vznikne několik položek obsahu.",
+        "V Content Factory prochází každá položka obsahu stavy: Koncept → V kontrole → Schváleno → Naplánováno → Publikováno.",
+        "Schválení je ruční krok a je povinné — nic se nepublikuje automaticky bez potvrzení.",
+        "V detailu položky obsahu lze skript, voiceover, titulky, hashtagy a thumbnail dogenerovat jednotlivě."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video a Design Studio",
+      "description": "Specializované nástroje pro každou součást obsahu.",
+      "steps": [
+        "Script Studio: vytváří skripty podle struktury Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: importuj nebo vytvoř vlastní hlas ElevenLabs a poté vytvoř voiceover přímo ze skriptu.",
+        "Design Studio: Thumbnail agent navrhne název, vizuální nápad, text, rozvržení a popis obrázku.",
+        "Video Studio: zobrazuje aktuální stav napojení poskytovatelů videa (správce formátů, stav poskytovatelů)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Kalendář obsahu a publikování",
+      "description": "Kam se dostanou naplánované příspěvky — a proč příspěvek skutečně odejde (nebo ne).",
+      "steps": [
+        "V kalendáři obsahu se zobrazují všechny položky obsahu s naplánovaným datem publikování.",
+        "Před každým publikováním PublishingAgent živě ověří, zda je cílová platforma v části „Sociální sítě“ skutečně označena jako „Připojeno“.",
+        "Bez skutečného připojení k platformě se poctivě zobrazí chyba, místo aby se publikování předstíralo."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytika a růst",
+      "description": "Skutečná čísla o tvém výkonu — a doporučení místo automatizace.",
+      "steps": [
+        "Analytika zobrazuje výhradně skutečná, importovaná nebo ručně zadaná data o výkonu.",
+        "Stránka Růst z těchto dat vypočítá nejlepší časy publikování, úspěšné hashtagy a formáty.",
+        "Důležité: záměrně neexistuje žádné automatizované zvyšování počtu sledujících/engagementu (žádné chování botů) — to by porušovalo podmínky používání každé platformy."
+      ]
+    },
+    "inbox": {
+      "title": "Doručená pošta",
+      "description": "Návrhy odpovědí od AI na zprávy — se schválením před odesláním.",
+      "steps": [
+        "Protože zatím není žádná platforma připojena přes OAuth, konverzace se aktuálně zakládají ručně, místo aby se načítaly živě.",
+        "MessageAgent navrhne odpověď na základě Brand DNA a průběhu konverzace.",
+        "Návrh musí být ručně zkontrolován a schválen, než se bude považovat za odeslaný — skutečné odeslání bez připojení k platformě poctivě selže, místo aby předstíralo úspěch."
+      ]
+    },
+    "revenue": {
+      "title": "Sledování příjmů",
+      "description": "Přehled všech příjmů z platforem na jednom místě — výplata přesto probíhá přes samotné platformy.",
+      "steps": [
+        "Příjmy se zadávají ručně, protože TikTok/Meta nenabízejí veřejné API pro tržby a YouTube k tomu potřebuje přístup do Partnerského programu (zatím nenapojeno).",
+        "Skutečná výplata probíhá vždy přímo přes příslušnou platformu (např. YouTube přes Google AdSense) — SECRET 58 žádné výplaty nezprostředkovává."
+      ]
+    },
+    "integrations": {
+      "title": "Integrace a API klíče",
+      "description": "Odkud se bere každý stav připojení a kam se zadává příslušný klíč.",
+      "steps": [
+        "Každý řádek zobrazuje skutečný, živě ověřený stav — nikdy předstírané připojení.",
+        "U stavu „Není nastaveno“ vede „Získat API klíč“ na oficiální stránku poskytovatele.",
+        "Přístupové údaje se nikdy neukládají v prohlížeči, ale pouze chráněně na serveru. Pokud přístup chybí, nastaví ho provozovatel.",
+        "Náklady: Pro a Maxi jsou předplatné, měsíční nebo roční. Aktuální ceny najdeš v části „Balíček a fakturace“. Každý externí poskytovatel má vlastní, nezávislý model nákladů (zdarma / podle využití / předplatné) — na stránce Integrace je u každé služby uvedeno, který model platí, s odkazem na aktuální ceny u poskytovatele."
+      ]
+    }
+  }
+}

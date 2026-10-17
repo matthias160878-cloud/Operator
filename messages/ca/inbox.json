@@ -1,0 +1,26 @@
+{
+  "title": "Safata d'entrada",
+  "description": "Missatges i comentaris de totes les plataformes. El MessageAgent proposa respostes: només s'envia el que tu aprovis. Encara no hi ha cap connexió OAuth real amb cap plataforma, per això les converses es simulen manualment aquí en lloc de consultar-se en directe.",
+  "emptyState": "Encara no hi ha converses: simula'n una per començar.",
+  "backToInbox": "Torna a la safata d'entrada",
+  "newConversation": {
+    "simulateButton": "Simula una conversa",
+    "simulateHint": "Com que no hi ha cap connexió real amb una plataforma, aquí pots simular un missatge entrant per provar l'esborrany de resposta amb IA.",
+    "close": "Tanca",
+    "namePlaceholder": "Nom",
+    "handlePlaceholder": "@handle (opcional)",
+    "messagePlaceholder": "Text del missatge …",
+    "createButton": "Crea"
+  },
+  "detail": {
+    "draftFailed": "L'esborrany ha fallat.",
+    "save": "Desa",
+    "edit": "Edita",
+    "approveAndSend": "Aprova i envia",
+    "requestDraft": "Sol·licita un esborrany de resposta amb IA",
+    "openDraftExists": "Ja hi ha un esborrany obert a dalt: primer edita'l o envia'l.",
+    "simulateMoreHint": "Simula un altre missatge entrant (prova sense connexió real amb una plataforma):",
+    "messagePlaceholder": "Text del missatge …",
+    "addButton": "Afegeix"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Küçük resim konseptleri, görsel varlıklar ve Canva entegrasyonu.",
+  "imageAssetsTitle": "Görsel varlıklar",
+  "imageAssetsEmpty": "Henüz görsel varlık yok.",
+  "thumbnailAgent": {
+    "title": "Küçük resim ajanı",
+    "description": "Bir metin konsepti (başlık, görsel fikir, yerleşim, CTA) üretir — bir görsel üreticisinin bağlanmasına hazırlanmıştır. Henüz görsel üretilmez.",
+    "inputPlaceholder": "Küçük resim için konu",
+    "submitButton": "Konsept üret",
+    "errorGenerationFailed": "Üretim başarısız oldu.",
+    "errorUnknown": "Bilinmeyen hata.",
+    "fieldTitle": "Başlık",
+    "fieldVisualIdea": "Görsel fikir",
+    "fieldText": "Metin",
+    "fieldLayout": "Yerleşim",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Görsel açıklaması"
+  }
+}

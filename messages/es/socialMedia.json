@@ -20,5 +20,42 @@
   "errorInvalidState": "Conexión fallida (código de seguridad no válido). Inténtalo de nuevo.",
   "errorExchangeFailed": "Conexión fallida. Revisa las credenciales e inténtalo de nuevo.",
   "errorUnknownPlatform": "Plataforma desconocida.",
-  "encryptionKeyMissingNotice": "Nota: TOKEN_ENCRYPTION_KEY aún no está configurada — las cuentas solo podrán conectarse una vez que esta variable de entorno esté configurada en Render."
+  "encryptionKeyMissingNotice": "Nota: TOKEN_ENCRYPTION_KEY aún no está configurada — las cuentas solo podrán conectarse una vez que esta variable de entorno esté configurada en Render.",
+  "composio": {
+    "title": "Conectar una cuenta mediante Composio",
+    "subtitle": "Alternativa a la conexión directa: inicias sesión en la plataforma, Composio guarda el acceso y SECRET 58 solo vincula la cuenta a tu espacio de trabajo. Por ahora solo conexión y prueba de lectura; no se publica nada por esta vía.",
+    "serverNotSetUp": "Aún no configurado: el operador todavía no ha activado Composio en el servidor.",
+    "connectedBanner": "{platform} conectado mediante Composio. Ejecuta ahora la prueba de lectura.",
+    "accountLabel": "Cuenta",
+    "lastTestLabel": "Última prueba de lectura",
+    "lastErrorLabel": "Último error",
+    "statusNotSetUp": "Aún no configurado",
+    "statusNotConnected": "No conectado",
+    "statusPending": "Inicio de sesión iniciado",
+    "statusFailed": "Conexión fallida",
+    "statusConnectedUntested": "Conectado – prueba pendiente",
+    "statusReadOk": "Conectado – lectura verificada",
+    "statusReadFailed": "Conectado – prueba fallida",
+    "notSetUpHint": "Composio no está configurado en el servidor para esta plataforma.",
+    "connectButton": "Conectar cuenta",
+    "renewButton": "Renovar conexión",
+    "testButton": "Iniciar prueba de lectura",
+    "disconnectButton": "Desconectar",
+    "renewConfirm": "¿Iniciar sesión de nuevo? La conexión actual se mantiene hasta completar la nueva.",
+    "disconnectConfirm": "¿Desconectar {platform}? La conexión también se elimina en Composio.",
+    "testOk": "El acceso de lectura funciona ({account}). No es una prueba de publicación.",
+    "genericError": "No ha funcionado. Inténtalo de nuevo.",
+    "compareTitle": "¿Qué funciona por dónde?",
+    "compareNative": "Conexión directa (arriba): inicio de sesión directo con YouTube, TikTok, Instagram, Facebook y LinkedIn; la publicación está preparada allí y solo se usa con tu aprobación.",
+    "compareComposio": "Composio (aquí): inicio de sesión mediante Composio para Instagram, página de Facebook, LinkedIn y YouTube; por ahora solo prueba de lectura.",
+    "compareReadNotPublish": "Una prueba de lectura correcta solo demuestra el acceso, no que publicar funcione.",
+    "errors": {
+      "invalid_state": "La respuesta no coincidía con tu inicio de sesión. Vuelve a conectar.",
+      "expired": "El inicio de sesión tardó demasiado. Vuelve a conectar.",
+      "mismatch": "La cuenta devuelta no pertenece a este espacio de trabajo y no se vinculó.",
+      "not_active": "La plataforma no confirmó el acceso o fue rechazado.",
+      "composio_error": "Composio no estaba disponible o informó de un error. Inténtalo más tarde.",
+      "unknown": "Conexión fallida."
+    }
+  }
 }

@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Vídeo de formació",
+  "subtitlesLabel": "Subtítols",
+  "subtitlesOff": "Desactivats",
+  "soundLabel": "So",
+  "soundOn": "Veu de lectura activada",
+  "soundOff": "Veu de lectura desactivada",
+  "soundHint": "La veu de lectura ve del teu navegador. Els idiomes disponibles depenen del teu dispositiu.",
+  "soundMissing": "No hi ha cap veu instal·lada al teu dispositiu per a aquest idioma. Els subtítols funcionen igualment.",
+  "draftNote": "Esborrany: enregistrament de l'aplicació real amb dades de prova. Subtítols traduïts automàticament.",
+  "whatLabel": "Què és, quina funció té i com s'executa.",
+  "videosTitle": "Vídeos explicatius de cada àrea",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Primers passos",
+      "cues": {
+        "c1": "Us donem la benvinguda a la formació: Primers passos. Tot el que veus és l'aplicació real amb dades de prova.",
+        "c2": "A l'esquerra hi ha la navegació. Cada àrea de l'aplicació hi té una entrada.",
+        "c3": "Pas 1: comprova a «Integracions» quins serveis estan connectats.",
+        "c4": "Cada fila mostra l'estat real i comprovat, mai una connexió simulada.",
+        "c5": "«No configurat» vol dir que aquest servei encara no està configurat. Sense proveïdor d'IA, l'aplicació treballa en mode plantilla.",
+        "c6": "Pas 2: introdueix la teva marca a «Brand DNA». El to, el públic objectiu i els valors passen a cada text generat.",
+        "c7": "Exemple: omple el sector i el públic objectiu i desa a sota.",
+        "c8": "Pas 3: fes generar la primera idea a «Idees i inspiració». Escriu un tema i fes clic a «Genera idees».",
+        "c9": "Les idees apareixen com a targetes. En mode plantilla són exemples; amb un proveïdor d'IA es tornen personalitzades.",
+        "c10": "Tot continua sent un esborrany fins que l'aproves. Per a cada àrea hi ha un vídeo explicatiu propi."
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "cues": {
+        "c1": "El Dashboard és la teva pàgina d'inici: la visió general de tot el que passa al teu espai de treball.",
+        "c2": "A dalt veus els agents actius, la producció de contingut i les publicacions planificades.",
+        "c3": "Més avall hi ha l'activitat recent i dreceres a Content Factory i Brand DNA.",
+        "c4": "Amb «Setmana» canvies el període dels indicadors.",
+        "c5": "Com s'utilitza: obre el Dashboard cada dia, revisa els esborranys oberts i salta des d'aquí directament a l'àrea corresponent."
+      }
+    },
+    "schulung": {
+      "title": "Formació",
+      "cues": {
+        "c1": "La Formació és la teva guia dins l'aplicació. Explica cada àrea pas a pas.",
+        "c2": "Cada tema té una descripció, passos numerats i un enllaç que obre la pàgina corresponent.",
+        "c3": "Aquí també apareixen aquests vídeos explicatius, un per a cada àrea.",
+        "c4": "Com s'utilitza: tria un tema, llegeix els passos, obre la pàgina i prova-ho de seguida."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory és el banc de treball de tots els teus elements de contingut en un sol lloc.",
+        "c2": "Funció: crear, duplicar i reescriure elements, enriquir-los amb veu en off i subtítols i portar-los pel flux d'aprovació.",
+        "c3": "Els filtres de dalt mostren els estats: Esborrany, En revisió, Aprovat, Planificat, Publicat i Arxivat.",
+        "c4": "Com es fa: amb «Nou element de contingut» crees un element.",
+        "c5": "Obre un element per editar-ne el guió, la veu en off, els subtítols, els hashtags i la miniatura.",
+        "c6": "L'aprovació sempre és un pas manual. No es publica res sense la teva confirmació."
+      }
+    },
+    "ideas": {
+      "title": "Idees i inspiració",
+      "cues": {
+        "c1": "Aquí recopiles idees: agrupacions de temes, sèries i formats per a contingut futur.",
+        "c2": "Funció: l'IdeaAgent genera idees sobre un tema, o bé en pots introduir de pròpies a mà.",
+        "c3": "Com es fa: escriu el tema, tria la plataforma, l'objectiu i el format i fes clic a «Genera idees».",
+        "c4": "Cada idea es converteix en una targeta amb títol, enganxall i prioritat.",
+        "c5": "Amb «Manual» crees una idea pròpia.",
+        "c6": "Les bones idees les fas servir com a punt de partida per a Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain converteix una idea en un pla de contingut complet.",
+        "c2": "Funció: té en compte el teu Brand DNA i genera com a esborrany hooks, guions, hashtags i conceptes de miniatura per a cada plataforma triada.",
+        "c3": "Com es fa: escriu el tema i el públic objectiu.",
+        "c4": "Tria l'objectiu i l'idioma i després fes clic a les plataformes. Aquí s'hi afegeix TikTok.",
+        "c5": "Amb el control lliscant defineixes quants elements de contingut es creen per plataforma.",
+        "c6": "Un clic a «Genera pla de contingut» inicia l'execució.",
+        "c7": "La campanya apareix a sota. Tots els elements són esborranys i són a Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "El Brand DNA descriu la teva marca: nom, sector, públic objectiu, to i valors.",
+        "c2": "Funció: aquestes dades passen automàticament a Content Brain i als agents de guions, hooks i hashtags.",
+        "c3": "Com es fa: omple els camps, per exemple el sector i el públic objectiu.",
+        "c4": "Més avall mantens les paraules preferides i prohibides, les crides a l'acció i els valors de la marca.",
+        "c5": "Al final, fes clic a «Desa Brand DNA»."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio és el taller de guions i hooks.",
+        "c2": "Funció: construeix guions amb l'estructura Hook, Problema, Benefici, Exemple, Resultat i crida a l'acció, i ofereix diverses variants de hook.",
+        "c3": "Com es fa: escriu el tema i tria la plataforma.",
+        "c4": "Després fes clic a «Genera guió i hooks».",
+        "c5": "El resultat és un esborrany que continuaràs utilitzant a Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio gestiona veus i genera veus en off.",
+        "c2": "Funció: mantenir la biblioteca de veus, generar previsualitzacions i importar veus. La connexió es fa mitjançant ElevenLabs.",
+        "c3": "Com es fa: crea una veu manualment o importa-la d'ElevenLabs. La importació necessita una connexió configurada.",
+        "c4": "Amb un text i una veu generes una previsualització i la reprodueixes."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio és el canal de vídeo de l'aplicació.",
+        "c2": "Funció: gestor de formats, proveïdors de vídeo intercanviables i connexió de la veu en off i dels subtítols.",
+        "c3": "La pàgina mostra quins proveïdors estan configurats. Els que no ho estan s'indiquen honestament com a tals.",
+        "c4": "Com es fa: els vídeos es generen per a cada element de contingut a Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio ofereix conceptes de miniatura i recursos d'imatge.",
+        "c2": "Funció: l'agent de miniatures proposa títol, idea d'imatge, text i disseny. Aquí hi ha prevista la integració amb Canva.",
+        "c3": "Com es fa: escriu el tema de la miniatura.",
+        "c4": "Fes clic a «Genera concepte».",
+        "c5": "El concepte et serveix de plantilla per a la teva imatge."
+      }
+    },
+    "socialMedia": {
+      "title": "Xarxes socials",
+      "cues": {
+        "c1": "Aquí connectes els teus comptes de plataforma i en veus l'estat.",
+        "c2": "Funció: els accessos es gestionen al servidor i es desen xifrats. Inicies sessió a la plataforma mitjançant Composio.",
+        "c3": "Cada targeta mostra plataforma, compte, estat i última prova de lectura.",
+        "c4": "«Encara no configurat» vol dir que l'operador encara no ha activat la connexió al servidor.",
+        "c5": "Com es fa: quan estigui configurat, fes clic a «Connecta» a la plataforma i inicia sessió. Només es llegeix, no es publica res."
+      }
+    },
+    "calendar": {
+      "title": "Content Kalender",
+      "cues": {
+        "c1": "El Content Kalender mostra una visió general del contingut planificat i publicat.",
+        "c2": "Funció: aquí apareixen tots els elements de contingut amb data de publicació, filtrables per plataforma.",
+        "c3": "Com es fa: planifica un element a Content Factory amb una data i apareixerà aquí.",
+        "c4": "Abans de cada publicació, l'aplicació comprova en directe si la plataforma de destinació està connectada."
+      }
+    },
+    "analytics": {
+      "title": "Analytics",
+      "cues": {
+        "c1": "Analytics mostra els teus indicadors de rendiment.",
+        "c2": "Funció: només dades realment disponibles, importades o introduïdes per tu. No s'inventa res.",
+        "c3": "Hi veus l'evolució al llarg del temps, el contingut amb millor rendiment i les recomanacions del Learning Agent.",
+        "c4": "Com es fa: quan es connectin plataformes o introdueixis dades, els gràfics s'ompliran."
+      }
+    },
+    "growth": {
+      "title": "Creixement",
+      "cues": {
+        "c1": "La pàgina de creixement dona recomanacions per aconseguir més abast.",
+        "c2": "Funció: a partir de les teves dades reals d'analytics calcula les millors hores de publicació, els hashtags i els formats amb més èxit.",
+        "c3": "Com es fa: tria una plataforma i llegeix les recomanacions.",
+        "c4": "Són recomanacions, no un automatisme. Els seguidors o les interaccions no s'incrementen artificialment."
+      }
+    },
+    "revenue": {
+      "title": "Ingressos",
+      "cues": {
+        "c1": "A Ingressos reuneixes els teus ingressos de plataformes i campanyes.",
+        "c2": "Funció: els imports només apareixen quan els introdueixes. No hi ha xifres inventades.",
+        "c3": "Com es fa: fes clic a «Registra un ingrés», tria la plataforma i el tipus i introdueix l'import.",
+        "c4": "El pagament sempre es fa directament a través de la plataforma. SECRET 58 no gestiona cap pagament."
+      }
+    },
+    "sales": {
+      "title": "Vendes i botiga",
+      "cues": {
+        "c1": "«Vendes i botiga» mostra els ingressos del teu propi negoci.",
+        "c2": "Funció: estan separats del teu paquet de SECRET 58. Només es compten les vendes reals; les dades de prova estan marcades.",
+        "c3": "A dalt hi ha els totals per moneda i, a sota, les dades del teu proveïdor per a l'avís legal.",
+        "c4": "Opció B: vendre mitjançant SECRET 58. Opció A: importar una botiga existent.",
+        "c5": "Com es fa: omple i desa les dades del proveïdor i després tria la via de venda."
+      }
+    },
+    "website": {
+      "title": "El meu web",
+      "cues": {
+        "c1": "Aquí integres l'assistent web al teu propi web.",
+        "c2": "Funció: l'assistent respon les preguntes dels teus visitants.",
+        "c3": "No modifiquem el teu web automàticament. Tu mateix hi enganxes el codi o el fas enganxar al teu dissenyador web.",
+        "c4": "Com es fa: escriu l'adreça web i fes clic a «Afegeix el web».",
+        "c5": "Després copia el codi que es mostra al teu web."
+      }
+    },
+    "inbox": {
+      "title": "Safata d'entrada",
+      "cues": {
+        "c1": "La safata d'entrada recull missatges i comentaris de totes les plataformes.",
+        "c2": "Funció: el MessageAgent proposa respostes. Només s'envia el que tu aprovis.",
+        "c3": "Com es fa: mentre no hi hagi cap plataforma connectada en directe, fes clic a «Simula una conversa».",
+        "c4": "Revisa la resposta proposada, adapta-la i aprova-la."
+      }
+    },
+    "agents": {
+      "title": "Agents",
+      "cues": {
+        "c1": "El Monitor d'agents mostra tots els agents de SECRET 58.",
+        "c2": "Funció: estat, darrera tasca i resultat de cada agent. Cada execució es registra.",
+        "c3": "A l'historial d'execucions veus què s'ha executat, quan i si ha anat bé.",
+        "c4": "Com s'utilitza: consulta-ho aquí quan alguna cosa no s'hagi generat com esperaves."
+      }
+    },
+    "integrations": {
+      "title": "Integracions",
+      "cues": {
+        "c1": "Aquí veus l'estat en directe de tots els serveis externs.",
+        "c2": "Funció: cada fila es basa en els accessos realment definits. No hi ha connexions simulades.",
+        "c3": "Els grups són: proveïdors d'IA, Voice, plataformes socials, disseny, vídeo i tendències.",
+        "c4": "Com es fa: si diu «No configurat», «Obtén la clau d'API» porta a la pàgina del proveïdor.",
+        "c5": "Els proveïdors externs tenen els seus propis preus. A cada servei s'indica quin model s'aplica."
+      }
+    },
+    "billing": {
+      "title": "Paquet i facturació",
+      "cues": {
+        "c1": "A «Paquet i facturació» veus el teu paquet i el pots canviar.",
+        "c2": "Funció: les funcions d'IA funcionen amb els accessos de l'operador. No et cal cap subscripció d'IA pròpia.",
+        "c3": "Hi ha Pro i Maxi, mensual o anual. Els preus apareixen nets a les targetes.",
+        "c4": "Només es compra amb un clic exprés a «Comanda amb obligació de pagament».",
+        "c5": "Si tens un codi promocional, el bescanvies al camp de sota."
+      }
+    },
+    "settings": {
+      "title": "Configuració",
+      "cues": {
+        "c1": "A Configuració gestiones l'espai de treball, els usuaris i la informació del sistema.",
+        "c2": "Funció: espai de treball, rols, estat del sistema, assistent de configuració i les teves dades amb accés i eliminació.",
+        "c3": "Com es fa: desplaça't per les seccions. L'eliminació de l'espai de treball requereix una confirmació addicional.",
+        "c4": "Revisa aquí regularment les teves dades i l'assistent de configuració."
+      }
+    }
+  }
+}

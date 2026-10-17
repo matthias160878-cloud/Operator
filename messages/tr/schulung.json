@@ -1,0 +1,86 @@
+{
+  "title": "Eğitim",
+  "subtitle": "SECRET 58'in her alanı için adım adım kılavuzlar ve anlatım videoları — istediğin zaman buradan bakabilirsin.",
+  "welcomeBanner": {
+    "title": "SECRET 58'e hoş geldin!",
+    "body": "Satın aldığın için teşekkürler. Başlamadan önce aşağıdaki “İlk adımlar”a kısaca göz atmaya değer — böylece yapay zekâ ajanları en baştan gerçek verilerinle çalışır."
+  },
+  "stepsLabel": "Adımlar",
+  "openPage": "Sayfayı aç",
+  "topics": {
+    "firstSteps": {
+      "title": "İlk adımlar",
+      "description": "Önce bu üç şeyi yap; ardından tüm yapay zekâ ajanları yer tutucular yerine gerçek verilerle çalışır.",
+      "steps": [
+        "“Entegrasyonlar” bölümünde bir yapay zekâ sağlayıcısının kurulu olup olmadığını kontrol et. Yapay zekâ işlevleri işletmecinin erişimleri üzerinden çalışır, kendi yapay zekâ aboneliğine ihtiyacın yok. Yapay zekâ sağlayıcısı olmadan uygulama şablon modunda çalışır.",
+        "“Brand DNA” bölümünde kendi markanı doldur (ton, hedef kitle, değerler) — yapay zekâ ajanları bunu ürettikleri her metin için kullanır.",
+        "“Fikirler ve ilham” ya da “Content Brain” bölümünde ilk fikri veya kampanyayı ürettir."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Bir fikirden hazır, onaylanmış içerik böyle oluşur.",
+      "steps": [
+        "Content Brain'de bir konu ve hedef platformlarla yeni bir kampanya oluştur — bundan otomatik olarak birden çok içerik öğesi oluşur.",
+        "Content Factory'de her içerik öğesi şu durumlardan geçer: Taslak → İncelemede → Onaylandı → Planlandı → Yayınlandı.",
+        "Onay elle yapılan, zorunlu bir adımdır — hiçbir şey onay olmadan otomatik yayınlanmaz.",
+        "Bir içerik öğesinin ayrıntı görünümünde script, seslendirme, altyazı, hashtag'ler ve küçük resim tek tek yeniden üretilebilir."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video ve Design Studio",
+      "description": "Her içerik yapı taşı için özel araçlar.",
+      "steps": [
+        "Script Studio: script'leri Hook → Problem → Value → Example → Payoff → CTA yapısına göre üretir.",
+        "Voice Studio: kendi ElevenLabs sesini içe aktar veya oluştur, sonra seslendirmeyi doğrudan bir script'ten üret.",
+        "Design Studio: küçük resim ajanı başlık, görsel fikir, metin, yerleşim ve görsel açıklaması önerir.",
+        "Video Studio: video sağlayıcısı bağlantısının güncel durumunu gösterir (format yöneticisi, sağlayıcı durumu)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "İçerik Takvimi ve yayınlama",
+      "description": "Planlanan gönderilerin nerede toplandığı — ve bir gönderinin neden gerçekten çıktığı (ya da çıkmadığı).",
+      "steps": [
+        "İçerik Takvimi'nde yayın tarihi planlanmış tüm içerik öğeleri görünür.",
+        "Her yayından önce PublishingAgent, hedef platformun “Sosyal medya” bölümünde gerçekten “Bağlı” olarak işaretli olup olmadığını canlı kontrol eder.",
+        "Gerçek bir platform bağlantısı yoksa, yayın yapılmış gibi gösterilmez; dürüstçe bir hata gösterilir."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analitik ve büyüme",
+      "description": "Kendi performansına dair gerçek rakamlar — ve otomasyon yerine öneriler.",
+      "steps": [
+        "Analitik, yalnızca gerçek, içe aktarılmış veya elle girilmiş performans verilerini gösterir.",
+        "Büyüme sayfası bu verilerden en iyi paylaşım zamanlarını, başarılı hashtag'leri ve biçimleri hesaplar.",
+        "Önemli: bilerek otomatik takipçi/etkileşim artırma (bot davranışı) yoktur — bu, her platformun kullanım koşullarını ihlal ederdi."
+      ]
+    },
+    "inbox": {
+      "title": "Gelen kutusu",
+      "description": "Mesajlar için yapay zekâ yanıt taslakları — göndermeden önce onayla.",
+      "steps": [
+        "(Henüz) hiçbir platform OAuth ile bağlı olmadığından, görüşmeler şu anda canlı çekilmek yerine elle oluşturulur.",
+        "MessageAgent, Brand DNA'ya ve görüşme akışına dayanarak bir yanıt önerir.",
+        "Taslak, gönderildi sayılmadan önce elle incelenip onaylanmalıdır — platform bağlantısı olmadan gerçek bir gönderim, başarı gösterilmek yerine dürüstçe başarısız olur."
+      ]
+    },
+    "revenue": {
+      "title": "Gelir takibi",
+      "description": "Tüm platform gelirlerine tek yerden genel bakış — ödeme yine de platformların kendisi üzerinden yapılır.",
+      "steps": [
+        "Gelirler elle girilir; çünkü TikTok/Meta herkese açık bir gelir API'si sunmuyor, YouTube ise bunun için ortaklık programı erişimi gerektiriyor (henüz bağlı değil).",
+        "Gerçek ödeme her zaman doğrudan ilgili platform üzerinden yapılır (ör. YouTube için Google AdSense) — SECRET 58 hiçbir ödeme işlemi yürütmez."
+      ]
+    },
+    "integrations": {
+      "title": "Entegrasyonlar ve API anahtarları",
+      "description": "Her bağlantı durumunun nereden geldiği ve uygun anahtarın nereye girildiği.",
+      "steps": [
+        "Her satır gerçek, canlı kontrol edilmiş durumu gösterir — asla sahte bir bağlantıyı değil.",
+        "“Yapılandırılmadı” durumunda “API anahtarı al”, sağlayıcının resmî sayfasına götürür.",
+        "Erişim bilgileri hiçbir zaman tarayıcıda saklanmaz, yalnızca sunucuda korumalı olarak tutulur. Bir erişim eksikse işletmeci kurar.",
+        "Maliyetler: Pro ve Maxi aylık veya yıllık aboneliklerdir. Güncel fiyatlar “Paket ve faturalama” bölümünde yer alır. Her harici sağlayıcının kendi bağımsız maliyet modeli vardır (ücretsiz / kullanıma bağlı / abonelik) — Entegrasyonlar sayfasında her hizmet için hangi modelin geçerli olduğu, sağlayıcının güncel fiyatlarına bağlantıyla birlikte gösterilir."
+      ]
+    }
+  }
+}

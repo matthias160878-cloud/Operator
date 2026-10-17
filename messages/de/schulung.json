@@ -1,11 +1,10 @@
 {
   "title": "Schulung",
-  "subtitle": "Schritt-für-Schritt-Anleitungen zu jedem Bereich von SECRET 58 — jederzeit hier nachschlagbar. Videos werden ergänzt, sobald sie aufgenommen sind.",
+  "subtitle": "Schritt-für-Schritt-Anleitungen und Erklärvideos zu jedem Bereich von SECRET 58 — jederzeit hier nachschlagbar.",
   "welcomeBanner": {
     "title": "Willkommen bei SECRET 58!",
     "body": "Danke für deinen Kauf. Bevor es losgeht, lohnt sich ein kurzer Blick auf \"Erste Schritte\" unten — damit die KI-Agenten von Anfang an mit deinen echten Daten arbeiten."
   },
-  "videoPending": "Video folgt",
   "stepsLabel": "Schritte",
   "openPage": "Seite öffnen",
   "topics": {
@@ -13,7 +12,7 @@
       "title": "Erste Schritte",
       "description": "Diese drei Dinge zuerst erledigen, dann arbeiten alle KI-Agenten mit echten Daten statt mit Platzhaltern.",
       "steps": [
-        "Unter \"Integrationen\" mindestens einen KI-Provider verbinden (Anthropic oder OpenAI) — dafür oben rechts auf der jeweiligen Zeile auf \"API-Schlüssel holen\" klicken, den Schlüssel beim Anbieter erstellen und über \"In Render eintragen\" hinterlegen.",
+        "Unter „Integrationen“ prüfen, ob ein KI-Anbieter eingerichtet ist. Die KI-Funktionen laufen über die Zugänge des Betreibers, du brauchst kein eigenes KI-Abo. Ohne KI-Anbieter arbeitet die App im Vorlagen-Modus.",
         "Unter \"Brand DNA\" die eigene Marke ausfüllen (Ton, Zielgruppe, Werte) — die KI-Agenten nutzen das für jeden generierten Text.",
         "Unter \"Ideen & Inspiration\" oder \"Content Brain\" die erste Idee bzw. Kampagne erzeugen lassen."
       ]
@@ -79,8 +78,8 @@
       "steps": [
         "Jede Zeile zeigt den echten, live geprüften Status — nie eine vorgetäuschte Verbindung.",
         "Bei \"Nicht konfiguriert\" führt \"API-Schlüssel holen\" zur offiziellen Seite des Anbieters.",
-        "\"In Render eintragen\" führt direkt zu den Umgebungsvariablen, wo der Schlüssel hinterlegt wird — ein Eingabeformular in der App selbst gibt es aus Sicherheitsgründen bewusst nicht.",
-        "Kosten: Der SECRET-58-Kaufpreis ist einmalig. Jeder externe Anbieter hat sein eigenes, unabhängiges Kostenmodell (kostenlos / nutzungsbasiert / Abo) — auf der Integrationen-Seite steht bei jedem Dienst, welches Modell gilt, mit Link zu den aktuellen Preisen beim Anbieter."
+        "Zugangsdaten werden nie im Browser gespeichert, sondern nur geschützt auf dem Server. Fehlt ein Zugang, richtet ihn der Betreiber ein.",
+        "Kosten: Pro und Maxi sind Abos, monatlich oder jährlich. Die aktuellen Preise stehen unter „Paket & Abrechnung“. Jeder externe Anbieter hat sein eigenes, unabhängiges Kostenmodell (kostenlos / nutzungsbasiert / Abo) — auf der Integrationen-Seite steht bei jedem Dienst, welches Modell gilt, mit Link zu den aktuellen Preisen beim Anbieter."
       ]
     }
   }

@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "A márkád. A stílusod. Mindenhol. Ezek az adatok automatikusan bekerülnek a Content Brainbe, valamint a script-, hook- és hashtag-agentbe.",
+  "form": {
+    "nameLabel": "Márkanév",
+    "industryLabel": "Iparág",
+    "descriptionLabel": "Leírás",
+    "descriptionHint": "Mi teszi különlegessé a márkát?",
+    "audienceLabel": "Célközönség",
+    "languageLabel": "Nyelv",
+    "tonalityLabel": "Hangnem",
+    "humorLabel": "Humor",
+    "formalityLabel": "Formalitás",
+    "preferredWordsLabel": "Kedvelt szavak",
+    "forbiddenWordsLabel": "Tiltott szavak",
+    "preferredCtasLabel": "Kedvelt CTA-k",
+    "brandValuesLabel": "Márkaértékek",
+    "topicsLabel": "Témák",
+    "csvHint": "vesszővel elválasztva",
+    "colorsLabel": "Színek",
+    "colorsHint": "vesszővel elválasztva, pl. #6D5BFF",
+    "fontsLabel": "Betűtípusok",
+    "visualRulesLabel": "Vizuális szabályok",
+    "saveError": "A mentés nem sikerült.",
+    "unknownError": "Ismeretlen hiba.",
+    "saving": "Mentés…",
+    "save": "Brand DNA mentése",
+    "savedAt": "Mentve: {time}"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Analytics",
+  "subtitle": "Tregues performance nga të dhënat që ekzistojnë realisht — sapo të lidhen platformat, ky pamje plotësohet me vlera reale.",
+  "statViewsTotal": "Shikime gjithsej",
+  "statLikesTotal": "Pëlqime gjithsej",
+  "statComments": "Komente",
+  "statShares": "Shpërndarje",
+  "chartTitle": "Performanca e përmbajtjes me kalimin e kohës",
+  "chartLegend": "Shikime (vjollcë) · Engagement % (turkez)",
+  "chartEmpty": "Ende nuk ka të dhëna analitike.",
+  "bestPerformingTitle": "Përmbajtja më e suksesshme",
+  "bestPerformingEmpty": "Ende nuk ka të dhëna.",
+  "learningAgentTitle": "Learning Agent — Rekomandime"
+}

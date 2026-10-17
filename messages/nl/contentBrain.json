@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Eén idee erin — een volledig, platformgericht contentplan eruit. De ContentBrainAgent houdt rekening met je Brand DNA en maakt voor elk gekozen platform passende hooks, scripts, hashtags en thumbnailconcepten als concept.",
+  "campaignsHeading": "Campagnes",
+  "noCampaigns": "Nog geen campagnes aangemaakt.",
+  "campaignSummary": "{count} content-items · {audience}",
+  "form": {
+    "textEngineLabel": "Tekst-engine:",
+    "templateMode": "Sjabloonmodus (geen AI-provider geconfigureerd)",
+    "modeTemplate": "Sjabloon",
+    "topicLabel": "Onderwerp / idee",
+    "topicPlaceholder": "bijv. Leg uit waarom autonome AI-agents de werkwereld veranderen.",
+    "audienceLabel": "Doelgroep",
+    "audiencePlaceholder": "bijv. 25-45, tech-geïnteresseerden",
+    "goalLabel": "Doel",
+    "languageLabel": "Taal",
+    "platformsLabel": "Platforms",
+    "itemsPerPlatformLabel": "Content-items per platform ({count})",
+    "generateError": "Genereren mislukt.",
+    "unknownError": "Onbekende fout.",
+    "submitLoading": "Content Brain is bezig…",
+    "submitIdle": "Contentplan genereren",
+    "resultHeading": "Campagne aangemaakt — {count} content-items als concept opgeslagen.",
+    "resultDescription": "Gegenereerd in {mode}-modus. Alle content begint als DRAFT — controleer en bewerk het in de Content Factory.",
+    "resultLink": "Naar de Content Factory →"
+  }
+}

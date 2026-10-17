@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Notri ena ideja — ven poln vsebinski načrt, prilagojen platformam. ContentBrainAgent upošteva tvoj Brand DNA in za vsako izbrano platformo ustvari ustrezne Hooke, scenarije, heštage in zasnove sličic kot osnutek.",
+  "campaignsHeading": "Kampanje",
+  "noCampaigns": "Kampanj še ni.",
+  "campaignSummary": "{count} vsebinskih elementov · {audience}",
+  "form": {
+    "textEngineLabel": "Besedilni motor:",
+    "templateMode": "Način predlog (ponudnik UI ni nastavljen)",
+    "modeTemplate": "Predloga",
+    "topicLabel": "Tema / ideja",
+    "topicPlaceholder": "npr. Razloži, zakaj avtonomni UI agenti spreminjajo svet dela.",
+    "audienceLabel": "Ciljna skupina",
+    "audiencePlaceholder": "npr. 25–45, zanimanje za tehnologijo",
+    "goalLabel": "Cilj",
+    "languageLabel": "Jezik",
+    "platformsLabel": "Platforme",
+    "itemsPerPlatformLabel": "Vsebinskih elementov na platformo ({count})",
+    "generateError": "Generiranje ni uspelo.",
+    "unknownError": "Neznana napaka.",
+    "submitLoading": "Content Brain dela …",
+    "submitIdle": "Generiraj vsebinski načrt",
+    "resultHeading": "Kampanja ustvarjena — {count} vsebinskih elementov shranjenih kot osnutek.",
+    "resultDescription": "Generirano v načinu {mode}. Vse vsebine se začnejo kot DRAFT — preglej in uredi jih v Content Factory.",
+    "resultLink": "Na Content Factory →"
+  }
+}

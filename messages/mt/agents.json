@@ -1,0 +1,21 @@
+{
+  "title": "Agent Monitor",
+  "description": "L-aġenti kollha ta' SECRET 58 bl-istatus, l-aħħar kompitu u r-riżultat. Kull eżekuzzjoni tiġi rreġistrata.",
+  "table": {
+    "agent": "Agent",
+    "description": "Deskrizzjoni",
+    "status": "Status",
+    "lastTask": "L-aħħar kompitu"
+  },
+  "history": {
+    "title": "Storja tal-eżekuzzjonijiet",
+    "agent": "Agent",
+    "task": "Kompitu",
+    "status": "Status",
+    "start": "Bidu",
+    "end": "Tmiem",
+    "resultError": "Riżultat / Żball",
+    "empty": "Għad ma hemm l-ebda eżekuzzjoni ta' agenti.",
+    "completed": "Tlesta"
+  }
+}

@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Upute korak po korak i video-objašnjenja za svako područje SECRET 58 — uvijek ih možeš pogledati ovdje.",
+ "schulung.topics.firstSteps.steps.0": "Pod „Integracije“ provjeri je li postavljen neki AI provajder. AI funkcije rade preko pristupa operatera, pa ti nije potrebna vlastita AI pretplata. Bez AI provajdera aplikacija radi u načinu rada sa šablonima.",
+ "schulung.topics.integrations.steps.2": "Pristupni podaci se nikada ne pohranjuju u pregledniku, nego samo zaštićeno na serveru. Ako pristup nedostaje, postavlja ga operater.",
+ "schulung.topics.integrations.steps.3": "Troškovi: Pro i Maxi su pretplate, mjesečne ili godišnje. Aktuelne cijene nalaze se pod „Paket i naplata“. Svaki vanjski provajder ima svoj, nezavisan model troškova (besplatno / prema korištenju / pretplata) — na stranici „Integracije“ uz svaku uslugu piše koji model vrijedi, s linkom na aktuelne cijene kod provajdera.",
+ "integrations.costNote": "Tvoj SECRET 58 paket (Pro ili Maxi) je pretplata, vidi „Paket i naplata“. Svaka vanjska usluga ovdje ima svoj, nezavisan model troškova kod odgovarajućeg provajdera — SECRET 58 za njih nikada ne naplaćuje dodatno."
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Integraties",
+  "description": "Live status van alle externe diensten — uitsluitend op basis van de daadwerkelijk ingestelde omgevingsvariabelen. Geen schijnverbindingen.",
+  "categories": {
+    "AI": "AI-providers",
+    "VOICE": "Voice",
+    "PLATFORM": "Socialemediaplatforms",
+    "DESIGN": "Design",
+    "VIDEO": "Video",
+    "TREND": "Trends"
+  },
+  "costNote": "Je SECRET 58-pakket (Pro of Maxi) is een abonnement, zie „Pakket & facturering“. Elke externe dienst hier heeft zijn eigen, onafhankelijke kostenmodel bij de betreffende aanbieder — SECRET 58 brengt hiervoor nooit extra in rekening.",
+  "links": {
+    "getKey": "API-sleutel ophalen",
+    "setInRender": "In Render invoeren",
+    "viewPricing": "Prijzen bekijken"
+  },
+  "pricing": {
+    "free": "Gratis",
+    "payAsYouGo": "Op basis van gebruik",
+    "subscription": "Abonnement",
+    "unknown": "Prijs bij de aanbieder controleren"
+  }
+}

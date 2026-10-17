@@ -1,0 +1,96 @@
+{
+  "viewAll": "Покажи всички",
+  "demoBanner": {
+    "before": "Демо данните са активни — кампаниите, единиците съдържание и анализите са примерни данни от ",
+    "after": ", а не реални числа от платформи."
+  },
+  "hero": {
+    "subtitle": "Една идея. Няколко платформи. Максимален обхват.",
+    "newCampaign": "Нова кампания",
+    "createContent": "Създай съдържание",
+    "findIdeas": "Намери идеи",
+    "aiAgents": "ИИ агенти"
+  },
+  "orbit": {
+    "xNotConnected": "X (не е свързан)",
+    "brainAlt": "ИИ мозък на SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Активни агенти",
+    "empty": "Все още няма изпълнения на агенти."
+  },
+  "kpi": {
+    "contentCreated": "Създадено съдържание",
+    "videosCreated": "Създадени видеа",
+    "postsCreated": "Създадени публикации",
+    "published": "Публикации",
+    "views": "Прегледи",
+    "avgEngagement": "Ø ангажираност",
+    "totalRevenue": "Общо приходи",
+    "noComparisonWeek": "Все още няма предходна седмица за сравнение — промените ще се покажат, щом има данни за поне две седмици."
+  },
+  "production": {
+    "title": "Производство на съдържание",
+    "thisWeek": "Тази седмица"
+  },
+  "scheduled": {
+    "title": "Планирани публикации",
+    "empty": "Няма планирани публикации."
+  },
+  "activity": {
+    "title": "Последни дейности",
+    "empty": "Все още няма дейности."
+  },
+  "contentFactory": {
+    "description": "Създавай с една-единствена идея пълни кампании за всички платформи.",
+    "cta": "Започни сега →",
+    "popularTemplates": "Популярни шаблони",
+    "templateYoutubeVideo": "YouTube видео",
+    "templateTiktokSeries": "TikTok серия",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn публикация",
+    "templateBlogPost": "Статия в блог",
+    "viewAllTemplates": "Всички шаблони →"
+  },
+  "brandDna": {
+    "tonality": "Тон",
+    "targetAudience": "Целева група",
+    "industry": "Отрасъл",
+    "language": "Език",
+    "empty": "Все още няма зададен Brand DNA."
+  },
+  "campaigns": {
+    "title": "Текущи кампании",
+    "empty": "Все още няма кампании."
+  },
+  "platforms": {
+    "title": "Платформи",
+    "manage": "Управление"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} свързани"
+  },
+  "agentMonitor": {
+    "title": "Монитор на агентите",
+    "empty": "Все още няма изпълнения."
+  },
+  "topPerformer": {
+    "title": "Най-успешни",
+    "last7Days": "Последните 7 дни",
+    "empty": "Все още няма данни за ефективността.",
+    "views": "Прегледи",
+    "likes": "Харесвания",
+    "comments": "Коментари",
+    "shares": "Споделяния",
+    "engagementRate": "+Ангажираност {value}"
+  },
+  "calendar": {
+    "open": "Отвори",
+    "viewMonth": "Месец",
+    "viewWeek": "Седмица",
+    "viewDay": "Ден",
+    "viewCampaign": "Кампания",
+    "moreItems": "+{count} още"
+  },
+  "weekdayLabels": ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"]
+}

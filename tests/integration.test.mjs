@@ -1366,9 +1366,15 @@ test("Designkonzept Make it real: Unterseite, Motiv und Karten in Referenzen, We
   assert.ok(html.includes("keine automatische KI-Erstellung") && html.includes("keine Cloud-Speicherung") && html.includes("Umsetzungsauftrag-") && html.includes("prefers-reduced-motion") && html.includes("data-cycle") && html.includes("INTERVAL=2000"), "Werkstatt ehrlich beschriftet, Auftrags-Download, Farbwechsel im Zwei-Sekunden-Takt mit Pause, reduzierte Bewegung");
   assert.ok(["#/impressum", "#/datenschutz", "#/agb", "#/kontakt"].every((l) => html.includes(l)), "Kontakt- und Rechtstextlinks");
   for (const f of ["kolibri.jpg", "kolibri-vorschau.jpg"]) assert.equal((await fetch(`${BASE}/hauptseite/referenzen/make-it-real/${f}`)).status, 200, f);
+  const ort = await fetch(`${BASE}/hauptseite/referenzen/verlassene-orte/index.html`);
+  assert.equal(ort.status, 200, "Referenz 2 (Verlassene Orte) muss ohne Anmeldung erreichbar sein");
+  assert.ok((await ort.text()).includes("Verlassene Orte"));
+  assert.equal((await fetch(`${BASE}/hauptseite/referenzen/verlassene-orte/vorschau.jpg`)).status, 200);
+  assert.equal((await fetch(`${BASE}/hauptseite/referenzen/make-it-real/ruinen/var/02-himmel.webp`)).status, 200);
   const idx = await (await fetch(`${BASE}/hauptseite/index.html`)).text();
   assert.equal(idx.split("kolibriKarte()").length - 1, 4, "Definition plus Karten in Referenzen, Webdesign und Portfolio");
   assert.ok(idx.includes('href="referenzen/make-it-real/index.html">Kolibri-Konzept ansehen') && idx.includes("Designkonzept / Demo-Projekt") && idx.includes("Ähnliche Webseite anfragen") && idx.includes("Eigenes Designkonzept, kein Kundenauftrag"));
+  assert.ok(idx.includes("referenzen/verlassene-orte/index.html") && idx.includes("Referenz 2 ansehen"), "Referenz 2 muss auf der Hauptseite verlinkt sein");
 });
 
 test("Verlauf der Zentrale: historische Kopien sind ohne Anmeldung erreichbar", async () => {

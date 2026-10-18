@@ -28,6 +28,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f21](f21-die-bluete/) | Die Blüte (Auftakt Staffel 5, Frühling) | Unter dem Rasensprenger erblüht Tung Tung — seine Pollen lassen Tralalero sich in die Pfütze niesen |
 | [f22](f22-der-drachen/) | Der Drachen | Die Drachenschnur landet in Tung Tungs Hand — er lässt Tralalero Loopings fliegen, bis die Schnur reißt |
 | [f23](f23-das-trampolin/) | Das Trampolin | Tung Tung springt Saltos statt in die Pfütze — Tralaleros Vorführung endet selbst darin |
+| [f24](f24-die-riesenblase/) | Die Riesenblase | Tung Tung genießt den Blasen-Rundflug — Tralalero schwebt selbst davon, bis über die Pfütze |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -56,6 +57,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 23. Tung Tung blühend — `f21-die-bluete/01-treatment.md`
 24. Tralalero am Drachen — `f22-der-drachen/01-treatment.md`
 25. Schräges Trampolin am Waldweg — `f23-das-trampolin/01-treatment.md`
+26. Seifenblasen-Maschine — `f24-die-riesenblase/01-treatment.md`
 
 ## Ablauf je Folge
 

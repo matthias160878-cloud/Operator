@@ -25,6 +25,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f18](f18-die-schneeballkanone/) | Die Schneeballkanone | Tung Tung schlägt jeden Schneeball zurück — der Homerun macht Tralalero zum Schneemann |
 | [f19](f19-das-iglu/) | Das Iglu | Tung Tung richtet das Fallen-Iglu gemütlich ein und lädt zum Tee — Tralalero tritt auf seine eigene Falltür |
 | [f20](f20-das-geschenk/) | Das Geschenk (Finale Staffel 4) | Tung Tung schenkt Tralalero eine geschnitzte Holzfigur — und öffnet die Schnee-Falle danach falsch herum |
+| [f21](f21-die-bluete/) | Die Blüte (Auftakt Staffel 5, Frühling) | Unter dem Rasensprenger erblüht Tung Tung — seine Pollen lassen Tralalero sich in die Pfütze niesen |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -50,6 +51,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 20. Schneeballkanone — `f18-die-schneeballkanone/01-treatment.md`
 21. Iglu mit Falltür — `f19-das-iglu/01-treatment.md`
 22. Geschnitzte Tralalero-Holzfigur — `f20-das-geschenk/01-treatment.md`
+23. Tung Tung blühend — `f21-die-bluete/01-treatment.md`
 
 ## Ablauf je Folge
 

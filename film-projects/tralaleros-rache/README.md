@@ -26,6 +26,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f19](f19-das-iglu/) | Das Iglu | Tung Tung richtet das Fallen-Iglu gemütlich ein und lädt zum Tee — Tralalero tritt auf seine eigene Falltür |
 | [f20](f20-das-geschenk/) | Das Geschenk (Finale Staffel 4) | Tung Tung schenkt Tralalero eine geschnitzte Holzfigur — und öffnet die Schnee-Falle danach falsch herum |
 | [f21](f21-die-bluete/) | Die Blüte (Auftakt Staffel 5, Frühling) | Unter dem Rasensprenger erblüht Tung Tung — seine Pollen lassen Tralalero sich in die Pfütze niesen |
+| [f22](f22-der-drachen/) | Der Drachen | Die Drachenschnur landet in Tung Tungs Hand — er lässt Tralalero Loopings fliegen, bis die Schnur reißt |
 | [f23](f23-das-trampolin/) | Das Trampolin | Tung Tung springt Saltos statt in die Pfütze — Tralaleros Vorführung endet selbst darin |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
@@ -53,6 +54,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 21. Iglu mit Falltür — `f19-das-iglu/01-treatment.md`
 22. Geschnitzte Tralalero-Holzfigur — `f20-das-geschenk/01-treatment.md`
 23. Tung Tung blühend — `f21-die-bluete/01-treatment.md`
+24. Tralalero am Drachen — `f22-der-drachen/01-treatment.md`
 25. Schräges Trampolin am Waldweg — `f23-das-trampolin/01-treatment.md`
 
 ## Ablauf je Folge

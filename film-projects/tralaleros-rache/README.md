@@ -20,6 +20,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f13](f13-die-seilrutsche/) | Die Seilrutsche | Tung Tung bückt sich im letzten Moment nach einem Pilz — Tralalero rauscht über ihn hinweg bis ans Seilende über der Pfütze |
 | [f14](f14-der-zaubertrick/) | Der Zaubertrick | Die Zauberkiste hat eine Hintertür — Tralalero rutscht am Ende selbst darin in die Pfütze |
 | [f16](f16-der-schneemann/) | Der Schneemann (Auftakt Staffel 4, Winter) | Tralalero lauert im Schneemann, niest — und bricht ins Eis der zugefrorenen Pfütze ein |
+| [f17](f17-der-schlitten/) | Der Schlitten | Tung Tung hüpft hinten auf den Schlitten, segelt nach der Schanze sanft herunter — Tralalero steckt kopfüber im Schnee |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -40,6 +41,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 15. Seilrutsche zwischen den Bäumen — `f13-die-seilrutsche/01-treatment.md`
 16. Tralalero als Zauberer mit der Zauberkiste — `f14-der-zaubertrick/01-treatment.md`
 18. Verschneiter Wald mit zugefrorener Pfütze — `f16-der-schneemann/01-treatment.md`
+19. Holzschlitten — `f17-der-schlitten/01-treatment.md`
 
 ## Ablauf je Folge
 

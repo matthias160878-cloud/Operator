@@ -18,6 +18,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f11](f11-die-wasserbomben/) | Die Wasserbomben (Auftakt Staffel 3) | Tung Tung genießt die Wasserbomben als Dusche — Tralaleros Ballons platzen einer nach dem anderen |
 | [f12](f12-der-magnet/) | Der Magnet | Tung Tung ist aus Holz — der Magnet zieht stattdessen die rostige Rüstung aus Folge 2 an Tralalero |
 | [f13](f13-die-seilrutsche/) | Die Seilrutsche | Tung Tung bückt sich im letzten Moment nach einem Pilz — Tralalero rauscht über ihn hinweg bis ans Seilende über der Pfütze |
+| [f14](f14-der-zaubertrick/) | Der Zaubertrick | Die Zauberkiste hat eine Hintertür — Tralalero rutscht am Ende selbst darin in die Pfütze |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -36,6 +37,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 13. Tralalero am Ballonbündel mit Wasserbomben-Gürtel — `f11-die-wasserbomben/01-treatment.md`
 14. Hufeisenmagnet — `f12-der-magnet/01-treatment.md`
 15. Seilrutsche zwischen den Bäumen — `f13-die-seilrutsche/01-treatment.md`
+16. Tralalero als Zauberer mit der Zauberkiste — `f14-der-zaubertrick/01-treatment.md`
 
 ## Ablauf je Folge
 

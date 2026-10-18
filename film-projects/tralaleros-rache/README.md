@@ -23,6 +23,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f16](f16-der-schneemann/) | Der Schneemann (Auftakt Staffel 4, Winter) | Tralalero lauert im Schneemann, niest — und bricht ins Eis der zugefrorenen Pfütze ein |
 | [f17](f17-der-schlitten/) | Der Schlitten | Tung Tung hüpft hinten auf den Schlitten, segelt nach der Schanze sanft herunter — Tralalero steckt kopfüber im Schnee |
 | [f18](f18-die-schneeballkanone/) | Die Schneeballkanone | Tung Tung schlägt jeden Schneeball zurück — der Homerun macht Tralalero zum Schneemann |
+| [f19](f19-das-iglu/) | Das Iglu | Tung Tung richtet das Fallen-Iglu gemütlich ein und lädt zum Tee — Tralalero tritt auf seine eigene Falltür |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -46,6 +47,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 18. Verschneiter Wald mit zugefrorener Pfütze — `f16-der-schneemann/01-treatment.md`
 19. Holzschlitten — `f17-der-schlitten/01-treatment.md`
 20. Schneeballkanone — `f18-die-schneeballkanone/01-treatment.md`
+21. Iglu mit Falltür — `f19-das-iglu/01-treatment.md`
 
 ## Ablauf je Folge
 

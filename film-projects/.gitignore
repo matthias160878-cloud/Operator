@@ -1,0 +1,8 @@
+# Generierte Clips und Medien nicht ins Repo — nur Planung und Schnittdateien.
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.png
+*.jpg
+*.webp

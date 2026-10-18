@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.9">
+  <resources>
+    <format id="r1" frameDuration="1/24s" width="1080" height="1920"/>
+    <asset id="r2" name="S01" start="0s" duration="72/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S01.mp4"/>
+    </asset>
+    <asset id="r3" name="S02" start="0s" duration="96/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S02.mp4"/>
+    </asset>
+    <asset id="r4" name="S03" start="0s" duration="96/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S03.mp4"/>
+    </asset>
+    <asset id="r5" name="S04" start="0s" duration="96/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S04.mp4"/>
+    </asset>
+    <asset id="r6" name="S05" start="0s" duration="120/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S05.mp4"/>
+    </asset>
+    <asset id="r7" name="S06" start="0s" duration="96/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S06.mp4"/>
+    </asset>
+    <asset id="r8" name="S07" start="0s" duration="120/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S07.mp4"/>
+    </asset>
+    <asset id="r9" name="S08" start="0s" duration="72/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S08.mp4"/>
+    </asset>
+    <asset id="r10" name="S09" start="0s" duration="96/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S09.mp4"/>
+    </asset>
+    <asset id="r11" name="S10" start="0s" duration="96/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S10.mp4"/>
+    </asset>
+    <asset id="r12" name="S11" start="0s" duration="120/24s" hasVideo="1" format="r1">
+      <media-rep kind="original-media" src="file:///home/user/Operator/film-projects/tralaleros-rache/f09-der-bumerang/clips/S11.mp4"/>
+    </asset>
+  </resources>
+  <library>
+    <event name="Tralaleros Rache – Folge 9: Der Bumerang">
+      <project name="Tralaleros Rache – Folge 9: Der Bumerang">
+        <sequence format="r1" duration="1080/24s" tcStart="0s" tcFormat="NDF">
+          <spine>
+            <asset-clip ref="r2" name="S01" offset="0/24s" duration="72/24s" start="0s"/>
+            <asset-clip ref="r3" name="S02" offset="72/24s" duration="96/24s" start="0s"/>
+            <asset-clip ref="r4" name="S03" offset="168/24s" duration="96/24s" start="0s"/>
+            <asset-clip ref="r5" name="S04" offset="264/24s" duration="96/24s" start="0s"/>
+            <asset-clip ref="r6" name="S05" offset="360/24s" duration="120/24s" start="0s"/>
+            <asset-clip ref="r7" name="S06" offset="480/24s" duration="96/24s" start="0s"/>
+            <asset-clip ref="r8" name="S07" offset="576/24s" duration="120/24s" start="0s"/>
+            <asset-clip ref="r9" name="S08" offset="696/24s" duration="72/24s" start="0s"/>
+            <asset-clip ref="r10" name="S09" offset="768/24s" duration="96/24s" start="0s"/>
+            <asset-clip ref="r11" name="S10" offset="864/24s" duration="96/24s" start="0s"/>
+            <asset-clip ref="r12" name="S11" offset="960/24s" duration="120/24s" start="0s"/>
+          </spine>
+        </sequence>
+      </project>
+    </event>
+  </library>
+</fcpxml>

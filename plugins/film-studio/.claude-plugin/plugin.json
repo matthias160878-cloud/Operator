@@ -1,0 +1,9 @@
+{
+  "name": "film-studio",
+  "version": "0.2.0",
+  "description": "KI-Kurzfilm-Studio: Idee → Drehbuch → Shotlist mit KI-Prompts → Voiceover/Untertitel → Schnittliste (EDL/FCPXML) für gängige Schnittprogramme, plus 28-Tage-Filmplan und Spielfilm-Modus (lange Filme in parallel produzierten Sequenzen).",
+  "author": {
+    "name": "matthias160878-cloud"
+  },
+  "keywords": ["film", "video", "kurzfilm", "drehbuch", "shotlist", "premiere", "davinci", "final-cut"]
+}

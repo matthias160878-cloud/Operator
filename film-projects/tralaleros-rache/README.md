@@ -16,6 +16,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f09](f09-der-bumerang/) | Der Bumerang | Tung Tung wirft den Bumerang mit Pirouette zurück — er jagt Tralalero bis in die Pfütze und landet als Hut |
 | [f10](f10-das-unwetter/) | Das Unwetter (Finale Staffel 2) | Tralalero rettet Tung Tung aus dem Hochwasser, bekommt den Schläger geschenkt — und wird damit in den See gewirbelt |
 | [f11](f11-die-wasserbomben/) | Die Wasserbomben (Auftakt Staffel 3) | Tung Tung genießt die Wasserbomben als Dusche — Tralaleros Ballons platzen einer nach dem anderen |
+| [f13](f13-die-seilrutsche/) | Die Seilrutsche | Tung Tung bückt sich im letzten Moment nach einem Pilz — Tralalero rauscht über ihn hinweg bis ans Seilende über der Pfütze |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -32,6 +33,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 11. Holzbumerang — `f09-der-bumerang/01-treatment.md`
 12. Überfluteter Waldweg im Regen — `f10-das-unwetter/01-treatment.md`
 13. Tralalero am Ballonbündel mit Wasserbomben-Gürtel — `f11-die-wasserbomben/01-treatment.md`
+15. Seilrutsche zwischen den Bäumen — `f13-die-seilrutsche/01-treatment.md`
 
 ## Ablauf je Folge
 

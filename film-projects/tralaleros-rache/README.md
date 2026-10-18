@@ -14,6 +14,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f07](f07-der-laubblaeser/) | Der Laubbläser | Tung Tung segelt begeistert davon, landet perfekt — und dreht das Rohr um |
 | [f08](f08-die-torte/) | Die Torte | Tung Tung hält die Hinterhalt-Torte für seine Geburtstagsüberraschung und pustet Tralalero samt Sahne weg |
 | [f09](f09-der-bumerang/) | Der Bumerang | Tung Tung wirft den Bumerang mit Pirouette zurück — er jagt Tralalero bis in die Pfütze und landet als Hut |
+| [f10](f10-das-unwetter/) | Das Unwetter (Finale Staffel 2) | Tralalero rettet Tung Tung aus dem Hochwasser, bekommt den Schläger geschenkt — und wird damit in den See gewirbelt |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -28,6 +29,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 9. Riesentorte — `f08-die-torte/01-treatment.md`
 10. Tung Tung schlafend am Baum — `f06-der-geklaute-schlaeger/01-treatment.md`
 11. Holzbumerang — `f09-der-bumerang/01-treatment.md`
+12. Überfluteter Waldweg im Regen — `f10-das-unwetter/01-treatment.md`
 
 ## Ablauf je Folge
 

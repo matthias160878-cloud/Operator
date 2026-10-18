@@ -15,6 +15,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f08](f08-die-torte/) | Die Torte | Tung Tung hält die Hinterhalt-Torte für seine Geburtstagsüberraschung und pustet Tralalero samt Sahne weg |
 | [f09](f09-der-bumerang/) | Der Bumerang | Tung Tung wirft den Bumerang mit Pirouette zurück — er jagt Tralalero bis in die Pfütze und landet als Hut |
 | [f10](f10-das-unwetter/) | Das Unwetter (Finale Staffel 2) | Tralalero rettet Tung Tung aus dem Hochwasser, bekommt den Schläger geschenkt — und wird damit in den See gewirbelt |
+| [f11](f11-die-wasserbomben/) | Die Wasserbomben (Auftakt Staffel 3) | Tung Tung genießt die Wasserbomben als Dusche — Tralaleros Ballons platzen einer nach dem anderen |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -30,6 +31,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 10. Tung Tung schlafend am Baum — `f06-der-geklaute-schlaeger/01-treatment.md`
 11. Holzbumerang — `f09-der-bumerang/01-treatment.md`
 12. Überfluteter Waldweg im Regen — `f10-das-unwetter/01-treatment.md`
+13. Tralalero am Ballonbündel mit Wasserbomben-Gürtel — `f11-die-wasserbomben/01-treatment.md`
 
 ## Ablauf je Folge
 

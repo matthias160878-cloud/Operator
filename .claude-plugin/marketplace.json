@@ -1,0 +1,16 @@
+{
+  "name": "operator-plugins",
+  "owner": {
+    "name": "matthias160878-cloud"
+  },
+  "metadata": {
+    "description": "Eigenständige Claude-Code-Plugins aus dem Operator-Repo."
+  },
+  "plugins": [
+    {
+      "name": "film-studio",
+      "source": "./plugins/film-studio",
+      "description": "KI-Kurzfilm-Studio: Worker-Agent plant, schreibt und bereitet einen Kurzfilm schnittfertig für Premiere Pro, DaVinci Resolve, Final Cut Pro, After Effects, LumaFusion und Frame.io vor."
+    }
+  ]
+}

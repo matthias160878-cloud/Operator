@@ -4,10 +4,11 @@ Diese Datei gibt Claude Code (claude.ai/code) Hinweise für die Arbeit mit dem C
 
 ## Repository-Status
 
-Dieses Repository enthält zwei unabhängige Teilprojekte:
+Dieses Repository enthält drei unabhängige Teilprojekte:
 
 - **`src/`** — Next.js-Anwendung (App Router), erstellt mit `create-next-app`, TypeScript und Tailwind CSS v4. Ausgangspunkt für die Darwin-AI-Assistant-Webanwendung.
 - **`assistant/`** — eigenständiges Python-Projekt für einen lokalen KI-Assistenten (Textmodus + optionale Sprach-Erweiterung mit faster-whisper/sherpa-onnx). Siehe `assistant/README.md` für Befehle, Architektur und Einrichtung — eigene, unabhängige Implementierung, keine Kopie eines bezahlten Produkts.
+- **`plugins/film-studio/`** — eigenständiges Claude-Code-Plugin (Worker-Agent `film-producer` + Skills `film-produce`, `film-plan`, `film-export`) für KI-Kurzfilme. Marketplace-Datei: `.claude-plugin/marketplace.json`. Prüfen mit `claude plugin validate .`, Build-Skript testen mit `python3 plugins/film-studio/scripts/build_edit.py <projektordner>`. Siehe `plugins/film-studio/README.md`.
 
 Die folgenden Abschnitte beziehen sich auf das Next.js-Teilprojekt (`src/`).
 

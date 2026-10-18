@@ -1379,6 +1379,7 @@ test("Designkonzept Make it real: Unterseite, Motiv und Karten in Referenzen, We
   assert.equal(idx.split("kolibriKarte()").length - 1, 4, "Definition plus Karten in Referenzen, Webdesign und Portfolio");
   assert.ok(idx.includes('href="referenzen/make-it-real/index.html">Kolibri-Konzept ansehen') && idx.includes("Designkonzept / Demo-Projekt") && idx.includes("Ähnliche Webseite anfragen") && idx.includes("Eigenes Designkonzept, kein Kundenauftrag"));
   assert.ok(idx.includes("referenzen/make-it-real-2/index.html") && idx.includes("Kolibri-Konzept 2 ansehen"), "Referenz 2 muss auf der Hauptseite verlinkt sein");
+  assert.ok(idx.includes('id="arbeitsbereich"') && idx.includes("arbeitsbereichBind") && idx.includes("Download-Ordner") && idx.includes("ZIP-Ordner") && idx.includes("Kalender"), "KI-Agenten: Kalender, Download-Ordner und ZIP-Ordner");
   assert.ok(idx.includes("referenzen/beauty-konzept/index.html") && idx.includes("Beauty-Konzept ansehen"), "Referenz 3 muss auf der Hauptseite verlinkt sein");
 });
 

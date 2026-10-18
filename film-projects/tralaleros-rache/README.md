@@ -22,6 +22,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f15](f15-der-roboter/) | Der Roboter (Finale Staffel 3) | Schrott-Roboter aus allen alten Plänen tanzt den Zwillingstanz — und fällt Teil für Teil auseinander |
 | [f16](f16-der-schneemann/) | Der Schneemann (Auftakt Staffel 4, Winter) | Tralalero lauert im Schneemann, niest — und bricht ins Eis der zugefrorenen Pfütze ein |
 | [f17](f17-der-schlitten/) | Der Schlitten | Tung Tung hüpft hinten auf den Schlitten, segelt nach der Schanze sanft herunter — Tralalero steckt kopfüber im Schnee |
+| [f18](f18-die-schneeballkanone/) | Die Schneeballkanone | Tung Tung schlägt jeden Schneeball zurück — der Homerun macht Tralalero zum Schneemann |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -44,6 +45,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 17. Schrott-Roboter — `f15-der-roboter/01-treatment.md`
 18. Verschneiter Wald mit zugefrorener Pfütze — `f16-der-schneemann/01-treatment.md`
 19. Holzschlitten — `f17-der-schlitten/01-treatment.md`
+20. Schneeballkanone — `f18-die-schneeballkanone/01-treatment.md`
 
 ## Ablauf je Folge
 

@@ -10,6 +10,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f03](f03-der-riesenhammer/) | Der Riesenhammer | Tung Tung hält den Holzhammer für einen Verwandten und adoptiert ihn |
 | [f04](f04-die-verkleidung/) | Die Verkleidung | Im Tung-Tung-Holzkostüm wird Tralalero für den Zwillingsbruder gehalten — das nasse Holz quillt zum Fass |
 | [f05](f05-das-katapult/) | Das Katapult (Finale Staffel 1) | Senkrecht in die Baumkrone, Rettung, Versöhnung mit Banane — und wieder ausgerutscht |
+| [f06](f06-der-geklaute-schlaeger/) | Der geklaute Schläger (Auftakt Staffel 2) | Der geklaute Schläger wirbelt Tralalero wie ein Hubschrauber in die Pfütze, Tung Tung schläft weiter |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -20,6 +21,9 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 5. Riesenhammer — `f03-der-riesenhammer/01-treatment.md`
 6. Tralalero im Tung-Tung-Holzkostüm — `f04-die-verkleidung/01-treatment.md`
 7. Holzkatapult — `f05-das-katapult/01-treatment.md`
+8. Laubbläser — `f07-der-laubblaeser/01-treatment.md` (Folge 7)
+9. Riesentorte — `f08-die-torte/01-treatment.md` (Folge 8)
+10. Tung Tung schlafend am Baum — `f06-der-geklaute-schlaeger/01-treatment.md`
 
 ## Ablauf je Folge
 

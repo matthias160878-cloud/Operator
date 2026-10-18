@@ -19,6 +19,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f12](f12-der-magnet/) | Der Magnet | Tung Tung ist aus Holz — der Magnet zieht stattdessen die rostige Rüstung aus Folge 2 an Tralalero |
 | [f13](f13-die-seilrutsche/) | Die Seilrutsche | Tung Tung bückt sich im letzten Moment nach einem Pilz — Tralalero rauscht über ihn hinweg bis ans Seilende über der Pfütze |
 | [f14](f14-der-zaubertrick/) | Der Zaubertrick | Die Zauberkiste hat eine Hintertür — Tralalero rutscht am Ende selbst darin in die Pfütze |
+| [f16](f16-der-schneemann/) | Der Schneemann (Auftakt Staffel 4, Winter) | Tralalero lauert im Schneemann, niest — und bricht ins Eis der zugefrorenen Pfütze ein |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -38,6 +39,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 14. Hufeisenmagnet — `f12-der-magnet/01-treatment.md`
 15. Seilrutsche zwischen den Bäumen — `f13-die-seilrutsche/01-treatment.md`
 16. Tralalero als Zauberer mit der Zauberkiste — `f14-der-zaubertrick/01-treatment.md`
+18. Verschneiter Wald mit zugefrorener Pfütze — `f16-der-schneemann/01-treatment.md`
 
 ## Ablauf je Folge
 

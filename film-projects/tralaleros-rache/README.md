@@ -12,6 +12,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f05](f05-das-katapult/) | Das Katapult (Finale Staffel 1) | Senkrecht in die Baumkrone, Rettung, Versöhnung mit Banane — und wieder ausgerutscht |
 | [f06](f06-der-geklaute-schlaeger/) | Der geklaute Schläger (Auftakt Staffel 2) | Der geklaute Schläger wirbelt Tralalero wie ein Hubschrauber in die Pfütze, Tung Tung schläft weiter |
 | [f07](f07-der-laubblaeser/) | Der Laubbläser | Tung Tung segelt begeistert davon, landet perfekt — und dreht das Rohr um |
+| [f08](f08-die-torte/) | Die Torte | Tung Tung hält die Hinterhalt-Torte für seine Geburtstagsüberraschung und pustet Tralalero samt Sahne weg |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -23,7 +24,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 6. Tralalero im Tung-Tung-Holzkostüm — `f04-die-verkleidung/01-treatment.md`
 7. Holzkatapult — `f05-das-katapult/01-treatment.md`
 8. Laubbläser — `f07-der-laubblaeser/01-treatment.md` 
-9. Riesentorte — `f08-die-torte/01-treatment.md` (Folge 8)
+9. Riesentorte — `f08-die-torte/01-treatment.md`
 10. Tung Tung schlafend am Baum — `f06-der-geklaute-schlaeger/01-treatment.md`
 
 ## Ablauf je Folge

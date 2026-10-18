@@ -30,6 +30,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f23](f23-das-trampolin/) | Das Trampolin | Tung Tung springt Saltos statt in die Pfütze — Tralaleros Vorführung endet selbst darin |
 | [f24](f24-die-riesenblase/) | Die Riesenblase | Tung Tung genießt den Blasen-Rundflug — Tralalero schwebt selbst davon, bis über die Pfütze |
 | [f25](f25-die-ueberraschungsparty/) | Die Überraschungsparty (Finale Staffel 5, Jubiläum) | Die vermeintliche Falle ist eine Party für Tralalero — gerührt rutscht er auf seiner eigenen Bananenschale aus |
+| [f26](f26-der-liegestuhl/) | Der Liegestuhl (Auftakt Staffel 6, Sommer) | Tung Tung schläft in der Klappfalle ein — Tralaleros Selbsttest klappt ihn zum Sandwich und katapultiert ihn in die Pfütze |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -60,6 +61,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 25. Schräges Trampolin am Waldweg — `f23-das-trampolin/01-treatment.md`
 26. Seifenblasen-Maschine — `f24-die-riesenblase/01-treatment.md`
 27. Party-Lichtung mit Erinnerungsstücken — `f25-die-ueberraschungsparty/01-treatment.md`
+28. Liegestuhl mit Sonnenschirm im Sommerwald — `f26-der-liegestuhl/01-treatment.md`
 
 ## Ablauf je Folge
 

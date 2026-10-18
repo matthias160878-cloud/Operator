@@ -24,6 +24,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f17](f17-der-schlitten/) | Der Schlitten | Tung Tung hüpft hinten auf den Schlitten, segelt nach der Schanze sanft herunter — Tralalero steckt kopfüber im Schnee |
 | [f18](f18-die-schneeballkanone/) | Die Schneeballkanone | Tung Tung schlägt jeden Schneeball zurück — der Homerun macht Tralalero zum Schneemann |
 | [f19](f19-das-iglu/) | Das Iglu | Tung Tung richtet das Fallen-Iglu gemütlich ein und lädt zum Tee — Tralalero tritt auf seine eigene Falltür |
+| [f20](f20-das-geschenk/) | Das Geschenk (Finale Staffel 4) | Tung Tung schenkt Tralalero eine geschnitzte Holzfigur — und öffnet die Schnee-Falle danach falsch herum |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -48,6 +49,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 19. Holzschlitten — `f17-der-schlitten/01-treatment.md`
 20. Schneeballkanone — `f18-die-schneeballkanone/01-treatment.md`
 21. Iglu mit Falltür — `f19-das-iglu/01-treatment.md`
+22. Geschnitzte Tralalero-Holzfigur — `f20-das-geschenk/01-treatment.md`
 
 ## Ablauf je Folge
 

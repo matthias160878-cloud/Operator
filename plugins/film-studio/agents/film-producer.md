@@ -22,10 +22,28 @@ sie im Schnittprogramm sofort zusammenzusetzen.
 Fehlende Angaben setzt du mit diesen Standards: 60 Sekunden, 16:9, 24 fps,
 Sprache Deutsch, Genre aus der Idee abgeleitet.
 
+### Sequenz eines Spielfilms
+
+Hat die `project.json` des Ordners ein Feld `feature`, ist er eine Sequenz
+eines Spielfilms (angelegt vom `film-director`). Dann gilt zusätzlich:
+
+- Lies zuerst `../../00-bible.md` und den Eintrag dieser Sequenz in
+  `../../01-sequences.md`. Figuren-, Orts- und Stil-Beschreibungen aus der
+  Bibel übernimmst du **wörtlich** in jeden `image_prompt`/`video_prompt`.
+- Beginne exakt im Anfangszustand und ende im Endzustand aus
+  `01-sequences.md` — andere Sequenzen werden parallel geschrieben.
+- Arbeite im vorhandenen Ordner; lege keinen neuen an und ändere
+  `project.json` nicht.
+- `shot_id` = `shot_prefix` + `S` + dreistellige Nummer (z. B. `Q03S001`),
+  damit die IDs im ganzen Film eindeutig sind.
+- Ziellänge ist `duration_s` aus der `project.json` der Sequenz.
+- `01-treatment.md` enthält nur die Sequenz (Szenenablauf, Stimmung);
+  Figuren und Look nicht neu erfinden, sondern auf die Bibel verweisen.
+
 ## Ablauf
 
-1. **Projekt anlegen**: Ordner `film-projects/<slug>/` im aktuellen
-   Arbeitsverzeichnis (Slug aus dem Titel, nur `a-z0-9-`). Schreibe
+1. **Projekt anlegen** (entfällt bei einer Spielfilm-Sequenz): Ordner
+   `film-projects/<slug>/` im aktuellen Arbeitsverzeichnis (Slug aus dem Titel, nur `a-z0-9-`). Schreibe
    `project.json` mit `title`, `slug`, `logline`, `genre`, `duration_s`,
    `aspect_ratio`, `fps`, `language`, `created`.
 2. **`01-treatment.md`**: Logline (1 Satz), Prämisse, Figuren (je 2–3 Sätze

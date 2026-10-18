@@ -8,6 +8,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 | [f01](f01-die-bananenfalle/) | Die Bananenfalle | Tralalero legt eine Bananenschale aus — und rutscht selbst darauf aus |
 | [f02](f02-die-ritterruestung/) | Die Ritterrüstung | Die Rüstung rostet am ewig nassen Hai fest und zerfällt beim ersten Antippen |
 | [f03](f03-der-riesenhammer/) | Der Riesenhammer | Tung Tung hält den Holzhammer für einen Verwandten und adoptiert ihn |
+| [f04](f04-die-verkleidung/) | Die Verkleidung | Im Tung-Tung-Holzkostüm wird Tralalero für den Zwillingsbruder gehalten — das nasse Holz quillt zum Fass |
 
 ## Referenzbilder (einmal erzeugen, in allen Folgen nutzen)
 
@@ -16,6 +17,7 @@ Film-Studio-Plugin (`plugins/film-studio/`).
 3. Wald — ebenda
 4. Tralalero in Ritterrüstung — `f02-die-ritterruestung/01-treatment.md`
 5. Riesenhammer — `f03-der-riesenhammer/01-treatment.md`
+6. Tralalero im Tung-Tung-Holzkostüm — `f04-die-verkleidung/01-treatment.md`
 
 ## Ablauf je Folge
 

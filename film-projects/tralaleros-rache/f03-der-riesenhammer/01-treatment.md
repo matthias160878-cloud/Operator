@@ -54,7 +54,7 @@ Identisch mit Folge 1 (Serien-Look):
 
 ## Figuren-Referenzbilder
 
-Verwende **dieselben drei Referenzbilder aus Folge 1** (Prompts siehe `../tralaleros-rache-f01-die-bananenfalle/01-treatment.md`, Abschnitt „Figuren-Referenzbilder“):
+Verwende **dieselben drei Referenzbilder aus Folge 1** (Prompts siehe `../f01-die-bananenfalle/01-treatment.md`, Abschnitt „Figuren-Referenzbilder“):
 
 1. **Tralalero Tralala – Referenz** (aus Folge 1, unverändert)
 2. **Tung Tung Sahur – Referenz** (aus Folge 1, unverändert)

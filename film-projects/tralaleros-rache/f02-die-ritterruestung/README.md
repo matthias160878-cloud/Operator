@@ -2,7 +2,7 @@
 
 Ein ewig nasser Hai zieht in einer glänzenden Ritterrüstung gegen Tung Tung Sahur in den Kampf – und rostet auf halbem Weg zur Statue ein.
 
-**45 s · 11 Shots · 9:16 · 24 fps · Deutsch · Brainrot-Comedy · Loop (S11 → S01)** · Fortsetzung von `../tralaleros-rache-f01-die-bananenfalle/`
+**45 s · 11 Shots · 9:16 · 24 fps · Deutsch · Brainrot-Comedy · Loop (S11 → S01)** · Fortsetzung von `../f01-die-bananenfalle/`
 
 ## Dateien
 

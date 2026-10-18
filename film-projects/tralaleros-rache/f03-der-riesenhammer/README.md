@@ -4,7 +4,7 @@ Tralalero schleppt einen Holzhammer, größer als er selbst, zur Rache heran –
 
 **45 s · 11 Shots · 9:16 · 24 fps · Deutsch · Brainrot-Comedy · Loop (S11 → Folge 1, S01)**
 
-Serienkonsistenz: Figuren-, Wald- und Stilbeschreibungen sind wörtlich aus Folge 1 (`../tralaleros-rache-f01-die-bananenfalle/`) übernommen; es werden dieselben drei Referenzbilder verwendet, plus ein neues Referenzbild für den Riesenhammer.
+Serienkonsistenz: Figuren-, Wald- und Stilbeschreibungen sind wörtlich aus Folge 1 (`../f01-die-bananenfalle/`) übernommen; es werden dieselben drei Referenzbilder verwendet, plus ein neues Referenzbild für den Riesenhammer.
 
 ## Dateien
 

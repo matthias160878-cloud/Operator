@@ -2,6 +2,9 @@
  * Gemeinsamer Text-Generierungs-Adapter für Content Brain, Idea-, Script-,
  * Hook-, Hashtag-, Thumbnail- und Learning-Agent.
  *
+ * Schlüssel: in Kunden-Workspaces nur die eigenen des Kunden (Kontext aus
+ * `mitKiZugang`), sonst die des Servers/Betreibers.
+ *
  * Priorität: AI_PROVIDER (wenn gesetzt und Schlüssel vorhanden) ->
  * ANTHROPIC_API_KEY -> OPENAI_API_KEY -> GEMINI_API_KEY -> deterministischer
  * Template-Fallback. Der Fallback sorgt dafür, dass die komplette Text-Pipeline
@@ -9,6 +12,8 @@
  * Master-Prompt Abschnitt 42) — er wird im UI immer klar als "Template-Modus"
  * gekennzeichnet und niemals als echte KI-Antwort ausgegeben.
  */
+
+import { kiSpeicher } from "@/lib/ai/kiKontext";
 
 export type TextGenProvider = "anthropic" | "openai" | "gemini" | "template";
 
@@ -47,6 +52,15 @@ const AI_TIMEOUT_MS = Number(process.env.AI_TIMEOUT_MS) || 60_000;
 /** Obergrenze für Antwortlänge (Kostenkontrolle), unabhängig vom Aufrufer. */
 const MAX_TOKENS_CAP = Number(process.env.AI_MAX_TOKENS_CAP) || 2048;
 
+type Echt = Exclude<TextGenProvider, "template">;
+
+/** Schlüssel für den Anbieter im aktuellen Kontext — nie an den Browser oder ins Log. */
+function schluessel(p: Echt): string {
+  const ctx = kiSpeicher.getStore();
+  if (ctx?.quelle === "KUNDE") return ctx[p]?.trim() ?? "";
+  return ({ anthropic: process.env.ANTHROPIC_API_KEY, openai: process.env.OPENAI_API_KEY, gemini: process.env.GEMINI_API_KEY }[p] ?? "").trim();
+}
+
 function cappedTokens(requested: number | undefined): number {
   return Math.min(requested ?? 1024, MAX_TOKENS_CAP);
 }
@@ -56,7 +70,7 @@ async function callAnthropic(input: GenerateTextInput): Promise<string> {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "x-api-key": process.env.ANTHROPIC_API_KEY ?? "",
+      "x-api-key": schluessel("anthropic"),
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
@@ -88,11 +102,11 @@ async function callAnthropic(input: GenerateTextInput): Promise<string> {
 }
 
 async function callOpenAI(input: GenerateTextInput): Promise<string> {
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+  const res = await fetch(`${(process.env.OPENAI_BASE_URL || "https://api.openai.com").replace(/\/+$/, "")}/v1/chat/completions`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ""}`,
+      authorization: `Bearer ${schluessel("openai")}`,
     },
     body: JSON.stringify({
       model: OPENAI_MODEL,
@@ -121,7 +135,7 @@ async function callGemini(input: GenerateTextInput): Promise<string> {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "x-goog-api-key": process.env.GEMINI_API_KEY ?? "",
+      "x-goog-api-key": schluessel("gemini"),
     },
     body: JSON.stringify({
       system_instruction: { parts: [{ text: input.system }] },
@@ -150,10 +164,8 @@ const CALLERS: Record<Exclude<TextGenProvider, "template">, { call: (i: Generate
   gemini: { call: callGemini, name: "Gemini" },
 };
 
-function hasKey(p: Exclude<TextGenProvider, "template">): boolean {
-  return Boolean(
-    { anthropic: process.env.ANTHROPIC_API_KEY, openai: process.env.OPENAI_API_KEY, gemini: process.env.GEMINI_API_KEY }[p]?.trim()
-  );
+function hasKey(p: Echt): boolean {
+  return Boolean(schluessel(p));
 }
 
 export async function generateText(
@@ -176,7 +188,8 @@ export async function generateText(
  * Reihenfolge Anthropic, OpenAI, Gemini; sonst Template-Modus.
  */
 export function currentTextProvider(): TextGenProvider {
-  const wanted = (process.env.AI_PROVIDER ?? "").trim().toLowerCase();
+  const kunde = kiSpeicher.getStore()?.quelle === "KUNDE";
+  const wanted = kunde ? "" : (process.env.AI_PROVIDER ?? "").trim().toLowerCase();
   if ((wanted === "anthropic" || wanted === "openai" || wanted === "gemini") && hasKey(wanted)) return wanted;
   for (const p of ["anthropic", "openai", "gemini"] as const) if (hasKey(p)) return p;
   return "template";

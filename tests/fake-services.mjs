@@ -127,7 +127,13 @@ export function startFakeServices() {
         if (req.method === "GET" && p === "/api/v3/auth_configs") return json(res, 200, { items: [] });
         return json(res, 404, { error: { message: `fake composio: ${req.method} ${p}` } });
       }
+      if (req.method === "GET" && p === "/v1/models") {
+        // Schlüsselprüfung für eigene KI-Zugänge der Kunden (Anthropic-Format)
+        if (!String(req.headers["x-api-key"] ?? "").startsWith("sk-ant-kunde-gueltig")) return json(res, 401, { type: "error", error: { type: "authentication_error", message: "invalid x-api-key" } });
+        return json(res, 200, { data: [{ id: "claude-test", type: "model" }], has_more: false });
+      }
       if (p === "/v1/messages") {
+        calls[calls.length - 1].apiKey = req.headers["x-api-key"] ?? null;
         await new Promise((r) => setTimeout(r, 150));
         return json(res, 200, { content: [{ type: "text", text: '{"headline":"Test","concept":"Konzept","colors":[],"textOverlay":"x"}' }] });
       }

@@ -12,8 +12,11 @@ export interface ZugangFeld {
   musterHinweis: string;
 }
 
+export type AnbieterKey = "RESEND" | "ANTHROPIC" | "OPENAI" | "GEMINI";
+
 export interface ZugangAnbieter {
-  key: "RESEND";
+  key: AnbieterKey;
+  art: "EMAIL" | "KI";
   name: string;
   wofuer: string;
   felder: ZugangFeld[];
@@ -30,9 +33,18 @@ export function absenderDomain(absender: string): string | null {
   return m ? m[1].toLowerCase() : null;
 }
 
-export const ZUGANG_ANBIETER: Record<ZugangAnbieter["key"], ZugangAnbieter> = {
+const KI_HINWEISE = [
+  "Ein KI-Zugang reicht. Sind mehrere eingetragen, nutzt die App zuerst Anthropic, dann OpenAI, dann Gemini.",
+  "Der Schlüssel wird verschlüsselt gespeichert, gilt nur für diesen Workspace und wird nie wieder angezeigt (nur die letzten vier Zeichen).",
+  "Kosten entstehen nur bei Ihrem KI-Anbieter nach dessen Preisen; SECRET 58 berechnet dafür nichts. Legen Sie dort am besten ein Ausgabenlimit fest.",
+  "Ohne eigenen KI-Zugang arbeitet die App mit gekennzeichneten Vorlagen (Template-Modus).",
+  "Datenschutz: Mit Ihrem KI-Anbieter schließen Sie selbst die Auftragsverarbeitung (Data Processing Addendum) ab; geben Sie keine besonders sensiblen Daten ein.",
+];
+
+export const ZUGANG_ANBIETER: Record<AnbieterKey, ZugangAnbieter> = {
   RESEND: {
     key: "RESEND",
+    art: "EMAIL",
     name: "Resend (E-Mail-Versand)",
     wofuer: "Newsletter: Bestätigungs-Mails (Double-Opt-in) und Ausgaben an Ihre bestätigten Kontakte – über Ihr eigenes Resend-Konto und Ihre eigene Absenderdomain.",
     felder: [
@@ -64,6 +76,51 @@ export const ZUGANG_ANBIETER: Record<ZugangAnbieter["key"], ZugangAnbieter> = {
       "Kosten und Versandlimits richten sich nach Ihrem Resend-Tarif. SECRET 58 berechnet dafür nichts.",
       "Versendet wird nur an Personen, die sich selbst angemeldet und per Link bestätigt haben. Jede E-Mail enthält Ihren Abmeldelink (auch per Ein-Klick) und Ihre Anbieterangaben.",
     ],
+  },
+  ANTHROPIC: {
+    key: "ANTHROPIC",
+    art: "KI",
+    name: "Anthropic (Claude)",
+    wofuer: "KI-Texte in der App: Content Brain, Ideen, Skripte, Hooks, Hashtags, Antwortentwürfe und der Chat-Assistent auf Ihrer Webseite.",
+    felder: [{ key: "apiKey", label: "Anthropic API-Schlüssel", geheim: true, platzhalter: "sk-ant-…", muster: /^sk-ant-[A-Za-z0-9_-]{20,}$/, musterHinweis: "beginnt mit „sk-ant-“" }],
+    schritte: [
+      { text: "Konto in der Anthropic Console anlegen.", link: { href: "https://console.anthropic.com/", label: "console.anthropic.com" } },
+      { text: "Unter Billing Guthaben aufladen und ein Ausgabenlimit setzen – ohne Guthaben lehnt Anthropic Anfragen ab.", link: { href: "https://console.anthropic.com/settings/billing", label: "Billing" } },
+      { text: "Unter API Keys → „Create Key“ einen Schlüssel erstellen und kopieren (sk-ant-…).", link: { href: "https://console.anthropic.com/settings/keys", label: "console.anthropic.com/settings/keys" } },
+      { text: "Schlüssel hier eintragen und „Speichern und prüfen“ klicken." },
+    ],
+    preise: { href: "https://www.anthropic.com/pricing", text: "Preise bei Anthropic" },
+    hinweise: KI_HINWEISE,
+  },
+  OPENAI: {
+    key: "OPENAI",
+    art: "KI",
+    name: "OpenAI (GPT)",
+    wofuer: "Alternative oder Ersatz für Anthropic – dieselben KI-Funktionen der App.",
+    felder: [{ key: "apiKey", label: "OpenAI API-Schlüssel", geheim: true, platzhalter: "sk-…", muster: /^sk-(?!ant-)[A-Za-z0-9_-]{20,}$/, musterHinweis: "beginnt mit „sk-“ (z. B. sk-proj-…)" }],
+    schritte: [
+      { text: "Konto auf der OpenAI-Plattform anlegen.", link: { href: "https://platform.openai.com/signup", label: "platform.openai.com" } },
+      { text: "Unter Billing Guthaben aufladen und ein Limit festlegen.", link: { href: "https://platform.openai.com/settings/organization/billing/overview", label: "Billing" } },
+      { text: "Unter API keys → „Create new secret key“ einen Schlüssel erstellen und kopieren (sk-…).", link: { href: "https://platform.openai.com/api-keys", label: "platform.openai.com/api-keys" } },
+      { text: "Schlüssel hier eintragen und „Speichern und prüfen“ klicken." },
+    ],
+    preise: { href: "https://openai.com/api/pricing/", text: "Preise bei OpenAI" },
+    hinweise: KI_HINWEISE,
+  },
+  GEMINI: {
+    key: "GEMINI",
+    art: "KI",
+    name: "Google Gemini",
+    wofuer: "Alternative oder Ersatz für Anthropic und OpenAI – dieselben KI-Funktionen der App.",
+    felder: [{ key: "apiKey", label: "Gemini API-Schlüssel", geheim: true, platzhalter: "AIza…", muster: /^AIza[0-9A-Za-z_-]{30,}$/, musterHinweis: "beginnt mit „AIza“" }],
+    schritte: [
+      { text: "In Google AI Studio mit Ihrem Google-Konto anmelden.", link: { href: "https://aistudio.google.com/", label: "aistudio.google.com" } },
+      { text: "Abrechnung (Cloud Billing) für das Projekt aktivieren. Wichtig: Im kostenlosen Tarif darf Google Eingaben zur Verbesserung seiner Produkte verwenden – für Kundendaten nur den kostenpflichtigen Tarif nutzen." },
+      { text: "„Get API key“ → „Create API key“ und den Schlüssel kopieren (AIza…).", link: { href: "https://aistudio.google.com/apikey", label: "aistudio.google.com/apikey" } },
+      { text: "Schlüssel hier eintragen und „Speichern und prüfen“ klicken." },
+    ],
+    preise: { href: "https://ai.google.dev/gemini-api/docs/pricing", text: "Preise der Gemini API" },
+    hinweise: KI_HINWEISE,
   },
 };
 

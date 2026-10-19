@@ -573,6 +573,10 @@
      steht dadurch nie ohne Hintergrund da. */
   (function () {
     if (!window.fetch) return;
+    /* Nur abfragen, wenn die Seite einen Einstellungs-Dienst hat (data-grund-api am <body>).
+       Die Hauptseiten-Kopie in der App hat keinen; ohne diese Pruefung gaebe es bei jedem
+       Aufruf einen 404 auf api/einstellungen in der Konsole. */
+    if (!document.body.hasAttribute("data-grund-api")) return;
     var seite = location.pathname.split("/").pop() || "index.html";
     fetch("api/einstellungen", { headers: { accept: "application/json" } })
       .then(function (r) { return r.ok ? r.json() : null; })

@@ -205,10 +205,32 @@ nav.main a.btn:hover { background: var(--accent); }
 .lang button + button { border-left: 0; }
 .lang button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
 .btn { border-radius: 999px; }
+.tbl-wrap { overflow-x: auto; border-top: 1.5px solid var(--ink); }
+table.mods { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+table.mods th, table.mods td { text-align: left; vertical-align: top; padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line); }
+table.mods thead th { font: 500 0.72rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+table.mods tbody th { font-weight: 700; min-width: 11em; }
+table.mods td.c-n { color: var(--ink-2); min-width: 16em; }
+table.mods td.c-b, table.mods td.c-s { white-space: normal; min-width: 8em; }
+.lvl { display: inline-block; font: 500 0.74rem var(--font-mono); letter-spacing: 0.04em; padding: 3px 9px; border-radius: 999px; background: var(--tint); color: var(--ink); white-space: nowrap; }
+.lvl.lvl1 { background: var(--accent); color: var(--accent-ink); }
+.lim-h { margin-top: 30px; }
+ul.lim { margin: 10px 0 0 1.1em; color: var(--ink-2); }
+ul.lim li { margin: 4px 0; }
+@media (max-width: 760px) {
+  .tbl-wrap { overflow-x: visible; }
+  table.mods thead { position: absolute; left: -9999px; }
+  table.mods, table.mods tbody, table.mods tr, table.mods th, table.mods td { display: block; width: 100%; }
+  table.mods tr { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  table.mods th, table.mods td { border: 0; padding: 3px 0; min-width: 0 !important; }
+  table.mods td::before { display: inline-block; min-width: 5.5em; margin-right: 8px; font: 500 0.7rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+  td.c-b::before { content: "Bereich"; } td.c-n::before { content: "Nutzen"; } td.c-s::before { content: "Stand"; } td.c-l::before { content: "Stufe"; }
+  html[lang="fr"] td.c-b::before { content: "Domaine"; } html[lang="fr"] td.c-n::before { content: "Utilité"; } html[lang="fr"] td.c-s::before { content: "État"; } html[lang="fr"] td.c-l::before { content: "Niveau"; }
+  html[lang="it"] td.c-b::before { content: "Ambito"; } html[lang="it"] td.c-n::before { content: "Utilità"; } html[lang="it"] td.c-s::before { content: "Stato"; } html[lang="it"] td.c-l::before { content: "Livello"; }
+}
 </style>
 </head>
 <body>
-
 <div class="muster" data-t="t001">Mustervorlage für einen Versicherungsmakler in Deutschland. <span class="ph">Gelb markierte Stellen</span> sind Platzhalter und vor dem Livegang zu ersetzen. Die Rechtstexte ersetzen keine Prüfung durch eine Rechtsanwältin oder einen Rechtsanwalt.</div>
 <div class="wrap">
 <header class="top">
@@ -291,7 +313,7 @@ nav.main a.btn:hover { background: var(--accent); }
 </div>
 <div aria-labelledby="tab-firma" class="services" hidden="" id="panel-firma" role="tabpanel">
 <article class="service"><p class="label" data-t="t057">Betrieb</p><h3 data-t="t058">Betriebshaftpflicht</h3><p data-t="t059">Deckt Personen-, Sach- und Vermögensschäden, die Ihr Betrieb Dritten verursacht. Branchenspezifisch gerechnet, nicht nach Schema.</p></article>
-<article class="service"><p class="label" data-t="t060">Sachwerte</p><h3 data-t="t061">Inhalts- und Betriebsunterbrechung</h3><p data-t="t062">Inventar, Maschinen, Waren und der Ertragsausfall nach einem Schaden. Wir prüfen Versicherungssummen und Karenzzeiten.</p></article>
+<article class="service"><p class="label" data-t="t060">Sachwerte</p><h3 data-t="t061">Geschäftsinhalt und Betriebsunterbrechung</h3><p data-t="t062">Inventar, Maschinen, Waren und der Ertragsausfall nach einem Schaden. Wir prüfen Versicherungssummen und Karenzzeiten.</p></article>
 <article class="service"><p class="label" data-t="t063">Personal</p><h3 data-t="t064">Unfall und Krankentagegeld</h3><p data-t="t065">Die gesetzliche Unfallversicherung (Berufsgenossenschaft) ist Pflicht, wir ergänzen sie mit privater Gruppenunfall-Deckung und Krankentagegeld für Ihre Mitarbeitenden. Für Inhaber klären wir freiwillige Lösungen.</p></article>
 <article class="service"><p class="label" data-t="t066">Vorsorge</p><h3 data-t="t067">Betriebliche Altersversorgung (bAV)</h3><p data-t="t068">Direktversicherung, Pensionskasse und Unterstützungskasse im Vergleich, mit Beratung zu Entgeltumwandlung und Arbeitgeberzuschuss.</p></article>
 <article class="service"><p class="label" data-t="t069">Fahrzeuge</p><h3 data-t="t070">Fuhrpark und Transport</h3><p data-t="t071">Firmenfahrzeuge, Warentransport und Werkverkehr in einem abgestimmten Konzept statt vieler Einzelpolicen.</p></article>
@@ -317,17 +339,17 @@ nav.main a.btn:hover { background: var(--accent); }
 <ol class="steps">
 <li><h3 data-t="t085">Anfrage und Erstinformation</h3><p data-t="t086">Sie schildern Ihr Anliegen. Vor der Beratung erhalten Sie unsere Angaben zu Status, Vergütung und Aufsicht.</p></li>
 <li><h3 data-t="t087">Maklervertrag</h3><p data-t="t088">Mit Ihrer Unterschrift unter den Maklervertrag und die Maklervollmacht dürfen wir Angebote einholen und Ihre bestehenden Verträge einsehen.</p></li>
-<li><h3 data-t="t089">Vergleich und Empfehlung</h3><p data-t="t090">Sie erhalten eine Gegenüberstellung mit unserer begründeten Empfehlung. Den Entscheid treffen Sie.</p></li>
-<li><h3 data-t="t091">Abschluss und Betreuung</h3><p data-t="t092">Wir begleiten den Abschluss, helfen bei Schadenmeldungen und prüfen Ihre Verträge regelmäßig. Es gilt das gesetzliche Widerrufsrecht von 14 Tagen, bei Lebensversicherungen von 30 Tagen (§ 8 VVG).</p></li>
+<li><h3 data-t="t089">Vergleich und Empfehlung</h3><p data-t="t090">Sie erhalten eine Gegenüberstellung mit unserer begründeten Empfehlung. Die Entscheidung treffen Sie.</p></li>
+<li><h3 data-t="t091">Abschluss und Betreuung</h3><p data-t="t092">Wir begleiten den Abschluss, helfen bei Schadensmeldungen und prüfen Ihre Verträge regelmäßig. Es gilt das gesetzliche Widerrufsrecht von 14 Tagen, bei Lebensversicherungen von 30 Tagen (§ 8 VVG).</p></li>
 </ol>
 </section>
 <section aria-labelledby="ueber-h" id="ueber-uns">
 <div class="split">
 <div>
 <p class="label" data-t="t093">Über uns</p>
-<h2 data-t="t094" id="ueber-h" style="margin-top:10px">Beratung von Menschen, die Entscheide treffen müssen</h2>
+<h2 data-t="t094" id="ueber-h" style="margin-top:10px">Beratung von Menschen, die Entscheidungen treffen müssen</h2>
 <p data-t="t095" style="color:var(--ink-2);margin-top:18px;max-width:34em"><span class="ph">[Firmenname]</span> berät seit <span class="ph">[Jahr]</span> Privatpersonen und Unternehmen in <span class="ph">[Region/Bundesland]</span>. Wir sind ein kleines Team mit geprüften Fachqualifikationen im Versicherungsbereich (zum Beispiel Versicherungsfachmann/-frau IHK) und kennen die Produkte der großen deutschen Versicherer aus der Praxis.</p>
-<p style="color:var(--ink-2);margin-top:12px;max-width:34em"><span class="ph" data-t="t096">[Kurzer Absatz zur Geschichte, zu den Werten und zur Zusammenarbeit mit Treuhändern und Banken.]</span></p>
+<p style="color:var(--ink-2);margin-top:12px;max-width:34em"><span class="ph" data-t="t096">[Kurzer Absatz zur Geschichte, zu den Werten und zur Zusammenarbeit mit Steuerberatern und Banken.]</span></p>
 </div>
 <div class="about">
 <p class="label" data-t="t097" style="margin-bottom:14px">Erlaubnis und Registrierung</p>
@@ -340,6 +362,44 @@ nav.main a.btn:hover { background: var(--accent); }
 </dl>
 </div>
 </div>
+</section>
+<section aria-labelledby="bau-h" id="bausteine">
+<div class="sec-head">
+<h2 data-t="x94" id="bau-h">Digitale Bausteine für Ihr Maklerbüro</h2>
+<p data-t="x95">Referenzliste: Diese Bausteine von Secret 58 lassen sich an diese Webseite anbinden, um Kosten zu sparen und die Bedienung zu verbessern. Stufe 1 ist der empfohlene Start. Umfang und Preis nach Absprache.</p>
+</div>
+<div class="tbl-wrap">
+<table class="mods">
+<thead><tr><th data-t="x40" scope="col">Baustein</th><th data-t="x41" scope="col">Bereich</th><th data-t="x42" scope="col">Nutzen</th><th data-t="x43" scope="col">Stand</th><th data-t="x44" scope="col">Stufe</th></tr></thead>
+<tbody>
+<tr><th data-t="x45" scope="row">Lead-Automatisierung</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x46">Anfrage landet sofort im CRM oder Postfach, mit Eingangsbestätigung und Wiedervorlage</td><td class="c-s" data-t="x48">Angeboten</td><td class="c-l"><span class="lvl lvl1" data-t="x49">Stufe 1</span></td></tr>
+<tr><th data-t="x50" scope="row">Fristen- und Erinnerungsagent</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x51">Meldet Kündigungs- und Wechselfristen an Büro und Kundschaft, mehr Abschlüsse zum Stichtag</td><td class="c-s" data-t="x52">Neu zu bauen</td><td class="c-l"><span class="lvl lvl1" data-t="x49">Stufe 1</span></td></tr>
+<tr><th data-t="x53" scope="row">Dokumenten-Automatisierung</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x54">Erstinformation, Maklervertrag mit Vollmacht und Beratungsprotokoll aus den Kundendaten vorbefüllt</td><td class="c-s" data-t="x52">Neu zu bauen</td><td class="c-l"><span class="lvl lvl1" data-t="x49">Stufe 1</span></td></tr>
+<tr><th data-t="x55" scope="row">Terminbuchung</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x56">Zeitfenster direkt wählen statt Mailverkehr</td><td class="c-s" data-t="x52">Neu zu bauen</td><td class="c-l"><span class="lvl lvl1" data-t="x49">Stufe 1</span></td></tr>
+<tr><th data-t="x58" scope="row">Online-Bedarfscheck</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x59">Kurzer Fragebogen führt zu den passenden Themen und zur Anfrage</td><td class="c-s" data-t="x60">Vorlage vorhanden, Anpassung nötig</td><td class="c-l"><span class="lvl lvl1" data-t="x49">Stufe 1</span></td></tr>
+<tr><th data-t="x61" scope="row">Website-Chat</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x62">Beantwortet Standardfragen, sammelt Daten vor, keine Beratung</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x65" scope="row">Telefonassistent</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x66">Nimmt Anrufe außerhalb der Bürozeiten an und vereinbart Rückruf</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x67" scope="row">Kundenbereich mit Login</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x68">Verträge, Dokumente und Schadenmeldung an einem Ort, mit Upload und Download</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x69" scope="row">Police fotografieren oder hochladen</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x70">Eckdaten einer bestehenden Police werden ausgelesen, kein Abtippen</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x71" scope="row">Schadenmeldung mit Fotos</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x72">Strukturiertes Formular, das beim richtigen Versicherer ankommt</td><td class="c-s" data-t="x52">Neu zu bauen</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x73" scope="row">FAQ und Chat in einfacher Sprache</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x74">Was ist ein Makler, was kostet es, wie läuft ein Schadenfall</td><td class="c-s" data-t="x60">Vorlage vorhanden, Anpassung nötig</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x75" scope="row">Social-Media-KI</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x76">Beiträge und Kurzvideos mit Freigabe, ersetzt Agentur- oder Eigenaufwand</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+<tr><th data-t="x78" scope="row">Büro-Kennzahlen</th><td class="c-b" data-t="x80">Intern</td><td class="c-n" data-t="x79">Anfragen, Antwortzeit, Abschlüsse pro Kanal</td><td class="c-s" data-t="x81">Geplant, Umbau nötig</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+<tr><th data-t="x82" scope="row">Kontrollagent</th><td class="c-b" data-t="x84">Qualität</td><td class="c-n" data-t="x83">Prüft vor der Veröffentlichung, ob Pflichtangaben wie Registernummer und Erstinformation vollständig sind</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+<tr><th data-t="x85" scope="row">Eskalationsagent</th><td class="c-b" data-t="x84">Qualität</td><td class="c-n" data-t="x86">Übergibt schwierige oder sensible Fälle automatisch an einen Menschen</td><td class="c-s" data-t="x87">Konzept erstellt, Umsetzung offen</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+<tr><th data-t="x88" scope="row">Security-Agent</th><td class="c-b" data-t="x90">Sicherheit</td><td class="c-n" data-t="x89">Überwacht Formulare und Uploads (Gesundheits- und Vertragsdaten)</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+<tr><th data-t="x91" scope="row">Wöchentlicher Statusbericht</th><td class="c-b" data-t="x80">Intern</td><td class="c-n" data-t="x92">Neue Anfragen, offene Rückrufe und anstehende Fristen auf einer Seite</td><td class="c-s" data-t="x93">Gewünscht, Start offen</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+</tbody>
+</table>
+</div>
+<h3 class="lim-h" data-t="x96">Grenzen beim Einsatz</h3>
+<ul class="lim">
+<li data-t="x97">KI ersetzt keine Beratung oder Empfehlung. Die Pflichten dazu bleiben bei Ihrem Team.</li>
+<li data-t="x98">Bei Gesundheitsdaten, Chat und Telefon sind Datenschutzerklärung, Einwilligung und Auftragsverarbeitung nach DSGVO anzupassen.</li>
+<li data-t="x99">Keine Einsparungen in Euro versprechen, solange keine Zahlen der Kundschaft vorliegen.</li>
+</ul>
+<p class="note"><span class="ph" data-t="x100">Vor dem Livegang fachlich prüfen.</span></p>
+<p style="margin-top:18px"><a class="btn ghost" data-t="x101" href="https://www.secret58.com" rel="noopener" target="_blank">Mehr zu Secret 58</a></p>
 </section>
 <section aria-labelledby="kont-h" id="kontakt">
 <div class="contact">
@@ -414,7 +474,7 @@ nav.main a.btn:hover { background: var(--accent); }
 <h4 data-t="t165">5. Erlaubnis und Registrierung</h4>
 <p data-t="t166">Wir verfügen über die Erlaubnis nach § 34d Abs. 1 GewO und sind im Vermittlerregister unter der Nr. <span class="ph">D-XXXX-XXXXX-XX</span> eingetragen. Das Register ist öffentlich einsehbar (www.vermittlerregister.info).</p>
 <h4 data-t="t167">6. Berufshaftpflicht</h4>
-<p data-t="t168">Wir verfügen über eine Berufshaftpflichtversicherung (Vermögensschaden-Haftpflicht) gemäß den gesetzlichen Vorgaben. <span class="ph">[Versicherer angeben]</span></p>
+<p data-t="t168">Wir verfügen über eine Berufshaftpflichtversicherung (Vermögensschadenhaftpflicht) gemäß den gesetzlichen Vorgaben. <span class="ph">[Versicherer angeben]</span></p>
 <h4 data-t="t169">7. Beschwerden und Streitbeilegung</h4>
 <p data-t="t170">Bei Meinungsverschiedenheiten wenden Sie sich zuerst an uns. Außerdem können Sie sich an den Versicherungsombudsmann e. V. wenden (§ 214 VVG). Das Verfahren ist für Verbraucher in der Regel kostenlos. <span class="ph">[Zuständige Schlichtungsstelle prüfen]</span></p>
 </div>
@@ -424,7 +484,7 @@ nav.main a.btn:hover { background: var(--accent); }
 <div class="doc-body">
 <h4 data-t="t172">1. Verantwortlicher</h4>
 <p data-t="t173"><span class="ph">[Firmenname] [Rechtsform], [Anschrift], E-Mail [datenschutz@muster-broker.de]</span>. Wir verarbeiten personenbezogene Daten nach der Datenschutz-Grundverordnung (DSGVO) und dem Bundesdatenschutzgesetz (BDSG). <span class="ph">[Datenschutzbeauftragte/n nennen, falls bestellt]</span></p>
-<h4 data-t="t174">2. Welche Daten wir bearbeiten</h4>
+<h4 data-t="t174">2. Welche Daten wir verarbeiten</h4>
 <ul>
 <li data-t="t175">Kontaktdaten wie Name, Anschrift, Telefon, E-Mail</li>
 <li data-t="t176">Angaben zu Ihren Versicherungsverträgen, Risiken und Schäden</li>
@@ -444,7 +504,7 @@ nav.main a.btn:hover { background: var(--accent); }
 <h4 data-t="t189">8. Beschwerderecht</h4>
 <p data-t="t190">Sie können sich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel bei der Landesdatenschutzbehörde am Sitz unseres Unternehmens. <span class="ph">[Zuständige Behörde nennen]</span></p>
 <h4 data-t="t191">9. Datensicherheit</h4>
-<p data-t="t192">Wir schützen Ihre Daten durch angemessene technische und organisatorische Massnahmen, zum Beispiel verschlüsselte Übertragung und Zugriffsbeschränkungen.</p>
+<p data-t="t192">Wir schützen Ihre Daten durch angemessene technische und organisatorische Maßnahmen, zum Beispiel verschlüsselte Übertragung und Zugriffsbeschränkungen.</p>
 <h4 data-t="t193">10. Änderungen</h4>
 <p data-t="t194">Wir können diese Erklärung anpassen. Es gilt die jeweils auf der Webseite veröffentlichte Fassung. Stand: <span class="ph">[Datum]</span></p>
 </div>
@@ -480,7 +540,7 @@ nav.main a.btn:hover { background: var(--accent); }
 <details class="doc" id="beschwerde">
 <summary data-t="t215">Beschwerden und Schlichtung <small>VSBG</small></summary>
 <div class="doc-body">
-<p data-t="t216">Sind Sie mit unserer Beratung nicht zufrieden, schreiben Sie uns an <span class="ph">beschwerde@muster-broker.de</span>. Wir bestätigen den Eingang innert fünf Arbeitstagen und antworten schriftlich.</p>
+<p data-t="t216">Sind Sie mit unserer Beratung nicht zufrieden, schreiben Sie uns an <span class="ph">beschwerde@muster-broker.de</span>. Wir bestätigen den Eingang innerhalb von fünf Arbeitstagen und antworten schriftlich.</p>
 <p data-t="t217">Kommen wir nicht zu einer Lösung, können Sie sich an die Schlichtungsstelle <span class="ph">[Versicherungsombudsmann e. V. oder andere Stelle, Adresse, Webseite]</span> wenden. Das Verfahren ist für Verbraucher in der Regel kostenlos. Der Rechtsweg bleibt Ihnen offen. <span class="ph">[Angabe zur Teilnahmebereitschaft nach § 36 VSBG ergänzen]</span></p>
 </div>
 </details>
@@ -498,7 +558,7 @@ nav.main a.btn:hover { background: var(--accent); }
 <li><input id="c8" type="checkbox"/><label data-t="t227" for="c8">Kontaktformular an echten Dienst angebunden, Daten in Deutschland oder der EU gehostet, Auftragsverarbeitungsvertrag abgeschlossen</label></li>
 <li><input id="c9" type="checkbox"/><label data-t="t228" for="c9">Alle Rechtstexte durch eine in Deutschland zugelassene Rechtsanwältin oder einen Rechtsanwalt geprüft</label></li>
 <li><input id="c10" type="checkbox"/><label data-t="t229" for="c10">Muster-Hinweis und gelbe Markierungen entfernt</label></li>
-<li><input id="c11" type="checkbox"/><label data-t="t230" for="c11">Bei Kundschaft in der Schweiz stattdessen die separate Schweizer Vorlage (DE/FR/IT) verwenden</label></li>
+<li><input id="c11" type="checkbox"/><label data-t="t230" for="c11">Eintrag im IHK-Vermittlerregister (www.vermittlerregister.info) geprüft: Name, Anschrift und Registernummer stimmen mit dem Impressum überein</label></li>
 <li><input id="c12" type="checkbox"/><label data-t="t231" for="c12">Werbeaussagen und Vergleiche auf Lauterkeit (UWG) geprüft</label></li>
 </ul>
 </div>
@@ -634,5 +694,4 @@ nav.main a.btn:hover { background: var(--accent); }
 })();
 </script>
 
-</body>
-</html>
+</body></html>

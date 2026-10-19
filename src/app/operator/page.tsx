@@ -61,9 +61,12 @@ export default async function OperatorPage() {
             sichtbar.
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link href="/operator/zugaenge" className="rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-sm text-accent">
             Zugänge
+          </Link>
+          <Link href="/operator/pilotstudio" className="rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-sm text-accent">
+            Pilotstudio
           </Link>
           <Link href="/operator/hermes-pilot" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">
             Hermes (Pilot)

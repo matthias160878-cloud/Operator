@@ -14,6 +14,7 @@ export function startFakeServices() {
   const accounts = new Map();
   const fakes_completed = new Set();
   // Composio-Attrappe: verbundene Konten, nächster Status, Fehlerschalter.
+  const mail = { failNext: 0, idempotency: new Map() };
   const composio = { accounts: new Map(), nextStatus: "ACTIVE", failExecute: false, apiKey: "ck_test_fake", n: 0 };
 
   // Hermes-Attrappe (OpenAI-kompatibler API-Server): zwei Profile mit eigenem Schlüssel; Verhalten per /__hermes/<profil> steuerbar.
@@ -63,7 +64,14 @@ export function startFakeServices() {
       if (p === "/emails" && req.method === "POST") {
         // E-Mail-Attrappe (Resend-Format): nur protokollieren, nichts versenden.
         if (req.headers.authorization !== "Bearer re_test_fake") return json(res, 401, { message: "invalid key" });
+        if (mail.failNext > 0) {
+          mail.failNext -= 1;
+          return json(res, 500, { message: "fake mail failure" });
+        }
+        const idem = req.headers["idempotency-key"];
+        if (idem && mail.idempotency.has(idem)) return json(res, 200, { id: mail.idempotency.get(idem) });
         calls[calls.length - 1].email = JSON.parse(raw);
+        if (idem) mail.idempotency.set(idem, `mail_${calls.length}`);
         return json(res, 200, { id: `mail_${calls.length}` });
       }
       if (p.startsWith("/api/v3/")) {
@@ -167,6 +175,7 @@ export function startFakeServices() {
           accounts,
           composio,
           hermes,
+          mail,
           completed: fakes_completed,
           close: () => Promise.all([new Promise((r) => stripeServer.close(r)), new Promise((r) => siteServer.close(r))]),
         });

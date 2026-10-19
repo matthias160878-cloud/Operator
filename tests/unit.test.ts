@@ -320,3 +320,46 @@ test("Hermes: Adressprüfung, Werkzeugprüfung (fail-closed), Eingabeprüfung, B
   assert.ok(!k.includes("203"));
   assert.notEqual(k, visitorKey("203.0.113.8", "geheimnis-geheimnis-1"));
 });
+
+// ---------------------------------------------------------------- Pilotstudio
+import { DEMO_CASES, autoCheck } from "@/lib/pilotstudio/cases";
+import { classify, guardFlags } from "@/lib/pilotstudio/guard";
+
+test("Pilotstudio: zehn Testfälle, Musterantworten verletzen keine Prüfregel und erfüllen ihr Kriterium", () => {
+  assert.equal(DEMO_CASES.length, 10);
+  for (const c of DEMO_CASES) {
+    assert.deepEqual(guardFlags(c.demoAnswer), [], `Fall ${c.no}: ${guardFlags(c.demoAnswer).join(", ")}`);
+    const handed = c.route === "uebergabe";
+    const r = autoCheck(c.no, { draftText: c.demoAnswer, status: handed ? "UEBERGEBEN" : "FREIGEGEBEN", needsHuman: classify(c.subject, c.body).needsHuman, assignee: handed ? "Zuständig" : "" });
+    assert.ok(r.ok, `Fall ${c.no}: ${r.reasons.join(" ")}`);
+  }
+});
+
+test("Pilotstudio: Einordnung erkennt sensible Fälle und Manipulationsversuch", () => {
+  const cat = (n: number) => { const c = DEMO_CASES[n - 1]; return classify(c.subject, c.body); };
+  assert.equal(cat(1).category, "angebot");
+  assert.equal(cat(2).category, "termin");
+  assert.equal(cat(3).category, "zugang");
+  assert.equal(cat(4).category, "reklamation");
+  assert.equal(cat(5).category, "zahlung");
+  assert.equal(cat(6).category, "unklar");
+  assert.equal(cat(7).category, "datenschutz");
+  assert.equal(cat(8).category, "manipulationsversuch");
+  assert.equal(cat(9).category, "verfuegbarkeit");
+  assert.equal(cat(10).category, "kuendigung");
+  for (const n of [4, 5, 7, 8, 10]) assert.equal(cat(n).needsHuman, true, `Fall ${n}`);
+});
+
+test("Pilotstudio: Prüfregeln erkennen erfundene Zusagen", () => {
+  const has = (t: string, part: string) => guardFlags(t).some((f) => f.includes(part));
+  assert.ok(has("Die Website kostet 1.200 €.", "Preis"));
+  assert.ok(has("Bitte senden Sie uns Ihr Passwort.", "Passwort"));
+  assert.ok(has("Ihr Termin am Dienstag ist bestätigt.", "Termin"));
+  assert.ok(has("Wir erstatten Ihnen den Betrag.", "Erstattung"));
+  assert.ok(has("Ihre Daten wurden gelöscht.", "Löschung"));
+  assert.ok(has("Ihre Kündigung wird wirksam zum 31.12.", "Kündigungstermin"));
+  assert.ok(has("Hier: kunde@example.test", "E-Mail"));
+  // Fehlschlagender Fall: Antwort mit Preis besteht Testfall 1 nicht.
+  assert.equal(autoCheck(1, { draftText: "Das kostet 499 EUR.", status: "PRUEFUNG", needsHuman: false, assignee: "" }).ok, false);
+  assert.equal(autoCheck(3, { draftText: "Senden Sie uns Ihr Passwort?", status: "PRUEFUNG", needsHuman: false, assignee: "" }).ok, false);
+});

@@ -156,6 +156,10 @@ model Workspace {
   websites            WebsiteConnection[]
   composioConnections ComposioConnection[]
   publishJobs         PublishJob[]
+  pilotInquiries      PilotInquiry[]
+  pilotEvents         PilotEvent[]
+  pilotInterviews     PilotInterview[]
+  pilotConfig         PilotConfig?
 
   @@map("workspaces")
 }
@@ -864,4 +868,121 @@ model PromoRedemption {
 
   @@unique([promoCodeId, workspaceId])
   @@map("promo_redemptions")
+}
+
+
+// ---------------------------------------------------------------------------
+// Pilotstudio (interner Betreiberbereich /operator/pilotstudio).
+// Alle Datensätze hängen an einem Arbeitsbereich (heute: der des Betreibers;
+// später: der jeweilige Kunde unter /kundenanfragen). Demo-Fälle sind über
+// isDemo getrennt. Nachfrage-Gespräche (PilotInterview) und Budgetangaben
+// sind ausschließlich über /api/operator erreichbar.
+model PilotInquiry {
+  id               String    @id @default(cuid())
+  workspaceId      String
+  workspace        Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  isDemo           Boolean   @default(false)
+  demoCaseNo       Int?
+  /// Herkunft bei übernommenen Anfragen (z. B. website:<conversationId>), verhindert Doppelübernahme
+  sourceRef        String?
+  channel          String    @default("manuell")
+  receivedAt       DateTime  @default(now())
+  subject          String
+  body             String
+  senderName       String    @default("")
+  senderContact    String    @default("")
+  category         String    @default("unklar")
+  assignee         String    @default("")
+  /// NEU, ENTWURF, PRUEFUNG, FREIGEGEBEN, UEBERGEBEN, VERSAND_AUSSTEHEND, VERSENDET, VERSAND_FEHLGESCHLAGEN, ABGESCHLOSSEN
+  status           String    @default("NEU")
+  needsHuman       Boolean   @default(false)
+  riskNote         String    @default("")
+  draftText        String    @default("")
+  draftVersion     Int       @default(0)
+  /// DEMO (Musterantwort), KI, MANUELL
+  draftSource      String    @default("")
+  approvedVersion  Int?
+  approvedTextHash String?
+  approvedById     String?
+  approvedAt       DateTime?
+  sendAttempts     Int       @default(0)
+  sendKey          String?   @unique
+  sentAt           DateTime?
+  providerMessageId String?
+  deliveredAt      DateTime?
+  lastError        String    @default("")
+  /// Testart: DEMO, KI, KANAL
+  testMode         String    @default("DEMO")
+  expected         String    @default("")
+  autoCheck        String    @default("")
+  manualMinutes    Float?
+  pilotMinutes     Float?
+  corrections      Int       @default(0)
+  correctionKinds  String    @default("")
+  /// OFFEN, BESTANDEN, NICHT_BESTANDEN
+  testResult       String    @default("OFFEN")
+  testReason       String    @default("")
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  events PilotEvent[]
+
+  @@unique([workspaceId, sourceRef])
+  @@index([workspaceId, isDemo])
+  @@map("pilot_inquiries")
+}
+
+model PilotEvent {
+  id          String       @id @default(cuid())
+  workspaceId String
+  workspace   Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  inquiryId   String?
+  inquiry     PilotInquiry? @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  userId      String?
+  actor       String       @default("")
+  action      String
+  detail      String       @default("")
+  createdAt   DateTime     @default(now())
+
+  @@index([workspaceId, inquiryId])
+  @@map("pilot_events")
+}
+
+model PilotInterview {
+  id                String    @id @default(cuid())
+  workspaceId       String
+  workspace         Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  slot              Int
+  firmCode          String    @default("")
+  industry          String    @default("")
+  channels          String    @default("")
+  inquiriesPerWeek  Float?
+  minutesPerInquiry Float?
+  topIssues         String    @default("")
+  biggestEffort     String    @default("")
+  humanDecisions    String    @default("")
+  desiredOutcome    String    @default("")
+  /// UNGEFRAGT, KEIN_INTERESSE, UNKLAR, WEITERES_GESPRAECH, PILOT_PRUEFEN
+  interest          String    @default("UNGEFRAGT")
+  budgetText        String    @default("")
+  budgetCurrency    String    @default("")
+  interviewDate     String    @default("")
+  notes             String    @default("")
+  nextStep          String    @default("")
+  updatedAt         DateTime  @updatedAt
+
+  @@unique([workspaceId, slot])
+  @@map("pilot_interviews")
+}
+
+model PilotConfig {
+  workspaceId      String    @id
+  workspace        Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  knowledge        String    @default("")
+  rules            String    @default("")
+  responsibilities String    @default("")
+  checklist        String    @default("{}")
+  updatedAt        DateTime  @updatedAt
+
+  @@map("pilot_configs")
 }

@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { requireSessionUser } from "@/lib/auth/session";
-import { isEmailConfigured } from "@/lib/email";
 import { darfBearbeiten, darfFreigeben } from "@/lib/reichweite/zugriff";
 import { seitenOrigin } from "@/lib/reichweite/origin";
 import { DEMO_FORMAT, kampagnenBelege, newsletterAufraeumen, seitenZahlen, variantenAuswertung } from "@/lib/reichweitenaufbau/service";
-import { versandModus } from "@/lib/reichweitenaufbau/newsletterKunden";
+import { versandStand } from "@/lib/reichweitenaufbau/newsletterKunden";
 import { newsletterFreigeschaltet, werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 import { kennzeichnungWarnung } from "@/lib/reichweitenaufbau/kooperation";
 import { sellerProfileMissing } from "@/lib/connect/sellerProfile";
@@ -75,7 +74,8 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
   ]);
   const anbieterFehlt = sellerProfileMissing(anbieterProfil);
   const auswertungen = await Promise.all(tests.map(async (t) => ({ testId: t.id, ergebnis: (await variantenAuswertung(workspaceId, t.id)).ergebnis })));
-  const modus = versandModus();
+  const stand = await versandStand(workspaceId);
+  const modus = stand.modus;
 
   const stufen = {
     inhalte: zaehleStufen(inhalte.map((i) => stufeInhalt(i.status, i._count.analytics > 0))),
@@ -154,7 +154,7 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
           belege={belege}
           stufen={stufen}
           schritte={schritte}
-          anbindungen={{ newsletterModus: modus, emailEingerichtet: isEmailConfigured(), newsletterAktiv: frei.newsletter, werbungAktiv: frei.werbung }}
+          anbindungen={{ newsletterModus: modus, fehlt: stand.fehlt, newsletterAktiv: frei.newsletter, werbungAktiv: frei.werbung }}
           kooperationen={kooperationen.length}
           tests={tests.length}
         />
@@ -175,7 +175,7 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
           zahlen={zahlen}
           kampagnen={plain(kampagnen)}
           modus={modus}
-          emailEingerichtet={isEmailConfigured()}
+          fehlt={stand.fehlt}
           rechte={rechte}
           origin={origin}
         />

@@ -1,11 +1,13 @@
+import { createHash } from "node:crypto";
 import { prisma } from "@/lib/db";
 import { NotFoundError } from "@/lib/api";
 import { hashToken, newToken, CONFIRM_TTL_MS } from "@/lib/newsletter";
-import { sendEmail, escapeHtml } from "@/lib/email";
+import { EmailError, sendEmail, sendEmailBatch, escapeHtml, type EmailNachricht } from "@/lib/email";
+import { decryptToken, encryptToken, isTokenEncryptionConfigured } from "@/lib/crypto";
 import { aufbewahrungTage, demoAnlegen as weiterempfehlungDemo, demoEntfernen as weiterempfehlungDemoEntfernen, eindeutigerCode } from "@/lib/reichweite/service";
 import { neuerCode } from "@/lib/reichweite/codes";
 import { vergleiche, type VarianteEingabe, type VariantenMetrik } from "@/lib/reichweitenaufbau/varianten";
-import { einwilligungsText, versandModus } from "@/lib/reichweitenaufbau/newsletterKunden";
+import { abmeldeHeader, ausgabeHash, einwilligungsText, newsletterFusszeile, textAlsHtml, themenLesen, versandStand, type Anbieterangaben } from "@/lib/reichweitenaufbau/newsletterKunden";
 import type { KampagnenBeleg } from "@/lib/reichweitenaufbau/werbung";
 import { newsletterFreigeschaltet, werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
@@ -88,7 +90,8 @@ export async function newsletterAnmelden(input: {
   origin: string;
 }): Promise<{ modus: "ECHT" | "DEMO"; demoBestaetigungsUrl: string | null; demoAbmeldeUrl: string | null }> {
   const { seite, email } = input;
-  const modus = versandModus();
+  const stand = await versandStand(seite.workspaceId);
+  const modus = stand.modus;
   const demo = seite.istDemo || modus === "DEMO";
   const now = new Date();
   // Herkunft nur aus einem Link derselben Kampagne übernehmen.
@@ -108,6 +111,7 @@ export async function newsletterAnmelden(input: {
     confirmTokenHash: confirm.hash,
     confirmExpiresAt: new Date(now.getTime() + CONFIRM_TTL_MS),
     unsubscribeHash: unsubscribe.hash,
+    unsubscribeTokenEnc: isTokenEncryptionConfigured() ? encryptToken(unsubscribe.token) : null,
     consentText: einwilligungsText(input.absender, input.themen),
     consentAt: now,
     lastMailAt: now,
@@ -125,13 +129,15 @@ export async function newsletterAnmelden(input: {
   const bestaetigen = `${input.origin}/api/nl/bestaetigen?t=${confirm.token}`;
   const abmelden = `${input.origin}/api/nl/abmelden?t=${unsubscribe.token}`;
   // Im Demo-Modus gibt es keine E-Mail: Bestätigungs- und Abmeldelink gehen deutlich als DEMO an die anmeldende Person zurück.
-  if (modus === "DEMO") return { modus, demoBestaetigungsUrl: bestaetigen, demoAbmeldeUrl: abmelden };
-  const text = `Guten Tag,\n\nbitte bestätigen Sie Ihre Anmeldung zum Newsletter „${seite.titel}“ von ${input.absender}:\n${bestaetigen}\n\nOhne Bestätigung erhalten Sie nichts.\nAbmelden: ${abmelden}`;
+  if (modus === "DEMO" || !stand.zugang) return { modus: "DEMO", demoBestaetigungsUrl: bestaetigen, demoAbmeldeUrl: abmelden };
+  const anbieter = await anbieterangaben(seite.workspaceId);
+  const fuss = newsletterFusszeile(anbieter, abmelden, "Sie erhalten diese E-Mail, weil diese Adresse für den Newsletter angemeldet wurde. Ohne Bestätigung erhalten Sie nichts weiter.");
   await sendEmail({
+    zugang: stand.zugang,
     to: email,
     subject: `Bitte bestätigen: Newsletter ${input.absender}`,
-    text,
-    html: `<p>Guten Tag,</p><p>bitte bestätigen Sie Ihre Anmeldung zum Newsletter „${escapeHtml(seite.titel)}“ von ${escapeHtml(input.absender)}:</p><p><a href="${escapeHtml(bestaetigen)}">Anmeldung bestätigen</a></p><p>Ohne Bestätigung erhalten Sie nichts.</p><p style="font-size:12px">Abmelden: <a href="${escapeHtml(abmelden)}">${escapeHtml(abmelden)}</a></p>`,
+    text: `Guten Tag,\n\nbitte bestätigen Sie Ihre Anmeldung zum Newsletter „${seite.titel}“ von ${input.absender}:\n${bestaetigen}\n\nWaren Sie das nicht? Dann ignorieren Sie diese E-Mail einfach.${fuss.text}`,
+    html: `<p>Guten Tag,</p><p>bitte bestätigen Sie Ihre Anmeldung zum Newsletter „${escapeHtml(seite.titel)}“ von ${escapeHtml(input.absender)}:</p><p><a href="${escapeHtml(bestaetigen)}">Anmeldung bestätigen</a></p><p>Waren Sie das nicht? Dann ignorieren Sie diese E-Mail einfach.</p>${fuss.html}`,
     idempotencyKey: `nl-${confirm.hash.slice(0, 32)}`,
   });
   return { modus, demoBestaetigungsUrl: null, demoAbmeldeUrl: null };
@@ -347,4 +353,86 @@ async function newsletterDemo(workspaceId: string, kampagneId: string, linkAId: 
       bildIdee: "Herbstliches Titelbild mit eigenem Foto", themen: JSON.stringify(["Praxistipps"]), kampagneId: kampagne.id, status: "ENTWURF",
     },
   });
+}
+
+async function anbieterangaben(workspaceId: string): Promise<Anbieterangaben> {
+  const p = await prisma.sellerProfile.findUnique({ where: { workspaceId } });
+  return { name: p?.firma || p?.anbieter || "", anschrift: p?.anschrift ?? "", email: p?.email ?? "", datenschutzUrl: p?.datenschutzUrl ?? "" };
+}
+
+/** Abmeldelink eines Kontakts; fehlt der gespeicherte, wird ein neuer erzeugt (der alte bleibt dann ungültig). */
+async function abmeldeLink(k: { id: string; unsubscribeTokenEnc: string | null }, origin: string): Promise<string> {
+  let token: string | null = null;
+  if (k.unsubscribeTokenEnc) {
+    try {
+      token = decryptToken(k.unsubscribeTokenEnc);
+    } catch {
+      token = null;
+    }
+  }
+  if (!token) {
+    const neu = newToken();
+    token = neu.token;
+    await prisma.newsletterKontakt.update({ where: { id: k.id }, data: { unsubscribeHash: neu.hash, unsubscribeTokenEnc: encryptToken(neu.token) } });
+  }
+  return `${origin}/api/nl/abmelden?t=${token}`;
+}
+
+const BATCH = 100;
+const pause = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * Echter Versand einer freigegebenen Ausgabe über den Resend-Zugang des Kunden
+ * an alle bestätigten, nicht abgemeldeten Kontakte (passende Themen). Jede Mail
+ * ist persönlich (eigener Abmeldelink, Ein-Klick-Abmeldung, Anbieterangaben).
+ * Bereits angenommene Empfänger werden bei einer Wiederholung übersprungen.
+ */
+export async function ausgabeVersenden(workspaceId: string, ausgabeId: string, origin: string): Promise<{ ok: true; empfaenger: number; zugestellt: number } | { ok: false; status: number; error: string }> {
+  const stand = await versandStand(workspaceId);
+  if (stand.modus !== "ECHT" || !stand.zugang) return { ok: false, status: 409, error: `Echter Versand nicht möglich – es fehlt: ${stand.fehlt.join(", ")}.` };
+  if (!isTokenEncryptionConfigured()) return { ok: false, status: 409, error: "Server-Verschlüsselung fehlt (TOKEN_ENCRYPTION_KEY)." };
+  const a = await prisma.newsletterAusgabe.findFirst({ where: { id: ausgabeId, workspaceId, istDemo: false } });
+  if (!a) throw new NotFoundError();
+  if (a.freigabeHash !== ausgabeHash(a.betreff, a.text)) return { ok: false, status: 409, error: "Der Text weicht von der Freigabe ab." };
+  // Sperre gegen Doppelklick/parallelen Versand
+  const vorher = a.status;
+  const gesperrt = await prisma.newsletterAusgabe.updateMany({ where: { id: a.id, status: { in: ["FREIGEGEBEN", "GEPLANT"] } }, data: { status: "VERSAND_LAEUFT", versandFehler: "" } });
+  if (gesperrt.count === 0) return { ok: false, status: 409, error: "Diese Ausgabe wird bereits versendet oder ist nicht freigegeben." };
+
+  const themen = themenLesen(a.themen);
+  const kontakte = (await prisma.newsletterKontakt.findMany({ where: { workspaceId, status: "ACTIVE", istDemo: false, confirmedAt: { not: null } } })).filter(
+    (k) => !themen.length || themenLesen(k.themen).some((t) => themen.includes(t))
+  );
+  const vorhanden = new Set((await prisma.newsletterZustellung.findMany({ where: { ausgabeId: a.id }, select: { kontaktId: true } })).map((z) => z.kontaktId));
+  const neu = kontakte.filter((k) => !vorhanden.has(k.id));
+  if (neu.length) await prisma.newsletterZustellung.createMany({ data: neu.map((k) => ({ workspaceId, ausgabeId: a.id, kontaktId: k.id })) });
+  const offen = await prisma.newsletterZustellung.findMany({ where: { ausgabeId: a.id, status: { not: "ANGENOMMEN" }, kontakt: { status: "ACTIVE" } }, include: { kontakt: true } });
+
+  const anbieter = await anbieterangaben(workspaceId);
+  const absenderName = anbieter.name;
+  try {
+    for (let i = 0; i < offen.length; i += BATCH) {
+      const teil = offen.slice(i, i + BATCH);
+      const nachrichten: EmailNachricht[] = [];
+      for (const z of teil) {
+        const url = await abmeldeLink(z.kontakt, origin);
+        const fuss = newsletterFusszeile(anbieter, url, `Sie erhalten diesen Newsletter von ${absenderName}, weil Sie sich angemeldet und die Anmeldung bestätigt haben.`);
+        nachrichten.push({ to: z.kontakt.email, subject: a.betreff, text: `${a.text}${fuss.text}`, html: `${textAlsHtml(a.text)}${fuss.html}`, headers: abmeldeHeader(url) });
+      }
+      const ids = await sendEmailBatch(stand.zugang, nachrichten, `nla-${a.id}-${createHash("sha256").update(teil.map((z) => z.id).join(",")).digest("hex").slice(0, 32)}`);
+      await prisma.$transaction(teil.map((z, j) => prisma.newsletterZustellung.update({ where: { id: z.id }, data: { status: "ANGENOMMEN", anbieterId: ids[j] } })));
+      if (i + BATCH < offen.length) await pause(700); // Resend-Standardlimit: wenige Anfragen pro Sekunde
+    }
+  } catch (e) {
+    const meldung = e instanceof EmailError ? e.message : "Unbekannter Fehler beim Versand.";
+    const zugestellt = await prisma.newsletterZustellung.count({ where: { ausgabeId: a.id, status: "ANGENOMMEN" } });
+    await prisma.newsletterAusgabe.update({ where: { id: a.id }, data: { status: vorher, versandFehler: meldung, zugestelltAnzahl: zugestellt } });
+    return { ok: false, status: 502, error: `${meldung} ${zugestellt} E-Mail(s) wurden bereits angenommen; ein erneuter Versand schickt nur die übrigen.` };
+  }
+  const zugestellt = await prisma.newsletterZustellung.count({ where: { ausgabeId: a.id, status: "ANGENOMMEN" } });
+  await prisma.newsletterAusgabe.update({
+    where: { id: a.id },
+    data: { status: "VERSENDET", versendetAm: new Date(), empfaengerAnzahl: kontakte.length, zugestelltAnzahl: zugestellt, versandFehler: "" },
+  });
+  return { ok: true, empfaenger: kontakte.length, zugestellt };
 }

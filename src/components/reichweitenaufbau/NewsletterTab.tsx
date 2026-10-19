@@ -33,6 +33,8 @@ interface Ausgabe {
   bildIdee: string;
   themen: string;
   status: string;
+  versandFehler: string;
+  zugestelltAnzahl: number | null;
   geplantAm: string | null;
   versendetAm: string | null;
   empfaengerAnzahl: number | null;
@@ -50,7 +52,7 @@ export function NewsletterTab(props: {
   zahlen: { ereignisse: { seiteId: string; art: string; anzahl: number }[]; kontakte: { seiteId: string | null; status: string; anzahl: number }[] };
   kampagnen: { id: string; titel: string }[];
   modus: "ECHT" | "DEMO";
-  emailEingerichtet: boolean;
+  fehlt: string[];
   rechte: { bearbeiten: boolean; freigeben: boolean };
   origin: string;
 }) {
@@ -93,16 +95,28 @@ export function NewsletterTab(props: {
       >
         {props.modus === "DEMO" ? (
           <>
-            <strong>Demo-Modus:</strong> {props.emailEingerichtet ? "Versanddienst eingerichtet, aber für Kunden-Newsletter nicht freigeschaltet" : "Kein Versanddienst eingerichtet (Resend: RESEND_API_KEY, EMAIL_FROM)"}. Es
-            werden keine E-Mails versendet; Anmeldungen und Versand sind als DEMO gekennzeichnet.
+            <strong>Demo-Modus:</strong> Es werden keine E-Mails versendet; Anmeldungen und Versand sind als DEMO gekennzeichnet. Für echten Versand fehlt:{" "}
+            {props.fehlt.join(", ")}.{" "}
+            <a href="/settings/zugaenge" className="underline">
+              Eigenen Resend-Zugang eintragen
+            </a>{" "}
+            ·{" "}
+            <a href="/sales" className="underline">
+              Anbieterangaben
+            </a>
           </>
         ) : (
-          <>Bestätigungsmails (Double-Opt-in) werden versendet. Der Versand von Ausgaben ist noch nicht umgesetzt.</>
+          <>
+            <strong>Echter Versand aktiv</strong> über Ihren eigenen Resend-Zugang: Bestätigungsmails (Double-Opt-in) und freigegebene Ausgaben – nur per Klick, nie automatisch.{" "}
+            <a href="/settings/zugaenge" className="underline">
+              Zugang verwalten
+            </a>
+          </>
         )}
       </div>
       <p className="text-xs text-muted">
-        Ablauf: Social-Media-Beitrag → Landingpage → freiwillige Anmeldung → Bestätigung per E-Mail → freigegebene Inhalte → mögliche Anfrage. Newsletter-Versand ist derzeit in keinem Paket (Pro, Maxi)
-        als enthalten definiert.
+        Ablauf: Social-Media-Beitrag → Landingpage → freiwillige Anmeldung → Bestätigung per E-Mail → freigegebene Inhalte → mögliche Anfrage. Der Versand läuft über Ihr eigenes
+        Resend-Konto – Kosten und Limits nach Ihrem Resend-Tarif; SECRET 58 berechnet dafür nichts.
       </p>
       {rueckmeldung}
 
@@ -168,7 +182,7 @@ export function NewsletterTab(props: {
         <h2 className="text-sm font-semibold text-foreground">Ausgaben</h2>
         {props.ausgaben.length === 0 && <p className="text-xs text-muted">Noch keine Ausgabe.</p>}
         {props.ausgaben.map((a) => (
-          <AusgabeKarte key={a.id} a={a} rechte={props.rechte} aufruf={aufruf} laedt={laedt} />
+          <AusgabeKarte key={a.id} a={a} rechte={props.rechte} aufruf={aufruf} laedt={laedt} modus={props.modus} />
         ))}
         {props.rechte.bearbeiten && (
           <details className="rounded-lg border border-border p-3">
@@ -248,7 +262,7 @@ function Zahl({ label, wert, hervor = false }: { label: string; wert: number; he
   );
 }
 
-function AusgabeKarte({ a, rechte, aufruf, laedt }: { a: Ausgabe; rechte: { bearbeiten: boolean; freigeben: boolean }; aufruf: ReturnType<typeof useAktion>["aufruf"]; laedt: boolean }) {
+function AusgabeKarte({ a, rechte, aufruf, laedt, modus }: { a: Ausgabe; rechte: { bearbeiten: boolean; freigeben: boolean }; aufruf: ReturnType<typeof useAktion>["aufruf"]; laedt: boolean; modus: "ECHT" | "DEMO" }) {
   const [vorschau, setVorschau] = useState(false);
   const [bearbeiten, setBearbeiten] = useState(false);
   const [geplant, setGeplant] = useState("");
@@ -267,6 +281,7 @@ function AusgabeKarte({ a, rechte, aufruf, laedt }: { a: Ausgabe; rechte: { bear
         {a.freigegebenAm && ` · freigegeben ${datumZeit(a.freigegebenAm)}`}
         {a.geplantAm && ` · geplant für ${datumZeit(a.geplantAm)}`}
         {a.versendetAm && ` · ${a.status === "VERSENDET_DEMO" ? "Demo-Versand" : "versendet"} ${datumZeit(a.versendetAm)} an ${a.empfaengerAnzahl ?? 0} bestätigte Kontakte`}
+        {a.status === "VERSENDET" && a.zugestelltAnzahl !== null && ` (${a.zugestelltAnzahl} vom Versanddienst angenommen)`}
       </div>
       <div className="flex flex-wrap gap-2">
         <button type="button" className={knopf} onClick={() => setVorschau(!vorschau)}>
@@ -293,8 +308,13 @@ function AusgabeKarte({ a, rechte, aufruf, laedt }: { a: Ausgabe; rechte: { bear
           </button>
         )}
         {rechte.freigeben && darfUebergang("versenden", a.status) && (
-          <button type="button" className={knopf} disabled={laedt} onClick={() => aktion("versenden")}>
-            Versenden ({a.istDemo ? "DEMO" : "nur Demo möglich"})
+          <button
+            type="button"
+            className={knopf}
+            disabled={laedt}
+            onClick={() => (a.istDemo || modus === "DEMO" || confirm(`„${a.betreff}“ jetzt an alle bestätigten Kontakte mit passenden Themen versenden? Das lässt sich nicht rückgängig machen.`)) && aktion("versenden")}
+          >
+            {a.istDemo || modus === "DEMO" ? "Versenden (DEMO)" : "Jetzt an bestätigte Kontakte versenden"}
           </button>
         )}
       </div>
@@ -309,7 +329,8 @@ function AusgabeKarte({ a, rechte, aufruf, laedt }: { a: Ausgabe; rechte: { bear
       {!rechte.freigeben && (darfUebergang("freigeben", a.status) || darfUebergang("planen", a.status)) && (
         <p className="text-[11px] text-muted">Freigeben, Planen und Versenden dürfen nur Inhaber und Admins.</p>
       )}
-      {a.status === "GEPLANT" && <p className="text-[11px] text-warning">Geplant heißt nicht versendet: Es gibt keinen automatischen Versand. Ein echter Versand ist noch nicht umgesetzt.</p>}
+      {a.status === "GEPLANT" && <p className="text-[11px] text-warning">Geplant ist eine Erinnerung: Es gibt keinen automatischen Versand. Versendet wird erst per Klick auf „versenden“.</p>}
+      {a.versandFehler && <p className="text-[11px] text-danger">Letzter Versandversuch: {a.versandFehler}</p>}
       {vorschau && (
         <div className="rounded-md border border-border bg-surface-2 p-3" data-testid="nl-vorschau">
           <div className="text-muted">Betreff</div>

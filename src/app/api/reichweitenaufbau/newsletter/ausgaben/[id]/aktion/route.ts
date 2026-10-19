@@ -5,15 +5,17 @@ import { NotFoundError, route } from "@/lib/api";
 import { requireSessionUser } from "@/lib/auth/session";
 import { darfBearbeiten, darfFreigeben } from "@/lib/reichweite/zugriff";
 import { protokoll } from "@/lib/reichweite/service";
-import { ausgabeHash, darfUebergang, themenLesen, versandModus } from "@/lib/reichweitenaufbau/newsletterKunden";
+import { ausgabeHash, darfUebergang, themenLesen, versandStand } from "@/lib/reichweitenaufbau/newsletterKunden";
+import { ausgabeVersenden } from "@/lib/reichweitenaufbau/service";
+import { appOrigin } from "@/lib/composio/origin";
 import { nurWenn, newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 const schema = z.object({ aktion: z.enum(["pruefen", "freigeben", "planen", "zurueck", "versenden"]), geplantAm: z.string().optional() });
 
 /**
  * Statuswechsel einer Newsletter-Ausgabe. Freigeben und Versenden nur durch
- * Inhaber/Admin. Versand: im DEMO-Modus wird nichts verschickt, nur als Demo
- * protokolliert; echter Versand ist noch nicht umgesetzt.
+ * Inhaber/Admin. Versand nur per Klick: echt über den eigenen Resend-Zugang des
+ * Kunden (wenn eingerichtet), sonst DEMO – dann wird nichts verschickt.
  */
 async function handlePOST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const user = await requireSessionUser();
@@ -48,12 +50,16 @@ async function handlePOST(request: Request, { params }: { params: Promise<{ id: 
     // Demo-Ausgaben zählen nur Demo-Kontakte, echte Ausgaben nur echte Kontakte.
     const aktive = await prisma.newsletterKontakt.findMany({ where: { workspaceId: user.workspaceId, status: "ACTIVE", istDemo: a.istDemo }, select: { themen: true } });
     const empfaenger = aktive.filter((k) => !themen.length || themenLesen(k.themen).some((t) => themen.includes(t))).length;
-    if (versandModus() === "ECHT" && !a.istDemo) {
-      return NextResponse.json({ error: "Echter Newsletter-Versand ist noch nicht umgesetzt. Es wurde nichts versendet." }, { status: 501 });
+    const stand = await versandStand(user.workspaceId);
+    if (stand.modus === "ECHT" && !a.istDemo) {
+      const r = await ausgabeVersenden(user.workspaceId, a.id, appOrigin(request));
+      if (!r.ok) return NextResponse.json({ error: r.error }, { status: r.status });
+      await protokoll(user.workspaceId, user.userId, "reichweitenaufbau.ausgabe_versendet", id);
+      return NextResponse.json({ ok: true, demo: false, empfaenger: r.empfaenger, hinweis: `Versendet: ${r.zugestellt} E-Mail(s) vom Versanddienst angenommen.` });
     }
     await prisma.newsletterAusgabe.update({ where: { id }, data: { status: "VERSENDET_DEMO", versendetAm: new Date(), empfaengerAnzahl: empfaenger } });
     await protokoll(user.workspaceId, user.userId, "reichweitenaufbau.ausgabe_demo_versand", id);
-    return NextResponse.json({ ok: true, demo: true, empfaenger, hinweis: `DEMO: Es wurde keine E-Mail versendet. ${empfaenger} bestätigte Kontakte hätten diese Ausgabe erhalten.` });
+    return NextResponse.json({ ok: true, demo: true, empfaenger, hinweis: `DEMO: Es wurde keine E-Mail versendet. ${empfaenger} bestätigte Kontakte hätten diese Ausgabe erhalten.${!a.istDemo && stand.fehlt.length ? ` Für echten Versand fehlt: ${stand.fehlt.join(", ")}.` : ""}` });
   }
   await protokoll(user.workspaceId, user.userId, `reichweitenaufbau.ausgabe_${aktion}`, id);
   return NextResponse.json({ ok: true });

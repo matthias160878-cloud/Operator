@@ -61,9 +61,33 @@ export function startFakeServices() {
         }
         return json(res, 404, { error: "not found" });
       }
+      // Resend-Attrappe für eigene Kundenzugänge: voller Zugang, reiner Versandschlüssel, ungültig.
+      const KUNDEN_KEYS = ["re_kunde_voll_1234", "re_kunde_send_5678"];
+      if (p === "/domains" && req.method === "GET") {
+        if (req.headers.authorization === "Bearer re_kunde_send_5678") return json(res, 401, { statusCode: 401, name: "restricted_api_key", message: "This API key is restricted to only send emails" });
+        if (req.headers.authorization !== "Bearer re_kunde_voll_1234") return json(res, 401, { statusCode: 401, name: "validation_error", message: "API key is invalid" });
+        return json(res, 200, { data: [{ name: "news.kunde.example", status: "verified" }, { name: "offen.example", status: "pending" }] });
+      }
+      if (p === "/emails/batch" && req.method === "POST") {
+        if (!KUNDEN_KEYS.includes((req.headers.authorization ?? "").replace("Bearer ", ""))) return json(res, 401, { message: "invalid key" });
+        if (mail.failNext > 0) {
+          mail.failNext -= 1;
+          return json(res, 500, { message: "fake mail failure" });
+        }
+        const idem = req.headers["idempotency-key"];
+        if (idem && mail.idempotency.has(idem)) return json(res, 200, mail.idempotency.get(idem));
+        const liste = JSON.parse(raw);
+        calls[calls.length - 1].batch = liste;
+        calls[calls.length - 1].authorization = req.headers.authorization;
+        const antwort = { data: liste.map((_, i) => ({ id: `batch_${calls.length}_${i}` })) };
+        if (idem) mail.idempotency.set(idem, antwort);
+        return json(res, 200, antwort);
+      }
       if (p === "/emails" && req.method === "POST") {
         // E-Mail-Attrappe (Resend-Format): nur protokollieren, nichts versenden.
-        if (req.headers.authorization !== "Bearer re_test_fake") return json(res, 401, { message: "invalid key" });
+        const kunde = KUNDEN_KEYS.includes((req.headers.authorization ?? "").replace("Bearer ", ""));
+        if (req.headers.authorization !== "Bearer re_test_fake" && !kunde) return json(res, 401, { message: "invalid key" });
+        calls[calls.length - 1].authorization = req.headers.authorization;
         if (mail.failNext > 0) {
           mail.failNext -= 1;
           return json(res, 500, { message: "fake mail failure" });

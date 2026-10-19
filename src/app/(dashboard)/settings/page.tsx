@@ -106,6 +106,10 @@ export default async function SettingsPage() {
           {t("onboarding.reopen")}
         </Link>
       </div>
+      <Link href="/settings/zugaenge" className="card block p-5 hover:border-accent" data-testid="link-zugaenge">
+        <h2 className="text-sm font-semibold text-foreground">Eigene Zugänge (API-Schlüssel)</h2>
+        <p className="mt-1 text-xs text-muted">Eigenen Resend-Schlüssel für den Newsletter-Versand eintragen – mit Schritt-für-Schritt-Wegweiser. Verschlüsselt, nur für diesen Workspace.</p>
+      </Link>
       <AccountDataPanel />
     </div>
   );

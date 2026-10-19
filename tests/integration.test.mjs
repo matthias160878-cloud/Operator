@@ -2160,3 +2160,84 @@ test("Reichweitenaufbau: Freigabegrenzen, Rollen, Mandanten, Newsletter-Double-O
   assert.equal(await prisma.newsletterKontakt.count({ where: { workspaceId: wsA, email: "leser@example.com" } }), 0, "Demo-Anmeldungen (nie per E-Mail bestätigt) werden mitgelöscht");
   assert.equal(await prisma.newsletterSeite.count({ where: { workspaceId: wsA, istDemo: false } }), 1, "echte Anmeldeseite bleibt");
 });
+
+test("Eigene Zugänge: Kunde trägt Resend-Schlüssel ein, echter Newsletter-Versand nur über seinen Zugang", async () => {
+  const C = await signup("zugang-c@example.com", "Zugang C", "10.79.0.1");
+  const D = await signup("zugang-d@example.com", "Zugang D", "10.79.0.2");
+  const wsC = await workspaceIdOf("zugang-c@example.com");
+  const R = "/api/reichweitenaufbau";
+  const seiteHtml = await (await C.req("/settings/zugaenge")).text();
+  assert.ok(seiteHtml.includes("resend.com/api-keys") && seiteHtml.includes("Sending access"), "Wegweiser zum Schlüssel");
+  assert.ok((await (await C.req("/settings")).text()).includes("/settings/zugaenge"), "Link aus den Einstellungen");
+
+  const put = (c, werte) => c.json("/api/zugaenge", { method: "PUT", body: { anbieter: "RESEND", werte } });
+  assert.equal((await put(C, { apiKey: "falsch", absender: "C <n@news.kunde.example>" })).status, 400, "Format");
+  assert.equal((await put(C, { apiKey: "re_kunde_ungueltig_0", absender: "C <n@news.kunde.example>" })).data.pruefung.status, "FEHLER");
+  const pending = await put(C, { apiKey: "re_kunde_voll_1234", absender: "C <n@offen.example>" });
+  assert.match(pending.data.pruefung.meldung, /nicht bestätigt/);
+  await prisma.user.update({ where: { email: "zugang-c@example.com" }, data: { role: "EDITOR" } });
+  assert.equal((await put(C, { apiKey: "re_kunde_voll_1234", absender: "C <n@news.kunde.example>" })).status, 403, "nur Inhaber/Admin");
+  await prisma.user.update({ where: { email: "zugang-c@example.com" }, data: { role: "OWNER" } });
+  const ok = await put(C, { apiKey: "re_kunde_voll_1234", absender: "Café C <newsletter@news.kunde.example>" });
+  assert.equal(ok.data.pruefung.status, "OK", JSON.stringify(ok.data));
+  const liste = await C.json("/api/zugaenge");
+  assert.equal(liste.data.zugaenge[0].endung, "1234");
+  assert.ok(!JSON.stringify(liste.data).includes("re_kunde_voll_1234"), "Schlüssel kommt nie zurück");
+  assert.ok(!(await prisma.workspaceZugang.findFirst({ where: { workspaceId: wsC } })).wertEnc.includes("re_kunde"), "verschlüsselt gespeichert");
+  assert.equal((await D.json("/api/zugaenge")).data.zugaenge.length, 0, "Mandantentrennung");
+
+  // Ohne Anbieterangaben bleibt es Demo; mit Angaben echter Versand über den Kundenzugang
+  const s = await C.json(`${R}/newsletter/seiten`, { method: "POST", body: { titel: "Café-Post", themenBeschreibung: "Einmal im Monat Neuigkeiten aus dem Café.", themen: [] } });
+  const code = s.data.seite.code;
+  await prisma.sellerProfile.create({
+    data: { workspaceId: wsC, anbieter: "Clara Café", firma: "Café C GmbH", anschrift: "Bohnenweg 3\n12345 Röststadt", email: "hallo@kunde.example", datenschutzUrl: "https://kunde.example/datenschutz" },
+  });
+  const anon = new Client();
+  assert.ok(!(await (await anon.req(`/n/${code}`)).text()).includes("DEMO – Versanddienst"), "kein Demo-Hinweis");
+  const vorher = fakes.calls.length;
+  const an = await anon.json(`/api/nl/${code}/anmelden`, { method: "POST", headers: { "x-forwarded-for": "10.79.1.1" }, body: { email: "gast@example.org", einwilligung: true } });
+  assert.equal(an.status, 200, JSON.stringify(an.data));
+  assert.equal(an.data.demo, undefined);
+  const best = fakes.calls.slice(vorher).find((c) => c.path === "/emails");
+  assert.equal(best.authorization, "Bearer re_kunde_voll_1234", "Kundenschlüssel, nicht der des Betreibers");
+  assert.equal(best.email.from, "Café C <newsletter@news.kunde.example>");
+  assert.ok(best.email.text.includes("Bohnenweg 3, 12345 Röststadt") && best.email.text.includes("https://kunde.example/datenschutz"), "Anbieterangaben in der Mail");
+  const link = best.email.text.match(/\/api\/nl\/bestaetigen\?t=[A-Za-z0-9_-]+/)[0];
+  assert.equal((await anon.req(link)).status, 200);
+  const k = await prisma.newsletterKontakt.findFirst({ where: { workspaceId: wsC } });
+  assert.equal(k.status, "ACTIVE");
+  assert.equal(k.istDemo, false);
+
+  const aus = await C.json(`${R}/newsletter/ausgaben`, { method: "POST", body: { betreff: "Neu: Herbstkuchen", text: "Hallo,\n\nab Montag gibt es Zwetschgenkuchen.\n\nBis bald" } });
+  const aid = aus.data.ausgabe.id;
+  const akt = (aktion) => C.json(`${R}/newsletter/ausgaben/${aid}/aktion`, { method: "POST", body: { aktion } });
+  assert.equal((await akt("versenden")).status, 409, "erst Freigabe");
+  assert.equal((await akt("freigeben")).status, 200);
+  const v0 = fakes.calls.length;
+  const ver = await akt("versenden");
+  assert.equal(ver.status, 200, JSON.stringify(ver.data));
+  assert.equal(ver.data.demo, false);
+  const batch = fakes.calls.slice(v0).find((c) => c.path === "/emails/batch");
+  assert.equal(batch.authorization, "Bearer re_kunde_voll_1234");
+  assert.equal(batch.batch.length, 1);
+  const m = batch.batch[0];
+  assert.deepEqual(m.to, ["gast@example.org"]);
+  assert.equal(m.headers["List-Unsubscribe-Post"], "List-Unsubscribe=One-Click");
+  assert.ok(m.html.includes("Zwetschgenkuchen") && m.html.includes("Café C GmbH") && m.text.includes("Abmelden: "));
+  const a = await prisma.newsletterAusgabe.findUnique({ where: { id: aid } });
+  assert.equal(a.status, "VERSENDET");
+  assert.equal(a.zugestelltAnzahl, 1);
+  assert.equal((await akt("versenden")).status, 409, "kein zweiter Versand");
+
+  // Ein-Klick-Abmeldung über den Header-Link
+  const abUrl = m.headers["List-Unsubscribe"].slice(1, -1).replace(/^https?:\/\/[^/]+/, BASE);
+  assert.equal((await fetch(abUrl, { method: "POST", headers: { origin: "https://mail.example" } })).status, 200);
+  assert.equal((await prisma.newsletterKontakt.findUnique({ where: { id: k.id } })).status, "UNSUBSCRIBED");
+
+  // Reiner Versandschlüssel wird akzeptiert (mit Hinweis); Löschen schaltet zurück auf Demo
+  const send = await put(C, { apiKey: "re_kunde_send_5678", absender: "Café C <newsletter@news.kunde.example>" });
+  assert.equal(send.data.pruefung.status, "OK");
+  assert.match(send.data.pruefung.meldung, /nur Versand/);
+  assert.equal((await C.json("/api/zugaenge?anbieter=RESEND", { method: "DELETE" })).status, 200);
+  assert.ok((await (await anon.req(`/n/${code}`)).text()).includes("DEMO"));
+});

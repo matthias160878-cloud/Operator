@@ -9,7 +9,7 @@ export function UebersichtTab(props: {
   belege: KampagnenBeleg[];
   stufen: { inhalte: Record<Stufe, number>; newsletter: Record<Stufe, number>; werbung: Record<Stufe, number> };
   schritte: { text: string; tab: string; art: "AKTION" | "FEHLT" }[];
-  anbindungen: { newsletterModus: "ECHT" | "DEMO"; emailEingerichtet: boolean; newsletterAktiv: boolean; werbungAktiv: boolean };
+  anbindungen: { newsletterModus: "ECHT" | "DEMO"; fehlt: string[]; newsletterAktiv: boolean; werbungAktiv: boolean };
   kooperationen: number;
   tests: number;
 }) {
@@ -109,8 +109,17 @@ export function UebersichtTab(props: {
           )}
           {props.anbindungen.newsletterAktiv ? (
             <li>
-              Newsletter-Versand: <Chip ton={props.anbindungen.newsletterModus === "ECHT" ? "gut" : "warn"}>{props.anbindungen.newsletterModus === "ECHT" ? "Bestätigungsmails aktiv" : "Demo"}</Chip>{" "}
-              {props.anbindungen.emailEingerichtet ? "Versanddienst eingerichtet" : "Versanddienst (Resend) nicht eingerichtet"}; Versand von Ausgaben noch nicht umgesetzt
+              Newsletter-Versand: <Chip ton={props.anbindungen.newsletterModus === "ECHT" ? "gut" : "warn"}>{props.anbindungen.newsletterModus === "ECHT" ? "aktiv (eigener Resend-Zugang)" : "Demo"}</Chip>{" "}
+              {props.anbindungen.newsletterModus === "ECHT" ? (
+                "Bestätigungsmails und freigegebene Ausgaben, Versand nur per Klick"
+              ) : (
+                <>
+                  es fehlt: {props.anbindungen.fehlt.join(", ")} –{" "}
+                  <Link href="/settings/zugaenge" className="underline">
+                    Eigene Zugänge
+                  </Link>
+                </>
+              )}
             </li>
           ) : (
             <li>

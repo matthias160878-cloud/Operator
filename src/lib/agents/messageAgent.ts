@@ -2,6 +2,7 @@ import { prisma } from "@/lib/db";
 import { getBrandDNA, brandContextPrompt } from "@/lib/brand";
 import { generateText } from "@/lib/ai/textGenerator";
 import { sendPlatformReply } from "@/lib/messaging/send";
+import { sendWidgetWebhook, widgetConfig } from "@/lib/widget/websiteWidget";
 
 function templateReply(): string {
   return (
@@ -76,6 +77,25 @@ export async function approveAndSend(messageId: string) {
 
   if (message.direction !== "OUTBOUND" || (message.status !== "DRAFTED" && message.status !== "FAILED")) {
     return { sent: false, message: "Nur Entwürfe oder fehlgeschlagene Antworten können gesendet werden." };
+  }
+
+  if (message.conversation.platform === "WEBSITE") {
+    // Website-Widget: kein Plattform-Account — die Antwort ist zugestellt,
+    // sobald sie gespeichert ist; das Widget holt sie beim nächsten Abruf ab.
+    const sentAt = new Date();
+    const sent = await prisma.message.update({
+      where: { id: messageId },
+      data: { status: "SENT", sentAt, error: null },
+    });
+    await prisma.conversation.update({ where: { id: message.conversationId }, data: { lastMessageAt: sentAt } });
+    const forwarded = Boolean(widgetConfig().webhookUrl);
+    if (forwarded) void sendWidgetWebhook("widget.reply.sent", message.conversation, sent);
+    return {
+      sent: true,
+      message: forwarded
+        ? "Antwort gespeichert — sie erscheint im Website-Widget und wird an den Webhook weitergeleitet."
+        : "Antwort gespeichert — sie erscheint im Website-Widget, sobald der Besucher es öffnet.",
+    };
   }
 
   const account = await prisma.platformAccount.findUnique({

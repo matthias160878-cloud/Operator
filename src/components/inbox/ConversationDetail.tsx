@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Loader2, Send, Sparkles } from "lucide-react";
 import type { Conversation, Message } from "@prisma/client";
-import { PLATFORM_LABELS } from "@/lib/format";
+import { INBOX_PLATFORM_LABELS } from "@/lib/format";
 
 const inputClass =
   "w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none";
@@ -89,23 +89,26 @@ export function ConversationDetail({
     }
   }
 
+  const isWebsite = conversation.platform === "WEBSITE";
   const hasOpenDraft = conversation.messages.some((m) => m.direction === "OUTBOUND" && m.status === "DRAFTED");
 
   return (
     <div className="space-y-5">
       <div className="card p-5">
         <div className="mb-1 text-xs text-muted">
-          {PLATFORM_LABELS[conversation.platform] ?? conversation.platform} · {t(`channel.${conversation.channel}`)}
+          {INBOX_PLATFORM_LABELS[conversation.platform] ?? conversation.platform} · {t(`channel.${conversation.channel}`)}
         </div>
         <h1 className="text-lg font-semibold text-foreground">
           {conversation.participantName}
           {conversation.participantHandle && (
-            <span className="ml-2 text-sm font-normal text-muted">@{conversation.participantHandle}</span>
+            <span className="ml-2 text-sm font-normal text-muted">
+              {isWebsite ? conversation.participantHandle : `@${conversation.participantHandle}`}
+            </span>
           )}
         </h1>
         {conversation.externalContext && (
           <p className="mt-1 truncate text-xs text-muted">
-            {t("detail.context")}:{" "}
+            {isWebsite ? t("detail.websitePage") : t("detail.context")}:{" "}
             {/^https:\/\//.test(conversation.externalContext) ? (
               <a href={conversation.externalContext} target="_blank" rel="noreferrer" className="underline">
                 {conversation.externalContext}
@@ -115,6 +118,9 @@ export function ConversationDetail({
             )}
           </p>
         )}
+        {isWebsite ? (
+          <p className="mt-3 text-xs text-muted">{t("detail.websiteHint")}</p>
+        ) : (
         <form onSubmit={saveExternalId} className="mt-3 space-y-1">
           <label className="text-xs text-muted">{t("detail.externalIdLabel")}</label>
           <div className="flex gap-2">
@@ -130,6 +136,7 @@ export function ConversationDetail({
           </div>
           {!conversation.externalThreadId && <p className="text-xs text-warning">{t("detail.noExternalId")}</p>}
         </form>
+        )}
       </div>
 
       <div className="card space-y-3 p-5">

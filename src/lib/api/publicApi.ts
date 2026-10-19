@@ -1,5 +1,6 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
+import { hitRateLimit } from "@/lib/api/rateLimit";
 
 /**
  * Externe API (/api/v1/**) für Zapier, eigene Websites, Skripte usw.
@@ -16,7 +17,6 @@ import { NextResponse } from "next/server";
  */
 
 const WINDOW_MS = 60_000;
-const buckets = new Map<string, { count: number; resetAt: number }>();
 
 function digest(value: string): Buffer {
   return createHash("sha256").update(value).digest();
@@ -82,18 +82,11 @@ export function authenticate(request: Request): NextResponse | null {
   }
 
   const limit = Math.max(1, Number(process.env.PUBLIC_API_RATE_LIMIT) || 30);
-  const bucketKey = providedDigest.toString("hex");
-  const now = Date.now();
-  const bucket = buckets.get(bucketKey);
-  if (!bucket || bucket.resetAt <= now) {
-    buckets.set(bucketKey, { count: 1, resetAt: now + WINDOW_MS });
-  } else if (bucket.count >= limit) {
-    const retryAfter = Math.ceil((bucket.resetAt - now) / 1000);
+  const retryAfter = hitRateLimit(`api:${providedDigest.toString("hex")}`, limit, WINDOW_MS);
+  if (retryAfter !== null) {
     return apiError(request, 429, `Zu viele Anfragen — höchstens ${limit} pro Minute.`, {
       "Retry-After": String(retryAfter),
     });
-  } else {
-    bucket.count++;
   }
   return null;
 }

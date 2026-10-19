@@ -1,0 +1,40 @@
+{
+  "title": "Website-Widget",
+  "subtitle": "Ein Chat-Fenster für deine eigene Website: Besucher schreiben dir, die Nachricht landet im Posteingang, und deine Antwort erscheint direkt beim Besucher. Jede Nachricht kann zusätzlich per Webhook an Zapier, Make oder dein eigenes System gehen.",
+  "copy": "Kopieren",
+  "copied": "Kopiert",
+  "status": {
+    "heading": "Status",
+    "key": "Widget-ID",
+    "origins": "Freigegebene Websites",
+    "webhook": "Webhook",
+    "set": "gesetzt",
+    "missing": "fehlt ({env} in .env)",
+    "optional": "optional ({env} in .env)",
+    "webhookSigned": "aktiv, signiert",
+    "webhookUnsigned": "aktiv, ohne Signatur (WEBSITE_WIDGET_WEBHOOK_SECRET empfohlen)",
+    "enabled": "Das Widget ist aktiv.",
+    "disabled": "Das Widget ist noch nicht aktiv.",
+    "conversations": "{count, plural, =0 {Noch keine Website-Unterhaltungen} one {# Website-Unterhaltung im Posteingang} other {# Website-Unterhaltungen im Posteingang}}"
+  },
+  "setup": {
+    "heading": "Einrichten",
+    "text": "Trage diese Werte in die .env der App ein und starte die App neu. Die Widget-ID ist öffentlich (sie steht im Einbettungs-Code); geschützt wird über die Liste der freigegebenen Websites und Limits pro Besucher."
+  },
+  "embed": {
+    "heading": "Einbettungs-Code",
+    "text": "Füge diese Zeile auf deiner Website vor </body> ein — z. B. in WordPress über ein Code-Snippet-Plugin oder in Wix/Squarespace als „eigener Code“.",
+    "options": "Optionale Attribute:",
+    "optTitle": "Überschrift des Fensters",
+    "optGreeting": "Begrüßungstext",
+    "optColor": "Farbe als Hex-Wert, z. B. #e4572e",
+    "optPosition": "right (Standard) oder left",
+    "optLang": "de oder en (Standard: Sprache der Seite)",
+    "optPrivacy": "Link zu deiner Datenschutzerklärung"
+  },
+  "webhook": {
+    "heading": "Webhook",
+    "text": "Bei jeder neuen Besuchernachricht und jeder gesendeten Antwort schickt die App einen POST an WEBSITE_WIDGET_WEBHOOK_URL:",
+    "hint": "Prüfe die Signatur mit deinem Secret und lehne alte Zeitstempel ab. Typischer Einsatz: Bei widget.reply.sent eine E-Mail an conversation.email schicken, damit der Besucher die Antwort auch bekommt, wenn er die Seite schon verlassen hat."
+  }
+}

@@ -33,12 +33,15 @@ Agenten- und API-Dokumentation: siehe [`README-SOCIAL-MEDIA.md`](README-SOCIAL-M
 - `src/app/` — App-Router-Seiten (Dashboard, Content Brain, Brand DNA, Ideen,
   Content Factory, Script/Voice/Video/Design Studio, Social Media,
   Content Kalender, Analytics, SEO-Analyse, Posts aus Website, Posteingang,
+  Website-Widget,
   Agenten, Integrationen, Einstellungen) sowie
   `src/app/api/**` für alle mutierenden Aktionen. `layout.tsx` bindet den
   App-Shell (Sidebar/Topbar, `src/components/layout/`) und die Schriftarten
   (Geist Sans/Mono über `next/font/google`) ein; `page.tsx` ist das Dashboard.
 - `src/app/globals.css` — Tailwind-v4-Import und CSS-Custom-Properties für das
   dunkle Command-Center-Theme.
+- `public/widget.js` — einbettbares Website-Chat-Widget (Logik in
+  `src/lib/widget/`, öffentliche Route `src/app/api/v1/widget/messages`).
 - `src/lib/` — Domänenlogik: `agents/` (19 Agenten + Logging-Runner),
   `ai/` (KI-Provider-Adapter mit Template-Fallback), `integrations/`
   (env-basierte Statusprüfung), `video/` (Provider-Abstraktion + Format

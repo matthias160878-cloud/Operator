@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   LayoutDashboard,
+  MessagesSquare,
   Factory,
   Lightbulb,
   Brain,
@@ -48,6 +49,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/seo", labelKey: "seo", icon: SearchCheck },
   { href: "/revenue", labelKey: "revenue", icon: Wallet },
   { href: "/inbox", labelKey: "inbox", icon: Inbox },
+  { href: "/website-widget", labelKey: "websiteWidget", icon: MessagesSquare },
   { href: "/agents", labelKey: "agents", icon: Bot },
   { href: "/integrations", labelKey: "integrations", icon: Plug },
   { href: "/settings", labelKey: "settings", icon: Settings },

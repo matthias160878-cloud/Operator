@@ -44,6 +44,7 @@ export default getRequestConfig(async () => {
     "onboarding",
     "seo",
     "websitePosts",
+    "websiteWidget",
   ];
 
   const messages: Record<string, unknown> = {};

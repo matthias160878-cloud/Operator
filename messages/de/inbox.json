@@ -27,7 +27,9 @@
     "context": "Beitrag",
     "externalIdLabel": "Plattform-ID, an die geantwortet wird",
     "noExternalId": "Ohne Plattform-ID kann nicht echt gesendet werden.",
-    "saveFailed": "Speichern fehlgeschlagen."
+    "saveFailed": "Speichern fehlgeschlagen.",
+    "websiteHint": "Nachricht aus dem Website-Widget. Freigegebene Antworten erscheinen direkt im Widget beim Besucher und gehen — falls eingerichtet — an deinen Webhook (z. B. für eine E-Mail-Benachrichtigung).",
+    "websitePage": "Seite"
   },
   "channel": {
     "COMMENT": "Kommentar",

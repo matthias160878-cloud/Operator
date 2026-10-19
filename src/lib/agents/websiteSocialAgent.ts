@@ -30,6 +30,8 @@ const CAPTION_LIMITS: Record<Platform, number> = {
   FACEBOOK: 5000,
   BLOG: 20000,
   NEWSLETTER: 20000,
+  // WEBSITE ist nur ein Posteingangs-Kanal (Website-Widget) und kein Post-Ziel.
+  WEBSITE: 5000,
 };
 
 const PLATFORM_STYLE: Record<Platform, string> = {
@@ -40,6 +42,7 @@ const PLATFORM_STYLE: Record<Platform, string> = {
   FACEBOOK: "gesprächig, Community-Frage am Ende",
   BLOG: "Teaser-Absatz für einen Blogartikel",
   NEWSLETTER: "Newsletter-Abschnitt mit Betreffzeile als Hook",
+  WEBSITE: "kurzer Website-Text",
 };
 
 const postSchema = z.object({

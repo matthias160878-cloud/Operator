@@ -2004,6 +2004,9 @@ test("Reichweitenaufbau: Freigabegrenzen, Rollen, Mandanten, Newsletter-Double-O
   const tipp = vs.data.vorschlaege.find((v) => v.art === "TIPPS");
   const ueb = (art, grundlage = "") => A.json(`${R}/ideen/uebernehmen`, { method: "POST", body: { ...tipp, art, plattform: "INSTAGRAM", titel: "Tipps", grundlage } });
   assert.equal((await ueb("VORHER_NACHHER")).status, 400);
+  const hwg = await A.json(`${R}/ideen/uebernehmen`, { method: "POST", body: { ...tipp, art: "VORHER_NACHHER", plattform: "INSTAGRAM", titel: "Nasenkorrektur vorher/nachher", grundlage: "eigene Fotos" } });
+  assert.equal(hwg.status, 400, "HWG-Sperre auch auf dem Server");
+  assert.match(hwg.data.error, /HWG/);
   const item = await ueb("TIPPS");
   assert.equal(item.status, 200);
   assert.equal((await prisma.contentItem.findUnique({ where: { id: item.data.item.id } })).status, "DRAFT", "nur Entwurf – Freigabe in der Content Factory");

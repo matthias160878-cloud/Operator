@@ -1,4 +1,5 @@
 import type { Conversation, PlatformAccount } from "@prisma/client";
+import { prisma } from "@/lib/db";
 import { getValidAccessToken, getValidMessagingToken } from "@/lib/publishing/tokens";
 import { linkedInRestHeaders } from "@/lib/oauth/providers";
 import { requestJson, tiktokBusinessRequest } from "@/lib/messaging/http";
@@ -15,7 +16,32 @@ const MAX_LENGTH: Record<string, number> = {
   "INSTAGRAM:DIRECT_MESSAGE": 1000,
   "LINKEDIN:COMMENT": 1250,
   "TIKTOK:COMMENT": 1200,
+  "TIKTOK:DIRECT_MESSAGE": 6000,
 };
+
+/** TikTok Business Messaging: max. 10 Nachrichten innerhalb von 48 h nach der letzten Kundennachricht. */
+const TIKTOK_DM_WINDOW_MS = 48 * 60 * 60 * 1000;
+const TIKTOK_DM_MAX_PER_WINDOW = 10;
+
+async function assertTikTokDmWindow(conversationId: string) {
+  const lastInbound = await prisma.message.findFirst({
+    where: { conversationId, direction: "INBOUND" },
+    orderBy: { createdAt: "desc" },
+  });
+  if (!lastInbound || Date.now() - lastInbound.createdAt.getTime() > TIKTOK_DM_WINDOW_MS) {
+    throw new Error(
+      "TikTok erlaubt Direktnachrichten nur innerhalb von 48 Stunden nach der letzten Nachricht des Kunden — dieses Fenster ist abgelaufen."
+    );
+  }
+  const sentSince = await prisma.message.count({
+    where: { conversationId, direction: "OUTBOUND", status: "SENT", sentAt: { gte: lastInbound.createdAt } },
+  });
+  if (sentSince >= TIKTOK_DM_MAX_PER_WINDOW) {
+    throw new Error(
+      `TikTok erlaubt höchstens ${TIKTOK_DM_MAX_PER_WINDOW} Nachrichten pro 48-Stunden-Fenster — warte auf eine neue Nachricht des Kunden.`
+    );
+  }
+}
 
 export interface SendReplyResult {
   externalId?: string;
@@ -206,10 +232,36 @@ export async function sendPlatformReply(
       throw new Error("LinkedIn erlaubt Drittanbieter-Apps keine Direktnachrichten — bitte direkt in LinkedIn antworten.");
     case "YOUTUBE:DIRECT_MESSAGE":
       throw new Error("YouTube hat keine Direktnachrichten — Antworten sind nur auf Kommentare möglich.");
-    case "TIKTOK:DIRECT_MESSAGE":
-      throw new Error(
-        "TikTok-Direktnachrichten (Business Messaging API) sind nicht angebunden — TikTok verlangt dafür eine separate Zugangsprüfung. Bitte direkt in TikTok antworten."
+    case "TIKTOK:DIRECT_MESSAGE": {
+      if (!account.messagingExternalId) {
+        throw new Error(
+          "TikTok-Direktnachrichten laufen über die TikTok API for Business — verbinde unter Social Media „Posteingang verbinden“."
+        );
+      }
+      if (process.env.TIKTOK_BUSINESS_MESSAGING !== "true") {
+        throw new Error(
+          "TikTok Business Messaging ist deaktiviert — nach TikToks Zugangsprüfung mit TIKTOK_BUSINESS_MESSAGING=true einschalten."
+        );
+      }
+      await assertTikTokDmWindow(conversation.id);
+      const token = await getValidMessagingToken(account);
+      const data = await tiktokBusinessRequest<{ message?: { message_id?: string } }>(
+        "/business/message/send/",
+        token,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            business_id: account.messagingExternalId,
+            recipient_type: "CONVERSATION",
+            recipient: target,
+            message_type: "TEXT",
+            text: { body: text },
+          }),
+        },
+        "TikTok-Direktnachricht"
       );
+      return { externalId: data.message?.message_id || undefined };
+    }
     default:
       throw new Error(
         `${conversation.platform} bietet für Drittanbieter-Apps keine API zum Beantworten von Kommentaren oder Nachrichten — bitte direkt in der App antworten.`

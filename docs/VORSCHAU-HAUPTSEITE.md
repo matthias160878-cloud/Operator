@@ -73,3 +73,30 @@ Der Newsletter-Preis ist über den Agentenkatalog der Zentrale belegt.
 
 - `hintergrund.js` (unverändert aus dem Original) fragt `/api/einstellungen` ab. Ohne Server gibt das einen 404 in der Konsole, ohne sichtbare Auswirkung.
 - Breite Tabellen (Preise, Webdesign, Quellen) scrollen auf dem Handy innerhalb ihres Rahmens. Die Seite selbst läuft nicht seitlich über.
+
+## Zusammengeführte Vorschau (Staging + neue Bereiche)
+
+Ordner `vorschau/zusammen/`. Grundlage ist die Staging-Kopie (`public/hauptseite`, Branch `claude/modest-fermat-ysdjp6`).
+Sie enthält schon alles aus der Hauptseite, Version 72. Darauf kommen die neuen Bereiche aus `quellcode/neu-seiten.js`.
+
+```
+python3 -I vorschau/hauptseite/quellcode/bauen-zusammen.py
+python3 -m http.server 4174 --bind 127.0.0.1 --directory vorschau/zusammen
+```
+
+Was zusätzlich zur ersten Vorschau drin ist:
+
+- Kundenanfragen-Pilot (490 € netto) im Menü „KI & Automation“
+- Arbeitsbereich (Kalender, Ordner, Webseiten-Links, ZIP) auf der Seite KI-Agenten, als Demo nur im Browser
+- Referenzen Kolibri 1 und 2 und Beauty sowie Versicherung Schweiz und Deutschland. Kolibri auch auf Webdesign und Portfolio
+- Menü-Knopf der Staging-Kopie
+- Übersicht „Alles von Secret 58 auf einen Blick“ (13 Karten) im Unternehmensbereich
+
+Für die Vorschau geändert:
+
+- Das Kontaktformular sendet nicht an `/api/kontakt`, sondern zeigt nur eine Demo-Meldung.
+- Der Arbeitsbereich fragt nicht `/api/dateien/status` ab.
+- Die Beispieldateien werden relativ geladen.
+- Die Karte „Dateiaustausch“ führt auf „Login / Demo“, nicht auf `/dateien`.
+
+Zusätzliche offene Frage: Der Pilot steht mit „490 € netto“ da, an anderen Stellen gilt „Kleinunternehmer, keine Umsatzsteuer“. Siehe Punkt 1.

@@ -1,0 +1,7 @@
+Wochenbericht (Beispiel)
+
+Anfragen: 12 (Beispielzahl)
+Termine vereinbart: 5 (Beispielzahl)
+Offen zur Freigabe: 2 (Beispielzahl)
+
+Alle Werte sind Platzhalter, keine echten Kennzahlen.

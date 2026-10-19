@@ -3,10 +3,15 @@ plus die neuen Bereiche Privatkunden / Unternehmen / Pakete aus neu-seiten.js.
 
 Ergebnis: vorschau/zusammen/index.html
 Aufruf:   python3 -I vorschau/hauptseite/quellcode/bauen-zusammen.py
+          python3 -I vorschau/hauptseite/quellcode/bauen-zusammen.py --staging ZIELDATEI
+          (--staging: echtes Kontaktformular und Dateistatus der Staging-Seite bleiben erhalten)
 Jede Ersetzung muss genau einmal greifen, sonst bricht das Skript ab.
 """
 import pathlib
 import re
+import sys
+
+STAGING = len(sys.argv) == 3 and sys.argv[1] == "--staging"
 
 quell = pathlib.Path(__file__).resolve().parent
 ziel = quell.parent.parent / "zusammen"
@@ -46,10 +51,20 @@ seiten = seiten.replace(
     "['Dateiaustausch','Echter Dateiaustausch gibt es nur im Kundenkonto der App nach der Anmeldung. Hier in der Vorschau nicht angebunden.','#/ki-agenten','Arbeitsbereich-Demo'],")
 if "alle-leistungen" not in seiten or "Arbeitsbereich (Kalender" not in seiten:
     raise SystemExit("Einfügen in neu-seiten.js fehlgeschlagen")
+if STAGING:
+    seiten = seiten.replace("'Echter Dateiaustausch gibt es nur im Kundenkonto der App nach der Anmeldung. Hier in der Vorschau nicht angebunden.','#/ki-agenten','Arbeitsbereich-Demo'",
+                            "'Echter Dateiaustausch im Kundenkonto der App, nach der Anmeldung unter „Dateien“.','/dateien','Dateien öffnen'")
+    seiten = seiten.replace("'#/einstieg']", "'/dateien']")
+    seiten = seiten.replace("Vorschau, noch nicht veröffentlicht. Alle Knöpfe sind Demo: Es wird nichts gekauft, versendet, veröffentlicht oder verbunden.",
+                            "Demo-Ansicht: Käufe, Zahlungen, Veröffentlichungen und Kontoanbindungen sind auf dieser Seite nicht aktiv.")
+    seiten = seiten.replace('<span class="kicker">Nur in der Vorschau</span>', '<span class="kicker">Arbeitsstand</span>')
+    for alt, neu in [("in dieser Vorschau", "auf dieser Seite"), ("in der Vorschau bewusst", "hier bewusst"), ("in der Vorschau entfernt", "hier entfernt")]:
+        seiten = seiten.replace(alt, neu)
 
 # 1. Stil, Hinweisleiste, Logo
 ersetze("@media print{header.top,footer,.demo-bar", stil + "\n@media print{header.top,footer,.demo-bar")
-ersetze('<div class="demo-bar">Demo-Ansicht ·', '<div class="demo-bar">Vorschau (zusammengeführt), nicht veröffentlicht · Demo-Ansicht ·')
+if not STAGING:
+    ersetze('<div class="demo-bar">Demo-Ansicht ·', '<div class="demo-bar">Vorschau (zusammengeführt), nicht veröffentlicht · Demo-Ansicht ·')
 ersetze('<a class="logo" href="start.html">', '<a class="logo" href="#/start">')
 
 # 2. Navigation
@@ -71,21 +86,24 @@ ersetze("  menuZu();\n",
         "  menuZu();\n  if(slug==='pakete'&&q.gruppe){const z=document.getElementById('gruppe-'+q.gruppe);if(z)setTimeout(()=>z.scrollIntoView(),0)}\n")
 
 # 5. Kontaktformular in der Vorschau nur als Demo (kein Versand an /api/kontakt)
-handler_neu = ausschnitt(original, "  if(slug==='kontakt'){", "})}\n")
-handler_alt = ausschnitt(s, "  if(slug==='kontakt'){", "})}\n")
-ersetze(handler_alt, handler_neu)
-ersetze("Die Anfrage geht an unser Team und landet im Posteingang. Wir antworten per E-Mail; eine automatische Bestätigung wird nicht verschickt.",
-        "Demo: In dieser Vorschau wird nichts versendet. In der echten Seite geht die Anfrage an das Team von Secret 58.")
+if not STAGING:
+    handler_neu = ausschnitt(original, "  if(slug==='kontakt'){", "})}\n")
+    handler_alt = ausschnitt(s, "  if(slug==='kontakt'){", "})}\n")
+    ersetze(handler_alt, handler_neu)
+    ersetze("Die Anfrage geht an unser Team und landet im Posteingang. Wir antworten per E-Mail; eine automatische Bestätigung wird nicht verschickt.",
+            "Demo: In dieser Vorschau wird nichts versendet. In der echten Seite geht die Anfrage an das Team von Secret 58.")
 ersetze("['webseiten-aufbau','Webseiten-Aufbau'],['sonstiges','Sonstiges']]",
         "['webseiten-aufbau','Webseiten-Aufbau'],['privat','Privates Projekt'],['sonstiges','Sonstiges']]")
 
 # 5b. Arbeitsbereich: Beispieldateien relativ laden, keine Serverabfrage in der Vorschau
-s = s.replace("fetch('/hauptseite/beispiele/'", "fetch('beispiele/'")
-a = s.index("if(!el)return;try{const r=await fetch('/api/dateien/status'")
-b = s.index("· Unten: Demo im Browser.'}", a) + len("· Unten: Demo im Browser.'}")
-s = s[:a] + "if(!el)return;el.innerHTML='<b>Vorschau:</b> Echter Dateiaustausch gibt es nur im Kundenkonto der App nach der Anmeldung – hier nicht angebunden. Unten: Demo im Browser.'}" + s[b:]
-if re.search(r"fetch\(\s*['\"`]/api/", s):
-    raise SystemExit("Noch Server-Aufrufe in der Vorschau: " + ", ".join(re.findall(r"fetch\(\s*['\"`](/api/[^'\"`]+)", s)))
+if not STAGING:
+    s = s.replace("fetch('/hauptseite/beispiele/'", "fetch('beispiele/'")
+    a = s.index("if(!el)return;try{const r=await fetch('/api/dateien/status'")
+    b = s.index("· Unten: Demo im Browser.'}", a) + len("· Unten: Demo im Browser.'}")
+    s = s[:a] + "if(!el)return;el.innerHTML='<b>Vorschau:</b> Echter Dateiaustausch gibt es nur im Kundenkonto der App nach der Anmeldung – hier nicht angebunden. Unten: Demo im Browser.'}" + s[b:]
+    if re.search(r"fetch\(\s*['\"`]/api/", s):
+        raise SystemExit("Noch Server-Aufrufe in der Vorschau: " + ", ".join(re.findall(r"fetch\(\s*['\"`](/api/[^'\"`]+)", s)))
+
 
 # Keine „Beliebt“-Kennzeichnung ohne belegte Grundlage
 ersetze("${i===1?'Beliebt · ':''}", "")
@@ -98,5 +116,10 @@ ersetze('<a href="#/ueber-uns">Über uns</a>',
 
 if "orbit-hero" in s:
     raise SystemExit("Gehirn-Bühne noch auf der Startseite")
-(ziel / "index.html").write_text(s, encoding="utf-8")
-print("Zusammengeführte Vorschau gebaut:", ziel / "index.html")
+if STAGING:
+    s = s.replace('<a href="#/quellen">Quellen (Vorschau)</a>', '<a href="#/quellen">Quellen und offene Fragen</a>')
+    pathlib.Path(sys.argv[2]).write_text(s, encoding="utf-8")
+    print("Staging-Fassung gebaut:", sys.argv[2])
+else:
+    (ziel / "index.html").write_text(s, encoding="utf-8")
+    print("Zusammengeführte Vorschau gebaut:", ziel / "index.html")

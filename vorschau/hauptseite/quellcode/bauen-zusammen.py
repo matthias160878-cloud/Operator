@@ -87,6 +87,9 @@ s = s[:a] + "if(!el)return;el.innerHTML='<b>Vorschau:</b> Echter Dateiaustausch 
 if re.search(r"fetch\(\s*['\"`]/api/", s):
     raise SystemExit("Noch Server-Aufrufe in der Vorschau: " + ", ".join(re.findall(r"fetch\(\s*['\"`](/api/[^'\"`]+)", s)))
 
+# Keine „Beliebt“-Kennzeichnung ohne belegte Grundlage
+ersetze("${i===1?'Beliebt · ':''}", "")
+
 # 6. Hintergrund und Fußzeile
 ersetze("  start:               ['konstellation', 34],\n",
         "  start:               ['konstellation', 34],\n  privat:              ['punktregen',    20],\n  unternehmen:         ['leiterbahnen',  20],\n  social:              ['punktregen',    20],\n  pakete:              ['gitter',        18],\n")

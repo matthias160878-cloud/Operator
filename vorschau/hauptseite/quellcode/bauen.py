@@ -63,6 +63,9 @@ ersetze("['webseiten-aufbau','Webseiten-Aufbau'],['sonstiges','Sonstiges']].map(
 ersetze("  start:               ['konstellation', 34],\n",
         "  start:               ['konstellation', 34],\n  privat:              ['punktregen',    20],\n  unternehmen:         ['leiterbahnen',  20],\n  social:              ['punktregen',    20],\n  pakete:              ['gitter',        18],\n")
 
+# Keine „Beliebt“-Kennzeichnung ohne belegte Grundlage
+ersetze("${i===1?'Beliebt · ':''}", "")
+
 # 9. Fußzeile: Login/Demo und Quellen
 ersetze('<a href="#/ueber-uns">Über uns</a>', '<a href="#/privat">Für Privatkunden</a><a href="#/unternehmen">Für Unternehmen</a><a href="#/pakete">Pakete</a><a href="#/quellen">Quellen (Vorschau)</a><a href="#/ueber-uns">Über uns</a>')
 

@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="de">
+<head>
+<title>Muster Broker</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Spectral:ital,wght@0,300;0,500;1,300&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Layout: Hero mit Schnellstart-Karte, danach Leistungen mit Umschalter Privat/Firmen, Ablauf, Kontakt und ein Rechtsblock (Impressum, Erstinformation, Datenschutz, AGB). */
+:root {
+  --ink: #1c1b2e;
+  --ink-2: #55526a;
+  --paper: #f7f4ee;
+  --card: #fffdf9;
+  --line: #dcd7cc;
+  --tint: #ebe8f6;
+  --accent: #4a3fb5;
+  --accent-ink: #ffffff;
+  --signal: #d9531e;
+  --mark: #fff1b8;
+  --mark-ink: #4a3a00;
+  --font-display: "Spectral", Georgia, "Times New Roman", serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #ece9f7; --ink-2: #aeaac6; --paper: #14131f; --card: #1d1c2c; --line: #323049;
+    --tint: #25233d; --accent: #a59bff; --accent-ink: #14131f; --signal: #ff8a5c;
+    --mark: #4a3f12; --mark-ink: #ffe9a0; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #ece9f7; --ink-2: #aeaac6; --paper: #14131f; --card: #1d1c2c; --line: #323049;
+  --tint: #25233d; --accent: #a59bff; --accent-ink: #14131f; --signal: #ff8a5c;
+  --mark: #4a3f12; --mark-ink: #ffe9a0; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin-inline: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.12; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.3rem, 5.4vw, 3.9rem); font-weight: 300; letter-spacing: -0.015em; }
+h1 em { font-style: italic; color: var(--accent); }
+h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+h3 { font-size: 1.28rem; }
+p { margin: 0; }
+.label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+.ph { background: var(--mark); color: var(--mark-ink); padding: 0 4px; border-radius: 2px; }
+
+.muster { background: var(--ink); color: var(--paper); font-size: 0.82rem; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: 8px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px)); text-align: center; }
+
+header.top { display: flex; align-items: center; justify-content: space-between; gap: 14px 24px; flex-wrap: wrap; padding-block: 20px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand svg { flex: none; }
+.brand b { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; line-height: 1; display: block; }
+.brand small { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+nav.main { display: flex; gap: 8px 22px; flex-wrap: wrap; align-items: center; font-size: 0.95rem; }
+nav.main a { text-decoration: none; padding-block: 4px; border-bottom: 2px solid transparent; }
+nav.main a:hover { border-color: var(--accent); }
+nav.main a.btn { border: 0; padding: 10px 18px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--accent); color: var(--accent-ink); font: 500 1rem var(--font-body); border: 0; padding: 13px 22px; border-radius: 3px; text-decoration: none; cursor: pointer; }
+.btn:hover { filter: brightness(1.08); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(28px, 5vw, 64px); align-items: start; padding-block: clamp(24px, 5vw, 64px) clamp(40px, 7vw, 84px); }
+.hero .lead { font-size: 1.15rem; color: var(--ink-2); max-width: 34em; margin-top: 22px; }
+.hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+dl.facts { display: flex; gap: 10px 28px; flex-wrap: wrap; margin: 36px 0 0; padding-top: 20px; border-top: 1px solid var(--line); }
+dl.facts div { min-width: 0; }
+dl.facts dt { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+dl.facts dd { margin: 2px 0 0; font-weight: 500; }
+
+/* Schnellstart-Karte */
+.finder { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: clamp(18px, 3vw, 28px); box-shadow: 0 1px 0 var(--line), 0 18px 40px -28px rgba(19, 35, 46, 0.45); min-width: 0; }
+.finder h2 { font-size: 1.5rem; margin-top: 8px; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; margin-top: 18px; border: 1.5px solid var(--ink); border-radius: 3px; overflow: hidden; }
+.seg button { font: 500 0.95rem var(--font-body); padding: 11px 10px; background: transparent; color: var(--ink); border: 0; cursor: pointer; }
+.seg button + button { border-left: 1.5px solid var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+fieldset.picks { border: 0; margin: 16px 0 0; padding: 0; min-width: 0; display: grid; gap: 2px; }
+.pick { display: flex; gap: 10px; align-items: flex-start; padding: 8px 4px; border-bottom: 1px solid var(--line); cursor: pointer; font-size: 0.97rem; }
+.pick input { margin-top: 5px; accent-color: var(--accent); flex: none; width: 16px; height: 16px; }
+.finder .btn { width: 100%; margin-top: 18px; }
+.note { font-size: 0.8rem; color: var(--ink-2); margin-top: 12px; }
+
+/* Abschnitte */
+section { padding-block: clamp(40px, 7vw, 84px); border-top: 1px solid var(--line); }
+.sec-head { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 20px clamp(24px, 5vw, 64px); align-items: end; margin-bottom: clamp(26px, 4vw, 44px); }
+.sec-head p { color: var(--ink-2); max-width: 38em; }
+
+.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
+.why article { padding: 22px 0 8px; border-top: 1.5px solid var(--ink); min-width: 0; }
+.why h3 { margin-bottom: 10px; }
+.why p { color: var(--ink-2); font-size: 0.97rem; }
+
+.tabs { display: inline-grid; grid-auto-flow: column; border: 1.5px solid var(--ink); border-radius: 3px; overflow: hidden; margin-bottom: 26px; max-width: 100%; }
+.tabs button { font: 500 1rem var(--font-body); padding: 11px 22px; background: transparent; color: var(--ink); border: 0; cursor: pointer; }
+.tabs button + button { border-left: 1.5px solid var(--ink); }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
+.service { padding: 20px 0 26px; border-top: 1.5px solid var(--ink); min-width: 0; }
+.service .label { color: var(--accent); }
+.service h3 { margin: 8px 0 8px; }
+.service p { color: var(--ink-2); font-size: 0.96rem; }
+
+.deadlines { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); margin: 0; }
+.deadlines div { padding: 16px 0; border-top: 1px solid var(--line); min-width: 0; }
+.deadlines dt { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.deadlines dd { margin: 6px 0 0; color: var(--ink-2); font-size: 0.96rem; }
+
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); counter-reset: step; }
+.steps li { counter-increment: step; padding: 22px 22px 8px 0; border-top: 1.5px solid var(--ink); min-width: 0; }
+.steps li::before { content: "Schritt " counter(step); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); }
+.steps h3 { font-size: 1.2rem; margin: 8px 0; }
+.steps p { font-size: 0.95rem; color: var(--ink-2); }
+
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 64px); }
+.about { background: var(--tint); padding: clamp(20px, 3.4vw, 34px); border-radius: 6px; min-width: 0; }
+.about dl { margin: 0; display: grid; gap: 14px; }
+.about dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+.about dd { margin: 2px 0 0; }
+
+.contact { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(24px, 5vw, 64px); }
+.contact address { font-style: normal; margin-top: 22px; display: grid; gap: 14px; }
+.contact address b { display: block; font-family: var(--font-mono); font-weight: 400; font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+.field { display: grid; gap: 6px; margin-top: 16px; }
+.field label { font-size: 0.86rem; font-weight: 500; }
+.field input[type="text"], .field select, .field textarea { width: 100%; font: 400 1rem var(--font-body); color: var(--ink); background: var(--card); border: 1.5px solid var(--line); border-radius: 3px; padding: 11px 12px; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+form.req { min-width: 0; }
+form.req .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 16px; }
+form.req .row .field:first-child { margin-top: 16px; }
+.consent { display: flex; gap: 10px; align-items: flex-start; margin-top: 18px; font-size: 0.9rem; color: var(--ink-2); }
+.consent input { margin-top: 5px; accent-color: var(--accent); flex: none; width: 16px; height: 16px; }
+form.req .btn { margin-top: 20px; }
+#sent { margin-top: 14px; font-size: 0.92rem; color: var(--accent); min-height: 1.4em; }
+
+/* Rechtsblock */
+.legal-intro { color: var(--ink-2); max-width: 44em; margin-bottom: 24px; }
+details.doc { border-top: 1px solid var(--line); }
+details.doc:last-of-type { border-bottom: 1px solid var(--line); }
+details.doc summary { cursor: pointer; list-style: none; padding: 18px 0; display: flex; justify-content: space-between; gap: 16px; align-items: baseline; font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; }
+details.doc summary::-webkit-details-marker { display: none; }
+details.doc summary::after { content: "+"; font-family: var(--font-mono); color: var(--accent); flex: none; }
+details.doc[open] summary::after { content: "–"; }
+details.doc summary small { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); font-weight: 400; margin-left: auto; padding-right: 8px; text-align: right; }
+.doc-body { padding: 0 0 26px; max-width: 52em; color: var(--ink-2); font-size: 0.97rem; }
+.doc-body h4 { margin: 20px 0 6px; font-size: 1rem; color: var(--ink); font-family: var(--font-body); }
+.doc-body p + p { margin-top: 10px; }
+.doc-body ul, .doc-body ol { margin: 8px 0 0; padding-left: 1.3em; }
+.doc-body li { margin-top: 4px; }
+.doc-body dl { margin: 0; display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: 8px 18px; }
+.doc-body dt { color: var(--ink); font-weight: 500; }
+.doc-body dd { margin: 0; }
+
+.operator { margin-top: 40px; border: 1.5px dashed var(--signal); border-radius: 6px; padding: clamp(18px, 3vw, 28px); }
+.operator h2 { font-size: 1.5rem; }
+.operator .label { color: var(--signal); }
+.operator ul { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(20px, 4vw, 48px); }
+.operator li { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-top: 1px solid var(--line); font-size: 0.94rem; }
+.operator li input { margin-top: 5px; accent-color: var(--accent); flex: none; width: 16px; height: 16px; }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; font-size: 0.86rem; color: var(--ink-2); }
+footer nav { display: flex; gap: 8px 18px; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .hero, .sec-head, .split, .contact { grid-template-columns: minmax(0, 1fr); }
+  .services, .why, .deadlines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .services, .why, .deadlines, .steps, .operator ul { grid-template-columns: minmax(0, 1fr); }
+  form.req .row { grid-template-columns: minmax(0, 1fr); }
+  .doc-body dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .doc-body dd { margin-bottom: 8px; }
+  details.doc summary small { display: none; }
+  .tabs button { padding: 11px 14px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+header.top { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px 12px 18px; margin-top: 16px; margin-bottom: 8px; box-shadow: 0 10px 30px -22px rgba(28, 27, 46, 0.55); }
+.brand small { color: var(--accent); }
+nav.main { gap: 4px 6px; }
+nav.main a { padding: 8px 12px; border-bottom: 0; border-radius: 999px; }
+nav.main a:hover { background: var(--tint); }
+nav.main a.btn { padding: 10px 18px; margin-left: 6px; }
+nav.main a.btn:hover { background: var(--accent); }
+.lang { border: 0; background: var(--tint); border-radius: 999px; padding: 3px; gap: 2px; margin-left: 8px; }
+.lang button { border-radius: 999px; padding: 5px 11px; min-width: 40px; }
+.lang button + button { border-left: 0; }
+.lang button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.btn { border-radius: 999px; }
+</style>
+</head>
+<body>
+
+<div class="muster" data-t="t001">Mustervorlage für einen Versicherungsmakler in Deutschland. <span class="ph">Gelb markierte Stellen</span> sind Platzhalter und vor dem Livegang zu ersetzen. Die Rechtstexte ersetzen keine Prüfung durch eine Rechtsanwältin oder einen Rechtsanwalt.</div>
+<div class="wrap">
+<header class="top">
+<a aria-label="Muster Broker, Startseite" class="brand" data-a-aria-label="a01" href="#oben" id="oben">
+<svg aria-hidden="true" height="40" viewbox="0 0 40 40" width="40"><rect fill="var(--accent)" height="40" rx="11" width="40"></rect><path d="M20 8 L31 12.5 V20 C31 26 26.5 30.5 20 33 C13.5 30.5 9 26 9 20 V12.5 Z" fill="none" stroke="var(--accent-ink)" stroke-linejoin="round" stroke-width="2"></path><path d="M14.5 20.5 L18.5 24.5 L26 16" fill="none" stroke="var(--accent-ink)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg>
+<span><b data-t="t002">Muster Broker</b><small data-t="t003">Versicherungsmakler Deutschland</small></span>
+</a>
+<nav aria-label="Hauptnavigation" class="main" data-a-aria-label="a02">
+<a data-t="t004" href="#leistungen">Leistungen</a>
+<a data-t="t005" href="#ablauf">Ablauf</a>
+<a data-t="t006" href="#ueber-uns">Über uns</a>
+<a data-t="t007" href="#recht">Rechtliches</a>
+<a class="btn" data-t="t008" href="#kontakt">Beratung anfragen</a>
+</nav>
+</header>
+<main>
+<div class="hero">
+<div>
+<p class="label" data-t="t009">Für Privatpersonen und Unternehmen in Deutschland</p>
+<h1 data-t="t010" style="margin-top:14px">Ihr unabhängiger Versicherungs­makler. <em>Ohne Kleingedrucktes.</em></h1>
+<p class="lead" data-t="t011">Wir vergleichen Angebote deutscher Versicherer, erklären Ihnen die Unterschiede und betreuen Ihre Verträge bis zum Schadenfall. Sie zahlen für die Beratung nichts extra, die Vergütung legen wir vorab offen.</p>
+<div class="actions">
+<a class="btn" data-t="t012" href="#kontakt">Beratung anfragen</a>
+<a class="btn ghost" data-t="t013" href="#leistungen">Leistungen ansehen</a>
+</div>
+<dl class="facts">
+<div><dt data-t="t014">Status</dt><dd data-t="t015">Versicherungsmakler (§ 34d GewO)</dd></div>
+<div><dt data-t="t016">Erlaubnis und Register</dt><dd data-t="t017">IHK-Vermittlerregister <span class="ph">D-XXXX-XXXXX-XX</span></dd></div>
+<div><dt data-t="t018">Sprachen</dt><dd><span class="ph" data-t="t019">DE</span></dd></div><div><dt>Standorte</dt><dd><span class="ph">Berlin, München, Hamburg</span></dd></div>
+</dl>
+</div>
+<aside aria-labelledby="finder-h" class="finder">
+<p class="label" data-t="t020">Schnellstart</p>
+<h2 data-t="t021" id="finder-h">Was möchten Sie absichern?</h2>
+<div aria-label="Kundenart" class="seg" data-a-aria-label="a03" role="group">
+<button aria-pressed="true" data-t="t022" data-typ="privat" type="button">Privatperson</button>
+<button aria-pressed="false" data-t="t023" data-typ="firma" type="button">Unternehmen</button>
+</div>
+<fieldset class="picks" id="picks"><legend class="sr" data-t="t024">Themen auswählen</legend></fieldset>
+<button class="btn" data-t="t025" id="go" type="button">Beratung zu diesen Themen anfragen</button>
+<p class="note" data-t="t026">Unverbindlich. Bitte schreiben Sie keine Gesundheitsdaten in das Formular, die besprechen wir im Gespräch.</p>
+</aside>
+</div>
+<section aria-labelledby="why-h">
+<div class="sec-head">
+<h2 data-t="t027" id="why-h">Was ein Broker für Sie anders macht</h2>
+<p data-t="t028">Ein Versicherungsvertreter arbeitet für einen oder wenige Versicherer und verkauft deren Produkte. Wir sind Makler: Wir arbeiten in Ihrem Auftrag und vergleichen quer über den Markt.</p>
+</div>
+<div class="why">
+<article>
+<h3 data-t="t029">Marktvergleich statt Hausprodukt</h3>
+<p data-t="t030">Wir holen Angebote bei mehreren deutschen Versicherern ein und stellen Beitrag, Leistung, Selbstbeteiligung und Ausschlüsse nebeneinander.</p>
+</article>
+<article>
+<h3 data-t="t031">Vergütung auf dem Tisch</h3>
+<p data-t="t032">Wir werden in der Regel über Courtage der Versicherer bezahlt, die im Beitrag enthalten ist. Auf Wunsch rechnen wir stattdessen nach Honorar ab, etwa bei Nettotarifen. Beides erfahren Sie vor Beginn.</p>
+</article>
+<article>
+<h3 data-t="t033">Keine unaufgeforderten Anrufe</h3>
+<p data-t="t034">Wir kontaktieren Sie nur, wenn Sie sich bei uns gemeldet haben. Im Schadenfall sind wir Ihr Ansprechpartner gegenüber dem Versicherer.</p>
+</article>
+</div>
+</section>
+<section aria-labelledby="leist-h" id="leistungen">
+<div class="sec-head">
+<h2 data-t="t035" id="leist-h">Leistungen</h2>
+<p data-t="t036">Wählen Sie, ob Sie als Privatperson oder für Ihr Unternehmen anfragen. Alle Beträge verstehen sich in Euro.</p>
+</div>
+<div aria-label="Kundenart" class="tabs" data-a-aria-label="a04" role="tablist">
+<button aria-controls="panel-privat" aria-selected="true" data-t="t037" data-typ="privat" id="tab-privat" role="tab" type="button">Privatkunden</button>
+<button aria-controls="panel-firma" aria-selected="false" data-t="t038" data-typ="firma" id="tab-firma" role="tab" type="button">Firmenkunden</button>
+</div>
+<div aria-labelledby="tab-privat" class="services" id="panel-privat" role="tabpanel">
+<article class="service"><p class="label" data-t="t039">Gesundheit</p><h3 data-t="t040">Krankenversicherung und Zusatzschutz</h3><p data-t="t041">Private Krankenversicherung, Zusatzversicherungen (Zahn, Brille, Krankenhaus) und Krankentagegeld im Vergleich. Zur gesetzlichen Krankenversicherung zeigen wir Ihnen die Optionen.</p></article>
+<article class="service"><p class="label" data-t="t042">Haushalt</p><h3 data-t="t043">Hausrat und Privathaftpflicht</h3><p data-t="t044">Deckung für Einbruch, Feuer, Leitungswasser und Schäden, die Sie anderen zufügen. Wir prüfen Versicherungssumme und Unterversicherung.</p></article>
+<article class="service"><p class="label" data-t="t045">Mobilität</p><h3 data-t="t046">Kfz-Versicherung</h3><p data-t="t047">Pflicht-Haftpflicht, Teil- und Vollkasko, Schadenfreiheitsrabatt. Wir vergleichen Beiträge und Selbstbeteiligungen der gängigen Anbieter.</p></article>
+<article class="service"><p class="label" data-t="t048">Vorsorge</p><h3 data-t="t049">Altersvorsorge und Berufsunfähigkeit</h3><p data-t="t050">Berufsunfähigkeit, Risikolebensversicherung sowie private und betriebliche Altersvorsorge. Wir zeigen Angebote im Vergleich, ohne Abschlussdruck.</p></article>
+<article class="service"><p class="label" data-t="t051">Eigenheim</p><h3 data-t="t052">Wohngebäude und Eigenheim</h3><p data-t="t053">Wohngebäudeversicherung, Elementarschäden, Solaranlagen und Erweiterungen. Wir klären, welche Deckung für Ihr Haus sinnvoll ist.</p></article>
+<article class="service"><p class="label" data-t="t054">Absichern</p><h3 data-t="t055">Rechtsschutz und Reise</h3><p data-t="t056">Privat-, Verkehrs- und Mietrechtsschutz sowie Reiseversicherung. Kurz erklärt, welche Deckung zu Ihrem Alltag passt.</p></article>
+</div>
+<div aria-labelledby="tab-firma" class="services" hidden="" id="panel-firma" role="tabpanel">
+<article class="service"><p class="label" data-t="t057">Betrieb</p><h3 data-t="t058">Betriebshaftpflicht</h3><p data-t="t059">Deckt Personen-, Sach- und Vermögensschäden, die Ihr Betrieb Dritten verursacht. Branchenspezifisch gerechnet, nicht nach Schema.</p></article>
+<article class="service"><p class="label" data-t="t060">Sachwerte</p><h3 data-t="t061">Inhalts- und Betriebsunterbrechung</h3><p data-t="t062">Inventar, Maschinen, Waren und der Ertragsausfall nach einem Schaden. Wir prüfen Versicherungssummen und Karenzzeiten.</p></article>
+<article class="service"><p class="label" data-t="t063">Personal</p><h3 data-t="t064">Unfall und Krankentagegeld</h3><p data-t="t065">Die gesetzliche Unfallversicherung (Berufsgenossenschaft) ist Pflicht, wir ergänzen sie mit privater Gruppenunfall-Deckung und Krankentagegeld für Ihre Mitarbeitenden. Für Inhaber klären wir freiwillige Lösungen.</p></article>
+<article class="service"><p class="label" data-t="t066">Vorsorge</p><h3 data-t="t067">Betriebliche Altersversorgung (bAV)</h3><p data-t="t068">Direktversicherung, Pensionskasse und Unterstützungskasse im Vergleich, mit Beratung zu Entgeltumwandlung und Arbeitgeberzuschuss.</p></article>
+<article class="service"><p class="label" data-t="t069">Fahrzeuge</p><h3 data-t="t070">Fuhrpark und Transport</h3><p data-t="t071">Firmenfahrzeuge, Warentransport und Werkverkehr in einem abgestimmten Konzept statt vieler Einzelpolicen.</p></article>
+<article class="service"><p class="label" data-t="t072">Risiken</p><h3 data-t="t073">Cyber, D&amp;O und Rechtsschutz</h3><p data-t="t074">Datenverlust, Erpressung durch Schadsoftware, Haftung der Geschäftsleitung und Firmenrechtsschutz, mit klarer Empfehlung, was für Ihre Größe sinnvoll ist.</p></article>
+</div>
+</section>
+<section aria-labelledby="fr-h">
+<div class="sec-head">
+<h2 data-t="t075" id="fr-h">Fristen, die wir für Sie im Blick behalten</h2>
+<p data-t="t076">Wer zu spät kündigt, zahlt ein weiteres Jahr. Typische Beispiele, die genauen Fristen stehen in Ihrer Police. <span class="ph">Vor Veröffentlichung fachlich prüfen.</span></p>
+</div>
+<dl class="deadlines">
+<div><dt data-t="t077">Kfz-Versicherung</dt><dd data-t="t078">Wechsel zum Jahresende: Die Kündigung muss in der Regel bis zum 30. November beim Versicherer eingehen. Die genauen Fristen stehen in Ihrer Police.</dd></div>
+<div><dt data-t="t079">Mehrjahresverträge</dt><dd data-t="t080">Sach- und Haftpflichtverträge laufen oft mehrere Jahre. Bei Laufzeiten über drei Jahre können Verbraucher nach drei Jahren kündigen (§ 11 Abs. 4 VVG). Gekündigt wird meist drei Monate vor Ablauf.</dd></div>
+<div><dt data-t="t081">Beitragserhöhung</dt><dd data-t="t082">Bei einer Erhöhung ohne Leistungsänderung gibt es ein Sonderkündigungsrecht, meist mit einer Frist von einem Monat ab Zugang der Mitteilung. Deshalb melden wir uns, sobald Ihre Post eintrifft.</dd></div>
+</dl>
+</section>
+<section aria-labelledby="abl-h" id="ablauf">
+<div class="sec-head">
+<h2 data-t="t083" id="abl-h">So läuft die Beratung ab</h2>
+<p data-t="t084">Vier Schritte, in dieser Reihenfolge. Zwischen den Schritten entscheiden Sie, ob es weitergeht.</p>
+</div>
+<ol class="steps">
+<li><h3 data-t="t085">Anfrage und Erstinformation</h3><p data-t="t086">Sie schildern Ihr Anliegen. Vor der Beratung erhalten Sie unsere Angaben zu Status, Vergütung und Aufsicht.</p></li>
+<li><h3 data-t="t087">Maklervertrag</h3><p data-t="t088">Mit Ihrer Unterschrift unter den Maklervertrag und die Maklervollmacht dürfen wir Angebote einholen und Ihre bestehenden Verträge einsehen.</p></li>
+<li><h3 data-t="t089">Vergleich und Empfehlung</h3><p data-t="t090">Sie erhalten eine Gegenüberstellung mit unserer begründeten Empfehlung. Den Entscheid treffen Sie.</p></li>
+<li><h3 data-t="t091">Abschluss und Betreuung</h3><p data-t="t092">Wir begleiten den Abschluss, helfen bei Schadenmeldungen und prüfen Ihre Verträge regelmäßig. Es gilt das gesetzliche Widerrufsrecht von 14 Tagen, bei Lebensversicherungen von 30 Tagen (§ 8 VVG).</p></li>
+</ol>
+</section>
+<section aria-labelledby="ueber-h" id="ueber-uns">
+<div class="split">
+<div>
+<p class="label" data-t="t093">Über uns</p>
+<h2 data-t="t094" id="ueber-h" style="margin-top:10px">Beratung von Menschen, die Entscheide treffen müssen</h2>
+<p data-t="t095" style="color:var(--ink-2);margin-top:18px;max-width:34em"><span class="ph">[Firmenname]</span> berät seit <span class="ph">[Jahr]</span> Privatpersonen und Unternehmen in <span class="ph">[Region/Bundesland]</span>. Wir sind ein kleines Team mit geprüften Fachqualifikationen im Versicherungsbereich (zum Beispiel Versicherungsfachmann/-frau IHK) und kennen die Produkte der großen deutschen Versicherer aus der Praxis.</p>
+<p style="color:var(--ink-2);margin-top:12px;max-width:34em"><span class="ph" data-t="t096">[Kurzer Absatz zur Geschichte, zu den Werten und zur Zusammenarbeit mit Treuhändern und Banken.]</span></p>
+</div>
+<div class="about">
+<p class="label" data-t="t097" style="margin-bottom:14px">Erlaubnis und Registrierung</p>
+<dl>
+<div><dt data-t="t098">Vermittlerregister</dt><dd data-t="t099">Eingetragen im Vermittlerregister der IHK (www.vermittlerregister.info) unter Nr. <span class="ph">D-XXXX-XXXXX-XX</span>, Erlaubnis nach § 34d Abs. 1 GewO</dd></div>
+<div><dt data-t="t100">Status</dt><dd data-t="t101">Versicherungsmakler (Broker)</dd></div>
+<div><dt data-t="t102">Berufshaftpflicht</dt><dd><span class="ph" data-t="t103">[Versicherer, Policen-Nr.]</span></dd></div>
+<div><dt data-t="t104">Schlichtungsstelle</dt><dd data-t="t105">Teilnahme an <span class="ph">[Versicherungsombudsmann e. V. oder andere Stelle]</span></dd></div>
+<div><dt data-t="t106">Branchenverband</dt><dd><span class="ph" data-t="t107">[Falls Mitglied, Verband nennen]</span></dd></div>
+</dl>
+</div>
+</div>
+</section>
+<section aria-labelledby="kont-h" id="kontakt">
+<div class="contact">
+<div>
+<p class="label" data-t="t108">Kontakt</p>
+<h2 data-t="t109" id="kont-h" style="margin-top:10px">Beratung anfragen</h2>
+<p data-t="t110" style="color:var(--ink-2);margin-top:16px">Wir melden uns innerhalb eines Arbeitstags, per E-Mail oder Telefon, ganz wie Sie es wünschen.</p>
+<address>
+<div><b data-t="t111">Büro</b><span class="ph" data-t="t112">[Straße Nr.], [PLZ Ort]</span></div>
+<div><b data-t="t113">Telefon</b><span class="ph" data-t="t114">+49 000 0000000</span></div>
+<div><b data-t="t115">E-Mail</b><span class="ph" data-t="t116">kontakt@muster-broker.de</span></div>
+<div><b data-t="t117">Erreichbar</b><span class="ph" data-t="t118">Mo bis Fr 08:00 bis 17:30 Uhr</span></div>
+</address>
+</div>
+<form class="req" id="req" novalidate="">
+<div class="row">
+<div class="field"><label data-t="t119" for="f-typ">Ich frage an als</label>
+<select id="f-typ"><option data-t="t120" value="privat">Privatperson</option><option data-t="t121" value="firma">Unternehmen</option></select>
+</div>
+<div class="field"><label data-t="t122" for="f-name">Name oder Firma</label><input autocomplete="name" id="f-name" required="" type="text"/></div>
+</div>
+<div class="field"><label data-t="t123" for="f-kontakt">Telefon oder E-Mail</label><input autocomplete="email" id="f-kontakt" required="" type="text"/></div>
+<div class="field"><label data-t="t124" for="f-msg">Ihr Anliegen</label><textarea data-a-placeholder="a05" id="f-msg" placeholder="Worum geht es? Bitte keine Gesundheitsdaten angeben." rows="5"></textarea></div>
+<label class="consent" for="f-consent">
+<input id="f-consent" required="" type="checkbox"/>
+<span data-t="t125">Ich habe die <a data-open="datenschutz" href="#datenschutz">Datenschutzerklärung</a> und die <a data-open="erstinformation" href="#erstinformation">Erstinformation</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Beantwortung der Anfrage einverstanden.</span>
+</label>
+<button class="btn" data-t="t126" type="submit">Anfrage senden</button>
+<p id="sent" role="status"></p>
+</form>
+</div>
+</section>
+<section aria-labelledby="recht-h" id="recht">
+<div class="sec-head">
+<h2 data-t="t127" id="recht-h">Rechtliche Angaben</h2>
+<p data-t="t128">Pflichtangaben nach deutschem Recht. Klicken Sie auf einen Titel, um den Text zu öffnen.</p>
+</div>
+<p class="legal-intro" data-t="t129"><strong style="color:var(--ink)">Hinweis zur Vorlage:</strong> Die folgenden Texte sind ein Entwurf nach dem Stand des deutschen Rechts, wie es üblicherweise für Versicherungsmakler gilt. Sie müssen an das konkrete Unternehmen angepasst und vor Veröffentlichung von einer in Deutschland zugelassenen Rechtsanwältin oder einem Rechtsanwalt geprüft werden.</p>
+<details class="doc" id="impressum">
+<summary data-t="t130">Impressum <small>§ 5 DDG</small></summary>
+<div class="doc-body">
+<dl>
+<dt data-t="t131">Firma</dt><dd><span class="ph" data-t="t132"><span class="ph">[Firmenname] [GmbH / UG / e. K. / Einzelunternehmen]</span></span></dd>
+<dt data-t="t133">Sitz und Anschrift</dt><dd><span class="ph" data-t="t134">[Straße Nr.], [PLZ Ort], Deutschland</span></dd>
+<dt data-t="t135">Rechtsform</dt><dd><span class="ph" data-t="t136">GmbH / UG (haftungsbeschränkt) / AG / e. K. / Einzelunternehmen</span></dd>
+<dt data-t="t137">Handelsregister</dt><dd data-t="t138"><span class="ph">[Amtsgericht, HRB-Nummer]</span> (entfällt bei nicht eingetragenen Einzelunternehmen)</dd>
+<dt data-t="t139">USt-IdNr.</dt><dd data-t="t140"><span class="ph">DE000000000</span> (nur falls vorhanden)</dd>
+<dt data-t="t141">Vertretung</dt><dd><span class="ph" data-t="t142">[Name], Geschäftsführer/in oder Inhaber/in</span></dd>
+<dt data-t="t143">Kontakt</dt><dd data-t="t144">Telefon <span class="ph">+49 000 0000000</span>, E-Mail <span class="ph">kontakt@muster-broker.de</span></dd>
+<dt data-t="t145">Erlaubnis und Registrierung</dt><dd data-t="t146">Erlaubnis nach § 34d Abs. 1 GewO, Vermittlerregister Nr. <span class="ph">D-XXXX-XXXXX-XX</span>, eingetragen über die IHK <span class="ph">[Ort]</span>, Register: www.vermittlerregister.info</dd>
+<dt data-t="t147">Berufshaftpflicht</dt><dd><span class="ph" data-t="t148">[Versicherer, Policen-Nr.]</span></dd>
+<dt data-t="t149">Zuständige Erlaubnisbehörde</dt><dd><span class="ph" data-t="t150">[IHK Ort, Adresse]</span></dd>
+</dl>
+<h4 data-t="t151">Haftungsausschluss</h4>
+<p data-t="t152">Die Inhalte dieser Webseite dienen der allgemeinen Information und sind kein Angebot und keine individuelle Beratung. Wir erstellen sie mit Sorgfalt, übernehmen aber keine Gewähr für Richtigkeit, Vollständigkeit und Aktualität. Für Inhalte verlinkter Seiten Dritter sind deren Betreiber verantwortlich.</p>
+<h4 data-t="t153">Urheberrecht</h4>
+<p data-t="t154">Texte, Bilder und Gestaltung dieser Webseite sind urheberrechtlich geschützt. Eine Verwendung außerhalb des gesetzlich Erlaubten bedarf unserer schriftlichen Zustimmung.</p>
+</div>
+</details>
+<details class="doc" id="erstinformation">
+<summary data-t="t155">Erstinformation für Kundinnen und Kunden <small>§ 15 VersVermV</small></summary>
+<div class="doc-body">
+<p data-t="t156">Als Versicherungsmakler informieren wir Sie bei der ersten Geschäftsbeziehung, vor Abgabe Ihrer Vertragserklärung, klar und verständlich in Textform über folgende Punkte. <span class="ph">[Normverweise anwaltlich prüfen]</span></p>
+<h4 data-t="t157">1. Identität</h4>
+<p><span class="ph" data-t="t158">[Firmenname] [Rechtsform], [Anschrift], Handelsregister [Amtsgericht, HRB]</span></p>
+<h4 data-t="t159">2. Status</h4>
+<p data-t="t160">Wir sind Versicherungsmakler im Sinne von § 59 Abs. 3 VVG und handeln im Interesse und Auftrag unserer Kundschaft. Wir sind nicht an einzelne Versicherer gebunden und vermitteln Verträge verschiedener Versicherer.</p>
+<h4 data-t="t161">3. Beteiligungen und Marktuntersuchung</h4>
+<p data-t="t162">Wir halten keine direkten oder indirekten Beteiligungen von mehr als 10 % an den Stimmrechten oder am Kapital eines Versicherungsunternehmens, und kein Versicherer hält eine solche Beteiligung an uns. <span class="ph">[Zutreffendes bestätigen]</span> Unsere Empfehlung beruht auf einer Untersuchung des für Ihren Bedarf relevanten Marktes. <span class="ph">[Umfang der Marktuntersuchung beschreiben]</span></p>
+<h4 data-t="t163">4. Vergütung</h4>
+<p data-t="t164">Wir erhalten für die Vermittlung in der Regel eine Courtage vom Versicherer, die im Beitrag einkalkuliert ist. Alternativ vereinbaren wir mit Ihnen ein Honorar. Art und Höhe der Vergütung nennen wir Ihnen vor Abschluss des Maklervertrags, in Euro oder in Prozent des Beitrags. <span class="ph">[Vergütungsmodell des Kunden einsetzen]</span></p>
+<h4 data-t="t165">5. Erlaubnis und Registrierung</h4>
+<p data-t="t166">Wir verfügen über die Erlaubnis nach § 34d Abs. 1 GewO und sind im Vermittlerregister unter der Nr. <span class="ph">D-XXXX-XXXXX-XX</span> eingetragen. Das Register ist öffentlich einsehbar (www.vermittlerregister.info).</p>
+<h4 data-t="t167">6. Berufshaftpflicht</h4>
+<p data-t="t168">Wir verfügen über eine Berufshaftpflichtversicherung (Vermögensschaden-Haftpflicht) gemäß den gesetzlichen Vorgaben. <span class="ph">[Versicherer angeben]</span></p>
+<h4 data-t="t169">7. Beschwerden und Streitbeilegung</h4>
+<p data-t="t170">Bei Meinungsverschiedenheiten wenden Sie sich zuerst an uns. Außerdem können Sie sich an den Versicherungsombudsmann e. V. wenden (§ 214 VVG). Das Verfahren ist für Verbraucher in der Regel kostenlos. <span class="ph">[Zuständige Schlichtungsstelle prüfen]</span></p>
+</div>
+</details>
+<details class="doc" id="datenschutz">
+<summary data-t="t171">Datenschutzerklärung <small>DSGVO, BDSG, TDDDG</small></summary>
+<div class="doc-body">
+<h4 data-t="t172">1. Verantwortlicher</h4>
+<p data-t="t173"><span class="ph">[Firmenname] [Rechtsform], [Anschrift], E-Mail [datenschutz@muster-broker.de]</span>. Wir verarbeiten personenbezogene Daten nach der Datenschutz-Grundverordnung (DSGVO) und dem Bundesdatenschutzgesetz (BDSG). <span class="ph">[Datenschutzbeauftragte/n nennen, falls bestellt]</span></p>
+<h4 data-t="t174">2. Welche Daten wir bearbeiten</h4>
+<ul>
+<li data-t="t175">Kontaktdaten wie Name, Anschrift, Telefon, E-Mail</li>
+<li data-t="t176">Angaben zu Ihren Versicherungsverträgen, Risiken und Schäden</li>
+<li data-t="t177">Besondere Kategorien personenbezogener Daten wie Gesundheitsdaten (Art. 9 DSGVO), nur soweit für die Beratung oder Vermittlung nötig und mit Ihrer ausdrücklichen Einwilligung</li>
+<li data-t="t178">Technische Daten beim Besuch der Webseite, zum Beispiel IP-Adresse und Zeitpunkt des Zugriffs</li>
+</ul>
+<h4 data-t="t179">3. Zwecke und Rechtsgrundlagen</h4>
+<p data-t="t180">Beantwortung von Anfragen und Vertragsanbahnung, Beratung, Vermittlung und Vertragsverwaltung (Art. 6 Abs. 1 lit. b DSGVO), Erfüllung gesetzlicher Pflichten wie Dokumentation und Aufbewahrung (lit. c), berechtigte Interessen wie Betrieb und Sicherheit der Webseite (lit. f) sowie Ihre Einwilligung (lit. a).</p>
+<h4 data-t="t181">4. Empfänger</h4>
+<p data-t="t182">Wir geben Daten nur weiter, soweit es für Ihren Auftrag nötig ist, insbesondere an Versicherer, Rückversicherer und Schadenregulierer sowie an IT- und Hosting-Dienstleister, die als Auftragsverarbeiter nach Art. 28 DSGVO in unserem Auftrag handeln. Alle Empfänger sind zur Vertraulichkeit verpflichtet.</p>
+<h4 data-t="t183">5. Übermittlung in Drittländer</h4>
+<p data-t="t184">Wir verarbeiten Daten grundsätzlich in Deutschland oder der EU. Falls ein Dienstleister Daten in ein Drittland übermittelt, sichern wir dies durch geeignete Garantien nach Art. 44 ff. DSGVO, zum Beispiel Standardvertragsklauseln. <span class="ph">[Hosting-Standort und Dienstleister ergänzen]</span></p>
+<h4 data-t="t185">6. Aufbewahrung</h4>
+<p data-t="t186">Wir bewahren Daten so lange auf, wie es der Zweck erfordert oder gesetzliche Aufbewahrungsfristen es verlangen, etwa sechs Jahre für Handelsbriefe und acht Jahre für Buchungsbelege (§ 257 HGB, § 147 AO). <span class="ph">[Fristen prüfen, auch Dokumentationspflichten nach VVG]</span></p>
+<h4 data-t="t187">7. Ihre Rechte</h4>
+<p data-t="t188">Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Schreiben Sie dazu an die oben genannte Adresse, wir können einen Identitätsnachweis verlangen.</p>
+<h4 data-t="t189">8. Beschwerderecht</h4>
+<p data-t="t190">Sie können sich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel bei der Landesdatenschutzbehörde am Sitz unseres Unternehmens. <span class="ph">[Zuständige Behörde nennen]</span></p>
+<h4 data-t="t191">9. Datensicherheit</h4>
+<p data-t="t192">Wir schützen Ihre Daten durch angemessene technische und organisatorische Massnahmen, zum Beispiel verschlüsselte Übertragung und Zugriffsbeschränkungen.</p>
+<h4 data-t="t193">10. Änderungen</h4>
+<p data-t="t194">Wir können diese Erklärung anpassen. Es gilt die jeweils auf der Webseite veröffentlichte Fassung. Stand: <span class="ph">[Datum]</span></p>
+</div>
+</details>
+<details class="doc" id="agb">
+<summary data-t="t195">Allgemeine Geschäftsbedingungen und Maklervertrag <small>BGB, VVG</small></summary>
+<div class="doc-body">
+<h4 data-t="t196">1. Geltungsbereich</h4>
+<p data-t="t197">Diese Bedingungen gelten für die Beratung und Vermittlung von Versicherungen durch <span class="ph">[Firmenname] [Rechtsform]</span> (der Makler) gegenüber Privatpersonen und Unternehmen mit Sitz oder Wohnsitz in Deutschland.</p>
+<h4 data-t="t198">2. Maklervertrag und Vollmacht</h4>
+<p data-t="t199">Der Maklervertrag kommt mit der Annahme in Textform zustande. Er berechtigt den Makler, im Namen der Kundin oder des Kunden Angebote einzuholen, Anträge zu stellen und mit Versicherern zu verkehren (Maklervollmacht). Es gelten die Vorschriften über Dienst- und Geschäftsbesorgungsverträge (§§ 611 ff., 675 BGB) sowie §§ 59 ff. VVG.</p>
+<h4 data-t="t200">3. Pflichten der Kundschaft</h4>
+<p data-t="t201">Die Kundschaft gibt alle für die Risikobeurteilung erheblichen Tatsachen vollständig und wahrheitsgemäß an. Eine falsche oder unvollständige Angabe kann nach dem Versicherungsvertragsgesetz (vorvertragliche Anzeigepflicht, §§ 19 ff. VVG) zum Verlust des Versicherungsschutzes führen. Änderungen wie Umzug, neue Fahrzeuge oder Betriebsanpassungen sind uns unverzüglich zu melden.</p>
+<h4 data-t="t202">4. Pflichten des Maklers</h4>
+<p data-t="t203">Der Makler berät nach bestem Wissen und Gewissen, vergleicht die ihm zugänglichen Angebote und empfiehlt jene, die dem ermittelten Bedarf am besten entsprechen (§ 60 VVG). Er dokumentiert Wünsche, Bedürfnisse, Beratung und die Gründe seiner Empfehlung und stellt sie vor Vertragsschluss in Textform zur Verfügung (§§ 61, 62 VVG). Er weist auf Ausschlüsse und Fristen hin.</p>
+<h4 data-t="t204">5. Vergütung</h4>
+<p data-t="t205">Die Vergütung erfolgt über Courtage des Versicherers oder über ein vorher schriftlich vereinbartes Honorar. Einzelheiten stehen in der Erstinformation und im Mandat. <span class="ph">[Konditionen und Stundensatz ergänzen]</span></p>
+<h4 data-t="t206">6. Haftung</h4>
+<p data-t="t207">Der Makler haftet für Schäden aus schuldhafter Verletzung seiner Pflichten (§ 63 VVG). Eine Haftungsbeschränkung ist nur im gesetzlich zulässigen Rahmen möglich. Für Entscheidungen und Leistungen der Versicherer haftet der Makler nicht. <span class="ph">[Haftungsregelung anwaltlich prüfen]</span></p>
+<h4 data-t="t208">7. Dauer und Beendigung</h4>
+<p data-t="t209">Der Maklervertrag gilt unbefristet und kann von beiden Seiten gekündigt werden. <span class="ph">[Kündigungsfrist festlegen]</span> Bereits entstandene Vergütungsansprüche bleiben bestehen.</p>
+<h4 data-t="t210">8. Anwendbares Recht und Gerichtsstand</h4>
+<p data-t="t211">Es gilt deutsches Recht. Gerichtsstand ist <span class="ph">[Ort des Sitzes]</span>, soweit nicht zwingende Gerichtsstände zum Schutz von Verbrauchern gelten (§ 215 VVG).</p>
+</div>
+</details>
+<details class="doc" id="cookies">
+<summary data-t="t212">Cookies und Webanalyse <small>§ 25 TDDDG</small></summary>
+<div class="doc-body">
+<p data-t="t213">Diese Webseite verwendet <span class="ph">[nur technisch notwendige Cookies / zusätzlich Analyse-Cookies von Anbieter X]</span>. Notwendige Cookies stellen den Betrieb der Seite sicher und lassen sich nicht abschalten. Alle weiteren Cookies setzen wir nur nach Ihrer Einwilligung über das Cookie-Banner. <span class="ph">[Falls Analyse oder Marketing eingesetzt wird: Zweck, Anbieter, Speicherdauer und Widerrufsmöglichkeit angeben.]</span></p>
+<p data-t="t214">Sie können Cookies in Ihrem Browser jederzeit blockieren oder löschen. Dann funktionieren einzelne Teile der Seite möglicherweise nicht mehr.</p>
+</div>
+</details>
+<details class="doc" id="beschwerde">
+<summary data-t="t215">Beschwerden und Schlichtung <small>VSBG</small></summary>
+<div class="doc-body">
+<p data-t="t216">Sind Sie mit unserer Beratung nicht zufrieden, schreiben Sie uns an <span class="ph">beschwerde@muster-broker.de</span>. Wir bestätigen den Eingang innert fünf Arbeitstagen und antworten schriftlich.</p>
+<p data-t="t217">Kommen wir nicht zu einer Lösung, können Sie sich an die Schlichtungsstelle <span class="ph">[Versicherungsombudsmann e. V. oder andere Stelle, Adresse, Webseite]</span> wenden. Das Verfahren ist für Verbraucher in der Regel kostenlos. Der Rechtsweg bleibt Ihnen offen. <span class="ph">[Angabe zur Teilnahmebereitschaft nach § 36 VSBG ergänzen]</span></p>
+</div>
+</details>
+<div class="operator">
+<p class="label" data-t="t218">Nur für den Betreiber, vor Veröffentlichung entfernen</p>
+<h2 data-t="t219" style="margin-top:8px">Checkliste für den Livegang</h2>
+<ul>
+<li><input id="c1" type="checkbox"/><label data-t="t220" for="c1">Erlaubnis nach § 34d GewO vorhanden und Registernummer eingesetzt</label></li>
+<li><input id="c2" type="checkbox"/><label data-t="t221" for="c2">Berufshaftpflichtversicherung abgeschlossen und genannt</label></li>
+<li><input id="c3" type="checkbox"/><label data-t="t222" for="c3">Schlichtungsstelle gewählt und Teilnahmebereitschaft (VSBG) geklärt</label></li>
+<li><input id="c4" type="checkbox"/><label data-t="t223" for="c4">Firmendaten, Handelsregister und USt-IdNr. im Impressum geprüft</label></li>
+<li><input id="c5" type="checkbox"/><label data-t="t224" for="c5">Vergütungsmodell (Courtage oder Honorar) in Erstinformation und Maklervertrag beschrieben</label></li>
+<li><input id="c6" type="checkbox"/><label data-t="t225" for="c6">Datenschutzerklärung an echte Dienstleister, Hosting und Tools angepasst</label></li>
+<li><input id="c7" type="checkbox"/><label data-t="t226" for="c7">Cookie-Banner nur so weit nötig, Einwilligung vor dem Setzen von Analyse-Cookies</label></li>
+<li><input id="c8" type="checkbox"/><label data-t="t227" for="c8">Kontaktformular an echten Dienst angebunden, Daten in Deutschland oder der EU gehostet, Auftragsverarbeitungsvertrag abgeschlossen</label></li>
+<li><input id="c9" type="checkbox"/><label data-t="t228" for="c9">Alle Rechtstexte durch eine in Deutschland zugelassene Rechtsanwältin oder einen Rechtsanwalt geprüft</label></li>
+<li><input id="c10" type="checkbox"/><label data-t="t229" for="c10">Muster-Hinweis und gelbe Markierungen entfernt</label></li>
+<li><input id="c11" type="checkbox"/><label data-t="t230" for="c11">Bei Kundschaft in der Schweiz stattdessen die separate Schweizer Vorlage (DE/FR/IT) verwenden</label></li>
+<li><input id="c12" type="checkbox"/><label data-t="t231" for="c12">Werbeaussagen und Vergleiche auf Lauterkeit (UWG) geprüft</label></li>
+</ul>
+</div>
+</section>
+</main>
+<footer>
+<span data-t="t232">© 2026 <span class="ph">[Firmenname] [Rechtsform]</span>, Deutschland</span>
+<nav aria-label="Rechtliches" data-a-aria-label="a06">
+<a data-open="impressum" data-t="t233" href="#impressum">Impressum</a>
+<a data-open="erstinformation" data-t="t234" href="#erstinformation">Erstinformation</a>
+<a data-open="datenschutz" data-t="t235" href="#datenschutz">Datenschutz</a>
+<a data-open="agb" data-t="t236" href="#agb">AGB</a>
+<a data-open="cookies" data-t="t237" href="#cookies">Cookies</a>
+<a data-open="beschwerde" data-t="t238" href="#beschwerde">Beschwerden</a>
+</nav>
+</footer>
+</div>
+<script>(function () {
+  var T = {};
+  var A = {};
+  var UI = {
+    de: { pick: "Ich interessiere mich für: ", err1: "Bitte Name und Telefon oder E-Mail angeben.", err2: "Bitte bestätigen Sie die Kenntnisnahme der Datenschutzerklärung.", ok: "Mustervorlage: Die Anfrage wird nicht übertragen. Hier binden Sie Ihren Formular-Dienst ein." },
+    fr: { pick: "Je m'intéresse à : ", err1: "Merci d'indiquer votre nom et un numéro de téléphone ou une adresse e-mail.", err2: "Merci de confirmer que vous avez pris connaissance de la déclaration de protection des données.", ok: "Modèle : la demande n'est pas transmise. Intégrez ici votre service de formulaire." },
+    it: { pick: "Mi interesso a: ", err1: "Inserisca nome e telefono o e-mail.", err2: "La preghiamo di confermare di aver letto l'informativa sulla protezione dei dati.", ok: "Modello: la richiesta non viene trasmessa. Qui va integrato il Suo servizio di moduli." }
+  };
+  var lang = "de", current = "privat";
+  var tabs = document.querySelectorAll('.tabs [role="tab"]');
+  var segs = document.querySelectorAll(".seg button");
+  var picks = document.getElementById("picks");
+  var typSel = document.getElementById("f-typ");
+  var msg = document.getElementById("f-msg");
+  var sent = document.getElementById("sent");
+  var langBtns = document.querySelectorAll(".lang button");
+
+  var DE = {}, textEls = document.querySelectorAll("[data-t]");
+  Array.prototype.forEach.call(textEls, function (el) { DE[el.getAttribute("data-t")] = el.innerHTML; });
+  var attrEls = [];
+  ["aria-label", "placeholder"].forEach(function (a) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-a-" + a + "]"), function (el) {
+      attrEls.push({ el: el, attr: a, key: el.getAttribute("data-a-" + a), de: el.getAttribute(a) });
+    });
+  });
+
+  function renderPicks(keep) {
+    picks.innerHTML = "";
+    var titles = document.querySelectorAll("#panel-" + current + " .service h3");
+    Array.prototype.forEach.call(titles, function (h, i) {
+      var id = "pick-" + current + "-" + i;
+      var label = document.createElement("label");
+      label.className = "pick";
+      label.setAttribute("for", id);
+      var input = document.createElement("input");
+      input.type = "checkbox"; input.id = id; input.value = h.textContent;
+      if (keep && keep[i]) { input.checked = true; }
+      var span = document.createElement("span");
+      span.textContent = h.textContent;
+      label.appendChild(input); label.appendChild(span);
+      picks.appendChild(label);
+    });
+  }
+
+  function setTyp(t) {
+    current = t;
+    Array.prototype.forEach.call(tabs, function (b) { b.setAttribute("aria-selected", b.dataset.typ === t ? "true" : "false"); });
+    Array.prototype.forEach.call(segs, function (b) { b.setAttribute("aria-pressed", b.dataset.typ === t ? "true" : "false"); });
+    document.getElementById("panel-privat").hidden = t !== "privat";
+    document.getElementById("panel-firma").hidden = t !== "firma";
+    typSel.value = t;
+    renderPicks();
+  }
+  Array.prototype.forEach.call(tabs, function (b) { b.addEventListener("click", function () { setTyp(b.dataset.typ); }); });
+  Array.prototype.forEach.call(segs, function (b) { b.addEventListener("click", function () { setTyp(b.dataset.typ); }); });
+  typSel.addEventListener("change", function () { setTyp(typSel.value); });
+
+  function setLang(l, store) {
+    var keep = Array.prototype.map.call(picks.querySelectorAll("input"), function (i) { return i.checked; });
+    lang = l;
+    Array.prototype.forEach.call(textEls, function (el) {
+      var k = el.getAttribute("data-t");
+      var v = l === "de" ? DE[k] : (T[l] && T[l][k]);
+      el.innerHTML = v != null ? v : DE[k];
+    });
+    attrEls.forEach(function (o) {
+      var v = l === "de" ? o.de : (A[l] && A[l][o.key]);
+      o.el.setAttribute(o.attr, v != null ? v : o.de);
+    });
+    document.documentElement.lang = l;
+    Array.prototype.forEach.call(langBtns, function (b) { b.setAttribute("aria-pressed", b.dataset.lang === l ? "true" : "false"); });
+    sent.textContent = "";
+    renderPicks(keep);
+    if (store) { try { localStorage.setItem("lang", l); } catch (e) {} }
+  }
+  Array.prototype.forEach.call(langBtns, function (b) { b.addEventListener("click", function () { setLang(b.dataset.lang, true); }); });
+
+  setTyp("privat");
+  var start = "de";
+  try {
+    var s = localStorage.getItem("lang");
+    if (s === "de" || s === "fr" || s === "it") { start = s; }
+    else {
+      var nl = (navigator.language || "").slice(0, 2).toLowerCase();
+      if (nl === "fr" || nl === "it") { start = nl; }
+    }
+  } catch (e) {}
+  
+
+  document.getElementById("go").addEventListener("click", function () {
+    var chosen = Array.prototype.map.call(picks.querySelectorAll("input:checked"), function (i) { return i.value; });
+    typSel.value = current;
+    if (chosen.length) { msg.value = UI[lang].pick + chosen.join(", ") + "."; }
+    var target = document.getElementById("kontakt");
+    if (target && target.scrollIntoView) { target.scrollIntoView(); }
+    document.getElementById("f-name").focus({ preventScroll: true });
+  });
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("[data-open]") : null;
+    if (!a) { return; }
+    var d = document.getElementById(a.getAttribute("data-open"));
+    if (!d) { return; }
+    e.preventDefault();
+    d.open = true;
+    if (d.scrollIntoView) { d.scrollIntoView(); }
+  });
+
+  document.getElementById("req").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var ok = document.getElementById("f-name").value.trim() && document.getElementById("f-kontakt").value.trim();
+    if (!ok) { sent.textContent = UI[lang].err1; return; }
+    if (!document.getElementById("f-consent").checked) { sent.textContent = UI[lang].err2; return; }
+    sent.textContent = UI[lang].ok;
+  });
+})();
+</script>
+
+</body>
+</html>

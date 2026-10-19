@@ -333,6 +333,17 @@ model PlatformAccount {
   tokenExpiresAt    DateTime?
   externalAccountId String?
 
+  // Separate Verbindung nur für den Posteingang (Kommentare abrufen und
+  // beantworten), wenn die Plattform dafür eine eigene App/API verlangt:
+  // TikTok (Accounts API der TikTok API for Business) und LinkedIn
+  // (Community Management API für Unternehmensseiten).
+  messagingAccountName     String    @default("")
+  messagingExternalId      String?
+  messagingAccessTokenEnc  String?
+  messagingRefreshTokenEnc String?
+  messagingTokenExpiresAt  DateTime?
+  messagingError           String?
+
   @@unique([workspaceId, platform])
   @@map("platform_accounts")
 }
@@ -457,6 +468,9 @@ model Conversation {
   // Empfänger-ID (Facebook PSID / Instagram IGSID). Null = manuell
   // angelegt, dann ist kein echtes Senden möglich.
   externalThreadId  String?
+  // ID des kommentierten Beitrags (TikTok: video_id, LinkedIn: Post-URN) —
+  // von manchen Plattformen zum Antworten zusätzlich verlangt.
+  externalObjectId  String?
   // Kurzer Kontext, z. B. Titel/Link des kommentierten Beitrags.
   externalContext   String              @default("")
   status            ConversationStatus  @default(OPEN)

@@ -19,6 +19,7 @@ export async function GET(
 const patchSchema = z.object({
   channel: z.enum(["COMMENT", "DIRECT_MESSAGE"]).optional(),
   externalThreadId: z.string().trim().max(500).nullable().optional(),
+  externalObjectId: z.string().trim().max(500).nullable().optional(),
   status: z.enum(["OPEN", "CLOSED"]).optional(),
 });
 
@@ -36,12 +37,13 @@ export async function PATCH(
   const existing = await prisma.conversation.findFirst({ where: { id, workspaceId } });
   if (!existing) return NextResponse.json({ error: "Nicht gefunden." }, { status: 404 });
 
-  const { externalThreadId, ...rest } = parsed.data;
+  const { externalThreadId, externalObjectId, ...rest } = parsed.data;
   const conversation = await prisma.conversation.update({
     where: { id },
     data: {
       ...rest,
       ...(externalThreadId !== undefined ? { externalThreadId: externalThreadId || null } : {}),
+      ...(externalObjectId !== undefined ? { externalObjectId: externalObjectId || null } : {}),
     },
   });
   return NextResponse.json({ conversation });

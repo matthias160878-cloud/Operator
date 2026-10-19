@@ -146,8 +146,23 @@ Freigegebene Antworten gehen über die native API raus
 | YouTube | Kommentare aller Kanal-Videos | Kommentar-Antwort | `youtube.force-ssl` |
 | Facebook | Kommentare auf Seitenbeiträgen, Messenger | Kommentar-Antwort, Messenger (24-h-Fenster) | `pages_read_user_content`, `pages_manage_engagement`, `pages_messaging` (Meta App Review) |
 | Instagram | Kommentare unter eigenen Medien, DMs | Kommentar-Antwort, DM (24-h-Fenster) | `instagram_business_manage_comments`, `instagram_business_manage_messages` (Meta App Review) |
-| LinkedIn | — (nur für LinkedIn-Partner-Apps) | Antwort auf Kommentare per Kommentar-URN | `w_member_social` |
-| TikTok | — | — (keine API für Drittanbieter) | — |
+| LinkedIn (Unternehmensseite) | Kommentare + Antworten unter den letzten Seitenbeiträgen | Antwort als Seite | Separate App mit Community Management API: `rw_organization_admin`, `r/w_organization_social(_feed)` (LinkedIn-Prüfung) |
+| LinkedIn (persönliches Profil) | — (LinkedIn gibt das nicht frei) | Antwort per Kommentar-URN | `w_member_social` |
+| TikTok | Kommentare + Antworten unter den letzten Videos | Kommentar-Antwort | Separate App im TikTok-for-Business-Portal (Accounts API): `video.list`, `comment.list`, `comment.list.manage` |
+
+**TikTok & LinkedIn: zweite Verbindung „Posteingang verbinden“.** Beide
+Anbieter verlangen für Kommentare eine eigene App mit eigenen Zugangsdaten
+(`TIKTOK_BUSINESS_APP_ID/SECRET`, `LINKEDIN_PAGE_CLIENT_ID/SECRET`) und
+eigener Freigabe. Unter **Social Media** gibt es dafür je Plattform einen
+eigenen Button; die Tokens liegen getrennt von der Veröffentlichungs-
+Verbindung (`messaging*`-Felder am `PlatformAccount`). TikTok-Tokens laufen
+nach 24 h ab und werden automatisch per Refresh-Token erneuert (1 Jahr
+gültig). Redirect-URLs in den Apps: `<APP_URL>/api/oauth/TIKTOK_BUSINESS/callback`
+bzw. `<APP_URL>/api/oauth/LINKEDIN_PAGE/callback`.
+
+Direktnachrichten gibt es für beide weiterhin nicht: LinkedIn bietet keine
+DM-API für Drittanbieter, TikToks Business Messaging API verlangt eine
+gesonderte Zugangsprüfung und ist nicht angebunden.
 
 - Die zusätzlichen Berechtigungen wurden in `src/lib/oauth/providers.ts`
   ergänzt — **bereits verbundene Accounts müssen einmal neu verbunden

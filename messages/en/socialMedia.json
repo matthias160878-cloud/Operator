@@ -20,5 +20,11 @@
   "errorInvalidState": "Connection failed (invalid security code). Please try again.",
   "errorExchangeFailed": "Connection failed. Check the credentials and try again.",
   "errorUnknownPlatform": "Unknown platform.",
-  "encryptionKeyMissingNotice": "Note: TOKEN_ENCRYPTION_KEY is not set yet — accounts can only be connected once this environment variable is set in Render."
+  "encryptionKeyMissingNotice": "Note: TOKEN_ENCRYPTION_KEY is not set yet — accounts can only be connected once this environment variable is set in Render.",
+  "messagingTitle": "Inbox (comments)",
+  "messagingConnected": "Connected: {name}",
+  "messagingNotConnected": "Not connected",
+  "messagingConnect": "Connect inbox",
+  "messagingReconnect": "Reconnect inbox",
+  "messagingConnectedBanner": "Inbox for {platform} connected — comments can now be fetched and answered."
 }

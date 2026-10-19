@@ -1,7 +1,8 @@
 import type { ConversationChannel, Platform, PlatformAccount } from "@prisma/client";
 import { prisma } from "@/lib/db";
-import { getValidAccessToken } from "@/lib/publishing/tokens";
-import { requestJson } from "@/lib/messaging/http";
+import { getValidAccessToken, getValidMessagingToken } from "@/lib/publishing/tokens";
+import { linkedInRestHeaders } from "@/lib/oauth/providers";
+import { requestJson, tiktokBusinessRequest } from "@/lib/messaging/http";
 
 const GRAPH_FB = "https://graph.facebook.com/v19.0";
 const GRAPH_IG = "https://graph.instagram.com/v21.0";
@@ -16,6 +17,8 @@ interface ThreadMessage {
 interface Thread {
   channel: ConversationChannel;
   externalThreadId: string;
+  /** Beitrag, unter dem kommentiert wurde (TikTok-Video / LinkedIn-Post). */
+  externalObjectId?: string;
   participantName: string;
   participantHandle: string;
   context: string;
@@ -53,6 +56,7 @@ async function storeThreads(workspaceId: string, platform: Platform, threads: Th
           platform,
           channel: thread.channel,
           externalThreadId: thread.externalThreadId,
+          externalObjectId: thread.externalObjectId ?? null,
           externalContext: thread.context.slice(0, 300),
           participantName: thread.participantName.slice(0, 200) || "Unbekannt",
           participantHandle: thread.participantHandle.slice(0, 200),
@@ -274,23 +278,154 @@ async function fetchInstagramMessages(token: string, isUs: (from?: { id: string;
   return dmThreads(data.data ?? [], isUs);
 }
 
+// --- TikTok: Kommentare unter eigenen Videos (Accounts API) -----------------
+
+async function fetchTikTok(account: PlatformAccount): Promise<Thread[]> {
+  const businessId = account.messagingExternalId;
+  if (!businessId) throw new Error("TikTok-Business-ID fehlt — Posteingang erneut verbinden.");
+  const token = await getValidMessagingToken(account);
+
+  const videoParams = new URLSearchParams({
+    business_id: businessId,
+    fields: JSON.stringify(["item_id", "create_time", "caption", "share_url"]),
+    max_count: "10",
+  });
+  const { videos = [] } = await tiktokBusinessRequest<{
+    videos?: { item_id: string; caption?: string; share_url?: string }[];
+  }>(`/business/video/list/?${videoParams}`, token, {}, "TikTok-Videoabruf");
+
+  type TikTokComment = {
+    comment_id: string;
+    text?: string;
+    create_time: string;
+    owner?: boolean;
+    username?: string;
+    display_name?: string;
+    parent_comment_id?: string;
+    reply_list?: TikTokComment[];
+  };
+  const toMessage = (c: TikTokComment): ThreadMessage => ({
+    externalId: String(c.comment_id),
+    body: c.text ?? "",
+    createdAt: new Date(Number(c.create_time) * 1000),
+    fromUs: Boolean(c.owner),
+  });
+
+  const threads: Thread[] = [];
+  for (const video of videos) {
+    const params = new URLSearchParams({
+      business_id: businessId,
+      video_id: video.item_id,
+      include_replies: "true",
+      sort_field: "create_time",
+      sort_order: "desc",
+      max_count: "30",
+    });
+    const { comments = [] } = await tiktokBusinessRequest<{ comments?: TikTokComment[] }>(
+      `/business/comment/list/?${params}`,
+      token,
+      {},
+      "TikTok-Kommentarabruf"
+    );
+    for (const top of comments) {
+      if (top.parent_comment_id || top.owner) continue;
+      threads.push({
+        channel: "COMMENT",
+        externalThreadId: String(top.comment_id),
+        externalObjectId: video.item_id,
+        participantName: top.display_name || (top.username ? `@${top.username}` : "TikTok-Nutzer"),
+        participantHandle: top.username ?? "",
+        context: video.share_url ?? (video.caption ?? "").slice(0, 120),
+        messages: [top, ...(top.reply_list ?? [])].map(toMessage),
+      });
+    }
+  }
+  return threads;
+}
+
+// --- LinkedIn: Kommentare unter Beiträgen der Unternehmensseite --------------
+
+async function fetchLinkedInPage(account: PlatformAccount): Promise<Thread[]> {
+  const orgUrn = account.messagingExternalId;
+  if (!orgUrn) throw new Error("LinkedIn-Unternehmensseite fehlt — Posteingang erneut verbinden.");
+  const token = await getValidMessagingToken(account);
+  const headers = linkedInRestHeaders(token);
+  const base = "https://api.linkedin.com/rest";
+
+  type LiComment = {
+    id: string;
+    commentUrn?: string;
+    actor?: string;
+    message?: { text?: string };
+    created?: { time?: number };
+    parentComment?: string;
+    commentsSummary?: { aggregatedTotalComments?: number; totalFirstLevelComments?: number };
+  };
+  const toMessage = (c: LiComment): ThreadMessage => ({
+    externalId: c.commentUrn ?? c.id,
+    body: c.message?.text ?? "",
+    createdAt: new Date(c.created?.time ?? Date.now()),
+    fromUs: c.actor === orgUrn,
+  });
+
+  const { data: posts } = await requestJson<{ elements?: { id: string; commentary?: string }[] }>(
+    `${base}/posts?author=${encodeURIComponent(orgUrn)}&q=author&count=10&sortBy=LAST_MODIFIED`,
+    { headers },
+    "LinkedIn-Beitragsabruf"
+  );
+
+  const threads: Thread[] = [];
+  for (const post of posts.elements ?? []) {
+    const { data: comments } = await requestJson<{ elements?: LiComment[] }>(
+      `${base}/socialActions/${encodeURIComponent(post.id)}/comments?count=20`,
+      { headers },
+      "LinkedIn-Kommentarabruf"
+    );
+    for (const top of comments.elements ?? []) {
+      if (top.parentComment || top.actor === orgUrn || !top.commentUrn) continue;
+      let replies: LiComment[] = [];
+      const replyCount = top.commentsSummary?.aggregatedTotalComments ?? top.commentsSummary?.totalFirstLevelComments ?? 0;
+      if (replyCount > 0) {
+        const { data } = await requestJson<{ elements?: LiComment[] }>(
+          `${base}/socialActions/${encodeURIComponent(top.commentUrn)}/comments?count=20`,
+          { headers },
+          "LinkedIn-Antwortabruf"
+        );
+        replies = data.elements ?? [];
+      }
+      threads.push({
+        channel: "COMMENT",
+        externalThreadId: top.commentUrn,
+        externalObjectId: post.id,
+        participantName: "LinkedIn-Mitglied",
+        participantHandle: top.actor ?? "",
+        context: (post.commentary ?? "").slice(0, 120) || post.id,
+        messages: [top, ...replies].map(toMessage),
+      });
+    }
+  }
+  return threads;
+}
+
 // --- Orchestrierung -----------------------------------------------------------
 
-async function collectThreads(account: PlatformAccount, notes: string[]): Promise<Thread[]> {
+async function collectThreads(account: PlatformAccount, notes: string[], failures: string[]): Promise<Thread[]> {
   const threads: Thread[] = [];
   const attempt = async (label: string, fn: () => Promise<Thread[]>) => {
     try {
       threads.push(...(await fn()));
     } catch (error) {
-      notes.push(`${label}: ${error instanceof Error ? error.message : "unbekannter Fehler"}`);
+      failures.push(`${label}: ${error instanceof Error ? error.message : "unbekannter Fehler"}`);
     }
   };
 
   switch (account.platform) {
     case "YOUTUBE":
+      if (account.status !== "CONNECTED") break;
       await attempt("Kommentare", () => fetchYouTube(account));
       break;
     case "FACEBOOK": {
+      if (account.status !== "CONNECTED") break;
       const pageId = account.externalAccountId;
       if (!pageId) throw new Error("Facebook-Seiten-ID fehlt — Account erneut verbinden.");
       const token = await getValidAccessToken(account);
@@ -299,6 +434,7 @@ async function collectThreads(account: PlatformAccount, notes: string[]): Promis
       break;
     }
     case "INSTAGRAM": {
+      if (account.status !== "CONNECTED") break;
       const igId = account.externalAccountId;
       if (!igId) throw new Error("Instagram-Konto-ID fehlt — Account erneut verbinden.");
       const token = await getValidAccessToken(account);
@@ -309,10 +445,25 @@ async function collectThreads(account: PlatformAccount, notes: string[]): Promis
       await attempt("Direktnachrichten", () => fetchInstagramMessages(token, isUs));
       break;
     }
+    case "TIKTOK":
+      if (!account.messagingAccessTokenEnc) {
+        notes.push(
+          "TikTok: Kommentare werden über die TikTok API for Business abgerufen — verbinde dafür unter Social Media „Posteingang verbinden“."
+        );
+        break;
+      }
+      await attempt("Kommentare", () => fetchTikTok(account));
+      notes.push("Direktnachrichten: TikTok Business Messaging API ist nicht angebunden (separate Zugangsprüfung durch TikTok).");
+      break;
     case "LINKEDIN":
-      notes.push(
-        "LinkedIn erlaubt das Abrufen von Kommentaren/Nachrichten nur freigegebenen Partner-Apps. Kommentare können mit ihrer Kommentar-URN manuell angelegt und dann echt beantwortet werden."
-      );
+      if (!account.messagingAccessTokenEnc) {
+        notes.push(
+          "LinkedIn: Kommentare gibt es nur für Unternehmensseiten über die Community Management API — verbinde dafür unter Social Media „Posteingang verbinden“."
+        );
+        break;
+      }
+      await attempt("Kommentare", () => fetchLinkedInPage(account));
+      notes.push("Direktnachrichten: LinkedIn bietet dafür keine API für Drittanbieter.");
       break;
     default:
       notes.push(`${account.platform} bietet keine API zum Abrufen von Kommentaren oder Nachrichten.`);
@@ -327,17 +478,22 @@ async function collectThreads(account: PlatformAccount, notes: string[]): Promis
  */
 export async function syncInbox(workspaceId: string, platform?: Platform): Promise<PlatformSyncResult[]> {
   const accounts = await prisma.platformAccount.findMany({
-    where: { workspaceId, status: "CONNECTED", ...(platform ? { platform } : {}) },
+    where: {
+      workspaceId,
+      OR: [{ status: "CONNECTED" }, { messagingAccessTokenEnc: { not: null } }],
+      ...(platform ? { platform } : {}),
+    },
   });
 
   const results: PlatformSyncResult[] = [];
   for (const account of accounts) {
     if (account.platform === "BLOG" || account.platform === "NEWSLETTER") continue;
     const notes: string[] = [];
+    const failures: string[] = [];
     try {
-      const threads = await collectThreads(account, notes);
+      const threads = await collectThreads(account, notes, failures);
       const stored = await storeThreads(workspaceId, account.platform, threads);
-      results.push({ platform: account.platform, ok: notes.length === 0, ...stored, notes });
+      results.push({ platform: account.platform, ok: failures.length === 0, ...stored, notes: [...failures, ...notes] });
     } catch (error) {
       notes.push(error instanceof Error ? error.message : "Unbekannter Fehler");
       results.push({ platform: account.platform, ok: false, newConversations: 0, newMessages: 0, notes });

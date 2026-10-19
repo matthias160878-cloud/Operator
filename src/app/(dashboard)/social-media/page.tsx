@@ -7,7 +7,7 @@ import { checkIntegration, INTEGRATIONS } from "@/lib/integrations/registry";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { PlatformGlyph, type PlatformGlyphKey } from "@/components/dashboard/PlatformGlyph";
 import { PLATFORM_LABELS } from "@/lib/format";
-import { getProvider, isProviderConfigured } from "@/lib/oauth/providers";
+import { getMessagingProvider, getProvider, isProviderConfigured, MESSAGING_PROVIDER_KEY } from "@/lib/oauth/providers";
 import { isTokenEncryptionConfigured } from "@/lib/crypto";
 import { DisconnectButton } from "@/components/social-media/DisconnectButton";
 
@@ -43,6 +43,9 @@ export default async function SocialMediaPage({
   );
   const credentialByKey = new Map(credentialStatuses.map((s) => [s.key, s]));
   const encryptionReady = isTokenEncryptionConfigured();
+  const connectedMessagingPlatform = Object.entries(MESSAGING_PROVIDER_KEY).find(
+    ([, key]) => key === connected
+  )?.[0];
 
   return (
     <div className="space-y-5">
@@ -53,7 +56,11 @@ export default async function SocialMediaPage({
 
       {connected && (
         <div className="rounded-lg border border-success/30 bg-success/10 px-4 py-2 text-sm text-success">
-          {t("connectedBanner", { platform: PLATFORM_LABELS[connected] ?? connected })}
+          {connectedMessagingPlatform
+            ? t("messagingConnectedBanner", {
+                platform: PLATFORM_LABELS[connectedMessagingPlatform] ?? connectedMessagingPlatform,
+              })
+            : t("connectedBanner", { platform: PLATFORM_LABELS[connected] ?? connected })}
         </div>
       )}
       {oauthError && (
@@ -80,6 +87,9 @@ export default async function SocialMediaPage({
           const provider = getProvider(acc.platform);
           const credentialsReady = provider ? isProviderConfigured(provider) : false;
           const canConnect = provider && credentialsReady && encryptionReady;
+          const messagingProvider = getMessagingProvider(acc.platform);
+          const messagingKey = MESSAGING_PROVIDER_KEY[acc.platform];
+          const messagingReady = messagingProvider ? isProviderConfigured(messagingProvider) && encryptionReady : false;
 
           return (
             <div key={acc.id} className="card space-y-3 p-5">
@@ -164,6 +174,38 @@ export default async function SocialMediaPage({
 
               {provider?.publishingCaveat && (
                 <p className="text-[11px] text-muted">{provider.publishingCaveat}</p>
+              )}
+
+              {messagingProvider && messagingKey && (
+                <div className="space-y-2 border-t border-border pt-3">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-medium text-foreground">{t("messagingTitle")}</span>
+                    <span className={acc.messagingAccessTokenEnc ? "text-success" : "text-muted"}>
+                      {acc.messagingAccessTokenEnc
+                        ? t("messagingConnected", { name: acc.messagingAccountName || "—" })
+                        : t("messagingNotConnected")}
+                    </span>
+                  </div>
+                  {acc.messagingError && <p className="text-[11px] text-danger">{acc.messagingError}</p>}
+                  {messagingReady ? (
+                    <Link
+                      href={`/api/oauth/${messagingKey}/start`}
+                      className="flex w-full items-center justify-center rounded-lg border border-border px-3 py-2 text-xs font-medium text-foreground"
+                    >
+                      {acc.messagingAccessTokenEnc ? t("messagingReconnect") : t("messagingConnect")}
+                    </Link>
+                  ) : (
+                    <p className="text-[11px] text-muted">
+                      {t("needsCredentialsNote", {
+                        idVar: messagingProvider.clientIdEnv,
+                        secretVar: messagingProvider.clientSecretEnv,
+                      })}
+                    </p>
+                  )}
+                  {messagingProvider.publishingCaveat && (
+                    <p className="text-[11px] text-muted">{messagingProvider.publishingCaveat}</p>
+                  )}
+                </div>
               )}
             </div>
           );

@@ -95,7 +95,8 @@ export async function approveAndSend(messageId: string) {
     return { sent: false, message: errorText };
   };
 
-  if (!account || account.status !== "CONNECTED") {
+  const hasMessagingConnection = Boolean(account?.messagingAccessTokenEnc);
+  if (!account || (account.status !== "CONNECTED" && !hasMessagingConnection)) {
     return fail(
       `${message.conversation.platform} ist nicht verbunden. Verbinde den Account unter Social Media, bevor Nachrichten gesendet werden können.`
     );

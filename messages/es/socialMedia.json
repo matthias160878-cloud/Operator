@@ -20,5 +20,11 @@
   "errorInvalidState": "Conexión fallida (código de seguridad no válido). Inténtalo de nuevo.",
   "errorExchangeFailed": "Conexión fallida. Revisa las credenciales e inténtalo de nuevo.",
   "errorUnknownPlatform": "Plataforma desconocida.",
-  "encryptionKeyMissingNotice": "Nota: TOKEN_ENCRYPTION_KEY aún no está configurada — las cuentas solo podrán conectarse una vez que esta variable de entorno esté configurada en Render."
+  "encryptionKeyMissingNotice": "Nota: TOKEN_ENCRYPTION_KEY aún no está configurada — las cuentas solo podrán conectarse una vez que esta variable de entorno esté configurada en Render.",
+  "messagingTitle": "Bandeja de entrada (comentarios)",
+  "messagingConnected": "Conectado: {name}",
+  "messagingNotConnected": "No conectado",
+  "messagingConnect": "Conectar bandeja de entrada",
+  "messagingReconnect": "Volver a conectar bandeja",
+  "messagingConnectedBanner": "Bandeja de entrada de {platform} conectada — ahora se pueden obtener y responder comentarios."
 }

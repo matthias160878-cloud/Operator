@@ -45,8 +45,32 @@ export async function GET(
   try {
     const workspaceId = await getCurrentWorkspaceId();
     const tokenResult = await exchangeCodeForToken(provider, code, redirectUri, pkceCookie);
-    const accountInfo = await provider.fetchAccountInfo(tokenResult.accessToken);
+    const accountInfo = await provider.fetchAccountInfo(tokenResult.accessToken, tokenResult);
     const storedAccessToken = accountInfo.overrideAccessToken ?? tokenResult.accessToken;
+    const tokenExpiresAt = tokenResult.expiresInSeconds
+      ? new Date(Date.now() + tokenResult.expiresInSeconds * 1000)
+      : null;
+
+    if (provider.target === "messaging") {
+      // Nur die Posteingangs-Verbindung setzen; Veröffentlichungs-Status bleibt unverändert.
+      const messagingData = {
+        messagingAccountName: accountInfo.name,
+        messagingExternalId: accountInfo.externalId ?? null,
+        messagingAccessTokenEnc: encryptToken(storedAccessToken),
+        messagingRefreshTokenEnc: tokenResult.refreshToken ? encryptToken(tokenResult.refreshToken) : null,
+        messagingTokenExpiresAt: tokenExpiresAt,
+        messagingError: null,
+      };
+      await prisma.platformAccount.upsert({
+        where: { workspaceId_platform: { workspaceId, platform: provider.platform as never } },
+        create: { workspaceId, platform: provider.platform as never, ...messagingData },
+        update: messagingData,
+      });
+      const response = NextResponse.redirect(new URL(`/social-media?connected=${platform}`, origin));
+      response.cookies.delete(STATE_COOKIE);
+      response.cookies.delete(PKCE_COOKIE);
+      return response;
+    }
 
     await prisma.platformAccount.upsert({
       where: { workspaceId_platform: { workspaceId, platform: platform as never } },
@@ -84,11 +108,19 @@ export async function GET(
     const message = err instanceof Error ? err.message : "Unbekannter Fehler beim Verbinden.";
     try {
       const workspaceId = await getCurrentWorkspaceId();
-      await prisma.platformAccount.upsert({
-        where: { workspaceId_platform: { workspaceId, platform: platform as never } },
-        create: { workspaceId, platform: platform as never, status: "ERROR", lastError: message },
-        update: { status: "ERROR", lastError: message },
-      });
+      if (provider.target === "messaging") {
+        await prisma.platformAccount.upsert({
+          where: { workspaceId_platform: { workspaceId, platform: provider.platform as never } },
+          create: { workspaceId, platform: provider.platform as never, messagingError: message },
+          update: { messagingError: message },
+        });
+      } else {
+        await prisma.platformAccount.upsert({
+          where: { workspaceId_platform: { workspaceId, platform: platform as never } },
+          create: { workspaceId, platform: platform as never, status: "ERROR", lastError: message },
+          update: { status: "ERROR", lastError: message },
+        });
+      }
     } catch {
       // Fehlerprotokollierung darf den Redirect nicht zusätzlich blockieren.
     }

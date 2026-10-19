@@ -20,5 +20,11 @@
   "errorInvalidState": "Échec de la connexion (code de sécurité invalide). Veuillez réessayer.",
   "errorExchangeFailed": "Échec de la connexion. Vérifiez les identifiants et réessayez.",
   "errorUnknownPlatform": "Plateforme inconnue.",
-  "encryptionKeyMissingNotice": "Remarque : TOKEN_ENCRYPTION_KEY n'est pas encore configurée — les comptes ne pourront être connectés qu'une fois cette variable d'environnement définie dans Render."
+  "encryptionKeyMissingNotice": "Remarque : TOKEN_ENCRYPTION_KEY n'est pas encore configurée — les comptes ne pourront être connectés qu'une fois cette variable d'environnement définie dans Render.",
+  "messagingTitle": "Boîte de réception (commentaires)",
+  "messagingConnected": "Connecté : {name}",
+  "messagingNotConnected": "Non connecté",
+  "messagingConnect": "Connecter la boîte de réception",
+  "messagingReconnect": "Reconnecter la boîte de réception",
+  "messagingConnectedBanner": "Boîte de réception {platform} connectée — les commentaires peuvent maintenant être récupérés et traités."
 }

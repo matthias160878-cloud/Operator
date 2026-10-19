@@ -20,5 +20,11 @@
   "errorInvalidState": "Verbindung fehlgeschlagen (ungültiger Sicherheitscode). Bitte erneut versuchen.",
   "errorExchangeFailed": "Verbindung fehlgeschlagen. Zugangsdaten prüfen und erneut versuchen.",
   "errorUnknownPlatform": "Unbekannte Plattform.",
-  "encryptionKeyMissingNotice": "Hinweis: TOKEN_ENCRYPTION_KEY ist noch nicht gesetzt — Konten können erst verbunden werden, sobald diese Umgebungsvariable in Render eingetragen ist."
+  "encryptionKeyMissingNotice": "Hinweis: TOKEN_ENCRYPTION_KEY ist noch nicht gesetzt — Konten können erst verbunden werden, sobald diese Umgebungsvariable in Render eingetragen ist.",
+  "messagingTitle": "Posteingang (Kommentare)",
+  "messagingConnected": "Verbunden: {name}",
+  "messagingNotConnected": "Nicht verbunden",
+  "messagingConnect": "Posteingang verbinden",
+  "messagingReconnect": "Posteingang neu verbinden",
+  "messagingConnectedBanner": "Posteingang für {platform} verbunden — Kommentare lassen sich jetzt abrufen und beantworten."
 }

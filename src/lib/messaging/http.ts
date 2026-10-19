@@ -17,3 +17,26 @@ export async function requestJson<T>(url: string, init: RequestInit, context: st
   }
   return { data: data as T, res };
 }
+
+const TIKTOK_BUSINESS_API = "https://business-api.tiktok.com/open_api/v1.3";
+
+/**
+ * TikTok API for Business: Token im `Access-Token`-Header, Fehler kommen
+ * als HTTP 200 mit `code` != 0 — beides wird hier vereinheitlicht.
+ */
+export async function tiktokBusinessRequest<T>(
+  path: string,
+  accessToken: string,
+  init: RequestInit,
+  context: string
+): Promise<T> {
+  const { data } = await requestJson<{ code?: number; message?: string; data?: T }>(
+    `${TIKTOK_BUSINESS_API}${path}`,
+    { ...init, headers: { "Access-Token": accessToken, "Content-Type": "application/json", ...(init.headers ?? {}) } },
+    context
+  );
+  if (data.code !== undefined && data.code !== 0) {
+    throw new Error(`${context} fehlgeschlagen (Code ${data.code}): ${data.message ?? "unbekannter Fehler"}`);
+  }
+  return (data.data ?? {}) as T;
+}

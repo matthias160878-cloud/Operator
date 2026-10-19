@@ -4,6 +4,8 @@ export interface OAuthTokenResult {
   accessToken: string;
   refreshToken?: string;
   expiresInSeconds?: number;
+  /** Konto-ID, die manche Anbieter direkt im Token-Tausch liefern (TikTok Business: open_id). */
+  accountId?: string;
 }
 
 export interface OAuthAccountInfo {
@@ -29,7 +31,20 @@ export interface OAuthProvider {
   extraAuthParams?: Record<string, string>;
   usesPkce?: boolean;
   /** Ruft nach dem Token-Tausch grundlegende Kontoinformationen ab (Anzeigename). */
-  fetchAccountInfo: (accessToken: string) => Promise<OAuthAccountInfo>;
+  fetchAccountInfo: (accessToken: string, token: OAuthTokenResult) => Promise<OAuthAccountInfo>;
+  /**
+   * "messaging": Zusatzverbindung nur für den Posteingang (eigene App beim
+   * Anbieter); die Tokens landen in den messaging*-Feldern des
+   * PlatformAccount von `platform`, die Veröffentlichungs-Verbindung bleibt
+   * unberührt.
+   */
+  target?: "publishing" | "messaging";
+  /** Name des Client-ID-Parameters in der Autorisierungs-URL (Standard: client_id). */
+  clientIdParam?: string;
+  /** Eigener Token-Tausch für Anbieter, die vom OAuth-2-Standard abweichen. */
+  exchangeCode?: (code: string, redirectUri: string) => Promise<OAuthTokenResult>;
+  /** Eigene Token-Erneuerung für Anbieter, die vom OAuth-2-Standard abweichen. */
+  refresh?: (refreshToken: string) => Promise<OAuthTokenResult>;
   /**
    * Hinweis auf zusätzliche, außerhalb dieser Software liegende Freigaben,
    * die der jeweilige Anbieter für echtes Veröffentlichen verlangt (z.B.
@@ -174,7 +189,161 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
   },
 };
 
+const TIKTOK_BUSINESS_API = "https://business-api.tiktok.com/open_api/v1.3";
+const LINKEDIN_REST = "https://api.linkedin.com/rest";
+
+export function linkedInRestHeaders(accessToken: string): Record<string, string> {
+  return {
+    Authorization: `Bearer ${accessToken}`,
+    "LinkedIn-Version": process.env.LINKEDIN_API_VERSION || "202609",
+    "X-Restli-Protocol-Version": "2.0.0",
+    "Content-Type": "application/json",
+  };
+}
+
+/** TikTok-Business-Antworten: HTTP 200, Fehler stehen in `code` != 0. */
+async function tiktokBusinessJson<T>(res: Response, context: string): Promise<T> {
+  const data = (await jsonOrThrow(res, context)) as { code?: number; message?: string; data?: T };
+  if (data.code !== undefined && data.code !== 0) {
+    throw new Error(`${context} fehlgeschlagen (Code ${data.code}): ${data.message ?? "unbekannter Fehler"}`);
+  }
+  return (data.data ?? {}) as T;
+}
+
+type TikTokBusinessToken = {
+  access_token?: string;
+  refresh_token?: string;
+  expires_in?: number;
+  open_id?: string;
+};
+
+function toTikTokTokenResult(data: TikTokBusinessToken, context: string, fallbackRefresh?: string): OAuthTokenResult {
+  if (!data.access_token) throw new Error(`${context}: keine access_token in der Antwort erhalten.`);
+  return {
+    accessToken: data.access_token,
+    refreshToken: data.refresh_token ?? fallbackRefresh,
+    expiresInSeconds: data.expires_in,
+    accountId: data.open_id,
+  };
+}
+
+/**
+ * Zusatzverbindungen nur für den Posteingang. Beide Anbieter verlangen dafür
+ * eine eigene, separat freigegebene App — daher eigene Zugangsdaten.
+ */
+export const MESSAGING_PROVIDERS: Record<string, OAuthProvider> = {
+  TIKTOK_BUSINESS: {
+    platform: "TIKTOK",
+    target: "messaging",
+    clientIdEnv: "TIKTOK_BUSINESS_APP_ID",
+    clientSecretEnv: "TIKTOK_BUSINESS_APP_SECRET",
+    authorizeUrl: "https://www.tiktok.com/v2/auth/authorize/",
+    clientIdParam: "client_key",
+    tokenUrl: `${TIKTOK_BUSINESS_API}/tt_user/oauth2/token/`,
+    scope: "user.info.basic,video.list,comment.list,comment.list.manage",
+    publishingCaveat:
+      "Kommentare abrufen und beantworten läuft über die Accounts API der TikTok API for Business: eigene Developer-App im TikTok-for-Business-Portal mit freigegebenen Berechtigungen video.list, comment.list und comment.list.manage, verbunden mit einem TikTok-Business-Konto. Direktnachrichten (Business Messaging API) verlangen eine zusätzliche Zugangsprüfung durch TikTok und sind hier nicht angebunden.",
+    async exchangeCode(code, redirectUri) {
+      const res = await fetch(`${TIKTOK_BUSINESS_API}/tt_user/oauth2/token/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          client_id: process.env.TIKTOK_BUSINESS_APP_ID ?? "",
+          client_secret: process.env.TIKTOK_BUSINESS_APP_SECRET ?? "",
+          grant_type: "authorization_code",
+          auth_code: code,
+          redirect_uri: redirectUri,
+        }),
+      });
+      return toTikTokTokenResult(await tiktokBusinessJson<TikTokBusinessToken>(res, "TikTok-Business-Token-Tausch"), "TikTok-Business-Token-Tausch");
+    },
+    async refresh(refreshToken) {
+      const res = await fetch(`${TIKTOK_BUSINESS_API}/tt_user/oauth2/refresh_token/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          client_id: process.env.TIKTOK_BUSINESS_APP_ID ?? "",
+          client_secret: process.env.TIKTOK_BUSINESS_APP_SECRET ?? "",
+          grant_type: "refresh_token",
+          refresh_token: refreshToken,
+        }),
+      });
+      return toTikTokTokenResult(
+        await tiktokBusinessJson<TikTokBusinessToken>(res, "TikTok-Business-Token-Erneuerung"),
+        "TikTok-Business-Token-Erneuerung",
+        refreshToken
+      );
+    },
+    async fetchAccountInfo(accessToken, token) {
+      if (!token.accountId) throw new Error("TikTok lieferte keine open_id für das Business-Konto.");
+      let name = "TikTok-Business-Konto";
+      try {
+        const params = new URLSearchParams({
+          business_id: token.accountId,
+          fields: JSON.stringify(["username", "display_name"]),
+        });
+        const res = await fetch(`${TIKTOK_BUSINESS_API}/business/get/?${params}`, {
+          headers: { "Access-Token": accessToken },
+        });
+        const data = await tiktokBusinessJson<{ username?: string; display_name?: string }>(res, "TikTok-Profilabruf");
+        name = data.username ? `@${data.username}` : data.display_name ?? name;
+      } catch {
+        // Anzeigename ist optional — die Verbindung funktioniert auch ohne.
+      }
+      return { name, externalId: token.accountId };
+    },
+  },
+  LINKEDIN_PAGE: {
+    platform: "LINKEDIN",
+    target: "messaging",
+    clientIdEnv: "LINKEDIN_PAGE_CLIENT_ID",
+    clientSecretEnv: "LINKEDIN_PAGE_CLIENT_SECRET",
+    authorizeUrl: "https://www.linkedin.com/oauth/v2/authorization",
+    tokenUrl: "https://www.linkedin.com/oauth/v2/accessToken",
+    scope:
+      process.env.LINKEDIN_PAGE_SCOPE ||
+      "rw_organization_admin r_organization_social w_organization_social r_organization_social_feed w_organization_social_feed",
+    publishingCaveat:
+      "Kommentare abrufen und beantworten geht bei LinkedIn nur für Unternehmensseiten über die Community Management API. LinkedIn verlangt dafür eine eigene App, auf der ausschließlich dieses Produkt beantragt und nach Prüfung freigegeben ist, sowie eine Administrator-Rolle auf der Seite. Kommentare auf persönlichen Profilen und Direktnachrichten gibt LinkedIn für Drittanbieter nicht frei.",
+    async fetchAccountInfo(accessToken) {
+      const res = await fetch(
+        `${LINKEDIN_REST}/organizationAcls?q=roleAssignee&role=ADMINISTRATOR&state=APPROVED&count=10`,
+        { headers: linkedInRestHeaders(accessToken) }
+      );
+      const data = (await jsonOrThrow(res, "LinkedIn-Seitenabruf")) as {
+        elements?: { organization?: string; organizationTarget?: string }[];
+      };
+      const orgUrn = data.elements?.map((e) => e.organizationTarget ?? e.organization).find(Boolean);
+      if (!orgUrn) {
+        throw new Error("Keine LinkedIn-Unternehmensseite gefunden, auf der du Administrator bist.");
+      }
+      let name = "LinkedIn-Unternehmensseite";
+      try {
+        const orgId = orgUrn.split(":").pop();
+        const orgRes = await fetch(`${LINKEDIN_REST}/organizations/${orgId}`, { headers: linkedInRestHeaders(accessToken) });
+        const org = (await jsonOrThrow(orgRes, "LinkedIn-Seitenname")) as { localizedName?: string };
+        if (org.localizedName) name = org.localizedName;
+      } catch {
+        // Anzeigename ist optional.
+      }
+      return { name, externalId: orgUrn };
+    },
+  },
+};
+
+/** Schlüssel der Posteingangs-Verbindung je Plattform (falls separat nötig). */
+export const MESSAGING_PROVIDER_KEY: Partial<Record<string, string>> = {
+  TIKTOK: "TIKTOK_BUSINESS",
+  LINKEDIN: "LINKEDIN_PAGE",
+};
+
+export function getMessagingProvider(platform: string): OAuthProvider | null {
+  const key = MESSAGING_PROVIDER_KEY[platform];
+  return key ? MESSAGING_PROVIDERS[key] : null;
+}
+
 export function getProvider(platform: string): OAuthProvider | null {
+  if (MESSAGING_PROVIDERS[platform]) return MESSAGING_PROVIDERS[platform];
   return OAUTH_PROVIDERS[platform] ?? null;
 }
 
@@ -192,6 +361,7 @@ export async function exchangeCodeForToken(
   redirectUri: string,
   pkceVerifier?: string
 ): Promise<OAuthTokenResult> {
+  if (provider.exchangeCode) return provider.exchangeCode(code, redirectUri);
   const clientId = process.env[provider.clientIdEnv] ?? "";
   const clientSecret = process.env[provider.clientSecretEnv] ?? "";
 
@@ -233,6 +403,7 @@ export async function refreshAccessToken(
   provider: OAuthProvider,
   refreshToken: string
 ): Promise<OAuthTokenResult> {
+  if (provider.refresh) return provider.refresh(refreshToken);
   const clientId = process.env[provider.clientIdEnv] ?? "";
   const clientSecret = process.env[provider.clientSecretEnv] ?? "";
   const body = new URLSearchParams({
@@ -269,7 +440,7 @@ export function buildAuthorizeUrl(
 ): string {
   const clientId = process.env[provider.clientIdEnv] ?? "";
   const url = new URL(provider.authorizeUrl);
-  url.searchParams.set("client_id", clientId);
+  url.searchParams.set(provider.clientIdParam ?? "client_id", clientId);
   url.searchParams.set("redirect_uri", redirectUri);
   url.searchParams.set("response_type", "code");
   url.searchParams.set("scope", provider.scope);

@@ -1,6 +1,7 @@
 import type { Conversation, PlatformAccount } from "@prisma/client";
-import { getValidAccessToken } from "@/lib/publishing/tokens";
-import { requestJson } from "@/lib/messaging/http";
+import { getValidAccessToken, getValidMessagingToken } from "@/lib/publishing/tokens";
+import { linkedInRestHeaders } from "@/lib/oauth/providers";
+import { requestJson, tiktokBusinessRequest } from "@/lib/messaging/http";
 
 const GRAPH_FB = "https://graph.facebook.com/v19.0";
 const GRAPH_IG = "https://graph.instagram.com/v21.0";
@@ -13,6 +14,7 @@ const MAX_LENGTH: Record<string, number> = {
   "INSTAGRAM:COMMENT": 2200,
   "INSTAGRAM:DIRECT_MESSAGE": 1000,
   "LINKEDIN:COMMENT": 1250,
+  "TIKTOK:COMMENT": 1200,
 };
 
 export interface SendReplyResult {
@@ -122,7 +124,55 @@ export async function sendPlatformReply(
       return { externalId: data.message_id };
     }
 
+    case "TIKTOK:COMMENT": {
+      if (!account.messagingExternalId) {
+        throw new Error(
+          "TikTok-Antworten laufen über die TikTok API for Business — verbinde unter Social Media „Posteingang verbinden“."
+        );
+      }
+      if (!conversation.externalObjectId) {
+        throw new Error("TikTok verlangt die Video-ID zum Antworten — rufe den Kommentar über „Nachrichten abrufen“ ab.");
+      }
+      const token = await getValidMessagingToken(account);
+      const data = await tiktokBusinessRequest<{ comment_id?: string }>(
+        "/business/comment/reply/create/",
+        token,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            business_id: account.messagingExternalId,
+            video_id: conversation.externalObjectId,
+            comment_id: target,
+            text,
+          }),
+        },
+        "TikTok-Kommentarantwort"
+      );
+      return { externalId: data.comment_id };
+    }
+
     case "LINKEDIN:COMMENT": {
+      const parsedUrn = parseLinkedInCommentUrn(target);
+      if (account.messagingAccessTokenEnc && account.messagingExternalId && parsedUrn) {
+        // Antwort als Unternehmensseite über die Community Management API.
+        const token = await getValidMessagingToken(account);
+        const objectUrn = conversation.externalObjectId ?? parsedUrn.objectUrn;
+        const { data, res } = await requestJson<{ id?: string; commentUrn?: string }>(
+          `https://api.linkedin.com/rest/socialActions/${encodeURIComponent(objectUrn)}/comments`,
+          {
+            method: "POST",
+            headers: linkedInRestHeaders(token),
+            body: JSON.stringify({
+              actor: account.messagingExternalId,
+              object: objectUrn,
+              parentComment: parsedUrn.commentUrn,
+              message: { text },
+            }),
+          },
+          "LinkedIn-Kommentarantwort (Unternehmensseite)"
+        );
+        return { externalId: data.commentUrn ?? res.headers.get("x-restli-id") ?? data.id };
+      }
       if (!account.externalAccountId) throw new Error("LinkedIn-Mitglieds-ID fehlt — Account erneut verbinden.");
       const parsed = parseLinkedInCommentUrn(target);
       if (!parsed) {
@@ -156,6 +206,10 @@ export async function sendPlatformReply(
       throw new Error("LinkedIn erlaubt Drittanbieter-Apps keine Direktnachrichten — bitte direkt in LinkedIn antworten.");
     case "YOUTUBE:DIRECT_MESSAGE":
       throw new Error("YouTube hat keine Direktnachrichten — Antworten sind nur auf Kommentare möglich.");
+    case "TIKTOK:DIRECT_MESSAGE":
+      throw new Error(
+        "TikTok-Direktnachrichten (Business Messaging API) sind nicht angebunden — TikTok verlangt dafür eine separate Zugangsprüfung. Bitte direkt in TikTok antworten."
+      );
     default:
       throw new Error(
         `${conversation.platform} bietet für Drittanbieter-Apps keine API zum Beantworten von Kommentaren oder Nachrichten — bitte direkt in der App antworten.`

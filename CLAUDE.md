@@ -12,6 +12,7 @@ Die Hauptseite von SECRET 58 ist die **„Secret 58 Zentrale“** (claude.ai-Art
 - Die Seite ist eine Demo mit Beispieldaten (rein im Browser, ohne Server). Was nicht angebunden ist, ist als Demo / vorbereitet / noch nicht eingerichtet zu kennzeichnen.
 - Umstellung der echten Domain secret58.com (liegt bei IONOS) erst nach ausdrücklicher Freigabe eines geprüften Ergebnisses.
 - Stand 14.10.2026: Der Bereich `#/social-media-ki` ist auf Anordnung von Matthias an die Staging-App angebunden (Buttons → `secret58-staging.onrender.com/buy` und `/login`, Preise Pro 590 €/Maxi 797 € netto, Aktionszeiträume mit Codes, Autopilot S/M/L als „Demnächst“, Block „Stand der Anbindungen“). Kopie der Seite: `public/hauptseite/` (Staging: `/hauptseite/index.html`). Die Codes müssen vor Aktionsbeginn in der App angelegt werden.
+- Stand 19.10.2026: Auf Anordnung von Matthias Abschnitt `#reichweitenaufbau` in `#/social-media-ki` ergänzt (Version 74, auch in `public/hauptseite/`): Links zu `/reichweitenaufbau`, `/weiterempfehlungen` und `/settings/zugaenge` der Staging-App sowie Wegweiser zum eigenen Resend-Schlüssel. Auf Staging sind `REICHWEITE_NEWSLETTER=1` und `REICHWEITE_WERBUNG=1` gesetzt.
 
 ## Repository-Status
 

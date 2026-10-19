@@ -45,6 +45,11 @@ header.top{position:sticky;top:0;z-index:20;background:var(--alu);border-bottom:
 .logo .gem{filter:drop-shadow(0 0 8px rgba(80,150,255,.6));flex:0 0 auto}
 .logo small{font-weight:500;color:var(--ink-3);font-size:.72rem;display:block;letter-spacing:.08em;text-transform:uppercase}
 nav.main{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
+.menu-knopf{display:none;align-items:center;gap:8px;margin-left:auto;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:var(--r);padding:8px 12px;font:600 .9rem Archivo,sans-serif;cursor:pointer}
+.menu-knopf .striche{display:inline-grid;gap:3px}.menu-knopf .striche i{display:block;width:16px;height:2px;background:currentColor;border-radius:1px;transition:transform .2s,opacity .2s}
+header.top.offen .menu-knopf .striche i:nth-child(1){transform:translateY(5px) rotate(45deg)}header.top.offen .menu-knopf .striche i:nth-child(2){opacity:0}header.top.offen .menu-knopf .striche i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+@media (max-width:900px){.topin{gap:10px;min-height:56px}.menu-knopf{display:inline-flex}.topin>.btn.sm{order:2}.menu-knopf{order:1}nav.main{display:none;order:3;width:100%;flex-direction:column;flex-wrap:nowrap;gap:0;margin:0 0 10px;padding-top:6px;border-top:1px solid var(--line);max-height:calc(100vh - 140px);overflow-y:auto}header.top.offen nav.main{display:flex}nav.main summary,nav.main>a{padding:12px 10px;font-size:.95rem;white-space:normal}header.top nav.main .menu{position:static;box-shadow:none;border:0;border-left:2px solid var(--line);border-radius:0;margin:0 0 6px 10px;min-width:0;padding:2px 0 2px 8px;background:transparent}header.top nav.main .menu a{padding:10px}}
+@media (prefers-reduced-motion: reduce){.menu-knopf .striche i{transition:none}}
 nav.main details{position:relative}
 nav.main summary,nav.main>a{list-style:none;cursor:pointer;padding:8px 10px;border-radius:var(--r);font-size:.84rem;font-weight:600;color:var(--ink-2);text-decoration:none;display:block;white-space:nowrap}
 nav.main summary::-webkit-details-marker{display:none}
@@ -411,6 +416,7 @@ canvas.orbit.hero{height:auto;aspect-ratio:1800/1009}
 <div class="demo-bar">Demo-Ansicht · alle Zahlen, Referenzen und Kundendaten sind Beispiele · KI-Assistent im Regelmodus, kein Mensch</div>
 <header class="top"><div class="wrap topin">
   <a class="logo" href="start.html"><svg class="gem" viewBox="0 0 32 28" width="30" height="26" aria-hidden="true"><defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FD0FF"/><stop offset="1" stop-color="#1746C9"/></linearGradient><linearGradient id="gB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5FA8FF"/><stop offset="1" stop-color="#0B2B8F"/></linearGradient></defs><polygon points="8,2 24,2 31,10 16,27 1,10" fill="url(#gB)"/><polygon points="8,2 24,2 20,10 12,10" fill="url(#gA)"/><polygon points="1,10 12,10 16,27" fill="#1E56D8" opacity=".85"/><polygon points="31,10 20,10 16,27" fill="#0E2F92"/><polygon points="12,10 20,10 16,27" fill="#3B7BF0"/><polygon points="8,2 12,10 1,10" fill="#6FB6FF" opacity=".9"/><polygon points="24,2 31,10 20,10" fill="#2B62E0"/><polygon points="9,3.5 13,3.5 11,7" fill="#EAF6FF" opacity=".9"/></svg><span>Secret 58<small>KI-Agenten &amp; Automation</small></span></a>
+  <button type="button" class="menu-knopf" id="menu-knopf" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen"><span class="striche" aria-hidden="true"><i></i><i></i><i></i></span><span>Menü</span></button>
   <nav class="main" id="nav"></nav>
   <a class="btn sm" href="#/kontakt">Erstgespräch</a>
 </div></header>
@@ -2137,6 +2143,7 @@ function render(){
   const v=document.getElementById('view');v.innerHTML=s.render(q);scrollTo({top:0});
   document.querySelectorAll('nav.main a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#/'+slug));
   document.querySelectorAll('nav.main details').forEach(d=>d.open=false);
+  menuZu();
   if(slug==='start'&&document.getElementById('orbit-hero')){const o=Orbit(document.getElementById('orbit-hero'),{onSelect:a=>{if(a)location.hash='/ki-agenten'},live:true});orbits.push(o)}
   if(slug==='ki-agenten'){arbeitsbereichBind();const card=document.getElementById('agentcard');const o=Orbit(document.getElementById('orbit-full'),{onSelect:a=>agentCard(card,a),live:true,onEvent:feedInto('feed-full'),onState:stateInto('state-full'),onJob:boardInto('board-full')});orbits.push(o);
     const ch=document.getElementById('chips');ch.innerHTML=`<button class="chip on" id="chip-aktiv" data-toggle="1">● Nur aktive</button><button class="chip" data-f="organisch" style="border-color:#7FE7D6;color:#7FE7D6">◆ Organische <span style="opacity:.7">${AGENTEN.filter(a=>a.preis.typ==='kostenlos').length}</span></button>`+['alle',...Object.keys(ARTEN)].map(k=>`<button class="chip${k==='alle'?' on':''}" data-f="${k}">${k==='alle'?'Alle':ARTEN[k]} <span style="opacity:.7">${k==='alle'?AGENTEN.length:AGENTEN.filter(a=>a.art===k).length}</span></button>`).join('');
@@ -2186,6 +2193,12 @@ document.addEventListener('input',e=>{if(e.target.type==='range'){const l=e.targ
 // nav
 document.getElementById('nav').innerHTML=NAV.map(n=>Array.isArray(n)?`<a href="${n[0][0]==='@'?n[0].slice(1):'#/'+n[0]}">${n[1]}</a>`:`<details><summary>${n.t}</summary><div class="menu">${n.items.map(i=>/^https?:/.test(i[0])?`<a href="${i[0]}" target="_blank" rel="noopener noreferrer">${i[1]} \u2197</a>`:`<a href="#/${i[0]}">${i[1]}</a>`).join('')}</div></details>`).join('');
 document.addEventListener('click',e=>{if(!e.target.closest('nav.main details'))document.querySelectorAll('nav.main details').forEach(d=>d.open=false)});
+/* Menü-Knopf fürs Handy: klappt die Navigation auf und zu, schließt bei Seitenwechsel, Escape und Klick außerhalb */
+function menuZu(){const h=document.querySelector('header.top'),k=document.getElementById('menu-knopf');if(!h||!k)return;h.classList.remove('offen');k.setAttribute('aria-expanded','false');k.setAttribute('aria-label','Menü öffnen')}
+document.getElementById('menu-knopf').addEventListener('click',e=>{e.stopPropagation();const h=document.querySelector('header.top'),k=e.currentTarget,auf=!h.classList.contains('offen');h.classList.toggle('offen',auf);k.setAttribute('aria-expanded',String(auf));k.setAttribute('aria-label',auf?'Menü schließen':'Menü öffnen')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.querySelector('header.top.offen')){menuZu();document.getElementById('menu-knopf').focus()}});
+document.addEventListener('click',e=>{if(!e.target.closest('header.top'))menuZu()});
+document.getElementById('nav').addEventListener('click',e=>{const a=e.target.closest('a');if(a)menuZu()});
 document.getElementById('footcols').innerHTML=`<div><h4>KI & Automation</h4>${NAV.find(n=>n.t==='KI & Automation').items.map(i=>`<a href="#/${i[0]}">${i[1]}</a>`).join('')}</div><div><h4>Webdesign</h4>${NAV.find(n=>n.t==='Webdesign').items.map(i=>`<a href="#/${i[0]}">${i[1]}</a>`).join('')}</div><div><h4>Unternehmen</h4><a href="#/ueber-uns">Über uns</a><a href="#/referenzen">Referenzen</a><a href="#/portfolio">Portfolio</a><a href="#/preise">Preise</a><a href="#/rechner">Angebotsrechner</a><a href="#/faq">FAQ</a></div><div><h4>Konto</h4><a href="#/demo">Demo / Test</a><a href="#/finanzen">Finanzen (Einnahmen & Ausgaben)</a><a href="#/login">Login / Kundenbereich</a><a href="#/kontakt">Kontakt</a><a href="#/impressum">Impressum</a><a href="#/datenschutz">Datenschutz</a><a href="#/agb">AGB</a></div>`;
 /* Ein offenes Fenster blieb bisher ueber der naechsten Seite stehen. */
 addEventListener('hashchange',()=>{const m=document.getElementById('konnmodal');if(m)m.remove();KONN._zurueck=null;render()});render();

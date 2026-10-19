@@ -385,3 +385,291 @@ test("Dateiaustausch: Dateinamen, Ordner, Ansichtstypen und Webadressen werden s
     assert.equal(normUrl(bad), null, bad);
   }
 });
+
+// ── Weiterempfehlungen & Reichweite ─────────────────────────────────────────
+import { CODE_LAENGE, istGueltigerCode, neuerCode } from "@/lib/reichweite/codes";
+import { enthaeltPersonendaten, pruefeZielUrl } from "@/lib/reichweite/texte";
+import { teilenZiele } from "@/lib/reichweite/teilen";
+import { auswerten } from "@/lib/reichweite/auswertung";
+import { CTA_VORSCHLAEGE, begleittexte } from "@/lib/reichweite/vorschlaege";
+
+test("Empfehlung: Codes sind zufällig, gültig und ohne Personenbezug", () => {
+  const codes = new Set(Array.from({ length: 500 }, () => neuerCode()));
+  assert.equal(codes.size, 500);
+  for (const c of codes) {
+    assert.equal(c.length, CODE_LAENGE);
+    assert.ok(istGueltigerCode(c));
+    assert.ok(!c.includes("@"));
+  }
+  assert.ok(!istGueltigerCode("../../etc"));
+  assert.ok(!istGueltigerCode("max@test.de"));
+});
+
+test("Empfehlung: Bezeichnungen und Zielseiten ohne Personendaten", () => {
+  assert.ok(enthaeltPersonendaten("an max@example.com"));
+  assert.ok(enthaeltPersonendaten("Tel +49 170 1234567"));
+  assert.ok(!enthaeltPersonendaten("Instagram-Bio Frühjahr 2026"));
+  assert.equal(pruefeZielUrl("javascript:alert(1)").ok, false);
+  assert.equal(pruefeZielUrl("https://user:pw@example.com").ok, false);
+  assert.equal(pruefeZielUrl("https://example.com/?mail=max@example.com").ok, false);
+  assert.deepEqual(pruefeZielUrl(""), { ok: true, url: "" });
+  assert.equal(pruefeZielUrl("https://example.com/angebot").ok, true);
+});
+
+test("Empfehlung: Teilen-Adressen sind offizielle Teilen-Fenster ohne Empfängervorgabe", () => {
+  const ziele = teilenZiele("https://app.test/e/abcdefghjk", "Schau mal & mehr");
+  const wa = ziele.find((z) => z.key === "whatsapp")!;
+  assert.ok(wa.href.startsWith("https://wa.me/?text="));
+  assert.ok(wa.href.includes(encodeURIComponent("https://app.test/e/abcdefghjk")));
+  assert.ok(!wa.href.includes("phone="));
+  assert.ok(ziele.find((z) => z.key === "email")!.href.startsWith("mailto:?"));
+  assert.ok(ziele.every((z) => !z.href.includes("Schau mal & mehr")));
+});
+
+test("Empfehlung: Auswertung erfindet keine Stufen und vermischt keine Größen", () => {
+  const t = new Date("2026-10-01T10:00:00Z");
+  const team = { id: "a", code: "aaaaaaaaaa", parentId: null, stufe: 1, bezeichnung: "Bio", herkunft: "TEAM", istDemo: false, widerrufenAm: null, createdAt: t };
+  // Derselbe Link wird oft aufgerufen (z. B. weitergeleitet) – das ergibt keine neue Stufe.
+  const leer = auswerten({
+    links: [team],
+    ereignisse: Array.from({ length: 7 }, () => ({ linkId: "a", art: "AUFRUF", istDemo: false, createdAt: t })),
+    kennzahlen: [],
+  });
+  assert.equal(leer.stufen.length, 1);
+  assert.equal(leer.stufen[0].kinder.length, 0);
+  assert.equal(leer.eigeneMessung.AUFRUF.wert, 7);
+  assert.equal(leer.herkunft.unbekannteHerkunft.wert, 7);
+  assert.equal(leer.herkunft.gemesseneWeiterempfehlungen.wert, 0);
+  assert.equal(leer.herkunft.plattformempfehlungen.status, "NICHT_ANGEBUNDEN");
+  assert.equal(leer.eindeutigePersonen.status, "NICHT_MESSBAR");
+  assert.equal(leer.eindeutigePersonen.wert, null);
+  assert.equal(leer.newsletter.status, "NICHT_ANGEBUNDEN");
+  assert.equal(leer.fluss.find((s) => s.key === "beitrag")!.zahl.status, "NICHT_ANGEBUNDEN");
+  assert.equal(leer.enthaeltDemo, false);
+
+  // Stufe 2 nur, weil ausdrücklich ein Besucher-Link erzeugt wurde.
+  const kind = { ...team, id: "b", code: "bbbbbbbbbb", parentId: "a", stufe: 2, bezeichnung: "", herkunft: "BESUCHER" };
+  const mit = auswerten({
+    links: [team, kind],
+    ereignisse: [
+      { linkId: "a", art: "LINK_ERZEUGT", istDemo: false, createdAt: t },
+      { linkId: "b", art: "AUFRUF", istDemo: false, createdAt: t },
+      { linkId: "b", art: "AUFRUF", istDemo: false, createdAt: t },
+    ],
+    kennzahlen: [
+      { id: "k1", plattform: "INSTAGRAM", metrik: "REICHWEITE", wert: 100, quelle: "MANUELL", zeitraumVon: t, zeitraumBis: t, erfasstAm: t },
+      { id: "k2", plattform: "YOUTUBE", metrik: "VIDEOAUFRUFE", wert: 50, quelle: "DEMO", zeitraumVon: t, zeitraumBis: t, erfasstAm: t },
+    ],
+  });
+  assert.equal(mit.stufen[0].kinder[0].stufe, 2);
+  assert.equal(mit.herkunft.gemesseneWeiterempfehlungen.wert, 2);
+  assert.equal(mit.eigeneMessung.LINK_ERZEUGT.wert, 1);
+  const beitrag = mit.fluss.find((s) => s.key === "beitrag")!.zahl;
+  assert.equal(beitrag.wert, 50); // nur Videoaufrufe, Reichweite wird nicht dazugerechnet
+  assert.equal(beitrag.istDemo, true);
+  assert.ok(mit.plattformKennzahlen.find((k) => k.metrik === "REICHWEITE")!.zahl.einheit.includes("keine eindeutigen Personen"));
+  assert.equal(mit.enthaeltDemo, true);
+});
+
+test("Empfehlung: Vorschläge versprechen keine Viralität", () => {
+  const alle = [...CTA_VORSCHLAEGE, ...begleittexte("Test")].join(" ").toLowerCase();
+  for (const w of ["viral", "garantiert", "millionen", "alle deine kontakte"]) assert.ok(!alle.includes(w), w);
+});
+
+// ── Reichweitenaufbau ───────────────────────────────────────────────────────
+import { erzeugeVorschlaege, hwgRisiko, pruefeBriefing, versprechenImText, type Briefing } from "@/lib/reichweitenaufbau/ideen";
+import { vergleiche, zWert, type VarianteEingabe } from "@/lib/reichweitenaufbau/varianten";
+import { exportCsv, laufzeitTage, planHinweise, pruefeFreigabe, bewerbungsVorschlaege, PLATTFORM_VORAUSSETZUNGEN } from "@/lib/reichweitenaufbau/werbung";
+import { freigabeHash } from "@/lib/reichweitenaufbau/werbungHash";
+import { darfUebergang, themenBereinigen } from "@/lib/reichweitenaufbau/newsletterRegeln";
+import { naechsteSchritte, stufeAusgabe, stufeInhalt, stufeWerbeplan } from "@/lib/reichweitenaufbau/status";
+
+const BRIEF: Briefing = {
+  zielgruppe: "Handwerksbetriebe",
+  problem: "keine Zeit für Social Media",
+  ergebnis: "regelmäßig posten",
+  plattform: "INSTAGRAM",
+  format: "Reel",
+  tonalitaet: "SACHLICH_SIE",
+  material: "",
+  aufforderung: "TEILEN",
+  grundlageVorherNachher: "",
+};
+
+test("Reichweitenaufbau: Ideen – sechs Vorlagen, Vorher-nachher nur mit Grundlage, keine Versprechen", () => {
+  assert.equal(pruefeBriefing({ ...BRIEF, zielgruppe: " " }), "Bitte die Zielgruppe angeben.");
+  const v = erzeugeVorschlaege(BRIEF);
+  assert.equal(v.length, 6);
+  assert.ok(v.find((x) => x.art === "VORHER_NACHHER")!.gesperrt);
+  assert.ok(v.filter((x) => x.art !== "VORHER_NACHHER").every((x) => !x.gesperrt && x.einstieg && x.text && x.bildVideoIdee && x.beschreibung && x.aufforderung));
+  assert.ok(v.every((x) => versprechenImText(`${x.einstieg} ${x.text} ${x.aufforderung}`).length === 0), "keine Erfolgsversprechen erzeugt");
+  assert.ok(v[0].aufforderung.includes("Sie"), "Sie-Form bei sachlicher Tonalität");
+  assert.ok(erzeugeVorschlaege({ ...BRIEF, tonalitaet: "LOCKER_DU" })[0].aufforderung.includes("du"));
+  const mit = erzeugeVorschlaege({ ...BRIEF, grundlageVorherNachher: "eigenes Projekt 05/2026, Fotos vorhanden" });
+  assert.equal(mit.find((x) => x.art === "VORHER_NACHHER")!.gesperrt, null);
+  const warn = erzeugeVorschlaege({ ...BRIEF, ergebnis: "garantiert viral werden" });
+  assert.ok(warn[0].hinweise.some((h) => h.includes("Erfolgsversprechen")));
+});
+
+test("Reichweitenaufbau: Ideen – HWG-Sperre für Vorher-nachher bei Schönheitseingriffen", () => {
+  assert.equal(hwgRisiko(BRIEF), null);
+  assert.equal(hwgRisiko({ ...BRIEF, zielgruppe: "Frauen, die über eine Brustvergrößerung nachdenken" }), "EINGRIFF");
+  assert.equal(hwgRisiko({ ...BRIEF, problem: "Faltenbehandlung mit Hyaluron" }), "EINGRIFF");
+  assert.equal(hwgRisiko({ ...BRIEF, zielgruppe: "Patienten einer Zahnarztpraxis" }), "HEILBEREICH");
+  assert.equal(hwgRisiko({ ...BRIEF, problem: "Bubble-Tea-Bar" }), null, "kein Treffer in fremden Wörtern");
+  const op = erzeugeVorschlaege({ ...BRIEF, zielgruppe: "Interessierte an Schönheits-OPs", grundlageVorherNachher: "eigene Patientenfotos mit Einverständnis" });
+  const vn = op.find((x) => x.art === "VORHER_NACHHER")!;
+  assert.match(vn.gesperrt ?? "", /§ 11 Abs\. 1 S\. 3 Nr\. 1 HWG/, "auch mit Grundlage gesperrt");
+  assert.ok(vn.hinweise.some((h) => h.includes("HWG")));
+  assert.ok(op.filter((x) => x.art !== "VORHER_NACHHER").every((x) => x.hinweise.some((h) => h.includes("Heilmittelwerbegesetz"))));
+  const zahn = erzeugeVorschlaege({ ...BRIEF, zielgruppe: "Zahnarztpraxis", grundlageVorherNachher: "Fall 03/2026 mit Einverständnis" });
+  assert.equal(zahn.find((x) => x.art === "VORHER_NACHHER")!.gesperrt, null, "Heilbereich: Hinweis, keine Sperre");
+});
+
+function variante(id: string, plattform: string, aufrufe: number | null, klicks: number | null, extra: VarianteEingabe["werte"] = {}): VarianteEingabe {
+  return {
+    id,
+    label: `Variante ${id}`,
+    plattform,
+    veroeffentlichtAm: null,
+    werte: {
+      ...(aufrufe !== null ? { AUFRUFE: { wert: aufrufe, quelle: "MANUELL" } } : {}),
+      ...(klicks !== null ? { LINKKLICKS: { wert: klicks, quelle: "Eigene Messung" } } : {}),
+      ...extra,
+    },
+  };
+}
+const ENDE = new Date("2026-10-01");
+const JETZT = new Date("2026-10-19");
+
+test("Reichweitenaufbau: Varianten – kein Sieger bei zu wenig Daten oder ohne Unterschied", () => {
+  const wenig = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: false, laufzeitBis: ENDE, jetzt: JETZT, varianten: [variante("A", "INSTAGRAM", 80, 9), variante("B", "INSTAGRAM", 90, 2)] });
+  assert.equal(wenig.status, "KEINE_AUSSAGE");
+  assert.match(wenig.aussage, /Zu wenige Daten/);
+  assert.equal(wenig.bezeichnung, "Variantenvergleich");
+  const gleich = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: true, laufzeitBis: ENDE, jetzt: JETZT, varianten: [variante("A", "INSTAGRAM", 1000, 50), variante("B", "INSTAGRAM", 1000, 52)] });
+  assert.equal(gleich.status, "KEINE_AUSSAGE");
+  assert.match(gleich.aussage, /Kein belastbarer Unterschied/);
+  const fehlt = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: false, laufzeitBis: ENDE, jetzt: JETZT, varianten: [variante("A", "INSTAGRAM", null, 40), variante("B", "INSTAGRAM", 900, 20)] });
+  assert.equal(fehlt.status, "KEINE_AUSSAGE");
+});
+
+test("Reichweitenaufbau: Varianten – organisch nur Hinweis, A/B auffällig, Plattformen nicht vermischt", () => {
+  const vs = [variante("A", "INSTAGRAM", 1840, 120), variante("B", "INSTAGRAM", 1210, 30)];
+  const organisch = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: false, laufzeitBis: ENDE, jetzt: JETZT, varianten: vs });
+  assert.equal(organisch.status, "HINWEIS");
+  assert.match(organisch.aussage, /kein Beweis/);
+  assert.ok(organisch.hinweise.some((h) => h.includes("kein A/B-Test")));
+  assert.ok(organisch.einschaetzung.every((e) => e.startsWith("Einschätzung")));
+  const ab = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: true, laufzeitBis: ENDE, jetzt: JETZT, varianten: vs });
+  assert.equal(ab.status, "AUFFAELLIG");
+  assert.equal(ab.bezeichnung, "A/B-Test");
+  assert.ok(Math.abs(ab.tabelle[0].zellen.LINKKLICKS.quoteProzent! - (120 / 1840) * 100) < 1e-9, "Quote = Klicks ÷ Aufrufe × 100");
+  const gemischt = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: true, laufzeitBis: ENDE, jetzt: JETZT, varianten: [vs[0], { ...vs[1], plattform: "TIKTOK" }] });
+  assert.equal(gemischt.status, "KEINE_AUSSAGE");
+  assert.match(gemischt.aussage, /verschiedenen Plattformen/);
+  const dauer = vergleiche({
+    hauptkennzahl: "WIEDERGABEDAUER_SEK",
+    zufallsverteilt: true,
+    laufzeitBis: ENDE,
+    jetzt: JETZT,
+    varianten: [variante("A", "INSTAGRAM", 2000, null, { WIEDERGABEDAUER_SEK: { wert: 9, quelle: "M" } }), variante("B", "INSTAGRAM", 2000, null, { WIEDERGABEDAUER_SEK: { wert: 12, quelle: "M" } })],
+  });
+  assert.equal(dauer.status, "KEINE_AUSSAGE", "Durchschnittswerte ohne Einzeldaten: kein Test");
+  assert.ok(dauer.einschaetzung[0].includes("Variante B"));
+  const laeuft = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: true, laufzeitBis: new Date("2026-12-01"), jetzt: JETZT, varianten: vs });
+  assert.ok(laeuft.hinweise.some((h) => h.includes("Zwischenstand")));
+  assert.equal(zWert(0, 0, 1, 10), null);
+  assert.ok(Math.abs(zWert(50, 1000, 50, 1000)!) < 1e-12);
+});
+
+test("Reichweitenaufbau: Werbung – Freigabe nur bei exakt bestätigtem Betrag, Laufzeit und Ziel", () => {
+  const p = { plattform: "META", ziel: "TRAFFIC", startAm: new Date("2026-11-01"), endeAm: new Date("2026-11-07"), tagesbudgetCent: 1000, gesamtbudgetCent: 7000 };
+  const ok = { gesamtbudgetCent: 7000, startAm: "2026-11-01", endeAm: "2026-11-07", ziel: "TRAFFIC", bestaetigt: true };
+  assert.equal(pruefeFreigabe(p, ok), null);
+  assert.match(pruefeFreigabe(p, { ...ok, bestaetigt: false })!, /ausdrücklich/);
+  assert.match(pruefeFreigabe(p, { ...ok, gesamtbudgetCent: 70000 })!, /Betrag/);
+  assert.match(pruefeFreigabe(p, { ...ok, endeAm: "2026-11-30" })!, /Laufzeit/);
+  assert.match(pruefeFreigabe(p, { ...ok, ziel: "LEADS" })!, /Ziel/);
+  assert.notEqual(freigabeHash(p), freigabeHash({ ...p, gesamtbudgetCent: 7001 }), "Änderung macht Freigabe ungültig");
+  assert.equal(laufzeitTage(p), 7);
+  assert.ok(planHinweise(p).some((h) => h.includes("garantiert keine")));
+  assert.match(PLATTFORM_VORAUSSETZUNGEN.LINKEDIN.zielgruppen.AEHNLICH, /eingestellt/);
+});
+
+test("Reichweitenaufbau: Werbung – Export ohne Formel-Injektion, Vorschläge nur mit Belegen", () => {
+  const csv = exportCsv({
+    plattform: "META", ziel: "TRAFFIC", startAm: new Date("2026-11-01"), endeAm: new Date("2026-11-07"), tagesbudgetCent: 1000, gesamtbudgetCent: 7000,
+    titel: "=HYPERLINK(\"x\")", zielgruppe: "", zielgruppenArt: "NEU", region: "", sprache: "Deutsch", zielUrl: "", erfolgsmessung: "", status: "ENTWURF", freigegebenAm: null, istDemo: false, inhalt: "",
+  });
+  assert.ok(csv.includes(`"'=HYPERLINK(""x"")"`));
+  assert.ok(csv.includes("nicht freigegeben"));
+  assert.ok(csv.includes("geplant"));
+  const v = bewerbungsVorschlaege([
+    { kampagneId: "a", titel: "A", aufrufe: 5, zielKlicks: 3, anfragen: 1, newsletterBestaetigt: 0, istDemo: false },
+    { kampagneId: "b", titel: "B", aufrufe: 100, zielKlicks: 10, anfragen: 0, newsletterBestaetigt: 0, istDemo: false },
+    { kampagneId: "c", titel: "C", aufrufe: 100, zielKlicks: 0, anfragen: 0, newsletterBestaetigt: 0, istDemo: false },
+    { kampagneId: "d", titel: "D", aufrufe: 50, zielKlicks: 2, anfragen: 3, newsletterBestaetigt: 0, istDemo: true },
+  ]);
+  assert.deepEqual(v.map((x) => x.kampagneId), ["d", "b"]);
+  assert.ok(v[0].begruendung.includes("DEMO"));
+  assert.ok(v[0].begruendung.includes("kein Beleg"));
+});
+
+test("Reichweitenaufbau: Newsletter-Übergänge und Statusleiste", () => {
+  assert.ok(darfUebergang("freigeben", "PRUEFUNG"));
+  assert.ok(!darfUebergang("versenden", "FREIGEGEBEN"), "Versand erst nach Planung");
+  assert.ok(!darfUebergang("versenden", "ENTWURF"));
+  assert.ok(!darfUebergang("planen", "ENTWURF"), "Planen erst nach Freigabe");
+  assert.deepEqual(themenBereinigen(["A", "A", " B ", 3, "C"], ["A", "B"]), ["A", "B"]);
+  assert.equal(stufeAusgabe("VERSENDET_DEMO"), null, "Demo-Versand zählt nicht als versendet");
+  assert.equal(stufeAusgabe("VERSENDET"), "UMGESETZT");
+  assert.equal(stufeWerbeplan("FREIGEGEBEN", null), "FREIGEGEBEN", "Freigabe ist kein Start");
+  assert.equal(stufeInhalt("PUBLISHED", false), "UMGESETZT");
+  assert.equal(stufeInhalt("PUBLISHED", true), "AUSGEWERTET");
+  const s = naechsteSchritte({
+    inhalteInPruefung: 0, inhalteFreigegebenOhneVeroeffentlichung: 0, variantenOhneAussage: 0, kooperationenOhneNaechstenSchritt: 0, kooperationenTerminBald: 0,
+    werbeplaeneFreigegeben: 1, werbeplaeneInPruefung: 0, ausgabenGeplant: 1, ausgabenInPruefung: 0, newsletterModus: "DEMO", newsletterSeiten: 1, plattformStatistikAngebunden: false,
+  });
+  assert.ok(s.some((x) => x.text.includes("exportieren")));
+  assert.ok(s.some((x) => x.art === "FEHLT" && x.text.includes("Versanddienst")));
+});
+
+test("Empfehlung: Newsletter in der Auswertung nur mit Anmeldeseite, nur bestätigte Anmeldungen", () => {
+  const ohne = auswerten({ links: [], ereignisse: [], kennzahlen: [] });
+  assert.equal(ohne.newsletter.status, "NICHT_ANGEBUNDEN");
+  const mit = auswerten({ links: [], ereignisse: [], kennzahlen: [], newsletter: { bestaetigt: [{ confirmedAt: new Date("2026-10-10"), istDemo: true }] } });
+  assert.equal(mit.newsletter.wert, 1);
+  assert.equal(mit.newsletter.status, "GEMESSEN");
+  assert.equal(mit.enthaeltDemo, true);
+});
+
+test("Reichweitenaufbau: Freischaltung – Newsletter und Werbung standardmäßig aus, Kennzeichnung offen gemeldet", async () => {
+  const { newsletterFreigeschaltet, werbungFreigeschaltet, nurWenn } = await import("@/lib/reichweitenaufbau/freischaltung");
+  const { kennzeichnungWarnung, anfrageEntwurf } = await import("@/lib/reichweitenaufbau/kooperation");
+  const vorher = { nl: process.env.REICHWEITE_NEWSLETTER, wb: process.env.REICHWEITE_WERBUNG };
+  delete process.env.REICHWEITE_NEWSLETTER;
+  delete process.env.REICHWEITE_WERBUNG;
+  try {
+    assert.equal(newsletterFreigeschaltet(), false);
+    assert.equal(werbungFreigeschaltet(), false);
+    const h = nurWenn(newsletterFreigeschaltet, async () => new Response("ok"));
+    assert.equal((await h()).status, 404);
+    process.env.REICHWEITE_NEWSLETTER = "1";
+    assert.equal((await h()).status, 200);
+  } finally {
+    if (vorher.nl === undefined) delete process.env.REICHWEITE_NEWSLETTER; else process.env.REICHWEITE_NEWSLETTER = vorher.nl;
+    if (vorher.wb === undefined) delete process.env.REICHWEITE_WERBUNG; else process.env.REICHWEITE_WERBUNG = vorher.wb;
+  }
+  const lage = {
+    inhalteInPruefung: 0, inhalteFreigegebenOhneVeroeffentlichung: 0, variantenOhneAussage: 0, kooperationenOhneNaechstenSchritt: 0, kooperationenTerminBald: 0,
+    werbeplaeneFreigegeben: 1, werbeplaeneInPruefung: 1, ausgabenGeplant: 1, ausgabenInPruefung: 1, newsletterModus: "DEMO" as const, newsletterSeiten: 0, plattformStatistikAngebunden: false,
+  };
+  const aus = naechsteSchritte({ ...lage, newsletterAktiv: false, werbungAktiv: false, kooperationenOhneKennzeichnung: 2 });
+  assert.ok(aus.every((x) => x.tab !== "newsletter" && x.tab !== "werbung"), "abgeschaltete Bereiche ohne Hinweise");
+  assert.ok(aus.some((x) => x.text.includes("Werbekennzeichnung")));
+  assert.equal(kennzeichnungWarnung({ status: "VEREINBART", kennzeichnung: "OFFEN" }), "Werbekennzeichnung noch nicht geklärt.");
+  assert.equal(kennzeichnungWarnung({ status: "IDEE", kennzeichnung: "OFFEN" }), null);
+  assert.equal(kennzeichnungWarnung({ status: "UMGESETZT", kennzeichnung: "WERBUNG" }), null);
+  assert.match(anfrageEntwurf({ name: "X", format: "AKTION", idee: "", passungNotiz: "", absender: "Y", sie: true }), /Werbung bzw\. Anzeige/);
+});

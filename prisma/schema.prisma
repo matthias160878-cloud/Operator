@@ -165,6 +165,19 @@ model Workspace {
   dateiFreigaben      DateiFreigabe[]
 
   @@map("workspaces")
+  reichweitenKampagnen  ReichweitenKampagne[]
+  empfehlungsLinks      EmpfehlungsLink[]
+  empfehlungsEreignisse EmpfehlungsEreignis[]
+  reichweitenKennzahlen ReichweitenKennzahl[]
+  variantenTests        VariantenTest[]
+  testVarianten         TestVariante[]
+  variantenMesswerte    VariantenMesswert[]
+  kooperationen         Kooperation[]
+  werbeplaene           Werbeplan[]
+  newsletterSeiten      NewsletterSeite[]
+  newsletterKontakte    NewsletterKontakt[]
+  newsletterEreignisse  NewsletterEreignis[]
+  newsletterAusgaben    NewsletterAusgabe[]
 }
 
 model User {
@@ -232,6 +245,7 @@ model Campaign {
   revenueEntries RevenueEntry[]
 
   @@map("campaigns")
+  reichweitenKampagnen ReichweitenKampagne[]
 }
 
 model ContentIdea {
@@ -288,6 +302,8 @@ model ContentItem {
   scripts     Script[]
   mediaAssets MediaAsset[]
   analytics   Analytics[]
+  testVarianten TestVariante[]
+  werbeplaene   Werbeplan[]
 
   @@map("content_items")
 }
@@ -1052,4 +1068,353 @@ model KundenLink {
 
   @@index([workspaceId])
   @@map("kunden_links")
+}
+
+
+// ---------------------------------------------------------------------------
+// Weiterempfehlungen & Reichweite (src/lib/reichweite, docs/WEITEREMPFEHLUNGEN.md)
+// Öffentlich ist nur, was ausdrücklich in titel/text/zielUrl steht. Keine Personendaten in
+// Codes oder Ereignissen, keine Cookies, keine Besucherkennungen.
+// ---------------------------------------------------------------------------
+
+model ReichweitenKampagne {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  /// Interne Kampagne zur Zuordnung – wird nie öffentlich angezeigt
+  campaignId  String?
+  campaign    Campaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  /// Öffentlich sichtbar auf /e/<code>
+  titel       String
+  text        String    @default("")
+  zielUrl     String    @default("")
+  aktiv       Boolean   @default(true)
+  istDemo     Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  links      EmpfehlungsLink[]
+  ereignisse EmpfehlungsEreignis[]
+  kennzahlen ReichweitenKennzahl[]
+  variantenTests     VariantenTest[]
+  kooperationen      Kooperation[]
+  werbeplaene        Werbeplan[]
+  newsletterSeiten   NewsletterSeite[]
+  newsletterKontakte NewsletterKontakt[]
+  newsletterAusgaben NewsletterAusgabe[]
+
+  @@index([workspaceId])
+  @@map("reichweiten_kampagnen")
+}
+
+model EmpfehlungsLink {
+  id           String              @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId   String
+  kampagne     ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  /// Zufälliger öffentlicher Code, kein Zugriffs- oder Login-Token, keine Personendaten
+  code         String              @unique
+  /// Gesetzt nur, wenn jemand ausdrücklich einen eigenen Link aus diesem Link erzeugt hat
+  parentId     String?
+  parent       EmpfehlungsLink?    @relation("EmpfehlungsStufe", fields: [parentId], references: [id], onDelete: SetNull)
+  kinder       EmpfehlungsLink[]   @relation("EmpfehlungsStufe")
+  stufe        Int                 @default(1)
+  /// Interne Bezeichnung (z. B. „Instagram-Bio“), nie öffentlich
+  bezeichnung  String              @default("")
+  /// TEAM (im Kundenkonto erzeugt) oder BESUCHER (auf der öffentlichen Seite erzeugt)
+  herkunft     String              @default("TEAM")
+  istDemo      Boolean             @default(false)
+  widerrufenAm DateTime?
+  createdAt    DateTime            @default(now())
+
+  ereignisse EmpfehlungsEreignis[]
+  testVarianten      TestVariante[]
+  kooperationen      Kooperation[]
+  newsletterKontakte NewsletterKontakt[]
+
+  @@index([workspaceId, kampagneId])
+  @@map("empfehlungs_links")
+}
+
+/// Zählt Ereignisse ohne Personenbezug: AUFRUF (Seite über Link geöffnet), ZIEL_KLICK
+/// (weiter zur Zielseite), ANFRAGE (Formular abgeschickt), LINK_ERZEUGT (eigener Link erzeugt).
+/// Ein geöffneter Teilen-Dialog wird bewusst nie gezählt.
+model EmpfehlungsEreignis {
+  id          String              @id @default(cuid())
+  workspaceId String
+  workspace   Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId  String
+  kampagne    ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  linkId      String?
+  link        EmpfehlungsLink?    @relation(fields: [linkId], references: [id], onDelete: SetNull)
+  art         String
+  istDemo     Boolean             @default(false)
+  createdAt   DateTime            @default(now())
+
+  @@index([workspaceId, kampagneId, art])
+  @@index([createdAt])
+  @@map("empfehlungs_ereignisse")
+}
+
+/// Plattformzahlen je Kampagne mit Quelle (DEMO, MANUELL) und Zeitraum.
+/// Eine Plattform-Schnittstelle schreibt hier erst, wenn sie angebunden ist (Quelle API:<PLATTFORM>).
+model ReichweitenKennzahl {
+  id          String              @id @default(cuid())
+  workspaceId String
+  workspace   Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId  String
+  kampagne    ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  plattform   String
+  /// IMPRESSIONEN, REICHWEITE, VIDEOAUFRUFE, SHARES
+  metrik      String
+  wert        Int
+  quelle      String
+  zeitraumVon DateTime
+  zeitraumBis DateTime
+  erfasstAm   DateTime            @default(now())
+
+  @@index([workspaceId, kampagneId])
+  @@map("reichweiten_kennzahlen")
+}
+
+// ── Reichweitenaufbau ───────────────────────────────────────────────────────
+// Baut auf ReichweitenKampagne/EmpfehlungsLink (Weiterempfehlungen) auf.
+// Inhalte selbst laufen als ContentItem durch die bestehende Freigabe.
+
+/// Variantenvergleich (organisch) bzw. A/B-Test nur, wenn die Plattform zufällig verteilt hat.
+model VariantenTest {
+  id            String               @id @default(cuid())
+  workspaceId   String
+  workspace     Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId    String?
+  kampagne      ReichweitenKampagne? @relation(fields: [kampagneId], references: [id], onDelete: SetNull)
+  titel         String
+  ziel          String
+  /// Hauptkennzahl, vor dem Test festgelegt
+  hauptkennzahl String
+  /// EINSTIEG, TITEL, VORSCHAUBILD, LAENGE, CTA
+  eigenschaft   String
+  datenquelle   String
+  laufzeitVon   DateTime
+  laufzeitBis   DateTime
+  /// true nur, wenn die Plattform selbst zufällig verteilt hat (echter A/B-Test)
+  zufallsverteilt Boolean            @default(false)
+  istDemo       Boolean              @default(false)
+  createdAt     DateTime             @default(now())
+
+  varianten TestVariante[]
+
+  @@index([workspaceId])
+  @@map("varianten_tests")
+}
+
+model TestVariante {
+  id               String           @id @default(cuid())
+  workspaceId      String
+  workspace        Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  testId           String
+  test             VariantenTest    @relation(fields: [testId], references: [id], onDelete: Cascade)
+  label            String
+  beschreibung     String           @default("")
+  plattform        String           @default("")
+  contentItemId    String?
+  contentItem      ContentItem?     @relation(fields: [contentItemId], references: [id], onDelete: SetNull)
+  /// Eigener Empfehlungslink je Variante: Klicks/Anfragen/Newsletter werden selbst gemessen
+  linkId           String?
+  link             EmpfehlungsLink? @relation(fields: [linkId], references: [id], onDelete: SetNull)
+  veroeffentlichtAm DateTime?
+  createdAt        DateTime         @default(now())
+
+  messwerte VariantenMesswert[]
+
+  @@index([workspaceId, testId])
+  @@map("test_varianten")
+}
+
+/// Plattformwerte je Variante (DEMO oder MANUELL übertragen).
+model VariantenMesswert {
+  id          String       @id @default(cuid())
+  workspaceId String
+  workspace   Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  varianteId  String
+  variante    TestVariante @relation(fields: [varianteId], references: [id], onDelete: Cascade)
+  metrik      String
+  wert        Float
+  quelle      String
+  erfasstAm   DateTime     @default(now())
+
+  @@index([workspaceId, varianteId])
+  @@map("varianten_messwerte")
+}
+
+model Kooperation {
+  id                 String               @id @default(cuid())
+  workspaceId        String
+  workspace          Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  name               String
+  profilUrl          String               @default("")
+  /// CREATOR, REGIONAL, PARTNER, KONTAKT
+  art                String
+  /// HOCH, MITTEL, NIEDRIG, UNKLAR
+  zielgruppenpassung String               @default("UNKLAR")
+  passungNotiz       String               @default("")
+  idee               String               @default("")
+  /// GEMEINSAMER_BEITRAG, INTERVIEW, EMPFEHLUNG, AKTION
+  format             String               @default("GEMEINSAMER_BEITRAG")
+  /// IDEE, ANFRAGE_ENTWURF, ANGEFRAGT, IM_GESPRAECH, VEREINBART, UMGESETZT, ABGESCHLOSSEN, ABGESAGT
+  status             String               @default("IDEE")
+  naechsterSchritt   String               @default("")
+  termin             DateTime?
+  kampagneId         String?
+  kampagne           ReichweitenKampagne? @relation(fields: [kampagneId], references: [id], onDelete: SetNull)
+  linkId             String?
+  link               EmpfehlungsLink?     @relation(fields: [linkId], references: [id], onDelete: SetNull)
+  anfrageEntwurf     String               @default("")
+  /// Werbekennzeichnung: OFFEN, WERBUNG, ANZEIGE, KEINE_GEGENLEISTUNG
+  kennzeichnung      String               @default("OFFEN")
+  istDemo            Boolean              @default(false)
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+
+  @@index([workspaceId])
+  @@map("kooperationen")
+}
+
+/// Werbeplanung. Es gibt keine Werbe-Schnittstelle: nur Entwurf, Freigabe und Export.
+model Werbeplan {
+  id                    String               @id @default(cuid())
+  workspaceId           String
+  workspace             Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  titel                 String
+  contentItemId         String?
+  contentItem           ContentItem?         @relation(fields: [contentItemId], references: [id], onDelete: SetNull)
+  kampagneId            String?
+  kampagne              ReichweitenKampagne? @relation(fields: [kampagneId], references: [id], onDelete: SetNull)
+  plattform             String
+  ziel                  String
+  zielgruppe            String               @default("")
+  /// NEU, ERNEUT (Retargeting), AEHNLICH (Lookalike)
+  zielgruppenArt        String               @default("NEU")
+  region                String               @default("")
+  sprache               String               @default("Deutsch")
+  startAm               DateTime
+  endeAm                DateTime
+  tagesbudgetCent       Int
+  gesamtbudgetCent      Int
+  zielUrl               String               @default("")
+  erfolgsmessung        String               @default("")
+  /// ENTWURF, PRUEFUNG, FREIGEGEBEN
+  status                String               @default("ENTWURF")
+  /// Prüfsumme über Betrag, Laufzeit, Ziel und Plattform zum Zeitpunkt der Freigabe
+  freigabeHash          String?
+  freigegebenVonId      String?
+  freigegebenAm         DateTime?
+  /// Tatsächlich von der Plattform gemeldete Ausgaben (getrennt vom Plan; null = keine Meldung)
+  gemeldeteAusgabenCent Int?
+  gemeldetQuelle        String               @default("")
+  gemeldetAm            DateTime?
+  istDemo               Boolean              @default(false)
+  createdAt             DateTime             @default(now())
+  updatedAt             DateTime             @updatedAt
+
+  @@index([workspaceId])
+  @@map("werbeplaene")
+}
+
+/// Öffentliche Newsletter-Landingpage eines Kunden (/n/<code>).
+model NewsletterSeite {
+  id                 String               @id @default(cuid())
+  workspaceId        String
+  workspace          Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  code               String               @unique
+  titel              String
+  themenBeschreibung String
+  /// JSON string[]
+  themen             String               @default("[]")
+  kampagneId         String?
+  kampagne           ReichweitenKampagne? @relation(fields: [kampagneId], references: [id], onDelete: SetNull)
+  aktiv              Boolean              @default(true)
+  istDemo            Boolean              @default(false)
+  createdAt          DateTime             @default(now())
+
+  kontakte   NewsletterKontakt[]
+  ereignisse NewsletterEreignis[]
+
+  @@index([workspaceId])
+  @@map("newsletter_seiten")
+}
+
+/// Newsletter-Kontakt eines Kunden-Workspaces (Double-Opt-in). Eine Adresse je Workspace nur einmal.
+model NewsletterKontakt {
+  id               String               @id @default(cuid())
+  workspaceId      String
+  workspace        Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  email            String
+  /// PENDING, ACTIVE, UNSUBSCRIBED
+  status           String               @default("PENDING")
+  /// JSON string[]
+  themen           String               @default("[]")
+  confirmTokenHash String?              @unique
+  confirmExpiresAt DateTime?
+  unsubscribeHash  String               @unique
+  consentText      String
+  consentAt        DateTime
+  confirmedAt      DateTime?
+  unsubscribedAt   DateTime?
+  lastMailAt       DateTime?
+  seiteId          String?
+  seite            NewsletterSeite?     @relation(fields: [seiteId], references: [id], onDelete: SetNull)
+  quelleKampagneId String?
+  quelleKampagne   ReichweitenKampagne? @relation(fields: [quelleKampagneId], references: [id], onDelete: SetNull)
+  quelleLinkId     String?
+  quelleLink       EmpfehlungsLink?     @relation(fields: [quelleLinkId], references: [id], onDelete: SetNull)
+  istDemo          Boolean              @default(false)
+  createdAt        DateTime             @default(now())
+
+  @@unique([workspaceId, email])
+  @@map("newsletter_kontakte")
+}
+
+/// Zählt ohne Personenbezug: AUFRUF (Formularseite geöffnet), ANMELDUNG, BESTAETIGT, ABGEMELDET.
+model NewsletterEreignis {
+  id          String          @id @default(cuid())
+  workspaceId String
+  workspace   Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  seiteId     String
+  seite       NewsletterSeite @relation(fields: [seiteId], references: [id], onDelete: Cascade)
+  art         String
+  istDemo     Boolean         @default(false)
+  createdAt   DateTime        @default(now())
+
+  @@index([workspaceId, seiteId, art])
+  @@map("newsletter_ereignisse")
+}
+
+model NewsletterAusgabe {
+  id               String               @id @default(cuid())
+  workspaceId      String
+  workspace        Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  betreff          String
+  text             String
+  bildIdee         String               @default("")
+  /// JSON string[]; leer = alle Themen
+  themen           String               @default("[]")
+  kampagneId       String?
+  kampagne         ReichweitenKampagne? @relation(fields: [kampagneId], references: [id], onDelete: SetNull)
+  /// ENTWURF, PRUEFUNG, FREIGEGEBEN, GEPLANT, VERSENDET_DEMO, VERSENDET
+  status           String               @default("ENTWURF")
+  /// Prüfsumme von Betreff+Text zum Zeitpunkt der Freigabe
+  freigabeHash     String?
+  freigegebenVonId String?
+  freigegebenAm    DateTime?
+  geplantAm        DateTime?
+  versendetAm      DateTime?
+  empfaengerAnzahl Int?
+  istDemo          Boolean              @default(false)
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @updatedAt
+
+  @@index([workspaceId])
+  @@map("newsletter_ausgaben")
 }

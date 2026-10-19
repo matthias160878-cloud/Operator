@@ -3,8 +3,7 @@ import { z } from "zod";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { getBrandDNA } from "@/lib/brand";
 import { saveWebsitePosts } from "@/lib/agents/websiteSocialAgent";
-
-const PLATFORM_VALUES = ["YOUTUBE", "TIKTOK", "INSTAGRAM", "LINKEDIN", "FACEBOOK", "BLOG", "NEWSLETTER"] as const;
+import { PLATFORM_VALUES } from "@/lib/api/schemas";
 
 const bodySchema = z.object({
   sourceTitle: z.string().max(300).default(""),

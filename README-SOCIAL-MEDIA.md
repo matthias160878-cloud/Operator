@@ -27,6 +27,7 @@ Hooks, Hashtags, Untertiteln, Voiceover-Anbindung und Publishing-Workflow.
 - [Agenten](#agenten)
 - [API-Dokumentation](#api-dokumentation)
 - [MCP-Server](#mcp-server)
+- [Externe API (/api/v1)](#externe-api-apiv1)
 - [Tests](#tests)
 - [Troubleshooting](#troubleshooting)
 - [Status-Checkliste](#status-checkliste)
@@ -393,6 +394,52 @@ Leitplanken:
 - Die SEO-Analyse prüft eine Seite (kein Crawl der ganzen Domain) und liest
   das ausgelieferte HTML — rein clientseitig gerenderte Inhalte sieht nur die
   optionale PageSpeed-Analyse.
+
+## Externe API (/api/v1)
+
+SEO-Analyse und Website-Posts lassen sich auch von außen aufrufen — z. B.
+aus Zapier/Make, dem Backend der eigenen Website oder per Skript. Die
+Routen unter `/api/v1/` sind von der App-Zugangssperre ausgenommen und
+stattdessen per API-Schlüssel geschützt (`src/lib/api/publicApi.ts`).
+
+**Aktivieren** (`.env`):
+
+```bash
+PUBLIC_API_KEYS=dein-langer-zufaelliger-schluessel   # openssl rand -hex 32
+PUBLIC_API_RATE_LIMIT=30                             # optional, pro Minute und Schlüssel
+PUBLIC_API_CORS_ORIGINS=https://meine-website.de     # optional, nur für Browser-Aufrufe
+```
+
+Ohne `PUBLIC_API_KEYS` antworten alle `/api/v1`-Routen mit `503`.
+
+| Endpunkt | Methode | Body (JSON) | Antwort |
+| --- | --- | --- | --- |
+| `/api/v1/seo/analyze` | POST | `url`, optional `focusKeyword`, `includePageSpeed` (bool), `strategy` (`mobile`/`desktop`) | `{ report }` mit `score`, `categoryScores`, `checks`, `recommendations`, `facts`, `pageSpeed` |
+| `/api/v1/website-posts` | POST | `url`, `platforms` (z. B. `["LINKEDIN","INSTAGRAM"]`), optional `postsPerPlatform` (1–3), `instructions`, `save` (bool) | `{ source, posts, savedContentItemIds, provider }` |
+
+```bash
+curl -X POST https://deine-app.de/api/v1/seo/analyze \
+  -H "Authorization: Bearer $PUBLIC_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://meine-website.de","focusKeyword":"Kaffee-Abo"}'
+
+curl -X POST https://deine-app.de/api/v1/website-posts \
+  -H "X-API-Key: $PUBLIC_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://meine-website.de/angebot","platforms":["LINKEDIN","INSTAGRAM"],"save":true}'
+```
+
+- Schlüssel per `Authorization: Bearer …` oder `X-API-Key: …`.
+- Fehler kommen als `{ "error": "…" }` mit passendem Status: `400`
+  (Eingabe), `401` (Schlüssel), `422` (Seite nicht abrufbar o. ä.), `429`
+  (Limit, mit `Retry-After`), `503` (API nicht aktiviert).
+- `save: true` legt die Beiträge als DRAFT-Content-Items an — veröffentlicht
+  wird nie automatisch.
+- **Schlüssel nie ins Browser-JavaScript einer öffentlichen Website legen**
+  (er wäre für jeden sichtbar). Aufrufe gehören in ein Backend, Zapier o. ä.;
+  CORS ist nur für interne Tools gedacht.
+- Das Anfragelimit wird im Speicher des Server-Prozesses gezählt (bei
+  mehreren Instanzen gilt es je Instanz).
 
 ## Tests
 

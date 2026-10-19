@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "secret58": {
+      "command": "npx",
+      "args": ["tsx", "src/mcp/server.mts"]
+    }
+  }
+}

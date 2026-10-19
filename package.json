@@ -9,12 +9,14 @@
     "lint": "eslint",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "mcp": "tsx src/mcp/server.mts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
     "@prisma/client": "^6.19.3",
     "clsx": "^2.1.1",
     "lucide-react": "^1.47.0",

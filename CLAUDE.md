@@ -21,6 +21,7 @@ Die folgenden Abschnitte beziehen sich auf das Next.js-Teilprojekt (`src/`).
 - `npm run db:push` — Prisma-Schema mit der (lokalen SQLite-)Datenbank synchronisieren
 - `npm run db:seed` — Demo-Daten laden (`prisma/seed.ts`)
 - `npm run db:studio` — Prisma Studio (DB-GUI) öffnen
+- `npm run mcp` — MCP-Server (stdio) mit Website-Social-, SEO- und Inbox-Tools starten (`src/mcp/server.mts`, Doku in `README-SOCIAL-MEDIA.md` → MCP-Server)
 
 Es ist noch kein Test-Runner eingerichtet. Sobald Tests hinzugefügt werden, hier dokumentieren, wie man die gesamte Suite und einen einzelnen Test ausführt.
 
@@ -37,11 +38,13 @@ Agenten- und API-Dokumentation: siehe [`README-SOCIAL-MEDIA.md`](README-SOCIAL-M
   (Geist Sans/Mono über `next/font/google`) ein; `page.tsx` ist das Dashboard.
 - `src/app/globals.css` — Tailwind-v4-Import und CSS-Custom-Properties für das
   dunkle Command-Center-Theme.
-- `src/lib/` — Domänenlogik: `agents/` (14 Agenten + Logging-Runner),
+- `src/lib/` — Domänenlogik: `agents/` (19 Agenten + Logging-Runner),
   `ai/` (KI-Provider-Adapter mit Template-Fallback), `integrations/`
   (env-basierte Statusprüfung), `video/` (Provider-Abstraktion + Format
-  Manager), `db.ts` (Prisma-Client), `workspace.ts`, `brand.ts`,
-  `mediaStorage.ts`.
+  Manager), `web/` (sicherer Website-Abruf + HTML-Extraktion), `db.ts`
+  (Prisma-Client), `workspace.ts`, `brand.ts`, `mediaStorage.ts`.
+- `src/mcp/server.mts` — MCP-Server (stdio), der die Agenten als Tools
+  bereitstellt (`npm run mcp`, Registrierung über `.mcp.json`).
 - `prisma/schema.prisma` — Datenmodell (SQLite standardmäßig,
   `DATABASE_URL` in `.env`); `prisma/seed.ts` für Demo-Daten
   (`npm run db:seed`).

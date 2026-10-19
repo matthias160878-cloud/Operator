@@ -26,6 +26,7 @@ Hooks, Hashtags, Untertiteln, Voiceover-Anbindung und Publishing-Workflow.
 - [Architektur](#architektur)
 - [Agenten](#agenten)
 - [API-Dokumentation](#api-dokumentation)
+- [MCP-Server](#mcp-server)
 - [Tests](#tests)
 - [Troubleshooting](#troubleshooting)
 - [Status-Checkliste](#status-checkliste)
@@ -91,6 +92,7 @@ npm run dev     # Entwicklungsserver (Turbopack), http://localhost:3000
 npm run build   # Produktions-Build
 npm run start   # Produktions-Server
 npm run lint    # ESLint (Flat Config)
+npm run mcp     # MCP-Server (stdio) für Claude Code / Claude Desktop
 ```
 
 ## ElevenLabs Setup (Voice Engine)
@@ -239,6 +241,9 @@ CONTENT BRAIN → IDEA ENGINE → TREND ENGINE → SCRIPT ENGINE → HOOK ENGINE
 | PublishingAgent | `lib/agents/publishingAgent.ts` | Workflow DRAFT → REVIEW → APPROVED → SCHEDULED → PUBLISHED, echte Veröffentlichung nur bei verbundenem Account |
 | AnalyticsAgent | `lib/agents/analyticsAgent.ts` | Aggregiert Views/Likes/Kommentare/Shares/Engagement aus der DB |
 | LearningAgent | `lib/agents/learningAgent.ts` | Regelbasierte Empfehlungen aus vorhandenen Analytics-Daten (verändert nie automatisch Einstellungen) |
+| WebsiteSocialAgent | `lib/agents/websiteSocialAgent.ts` | Liest eine Website und erzeugt plattformgerechte Social-Posts im Stil der Brand DNA (optional als DRAFT gespeichert) |
+| SeoAgent | `lib/agents/seoAgent.ts` | SEO-, Technik-, Performance- und Social-Vorschau-Analyse einer URL mit Score und priorisierten Maßnahmen, optional Lighthouse über PageSpeed Insights |
+| InboxAgent | `lib/agents/inboxAgent.ts` | Priorisiert Kundennachrichten aller Plattformen (Frage/Beschwerde/Kaufinteresse/Lob/Spam) und erstellt Antwortentwürfe in Serie |
 
 Alle Läufe erscheinen mit Status (`IDLE`/`RUNNING`/`WAITING`/`SUCCESS`/`ERROR`),
 Start-/Endzeit, Task und Ergebnis/Fehler im **Agent Monitor**
@@ -270,6 +275,64 @@ Alle Endpunkte liegen unter `src/app/api/**` und geben JSON zurück.
 | `/api/voices/preview` | POST | Voice-Preview erzeugen |
 | `/api/script-studio/generate` | POST | Freies Script + Hook-Set generieren |
 | `/api/thumbnails/generate` | POST | Thumbnail-Konzept generieren |
+
+## MCP-Server
+
+`src/mcp/server.mts` stellt die Agenten als
+[MCP](https://modelcontextprotocol.io)-Tools bereit (stdio-Transport). Er nutzt
+dieselbe Datenbank, Brand DNA, denselben KI-Provider und das Agent-Logging wie
+die Web-App — jeder Lauf erscheint im **Agent Monitor**.
+
+```bash
+npm run mcp   # aus dem Projekt-Root starten (liest .env)
+```
+
+**Claude Code:** Die mitgelieferte `.mcp.json` registriert den Server als
+`secret58`, sobald Claude Code in diesem Ordner gestartet wird.
+**Claude Desktop:** in `claude_desktop_config.json` eintragen:
+
+```json
+{
+  "mcpServers": {
+    "secret58": {
+      "command": "npx",
+      "args": ["tsx", "/pfad/zu/Operator/src/mcp/server.mts"],
+      "cwd": "/pfad/zu/Operator"
+    }
+  }
+}
+```
+
+| Tool | Agent | Zweck |
+| --- | --- | --- |
+| `social_posts_from_website` | WebsiteSocialAgent | Website-URL → Beiträge für YouTube/TikTok/Instagram/LinkedIn/Facebook/Blog/Newsletter; `save: true` legt DRAFT-Content-Items an |
+| `seo_analyze_website` | SeoAgent | Score 0–100 (SEO/Performance/Social/Technik), ~25 Einzelprüfungen, Fokus-Keyword-Check, Maßnahmenliste; `includePageSpeed: true` ergänzt Lighthouse-Scores und Core Web Vitals |
+| `inbox_list_conversations` | — | Konversationen aller Plattformen mit letzter Nachricht |
+| `inbox_get_conversation` | — | Vollständiger Verlauf einer Konversation |
+| `inbox_triage` | InboxAgent | Unbeantwortete Nachrichten nach Kategorie, Stimmung, Priorität + empfohlener Aktion |
+| `inbox_record_message` | — | Eingehende Nachricht/Kommentar erfassen (z. B. aus Webhook/Zapier); ordnet per Handle zu |
+| `inbox_draft_reply` | MessageAgent | Antwortentwurf für eine Konversation |
+| `inbox_draft_pending_replies` | InboxAgent | Entwürfe für alle wartenden Konversationen (Spam übersprungen) |
+| `inbox_update_draft` | — | Entwurfstext anpassen |
+| `inbox_send_reply` | MessageAgent | Entwurf freigeben & senden — nur nach menschlicher Freigabe |
+
+Leitplanken:
+
+- **Nichts wird automatisch veröffentlicht oder gesendet.** Posts landen als
+  DRAFT im Publishing-Workflow, Antworten als Entwurf. `inbox_send_reply`
+  scheitert ehrlich, solange die Plattform nicht verbunden ist bzw. der native
+  Sende-Aufruf fehlt (siehe MessageAgent).
+- **Ohne KI-Provider** laufen alle Tools im Template-Modus (regelbasierte
+  Posts, Klassifikation und Empfehlungen); das Feld `provider` zeigt das an.
+  Alle SEO-Messwerte stammen immer aus echten Abrufen, nie von der KI.
+- **Website-Abruf** (`src/lib/web/fetchPage.ts`): nur http/https, 15 s
+  Timeout, max. 3 MB, Redirects werden einzeln geprüft; localhost, private
+  Netze und Cloud-Metadaten-IPs sind gesperrt (`WEB_FETCH_ALLOW_PRIVATE=true`
+  nur für lokale Tests). Seiteninhalte werden der KI als Daten, nicht als
+  Anweisungen übergeben.
+- Die SEO-Analyse prüft eine Seite (kein Crawl der ganzen Domain) und liest
+  das ausgelieferte HTML — rein clientseitig gerenderte Inhalte sieht nur die
+  optionale PageSpeed-Analyse.
 
 ## Tests
 

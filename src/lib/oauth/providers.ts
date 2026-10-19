@@ -30,6 +30,8 @@ export interface OAuthProvider {
   /** Zusätzliche Query-Parameter für die Autorisierungs-URL (z.B. offline-Zugriff bei Google). */
   extraAuthParams?: Record<string, string>;
   usesPkce?: boolean;
+  /** Kodierung der PKCE-Challenge: Standard base64url (RFC 7636), TikTok verlangt hex. */
+  pkceEncoding?: "base64url" | "hex";
   /** Ruft nach dem Token-Tausch grundlegende Kontoinformationen ab (Anzeigename). */
   fetchAccountInfo: (accessToken: string, token: OAuthTokenResult) => Promise<OAuthAccountInfo>;
   /**
@@ -39,7 +41,10 @@ export interface OAuthProvider {
    * unberührt.
    */
   target?: "publishing" | "messaging";
-  /** Name des Client-ID-Parameters in der Autorisierungs-URL (Standard: client_id). */
+  /**
+   * Name des Client-ID-Parameters in Autorisierungs-URL, Token-Tausch und
+   * Token-Erneuerung (Standard: client_id; TikTok: client_key).
+   */
   clientIdParam?: string;
   /** Eigener Token-Tausch für Anbieter, die vom OAuth-2-Standard abweichen. */
   exchangeCode?: (code: string, redirectUri: string) => Promise<OAuthTokenResult>;
@@ -57,9 +62,9 @@ function randomState(): string {
   return randomBytes(24).toString("base64url");
 }
 
-export function generatePkcePair() {
+export function generatePkcePair(encoding: "base64url" | "hex" = "base64url") {
   const verifier = randomBytes(32).toString("base64url");
-  const challenge = createHash("sha256").update(verifier).digest("base64url");
+  const challenge = createHash("sha256").update(verifier).digest(encoding);
   return { verifier, challenge };
 }
 
@@ -171,6 +176,8 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     tokenUrl: "https://open.tiktokapis.com/v2/oauth/token/",
     scope: "user.info.basic,video.publish",
     usesPkce: true,
+    pkceEncoding: "hex",
+    clientIdParam: "client_key",
     publishingCaveat:
       "TikTok schaltet den Veröffentlichungs-Zugriff (video.publish) erst nach eigener Prüfung der App durch TikTok frei — das ist ein separater Freigabeprozess bei TikTok, den diese Software nicht ersetzt. Bis dahin funktioniert nur das Verbinden/Anzeigen des Kontos. Antworten auf Kommentare oder Direktnachrichten bietet TikTok für Drittanbieter-Apps derzeit nicht an.",
     async fetchAccountInfo(accessToken) {
@@ -369,7 +376,7 @@ export async function exchangeCodeForToken(
     grant_type: "authorization_code",
     code,
     redirect_uri: redirectUri,
-    client_id: clientId,
+    [provider.clientIdParam ?? "client_id"]: clientId,
     client_secret: clientSecret,
   });
   if (pkceVerifier) body.set("code_verifier", pkceVerifier);
@@ -383,7 +390,14 @@ export async function exchangeCodeForToken(
     access_token?: string;
     refresh_token?: string;
     expires_in?: number;
+    error?: string;
+    error_description?: string;
   };
+  if (data.error) {
+    throw new Error(
+      `${provider.platform}-Token-Tausch fehlgeschlagen: ${data.error_description || data.error}`
+    );
+  }
   if (!data.access_token) {
     throw new Error(`${provider.platform}: keine access_token in der Antwort erhalten.`);
   }
@@ -409,7 +423,7 @@ export async function refreshAccessToken(
   const body = new URLSearchParams({
     grant_type: "refresh_token",
     refresh_token: refreshToken,
-    client_id: clientId,
+    [provider.clientIdParam ?? "client_id"]: clientId,
     client_secret: clientSecret,
   });
   const res = await fetch(provider.tokenUrl, {
@@ -421,7 +435,14 @@ export async function refreshAccessToken(
     access_token?: string;
     refresh_token?: string;
     expires_in?: number;
+    error?: string;
+    error_description?: string;
   };
+  if (data.error) {
+    throw new Error(
+      `${provider.platform}-Token-Erneuerung fehlgeschlagen: ${data.error_description || data.error}`
+    );
+  }
   if (!data.access_token) {
     throw new Error(`${provider.platform}: Token-Erneuerung lieferte keinen access_token.`);
   }

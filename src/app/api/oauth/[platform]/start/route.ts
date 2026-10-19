@@ -38,7 +38,7 @@ export async function GET(
   let pkceChallenge: string | undefined;
   let pkceVerifier: string | undefined;
   if (provider.usesPkce) {
-    const pair = generatePkcePair();
+    const pair = generatePkcePair(provider.pkceEncoding);
     pkceChallenge = pair.challenge;
     pkceVerifier = pair.verifier;
   }

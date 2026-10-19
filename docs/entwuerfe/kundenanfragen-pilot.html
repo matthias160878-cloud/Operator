@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Kundenanfragen-Pilot – Entwurf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Farben wie Hauptseite (public/hauptseite/index.html) */
+:root{--alu:#EEF1F4;--paper:#F7F8FA;--panel:#FFFFFF;--ink:#15202B;--ink-2:#4A5866;--ink-3:#7C8894;--line:#CDD4DC;--line-soft:#E4E9EE;--blau:#1D5BB8;--blau-2:#164A99;--blau-soft:#DCE7F8;--ok:#1E8A5A;--warn:#B8730E;--crit:#B23A3A;--shadow:0 1px 2px rgba(21,32,43,.06),0 8px 24px rgba(21,32,43,.08);--r:6px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--alu:#131C27;--paper:#0F1720;--panel:#172230;--ink:#E7ECF2;--ink-2:#AEBAC7;--ink-3:#7D8B99;--line:#2A3747;--line-soft:#223040;--blau:#5A9BFF;--blau-2:#7DB0FF;--blau-soft:#1B2C45;--ok:#3DBA80;--warn:#E0A040;--crit:#E06B6B}}
+:root[data-theme="dark"]{--alu:#131C27;--paper:#0F1720;--panel:#172230;--ink:#E7ECF2;--ink-2:#AEBAC7;--ink-3:#7D8B99;--line:#2A3747;--line-soft:#223040;--blau:#5A9BFF;--blau-2:#7DB0FF;--blau-soft:#1B2C45;--ok:#3DBA80;--warn:#E0A040;--crit:#E06B6B}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Archivo,Inter,sans-serif;line-height:1.2;margin:0 0 10px}
+h1{font-size:clamp(1.7rem,4.5vw,2.6rem)}h2{font-size:clamp(1.3rem,3vw,1.7rem)}h3{font-size:1.05rem}
+p{margin:0 0 10px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.draft{background:var(--warn);color:#fff;font:600 .85rem/1.4 Archivo,sans-serif;padding:8px 16px;text-align:center}
+.block{padding:44px 0;border-bottom:1px solid var(--line-soft)}
+.kicker{display:inline-block;font:600 .78rem Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--blau)}
+.lede{font-size:1.1rem;color:var(--ink-2);max-width:720px}
+.note{color:var(--ink-3);font-size:.9rem}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+.card p{color:var(--ink-2);margin:0}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.steps li{counter-increment:s;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--blau-soft);color:var(--blau);font:700 .9rem Archivo,sans-serif;margin-bottom:8px}
+.steps li.me::before{background:var(--blau);color:#fff}
+.steps b{display:block;font-family:Archivo,sans-serif}
+.steps span{color:var(--ink-2);font-size:.92rem}
+ul.no{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+ul.no li{padding-left:28px;position:relative;color:var(--ink-2)}
+ul.no li::before{content:"✕";position:absolute;left:4px;color:var(--crit);font-weight:700}
+ul.yes{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+ul.yes li{padding-left:28px;position:relative;color:var(--ink-2)}
+ul.yes li::before{content:"✓";position:absolute;left:4px;color:var(--ok);font-weight:700}
+.btn{display:inline-block;background:var(--blau);color:#fff;text-decoration:none;font:600 .95rem Archivo,sans-serif;padding:11px 18px;border-radius:var(--r);border:1px solid var(--blau)}
+.btn.ghost{background:transparent;color:var(--blau)}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.open{border:2px dashed var(--warn);border-radius:var(--r);padding:12px 14px;color:var(--ink);background:var(--panel)}
+.open b{color:var(--warn)}
+details{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px;margin-bottom:8px}
+summary{cursor:pointer;font:600 1rem Archivo,sans-serif}
+details p{margin:8px 0 0;color:var(--ink-2)}
+.memo{background:var(--alu);border-left:4px solid var(--warn);padding:18px;border-radius:var(--r)}
+.memo ol{margin:8px 0 0;padding-left:20px;color:var(--ink-2)}
+.theme{position:fixed;right:12px;bottom:12px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px;font:500 .8rem Inter,sans-serif;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="draft">ENTWURF – nicht veröffentlicht · nicht verlinkt · keine Änderung an secret58.com oder der Hauptseite</div>
+
+<main class="wrap">
+  <section class="block">
+    <span class="kicker">KI-Agenten &amp; Automation · Kundenanfragen</span>
+    <h1>Kundenanfragen schneller beantworten – ohne dass etwas ungeprüft rausgeht.</h1>
+    <p class="lede">Ein Assistent liest Ihre eingehenden Anfragen, ordnet sie ein und schreibt einen Antwortentwurf. Sie prüfen und geben frei. Heikle Fälle wie Zahlungen, Datenschutz oder Kündigungen gehen direkt an die zuständige Person.</p>
+    <div class="cta">
+      <a class="btn" href="#pilot">Pilot ansehen</a>
+      <a class="btn ghost" href="#regeln">Was der Assistent nie tut</a>
+    </div>
+  </section>
+
+  <section class="block">
+    <span class="kicker">So läuft es</span>
+    <h2>Fünf Schritte, einer davon gehört immer Ihnen.</h2>
+    <ol class="steps" style="margin-top:14px">
+      <li><b>Eingang</b><span>Anfrage kommt per Kontaktformular oder E-Mail an – zum Start genau ein Kanal.</span></li>
+      <li><b>Einordnung</b><span>Angebot, Termin, Zugang, Reklamation … oder „braucht einen Menschen“.</span></li>
+      <li><b>Entwurf</b><span>Antwort auf Basis Ihrer freigegebenen Informationen – nichts dazu erfunden.</span></li>
+      <li class="me"><b>Ihre Prüfung</b><span>Sie lesen, ändern bei Bedarf und geben genau diese Fassung frei.</span></li>
+      <li><b>Versand &amp; Protokoll</b><span>Erst nach Freigabe. Jede Antwort geht höchstens einmal raus, alles ist nachvollziehbar.</span></li>
+    </ol>
+    <p class="note" style="margin-top:12px">Ändern Sie einen freigegebenen Text, ist die Freigabe automatisch aufgehoben und muss neu erteilt werden.</p>
+  </section>
+
+  <section class="block" id="regeln">
+    <span class="kicker">Sicherheitsregeln</span>
+    <h2>Was der Assistent nie tut.</h2>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card">
+        <h3>Keine erfundenen Zusagen</h3>
+        <ul class="no">
+          <li>keine Preise, die nicht in Ihrer Preisliste stehen</li>
+          <li>keine Terminbestätigung ohne Blick in den Kalender</li>
+          <li>keine Erstattung oder Gutschrift ohne Prüfung</li>
+          <li>keinen Kündigungstermin ohne Vertragsprüfung</li>
+          <li>keine Lieferzusage für Länder oder Leistungen, die nicht geklärt sind</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Keine riskanten Handlungen</h3>
+        <ul class="no">
+          <li>fragt nie nach Passwörtern oder Kartendaten</li>
+          <li>gibt keine Daten anderer Kunden heraus</li>
+          <li>behauptet keine Löschung, die nicht erfolgt ist</li>
+          <li>löst keine Zahlung oder Rückbuchung aus</li>
+          <li>befolgt keine Anweisungen, die in einer Anfrage versteckt sind</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:12px">Verstößt ein Entwurf gegen eine dieser Regeln, lässt das System die Freigabe gar nicht erst zu.</p>
+  </section>
+
+  <section class="block" id="pilot">
+    <span class="kicker">Pilot</span>
+    <h2>Erst testen, dann entscheiden.</h2>
+    <p class="lede">Bevor eine einzige echte Antwort rausgeht, prüfen wir gemeinsam mit zehn typischen Anfragen aus Ihrem Alltag, ob der Assistent für Sie taugt.</p>
+    <div class="grid g3" style="margin-top:14px">
+      <div class="card"><h3>Zehn Testfälle</h3><p>Typische Anfragen – Angebot, Termin, Reklamation, Zahlung, Datenschutz, unklare Nachrichten. Für jeden Fall ist vorher festgelegt, was richtig wäre.</p></div>
+      <div class="card"><h3>Ehrliche Zeitmessung</h3><p>Wie lange brauchen Sie heute pro Anfrage, wie lange mit Entwurf und Prüfung? Gemessen, nicht geschätzt.</p></div>
+      <div class="card"><h3>Klares Ergebnis</h3><p>Pro Fall: bestanden oder nicht, mit Begründung und Korrekturen. Danach entscheiden Sie, ob es weitergeht.</p></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card">
+        <h3>Was wir von Ihnen brauchen</h3>
+        <ul class="yes">
+          <li>Ihre Leistungen, Preise und Bedingungen zum Freigeben</li>
+          <li>Regeln, was nie zugesagt werden darf</li>
+          <li>Wer zuständig ist für Zahlung, Datenschutz und Verträge</li>
+          <li>Einen Eingangskanal zum Start</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Für wen das passt</h3>
+        <ul class="yes">
+          <li>Kleine und mittlere Betriebe mit wiederkehrenden Anfragen</li>
+          <li>Anfragen kommen per E-Mail oder Kontaktformular</li>
+          <li>Antworten sollen schneller raus, aber nie ungeprüft</li>
+        </ul>
+      </div>
+    </div>
+    <div class="open" style="margin-top:14px"><b>Noch offen:</b> Konditionen und Preis des Piloten sind noch nicht festgelegt. Hier steht vor einer Veröffentlichung nur, was Matthias freigibt.</div>
+  </section>
+
+  <section class="block">
+    <span class="kicker">Häufige Fragen</span>
+    <h2>Kurz beantwortet.</h2>
+    <div style="margin-top:14px">
+      <details><summary>Antwortet der Assistent selbstständig?</summary><p>Nein. Jede Antwort braucht Ihre Freigabe. Ohne Freigabe geht nichts raus.</p></details>
+      <details><summary>Was passiert mit heiklen Anfragen?</summary><p>Zahlungen, Datenschutzanfragen, Kündigungen und verdächtige Nachrichten werden markiert und an die zuständige Person übergeben – mit einer Notiz, worum es geht.</p></details>
+      <details><summary>Kann eine Antwort aus Versehen doppelt verschickt werden?</summary><p>Nein. Jede freigegebene Fassung kann höchstens einmal versendet werden, auch wenn zweimal geklickt wird.</p></details>
+      <details><summary>Welche KI wird genutzt?</summary><p><span class="open" style="display:inline-block;padding:2px 8px"><b>Noch offen:</b> Anbieter wird vor Start festgelegt.</span> Im Test arbeiten wir zunächst mit festen Mustertexten ohne KI.</p></details>
+      <details><summary>Wie steht es um den Datenschutz?</summary><p><span class="open" style="display:inline-block;padding:2px 8px"><b>Noch offen:</b> Datenschutzhinweis und Auftragsverarbeitung werden vor dem Start geklärt und hier verlinkt.</span></p></details>
+      <details><summary>Was kostet das?</summary><p><span class="open" style="display:inline-block;padding:2px 8px"><b>Noch offen:</b> Preis noch nicht festgelegt.</span></p></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <span class="kicker">Nächster Schritt</span>
+    <h2>Erzählen Sie uns, welche Anfragen jede Woche Zeit kosten.</h2>
+    <p class="lede">In einem kurzen Gespräch klären wir, ob ein Pilot für Sie sinnvoll ist. Kein Verkaufsdruck.</p>
+    <div class="cta"><a class="btn" href="#" aria-disabled="true" onclick="return false">Pilotgespräch anfragen (im Entwurf ohne Funktion)</a></div>
+    <p class="note">Bei Veröffentlichung führt der Knopf zum vorhandenen Kontaktformular (Bereich „KI-Agenten“).</p>
+  </section>
+
+  <section class="block" style="border-bottom:0">
+    <div class="memo">
+      <h3>Interne Notiz für Matthias – vor einer Veröffentlichung entfernen</h3>
+      <p class="note">Geplanter Ort: Unterseite im Bereich „KI-Agenten &amp; Automation“, z. B. <code>#/kundenanfragen-pilot</code>, verlinkt von <code>#/ki-agenten</code>. Die Hauptseite selbst bleibt unverändert, bis du es ausdrücklich anordnest.</p>
+      <ol>
+        <li>Konditionen und Preis des Piloten festlegen (oder bewusst „auf Anfrage“).</li>
+        <li>KI-Anbieter entscheiden, Datenschutzhinweis und Auftragsverarbeitung klären.</li>
+        <li>Mindestens die zehn Testfälle im Pilotstudio bewerten, damit die Aussagen hier belegt sind.</li>
+        <li>Texte freigeben, dann Einbau zuerst in die Kopie <code>public/hauptseite/</code> auf Staging.</li>
+      </ol>
+      <p class="note" style="margin-top:8px">Bewusst nicht enthalten: Kundenstimmen, Zahlen zur Zeitersparnis und Referenzen – dafür gibt es noch keine echten Daten.</p>
+    </div>
+  </section>
+</main>
+
+<button class="theme" type="button" id="t">Hell/Dunkel</button>
+<script>
+document.getElementById("t").onclick=function(){var r=document.documentElement,d=r.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.theme=d==="dark"?"light":"dark"};
+</script>
+</body>
+</html>

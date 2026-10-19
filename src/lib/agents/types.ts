@@ -14,7 +14,10 @@ export type AgentKey =
   | "analytics"
   | "learning"
   | "growth"
-  | "message";
+  | "message"
+  | "website-social"
+  | "seo"
+  | "inbox";
 
 export interface AgentDefinition {
   key: AgentKey;
@@ -102,6 +105,21 @@ export const AGENTS: AgentDefinition[] = [
     key: "message",
     name: "MessageAgent",
     description: "Entwirft KI-Antworten auf Nachrichten/Kommentare zur manuellen Freigabe.",
+  },
+  {
+    key: "website-social",
+    name: "WebsiteSocialAgent",
+    description: "Erzeugt plattformgerechte Social-Media-Beiträge aus den Inhalten einer Website.",
+  },
+  {
+    key: "seo",
+    name: "SeoAgent",
+    description: "Analysiert SEO, Technik, Performance und Social-Vorschau einer URL mit priorisierten Maßnahmen.",
+  },
+  {
+    key: "inbox",
+    name: "InboxAgent",
+    description: "Sortiert Kundennachrichten aller Plattformen nach Dringlichkeit und erstellt Antwortentwürfe.",
   },
 ];
 

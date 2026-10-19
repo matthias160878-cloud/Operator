@@ -9,6 +9,7 @@ export interface HashtagResult {
 const STOPWORDS = new Set([
   "der", "die", "das", "den", "dem", "des", "ein", "eine", "einen", "einem", "einer",
   "und", "oder", "mit", "für", "von", "bei", "auf", "aus", "als", "ist", "sind",
+  "vom", "zum", "zur", "im", "in", "zu", "dir", "dich", "wir", "ihr", "uns", "nach", "über",
   "the", "a", "an", "and", "or", "with", "for", "from", "at", "on", "is", "are", "to",
 ]);
 
@@ -26,7 +27,7 @@ function slugifyTag(word: string): string {
   );
 }
 
-function templateHashtags(topic: string, brand?: BrandDNA | null): HashtagResult {
+export function templateHashtags(topic: string, brand?: BrandDNA | null): HashtagResult {
   const words = topic
     .split(/\s+/)
     .map(cleanWord)

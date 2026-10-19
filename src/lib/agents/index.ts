@@ -25,3 +25,6 @@ export {
 export { getRecommendations } from "@/lib/agents/learningAgent";
 export { getGrowthRecommendations } from "@/lib/agents/growthAgent";
 export { generateReplyDraft, approveAndSend } from "@/lib/agents/messageAgent";
+export { generateSocialPostsFromWebsite } from "@/lib/agents/websiteSocialAgent";
+export { analyzeWebsite } from "@/lib/agents/seoAgent";
+export { triageInbox, draftPendingReplies, recordInboundMessage } from "@/lib/agents/inboxAgent";

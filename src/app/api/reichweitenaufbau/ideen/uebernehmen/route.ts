@@ -4,7 +4,7 @@ import { prisma } from "@/lib/db";
 import { route } from "@/lib/api";
 import { bearbeiterOderAntwort } from "@/lib/reichweite/zugriff";
 import { protokoll } from "@/lib/reichweite/service";
-import { INHALTSARTEN, PLATTFORMEN, versprechenImText } from "@/lib/reichweitenaufbau/ideen";
+import { INHALTSARTEN, PLATTFORMEN, hwgRisiko, versprechenImText } from "@/lib/reichweitenaufbau/ideen";
 
 const schema = z.object({
   art: z.enum(Object.keys(INHALTSARTEN) as [string, ...string[]]),
@@ -32,6 +32,12 @@ async function handlePOST(request: Request) {
   const d = parsed.data;
   if (d.art === "VORHER_NACHHER" && !d.grundlage.trim()) {
     return NextResponse.json({ error: "Vorher-nachher nur mit belegter Grundlage." }, { status: 400 });
+  }
+  if (
+    d.art === "VORHER_NACHHER" &&
+    hwgRisiko({ zielgruppe: d.titel, problem: `${d.einstieg} ${d.text}`, ergebnis: d.beschreibung, material: d.bildVideoIdee, grundlageVorherNachher: d.grundlage }) === "EINGRIFF"
+  ) {
+    return NextResponse.json({ error: "Vorher-nachher für Schönheits- bzw. plastisch-chirurgische Eingriffe ist gegenüber Laien verboten (§ 11 Abs. 1 S. 3 Nr. 1 HWG)." }, { status: 400 });
   }
   let campaignId: string | null = null;
   if (d.kampagneId) {

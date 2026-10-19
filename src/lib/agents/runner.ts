@@ -2,6 +2,8 @@ import { prisma } from "@/lib/db";
 import { getAgentDefinition, type AgentKey } from "@/lib/agents/types";
 import { reserveQuota } from "@/lib/entitlements";
 import { currentTextProvider } from "@/lib/ai/textGenerator";
+import { kiSpeicher } from "@/lib/ai/kiKontext";
+import { mitKiZugang } from "@/lib/ai/kundenKi";
 import type { Metric } from "@/lib/plans";
 
 /**
@@ -44,6 +46,8 @@ export async function runAgent<T>(
   fn: () => Promise<T>,
   quota?: Metric | null | { metric: Metric; amount: number }
 ): Promise<T> {
+  // KI-Aufrufe des Laufs nutzen die Schlüssel dieses Workspaces (eigene des Kunden).
+  if (!kiSpeicher.getStore()) return mitKiZugang(workspaceId, () => runAgent(key, workspaceId, task, fn, quota));
   const def = getAgentDefinition(key);
   // Mehrfach-Aufträge (z. B. mehrere Plattformen) verbrauchen je Einheit ein Kontingent.
   const metric = quota === undefined ? AGENT_METRIC[key] ?? null : quota && typeof quota === "object" ? quota.metric : quota;

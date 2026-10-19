@@ -94,6 +94,7 @@ async function workspaceIdOf(email) {
 }
 
 let A, B;
+const KUNDEN_KI_KEY = "sk-ant-kunde-gueltig-0123456789abcdef";
 
 before(async () => {
   fakes = await startFakeServices();
@@ -162,6 +163,9 @@ before(async () => {
     await new Promise((r) => setTimeout(r, 500));
   }
   A = await signup("a@example.test", "Firma A");
+  // Kunden nutzen für KI-Texte ihren eigenen Schlüssel (Einstellungen → Eigene Zugänge).
+  const ki = await A.json("/api/zugaenge", { method: "PUT", body: { anbieter: "ANTHROPIC", werte: { apiKey: KUNDEN_KI_KEY } } });
+  assert.equal(ki.data?.pruefung?.status, "OK", JSON.stringify(ki.data));
   B = await signup("b@example.test", "Firma B");
 });
 
@@ -2240,4 +2244,43 @@ test("Eigene Zugänge: Kunde trägt Resend-Schlüssel ein, echter Newsletter-Ver
   assert.match(send.data.pruefung.meldung, /nur Versand/);
   assert.equal((await C.json("/api/zugaenge?anbieter=RESEND", { method: "DELETE" })).status, 200);
   assert.ok((await (await anon.req(`/n/${code}`)).text()).includes("DEMO"));
+});
+
+test("Eigene KI-Schlüssel: Kunde nutzt nur seinen Schlüssel, ohne Schlüssel Vorlagen statt Betreiber-KI", async () => {
+  const messages = (ab) => fakes.calls.slice(ab).filter((c) => c.path === "/v1/messages");
+  // Ohne eigenen Schlüssel: Vorlagen (Template-Modus), obwohl der Server einen Anthropic-Schlüssel hat
+  assert.equal((await A.json("/api/zugaenge?anbieter=ANTHROPIC", { method: "DELETE" })).status, 200);
+  let v = fakes.calls.length;
+  const ohne = await A.json("/api/thumbnails/generate", { method: "POST", body: { topic: "Ohne Schlüssel" } });
+  assert.equal(ohne.status, 200, JSON.stringify(ohne.data));
+  assert.equal(messages(v).length, 0, "keine Betreiber-KI für Kunden");
+  const integ = await (await A.req("/integrations")).text();
+  assert.ok(integ.includes("Kein eigener Schlüssel eingetragen") && integ.includes("/settings/zugaenge"));
+
+  // Mit eigenem Schlüssel: Aufruf mit genau diesem Schlüssel
+  assert.equal((await A.json("/api/zugaenge", { method: "PUT", body: { anbieter: "ANTHROPIC", werte: { apiKey: KUNDEN_KI_KEY } } })).data.pruefung.status, "OK");
+  v = fakes.calls.length;
+  assert.equal((await A.json("/api/thumbnails/generate", { method: "POST", body: { topic: "Mit Schlüssel" } })).status, 200);
+  assert.ok(messages(v).length >= 1);
+  assert.ok(messages(v).every((c) => c.apiKey === KUNDEN_KI_KEY), "nur der Kundenschlüssel");
+
+  // Widget-Chat des Kunden ebenfalls über seinen Schlüssel
+  const site = await prisma.websiteConnection.findFirst({ where: { workspaceId: await workspaceIdOf("a@example.test"), revokedAt: null } });
+  if (site) {
+    v = fakes.calls.length;
+    const r = await fetch(`${BASE}/api/widget/${site.publicKey}/chat`, {
+      method: "POST",
+      headers: { "content-type": "application/json", origin: site.origin },
+      body: JSON.stringify({ messages: [{ role: "user", content: "Hallo?" }] }),
+    });
+    assert.equal(r.status, 200);
+    assert.ok(messages(v).every((c) => c.apiKey === KUNDEN_KI_KEY));
+  }
+
+  // Prüfung: ungültig wird erkannt, falsches Format abgelehnt, Wegweiser vorhanden, Mandantentrennung
+  const E = await signup("ki-e@example.com", "KI E", "10.80.0.1");
+  assert.equal((await E.json("/api/zugaenge", { method: "PUT", body: { anbieter: "ANTHROPIC", werte: { apiKey: "sk-ant-kunde-falsch-0123456789abcdef" } } })).data.pruefung.status, "FEHLER");
+  assert.equal((await E.json("/api/zugaenge", { method: "PUT", body: { anbieter: "OPENAI", werte: { apiKey: "sk-ant-xyz0123456789abcdefghij" } } })).status, 400, "Anthropic-Schlüssel nicht als OpenAI");
+  assert.ok((await (await E.req("/settings/zugaenge")).text()).includes("console.anthropic.com/settings/keys"), "Wegweiser zum KI-Schlüssel");
+  assert.ok(!(await E.json("/api/zugaenge")).data.zugaenge.some((z) => z.endung === KUNDEN_KI_KEY.slice(-4) && z.status === "OK"), "keine fremden Zugänge");
 });

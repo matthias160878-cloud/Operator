@@ -1,13 +1,14 @@
 import { prisma } from "@/lib/db";
 import { decryptToken, encryptToken, isTokenEncryptionConfigured } from "@/lib/crypto";
-import { ZUGANG_ANBIETER, absenderDomain, zugangFehler, type ZugangAnbieter } from "@/lib/zugaenge/anbieter";
+import { ZUGANG_ANBIETER, absenderDomain, zugangFehler, type AnbieterKey } from "@/lib/zugaenge/anbieter";
+import type { KiSchluessel } from "@/lib/ai/kiKontext";
 
 /**
  * Eigene Zugänge eines Workspaces (Kunde trägt seinen Schlüssel selbst ein).
  * Werte liegen verschlüsselt in der Datenbank, werden nie an den Browser
  * gegeben und nie geloggt. Jeder Workspace sieht und nutzt nur seine eigenen.
  */
-export type AnbieterKey = ZugangAnbieter["key"];
+export type { AnbieterKey };
 
 export interface ResendZugang {
   apiKey: string;
@@ -65,7 +66,11 @@ async function werteLaden(workspaceId: string, anbieter: AnbieterKey): Promise<R
 /** Prüft den Zugang beim Anbieter und speichert das Ergebnis. Gibt nie den Schlüssel zurück. */
 export async function zugangPruefen(workspaceId: string, anbieter: AnbieterKey): Promise<{ status: "OK" | "FEHLER"; meldung: string }> {
   const w = await werteLaden(workspaceId, anbieter);
-  const ergebnis = w ? await resendPruefen({ apiKey: w.apiKey, absender: w.absender }) : { status: "FEHLER" as const, meldung: "Kein lesbarer Zugang gespeichert. Bitte neu eintragen." };
+  const ergebnis = !w
+    ? { status: "FEHLER" as const, meldung: "Kein lesbarer Zugang gespeichert. Bitte neu eintragen." }
+    : anbieter === "RESEND"
+      ? await resendPruefen({ apiKey: w.apiKey, absender: w.absender })
+      : await kiPruefen(anbieter, w.apiKey);
   await prisma.workspaceZugang.updateMany({ where: { workspaceId, anbieter }, data: { status: ergebnis.status, meldung: ergebnis.meldung, geprueftAm: new Date() } });
   return ergebnis;
 }
@@ -99,4 +104,46 @@ export async function resendZugang(workspaceId: string): Promise<ResendZugang | 
   if (z?.status !== "OK") return null;
   const w = await werteLaden(workspaceId, "RESEND");
   return w?.apiKey && w.absender ? { apiKey: w.apiKey, absender: w.absender } : null;
+}
+
+const KI_PRUEFUNG: Record<Exclude<AnbieterKey, "RESEND">, (key: string) => { url: string; headers: Record<string, string> }> = {
+  ANTHROPIC: (key) => ({ url: `${(process.env.ANTHROPIC_BASE_URL || "https://api.anthropic.com").replace(/\/+$/, "")}/v1/models?limit=1`, headers: { "x-api-key": key, "anthropic-version": "2023-06-01" } }),
+  OPENAI: (key) => ({ url: `${(process.env.OPENAI_BASE_URL || "https://api.openai.com").replace(/\/+$/, "")}/v1/models`, headers: { authorization: `Bearer ${key}` } }),
+  GEMINI: (key) => ({ url: `${(process.env.GEMINI_BASE_URL || "https://generativelanguage.googleapis.com").replace(/\/+$/, "")}/v1beta/models?pageSize=1`, headers: { "x-goog-api-key": key } }),
+};
+
+/** Prüft einen KI-Schlüssel mit einer kostenlosen Abfrage (Modellliste) – es wird nichts generiert. */
+async function kiPruefen(anbieter: Exclude<AnbieterKey, "RESEND">, key: string): Promise<{ status: "OK" | "FEHLER"; meldung: string }> {
+  const { url, headers } = KI_PRUEFUNG[anbieter](key);
+  const name = ZUGANG_ANBIETER[anbieter].name;
+  let res: Response;
+  try {
+    res = await fetch(url, { headers, signal: AbortSignal.timeout(10_000), cache: "no-store" });
+  } catch {
+    return { status: "FEHLER", meldung: `${name} ist gerade nicht erreichbar. Bitte später erneut prüfen.` };
+  }
+  if (res.ok) return { status: "OK", meldung: `Schlüssel gültig. Bitte bei ${name} Guthaben bzw. Abrechnung und ein Ausgabenlimit prüfen.` };
+  if (res.status === 429) return { status: "OK", meldung: `Schlüssel gültig, aber das Anfragelimit bei ${name} ist gerade erreicht.` };
+  if (res.status === 400 || res.status === 401 || res.status === 403) return { status: "FEHLER", meldung: "Schlüssel ungültig, gesperrt oder ohne Berechtigung." };
+  return { status: "FEHLER", meldung: `${name} antwortete mit Status ${res.status}.` };
+}
+
+/**
+ * KI-Schlüssel für einen Workspace: Kunden nur ihre eigenen (zuletzt erfolgreich
+ * geprüft), ohne Rückgriff auf die Betreiber-Schlüssel. Workspaces des Betreibers
+ * nutzen die Schlüssel des Servers.
+ */
+export async function kiSchluesselFuer(workspaceId: string): Promise<KiSchluessel> {
+  const betreiber = await prisma.user.findFirst({ where: { workspaceId, isOperator: true }, select: { id: true } });
+  if (betreiber) return { quelle: "BETREIBER" };
+  const rows = await prisma.workspaceZugang.findMany({ where: { workspaceId, anbieter: { in: ["ANTHROPIC", "OPENAI", "GEMINI"] }, status: "OK" }, select: { anbieter: true } });
+  const out: KiSchluessel = { quelle: "KUNDE" };
+  for (const r of rows) {
+    const w = await werteLaden(workspaceId, r.anbieter as AnbieterKey);
+    if (!w?.apiKey) continue;
+    if (r.anbieter === "ANTHROPIC") out.anthropic = w.apiKey;
+    if (r.anbieter === "OPENAI") out.openai = w.apiKey;
+    if (r.anbieter === "GEMINI") out.gemini = w.apiKey;
+  }
+  return out;
 }

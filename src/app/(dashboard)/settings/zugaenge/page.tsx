@@ -36,7 +36,10 @@ export default async function ZugaengePage() {
       )}
       {!darf && <p className="text-xs text-warning">Ansehen ist möglich; eintragen, prüfen und löschen dürfen nur Inhaber und Admins.</p>}
 
-      {Object.values(ZUGANG_ANBIETER).map((a) => {
+      {(["EMAIL", "KI"] as const).map((art) => (
+        <div key={art} className="space-y-3">
+          <h2 className="text-base font-semibold text-foreground">{art === "EMAIL" ? "E-Mail (Newsletter)" : "KI-Texte (ein Anbieter reicht)"}</h2>
+      {Object.values(ZUGANG_ANBIETER).filter((a) => a.art === art).map((a) => {
         const z = zugaenge.find((x) => x.anbieter === a.key) ?? null;
         return (
           <section key={a.key} className="card space-y-3 p-5" data-testid={`zugang-${a.key}`}>
@@ -89,6 +92,8 @@ export default async function ZugaengePage() {
           </section>
         );
       })}
+        </div>
+      ))}
 
       <section className="card space-y-2 p-5">
         <h2 className="text-sm font-semibold text-foreground">Werbekonten (Meta, Google Ads, LinkedIn, TikTok)</h2>

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { Platform } from "@prisma/client";
+import type { ConversationChannel, Platform } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { generateJson } from "@/lib/ai/generateJson";
 import { generateReplyDraft } from "@/lib/agents/messageAgent";
@@ -182,18 +182,41 @@ export async function recordInboundMessage(input: {
   participantName: string;
   participantHandle?: string;
   body: string;
+  channel?: ConversationChannel;
+  /** Kommentar-ID (bzw. LinkedIn-Kommentar-URN) oder Empfänger-ID für echtes Antworten. */
+  externalThreadId?: string;
+  /** ID der Nachricht auf der Plattform — verhindert doppeltes Erfassen. */
+  externalMessageId?: string;
 }) {
   const handle = input.participantHandle?.trim() ?? "";
-  const existing = handle
+  const threadId = input.externalThreadId?.trim() || null;
+  const channel = input.channel ?? "COMMENT";
+  const existing = threadId
     ? await prisma.conversation.findFirst({
-        where: { workspaceId: input.workspaceId, platform: input.platform, participantHandle: handle },
-        orderBy: { lastMessageAt: "desc" },
+        where: { workspaceId: input.workspaceId, platform: input.platform, channel, externalThreadId: threadId },
       })
-    : null;
+    : handle
+      ? await prisma.conversation.findFirst({
+          where: { workspaceId: input.workspaceId, platform: input.platform, participantHandle: handle },
+          orderBy: { lastMessageAt: "desc" },
+        })
+      : null;
 
   if (existing) {
+    if (input.externalMessageId) {
+      const duplicate = await prisma.message.findFirst({
+        where: { conversationId: existing.id, externalId: input.externalMessageId },
+      });
+      if (duplicate) return { conversationId: existing.id, messageId: duplicate.id, created: false, duplicate: true };
+    }
     const message = await prisma.message.create({
-      data: { conversationId: existing.id, direction: "INBOUND", body: input.body, status: "RECEIVED" },
+      data: {
+        conversationId: existing.id,
+        direction: "INBOUND",
+        body: input.body,
+        status: "RECEIVED",
+        externalId: input.externalMessageId ?? null,
+      },
     });
     await prisma.conversation.update({
       where: { id: existing.id },
@@ -208,7 +231,16 @@ export async function recordInboundMessage(input: {
       platform: input.platform,
       participantName: input.participantName,
       participantHandle: handle,
-      messages: { create: { direction: "INBOUND", body: input.body, status: "RECEIVED" } },
+      channel,
+      externalThreadId: threadId,
+      messages: {
+        create: {
+          direction: "INBOUND",
+          body: input.body,
+          status: "RECEIVED",
+          externalId: input.externalMessageId ?? null,
+        },
+      },
     },
     include: { messages: true },
   });

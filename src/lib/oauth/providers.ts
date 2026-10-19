@@ -69,7 +69,8 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     clientSecretEnv: "YOUTUBE_CLIENT_SECRET",
     authorizeUrl: "https://accounts.google.com/o/oauth2/v2/auth",
     tokenUrl: "https://oauth2.googleapis.com/token",
-    scope: "https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload",
+    scope:
+      "https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.force-ssl",
     extraAuthParams: { access_type: "offline", prompt: "consent" },
     async fetchAccountInfo(accessToken) {
       const res = await fetch(
@@ -89,9 +90,10 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     clientSecretEnv: "FACEBOOK_APP_SECRET",
     authorizeUrl: "https://www.facebook.com/v19.0/dialog/oauth",
     tokenUrl: "https://graph.facebook.com/v19.0/oauth/access_token",
-    scope: "pages_show_list,pages_manage_posts,pages_read_engagement",
+    scope:
+      "pages_show_list,pages_manage_posts,pages_read_engagement,pages_read_user_content,pages_manage_engagement,pages_messaging",
     publishingCaveat:
-      "Für echtes Veröffentlichen auf verbundenen Facebook-Seiten muss die App bei Meta zusätzlich zur Prüfung (App Review) eingereicht werden — das ist ein separater Schritt bei Meta, den diese Software nicht ersetzt. Facebook postet immer über eine Seite, nicht über das persönliche Profil; falls mehrere Seiten verwaltet werden, wird automatisch die erste verbunden. Der Seiten-Zugangstoken läuft nicht automatisch ab, ein Refresh ist hier nicht nötig.",
+      "Für echtes Veröffentlichen auf verbundenen Facebook-Seiten muss die App bei Meta zusätzlich zur Prüfung (App Review) eingereicht werden — das ist ein separater Schritt bei Meta, den diese Software nicht ersetzt. Facebook postet immer über eine Seite, nicht über das persönliche Profil; falls mehrere Seiten verwaltet werden, wird automatisch die erste verbunden. Der Seiten-Zugangstoken läuft nicht automatisch ab, ein Refresh ist hier nicht nötig. Für Antworten auf Kommentare und Messenger-Nachrichten verlangt Meta außerdem die Freigabe von pages_manage_engagement bzw. pages_messaging; Messenger-Antworten sind nur innerhalb von 24 Stunden nach der letzten Nachricht des Kunden erlaubt.",
     async fetchAccountInfo(accessToken) {
       const res = await fetch(
         `https://graph.facebook.com/me/accounts?fields=id,name,access_token&access_token=${encodeURIComponent(accessToken)}`
@@ -114,9 +116,10 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     clientSecretEnv: "INSTAGRAM_CLIENT_SECRET",
     authorizeUrl: "https://www.instagram.com/oauth/authorize",
     tokenUrl: "https://api.instagram.com/oauth/access_token",
-    scope: "instagram_business_basic,instagram_business_content_publish",
+    scope:
+      "instagram_business_basic,instagram_business_content_publish,instagram_business_manage_comments,instagram_business_manage_messages",
     publishingCaveat:
-      "Setzt ein verknüpftes Instagram-Business- oder Creator-Konto voraus. Für echtes Veröffentlichen prüft Meta die App zusätzlich (App Review) — ein separater Schritt bei Meta.",
+      "Setzt ein verknüpftes Instagram-Business- oder Creator-Konto voraus. Für echtes Veröffentlichen prüft Meta die App zusätzlich (App Review) — ein separater Schritt bei Meta. Das gilt auch für Antworten auf Kommentare und Direktnachrichten (instagram_business_manage_comments/_messages); DM-Antworten sind nur innerhalb von 24 Stunden nach der letzten Kundennachricht erlaubt.",
     async fetchAccountInfo(accessToken) {
       const res = await fetch(
         `https://graph.instagram.com/me?fields=username&access_token=${encodeURIComponent(accessToken)}`
@@ -136,7 +139,7 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     tokenUrl: "https://www.linkedin.com/oauth/v2/accessToken",
     scope: "openid profile w_member_social",
     publishingCaveat:
-      "LinkedIn-Zugangstoken laufen nach ca. 60 Tagen ab; ein automatisches Verlängern (Refresh) ist ohne separat von LinkedIn freigegebenen Zugriff nicht möglich — danach ist ein erneutes Verbinden nötig.",
+      "LinkedIn-Zugangstoken laufen nach ca. 60 Tagen ab; ein automatisches Verlängern (Refresh) ist ohne separat von LinkedIn freigegebenen Zugriff nicht möglich — danach ist ein erneutes Verbinden nötig. Antworten auf Kommentare sind möglich, das automatische Abrufen von Kommentaren und Direktnachrichten erlaubt LinkedIn nur Partner-Apps — Kommentare müssen daher mit ihrer Kommentar-URN manuell angelegt werden.",
     async fetchAccountInfo(accessToken) {
       const res = await fetch("https://api.linkedin.com/v2/userinfo", {
         headers: { Authorization: `Bearer ${accessToken}` },
@@ -154,7 +157,7 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     scope: "user.info.basic,video.publish",
     usesPkce: true,
     publishingCaveat:
-      "TikTok schaltet den Veröffentlichungs-Zugriff (video.publish) erst nach eigener Prüfung der App durch TikTok frei — das ist ein separater Freigabeprozess bei TikTok, den diese Software nicht ersetzt. Bis dahin funktioniert nur das Verbinden/Anzeigen des Kontos.",
+      "TikTok schaltet den Veröffentlichungs-Zugriff (video.publish) erst nach eigener Prüfung der App durch TikTok frei — das ist ein separater Freigabeprozess bei TikTok, den diese Software nicht ersetzt. Bis dahin funktioniert nur das Verbinden/Anzeigen des Kontos. Antworten auf Kommentare oder Direktnachrichten bietet TikTok für Drittanbieter-Apps derzeit nicht an.",
     async fetchAccountInfo(accessToken) {
       const res = await fetch(
         "https://open.tiktokapis.com/v2/user/info/?fields=display_name,open_id",

@@ -102,6 +102,13 @@ enum ConversationStatus {
   CLOSED
 }
 
+// Art der Konversation: öffentlicher Kommentar (Antwort als Kommentar-Reply)
+// oder Direktnachricht (Antwort als DM an den Absender).
+enum ConversationChannel {
+  COMMENT
+  DIRECT_MESSAGE
+}
+
 enum MessageDirection {
   INBOUND
   OUTBOUND
@@ -312,18 +319,18 @@ model MediaAsset {
 }
 
 model PlatformAccount {
-  id               String        @id @default(cuid())
-  workspaceId      String
-  workspace        Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  platform         Platform
-  accountName      String        @default("")
-  status           AccountStatus @default(NOT_CONFIGURED)
-  lastPublishedAt  DateTime?
-  lastError        String?
-  createdAt        DateTime      @default(now())
-  accessTokenEnc   String?
-  refreshTokenEnc  String?
-  tokenExpiresAt   DateTime?
+  id                String        @id @default(cuid())
+  workspaceId       String
+  workspace         Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  platform          Platform
+  accountName       String        @default("")
+  status            AccountStatus @default(NOT_CONFIGURED)
+  lastPublishedAt   DateTime?
+  lastError         String?
+  createdAt         DateTime      @default(now())
+  accessTokenEnc    String?
+  refreshTokenEnc   String?
+  tokenExpiresAt    DateTime?
   externalAccountId String?
 
   @@unique([workspaceId, platform])
@@ -438,18 +445,27 @@ model RevenueEntry {
 // als Adapter vorbereitet, meldet aber ehrlich NOT_CONFIGURED, solange kein
 // echter Zugang existiert — siehe `lib/agents/messageAgent.ts`.
 model Conversation {
-  id                String             @id @default(cuid())
+  id                String              @id @default(cuid())
   workspaceId       String
-  workspace         Workspace          @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspace         Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   platform          Platform
   participantName   String
-  participantHandle String             @default("")
-  status            ConversationStatus @default(OPEN)
-  lastMessageAt     DateTime           @default(now())
-  createdAt         DateTime           @default(now())
+  participantHandle String              @default("")
+  channel           ConversationChannel @default(COMMENT)
+  // Plattform-ID, an die geantwortet wird: bei COMMENT die ID des
+  // Kommentars (LinkedIn: Kommentar-URN), bei DIRECT_MESSAGE die
+  // Empfänger-ID (Facebook PSID / Instagram IGSID). Null = manuell
+  // angelegt, dann ist kein echtes Senden möglich.
+  externalThreadId  String?
+  // Kurzer Kontext, z. B. Titel/Link des kommentierten Beitrags.
+  externalContext   String              @default("")
+  status            ConversationStatus  @default(OPEN)
+  lastMessageAt     DateTime            @default(now())
+  createdAt         DateTime            @default(now())
 
   messages Message[]
 
+  @@index([workspaceId, platform, externalThreadId])
   @@map("conversations")
 }
 
@@ -460,10 +476,14 @@ model Message {
   direction      MessageDirection
   body           String
   status         MessageStatus    @default(RECEIVED)
+  // ID der Nachricht/des Kommentars auf der Plattform (eingehend: zum
+  // Entdoppeln beim Abruf; ausgehend: ID der gesendeten Antwort).
+  externalId     String?
   error          String?
   createdAt      DateTime         @default(now())
   sentAt         DateTime?
 
+  @@index([conversationId, externalId])
   @@map("messages")
 }
 

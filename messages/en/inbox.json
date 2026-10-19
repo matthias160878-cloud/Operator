@@ -1,16 +1,17 @@
 {
   "title": "Inbox",
-  "description": "Messages & comments across all platforms. The MessageAgent suggests replies — only what you approve gets sent. There's no real OAuth connection to any platform yet, so conversations here are simulated manually instead of fetched live.",
-  "emptyState": "No conversations yet — simulate one to get started.",
+  "description": "Messages & comments across all platforms. The MessageAgent suggests replies — only what you approve is sent, directly via the platform (comment reply or direct message). Connect platforms under Social Media and fetch new messages with “Fetch messages”.",
+  "emptyState": "No conversations yet — fetch messages from your connected platforms or create one manually.",
   "backToInbox": "Back to inbox",
   "newConversation": {
-    "simulateButton": "Simulate conversation",
-    "simulateHint": "Since there's no real platform connection, you can simulate an incoming message here to try out the AI reply draft.",
+    "simulateButton": "Add conversation manually",
+    "simulateHint": "Add a conversation manually. With a platform ID (comment ID or recipient ID) you can reply for real; without an ID it only serves to test the reply draft.",
     "close": "Close",
     "namePlaceholder": "Name",
     "handlePlaceholder": "@handle (optional)",
     "messagePlaceholder": "Message text …",
-    "createButton": "Create"
+    "createButton": "Create",
+    "externalIdPlaceholder": "Platform ID (comment ID / LinkedIn comment URN / recipient ID, optional)"
   },
   "detail": {
     "draftFailed": "Draft failed.",
@@ -19,8 +20,23 @@
     "approveAndSend": "Approve & send",
     "requestDraft": "Request AI reply draft",
     "openDraftExists": "There's already an open draft above — edit or send it first.",
-    "simulateMoreHint": "Simulate another incoming message (test without a real platform connection):",
+    "simulateMoreHint": "Add another incoming message manually (e.g. for testing):",
     "messagePlaceholder": "Message text …",
-    "addButton": "Add"
+    "addButton": "Add",
+    "retrySend": "Send again",
+    "context": "Post",
+    "externalIdLabel": "Platform ID to reply to",
+    "noExternalId": "Without a platform ID nothing can actually be sent.",
+    "saveFailed": "Saving failed."
+  },
+  "channel": {
+    "COMMENT": "Comment",
+    "DIRECT_MESSAGE": "Direct message"
+  },
+  "sync": {
+    "button": "Fetch messages",
+    "failed": "Fetching failed.",
+    "result": "{platform}: {conversations} new conversation(s), {messages} new message(s)",
+    "noAccounts": "No platform connected — connect accounts under Social Media."
   }
 }

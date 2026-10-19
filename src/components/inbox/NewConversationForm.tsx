@@ -17,6 +17,8 @@ export function NewConversationForm() {
   const [platform, setPlatform] = useState("INSTAGRAM");
   const [participantName, setParticipantName] = useState("");
   const [participantHandle, setParticipantHandle] = useState("");
+  const [channel, setChannel] = useState("COMMENT");
+  const [externalThreadId, setExternalThreadId] = useState("");
   const [initialMessage, setInitialMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -27,7 +29,14 @@ export function NewConversationForm() {
       const res = await fetch("/api/conversations", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ platform, participantName, participantHandle, initialMessage }),
+        body: JSON.stringify({
+          platform,
+          participantName,
+          participantHandle,
+          channel,
+          externalThreadId: externalThreadId.trim() || undefined,
+          initialMessage,
+        }),
       });
       const data = await res.json();
       if (res.ok) router.push(`/inbox/${data.conversation.id}`);
@@ -75,6 +84,18 @@ export function NewConversationForm() {
           placeholder={t("newConversation.handlePlaceholder")}
           value={participantHandle}
           onChange={(e) => setParticipantHandle(e.target.value)}
+        />
+      </div>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <select className={inputClass} value={channel} onChange={(e) => setChannel(e.target.value)}>
+          <option value="COMMENT">{t("channel.COMMENT")}</option>
+          <option value="DIRECT_MESSAGE">{t("channel.DIRECT_MESSAGE")}</option>
+        </select>
+        <input
+          className={`${inputClass} sm:col-span-2`}
+          placeholder={t("newConversation.externalIdPlaceholder")}
+          value={externalThreadId}
+          onChange={(e) => setExternalThreadId(e.target.value)}
         />
       </div>
       <textarea

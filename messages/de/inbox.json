@@ -1,16 +1,17 @@
 {
   "title": "Posteingang",
-  "description": "Nachrichten & Kommentare über alle Plattformen. Der MessageAgent schlägt Antworten vor — gesendet wird nur, was du freigibst. Es besteht noch keine echte OAuth-Verbindung zu einer Plattform, daher werden Konversationen hier manuell simuliert statt live abgerufen.",
-  "emptyState": "Noch keine Konversationen — simuliere eine, um zu starten.",
+  "description": "Nachrichten & Kommentare über alle Plattformen. Der MessageAgent schlägt Antworten vor — gesendet wird nur, was du freigibst, und zwar direkt über die Plattform (Kommentar-Antwort oder Direktnachricht). Verbinde Plattformen unter Social Media und rufe neue Nachrichten über „Nachrichten abrufen“ ab.",
+  "emptyState": "Noch keine Konversationen — rufe Nachrichten von deinen verbundenen Plattformen ab oder lege eine manuell an.",
   "backToInbox": "Zurück zum Posteingang",
   "newConversation": {
-    "simulateButton": "Konversation simulieren",
-    "simulateHint": "Da keine echte Plattform-Verbindung besteht, kannst du hier eine eingehende Nachricht simulieren, um den KI-Antwortentwurf auszuprobieren.",
+    "simulateButton": "Konversation manuell anlegen",
+    "simulateHint": "Lege eine Konversation manuell an. Mit Plattform-ID (Kommentar-ID bzw. Empfänger-ID) kann echt geantwortet werden, ohne ID dient sie nur zum Testen des Antwortentwurfs.",
     "close": "Schließen",
     "namePlaceholder": "Name",
     "handlePlaceholder": "@handle (optional)",
     "messagePlaceholder": "Nachrichtentext …",
-    "createButton": "Erstellen"
+    "createButton": "Erstellen",
+    "externalIdPlaceholder": "Plattform-ID (Kommentar-ID / LinkedIn-Kommentar-URN / Empfänger-ID, optional)"
   },
   "detail": {
     "draftFailed": "Entwurf fehlgeschlagen.",
@@ -19,8 +20,23 @@
     "approveAndSend": "Freigeben & senden",
     "requestDraft": "KI-Antwortentwurf anfordern",
     "openDraftExists": "Es gibt bereits einen offenen Entwurf oben — erst bearbeiten/senden.",
-    "simulateMoreHint": "Weitere eingehende Nachricht simulieren (Test ohne echte Plattform-Verbindung):",
+    "simulateMoreHint": "Weitere eingehende Nachricht manuell hinzufügen (z. B. zum Testen):",
     "messagePlaceholder": "Nachrichtentext …",
-    "addButton": "Hinzufügen"
+    "addButton": "Hinzufügen",
+    "retrySend": "Erneut senden",
+    "context": "Beitrag",
+    "externalIdLabel": "Plattform-ID, an die geantwortet wird",
+    "noExternalId": "Ohne Plattform-ID kann nicht echt gesendet werden.",
+    "saveFailed": "Speichern fehlgeschlagen."
+  },
+  "channel": {
+    "COMMENT": "Kommentar",
+    "DIRECT_MESSAGE": "Direktnachricht"
+  },
+  "sync": {
+    "button": "Nachrichten abrufen",
+    "failed": "Abruf fehlgeschlagen.",
+    "result": "{platform}: {conversations} neue Konversation(en), {messages} neue Nachricht(en)",
+    "noAccounts": "Keine Plattform verbunden — verbinde Accounts unter Social Media."
   }
 }

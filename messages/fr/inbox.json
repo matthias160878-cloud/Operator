@@ -1,16 +1,17 @@
 {
   "title": "Boîte de réception",
-  "description": "Messages et commentaires de toutes les plateformes. Le MessageAgent propose des réponses — seul ce que tu approuves est envoyé. Il n'existe pas encore de véritable connexion OAuth à une plateforme, les conversations sont donc simulées manuellement ici plutôt que récupérées en direct.",
-  "emptyState": "Aucune conversation pour l'instant — simules-en une pour commencer.",
+  "description": "Messages et commentaires de toutes les plateformes. Le MessageAgent propose des réponses — seul ce que vous validez est envoyé, directement via la plateforme (réponse au commentaire ou message direct). Connectez les plateformes sous Social Media et récupérez les nouveaux messages avec « Récupérer les messages ».",
+  "emptyState": "Aucune conversation pour l’instant — récupérez les messages de vos plateformes connectées ou créez-en une manuellement.",
   "backToInbox": "Retour à la boîte de réception",
   "newConversation": {
-    "simulateButton": "Simuler une conversation",
-    "simulateHint": "Comme il n'y a pas de véritable connexion à la plateforme, tu peux simuler ici un message entrant pour tester le brouillon de réponse généré par l'IA.",
+    "simulateButton": "Ajouter une conversation manuellement",
+    "simulateHint": "Ajoutez une conversation manuellement. Avec un ID de plateforme (ID du commentaire ou du destinataire), vous pouvez répondre réellement ; sans ID, elle sert uniquement à tester le brouillon.",
     "close": "Fermer",
     "namePlaceholder": "Nom",
     "handlePlaceholder": "@identifiant (facultatif)",
     "messagePlaceholder": "Texte du message …",
-    "createButton": "Créer"
+    "createButton": "Créer",
+    "externalIdPlaceholder": "ID de plateforme (ID du commentaire / URN de commentaire LinkedIn / ID du destinataire, facultatif)"
   },
   "detail": {
     "draftFailed": "Échec de la génération du brouillon.",
@@ -19,8 +20,23 @@
     "approveAndSend": "Approuver et envoyer",
     "requestDraft": "Demander un brouillon de réponse IA",
     "openDraftExists": "Il y a déjà un brouillon ouvert ci-dessus — modifie-le ou envoie-le d'abord.",
-    "simulateMoreHint": "Simuler un autre message entrant (test sans véritable connexion à la plateforme) :",
+    "simulateMoreHint": "Ajouter manuellement un autre message entrant (p. ex. pour tester) :",
     "messagePlaceholder": "Texte du message …",
-    "addButton": "Ajouter"
+    "addButton": "Ajouter",
+    "retrySend": "Renvoyer",
+    "context": "Publication",
+    "externalIdLabel": "ID de plateforme à laquelle répondre",
+    "noExternalId": "Sans ID de plateforme, rien ne peut être réellement envoyé.",
+    "saveFailed": "L’enregistrement a échoué."
+  },
+  "channel": {
+    "COMMENT": "Commentaire",
+    "DIRECT_MESSAGE": "Message direct"
+  },
+  "sync": {
+    "button": "Récupérer les messages",
+    "failed": "La récupération a échoué.",
+    "result": "{platform} : {conversations} nouvelle(s) conversation(s), {messages} nouveau(x) message(s)",
+    "noAccounts": "Aucune plateforme connectée — connectez des comptes sous Social Media."
   }
 }

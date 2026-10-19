@@ -22,6 +22,18 @@ export function ConversationDetail({
   const [sendingId, setSendingId] = useState<string | null>(null);
   const [editing, setEditing] = useState<Record<string, string>>({});
   const [notice, setNotice] = useState<string | null>(null);
+  const [externalId, setExternalId] = useState(conversation.externalThreadId ?? "");
+
+  async function saveExternalId(e: React.FormEvent) {
+    e.preventDefault();
+    const res = await fetch(`/api/conversations/${conversation.id}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ externalThreadId: externalId.trim() || null }),
+    });
+    if (!res.ok) setNotice(t("detail.saveFailed"));
+    router.refresh();
+  }
 
   async function simulateInbound(e: React.FormEvent) {
     e.preventDefault();
@@ -82,13 +94,42 @@ export function ConversationDetail({
   return (
     <div className="space-y-5">
       <div className="card p-5">
-        <div className="mb-1 text-xs text-muted">{PLATFORM_LABELS[conversation.platform] ?? conversation.platform}</div>
+        <div className="mb-1 text-xs text-muted">
+          {PLATFORM_LABELS[conversation.platform] ?? conversation.platform} · {t(`channel.${conversation.channel}`)}
+        </div>
         <h1 className="text-lg font-semibold text-foreground">
           {conversation.participantName}
           {conversation.participantHandle && (
             <span className="ml-2 text-sm font-normal text-muted">@{conversation.participantHandle}</span>
           )}
         </h1>
+        {conversation.externalContext && (
+          <p className="mt-1 truncate text-xs text-muted">
+            {t("detail.context")}:{" "}
+            {/^https:\/\//.test(conversation.externalContext) ? (
+              <a href={conversation.externalContext} target="_blank" rel="noreferrer" className="underline">
+                {conversation.externalContext}
+              </a>
+            ) : (
+              conversation.externalContext
+            )}
+          </p>
+        )}
+        <form onSubmit={saveExternalId} className="mt-3 space-y-1">
+          <label className="text-xs text-muted">{t("detail.externalIdLabel")}</label>
+          <div className="flex gap-2">
+            <input
+              className={inputClass}
+              placeholder={t("newConversation.externalIdPlaceholder")}
+              value={externalId}
+              onChange={(e) => setExternalId(e.target.value)}
+            />
+            <button type="submit" className="rounded-lg border border-border px-3 py-2 text-xs text-foreground">
+              {t("detail.save")}
+            </button>
+          </div>
+          {!conversation.externalThreadId && <p className="text-xs text-warning">{t("detail.noExternalId")}</p>}
+        </form>
       </div>
 
       <div className="card space-y-3 p-5">
@@ -130,7 +171,7 @@ export function ConversationDetail({
                 {m.direction === "OUTBOUND" && <span>· {m.status}</span>}
               </div>
 
-              {m.direction === "OUTBOUND" && m.status === "DRAFTED" && editing[m.id] == null && (
+              {m.direction === "OUTBOUND" && (m.status === "DRAFTED" || m.status === "FAILED") && editing[m.id] == null && (
                 <div className="mt-2 flex gap-2">
                   <button
                     onClick={() => setEditing((prev) => ({ ...prev, [m.id]: m.body }))}
@@ -144,7 +185,7 @@ export function ConversationDetail({
                     className="inline-flex items-center gap-1 rounded-lg bg-accent px-2.5 py-1 text-xs text-white disabled:opacity-60"
                   >
                     {sendingId === m.id ? <Loader2 className="h-3 w-3 animate-spin" /> : <Send className="h-3 w-3" />}
-                    {t("detail.approveAndSend")}
+                    {m.status === "FAILED" ? t("detail.retrySend") : t("detail.approveAndSend")}
                   </button>
                 </div>
               )}

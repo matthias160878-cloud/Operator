@@ -618,7 +618,8 @@ test("Reichweitenaufbau: Werbung – Export ohne Formel-Injektion, Vorschläge n
 
 test("Reichweitenaufbau: Newsletter-Übergänge und Statusleiste", () => {
   assert.ok(darfUebergang("freigeben", "PRUEFUNG"));
-  assert.ok(!darfUebergang("versenden", "FREIGEGEBEN"), "Versand erst nach Planung");
+  assert.ok(darfUebergang("versenden", "FREIGEGEBEN"), "Versand per Klick nach Freigabe");
+  assert.ok(!darfUebergang("versenden", "VERSAND_LAEUFT"), "kein Doppelversand");
   assert.ok(!darfUebergang("versenden", "ENTWURF"));
   assert.ok(!darfUebergang("planen", "ENTWURF"), "Planen erst nach Freigabe");
   assert.deepEqual(themenBereinigen(["A", "A", " B ", 3, "C"], ["A", "B"]), ["A", "B"]);
@@ -632,7 +633,7 @@ test("Reichweitenaufbau: Newsletter-Übergänge und Statusleiste", () => {
     werbeplaeneFreigegeben: 1, werbeplaeneInPruefung: 0, ausgabenGeplant: 1, ausgabenInPruefung: 0, newsletterModus: "DEMO", newsletterSeiten: 1, plattformStatistikAngebunden: false,
   });
   assert.ok(s.some((x) => x.text.includes("exportieren")));
-  assert.ok(s.some((x) => x.art === "FEHLT" && x.text.includes("Versanddienst")));
+  assert.ok(s.some((x) => x.art === "FEHLT" && x.text.includes("Resend-Zugang")));
 });
 
 test("Empfehlung: Newsletter in der Auswertung nur mit Anmeldeseite, nur bestätigte Anmeldungen", () => {

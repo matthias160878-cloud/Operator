@@ -5,7 +5,7 @@ import { EmailError } from "@/lib/email";
 import { appOrigin } from "@/lib/composio/origin";
 import { clientIp, hitRateLimit } from "@/lib/rateLimit";
 import { istGueltigerCode } from "@/lib/reichweite/codes";
-import { ipSchluessel } from "@/lib/reichweite/service";
+import { ipSchluessel, oeffentlicherAnbieter } from "@/lib/reichweite/service";
 import { themenBereinigen, themenLesen } from "@/lib/reichweitenaufbau/newsletterKunden";
 import { newsletterAnmelden } from "@/lib/reichweitenaufbau/service";
 import { newsletterFreigeschaltet, nurWenn } from "@/lib/reichweitenaufbau/freischaltung";
@@ -31,11 +31,13 @@ async function handlePOST(request: Request, { params }: { params: Promise<{ code
   }
   const seite = await prisma.newsletterSeite.findUnique({ where: { code }, include: { workspace: { select: { name: true } } } });
   if (!seite || !seite.aktiv) return NextResponse.json({ error: "Diese Anmeldung ist nicht mehr aktiv." }, { status: 404 });
+  const anbieter = await oeffentlicherAnbieter(seite.workspaceId, seite.istDemo);
+  if (!anbieter.freigeschaltet) return NextResponse.json({ error: "Diese Seite ist noch nicht freigeschaltet." }, { status: 403 });
   const ref = parsed.data.ref && istGueltigerCode(parsed.data.ref) ? parsed.data.ref : null;
   try {
     const r = await newsletterAnmelden({
       seite,
-      absender: seite.workspace.name,
+      absender: anbieter.profil ? anbieter.profil.firma || anbieter.profil.anbieter : seite.workspace.name,
       email: parsed.data.email,
       themen: themenBereinigen(parsed.data.themen, themenLesen(seite.themen)),
       refCode: ref,

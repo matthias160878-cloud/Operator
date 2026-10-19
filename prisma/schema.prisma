@@ -178,6 +178,8 @@ model Workspace {
   newsletterKontakte    NewsletterKontakt[]
   newsletterEreignisse  NewsletterEreignis[]
   newsletterAusgaben    NewsletterAusgabe[]
+  eigeneZugaenge        WorkspaceZugang[]
+  newsletterZustellungen NewsletterZustellung[]
 }
 
 model User {
@@ -1371,6 +1373,9 @@ model NewsletterKontakt {
   quelleLink       EmpfehlungsLink?     @relation(fields: [quelleLinkId], references: [id], onDelete: SetNull)
   istDemo          Boolean              @default(false)
   createdAt        DateTime             @default(now())
+  /// Abmeldelink für alle Ausgaben (verschlüsselt, TOKEN_ENCRYPTION_KEY); Prüfung über unsubscribeHash
+  unsubscribeTokenEnc String?
+  zustellungen     NewsletterZustellung[]
 
   @@unique([workspaceId, email])
   @@map("newsletter_kontakte")
@@ -1411,10 +1416,60 @@ model NewsletterAusgabe {
   geplantAm        DateTime?
   versendetAm      DateTime?
   empfaengerAnzahl Int?
+  /// Anzahl tatsächlich vom Versanddienst angenommener E-Mails (nur echter Versand)
+  zugestelltAnzahl Int?
+  versandFehler    String               @default("")
+  zustellungen     NewsletterZustellung[]
   istDemo          Boolean              @default(false)
   createdAt        DateTime             @default(now())
   updatedAt        DateTime             @updatedAt
 
   @@index([workspaceId])
   @@map("newsletter_ausgaben")
+}
+
+/// Zugänge (API-Schlüssel), die ein Kunde für seinen eigenen Workspace
+/// hinterlegt. Wert verschlüsselt (TOKEN_ENCRYPTION_KEY), nie an den Browser.
+model WorkspaceZugang {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  /// z. B. RESEND
+  anbieter    String
+  /// verschlüsseltes JSON mit den Feldern des Anbieters
+  wertEnc     String
+  /// letzte vier Zeichen des Schlüssels zur Anzeige
+  endung      String    @default("")
+  /// nicht geheime Angaben zur Anzeige (z. B. Absender)
+  anzeige     String    @default("")
+  /// UNGEPRUEFT, OK, FEHLER
+  status      String    @default("UNGEPRUEFT")
+  meldung     String    @default("")
+  geprueftAm  DateTime?
+  updatedById String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([workspaceId, anbieter])
+  @@map("workspace_zugaenge")
+}
+
+/// Ein Empfänger einer echten Newsletter-Ausgabe — verhindert Doppelversand bei Wiederholung.
+model NewsletterZustellung {
+  id          String            @id @default(cuid())
+  workspaceId String
+  workspace   Workspace         @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  ausgabeId   String
+  ausgabe     NewsletterAusgabe @relation(fields: [ausgabeId], references: [id], onDelete: Cascade)
+  kontaktId   String
+  kontakt     NewsletterKontakt @relation(fields: [kontaktId], references: [id], onDelete: Cascade)
+  /// OFFEN, ANGENOMMEN, FEHLER
+  status      String            @default("OFFEN")
+  anbieterId  String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@unique([ausgabeId, kontaktId])
+  @@index([workspaceId])
+  @@map("newsletter_zustellungen")
 }

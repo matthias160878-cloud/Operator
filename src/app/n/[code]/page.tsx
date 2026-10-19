@@ -6,7 +6,7 @@ import { istGueltigerCode } from "@/lib/reichweite/codes";
 import { istZaehlbarerAufruf, oeffentlicherAnbieter } from "@/lib/reichweite/service";
 import { newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 import { AnbieterFuss, NichtFreigeschaltet } from "@/components/reichweite/AnbieterFuss";
-import { einwilligungsText, themenLesen, versandModus } from "@/lib/reichweitenaufbau/newsletterKunden";
+import { einwilligungsText, themenLesen, versandStand } from "@/lib/reichweitenaufbau/newsletterKunden";
 import { NewsletterFormular } from "@/components/reichweitenaufbau/NewsletterFormular";
 
 export const dynamic = "force-dynamic";
@@ -29,7 +29,7 @@ export default async function NewsletterSeite({ params, searchParams }: { params
   const { profil, freigeschaltet } = await oeffentlicherAnbieter(seite.workspaceId, seite.istDemo);
   if (!freigeschaltet) return <NichtFreigeschaltet />;
   const absender = profil ? profil.firma || profil.anbieter : seite.workspace.name;
-  const demo = seite.istDemo || versandModus() === "DEMO";
+  const demo = seite.istDemo || (await versandStand(seite.workspaceId)).modus === "DEMO";
   if (istZaehlbarerAufruf(await headers())) {
     await prisma.newsletterEreignis.create({ data: { workspaceId: seite.workspaceId, seiteId: seite.id, art: "AUFRUF", istDemo: demo } });
   }

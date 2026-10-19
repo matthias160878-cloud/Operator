@@ -34,7 +34,7 @@ export function stufeInhalt(status: string, hatAuswertung: boolean): Stufe | nul
 
 export function stufeAusgabe(status: string): Stufe | null {
   return (
-    ({ ENTWURF: "ENTWURF", PRUEFUNG: "PRUEFUNG", FREIGEGEBEN: "FREIGEGEBEN", GEPLANT: "GEPLANT", VERSENDET: "UMGESETZT" } as Record<string, Stufe>)[status] ??
+    ({ ENTWURF: "ENTWURF", PRUEFUNG: "PRUEFUNG", FREIGEGEBEN: "FREIGEGEBEN", GEPLANT: "GEPLANT", VERSAND_LAEUFT: "GEPLANT", VERSENDET: "UMGESETZT" } as Record<string, Stufe>)[status] ??
     null
   ); // VERSENDET_DEMO zählt bewusst nicht als tatsächlich versendet
 }
@@ -85,9 +85,14 @@ export function naechsteSchritte(l: Lage): { text: string; tab: string; art: "AK
   if (werbung && l.werbeplaeneInPruefung) s.push({ text: `${l.werbeplaeneInPruefung} Werbeplan/-pläne zur Freigabe (Betrag, Laufzeit, Ziel bestätigen).`, tab: "werbung", art: "AKTION" });
   if (werbung && l.werbeplaeneFreigegeben) s.push({ text: `${l.werbeplaeneFreigegeben} freigegebene(r) Werbeplan/-pläne: als Entwurf exportieren und im Werbekonto selbst anlegen (keine Werbeanbindung).`, tab: "werbung", art: "AKTION" });
   if (newsletter && l.ausgabenInPruefung) s.push({ text: `${l.ausgabenInPruefung} Newsletter-Ausgabe(n) in Prüfung.`, tab: "newsletter", art: "AKTION" });
-  if (newsletter && l.ausgabenGeplant && l.newsletterModus === "DEMO") s.push({ text: `${l.ausgabenGeplant} geplante Ausgabe(n) – Versand nur als Demo möglich, Versanddienst fehlt.`, tab: "newsletter", art: "FEHLT" });
+  if (newsletter && l.ausgabenGeplant)
+    s.push(
+      l.newsletterModus === "DEMO"
+        ? { text: `${l.ausgabenGeplant} geplante Ausgabe(n) – Versand nur als Demo möglich, eigener Resend-Zugang fehlt.`, tab: "newsletter", art: "FEHLT" }
+        : { text: `${l.ausgabenGeplant} geplante Ausgabe(n) – Versand per Klick, wenn der Zeitpunkt erreicht ist.`, tab: "newsletter", art: "AKTION" }
+    );
   if (newsletter && !l.newsletterSeiten) s.push({ text: "Noch keine Newsletter-Anmeldeseite angelegt.", tab: "newsletter", art: "AKTION" });
-  if (newsletter && l.newsletterModus === "DEMO") s.push({ text: "Newsletter-Versanddienst nicht freigeschaltet – Anmeldungen und Versand laufen nur als Demo.", tab: "newsletter", art: "FEHLT" });
+  if (newsletter && l.newsletterModus === "DEMO") s.push({ text: "Newsletter-Versand nicht eingerichtet (eigener Resend-Zugang, Anbieterangaben) – Anmeldungen und Versand laufen nur als Demo.", tab: "newsletter", art: "FEHLT" });
   if (!l.plattformStatistikAngebunden) s.push({ text: "Plattform-Statistiken nicht angebunden – Messwerte nur manuell oder als Demo.", tab: "varianten", art: "FEHLT" });
   return s;
 }

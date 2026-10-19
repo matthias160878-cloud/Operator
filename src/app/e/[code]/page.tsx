@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
+import { prisma } from "@/lib/db";
 import { istGueltigerCode } from "@/lib/reichweite/codes";
 import { MAX_STUFE, ereignisSpeichern, istZaehlbarerAufruf, oeffentlicherLink } from "@/lib/reichweite/service";
 import { empfehlungsUrl } from "@/lib/reichweite/teilen";
@@ -37,6 +38,7 @@ export default async function EmpfehlungSeite({ params }: { params: Promise<{ co
   if (istZaehlbarerAufruf(await headers())) await ereignisSpeichern(link, "AUFRUF");
   const url = empfehlungsUrl(await seitenOrigin(), link.code);
   const texte = begleittexte(link.kampagne.titel);
+  const newsletter = await prisma.newsletterSeite.findFirst({ where: { kampagneId: link.kampagneId, aktiv: true }, select: { code: true, titel: true } });
 
   return (
     <div className="min-h-screen bg-grid px-4 py-8">
@@ -66,6 +68,16 @@ export default async function EmpfehlungSeite({ params }: { params: Promise<{ co
           <TeilenBereich url={url} titel={link.kampagne.titel} texte={texte} />
           <EigenerLink code={link.code} titel={link.kampagne.titel} texte={texte} darfErzeugen={link.stufe < MAX_STUFE} />
         </div>
+
+        {newsletter && (
+          <div className="card space-y-2 p-5">
+            <h2 className="text-sm font-semibold text-foreground">Newsletter (freiwillig)</h2>
+            <p className="text-sm text-muted">{newsletter.titel}</p>
+            <a href={`/n/${newsletter.code}?ref=${link.code}`} className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 text-sm text-foreground">
+              Zur Anmeldung
+            </a>
+          </div>
+        )}
 
         <div className="card space-y-3 p-5">
           <h2 className="text-sm font-semibold text-foreground">Frage stellen</h2>

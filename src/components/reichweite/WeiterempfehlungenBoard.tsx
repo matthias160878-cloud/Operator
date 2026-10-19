@@ -59,8 +59,9 @@ const STATUS_TEXT: Record<Zahl["status"], string> = {
   KEINE_DATEN: "noch keine Daten",
 };
 
-const datum = (iso: string) => new Date(iso).toLocaleDateString("de-DE");
-const zeit = (iso: string) => new Date(iso).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" });
+const TZ = "Europe/Berlin"; // feste Zeitzone: Server- und Browser-Ausgabe stimmen überein
+const datum = (iso: string) => new Date(iso).toLocaleDateString("de-DE", { timeZone: TZ });
+const zeit = (iso: string) => new Date(iso).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short", timeZone: TZ });
 
 function DemoMarke() {
   return <span className="rounded border border-warning/60 px-1.5 py-0.5 text-[10px] font-semibold text-warning">DEMO</span>;
@@ -262,7 +263,7 @@ export function WeiterempfehlungenBoard(props: {
         </div>
         <ul className="mt-3 list-disc space-y-0.5 pl-4 text-[11px] text-muted">
           <li>Plattformzahlen (Impressionen, Reichweite, Videoaufrufe, Shares) werden derzeit nur als DEMO oder manuell übertragen angezeigt.</li>
-          <li>Newsletter: nicht kampagnenbezogen angebunden. Website-Besuche: nur „Klicks zur Zielseite“ über den Empfehlungslink.</li>
+          <li>Newsletter: über eine Anmeldeseite im Bereich „Reichweitenaufbau“ je Kampagne messbar (bestätigte Anmeldungen). Website-Besuche: nur „Klicks zur Zielseite“ über den Empfehlungslink.</li>
           <li>Keine Einwilligungsverwaltung vorhanden – deshalb keine Cookies und keine Besucherkennung; gezählt wird nur ohne Personenbezug.</li>
           <li>Zähl-Ereignisse werden nach {props.aufbewahrungTage} Tagen automatisch gelöscht. Anfragen landen unter „Kundenanfragen“ (Kanal „empfehlung“).</li>
         </ul>

@@ -166,6 +166,8 @@ export function auswerten(input: {
   links: LinkEingabe[];
   ereignisse: EreignisEingabe[];
   kennzahlen: KennzahlEingabe[];
+  /** Nur gesetzt, wenn der Kampagne eine Newsletter-Anmeldeseite (Reichweitenaufbau) zugeordnet ist. */
+  newsletter?: { bestaetigt: { confirmedAt: Date; istDemo: boolean }[] };
 }): Auswertung {
   const { links, ereignisse, kennzahlen } = input;
 
@@ -220,9 +222,24 @@ export function auswerten(input: {
     ]),
   };
 
-  const newsletter = leer("NICHT_ANGEBUNDEN", "Newsletter-Anmeldungen", [
-    "Der vorhandene Newsletter ist nicht kampagnenbezogen angebunden; Anmeldungen werden keiner Kampagne zugeordnet.",
-  ]);
+  const newsletter: Zahl = input.newsletter
+    ? (() => {
+        const b = input.newsletter.bestaetigt;
+        const zeiten = b.map((x) => x.confirmedAt.getTime());
+        return {
+          wert: b.length,
+          einheit: "bestätigte Newsletter-Anmeldungen (Double-Opt-in) – nicht Formularaufrufe",
+          quelle: "Eigene Messung (Newsletter-Anmeldeseite)",
+          zeitraum: b.length ? { von: iso(new Date(Math.min(...zeiten))), bis: iso(new Date(Math.max(...zeiten))) } : null,
+          letzteAktualisierung: b.length ? iso(new Date(Math.max(...zeiten))) : null,
+          messluecken: ["Zählt nur bestätigte Anmeldungen dieser Kampagne; Abmeldungen danach sind nicht abgezogen."],
+          istDemo: b.some((x) => x.istDemo),
+          status: b.length ? "GEMESSEN" : "KEINE_DATEN",
+        } satisfies Zahl;
+      })()
+    : leer("NICHT_ANGEBUNDEN", "Newsletter-Anmeldungen", [
+        "Dieser Kampagne ist keine Newsletter-Anmeldeseite zugeordnet (Bereich Reichweitenaufbau → Newsletter).",
+      ]);
   const eindeutigePersonen = leer("NICHT_MESSBAR", "eindeutige Personen", [
     "Ohne Cookies und Besucherkennung ist nicht feststellbar, ob mehrere Aufrufe von derselben Person stammen.",
   ]);
@@ -259,7 +276,7 @@ export function auswerten(input: {
   ];
 
   const enthaeltDemo =
-    links.some((l) => l.istDemo) || ereignisse.some((e) => e.istDemo) || kennzahlen.some((k) => k.quelle === "DEMO");
+    links.some((l) => l.istDemo) || ereignisse.some((e) => e.istDemo) || kennzahlen.some((k) => k.quelle === "DEMO") || newsletter.istDemo;
 
   return {
     plattformKennzahlen,

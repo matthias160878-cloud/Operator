@@ -85,15 +85,25 @@ export async function ereignisSpeichern(
 export async function kampagnenAuswertung(workspaceId: string, kampagneId: string) {
   await eigeneKampagne(workspaceId, kampagneId);
   await alteEreignisseLoeschen(workspaceId);
-  const [links, ereignisse, kennzahlen] = await Promise.all([
+  const [links, ereignisse, kennzahlen, seiten, bestaetigt] = await Promise.all([
     prisma.empfehlungsLink.findMany({ where: { workspaceId, kampagneId } }),
     prisma.empfehlungsEreignis.findMany({
       where: { workspaceId, kampagneId },
       select: { linkId: true, art: true, istDemo: true, createdAt: true },
     }),
     prisma.reichweitenKennzahl.findMany({ where: { workspaceId, kampagneId } }),
+    prisma.newsletterSeite.count({ where: { workspaceId, kampagneId } }),
+    prisma.newsletterKontakt.findMany({
+      where: { workspaceId, quelleKampagneId: kampagneId, status: "ACTIVE", confirmedAt: { not: null } },
+      select: { confirmedAt: true, istDemo: true },
+    }),
   ]);
-  return auswerten({ links, ereignisse, kennzahlen });
+  return auswerten({
+    links,
+    ereignisse,
+    kennzahlen,
+    newsletter: seiten > 0 ? { bestaetigt: bestaetigt.map((b) => ({ confirmedAt: b.confirmedAt!, istDemo: b.istDemo })) } : undefined,
+  });
 }
 
 const PLATTFORMEN = ["YOUTUBE", "INSTAGRAM", "FACEBOOK", "LINKEDIN", "TIKTOK"] as const;

@@ -1845,3 +1845,120 @@ test("Dateiaustausch: Kundentrennung, Grenzen, sichere Auslieferung, Freigabe-Li
   assert.equal((await A.req(`${D}/${html.id}`)).status, 404);
   assert.ok((await prisma.auditLog.count({ where: { workspaceId: wsA, action: { startsWith: "datei." } } })) >= 5, "Protokoll");
 });
+
+test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich und Mandanten", async () => {
+  const A = await signup("reichweite-a@example.com", "Reichweite A", "10.77.0.1");
+  const B = await signup("reichweite-b@example.com", "Reichweite B", "10.77.0.2");
+  const wsA = await workspaceIdOf("reichweite-a@example.com");
+  const intern = await prisma.campaign.create({ data: { workspaceId: wsA, title: "GEHEIM-interne-Kampagne", goal: "nur intern" } });
+
+  // Kampagne + Team-Link anlegen
+  const k = await A.json("/api/reichweite/kampagnen", {
+    method: "POST",
+    body: { titel: "Öffentlicher Titel", text: "Öffentlicher Text", zielUrl: "https://example.com/ziel", campaignId: intern.id },
+  });
+  assert.equal(k.status, 200, JSON.stringify(k.data));
+  const kid = k.data.kampagne.id;
+  assert.equal((await A.json(`/api/reichweite/kampagnen/${kid}/links`, { method: "POST", body: { bezeichnung: "max@example.com" } })).status, 400, "keine Personendaten");
+  const l = await A.json(`/api/reichweite/kampagnen/${kid}/links`, { method: "POST", body: { bezeichnung: "Instagram-Bio" } });
+  assert.equal(l.status, 200);
+  const code = l.data.link.code;
+  assert.match(code, /^[a-z0-9]{10}$/);
+
+  // Mandantentrennung
+  assert.equal((await B.json(`/api/reichweite/kampagnen/${kid}/auswertung`)).status, 404);
+  assert.equal((await B.json(`/api/reichweite/kampagnen/${kid}/links`, { method: "POST", body: {} })).status, 404);
+  assert.equal((await B.json(`/api/reichweite/kampagnen/${kid}`, { method: "DELETE" })).status, 404);
+  assert.equal((await B.json(`/api/reichweite/links/${l.data.link.id}`, { method: "DELETE" })).status, 404);
+  assert.equal((await B.json("/api/reichweite/kampagnen")).data.kampagnen.length, 0);
+  assert.equal((await B.json("/api/reichweite/kampagnen", { method: "POST", body: { titel: "x", campaignId: intern.id } })).status, 404, "fremde interne Kampagne");
+  assert.equal((await new Client().json("/api/reichweite/kampagnen")).status, 401);
+
+  // Öffentliche Seite: nur öffentliche Felder, ohne Anmeldung, keine Cookies
+  const anon = new Client();
+  const seite = await anon.req(`/e/${code}`, { headers: { "user-agent": "Mozilla/5.0 Testbrowser" } });
+  assert.equal(seite.status, 200);
+  assert.equal(seite.headers.get("set-cookie"), null, "keine Cookies");
+  const html = await seite.text();
+  assert.ok(html.includes("Öffentlicher Titel"));
+  assert.ok(!html.includes("GEHEIM-interne-Kampagne"), "interne Kampagne bleibt privat");
+  assert.ok(!html.includes("Instagram-Bio"), "interne Bezeichnung bleibt privat");
+  assert.ok(!html.includes(wsA), "keine Workspace-ID");
+  // Messenger-Vorschau und Prefetch zählen nicht
+  await anon.req(`/e/${code}`, { headers: { "user-agent": "WhatsApp/2.23" } });
+  await anon.req(`/e/${code}`, { headers: { "user-agent": "Mozilla/5.0", "sec-purpose": "prefetch" } });
+  assert.equal((await anon.req(`/e/zzzzzzzzzz`)).status, 404);
+
+  // Klick zur Zielseite
+  const weiter = await anon.req(`/e/${code}/weiter`, { headers: { "user-agent": "Mozilla/5.0" } });
+  assert.equal(weiter.status, 303);
+  assert.equal(weiter.headers.get("location"), "https://example.com/ziel");
+
+  let a = (await A.json(`/api/reichweite/kampagnen/${kid}/auswertung`)).data.auswertung;
+  assert.equal(a.eigeneMessung.AUFRUF.wert, 1, "nur ein echter Aufruf gezählt");
+  assert.equal(a.eigeneMessung.ZIEL_KLICK.wert, 1);
+  assert.equal(a.eigeneMessung.LINK_ERZEUGT.wert, 0, "Teilen-Dialog/Kopieren erzeugt keine Zählung");
+  assert.equal(a.stufen.length, 1);
+  assert.equal(a.stufen[0].kinder.length, 0, "keine erfundenen Stufen");
+  assert.equal(a.eindeutigePersonen.status, "NICHT_MESSBAR");
+  assert.equal(a.herkunft.plattformempfehlungen.status, "NICHT_ANGEBUNDEN");
+  assert.equal(a.enthaeltDemo, false);
+
+  // Ausdrücklich erzeugter eigener Link = nächste Stufe
+  const kind = await anon.json(`/api/empfehlung/${code}/link`, { method: "POST", headers: { "x-forwarded-for": "10.77.1.1" } });
+  assert.equal(kind.status, 200, JSON.stringify(kind.data));
+  assert.equal(kind.data.stufe, 2);
+  assert.ok(kind.data.url.endsWith(`/e/${kind.data.code}`));
+  await anon.req(`/e/${kind.data.code}`, { headers: { "user-agent": "Mozilla/5.0" } });
+
+  // Anfrage: Einwilligung Pflicht, landet als Kundenanfrage
+  assert.equal((await anon.json(`/api/empfehlung/${kind.data.code}/anfrage`, { method: "POST", body: { kontakt: "x@example.com", nachricht: "Hallo" } })).status, 400);
+  const anf = await anon.json(`/api/empfehlung/${kind.data.code}/anfrage`, {
+    method: "POST",
+    headers: { "x-forwarded-for": "10.77.1.2" },
+    body: { kontakt: "interessent@example.com", nachricht: "Bitte Angebot", einwilligung: true },
+  });
+  assert.equal(anf.status, 200, JSON.stringify(anf.data));
+  const inq = await prisma.pilotInquiry.findFirst({ where: { workspaceId: wsA, channel: "empfehlung" } });
+  assert.ok(inq && inq.senderContact === "interessent@example.com");
+  assert.equal((await prisma.empfehlungsEreignis.count({ where: { art: "ANFRAGE" } })), 1);
+  assert.equal(await prisma.rateLimit.count({ where: { key: { startsWith: "empf", contains: "10.77" } } }), 0, "IP nur gehasht");
+  assert.ok((await prisma.rateLimit.count({ where: { key: { startsWith: "empf-anfrage:" } } })) >= 1);
+
+  a = (await A.json(`/api/reichweite/kampagnen/${kid}/auswertung`)).data.auswertung;
+  assert.equal(a.stufen[0].kinder.length, 1);
+  assert.equal(a.stufen[0].kinder[0].stufe, 2);
+  assert.equal(a.herkunft.gemesseneWeiterempfehlungen.wert, 1);
+  assert.equal(a.herkunft.unbekannteHerkunft.wert, 1);
+  assert.equal(a.eigeneMessung.ANFRAGE.wert, 1);
+
+  // Widerruf: öffentliche Seite zeigt nur noch „nicht mehr aktiv“, keine weiteren Links/Anfragen
+  assert.equal((await A.json(`/api/reichweite/links/${l.data.link.id}`, { method: "DELETE" })).status, 200);
+  assert.ok((await (await anon.req(`/e/${code}`)).text()).includes("nicht mehr aktiv"));
+  assert.equal((await anon.json(`/api/empfehlung/${code}/link`, { method: "POST", headers: { "x-forwarded-for": "10.77.1.3" } })).status, 404);
+  assert.equal((await anon.req(`/e/${code}/weiter`)).status, 303);
+  assert.ok(!(await anon.req(`/e/${code}/weiter`)).headers.get("location").startsWith("https://example.com"));
+
+  // Rollen: Nur-Lesen darf nichts ändern
+  await prisma.user.update({ where: { email: "reichweite-a@example.com" }, data: { role: "VIEWER" } });
+  assert.equal((await A.json(`/api/reichweite/kampagnen/${kid}/links`, { method: "POST", body: {} })).status, 403);
+  assert.equal((await A.json(`/api/reichweite/kampagnen/${kid}/auswertung`)).status, 200);
+  await prisma.user.update({ where: { email: "reichweite-a@example.com" }, data: { role: "OWNER" } });
+
+  // Demo-Daten deutlich gekennzeichnet und entfernbar
+  const demo = await A.json("/api/reichweite/demo", { method: "POST" });
+  assert.equal(demo.status, 200);
+  const da = (await A.json(`/api/reichweite/kampagnen/${demo.data.kampagne.id}/auswertung`)).data.auswertung;
+  assert.equal(da.enthaeltDemo, true);
+  assert.ok(da.plattformKennzahlen.every((p) => p.zahl.istDemo));
+  const demoLink = await prisma.empfehlungsLink.findFirst({ where: { kampagneId: demo.data.kampagne.id, stufe: 1 } });
+  assert.ok((await (await anon.req(`/e/${demoLink.code}`)).text()).includes("DEMO"));
+  assert.equal((await A.req("/weiterempfehlungen")).status, 200);
+  assert.equal((await A.json("/api/reichweite/demo", { method: "DELETE" })).data.anzahl, 1);
+  assert.equal(await prisma.reichweitenKampagne.count({ where: { workspaceId: wsA, istDemo: true } }), 0);
+
+  // Löschen der Kampagne entfernt Links und Ereignisse
+  assert.equal((await A.json(`/api/reichweite/kampagnen/${kid}`, { method: "DELETE" })).status, 200);
+  assert.equal(await prisma.empfehlungsLink.count({ where: { kampagneId: kid } }), 0);
+  assert.equal(await prisma.empfehlungsEreignis.count({ where: { kampagneId: kid } }), 0);
+});

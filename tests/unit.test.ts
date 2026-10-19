@@ -385,3 +385,93 @@ test("Dateiaustausch: Dateinamen, Ordner, Ansichtstypen und Webadressen werden s
     assert.equal(normUrl(bad), null, bad);
   }
 });
+
+// ── Weiterempfehlungen & Reichweite ─────────────────────────────────────────
+import { CODE_LAENGE, istGueltigerCode, neuerCode } from "@/lib/reichweite/codes";
+import { enthaeltPersonendaten, pruefeZielUrl } from "@/lib/reichweite/texte";
+import { teilenZiele } from "@/lib/reichweite/teilen";
+import { auswerten } from "@/lib/reichweite/auswertung";
+import { CTA_VORSCHLAEGE, begleittexte } from "@/lib/reichweite/vorschlaege";
+
+test("Empfehlung: Codes sind zufällig, gültig und ohne Personenbezug", () => {
+  const codes = new Set(Array.from({ length: 500 }, () => neuerCode()));
+  assert.equal(codes.size, 500);
+  for (const c of codes) {
+    assert.equal(c.length, CODE_LAENGE);
+    assert.ok(istGueltigerCode(c));
+    assert.ok(!c.includes("@"));
+  }
+  assert.ok(!istGueltigerCode("../../etc"));
+  assert.ok(!istGueltigerCode("max@test.de"));
+});
+
+test("Empfehlung: Bezeichnungen und Zielseiten ohne Personendaten", () => {
+  assert.ok(enthaeltPersonendaten("an max@example.com"));
+  assert.ok(enthaeltPersonendaten("Tel +49 170 1234567"));
+  assert.ok(!enthaeltPersonendaten("Instagram-Bio Frühjahr 2026"));
+  assert.equal(pruefeZielUrl("javascript:alert(1)").ok, false);
+  assert.equal(pruefeZielUrl("https://user:pw@example.com").ok, false);
+  assert.equal(pruefeZielUrl("https://example.com/?mail=max@example.com").ok, false);
+  assert.deepEqual(pruefeZielUrl(""), { ok: true, url: "" });
+  assert.equal(pruefeZielUrl("https://example.com/angebot").ok, true);
+});
+
+test("Empfehlung: Teilen-Adressen sind offizielle Teilen-Fenster ohne Empfängervorgabe", () => {
+  const ziele = teilenZiele("https://app.test/e/abcdefghjk", "Schau mal & mehr");
+  const wa = ziele.find((z) => z.key === "whatsapp")!;
+  assert.ok(wa.href.startsWith("https://wa.me/?text="));
+  assert.ok(wa.href.includes(encodeURIComponent("https://app.test/e/abcdefghjk")));
+  assert.ok(!wa.href.includes("phone="));
+  assert.ok(ziele.find((z) => z.key === "email")!.href.startsWith("mailto:?"));
+  assert.ok(ziele.every((z) => !z.href.includes("Schau mal & mehr")));
+});
+
+test("Empfehlung: Auswertung erfindet keine Stufen und vermischt keine Größen", () => {
+  const t = new Date("2026-10-01T10:00:00Z");
+  const team = { id: "a", code: "aaaaaaaaaa", parentId: null, stufe: 1, bezeichnung: "Bio", herkunft: "TEAM", istDemo: false, widerrufenAm: null, createdAt: t };
+  // Derselbe Link wird oft aufgerufen (z. B. weitergeleitet) – das ergibt keine neue Stufe.
+  const leer = auswerten({
+    links: [team],
+    ereignisse: Array.from({ length: 7 }, () => ({ linkId: "a", art: "AUFRUF", istDemo: false, createdAt: t })),
+    kennzahlen: [],
+  });
+  assert.equal(leer.stufen.length, 1);
+  assert.equal(leer.stufen[0].kinder.length, 0);
+  assert.equal(leer.eigeneMessung.AUFRUF.wert, 7);
+  assert.equal(leer.herkunft.unbekannteHerkunft.wert, 7);
+  assert.equal(leer.herkunft.gemesseneWeiterempfehlungen.wert, 0);
+  assert.equal(leer.herkunft.plattformempfehlungen.status, "NICHT_ANGEBUNDEN");
+  assert.equal(leer.eindeutigePersonen.status, "NICHT_MESSBAR");
+  assert.equal(leer.eindeutigePersonen.wert, null);
+  assert.equal(leer.newsletter.status, "NICHT_ANGEBUNDEN");
+  assert.equal(leer.fluss.find((s) => s.key === "beitrag")!.zahl.status, "NICHT_ANGEBUNDEN");
+  assert.equal(leer.enthaeltDemo, false);
+
+  // Stufe 2 nur, weil ausdrücklich ein Besucher-Link erzeugt wurde.
+  const kind = { ...team, id: "b", code: "bbbbbbbbbb", parentId: "a", stufe: 2, bezeichnung: "", herkunft: "BESUCHER" };
+  const mit = auswerten({
+    links: [team, kind],
+    ereignisse: [
+      { linkId: "a", art: "LINK_ERZEUGT", istDemo: false, createdAt: t },
+      { linkId: "b", art: "AUFRUF", istDemo: false, createdAt: t },
+      { linkId: "b", art: "AUFRUF", istDemo: false, createdAt: t },
+    ],
+    kennzahlen: [
+      { id: "k1", plattform: "INSTAGRAM", metrik: "REICHWEITE", wert: 100, quelle: "MANUELL", zeitraumVon: t, zeitraumBis: t, erfasstAm: t },
+      { id: "k2", plattform: "YOUTUBE", metrik: "VIDEOAUFRUFE", wert: 50, quelle: "DEMO", zeitraumVon: t, zeitraumBis: t, erfasstAm: t },
+    ],
+  });
+  assert.equal(mit.stufen[0].kinder[0].stufe, 2);
+  assert.equal(mit.herkunft.gemesseneWeiterempfehlungen.wert, 2);
+  assert.equal(mit.eigeneMessung.LINK_ERZEUGT.wert, 1);
+  const beitrag = mit.fluss.find((s) => s.key === "beitrag")!.zahl;
+  assert.equal(beitrag.wert, 50); // nur Videoaufrufe, Reichweite wird nicht dazugerechnet
+  assert.equal(beitrag.istDemo, true);
+  assert.ok(mit.plattformKennzahlen.find((k) => k.metrik === "REICHWEITE")!.zahl.einheit.includes("keine eindeutigen Personen"));
+  assert.equal(mit.enthaeltDemo, true);
+});
+
+test("Empfehlung: Vorschläge versprechen keine Viralität", () => {
+  const alle = [...CTA_VORSCHLAEGE, ...begleittexte("Test")].join(" ").toLowerCase();
+  for (const w of ["viral", "garantiert", "millionen", "alle deine kontakte"]) assert.ok(!alle.includes(w), w);
+});

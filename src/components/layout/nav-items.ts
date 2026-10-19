@@ -23,6 +23,7 @@ import {
   Store,
   Globe,
   FolderOpen,
+  Megaphone,
 } from "lucide-react";
 
 export interface NavItem {
@@ -46,6 +47,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/calendar", labelKey: "calendar", icon: CalendarDays },
   { href: "/analytics", labelKey: "analytics", icon: BarChart3 },
   { href: "/growth", labelKey: "growth", icon: TrendingUp },
+  { href: "/weiterempfehlungen", labelKey: "weiterempfehlungen", icon: Megaphone },
   { href: "/revenue", labelKey: "revenue", icon: Wallet },
   { href: "/sales", labelKey: "sales", icon: Store },
   { href: "/website", labelKey: "website", icon: Globe },

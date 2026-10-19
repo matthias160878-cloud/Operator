@@ -165,6 +165,10 @@ model Workspace {
   dateiFreigaben      DateiFreigabe[]
 
   @@map("workspaces")
+  reichweitenKampagnen  ReichweitenKampagne[]
+  empfehlungsLinks      EmpfehlungsLink[]
+  empfehlungsEreignisse EmpfehlungsEreignis[]
+  reichweitenKennzahlen ReichweitenKennzahl[]
 }
 
 model User {
@@ -232,6 +236,7 @@ model Campaign {
   revenueEntries RevenueEntry[]
 
   @@map("campaigns")
+  reichweitenKampagnen ReichweitenKampagne[]
 }
 
 model ContentIdea {
@@ -1052,4 +1057,103 @@ model KundenLink {
 
   @@index([workspaceId])
   @@map("kunden_links")
+}
+
+
+// ---------------------------------------------------------------------------
+// Weiterempfehlungen & Reichweite (src/lib/reichweite, docs/WEITEREMPFEHLUNGEN.md)
+// Öffentlich ist nur, was ausdrücklich in titel/text/zielUrl steht. Keine Personendaten in
+// Codes oder Ereignissen, keine Cookies, keine Besucherkennungen.
+// ---------------------------------------------------------------------------
+
+model ReichweitenKampagne {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  /// Interne Kampagne zur Zuordnung – wird nie öffentlich angezeigt
+  campaignId  String?
+  campaign    Campaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  /// Öffentlich sichtbar auf /e/<code>
+  titel       String
+  text        String    @default("")
+  zielUrl     String    @default("")
+  aktiv       Boolean   @default(true)
+  istDemo     Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  links      EmpfehlungsLink[]
+  ereignisse EmpfehlungsEreignis[]
+  kennzahlen ReichweitenKennzahl[]
+
+  @@index([workspaceId])
+  @@map("reichweiten_kampagnen")
+}
+
+model EmpfehlungsLink {
+  id           String              @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId   String
+  kampagne     ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  /// Zufälliger öffentlicher Code, kein Zugriffs- oder Login-Token, keine Personendaten
+  code         String              @unique
+  /// Gesetzt nur, wenn jemand ausdrücklich einen eigenen Link aus diesem Link erzeugt hat
+  parentId     String?
+  parent       EmpfehlungsLink?    @relation("EmpfehlungsStufe", fields: [parentId], references: [id], onDelete: SetNull)
+  kinder       EmpfehlungsLink[]   @relation("EmpfehlungsStufe")
+  stufe        Int                 @default(1)
+  /// Interne Bezeichnung (z. B. „Instagram-Bio“), nie öffentlich
+  bezeichnung  String              @default("")
+  /// TEAM (im Kundenkonto erzeugt) oder BESUCHER (auf der öffentlichen Seite erzeugt)
+  herkunft     String              @default("TEAM")
+  istDemo      Boolean             @default(false)
+  widerrufenAm DateTime?
+  createdAt    DateTime            @default(now())
+
+  ereignisse EmpfehlungsEreignis[]
+
+  @@index([workspaceId, kampagneId])
+  @@map("empfehlungs_links")
+}
+
+/// Zählt Ereignisse ohne Personenbezug: AUFRUF (Seite über Link geöffnet), ZIEL_KLICK
+/// (weiter zur Zielseite), ANFRAGE (Formular abgeschickt), LINK_ERZEUGT (eigener Link erzeugt).
+/// Ein geöffneter Teilen-Dialog wird bewusst nie gezählt.
+model EmpfehlungsEreignis {
+  id          String              @id @default(cuid())
+  workspaceId String
+  workspace   Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId  String
+  kampagne    ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  linkId      String?
+  link        EmpfehlungsLink?    @relation(fields: [linkId], references: [id], onDelete: SetNull)
+  art         String
+  istDemo     Boolean             @default(false)
+  createdAt   DateTime            @default(now())
+
+  @@index([workspaceId, kampagneId, art])
+  @@index([createdAt])
+  @@map("empfehlungs_ereignisse")
+}
+
+/// Plattformzahlen je Kampagne mit Quelle (DEMO, MANUELL) und Zeitraum.
+/// Eine Plattform-Schnittstelle schreibt hier erst, wenn sie angebunden ist (Quelle API:<PLATTFORM>).
+model ReichweitenKennzahl {
+  id          String              @id @default(cuid())
+  workspaceId String
+  workspace   Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId  String
+  kampagne    ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  plattform   String
+  /// IMPRESSIONEN, REICHWEITE, VIDEOAUFRUFE, SHARES
+  metrik      String
+  wert        Int
+  quelle      String
+  zeitraumVon DateTime
+  zeitraumBis DateTime
+  erfasstAm   DateTime            @default(now())
+
+  @@index([workspaceId, kampagneId])
+  @@map("reichweiten_kennzahlen")
 }

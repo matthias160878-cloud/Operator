@@ -44,6 +44,8 @@ const PUBLIC_PREFIXES = [
   "/api/termine/",
   "/api/webseite/status",
   "/api/newsletter/",
+  "/e/",
+  "/api/empfehlung/",
   "/widget.js",
   "/_next",
   "/favicon.ico",

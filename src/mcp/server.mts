@@ -19,7 +19,7 @@ try {
   // Keine .env vorhanden — Umgebungsvariablen kommen dann aus der MCP-Client-Konfiguration.
 }
 
-const [{ prisma }, { getCurrentWorkspaceId }, { runAgent }, social, seo, inbox, messages] =
+const [{ prisma }, { getCurrentWorkspaceId }, { runAgent }, social, seo, inbox, messages, sync] =
   await Promise.all([
     import("@/lib/db"),
     import("@/lib/workspace"),
@@ -28,6 +28,7 @@ const [{ prisma }, { getCurrentWorkspaceId }, { runAgent }, social, seo, inbox, 
     import("@/lib/agents/seoAgent"),
     import("@/lib/agents/inboxAgent"),
     import("@/lib/agents/messageAgent"),
+    import("@/lib/messaging/sync"),
   ]);
 
 const SOCIAL_PLATFORMS = ["YOUTUBE", "TIKTOK", "INSTAGRAM", "LINKEDIN", "FACEBOOK", "BLOG", "NEWSLETTER"] as const;
@@ -128,6 +129,25 @@ server.registerTool(
 // --- Kundeninteraktion (Inbox) -------------------------------------------------
 
 server.registerTool(
+  "inbox_sync",
+  {
+    title: "Nachrichten von Plattformen abrufen",
+    description:
+      "Ruft Kommentare und Direktnachrichten der verbundenen Plattformen ab (YouTube-Kommentare, Facebook-" +
+      "Kommentare + Messenger, Instagram-Kommentare + DMs) und übernimmt neue in den Posteingang.",
+    inputSchema: { platform: z.enum(MESSAGE_PLATFORMS).optional() },
+    annotations: { openWorldHint: true },
+  },
+  async ({ platform }) =>
+    safely(async () => {
+      const workspaceId = await getCurrentWorkspaceId();
+      return runAgent("inbox", workspaceId, "Nachrichten von Plattformen abrufen", () =>
+        sync.syncInbox(workspaceId, platform)
+      );
+    })
+);
+
+server.registerTool(
   "inbox_list_conversations",
   {
     title: "Konversationen auflisten",
@@ -151,6 +171,8 @@ server.registerTool(
       return conversations.map((c) => ({
         id: c.id,
         platform: c.platform,
+        channel: c.channel,
+        canReply: Boolean(c.externalThreadId),
         participant: c.participantName,
         handle: c.participantHandle,
         status: c.status,
@@ -207,12 +229,20 @@ server.registerTool(
     title: "Eingehende Nachricht erfassen",
     description:
       "Erfasst eine eingehende Kundennachricht/einen Kommentar von einer Plattform (z. B. aus Webhook, " +
-      "Zapier oder manuell). Ordnet sie per Handle einer bestehenden Konversation zu oder legt eine neue an.",
+      "Zapier oder manuell). Ordnet sie per Plattform-ID bzw. Handle einer bestehenden Konversation zu oder legt " +
+      "eine neue an. Mit externalThreadId kann später echt auf der Plattform geantwortet werden.",
     inputSchema: {
       platform: z.enum(MESSAGE_PLATFORMS),
       participantName: z.string().min(1).max(200),
       participantHandle: z.string().max(200).optional(),
       body: z.string().min(1).max(10000),
+      channel: z.enum(["COMMENT", "DIRECT_MESSAGE"]).default("COMMENT"),
+      externalThreadId: z
+        .string()
+        .max(500)
+        .optional()
+        .describe("Kommentar-ID (LinkedIn: Kommentar-URN) bzw. Empfänger-ID (PSID/IGSID) — nötig für echtes Antworten"),
+      externalMessageId: z.string().max(500).optional().describe("Plattform-ID der Nachricht, verhindert Duplikate"),
     },
   },
   async (args) =>
@@ -282,8 +312,9 @@ server.registerTool(
   {
     title: "Entwurf freigeben & senden",
     description:
-      "Gibt einen Antwortentwurf frei und sendet ihn über die verbundene Plattform. Nur nach ausdrücklicher " +
-      "Freigabe durch einen Menschen aufrufen. Schlägt ehrlich fehl, wenn die Plattform nicht verbunden ist.",
+      "Gibt einen Antwortentwurf frei und sendet ihn über die native Plattform-API (Kommentar-Antwort bzw. " +
+      "Direktnachricht). Nur nach ausdrücklicher Freigabe durch einen Menschen aufrufen. Fehler der Plattform " +
+      "(nicht verbunden, fehlende Berechtigung, 24-h-Fenster abgelaufen) werden ehrlich zurückgegeben.",
     inputSchema: { messageId: z.string() },
     annotations: { destructiveHint: true, openWorldHint: true },
   },
@@ -291,8 +322,8 @@ server.registerTool(
     safely(async () => {
       const workspaceId = await getCurrentWorkspaceId();
       const message = await requireMessage(workspaceId, messageId);
-      if (message.direction !== "OUTBOUND" || message.status !== "DRAFTED") {
-        throw new Error("Nur ausgehende Entwürfe (Status DRAFTED) können gesendet werden.");
+      if (message.direction !== "OUTBOUND" || (message.status !== "DRAFTED" && message.status !== "FAILED")) {
+        throw new Error("Nur ausgehende Entwürfe oder fehlgeschlagene Antworten können gesendet werden.");
       }
       return runAgent("message", workspaceId, `Sende Nachricht ${messageId}`, () => messages.approveAndSend(messageId));
     })

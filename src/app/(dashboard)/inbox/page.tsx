@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { NewConversationForm } from "@/components/inbox/NewConversationForm";
+import { SyncInboxButton } from "@/components/inbox/SyncInboxButton";
 import { PLATFORM_LABELS, relativeTime } from "@/lib/format";
 import { PlatformGlyph, type PlatformGlyphKey } from "@/components/dashboard/PlatformGlyph";
 
@@ -25,7 +26,10 @@ export default async function InboxPage() {
           <h1 className="text-xl font-semibold text-foreground">{t("title")}</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted">{t("description")}</p>
         </div>
-        <NewConversationForm />
+        <div className="flex flex-wrap items-start gap-2">
+          <SyncInboxButton />
+          <NewConversationForm />
+        </div>
       </div>
 
       <div className="card divide-y divide-border">
@@ -53,6 +57,7 @@ export default async function InboxPage() {
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted">
                   <span>{PLATFORM_LABELS[c.platform] ?? c.platform}</span>
+                  <span>· {t(`channel.${c.channel}`)}</span>
                   {last && <span className="truncate">· {last.body}</span>}
                 </div>
               </div>

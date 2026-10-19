@@ -15,6 +15,8 @@ const createSchema = z.object({
   platform: z.enum(PLATFORM_VALUES),
   participantName: z.string().min(1),
   participantHandle: z.string().default(""),
+  channel: z.enum(["COMMENT", "DIRECT_MESSAGE"]).default("COMMENT"),
+  externalThreadId: z.string().trim().max(500).optional(),
   initialMessage: z.string().min(1),
 });
 
@@ -45,6 +47,8 @@ export async function POST(request: Request) {
       platform: parsed.data.platform,
       participantName: parsed.data.participantName,
       participantHandle: parsed.data.participantHandle,
+      channel: parsed.data.channel,
+      externalThreadId: parsed.data.externalThreadId || null,
       messages: {
         create: {
           direction: "INBOUND",

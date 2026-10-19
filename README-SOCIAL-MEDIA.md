@@ -133,6 +133,35 @@ Verbindung vorzutäuschen. `PublishingAgent.publishContentItem()` prüft live,
 ob ein `PlatformAccount` den Status `CONNECTED` trägt, und veröffentlicht
 niemals automatisch ohne diese Prüfung.
 
+### Posteingang: Nachrichten abrufen & echt antworten
+
+Der Posteingang (`/inbox`) ruft über **„Nachrichten abrufen“**
+(`POST /api/conversations/sync`, MCP `inbox_sync`) Kommentare und
+Direktnachrichten der verbundenen Accounts ab (`src/lib/messaging/sync.ts`).
+Freigegebene Antworten gehen über die native API raus
+(`src/lib/messaging/send.ts`):
+
+| Plattform | Abrufen | Antworten | Benötigte Berechtigung |
+| --- | --- | --- | --- |
+| YouTube | Kommentare aller Kanal-Videos | Kommentar-Antwort | `youtube.force-ssl` |
+| Facebook | Kommentare auf Seitenbeiträgen, Messenger | Kommentar-Antwort, Messenger (24-h-Fenster) | `pages_read_user_content`, `pages_manage_engagement`, `pages_messaging` (Meta App Review) |
+| Instagram | Kommentare unter eigenen Medien, DMs | Kommentar-Antwort, DM (24-h-Fenster) | `instagram_business_manage_comments`, `instagram_business_manage_messages` (Meta App Review) |
+| LinkedIn | — (nur für LinkedIn-Partner-Apps) | Antwort auf Kommentare per Kommentar-URN | `w_member_social` |
+| TikTok | — | — (keine API für Drittanbieter) | — |
+
+- Die zusätzlichen Berechtigungen wurden in `src/lib/oauth/providers.ts`
+  ergänzt — **bereits verbundene Accounts müssen einmal neu verbunden
+  werden**, damit der neue Token sie enthält.
+- Jede Konversation speichert, ob sie ein Kommentar oder eine
+  Direktnachricht ist (`channel`) und an welche Plattform-ID geantwortet wird
+  (`externalThreadId`). Manuell angelegte Konversationen ohne ID können nicht
+  echt gesendet werden; die ID lässt sich in der Detailansicht nachtragen
+  (z. B. LinkedIn-Kommentar-URN `urn:li:comment:(urn:li:activity:…,…)`).
+- Gesendet wird nur nach Freigabe. Fehler der Plattform (fehlende
+  Berechtigung, abgelaufenes 24-h-Fenster, zu langer Text) landen als
+  `FAILED` mit Fehlertext; „Erneut senden“ ist möglich.
+- Nach `git pull` einmal `npm run db:push` ausführen (neue Felder).
+
 ## Kauf-Freischaltung (Stripe) & App-Installation (PWA)
 
 SECRET 58 kann komplett offen betrieben werden (Standard, kein Setup nötig)
@@ -310,7 +339,8 @@ npm run mcp   # aus dem Projekt-Root starten (liest .env)
 | `inbox_list_conversations` | — | Konversationen aller Plattformen mit letzter Nachricht |
 | `inbox_get_conversation` | — | Vollständiger Verlauf einer Konversation |
 | `inbox_triage` | InboxAgent | Unbeantwortete Nachrichten nach Kategorie, Stimmung, Priorität + empfohlener Aktion |
-| `inbox_record_message` | — | Eingehende Nachricht/Kommentar erfassen (z. B. aus Webhook/Zapier); ordnet per Handle zu |
+| `inbox_sync` | InboxAgent | Kommentare & Direktnachrichten der verbundenen Plattformen abrufen |
+| `inbox_record_message` | — | Eingehende Nachricht/Kommentar erfassen (z. B. aus Webhook/Zapier), optional mit Plattform-ID für echtes Antworten |
 | `inbox_draft_reply` | MessageAgent | Antwortentwurf für eine Konversation |
 | `inbox_draft_pending_replies` | InboxAgent | Entwürfe für alle wartenden Konversationen (Spam übersprungen) |
 | `inbox_update_draft` | — | Entwurfstext anpassen |
@@ -320,8 +350,8 @@ Leitplanken:
 
 - **Nichts wird automatisch veröffentlicht oder gesendet.** Posts landen als
   DRAFT im Publishing-Workflow, Antworten als Entwurf. `inbox_send_reply`
-  scheitert ehrlich, solange die Plattform nicht verbunden ist bzw. der native
-  Sende-Aufruf fehlt (siehe MessageAgent).
+  sendet über die native Plattform-API und meldet Plattform-Fehler ehrlich
+  (siehe [Posteingang](#posteingang-nachrichten-abrufen--echt-antworten)).
 - **Ohne KI-Provider** laufen alle Tools im Template-Modus (regelbasierte
   Posts, Klassifikation und Empfehlungen); das Feld `provider` zeigt das an.
   Alle SEO-Messwerte stammen immer aus echten Abrufen, nie von der KI.

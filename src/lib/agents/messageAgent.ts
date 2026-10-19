@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/db";
 import { getBrandDNA, brandContextPrompt } from "@/lib/brand";
 import { generateText } from "@/lib/ai/textGenerator";
+import { sendPlatformReply } from "@/lib/messaging/send";
 
 function templateReply(): string {
   return (
@@ -12,8 +13,8 @@ function templateReply(): string {
 /**
  * MessageAgent — erzeugt einen KI-Antwortentwurf für eine Konversation
  * (nutzt Brand DNA + Verlauf), sendet aber NIE automatisch. Jeder Entwurf
- * muss über `approveAndSend` freigegeben werden; das tatsächliche Senden
- * scheitert ehrlich, solange kein Plattform-Account wirklich verbunden ist.
+ * muss über `approveAndSend` freigegeben werden, das dann über die native
+ * Plattform-API sendet.
  */
 export async function generateReplyDraft(input: {
   workspaceId: string;
@@ -62,11 +63,20 @@ export async function generateReplyDraft(input: {
   return { message, provider };
 }
 
+/**
+ * Gibt einen Entwurf frei und sendet ihn über die native Plattform-API
+ * (Kommentar-Antwort oder Direktnachricht, siehe `lib/messaging/send.ts`).
+ * Jeder Fehler der Plattform landet ehrlich als FAILED mit Fehlertext.
+ */
 export async function approveAndSend(messageId: string) {
   const message = await prisma.message.findUniqueOrThrow({
     where: { id: messageId },
     include: { conversation: true },
   });
+
+  if (message.direction !== "OUTBOUND" || (message.status !== "DRAFTED" && message.status !== "FAILED")) {
+    return { sent: false, message: "Nur Entwürfe oder fehlgeschlagene Antworten können gesendet werden." };
+  }
 
   const account = await prisma.platformAccount.findUnique({
     where: {
@@ -77,21 +87,35 @@ export async function approveAndSend(messageId: string) {
     },
   });
 
-  if (!account || account.status !== "CONNECTED") {
-    const errorText = `${message.conversation.platform} ist nicht verbunden. Verbinde den Account unter Social Media, bevor Nachrichten gesendet werden können.`;
+  const fail = async (errorText: string) => {
     await prisma.message.update({
       where: { id: messageId },
       data: { status: "FAILED", error: errorText },
     });
     return { sent: false, message: errorText };
+  };
+
+  if (!account || account.status !== "CONNECTED") {
+    return fail(
+      `${message.conversation.platform} ist nicht verbunden. Verbinde den Account unter Social Media, bevor Nachrichten gesendet werden können.`
+    );
   }
 
-  // Kein Plattform-Account ist aktuell tatsächlich verbunden — der reale
-  // Sende-Aufruf ist bewusst nicht implementiert, um kein Senden vorzutäuschen.
-  const errorText = `Sende-Adapter für ${message.conversation.platform} ist vorbereitet, der native API-Aufruf ist noch nicht implementiert.`;
-  await prisma.message.update({
-    where: { id: messageId },
-    data: { status: "FAILED", error: errorText },
-  });
-  return { sent: false, message: errorText };
+  await prisma.message.update({ where: { id: messageId }, data: { status: "APPROVED", error: null } });
+
+  try {
+    const result = await sendPlatformReply(account, message.conversation, message.body);
+    const sentAt = new Date();
+    await prisma.message.update({
+      where: { id: messageId },
+      data: { status: "SENT", sentAt, externalId: result.externalId ?? null, error: null },
+    });
+    await prisma.conversation.update({
+      where: { id: message.conversationId },
+      data: { lastMessageAt: sentAt },
+    });
+    return { sent: true, message: `Antwort auf ${message.conversation.platform} gesendet.`, externalId: result.externalId };
+  } catch (error) {
+    return fail(error instanceof Error ? error.message : "Senden fehlgeschlagen.");
+  }
 }

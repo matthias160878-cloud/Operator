@@ -1,0 +1,46 @@
+{
+  "title": "Análisis SEO",
+  "subtitle": "Revisa una página en SEO, técnica, velocidad de carga y vista previa social, y devuelve una puntuación con acciones priorizadas. Todas las mediciones provienen de solicitudes reales.",
+  "form": {
+    "urlLabel": "URL de la página",
+    "keywordLabel": "Palabra clave (opcional)",
+    "keywordPlaceholder": "p. ej. suscripción de café",
+    "pageSpeedLabel": "Además Google PageSpeed (Lighthouse)",
+    "pageSpeedHint": "Tarda 20–60 segundos. Sin PAGESPEED_API_KEY la cuota de Google es limitada.",
+    "mobile": "Móvil",
+    "desktop": "Escritorio",
+    "analyzeButton": "Analizar",
+    "analyzing": "Analizando …",
+    "failed": "El análisis falló."
+  },
+  "result": {
+    "score": "Puntuación total",
+    "recommendations": "Acciones recomendadas",
+    "templateMode": "Basado en reglas (sin proveedor de IA)",
+    "aiMode": "Recomendaciones de IA ({provider})",
+    "noRecommendations": "No se encontraron problemas.",
+    "checks": "Comprobaciones",
+    "showPassed": "Mostrar aprobadas"
+  },
+  "categories": {
+    "seo": "SEO",
+    "performance": "Rendimiento",
+    "technik": "Técnica",
+    "social": "Vista previa social"
+  },
+  "facts": {
+    "responseTime": "Tiempo de respuesta",
+    "htmlSize": "Tamaño HTML",
+    "words": "Palabras",
+    "images": "Imágenes",
+    "withoutAlt": "sin alt"
+  },
+  "pageSpeed": {
+    "heading": "Google PageSpeed (Lighthouse)"
+  },
+  "priority": {
+    "hoch": "alta",
+    "mittel": "media",
+    "niedrig": "baja"
+  }
+}

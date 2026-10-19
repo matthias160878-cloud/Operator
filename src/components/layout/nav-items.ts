@@ -19,6 +19,8 @@ import {
   Plug,
   Settings,
   GraduationCap,
+  SearchCheck,
+  Globe,
 } from "lucide-react";
 
 export interface NavItem {
@@ -38,10 +40,12 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/voice-studio", labelKey: "voiceStudio", icon: Mic },
   { href: "/video-studio", labelKey: "videoStudio", icon: Video },
   { href: "/design-studio", labelKey: "designStudio", icon: Palette },
+  { href: "/website-posts", labelKey: "websitePosts", icon: Globe },
   { href: "/social-media", labelKey: "socialMedia", icon: Share2 },
   { href: "/calendar", labelKey: "calendar", icon: CalendarDays },
   { href: "/analytics", labelKey: "analytics", icon: BarChart3 },
   { href: "/growth", labelKey: "growth", icon: TrendingUp },
+  { href: "/seo", labelKey: "seo", icon: SearchCheck },
   { href: "/revenue", labelKey: "revenue", icon: Wallet },
   { href: "/inbox", labelKey: "inbox", icon: Inbox },
   { href: "/agents", labelKey: "agents", icon: Bot },

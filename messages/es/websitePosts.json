@@ -1,0 +1,26 @@
+{
+  "title": "Posts desde web",
+  "subtitle": "Lee una página de tu web y escribe publicaciones con el estilo de tu marca. Puedes editarlas, copiarlas o guardarlas como borradores en la Content Factory; no se publica nada automáticamente.",
+  "form": {
+    "urlLabel": "URL de la página",
+    "platformsLabel": "Plataformas",
+    "perPlatformLabel": "Publicaciones por plataforma",
+    "instructionsLabel": "Indicaciones extra (opcional)",
+    "instructionsPlaceholder": "p. ej. enfoque en la oferta de otoño, tono cercano",
+    "generateButton": "Generar publicaciones",
+    "generating": "Generando …",
+    "failed": "La generación falló."
+  },
+  "result": {
+    "templateMode": "Modo plantilla (sin IA): revisa los textos",
+    "aiMode": "Generado con IA ({provider})",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "hookPlaceholder": "Gancho / primera línea",
+    "chars": "{count} caracteres",
+    "saveButton": "Guardar {count} como borrador",
+    "saved": "{count} borradores guardados.",
+    "openContentFactory": "Abrir en la Content Factory",
+    "saveFailed": "No se pudo guardar."
+  }
+}

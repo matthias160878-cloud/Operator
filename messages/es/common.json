@@ -26,7 +26,9 @@
     "inbox": "Bandeja de entrada",
     "agents": "Agentes",
     "integrations": "Integraciones",
-    "settings": "Ajustes"
+    "settings": "Ajustes",
+    "seo": "Análisis SEO",
+    "websitePosts": "Posts desde web"
   },
   "topbar": {
     "menuOpen": "Abrir menú",

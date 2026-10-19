@@ -1,0 +1,46 @@
+{
+  "title": "Analyse SEO",
+  "subtitle": "Vérifie une page (SEO, technique, temps de chargement, aperçu social) et fournit un score avec des actions prioritaires. Toutes les mesures proviennent de requêtes réelles.",
+  "form": {
+    "urlLabel": "URL de la page",
+    "keywordLabel": "Mot-clé principal (facultatif)",
+    "keywordPlaceholder": "p. ex. abonnement café",
+    "pageSpeedLabel": "Ajouter Google PageSpeed (Lighthouse)",
+    "pageSpeedHint": "Prend 20 à 60 secondes. Sans PAGESPEED_API_KEY, le quota de Google est limité.",
+    "mobile": "Mobile",
+    "desktop": "Ordinateur",
+    "analyzeButton": "Analyser",
+    "analyzing": "Analyse en cours …",
+    "failed": "L’analyse a échoué."
+  },
+  "result": {
+    "score": "Score global",
+    "recommendations": "Actions recommandées",
+    "templateMode": "Basé sur des règles (sans fournisseur IA)",
+    "aiMode": "Recommandations IA ({provider})",
+    "noRecommendations": "Aucun problème trouvé.",
+    "checks": "Contrôles détaillés",
+    "showPassed": "Afficher les réussis"
+  },
+  "categories": {
+    "seo": "SEO",
+    "performance": "Performance",
+    "technik": "Technique",
+    "social": "Aperçu social"
+  },
+  "facts": {
+    "responseTime": "Temps de réponse",
+    "htmlSize": "Taille HTML",
+    "words": "Mots",
+    "images": "Images",
+    "withoutAlt": "sans alt"
+  },
+  "pageSpeed": {
+    "heading": "Google PageSpeed (Lighthouse)"
+  },
+  "priority": {
+    "hoch": "haute",
+    "mittel": "moyenne",
+    "niedrig": "basse"
+  }
+}

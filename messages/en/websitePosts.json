@@ -1,0 +1,26 @@
+{
+  "title": "Posts from website",
+  "subtitle": "Reads a page of your website and writes posts from it in your brand voice. Edit, copy or save them as drafts in the Content Factory — nothing is published automatically.",
+  "form": {
+    "urlLabel": "Page URL",
+    "platformsLabel": "Platforms",
+    "perPlatformLabel": "Posts per platform",
+    "instructionsLabel": "Extra wishes (optional)",
+    "instructionsPlaceholder": "e.g. focus on the autumn offer, casual tone",
+    "generateButton": "Generate posts",
+    "generating": "Generating …",
+    "failed": "Generation failed."
+  },
+  "result": {
+    "templateMode": "Template mode (no AI provider) — please revise the texts",
+    "aiMode": "Generated with AI ({provider})",
+    "copy": "Copy",
+    "copied": "Copied",
+    "hookPlaceholder": "Hook / first line",
+    "chars": "{count} characters",
+    "saveButton": "Save {count} as draft",
+    "saved": "{count} drafts saved.",
+    "openContentFactory": "Open in Content Factory",
+    "saveFailed": "Saving failed."
+  }
+}

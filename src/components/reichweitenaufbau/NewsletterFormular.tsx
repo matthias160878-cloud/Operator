@@ -5,7 +5,7 @@ import { useState } from "react";
 const feld = "w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-foreground placeholder:text-muted";
 
 /** Öffentliches Anmeldeformular mit Themenwahl und Einwilligung (Double-Opt-in). */
-export function NewsletterFormular({ code, themen, einwilligung, refCode }: { code: string; themen: string[]; einwilligung: string; refCode: string | null }) {
+export function NewsletterFormular({ code, themen, einwilligung, refCode, datenschutzUrl }: { code: string; themen: string[]; einwilligung: string; refCode: string | null; datenschutzUrl: string | null }) {
   const [gewaehlt, setGewaehlt] = useState<string[]>(themen);
   const [antwort, setAntwort] = useState<{ meldung: string; demo?: boolean; bestaetigungsUrl?: string | null; abmeldeUrl?: string | null } | null>(null);
   const [fehler, setFehler] = useState<string | null>(null);
@@ -66,7 +66,14 @@ export function NewsletterFormular({ code, themen, einwilligung, refCode }: { co
       <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <label className="flex items-start gap-2 text-xs text-muted">
         <input type="checkbox" name="einwilligung" required className="mt-0.5 h-4 w-4" />
-        <span>{einwilligung}</span>
+        <span>
+          {einwilligung}
+          {datenschutzUrl && (
+            <>
+              {" "}Details: <a href={datenschutzUrl} target="_blank" rel="noopener noreferrer nofollow" className="underline">Datenschutzerklärung</a>
+            </>
+          )}
+        </span>
       </label>
       <button
         type="submit"

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { NotFoundError, route } from "@/lib/api";
 import { freigeberOderAntwort } from "@/lib/reichweite/zugriff";
+import { nurWenn, werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 /**
  * Bezahlte Kampagnen werden aus dieser App nicht gestartet: Es gibt keine
@@ -18,4 +19,4 @@ async function handlePOST(_r: Request, { params }: { params: Promise<{ id: strin
   );
 }
 
-export const POST = route(handlePOST);
+export const POST = nurWenn(werbungFreigeschaltet, route(handlePOST));

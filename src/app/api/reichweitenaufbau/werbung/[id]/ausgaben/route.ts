@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { NotFoundError, route } from "@/lib/api";
 import { bearbeiterOderAntwort } from "@/lib/reichweite/zugriff";
 import { protokoll } from "@/lib/reichweite/service";
+import { nurWenn, werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 const schema = z.object({ ausgabenCent: z.number().int().min(0).max(1_000_000_00).nullable() });
 
@@ -31,4 +32,4 @@ async function handlePOST(request: Request, { params }: { params: Promise<{ id: 
   return NextResponse.json({ ok: true });
 }
 
-export const POST = route(handlePOST);
+export const POST = nurWenn(werbungFreigeschaltet, route(handlePOST));

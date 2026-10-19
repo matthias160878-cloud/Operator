@@ -6,6 +6,7 @@ import { requireSessionUser } from "@/lib/auth/session";
 import { darfBearbeiten, darfFreigeben } from "@/lib/reichweite/zugriff";
 import { protokoll } from "@/lib/reichweite/service";
 import { ausgabeHash, darfUebergang, themenLesen, versandModus } from "@/lib/reichweitenaufbau/newsletterKunden";
+import { nurWenn, newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 const schema = z.object({ aktion: z.enum(["pruefen", "freigeben", "planen", "zurueck", "versenden"]), geplantAm: z.string().optional() });
 
@@ -58,4 +59,4 @@ async function handlePOST(request: Request, { params }: { params: Promise<{ id: 
   return NextResponse.json({ ok: true });
 }
 
-export const POST = route(handlePOST);
+export const POST = nurWenn(newsletterFreigeschaltet, route(handlePOST));

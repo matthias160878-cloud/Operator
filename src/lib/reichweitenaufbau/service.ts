@@ -7,6 +7,7 @@ import { neuerCode } from "@/lib/reichweite/codes";
 import { vergleiche, type VarianteEingabe, type VariantenMetrik } from "@/lib/reichweitenaufbau/varianten";
 import { einwilligungsText, versandModus } from "@/lib/reichweitenaufbau/newsletterKunden";
 import type { KampagnenBeleg } from "@/lib/reichweitenaufbau/werbung";
+import { newsletterFreigeschaltet, werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 /** Kennzeichen für Demo-Inhalte in der Content Factory (ContentItem hat kein eigenes Demo-Feld). */
 export const DEMO_FORMAT = "DEMO · Reichweitenaufbau";
@@ -285,7 +286,7 @@ export async function demoAnlegen(workspaceId: string) {
     data: [
       {
         workspaceId, istDemo: true, name: "DEMO Bäckerei Beispiel", profilUrl: "https://example.com/baeckerei", art: "REGIONAL", zielgruppenpassung: "HOCH",
-        passungNotiz: "gleiche Region, ähnliche Kundschaft", idee: "Gemeinsame Aktion zum Stadtfest", format: "AKTION", status: "IM_GESPRAECH",
+        passungNotiz: "gleiche Region, ähnliche Kundschaft", idee: "Gemeinsame Aktion zum Stadtfest", format: "AKTION", status: "IM_GESPRAECH", kennzeichnung: "KEINE_GEGENLEISTUNG",
         naechsterSchritt: "Termin zur Abstimmung", termin: new Date(jetzt + 3 * tag), kampagneId: kampagne.id, linkId: koopLink.id,
       },
       {
@@ -300,7 +301,7 @@ export async function demoAnlegen(workspaceId: string) {
     ],
   });
 
-  await prisma.werbeplan.create({
+  if (werbungFreigeschaltet()) await prisma.werbeplan.create({
     data: {
       workspaceId, istDemo: true, titel: "DEMO – Checkliste bewerben", kampagneId: kampagne.id, plattform: "META", ziel: "TRAFFIC",
       zielgruppe: "Selbstständige 25–55, Interesse Social Media", zielgruppenArt: "NEU", region: "Deutschland (Baden-Württemberg)", sprache: "Deutsch",
@@ -309,6 +310,13 @@ export async function demoAnlegen(workspaceId: string) {
     },
   });
 
+  if (newsletterFreigeschaltet()) await newsletterDemo(workspaceId, kampagne.id, linkA.id, jetzt, tag);
+  return kampagne;
+}
+
+async function newsletterDemo(workspaceId: string, kampagneId: string, linkAId: string, jetzt: number, tag: number) {
+  const kampagne = { id: kampagneId };
+  const linkA = { id: linkAId };
   const seite = await prisma.newsletterSeite.create({
     data: {
       workspaceId, istDemo: true, code: await neuerSeitenCode(), titel: "DEMO – Monatliche Praxistipps",
@@ -339,5 +347,4 @@ export async function demoAnlegen(workspaceId: string) {
       bildIdee: "Herbstliches Titelbild mit eigenem Foto", themen: JSON.stringify(["Praxistipps"]), kampagneId: kampagne.id, status: "ENTWURF",
     },
   });
-  return kampagne;
 }

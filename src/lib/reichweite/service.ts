@@ -1,5 +1,7 @@
 import { createHash } from "node:crypto";
 import { prisma } from "@/lib/db";
+import { sellerProfileComplete } from "@/lib/connect/sellerProfile";
+import { newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 import { NotFoundError } from "@/lib/api";
 import { getProvider, isProviderConfigured } from "@/lib/oauth/providers";
 import { neuerCode } from "@/lib/reichweite/codes";
@@ -70,7 +72,19 @@ export async function oeffentlicherLink(code: string) {
     },
   });
   if (!link) return null;
-  return { ...link, aktiv: link.kampagne.aktiv && !link.widerrufenAm };
+  const anbieter = await oeffentlicherAnbieter(link.workspaceId, link.istDemo);
+  return { ...link, aktiv: link.kampagne.aktiv && !link.widerrufenAm, ...anbieter };
+}
+
+/**
+ * Öffentliche Seiten eines Kunden dürfen nur mit dessen Impressum- und
+ * Datenschutzangaben (Verkäuferprofil) erreichbar sein. Demo-Seiten sind
+ * ausgenommen und tragen einen sichtbaren Hinweis.
+ */
+export async function oeffentlicherAnbieter(workspaceId: string, istDemo: boolean) {
+  const profil = await prisma.sellerProfile.findUnique({ where: { workspaceId } });
+  const vollstaendig = sellerProfileComplete(profil);
+  return { profil: vollstaendig ? profil : null, freigeschaltet: istDemo || vollstaendig };
 }
 
 export async function ereignisSpeichern(
@@ -102,7 +116,7 @@ export async function kampagnenAuswertung(workspaceId: string, kampagneId: strin
     links,
     ereignisse,
     kennzahlen,
-    newsletter: seiten > 0 ? { bestaetigt: bestaetigt.map((b) => ({ confirmedAt: b.confirmedAt!, istDemo: b.istDemo })) } : undefined,
+    newsletter: newsletterFreigeschaltet() && seiten > 0 ? { bestaetigt: bestaetigt.map((b) => ({ confirmedAt: b.confirmedAt!, istDemo: b.istDemo })) } : undefined,
   });
 }
 

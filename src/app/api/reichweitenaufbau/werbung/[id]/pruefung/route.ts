@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { NotFoundError, route } from "@/lib/api";
 import { bearbeiterOderAntwort } from "@/lib/reichweite/zugriff";
+import { nurWenn, werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 /** Entwurf → Prüfung (zur Freigabe vorlegen). */
 async function handlePOST(_r: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -15,4 +16,4 @@ async function handlePOST(_r: Request, { params }: { params: Promise<{ id: strin
   return NextResponse.json({ ok: true });
 }
 
-export const POST = route(handlePOST);
+export const POST = nurWenn(werbungFreigeschaltet, route(handlePOST));

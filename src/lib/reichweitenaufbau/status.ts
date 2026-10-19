@@ -63,6 +63,11 @@ export interface Lage {
   newsletterModus: "ECHT" | "DEMO";
   newsletterSeiten: number;
   plattformStatistikAngebunden: boolean;
+  /** Vereinbarte/umgesetzte Kooperationen ohne geklärte Werbekennzeichnung. */
+  kooperationenOhneKennzeichnung?: number;
+  /** Freigeschaltete Bausteine; ohne Angabe gelten beide als freigeschaltet. */
+  newsletterAktiv?: boolean;
+  werbungAktiv?: boolean;
 }
 
 /** Nächste Schritte als Vorschläge – regelbasiert und nachvollziehbar, keine Erfolgsprognose. */
@@ -74,12 +79,15 @@ export function naechsteSchritte(l: Lage): { text: string; tab: string; art: "AK
   if (l.variantenOhneAussage) s.push({ text: `${l.variantenOhneAussage} Variantenvergleich(e) ohne belastbare Aussage – Messwerte nachtragen oder Laufzeit abwarten.`, tab: "varianten", art: "AKTION" });
   if (l.kooperationenOhneNaechstenSchritt) s.push({ text: `${l.kooperationenOhneNaechstenSchritt} Kooperation(en) ohne nächsten Schritt.`, tab: "kooperationen", art: "AKTION" });
   if (l.kooperationenTerminBald) s.push({ text: `${l.kooperationenTerminBald} Kooperationstermin(e) in den nächsten 7 Tagen.`, tab: "kooperationen", art: "AKTION" });
-  if (l.werbeplaeneInPruefung) s.push({ text: `${l.werbeplaeneInPruefung} Werbeplan/-pläne zur Freigabe (Betrag, Laufzeit, Ziel bestätigen).`, tab: "werbung", art: "AKTION" });
-  if (l.werbeplaeneFreigegeben) s.push({ text: `${l.werbeplaeneFreigegeben} freigegebene(r) Werbeplan/-pläne: als Entwurf exportieren und im Werbekonto selbst anlegen (keine Werbeanbindung).`, tab: "werbung", art: "AKTION" });
-  if (l.ausgabenInPruefung) s.push({ text: `${l.ausgabenInPruefung} Newsletter-Ausgabe(n) in Prüfung.`, tab: "newsletter", art: "AKTION" });
-  if (l.ausgabenGeplant && l.newsletterModus === "DEMO") s.push({ text: `${l.ausgabenGeplant} geplante Ausgabe(n) – Versand nur als Demo möglich, Versanddienst fehlt.`, tab: "newsletter", art: "FEHLT" });
-  if (!l.newsletterSeiten) s.push({ text: "Noch keine Newsletter-Anmeldeseite angelegt.", tab: "newsletter", art: "AKTION" });
-  if (l.newsletterModus === "DEMO") s.push({ text: "Newsletter-Versanddienst nicht freigeschaltet – Anmeldungen und Versand laufen nur als Demo.", tab: "newsletter", art: "FEHLT" });
+  if (l.kooperationenOhneKennzeichnung) s.push({ text: `${l.kooperationenOhneKennzeichnung} Kooperation(en): Werbekennzeichnung noch nicht geklärt.`, tab: "kooperationen", art: "FEHLT" });
+  const werbung = l.werbungAktiv !== false;
+  const newsletter = l.newsletterAktiv !== false;
+  if (werbung && l.werbeplaeneInPruefung) s.push({ text: `${l.werbeplaeneInPruefung} Werbeplan/-pläne zur Freigabe (Betrag, Laufzeit, Ziel bestätigen).`, tab: "werbung", art: "AKTION" });
+  if (werbung && l.werbeplaeneFreigegeben) s.push({ text: `${l.werbeplaeneFreigegeben} freigegebene(r) Werbeplan/-pläne: als Entwurf exportieren und im Werbekonto selbst anlegen (keine Werbeanbindung).`, tab: "werbung", art: "AKTION" });
+  if (newsletter && l.ausgabenInPruefung) s.push({ text: `${l.ausgabenInPruefung} Newsletter-Ausgabe(n) in Prüfung.`, tab: "newsletter", art: "AKTION" });
+  if (newsletter && l.ausgabenGeplant && l.newsletterModus === "DEMO") s.push({ text: `${l.ausgabenGeplant} geplante Ausgabe(n) – Versand nur als Demo möglich, Versanddienst fehlt.`, tab: "newsletter", art: "FEHLT" });
+  if (newsletter && !l.newsletterSeiten) s.push({ text: "Noch keine Newsletter-Anmeldeseite angelegt.", tab: "newsletter", art: "AKTION" });
+  if (newsletter && l.newsletterModus === "DEMO") s.push({ text: "Newsletter-Versanddienst nicht freigeschaltet – Anmeldungen und Versand laufen nur als Demo.", tab: "newsletter", art: "FEHLT" });
   if (!l.plattformStatistikAngebunden) s.push({ text: "Plattform-Statistiken nicht angebunden – Messwerte nur manuell oder als Demo.", tab: "varianten", art: "FEHLT" });
   return s;
 }

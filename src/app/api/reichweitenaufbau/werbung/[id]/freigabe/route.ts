@@ -6,6 +6,7 @@ import { freigeberOderAntwort } from "@/lib/reichweite/zugriff";
 import { protokoll } from "@/lib/reichweite/service";
 import { euro, pruefeFreigabe } from "@/lib/reichweitenaufbau/werbung";
 import { freigabeHash } from "@/lib/reichweitenaufbau/werbungHash";
+import { nurWenn, werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 const schema = z.object({
   gesamtbudgetCent: z.number().int(),
@@ -39,4 +40,4 @@ async function handlePOST(request: Request, { params }: { params: Promise<{ id: 
   return NextResponse.json({ ok: true, hinweis: "Freigegeben – es wurde nichts gestartet. Keine Werbeanbindung vorhanden: bitte als Entwurf exportieren." });
 }
 
-export const POST = route(handlePOST);
+export const POST = nurWenn(werbungFreigeschaltet, route(handlePOST));

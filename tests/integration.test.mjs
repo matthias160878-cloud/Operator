@@ -145,6 +145,8 @@ before(async () => {
     COMPOSIO_AUTH_CONFIG_TIKTOK: "ac_tiktok",
     TOKEN_ENCRYPTION_KEY: "test-schluessel-nur-fuer-die-integrationstests",
     RESEND_API_KEY: "re_test_fake",
+    REICHWEITE_NEWSLETTER: "1",
+    REICHWEITE_WERBUNG: "1",
     EMAIL_FROM: "Secret 58 <newsletter@example.test>",
     EMAIL_API_BASE: `http://127.0.0.1:${fakes.stripePort}`,
     PILOTSTUDIO_LIVE_SEND: "true",
@@ -1874,8 +1876,19 @@ test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich u
   assert.equal((await B.json("/api/reichweite/kampagnen", { method: "POST", body: { titel: "x", campaignId: intern.id } })).status, 404, "fremde interne Kampagne");
   assert.equal((await new Client().json("/api/reichweite/kampagnen")).status, 401);
 
-  // Öffentliche Seite: nur öffentliche Felder, ohne Anmeldung, keine Cookies
+  // Ohne Impressum-/Datenschutzangaben des Kunden bleibt die öffentliche Seite gesperrt
   const anon = new Client();
+  const gesperrt = await anon.req(`/e/${code}`, { headers: { "user-agent": "Mozilla/5.0 Testbrowser" } });
+  assert.ok((await gesperrt.text()).includes("noch nicht freigeschaltet"));
+  assert.equal((await anon.json(`/api/empfehlung/${code}/anfrage`, { method: "POST", body: { kontakt: "x@example.com", nachricht: "Hallo", einwilligung: true } })).status, 403);
+  assert.equal((await anon.req(`/e/${code}/impressum`)).status, 404);
+  assert.equal(await prisma.empfehlungsEreignis.count({ where: { kampagneId: kid } }), 0, "gesperrte Seite zählt nicht");
+  assert.ok((await (await A.req("/reichweitenaufbau")).text()).includes("anbieter-hinweis"));
+  await prisma.sellerProfile.create({
+    data: { workspaceId: wsA, anbieter: "Rita Reichweite", firma: "Reichweite A GmbH", anschrift: "Linkweg 1\n12345 Teilstadt", email: "kontakt@reichweite-a.example", datenschutzUrl: "https://reichweite-a.example/datenschutz" },
+  });
+
+  // Öffentliche Seite: nur öffentliche Felder, ohne Anmeldung, keine Cookies
   const seite = await anon.req(`/e/${code}`, { headers: { "user-agent": "Mozilla/5.0 Testbrowser" } });
   assert.equal(seite.status, 200);
   assert.equal(seite.headers.get("set-cookie"), null, "keine Cookies");
@@ -1884,6 +1897,9 @@ test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich u
   assert.ok(!html.includes("GEHEIM-interne-Kampagne"), "interne Kampagne bleibt privat");
   assert.ok(!html.includes("Instagram-Bio"), "interne Bezeichnung bleibt privat");
   assert.ok(!html.includes(wsA), "keine Workspace-ID");
+  assert.ok(html.includes("Reichweite A GmbH") && html.includes("https://reichweite-a.example/datenschutz"), "Anbieter und Datenschutz des Kunden");
+  const imp = await (await anon.req(`/e/${code}/impressum`)).text();
+  assert.ok(imp.includes("Linkweg 1") && imp.includes("kontakt@reichweite-a.example"));
   // Messenger-Vorschau und Prefetch zählen nicht
   await anon.req(`/e/${code}`, { headers: { "user-agent": "WhatsApp/2.23" } });
   await anon.req(`/e/${code}`, { headers: { "user-agent": "Mozilla/5.0", "sec-purpose": "prefetch" } });
@@ -2017,6 +2033,13 @@ test("Reichweitenaufbau: Freigabegrenzen, Rollen, Mandanten, Newsletter-Double-O
   assert.equal(ent.data.kooperation.status, "ANFRAGE_ENTWURF");
   assert.equal((await A.json(`${R}/kooperationen/${ko.data.kooperation.id}/link`, { method: "POST" })).status, 409, "Link nur mit Kampagne");
   assert.equal((await B.json(`${R}/kooperationen/${ko.data.kooperation.id}`, { method: "PATCH", body: { status: "VEREINBART" } })).status, 404);
+  assert.equal(ko.data.kooperation.kennzeichnung, "OFFEN");
+  assert.match(ent.data.kooperation.anfrageEntwurf, /als Werbung bzw\. Anzeige/);
+  assert.equal((await A.json(`${R}/kooperationen/${ko.data.kooperation.id}`, { method: "PATCH", body: { kennzeichnung: "SCHLEICHWERBUNG" } })).status, 400);
+  await A.json(`${R}/kooperationen/${ko.data.kooperation.id}`, { method: "PATCH", body: { status: "VEREINBART" } });
+  assert.ok((await (await A.req("/reichweitenaufbau")).text()).includes("Werbekennzeichnung noch nicht geklärt"));
+  const gekennzeichnet = await A.json(`${R}/kooperationen/${ko.data.kooperation.id}`, { method: "PATCH", body: { kennzeichnung: "WERBUNG" } });
+  assert.equal(gekennzeichnet.data.kooperation.kennzeichnung, "WERBUNG");
 
   // Werbung: Freigabe nur exakt bestätigt, nur Inhaber/Admin, Start immer blockiert, Änderung hebt Freigabe auf
   const plan = await A.json(`${R}/werbung`, {
@@ -2059,6 +2082,10 @@ test("Reichweitenaufbau: Freigabegrenzen, Rollen, Mandanten, Newsletter-Double-O
   assert.equal(seite.status, 200);
   const code = seite.data.seite.code;
   const anon = new Client();
+  assert.ok((await (await anon.req(`/n/${code}`)).text()).includes("noch nicht freigeschaltet"), "ohne Anbieterangaben gesperrt");
+  await prisma.sellerProfile.create({
+    data: { workspaceId: wsA, anbieter: "Anton Aufbau", anschrift: "Planweg 2\n12345 Aufbaustadt", email: "kontakt@aufbau-a.example", datenschutzUrl: "https://aufbau-a.example/datenschutz" },
+  });
   const nlSeite = await anon.req(`/n/${code}`, { headers: { "user-agent": "Mozilla/5.0" } });
   assert.equal(nlSeite.status, 200);
   assert.equal(nlSeite.headers.get("set-cookie"), null);

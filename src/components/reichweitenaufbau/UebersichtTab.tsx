@@ -9,7 +9,7 @@ export function UebersichtTab(props: {
   belege: KampagnenBeleg[];
   stufen: { inhalte: Record<Stufe, number>; newsletter: Record<Stufe, number>; werbung: Record<Stufe, number> };
   schritte: { text: string; tab: string; art: "AKTION" | "FEHLT" }[];
-  anbindungen: { newsletterModus: "ECHT" | "DEMO"; emailEingerichtet: boolean };
+  anbindungen: { newsletterModus: "ECHT" | "DEMO"; emailEingerichtet: boolean; newsletterAktiv: boolean; werbungAktiv: boolean };
   kooperationen: number;
   tests: number;
 }) {
@@ -18,10 +18,10 @@ export function UebersichtTab(props: {
       <section className={karte}>
         <h2 className="text-sm font-semibold text-foreground">Stand der Abläufe</h2>
         <StatusLeiste titel="Inhalte (Content Factory)" zahlen={props.stufen.inhalte} />
-        <StatusLeiste titel="Newsletter-Ausgaben" zahlen={props.stufen.newsletter} />
-        <StatusLeiste titel="Werbepläne" zahlen={props.stufen.werbung} />
+        {props.anbindungen.newsletterAktiv && <StatusLeiste titel="Newsletter-Ausgaben" zahlen={props.stufen.newsletter} />}
+        {props.anbindungen.werbungAktiv && <StatusLeiste titel="Werbepläne" zahlen={props.stufen.werbung} />}
         <p className="text-[11px] text-muted">
-          „Veröffentlicht / versendet“ zählt nur bestätigte Aktionen. Demo-Versand und freigegebene, aber nicht gestartete Werbung zählen nicht dazu.
+          „Veröffentlicht / versendet“ zählt nur bestätigte Aktionen – keine Demo-Daten.
         </p>
       </section>
 
@@ -62,7 +62,7 @@ export function UebersichtTab(props: {
                   <th className="py-1 pr-3 font-normal">Linkaufrufe</th>
                   <th className="py-1 pr-3 font-normal">Klicks zur Zielseite</th>
                   <th className="py-1 pr-3 font-normal">Anfragen</th>
-                  <th className="py-1 font-normal">Newsletter bestätigt</th>
+                  {props.anbindungen.newsletterAktiv && <th className="py-1 font-normal">Newsletter bestätigt</th>}
                 </tr>
               </thead>
               <tbody className="text-foreground">
@@ -74,7 +74,7 @@ export function UebersichtTab(props: {
                     <td className="py-1.5 pr-3">{b.aufrufe}</td>
                     <td className="py-1.5 pr-3">{b.zielKlicks}</td>
                     <td className="py-1.5 pr-3">{b.anfragen}</td>
-                    <td className="py-1.5">{b.newsletterBestaetigt}</td>
+                    {props.anbindungen.newsletterAktiv && <td className="py-1.5">{b.newsletterBestaetigt}</td>}
                   </tr>
                 ))}
               </tbody>
@@ -98,13 +98,25 @@ export function UebersichtTab(props: {
           <li>
             Plattform-Statistiken (Wiedergabedauer, Speicherungen …): <Chip ton="warn">nicht angebunden</Chip> – manuell oder Demo
           </li>
-          <li>
-            Werbe-Schnittstellen (Meta, Google Ads, LinkedIn, TikTok): <Chip ton="warn">nicht angebunden</Chip> – Entwurf und Export
-          </li>
-          <li>
-            Newsletter-Versand: <Chip ton={props.anbindungen.newsletterModus === "ECHT" ? "gut" : "warn"}>{props.anbindungen.newsletterModus === "ECHT" ? "Bestätigungsmails aktiv" : "Demo"}</Chip>{" "}
-            {props.anbindungen.emailEingerichtet ? "Versanddienst eingerichtet" : "Versanddienst (Resend) nicht eingerichtet"}; Versand von Ausgaben noch nicht umgesetzt
-          </li>
+          {props.anbindungen.werbungAktiv ? (
+            <li>
+              Werbe-Schnittstellen (Meta, Google Ads, LinkedIn, TikTok): <Chip ton="warn">nicht angebunden</Chip> – Entwurf und Export
+            </li>
+          ) : (
+            <li>
+              Werbeplanung: <Chip ton="neutral">nicht freigeschaltet</Chip> – vorbereitet, wird erst nach ausdrücklicher Freigabe eingeschaltet
+            </li>
+          )}
+          {props.anbindungen.newsletterAktiv ? (
+            <li>
+              Newsletter-Versand: <Chip ton={props.anbindungen.newsletterModus === "ECHT" ? "gut" : "warn"}>{props.anbindungen.newsletterModus === "ECHT" ? "Bestätigungsmails aktiv" : "Demo"}</Chip>{" "}
+              {props.anbindungen.emailEingerichtet ? "Versanddienst eingerichtet" : "Versanddienst (Resend) nicht eingerichtet"}; Versand von Ausgaben noch nicht umgesetzt
+            </li>
+          ) : (
+            <li>
+              Newsletter: <Chip ton="neutral">nicht freigeschaltet</Chip> – vorbereitet, wird erst nach ausdrücklicher Freigabe eingeschaltet
+            </li>
+          )}
           <li>
             Kooperationen: {props.kooperationen} · Variantenvergleiche: {props.tests}
           </li>

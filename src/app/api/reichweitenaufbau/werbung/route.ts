@@ -4,6 +4,7 @@ import { route } from "@/lib/api";
 import { bearbeiterOderAntwort } from "@/lib/reichweite/zugriff";
 import { protokoll } from "@/lib/reichweite/service";
 import { werbeplanDaten, werbeplanSchema } from "@/lib/reichweitenaufbau/werbungApi";
+import { nurWenn, werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 async function handlePOST(request: Request) {
   const user = await bearbeiterOderAntwort();
@@ -17,4 +18,4 @@ async function handlePOST(request: Request) {
   return NextResponse.json({ plan });
 }
 
-export const POST = route(handlePOST);
+export const POST = nurWenn(werbungFreigeschaltet, route(handlePOST));

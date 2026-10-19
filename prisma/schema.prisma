@@ -1271,6 +1271,8 @@ model Kooperation {
   linkId             String?
   link               EmpfehlungsLink?     @relation(fields: [linkId], references: [id], onDelete: SetNull)
   anfrageEntwurf     String               @default("")
+  /// Werbekennzeichnung: OFFEN, WERBUNG, ANZEIGE, KEINE_GEGENLEISTUNG
+  kennzeichnung      String               @default("OFFEN")
   istDemo            Boolean              @default(false)
   createdAt          DateTime             @default(now())
   updatedAt          DateTime             @updatedAt

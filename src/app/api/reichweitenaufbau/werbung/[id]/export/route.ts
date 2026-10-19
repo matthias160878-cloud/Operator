@@ -4,6 +4,7 @@ import { NotFoundError, route } from "@/lib/api";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { exportCsv, exportJson } from "@/lib/reichweitenaufbau/werbung";
 import { freigabeHash } from "@/lib/reichweitenaufbau/werbungHash";
+import { nurWenn, werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 /** Exportierbarer Kampagnenentwurf (JSON oder CSV). */
 async function handleGET(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -26,4 +27,4 @@ async function handleGET(request: Request, { params }: { params: Promise<{ id: s
   });
 }
 
-export const GET = route(handleGET);
+export const GET = nurWenn(werbungFreigeschaltet, route(handleGET));

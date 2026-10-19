@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { kuerzen } from "@/lib/reichweite/texte";
-import { KOOP_ARTEN, KOOP_FORMATE, KOOP_STATUS, PASSUNG } from "@/lib/reichweitenaufbau/kooperation";
+import { KOOP_ARTEN, KOOP_FORMATE, KOOP_KENNZEICHNUNG, KOOP_STATUS, PASSUNG } from "@/lib/reichweitenaufbau/kooperation";
 
 const keys = (o: object) => Object.keys(o) as [string, ...string[]];
 
@@ -18,6 +18,7 @@ export const kooperationSchema = z.object({
   termin: z.string().nullable().optional(),
   kampagneId: z.string().nullable().optional(),
   anfrageEntwurf: z.string().max(5000).optional(),
+  kennzeichnung: z.enum(keys(KOOP_KENNZEICHNUNG)).optional(),
 });
 
 /** Bereinigte Felder; Kampagnen nur aus dem eigenen Workspace. */
@@ -28,6 +29,7 @@ export async function kooperationsDaten(workspaceId: string, d: z.infer<typeof k
   if (d.idee !== undefined) out.idee = kuerzen(d.idee, 1000);
   if (d.format !== undefined) out.format = d.format;
   if (d.status !== undefined) out.status = d.status;
+  if (d.kennzeichnung !== undefined) out.kennzeichnung = d.kennzeichnung;
   if (d.naechsterSchritt !== undefined) out.naechsterSchritt = kuerzen(d.naechsterSchritt, 300);
   if (d.anfrageEntwurf !== undefined) out.anfrageEntwurf = kuerzen(d.anfrageEntwurf, 5000);
   if (d.termin !== undefined) {

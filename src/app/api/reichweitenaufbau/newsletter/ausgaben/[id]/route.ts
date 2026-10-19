@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { NotFoundError, route } from "@/lib/api";
 import { bearbeiterOderAntwort } from "@/lib/reichweite/zugriff";
 import { ausgabeDaten, ausgabeSchema } from "@/lib/reichweitenaufbau/newsletterApi";
+import { nurWenn, newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 type Ctx = { params: Promise<{ id: string }> };
 
@@ -34,5 +35,5 @@ async function handleDELETE(_r: Request, { params }: Ctx) {
   return NextResponse.json({ ok: true });
 }
 
-export const PATCH = route(handlePATCH);
-export const DELETE = route(handleDELETE);
+export const PATCH = nurWenn(newsletterFreigeschaltet, route(handlePATCH));
+export const DELETE = nurWenn(newsletterFreigeschaltet, route(handleDELETE));

@@ -6,6 +6,9 @@ import { darfBearbeiten, darfFreigeben } from "@/lib/reichweite/zugriff";
 import { seitenOrigin } from "@/lib/reichweite/origin";
 import { DEMO_FORMAT, kampagnenBelege, newsletterAufraeumen, seitenZahlen, variantenAuswertung } from "@/lib/reichweitenaufbau/service";
 import { versandModus } from "@/lib/reichweitenaufbau/newsletterKunden";
+import { newsletterFreigeschaltet, werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
+import { kennzeichnungWarnung } from "@/lib/reichweitenaufbau/kooperation";
+import { sellerProfileMissing } from "@/lib/connect/sellerProfile";
 import { bewerbungsVorschlaege } from "@/lib/reichweitenaufbau/werbung";
 import { naechsteSchritte, termineBald, stufeAusgabe, stufeInhalt, stufeWerbeplan, zaehleStufen } from "@/lib/reichweitenaufbau/status";
 import { plain } from "@/components/reichweitenaufbau/typen";
@@ -31,13 +34,16 @@ type TabKey = (typeof TABS)[number]["key"];
 
 export default async function ReichweitenaufbauPage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
   const { tab: tabParam } = await searchParams;
-  const tab: TabKey = (TABS.find((t) => t.key === tabParam)?.key ?? "uebersicht") as TabKey;
+  const frei = { newsletter: newsletterFreigeschaltet(), werbung: werbungFreigeschaltet() };
+  const tabs = TABS.filter((t) => (t.key !== "newsletter" || frei.newsletter) && (t.key !== "werbung" || frei.werbung));
+  const tab: TabKey = (tabs.find((t) => t.key === tabParam)?.key ?? "uebersicht") as TabKey;
   const user = await requireSessionUser();
   const { workspaceId } = user;
-  await newsletterAufraeumen(workspaceId);
+  if (frei.newsletter) await newsletterAufraeumen(workspaceId);
 
   const inhaltFilter = { workspaceId, OR: [{ format: { startsWith: "Reichweitenaufbau" } }, { format: DEMO_FORMAT }] };
-  const [kampagnen, inhalte, alleInhalte, tests, kooperationen, werbeplaene, seiten, kontakte, ausgaben, belege, zahlen, origin] = await Promise.all([
+  const leer = <T,>(): Promise<T[]> => Promise.resolve([]);
+  const [kampagnen, inhalte, alleInhalte, tests, kooperationen, werbeplaene, seiten, kontakte, ausgaben, belege, zahlen, origin, anbieterProfil] = await Promise.all([
     prisma.reichweitenKampagne.findMany({ where: { workspaceId }, select: { id: true, titel: true, istDemo: true, aktiv: true }, orderBy: { createdAt: "desc" } }),
     prisma.contentItem.findMany({
       where: inhaltFilter,
@@ -51,19 +57,23 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
       orderBy: { createdAt: "desc" },
     }),
     prisma.kooperation.findMany({ where: { workspaceId }, include: { kampagne: { select: { titel: true } }, link: { select: { code: true } } }, orderBy: { updatedAt: "desc" } }),
-    prisma.werbeplan.findMany({ where: { workspaceId }, include: { contentItem: { select: { title: true } }, kampagne: { select: { titel: true } } }, orderBy: { createdAt: "desc" } }),
-    prisma.newsletterSeite.findMany({ where: { workspaceId }, include: { kampagne: { select: { titel: true } } }, orderBy: { createdAt: "desc" } }),
-    prisma.newsletterKontakt.findMany({
+    frei.werbung
+      ? prisma.werbeplan.findMany({ where: { workspaceId }, include: { contentItem: { select: { title: true } }, kampagne: { select: { titel: true } } }, orderBy: { createdAt: "desc" } })
+      : leer<never>(),
+    frei.newsletter ? prisma.newsletterSeite.findMany({ where: { workspaceId }, include: { kampagne: { select: { titel: true } } }, orderBy: { createdAt: "desc" } }) : leer<never>(),
+    !frei.newsletter ? leer<never>() : prisma.newsletterKontakt.findMany({
       where: { workspaceId },
       select: { id: true, email: true, status: true, themen: true, consentAt: true, confirmedAt: true, unsubscribedAt: true, istDemo: true, seiteId: true },
       orderBy: { createdAt: "desc" },
       take: 200,
     }),
-    prisma.newsletterAusgabe.findMany({ where: { workspaceId }, include: { kampagne: { select: { titel: true } } }, orderBy: { createdAt: "desc" } }),
+    frei.newsletter ? prisma.newsletterAusgabe.findMany({ where: { workspaceId }, include: { kampagne: { select: { titel: true } } }, orderBy: { createdAt: "desc" } }) : leer<never>(),
     kampagnenBelege(workspaceId),
     seitenZahlen(workspaceId),
     seitenOrigin(),
+    prisma.sellerProfile.findUnique({ where: { workspaceId } }),
   ]);
+  const anbieterFehlt = sellerProfileMissing(anbieterProfil);
   const auswertungen = await Promise.all(tests.map(async (t) => ({ testId: t.id, ergebnis: (await variantenAuswertung(workspaceId, t.id)).ergebnis })));
   const modus = versandModus();
 
@@ -85,6 +95,9 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
     newsletterModus: modus,
     newsletterSeiten: seiten.length,
     plattformStatistikAngebunden: false,
+    kooperationenOhneKennzeichnung: kooperationen.filter((k) => kennzeichnungWarnung(k)).length,
+    newsletterAktiv: frei.newsletter,
+    werbungAktiv: frei.werbung,
   });
   const hatDemo =
     kampagnen.some((k) => k.istDemo) || tests.some((t) => t.istDemo) || kooperationen.some((k) => k.istDemo) || werbeplaene.some((w) => w.istDemo) || seiten.some((s) => s.istDemo);
@@ -96,7 +109,9 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
         <div>
           <h1 className="text-xl font-semibold text-foreground">Reichweitenaufbau</h1>
           <p className="mt-1 max-w-3xl text-sm text-muted">
-            Inhalte vorbereiten, Varianten vergleichen, Kooperationen organisieren, Werbung kontrolliert planen und Interessenten per Newsletter halten.
+            Inhalte vorbereiten, Varianten vergleichen und Kooperationen organisieren
+            {frei.werbung && ", Werbung kontrolliert planen"}
+            {frei.newsletter && " und Interessenten per Newsletter halten"}.
             Kampagnen, Links und Messdaten kommen aus{" "}
             <Link href="/weiterempfehlungen" className="underline">
               Weiterempfehlungen
@@ -111,8 +126,17 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
           <strong>Demo-Daten aktiv:</strong> Einträge mit DEMO-Kennzeichen sind erfunden. Nichts davon wurde veröffentlicht, versendet oder bezahlt.
         </div>
       )}
+      {anbieterFehlt.length > 0 && (
+        <div className="rounded-lg border border-warning/50 bg-warning/10 px-4 py-3 text-xs text-warning" data-testid="anbieter-hinweis">
+          <strong>Öffentliche Empfehlungsseiten noch gesperrt:</strong> Es fehlen Pflichtangaben für Impressum und Datenschutz ({anbieterFehlt.join(", ")}).{" "}
+          <Link href="/sales" className="underline">
+            Jetzt unter „Verkaufen“ hinterlegen
+          </Link>
+          . Demo-Seiten sind davon ausgenommen.
+        </div>
+      )}
       <nav className="-mx-1 flex gap-1 overflow-x-auto pb-1" aria-label="Bereiche">
-        {TABS.map((t) => (
+        {tabs.map((t) => (
           <Link
             key={t.key}
             href={`/reichweitenaufbau?tab=${t.key}`}
@@ -130,7 +154,7 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
           belege={belege}
           stufen={stufen}
           schritte={schritte}
-          anbindungen={{ newsletterModus: modus, emailEingerichtet: isEmailConfigured() }}
+          anbindungen={{ newsletterModus: modus, emailEingerichtet: isEmailConfigured(), newsletterAktiv: frei.newsletter, werbungAktiv: frei.werbung }}
           kooperationen={kooperationen.length}
           tests={tests.length}
         />
@@ -140,10 +164,10 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
         <VariantenTab tests={plain(tests)} auswertungen={auswertungen} kampagnen={plain(kampagnen)} inhalte={plain(alleInhalte)} darfBearbeiten={rechte.bearbeiten} origin={origin} />
       )}
       {tab === "kooperationen" && <KooperationenTab kooperationen={plain(kooperationen)} kampagnen={plain(kampagnen)} darfBearbeiten={rechte.bearbeiten} origin={origin} />}
-      {tab === "werbung" && (
+      {frei.werbung && tab === "werbung" && (
         <WerbungTab plaene={plain(werbeplaene)} kampagnen={plain(kampagnen)} inhalte={plain(alleInhalte)} vorschlaege={bewerbungsVorschlaege(belege)} rechte={rechte} />
       )}
-      {tab === "newsletter" && (
+      {frei.newsletter && tab === "newsletter" && (
         <NewsletterTab
           seiten={plain(seiten)}
           kontakte={plain(kontakte)}

@@ -263,7 +263,7 @@ export function WeiterempfehlungenBoard(props: {
         </div>
         <ul className="mt-3 list-disc space-y-0.5 pl-4 text-[11px] text-muted">
           <li>Plattformzahlen (Impressionen, Reichweite, Videoaufrufe, Shares) werden derzeit nur als DEMO oder manuell übertragen angezeigt.</li>
-          <li>Newsletter: über eine Anmeldeseite im Bereich „Reichweitenaufbau“ je Kampagne messbar (bestätigte Anmeldungen). Website-Besuche: nur „Klicks zur Zielseite“ über den Empfehlungslink.</li>
+          <li>Newsletter: nur wenn der Newsletter-Baustein freigeschaltet ist – dann über eine Anmeldeseite im „Reichweitenaufbau“ je Kampagne messbar (bestätigte Anmeldungen). Website-Besuche: nur „Klicks zur Zielseite“ über den Empfehlungslink.</li>
           <li>Keine Einwilligungsverwaltung vorhanden – deshalb keine Cookies und keine Besucherkennung; gezählt wird nur ohne Personenbezug.</li>
           <li>Zähl-Ereignisse werden nach {props.aufbewahrungTage} Tagen automatisch gelöscht. Anfragen landen unter „Kundenanfragen“ (Kanal „empfehlung“).</li>
         </ul>

@@ -27,6 +27,23 @@ export const KOOP_STATUS = {
   ABGESAGT: "Abgesagt",
 } as const;
 
+/** Kennzeichnung gemeinsamer Beiträge (§ 5a Abs. 4 UWG, § 22 MStV, § 6 DDG). */
+export const KOOP_KENNZEICHNUNG = {
+  OFFEN: "Noch nicht geklärt",
+  WERBUNG: "Als „Werbung“ kennzeichnen",
+  ANZEIGE: "Als „Anzeige“ kennzeichnen",
+  KEINE_GEGENLEISTUNG: "Keine Gegenleistung – keine Kennzeichnung nötig",
+} as const;
+
+export const KENNZEICHNUNG_HINWEIS =
+  "Gibt es eine Gegenleistung (Geld, Produkte, Rabatte, gegenseitige Werbung), muss der Beitrag gut sichtbar als „Werbung“ oder „Anzeige“ gekennzeichnet sein (§ 5a Abs. 4 UWG, § 22 MStV). Bitte vor der Veröffentlichung klären und die Kennzeichnungsfunktion der Plattform nutzen.";
+
+/** Warnung für die Übersicht, solange die Kennzeichnung bei vereinbarten oder umgesetzten Kooperationen offen ist. */
+export function kennzeichnungWarnung(k: { status: string; kennzeichnung: string }): string | null {
+  if (k.kennzeichnung !== "OFFEN") return null;
+  return ["VEREINBART", "UMGESETZT", "ABGESCHLOSSEN"].includes(k.status) ? "Werbekennzeichnung noch nicht geklärt." : null;
+}
+
 export const PASSUNG = { HOCH: "hoch", MITTEL: "mittel", NIEDRIG: "niedrig", UNKLAR: "unklar" } as const;
 
 /**
@@ -60,6 +77,7 @@ export function anfrageEntwurf(input: {
     `ich bin ${absender.trim() || "[Ihr Name / Unternehmen]"}. ${passungNotiz.trim() ? `Ich melde mich, weil ${passungNotiz.trim()}` : "[Warum gerade diese Person/Organisation – konkret und ehrlich]"}`,
     "",
     `Meine Idee: ${format.toLowerCase()} – ${idee.trim() || "[kurze Beschreibung]"}.`,
+    "Falls es dabei eine Gegenleistung gibt, kennzeichnen wir den Beitrag beide offen als Werbung bzw. Anzeige.",
     `${du.hast} Interesse an einem kurzen Austausch dazu? Ich richte mich gern nach ${sie ? "Ihrem" : "deinem"} Zeitplan.`,
     "",
     "Viele Grüße",

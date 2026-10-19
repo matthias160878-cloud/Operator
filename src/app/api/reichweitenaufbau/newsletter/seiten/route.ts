@@ -7,6 +7,7 @@ import { protokoll } from "@/lib/reichweite/service";
 import { kuerzen } from "@/lib/reichweite/texte";
 import { themenBereinigen } from "@/lib/reichweitenaufbau/newsletterKunden";
 import { neuerSeitenCode } from "@/lib/reichweitenaufbau/service";
+import { nurWenn, newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 const schema = z.object({
   titel: z.string().min(1).max(160),
@@ -38,4 +39,4 @@ async function handlePOST(request: Request) {
   return NextResponse.json({ seite });
 }
 
-export const POST = route(handlePOST);
+export const POST = nurWenn(newsletterFreigeschaltet, route(handlePOST));

@@ -477,7 +477,7 @@ test("Empfehlung: Vorschläge versprechen keine Viralität", () => {
 });
 
 // ── Reichweitenaufbau ───────────────────────────────────────────────────────
-import { erzeugeVorschlaege, pruefeBriefing, versprechenImText, type Briefing } from "@/lib/reichweitenaufbau/ideen";
+import { erzeugeVorschlaege, hwgRisiko, pruefeBriefing, versprechenImText, type Briefing } from "@/lib/reichweitenaufbau/ideen";
 import { vergleiche, zWert, type VarianteEingabe } from "@/lib/reichweitenaufbau/varianten";
 import { exportCsv, laufzeitTage, planHinweise, pruefeFreigabe, bewerbungsVorschlaege, PLATTFORM_VORAUSSETZUNGEN } from "@/lib/reichweitenaufbau/werbung";
 import { freigabeHash } from "@/lib/reichweitenaufbau/werbungHash";
@@ -509,6 +509,21 @@ test("Reichweitenaufbau: Ideen – sechs Vorlagen, Vorher-nachher nur mit Grundl
   assert.equal(mit.find((x) => x.art === "VORHER_NACHHER")!.gesperrt, null);
   const warn = erzeugeVorschlaege({ ...BRIEF, ergebnis: "garantiert viral werden" });
   assert.ok(warn[0].hinweise.some((h) => h.includes("Erfolgsversprechen")));
+});
+
+test("Reichweitenaufbau: Ideen – HWG-Sperre für Vorher-nachher bei Schönheitseingriffen", () => {
+  assert.equal(hwgRisiko(BRIEF), null);
+  assert.equal(hwgRisiko({ ...BRIEF, zielgruppe: "Frauen, die über eine Brustvergrößerung nachdenken" }), "EINGRIFF");
+  assert.equal(hwgRisiko({ ...BRIEF, problem: "Faltenbehandlung mit Hyaluron" }), "EINGRIFF");
+  assert.equal(hwgRisiko({ ...BRIEF, zielgruppe: "Patienten einer Zahnarztpraxis" }), "HEILBEREICH");
+  assert.equal(hwgRisiko({ ...BRIEF, problem: "Bubble-Tea-Bar" }), null, "kein Treffer in fremden Wörtern");
+  const op = erzeugeVorschlaege({ ...BRIEF, zielgruppe: "Interessierte an Schönheits-OPs", grundlageVorherNachher: "eigene Patientenfotos mit Einverständnis" });
+  const vn = op.find((x) => x.art === "VORHER_NACHHER")!;
+  assert.match(vn.gesperrt ?? "", /§ 11 Abs\. 1 S\. 3 Nr\. 1 HWG/, "auch mit Grundlage gesperrt");
+  assert.ok(vn.hinweise.some((h) => h.includes("HWG")));
+  assert.ok(op.filter((x) => x.art !== "VORHER_NACHHER").every((x) => x.hinweise.some((h) => h.includes("Heilmittelwerbegesetz"))));
+  const zahn = erzeugeVorschlaege({ ...BRIEF, zielgruppe: "Zahnarztpraxis", grundlageVorherNachher: "Fall 03/2026 mit Einverständnis" });
+  assert.equal(zahn.find((x) => x.art === "VORHER_NACHHER")!.gesperrt, null, "Heilbereich: Hinweis, keine Sperre");
 });
 
 function variante(id: string, plattform: string, aufrufe: number | null, klicks: number | null, extra: VarianteEingabe["werte"] = {}): VarianteEingabe {
@@ -627,4 +642,34 @@ test("Empfehlung: Newsletter in der Auswertung nur mit Anmeldeseite, nur bestät
   assert.equal(mit.newsletter.wert, 1);
   assert.equal(mit.newsletter.status, "GEMESSEN");
   assert.equal(mit.enthaeltDemo, true);
+});
+
+test("Reichweitenaufbau: Freischaltung – Newsletter und Werbung standardmäßig aus, Kennzeichnung offen gemeldet", async () => {
+  const { newsletterFreigeschaltet, werbungFreigeschaltet, nurWenn } = await import("@/lib/reichweitenaufbau/freischaltung");
+  const { kennzeichnungWarnung, anfrageEntwurf } = await import("@/lib/reichweitenaufbau/kooperation");
+  const vorher = { nl: process.env.REICHWEITE_NEWSLETTER, wb: process.env.REICHWEITE_WERBUNG };
+  delete process.env.REICHWEITE_NEWSLETTER;
+  delete process.env.REICHWEITE_WERBUNG;
+  try {
+    assert.equal(newsletterFreigeschaltet(), false);
+    assert.equal(werbungFreigeschaltet(), false);
+    const h = nurWenn(newsletterFreigeschaltet, async () => new Response("ok"));
+    assert.equal((await h()).status, 404);
+    process.env.REICHWEITE_NEWSLETTER = "1";
+    assert.equal((await h()).status, 200);
+  } finally {
+    if (vorher.nl === undefined) delete process.env.REICHWEITE_NEWSLETTER; else process.env.REICHWEITE_NEWSLETTER = vorher.nl;
+    if (vorher.wb === undefined) delete process.env.REICHWEITE_WERBUNG; else process.env.REICHWEITE_WERBUNG = vorher.wb;
+  }
+  const lage = {
+    inhalteInPruefung: 0, inhalteFreigegebenOhneVeroeffentlichung: 0, variantenOhneAussage: 0, kooperationenOhneNaechstenSchritt: 0, kooperationenTerminBald: 0,
+    werbeplaeneFreigegeben: 1, werbeplaeneInPruefung: 1, ausgabenGeplant: 1, ausgabenInPruefung: 1, newsletterModus: "DEMO" as const, newsletterSeiten: 0, plattformStatistikAngebunden: false,
+  };
+  const aus = naechsteSchritte({ ...lage, newsletterAktiv: false, werbungAktiv: false, kooperationenOhneKennzeichnung: 2 });
+  assert.ok(aus.every((x) => x.tab !== "newsletter" && x.tab !== "werbung"), "abgeschaltete Bereiche ohne Hinweise");
+  assert.ok(aus.some((x) => x.text.includes("Werbekennzeichnung")));
+  assert.equal(kennzeichnungWarnung({ status: "VEREINBART", kennzeichnung: "OFFEN" }), "Werbekennzeichnung noch nicht geklärt.");
+  assert.equal(kennzeichnungWarnung({ status: "IDEE", kennzeichnung: "OFFEN" }), null);
+  assert.equal(kennzeichnungWarnung({ status: "UMGESETZT", kennzeichnung: "WERBUNG" }), null);
+  assert.match(anfrageEntwurf({ name: "X", format: "AKTION", idee: "", passungNotiz: "", absender: "Y", sie: true }), /Werbung bzw\. Anzeige/);
 });

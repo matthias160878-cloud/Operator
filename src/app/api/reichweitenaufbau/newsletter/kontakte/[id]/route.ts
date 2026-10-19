@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { NotFoundError, route } from "@/lib/api";
 import { freigeberOderAntwort } from "@/lib/reichweite/zugriff";
 import { protokoll } from "@/lib/reichweite/service";
+import { nurWenn, newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 /** Löschen eines Kontakts (z. B. auf Wunsch der Person). */
 async function handleDELETE(_r: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -15,4 +16,4 @@ async function handleDELETE(_r: Request, { params }: { params: Promise<{ id: str
   return NextResponse.json({ ok: true });
 }
 
-export const DELETE = route(handleDELETE);
+export const DELETE = nurWenn(newsletterFreigeschaltet, route(handleDELETE));

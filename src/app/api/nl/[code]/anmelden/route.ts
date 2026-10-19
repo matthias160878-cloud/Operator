@@ -8,6 +8,7 @@ import { istGueltigerCode } from "@/lib/reichweite/codes";
 import { ipSchluessel } from "@/lib/reichweite/service";
 import { themenBereinigen, themenLesen } from "@/lib/reichweitenaufbau/newsletterKunden";
 import { newsletterAnmelden } from "@/lib/reichweitenaufbau/service";
+import { newsletterFreigeschaltet, nurWenn } from "@/lib/reichweitenaufbau/freischaltung";
 
 const schema = z.object({
   email: z.string().trim().toLowerCase().max(320).email(),
@@ -20,7 +21,7 @@ const schema = z.object({
 const ANTWORT = "Fast geschafft: Bitte bestätigen Sie die Anmeldung über den Link in der E-Mail.";
 
 /** Öffentlich: freiwillige Newsletter-Anmeldung (Double-Opt-in). Gleiche Antwort für jede Adresse. */
-export async function POST(request: Request, { params }: { params: Promise<{ code: string }> }) {
+async function handlePOST(request: Request, { params }: { params: Promise<{ code: string }> }) {
   const { code } = await params;
   if (!istGueltigerCode(code)) return NextResponse.json({ error: "Seite nicht gefunden." }, { status: 404 });
   const parsed = schema.safeParse(await request.json().catch(() => null));
@@ -56,3 +57,5 @@ export async function POST(request: Request, { params }: { params: Promise<{ cod
     return NextResponse.json({ error: "Die Bestätigungs-E-Mail konnte nicht versendet werden. Bitte später erneut versuchen." }, { status: 502 });
   }
 }
+
+export const POST = nurWenn(newsletterFreigeschaltet, handlePOST);

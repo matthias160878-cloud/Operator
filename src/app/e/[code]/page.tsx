@@ -9,6 +9,8 @@ import { begleittexte } from "@/lib/reichweite/vorschlaege";
 import { seitenOrigin } from "@/lib/reichweite/origin";
 import { TeilenBereich } from "@/components/reichweite/TeilenBereich";
 import { AnfrageFormular, EigenerLink } from "@/components/reichweite/EmpfehlungAktionen";
+import { AnbieterFuss, NichtFreigeschaltet } from "@/components/reichweite/AnbieterFuss";
+import { newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Empfehlung", robots: { index: false, follow: false }, referrer: "no-referrer" };
@@ -35,10 +37,12 @@ export default async function EmpfehlungSeite({ params }: { params: Promise<{ co
     );
   }
 
+  if (!link.freigeschaltet) return <NichtFreigeschaltet />;
+
   if (istZaehlbarerAufruf(await headers())) await ereignisSpeichern(link, "AUFRUF");
   const url = empfehlungsUrl(await seitenOrigin(), link.code);
   const texte = begleittexte(link.kampagne.titel);
-  const newsletter = await prisma.newsletterSeite.findFirst({ where: { kampagneId: link.kampagneId, aktiv: true }, select: { code: true, titel: true } });
+  const newsletter = newsletterFreigeschaltet() && await prisma.newsletterSeite.findFirst({ where: { kampagneId: link.kampagneId, aktiv: true }, select: { code: true, titel: true } });
 
   return (
     <div className="min-h-screen bg-grid px-4 py-8">
@@ -81,13 +85,12 @@ export default async function EmpfehlungSeite({ params }: { params: Promise<{ co
 
         <div className="card space-y-3 p-5">
           <h2 className="text-sm font-semibold text-foreground">Frage stellen</h2>
-          <AnfrageFormular code={link.code} />
+          <AnfrageFormular code={link.code} anbieter={link.profil ? link.profil.firma || link.profil.anbieter : null} datenschutzUrl={link.profil?.datenschutzUrl ?? null} />
         </div>
 
-        <p className="px-1 text-[11px] text-muted">
+        <AnbieterFuss profil={link.profil} impressumHref={`/e/${link.code}/impressum`}>
           Diese Seite setzt keine Cookies und speichert keine Angaben zu dir. Gezählt wird nur, dass der Link geöffnet wurde – ohne Personenbezug.
-          {" "}<a href="/impressum" className="underline">Impressum</a>
-        </p>
+        </AnbieterFuss>
       </div>
     </div>
   );

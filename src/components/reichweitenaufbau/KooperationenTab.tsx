@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { KOOP_ARTEN, KOOP_FORMATE, KOOP_STATUS, PASSUNG, gemeinsamerBeitragDirekt } from "@/lib/reichweitenaufbau/kooperation";
+import { KENNZEICHNUNG_HINWEIS, KOOP_ARTEN, KOOP_FORMATE, KOOP_KENNZEICHNUNG, KOOP_STATUS, PASSUNG, gemeinsamerBeitragDirekt, kennzeichnungWarnung } from "@/lib/reichweitenaufbau/kooperation";
 import { empfehlungsUrl } from "@/lib/reichweite/teilen";
 import { Chip, DemoMarke, datumZeit, useAktion } from "@/components/reichweitenaufbau/gemeinsam";
 import { feld, karte, knopf, knopfPrimaer } from "@/components/reichweitenaufbau/stil";
@@ -22,6 +22,7 @@ interface Koop {
   kampagne: { titel: string } | null;
   link: { code: string } | null;
   anfrageEntwurf: string;
+  kennzeichnung: string;
   istDemo: boolean;
 }
 
@@ -54,6 +55,7 @@ export function KooperationenTab(props: { kooperationen: Koop[]; kampagnen: { id
       passungNotiz: f.get("passungNotiz"),
       idee: f.get("idee"),
       format: f.get("format"),
+      kennzeichnung: f.get("kennzeichnung"),
       kampagneId: String(f.get("kampagneId") ?? "") || null,
     });
     if (ok) form.reset();
@@ -92,8 +94,16 @@ export function KooperationenTab(props: { kooperationen: Koop[]; kampagnen: { id
                 </option>
               ))}
             </select>
+            <select name="kennzeichnung" className={`${feld} sm:col-span-2`} aria-label="Werbekennzeichnung" defaultValue="OFFEN">
+              {Object.entries(KOOP_KENNZEICHNUNG).map(([k, v]) => (
+                <option key={k} value={k}>
+                  Kennzeichnung: {v}
+                </option>
+              ))}
+            </select>
             <input name="passungNotiz" maxLength={500} placeholder="Warum passt die Zielgruppe? (konkret)" className={`${feld} sm:col-span-2`} />
             <textarea name="idee" maxLength={1000} rows={2} placeholder="Kooperationsidee" className={`${feld} sm:col-span-2`} />
+            <p className="text-[11px] text-muted sm:col-span-2">{KENNZEICHNUNG_HINWEIS}</p>
             <button type="submit" className={knopfPrimaer} disabled={laedt}>
               Hinzufügen
             </button>
@@ -130,6 +140,7 @@ function KoopKarte({
   const [entwurf, setEntwurf] = useState(k.anfrageEntwurf);
   const [kopiert, setKopiert] = useState(false);
   const direkt = gemeinsamerBeitragDirekt("Instagram/TikTok");
+  const warnung = kennzeichnungWarnung(k);
 
   async function speichern(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -137,6 +148,7 @@ function KoopKarte({
     const termin = String(f.get("termin") ?? "");
     await aufruf(`/api/reichweitenaufbau/kooperationen/${k.id}`, "PATCH", {
       status: f.get("status"),
+      kennzeichnung: f.get("kennzeichnung"),
       naechsterSchritt: f.get("naechsterSchritt"),
       termin: termin ? new Date(termin).toISOString() : null,
       kampagneId: String(f.get("kampagneId") ?? "") || null,
@@ -169,6 +181,10 @@ function KoopKarte({
         </a>
       )}
       {k.idee && <p className="text-xs text-foreground">Idee: {k.idee}</p>}
+      <p className="text-xs text-muted" data-testid="kennzeichnung">
+        Werbekennzeichnung: <span className="text-foreground">{KOOP_KENNZEICHNUNG[k.kennzeichnung as keyof typeof KOOP_KENNZEICHNUNG] ?? k.kennzeichnung}</span>
+        {warnung && <span className="ml-1 text-warning">– {warnung}</span>}
+      </p>
       <p className="text-xs text-muted">
         Nächster Schritt: <span className="text-foreground">{k.naechsterSchritt || "—"}</span> · Termin: <span className="text-foreground">{datumZeit(k.termin)}</span> · Kampagne:{" "}
         <span className="text-foreground">{k.kampagne?.titel ?? "—"}</span>
@@ -189,12 +205,15 @@ function KoopKarte({
 
       {darfBearbeiten && (
         <details className="rounded-lg border border-border p-2">
-          <summary className="cursor-pointer text-xs text-foreground">Status, nächster Schritt, Termin</summary>
+          <summary className="cursor-pointer text-xs text-foreground">Status, Kennzeichnung, nächster Schritt, Termin</summary>
           <form onSubmit={speichern} className="mt-2 grid gap-2 sm:grid-cols-2">
             <select name="status" className={feld} defaultValue={k.status} aria-label="Status">
               {optionen(KOOP_STATUS)}
             </select>
             <input name="termin" type="datetime-local" defaultValue={lokal(k.termin)} suppressHydrationWarning className={feld} aria-label="Vereinbarter Termin" />
+            <select name="kennzeichnung" className={feld} defaultValue={k.kennzeichnung} aria-label="Werbekennzeichnung">
+              {optionen(KOOP_KENNZEICHNUNG)}
+            </select>
             <input name="naechsterSchritt" defaultValue={k.naechsterSchritt} maxLength={300} placeholder="Nächster Schritt" className={feld} />
             <select name="kampagneId" className={feld} defaultValue={k.kampagneId ?? ""} aria-label="Kampagne">
               <option value="">Keine Kampagne</option>

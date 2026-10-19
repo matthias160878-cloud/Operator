@@ -105,6 +105,26 @@ function sauber(s: string, fallback: string) {
   return t || fallback;
 }
 
+/** Begriffe für operative plastisch-chirurgische bzw. ästhetische Eingriffe (§ 11 Abs. 1 S. 3 Nr. 1 HWG). */
+const SCHOENHEITS_EINGRIFFE = [
+  "schönheits-op", "schönheitsop", "schönheitsoperation", "schoenheitsoperation", "schönheitschirurg", "plastische chirurg", "ästhetische chirurg",
+  "brustvergrößerung", "brustvergroesserung", "brustverkleinerung", "fettabsaugung", "liposuktion", "nasenkorrektur", "nasen-op",
+  "facelift", "lidstraffung", "lidkorrektur", "bauchdeckenstraffung", "bbl", "hyaluron", "unterspritz", "botox",
+];
+/** Hinweise auf Heilberufe oder Behandlungen — dort gelten weitere Grenzen des HWG. */
+const HEIL_BEGRIFFE = ["arzt", "ärzt", "praxis", "klinik", "heilpraktik", "therapie", "therapeut", "behandlung", "zahn", "kosmetik", "dermatolog"];
+
+export const HWG_HINWEIS =
+  "Gesundheit, Schönheit, Behandlungen: Vorher-nachher-Darstellungen für operative plastisch-chirurgische Eingriffe sind gegenüber Laien verboten (§ 11 Abs. 1 S. 3 Nr. 1 HWG). Für andere Behandlungen setzt das Heilmittelwerbegesetz weitere Grenzen – im Zweifel vor der Veröffentlichung rechtlich prüfen lassen.";
+
+/** Prüft das Briefing auf Hinweise zu Gesundheits- bzw. Schönheitseingriffen. */
+export function hwgRisiko(b: Pick<Briefing, "zielgruppe" | "problem" | "ergebnis" | "material" | "grundlageVorherNachher">): "EINGRIFF" | "HEILBEREICH" | null {
+  const t = [b.zielgruppe, b.problem, b.ergebnis, b.material, b.grundlageVorherNachher].join(" ").toLowerCase();
+  if (SCHOENHEITS_EINGRIFFE.some((w) => (w === "bbl" ? /\bbbl\b/.test(t) : t.includes(w)))) return "EINGRIFF";
+  if (HEIL_BEGRIFFE.some((w) => t.includes(w))) return "HEILBEREICH";
+  return null;
+}
+
 export function pruefeBriefing(b: Partial<Briefing>): string | null {
   if (!b.zielgruppe?.trim()) return "Bitte die Zielgruppe angeben.";
   if (!b.problem?.trim()) return "Bitte das Thema oder konkrete Problem angeben.";
@@ -124,6 +144,7 @@ export function erzeugeVorschlaege(b: Briefing): Vorschlag[] {
   const mat = b.material.trim();
   const cta = aufforderungText(b.aufforderung, b.tonalitaet);
   const materialHinweis = mat ? `Vorhandenes Material nutzen: ${mat}.` : "Kein Material angegeben – eigene Aufnahmen oder Bilder einplanen.";
+  const hwg = hwgRisiko(b);
   const grund = [`Vorlage für ${b.plattform}, Format ${fmt}. Platzhalter in [ ] durch eigene, überprüfbare Angaben ersetzen.`];
 
   const vorschlaege: Vorschlag[] = [
@@ -157,8 +178,10 @@ export function erzeugeVorschlaege(b: Briefing): Vorschlag[] {
       bildVideoIdee: `Echte Vorher- und Nachher-Aufnahmen aus derselben Perspektive, ohne Filter oder Montage.`,
       beschreibung: `Nachvollziehbares Beispiel aus einem echten Fall.`,
       aufforderung: cta,
-      hinweise: [...grund, "Nur mit echten Aufnahmen und Einverständnis der gezeigten Personen bzw. Kunden.", "Kein Versprechen, dass jeder dasselbe Ergebnis erzielt."],
-      gesperrt: b.grundlageVorherNachher.trim()
+      hinweise: [...grund, "Nur mit echten Aufnahmen und Einverständnis der gezeigten Personen bzw. Kunden.", "Kein Versprechen, dass jeder dasselbe Ergebnis erzielt.", HWG_HINWEIS],
+      gesperrt: hwg === "EINGRIFF"
+        ? "Gesperrt: Das Briefing deutet auf einen Schönheits- bzw. plastisch-chirurgischen Eingriff hin. Vorher-nachher-Werbung dafür ist gegenüber Laien verboten (§ 11 Abs. 1 S. 3 Nr. 1 HWG)."
+        : b.grundlageVorherNachher.trim()
         ? null
         : "Vorher-nachher braucht eine echte Grundlage (eigener Fall mit Aufnahmen oder dokumentiertes Kundenprojekt mit Einverständnis). Bitte im Briefing angeben.",
     },
@@ -199,6 +222,11 @@ export function erzeugeVorschlaege(b: Briefing): Vorschlag[] {
   const warnung = versprechenImText(`${b.problem} ${b.ergebnis} ${b.material}`);
   if (warnung.length) {
     for (const v of vorschlaege) v.hinweise.push(`Achtung: Das Briefing enthält Erfolgsversprechen (${warnung.join(", ")}). Bitte vor der Freigabe entfernen oder belegen.`);
+  }
+  if (hwg) {
+    for (const v of vorschlaege) {
+      if (v.art !== "VORHER_NACHHER") v.hinweise.push("Gesundheit/Behandlungen: Werbung unterliegt dem Heilmittelwerbegesetz (keine Heilversprechen, keine Angstwerbung). Vor der Veröffentlichung prüfen.");
+    }
   }
   return vorschlaege;
 }

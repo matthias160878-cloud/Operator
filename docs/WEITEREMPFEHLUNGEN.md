@@ -30,7 +30,8 @@ Reichweite, die über Plattformen summiert wird, ergibt keine Zahl eindeutiger P
 - Es gibt keinen Adressbuchzugriff, keine automatischen Nachrichten und keine Massen-DMs.
 - Mandantentrennung: Alle Abfragen laufen über `workspaceId` aus der Sitzung, fremde IDs ergeben 404. Rollen: `VIEWER` darf nur lesen, alle anderen Rollen dürfen auch bearbeiten. Änderungen stehen im Audit-Log.
 - Aufbewahrung: Ereignisse werden nach `EMPFEHLUNG_AUFBEWAHRUNG_TAGE` Tagen gelöscht (Standard 180), jeweils beim Öffnen einer Auswertung. Wird eine Kampagne gelöscht, werden ihre Links, Ereignisse und Kennzahlen mitgelöscht. Anfragen verwaltet der Bereich „Kundenanfragen“.
-- Die Anfrage-Formulare verlangen eine Einwilligungs-Checkbox. Sie haben ein Honigtopf-Feld und ein Limit von 5 Anfragen pro Stunde je IP-Hash und von 30 pro Stunde je Link.
+- Öffentliche Empfehlungsseiten sind nur mit vollständigem Verkäuferprofil des Kunden erreichbar (Name, Anschrift, E-Mail, Datenschutzerklärung); die Fußzeile verlinkt dessen Impressum (`/e/<code>/impressum`) und Datenschutzerklärung. Demo-Links sind ausgenommen und gekennzeichnet.
+- Die Anfrage-Formulare verlangen eine Einwilligungs-Checkbox, die den Kunden als Empfänger nennt und auf seine Datenschutzerklärung verweist. Sie haben ein Honigtopf-Feld und ein Limit von 5 Anfragen pro Stunde je IP-Hash und von 30 pro Stunde je Link.
 
 ## Technik
 - Modelle: `ReichweitenKampagne`, `EmpfehlungsLink`, `EmpfehlungsEreignis`, `ReichweitenKennzahl` (`prisma/schema.prisma`). Das ist eine reine Erweiterung, `db push` ist nicht destruktiv.

@@ -1701,6 +1701,11 @@ test("Dateiaustausch: Kundentrennung, Grenzen, sichere Auslieferung, Freigabe-Li
   };
   const pdf = Buffer.from("%PDF-1.4\n% Testangebot\n");
 
+  // Status für die Hauptseite: immer 200, ohne Sitzung keine Daten
+  const anon = await new Client().json(`${D}/status`);
+  assert.equal(anon.status, 200);
+  assert.deepEqual(anon.data, { angemeldet: false });
+
   // Ohne Anmeldung / fremder Ursprung
   assert.equal((await new Client().req(D)).status, 401);
   assert.equal((await new Client().req("/dateien")).status, 307);
@@ -1730,6 +1735,11 @@ test("Dateiaustausch: Kundentrennung, Grenzen, sichere Auslieferung, Freigabe-Li
   assert.equal(ue.dateien.length, 3);
   assert.ok(ue.ordner.includes("An SECRET 58") && ue.ordner.includes("Von SECRET 58"));
   assert.ok(!JSON.stringify(ue).includes("nur für A"), "Liste ohne Dateiinhalt");
+
+  const stA = (await A.json(`${D}/status`)).data;
+  assert.equal(stA.angemeldet, true);
+  assert.equal(stA.dateien, 3);
+  assert.equal((await B.json(`${D}/status`)).data.dateien, 0, "Status zählt nur eigene Dateien");
 
   // Kundentrennung
   assert.equal((await B.json(D)).data.dateien.length, 0);

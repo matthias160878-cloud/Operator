@@ -1,0 +1,41 @@
+/* ===== VORSCHAU: Bereichswahl, Paketkarten, mobiles Menü ===== */
+.lede{font-size:1.12rem;color:var(--ink-2);max-width:60ch}
+.start-wahl .wahl{text-decoration:none;color:inherit;padding:26px;border-width:2px;gap:12px;min-height:240px}
+.start-wahl .wahl h2{font-size:clamp(1.3rem,2.4vw,1.7rem)}
+.card.wahl:hover,.card.wahl:focus-visible{border-color:var(--blau)}
+.wahl .btn{align-self:flex-start;margin-top:auto}
+.bereich-wechsel{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--line);border-radius:999px;overflow:hidden;width:max-content;max-width:100%;margin:0 0 18px;background:var(--panel)}
+.bereich-wechsel a{padding:9px 16px;font-family:Archivo,sans-serif;font-weight:600;font-size:.86rem;color:var(--ink-2);text-decoration:none}
+.bereich-wechsel a[aria-current="page"]{background:var(--blau);color:#fff}
+@media (max-width:520px){.bereich-wechsel{width:100%;border-radius:var(--r)}.bereich-wechsel a{flex:1 1 100%;text-align:center}}
+.sm-band{border:2px solid var(--blau);background:var(--blau-soft)}
+.sm-band h2{margin-top:6px}
+.sm-liste{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:12px 0 0}
+.sm-liste li{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-family:Archivo,sans-serif;font-size:.82rem;font-weight:600}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.btn.sm-knopf{font-size:1rem;padding:13px 20px}
+.paket-grid{align-items:stretch}
+.card.paket{border-width:2px;border-top:5px solid var(--blau);box-shadow:var(--shadow)}
+.paket .paket-preis{display:flex;flex-direction:column;gap:2px;padding:8px 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.paket-zeit{font-family:Archivo,sans-serif;font-size:.82rem;color:var(--ink-2)}
+.paket-steuer{font-family:Archivo,sans-serif;font-size:.74rem;color:var(--warn)}
+.paket-daten{margin:0;display:grid;gap:6px}
+.paket-daten dt{font-family:Archivo,sans-serif;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.paket-daten dd{margin:2px 0 0;font-size:.9rem;color:var(--ink-2)}
+.paket .btn{align-self:flex-start;margin-top:auto}
+.paket-gruppe{scroll-margin-top:90px}
+.paket-sprung{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.paket-sprung a{font-family:Archivo,sans-serif;font-weight:600;font-size:.84rem;padding:7px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;background:var(--panel)}
+.steuer-hinweis{font-size:.92rem}
+.vorschau-hinweis{margin-top:14px}
+nav.main>a.nav-sm{background:var(--blau);color:#fff}
+nav.main>a.nav-sm:hover,nav.main>a.nav-sm.on{background:var(--blau-2);color:#fff}
+.menu-knopf{display:none;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:var(--r);padding:8px 12px;font-family:Archivo,sans-serif;font-weight:600;font-size:.86rem;cursor:pointer}
+@media (max-width:900px){
+  .menu-knopf{display:inline-flex;margin-left:auto}
+  header.top nav.main{display:none;width:100%;flex-direction:column;align-items:stretch;margin-left:0;padding-bottom:10px}
+  header.top.offen nav.main{display:flex}
+  header.top nav.main .menu{position:static;box-shadow:none;min-width:0}
+  nav.main summary,nav.main>a{white-space:normal}
+}
+nav.main summary:focus-visible,.bereich-wechsel a:focus-visible,.card.wahl:focus-visible{outline:2px solid var(--gold);outline-offset:2px}

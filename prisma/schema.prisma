@@ -160,6 +160,9 @@ model Workspace {
   pilotEvents         PilotEvent[]
   pilotInterviews     PilotInterview[]
   pilotConfig         PilotConfig?
+  kundenDateien       KundenDatei[]
+  kundenLinks         KundenLink[]
+  dateiFreigaben      DateiFreigabe[]
 
   @@map("workspaces")
 }
@@ -843,17 +846,17 @@ model NewsletterSubscriber {
 /// Vom Betreiber erzeugter Promocode: schaltet ein Paket dauerhaft frei (ohne
 /// Stripe). Nur der Hash wird gespeichert; der Klartext erscheint einmal beim Anlegen.
 model PromoCode {
-  id          String   @id @default(cuid())
-  codeHash    String   @unique
+  id          String            @id @default(cuid())
+  codeHash    String            @unique
   /// letzte 4 Zeichen zur Wiedererkennung in der Liste
   hint        String
   plan        String // "PRO" | "MAXI"
-  label       String   @default("")
-  maxUses     Int      @default(1)
-  usedCount   Int      @default(0)
+  label       String            @default("")
+  maxUses     Int               @default(1)
+  usedCount   Int               @default(0)
   expiresAt   DateTime?
   createdById String?
-  createdAt   DateTime @default(now())
+  createdAt   DateTime          @default(now())
   redemptions PromoRedemption[]
 
   @@map("promo_codes")
@@ -870,7 +873,6 @@ model PromoRedemption {
   @@map("promo_redemptions")
 }
 
-
 // ---------------------------------------------------------------------------
 // Pilotstudio (interner Betreiberbereich /operator/pilotstudio).
 // Alle Datensätze hängen an einem Arbeitsbereich (heute: der des Betreibers;
@@ -878,52 +880,52 @@ model PromoRedemption {
 // isDemo getrennt. Nachfrage-Gespräche (PilotInterview) und Budgetangaben
 // sind ausschließlich über /api/operator erreichbar.
 model PilotInquiry {
-  id               String    @id @default(cuid())
-  workspaceId      String
-  workspace        Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  isDemo           Boolean   @default(false)
-  demoCaseNo       Int?
+  id                String    @id @default(cuid())
+  workspaceId       String
+  workspace         Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  isDemo            Boolean   @default(false)
+  demoCaseNo        Int?
   /// Herkunft bei übernommenen Anfragen (z. B. website:<conversationId>), verhindert Doppelübernahme
-  sourceRef        String?
-  channel          String    @default("manuell")
-  receivedAt       DateTime  @default(now())
-  subject          String
-  body             String
-  senderName       String    @default("")
-  senderContact    String    @default("")
-  category         String    @default("unklar")
-  assignee         String    @default("")
+  sourceRef         String?
+  channel           String    @default("manuell")
+  receivedAt        DateTime  @default(now())
+  subject           String
+  body              String
+  senderName        String    @default("")
+  senderContact     String    @default("")
+  category          String    @default("unklar")
+  assignee          String    @default("")
   /// NEU, ENTWURF, PRUEFUNG, FREIGEGEBEN, UEBERGEBEN, VERSAND_AUSSTEHEND, VERSENDET, VERSAND_FEHLGESCHLAGEN, ABGESCHLOSSEN
-  status           String    @default("NEU")
-  needsHuman       Boolean   @default(false)
-  riskNote         String    @default("")
-  draftText        String    @default("")
-  draftVersion     Int       @default(0)
+  status            String    @default("NEU")
+  needsHuman        Boolean   @default(false)
+  riskNote          String    @default("")
+  draftText         String    @default("")
+  draftVersion      Int       @default(0)
   /// DEMO (Musterantwort), KI, MANUELL
-  draftSource      String    @default("")
-  approvedVersion  Int?
-  approvedTextHash String?
-  approvedById     String?
-  approvedAt       DateTime?
-  sendAttempts     Int       @default(0)
-  sendKey          String?   @unique
-  sentAt           DateTime?
+  draftSource       String    @default("")
+  approvedVersion   Int?
+  approvedTextHash  String?
+  approvedById      String?
+  approvedAt        DateTime?
+  sendAttempts      Int       @default(0)
+  sendKey           String?   @unique
+  sentAt            DateTime?
   providerMessageId String?
-  deliveredAt      DateTime?
-  lastError        String    @default("")
+  deliveredAt       DateTime?
+  lastError         String    @default("")
   /// Testart: DEMO, KI, KANAL
-  testMode         String    @default("DEMO")
-  expected         String    @default("")
-  autoCheck        String    @default("")
-  manualMinutes    Float?
-  pilotMinutes     Float?
-  corrections      Int       @default(0)
-  correctionKinds  String    @default("")
+  testMode          String    @default("DEMO")
+  expected          String    @default("")
+  autoCheck         String    @default("")
+  manualMinutes     Float?
+  pilotMinutes      Float?
+  corrections       Int       @default(0)
+  correctionKinds   String    @default("")
   /// OFFEN, BESTANDEN, NICHT_BESTANDEN
-  testResult       String    @default("OFFEN")
-  testReason       String    @default("")
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  testResult        String    @default("OFFEN")
+  testReason        String    @default("")
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 
   events PilotEvent[]
 
@@ -933,16 +935,16 @@ model PilotInquiry {
 }
 
 model PilotEvent {
-  id          String       @id @default(cuid())
+  id          String        @id @default(cuid())
   workspaceId String
-  workspace   Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspace   Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   inquiryId   String?
   inquiry     PilotInquiry? @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
   userId      String?
-  actor       String       @default("")
+  actor       String        @default("")
   action      String
-  detail      String       @default("")
-  createdAt   DateTime     @default(now())
+  detail      String        @default("")
+  createdAt   DateTime      @default(now())
 
   @@index([workspaceId, inquiryId])
   @@map("pilot_events")
@@ -985,4 +987,69 @@ model PilotConfig {
   updatedAt        DateTime  @updatedAt
 
   @@map("pilot_configs")
+}
+
+/// Dateiaustausch: Dateien eines Kundenkontos (Inhalt getrennt in KundenDateiInhalt,
+/// damit Listen keine Dateiinhalte laden). Gespeichert in der Datenbank, weil die
+/// Festplatte des Servers ohne Zusatz-Disk bei jedem Neustart geleert wird.
+model KundenDatei {
+  id            String             @id @default(cuid())
+  workspaceId   String
+  workspace     Workspace          @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  ordner        String
+  name          String
+  mime          String             @default("application/octet-stream")
+  groesse       Int
+  sha256        String
+  /// KUNDE | BETREIBER | AGENT
+  quelle        String             @default("KUNDE")
+  quelleName    String             @default("")
+  erstelltVonId String?
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  inhalt        KundenDateiInhalt?
+  freigaben     DateiFreigabe[]
+
+  @@index([workspaceId, ordner])
+  @@map("kunden_dateien")
+}
+
+model KundenDateiInhalt {
+  dateiId String      @id
+  datei   KundenDatei @relation(fields: [dateiId], references: [id], onDelete: Cascade)
+  daten   Bytes
+
+  @@map("kunden_datei_inhalte")
+}
+
+/// Freigabe-Link für eine Datei (z. B. an einen anderen Kunden). Gespeichert wird nur der Hash des Schlüssels.
+model DateiFreigabe {
+  id            String      @id @default(cuid())
+  dateiId       String
+  datei         KundenDatei @relation(fields: [dateiId], references: [id], onDelete: Cascade)
+  workspaceId   String
+  workspace     Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  tokenHash     String      @unique
+  ablauf        DateTime
+  maxAbrufe     Int
+  abrufe        Int         @default(0)
+  widerrufenAm  DateTime?
+  erstelltVonId String?
+  createdAt     DateTime    @default(now())
+
+  @@index([dateiId])
+  @@map("datei_freigaben")
+}
+
+model KundenLink {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  titel       String
+  url         String
+  art         String
+  createdAt   DateTime  @default(now())
+
+  @@index([workspaceId])
+  @@map("kunden_links")
 }

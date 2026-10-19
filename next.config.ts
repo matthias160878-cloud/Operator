@@ -17,6 +17,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Dateiaustausch: Uploads bis 10 MB (plus Formular-Overhead) müssen den Proxy vollständig passieren.
+  experimental: { proxyClientMaxBodySize: "12mb" },
   // Inhaltsseiten der Zentrale unter ihren gewohnten Adressen (statisches HTML).
   async rewrites() {
     return [

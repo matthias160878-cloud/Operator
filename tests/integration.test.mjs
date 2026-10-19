@@ -148,6 +148,7 @@ before(async () => {
     EMAIL_FROM: "Secret 58 <newsletter@example.test>",
     EMAIL_API_BASE: `http://127.0.0.1:${fakes.stripePort}`,
     PILOTSTUDIO_LIVE_SEND: "true",
+    DATEIEN_KONTINGENT_MB: "12",
   };
   server = spawn("npx", ["next", "start", "-p", String(PORT), "-H", "127.0.0.1"], { env, stdio: ["ignore", "pipe", "pipe"], detached: true });
   server.stderr.on("data", (d) => process.env.DEBUG_SERVER && process.stderr.write(d));
@@ -1688,4 +1689,149 @@ test("Pilotstudio: Betreiberschutz, zehn Testfälle, Freigabezwang, Versand ohne
   assert.equal((await prisma.pilotInterview.findFirstOrThrow({ where: { workspaceId: opWs, slot: 1 } })).firmCode, "KMU-A");
   // Kunden-Arbeitsbereiche bleiben unberührt
   assert.equal(await prisma.pilotInquiry.count({ where: { workspaceId: { not: opWs } } }), 0);
+});
+
+test("Dateiaustausch: Kundentrennung, Grenzen, sichere Auslieferung, Freigabe-Links, Betreiber sieht nur Austauschordner", async () => {
+  const D = "/api/dateien";
+  const up = (c, name, bytes, ordner) => {
+    const fd = new FormData();
+    fd.append("datei", new Blob([bytes]), name);
+    if (ordner) fd.append("ordner", ordner);
+    return c.json(D, { method: "POST", raw: fd });
+  };
+  const pdf = Buffer.from("%PDF-1.4\n% Testangebot\n");
+
+  // Ohne Anmeldung / fremder Ursprung
+  assert.equal((await new Client().req(D)).status, 401);
+  assert.equal((await new Client().req("/dateien")).status, 307);
+  const fremd = await fetch(`${BASE}${D}`, { method: "POST", headers: { cookie: A.cookie, origin: "https://evil.example" }, body: new FormData() });
+  assert.equal(fremd.status, 403, "fremder Ursprung abgelehnt");
+
+  // Upload, Typ- und Ordnerregeln
+  const r1 = await up(A, "Angebot.pdf", pdf, "An SECRET 58");
+  assert.equal(r1.status, 200, JSON.stringify(r1.data));
+  const idAn = r1.data.datei.id;
+  assert.equal(r1.data.datei.ordner, "An SECRET 58");
+  const privat = (await up(A, "../../geheim<1>.txt", "nur für A", "Eigene Dateien")).data.datei;
+  assert.equal(privat.name, "geheim_1_.txt", "Pfadanteile und Sonderzeichen entfernt");
+  const html = (await up(A, "seite.html", "<script>alert(1)</script>")).data.datei;
+  assert.equal(html.ordner, "Eigene Dateien", "Standardordner");
+  assert.equal((await up(A, "tool.exe", "MZ")).status, 415);
+  assert.equal((await up(A, "leer.txt", "")).status, 400);
+  assert.equal((await up(A, "x.txt", "x", "Von SECRET 58")).status, 403, "Kunde legt nicht in „Von SECRET 58“ ab");
+  assert.equal((await up(A, "riesig.bin", Buffer.alloc(10 * 1024 * 1024 + 10))).status, 413);
+  const genau = await up(A, "genau-10-MB.bin", Buffer.alloc(10 * 1024 * 1024, 2));
+  assert.equal(genau.status, 200, "10 MB passen durch den Proxy (proxyClientMaxBodySize)");
+  assert.equal((await A.req(`${D}/${genau.data.datei.id}`)).headers.get("content-length"), String(10 * 1024 * 1024));
+  assert.equal((await A.json(`${D}/${genau.data.datei.id}`, { method: "DELETE" })).status, 200);
+
+  // Übersicht
+  const ue = (await A.json(D)).data;
+  assert.equal(ue.dateien.length, 3);
+  assert.ok(ue.ordner.includes("An SECRET 58") && ue.ordner.includes("Von SECRET 58"));
+  assert.ok(!JSON.stringify(ue).includes("nur für A"), "Liste ohne Dateiinhalt");
+
+  // Kundentrennung
+  assert.equal((await B.json(D)).data.dateien.length, 0);
+  for (const [m, body] of [["GET"], ["PATCH", { name: "x.txt" }], ["DELETE"]]) {
+    assert.equal((await B.req(`${D}/${privat.id}`, { method: m, body })).status, 404, `B darf ${m} nicht`);
+  }
+  assert.equal((await B.json(`${D}/${privat.id}/freigabe`, { method: "POST", body: {} })).status, 404);
+
+  // Auslieferung: Download, Ansicht nur für sichere Typen
+  const dl = await A.req(`${D}/${privat.id}`);
+  assert.equal(dl.status, 200);
+  assert.equal(await dl.text(), "nur für A");
+  assert.equal(dl.headers.get("content-type"), "application/octet-stream");
+  assert.match(dl.headers.get("content-disposition"), /^attachment;/);
+  assert.equal(dl.headers.get("x-content-type-options"), "nosniff");
+  const ansicht = await A.req(`${D}/${idAn}?ansehen=1`);
+  assert.equal(ansicht.headers.get("content-type"), "application/pdf");
+  assert.match(ansicht.headers.get("content-disposition"), /^inline;/);
+  assert.match(ansicht.headers.get("content-security-policy"), /sandbox/);
+  const htmlAnsicht = await A.req(`${D}/${html.id}?ansehen=1`);
+  assert.equal(htmlAnsicht.headers.get("content-type"), "application/octet-stream", "HTML nie im Browser ausführen");
+  assert.match(htmlAnsicht.headers.get("content-disposition"), /^attachment;/);
+
+  // Ordner, Umbenennen, Verschieben
+  assert.equal((await A.json(`${D}/ordner`, { method: "POST", body: { name: "Projekt X" } })).status, 200);
+  assert.equal((await A.json(`${D}/${privat.id}`, { method: "PATCH", body: { ordner: "Projekt X", name: "Notiz.txt" } })).data.datei.ordner, "Projekt X");
+  assert.equal((await A.json(`${D}/${privat.id}`, { method: "PATCH", body: { name: "boese.exe" } })).status, 415);
+  assert.equal((await A.json(`${D}/${privat.id}`, { method: "PATCH", body: { ordner: "Von SECRET 58" } })).status, 403);
+  assert.equal((await A.json(`${D}/ordner`, { method: "DELETE", body: { name: "Projekt X" } })).status, 409, "nicht leerer Ordner bleibt");
+  assert.equal((await A.json(`${D}/ordner`, { method: "DELETE", body: { name: "Eigene Dateien" } })).status, 400);
+
+  // Freigabe-Link: ohne Anmeldung, Abrufgrenze, Widerruf, kein Klartext-Schlüssel in der DB
+  const fr = await A.json(`${D}/${privat.id}/freigabe`, { method: "POST", body: { tage: 1, maxAbrufe: 2 } });
+  assert.equal(fr.status, 200, JSON.stringify(fr.data));
+  const pfad = new URL(fr.data.freigabe.url).pathname;
+  const token = pfad.split("/").pop();
+  assert.equal((await prisma.dateiFreigabe.count({ where: { tokenHash: token } })), 0, "Schlüssel nur als Hash gespeichert");
+  for (let i = 0; i < 2; i++) {
+    const g = await fetch(`${BASE}${pfad}`);
+    assert.equal(g.status, 200);
+    assert.equal(await g.text(), "nur für A");
+    assert.match(g.headers.get("content-disposition"), /^attachment;/);
+  }
+  assert.equal((await fetch(`${BASE}${pfad}`)).status, 410, "Abrufgrenze erreicht");
+  const fr2 = await A.json(`${D}/${privat.id}/freigabe`, { method: "POST", body: {} });
+  const pfad2 = new URL(fr2.data.freigabe.url).pathname;
+  assert.equal((await B.json(`${D}/freigaben/${fr2.data.freigabe.id}`, { method: "DELETE" })).status, 404, "B widerruft nicht A's Link");
+  assert.equal((await A.json(`${D}/freigaben/${fr2.data.freigabe.id}`, { method: "DELETE" })).status, 200);
+  assert.equal((await fetch(`${BASE}${pfad2}`)).status, 410, "widerrufen");
+  assert.equal((await fetch(`${BASE}/api/freigabe/${"x".repeat(43)}`)).status, 404);
+  assert.equal((await A.json(`${D}/${privat.id}/freigabe`, { method: "POST", body: { tage: 365 } })).status, 400);
+  const fr3 = await A.json(`${D}/${idAn}/freigabe`, { method: "POST", body: {} });
+  await prisma.dateiFreigabe.update({ where: { id: fr3.data.freigabe.id }, data: { ablauf: new Date(Date.now() - 1000) } });
+  assert.equal((await fetch(fr3.data.freigabe.url.replace(/^https?:\/\/[^/]+/, BASE))).status, 410, "abgelaufen");
+
+  // Links (eigene Webseite)
+  assert.equal((await A.json(`${D}/links`, { method: "POST", body: { url: "javascript:alert(1)" } })).status, 400);
+  assert.equal((await A.json(`${D}/links`, { method: "POST", body: { url: "https://nutzer:pw@example.org" } })).status, 400);
+  const ln = await A.json(`${D}/links`, { method: "POST", body: { titel: "Meine Webseite", url: "www.firma-a.example.org", art: "Eigene Webseite" } });
+  assert.equal(ln.status, 200);
+  assert.equal(ln.data.link.url, "https://www.firma-a.example.org/");
+  assert.equal((await A.json(`${D}/links`, { method: "POST", body: { url: "https://www.firma-a.example.org/" } })).status, 409);
+  assert.equal((await B.json(`${D}/links/${ln.data.link.id}`, { method: "DELETE" })).status, 404);
+  assert.equal((await A.json(D)).data.links.length, 1);
+
+  // Betreiber: nur „An SECRET 58“ und eigene Ablagen sichtbar
+  const op = new Client();
+  assert.equal((await op.json("/api/auth/login", { method: "POST", body: { email: "op@example.test", password: "betreiber-passwort-123" } })).status, 200);
+  const wsA = await workspaceIdOf("a@example.test");
+  assert.ok([403, 404].includes((await A.req("/api/operator/dateien")).status), "Kunde sieht Betreiberschnittstelle nicht");
+  assert.ok([403, 404].includes((await A.req(`/api/operator/dateien?konto=${wsA}`)).status));
+  const konten = (await op.json("/api/operator/dateien")).data.konten;
+  assert.equal(konten.find((k) => k.id === wsA).anBetreiber, 1);
+  const sicht = (await op.json(`/api/operator/dateien?konto=${wsA}`)).data.dateien;
+  assert.deepEqual(sicht.map((d) => d.name), ["Angebot.pdf"], "Betreiber sieht keine privaten Ordner");
+  assert.equal((await op.req(`/api/operator/dateien/${privat.id}`)).status, 404, "private Datei nicht abrufbar");
+  assert.equal((await op.req(`/api/operator/dateien/${idAn}`)).status, 200);
+  assert.equal((await op.req(`/api/operator/dateien?konto=gibtesnicht`)).status, 404);
+  const ofd = new FormData();
+  ofd.append("datei", new Blob(["Ihr Vertrag"]), "Vertrag.pdf");
+  ofd.append("konto", wsA);
+  const oup = await op.json("/api/operator/dateien", { method: "POST", raw: ofd });
+  assert.equal(oup.status, 200, JSON.stringify(oup.data));
+  const vonOp = (await A.json(D)).data.dateien.find((d) => d.ordner === "Von SECRET 58");
+  assert.equal(vonOp.name, "Vertrag.pdf");
+  assert.equal(vonOp.quelle, "BETREIBER");
+  assert.equal(await (await A.req(`${D}/${vonOp.id}`)).text(), "Ihr Vertrag");
+  assert.equal((await op.json(`/api/operator/dateien/${idAn}`, { method: "DELETE" })).status, 404, "Betreiber löscht keine Kundendateien");
+  assert.equal((await op.json(`/api/operator/dateien/${vonOp.id}`, { method: "DELETE" })).status, 200);
+  assert.ok((await (await op.req("/operator")).text()).includes("/operator/dateien"), "Menüpunkt im Betreiberbereich");
+  assert.equal((await op.req("/operator/dateien")).status, 200);
+  assert.equal((await A.req("/operator/dateien")).status, 307);
+  assert.equal((await A.req("/dateien")).status, 200);
+
+  // Kontingent (Test: 12 MB je Konto)
+  assert.equal((await up(B, "gross1.bin", Buffer.alloc(9 * 1024 * 1024, 1))).status, 200);
+  const voll = await up(B, "gross2.bin", Buffer.alloc(4 * 1024 * 1024, 1));
+  assert.equal(voll.status, 413);
+  assert.match(voll.data.error, /Speicherplatz/);
+
+  // Löschen
+  assert.equal((await A.json(`${D}/${html.id}`, { method: "DELETE" })).status, 200);
+  assert.equal((await A.req(`${D}/${html.id}`)).status, 404);
+  assert.ok((await prisma.auditLog.count({ where: { workspaceId: wsA, action: { startsWith: "datei." } } })) >= 5, "Protokoll");
 });

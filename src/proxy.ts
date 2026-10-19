@@ -34,6 +34,7 @@ const PUBLIC_PREFIXES = [
   "/api/shop/",
   "/api/widget/",
   "/api/media-signed/",
+  "/api/freigabe/",
   "/api/locale",
   "/api/health",
   "/api/kontakt",

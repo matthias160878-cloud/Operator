@@ -22,6 +22,7 @@ import {
   CreditCard,
   Store,
   Globe,
+  FolderOpen,
 } from "lucide-react";
 
 export interface NavItem {
@@ -49,6 +50,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/sales", labelKey: "sales", icon: Store },
   { href: "/website", labelKey: "website", icon: Globe },
   { href: "/inbox", labelKey: "inbox", icon: Inbox },
+  { href: "/dateien", labelKey: "dateien", icon: FolderOpen },
   { href: "/agents", labelKey: "agents", icon: Bot },
   { href: "/integrations", labelKey: "integrations", icon: Plug },
   { href: "/billing", labelKey: "billing", icon: CreditCard },

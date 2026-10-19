@@ -363,3 +363,25 @@ test("Pilotstudio: Prüfregeln erkennen erfundene Zusagen", () => {
   assert.equal(autoCheck(1, { draftText: "Das kostet 499 EUR.", status: "PRUEFUNG", needsHuman: false, assignee: "" }).ok, false);
   assert.equal(autoCheck(3, { draftText: "Senden Sie uns Ihr Passwort?", status: "PRUEFUNG", needsHuman: false, assignee: "" }).ok, false);
 });
+
+// ---------------------------------------------------------------- Dateiaustausch
+import { ansichtTyp, normUrl, sauberName, sauberOrdner } from "@/lib/dateien/service";
+
+test("Dateiaustausch: Dateinamen, Ordner, Ansichtstypen und Webadressen werden sicher bereinigt", () => {
+  assert.equal(sauberName("../../etc/passwd"), "passwd");
+  assert.equal(sauberName("C:\\Users\\x\\Angebot.pdf"), "Angebot.pdf");
+  assert.equal(sauberName(".htaccess"), "htaccess");
+  assert.equal(sauberName('a<b>:"c|?*.txt'), "a_b___c___.txt");
+  assert.equal(sauberName(""), "Datei");
+  assert.equal(sauberName("x".repeat(300)).length, 120);
+  assert.equal(sauberOrdner("  Projekt / Müller  "), "Projekt Müller");
+  assert.throws(() => sauberOrdner("   "));
+  assert.equal(ansichtTyp("a.PDF"), "application/pdf");
+  assert.equal(ansichtTyp("seite.html"), null);
+  assert.equal(ansichtTyp("bild.svg"), null, "SVG kann Skripte enthalten");
+  assert.equal(normUrl("www.firma.de"), "https://www.firma.de/");
+  assert.equal(normUrl("http://firma.de/shop?a=1"), "http://firma.de/shop?a=1");
+  for (const bad of ["javascript:alert(1)", "data:text/html,x", "ftp://firma.de", "https://localhost", "https://u:p@firma.de", "kein link", ""]) {
+    assert.equal(normUrl(bad), null, bad);
+  }
+});

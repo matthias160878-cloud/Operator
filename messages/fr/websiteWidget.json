@@ -1,0 +1,40 @@
+{
+  "title": "Widget du site",
+  "subtitle": "Une fenêtre de chat pour ton propre site : les visiteurs t'écrivent, le message arrive dans la boîte de réception et ta réponse s'affiche dans le widget du visiteur. Chaque message peut aussi partir par webhook vers Zapier, Make ou ton propre système.",
+  "copy": "Copier",
+  "copied": "Copié",
+  "status": {
+    "heading": "Statut",
+    "key": "ID du widget",
+    "origins": "Sites autorisés",
+    "webhook": "Webhook",
+    "set": "défini",
+    "missing": "manquant ({env} dans .env)",
+    "optional": "optionnel ({env} dans .env)",
+    "webhookSigned": "actif, signé",
+    "webhookUnsigned": "actif, non signé (WEBSITE_WIDGET_WEBHOOK_SECRET recommandé)",
+    "enabled": "Le widget est actif.",
+    "disabled": "Le widget n'est pas encore actif.",
+    "conversations": "{count, plural, =0 {Aucune conversation du site pour l'instant} one {# conversation du site dans la boîte} other {# conversations du site dans la boîte}}"
+  },
+  "setup": {
+    "heading": "Configuration",
+    "text": "Ajoute ces valeurs au .env de l'app et redémarre-la. L'ID du widget est public (il figure dans le code d'intégration) ; la protection repose sur la liste des sites autorisés et des limites par visiteur."
+  },
+  "embed": {
+    "heading": "Code d'intégration",
+    "text": "Ajoute cette ligne à ton site avant </body>, p. ex. dans WordPress via un plugin d'extraits de code ou dans Wix/Squarespace comme « code personnalisé ».",
+    "options": "Attributs optionnels :",
+    "optTitle": "titre de la fenêtre",
+    "optGreeting": "texte d'accueil",
+    "optColor": "couleur hex, p. ex. #e4572e",
+    "optPosition": "right (par défaut) ou left",
+    "optLang": "de ou en (par défaut : langue de la page)",
+    "optPrivacy": "lien vers ta politique de confidentialité"
+  },
+  "webhook": {
+    "heading": "Webhook",
+    "text": "Pour chaque nouveau message et chaque réponse envoyée, l'app envoie un POST à WEBSITE_WIDGET_WEBHOOK_URL :",
+    "hint": "Vérifie la signature avec ton secret et rejette les horodatages anciens. Usage typique : sur widget.reply.sent, envoyer un e-mail à conversation.email pour que le visiteur reçoive la réponse même après avoir quitté la page."
+  }
+}

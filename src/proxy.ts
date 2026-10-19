@@ -21,6 +21,8 @@ const PUBLIC_PREFIXES = [
   "/api/locale",
   // Externe API: eigene Authentifizierung per API-Schlüssel (src/lib/api/publicApi.ts).
   "/api/v1/",
+  // Website-Widget-Skript zum Einbetten auf der eigenen Website.
+  "/widget.js",
   "/_next",
   "/favicon.ico",
   "/manifest.webmanifest",

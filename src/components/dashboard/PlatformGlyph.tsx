@@ -6,7 +6,8 @@ export type PlatformGlyphKey =
   | "TIKTOK"
   | "LINKEDIN"
   | "FACEBOOK"
-  | "X";
+  | "X"
+  | "WEBSITE";
 
 /**
  * Minimalistische, selbst gezeichnete Icon-Glyphen für die Plattform-Badges.
@@ -72,6 +73,12 @@ const GLYPHS: Record<PlatformGlyphKey, (props: SVGProps<SVGSVGElement>) => React
         d="M13.6 8.4h1.3V6h-1.6c-1.5 0-2.6 1.1-2.6 2.7v1.5H9.3v2.4h1.4V18h2.4v-5.4h1.6l.3-2.4h-1.9V8.9c0-.3.2-.5.5-.5Z"
         fill="currentColor"
       />
+    </IconBase>
+  ),
+  WEBSITE: (props) => (
+    <IconBase {...props}>
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" strokeWidth="1.6" />
     </IconBase>
   ),
   X: (props) => (

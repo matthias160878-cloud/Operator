@@ -28,7 +28,8 @@
     "integrations": "Intégrations",
     "settings": "Paramètres",
     "seo": "Analyse SEO",
-    "websitePosts": "Posts depuis un site"
+    "websitePosts": "Posts depuis un site",
+    "websiteWidget": "Widget du site"
   },
   "topbar": {
     "menuOpen": "Ouvrir le menu",

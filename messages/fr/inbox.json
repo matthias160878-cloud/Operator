@@ -27,7 +27,9 @@
     "context": "Publication",
     "externalIdLabel": "ID de plateforme à laquelle répondre",
     "noExternalId": "Sans ID de plateforme, rien ne peut être réellement envoyé.",
-    "saveFailed": "L’enregistrement a échoué."
+    "saveFailed": "L’enregistrement a échoué.",
+    "websiteHint": "Message du widget du site. Les réponses validées s'affichent dans le widget du visiteur et, si configuré, sont envoyées à ton webhook (p. ex. pour une notification par e-mail).",
+    "websitePage": "Page"
   },
   "channel": {
     "COMMENT": "Commentaire",

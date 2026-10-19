@@ -44,3 +44,9 @@ export const PLATFORM_LABELS: Record<string, string> = {
   BLOG: "Blog",
   NEWSLETTER: "Newsletter",
 };
+
+/** Wie PLATFORM_LABELS, plus Posteingangs-Kanäle, die keine Post-Ziele sind. */
+export const INBOX_PLATFORM_LABELS: Record<string, string> = {
+  ...PLATFORM_LABELS,
+  WEBSITE: "Website",
+};

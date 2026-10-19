@@ -5,7 +5,7 @@ import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { NewConversationForm } from "@/components/inbox/NewConversationForm";
 import { SyncInboxButton } from "@/components/inbox/SyncInboxButton";
-import { PLATFORM_LABELS, relativeTime } from "@/lib/format";
+import { INBOX_PLATFORM_LABELS, relativeTime } from "@/lib/format";
 import { PlatformGlyph, type PlatformGlyphKey } from "@/components/dashboard/PlatformGlyph";
 
 export const dynamic = "force-dynamic";
@@ -56,7 +56,7 @@ export default async function InboxPage() {
                   <span className="shrink-0 text-xs text-muted">{relativeTime(c.lastMessageAt)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted">
-                  <span>{PLATFORM_LABELS[c.platform] ?? c.platform}</span>
+                  <span>{INBOX_PLATFORM_LABELS[c.platform] ?? c.platform}</span>
                   <span>· {t(`channel.${c.channel}`)}</span>
                   {last && <span className="truncate">· {last.body}</span>}
                 </div>

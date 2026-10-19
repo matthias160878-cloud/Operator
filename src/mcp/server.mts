@@ -33,6 +33,8 @@ const [{ prisma }, { getCurrentWorkspaceId }, { runAgent }, social, seo, inbox, 
 
 const SOCIAL_PLATFORMS = ["YOUTUBE", "TIKTOK", "INSTAGRAM", "LINKEDIN", "FACEBOOK", "BLOG", "NEWSLETTER"] as const;
 const MESSAGE_PLATFORMS = ["YOUTUBE", "TIKTOK", "INSTAGRAM", "LINKEDIN", "FACEBOOK"] as const;
+// Zum Filtern im Posteingang zusätzlich das Website-Widget.
+const INBOX_PLATFORMS = [...MESSAGE_PLATFORMS, "WEBSITE"] as const;
 
 type ToolResult = { content: { type: "text"; text: string }[]; isError?: boolean };
 
@@ -154,7 +156,7 @@ server.registerTool(
     description: "Listet Kundenkonversationen aller Plattformen mit letzter Nachricht und Entwurfsstatus.",
     inputSchema: {
       status: z.enum(["OPEN", "CLOSED"]).optional(),
-      platform: z.enum(MESSAGE_PLATFORMS).optional(),
+      platform: z.enum(INBOX_PLATFORMS).optional(),
       limit: z.number().int().min(1).max(100).default(20),
     },
     annotations: { readOnlyHint: true },
@@ -211,7 +213,7 @@ server.registerTool(
       "InboxAgent: klassifiziert alle unbeantworteten Nachrichten (Frage, Beschwerde, Kaufinteresse, Lob, " +
       "Spam) nach Stimmung und Priorität und schlägt je Nachricht eine Aktion vor. Ändert keine Daten.",
     inputSchema: {
-      platform: z.enum(MESSAGE_PLATFORMS).optional(),
+      platform: z.enum(INBOX_PLATFORMS).optional(),
       limit: z.number().int().min(1).max(100).default(30),
     },
     annotations: { readOnlyHint: true },
@@ -278,7 +280,7 @@ server.registerTool(
       "Erstellt Antwortentwürfe für alle Konversationen, die auf eine Antwort warten und noch keinen " +
       "aktuellen Entwurf haben (Spam wird übersprungen). Nichts wird gesendet.",
     inputSchema: {
-      platform: z.enum(MESSAGE_PLATFORMS).optional(),
+      platform: z.enum(INBOX_PLATFORMS).optional(),
       limit: z.number().int().min(1).max(25).default(10),
     },
   },

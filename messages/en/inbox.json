@@ -27,7 +27,9 @@
     "context": "Post",
     "externalIdLabel": "Platform ID to reply to",
     "noExternalId": "Without a platform ID nothing can actually be sent.",
-    "saveFailed": "Saving failed."
+    "saveFailed": "Saving failed.",
+    "websiteHint": "Message from the website widget. Approved replies appear in the visitor's widget and, if configured, are sent to your webhook (e.g. for an email notification).",
+    "websitePage": "Page"
   },
   "channel": {
     "COMMENT": "Comment",

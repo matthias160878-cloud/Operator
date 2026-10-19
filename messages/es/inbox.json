@@ -27,7 +27,9 @@
     "context": "Publicación",
     "externalIdLabel": "ID de plataforma a la que se responde",
     "noExternalId": "Sin ID de plataforma no se puede enviar de verdad.",
-    "saveFailed": "No se pudo guardar."
+    "saveFailed": "No se pudo guardar.",
+    "websiteHint": "Mensaje del widget de la web. Las respuestas aprobadas aparecen en el widget del visitante y, si está configurado, se envían a tu webhook (p. ej. para avisar por correo).",
+    "websitePage": "Página"
   },
   "channel": {
     "COMMENT": "Comentario",

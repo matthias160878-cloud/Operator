@@ -28,6 +28,7 @@ Hooks, Hashtags, Untertiteln, Voiceover-Anbindung und Publishing-Workflow.
 - [API-Dokumentation](#api-dokumentation)
 - [MCP-Server](#mcp-server)
 - [Externe API (/api/v1)](#externe-api-apiv1)
+- [Website-Widget](#website-widget)
 - [Tests](#tests)
 - [Troubleshooting](#troubleshooting)
 - [Status-Checkliste](#status-checkliste)
@@ -440,6 +441,77 @@ curl -X POST https://deine-app.de/api/v1/website-posts \
   CORS ist nur für interne Tools gedacht.
 - Das Anfragelimit wird im Speicher des Server-Prozesses gezählt (bei
   mehreren Instanzen gilt es je Instanz).
+
+## Website-Widget
+
+Ein Chat-Fenster für die eigene Website (`public/widget.js`, ohne
+Abhängigkeiten, Styles im Shadow DOM). Besucher schreiben, die Nachricht
+landet als Konversation mit Plattform `WEBSITE` im Posteingang; freigegebene
+Antworten erscheinen direkt im Widget des Besuchers. Einrichtung und
+Einbettungs-Code zeigt die Seite **Website-Widget** in der App.
+
+**Aktivieren** (`.env`, danach App neu starten):
+
+```bash
+WEBSITE_WIDGET_KEY=3f9c…                       # öffentliche ID, openssl rand -hex 16
+WEBSITE_WIDGET_ORIGINS=https://meine-website.de,https://www.meine-website.de
+WEBSITE_WIDGET_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/…   # optional
+WEBSITE_WIDGET_WEBHOOK_SECRET=…                # optional, empfohlen
+```
+
+**Einbetten** (vor `</body>`):
+
+```html
+<script src="https://deine-app.de/widget.js" data-key="3f9c…" async></script>
+```
+
+Optionale Attribute: `data-title`, `data-greeting`, `data-color` (Hex),
+`data-position` (`right`/`left`), `data-lang` (`de`/`en`),
+`data-privacy-url`. Per JavaScript: `Secret58Widget.open()` / `.close()`.
+
+**Ablauf**
+
+1. Erste Nachricht: Name, optional E-Mail, Text → `POST /api/v1/widget/messages`.
+   Die App legt eine Konversation an und gibt ein zufälliges Besucher-Token
+   zurück (im `localStorage` des Besuchers; in der DB liegt nur der SHA-256-Hash).
+2. Das Widget fragt mit dem Token neue Antworten ab (`GET`, alle 5 s bei
+   offenem, alle 60 s bei geschlossenem Fenster, nicht in Hintergrund-Tabs).
+3. Antwort im Posteingang: KI-Entwurf oder eigener Text → „Freigeben & senden“.
+   Bei `WEBSITE` gibt es keinen Plattform-Account; die Antwort gilt als
+   gesendet und erscheint beim nächsten Abruf im Widget. Entwürfe sieht der
+   Besucher nie.
+
+**Webhook** — bei `widget.message.received` und `widget.reply.sent`:
+
+```http
+POST <WEBSITE_WIDGET_WEBHOOK_URL>
+X-Secret58-Event: widget.message.received
+X-Secret58-Timestamp: 1760000000
+X-Secret58-Signature: sha256=<HMAC-SHA256(secret, "<timestamp>.<body>")>
+
+{ "event": "widget.message.received", "createdAt": "…",
+  "conversation": { "id": "…", "name": "Anna", "email": "anna@example.com", "page": "https://…", "inboxPath": "/inbox/…" },
+  "message": { "id": "…", "body": "…" } }
+```
+
+Typisch: Bei `widget.reply.sent` per Zapier eine E-Mail an
+`conversation.email` schicken, damit der Besucher die Antwort auch nach dem
+Verlassen der Seite bekommt. Der Webhook läuft im Hintergrund (Timeout 5 s);
+ist er nicht erreichbar, bleibt die Nachricht trotzdem gespeichert.
+
+**Schutz**
+
+- Die Widget-ID ist öffentlich. Anfragen werden nur von den Origins in
+  `WEBSITE_WIDGET_ORIGINS` angenommen (sonst `403`); ohne ID oder Origins
+  ist das Widget aus (`503`).
+- Limits: pro IP 8 Nachrichten in 10 Minuten und 40 Abrufe pro Minute; pro
+  Unterhaltung 20 Nachrichten in 10 Minuten; insgesamt höchstens 100 neue
+  Unterhaltungen und 600 Nachrichten pro Stunde (sonst `429`).
+- Honeypot-Feld gegen einfache Bots, Nachrichten max. 2000 Zeichen.
+- Der Besucher sieht nur seine eigene Unterhaltung (über das Token).
+- Hinweis: Ein Origin-Header lässt sich außerhalb von Browsern fälschen —
+  die Origin-Liste verhindert das Einbetten auf fremden Websites, ersetzt
+  aber keine Spam-Prüfung. Die Limits zählen im Speicher des Server-Prozesses.
 
 ## Tests
 

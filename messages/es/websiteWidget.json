@@ -1,0 +1,40 @@
+{
+  "title": "Widget web",
+  "subtitle": "Una ventana de chat para tu propia web: los visitantes te escriben, el mensaje llega a la bandeja de entrada y tu respuesta aparece en el widget del visitante. Cada mensaje puede enviarse también por webhook a Zapier, Make o tu propio sistema.",
+  "copy": "Copiar",
+  "copied": "Copiado",
+  "status": {
+    "heading": "Estado",
+    "key": "ID del widget",
+    "origins": "Webs permitidas",
+    "webhook": "Webhook",
+    "set": "configurado",
+    "missing": "falta ({env} en .env)",
+    "optional": "opcional ({env} en .env)",
+    "webhookSigned": "activo, firmado",
+    "webhookUnsigned": "activo, sin firma (se recomienda WEBSITE_WIDGET_WEBHOOK_SECRET)",
+    "enabled": "El widget está activo.",
+    "disabled": "El widget aún no está activo.",
+    "conversations": "{count, plural, =0 {Aún no hay conversaciones web} one {# conversación web en la bandeja} other {# conversaciones web en la bandeja}}"
+  },
+  "setup": {
+    "heading": "Configuración",
+    "text": "Añade estos valores al .env de la app y reiníciala. El ID del widget es público (forma parte del código); la protección viene de la lista de webs permitidas y de los límites por visitante."
+  },
+  "embed": {
+    "heading": "Código para insertar",
+    "text": "Añade esta línea a tu web antes de </body>, p. ej. en WordPress con un plugin de fragmentos de código o en Wix/Squarespace como “código personalizado”.",
+    "options": "Atributos opcionales:",
+    "optTitle": "título de la ventana",
+    "optGreeting": "texto de bienvenida",
+    "optColor": "color hex, p. ej. #e4572e",
+    "optPosition": "right (por defecto) o left",
+    "optLang": "de o en (por defecto: idioma de la página)",
+    "optPrivacy": "enlace a tu política de privacidad"
+  },
+  "webhook": {
+    "heading": "Webhook",
+    "text": "Por cada mensaje nuevo y cada respuesta enviada, la app envía un POST a WEBSITE_WIDGET_WEBHOOK_URL:",
+    "hint": "Verifica la firma con tu secreto y rechaza marcas de tiempo antiguas. Uso típico: con widget.reply.sent, enviar un correo a conversation.email para que el visitante reciba la respuesta aunque haya salido de la página."
+  }
+}

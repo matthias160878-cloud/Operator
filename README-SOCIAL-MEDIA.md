@@ -148,7 +148,7 @@ Freigegebene Antworten gehen über die native API raus
 | Instagram | Kommentare unter eigenen Medien, DMs | Kommentar-Antwort, DM (24-h-Fenster) | `instagram_business_manage_comments`, `instagram_business_manage_messages` (Meta App Review) |
 | LinkedIn (Unternehmensseite) | Kommentare + Antworten unter den letzten Seitenbeiträgen | Antwort als Seite | Separate App mit Community Management API: `rw_organization_admin`, `r/w_organization_social(_feed)` (LinkedIn-Prüfung) |
 | LinkedIn (persönliches Profil) | — (LinkedIn gibt das nicht frei) | Antwort per Kommentar-URN | `w_member_social` |
-| TikTok | Kommentare + Antworten unter den letzten Videos | Kommentar-Antwort | Separate App im TikTok-for-Business-Portal (Accounts API): `video.list`, `comment.list`, `comment.list.manage` |
+| TikTok | Kommentare + Antworten unter den letzten Videos; Direktnachrichten (optional) | Kommentar-Antwort; Direktnachricht (48-h-Fenster, max. 10 Nachrichten) | Separate App im TikTok-for-Business-Portal (Accounts API): `video.list`, `comment.list`, `comment.list.manage`; für DMs zusätzlich Business Messaging API (TikTok-Zugangsprüfung) |
 
 **TikTok & LinkedIn: zweite Verbindung „Posteingang verbinden“.** Beide
 Anbieter verlangen für Kommentare eine eigene App mit eigenen Zugangsdaten
@@ -160,9 +160,20 @@ nach 24 h ab und werden automatisch per Refresh-Token erneuert (1 Jahr
 gültig). Redirect-URLs in den Apps: `<APP_URL>/api/oauth/TIKTOK_BUSINESS/callback`
 bzw. `<APP_URL>/api/oauth/LINKEDIN_PAGE/callback`.
 
-Direktnachrichten gibt es für beide weiterhin nicht: LinkedIn bietet keine
-DM-API für Drittanbieter, TikToks Business Messaging API verlangt eine
-gesonderte Zugangsprüfung und ist nicht angebunden.
+**TikTok-Direktnachrichten** laufen über die Business Messaging API und sind
+standardmäßig aus. Voraussetzungen bei TikTok: Zugang zur Business Messaging
+API inkl. Datenschutz-/Sicherheitsprüfung, ein Konto mit Advanced Access bzw.
+verifiziertes Business-Konto, Kontoinhaber ab 18. Danach:
+`TIKTOK_BUSINESS_MESSAGING=true` setzen, die Messaging-Berechtigungen aus der
+App in `TIKTOK_BUSINESS_SCOPE` ergänzen und den Posteingang neu verbinden.
+Abgerufen werden offene Nachrichtenanfragen (`STRANGER`) und laufende
+Unterhaltungen (`SINGLE`) der letzten 90 Tage, je die 20 neuesten Nachrichten;
+Bilder, Videos usw. erscheinen als Platzhalter. Vor dem Senden prüft die App
+TikToks Regel (max. 10 Nachrichten innerhalb von 48 h nach der letzten
+Kundennachricht) und meldet einen Verstoß, ohne TikTok aufzurufen. Selbst ein
+Gespräch beginnen ist laut TikTok nicht erlaubt.
+
+LinkedIn bietet weiterhin keine DM-API für Drittanbieter.
 
 - Die zusätzlichen Berechtigungen wurden in `src/lib/oauth/providers.ts`
   ergänzt — **bereits verbundene Accounts müssen einmal neu verbunden

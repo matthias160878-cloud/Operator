@@ -247,9 +247,9 @@ export const MESSAGING_PROVIDERS: Record<string, OAuthProvider> = {
     authorizeUrl: "https://www.tiktok.com/v2/auth/authorize/",
     clientIdParam: "client_key",
     tokenUrl: `${TIKTOK_BUSINESS_API}/tt_user/oauth2/token/`,
-    scope: "user.info.basic,video.list,comment.list,comment.list.manage",
+    scope: process.env.TIKTOK_BUSINESS_SCOPE || "user.info.basic,video.list,comment.list,comment.list.manage",
     publishingCaveat:
-      "Kommentare abrufen und beantworten läuft über die Accounts API der TikTok API for Business: eigene Developer-App im TikTok-for-Business-Portal mit freigegebenen Berechtigungen video.list, comment.list und comment.list.manage, verbunden mit einem TikTok-Business-Konto. Direktnachrichten (Business Messaging API) verlangen eine zusätzliche Zugangsprüfung durch TikTok und sind hier nicht angebunden.",
+      "Kommentare abrufen und beantworten läuft über die Accounts API der TikTok API for Business: eigene Developer-App im TikTok-for-Business-Portal mit freigegebenen Berechtigungen video.list, comment.list und comment.list.manage, verbunden mit einem TikTok-Business-Konto. Direktnachrichten laufen über die Business Messaging API: TikTok verlangt dafür eine eigene Zugangs-, Datenschutz- und Sicherheitsprüfung, ein Konto mit Advanced Access bzw. verifiziertes Business-Konto und Kontoinhaber ab 18. Nach der Freigabe die Messaging-Berechtigungen in TIKTOK_BUSINESS_SCOPE ergänzen, TIKTOK_BUSINESS_MESSAGING=true setzen und den Posteingang neu verbinden. Antworten sind nur innerhalb von 48 Stunden nach der letzten Kundennachricht möglich (max. 10 Nachrichten).",
     async exchangeCode(code, redirectUri) {
       const res = await fetch(`${TIKTOK_BUSINESS_API}/tt_user/oauth2/token/`, {
         method: "POST",

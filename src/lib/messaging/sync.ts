@@ -343,6 +343,82 @@ async function fetchTikTok(account: PlatformAccount): Promise<Thread[]> {
   return threads;
 }
 
+// --- TikTok: Direktnachrichten (Business Messaging API) ---------------------
+
+/** Business Messaging ist freigabepflichtig — nur abrufen, wenn ausdrücklich aktiviert. */
+export function isTikTokMessagingEnabled(): boolean {
+  return process.env.TIKTOK_BUSINESS_MESSAGING === "true";
+}
+
+const TIKTOK_MESSAGE_PLACEHOLDER: Record<string, string> = {
+  IMAGE: "[Bild]",
+  VIDEO: "[Video]",
+  SHARE_POST: "[Geteilter TikTok-Beitrag]",
+  EMOJI: "[Emoji]",
+  STICKER: "[Sticker]",
+  TEMPLATE: "[Nachrichtenvorlage]",
+  OTHER: "[Nicht unterstützter Nachrichtentyp]",
+};
+
+async function fetchTikTokMessages(account: PlatformAccount): Promise<Thread[]> {
+  const businessId = account.messagingExternalId;
+  if (!businessId) throw new Error("TikTok-Business-ID fehlt — Posteingang erneut verbinden.");
+  const token = await getValidMessagingToken(account);
+
+  type TikTokDm = {
+    message_id: string;
+    timestamp: number;
+    message_type?: string;
+    sender?: string;
+    text?: { body?: string };
+    from_user?: { id?: string; role?: string };
+    template?: { title?: string };
+  };
+  type Participant = { id: string; role?: string; display_name?: string };
+
+  const conversationIds: string[] = [];
+  // STRANGER = Nachrichtenanfrage noch nicht beantwortet, SINGLE = laufende 1:1-Unterhaltung.
+  for (const type of ["STRANGER", "SINGLE"]) {
+    const params = new URLSearchParams({ business_id: businessId, conversation_type: type, limit: "20" });
+    const { conversations = [] } = await tiktokBusinessRequest<{
+      conversations?: { conversation_id: string; update_time?: number }[];
+    }>(`/business/message/conversation/list/?${params}`, token, {}, "TikTok-Konversationsabruf");
+    conversationIds.push(...conversations.map((c) => c.conversation_id));
+  }
+
+  const threads: Thread[] = [];
+  for (const conversationId of conversationIds) {
+    const params = new URLSearchParams({ business_id: businessId, conversation_id: conversationId });
+    const { messages = [], participants = [] } = await tiktokBusinessRequest<{
+      messages?: TikTokDm[];
+      participants?: Participant[];
+    }>(`/business/message/content/list/?${params}`, token, {}, "TikTok-Nachrichtenabruf");
+
+    const person = participants.find((p) => p.role === "PERSONAL_ACCOUNT");
+    const isUs = (m: TikTokDm) => m.from_user?.role === "BUSINESS_ACCOUNT";
+    const username = messages.find((m) => !isUs(m))?.sender ?? "";
+    threads.push({
+      channel: "DIRECT_MESSAGE",
+      externalThreadId: conversationId,
+      participantName: person?.display_name || (username ? `@${username}` : "TikTok-Nutzer"),
+      participantHandle: username,
+      context: "",
+      messages: messages.map((m) => ({
+        externalId: m.message_id,
+        body:
+          m.message_type === "TEXT"
+            ? m.text?.body ?? ""
+            : m.message_type === "TEMPLATE" && m.template?.title
+              ? `[Vorlage] ${m.template.title}`
+              : TIKTOK_MESSAGE_PLACEHOLDER[m.message_type ?? "OTHER"] ?? TIKTOK_MESSAGE_PLACEHOLDER.OTHER,
+        createdAt: new Date(m.timestamp),
+        fromUs: isUs(m),
+      })),
+    });
+  }
+  return threads;
+}
+
 // --- LinkedIn: Kommentare unter Beiträgen der Unternehmensseite --------------
 
 async function fetchLinkedInPage(account: PlatformAccount): Promise<Thread[]> {
@@ -453,7 +529,13 @@ async function collectThreads(account: PlatformAccount, notes: string[], failure
         break;
       }
       await attempt("Kommentare", () => fetchTikTok(account));
-      notes.push("Direktnachrichten: TikTok Business Messaging API ist nicht angebunden (separate Zugangsprüfung durch TikTok).");
+      if (isTikTokMessagingEnabled()) {
+        await attempt("Direktnachrichten", () => fetchTikTokMessages(account));
+      } else {
+        notes.push(
+          "Direktnachrichten: TikTok Business Messaging API ist deaktiviert — nach TikToks Zugangsprüfung mit TIKTOK_BUSINESS_MESSAGING=true einschalten."
+        );
+      }
       break;
     case "LINKEDIN":
       if (!account.messagingAccessTokenEnc) {

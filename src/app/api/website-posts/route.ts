@@ -1,17 +1,10 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { runAgent } from "@/lib/agents/runner";
 import { generateSocialPostsFromWebsite } from "@/lib/agents/websiteSocialAgent";
+import { websitePostsSchema } from "@/lib/api/schemas";
 
-const PLATFORM_VALUES = ["YOUTUBE", "TIKTOK", "INSTAGRAM", "LINKEDIN", "FACEBOOK", "BLOG", "NEWSLETTER"] as const;
-
-const bodySchema = z.object({
-  url: z.string().trim().url("Bitte eine vollständige URL mit https:// angeben."),
-  platforms: z.array(z.enum(PLATFORM_VALUES)).min(1, "Mindestens eine Plattform wählen."),
-  postsPerPlatform: z.number().int().min(1).max(3).default(1),
-  instructions: z.string().trim().max(1000).optional(),
-});
+const bodySchema = websitePostsSchema;
 
 export const maxDuration = 120;
 

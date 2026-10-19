@@ -19,6 +19,8 @@ const PUBLIC_PREFIXES = [
   "/unlock",
   "/api/stripe",
   "/api/locale",
+  // Externe API: eigene Authentifizierung per API-Schlüssel (src/lib/api/publicApi.ts).
+  "/api/v1/",
   "/_next",
   "/favicon.ico",
   "/manifest.webmanifest",

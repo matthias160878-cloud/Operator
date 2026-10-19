@@ -1,15 +1,10 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { runAgent } from "@/lib/agents/runner";
 import { analyzeWebsite } from "@/lib/agents/seoAgent";
+import { seoAnalyzeSchema } from "@/lib/api/schemas";
 
-const bodySchema = z.object({
-  url: z.string().trim().url("Bitte eine vollständige URL mit https:// angeben."),
-  focusKeyword: z.string().trim().max(100).optional(),
-  includePageSpeed: z.boolean().default(false),
-  strategy: z.enum(["mobile", "desktop"]).default("mobile"),
-});
+const bodySchema = seoAnalyzeSchema;
 
 export const maxDuration = 120;
 

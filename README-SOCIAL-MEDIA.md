@@ -330,6 +330,10 @@ Alle Endpunkte liegen unter `src/app/api/**` und geben JSON zurück.
 | `/api/voices/preview` | POST | Voice-Preview erzeugen |
 | `/api/script-studio/generate` | POST | Freies Script + Hook-Set generieren |
 | `/api/thumbnails/generate` | POST | Thumbnail-Konzept generieren |
+| `/api/seo/analyze` | POST | SEO-/Performance-Analyse einer URL (SeoAgent), Seite `/seo` |
+| `/api/website-posts` | POST | Social-Posts aus einer Website erzeugen (WebsiteSocialAgent), Seite `/website-posts` |
+| `/api/website-posts/save` | POST | Ausgewählte/bearbeitete Website-Posts als DRAFT-Content-Items speichern |
+| `/api/conversations/sync` | POST | Kommentare & Direktnachrichten der verbundenen Plattformen abrufen |
 
 ## MCP-Server
 

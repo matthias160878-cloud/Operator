@@ -177,25 +177,14 @@ export async function generateSocialPostsFromWebsite(input: {
     hashtags: Array.from(new Set(p.hashtags.map(normalizeTag).filter(Boolean))).slice(0, 15),
   }));
 
-  const savedContentItemIds: string[] = [];
-  if (input.save) {
-    for (const post of posts) {
-      const item = await prisma.contentItem.create({
-        data: {
-          workspaceId: input.workspaceId,
-          title: (post.hook || page.title || fetched.finalUrl).slice(0, 120),
-          platform: post.platform,
-          format: "Post (aus Website)",
-          status: "DRAFT",
-          hook: post.hook,
-          caption: post.caption,
-          hashtags: JSON.stringify(post.hashtags),
-          language: brand?.language ?? "Deutsch",
-        },
-      });
-      savedContentItemIds.push(item.id);
-    }
-  }
+  const savedContentItemIds = input.save
+    ? await saveWebsitePosts({
+        workspaceId: input.workspaceId,
+        posts,
+        fallbackTitle: page.title || fetched.finalUrl,
+        language: brand?.language,
+      })
+    : [];
 
   return {
     source: { url: fetched.finalUrl, title: page.title, description: page.metaDescription },
@@ -203,4 +192,31 @@ export async function generateSocialPostsFromWebsite(input: {
     savedContentItemIds,
     provider: usedProvider,
   };
+}
+
+/** Speichert Website-Posts als DRAFT-Content-Items (Publishing-Workflow übernimmt den Rest). */
+export async function saveWebsitePosts(input: {
+  workspaceId: string;
+  posts: WebsitePost[];
+  fallbackTitle: string;
+  language?: string;
+}): Promise<string[]> {
+  const ids: string[] = [];
+  for (const post of input.posts) {
+    const item = await prisma.contentItem.create({
+      data: {
+        workspaceId: input.workspaceId,
+        title: (post.hook || input.fallbackTitle).slice(0, 120),
+        platform: post.platform,
+        format: "Post (aus Website)",
+        status: "DRAFT",
+        hook: post.hook,
+        caption: post.caption.slice(0, CAPTION_LIMITS[post.platform]),
+        hashtags: JSON.stringify(post.hashtags.map(normalizeTag).filter(Boolean)),
+        language: input.language ?? "Deutsch",
+      },
+    });
+    ids.push(item.id);
+  }
+  return ids;
 }

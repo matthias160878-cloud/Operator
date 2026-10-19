@@ -1,0 +1,46 @@
+{
+  "title": "SEO analysis",
+  "subtitle": "Checks a page for SEO, technical basics, load time and social preview and returns a score with prioritized actions. All measurements come from real requests.",
+  "form": {
+    "urlLabel": "Page URL",
+    "keywordLabel": "Focus keyword (optional)",
+    "keywordPlaceholder": "e.g. coffee subscription",
+    "pageSpeedLabel": "Also run Google PageSpeed (Lighthouse)",
+    "pageSpeedHint": "Takes 20–60 seconds. Without PAGESPEED_API_KEY Google's quota is tight.",
+    "mobile": "Mobile",
+    "desktop": "Desktop",
+    "analyzeButton": "Analyze",
+    "analyzing": "Analyzing …",
+    "failed": "Analysis failed."
+  },
+  "result": {
+    "score": "Overall score",
+    "recommendations": "Recommended actions",
+    "templateMode": "Rule-based (no AI provider)",
+    "aiMode": "AI recommendations ({provider})",
+    "noRecommendations": "No issues found.",
+    "checks": "Individual checks",
+    "showPassed": "Show passed"
+  },
+  "categories": {
+    "seo": "SEO",
+    "performance": "Performance",
+    "technik": "Technical",
+    "social": "Social preview"
+  },
+  "facts": {
+    "responseTime": "Response time",
+    "htmlSize": "HTML size",
+    "words": "Words",
+    "images": "Images",
+    "withoutAlt": "without alt"
+  },
+  "pageSpeed": {
+    "heading": "Google PageSpeed (Lighthouse)"
+  },
+  "priority": {
+    "hoch": "high",
+    "mittel": "medium",
+    "niedrig": "low"
+  }
+}

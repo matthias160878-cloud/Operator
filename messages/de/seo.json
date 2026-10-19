@@ -1,0 +1,46 @@
+{
+  "title": "SEO-Analyse",
+  "subtitle": "Prüft eine Seite auf SEO, Technik, Ladezeit und Social-Vorschau und liefert eine Punktzahl mit priorisierten Maßnahmen. Alle Messwerte stammen aus echten Abrufen.",
+  "form": {
+    "urlLabel": "URL der Seite",
+    "keywordLabel": "Fokus-Keyword (optional)",
+    "keywordPlaceholder": "z. B. Kaffee-Abo",
+    "pageSpeedLabel": "Zusätzlich Google PageSpeed (Lighthouse)",
+    "pageSpeedHint": "Dauert 20–60 Sekunden. Ohne PAGESPEED_API_KEY hat Google ein knappes Kontingent.",
+    "mobile": "Mobil",
+    "desktop": "Desktop",
+    "analyzeButton": "Analysieren",
+    "analyzing": "Analysiere …",
+    "failed": "Analyse fehlgeschlagen."
+  },
+  "result": {
+    "score": "Gesamtpunktzahl",
+    "recommendations": "Empfohlene Maßnahmen",
+    "templateMode": "Regelbasiert (kein KI-Provider)",
+    "aiMode": "KI-Empfehlungen ({provider})",
+    "noRecommendations": "Keine Probleme gefunden.",
+    "checks": "Einzelprüfungen",
+    "showPassed": "Bestandene anzeigen"
+  },
+  "categories": {
+    "seo": "SEO",
+    "performance": "Performance",
+    "technik": "Technik",
+    "social": "Social-Vorschau"
+  },
+  "facts": {
+    "responseTime": "Antwortzeit",
+    "htmlSize": "HTML-Größe",
+    "words": "Wörter",
+    "images": "Bilder",
+    "withoutAlt": "ohne Alt"
+  },
+  "pageSpeed": {
+    "heading": "Google PageSpeed (Lighthouse)"
+  },
+  "priority": {
+    "hoch": "hoch",
+    "mittel": "mittel",
+    "niedrig": "niedrig"
+  }
+}

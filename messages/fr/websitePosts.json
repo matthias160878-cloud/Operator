@@ -1,0 +1,26 @@
+{
+  "title": "Posts depuis un site",
+  "subtitle": "Lit une page de votre site et rédige des publications dans le style de votre marque. Modifiez-les, copiez-les ou enregistrez-les comme brouillons dans la Content Factory — rien n’est publié automatiquement.",
+  "form": {
+    "urlLabel": "URL de la page",
+    "platformsLabel": "Plateformes",
+    "perPlatformLabel": "Publications par plateforme",
+    "instructionsLabel": "Souhaits supplémentaires (facultatif)",
+    "instructionsPlaceholder": "p. ex. mettre l’accent sur l’offre d’automne, ton détendu",
+    "generateButton": "Générer les publications",
+    "generating": "Génération …",
+    "failed": "La génération a échoué."
+  },
+  "result": {
+    "templateMode": "Mode modèle (sans IA) — merci de retravailler les textes",
+    "aiMode": "Généré par IA ({provider})",
+    "copy": "Copier",
+    "copied": "Copié",
+    "hookPlaceholder": "Accroche / première ligne",
+    "chars": "{count} caractères",
+    "saveButton": "Enregistrer {count} comme brouillon",
+    "saved": "{count} brouillons enregistrés.",
+    "openContentFactory": "Ouvrir dans la Content Factory",
+    "saveFailed": "L’enregistrement a échoué."
+  }
+}

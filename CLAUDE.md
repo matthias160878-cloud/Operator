@@ -32,7 +32,8 @@ Agenten- und API-Dokumentation: siehe [`README-SOCIAL-MEDIA.md`](README-SOCIAL-M
 
 - `src/app/` — App-Router-Seiten (Dashboard, Content Brain, Brand DNA, Ideen,
   Content Factory, Script/Voice/Video/Design Studio, Social Media,
-  Content Kalender, Analytics, Agenten, Integrationen, Einstellungen) sowie
+  Content Kalender, Analytics, SEO-Analyse, Posts aus Website, Posteingang,
+  Agenten, Integrationen, Einstellungen) sowie
   `src/app/api/**` für alle mutierenden Aktionen. `layout.tsx` bindet den
   App-Shell (Sidebar/Topbar, `src/components/layout/`) und die Schriftarten
   (Geist Sans/Mono über `next/font/google`) ein; `page.tsx` ist das Dashboard.

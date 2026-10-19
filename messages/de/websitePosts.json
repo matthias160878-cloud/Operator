@@ -1,0 +1,26 @@
+{
+  "title": "Posts aus Website",
+  "subtitle": "Liest eine Seite deiner Website und schreibt daraus Beiträge im Stil deiner Brand DNA. Du kannst sie bearbeiten, kopieren oder als Entwürfe in die Content Factory übernehmen — veröffentlicht wird nichts automatisch.",
+  "form": {
+    "urlLabel": "URL der Seite",
+    "platformsLabel": "Plattformen",
+    "perPlatformLabel": "Beiträge pro Plattform",
+    "instructionsLabel": "Zusätzliche Wünsche (optional)",
+    "instructionsPlaceholder": "z. B. Fokus auf das Herbst-Angebot, lockerer Ton",
+    "generateButton": "Beiträge erzeugen",
+    "generating": "Erzeuge …",
+    "failed": "Erzeugen fehlgeschlagen."
+  },
+  "result": {
+    "templateMode": "Vorlagen-Modus (kein KI-Provider) — Texte bitte überarbeiten",
+    "aiMode": "Erzeugt mit KI ({provider})",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "hookPlaceholder": "Hook / erste Zeile",
+    "chars": "{count} Zeichen",
+    "saveButton": "{count} als Entwurf speichern",
+    "saved": "{count} Entwürfe gespeichert.",
+    "openContentFactory": "In der Content Factory öffnen",
+    "saveFailed": "Speichern fehlgeschlagen."
+  }
+}

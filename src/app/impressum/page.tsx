@@ -80,7 +80,7 @@ export default function ImpressumPage() {
           <Link href="/buy" className="text-accent-2 underline">Zurück</Link>
         </p>
       </div>
-      <LegalFooter />
+      <LegalFooter installieren />
     </div>
   );
 }

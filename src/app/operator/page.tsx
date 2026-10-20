@@ -202,7 +202,7 @@ export default async function OperatorPage() {
         )}
       </section>
       <PromoCodesPanel initial={promoCodes.map((c) => ({ ...c, createdAt: c.createdAt.toISOString() }))} />
-      <LegalFooter />
+      <LegalFooter installieren />
     </div>
   );
 }

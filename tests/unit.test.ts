@@ -831,3 +831,35 @@ test("Plattform-Richtlinien: KI-Kennzeichnung nur für Videos aus KI-Diensten", 
   assert.equal(istKiVideo({ provider: "upload" }), false);
   assert.equal(istKiVideo({ provider: "capcut" }), true);
 });
+
+test("Kündigungsbutton: Referenz, Zeitpunkt und neutrale Bestätigung", async () => {
+  const { neueReferenz, istReferenz, pruefeZeitpunkt, zeitpunktText, bestaetigungsMail, heuteInDeutschland } = await import("@/lib/kuendigung");
+  const ref = neueReferenz(new Date("2026-12-31T23:30:00Z"));
+  assert.match(ref, /^K-2027-[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{6}$/, "Jahr in deutscher Zeit");
+  assert.ok(istReferenz(ref));
+  assert.ok(!istReferenz("K-2026-0O1IL0"));
+  assert.equal(new Set(Array.from({ length: 50 }, () => neueReferenz())).size, 50);
+
+  assert.equal(heuteInDeutschland(new Date("2026-10-19T22:30:00Z")), "2026-10-20");
+  const heute = "2026-10-20";
+  assert.equal(pruefeZeitpunkt("", heute), "naechstmoeglich");
+  assert.equal(pruefeZeitpunkt("naechstmoeglich", heute), "naechstmoeglich");
+  assert.equal(pruefeZeitpunkt("2026-10-20", heute), "2026-10-20");
+  assert.equal(pruefeZeitpunkt("2026-12-31", heute), "2026-12-31");
+  assert.equal(pruefeZeitpunkt("2026-10-19", heute), null, "Vergangenheit");
+  assert.equal(pruefeZeitpunkt("2027-02-30", heute), null, "kein echtes Datum");
+  assert.equal(pruefeZeitpunkt("2032-01-01", heute), null, "mehr als 5 Jahre");
+  assert.equal(pruefeZeitpunkt("31.12.2026", heute), null);
+  assert.equal(zeitpunktText("naechstmoeglich"), "zum nächstmöglichen Zeitpunkt");
+  assert.equal(zeitpunktText("2026-12-31"), "zum 31.12.2026");
+
+  const mail = bestaetigungsMail({
+    referenz: ref, art: "AUSSERORDENTLICH", grund: "<b>Grund</b>", name: "Eva <Test>", email: "eva@example.test", kundennummer: "",
+    vertrag: "Social Media KI – Pro", zeitpunkt: "naechstmoeglich", bestaetigungEmail: "eva@example.test", eingangAm: new Date("2026-10-20T08:15:00Z"),
+  });
+  assert.equal(mail.subject, "Eingangsbestätigung Ihrer Kündigung – SECRET 58");
+  assert.ok(mail.text.includes(ref) && mail.text.includes("zum nächstmöglichen Zeitpunkt") && mail.text.includes("10:15:00"));
+  assert.ok(mail.text.includes("Ihre Kündigung ist bei uns eingegangen"));
+  assert.ok(!mail.html.includes("<b>Grund</b>") && mail.html.includes("&lt;b&gt;Grund&lt;/b&gt;") && mail.html.includes("Eva &lt;Test&gt;"), "HTML maskiert");
+  assert.ok(!/Konto (gefunden|existiert)|kein Konto/i.test(mail.text), "verrät nicht, ob ein Konto existiert");
+});

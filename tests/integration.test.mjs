@@ -2530,3 +2530,116 @@ test("Kampagnen: Assistent ohne Duplikate, Budgetregeln, Plattformformate mit Fr
   assert.equal(fakes.calls.filter((c) => c.path.startsWith("/emails")).length, mails0, "nichts versendet");
   assert.equal(await prisma.reichweitenKampagne.count({ where: { id: kid } }), 1, "echte Kampagne bleibt");
 });
+
+test("Kündigungsbutton (§ 312k BGB): öffentlich, Bestätigung auf dem Bildschirm und per E-Mail, Posteingang, Missbrauchsschutz", async () => {
+  // Bestätigungsseite ohne Anmeldung
+  const seite = await fetch(`${BASE}/kuendigen`, { redirect: "manual" });
+  assert.equal(seite.status, 200);
+  const html = await seite.text();
+  assert.ok(html.includes("jetzt kündigen") && html.includes("Verträge hier kündigen"), "Knopf und Überschrift");
+  assert.ok(html.includes("Social Media KI – Pro") && html.includes("Social Media KI – Maxi") && html.includes("zum nächstmöglichen Zeitpunkt"));
+  // ständig verfügbar: Seitenfuß der öffentlichen Seiten und der Zentrale
+  for (const p of ["/login", "/signup", "/impressum", "/preise"]) {
+    assert.ok((await (await fetch(`${BASE}${p}`)).text()).includes('href="/kuendigen"'), `Link fehlt auf ${p}`);
+  }
+  assert.ok((await (await fetch(`${BASE}/buy`)).text()).includes('href="/kuendigen"'), "Link fehlt im eigenen Seitenfuß von /buy (src/app/buy/page.tsx)");
+
+  const post = (body, ip, headers = {}) =>
+    fetch(`${BASE}/api/kuendigen`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR, "x-forwarded-for": ip, ...headers }, body: JSON.stringify(body) });
+  const gueltig = (email, bestaetigungEmail, extra = {}) => ({
+    art: "ORDENTLICH", name: "Kim Kündig", email, kundennummer: "", vertrag: "PRO", zeitpunkt: "naechstmoeglich", bestaetigungEmail, ...extra,
+  });
+  const mails = () => fakes.calls.filter((c) => c.path === "/emails" && c.email);
+  const op = await prisma.user.findFirstOrThrow({ where: { isOperator: true } });
+
+  // ungültige Eingaben
+  assert.equal((await post({ name: "x" }, "10.90.1.1")).status, 400);
+  assert.equal((await post(gueltig("a@example.test", "a@example.test", { vertrag: "SONSTIGES" }), "10.90.1.2")).status, 400, "Sonstiger Vertrag ohne Beschreibung");
+  assert.equal((await post(gueltig("a@example.test", "a@example.test", { zeitpunkt: "2020-01-01" }), "10.90.1.3")).status, 400, "Datum in der Vergangenheit");
+  assert.equal((await post(gueltig("a@example.test", "a@example.test", { workspaceId: "fremd" }), "10.90.1.4")).status, 400, "keine Arbeitsbereichs-ID aus der Anfrage");
+  assert.equal((await post(gueltig("a@example.test", "keine-adresse"), "10.90.1.5")).status, 400);
+  assert.equal((await post(gueltig("a@example.test", "a@example.test", { name: "x".repeat(121) }), "10.90.1.6")).status, 400, "Längengrenze");
+  const fremd = await fetch(`${BASE}/api/kuendigen`, { method: "POST", headers: { "content-type": "application/json", origin: "https://evil.example" }, body: JSON.stringify(gueltig("a@example.test", "a@example.test")) });
+  assert.equal(fremd.status, 403);
+  assert.equal(await prisma.kuendigung.count(), 0);
+
+  // bekanntes Konto (A hat ein Paket)
+  const m0 = mails().length;
+  const r1 = await post(gueltig("A@Example.test", "kim@example.test", { kundennummer: "Firma A" }), "10.90.2.1");
+  assert.equal(r1.status, 200);
+  const d1 = await r1.json();
+  assert.match(d1.referenz, /^K-\d{4}-[2-9A-Z]{6}$/);
+  assert.equal(d1.emailGesendet, true);
+  assert.ok(d1.eingangText && d1.zeitpunktText === "zum nächstmöglichen Zeitpunkt");
+  assert.ok(d1.zeilen.some(([a, b]) => a === "Referenznummer" && b === d1.referenz));
+  assert.match(d1.meldung, /Ihre Kündigung ist bei uns eingegangen/);
+  const k1 = await prisma.kuendigung.findUniqueOrThrow({ where: { referenz: d1.referenz } });
+  assert.equal(k1.email, "a@example.test");
+  assert.equal(k1.workspaceId, await workspaceIdOf("a@example.test"), "Zuordnung serverseitig über die E-Mail");
+  assert.equal(k1.emailGesendet, true);
+  assert.equal(k1.bearbeitetAm, null);
+  assert.equal(mails().length, m0 + 1);
+  const mail = mails().at(-1).email;
+  assert.deepEqual(mail.to, ["kim@example.test"]);
+  assert.equal(mail.subject, "Eingangsbestätigung Ihrer Kündigung – SECRET 58");
+  assert.ok(mail.text.includes(d1.referenz) && mail.text.includes("Social Media KI – Pro") && mail.text.includes("zum nächstmöglichen Zeitpunkt"));
+  const conv = await prisma.conversation.findFirstOrThrow({ where: { workspaceId: op.workspaceId, participantName: { contains: d1.referenz } }, include: { messages: true } });
+  assert.match(conv.messages[0].body, new RegExp(`^Kündigung ${d1.referenz}`));
+  assert.match(conv.messages[0].body, /Konto gefunden/);
+  const planA = await prisma.workspacePlan.findUnique({ where: { workspaceId: k1.workspaceId } });
+  if (planA) assert.ok(conv.messages[0].body.includes(`Paket: ${planA.plan}`), "Paketstand für den Betreiber");
+  assert.match(conv.messages[0].body, /Nichts wurde automatisch gekündigt/);
+  if (planA) {
+    const nachher = await prisma.workspacePlan.findUniqueOrThrow({ where: { workspaceId: k1.workspaceId } });
+    assert.equal(nachher.status, planA.status);
+    assert.equal(nachher.cancelAtPeriodEnd, planA.cancelAtPeriodEnd, "keine automatische Änderung am Abo");
+  }
+  assert.ok(!fakes.calls.some((c) => c.path.includes("/v1/subscriptions") && c.method === "DELETE"), "kein Stripe-Abbruch");
+
+  // unbekannte E-Mail: gleich aufgebaute Antwort
+  const r2 = await post(gueltig("niemand@example.test", "niemand@example.test", { art: "AUSSERORDENTLICH", grund: "<script>x</script>", zeitpunkt: "2099-01-01" }), "10.90.2.2");
+  assert.equal(r2.status, 400, "Datum mehr als 5 Jahre in der Zukunft");
+  const r3 = await post(gueltig("niemand@example.test", "niemand@example.test", { art: "AUSSERORDENTLICH", grund: "<script>x</script>", vertrag: "SONSTIGES", vertragBeschreibung: "Altvertrag" }), "10.90.2.3");
+  assert.equal(r3.status, 200);
+  const d3 = await r3.json();
+  assert.deepEqual(Object.keys(d3).sort(), Object.keys(d1).sort(), "gleiche Antwortstruktur");
+  assert.deepEqual(d3.zeilen.map(([a]) => a).filter((a) => a !== "Kündigungsgrund"), d1.zeilen.map(([a]) => a));
+  assert.equal(d3.emailGesendet, true);
+  assert.equal(d3.meldung.replace("niemand@example.test", "X"), d1.meldung.replace("kim@example.test", "X"), "Meldung verrät kein Konto");
+  const k3 = await prisma.kuendigung.findUniqueOrThrow({ where: { referenz: d3.referenz } });
+  assert.equal(k3.workspaceId, null);
+  assert.equal(k3.vertrag, "Sonstiger Vertrag: Altvertrag");
+  const mail3 = mails().at(-1).email;
+  assert.ok(!mail3.html.includes("<script>") && mail3.html.includes("&lt;script&gt;"), "HTML maskiert");
+  const conv3 = await prisma.conversation.findFirstOrThrow({ where: { workspaceId: op.workspaceId, participantName: { contains: d3.referenz } }, include: { messages: true } });
+  assert.match(conv3.messages[0].body, /Kein Konto mit dieser E-Mail-Adresse/);
+
+  // Versand schlägt fehl: Kündigung bleibt gespeichert, ehrlicher Hinweis
+  fakes.mail.failNext = 1;
+  const r4 = await post(gueltig("a@example.test", "kim2@example.test", { vertrag: "MAXI", zeitpunkt: "2030-06-30" }), "10.90.2.4");
+  assert.equal(r4.status, 200);
+  const d4 = await r4.json();
+  assert.equal(d4.emailGesendet, false);
+  assert.equal(d4.zeitpunktText, "zum 30.06.2030");
+  assert.match(d4.meldung, /konnte gerade nicht versendet werden/);
+  assert.equal((await prisma.kuendigung.findUniqueOrThrow({ where: { referenz: d4.referenz } })).emailGesendet, false);
+  const conv4 = await prisma.conversation.findFirstOrThrow({ where: { participantName: { contains: d4.referenz } }, include: { messages: true } });
+  assert.match(conv4.messages[0].body, /NICHT versendet/);
+  // Kunden sehen keine Kündigungen im eigenen Posteingang
+  assert.equal(await prisma.conversation.count({ where: { participantName: { startsWith: "Kündigung " }, workspaceId: { not: op.workspaceId } } }), 0);
+
+  // Ratenbegrenzung je Anschluss
+  for (let i = 0; i < 5; i++) assert.equal((await post({ name: "x" }, "10.90.3.1")).status, 400);
+  assert.equal((await post(gueltig("a@example.test", "kim3@example.test"), "10.90.3.1")).status, 429);
+  assert.equal((await post({ name: "x" }, "10.90.3.2")).status, 400, "andere Adresse nicht betroffen");
+
+  // Betreiberansicht: nur Betreiber, als bearbeitet markieren
+  assert.equal((await A.req("/operator/kuendigungen")).status, 307);
+  assert.equal((await A.json("/api/operator/kuendigungen", { method: "PATCH", body: { id: k1.id, bearbeitet: true } })).status, 404);
+  const O = new Client();
+  assert.equal((await O.json("/api/auth/login", { method: "POST", body: { email: "op@example.test", password: "betreiber-passwort-123" }, headers: { "x-forwarded-for": "10.90.4.1" } })).status, 200);
+  const liste = await (await O.req("/operator/kuendigungen")).text();
+  assert.ok(liste.includes(d1.referenz) && liste.includes(d3.referenz) && liste.includes("E-Mail NICHT versendet"));
+  assert.equal((await O.json("/api/operator/kuendigungen", { method: "PATCH", body: { id: k1.id, bearbeitet: true } })).status, 200);
+  assert.ok((await prisma.kuendigung.findUniqueOrThrow({ where: { id: k1.id } })).bearbeitetAm);
+});

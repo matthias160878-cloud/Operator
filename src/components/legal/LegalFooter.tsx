@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { legalLinks } from "@/lib/legal";
 
-/** Impressum, Datenschutz und AGB — von jeder Seite aus mit einem Klick erreichbar. */
+/** Impressum, Datenschutz, AGB und Kündigungsbutton (§ 312k BGB) — von jeder Seite aus mit einem Klick erreichbar. */
 export function LegalFooter({ className }: { className?: string }) {
   const { agb, datenschutz } = legalLinks();
   return (
@@ -15,6 +15,7 @@ export function LegalFooter({ className }: { className?: string }) {
       {agb && (
         <a href={agb} className="hover:text-foreground" target="_blank" rel="noreferrer">AGB</a>
       )}
+      <Link href="/kuendigen" className="hover:text-foreground">Verträge hier kündigen</Link>
     </footer>
   );
 }

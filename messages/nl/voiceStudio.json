@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs Voice Engine — Voice Library beheren, voice-over-previews maken en stemmen importeren.",
-  "envWarning": "ElevenLabs is nog niet geconfigureerd. Voer <envKey>ELEVENLABS_API_KEY</envKey> in <envFile>.env</envFile> in om voice-over en stemimport te gebruiken. De Voice Library kan toch voor de planning worden gebruikt.",
+  "envWarning": "Voice-over is nog niet beschikbaar: de beheerder richt de spraakdienst (ElevenLabs) in. De stemmenbibliotheek kun je al gebruiken voor de planning.",
   "addManual": "Stem handmatig toevoegen",
   "importFromElevenLabs": "Importeren uit ElevenLabs",
   "form": {

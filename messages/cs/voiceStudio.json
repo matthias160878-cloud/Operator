@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs Voice Engine — spravuj knihovnu hlasů, vytvářej náhledy voiceoveru a importuj hlasy.",
-  "envWarning": "ElevenLabs ještě není nastaven. Zadej <envKey>ELEVENLABS_API_KEY</envKey> do <envFile>.env</envFile>, abys mohl/a používat voiceover a import hlasů. Knihovnu hlasů lze přesto využít pro plánování.",
+  "envWarning": "Hlasový komentář zatím není k dispozici: hlasovou službu (ElevenLabs) nastavuje provozovatel. Knihovnu hlasů už můžete používat pro plánování.",
   "addManual": "Přidat hlas ručně",
   "importFromElevenLabs": "Importovat z ElevenLabs",
   "form": {

@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "Silnik głosu ElevenLabs — zarządzaj biblioteką głosów, twórz podglądy lektora i importuj głosy.",
-  "envWarning": "ElevenLabs nie jest jeszcze skonfigurowany. Wpisz <envKey>ELEVENLABS_API_KEY</envKey> w <envFile>.env</envFile>, aby korzystać z lektora i importu głosów. Biblioteki głosów można mimo to używać do planowania.",
+  "envWarning": "Lektor nie jest jeszcze dostępny: usługę głosową (ElevenLabs) konfiguruje operator. Bibliotekę głosów możesz już używać do planowania.",
   "addManual": "Dodaj głos ręcznie",
   "importFromElevenLabs": "Importuj z ElevenLabs",
   "form": {

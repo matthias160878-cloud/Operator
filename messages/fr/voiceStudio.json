@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "Moteur vocal ElevenLabs — gérez la bibliothèque de voix, générez des aperçus de voix off et importez des voix.",
-  "envWarning": "ElevenLabs n'est pas encore configuré. Ajoutez <envKey>ELEVENLABS_API_KEY</envKey> dans <envFile>.env</envFile> pour utiliser la voix off et l'import de voix. La bibliothèque de voix reste utilisable pour la planification en attendant.",
+  "envWarning": "La voix off n'est pas encore disponible : l'opérateur configure le service vocal (ElevenLabs). Vous pouvez déjà utiliser la bibliothèque de voix pour la planification.",
   "addManual": "Ajouter une voix manuellement",
   "importFromElevenLabs": "Importer depuis ElevenLabs",
   "form": {

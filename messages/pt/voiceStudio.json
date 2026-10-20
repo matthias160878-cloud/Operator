@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "Motor de voz da ElevenLabs — gerir a biblioteca de vozes, gerar pré-visualizações de voz off e importar vozes.",
-  "envWarning": "A ElevenLabs ainda não está configurada. Regista <envKey>ELEVENLABS_API_KEY</envKey> em <envFile>.env</envFile> para usar voz off e importação de vozes. A biblioteca de vozes pode, ainda assim, ser usada para planeamento.",
+  "envWarning": "A locução ainda não está disponível: o operador configura o serviço de voz (ElevenLabs). Já pode usar a biblioteca de vozes para planear.",
   "addManual": "Criar voz manualmente",
   "importFromElevenLabs": "Importar da ElevenLabs",
   "form": {

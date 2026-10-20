@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs Voice Engine — halda häälteeki, loo häälkõne eelvaateid ja impordi hääli.",
-  "envWarning": "ElevenLabs pole veel seadistatud. Sisesta <envKey>ELEVENLABS_API_KEY</envKey> faili <envFile>.env</envFile>, et kasutada häälkõnet ja häälte importi. Häälteeki saab planeerimiseks siiski kasutada.",
+  "envWarning": "Pealelugemine pole veel saadaval: kõneteenuse (ElevenLabs) seadistab haldur. Häälteeki saad juba planeerimiseks kasutada.",
   "addManual": "Lisa hääl käsitsi",
   "importFromElevenLabs": "Impordi ElevenLabsist",
   "form": {

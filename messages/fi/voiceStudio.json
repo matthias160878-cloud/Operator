@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs Voice Engine — hallitse äänikirjastoa, luo voiceover-esikuunteluja ja tuo ääniä.",
-  "envWarning": "ElevenLabsia ei ole vielä määritetty. Lisää <envKey>ELEVENLABS_API_KEY</envKey> tiedostoon <envFile>.env</envFile> käyttääksesi voiceoveria ja äänten tuontia. Äänikirjastoa voi silti käyttää suunnitteluun.",
+  "envWarning": "Selostus ei ole vielä käytettävissä: puhepalvelun (ElevenLabs) määrittää ylläpitäjä. Voit jo käyttää äänikirjastoa suunnitteluun.",
   "addManual": "Lisää ääni käsin",
   "importFromElevenLabs": "Tuo ElevenLabsista",
   "form": {

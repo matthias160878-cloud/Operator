@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs мотор гласа — управљај библиотеком гласова, прави прегледе војсовера и увози гласове.",
-  "envWarning": "ElevenLabs још није подешен. Унеси <envKey>ELEVENLABS_API_KEY</envKey> у <envFile>.env</envFile> да користиш војсовер и увоз гласова. Библиотека гласова се ипак може користити за планирање.",
+  "envWarning": "Glasovni zapis još nije dostupan: glasovnu uslugu (ElevenLabs) podešava operater. Biblioteku glasova već možete koristiti za planiranje.",
   "addManual": "Направи глас ручно",
   "importFromElevenLabs": "Увези из ElevenLabs",
   "form": {

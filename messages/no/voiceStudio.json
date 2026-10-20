@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs Voice Engine — administrer stemmebiblioteket, lag voiceover-forhåndsvisninger og importer stemmer.",
-  "envWarning": "ElevenLabs er ikke konfigurert ennå. Legg inn <envKey>ELEVENLABS_API_KEY</envKey> i <envFile>.env</envFile> for å bruke voiceover og stemmeimport. Stemmebiblioteket kan likevel brukes til planlegging.",
+  "envWarning": "Voiceover er ikke tilgjengelig ennå: operatøren setter opp taletjenesten (ElevenLabs). Du kan allerede bruke stemmebiblioteket til planlegging.",
   "addManual": "Opprett stemme manuelt",
   "importFromElevenLabs": "Importer fra ElevenLabs",
   "form": {

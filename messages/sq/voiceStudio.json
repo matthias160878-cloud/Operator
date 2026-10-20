@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "Motori i zërit ElevenLabs — menaxho Voice Library, krijo parapamje voiceover dhe importo zëra.",
-  "envWarning": "ElevenLabs ende nuk është konfiguruar. Shkruaj <envKey>ELEVENLABS_API_KEY</envKey> te <envFile>.env</envFile> për të përdorur voiceover dhe importin e zërave. Voice Library mund të përdoret prapë për planifikim.",
+  "envWarning": "Zëri jashtë kamere nuk është ende i disponueshëm: shërbimin e zërit (ElevenLabs) e konfiguron operatori. Bibliotekën e zërave mund ta përdorni tashmë për planifikim.",
   "addManual": "Krijo një zë me dorë",
   "importFromElevenLabs": "Importo nga ElevenLabs",
   "form": {

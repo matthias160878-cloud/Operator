@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs raddvél — stjórnaðu raddasafni, búðu til forskoðun á talsetningu og fluttu inn raddir.",
-  "envWarning": "ElevenLabs er ekki enn stillt. Skráðu <envKey>ELEVENLABS_API_KEY</envKey> í <envFile>.env</envFile> til að nota talsetningu og innflutning radda. Raddasafnið má samt nota til skipulagningar.",
+  "envWarning": "Talsetning er ekki enn í boði: rekstraraðili setur upp raddþjónustuna (ElevenLabs). Þú getur nú þegar notað raddsafnið við skipulagningu.",
   "addManual": "Stofna rödd handvirkt",
   "importFromElevenLabs": "Flytja inn frá ElevenLabs",
   "form": {

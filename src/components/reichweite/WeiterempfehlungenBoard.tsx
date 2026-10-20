@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Ban, Loader2, Plus, Trash2 } from "lucide-react";
 import type { Auswertung, StufenKnoten, Zahl } from "@/lib/reichweite/auswertung";
-import { METRIK_INFO, METRIKEN } from "@/lib/reichweite/auswertung";
+import { formatiereMetrikWert, istMetrik, METRIK_INFO, METRIKEN, type Metrik } from "@/lib/reichweite/auswertung";
 import { empfehlungsUrl } from "@/lib/reichweite/teilen";
 import { begleittexte } from "@/lib/reichweite/vorschlaege";
 import { TeilenBereich } from "@/components/reichweite/TeilenBereich";
@@ -76,7 +76,7 @@ function ZahlKarte({ label, zahl }: { label: string; zahl: Zahl }) {
         {zahl.istDemo && <DemoMarke />}
       </div>
       <div className={`mt-1 text-lg font-semibold ${ohneWert ? "text-muted" : "text-foreground"}`}>
-        {ohneWert ? STATUS_TEXT[zahl.status] : zahl.wert!.toLocaleString("de-DE")}
+        {ohneWert ? STATUS_TEXT[zahl.status] : (zahl.anzeige ?? zahl.wert!.toLocaleString("de-DE"))}
       </div>
       <div className="text-[11px] text-muted">{zahl.einheit}</div>
       <dl className="mt-2 space-y-0.5 text-[11px] text-muted">
@@ -140,6 +140,7 @@ export function WeiterempfehlungenBoard(props: {
   const [laedt, setLaedt] = useState(false);
   const [fehler, setFehler] = useState<string | null>(null);
   const [teilenFuer, setTeilenFuer] = useState<string | null>(null);
+  const [eingabeMetrik, setEingabeMetrik] = useState<Metrik>(METRIKEN[0]);
   const kampagne = kampagnen.find((k) => k.id === auswahl) ?? null;
 
   useEffect(() => {
@@ -210,7 +211,10 @@ export function WeiterempfehlungenBoard(props: {
       zeitraumVon: f.get("von"),
       zeitraumBis: f.get("bis"),
     });
-    if (ok) form.reset();
+    if (ok) {
+      form.reset();
+      setEingabeMetrik(METRIKEN[0]);
+    }
   }
 
   async function demoLaden() {
@@ -477,18 +481,20 @@ export function WeiterempfehlungenBoard(props: {
           <section className="card space-y-3 p-4">
             <h2 className="text-sm font-semibold text-foreground">Plattformzahlen eintragen</h2>
             <p className="text-[11px] text-muted">
-              Solange keine Statistik-Schnittstelle angebunden ist, können Zahlen aus der Plattform-Statistik von Hand übertragen werden. Sie erscheinen
-              mit Quelle „manuell“{kampagne.istDemo ? " (in Demo-Kampagnen als DEMO)" : ""}.
+              Solange keine Statistik-Schnittstelle angebunden ist, können Zahlen aus der Plattform-Statistik von Hand übertragen werden – auch
+              Speicherungen und Wiedergabedauer. Sie erscheinen mit Quelle „Manuell aus Plattform-Statistik“
+              {kampagne.istDemo ? " (in Demo-Kampagnen als DEMO)" : ""}. Durchschnittswerte (Ø Wiedergabedauer) gelten nur für die
+              eingetragene Plattform und den Zeitraum und werden nie addiert.
             </p>
             {kampagne.kennzahlen.length > 0 && (
               <ul className="space-y-1 text-xs">
                 {kampagne.kennzahlen.map((z) => (
                   <li key={z.id} className="flex flex-wrap items-center gap-2 rounded-md border border-border px-2 py-1">
                     <span className="text-foreground">
-                      {z.plattform} · {METRIK_INFO[z.metrik as keyof typeof METRIK_INFO]?.label ?? z.metrik}: {z.wert.toLocaleString("de-DE")}
+                      {z.plattform} · {istMetrik(z.metrik) ? METRIK_INFO[z.metrik].label : z.metrik}: {formatiereMetrikWert(z.metrik, z.wert)}
                     </span>
                     <span className="text-muted">
-                      {datum(z.zeitraumVon)} – {datum(z.zeitraumBis)} · {z.quelle === "DEMO" ? "DEMO" : "manuell"}
+                      {datum(z.zeitraumVon)} – {datum(z.zeitraumBis)} · {z.quelle === "DEMO" ? "DEMO" : "Manuell aus Plattform-Statistik"}
                     </span>
                     {darfBearbeiten && (
                       <button type="button" className="ml-auto text-muted hover:text-danger" disabled={laedt} onClick={() => aufruf(`/api/reichweite/kennzahlen/${z.id}`, "DELETE")} aria-label="Kennzahl löschen">
@@ -506,19 +512,42 @@ export function WeiterempfehlungenBoard(props: {
                     <option key={p}>{p}</option>
                   ))}
                 </select>
-                <select name="metrik" className={feld} required>
+                <select
+                  name="metrik"
+                  className={feld}
+                  required
+                  value={eingabeMetrik}
+                  onChange={(e) => istMetrik(e.target.value) && setEingabeMetrik(e.target.value)}
+                  aria-describedby="kennzahl-eingabe-hinweis"
+                >
                   {METRIKEN.map((m) => (
                     <option key={m} value={m}>
                       {METRIK_INFO[m].label}
+                      {m === "WIEDERGABEDAUER_SEK" ? " (Sekunden)" : m === "GESAMTWIEDERGABEZEIT_MIN" ? " (Minuten)" : ""}
                     </option>
                   ))}
                 </select>
-                <input name="wert" type="number" min={0} required placeholder="Wert" className={feld} />
+                <input
+                  name="wert"
+                  type="number"
+                  min={0}
+                  step={1}
+                  required
+                  placeholder={eingabeMetrik === "WIEDERGABEDAUER_SEK" ? "Sekunden" : eingabeMetrik === "GESAMTWIEDERGABEZEIT_MIN" ? "Minuten" : "Wert"}
+                  aria-label={`Wert: ${METRIK_INFO[eingabeMetrik].eingabe}`}
+                  className={feld}
+                />
                 <input name="von" type="date" required className={feld} aria-label="Zeitraum von" />
                 <input name="bis" type="date" required className={feld} aria-label="Zeitraum bis" />
                 <button type="submit" className={knopfPrimaer} disabled={laedt}>
                   <Plus className="h-4 w-4" /> Eintragen
                 </button>
+                <p id="kennzahl-eingabe-hinweis" className="text-[11px] text-muted sm:col-span-3 lg:col-span-6" data-testid="kennzahl-eingabe-hinweis">
+                  {METRIK_INFO[eingabeMetrik].label}: {METRIK_INFO[eingabeMetrik].eingabe}.
+                  {METRIK_INFO[eingabeMetrik].art === "DURCHSCHNITT"
+                    ? " Durchschnitt laut Plattform – Anzeige als m:ss, wird nicht über Plattformen oder Zeiträume addiert."
+                    : ""}
+                </p>
               </form>
             )}
           </section>

@@ -16,13 +16,16 @@ Modul in der Social-Media-App (`/weiterempfehlungen`). Stand: Vorschau im Branch
 | Anfragen über das Formular | gemessen. Sie landen als Kundenanfrage im Kanal `empfehlung`. |
 | Ausdrücklich erzeugte eigene Links | gemessen (gemessene Weiterempfehlung) |
 | Aufrufe über Team-Links | gemessen, Herkunft aber **unbekannt**: direkt aus dem Beitrag, aus der Bio oder aus einer weitergeleiteten Nachricht |
-| Impressionen, Reichweite, Videoaufrufe, Shares | nur DEMO oder manuell übertragen. Der Statistik-Abruf per Schnittstelle ist **nicht angebunden**. |
+| Impressionen, Reichweite, Videoaufrufe, Shares, Speicherungen, Gesamtwiedergabezeit (Minuten) | Zählwerte je Plattform und Zeitraum, nur DEMO oder manuell übertragen (Quelle „Manuell aus Plattform-Statistik“). Der Statistik-Abruf per Schnittstelle ist **nicht angebunden**. |
+| Ø Wiedergabedauer (`WIEDERGABEDAUER_SEK`) | Durchschnitt laut Plattform in ganzen Sekunden, Anzeige als m:ss. Nur DEMO oder manuell übertragen. Wird **nie** über Plattformen oder Zeiträume addiert oder gemittelt, sondern nur je Plattform und Zeitraum gezeigt. |
 | Plattformempfehlungen (Algorithmus) | nicht angebunden |
 | Newsletter-Anmeldungen je Kampagne | nicht angebunden. Der vorhandene Newsletter ist global. |
 | Eindeutige Personen | **nicht messbar**. Es gibt keine Cookies und keine Besucherkennung. |
 | Weitergabe per Messenger (gleicher Link) | nicht messbar |
 
-Reichweite, die über Plattformen summiert wird, ergibt keine Zahl eindeutiger Personen. Aufrufe, Klicks und Ausspielungen werden nicht miteinander verrechnet.
+Reichweite, die über Plattformen summiert wird, ergibt keine Zahl eindeutiger Personen. Aufrufe, Klicks und Ausspielungen werden nicht miteinander verrechnet. Durchschnittswerte (Ø Wiedergabedauer) erscheinen in keiner Summe (`istSummierbar` in `src/lib/reichweite/auswertung.ts`); ohne Einzeldaten wäre ein Gesamtdurchschnitt falsch.
+
+Manuelle Eingabe: im Board „Plattformzahlen eintragen“ Plattform, Kennzahl, ganzzahligen Wert und Zeitraum wählen. Die Ø Wiedergabedauer wird in Sekunden eingetragen (z. B. 1:05 min = 65, höchstens 86 400), die Gesamtwiedergabezeit in Minuten. Ungültige Kennzahlen oder Werte lehnt `POST /api/reichweite/kampagnen/[id]/kennzahlen` mit 400 ab.
 
 ## Datenschutz
 - Ereignisse speichern nur Art, Link, Kampagne und Zeit. Sie speichern keine IP-Adresse, keinen User-Agent und kein Cookie. Für den Missbrauchsschutz werden Zähler-Schlüssel (auch die IP-Adresse) mit einem geheimen Server-Wert per HMAC pseudonymisiert (`src/lib/rateLimit.ts`); abgelaufene Zähler werden nach 2 Tagen gelöscht.

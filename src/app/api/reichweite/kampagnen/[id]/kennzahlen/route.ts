@@ -2,17 +2,20 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { route } from "@/lib/api";
-import { METRIKEN } from "@/lib/reichweite/auswertung";
+import { istMetrik, METRIK_INFO, METRIK_MAX, METRIKEN, type Metrik } from "@/lib/reichweite/auswertung";
 import { bearbeiterOderAntwort } from "@/lib/reichweite/zugriff";
 import { eigeneKampagne, protokoll } from "@/lib/reichweite/service";
 
-const schema = z.object({
-  plattform: z.enum(["YOUTUBE", "INSTAGRAM", "FACEBOOK", "LINKEDIN", "TIKTOK", "SONSTIGE"]),
-  metrik: z.enum(METRIKEN as [string, ...string[]]),
-  wert: z.number().int().min(0).max(1_000_000_000),
-  zeitraumVon: z.string().min(8),
-  zeitraumBis: z.string().min(8),
-});
+const schema = z
+  .object({
+    plattform: z.enum(["YOUTUBE", "INSTAGRAM", "FACEBOOK", "LINKEDIN", "TIKTOK", "SONSTIGE"]),
+    metrik: z.enum(METRIKEN as [Metrik, ...Metrik[]]),
+    wert: z.number().int().min(0).max(1_000_000_000),
+    zeitraumVon: z.string().min(8),
+    zeitraumBis: z.string().min(8),
+  })
+  // Plausibilität je Metrik, z. B. Ø Wiedergabedauer höchstens 24 h in Sekunden.
+  .refine((d) => d.wert <= METRIK_MAX[d.metrik], { path: ["wert"] });
 
 /** Manuell aus der Plattform-Statistik übertragene Zahl (Quelle MANUELL). */
 async function handlePOST(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -20,8 +23,20 @@ async function handlePOST(request: Request, { params }: { params: Promise<{ id: 
   if (user instanceof Response) return user;
   const { id } = await params;
   const kampagne = await eigeneKampagne(user.workspaceId, id);
-  const parsed = schema.safeParse(await request.json().catch(() => null));
-  if (!parsed.success) return NextResponse.json({ error: "Bitte Plattform, Kennzahl, Wert und Zeitraum angeben." }, { status: 400 });
+  const roh = (await request.json().catch(() => null)) as { metrik?: unknown } | null;
+  const parsed = schema.safeParse(roh);
+  if (!parsed.success) {
+    const metrik = typeof roh?.metrik === "string" && istMetrik(roh.metrik) ? roh.metrik : null;
+    const wertFehler = metrik && parsed.error.issues.some((i) => i.path[0] === "wert");
+    return NextResponse.json(
+      {
+        error: wertFehler
+          ? `Ungültiger Wert für „${METRIK_INFO[metrik].label}“: ${METRIK_INFO[metrik].eingabe}, höchstens ${METRIK_MAX[metrik].toLocaleString("de-DE")}.`
+          : "Bitte Plattform, Kennzahl, Wert und Zeitraum angeben.",
+      },
+      { status: 400 }
+    );
+  }
   const von = new Date(parsed.data.zeitraumVon);
   const bis = new Date(parsed.data.zeitraumBis);
   if (Number.isNaN(von.getTime()) || Number.isNaN(bis.getTime()) || von > bis) {

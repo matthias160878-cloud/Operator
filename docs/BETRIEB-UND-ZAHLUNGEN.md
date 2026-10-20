@@ -305,6 +305,14 @@ Sicherung und Wiederherstellung:
 - Integrationssuite gegen PostgreSQL: leere Datenbank anlegen, `DATABASE_URL=… npm run build:server`,
   dann `TEST_DATABASE_URL=… npm run test:integration` (am 10.10.2026: 25/25).
 
+**Datenbank seit 20.10.2026 bei Neon** (Projekt „secret58“, Region AWS Frankfurt, kostenloser Tarif ohne
+Ablaufdatum, 1 GB). `DATABASE_URL` des Render-Dienstes zeigt auf die direkte (nicht gepoolte) Neon-Adresse
+mit `sslmode=require`; die Tabellen legt `npm run start:server` per `prisma db push` an. Die alte
+kostenlose Render-Datenbank „secret58-staging-db“ läuft am 09.11.2026 ab und wird nicht mehr genutzt.
+Sicherung: Neon stellt nur die letzten 6 Stunden wieder her – regelmäßig `pg_dump -Fc "<Neon-URL>"`
+von einem eigenen Rechner ziehen. Im Betreiberbereich gespeicherte Zugänge (`/operator/zugaenge`)
+lagen in der alten Datenbank und müssen einmal neu eingetragen werden.
+
 ## 9. Stripe-Einrichtung (Betreiber, zuerst im Testmodus)
 
 **Umsatzsteuer-Modus** (`UMSATZSTEUER_MODUS`, Standard `KLEINUNTERNEHMER`):

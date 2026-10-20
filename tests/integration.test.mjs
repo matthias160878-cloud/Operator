@@ -1189,6 +1189,9 @@ test("Zugänge: Betreiber hinterlegt Schlüssel in der App, Server-Werte haben V
   assert.equal(li.value, "ac_linkedin_test_1"); // nicht geheim → zur Kontrolle sichtbar
   const page = await (await op.req("/operator/zugaenge")).text();
   assert.ok(page.includes("in der App gespeichert") && page.includes("in der Server-Umgebung gesetzt"));
+  for (const url of ["https://console.anthropic.com/settings/keys", "https://aistudio.google.com/apikey", "https://resend.com/api-keys", "https://dashboard.stripe.com/apikeys", "https://dashboard.stripe.com/webhooks", "https://dashboard.stripe.com/products", "https://platform.composio.dev/"]) {
+    assert.ok(page.includes(`href="${url}"`), `Betreiber: Link zum Schlüssel ${url}`);
+  }
   assert.ok(!page.includes("ck_test_fake"));
 
   // Ohne Neustart nutzbar: Kunde kann LinkedIn jetzt verbinden
@@ -2189,6 +2192,11 @@ test("Eigene Zugänge: Kunde trägt Resend-Schlüssel ein, echter Newsletter-Ver
   const R = "/api/reichweitenaufbau";
   const seiteHtml = await (await C.req("/settings/zugaenge")).text();
   assert.ok(seiteHtml.includes("resend.com/api-keys") && seiteHtml.includes("Sending access"), "Wegweiser zum Schlüssel");
+  assert.ok(seiteHtml.includes('data-testid="zugang-tabelle"') && seiteHtml.includes('data-testid="zugang-dialog"'), "Übersichtstabelle und Eintragen-Fenster");
+  for (const url of ["https://resend.com/api-keys", "https://console.anthropic.com/settings/keys", "https://platform.openai.com/api-keys", "https://aistudio.google.com/apikey"]) {
+    assert.ok(seiteHtml.includes(`href="${url}"`), `Link zum Schlüssel: ${url}`);
+  }
+  assert.ok(seiteHtml.includes('aria-modal="true"') && seiteHtml.includes('name="apiKey"'), "Inhaber: Formular im Fenster");
   assert.ok((await (await C.req("/settings")).text()).includes("/settings/zugaenge"), "Link aus den Einstellungen");
 
   const put = (c, werte) => c.json("/api/zugaenge", { method: "PUT", body: { anbieter: "RESEND", werte } });
@@ -2201,6 +2209,9 @@ test("Eigene Zugänge: Kunde trägt Resend-Schlüssel ein, echter Newsletter-Ver
   assert.match(ohneDmarc.data.pruefung.meldung, /DMARC-Eintrag/, "ohne DMARC kein echter Versand");
   await prisma.user.update({ where: { email: "zugang-c@example.com" }, data: { role: "EDITOR" } });
   assert.equal((await put(C, { apiKey: "re_kunde_voll_1234", absender: "C <n@news.kunde.example>" })).status, 403, "nur Inhaber/Admin");
+  const editorHtml = await (await C.req("/settings/zugaenge")).text();
+  assert.ok(editorHtml.includes("Eintragen dürfen nur Inhaber und Admins.") && !editorHtml.includes('name="apiKey"'), "Redaktion: Eintragen gesperrt");
+  assert.ok(editorHtml.includes('href="https://resend.com/api-keys"'), "Redaktion sieht die Links");
   await prisma.user.update({ where: { email: "zugang-c@example.com" }, data: { role: "OWNER" } });
   const ok = await put(C, { apiKey: "re_kunde_voll_1234", absender: "Café C <newsletter@news.kunde.example>" });
   assert.equal(ok.data.pruefung.status, "OK", JSON.stringify(ok.data));

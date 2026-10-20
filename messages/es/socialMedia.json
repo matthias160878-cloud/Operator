@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Conexión fallida. Revisa las credenciales e inténtalo de nuevo.",
   "errorUnknownPlatform": "Plataforma desconocida.",
   "encryptionKeyMissingNotice": "Nota: TOKEN_ENCRYPTION_KEY aún no está configurada — las cuentas solo podrán conectarse una vez que esta variable de entorno esté configurada en Render.",
+  "connectedPageLabel": "Página conectada",
+  "facebookMultiplePages": "Se encontraron varias páginas de Facebook ({count}) – la conectada es «{name}». ¿Otra página? Desconecta y, al volver a conectar, selecciona solo la página deseada en el diálogo de Facebook.",
+  "tokenExpiresOn": "El acceso caduca el {date} – vuelve a conectar antes de esa fecha.",
+  "tokenExpiredOn": "El acceso caducó el {date} – vuelve a conectar.",
+  "tokenScheduledAfterExpiry": "Publicaciones programadas después de la fecha de caducidad: {count}. Sin volver a conectar no se publicarán.",
+  "reconnectButton": "Volver a conectar",
   "composio": {
     "title": "Conectar una cuenta mediante Composio",
     "subtitle": "Alternativa a la conexión directa: inicias sesión en la plataforma, Composio guarda el acceso y SECRET 58 solo vincula la cuenta a tu espacio de trabajo. Por ahora solo conexión y prueba de lectura; no se publica nada por esta vía.",

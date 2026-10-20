@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Ühendamine ebaõnnestus. Kontrolli ligipääsuandmeid ja proovi uuesti.",
   "errorUnknownPlatform": "Tundmatu platvorm.",
   "encryptionKeyMissingNotice": "Märkus: TOKEN_ENCRYPTION_KEY pole veel seatud — kontosid saab ühendada alles siis, kui see keskkonnamuutuja on Renderis sisestatud.",
+  "connectedPageLabel": "Ühendatud leht",
+  "facebookMultiplePages": "Leiti mitu Facebooki lehte ({count}) – ühendatud on „{name}“. Teine leht? Katkesta ühendus ja vali uuesti ühendamisel Facebooki dialoogis ainult soovitud leht.",
+  "tokenExpiresOn": "Juurdepääs aegub {date} – palun ühenda enne seda uuesti.",
+  "tokenExpiredOn": "Juurdepääs aegus {date} – palun ühenda uuesti.",
+  "tokenScheduledAfterExpiry": "Plaanitud postitusi pärast aegumiskuupäeva: {count}. Ilma uuesti ühendamata neid ei avaldata.",
+  "reconnectButton": "Ühenda uuesti",
   "composio": {
     "title": "Ühenda konto Composio kaudu",
     "subtitle": "Alternatiiv otseühendusele: logid platvormi sisse, Composio hoiab ligipääsu, SECRET 58 seostab konto ainult sinu tööruumiga. Praegu ainult ühendamine ja lugemisligipääsu test – selle kaudu midagi ei avaldata.",

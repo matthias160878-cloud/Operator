@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Connection failed. Check the credentials and try again.",
   "errorUnknownPlatform": "Unknown platform.",
   "encryptionKeyMissingNotice": "Note: TOKEN_ENCRYPTION_KEY is not set yet — accounts can only be connected once this environment variable is set in Render.",
+  "connectedPageLabel": "Connected page",
+  "facebookMultiplePages": "Several Facebook pages found ({count}) – connected is “{name}”. Different page? Disconnect and, when reconnecting, select only the page you want in the Facebook dialog.",
+  "tokenExpiresOn": "Access expires on {date} – please reconnect before then.",
+  "tokenExpiredOn": "Access expired on {date} – please reconnect.",
+  "tokenScheduledAfterExpiry": "Scheduled posts after the expiry date: {count}. Without reconnecting they will not be published.",
+  "reconnectButton": "Reconnect",
   "composio": {
     "title": "Connect an account via Composio",
     "subtitle": "Alternative to the direct connection: you sign in at the platform, Composio holds the access, SECRET 58 only links the account to your workspace. Currently connect and read-only access test only – nothing is published this way.",

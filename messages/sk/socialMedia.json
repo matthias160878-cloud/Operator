@@ -21,6 +21,12 @@
  "errorExchangeFailed": "Pripojenie zlyhalo. Skontroluj prístupové údaje a skús to znova.",
  "errorUnknownPlatform": "Neznáma platforma.",
  "encryptionKeyMissingNotice": "Upozornenie: TOKEN_ENCRYPTION_KEY zatiaľ nie je nastavený — účty sa dajú pripojiť, až keď bude táto premenná prostredia zadaná v Render.",
+ "connectedPageLabel": "Pripojená stránka",
+ "facebookMultiplePages": "Našlo sa viac stránok na Facebooku ({count}) – pripojená je „{name}“. Iná stránka? Odpojte ju a pri novom pripojení vyberte v dialógu Facebooku len požadovanú stránku.",
+ "tokenExpiresOn": "Prístup vyprší {date} – pripojte sa prosím znova pred týmto dátumom.",
+ "tokenExpiredOn": "Prístup vypršal {date} – pripojte sa prosím znova.",
+ "tokenScheduledAfterExpiry": "Naplánované príspevky po dátume vypršania: {count}. Bez nového pripojenia nebudú zverejnené.",
+ "reconnectButton": "Znova pripojiť",
  "composio": {
   "title": "Pripojiť účet cez Composio",
   "subtitle": "Alternatíva k priamemu pripojeniu: prihlásiš sa na platforme, Composio uchová prístup, SECRET 58 účet len priradí k tvojmu pracovnému priestoru. Momentálne len pripojenie a čítací test prístupu – cez to sa nič nepublikuje.",

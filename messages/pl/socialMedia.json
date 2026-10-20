@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Połączenie nie powiodło się. Sprawdź dane dostępowe i spróbuj ponownie.",
   "errorUnknownPlatform": "Nieznana platforma.",
   "encryptionKeyMissingNotice": "Uwaga: TOKEN_ENCRYPTION_KEY nie jest jeszcze ustawiony — konta można połączyć dopiero, gdy ta zmienna środowiskowa zostanie wpisana w Render.",
+  "connectedPageLabel": "Połączona strona",
+  "facebookMultiplePages": "Znaleziono kilka stron na Facebooku ({count}) – połączona jest „{name}”. Inna strona? Rozłącz i przy ponownym łączeniu wybierz w oknie Facebooka tylko właściwą stronę.",
+  "tokenExpiresOn": "Dostęp wygasa {date} – połącz ponownie przed tym terminem.",
+  "tokenExpiredOn": "Dostęp wygasł {date} – połącz ponownie.",
+  "tokenScheduledAfterExpiry": "Zaplanowane posty po dacie wygaśnięcia: {count}. Bez ponownego połączenia nie zostaną opublikowane.",
+  "reconnectButton": "Połącz ponownie",
   "composio": {
     "title": "Połącz konto przez Composio",
     "subtitle": "Alternatywa dla bezpośredniego połączenia: logujesz się na platformie, Composio przechowuje dostęp, a SECRET 58 tylko przypisuje konto do Twojej przestrzeni roboczej. Obecnie tylko połączenie i test dostępu do odczytu – nic nie jest przez to publikowane.",

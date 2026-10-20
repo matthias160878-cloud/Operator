@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Ban, Loader2, Plus, Trash2 } from "lucide-react";
 import type { Auswertung, StufenKnoten, Zahl } from "@/lib/reichweite/auswertung";
@@ -269,7 +270,7 @@ export function WeiterempfehlungenBoard(props: {
           <li>Plattformzahlen (Impressionen, Reichweite, Videoaufrufe, Shares) werden derzeit nur als DEMO oder manuell übertragen angezeigt.</li>
           <li>Newsletter: nur wenn der Newsletter-Baustein freigeschaltet ist – dann über eine Anmeldeseite im „Reichweitenaufbau“ je Kampagne messbar (bestätigte Anmeldungen). Website-Besuche: nur „Klicks zur Zielseite“ über den Empfehlungslink.</li>
           <li>Keine Einwilligungsverwaltung vorhanden – deshalb keine Cookies und keine Besucherkennung; gezählt wird nur ohne Personenbezug.</li>
-          <li>Zähl-Ereignisse werden nach {props.aufbewahrungTage} Tagen automatisch gelöscht. Anfragen landen unter „Kundenanfragen“ (Kanal „empfehlung“).</li>
+          <li>Zähl-Ereignisse werden nach {props.aufbewahrungTage} Tagen automatisch gelöscht. Anfragen landen im Menü unter <Link className="underline" href="/kundenanfragen">„Anfragen“</Link> (mit Kontakt und Nachricht, keine automatische Antwort).</li>
         </ul>
       </section>
 

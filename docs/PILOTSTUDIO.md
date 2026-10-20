@@ -52,7 +52,7 @@ Es gibt fünf leere Gesprächsplätze. Dazu gehören ein Leitfaden und ein Eröf
 
 ## Kundenbereich `/kundenanfragen`
 
-Der Kundenbereich ist vorbereitet, aber nicht freigeschaltet. Er wird erst mit `PILOTSTUDIO_KUNDENBEREICH=true` sichtbar. Dann zeigt er nur die eigenen Echtfälle des Arbeitsbereichs und nur zum Lesen.
+Die Seite `/kundenanfragen` (Menüpunkt „Anfragen“) zeigt jedem Kunden immer seine Anfragen aus Empfehlungslinks (Kanal `empfehlung`, mit Kontakt und Nachricht, ohne automatische Antwort). Der Pilot-Teil des Kundenbereichs ist vorbereitet, aber nicht freigeschaltet: Weitere eigene Echtfälle des Arbeitsbereichs erscheinen dort erst mit `PILOTSTUDIO_KUNDENBEREICH=true`, nur zum Lesen.
 
 ## Geänderte und neue Dateien
 
@@ -100,7 +100,7 @@ npm run build && npm run test:integration
 | `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` / `GEMINI_API_KEY`, `AI_PROVIDER` | Aktiviert den Knopf „KI-Entwurf“. Ohne Schlüssel gibt es nur Musterantworten. |
 | `RESEND_API_KEY`, `EMAIL_FROM` | E-Mail-Versand |
 | `PILOTSTUDIO_LIVE_SEND=true` | Versandschalter für Echtfälle (zusätzlich zu Resend). Standard: aus. |
-| `PILOTSTUDIO_KUNDENBEREICH=true` | Blendet `/kundenanfragen` ein. Standard: aus. |
+| `PILOTSTUDIO_KUNDENBEREICH=true` | Zeigt auf `/kundenanfragen` zusätzlich die Pilot-Echtfälle (Anfragen aus Empfehlungslinks sind dort immer sichtbar). Standard: aus. |
 
 ## Tests
 

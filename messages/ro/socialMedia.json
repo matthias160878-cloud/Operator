@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Conexiunea a eșuat. Verifică datele de acces și încearcă din nou.",
   "errorUnknownPlatform": "Platformă necunoscută.",
   "encryptionKeyMissingNotice": "Notă: TOKEN_ENCRYPTION_KEY nu este încă setat — conturile pot fi conectate abia după ce această variabilă de mediu este introdusă în Render.",
+  "connectedPageLabel": "Pagină conectată",
+  "facebookMultiplePages": "Au fost găsite mai multe pagini Facebook ({count}) – conectată este „{name}”. Altă pagină? Deconectează și, la reconectare, selectează în dialogul Facebook doar pagina dorită.",
+  "tokenExpiresOn": "Accesul expiră pe {date} – reconectează înainte de această dată.",
+  "tokenExpiredOn": "Accesul a expirat pe {date} – reconectează.",
+  "tokenScheduledAfterExpiry": "Postări programate după data expirării: {count}. Fără reconectare nu vor fi publicate.",
+  "reconnectButton": "Reconectează",
   "composio": {
     "title": "Conectează un cont prin Composio",
     "subtitle": "Alternativă la conectarea directă: te autentifici la platformă, Composio păstrează accesul, SECRET 58 atribuie contul doar spațiului tău de lucru. Momentan doar conectare și test de acces cu citire – prin aceasta nu se publică nimic.",

@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Il-konnessjoni falliet. Iċċekkja d-dettalji tal-aċċess u erġa' pprova.",
   "errorUnknownPlatform": "Pjattaforma mhux magħrufa.",
   "encryptionKeyMissingNotice": "Nota: TOKEN_ENCRYPTION_KEY għadu mhux issettjat — il-kontijiet jistgħu jiġu konnessi biss wara li din il-varjabbli tal-ambjent tiddaħħal f'Render.",
+  "connectedPageLabel": "Paġna konnessa",
+  "facebookMultiplePages": "Instabu diversi paġni ta’ Facebook ({count}) – konnessa hija “{name}”. Paġna oħra? Iddiskonnettja u, meta terġa’ tikkonnettja, agħżel biss il-paġna li trid fid-djalogu ta’ Facebook.",
+  "tokenExpiresOn": "L-aċċess jiskadi fl-{date} – jekk jogħġbok erġa’ kkonnettja qabel.",
+  "tokenExpiredOn": "L-aċċess skada fl-{date} – jekk jogħġbok erġa’ kkonnettja.",
+  "tokenScheduledAfterExpiry": "Postijiet skedati wara d-data tal-iskadenza: {count}. Mingħajr ma terġa’ tikkonnettja ma jiġux ippubblikati.",
+  "reconnectButton": "Erġa’ kkonnettja",
   "composio": {
     "title": "Qabbad kont permezz ta' Composio",
     "subtitle": "Alternattiva għall-konnessjoni diretta: Int tidħol fil-pjattaforma, Composio iżomm l-aċċess, SECRET 58 jassenja l-kont biss lill-ispazju tax-xogħol tiegħek. Bħalissa biss konnessjoni u test tal-aċċess bil-qari – ma jiġi ppubblikat xejn permezz tiegħu.",

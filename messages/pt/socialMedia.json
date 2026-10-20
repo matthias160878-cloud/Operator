@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Falha na ligação. Verifica as credenciais e tenta novamente.",
   "errorUnknownPlatform": "Plataforma desconhecida.",
   "encryptionKeyMissingNotice": "Nota: TOKEN_ENCRYPTION_KEY ainda não está definida — só é possível ligar contas depois de esta variável de ambiente estar registada no Render.",
+  "connectedPageLabel": "Página ligada",
+  "facebookMultiplePages": "Foram encontradas várias páginas do Facebook ({count}) – a ligada é «{name}». Outra página? Desligue e, ao voltar a ligar, selecione apenas a página pretendida na janela do Facebook.",
+  "tokenExpiresOn": "O acesso expira em {date} – volte a ligar antes dessa data.",
+  "tokenExpiredOn": "O acesso expirou em {date} – volte a ligar.",
+  "tokenScheduledAfterExpiry": "Publicações agendadas após a data de expiração: {count}. Sem voltar a ligar, não serão publicadas.",
+  "reconnectButton": "Voltar a ligar",
   "composio": {
     "title": "Ligar conta através do Composio",
     "subtitle": "Alternativa à ligação direta: inicias sessão na plataforma, o Composio guarda o acesso e o SECRET 58 limita-se a atribuir a conta ao teu espaço de trabalho. Atualmente apenas ligar e teste de acesso de leitura – não é publicado nada através disto.",

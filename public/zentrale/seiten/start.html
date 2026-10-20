@@ -795,6 +795,17 @@ h2.sec-title{
 }
 .s58-fab:hover{transform:translateY(-2px); box-shadow:0 24px 50px -14px rgba(245,174,60,.75);}
 @media(max-width:30rem){.s58-fab{padding:.72rem .9rem; font-size:.85rem; right:1rem; bottom:1rem;}}
+/* Der Knopf weicht beim Herunterscrollen aus, damit er beim Lesen nichts verdeckt; oben, beim Hochscrollen
+   und am Seitenende ist er da. Handy: kleiner runder Knopf. Der Seitenfuß hat unten Platz für den Knopf. */
+.s58-fab{transition:transform .25s var(--ease), opacity .25s var(--ease), box-shadow .2s var(--ease);}
+.s58-fab.ausgewichen{opacity:0; transform:translateY(160%); pointer-events:none;}
+.site-foot{padding-bottom:calc(5.5rem + env(safe-area-inset-bottom,0px));}
+@media(max-width:52rem){
+  .s58-fab{right:calc(1rem + env(safe-area-inset-right,0px)); bottom:calc(1rem + env(safe-area-inset-bottom,0px)); width:3.25rem; height:3.25rem; padding:0; justify-content:center; border-radius:50%;}
+  .s58-fab .agent-orb-mini{width:1.8rem; height:1.8rem;}
+  .s58-fab .fab-text{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+}
+@media(prefers-reduced-motion:reduce){.s58-fab{transition:none;}}
 .s58-fab .dot{width:.55rem; height:.55rem; border-radius:50%; background:#0B7A3E; box-shadow:0 0 0 0 rgba(11,122,62,.7); animation:s58pulse 2s infinite;}
 @keyframes s58pulse{0%{box-shadow:0 0 0 0 rgba(46,212,122,.6)}70%{box-shadow:0 0 0 .6rem rgba(46,212,122,0)}100%{box-shadow:0 0 0 0 rgba(46,212,122,0)}}
 .s58-panel{
@@ -1456,7 +1467,7 @@ addEventListener("DOMContentLoaded", function () {
   </div>
 </footer>
 
-<button class="s58-fab" id="s58open" type="button" aria-controls="s58panel" aria-expanded="false"><canvas class="agent-orb-mini" id="s58orbFab" aria-hidden="true"></canvas>Mit dem Agenten sprechen</button>
+<button class="s58-fab" id="s58open" type="button" aria-controls="s58panel" aria-expanded="false"><canvas class="agent-orb-mini" id="s58orbFab" aria-hidden="true"></canvas><span class="fab-text">Mit dem Agenten sprechen</span></button>
 <section class="s58-panel" id="s58panel" aria-label="Chat mit dem Secret 58 Agenten">
   <div class="s58-head"><div class="s58-head-left"><canvas class="agent-orb-head" id="s58orbHead" aria-hidden="true"></canvas><div><b>Secret 58 Agent</b><small>antwortet in Sekunden — kein Mensch, aber einer, der weiß, was wir tun</small></div></div><button type="button" id="s58close" aria-label="Schließen">&times;</button></div>
   <div class="s58-log" id="s58log" aria-live="polite"></div>
@@ -1692,6 +1703,23 @@ addEventListener("DOMContentLoaded", function () {
   function open(){ panel.classList.add('open'); fab.setAttribute('aria-expanded','true'); if(!log.children.length) add('bot','Guten Tag. Ich bin der Agent von Secret 58. Erzählen Sie mir, was in Ihrem Betrieb jede Woche Zeit frisst — ich sage Ihnen, was davon ein Agent übernehmen kann.'); setTimeout(()=>input.focus(),50); }
   function close(){ panel.classList.remove('open'); fab.setAttribute('aria-expanded','false'); }
   fab.addEventListener('click', ()=> panel.classList.contains('open') ? close() : open());
+  /* Beim Herunterscrollen ausweichen, beim Hochscrollen, oben und am Seitenende wieder zeigen. */
+  (function(){
+    let letztes = window.scrollY, geplant = false;
+    function pruefen(){
+      geplant = false;
+      const y = window.scrollY, unten = y + window.innerHeight >= document.documentElement.scrollHeight - 80;
+      const weg = !panel.classList.contains('open') && y > letztes + 4 && y > 200 && !unten;
+      if (y < letztes - 4 || y <= 200 || unten || panel.classList.contains('open')) fab.classList.remove('ausgewichen');
+      else if (weg) fab.classList.add('ausgewichen');
+      letztes = y;
+    }
+    let ruhe = 0;
+    window.addEventListener('scroll', ()=>{
+      if(!geplant){ geplant = true; requestAnimationFrame(pruefen); }
+      clearTimeout(ruhe); ruhe = setTimeout(pruefen, 160); /* nach dem Scrollen (auch sanftem Scrollen) am Seitenende sicher wieder zeigen */
+    }, {passive:true});
+  })();
   document.getElementById('s58close').addEventListener('click', close);
   async function ask(q){
     q=q.trim(); if(!q) return;

@@ -56,5 +56,6 @@ export function kostenSchaetzen(anbieter: KiAnbieter, eingabeZeichen: number, au
 }
 
 export function usdBetrag(usd: number): string {
-  return usd < 0.01 ? `< 0,01 $` : `${usd.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 4 })} $`;
+  if (usd > 0 && usd < 0.0001) return "< 0,0001 $";
+  return `${usd.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: usd < 0.01 ? 4 : 2 })} $`;
 }

@@ -1,8 +1,7 @@
 {
  "viewAll": "Zobraziť všetko",
  "demoBanner": {
-  "before": "Demo údaje sú aktívne — kampane, položky obsahu a analytika sú ukážkové údaje z ",
-  "after": ", nie skutočné čísla z platforiem."
+  "text": "Ukážkové dáta aktívne – kampane, obsah a štatistiky v tomto pracovnom priestore sú ukážkové dáta, nie skutočné čísla z platforiem."
  },
  "hero": {
   "subtitle": "Jeden nápad. Viac platforiem. Maximálny dosah.",
@@ -26,8 +25,9 @@
   "published": "Publikácie",
   "views": "Zobrazenia",
   "avgEngagement": "Ø zapojenie",
-  "totalRevenue": "Príjmy spolu",
-  "noComparisonWeek": "Zatiaľ nie je k dispozícii predchádzajúci týždeň ako základ na porovnanie — miery zmeny sa zobrazia, keď budú k dispozícii údaje aspoň za dva týždne."
+  "totalRevenue": "Príjmy (zadané ručne)",
+  "noComparisonWeek": "Zatiaľ nie je k dispozícii predchádzajúci týždeň ako základ na porovnanie — miery zmeny sa zobrazia, keď budú k dispozícii údaje aspoň za dva týždne.",
+  "noStats": "Zhliadnutia a engagement: zatiaľ žiadne štatistiky – štatistiky platforiem sa zatiaľ nenačítavajú automaticky."
  },
  "production": {
   "title": "Produkcia obsahu",
@@ -71,13 +71,13 @@
   "connectedCount": "{connected}/{total} pripojených"
  },
  "agentMonitor": {
-  "title": "Agent Monitor",
+  "title": "Protokol asistentov",
   "empty": "Zatiaľ žiadne spustenia."
  },
  "topPerformer": {
   "title": "Top výkon",
   "last7Days": "Posledných 7 dní",
-  "empty": "Zatiaľ žiadne údaje o výkonnosti.",
+  "empty": "Zatiaľ žiadne údaje o výkone – štatistiky platforiem sa zatiaľ nenačítavajú automaticky.",
   "views": "Zobrazenia",
   "likes": "Páči sa mi to",
   "comments": "Komentáre",

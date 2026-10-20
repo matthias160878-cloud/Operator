@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Pikkukuvakonseptit, kuvamateriaalit ja Canva-integraatio.",
+  "subtitle": "Pikkukuvakonseptit tekstinä ja Canva-yhteyden tila.",
   "imageAssetsTitle": "Kuvamateriaalit",
-  "imageAssetsEmpty": "Kuvamateriaaleja ei ole vielä.",
+  "imageAssetsEmpty": "Ei vielä kuvia. Pikkukuva-agentti luo tällä hetkellä vain tekstikonsepteja, ei kuvatiedostoja.",
   "thumbnailAgent": {
     "title": "Pikkukuva-agentti",
     "description": "Luo tekstikonseptin (otsikko, visuaalinen idea, asettelu, CTA) — valmisteltu kuvageneraattorin liittämistä varten. Kuvaa ei vielä luoda.",
@@ -15,6 +15,9 @@
     "fieldText": "Teksti",
     "fieldLayout": "Asettelu",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Kuvaus kuvasta"
+    "fieldImageDescription": "Kuvaus kuvasta",
+    "templateResult": "Mallipohja: tämä konsepti on peräisin kiinteästä tekstipohjasta, ei tekoälyltä. Tekoälykonsepteja varten syötä oma tekoälyavaimesi kohdassa ”Asetukset → Omat käyttöoikeudet”.",
+    "textEngineLabel": "Tekstimoottori:",
+    "templateMode": "Mallipohjatila (tekoälypalvelua ei ole määritetty)"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "title": "Eftirlit með fulltrúum",
-  "description": "Allir SECRET 58 fulltrúar með stöðu, síðasta verkefni og niðurstöðu. Hver keyrsla er skráð.",
+  "title": "Annáll aðstoðarmanna",
+  "description": "Allir aðstoðarmenn (þjónar) SECRET 58 með stöðu, síðasta verkefni og niðurstöðu. Hver keyrsla er skráð hér.",
   "table": {
     "agent": "Fulltrúi",
     "description": "Lýsing",

@@ -81,14 +81,16 @@
     "ERROR": "Kļūda",
     "REJECTED": "Noraidīts",
     "RECEIVED": "Saņemts",
-    "PENDING": "Gaida apstiprinājumu"
+    "PENDING": "Gaida apstiprinājumu",
+    "NOT_AVAILABLE": "Vēl nav pieejams"
   },
   "integrationStatus": {
     "notConfigured": "Nav nokonfigurēts — trūkst mainīgo: {vars}.",
     "verifyFailedGeneric": "Savienojums neizdevās.",
     "verifyFailedStatus": "{service} atbildēja ar statusu {status}.",
     "verifyUnreachable": "{service} nebija sasniedzams.",
-    "connected": "Pievienots."
+    "connected": "Pievienots.",
+    "notAvailable": "Vēl nav pieejams – šis savienojums lietotnē vēl nav izveidots."
   },
   "mediaPreview": {
     "expand": "Rādīt lielāku",

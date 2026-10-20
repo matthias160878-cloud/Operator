@@ -12,7 +12,7 @@
       "title": "Kom igång",
       "description": "Gör de här tre sakerna först, så arbetar alla AI-agenter med verkliga data i stället för platshållare.",
       "steps": [
-        "Under ”Integrationer”, kontrollera om en AI-leverantör är konfigurerad. AI-funktionerna körs via operatörens åtkomster, så du behöver ingen egen AI-prenumeration. Utan AI-leverantör fungerar appen i mallläge.",
+        "Ange under ”Inställningar → Egna åtkomster” din egen AI-nyckel från Anthropic, OpenAI eller Gemini. AI-funktionerna använder enbart din egen nyckel; AI-leverantören fakturerar dig direkt. Utan egen nyckel arbetar appen i mallläge med fasta textblock.",
         "Fyll i ditt eget varumärke under ”Brand DNA” (ton, målgrupp, värden) — AI-agenterna använder det för varje genererad text.",
         "Låt skapa den första idén respektive kampanjen under ”Idéer & inspiration” eller ”Content Brain”."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics & tillväxt",
       "description": "Verkliga siffror om din egen prestanda — och rekommendationer i stället för automatisering.",
       "steps": [
-        "Analytics visar uteslutande verkliga, importerade eller manuellt registrerade prestandadata.",
+        "Analytics visar bara sparad statistik (t.ex. exempeldata). Plattformsstatistik hämtas ännu inte automatiskt; siffror anger du manuellt under ”Rekommendationer” eller i variantjämförelsen – där utvärderas de.",
         "Tillväxtsidan beräknar utifrån dessa data bästa publiceringstider, framgångsrika hashtags och format.",
         "Viktigt: det finns medvetet ingen automatiserad ökning av följare/engagemang (inget botbeteende) — det skulle strida mot varje plattforms användarvillkor."
       ]
@@ -59,9 +59,9 @@
       "title": "Inkorg",
       "description": "AI-svarsutkast för meddelanden — med godkännande före sändning.",
       "steps": [
-        "Eftersom ingen plattform (än) är ansluten via OAuth läggs konversationer för tillfället in manuellt i stället för att hämtas live.",
+        "Meddelanden från plattformar hämtas ännu inte och svar skickas inte. För att prova skapar du konversationer som simulering.",
         "MessageAgent föreslår ett svar utifrån Brand DNA och konversationsförloppet.",
-        "Utkastet måste granskas och godkännas manuellt innan det räknas som skickat — en verklig sändning misslyckas ärligt utan plattformsanslutning i stället för att fingera framgång."
+        "Du granskar och godkänner utkastet. Att skicka till plattformar är ännu inte byggt – ”Godkänn & skicka” rapporterar det ärligt som fel i stället för att låtsas att det lyckades."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Varifrån varje anslutningsstatus kommer och var rätt nyckel läggs in.",
       "steps": [
         "Varje rad visar den verkliga, live-kontrollerade statusen — aldrig en fingerad anslutning.",
-        "Vid ”Inte konfigurerad” leder ”Hämta API-nyckel” till leverantörens officiella sida.",
-        "Åtkomstuppgifter sparas aldrig i webbläsaren, bara skyddat på servern. Saknas en åtkomst konfigurerar operatören den.",
-        "Kostnader: Pro och Maxi är prenumerationer, månadsvis eller årsvis. De aktuella priserna finns under ”Paket & fakturering”. Varje extern leverantör har sin egen, oberoende kostnadsmodell (gratis / användningsbaserad / prenumeration) — på sidan Integrationer visas för varje tjänst vilken modell som gäller, med en länk till leverantörens aktuella priser."
+        "Dina egna åtkomster (AI-nycklar, Resend för nyhetsbrevet) anger du under ”Inställningar → Egna åtkomster” – där leder en guide till leverantörens officiella nyckelsida.",
+        "Inloggningsuppgifter sparas aldrig i webbläsaren, bara krypterade på servern. Röstuppläsning och plattformarnas app-åtkomster konfigureras av operatören; ”Inte tillgänglig ännu” betyder att anslutningen ännu inte är byggd i appen.",
+        "Kostnader: Pro och Maxi är abonnemang, månads- eller årsvis. Aktuella priser finns under ”Paket & fakturering”. För dina egna åtkomster (AI, Resend) fakturerar varje leverantör dig direkt enligt sin egen prismodell – SECRET 58 tar inte ut något extra för detta."
       ]
     }
   }

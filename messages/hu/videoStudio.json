@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Szolgáltatófüggetlen videócsővezeték: formátumkezelő, cserélhető videószolgáltatók, hangalámondás- és feliratkapcsolat (lásd Content Factory, tartalomelemenként).",
+  "subtitle": "A videókészítés még nem érhető el: nincs csatlakoztatva olyan videószolgáltatás, amely videókat készítene. Lent láthatod az előkészített formátumokat platformonként; forgatókönyveket, hangalámondást és feliratokat a Script Studióban, a Voice Studióban és a Content Factoryban készítesz.",
   "providerCardTitle": "Videószolgáltatók",
-  "providerNotePrefix": "További szolgáltatók (MI-videó-API-k, stockvideó-könyvtárak) ugyanazon a",
-  "providerNoteSuffix": "-felületen keresztül adhatók hozzá, a meglévő kód érintése nélkül.",
   "formatManagerTitle": "Formátumkezelő",
   "assetsTitle": "Videóanyagok",
-  "assetsEmpty": "Még nincs renderelt videó — a renderelés a Content Factory tartalomelemein keresztül történik, amint be van állítva egy videószolgáltató."
+  "assetsEmpty": "Még nincsenek videók. A videókészítés még nem érhető el az alkalmazásban.",
+  "providerNote": "Még nincs használható videószolgáltatás – videók jelenleg nem készíthetők az alkalmazásban."
 }

@@ -1,14 +1,15 @@
 {
   "title": "Analytics",
-  "subtitle": "Prestandanyckeltal från faktiskt tillgängliga data — så fort plattformar är anslutna fylls den här vyn med verkliga värden.",
+  "subtitle": "Plattformsstatistik (visningar, gilla-markeringar, kommentarer, delningar) hämtas ännu inte automatiskt. Här visas bara redan sparade värden, t.ex. exempeldata. Siffror från plattformens statistik kan du ange manuellt under <weiter>Rekommendationer</weiter> (”Ange plattformssiffror”) eller i <varianten>variantjämförelsen</varianten> – de utvärderas där, inte på den här sidan.",
   "statViewsTotal": "Visningar totalt",
   "statLikesTotal": "Likes totalt",
   "statComments": "Kommentarer",
   "statShares": "Delningar",
   "chartTitle": "Innehållets prestanda över tid",
   "chartLegend": "Visningar (lila) · Engagemang % (turkos)",
-  "chartEmpty": "Inga analysdata ännu.",
+  "chartEmpty": "Ingen statistik ännu – inget förlopp tillgängligt.",
   "bestPerformingTitle": "Bäst presterande innehåll",
-  "bestPerformingEmpty": "Inga data ännu.",
-  "learningAgentTitle": "Learning Agent — rekommendationer"
+  "bestPerformingEmpty": "Ingen statistik ännu – ingen rangordning möjlig.",
+  "learningAgentTitle": "Learning Agent — rekommendationer",
+  "statsEmpty": "Ingen statistik sparad ännu – därför finns här inga nyckeltal ännu. Plattformsstatistik hämtas ännu inte automatiskt."
 }

@@ -1,6 +1,6 @@
 {
-  "title": "Monitor d'agents",
-  "description": "Tots els agents de SECRET 58 amb estat, darrera tasca i resultat. Cada execució es registra.",
+  "title": "Registre dels assistents",
+  "description": "Tots els assistents (agents) de SECRET 58 amb estat, darrera tasca i resultat. Cada execució queda registrada aquí.",
   "table": {
     "agent": "Agent",
     "description": "Descripció",

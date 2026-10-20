@@ -926,3 +926,24 @@ test("Token-Ablauf: Hinweis nur ohne Refresh-Token, rot bei geplanten Beiträgen
   assert.equal(abgelaufen.abgelaufen, true);
   assert.equal(abgelaufen.kritisch, true);
 });
+
+test("Integrationen: CapCut, Canva und Trend-Datenquelle zeigen nie „Verbunden“, solange kein Client gebaut ist", async () => {
+  const { checkIntegration, INTEGRATIONS } = await import("@/lib/integrations/registry");
+  const { VIDEO_PROVIDERS } = await import("@/lib/video/provider");
+  const t = (key: string) => key;
+  const alt = { CAPCUT_API_KEY: process.env.CAPCUT_API_KEY, CANVA_API_KEY: process.env.CANVA_API_KEY, TREND_API_KEY: process.env.TREND_API_KEY, TREND_API_PROVIDER: process.env.TREND_API_PROVIDER };
+  try {
+    Object.assign(process.env, { CAPCUT_API_KEY: "x", CANVA_API_KEY: "x", TREND_API_KEY: "x", TREND_API_PROVIDER: "x" });
+    for (const key of ["capcut", "canva", "trend"]) {
+      const r = await checkIntegration(INTEGRATIONS.find((i) => i.key === key)!, t);
+      assert.equal(r.status, "NOT_AVAILABLE", key);
+      assert.equal(r.message, "notAvailable", key);
+    }
+    assert.ok(VIDEO_PROVIDERS.every((p) => !p.renderVerfuegbar), "kein Video-Dienst rendert");
+  } finally {
+    for (const [k, v] of Object.entries(alt)) {
+      if (v === undefined) delete process.env[k];
+      else process.env[k] = v;
+    }
+  }
+});

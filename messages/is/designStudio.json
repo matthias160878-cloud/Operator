@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Smámyndahugmyndir, myndaeignir og Canva-samþætting.",
+  "subtitle": "Smámyndahugmyndir sem texti og staða Canva-tengingarinnar.",
   "imageAssetsTitle": "Myndaeignir",
-  "imageAssetsEmpty": "Engar myndaeignir til enn.",
+  "imageAssetsEmpty": "Engar myndir enn. Smámyndaþjónninn býr eins og er aðeins til textahugmyndir, engar myndaskrár.",
   "thumbnailAgent": {
     "title": "Smámyndafulltrúi",
     "description": "Býr til textahugmynd (titill, sjónræn hugmynd, uppsetning, CTA) — undirbúið fyrir tengingu við myndgerðarforrit. Engin mynd er búin til enn.",
@@ -15,6 +15,9 @@
     "fieldText": "Texti",
     "fieldLayout": "Uppsetning",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Myndlýsing"
+    "fieldImageDescription": "Myndlýsing",
+    "templateResult": "Sniðmát: þessi hugmynd kemur úr föstu textasniðmáti, ekki frá gervigreind. Fyrir gervigreindarhugmyndir skaltu skrá eigin gervigreindarlykil undir „Stillingar → Eigin aðgangar“.",
+    "textEngineLabel": "Textavél:",
+    "templateMode": "Sniðmátsstilling (engin gervigreindarveita stillt)"
   }
 }

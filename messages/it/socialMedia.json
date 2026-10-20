@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social media",
-  "subtitle": "Account delle piattaforme e relativo stato di connessione. Le credenziali vengono gestite esclusivamente come variabili d'ambiente lato server e mai salvate nel frontend. I token di accesso, dopo il collegamento, vengono salvati cifrati nel database.",
+  "subtitle": "I tuoi account delle piattaforme e il loro stato di connessione. Ti colleghi accedendo direttamente alla piattaforma; i token di accesso vengono salvati cifrati sul server, mai nel browser.",
   "credentialsLabel": "Credenziali dell'app",
   "accountLabel": "Account",
   "lastPublishedLabel": "Ultima pubblicazione",
   "lastErrorLabel": "Ultimo errore",
   "connectButton": "Collega",
   "connectButtonUnavailable": "Collega (non ancora possibile)",
-  "connectButtonTitleNoCreds": "Mancano ancora le credenziali dell'app",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY non è ancora impostata",
+  "connectButtonTitleNoCreds": "Non ancora configurato dal gestore",
+  "connectButtonTitleNoEncryption": "L'archiviazione sicura dei token di accesso non è ancora configurata",
   "disconnectButton": "Scollega",
   "disconnectConfirm": "Scollegare davvero questo account? Poi l'accesso dovrà essere ristabilito con «Collega».",
   "needsCredentialsNote": "Manca ancora: inserisci {idVar} e {secretVar} in Render.",
@@ -62,6 +62,10 @@
       "not_active": "La piattaforma non ha confermato l'accesso oppure è stato rifiutato.",
       "composio_error": "Composio non era raggiungibile o ha segnalato un errore. Riprova più tardi.",
       "unknown": "Connessione non riuscita."
-    }
-  }
+    },
+    "noPublishNotice": "Solo un test della connessione: qui non viene pubblicato nulla. Il test di lettura verifica soltanto se l'account può essere letto."
+  },
+  "needsCredentialsNoteCustomer": "Questa piattaforma viene configurata dal gestore. Potrai collegarti non appena sarà configurata.",
+  "errorNotConfiguredCustomer": "{platform}: il gestore non ha ancora configurato questa piattaforma. Potrai collegarti non appena sarà configurata.",
+  "encryptionKeyMissingNoticeCustomer": "Il collegamento non è ancora possibile: il gestore non ha ancora configurato l'archiviazione sicura dei token di accesso."
 }

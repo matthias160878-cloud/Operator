@@ -1,14 +1,14 @@
 {
   "pageTitle": "Redes sociais",
-  "subtitle": "Contas das plataformas e respetivo estado de ligação. As credenciais são geridas exclusivamente como variáveis de ambiente do lado do servidor, nunca guardadas no frontend. Os tokens de acesso, depois de ligados, são guardados de forma cifrada na base de dados.",
+  "subtitle": "As tuas contas das plataformas e o seu estado de ligação. Ligas-te iniciando sessão diretamente na plataforma; os tokens de acesso são guardados cifrados no servidor, nunca no navegador.",
   "credentialsLabel": "Credenciais da app",
   "accountLabel": "Conta",
   "lastPublishedLabel": "Última publicação",
   "lastErrorLabel": "Último erro",
   "connectButton": "Ligar",
   "connectButtonUnavailable": "Ligar (ainda não é possível)",
-  "connectButtonTitleNoCreds": "Faltam ainda as credenciais da app",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY ainda não está definida",
+  "connectButtonTitleNoCreds": "Ainda não configurado pelo operador",
+  "connectButtonTitleNoEncryption": "O armazenamento seguro dos tokens de acesso ainda não está configurado",
   "disconnectButton": "Desligar",
   "disconnectConfirm": "Desligar mesmo esta conta? Depois, o acesso tem de ser restabelecido através de «Ligar».",
   "needsCredentialsNote": "Falta ainda: registar {idVar} e {secretVar} no Render.",
@@ -62,6 +62,10 @@
       "not_active": "A plataforma não confirmou o acesso ou este foi rejeitado.",
       "composio_error": "Não foi possível contactar o Composio ou este comunicou um erro. Tenta novamente mais tarde.",
       "unknown": "Falha na ligação."
-    }
-  }
+    },
+    "noPublishNotice": "Apenas um teste da ligação – aqui nada é publicado. O teste de leitura só verifica se a conta pode ser lida."
+  },
+  "needsCredentialsNoteCustomer": "Esta plataforma é configurada pelo operador. Podes ligar-te assim que estiver configurada.",
+  "errorNotConfiguredCustomer": "{platform}: o operador ainda não configurou esta plataforma. Podes ligar-te assim que estiver configurada.",
+  "encryptionKeyMissingNoticeCustomer": "Ainda não é possível ligar: o operador ainda não configurou o armazenamento seguro dos tokens de acesso."
 }

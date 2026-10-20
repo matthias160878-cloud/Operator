@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Thumbnailconcepten, beeldassets en de Canva-integratie.",
+  "subtitle": "Thumbnailconcepten als tekst en de status van de Canva-koppeling.",
   "imageAssetsTitle": "Beeldassets",
-  "imageAssetsEmpty": "Nog geen beeldassets beschikbaar.",
+  "imageAssetsEmpty": "Nog geen afbeeldingen. De thumbnail-agent maakt momenteel alleen tekstconcepten, geen afbeeldingsbestanden.",
   "thumbnailAgent": {
     "title": "Thumbnail-agent",
     "description": "Maakt een tekstconcept (titel, visueel idee, lay-out, CTA) — voorbereid voor de koppeling met een beeldgenerator. Er wordt nog geen afbeelding gemaakt.",
@@ -15,6 +15,9 @@
     "fieldText": "Tekst",
     "fieldLayout": "Lay-out",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Beeldbeschrijving"
+    "fieldImageDescription": "Beeldbeschrijving",
+    "templateResult": "Sjabloon: dit concept komt uit een vast tekstsjabloon, niet van een AI. Voor AI-concepten voer je je eigen AI-sleutel in onder „Instellingen → Eigen toegangen”.",
+    "textEngineLabel": "Tekst-engine:",
+    "templateMode": "Sjabloonmodus (geen AI-provider geconfigureerd)"
   }
 }

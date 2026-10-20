@@ -1,14 +1,15 @@
 {
   "title": "Anailísíocht",
-  "subtitle": "Táscairí feidhmíochta ó shonraí atá ann i ndáiríre — a luaithe a nascfar ardáin, líonfar an radharc seo le fíorluachanna.",
+  "subtitle": "Ní fhaightear staitisticí na n-ardán (amhairc, maith liom, tráchtanna, comhroinnt) go huathoibríoch fós. Ní thaispeántar anseo ach luachanna atá sábháilte cheana, m.sh. sonraí samplacha. Is féidir leat figiúirí ó staitisticí an ardáin a chur isteach de láimh faoi <weiter>Moltaí</weiter> („Cuir isteach figiúirí an ardáin”) nó sa <varianten>chomparáid leaganacha</varianten> – measúnaítear ansin iad, ní ar an leathanach seo.",
   "statViewsTotal": "Iomlán na radhairc",
   "statLikesTotal": "Iomlán na dtaitneamh",
   "statComments": "Tuairimí",
   "statShares": "Comhroinnt",
   "chartTitle": "Feidhmíocht inneachair thar am",
   "chartLegend": "Radhairc (corcra) · Rannpháirtíocht % (turcóis)",
-  "chartEmpty": "Gan aon sonraí anailísíochta go fóill.",
+  "chartEmpty": "Níl aon staitisticí fós – níl aon fhorbairt ar fáil.",
   "bestPerformingTitle": "An t-inneachar is fearr feidhmíocht",
-  "bestPerformingEmpty": "Gan aon sonraí go fóill.",
-  "learningAgentTitle": "Learning Agent — Moltaí"
+  "bestPerformingEmpty": "Níl aon staitisticí fós – ní féidir rangú a dhéanamh.",
+  "learningAgentTitle": "Learning Agent — Moltaí",
+  "statsEmpty": "Níl aon staitisticí sábháilte fós – mar sin níl aon táscairí anseo fós. Ní fhaightear staitisticí na n-ardán go huathoibríoch fós."
 }

@@ -16,7 +16,10 @@
   "statusInProgress": "U toku",
   "statusUsed": "Iskorišteno",
   "statusArchived": "Arhivirano",
-  "sourceAiGenerated": "Generisao AI",
-  "sourceManual": "Ručno"
+  "sourceAiGenerated": "IdeaAgent (AI ili šablon)",
+  "sourceManual": "Ručno",
+  "templateResult": "Šablon: upravo kreirane ideje potiču iz fiksnih tekstualnih blokova, a ne od AI-ja. Za AI ideje unesi vlastiti AI ključ pod „Postavke → Vlastiti pristupi”.",
+  "textEngineLabel": "Tekstualni pogon:",
+  "templateMode": "Način šablona (nije konfigurisan AI provajder)"
  }
 }

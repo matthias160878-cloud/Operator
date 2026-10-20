@@ -1,6 +1,6 @@
 {
   "title": "Integracijos",
-  "description": "Visų išorinių paslaugų būsena realiuoju laiku — tik pagal iš tikrųjų nustatytus aplinkos kintamuosius (environment variables). Jokių apsimestinių ryšių.",
+  "description": "Išorinių paslaugų būsena realiuoju laiku – tik tikrai nustatyti ir patikrinti ryšiai, niekas neapsimetama.",
   "categories": {
     "AI": "DI tiekėjai",
     "VOICE": "Balsas",

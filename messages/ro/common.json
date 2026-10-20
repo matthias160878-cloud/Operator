@@ -81,14 +81,16 @@
     "ERROR": "Eroare",
     "REJECTED": "Respins",
     "RECEIVED": "Primit",
-    "PENDING": "În curs"
+    "PENDING": "În curs",
+    "NOT_AVAILABLE": "Încă indisponibil"
   },
   "integrationStatus": {
     "notConfigured": "Neconfigurat — variabile lipsă: {vars}.",
     "verifyFailedGeneric": "Conexiunea a eșuat.",
     "verifyFailedStatus": "{service} a răspuns cu starea {status}.",
     "verifyUnreachable": "{service} nu a putut fi contactat.",
-    "connected": "Conectat."
+    "connected": "Conectat.",
+    "notAvailable": "Încă indisponibil – această conexiune nu este încă realizată în aplicație."
   },
   "mediaPreview": {
     "expand": "Afișează mai mare",

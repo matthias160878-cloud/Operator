@@ -1,14 +1,15 @@
 {
   "title": "Analytique",
-  "subtitle": "Indicateurs de performance basés sur des données réelles — dès que des plateformes seront connectées, cette vue se remplira de valeurs concrètes.",
+  "subtitle": "Les statistiques des plateformes (vues, likes, commentaires, partages) ne sont pas encore récupérées automatiquement. Seules les valeurs déjà enregistrées apparaissent ici, p. ex. des données d'exemple. Tu peux saisir à la main les chiffres des statistiques de la plateforme sous <weiter>Recommandations</weiter> (« Saisir les chiffres de la plateforme ») ou dans la <varianten>comparaison de variantes</varianten> – ils y sont évalués, pas sur cette page.",
   "statViewsTotal": "Vues totales",
   "statLikesTotal": "Mentions J'aime totales",
   "statComments": "Commentaires",
   "statShares": "Partages",
   "chartTitle": "Performance du contenu dans le temps",
   "chartLegend": "Vues (violet) · Engagement % (turquoise)",
-  "chartEmpty": "Aucune donnée d'analyse pour le moment.",
+  "chartEmpty": "Pas encore de statistiques – aucun historique disponible.",
   "bestPerformingTitle": "Contenu le plus performant",
-  "bestPerformingEmpty": "Aucune donnée pour le moment.",
-  "learningAgentTitle": "Learning Agent — Recommandations"
+  "bestPerformingEmpty": "Pas encore de statistiques – aucun classement possible.",
+  "learningAgentTitle": "Learning Agent — Recommandations",
+  "statsEmpty": "Aucune statistique enregistrée pour l'instant – il n'y a donc pas encore d'indicateurs ici. Les statistiques des plateformes ne sont pas encore récupérées automatiquement."
 }

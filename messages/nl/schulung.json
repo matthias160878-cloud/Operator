@@ -12,7 +12,7 @@
       "title": "Eerste stappen",
       "description": "Doe deze drie dingen eerst, dan werken alle AI-agents met echte gegevens in plaats van met plaatshouders.",
       "steps": [
-        "Controleer onder „Integraties“ of er een AI-aanbieder is ingesteld. De AI-functies lopen via de toegangen van de beheerder, dus je hebt geen eigen AI-abonnement nodig. Zonder AI-aanbieder werkt de app in sjabloonmodus.",
+        "Voer onder „Instellingen → Eigen toegangen” je eigen AI-sleutel van Anthropic, OpenAI of Gemini in. De AI-functies gebruiken uitsluitend je eigen sleutel; de AI-aanbieder factureert jou rechtstreeks. Zonder eigen sleutel werkt de app in sjabloonmodus met vaste tekstblokken.",
         "Vul onder “Brand DNA” je eigen merk in (toon, doelgroep, waarden) — de AI-agents gebruiken dat voor elke gegenereerde tekst.",
         "Laat onder “Ideeën & inspiratie” of “Content Brain” het eerste idee of de eerste campagne maken."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics & groei",
       "description": "Echte cijfers over je eigen prestaties — en aanbevelingen in plaats van automatisering.",
       "steps": [
-        "Analytics toont uitsluitend echte, geïmporteerde of handmatig vastgelegde prestatiedata.",
+        "Analytics toont alleen opgeslagen statistieken (bijv. voorbeelddata). Platformstatistieken worden nog niet automatisch opgehaald; cijfers voer je handmatig in onder „Aanbevelingen” of in de variantenvergelijking – daar worden ze geëvalueerd.",
         "De groeipagina berekent uit deze data de beste posttijden, succesvolle hashtags en formaten.",
         "Belangrijk: er is bewust geen geautomatiseerde toename van volgers/engagement (geen botgedrag) — dat zou in strijd zijn met de gebruiksvoorwaarden van elk platform."
       ]
@@ -59,9 +59,9 @@
       "title": "Inbox",
       "description": "AI-antwoordconcepten voor berichten — met goedkeuring vóór verzending.",
       "steps": [
-        "Omdat (nog) geen platform via OAuth is gekoppeld, worden gesprekken momenteel handmatig aangemaakt in plaats van live opgehaald.",
+        "Berichten van platforms worden nog niet opgehaald en antwoorden worden niet verzonden. Om het uit te proberen maak je gesprekken aan als simulatie.",
         "De MessageAgent stelt een antwoord voor op basis van Brand DNA en gespreksverloop.",
-        "Het concept moet handmatig worden gecontroleerd en goedgekeurd voordat het als verzonden geldt — een echte verzending mislukt zonder platformkoppeling eerlijk, in plaats van succes voor te wenden."
+        "Jij controleert en keurt het concept goed. Verzenden naar platforms is nog niet gebouwd – „Goedkeuren & verzenden” meldt dat eerlijk als fout in plaats van succes te veinzen."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Waar elke verbindingsstatus vandaan komt en waar de bijbehorende sleutel wordt ingevoerd.",
       "steps": [
         "Elke rij toont de echte, live gecontroleerde status — nooit een schijnverbinding.",
-        "Bij “Niet geconfigureerd” leidt “API-sleutel ophalen” naar de officiële pagina van de aanbieder.",
-        "Toegangsgegevens worden nooit in de browser opgeslagen, maar alleen beschermd op de server. Ontbreekt er een toegang, dan stelt de beheerder die in.",
-        "Kosten: Pro en Maxi zijn abonnementen, maandelijks of jaarlijks. De actuele prijzen staan onder „Pakket & facturering“. Elke externe aanbieder heeft zijn eigen, onafhankelijke kostenmodel (gratis / gebruiksgebaseerd / abonnement) — op de pagina Integraties staat bij elke dienst welk model geldt, met een link naar de actuele prijzen bij de aanbieder."
+        "Je eigen toegangen (AI-sleutels, Resend voor de nieuwsbrief) voer je in onder „Instellingen → Eigen toegangen” – een wegwijzer leidt daar naar de officiële sleutelpagina van de aanbieder.",
+        "Inloggegevens worden nooit in de browser opgeslagen, alleen versleuteld op de server. Spraakuitvoer en de app-toegangen van de platforms richt de beheerder in; „Nog niet beschikbaar” betekent dat de koppeling nog niet in de app is gebouwd.",
+        "Kosten: Pro en Maxi zijn abonnementen, maandelijks of jaarlijks. De actuele prijzen staan onder „Pakket & facturering”. Voor je eigen toegangen (AI, Resend) factureert elke aanbieder je rechtstreeks volgens zijn eigen prijsmodel – SECRET 58 rekent daarvoor niets extra."
       ]
     }
   }

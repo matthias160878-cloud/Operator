@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Píblíne físe neamhspleách ar sholáthraí: Format Manager, soláthraithe físe in-malartaithe, nasc voiceover agus fotheidil (féach Content Factory do gach mír inneachair).",
+  "subtitle": "Níl cruthú físeán ar fáil fós: níl aon seirbhís físe a chruthaíonn físeáin nasctha. Thíos feiceann tú na formáidí ullmhaithe do gach ardán; cruthaíonn tú scripteanna, guthú agus fotheidil i Script Studio, Voice Studio agus Content Factory.",
   "providerCardTitle": "Soláthraithe físe",
-  "providerNotePrefix": "Is féidir soláthraithe eile (APIanna físe AI, leabharlanna físe stoic) a chur leis tríd an",
-  "providerNoteSuffix": "-chomhéadan céanna, gan teagmháil a dhéanamh leis an gcód atá ann cheana.",
   "formatManagerTitle": "Format Manager",
   "assetsTitle": "Sócmhainní físe",
-  "assetsEmpty": "Gan aon fhíseáin rindreáilte go fóill — ritheann an rindreáil trí mhíreanna inneachair sa Content Factory a luaithe a bheidh soláthraí físe cumraithe."
+  "assetsEmpty": "Níl aon fhíseáin fós. Níl cruthú físeán ar fáil san aip fós.",
+  "providerNote": "Níl aon seirbhís físe inúsáidte fós – ní féidir físeáin a chruthú san aip faoi láthair."
 }

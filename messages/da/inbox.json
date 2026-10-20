@@ -1,6 +1,6 @@
 {
   "title": "Indbakke",
-  "description": "Beskeder og kommentarer på tværs af alle platforme. MessageAgent foreslår svar — der sendes kun det, du godkender. Der er endnu ingen rigtig OAuth-forbindelse til en platform, så samtaler simuleres manuelt her i stedet for at blive hentet live.",
+  "description": "Beskeder og forespørgsler samlet ét sted. MessageAgent foreslår svarudkast.",
   "emptyState": "Ingen samtaler endnu — simuler en for at komme i gang.",
   "backToInbox": "Tilbage til indbakken",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simuler endnu en indkommende besked (test uden rigtig platformforbindelse):",
     "messagePlaceholder": "Beskedtekst …",
     "addButton": "Tilføj"
-  }
+  },
+  "simulationBanner": "<strong>Forhåndsvisning/simulering:</strong> beskeder fra platforme hentes endnu ikke, og svar sendes ikke – heller ikke via „Godkend & send“. Platformbeskeder kan du simulere her for at prøve det af. Rigtige poster kommer kun fra webstedsformularer (f.eks. tidsbestillinger); dem besvarer du via e-mail."
 }

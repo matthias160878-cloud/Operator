@@ -1,6 +1,6 @@
 {
-  "title": "Monitor de agentes",
-  "description": "Todos los agentes de SECRET 58 con su estado, última tarea y resultado. Cada ejecución queda registrada.",
+  "title": "Registro de los asistentes",
+  "description": "Todos los asistentes (agentes) de SECRET 58 con estado, última tarea y resultado. Cada ejecución queda registrada aquí.",
   "table": {
     "agent": "Agente",
     "description": "Descripción",

@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
+import { requireSessionUser } from "@/lib/auth/session";
 import { checkIntegration, INTEGRATIONS } from "@/lib/integrations/registry";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { PlatformGlyph, type PlatformGlyphKey } from "@/components/dashboard/PlatformGlyph";
@@ -50,6 +51,8 @@ export default async function SocialMediaPage({
   const t = await getTranslations("socialMedia");
   const ti = await getTranslations("common.integrationStatus");
   const locale = await getLocale();
+  // Kunden richten App-Zugangsdaten nicht selbst ein – technische Hinweise nur für den Betreiber.
+  const { isOperator } = await requireSessionUser();
   const workspaceId = await getCurrentWorkspaceId();
   const accounts = await prisma.platformAccount.findMany({
     where: { workspaceId },
@@ -105,8 +108,10 @@ export default async function SocialMediaPage({
       {oauthError && (
         <div className="rounded-lg border border-danger/30 bg-danger/10 px-4 py-2 text-sm text-danger">
           {oauthError === "not_configured" &&
-            t("errorNotConfigured", { platform: PLATFORM_LABELS[errorPlatform ?? ""] ?? errorPlatform ?? "" })}
-          {oauthError === "encryption_key_missing" && t("errorEncryptionMissing")}
+            t(isOperator ? "errorNotConfigured" : "errorNotConfiguredCustomer", {
+              platform: PLATFORM_LABELS[errorPlatform ?? ""] ?? errorPlatform ?? "",
+            })}
+          {oauthError === "encryption_key_missing" && t(isOperator ? "errorEncryptionMissing" : "encryptionKeyMissingNoticeCustomer")}
           {oauthError === "denied" && t("errorDenied")}
           {oauthError === "invalid_state" && t("errorInvalidState")}
           {oauthError === "exchange_failed" && t("errorExchangeFailed")}
@@ -115,7 +120,7 @@ export default async function SocialMediaPage({
       )}
       {!encryptionReady && (
         <div className="rounded-lg border border-warning/30 bg-warning/10 px-4 py-2 text-xs text-warning">
-          {t("encryptionKeyMissingNotice")}
+          {t(isOperator ? "encryptionKeyMissingNotice" : "encryptionKeyMissingNoticeCustomer")}
         </div>
       )}
 
@@ -230,7 +235,10 @@ export default async function SocialMediaPage({
                   >
                     {t("connectButtonUnavailable")}
                   </button>
-                  {!credentialsReady && provider && (
+                  {!credentialsReady && provider && !isOperator && (
+                    <p className="text-[11px] text-muted">{t("needsCredentialsNoteCustomer")}</p>
+                  )}
+                  {!credentialsReady && provider && isOperator && (
                     <p className="text-[11px] text-muted">
                       {t("needsCredentialsNote", {
                         idVar: provider.clientIdEnv,
@@ -256,6 +264,9 @@ export default async function SocialMediaPage({
         <div>
           <h2 className="text-lg font-semibold text-foreground">{tc("title")}</h2>
           <p className="mt-1 max-w-2xl text-sm text-muted">{tc("subtitle")}</p>
+        </div>
+        <div role="note" data-testid="composio-nur-test" className="rounded-lg border border-accent-2/30 bg-accent-2/10 px-4 py-2 text-xs text-foreground">
+          {tc("noPublishNotice")}
         </div>
         {composioConnected && (
           <div role="status" className="rounded-lg border border-success/30 bg-success/10 px-4 py-2 text-sm text-success">

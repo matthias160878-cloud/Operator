@@ -16,7 +16,10 @@
     "statusInProgress": "In lavorazione",
     "statusUsed": "Usata",
     "statusArchived": "Archiviata",
-    "sourceAiGenerated": "Generata dall'IA",
-    "sourceManual": "Manuale"
+    "sourceAiGenerated": "IdeaAgent (IA o modello)",
+    "sourceManual": "Manuale",
+    "templateResult": "Modello: le idee appena create derivano da blocchi di testo fissi, non da un'IA. Per idee con IA, inserisci la tua chiave IA in «Impostazioni → Accessi personali».",
+    "textEngineLabel": "Motore di testo:",
+    "templateMode": "Modalità template (nessun fornitore di IA configurato)"
   }
 }

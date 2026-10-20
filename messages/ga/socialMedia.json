@@ -1,14 +1,14 @@
 {
   "pageTitle": "Meáin shóisialta",
-  "subtitle": "Cuntais ardáin agus a stádas naisc. Déantar sonraí rochtana a bhainistiú go heisiach mar athróga timpeallachta ar thaobh an fhreastalaí, ní stóráiltear go deo iad sa frontend. Stóráiltear comharthaí rochtana go criptithe sa bhunachar sonraí tar éis an naisc.",
+  "subtitle": "Do chuntais ardán agus a stádas naisc. Nascann tú trí logáil isteach go díreach ar an ardán; stóráiltear comharthaí rochtana criptithe ar an bhfreastalaí, riamh sa bhrabhsálaí.",
   "credentialsLabel": "Sonraí rochtana aipe",
   "accountLabel": "Cuntas",
   "lastPublishedLabel": "An foilsiú deireanach",
   "lastErrorLabel": "An earráid dheireanach",
   "connectButton": "Nasc",
   "connectButtonUnavailable": "Nasc (nach féidir go fóill)",
-  "connectButtonTitleNoCreds": "Tá sonraí rochtana aipe ar iarraidh go fóill",
-  "connectButtonTitleNoEncryption": "Níl TOKEN_ENCRYPTION_KEY socraithe go fóill",
+  "connectButtonTitleNoCreds": "Níl sé socraithe ag an oibreoir fós",
+  "connectButtonTitleNoEncryption": "Níl stóráil shlán na gcomharthaí rochtana socraithe fós",
   "disconnectButton": "Dínasc",
   "disconnectConfirm": "An bhfuil tú cinnte gur mhaith leat an cuntas seo a dhínascadh? Ní mór an rochtain a athchruthú ansin trí “Nasc”.",
   "needsCredentialsNote": "Ar iarraidh go fóill: cuir {idVar} agus {secretVar} isteach i Render.",
@@ -62,6 +62,10 @@
       "not_active": "Níor dhearbhaigh an t-ardán an rochtain nó diúltaíodh di.",
       "composio_error": "Ní raibh Composio inrochtana nó thuairisc sé earráid. Bain triail eile as níos déanaí.",
       "unknown": "Theip ar an nasc."
-    }
-  }
+    },
+    "noPublishNotice": "Tástáil naisc amháin – ní fhoilsítear aon rud anseo. Ní sheiceálann an tástáil léite ach an féidir an cuntas a léamh."
+  },
+  "needsCredentialsNoteCustomer": "Socraíonn an t-oibreoir an t-ardán seo. Is féidir leat nascadh a luaithe a bheidh sé socraithe.",
+  "errorNotConfiguredCustomer": "{platform}: níl an t-ardán seo socraithe ag an oibreoir fós. Is féidir leat nascadh a luaithe a bheidh sé socraithe.",
+  "encryptionKeyMissingNoticeCustomer": "Ní féidir nascadh fós: níl stóráil shlán na gcomharthaí rochtana socraithe ag an oibreoir fós."
 }

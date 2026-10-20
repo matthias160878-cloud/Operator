@@ -1,6 +1,6 @@
 {
-  "title": "Aģentu monitors",
-  "description": "Visi SECRET 58 aģenti ar statusu, pēdējo uzdevumu un rezultātu. Katra palaišana tiek reģistrēta.",
+  "title": "Asistentu žurnāls",
+  "description": "Visi SECRET 58 asistenti (aģenti) ar statusu, pēdējo uzdevumu un rezultātu. Katra palaišana tiek reģistrēta šeit.",
   "table": {
     "agent": "Aģents",
     "description": "Apraksts",

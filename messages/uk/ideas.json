@@ -16,7 +16,10 @@
     "statusInProgress": "У роботі",
     "statusUsed": "Використана",
     "statusArchived": "В архіві",
-    "sourceAiGenerated": "Згенеровано ШІ",
-    "sourceManual": "Вручну"
+    "sourceAiGenerated": "IdeaAgent (ШІ або шаблон)",
+    "sourceManual": "Вручну",
+    "templateResult": "Шаблон: щойно створені ідеї взято з фіксованих текстових блоків, а не створено ШІ. Для ідей від ШІ введи свій ключ ШІ в розділі «Налаштування → Власні доступи».",
+    "textEngineLabel": "Текстовий рушій:",
+    "templateMode": "Режим шаблонів (ШІ-провайдера не налаштовано)"
   }
 }

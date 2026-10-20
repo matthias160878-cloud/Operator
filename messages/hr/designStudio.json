@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Koncepti thumbnaila, slikovni materijali i integracija s Canvom.",
+  "subtitle": "Koncepti sličica kao tekst i stanje veze s Canvom.",
   "imageAssetsTitle": "Slikovni materijali",
-  "imageAssetsEmpty": "Još nema slikovnih materijala.",
+  "imageAssetsEmpty": "Još nema slika. Agent za sličice trenutačno izrađuje samo tekstne koncepte, ne slikovne datoteke.",
   "thumbnailAgent": {
     "title": "Thumbnail agent",
     "description": "Izrađuje tekstualni koncept (naslov, vizualna ideja, raspored, CTA) — pripremljen za povezivanje generatora slika. Slika se još ne generira.",
@@ -15,6 +15,9 @@
     "fieldText": "Tekst",
     "fieldLayout": "Raspored",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Opis slike"
+    "fieldImageDescription": "Opis slike",
+    "templateResult": "Predložak: ovaj koncept potječe iz fiksnog tekstnog predloška, a ne od AI-ja. Za AI koncepte unesi vlastiti AI ključ pod „Postavke → Vlastiti pristupi”.",
+    "textEngineLabel": "Tekstualni pogon:",
+    "templateMode": "Način predloška (nije konfiguriran AI pružatelj)"
   }
 }

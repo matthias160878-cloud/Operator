@@ -1,6 +1,6 @@
 {
   "title": "Integracions",
-  "description": "Estat en directe de tots els serveis externs, exclusivament a partir de les variables d'entorn realment definides. Sense connexions simulades.",
+  "description": "Estat en directe dels serveis externs: només connexions realment configurades i verificades, no se simula res.",
   "categories": {
     "AI": "Proveïdors d'IA",
     "VOICE": "Voice",

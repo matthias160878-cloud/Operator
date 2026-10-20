@@ -1,6 +1,6 @@
 {
   "title": "Integrationer",
-  "description": "Live-status för alla externa tjänster — uteslutande baserad på de miljövariabler som faktiskt är satta. Inga fingerade anslutningar.",
+  "description": "Livestatus för externa tjänster – bara anslutningar som faktiskt är konfigurerade och kontrollerade, inget låtsas.",
   "categories": {
     "AI": "AI-leverantörer",
     "VOICE": "Voice",

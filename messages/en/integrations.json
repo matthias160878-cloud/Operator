@@ -1,6 +1,6 @@
 {
   "title": "Integrations",
-  "description": "Live status of all external services — based solely on the environment variables actually set. No simulated connections.",
+  "description": "Live status of external services – only connections that are actually set up and verified, nothing is faked.",
   "categories": {
     "AI": "AI providers",
     "VOICE": "Voice",

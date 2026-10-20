@@ -1,6 +1,6 @@
 {
   "title": "Integraatiot",
-  "description": "Kaikkien ulkoisten palveluiden live-tila — perustuu yksinomaan todellisuudessa asetettuihin ympäristömuuttujiin. Ei teeskenneltyjä yhteyksiä.",
+  "description": "Ulkoisten palvelujen reaaliaikainen tila – vain todella määritetyt ja tarkistetut yhteydet, mitään ei teeskennellä.",
   "categories": {
     "AI": "Tekoälypalvelut",
     "VOICE": "Voice",

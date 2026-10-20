@@ -16,7 +16,10 @@
     "statusInProgress": "Under arbeid",
     "statusUsed": "Brukt",
     "statusArchived": "Arkivert",
-    "sourceAiGenerated": "KI-generert",
-    "sourceManual": "Manuell"
+    "sourceAiGenerated": "IdeaAgent (AI eller mal)",
+    "sourceManual": "Manuell",
+    "templateResult": "Mal: ideene som nettopp ble laget, kommer fra faste tekstblokker, ikke fra en AI. For AI-ideer legger du inn din egen AI-nøkkel under «Innstillinger → Egne tilganger».",
+    "textEngineLabel": "Tekstmotor:",
+    "templateMode": "Malmodus (ingen KI-leverandør konfigurert)"
   }
 }

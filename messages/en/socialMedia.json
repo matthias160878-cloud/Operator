@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Platform accounts and their connection status. Credentials are managed exclusively as server-side environment variables and are never stored in the frontend. Access tokens are encrypted before being stored in the database once connected.",
+  "subtitle": "Your platform accounts and their connection status. You connect by signing in directly with the platform; access tokens are stored encrypted on the server, never in the browser.",
   "credentialsLabel": "App credentials",
   "accountLabel": "Account",
   "lastPublishedLabel": "Last published",
   "lastErrorLabel": "Last error",
   "connectButton": "Connect",
   "connectButtonUnavailable": "Connect (not possible yet)",
-  "connectButtonTitleNoCreds": "App credentials missing",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY not set yet",
+  "connectButtonTitleNoCreds": "Not set up by the operator yet",
+  "connectButtonTitleNoEncryption": "Secure storage of access tokens is not set up yet",
   "disconnectButton": "Disconnect",
   "disconnectConfirm": "Really disconnect this account? You'll need to reconnect it via \"Connect\" afterwards.",
   "needsCredentialsNote": "Still missing: set {idVar} and {secretVar} in Render.",
@@ -62,6 +62,10 @@
       "not_active": "The platform did not confirm access or it was declined.",
       "composio_error": "Composio was unreachable or reported an error. Please try again later.",
       "unknown": "Connection failed."
-    }
-  }
+    },
+    "noPublishNotice": "Only a connection test – nothing is published here. The read test only checks whether the account can be read."
+  },
+  "needsCredentialsNoteCustomer": "This platform is set up by the operator. You can connect as soon as it is set up.",
+  "errorNotConfiguredCustomer": "{platform}: the operator has not set up this platform yet. You can connect as soon as it is set up.",
+  "encryptionKeyMissingNoticeCustomer": "Connecting is not possible yet: the operator has not set up secure storage of access tokens yet."
 }

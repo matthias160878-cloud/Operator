@@ -81,14 +81,16 @@
     "ERROR": "Fehler",
     "REJECTED": "Abgelehnt",
     "RECEIVED": "Erhalten",
-    "PENDING": "Ausstehend"
+    "PENDING": "Ausstehend",
+    "NOT_AVAILABLE": "Noch nicht verfügbar"
   },
   "integrationStatus": {
     "notConfigured": "Nicht konfiguriert — fehlende Variable(n): {vars}.",
     "verifyFailedGeneric": "Verbindung fehlgeschlagen.",
     "verifyFailedStatus": "{service} antwortete mit Status {status}.",
     "verifyUnreachable": "{service} konnte nicht erreicht werden.",
-    "connected": "Verbunden."
+    "connected": "Verbunden.",
+    "notAvailable": "Noch nicht verfügbar – diese Anbindung ist in der App noch nicht gebaut."
   },
   "mediaPreview": {
     "expand": "Größer anzeigen",

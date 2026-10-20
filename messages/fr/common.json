@@ -81,14 +81,16 @@
     "ERROR": "Erreur",
     "REJECTED": "Rejeté",
     "RECEIVED": "Reçu",
-    "PENDING": "En attente"
+    "PENDING": "En attente",
+    "NOT_AVAILABLE": "Pas encore disponible"
   },
   "integrationStatus": {
     "notConfigured": "Non configuré — variable(s) manquante(s) : {vars}.",
     "verifyFailedGeneric": "Échec de la connexion.",
     "verifyFailedStatus": "{service} a répondu avec le statut {status}.",
     "verifyUnreachable": "Impossible de contacter {service}.",
-    "connected": "Connecté."
+    "connected": "Connecté.",
+    "notAvailable": "Pas encore disponible – cette connexion n'est pas encore développée dans l'application."
   },
   "mediaPreview": {
     "expand": "Agrandir",

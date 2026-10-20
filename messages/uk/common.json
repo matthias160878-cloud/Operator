@@ -81,14 +81,16 @@
     "ERROR": "Помилка",
     "REJECTED": "Відхилено",
     "RECEIVED": "Отримано",
-    "PENDING": "Очікується"
+    "PENDING": "Очікується",
+    "NOT_AVAILABLE": "Поки недоступно"
   },
   "integrationStatus": {
     "notConfigured": "Не налаштовано — відсутні змінні: {vars}.",
     "verifyFailedGeneric": "Не вдалося підключитися.",
     "verifyFailedStatus": "{service} відповів зі статусом {status}.",
     "verifyUnreachable": "Не вдалося зв'язатися з {service}.",
-    "connected": "Підключено."
+    "connected": "Підключено.",
+    "notAvailable": "Поки недоступно – це підключення в застосунку ще не реалізовано."
   },
   "mediaPreview": {
     "expand": "Збільшити",

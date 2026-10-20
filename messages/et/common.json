@@ -81,14 +81,16 @@
     "ERROR": "Viga",
     "REJECTED": "Tagasi lükatud",
     "RECEIVED": "Saadud",
-    "PENDING": "Ootel"
+    "PENDING": "Ootel",
+    "NOT_AVAILABLE": "Pole veel saadaval"
   },
   "integrationStatus": {
     "notConfigured": "Seadistamata — puuduvad muutujad: {vars}.",
     "verifyFailedGeneric": "Ühendus ebaõnnestus.",
     "verifyFailedStatus": "{service} vastas olekuga {status}.",
     "verifyUnreachable": "Teenust {service} ei õnnestunud kätte saada.",
-    "connected": "Ühendatud."
+    "connected": "Ühendatud.",
+    "notAvailable": "Pole veel saadaval – seda ühendust pole rakenduses veel ehitatud."
   },
   "mediaPreview": {
     "expand": "Näita suuremana",

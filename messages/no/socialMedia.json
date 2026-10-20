@@ -1,14 +1,14 @@
 {
   "pageTitle": "Sosiale medier",
-  "subtitle": "Plattformkontoer og tilkoblingsstatus. Tilgangsdata administreres utelukkende som miljøvariabler på serversiden og lagres aldri i frontend. Tilgangstokener lagres kryptert i databasen etter tilkobling.",
+  "subtitle": "Plattformkontoene dine og tilkoblingsstatusen deres. Du kobler til ved å logge inn direkte hos plattformen; tilgangstokener lagres kryptert på serveren, aldri i nettleseren.",
   "credentialsLabel": "App-tilgangsdata",
   "accountLabel": "Konto",
   "lastPublishedLabel": "Siste publisering",
   "lastErrorLabel": "Siste feil",
   "connectButton": "Koble til",
   "connectButtonUnavailable": "Koble til (ikke mulig ennå)",
-  "connectButtonTitleNoCreds": "App-tilgangsdata mangler ennå",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY er ikke satt ennå",
+  "connectButtonTitleNoCreds": "Ikke satt opp av operatøren ennå",
+  "connectButtonTitleNoEncryption": "Sikker lagring av tilgangstokener er ikke satt opp ennå",
   "disconnectButton": "Koble fra",
   "disconnectConfirm": "Vil du virkelig koble fra denne kontoen? Tilgangen må deretter opprettes på nytt via «Koble til».",
   "needsCredentialsNote": "Mangler ennå: Legg inn {idVar} og {secretVar} i Render.",
@@ -62,6 +62,10 @@
       "not_active": "Plattformen har ikke bekreftet tilgangen, eller den ble avvist.",
       "composio_error": "Composio kunne ikke nås eller meldte en feil. Prøv igjen senere.",
       "unknown": "Tilkoblingen mislyktes."
-    }
-  }
+    },
+    "noPublishNotice": "Bare en tilkoblingstest – her publiseres ingenting. Lesetesten sjekker bare om kontoen kan leses."
+  },
+  "needsCredentialsNoteCustomer": "Denne plattformen settes opp av operatøren. Du kan koble til så snart den er satt opp.",
+  "errorNotConfiguredCustomer": "{platform}: operatøren har ennå ikke satt opp denne plattformen. Du kan koble til så snart den er satt opp.",
+  "encryptionKeyMissingNoticeCustomer": "Tilkobling er ikke mulig ennå: operatøren har ennå ikke satt opp sikker lagring av tilgangstokener."
 }

@@ -81,14 +81,16 @@
   "ERROR": "Chyba",
   "REJECTED": "Zamietnuté",
   "RECEIVED": "Prijaté",
-  "PENDING": "Nevybavené"
+  "PENDING": "Nevybavené",
+  "NOT_AVAILABLE": "Zatiaľ nedostupné"
  },
  "integrationStatus": {
   "notConfigured": "Nenakonfigurované — chýbajúce premenné: {vars}.",
   "verifyFailedGeneric": "Pripojenie zlyhalo.",
   "verifyFailedStatus": "{service} odpovedal so stavom {status}.",
   "verifyUnreachable": "{service} sa nepodarilo kontaktovať.",
-  "connected": "Pripojené."
+  "connected": "Pripojené.",
+  "notAvailable": "Zatiaľ nedostupné – toto prepojenie v aplikácii ešte nie je hotové."
  },
  "mediaPreview": {
   "expand": "Zobraziť väčšie",

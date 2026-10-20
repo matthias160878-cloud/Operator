@@ -1,6 +1,6 @@
 {
   "title": "Integrări",
-  "description": "Starea live a tuturor serviciilor externe — exclusiv pe baza variabilelor de mediu efectiv setate. Fără conexiuni false.",
+  "description": "Starea în timp real a serviciilor externe – doar conexiuni configurate și verificate efectiv, nimic nu este simulat.",
   "categories": {
     "AI": "Furnizori IA",
     "VOICE": "Voice",

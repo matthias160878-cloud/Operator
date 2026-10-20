@@ -1,14 +1,14 @@
 {
   "pageTitle": "Družbena omrežja",
-  "subtitle": "Računi platform in njihov status povezave. Dostopni podatki se upravljajo izključno kot okoljske spremenljivke na strežniku, nikoli se ne shranjujejo v frontendu. Dostopni žetoni se po povezavi shranijo šifrirani v podatkovni zbirki.",
+  "subtitle": "Tvoji računi na platformah in njihovo stanje povezave. Povežeš se s prijavo neposredno na platformi; dostopni žetoni se shranjujejo šifrirano na strežniku, nikoli v brskalniku.",
   "credentialsLabel": "Dostopni podatki aplikacije",
   "accountLabel": "Račun",
   "lastPublishedLabel": "Zadnja objava",
   "lastErrorLabel": "Zadnja napaka",
   "connectButton": "Poveži",
   "connectButtonUnavailable": "Poveži (še ni mogoče)",
-  "connectButtonTitleNoCreds": "Dostopni podatki aplikacije še manjkajo",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY še ni nastavljen",
+  "connectButtonTitleNoCreds": "Upravljavec še ni nastavil",
+  "connectButtonTitleNoEncryption": "Varno shranjevanje dostopnih žetonov še ni nastavljeno",
   "disconnectButton": "Prekini povezavo",
   "disconnectConfirm": "Res prekinem povezavo s tem računom? Dostop je treba nato znova vzpostaviti prek „Poveži“.",
   "needsCredentialsNote": "Še manjka: vnesi {idVar} in {secretVar} v Render.",
@@ -62,6 +62,10 @@
       "not_active": "Platforma dostopa ni potrdila ali pa je bil zavrnjen.",
       "composio_error": "Composio ni bil dosegljiv ali je sporočil napako. Poskusi znova pozneje.",
       "unknown": "Povezava ni uspela."
-    }
-  }
+    },
+    "noPublishNotice": "Le preizkus povezave – tu se nič ne objavi. Preizkus branja le preveri, ali je račun mogoče brati."
+  },
+  "needsCredentialsNoteCustomer": "To platformo nastavi upravljavec. Povezati se boš lahko, takoj ko bo nastavljena.",
+  "errorNotConfiguredCustomer": "{platform}: upravljavec te platforme še ni nastavil. Povezati se boš lahko, takoj ko bo nastavljena.",
+  "encryptionKeyMissingNoticeCustomer": "Povezava še ni mogoča: upravljavec še ni nastavil varnega shranjevanja dostopnih žetonov."
 }

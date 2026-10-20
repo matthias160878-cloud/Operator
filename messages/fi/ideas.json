@@ -16,7 +16,10 @@
     "statusInProgress": "Työn alla",
     "statusUsed": "Käytetty",
     "statusArchived": "Arkistoitu",
-    "sourceAiGenerated": "Tekoälyn luoma",
-    "sourceManual": "Käsin"
+    "sourceAiGenerated": "IdeaAgent (tekoäly tai mallipohja)",
+    "sourceManual": "Käsin",
+    "templateResult": "Mallipohja: juuri luodut ideat ovat peräisin kiinteistä tekstipaloista, eivät tekoälyltä. Tekoälyideoita varten syötä oma tekoälyavaimesi kohdassa ”Asetukset → Omat käyttöoikeudet”.",
+    "textEngineLabel": "Tekstimoottori:",
+    "templateMode": "Mallipohjatila (tekoälypalvelua ei ole määritetty)"
   }
 }

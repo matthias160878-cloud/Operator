@@ -81,14 +81,16 @@
     "ERROR": "Villa",
     "REJECTED": "Hafnað",
     "RECEIVED": "Móttekið",
-    "PENDING": "Í bið"
+    "PENDING": "Í bið",
+    "NOT_AVAILABLE": "Ekki tiltækt enn"
   },
   "integrationStatus": {
     "notConfigured": "Ekki stillt — vantar breytu/breytur: {vars}.",
     "verifyFailedGeneric": "Tenging mistókst.",
     "verifyFailedStatus": "{service} svaraði með stöðunni {status}.",
     "verifyUnreachable": "Ekki náðist samband við {service}.",
-    "connected": "Tengt."
+    "connected": "Tengt.",
+    "notAvailable": "Ekki tiltækt enn – þessi tenging hefur ekki enn verið smíðuð í appinu."
   },
   "mediaPreview": {
     "expand": "Sýna stærra",

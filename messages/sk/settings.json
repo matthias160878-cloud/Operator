@@ -1,6 +1,6 @@
 {
  "title": "Nastavenia",
- "description": "Pracovný priestor, používatelia a systémové informácie. Prístupové údaje sa spravujú výlučne cez premenné prostredia (pozri <code>.env.example</code>).",
+ "description": "Tvoj pracovný priestor, používatelia a prehľad tvojich dát. Vlastné API kľúče (AI texty, rozosielanie newslettera) zadávaš v <zugaenge>Vlastné prístupy</zugaenge>; svoj balík nájdeš v <billing>Balík a fakturácia</billing>.",
  "workspace": {
   "title": "Pracovný priestor",
   "name": "Názov",
@@ -9,7 +9,7 @@
  },
  "users": {
   "title": "Používatelia a roly",
-  "note": "Multi-tenantový dátový model je plne pripravený (izolácia pracovných priestorov pre všetky tabuľky). Skutočné rozhranie prihlásenia/autentifikácie s viacerými používateľmi je ďalším krokom rozvoja — momentálne aplikácia pracuje presne s týmto predvoleným pracovným priestorom."
+  "note": "Každý účet má vlastný pracovný priestor oddelený od ostatných zákazníkov. Ďalších používateľov zatiaľ nemôžeš pridať sám."
  },
  "system": {
   "title": "Systém",
@@ -17,7 +17,7 @@
   "campaigns": "Kampane",
   "mediaAssets": "Mediálne podklady",
   "agentRuns": "Spustenia agentov",
-  "dbNote": "Databáza: SQLite (lokálna, <code>prisma/dev.db</code>) cez Prisma ORM. Pre produkciu prepni <codeSpaced>DATABASE_URL</codeSpaced> na Postgres/MySQL (uprav poskytovateľa v <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+  "dbNote": "Počet záznamov uložených v tvojom pracovnom priestore. Všetky dáta môžeš exportovať alebo pracovný priestor vymazať nižšie v časti „Moje dáta“."
  },
  "onboarding": {
   "title": "Asistent nastavenia",

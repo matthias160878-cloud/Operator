@@ -1,6 +1,6 @@
 {
   "title": "Integraties",
-  "description": "Live status van alle externe diensten — uitsluitend op basis van de daadwerkelijk ingestelde omgevingsvariabelen. Geen schijnverbindingen.",
+  "description": "Livestatus van externe diensten – alleen verbindingen die echt zijn ingericht en gecontroleerd, niets wordt geveinsd.",
   "categories": {
     "AI": "AI-providers",
     "VOICE": "Voice",

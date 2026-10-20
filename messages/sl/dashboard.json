@@ -1,8 +1,7 @@
 {
   "viewAll": "Prikaži vse",
   "demoBanner": {
-    "before": "Demo podatki aktivni — kampanje, vsebinski elementi in analitika so vzorčni podatki iz ",
-    "after": ", ne resnične številke platform."
+    "text": "Vzorčni podatki so aktivni – kampanje, vsebine in statistika v tem delovnem prostoru so vzorčni podatki, ne prave številke platform."
   },
   "hero": {
     "subtitle": "Ena ideja. Več platform. Največji doseg.",
@@ -26,8 +25,9 @@
     "published": "Objave",
     "views": "Ogledi",
     "avgEngagement": "Povpr. angažiranost",
-    "totalRevenue": "Prihodki skupaj",
-    "noComparisonWeek": "Prejšnjega tedna za primerjavo še ni — stopnje sprememb se prikažejo, ko bodo na voljo podatki za vsaj dva tedna."
+    "totalRevenue": "Prihodki (vneseni ročno)",
+    "noComparisonWeek": "Prejšnjega tedna za primerjavo še ni — stopnje sprememb se prikažejo, ko bodo na voljo podatki za vsaj dva tedna.",
+    "noStats": "Ogledi in angažiranost: še ni statističnih podatkov – statistika platform se še ne pridobiva samodejno."
   },
   "production": {
     "title": "Produkcija vsebin",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} povezanih"
   },
   "agentMonitor": {
-    "title": "Nadzor agentov",
+    "title": "Dnevnik asistentov",
     "empty": "Zagonov še ni."
   },
   "topPerformer": {
     "title": "Najuspešnejše",
     "last7Days": "Zadnjih 7 dni",
-    "empty": "Podatkov o uspešnosti še ni.",
+    "empty": "Še ni podatkov o uspešnosti – statistika platform se še ne pridobiva samodejno.",
     "views": "Ogledi",
     "likes": "Všečki",
     "comments": "Komentarji",

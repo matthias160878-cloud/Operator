@@ -1,6 +1,6 @@
 {
   "title": "Innboks",
-  "description": "Meldinger og kommentarer fra alle plattformer. MessageAgent foreslår svar — bare det du godkjenner, blir sendt. Det finnes ennå ingen ekte OAuth-tilkobling til en plattform, derfor simuleres samtaler manuelt her i stedet for å hentes live.",
+  "description": "Meldinger og henvendelser på ett sted. MessageAgent foreslår svarutkast.",
   "emptyState": "Ingen samtaler ennå — simuler en for å komme i gang.",
   "backToInbox": "Tilbake til innboksen",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simuler en ny innkommende melding (test uten ekte plattformtilkobling):",
     "messagePlaceholder": "Meldingstekst …",
     "addButton": "Legg til"
-  }
+  },
+  "simulationBanner": "<strong>Forhåndsvisning/simulering:</strong> meldinger fra plattformer hentes ennå ikke, og svar sendes ikke – heller ikke via «Godkjenn og send». Plattformmeldinger kan du simulere her for å prøve. Ekte oppføringer kommer bare fra nettskjemaer (f.eks. timeforespørsler); dem svarer du på via e-post."
 }

@@ -1,14 +1,15 @@
 {
   "title": "Analytics",
-  "subtitle": "Performance-Kennzahlen aus tatsächlich vorhandenen Daten — sobald Plattformen verbunden sind, füllt sich diese Ansicht mit echten Werten.",
+  "subtitle": "Plattformstatistiken (Views, Likes, Kommentare, Shares) werden noch nicht automatisch abgerufen. Hier erscheinen nur bereits gespeicherte Werte, z. B. Beispieldaten. Zahlen aus der Plattform-Statistik kannst du von Hand unter <weiter>Weiterempfehlungen</weiter> („Plattformzahlen eintragen“) oder im <varianten>Variantenvergleich</varianten> erfassen – sie werden dort ausgewertet, nicht auf dieser Seite.",
   "statViewsTotal": "Views gesamt",
   "statLikesTotal": "Likes gesamt",
   "statComments": "Kommentare",
   "statShares": "Shares",
   "chartTitle": "Content Performance über Zeit",
   "chartLegend": "Views (violett) · Engagement % (türkis)",
-  "chartEmpty": "Noch keine Analytics-Daten vorhanden.",
+  "chartEmpty": "Noch keine Statistikdaten – kein Verlauf vorhanden.",
   "bestPerformingTitle": "Best Performing Content",
-  "bestPerformingEmpty": "Noch keine Daten.",
-  "learningAgentTitle": "Learning Agent — Empfehlungen"
+  "bestPerformingEmpty": "Noch keine Statistikdaten – keine Rangliste möglich.",
+  "learningAgentTitle": "Learning Agent — Empfehlungen",
+  "statsEmpty": "Noch keine Statistikdaten gespeichert – deshalb gibt es hier noch keine Kennzahlen. Plattformstatistiken werden noch nicht automatisch abgerufen."
 }

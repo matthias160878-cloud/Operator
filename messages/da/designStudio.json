@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Thumbnail-koncepter, billedassets og Canva-integrationen.",
+  "subtitle": "Thumbnail-koncepter som tekst og status for Canva-forbindelsen.",
   "imageAssetsTitle": "Billedassets",
-  "imageAssetsEmpty": "Ingen billedassets endnu.",
+  "imageAssetsEmpty": "Endnu ingen billeder. Thumbnail-agenten laver i øjeblikket kun tekstkoncepter, ingen billedfiler.",
   "thumbnailAgent": {
     "title": "Thumbnail-agent",
     "description": "Laver et tekstkoncept (titel, visuel idé, layout, CTA) — forberedt til tilslutning af en billedgenerator. Der oprettes endnu intet billede.",
@@ -15,6 +15,9 @@
     "fieldText": "Tekst",
     "fieldLayout": "Layout",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Billedbeskrivelse"
+    "fieldImageDescription": "Billedbeskrivelse",
+    "templateResult": "Skabelon: dette koncept stammer fra en fast tekstskabelon, ikke fra en AI. For AI-koncepter skal du indtaste din egen AI-nøgle under „Indstillinger → Egne adgange“.",
+    "textEngineLabel": "Tekstmotor:",
+    "templateMode": "Skabelontilstand (ingen AI-udbyder konfigureret)"
   }
 }

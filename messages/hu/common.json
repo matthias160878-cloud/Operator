@@ -81,14 +81,16 @@
     "ERROR": "Hiba",
     "REJECTED": "Elutasítva",
     "RECEIVED": "Beérkezett",
-    "PENDING": "Függőben"
+    "PENDING": "Függőben",
+    "NOT_AVAILABLE": "Még nem érhető el"
   },
   "integrationStatus": {
     "notConfigured": "Nincs beállítva — hiányzó változó(k): {vars}.",
     "verifyFailedGeneric": "A kapcsolódás nem sikerült.",
     "verifyFailedStatus": "{service} a következő állapottal válaszolt: {status}.",
     "verifyUnreachable": "{service} nem érhető el.",
-    "connected": "Csatlakoztatva."
+    "connected": "Csatlakoztatva.",
+    "notAvailable": "Még nem érhető el – ez a kapcsolat még nincs kiépítve az alkalmazásban."
   },
   "mediaPreview": {
     "expand": "Nagyobb megjelenítés",

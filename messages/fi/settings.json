@@ -1,6 +1,6 @@
 {
   "title": "Asetukset",
-  "description": "Työtila, käyttäjät ja järjestelmätiedot. Tunnuksia hallitaan yksinomaan ympäristömuuttujien kautta (katso <code>.env.example</code>).",
+  "description": "Työtilasi, käyttäjät ja yleiskatsaus tietoihisi. Omat API-avaimesi (tekoälytekstit, uutiskirjeiden lähetys) syötät kohdassa <zugaenge>Omat käyttöoikeudet</zugaenge>; pakettisi löytyy kohdasta <billing>Paketti ja laskutus</billing>.",
   "workspace": {
     "title": "Työtila",
     "name": "Nimi",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Käyttäjät ja roolit",
-    "note": "Monivuokraajatietomalli on täysin valmisteltu (työtilojen eristys kaikille tauluille). Oikea kirjautumis-/tunnistautumisnäkymä usealle käyttäjälle on seuraava kehitysvaihe — tällä hetkellä sovellus toimii täsmälleen tällä oletustyötilalla."
+    "note": "Jokaisella tilillä on oma, muista asiakkaista erillinen työtila. Lisäkäyttäjiä et voi vielä lisätä itse."
   },
   "system": {
     "title": "Järjestelmä",
@@ -17,7 +17,7 @@
     "campaigns": "Kampanjat",
     "mediaAssets": "Mediamateriaalit",
     "agentRuns": "Agenttiajot",
-    "dbNote": "Tietokanta: SQLite (paikallinen, <code>prisma/dev.db</code>) Prisma ORM:n kautta. Tuotantoa varten vaihda <codeSpaced>DATABASE_URL</codeSpaced> Postgresiin/MySQL:ään (muokkaa providerin arvoa tiedostossa <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Työtilaasi tallennettujen merkintöjen määrä. Voit viedä kaikki tiedot tai poistaa työtilan alempana kohdassa ”Omat tiedot”."
   },
   "onboarding": {
     "title": "Käyttöönottoavustaja",

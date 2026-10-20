@@ -1,6 +1,6 @@
 {
-  "title": "Monatóir Gníomhairí",
-  "description": "Gach gníomhaire de chuid SECRET 58 le stádas, an tasc deireanach agus an toradh. Logáiltear gach rith.",
+  "title": "Logáil na gcúntóirí",
+  "description": "Gach cúntóir (gníomhaire) de chuid SECRET 58 le stádas, an tasc deireanach agus toradh. Logáiltear gach rith anseo.",
   "table": {
     "agent": "Gníomhaire",
     "description": "Cur síos",

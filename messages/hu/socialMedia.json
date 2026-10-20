@@ -1,14 +1,14 @@
 {
   "pageTitle": "Közösségi média",
-  "subtitle": "Platformfiókok és kapcsolati állapotuk. A hozzáférési adatokat kizárólag szerveroldali környezeti változókként kezeljük, a frontendben soha nem tároljuk. A csatlakoztatás után a hozzáférési tokenek titkosítva kerülnek az adatbázisba.",
+  "subtitle": "A platformfiókjaid és a kapcsolatuk állapota. A csatlakozás közvetlenül a platformon történő bejelentkezéssel történik; a hozzáférési tokeneket titkosítva tároljuk a szerveren, soha nem a böngészőben.",
   "credentialsLabel": "Alkalmazás-hozzáférési adatok",
   "accountLabel": "Fiók",
   "lastPublishedLabel": "Utolsó közzététel",
   "lastErrorLabel": "Utolsó hiba",
   "connectButton": "Csatlakoztatás",
   "connectButtonUnavailable": "Csatlakoztatás (még nem lehetséges)",
-  "connectButtonTitleNoCreds": "Az alkalmazás-hozzáférési adatok még hiányoznak",
-  "connectButtonTitleNoEncryption": "A TOKEN_ENCRYPTION_KEY még nincs beállítva",
+  "connectButtonTitleNoCreds": "Az üzemeltető még nem állította be",
+  "connectButtonTitleNoEncryption": "A hozzáférési tokenek biztonságos tárolása még nincs beállítva",
   "disconnectButton": "Leválasztás",
   "disconnectConfirm": "Biztosan leválasztod ezt a fiókot? A hozzáférést utána újra a „Csatlakoztatás” gombbal kell létrehozni.",
   "needsCredentialsNote": "Még hiányzik: add meg a Renderben a következőket: {idVar} és {secretVar}.",
@@ -62,6 +62,10 @@
       "not_active": "A platform nem erősítette meg a hozzáférést, vagy elutasította azt.",
       "composio_error": "A Composio nem volt elérhető, vagy hibát jelzett. Kérjük, próbáld újra később.",
       "unknown": "A kapcsolódás nem sikerült."
-    }
-  }
+    },
+    "noPublishNotice": "Csak kapcsolatteszt – itt semmi sem kerül közzétételre. Az olvasási teszt csak azt ellenőrzi, hogy a fiók olvasható-e."
+  },
+  "needsCredentialsNoteCustomer": "Ezt a platformot az üzemeltető állítja be. Amint be van állítva, csatlakozhatsz.",
+  "errorNotConfiguredCustomer": "{platform}: az üzemeltető még nem állította be ezt a platformot. Amint be van állítva, csatlakozhatsz.",
+  "encryptionKeyMissingNoticeCustomer": "A csatlakozás még nem lehetséges: az üzemeltető még nem állította be a hozzáférési tokenek biztonságos tárolását."
 }

@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Sağlayıcıdan bağımsız video hattı: Format Manager, değiştirilebilir video sağlayıcıları, seslendirme ve altyazı bağlantısı (bkz. Content Factory, içerik öğesi başına).",
+  "subtitle": "Video oluşturma henüz kullanılamıyor: video üreten bir video hizmeti bağlı değil. Aşağıda platform bazında hazırlanmış formatları görürsün; senaryoları, seslendirmeleri ve altyazıları Script Studio, Voice Studio ve Content Factory'de oluşturursun.",
   "providerCardTitle": "Video sağlayıcıları",
-  "providerNotePrefix": "Diğer sağlayıcılar (yapay zekâ video API'leri, stok video kütüphaneleri) aynı",
-  "providerNoteSuffix": "arayüzü üzerinden, mevcut koda dokunmadan eklenebilir.",
   "formatManagerTitle": "Format Manager",
   "assetsTitle": "Video varlıkları",
-  "assetsEmpty": "Henüz video render edilmedi — bir video sağlayıcısı yapılandırıldığında render işlemi Content Factory'deki içerik öğeleri üzerinden çalışır."
+  "assetsEmpty": "Henüz video yok. Video oluşturma uygulamada henüz kullanılamıyor.",
+  "providerNote": "Henüz kullanılabilir bir video hizmeti yok – şu anda uygulamada video üretilemiyor."
 }

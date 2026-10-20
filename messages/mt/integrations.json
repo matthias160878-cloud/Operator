@@ -1,6 +1,6 @@
 {
   "title": "Integrazzjonijiet",
-  "description": "L-istatus live tas-servizzi esterni kollha — esklussivament abbażi tal-varjabbli tal-ambjent li verament ġew issettjati. L-ebda konnessjonijiet foloz.",
+  "description": "Status dirett tas-servizzi esterni – konnessjonijiet li verament huma ssettjati u vverifikati biss, xejn mhu ffalsifikat.",
   "categories": {
     "AI": "Fornituri tal-AI",
     "VOICE": "Voice",

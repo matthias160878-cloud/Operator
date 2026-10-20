@@ -1,6 +1,6 @@
 {
   "title": "Integrationen",
-  "description": "Live-Status aller externen Dienste — ausschließlich auf Basis der tatsächlich gesetzten Environment-Variablen. Keine vorgetäuschten Verbindungen.",
+  "description": "Live-Status der externen Dienste – nur tatsächlich eingerichtete und geprüfte Verbindungen, nichts wird vorgetäuscht.",
   "categories": {
     "AI": "KI-Provider",
     "VOICE": "Voice",

@@ -12,7 +12,7 @@
       "title": "Prvi koraci",
       "description": "Prvo obavi ove tri stvari, a zatim svi AI agenti rade sa stvarnim podacima umjesto s rezerviranim tekstovima.",
       "steps": [
-        "Pod „Integracije“ provjeri je li postavljen pružatelj umjetne inteligencije. Funkcije umjetne inteligencije rade preko pristupa operatora, pa ti ne treba vlastita pretplata na umjetnu inteligenciju. Bez pružatelja umjetne inteligencije aplikacija radi u načinu predložaka.",
+        "Pod „Postavke → Vlastiti pristupi” unesi vlastiti AI ključ od Anthropic, OpenAI ili Gemini. AI funkcije koriste isključivo tvoj ključ; AI pružatelj naplaćuje ti izravno. Bez vlastitog ključa aplikacija radi u načinu predložaka s fiksnim tekstnim blokovima.",
         "Pod „Brand DNA“ ispuni podatke o vlastitom brendu (ton, ciljna skupina, vrijednosti) — AI agenti to koriste za svaki generirani tekst.",
         "Pod „Ideje i inspiracija“ ili „Content Brain“ daj da se generira prva ideja odnosno kampanja."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics i rast",
       "description": "Stvarni brojevi o vlastitoj uspješnosti — i preporuke umjesto automatizacije.",
       "steps": [
-        "Analytics prikazuje isključivo stvarne, uvezene ili ručno unesene podatke o uspješnosti.",
+        "Analytics prikazuje samo spremljenu statistiku (npr. primjere podataka). Statistika platformi još se ne dohvaća automatski; brojke ručno unosiš pod „Preporuke” ili u usporedbi varijanti – ondje se ocjenjuju.",
         "Stranica Rast iz tih podataka izračunava najbolja vremena objave, uspješne hashtagove i formate.",
         "Važno: namjerno ne postoji automatizirano povećanje broja pratitelja/engagementa (bez ponašanja nalik botovima) — to bi kršilo uvjete korištenja svake platforme."
       ]
@@ -59,9 +59,9 @@
       "title": "Inbox",
       "description": "AI nacrti odgovora na poruke — uz odobrenje prije slanja.",
       "steps": [
-        "Budući da (još) nijedna platforma nije povezana putem OAutha, razgovori se trenutačno stvaraju ručno umjesto da se dohvaćaju uživo.",
+        "Poruke s platformi još se ne dohvaćaju i odgovori se ne šalju. Za isprobavanje stvaraš razgovore kao simulaciju.",
         "MessageAgent predlaže odgovor na temelju Brand DNA i tijeka razgovora.",
-        "Nacrt se mora ručno pregledati i odobriti prije nego što se smatra poslanim — stvarno slanje bez veze s platformom iskreno ne uspijeva umjesto da glumi uspjeh."
+        "Nacrt pregledavaš i odobravaš ti. Slanje na platforme još nije izrađeno – „Odobri i pošalji” to pošteno javlja kao grešku umjesto da glumi uspjeh."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Odakle dolazi svaki status veze i gdje se unosi odgovarajući ključ.",
       "steps": [
         "Svaki redak prikazuje stvaran status provjeren uživo — nikada lažnu vezu.",
-        "Kod „Nije konfigurirano“ gumb „Nabavi API ključ“ vodi na službenu stranicu pružatelja.",
-        "Pristupni podaci nikad se ne spremaju u pregledniku, nego samo zaštićeno na poslužitelju. Ako pristup nedostaje, postavlja ga operator.",
-        "Troškovi: Pro i Maxi su pretplate, mjesečne ili godišnje. Aktualne cijene nalaze se pod „Paket i naplata“. Svaki vanjski pružatelj ima vlastiti, neovisan model troškova (besplatno / prema korištenju / pretplata) — na stranici Integracije za svaku je uslugu navedeno koji model vrijedi, s poveznicom na aktualne cijene kod pružatelja."
+        "Vlastite pristupe (AI ključeve, Resend za newsletter) unosiš pod „Postavke → Vlastiti pristupi” – vodič te ondje vodi na službenu stranicu s ključevima pružatelja.",
+        "Pristupni podaci nikad se ne spremaju u pregledniku, samo šifrirano na poslužitelju. Glasovni izlaz i pristupe aplikacija platformi postavlja operater; „Još nije dostupno” znači da veza u aplikaciji još nije izrađena.",
+        "Troškovi: Pro i Maxi su pretplate, mjesečne ili godišnje. Aktualne cijene nalaze se pod „Paket i naplata”. Za tvoje vlastite pristupe (AI, Resend) svaki pružatelj naplaćuje ti izravno po svom cjenovnom modelu – SECRET 58 za to ne naplaćuje ništa dodatno."
       ]
     }
   }

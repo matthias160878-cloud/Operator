@@ -1,6 +1,6 @@
 {
   "title": "Integracije",
-  "description": "Stanje vseh zunanjih storitev v živo — izključno na podlagi dejansko nastavljenih okoljskih spremenljivk. Brez navideznih povezav.",
+  "description": "Stanje zunanjih storitev v živo – le dejansko nastavljene in preverjene povezave, nič se ne hlini.",
   "categories": {
     "AI": "Ponudniki UI",
     "VOICE": "Glas",

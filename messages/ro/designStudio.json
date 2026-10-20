@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Concepte de miniatură, resurse de imagine și integrarea Canva.",
+  "subtitle": "Concepte de miniaturi sub formă de text și starea conexiunii cu Canva.",
   "imageAssetsTitle": "Resurse de imagine",
-  "imageAssetsEmpty": "Încă nu există resurse de imagine.",
+  "imageAssetsEmpty": "Încă nu există imagini. Agentul de miniaturi creează deocamdată doar concepte text, nu fișiere imagine.",
   "thumbnailAgent": {
     "title": "Agent pentru miniaturi",
     "description": "Creează un concept text (titlu, idee vizuală, layout, CTA) — pregătit pentru conectarea unui generator de imagini. Încă nu se generează nicio imagine.",
@@ -15,6 +15,9 @@
     "fieldText": "Text",
     "fieldLayout": "Layout",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Descrierea imaginii"
+    "fieldImageDescription": "Descrierea imaginii",
+    "templateResult": "Șablon: acest concept provine dintr-un șablon de text fix, nu de la o IA. Pentru concepte IA, introdu propria cheie IA la „Setări → Accese proprii”.",
+    "textEngineLabel": "Motor de text:",
+    "templateMode": "Mod șablon (niciun furnizor de IA configurat)"
   }
 }

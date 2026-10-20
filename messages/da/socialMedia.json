@@ -1,14 +1,14 @@
 {
   "pageTitle": "Sociale medier",
-  "subtitle": "Platformkonti og deres forbindelsesstatus. Adgangsoplysninger administreres udelukkende som miljøvariabler på serveren og gemmes aldrig i frontend. Adgangstokens gemmes krypteret i databasen efter tilslutning.",
+  "subtitle": "Dine platformkonti og deres forbindelsesstatus. Du forbinder ved at logge ind direkte hos platformen; adgangstokens gemmes krypteret på serveren, aldrig i browseren.",
   "credentialsLabel": "App-adgangsoplysninger",
   "accountLabel": "Konto",
   "lastPublishedLabel": "Seneste udgivelse",
   "lastErrorLabel": "Seneste fejl",
   "connectButton": "Forbind",
   "connectButtonUnavailable": "Forbind (endnu ikke muligt)",
-  "connectButtonTitleNoCreds": "App-adgangsoplysninger mangler stadig",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY er endnu ikke sat",
+  "connectButtonTitleNoCreds": "Endnu ikke opsat af operatøren",
+  "connectButtonTitleNoEncryption": "Sikker lagring af adgangstokens er endnu ikke opsat",
   "disconnectButton": "Afbryd",
   "disconnectConfirm": "Vil du virkelig afbryde denne konto? Adgangen skal derefter oprettes igen via »Forbind«.",
   "needsCredentialsNote": "Mangler stadig: Indtast {idVar} og {secretVar} i Render.",
@@ -62,6 +62,10 @@
       "not_active": "Platformen bekræftede ikke adgangen, eller den blev afvist.",
       "composio_error": "Composio kunne ikke nås eller meldte en fejl. Prøv igen senere.",
       "unknown": "Forbindelsen mislykkedes."
-    }
-  }
+    },
+    "noPublishNotice": "Kun en forbindelsestest – her offentliggøres intet. Læsetesten kontrollerer kun, om kontoen kan læses."
+  },
+  "needsCredentialsNoteCustomer": "Denne platform opsættes af operatøren. Du kan forbinde, så snart den er opsat.",
+  "errorNotConfiguredCustomer": "{platform}: operatøren har endnu ikke opsat denne platform. Du kan forbinde, så snart den er opsat.",
+  "encryptionKeyMissingNoticeCustomer": "Det er endnu ikke muligt at forbinde: operatøren har endnu ikke opsat sikker lagring af adgangstokens."
 }

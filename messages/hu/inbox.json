@@ -1,6 +1,6 @@
 {
   "title": "Beérkezett üzenetek",
-  "description": "Üzenetek és hozzászólások az összes platformról. A MessageAgent válaszokat javasol — csak az kerül elküldésre, amit jóváhagysz. Még nincs valódi OAuth-kapcsolat egyetlen platformmal sem, ezért a beszélgetések itt kézzel szimulálhatók, nem élőben kerülnek lekérésre.",
+  "description": "Üzenetek és megkeresések egy helyen. A MessageAgent válaszpiszkozatokat javasol.",
   "emptyState": "Még nincsenek beszélgetések — szimulálj egyet az induláshoz.",
   "backToInbox": "Vissza a beérkezett üzenetekhez",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Újabb bejövő üzenet szimulálása (teszt valódi platformkapcsolat nélkül):",
     "messagePlaceholder": "Üzenet szövege …",
     "addButton": "Hozzáadás"
-  }
+  },
+  "simulationBanner": "<strong>Előnézet/szimuláció:</strong> a platformok üzeneteit még nem kérjük le, és a válaszok nem kerülnek elküldésre – a „Jóváhagyás és küldés” gombbal sem. Platformüzeneteket itt szimulálhatsz kipróbálásként. Valódi bejegyzések csak a weboldal űrlapjairól érkeznek (pl. időpontkérések); ezekre e-mailben válaszolsz."
 }

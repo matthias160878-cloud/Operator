@@ -1,6 +1,6 @@
 {
   "title": "Safata d'entrada",
-  "description": "Missatges i comentaris de totes les plataformes. El MessageAgent proposa respostes: només s'envia el que tu aprovis. Encara no hi ha cap connexió OAuth real amb cap plataforma, per això les converses es simulen manualment aquí en lloc de consultar-se en directe.",
+  "description": "Missatges i sol·licituds en un sol lloc. El MessageAgent suggereix esborranys de resposta.",
   "emptyState": "Encara no hi ha converses: simula'n una per començar.",
   "backToInbox": "Torna a la safata d'entrada",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simula un altre missatge entrant (prova sense connexió real amb una plataforma):",
     "messagePlaceholder": "Text del missatge …",
     "addButton": "Afegeix"
-  }
+  },
+  "simulationBanner": "<strong>Previsualització/simulació:</strong> els missatges de les plataformes encara no s'obtenen i les respostes no s'envien, ni tan sols amb «Aprova i envia». Aquí pots simular missatges de plataformes per provar. Les entrades reals només provenen de formularis web (p. ex. sol·licituds de cita); a aquestes respons per correu electrònic."
 }

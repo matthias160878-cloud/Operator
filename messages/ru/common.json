@@ -81,14 +81,16 @@
     "ERROR": "Ошибка",
     "REJECTED": "Отклонено",
     "RECEIVED": "Получено",
-    "PENDING": "В ожидании"
+    "PENDING": "В ожидании",
+    "NOT_AVAILABLE": "Пока недоступно"
   },
   "integrationStatus": {
     "notConfigured": "Не настроено — отсутствуют переменные: {vars}.",
     "verifyFailedGeneric": "Не удалось подключиться.",
     "verifyFailedStatus": "{service} ответил со статусом {status}.",
     "verifyUnreachable": "Не удалось связаться с {service}.",
-    "connected": "Подключено."
+    "connected": "Подключено.",
+    "notAvailable": "Пока недоступно – это подключение в приложении ещё не реализовано."
   },
   "mediaPreview": {
     "expand": "Показать крупнее",

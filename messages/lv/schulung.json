@@ -12,7 +12,7 @@
       "title": "Pirmie soļi",
       "description": "Vispirms izdari šīs trīs lietas, tad visi MI aģenti strādās ar īstiem datiem, nevis vietturiem.",
       "steps": [
-        "Sadaļā „Integrācijas“ pārbaudi, vai ir iestatīts MI pakalpojumu sniedzējs. MI funkcijas darbojas ar operatora piekļuvēm, tāpēc tev nav vajadzīgs savs MI abonements. Bez MI pakalpojumu sniedzēja lietotne darbojas veidņu režīmā.",
+        "Sadaļā „Iestatījumi → Savas piekļuves“ ievadi savu MI atslēgu no Anthropic, OpenAI vai Gemini. MI funkcijas izmanto tikai tavu atslēgu; MI pakalpojumu sniedzējs izraksta rēķinu tieši tev. Bez savas atslēgas lietotne darbojas veidņu režīmā ar fiksētiem teksta blokiem.",
         "Sadaļā „Brand DNA“ aizpildi savu zīmolu (tonis, mērķauditorija, vērtības) — MI aģenti to izmanto katram ģenerētajam tekstam.",
         "Sadaļā „Idejas un iedvesma“ vai „Content Brain“ ļauj izveidot pirmo ideju vai kampaņu."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics un izaugsme",
       "description": "Īsti skaitļi par savu veiktspēju — un ieteikumi automatizācijas vietā.",
       "steps": [
-        "Analytics rāda tikai īstus, importētus vai manuāli ievadītus veiktspējas datus.",
+        "Analytics rāda tikai saglabātu statistiku (piem., parauga datus). Platformu statistika vēl netiek iegūta automātiski; skaitļus manuāli ievadi sadaļā „Ieteikumi“ vai variantu salīdzinājumā – tur tie tiek izvērtēti.",
         "Izaugsmes lapa no šiem datiem aprēķina labākos publicēšanas laikus, veiksmīgos tēmturus un formātus.",
         "Svarīgi: apzināti nav automatizēta sekotāju/iesaistes palielināšana (nekādas botu uzvedības) — tas pārkāptu katras platformas lietošanas noteikumus."
       ]
@@ -59,9 +59,9 @@
       "title": "Iesūtne",
       "description": "MI atbilžu melnraksti ziņām — ar apstiprināšanu pirms nosūtīšanas.",
       "steps": [
-        "Tā kā (pagaidām) neviena platforma nav savienota ar OAuth, sarunas pašlaik tiek izveidotas manuāli, nevis ielādētas tiešraidē.",
+        "Ziņas no platformām vēl netiek iegūtas, un atbildes netiek sūtītas. Lai izmēģinātu, tu izveido sarunas kā simulāciju.",
         "MessageAgent iesaka atbildi, pamatojoties uz Brand DNA un sarunas gaitu.",
-        "Melnraksts jāpārbauda un manuāli jāapstiprina, pirms tas tiek uzskatīts par nosūtītu — īsta nosūtīšana bez platformas savienojuma godīgi neizdodas, nevis izliekas par veiksmīgu."
+        "Melnrakstu pārskati un apstiprini tu. Sūtīšana uz platformām vēl nav izveidota – „Apstiprināt un nosūtīt“ godīgi ziņo par to kā kļūdu, nevis izliekas par veiksmi."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "No kurienes nāk katrs savienojuma statuss un kur ievadāma attiecīgā atslēga.",
       "steps": [
         "Katra rinda rāda īsto, tiešraidē pārbaudīto statusu — nekad izliktu savienojumu.",
-        "Pie „Nav nokonfigurēts“ poga „Iegūt API atslēgu“ ved uz pakalpojumu sniedzēja oficiālo lapu.",
-        "Piekļuves dati nekad netiek glabāti pārlūkprogrammā, bet tikai aizsargāti serverī. Ja piekļuves trūkst, to iestata operators.",
-        "Izmaksas: Pro un Maxi ir abonementi, mēneša vai gada. Aktuālās cenas ir sadaļā „Pakete un norēķini“. Katram ārējam pakalpojumu sniedzējam ir savs, neatkarīgs izmaksu modelis (bezmaksas / pēc lietojuma / abonements) — Integrāciju lapā pie katra pakalpojuma norādīts, kāds modelis ir spēkā, ar saiti uz aktuālajām cenām pie pakalpojumu sniedzēja."
+        "Savas piekļuves (MI atslēgas, Resend jaunumu vēstulei) ievadi sadaļā „Iestatījumi → Savas piekļuves“ – tur ceļvedis aizved uz pakalpojumu sniedzēja oficiālo atslēgu lapu.",
+        "Piekļuves dati nekad netiek glabāti pārlūkā, tikai šifrēti serverī. Balss izvadi un platformu lietotņu piekļuves iestata operators; „Vēl nav pieejams“ nozīmē, ka savienojums lietotnē vēl nav izveidots.",
+        "Izmaksas: Pro un Maxi ir abonementi, mēneša vai gada. Aktuālās cenas ir sadaļā „Pakete un norēķini“. Par tavām savām piekļuvēm (MI, Resend) katrs pakalpojumu sniedzējs izraksta rēķinu tieši tev pēc sava cenu modeļa – SECRET 58 par to papildus neko neiekasē."
       ]
     }
   }

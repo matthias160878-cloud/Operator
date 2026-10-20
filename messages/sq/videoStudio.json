@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Pipeline video i pavarur nga ofruesi: Format Manager, ofrues videosh të këmbyeshëm, lidhje me voiceover dhe titra (shih Content Factory për secilën njësi përmbajtjeje).",
+  "subtitle": "Krijimi i videove ende nuk është i disponueshëm: nuk është lidhur asnjë shërbim video që krijon video. Më poshtë sheh formatet e përgatitura për çdo platformë; skenarët, zërimin dhe titrat i krijon në Script Studio, Voice Studio dhe Content Factory.",
   "providerCardTitle": "Ofruesit e videove",
-  "providerNotePrefix": "Ofrues të tjerë (API videosh AI, biblioteka videosh stok) mund të shtohen përmes të njëjtës ndërfaqe",
-  "providerNoteSuffix": ", pa prekur kodin ekzistues.",
   "formatManagerTitle": "Format Manager",
   "assetsTitle": "Asetet e videove",
-  "assetsEmpty": "Ende nuk janë renderuar video — renderimi bëhet përmes njësive të përmbajtjes në Content Factory, sapo të konfigurohet një ofrues videosh."
+  "assetsEmpty": "Ende nuk ka video. Krijimi i videove ende nuk është i disponueshëm në aplikacion.",
+  "providerNote": "Ende nuk ka shërbim video të përdorshëm – aktualisht videot nuk mund të krijohen në aplikacion."
 }

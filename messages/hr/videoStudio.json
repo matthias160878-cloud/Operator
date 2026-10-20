@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Video pipeline neovisan o pružatelju: upravitelj formata, zamjenjivi video pružatelji, povezivanje voiceovera i titlova (vidi Content Factory po stavci sadržaja).",
+  "subtitle": "Izrada videa još nije dostupna: nije povezana nijedna video usluga koja izrađuje videozapise. Ispod vidiš pripremljene formate po platformi; skripte, glasovnu naraciju i titlove izrađuješ u Script Studiju, Voice Studiju i Content Factoryju.",
   "providerCardTitle": "Video pružatelji",
-  "providerNotePrefix": "Dodatni pružatelji (AI video API-ji, knjižnice stock videa) mogu se dodati putem istog sučelja",
-  "providerNoteSuffix": ", bez diranja postojećeg koda.",
   "formatManagerTitle": "Upravitelj formata",
   "assetsTitle": "Video materijali",
-  "assetsEmpty": "Još nema renderiranih videa — renderiranje ide preko stavki sadržaja u Content Factory čim se konfigurira video pružatelj."
+  "assetsEmpty": "Još nema videozapisa. Izrada videa u aplikaciji još nije dostupna.",
+  "providerNote": "Još nema upotrebljive video usluge – videozapisi se trenutačno ne mogu izraditi u aplikaciji."
 }

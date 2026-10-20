@@ -1,6 +1,6 @@
 {
-  "title": "Agentų monitorius",
-  "description": "Visi SECRET 58 agentai su būsena, paskutine užduotimi ir rezultatu. Kiekvienas paleidimas įrašomas į žurnalą.",
+  "title": "Asistentų žurnalas",
+  "description": "Visi SECRET 58 asistentai (agentai) su būsena, paskutine užduotimi ir rezultatu. Kiekvienas paleidimas registruojamas čia.",
   "table": {
     "agent": "Agentas",
     "description": "Aprašymas",

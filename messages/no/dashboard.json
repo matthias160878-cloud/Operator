@@ -1,8 +1,7 @@
 {
   "viewAll": "Vis alle",
   "demoBanner": {
-    "before": "Demodata aktive — kampanjer, innholdselementer og analytics er eksempeldata fra ",
-    "after": ", ikke ekte plattformtall."
+    "text": "Eksempeldata aktive – kampanjer, innhold og statistikk i dette arbeidsområdet er eksempeldata, ikke ekte plattformtall."
   },
   "hero": {
     "subtitle": "Én idé. Flere plattformer. Maksimal rekkevidde.",
@@ -26,8 +25,9 @@
     "published": "Publiseringer",
     "views": "Visninger",
     "avgEngagement": "Ø engasjement",
-    "totalRevenue": "Inntekter totalt",
-    "noComparisonWeek": "Ingen forrige uke som sammenligningsgrunnlag ennå — endringsrater vises så snart det finnes data for minst to uker."
+    "totalRevenue": "Inntekter (registrert manuelt)",
+    "noComparisonWeek": "Ingen forrige uke som sammenligningsgrunnlag ennå — endringsrater vises så snart det finnes data for minst to uker.",
+    "noStats": "Visninger og engasjement: ingen statistikk ennå – plattformstatistikk hentes ennå ikke automatisk."
   },
   "production": {
     "title": "Innholdsproduksjon",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} tilkoblet"
   },
   "agentMonitor": {
-    "title": "Agent Monitor",
+    "title": "Assistentenes logg",
     "empty": "Ingen kjøringer ennå."
   },
   "topPerformer": {
     "title": "Toppresterende",
     "last7Days": "Siste 7 dager",
-    "empty": "Ingen ytelsesdata ennå.",
+    "empty": "Ingen resultatdata ennå – plattformstatistikk hentes ennå ikke automatisk.",
     "views": "Visninger",
     "likes": "Likes",
     "comments": "Kommentarer",

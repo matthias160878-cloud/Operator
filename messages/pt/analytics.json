@@ -1,14 +1,15 @@
 {
   "title": "Analytics",
-  "subtitle": "Indicadores de desempenho com base em dados realmente existentes — quando as plataformas estiverem ligadas, esta vista enche-se com valores reais.",
+  "subtitle": "As estatísticas das plataformas (visualizações, gostos, comentários, partilhas) ainda não são obtidas automaticamente. Aqui só aparecem valores já guardados, p. ex. dados de exemplo. Podes introduzir à mão os números das estatísticas da plataforma em <weiter>Recomendações</weiter> («Introduzir números da plataforma») ou na <varianten>comparação de variantes</varianten> – são avaliados lá, não nesta página.",
   "statViewsTotal": "Total de visualizações",
   "statLikesTotal": "Total de gostos",
   "statComments": "Comentários",
   "statShares": "Partilhas",
   "chartTitle": "Desempenho do conteúdo ao longo do tempo",
   "chartLegend": "Visualizações (violeta) · Envolvimento % (turquesa)",
-  "chartEmpty": "Ainda não há dados de analytics.",
+  "chartEmpty": "Ainda não há estatísticas – sem histórico disponível.",
   "bestPerformingTitle": "Conteúdo com melhor desempenho",
-  "bestPerformingEmpty": "Ainda não há dados.",
-  "learningAgentTitle": "Learning Agent — Recomendações"
+  "bestPerformingEmpty": "Ainda não há estatísticas – não é possível uma classificação.",
+  "learningAgentTitle": "Learning Agent — Recomendações",
+  "statsEmpty": "Ainda não há estatísticas guardadas – por isso ainda não há indicadores aqui. As estatísticas das plataformas ainda não são obtidas automaticamente."
 }

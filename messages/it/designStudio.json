@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Concept di miniature, risorse immagine e integrazione con Canva.",
+  "subtitle": "Concept di miniature come testo e stato del collegamento con Canva.",
   "imageAssetsTitle": "Risorse immagine",
-  "imageAssetsEmpty": "Ancora nessuna risorsa immagine disponibile.",
+  "imageAssetsEmpty": "Nessuna immagine ancora. L'agente miniature per ora crea solo concept testuali, non file immagine.",
   "thumbnailAgent": {
     "title": "Agente miniature",
     "description": "Crea un concept testuale (titolo, idea visiva, layout, CTA), predisposto per il collegamento di un generatore di immagini. Per ora non viene creata nessuna immagine.",
@@ -15,6 +15,9 @@
     "fieldText": "Testo",
     "fieldLayout": "Layout",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Descrizione dell'immagine"
+    "fieldImageDescription": "Descrizione dell'immagine",
+    "templateResult": "Modello: questo concept deriva da un modello di testo fisso, non da un'IA. Per concept con IA, inserisci la tua chiave IA in «Impostazioni → Accessi personali».",
+    "textEngineLabel": "Motore di testo:",
+    "templateMode": "Modalità template (nessun fornitore di IA configurato)"
   }
 }

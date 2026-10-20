@@ -6,7 +6,7 @@ export type IntegrationCategory =
   | "VIDEO"
   | "TREND";
 
-export type IntegrationLiveStatus = "CONNECTED" | "NOT_CONFIGURED" | "ERROR";
+export type IntegrationLiveStatus = "CONNECTED" | "NOT_CONFIGURED" | "ERROR" | "NOT_AVAILABLE";
 
 export interface IntegrationStatusResult {
   key: string;
@@ -27,6 +27,12 @@ export interface IntegrationDefinition {
   name: string;
   category: IntegrationCategory;
   requiredEnv: string[];
+  /**
+   * Die App nutzt diesen Dienst noch nicht (kein Client gebaut). Dann gilt
+   * immer „Noch nicht verfügbar“ – auch wenn die Variablen gesetzt sind, damit
+   * nie eine Verbindung angezeigt wird, die nichts tut.
+   */
+  nochNichtVerfuegbar?: boolean;
   /**
    * Optionaler Live-Check (z.B. ein leichter API-Ping). Wird nur ausgeführt,
    * wenn alle requiredEnv-Variablen gesetzt sind. Muss innerhalb kurzer Zeit

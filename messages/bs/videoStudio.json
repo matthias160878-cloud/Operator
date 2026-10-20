@@ -1,10 +1,9 @@
 {
  "pageTitle": "Video Studio",
- "subtitle": "Video pipeline neovisan o provajderu: Format Manager, zamjenjivi video provajderi, povezivanje voiceovera i titlova (vidi Content Factory po stavci sadržaja).",
+ "subtitle": "Izrada videa još nije dostupna: nije povezana nijedna video usluga koja pravi videozapise. Ispod vidiš pripremljene formate po platformi; skripte, glasovnu naraciju i titlove praviš u Script Studiju, Voice Studiju i Content Factoryju.",
  "providerCardTitle": "Video provajderi",
- "providerNotePrefix": "Dodatni provajderi (AI video API-ji, biblioteke stock videa) mogu se dodati preko istog",
- "providerNoteSuffix": "-sučelja, bez diranja postojećeg koda.",
  "formatManagerTitle": "Format Manager",
  "assetsTitle": "Video asseti",
- "assetsEmpty": "Još nijedan video nije renderovan — renderovanje ide preko stavki sadržaja u Content Factory, čim se konfiguriše video provajder."
+ "assetsEmpty": "Još nema videozapisa. Izrada videa u aplikaciji još nije dostupna.",
+ "providerNote": "Još nema upotrebljive video usluge – videozapisi se trenutno ne mogu napraviti u aplikaciji."
 }

@@ -16,7 +16,10 @@
     "statusInProgress": "Töös",
     "statusUsed": "Kasutatud",
     "statusArchived": "Arhiveeritud",
-    "sourceAiGenerated": "Tehisintellekti loodud",
-    "sourceManual": "Käsitsi"
+    "sourceAiGenerated": "IdeaAgent (AI või mall)",
+    "sourceManual": "Käsitsi",
+    "templateResult": "Mall: äsja loodud ideed pärinevad kindlatest tekstiplokkidest, mitte AI-lt. AI-ideede jaoks sisesta oma AI-võti jaotises „Seaded → Oma ligipääsud“.",
+    "textEngineLabel": "Tekstimootor:",
+    "templateMode": "Mallirežiim (tehisintellekti pakkuja pole seadistatud)"
   }
 }

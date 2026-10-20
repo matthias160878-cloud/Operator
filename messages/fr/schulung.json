@@ -12,7 +12,7 @@
       "title": "Premiers pas",
       "description": "Faites ces trois choses en premier, ensuite chaque agent IA travaille avec de vraies données plutôt qu'avec des exemples.",
       "steps": [
-        "Dans « Intégrations », vérifie si un fournisseur d’IA est configuré. Les fonctions d’IA passent par les accès de l’exploitant, tu n’as donc pas besoin de ton propre abonnement d’IA. Sans fournisseur d’IA, l’app fonctionne en mode modèles.",
+        "Sous « Paramètres → Accès personnels », saisis ta propre clé d'IA d'Anthropic, OpenAI ou Gemini. Les fonctions d'IA utilisent uniquement ta propre clé ; le fournisseur d'IA te facture directement. Sans clé personnelle, l'application fonctionne en mode modèle avec des blocs de texte fixes.",
         "Sous \"ADN de marque\", renseignez votre marque (ton, public, valeurs) — chaque agent IA s'en sert pour le texte qu'il génère.",
         "Sous \"Idées & inspiration\" ou \"Content Brain\", générez votre première idée ou campagne."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytique & Croissance",
       "description": "De vrais chiffres sur votre propre performance — et des recommandations plutôt que de l'automatisation.",
       "steps": [
-        "Analytique n'affiche que des données de performance réelles, importées ou saisies manuellement.",
+        "Analytics affiche uniquement les statistiques enregistrées (p. ex. des données d'exemple). Les statistiques des plateformes ne sont pas encore récupérées automatiquement ; tu saisis les chiffres à la main sous « Recommandations » ou dans la comparaison de variantes – ils y sont évalués.",
         "La page Croissance calcule à partir de ces données les meilleurs horaires de publication, les hashtags les plus efficaces et les formats les plus performants.",
         "Important : il n'y a volontairement aucune croissance automatisée des abonnés/de l'engagement (aucun comportement de bot) — cela enfreindrait les conditions d'utilisation de toute plateforme."
       ]
@@ -59,9 +59,9 @@
       "title": "Messagerie",
       "description": "Réponses rédigées par IA aux messages — avec validation avant l'envoi.",
       "steps": [
-        "Comme aucune plateforme n'est encore connectée via OAuth, les conversations sont actuellement ajoutées manuellement plutôt que récupérées en direct.",
+        "Les messages des plateformes ne sont pas encore récupérés et les réponses ne sont pas envoyées. Pour essayer, tu crées des conversations en simulation.",
         "Le MessageAgent rédige une réponse à partir de l'ADN de marque et de l'historique de la conversation.",
-        "Le brouillon doit être vérifié et validé manuellement avant d'être considéré comme envoyé — un envoi réel échoue honnêtement sans connexion à la plateforme, plutôt que de simuler un succès."
+        "Tu vérifies et approuves le brouillon. L'envoi vers les plateformes n'est pas encore développé – « Approuver et envoyer » le signale honnêtement comme erreur au lieu de simuler un succès."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "D'où vient chaque statut de connexion, et où configurer la clé correspondante.",
       "steps": [
         "Chaque ligne affiche le statut réel, vérifié en direct — jamais une connexion simulée.",
-        "Pour \"Non configuré\", \"Obtenir la clé API\" mène à la page officielle du fournisseur.",
-        "Les identifiants ne sont jamais enregistrés dans le navigateur, mais uniquement protégés sur le serveur. Si un accès manque, l’exploitant le configure.",
-        "Coûts : Pro et Maxi sont des abonnements, mensuels ou annuels. Les prix actuels figurent sous « Offre et facturation ». Chaque fournisseur externe a son propre modèle de coûts, indépendant (gratuit / selon l’usage / abonnement) — la page Intégrations indique pour chaque service quel modèle s’applique, avec un lien vers les prix actuels du fournisseur."
+        "Tu saisis tes accès personnels (clés d'IA, Resend pour la newsletter) sous « Paramètres → Accès personnels » – un guide y mène à la page officielle des clés du fournisseur.",
+        "Les identifiants ne sont jamais stockés dans le navigateur, uniquement chiffrés sur le serveur. La synthèse vocale et les accès d'application des plateformes sont configurés par l'opérateur ; « Pas encore disponible » signifie que la connexion n'est pas encore développée dans l'application.",
+        "Coûts : Pro et Maxi sont des abonnements, mensuels ou annuels. Les prix actuels figurent sous « Offre et facturation ». Pour tes accès personnels (IA, Resend), chaque fournisseur te facture directement selon son propre modèle tarifaire – SECRET 58 ne facture rien en plus."
       ]
     }
   }

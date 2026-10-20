@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Kontijiet tal-pjattaformi u l-istatus tal-konnessjoni tagħhom. Id-dettalji tal-aċċess jiġu mmaniġġjati esklussivament bħala varjabbli tal-ambjent min-naħa tas-server, qatt ma jinħażnu fil-frontend. It-tokens tal-aċċess wara l-konnessjoni jinħażnu kriptati fid-database.",
+  "subtitle": "Il-kontijiet tiegħek fuq il-pjattaformi u l-istatus tal-konnessjoni tagħhom. Tikkonnettja billi tidħol direttament fuq il-pjattaforma; it-tokens tal-aċċess jinħażnu kriptati fuq is-server, qatt fil-browser.",
   "credentialsLabel": "Dettalji tal-aċċess tal-app",
   "accountLabel": "Kont",
   "lastPublishedLabel": "L-aħħar pubblikazzjoni",
   "lastErrorLabel": "L-aħħar żball",
   "connectButton": "Qabbad",
   "connectButtonUnavailable": "Qabbad (għadu mhux possibbli)",
-  "connectButtonTitleNoCreds": "Id-dettalji tal-aċċess tal-app għadhom nieqsa",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY għadu mhux issettjat",
+  "connectButtonTitleNoCreds": "Għadu mhux issettjat mill-operatur",
+  "connectButtonTitleNoEncryption": "Il-ħażna sigura tat-tokens tal-aċċess għadha mhix issettjata",
   "disconnectButton": "Skonnettja",
   "disconnectConfirm": "Tassew trid tiskonnettja dan il-kont? Wara, l-aċċess irid jerġa' jiġi stabbilit permezz ta' “Qabbad”.",
   "needsCredentialsNote": "Għadu nieqes: Daħħal {idVar} u {secretVar} f'Render.",
@@ -62,6 +62,10 @@
       "not_active": "Il-pjattaforma ma kkonfermatx l-aċċess jew ġie miċħud.",
       "composio_error": "Composio ma setax jintlaħaq jew irrapporta żball. Jekk jogħġbok erġa' pprova aktar tard.",
       "unknown": "Il-konnessjoni falliet."
-    }
-  }
+    },
+    "noPublishNotice": "Test tal-konnessjoni biss – hawnhekk ma jiġi ppubblikat xejn. It-test tal-qari jiċċekkja biss jekk il-kont jistax jinqara."
+  },
+  "needsCredentialsNoteCustomer": "Din il-pjattaforma jissettjaha l-operatur. Tista' tikkonnettja malli tiġi ssettjata.",
+  "errorNotConfiguredCustomer": "{platform}: l-operatur għadu ma ssettjax din il-pjattaforma. Tista' tikkonnettja malli tiġi ssettjata.",
+  "encryptionKeyMissingNoticeCustomer": "Għadu mhux possibbli li tikkonnettja: l-operatur għadu ma ssettjax il-ħażna sigura tat-tokens tal-aċċess."
 }

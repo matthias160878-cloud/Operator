@@ -1,6 +1,6 @@
 {
   "title": "Inställningar",
-  "description": "Arbetsyta, användare och systeminformation. Åtkomstuppgifter hanteras uteslutande via miljövariabler (se <code>.env.example</code>).",
+  "description": "Din arbetsyta, användare och en översikt över dina data. Dina egna API-nycklar (AI-texter, utskick av nyhetsbrev) anger du under <zugaenge>Egna åtkomster</zugaenge>; ditt paket finns under <billing>Paket & fakturering</billing>.",
   "workspace": {
     "title": "Arbetsyta",
     "name": "Namn",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Användare & roller",
-    "note": "Multi-tenant-datamodellen är helt förberedd (isolering av arbetsytor för alla tabeller). Ett riktigt inloggnings-/autentiseringsgränssnitt med flera användare är nästa utbyggnadssteg — för närvarande arbetar appen med just den här standardarbetsytan."
+    "note": "Varje konto har en egen arbetsyta, åtskild från andra kunder. Fler användare kan du ännu inte lägga till själv."
   },
   "system": {
     "title": "System",
@@ -17,7 +17,7 @@
     "campaigns": "Kampanjer",
     "mediaAssets": "Mediaresurser",
     "agentRuns": "Agentkörningar",
-    "dbNote": "Databas: SQLite (lokal, <code>prisma/dev.db</code>) via Prisma ORM. För produktion ställ om <codeSpaced>DATABASE_URL</codeSpaced> till Postgres/MySQL (anpassa leverantören i <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Antal poster som sparats i din arbetsyta. Du kan exportera alla data eller radera arbetsytan längre ner under ”Mina data”."
   },
   "onboarding": {
     "title": "Installationsassistent",

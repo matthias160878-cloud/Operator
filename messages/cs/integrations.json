@@ -1,6 +1,6 @@
 {
   "title": "Integrace",
-  "description": "Živý stav všech externích služeb — výhradně na základě skutečně nastavených proměnných prostředí. Žádná předstíraná připojení.",
+  "description": "Živý stav externích služeb – jen skutečně nastavená a ověřená připojení, nic se nepředstírá.",
   "categories": {
     "AI": "Poskytovatelé AI",
     "VOICE": "Hlas",

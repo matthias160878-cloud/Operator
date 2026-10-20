@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social media",
-  "subtitle": "Platformaccounts en hun verbindingsstatus. Toegangsgegevens worden uitsluitend als serverzijdige omgevingsvariabelen beheerd en nooit in de frontend opgeslagen. Toegangstokens worden na het verbinden versleuteld in de database bewaard.",
+  "subtitle": "Je platformaccounts en hun verbindingsstatus. Je verbindt door rechtstreeks bij het platform in te loggen; toegangstokens worden versleuteld op de server opgeslagen, nooit in de browser.",
   "credentialsLabel": "App-toegangsgegevens",
   "accountLabel": "Account",
   "lastPublishedLabel": "Laatste publicatie",
   "lastErrorLabel": "Laatste fout",
   "connectButton": "Verbinden",
   "connectButtonUnavailable": "Verbinden (nog niet mogelijk)",
-  "connectButtonTitleNoCreds": "App-toegangsgegevens ontbreken nog",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY is nog niet ingesteld",
+  "connectButtonTitleNoCreds": "Nog niet ingericht door de beheerder",
+  "connectButtonTitleNoEncryption": "Veilige opslag van toegangstokens is nog niet ingericht",
   "disconnectButton": "Loskoppelen",
   "disconnectConfirm": "Dit account echt loskoppelen? De toegang moet daarna opnieuw worden hersteld via “Verbinden”.",
   "needsCredentialsNote": "Ontbreekt nog: voer {idVar} en {secretVar} in bij Render in.",
@@ -62,6 +62,10 @@
       "not_active": "Het platform heeft de toegang niet bevestigd of deze is geweigerd.",
       "composio_error": "Composio was niet bereikbaar of meldde een fout. Probeer het later opnieuw.",
       "unknown": "Verbinding mislukt."
-    }
-  }
+    },
+    "noPublishNotice": "Alleen een verbindingstest – hier wordt niets gepubliceerd. De leestest controleert alleen of het account gelezen kan worden."
+  },
+  "needsCredentialsNoteCustomer": "Dit platform wordt door de beheerder ingericht. Verbinden is mogelijk zodra het is ingericht.",
+  "errorNotConfiguredCustomer": "{platform}: de beheerder heeft dit platform nog niet ingericht. Verbinden is mogelijk zodra het is ingericht.",
+  "encryptionKeyMissingNoticeCustomer": "Verbinden is nog niet mogelijk: de beheerder heeft de veilige opslag van toegangstokens nog niet ingericht."
 }

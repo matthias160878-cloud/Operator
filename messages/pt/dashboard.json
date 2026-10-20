@@ -1,8 +1,7 @@
 {
   "viewAll": "Ver tudo",
   "demoBanner": {
-    "before": "Dados de demonstração ativos — campanhas, itens de conteúdo e analytics são dados de exemplo de ",
-    "after": ", não são números reais das plataformas."
+    "text": "Dados de exemplo ativos – as campanhas, conteúdos e estatísticas deste espaço de trabalho são dados de exemplo, não números reais das plataformas."
   },
   "hero": {
     "subtitle": "Uma ideia. Várias plataformas. Máximo alcance.",
@@ -26,8 +25,9 @@
     "published": "Publicações feitas",
     "views": "Visualizações",
     "avgEngagement": "Ø Envolvimento",
-    "totalRevenue": "Total de receitas",
-    "noComparisonWeek": "Ainda não há semana anterior como base de comparação — as taxas de variação aparecem quando houver dados de pelo menos duas semanas."
+    "totalRevenue": "Receitas (registadas manualmente)",
+    "noComparisonWeek": "Ainda não há semana anterior como base de comparação — as taxas de variação aparecem quando houver dados de pelo menos duas semanas.",
+    "noStats": "Visualizações e envolvimento: ainda não há estatísticas – as estatísticas das plataformas ainda não são obtidas automaticamente."
   },
   "production": {
     "title": "Produção de conteúdo",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} ligadas"
   },
   "agentMonitor": {
-    "title": "Monitor de agentes",
+    "title": "Registo dos assistentes",
     "empty": "Ainda não há execuções."
   },
   "topPerformer": {
     "title": "Melhor desempenho",
     "last7Days": "Últimos 7 dias",
-    "empty": "Ainda não há dados de desempenho.",
+    "empty": "Ainda não há dados de desempenho – as estatísticas das plataformas ainda não são obtidas automaticamente.",
     "views": "Visualizações",
     "likes": "Gostos",
     "comments": "Comentários",

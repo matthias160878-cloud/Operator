@@ -1,14 +1,14 @@
 {
   "pageTitle": "Sosiaalinen media",
-  "subtitle": "Alustatilit ja niiden yhteyden tila. Tunnuksia hallitaan yksinomaan palvelinpuolen ympäristömuuttujina, eikä niitä koskaan tallenneta käyttöliittymään. Yhdistämisen jälkeen käyttötokenit tallennetaan salattuina tietokantaan.",
+  "subtitle": "Alustatilisi ja niiden yhteystila. Yhdistät kirjautumalla suoraan alustalle; käyttötunnukset tallennetaan salattuina palvelimelle, ei koskaan selaimeen.",
   "credentialsLabel": "Sovelluksen tunnukset",
   "accountLabel": "Tili",
   "lastPublishedLabel": "Viimeisin julkaisu",
   "lastErrorLabel": "Viimeisin virhe",
   "connectButton": "Yhdistä",
   "connectButtonUnavailable": "Yhdistä (ei vielä mahdollista)",
-  "connectButtonTitleNoCreds": "Sovelluksen tunnukset puuttuvat vielä",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY ei ole vielä asetettu",
+  "connectButtonTitleNoCreds": "Ylläpitäjä ei ole vielä määrittänyt",
+  "connectButtonTitleNoEncryption": "Käyttötunnusten turvallista tallennusta ei ole vielä määritetty",
   "disconnectButton": "Katkaise yhteys",
   "disconnectConfirm": "Katkaistaanko tämän tilin yhteys varmasti? Pääsy täytyy sen jälkeen palauttaa uudelleen kohdasta ”Yhdistä”.",
   "needsCredentialsNote": "Puuttuu vielä: tallenna {idVar} ja {secretVar} Renderiin.",
@@ -62,6 +62,10 @@
       "not_active": "Alusta ei vahvistanut pääsyä tai se hylättiin.",
       "composio_error": "Composioon ei saatu yhteyttä tai se ilmoitti virheen. Yritä myöhemmin uudelleen.",
       "unknown": "Yhteys epäonnistui."
-    }
-  }
+    },
+    "noPublishNotice": "Vain yhteystesti – täällä ei julkaista mitään. Lukutesti tarkistaa vain, voidaanko tiliä lukea."
+  },
+  "needsCredentialsNoteCustomer": "Ylläpitäjä määrittää tämän alustan. Voit yhdistää heti, kun se on määritetty.",
+  "errorNotConfiguredCustomer": "{platform}: ylläpitäjä ei ole vielä määrittänyt tätä alustaa. Voit yhdistää heti, kun se on määritetty.",
+  "encryptionKeyMissingNoticeCustomer": "Yhdistäminen ei ole vielä mahdollista: ylläpitäjä ei ole vielä määrittänyt käyttötunnusten turvallista tallennusta."
 }

@@ -1,6 +1,6 @@
 {
-  "title": "Agent Monitor",
-  "description": "Alle SECRET 58-agenter med status, siste oppgave og resultat. Hver kjøring logges.",
+  "title": "Assistentenes logg",
+  "description": "Alle SECRET 58-assistenter (agenter) med status, siste oppgave og resultat. Hver kjøring logges her.",
   "table": {
     "agent": "Agent",
     "description": "Beskrivelse",

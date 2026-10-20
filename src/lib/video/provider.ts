@@ -24,6 +24,8 @@ export interface VideoRenderResult {
 export interface VideoProvider {
   key: string;
   name: string;
+  /** false = Render-Aufruf noch nicht gebaut; die Oberfläche zeigt dann „Noch nicht verfügbar“. */
+  renderVerfuegbar: boolean;
   isConfigured(): boolean;
   render(job: VideoRenderJob): Promise<VideoRenderResult>;
 }
@@ -31,6 +33,7 @@ export interface VideoProvider {
 class CapCutProvider implements VideoProvider {
   key = "capcut";
   name = "CapCut";
+  renderVerfuegbar = false;
 
   isConfigured(): boolean {
     return Boolean(process.env.CAPCUT_API_KEY);

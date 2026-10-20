@@ -12,7 +12,7 @@
       "title": "Første skridt",
       "description": "Gør disse tre ting først, så arbejder alle AI-agenter med rigtige data i stedet for pladsholdere.",
       "steps": [
-        "Under „Integrationer“ kan du tjekke, om en AI-udbyder er sat op. AI-funktionerne kører via operatørens adgange, så du behøver ikke dit eget AI-abonnement. Uden AI-udbyder arbejder appen i skabelontilstand.",
+        "Indtast under „Indstillinger → Egne adgange“ din egen AI-nøgle fra Anthropic, OpenAI eller Gemini. AI-funktionerne bruger udelukkende din egen nøgle; AI-udbyderen fakturerer dig direkte. Uden egen nøgle arbejder appen i skabelontilstand med faste tekstblokke.",
         "Udfyld dit eget brand under »Brand DNA« (tone, målgruppe, værdier) — AI-agenterne bruger det til hver eneste genererede tekst.",
         "Lad den første idé eller kampagne blive oprettet under »Idéer & inspiration« eller »Content Brain«."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics & vækst",
       "description": "Rigtige tal for din egen præstation — og anbefalinger i stedet for automatisering.",
       "steps": [
-        "Analytics viser udelukkende rigtige, importerede eller manuelt registrerede præstationsdata.",
+        "Analytics viser kun gemt statistik (f.eks. eksempeldata). Platformstatistikker hentes endnu ikke automatisk; tal indtaster du manuelt under „Anbefalinger“ eller i variantsammenligningen – de evalueres dér.",
         "Vækstsiden beregner ud fra disse data de bedste opslagstidspunkter samt succesfulde hashtags og formater.",
         "Vigtigt: Der findes bevidst ingen automatisk forøgelse af følgere/engagement (ingen bot-adfærd) — det ville overtræde brugsvilkårene på enhver platform."
       ]
@@ -59,9 +59,9 @@
       "title": "Indbakke",
       "description": "AI-svarudkast til beskeder — med godkendelse før afsendelse.",
       "steps": [
-        "Da ingen platform (endnu) er forbundet via OAuth, oprettes samtaler i øjeblikket manuelt i stedet for at blive hentet live.",
+        "Beskeder fra platforme hentes endnu ikke, og svar sendes ikke. For at prøve det af opretter du samtaler som simulering.",
         "MessageAgent foreslår et svar på baggrund af Brand DNA og samtaleforløbet.",
-        "Udkastet skal gennemgås og godkendes manuelt, før det regnes som sendt — en rigtig afsendelse mislykkes ærligt uden platformforbindelse, i stedet for at foregive succes."
+        "Du gennemgår og godkender udkastet. Afsendelse til platforme er endnu ikke bygget – „Godkend & send“ melder det ærligt som fejl i stedet for at foregive succes."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Hvor hver forbindelsesstatus kommer fra, og hvor den rigtige nøgle indtastes.",
       "steps": [
         "Hver række viser den rigtige, live-tjekkede status — aldrig en foregivet forbindelse.",
-        "Ved »Ikke konfigureret« fører »Hent API-nøgle« til udbyderens officielle side.",
-        "Adgangsdata gemmes aldrig i browseren, kun beskyttet på serveren. Mangler der en adgang, sætter operatøren den op.",
-        "Omkostninger: Pro og Maxi er abonnementer, månedlige eller årlige. De aktuelle priser findes under „Pakke & fakturering“. Hver ekstern udbyder har sin egen, uafhængige omkostningsmodel (gratis / brugsbaseret / abonnement) — på siden Integrationer står der ved hver tjeneste, hvilken model der gælder, med et link til udbyderens aktuelle priser."
+        "Dine egne adgange (AI-nøgler, Resend til nyhedsbrevet) indtaster du under „Indstillinger → Egne adgange“ – en guide fører dér til udbyderens officielle nøgleside.",
+        "Adgangsdata gemmes aldrig i browseren, kun krypteret på serveren. Taleoutput og platformenes app-adgange opsættes af operatøren; „Endnu ikke tilgængelig“ betyder, at forbindelsen endnu ikke er bygget i appen.",
+        "Omkostninger: Pro og Maxi er abonnementer, månedligt eller årligt. De aktuelle priser står under „Pakke & fakturering“. For dine egne adgange (AI, Resend) fakturerer hver udbyder dig direkte efter sin egen prismodel – SECRET 58 opkræver intet ekstra for det."
       ]
     }
   }

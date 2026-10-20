@@ -1,6 +1,6 @@
 {
   "title": "Nustatymai",
-  "description": "Darbo erdvė, naudotojai ir sistemos informacija. Prieigos duomenys valdomi tik per aplinkos kintamuosius (žr. <code>.env.example</code>).",
+  "description": "Tavo darbo sritis, naudotojai ir tavo duomenų apžvalga. Savus API raktus (DI tekstai, naujienlaiškių siuntimas) įvedi skiltyje <zugaenge>Savos prieigos</zugaenge>; savo paketą rasi skiltyje <billing>Paketas ir apmokėjimas</billing>.",
   "workspace": {
     "title": "Darbo erdvė",
     "name": "Pavadinimas",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Naudotojai ir vaidmenys",
-    "note": "Daugiakliento (multi-tenant) duomenų modelis visiškai paruoštas (darbo erdvių izoliacija visoms lentelėms). Tikra prisijungimo / autentifikacijos sąsaja su keliais naudotojais yra kitas plėtros žingsnis — šiuo metu programa dirba būtent su šia numatytąja darbo erdve."
+    "note": "Kiekviena paskyra turi savo darbo sritį, atskirtą nuo kitų klientų. Papildomų naudotojų kol kas negali pridėti pats."
   },
   "system": {
     "title": "Sistema",
@@ -17,7 +17,7 @@
     "campaigns": "Kampanijos",
     "mediaAssets": "Medijos ištekliai",
     "agentRuns": "Agentų paleidimai",
-    "dbNote": "Duomenų bazė: SQLite (vietinė, <code>prisma/dev.db</code>) per Prisma ORM. Produkcijai <codeSpaced>DATABASE_URL</codeSpaced> perjunk į Postgres/MySQL (tiekėją pakeisk faile <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Tavo darbo srityje išsaugotų įrašų skaičius. Visus duomenis gali eksportuoti arba darbo sritį ištrinti žemiau, skiltyje „Mano duomenys“."
   },
   "onboarding": {
     "title": "Paruošimo asistentas",

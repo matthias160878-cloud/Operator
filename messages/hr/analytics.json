@@ -1,14 +1,15 @@
 {
   "title": "Analytics",
-  "subtitle": "Pokazatelji uspješnosti iz stvarno dostupnih podataka — čim povežeš platforme, ovaj prikaz će se ispuniti stvarnim vrijednostima.",
+  "subtitle": "Statistika platformi (pregledi, lajkovi, komentari, dijeljenja) još se ne dohvaća automatski. Ovdje se prikazuju samo već spremljene vrijednosti, npr. primjeri podataka. Brojke iz statistike platforme možeš ručno unijeti pod <weiter>Preporuke</weiter> („Unesi brojke platforme”) ili u <varianten>usporedbi varijanti</varianten> – ondje se ocjenjuju, ne na ovoj stranici.",
   "statViewsTotal": "Ukupno pregleda",
   "statLikesTotal": "Ukupno lajkova",
   "statComments": "Komentari",
   "statShares": "Dijeljenja",
   "chartTitle": "Uspješnost sadržaja kroz vrijeme",
   "chartLegend": "Pregledi (ljubičasto) · Engagement % (tirkizno)",
-  "chartEmpty": "Još nema podataka za analitiku.",
+  "chartEmpty": "Još nema statistike – nema dostupnog tijeka.",
   "bestPerformingTitle": "Najuspješniji sadržaj",
-  "bestPerformingEmpty": "Još nema podataka.",
-  "learningAgentTitle": "Learning Agent — preporuke"
+  "bestPerformingEmpty": "Još nema statistike – rang-lista nije moguća.",
+  "learningAgentTitle": "Learning Agent — preporuke",
+  "statsEmpty": "Još nema spremljene statistike – zato ovdje još nema pokazatelja. Statistika platformi još se ne dohvaća automatski."
 }

@@ -16,7 +16,10 @@
     "statusInProgress": "Во работа",
     "statusUsed": "Искористена",
     "statusArchived": "Архивирана",
-    "sourceAiGenerated": "Генерирана со AI",
-    "sourceManual": "Рачно"
+    "sourceAiGenerated": "IdeaAgent (ВИ или шаблон)",
+    "sourceManual": "Рачно",
+    "templateResult": "Шаблон: штотуку создадените идеи доаѓаат од фиксни текстуални блокови, а не од ВИ. За идеи со ВИ внеси сопствен клуч за ВИ во „Поставки → Сопствени пристапи“.",
+    "textEngineLabel": "Текстуален мотор:",
+    "templateMode": "Режим со шаблон (не е конфигуриран AI провајдер)"
   }
 }

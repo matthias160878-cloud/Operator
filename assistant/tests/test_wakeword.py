@@ -1,6 +1,7 @@
-import numpy as np
 import pytest
 
+# Nur mit der optionalen Sprach-Erweiterung (pip install -e ".[voice]") lauffähig.
+np = pytest.importorskip("numpy")
 pytest.importorskip("openwakeword")
 
 from heim_assistant.voice.wakeword import to_int16

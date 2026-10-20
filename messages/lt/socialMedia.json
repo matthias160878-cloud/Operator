@@ -1,14 +1,14 @@
 {
   "pageTitle": "Socialiniai tinklai",
-  "subtitle": "Platformų paskyros ir jų ryšio būsena. Prieigos duomenys valdomi tik kaip serverio pusės aplinkos kintamieji ir niekada nesaugomi frontende. Prieigos žetonai po prijungimo saugomi duomenų bazėje užšifruoti.",
+  "subtitle": "Tavo platformų paskyros ir jų prisijungimo būsena. Prisijungi tiesiogiai platformoje; prieigos raktai saugomi užšifruoti serveryje, niekada naršyklėje.",
   "credentialsLabel": "Programos prieigos duomenys",
   "accountLabel": "Paskyra",
   "lastPublishedLabel": "Paskutinis paskelbimas",
   "lastErrorLabel": "Paskutinė klaida",
   "connectButton": "Prijungti",
   "connectButtonUnavailable": "Prijungti (dar neįmanoma)",
-  "connectButtonTitleNoCreds": "Programos prieigos duomenų dar trūksta",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY dar nenustatytas",
+  "connectButtonTitleNoCreds": "Operatorius dar nenustatė",
+  "connectButtonTitleNoEncryption": "Saugus prieigos raktų saugojimas dar nenustatytas",
   "disconnectButton": "Atjungti",
   "disconnectConfirm": "Tikrai atjungti šią paskyrą? Po to prieigą reikės atkurti iš naujo per „Prijungti“.",
   "needsCredentialsNote": "Dar trūksta: įrašyk {idVar} ir {secretVar} Render.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Prijungti nepavyko. Patikrink prieigos duomenis ir pabandyk dar kartą.",
   "errorUnknownPlatform": "Nežinoma platforma.",
   "encryptionKeyMissingNotice": "Pastaba: TOKEN_ENCRYPTION_KEY dar nenustatytas — paskyras bus galima prijungti tik tada, kai šis aplinkos kintamasis bus įrašytas Render.",
+  "connectedPageLabel": "Prijungtas puslapis",
+  "facebookMultiplePages": "Rasti keli „Facebook“ puslapiai ({count}) – prijungtas „{name}“. Kitas puslapis? Atjunkite ir, jungdami iš naujo, „Facebook“ lange pasirinkite tik norimą puslapį.",
+  "tokenExpiresOn": "Prieiga baigiasi {date} – prašome prisijungti iš naujo iki tol.",
+  "tokenExpiredOn": "Prieiga baigėsi {date} – prašome prisijungti iš naujo.",
+  "tokenScheduledAfterExpiry": "Suplanuoti įrašai po galiojimo pabaigos: {count}. Neprisijungus iš naujo jie nebus paskelbti.",
+  "reconnectButton": "Prijungti iš naujo",
   "composio": {
     "title": "Prijungti paskyrą per Composio",
     "subtitle": "Alternatyva tiesioginiam prijungimui: prisijungi prie platformos, Composio saugo prieigą, o SECRET 58 paskyrą tik priskiria tavo darbo erdvei. Šiuo metu tik prijungimas ir skaitymo prieigos testas – per tai niekas neskelbiama.",
@@ -56,6 +62,10 @@
       "not_active": "Platforma nepatvirtino prieigos arba ji buvo atmesta.",
       "composio_error": "Composio nepavyko pasiekti arba ji pranešė apie klaidą. Pabandyk vėliau dar kartą.",
       "unknown": "Prijungti nepavyko."
-    }
-  }
+    },
+    "noPublishNotice": "Tik ryšio testas – čia nieko neskelbiama. Skaitymo testas tik patikrina, ar paskyrą galima nuskaityti."
+  },
+  "needsCredentialsNoteCustomer": "Šią platformą nustato operatorius. Prisijungti galėsi, kai tik ji bus nustatyta.",
+  "errorNotConfiguredCustomer": "{platform}: operatorius dar nenustatė šios platformos. Prisijungti galėsi, kai tik ji bus nustatyta.",
+  "encryptionKeyMissingNoticeCustomer": "Prisijungti dar negalima: operatorius dar nenustatė saugaus prieigos raktų saugojimo."
 }

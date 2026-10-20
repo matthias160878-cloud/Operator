@@ -1,6 +1,6 @@
 {
   "title": "Nabiralnik",
-  "description": "Sporočila in komentarji z vseh platform. MessageAgent predlaga odgovore — pošlje se le tisto, kar odobriš. Prave povezave OAuth s platformo še ni, zato se pogovori tu simulirajo ročno, namesto da bi se pridobivali v živo.",
+  "description": "Sporočila in povpraševanja na enem mestu. MessageAgent predlaga osnutke odgovorov.",
   "emptyState": "Pogovorov še ni — simuliraj enega, da začneš.",
   "backToInbox": "Nazaj v nabiralnik",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simuliraj še eno dohodno sporočilo (test brez prave povezave s platformo):",
     "messagePlaceholder": "Besedilo sporočila …",
     "addButton": "Dodaj"
-  }
+  },
+  "simulationBanner": "<strong>Predogled/simulacija:</strong> sporočila s platform se še ne pridobivajo in odgovori se ne pošiljajo – tudi ne prek »Odobri in pošlji«. Sporočila s platform lahko tu za preizkus simuliraš. Pravi vnosi prihajajo le iz spletnih obrazcev (npr. prošnje za termin); nanje odgovoriš po e-pošti."
 }

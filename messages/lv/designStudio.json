@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Sīktēlu koncepcijas, attēlu resursi un Canva integrācija.",
+  "subtitle": "Sīktēlu koncepcijas teksta veidā un Canva savienojuma statuss.",
   "imageAssetsTitle": "Attēlu resursi",
-  "imageAssetsEmpty": "Attēlu resursu vēl nav.",
+  "imageAssetsEmpty": "Attēlu vēl nav. Sīktēlu aģents pašlaik veido tikai teksta koncepcijas, nevis attēlu failus.",
   "thumbnailAgent": {
     "title": "Sīktēlu aģents",
     "description": "Izveido teksta koncepciju (nosaukums, vizuālā ideja, izkārtojums, CTA) — sagatavots attēlu ģeneratora pieslēgšanai. Attēls vēl netiek izveidots.",
@@ -15,6 +15,9 @@
     "fieldText": "Teksts",
     "fieldLayout": "Izkārtojums",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Attēla apraksts"
+    "fieldImageDescription": "Attēla apraksts",
+    "templateResult": "Veidne: šī koncepcija nāk no fiksētas teksta veidnes, nevis no MI. MI koncepcijām ievadi savu MI atslēgu sadaļā „Iestatījumi → Savas piekļuves“.",
+    "textEngineLabel": "Teksta dzinējs:",
+    "templateMode": "Sagataves režīms (MI pakalpojumu sniedzējs nav nokonfigurēts)"
   }
 }

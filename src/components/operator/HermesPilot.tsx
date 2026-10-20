@@ -40,7 +40,7 @@ export function HermesPilot() {
       <div className="card space-y-2 p-4 text-sm">
         <div className="font-semibold text-foreground">Stand</div>
         {!status ? <p className="text-muted">Wird geladen …</p> : (
-          <ul className="space-y-1 text-muted">
+          <ul className="space-y-1 text-muted [overflow-wrap:anywhere]">
             <li>
               Interner Pilot: {status.pilot.available ? <span className="text-success">eingerichtet</span> : <span>nicht verfügbar — fehlt: {status.pilot.missing?.join(", ")}</span>}
             </li>

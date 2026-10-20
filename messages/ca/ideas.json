@@ -16,7 +16,10 @@
     "statusInProgress": "En curs",
     "statusUsed": "Utilitzada",
     "statusArchived": "Arxivada",
-    "sourceAiGenerated": "Generada amb IA",
-    "sourceManual": "Manual"
+    "sourceAiGenerated": "IdeaAgent (IA o plantilla)",
+    "sourceManual": "Manual",
+    "templateResult": "Plantilla: les idees que acabes de crear provenen de blocs de text fixos, no d'una IA. Per a idees amb IA, introdueix la teva clau d'IA a «Configuració → Accessos propis».",
+    "textEngineLabel": "Motor de text:",
+    "templateMode": "Mode plantilla (cap proveïdor d'IA configurat)"
   }
 }

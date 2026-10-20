@@ -1,6 +1,6 @@
 {
   "title": "Inbox",
-  "description": "Poruke i komentari sa svih platformi. MessageAgent predlaže odgovore — šalje se samo ono što ti odobriš. Još ne postoji stvarna OAuth veza ni s jednom platformom, pa se razgovori ovdje simuliraju ručno umjesto da se dohvaćaju uživo.",
+  "description": "Poruke i upiti na jednom mjestu. MessageAgent predlaže nacrte odgovora.",
   "emptyState": "Još nema razgovora — simuliraj jedan za početak.",
   "backToInbox": "Natrag na Inbox",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simuliraj još jednu dolaznu poruku (test bez stvarne veze s platformom):",
     "messagePlaceholder": "Tekst poruke …",
     "addButton": "Dodaj"
-  }
+  },
+  "simulationBanner": "<strong>Pregled/simulacija:</strong> poruke s platformi još se ne dohvaćaju i odgovori se ne šalju – ni putem „Odobri i pošalji”. Poruke s platformi ovdje možeš simulirati radi isprobavanja. Stvarni unosi dolaze samo iz obrazaca na webu (npr. zahtjevi za termin); na njih odgovaraš e-poštom."
 }

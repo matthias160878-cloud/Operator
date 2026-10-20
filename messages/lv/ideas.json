@@ -16,7 +16,10 @@
     "statusInProgress": "Izstrādē",
     "statusUsed": "Izmantota",
     "statusArchived": "Arhivēta",
-    "sourceAiGenerated": "MI ģenerēta",
-    "sourceManual": "Manuāla"
+    "sourceAiGenerated": "IdeaAgent (MI vai veidne)",
+    "sourceManual": "Manuāla",
+    "templateResult": "Veidne: tikko izveidotās idejas nāk no fiksētiem teksta blokiem, nevis no MI. MI idejām ievadi savu MI atslēgu sadaļā „Iestatījumi → Savas piekļuves“.",
+    "textEngineLabel": "Teksta dzinējs:",
+    "templateMode": "Sagataves režīms (MI pakalpojumu sniedzējs nav nokonfigurēts)"
   }
 }

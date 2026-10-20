@@ -1,8 +1,7 @@
 {
   "viewAll": "Tümünü göster",
   "demoBanner": {
-    "before": "Demo verileri etkin — kampanyalar, içerik öğeleri ve analitik, şuradan alınan örnek verilerdir: ",
-    "after": ", gerçek platform rakamları değildir."
+    "text": "Örnek veriler etkin – bu çalışma alanındaki kampanyalar, içerikler ve istatistikler örnek verilerdir, gerçek platform sayıları değildir."
   },
   "hero": {
     "subtitle": "Tek fikir. Birden çok platform. Maksimum erişim.",
@@ -26,8 +25,9 @@
     "published": "Yayınlar",
     "views": "Görüntülenme",
     "avgEngagement": "Ort. etkileşim",
-    "totalRevenue": "Toplam gelir",
-    "noComparisonWeek": "Karşılaştırma için henüz önceki hafta yok — değişim oranları, en az iki haftalık veri olduğunda görünür."
+    "totalRevenue": "Gelirler (elle girilen)",
+    "noComparisonWeek": "Karşılaştırma için henüz önceki hafta yok — değişim oranları, en az iki haftalık veri olduğunda görünür.",
+    "noStats": "Görüntülenme ve etkileşim: henüz istatistik yok – platform istatistikleri henüz otomatik olarak alınmıyor."
   },
   "production": {
     "title": "İçerik üretimi",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} bağlı"
   },
   "agentMonitor": {
-    "title": "Agent Monitor",
+    "title": "Asistan günlüğü",
     "empty": "Henüz çalıştırma yok."
   },
   "topPerformer": {
     "title": "En iyi performans",
     "last7Days": "Son 7 gün",
-    "empty": "Henüz performans verisi yok.",
+    "empty": "Henüz performans verisi yok – platform istatistikleri henüz otomatik olarak alınmıyor.",
     "views": "Görüntülenme",
     "likes": "Beğeni",
     "comments": "Yorumlar",

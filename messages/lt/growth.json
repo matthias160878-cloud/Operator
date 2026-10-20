@@ -1,9 +1,9 @@
 {
   "title": "Augimas",
-  "subtitle": "Aprėpties ir augimo rekomendacijos — išvestos iš tikrų tavo ankstesnio turinio analitikos duomenų: geriausi publikavimo laikai, sėkmingiausios žymos (hashtag) ir formatai.",
+  "subtitle": "Rekomendacijos pasiekiamumui ir augimui – išvestos iš išsaugotos tavo turinio statistikos: geriausi skelbimo laikai, sėkmingiausios grotažymės ir formatai. Platformų statistika dar negaunama automatiškai.",
   "warning": "Sąmoningai <strong>neįtraukta</strong>: automatizuotas sekimas / patiktukų dėjimas / komentavimas dirbtiniam sekėjų skaičiaus didinimui. Tai pažeidžia YouTube, Instagram, TikTok, LinkedIn ir Facebook naudojimo sąlygas ir gali lemti paskyros užblokavimą. Šiame puslapyje pateikiamos tik duomenimis pagrįstos rekomendacijos tavo paties turiniui.",
   "filterAll": "Visos platformos",
-  "emptyState": "Analitikos duomenų, skirtų {platform}, dar nėra. Kai paskelbtas turinys surinks veiklos duomenų, čia atsiras rekomendacijos.",
+  "emptyState": "{platform} statistika dar neišsaugota, todėl rekomendacijų dar nėra. Platformų statistika dar negaunama automatiškai.",
   "emptyStateDefaultScope": "šiai darbo erdvei",
   "bestPostingTimesTitle": "Geriausi publikavimo laikai",
   "postingTime": "{day} · {hour} val.",

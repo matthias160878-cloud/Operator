@@ -12,7 +12,7 @@
       "title": "Prvi koraci",
       "description": "Prvo obavi ove tri stvari, pa će svi AI agenti raditi sa stvarnim podacima umjesto sa rezervnim tekstovima.",
       "steps": [
-        "Pod „Integracije“ provjeri je li postavljen neki AI provajder. AI funkcije rade preko pristupa operatera, pa ti nije potrebna vlastita AI pretplata. Bez AI provajdera aplikacija radi u načinu rada sa šablonima.",
+        "Pod „Postavke → Vlastiti pristupi” unesi vlastiti AI ključ od Anthropic, OpenAI ili Gemini. AI funkcije koriste isključivo tvoj ključ; AI pružalac ti naplaćuje direktno. Bez vlastitog ključa aplikacija radi u načinu šablona s fiksnim tekstualnim blokovima.",
         "Pod „Brand DNA“ popuni vlastiti brend (ton, ciljna grupa, vrijednosti) — AI agenti to koriste za svaki generisani tekst.",
         "Pod „Ideje i inspiracija“ ili „Content Brain“ daj da se kreira prva ideja odnosno kampanja."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics i rast",
       "description": "Stvarni brojevi o vlastitom učinku — i preporuke umjesto automatizacije.",
       "steps": [
-        "Analytics prikazuje isključivo stvarne, uvezene ili ručno unesene podatke o učinku.",
+        "Analytics prikazuje samo sačuvanu statistiku (npr. primjere podataka). Statistika platformi još se ne preuzima automatski; brojke ručno unosiš pod „Preporuke” ili u poređenju varijanti – tamo se ocjenjuju.",
         "Stranica Rast iz tih podataka izračunava najbolja vremena objavljivanja, uspješne hashtagove i formate.",
         "Važno: namjerno nema automatskog povećanja broja pratilaca/angažmana (nema ponašanja botova) — to bi kršilo uslove korištenja svake platforme."
       ]
@@ -59,9 +59,9 @@
       "title": "Prijemno sanduče",
       "description": "AI nacrti odgovora na poruke — s odobrenjem prije slanja.",
       "steps": [
-        "Pošto (još) nijedna platforma nije povezana putem OAuth-a, razgovori se trenutno kreiraju ručno umjesto da se preuzimaju uživo.",
+        "Poruke s platformi još se ne preuzimaju i odgovori se ne šalju. Za isprobavanje kreiraš razgovore kao simulaciju.",
         "MessageAgent predlaže odgovor na osnovu Brand DNA i toka razgovora.",
-        "Nacrt se mora ručno pregledati i odobriti prije nego što se smatra poslanim — stvarno slanje bez veze s platformom iskreno ne uspijeva umjesto da glumi uspjeh."
+        "Nacrt pregledaš i odobravaš ti. Slanje na platforme još nije izrađeno – „Odobri i pošalji” to iskreno prijavljuje kao grešku umjesto da glumi uspjeh."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Odakle dolazi svaki status veze i gdje se unosi odgovarajući ključ.",
       "steps": [
         "Svaki red prikazuje stvaran status provjeren uživo — nikada lažnu vezu.",
-        "Kod „Nije konfigurisano“, „Nabavi API ključ“ vodi na zvaničnu stranicu pružatelja.",
-        "Pristupni podaci se nikada ne pohranjuju u pregledniku, nego samo zaštićeno na serveru. Ako pristup nedostaje, postavlja ga operater.",
-        "Troškovi: Pro i Maxi su pretplate, mjesečne ili godišnje. Aktuelne cijene nalaze se pod „Paket i naplata“. Svaki vanjski provajder ima svoj, nezavisan model troškova (besplatno / prema korištenju / pretplata) — na stranici „Integracije“ uz svaku uslugu piše koji model vrijedi, s linkom na aktuelne cijene kod provajdera."
+        "Vlastite pristupe (AI ključeve, Resend za newsletter) unosiš pod „Postavke → Vlastiti pristupi” – vodič te tamo vodi na zvaničnu stranicu s ključevima pružaoca.",
+        "Pristupni podaci nikad se ne čuvaju u pregledniku, samo šifrirano na serveru. Glasovni izlaz i pristupe aplikacija platformi postavlja operater; „Još nije dostupno” znači da veza u aplikaciji još nije izrađena.",
+        "Troškovi: Pro i Maxi su pretplate, mjesečne ili godišnje. Aktuelne cijene nalaze se pod „Paket i naplata”. Za tvoje vlastite pristupe (AI, Resend) svaki pružalac ti naplaćuje direktno po svom cjenovnom modelu – SECRET 58 za to ne naplaćuje ništa dodatno."
       ]
     }
   }

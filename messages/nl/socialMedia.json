@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social media",
-  "subtitle": "Platformaccounts en hun verbindingsstatus. Toegangsgegevens worden uitsluitend als serverzijdige omgevingsvariabelen beheerd en nooit in de frontend opgeslagen. Toegangstokens worden na het verbinden versleuteld in de database bewaard.",
+  "subtitle": "Je platformaccounts en hun verbindingsstatus. Je verbindt door rechtstreeks bij het platform in te loggen; toegangstokens worden versleuteld op de server opgeslagen, nooit in de browser.",
   "credentialsLabel": "App-toegangsgegevens",
   "accountLabel": "Account",
   "lastPublishedLabel": "Laatste publicatie",
   "lastErrorLabel": "Laatste fout",
   "connectButton": "Verbinden",
   "connectButtonUnavailable": "Verbinden (nog niet mogelijk)",
-  "connectButtonTitleNoCreds": "App-toegangsgegevens ontbreken nog",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY is nog niet ingesteld",
+  "connectButtonTitleNoCreds": "Nog niet ingericht door de beheerder",
+  "connectButtonTitleNoEncryption": "Veilige opslag van toegangstokens is nog niet ingericht",
   "disconnectButton": "Loskoppelen",
   "disconnectConfirm": "Dit account echt loskoppelen? De toegang moet daarna opnieuw worden hersteld via “Verbinden”.",
   "needsCredentialsNote": "Ontbreekt nog: voer {idVar} en {secretVar} in bij Render in.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Verbinding mislukt. Controleer de toegangsgegevens en probeer het opnieuw.",
   "errorUnknownPlatform": "Onbekend platform.",
   "encryptionKeyMissingNotice": "Let op: TOKEN_ENCRYPTION_KEY is nog niet ingesteld — accounts kunnen pas worden verbonden zodra deze omgevingsvariabele bij Render is ingevoerd.",
+  "connectedPageLabel": "Verbonden pagina",
+  "facebookMultiplePages": "Meerdere Facebook-pagina’s gevonden ({count}) – verbonden is ‘{name}’. Andere pagina? Verbreek de verbinding en selecteer bij het opnieuw verbinden in het Facebook-venster alleen de gewenste pagina.",
+  "tokenExpiresOn": "Toegang verloopt op {date} – verbind vóór die datum opnieuw.",
+  "tokenExpiredOn": "Toegang is verlopen op {date} – verbind opnieuw.",
+  "tokenScheduledAfterExpiry": "Geplande berichten na de vervaldatum: {count}. Zonder opnieuw verbinden worden ze niet gepubliceerd.",
+  "reconnectButton": "Opnieuw verbinden",
   "composio": {
     "title": "Account verbinden via Composio",
     "subtitle": "Alternatief voor de directe koppeling: je meldt je aan bij het platform, Composio bewaart de toegang en SECRET 58 koppelt het account alleen aan jouw werkruimte. Momenteel alleen verbinden en een leestoegangstest – hiermee wordt niets gepubliceerd.",
@@ -56,6 +62,10 @@
       "not_active": "Het platform heeft de toegang niet bevestigd of deze is geweigerd.",
       "composio_error": "Composio was niet bereikbaar of meldde een fout. Probeer het later opnieuw.",
       "unknown": "Verbinding mislukt."
-    }
-  }
+    },
+    "noPublishNotice": "Alleen een verbindingstest – hier wordt niets gepubliceerd. De leestest controleert alleen of het account gelezen kan worden."
+  },
+  "needsCredentialsNoteCustomer": "Dit platform wordt door de beheerder ingericht. Verbinden is mogelijk zodra het is ingericht.",
+  "errorNotConfiguredCustomer": "{platform}: de beheerder heeft dit platform nog niet ingericht. Verbinden is mogelijk zodra het is ingericht.",
+  "encryptionKeyMissingNoticeCustomer": "Verbinden is nog niet mogelijk: de beheerder heeft de veilige opslag van toegangstokens nog niet ingericht."
 }

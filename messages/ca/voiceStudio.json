@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "Motor de veu d'ElevenLabs: gestiona la biblioteca de veus, genera previsualitzacions de veu en off i importa veus.",
-  "envWarning": "ElevenLabs encara no està configurat. Introdueix <envKey>ELEVENLABS_API_KEY</envKey> a <envFile>.env</envFile> per utilitzar la veu en off i la importació de veus. La biblioteca de veus es pot fer servir igualment per a la planificació.",
+  "envWarning": "La veu en off encara no està disponible: l'operador configura el servei de veu (ElevenLabs). Ja pots fer servir la biblioteca de veus per planificar.",
   "addManual": "Crea una veu manualment",
   "importFromElevenLabs": "Importa d'ElevenLabs",
   "form": {

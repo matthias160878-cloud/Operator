@@ -1,6 +1,6 @@
 {
   "title": "Indstillinger",
-  "description": "Workspace, brugere og systemoplysninger. Adgangsoplysninger administreres udelukkende via miljøvariabler (se <code>.env.example</code>).",
+  "description": "Dit arbejdsområde, brugere og et overblik over dine data. Dine egne API-nøgler (AI-tekster, udsendelse af nyhedsbreve) indtaster du under <zugaenge>Egne adgange</zugaenge>; din pakke finder du under <billing>Pakke & fakturering</billing>.",
   "workspace": {
     "title": "Workspace",
     "name": "Navn",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Brugere & roller",
-    "note": "Multi-tenant-datamodellen er fuldt forberedt (workspace-isolation for alle tabeller). En rigtig login-/auth-brugerflade med flere brugere er det næste udbygningstrin — i øjeblikket arbejder appen med netop dette standard-workspace."
+    "note": "Hver konto har sit eget arbejdsområde, adskilt fra andre kunder. Flere brugere kan du endnu ikke selv tilføje."
   },
   "system": {
     "title": "System",
@@ -17,7 +17,7 @@
     "campaigns": "Kampagner",
     "mediaAssets": "Medieassets",
     "agentRuns": "Agentkørsler",
-    "dbNote": "Database: SQLite (lokal, <code>prisma/dev.db</code>) via Prisma ORM. Til produktion skal <codeSpaced>DATABASE_URL</codeSpaced> skiftes til Postgres/MySQL (tilpas udbyderen i <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Antal poster gemt i dit arbejdsområde. Du kan eksportere alle data eller slette arbejdsområdet nedenfor under „Mine data“."
   },
   "onboarding": {
     "title": "Opsætningsguide",

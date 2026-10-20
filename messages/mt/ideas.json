@@ -16,7 +16,10 @@
     "statusInProgress": "Għaddej",
     "statusUsed": "Użat",
     "statusArchived": "Arkivjat",
-    "sourceAiGenerated": "Iġġenerat bl-AI",
-    "sourceManual": "Manwalment"
+    "sourceAiGenerated": "IdeaAgent (IA jew mudell)",
+    "sourceManual": "Manwalment",
+    "templateResult": "Mudell: l-ideat li għadhom kif inħolqu ġejjin minn blokki tat-test fissi, mhux minn IA. Għal ideat tal-IA, daħħal iċ-ċavetta tal-IA tiegħek taħt \"Settings → Aċċessi tiegħi\".",
+    "textEngineLabel": "Magna tat-test:",
+    "templateMode": "Modalità Template (l-ebda fornitur tal-AI ikkonfigurat)"
   }
 }

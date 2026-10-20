@@ -1,14 +1,15 @@
 {
  "title": "Analytics",
- "subtitle": "Výkonnostné ukazovatele zo skutočne dostupných údajov — keď pripojíš platformy, tento prehľad sa naplní reálnymi hodnotami.",
+ "subtitle": "Štatistiky platforiem (zhliadnutia, lajky, komentáre, zdieľania) sa zatiaľ nenačítavajú automaticky. Zobrazujú sa tu len už uložené hodnoty, napr. ukážkové dáta. Čísla zo štatistík platformy môžeš zadať ručne v časti <weiter>Odporúčania</weiter> („Zadať čísla z platformy“) alebo v <varianten>porovnaní variantov</varianten> – vyhodnocujú sa tam, nie na tejto stránke.",
  "statViewsTotal": "Zobrazenia spolu",
  "statLikesTotal": "Páči sa mi to spolu",
  "statComments": "Komentáre",
  "statShares": "Zdieľania",
  "chartTitle": "Výkonnosť obsahu v čase",
  "chartLegend": "Zobrazenia (fialová) · Zapojenie % (tyrkysová)",
- "chartEmpty": "Zatiaľ nie sú k dispozícii žiadne údaje analytiky.",
+ "chartEmpty": "Zatiaľ žiadne štatistiky – žiadny priebeh nie je k dispozícii.",
  "bestPerformingTitle": "Najvýkonnejší obsah",
- "bestPerformingEmpty": "Zatiaľ žiadne údaje.",
- "learningAgentTitle": "Learning Agent — odporúčania"
+ "bestPerformingEmpty": "Zatiaľ žiadne štatistiky – poradie nie je možné.",
+ "learningAgentTitle": "Learning Agent — odporúčania",
+ "statsEmpty": "Zatiaľ nie sú uložené žiadne štatistiky – preto tu zatiaľ nie sú žiadne ukazovatele. Štatistiky platforiem sa zatiaľ nenačítavajú automaticky."
 }

@@ -1,14 +1,14 @@
 {
   "pageTitle": "Družbena omrežja",
-  "subtitle": "Računi platform in njihov status povezave. Dostopni podatki se upravljajo izključno kot okoljske spremenljivke na strežniku, nikoli se ne shranjujejo v frontendu. Dostopni žetoni se po povezavi shranijo šifrirani v podatkovni zbirki.",
+  "subtitle": "Tvoji računi na platformah in njihovo stanje povezave. Povežeš se s prijavo neposredno na platformi; dostopni žetoni se shranjujejo šifrirano na strežniku, nikoli v brskalniku.",
   "credentialsLabel": "Dostopni podatki aplikacije",
   "accountLabel": "Račun",
   "lastPublishedLabel": "Zadnja objava",
   "lastErrorLabel": "Zadnja napaka",
   "connectButton": "Poveži",
   "connectButtonUnavailable": "Poveži (še ni mogoče)",
-  "connectButtonTitleNoCreds": "Dostopni podatki aplikacije še manjkajo",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY še ni nastavljen",
+  "connectButtonTitleNoCreds": "Upravljavec še ni nastavil",
+  "connectButtonTitleNoEncryption": "Varno shranjevanje dostopnih žetonov še ni nastavljeno",
   "disconnectButton": "Prekini povezavo",
   "disconnectConfirm": "Res prekinem povezavo s tem računom? Dostop je treba nato znova vzpostaviti prek „Poveži“.",
   "needsCredentialsNote": "Še manjka: vnesi {idVar} in {secretVar} v Render.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Povezava ni uspela. Preveri dostopne podatke in poskusi znova.",
   "errorUnknownPlatform": "Neznana platforma.",
   "encryptionKeyMissingNotice": "Opomba: TOKEN_ENCRYPTION_KEY še ni nastavljen — računov ni mogoče povezati, dokler te okoljske spremenljivke ne vneseš v Render.",
+  "connectedPageLabel": "Povezana stran",
+  "facebookMultiplePages": "Najdenih je več strani na Facebooku ({count}) – povezana je »{name}«. Druga stran? Prekinite povezavo in pri ponovni povezavi v Facebookovem oknu izberite samo želeno stran.",
+  "tokenExpiresOn": "Dostop poteče {date} – prosimo, pred tem se znova povežite.",
+  "tokenExpiredOn": "Dostop je potekel {date} – prosimo, znova se povežite.",
+  "tokenScheduledAfterExpiry": "Načrtovane objave po datumu poteka: {count}. Brez ponovne povezave ne bodo objavljene.",
+  "reconnectButton": "Znova poveži",
   "composio": {
     "title": "Poveži račun prek Composio",
     "subtitle": "Alternativa neposredni povezavi: prijaviš se na platformo, Composio hrani dostop, SECRET 58 račun le dodeli tvojemu delovnemu prostoru. Trenutno samo povezovanje in bralni preizkus dostopa – prek tega se nič ne objavlja.",
@@ -56,6 +62,10 @@
       "not_active": "Platforma dostopa ni potrdila ali pa je bil zavrnjen.",
       "composio_error": "Composio ni bil dosegljiv ali je sporočil napako. Poskusi znova pozneje.",
       "unknown": "Povezava ni uspela."
-    }
-  }
+    },
+    "noPublishNotice": "Le preizkus povezave – tu se nič ne objavi. Preizkus branja le preveri, ali je račun mogoče brati."
+  },
+  "needsCredentialsNoteCustomer": "To platformo nastavi upravljavec. Povezati se boš lahko, takoj ko bo nastavljena.",
+  "errorNotConfiguredCustomer": "{platform}: upravljavec te platforme še ni nastavil. Povezati se boš lahko, takoj ko bo nastavljena.",
+  "encryptionKeyMissingNoticeCustomer": "Povezava še ni mogoča: upravljavec še ni nastavil varnega shranjevanja dostopnih žetonov."
 }

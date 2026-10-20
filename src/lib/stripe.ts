@@ -1,7 +1,7 @@
 import Stripe from "stripe";
 import { prisma } from "@/lib/db";
 import { legalInfoComplete } from "@/lib/legal";
-import { PLANS, netAmountFor, packageTermsConfirmed, stripePriceIdFor, type BillingInterval, type PlanKey } from "@/lib/plans";
+import { PLANS, kleinunternehmer, netAmountFor, packageTermsConfirmed, stripePriceIdFor, type BillingInterval, type PlanKey } from "@/lib/plans";
 
 /**
  * Stripe-Adapter für die Paketabrechnung des Betreibers.
@@ -135,9 +135,12 @@ export async function createPlanCheckout(input: {
   // Schutz vor Fehlkonfiguration: Stripe-Preis muss dem bestätigten Nettopreis
   // für genau dieses Intervall entsprechen (Jahr = 12 Monate minus 15 %).
   const intervalOk = price.recurring?.interval === interval && price.recurring.intervalCount === 1;
-  if (!intervalOk || price.taxBehavior !== "exclusive" || price.unitAmount !== netAmountFor(input.plan, interval) || price.currency !== "eur") {
+  // Kleinunternehmer (§ 19 UStG): Endpreis ohne Steuer („inclusive“ oder ohne Angabe); Regelbesteuerung: Nettopreis („exclusive“).
+  const ku = kleinunternehmer();
+  const steuerOk = ku ? price.taxBehavior !== "exclusive" : price.taxBehavior === "exclusive";
+  if (!intervalOk || !steuerOk || price.unitAmount !== netAmountFor(input.plan, interval) || price.currency !== "eur") {
     throw new CheckoutRefused(
-      `Der Stripe-Preis dieses Pakets ist nicht als ${interval === "year" ? "jährlicher" : "monatlicher"} Nettopreis in der vereinbarten Höhe angelegt. Der Betreiber muss ihn korrigieren.`,
+      `Der Stripe-Preis dieses Pakets ist nicht als ${interval === "year" ? "jährlicher" : "monatlicher"} ${ku ? "Endpreis ohne Umsatzsteuer (Steuerverhalten „inklusive“)" : "Nettopreis"} in der vereinbarten Höhe angelegt. Der Betreiber muss ihn korrigieren.`,
       503
     );
   }
@@ -185,11 +188,11 @@ export async function createPlanCheckout(input: {
     ...(mode === "payment" ? { payment_intent_data: { metadata } } : { subscription_data: { metadata } }),
     // Rabatte nur über in Stripe angelegte Aktionscodes — kein selbst erfundener Rabatt.
     allow_promotion_codes: true,
-    // Umsatzsteuer je nach Land des Kunden (Stripe Tax). Für Unternehmen mit
-    // USt-ID berechnet Stripe Tax ggf. Reverse Charge.
-    automatic_tax: { enabled: true },
+    // Regelbesteuerung: Umsatzsteuer je nach Land des Kunden (Stripe Tax, ggf.
+    // Reverse Charge). Kleinunternehmer (§ 19 UStG): keine Umsatzsteuer.
+    automatic_tax: { enabled: !ku },
     billing_address_collection: "required",
-    tax_id_collection: { enabled: true },
+    ...(ku ? {} : { tax_id_collection: { enabled: true } }),
     success_url: `${input.origin}/billing?checkout={CHECKOUT_SESSION_ID}`,
     cancel_url: `${input.origin}/billing?plan=${input.plan.toLowerCase()}&intervall=${interval}&abgebrochen=1`,
   });

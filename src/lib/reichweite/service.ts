@@ -1,5 +1,7 @@
 import { createHash } from "node:crypto";
 import { prisma } from "@/lib/db";
+import { sellerProfileComplete } from "@/lib/connect/sellerProfile";
+import { newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 import { NotFoundError } from "@/lib/api";
 import { getProvider, isProviderConfigured } from "@/lib/oauth/providers";
 import { neuerCode } from "@/lib/reichweite/codes";
@@ -62,6 +64,7 @@ export async function oeffentlicherLink(code: string) {
       id: true,
       code: true,
       stufe: true,
+      angebotUrl: true,
       workspaceId: true,
       kampagneId: true,
       istDemo: true,
@@ -70,7 +73,19 @@ export async function oeffentlicherLink(code: string) {
     },
   });
   if (!link) return null;
-  return { ...link, aktiv: link.kampagne.aktiv && !link.widerrufenAm };
+  const anbieter = await oeffentlicherAnbieter(link.workspaceId, link.istDemo);
+  return { ...link, aktiv: link.kampagne.aktiv && !link.widerrufenAm, ...anbieter };
+}
+
+/**
+ * Öffentliche Seiten eines Kunden dürfen nur mit dessen Impressum- und
+ * Datenschutzangaben (Verkäuferprofil) erreichbar sein. Demo-Seiten sind
+ * ausgenommen und tragen einen sichtbaren Hinweis.
+ */
+export async function oeffentlicherAnbieter(workspaceId: string, istDemo: boolean) {
+  const profil = await prisma.sellerProfile.findUnique({ where: { workspaceId } });
+  const vollstaendig = sellerProfileComplete(profil);
+  return { profil: vollstaendig ? profil : null, freigeschaltet: istDemo || vollstaendig };
 }
 
 export async function ereignisSpeichern(
@@ -85,15 +100,25 @@ export async function ereignisSpeichern(
 export async function kampagnenAuswertung(workspaceId: string, kampagneId: string) {
   await eigeneKampagne(workspaceId, kampagneId);
   await alteEreignisseLoeschen(workspaceId);
-  const [links, ereignisse, kennzahlen] = await Promise.all([
+  const [links, ereignisse, kennzahlen, seiten, bestaetigt] = await Promise.all([
     prisma.empfehlungsLink.findMany({ where: { workspaceId, kampagneId } }),
     prisma.empfehlungsEreignis.findMany({
       where: { workspaceId, kampagneId },
       select: { linkId: true, art: true, istDemo: true, createdAt: true },
     }),
     prisma.reichweitenKennzahl.findMany({ where: { workspaceId, kampagneId } }),
+    prisma.newsletterSeite.count({ where: { workspaceId, kampagneId } }),
+    prisma.newsletterKontakt.findMany({
+      where: { workspaceId, quelleKampagneId: kampagneId, status: "ACTIVE", confirmedAt: { not: null } },
+      select: { confirmedAt: true, istDemo: true },
+    }),
   ]);
-  return auswerten({ links, ereignisse, kennzahlen });
+  return auswerten({
+    links,
+    ereignisse,
+    kennzahlen,
+    newsletter: newsletterFreigeschaltet() && seiten > 0 ? { bestaetigt: bestaetigt.map((b) => ({ confirmedAt: b.confirmedAt!, istDemo: b.istDemo })) } : undefined,
+  });
 }
 
 const PLATTFORMEN = ["YOUTUBE", "INSTAGRAM", "FACEBOOK", "LINKEDIN", "TIKTOK"] as const;
@@ -175,6 +200,11 @@ export async function demoAnlegen(workspaceId: string) {
       { plattform: "INSTAGRAM", metrik: "SHARES", wert: 37 },
       { plattform: "YOUTUBE", metrik: "IMPRESSIONEN", wert: 2900 },
       { plattform: "YOUTUBE", metrik: "VIDEOAUFRUFE", wert: 610 },
+      // Speicherungen und Wiedergabedauer: Ø-Werte je Plattform, werden nicht addiert.
+      { plattform: "INSTAGRAM", metrik: "SPEICHERUNGEN", wert: 54 },
+      { plattform: "INSTAGRAM", metrik: "WIEDERGABEDAUER_SEK", wert: 14 },
+      { plattform: "YOUTUBE", metrik: "WIEDERGABEDAUER_SEK", wert: 83 },
+      { plattform: "YOUTUBE", metrik: "GESAMTWIEDERGABEZEIT_MIN", wert: 844 },
     ].map((k) => ({ ...k, workspaceId, kampagneId: kampagne.id, quelle: "DEMO", zeitraumVon: von, zeitraumBis: bis })),
   });
   return kampagne;

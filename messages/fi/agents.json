@@ -1,6 +1,6 @@
 {
-  "title": "Agent Monitor",
-  "description": "Kaikki SECRET 58 -agentit tilan, viimeisimmän tehtävän ja tuloksen kanssa. Jokainen ajo kirjataan lokiin.",
+  "title": "Avustajien loki",
+  "description": "Kaikki SECRET 58 -avustajat (agentit) tilan, viimeisimmän tehtävän ja tuloksen kera. Jokainen ajo kirjataan tänne.",
   "table": {
     "agent": "Agentti",
     "description": "Kuvaus",

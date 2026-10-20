@@ -15,6 +15,7 @@ import {
   Wallet,
   TrendingUp,
   Inbox,
+  MessageSquareText,
   Bot,
   Plug,
   Settings,
@@ -24,6 +25,7 @@ import {
   Globe,
   FolderOpen,
   Megaphone,
+  Rocket,
 } from "lucide-react";
 
 export interface NavItem {
@@ -48,10 +50,12 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/analytics", labelKey: "analytics", icon: BarChart3 },
   { href: "/growth", labelKey: "growth", icon: TrendingUp },
   { href: "/weiterempfehlungen", labelKey: "weiterempfehlungen", icon: Megaphone },
+  { href: "/reichweitenaufbau", labelKey: "reichweitenaufbau", icon: Rocket },
   { href: "/revenue", labelKey: "revenue", icon: Wallet },
   { href: "/sales", labelKey: "sales", icon: Store },
   { href: "/website", labelKey: "website", icon: Globe },
   { href: "/inbox", labelKey: "inbox", icon: Inbox },
+  { href: "/kundenanfragen", labelKey: "anfragen", icon: MessageSquareText },
   { href: "/dateien", labelKey: "dateien", icon: FolderOpen },
   { href: "/agents", labelKey: "agents", icon: Bot },
   { href: "/integrations", labelKey: "integrations", icon: Plug },

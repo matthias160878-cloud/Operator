@@ -23,8 +23,10 @@
     "analytics": "Analytics",
     "growth": "Crescita",
     "weiterempfehlungen": "Passaparola",
+    "reichweitenaufbau": "Crescita del pubblico",
     "revenue": "Entrate",
     "inbox": "Posta in arrivo",
+    "anfragen": "Richieste",
     "dateien": "File",
     "agents": "Agenti",
     "integrations": "Integrazioni",
@@ -79,14 +81,16 @@
     "ERROR": "Errore",
     "REJECTED": "Rifiutato",
     "RECEIVED": "Ricevuto",
-    "PENDING": "In sospeso"
+    "PENDING": "In sospeso",
+    "NOT_AVAILABLE": "Non ancora disponibile"
   },
   "integrationStatus": {
     "notConfigured": "Non configurato — variabili mancanti: {vars}.",
     "verifyFailedGeneric": "Connessione non riuscita.",
     "verifyFailedStatus": "{service} ha risposto con stato {status}.",
     "verifyUnreachable": "{service} non è raggiungibile.",
-    "connected": "Connesso."
+    "connected": "Connesso.",
+    "notAvailable": "Non ancora disponibile: questo collegamento non è ancora realizzato nell'app."
   },
   "mediaPreview": {
     "expand": "Ingrandisci",

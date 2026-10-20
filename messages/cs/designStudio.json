@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Koncepty thumbnailů, obrazové assety a integrace Canva.",
+  "subtitle": "Koncepty miniatur jako text a stav propojení s Canvou.",
   "imageAssetsTitle": "Obrazové assety",
-  "imageAssetsEmpty": "Zatím nejsou k dispozici žádné obrazové assety.",
+  "imageAssetsEmpty": "Zatím žádné obrázky. Agent miniatur zatím vytváří jen textové koncepty, žádné obrázkové soubory.",
   "thumbnailAgent": {
     "title": "Thumbnail agent",
     "description": "Vytvoří textový koncept (název, vizuální nápad, rozvržení, CTA) — připravený pro napojení generátoru obrázků. Zatím se žádný obrázek nevytváří.",
@@ -15,6 +15,9 @@
     "fieldText": "Text",
     "fieldLayout": "Rozvržení",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Popis obrázku"
+    "fieldImageDescription": "Popis obrázku",
+    "templateResult": "Šablona: tento koncept pochází z pevné textové šablony, ne z AI. Pro AI koncepty zadej vlastní AI klíč v „Nastavení → Vlastní přístupy“.",
+    "textEngineLabel": "Textový engine:",
+    "templateMode": "Režim šablon (není nastaven žádný poskytovatel AI)"
   }
 }

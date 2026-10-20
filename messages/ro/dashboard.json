@@ -1,8 +1,7 @@
 {
   "viewAll": "Afișează tot",
   "demoBanner": {
-    "before": "Date demo active — campaniile, elementele de conținut și analizele sunt date de exemplu din ",
-    "after": ", nu cifre reale ale platformelor."
+    "text": "Date exemplu active – campaniile, conținutul și statisticile din acest spațiu de lucru sunt date exemplu, nu cifre reale ale platformelor."
   },
   "hero": {
     "subtitle": "O idee. Mai multe platforme. Acoperire maximă.",
@@ -26,8 +25,9 @@
     "published": "Publicări",
     "views": "Vizualizări",
     "avgEngagement": "Ø Engagement",
-    "totalRevenue": "Total venituri",
-    "noComparisonWeek": "Încă nu există o săptămână anterioară ca bază de comparație — ratele de schimbare apar imediat ce există date pentru cel puțin două săptămâni."
+    "totalRevenue": "Venituri (introduse manual)",
+    "noComparisonWeek": "Încă nu există o săptămână anterioară ca bază de comparație — ratele de schimbare apar imediat ce există date pentru cel puțin două săptămâni.",
+    "noStats": "Vizualizări și implicare: încă nu există statistici – statisticile platformelor nu sunt încă preluate automat."
   },
   "production": {
     "title": "Producție de conținut",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} conectate"
   },
   "agentMonitor": {
-    "title": "Agent Monitor",
+    "title": "Jurnalul asistenților",
     "empty": "Încă nu există rulări."
   },
   "topPerformer": {
     "title": "Top Performer",
     "last7Days": "Ultimele 7 zile",
-    "empty": "Încă nu există date de performanță.",
+    "empty": "Încă nu există date de performanță – statisticile platformelor nu sunt încă preluate automat.",
     "views": "Vizualizări",
     "likes": "Aprecieri",
     "comments": "Comentarii",

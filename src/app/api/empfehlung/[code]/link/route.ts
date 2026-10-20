@@ -19,6 +19,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ cod
   }
   const eltern = await oeffentlicherLink(code);
   if (!eltern || !eltern.aktiv) return NextResponse.json({ error: "Dieser Link ist nicht mehr aktiv." }, { status: 404 });
+  if (!eltern.freigeschaltet) return NextResponse.json({ error: "Diese Seite ist noch nicht freigeschaltet." }, { status: 403 });
   if (eltern.stufe >= MAX_STUFE) {
     return NextResponse.json({ error: "Aus diesem Link kann kein weiterer eigener Link erzeugt werden. Du kannst ihn aber einfach weitergeben." }, { status: 409 });
   }
@@ -29,6 +30,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ cod
       parentId: eltern.id,
       stufe: eltern.stufe + 1,
       herkunft: "BESUCHER",
+      angebotUrl: eltern.angebotUrl,
       istDemo: eltern.istDemo,
       code: await eindeutigerCode(),
     },

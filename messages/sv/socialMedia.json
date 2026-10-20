@@ -1,14 +1,14 @@
 {
   "pageTitle": "Sociala medier",
-  "subtitle": "Plattformskonton och deras anslutningsstatus. Åtkomstuppgifter hanteras uteslutande som miljövariabler på serversidan och lagras aldrig i frontend. Åtkomsttoken lagras krypterade i databasen efter anslutningen.",
+  "subtitle": "Dina plattformskonton och deras anslutningsstatus. Du ansluter genom att logga in direkt hos plattformen; åtkomsttoken sparas krypterade på servern, aldrig i webbläsaren.",
   "credentialsLabel": "Appens åtkomstuppgifter",
   "accountLabel": "Konto",
   "lastPublishedLabel": "Senaste publicering",
   "lastErrorLabel": "Senaste fel",
   "connectButton": "Anslut",
   "connectButtonUnavailable": "Anslut (inte möjligt än)",
-  "connectButtonTitleNoCreds": "Appens åtkomstuppgifter saknas ännu",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY är ännu inte satt",
+  "connectButtonTitleNoCreds": "Inte konfigurerat av operatören ännu",
+  "connectButtonTitleNoEncryption": "Säker lagring av åtkomsttoken är inte konfigurerad ännu",
   "disconnectButton": "Koppla från",
   "disconnectConfirm": "Vill du verkligen koppla från det här kontot? Åtkomsten måste därefter upprättas på nytt via ”Anslut”.",
   "needsCredentialsNote": "Saknas ännu: lägg in {idVar} och {secretVar} i Render.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Anslutningen misslyckades. Kontrollera åtkomstuppgifterna och försök igen.",
   "errorUnknownPlatform": "Okänd plattform.",
   "encryptionKeyMissingNotice": "Obs: TOKEN_ENCRYPTION_KEY är ännu inte satt — konton kan inte anslutas förrän den här miljövariabeln har lagts in i Render.",
+  "connectedPageLabel": "Ansluten sida",
+  "facebookMultiplePages": "Flera Facebook-sidor hittades ({count}) – ansluten är ”{name}”. En annan sida? Koppla från och välj bara önskad sida i Facebook-dialogen när du ansluter igen.",
+  "tokenExpiresOn": "Åtkomsten upphör {date} – anslut igen före dess.",
+  "tokenExpiredOn": "Åtkomsten upphörde {date} – anslut igen.",
+  "tokenScheduledAfterExpiry": "Schemalagda inlägg efter utgångsdatumet: {count}. Utan ny anslutning publiceras de inte.",
+  "reconnectButton": "Anslut igen",
   "composio": {
     "title": "Anslut konto via Composio",
     "subtitle": "Alternativ till direktanslutning: Du loggar in på plattformen, Composio förvarar åtkomsten, SECRET 58 kopplar bara kontot till din arbetsyta. För närvarande endast anslutning och läsande åtkomsttest – inget publiceras via detta.",
@@ -56,6 +62,10 @@
       "not_active": "Plattformen bekräftade inte åtkomsten eller den avvisades.",
       "composio_error": "Composio kunde inte nås eller rapporterade ett fel. Försök igen senare.",
       "unknown": "Anslutningen misslyckades."
-    }
-  }
+    },
+    "noPublishNotice": "Bara ett anslutningstest – här publiceras ingenting. Lästestet kontrollerar bara om kontot kan läsas."
+  },
+  "needsCredentialsNoteCustomer": "Den här plattformen konfigureras av operatören. Du kan ansluta så snart den är konfigurerad.",
+  "errorNotConfiguredCustomer": "{platform}: operatören har inte konfigurerat den här plattformen ännu. Du kan ansluta så snart den är konfigurerad.",
+  "encryptionKeyMissingNoticeCustomer": "Det går inte att ansluta ännu: operatören har inte konfigurerat säker lagring av åtkomsttoken ännu."
 }

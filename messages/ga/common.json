@@ -23,8 +23,10 @@
     "analytics": "Anailísíocht",
     "growth": "Fás",
     "weiterempfehlungen": "Moltaí",
+    "reichweitenaufbau": "Lucht féachana a mhéadú",
     "revenue": "Ioncam",
     "inbox": "Bosca isteach",
+    "anfragen": "Fiosruithe",
     "dateien": "Comhaid",
     "agents": "Gníomhairí",
     "integrations": "Comhtháthuithe",
@@ -79,14 +81,16 @@
     "ERROR": "Earráid",
     "REJECTED": "Diúltaithe",
     "RECEIVED": "Faighte",
-    "PENDING": "Ar feitheamh"
+    "PENDING": "Ar feitheamh",
+    "NOT_AVAILABLE": "Níl ar fáil fós"
   },
   "integrationStatus": {
     "notConfigured": "Gan cumrú — athróg(a) ar iarraidh: {vars}.",
     "verifyFailedGeneric": "Theip ar an nasc.",
     "verifyFailedStatus": "D’fhreagair {service} le stádas {status}.",
     "verifyUnreachable": "Níorbh fhéidir {service} a bhaint amach.",
-    "connected": "Nasctha."
+    "connected": "Nasctha.",
+    "notAvailable": "Níl ar fáil fós – níl an nasc seo tógtha san aip fós."
   },
   "mediaPreview": {
     "expand": "Taispeáin níos mó",

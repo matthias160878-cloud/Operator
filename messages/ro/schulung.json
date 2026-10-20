@@ -12,7 +12,7 @@
       "title": "Primii pași",
       "description": "Rezolvă mai întâi aceste trei lucruri, apoi toți agenții IA vor lucra cu date reale, nu cu substituenți.",
       "steps": [
-        "La „Integrări”, verifică dacă este configurat un furnizor de IA. Funcțiile IA rulează prin accesele operatorului, așa că nu ai nevoie de un abonament IA propriu. Fără furnizor de IA, aplicația funcționează în modul șabloane.",
+        "La „Setări → Accese proprii” introdu propria cheie IA de la Anthropic, OpenAI sau Gemini. Funcțiile IA folosesc exclusiv cheia ta; furnizorul IA te facturează direct. Fără cheie proprie, aplicația funcționează în modul șablon, cu blocuri de text fixe.",
         "La „Brand DNA” completează propriul brand (ton, public țintă, valori) — agenții IA folosesc aceste date pentru fiecare text generat.",
         "La „Idei și inspirație” sau „Content Brain” lasă-te să generezi prima idee, respectiv prima campanie."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics și creștere",
       "description": "Cifre reale despre propria performanță — și recomandări în loc de automatizare.",
       "steps": [
-        "Analytics arată exclusiv date de performanță reale, importate sau introduse manual.",
+        "Analytics afișează doar statistici salvate (de ex. date exemplu). Statisticile platformelor nu sunt încă preluate automat; cifrele le introduci manual la „Recomandări” sau în compararea variantelor – acolo sunt evaluate.",
         "Pagina Creștere calculează din aceste date cele mai bune momente de postare, hashtag-urile și formatele de succes.",
         "Important: intenționat nu există nicio creștere automatizată a urmăritorilor/engagement-ului (fără comportament de bot) — aceasta ar încălca condițiile de utilizare ale oricărei platforme."
       ]
@@ -59,9 +59,9 @@
       "title": "Inbox",
       "description": "Ciorne de răspuns generate de IA pentru mesaje — cu aprobare înainte de trimitere.",
       "steps": [
-        "Fiindcă (încă) nu este conectată nicio platformă prin OAuth, conversațiile sunt create momentan manual, în loc să fie preluate live.",
+        "Mesajele de pe platforme nu sunt încă preluate, iar răspunsurile nu sunt trimise. Pentru a încerca, creezi conversații ca simulare.",
         "MessageAgent propune un răspuns pe baza Brand DNA și a istoricului conversației.",
-        "Ciorna trebuie verificată și aprobată manual înainte de a fi considerată trimisă — o trimitere reală eșuează sincer fără conexiune cu platforma, în loc să simuleze succesul."
+        "Tu verifici și aprobi ciorna. Trimiterea către platforme nu este încă realizată – „Aprobă și trimite” semnalează asta onest ca eroare, în loc să simuleze un succes."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "De unde provine fiecare stare de conexiune și unde se introduce cheia potrivită.",
       "steps": [
         "Fiecare rând arată starea reală, verificată live — niciodată o conexiune simulată.",
-        "La „Neconfigurat”, „Obține cheia API” duce la pagina oficială a furnizorului.",
-        "Datele de acces nu sunt niciodată salvate în browser, ci doar protejat pe server. Dacă lipsește un acces, îl configurează operatorul.",
-        "Costuri: Pro și Maxi sunt abonamente, lunare sau anuale. Prețurile actuale se află la „Pachet și facturare”. Fiecare furnizor extern are propriul model de costuri, independent (gratuit / în funcție de utilizare / abonament) — pe pagina Integrări, la fiecare serviciu se vede ce model se aplică, cu link către prețurile actuale ale furnizorului."
+        "Accesele tale proprii (chei IA, Resend pentru newsletter) le introduci la „Setări → Accese proprii” – acolo un ghid te duce la pagina oficială de chei a furnizorului.",
+        "Datele de acces nu sunt salvate niciodată în browser, ci doar criptat pe server. Ieșirea vocală și accesele de aplicație ale platformelor sunt configurate de operator; „Încă indisponibil” înseamnă că legătura nu este încă realizată în aplicație.",
+        "Costuri: Pro și Maxi sunt abonamente, lunare sau anuale. Prețurile actuale se găsesc la „Pachet și facturare”. Pentru accesele tale proprii (IA, Resend), fiecare furnizor te facturează direct după propriul model de prețuri – SECRET 58 nu percepe nimic în plus pentru asta."
       ]
     }
   }

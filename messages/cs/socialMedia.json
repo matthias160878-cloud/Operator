@@ -1,14 +1,14 @@
 {
   "pageTitle": "Sociální sítě",
-  "subtitle": "Účty na platformách a stav jejich připojení. Přístupové údaje se spravují výhradně jako proměnné prostředí na straně serveru a nikdy se neukládají ve frontendu. Přístupové tokeny se po připojení ukládají zašifrovaně v databázi.",
+  "subtitle": "Tvé účty na platformách a jejich stav připojení. Připojuješ se přihlášením přímo na platformě; přístupové tokeny se ukládají šifrovaně na serveru, nikdy v prohlížeči.",
   "credentialsLabel": "Přístupové údaje aplikace",
   "accountLabel": "Účet",
   "lastPublishedLabel": "Poslední publikování",
   "lastErrorLabel": "Poslední chyba",
   "connectButton": "Připojit",
   "connectButtonUnavailable": "Připojit (zatím není možné)",
-  "connectButtonTitleNoCreds": "Přístupové údaje aplikace zatím chybí",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY zatím není nastaven",
+  "connectButtonTitleNoCreds": "Provozovatel zatím nenastavil",
+  "connectButtonTitleNoEncryption": "Bezpečné ukládání přístupových tokenů zatím není nastavené",
   "disconnectButton": "Odpojit",
   "disconnectConfirm": "Opravdu odpojit tento účet? Přístup bude poté nutné znovu obnovit přes „Připojit“.",
   "needsCredentialsNote": "Ještě chybí: zadej {idVar} a {secretVar} v Render.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Připojení se nezdařilo. Zkontroluj přístupové údaje a zkus to znovu.",
   "errorUnknownPlatform": "Neznámá platforma.",
   "encryptionKeyMissingNotice": "Upozornění: TOKEN_ENCRYPTION_KEY zatím není nastaven — účty lze připojit až poté, co bude tato proměnná prostředí zadána v Render.",
+  "connectedPageLabel": "Připojená stránka",
+  "facebookMultiplePages": "Nalezeno více stránek na Facebooku ({count}) – připojena je „{name}“. Jiná stránka? Odpojte ji a při novém připojení vyberte v dialogu Facebooku jen požadovanou stránku.",
+  "tokenExpiresOn": "Přístup vyprší {date} – připojte se prosím znovu před tímto datem.",
+  "tokenExpiredOn": "Přístup vypršel {date} – připojte se prosím znovu.",
+  "tokenScheduledAfterExpiry": "Naplánované příspěvky po datu vypršení: {count}. Bez nového připojení nebudou zveřejněny.",
+  "reconnectButton": "Znovu připojit",
   "composio": {
     "title": "Připojit účet přes Composio",
     "subtitle": "Alternativa k přímému napojení: přihlásíš se k platformě, Composio uchová přístup a SECRET 58 jen přiřadí účet k tvému pracovnímu prostoru. Aktuálně pouze připojení a čtecí test přístupu – nic se tím nepublikuje.",
@@ -56,6 +62,10 @@
       "not_active": "Platforma přístup nepotvrdila nebo byl odmítnut.",
       "composio_error": "Composio nebylo dostupné nebo nahlásilo chybu. Zkus to prosím později.",
       "unknown": "Připojení se nezdařilo."
-    }
-  }
+    },
+    "noPublishNotice": "Jen test připojení – nic se tu nepublikuje. Test čtení jen ověří, zda lze účet číst."
+  },
+  "needsCredentialsNoteCustomer": "Tuto platformu nastavuje provozovatel. Připojit se půjde, jakmile bude nastavená.",
+  "errorNotConfiguredCustomer": "{platform}: provozovatel tuto platformu zatím nenastavil. Připojit se půjde, jakmile bude nastavená.",
+  "encryptionKeyMissingNoticeCustomer": "Připojení zatím není možné: provozovatel ještě nenastavil bezpečné ukládání přístupových tokenů."
 }

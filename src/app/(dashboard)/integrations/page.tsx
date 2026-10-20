@@ -11,6 +11,7 @@ import {
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import type { IntegrationCategory } from "@/lib/integrations/types";
 import { requireSessionUser } from "@/lib/auth/session";
+import { zugaengeUebersicht } from "@/lib/zugaenge/service";
 
 const PRICING_STYLES: Record<PricingModel, string> = {
   free: "bg-success/15 text-success border-success/30",
@@ -32,11 +33,27 @@ export default async function IntegrationsPage() {
     TREND: t("categories.TREND"),
   };
   const ti = await getTranslations("common.integrationStatus");
-  const statuses = await getAllIntegrationStatuses(ti);
-  // Anbieter-Schlüssel richtet ausschließlich der Betreiber ein. Kunden sehen
-  // nur den ehrlichen Einrichtungsstatus — ohne Aufforderung, eigene
-  // API-Schlüssel zu besorgen.
-  const { isOperator } = await requireSessionUser();
+  const alleStatus = await getAllIntegrationStatuses(ti);
+  // KI-Texte laufen bei Kunden über ihre eigenen Schlüssel (Einstellungen →
+  // Eigene Zugänge); alle übrigen Dienste richtet der Betreiber ein.
+  const { isOperator, workspaceId } = await requireSessionUser();
+  const eigene = isOperator ? [] : await zugaengeUebersicht(workspaceId);
+  const KI_KEYS: Record<string, string> = { anthropic: "ANTHROPIC", openai: "OPENAI", gemini: "GEMINI" };
+  const statuses = alleStatus.map((s) => {
+    if (isOperator) return s;
+    if (!KI_KEYS[s.key]) {
+      // Kunden können diese Dienste nicht selbst einrichten – keine Variablennamen zeigen.
+      if (s.status === "NOT_CONFIGURED") return { ...s, message: "Richtet der Betreiber ein – derzeit noch nicht eingerichtet." };
+      if (s.status === "CONNECTED") return { ...s, message: "Vom Betreiber eingerichtet." };
+      return s;
+    }
+    const z = eigene.find((e) => e.anbieter === KI_KEYS[s.key]);
+    return {
+      ...s,
+      status: (z?.status === "OK" ? "CONNECTED" : z ? "ERROR" : "NOT_CONFIGURED") as typeof s.status,
+      message: z?.status === "OK" ? `Eigener Schlüssel …${z.endung} – geprüft.` : z ? `Eigener Schlüssel: ${z.meldung || "Prüfung fehlgeschlagen"}` : "Kein eigener Schlüssel eingetragen.",
+    };
+  });
   const byCategory = new Map<IntegrationCategory, typeof statuses>();
   for (const s of statuses) {
     const list = byCategory.get(s.category) ?? [];
@@ -53,9 +70,17 @@ export default async function IntegrationsPage() {
           <p className="mt-1 text-xs text-muted">{t("costNote")}</p>
         ) : (
           <p className="mt-1 text-xs text-muted">
-            KI- und Sprachanbieter stellt der Betreiber bereit; du brauchst dafür keine eigenen Schlüssel oder Abos.
-            „Nicht konfiguriert“ heißt: Der Betreiber hat diesen Dienst noch nicht eingerichtet. Social-Media-Konten
-            verbindest du sicher per Anmeldung beim jeweiligen Netzwerk unter „Social Media“.
+            <strong className="text-foreground">Selbst einrichten:</strong> KI-Texte laufen nur über deinen eigenen Schlüssel bei Anthropic, OpenAI oder
+            Gemini, der Newsletter-Versand über deinen eigenen Resend-Schlüssel – beides eintragen unter{" "}
+            <a href="/settings/zugaenge" className="text-accent-2 underline">
+              Einstellungen → Eigene Zugänge
+            </a>{" "}
+            (mit Wegweiser). Social-Media-Konten verbindest du per Anmeldung beim jeweiligen Netzwerk unter{" "}
+            <a href="/social-media" className="text-accent-2 underline">
+              Social Media
+            </a>
+            . <strong className="text-foreground">Richtet der Betreiber ein:</strong> Sprachausgabe sowie die App-Zugänge der Plattformen; „Nicht
+            konfiguriert“ heißt dort: noch nicht eingerichtet. „Noch nicht verfügbar“ heißt: Diese Anbindung ist in der App noch nicht gebaut.
           </p>
         )}
       </div>

@@ -1,8 +1,7 @@
 {
   "viewAll": "Mostra-ho tot",
   "demoBanner": {
-    "before": "Dades de demostració actives: les campanyes, els elements de contingut i l'analytics són dades d'exemple de ",
-    "after": ", no xifres reals de les plataformes."
+    "text": "Dades d'exemple actives: les campanyes, continguts i estadístiques d'aquest espai de treball són dades d'exemple, no xifres reals de plataformes."
   },
   "hero": {
     "subtitle": "Una idea. Diverses plataformes. Màxim abast.",
@@ -26,8 +25,9 @@
     "published": "Publicacions fetes",
     "views": "Visualitzacions",
     "avgEngagement": "Engagement mitjà",
-    "totalRevenue": "Ingressos totals",
-    "noComparisonWeek": "Encara no hi ha cap setmana anterior com a base de comparació: les taxes de variació apareixeran quan hi hagi dades d'almenys dues setmanes."
+    "totalRevenue": "Ingressos (registrats manualment)",
+    "noComparisonWeek": "Encara no hi ha cap setmana anterior com a base de comparació: les taxes de variació apareixeran quan hi hagi dades d'almenys dues setmanes.",
+    "noStats": "Visualitzacions i interacció: encara no hi ha estadístiques; les estadístiques de les plataformes encara no s'obtenen automàticament."
   },
   "production": {
     "title": "Producció de contingut",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} connectades"
   },
   "agentMonitor": {
-    "title": "Monitor d'agents",
+    "title": "Registre dels assistents",
     "empty": "Encara no hi ha execucions."
   },
   "topPerformer": {
     "title": "Millor rendiment",
     "last7Days": "Darrers 7 dies",
-    "empty": "Encara no hi ha dades de rendiment.",
+    "empty": "Encara no hi ha dades de rendiment: les estadístiques de les plataformes encara no s'obtenen automàticament.",
     "views": "Visualitzacions",
     "likes": "M'agrada",
     "comments": "Comentaris",

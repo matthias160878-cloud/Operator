@@ -1,6 +1,6 @@
 {
   "title": "Socruithe",
-  "description": "Spás oibre, úsáideoirí agus faisnéis chórais. Déantar sonraí rochtana a bhainistiú go heisiach trí athróga timpeallachta (féach <code>.env.example</code>).",
+  "description": "Do spás oibre, úsáideoirí agus forbhreathnú ar do shonraí. Cuireann tú d'eochracha API féin (téacsanna IS, seoladh nuachtlitreacha) isteach faoi <zugaenge>Rochtainí féin</zugaenge>; gheobhaidh tú do phacáiste faoi <billing>Pacáiste & Billeáil</billing>.",
   "workspace": {
     "title": "Spás oibre",
     "name": "Ainm",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Úsáideoirí & Róil",
-    "note": "Tá an tsamhail sonraí il-tionónta réitithe go hiomlán (leithlisiú spáis oibre do gach tábla). Is é an chéad chéim eile fíorchomhéadan logála isteach/fíordheimhnithe le húsáideoirí iolracha — faoi láthair oibríonn an aip leis an spás oibre réamhshocraithe seo go díreach."
+    "note": "Tá a spás oibre féin ag gach cuntas, scartha ó chustaiméirí eile. Ní féidir leat úsáideoirí breise a chur leis tú féin fós."
   },
   "system": {
     "title": "Córas",
@@ -17,7 +17,7 @@
     "campaigns": "Feachtais",
     "mediaAssets": "Sócmhainní meán",
     "agentRuns": "Rith gníomhairí",
-    "dbNote": "Bunachar sonraí: SQLite (áitiúil, <code>prisma/dev.db</code>) trí Prisma ORM. Le haghaidh táirgeachta athraigh <codeSpaced>DATABASE_URL</codeSpaced> go Postgres/MySQL (coigeartaigh an soláthraí i <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Líon na n-iontrálacha atá sábháilte i do spás oibre. Is féidir leat na sonraí go léir a easpórtáil nó an spás oibre a scriosadh thíos faoi „Mo shonraí”."
   },
   "onboarding": {
     "title": "Cúntóir socraithe",

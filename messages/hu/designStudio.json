@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Bélyegkép-koncepciók, képi anyagok és a Canva-integráció.",
+  "subtitle": "Bélyegkép-koncepciók szövegként és a Canva-kapcsolat állapota.",
   "imageAssetsTitle": "Képi anyagok",
-  "imageAssetsEmpty": "Még nincsenek képi anyagok.",
+  "imageAssetsEmpty": "Még nincsenek képek. A bélyegkép-ügynök jelenleg csak szöveges koncepciókat készít, képfájlokat nem.",
   "thumbnailAgent": {
     "title": "Bélyegkép-agent",
     "description": "Szöveges koncepciót készít (cím, vizuális ötlet, elrendezés, CTA) — előkészítve egy képgenerátor csatlakoztatására. Egyelőre nem készül kép.",
@@ -15,6 +15,9 @@
     "fieldText": "Szöveg",
     "fieldLayout": "Elrendezés",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Képleírás"
+    "fieldImageDescription": "Képleírás",
+    "templateResult": "Sablon: ez a koncepció rögzített szövegsablonból származik, nem MI-től. MI-koncepciókhoz add meg a saját MI-kulcsodat a „Beállítások → Saját hozzáférések” alatt.",
+    "textEngineLabel": "Szövegmotor:",
+    "templateMode": "Sablon mód (nincs beállítva MI-szolgáltató)"
   }
 }

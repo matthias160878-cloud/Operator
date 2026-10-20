@@ -94,6 +94,7 @@ async function workspaceIdOf(email) {
 }
 
 let A, B;
+const KUNDEN_KI_KEY = "sk-ant-kunde-gueltig-0123456789abcdef";
 
 before(async () => {
   fakes = await startFakeServices();
@@ -120,10 +121,15 @@ before(async () => {
     STRIPE_PRICE_ID_MAXI: "price_maxi",
     STRIPE_PRICE_ID_PRO_YEAR: "price_pro_year",
     PACKAGE_TERMS_CONFIRMED: "true",
+    // Die Tests prüfen den Steuerweg mit Stripe Tax (Nettopreise); Kleinunternehmer ist in Unit-Tests abgedeckt.
+    UMSATZSTEUER_MODUS: "REGEL",
     // Testangaben — keine echten Anbieterdaten
     IMPRESSUM_NAME: "Test Anbieter",
     IMPRESSUM_ANSCHRIFT: "Teststraße 1 | 00000 Teststadt",
     IMPRESSUM_EMAIL: "kontakt@example.test",
+    IMPRESSUM_FIRMA: "Testfirma",
+    IMPRESSUM_UMSATZSTEUER: "Kleinunternehmer im Sinne von § 19 UStG – es wird keine Umsatzsteuer ausgewiesen.",
+    IMPRESSUM_KONTAKT_URL: "/hauptseite/index.html#/kontakt",
     AGB_URL: "https://example.test/agb",
     DATENSCHUTZ_URL: "https://example.test/datenschutz",
     OPERATOR_SETUP_TOKEN: SETUP_TOKEN,
@@ -145,6 +151,9 @@ before(async () => {
     COMPOSIO_AUTH_CONFIG_TIKTOK: "ac_tiktok",
     TOKEN_ENCRYPTION_KEY: "test-schluessel-nur-fuer-die-integrationstests",
     RESEND_API_KEY: "re_test_fake",
+    REICHWEITE_NEWSLETTER: "1",
+    DMARC_TEST_EINTRAEGE: JSON.stringify({ "_dmarc.kunde.example": "v=DMARC1; p=none" }),
+    REICHWEITE_WERBUNG: "1",
     EMAIL_FROM: "Secret 58 <newsletter@example.test>",
     EMAIL_API_BASE: `http://127.0.0.1:${fakes.stripePort}`,
     PILOTSTUDIO_LIVE_SEND: "true",
@@ -160,6 +169,9 @@ before(async () => {
     await new Promise((r) => setTimeout(r, 500));
   }
   A = await signup("a@example.test", "Firma A");
+  // Kunden nutzen für KI-Texte ihren eigenen Schlüssel (Einstellungen → Eigene Zugänge).
+  const ki = await A.json("/api/zugaenge", { method: "PUT", body: { anbieter: "ANTHROPIC", werte: { apiKey: KUNDEN_KI_KEY } } });
+  assert.equal(ki.data?.pruefung?.status, "OK", JSON.stringify(ki.data));
   B = await signup("b@example.test", "Firma B");
 });
 
@@ -196,6 +208,17 @@ test("Impressum ist ohne Anmeldung erreichbar und überall verlinkt", async () =
     assert.ok(h.includes('href="/impressum"'), `Impressum-Link fehlt auf ${p}`);
     assert.ok(h.includes("https://example.test/datenschutz") && h.includes("https://example.test/agb"), `AGB/Datenschutz fehlen auf ${p}`);
   }
+  assert.ok(html.includes("Kleinunternehmer") && html.includes("/hauptseite/index.html#/kontakt"), "USt-Hinweis und Kontaktformular");
+  assert.ok(html.includes("Inhaber"), "Einzelunternehmen: Inhaber statt Vertreten durch");
+});
+
+test("Datenschutzerklärung der App ist ohne Anmeldung erreichbar und nennt die Dienste", async () => {
+  const res = await fetch(`${BASE}/datenschutz`, { redirect: "manual" });
+  assert.equal(res.status, 200);
+  assert.equal(res.headers.get("set-cookie"), null, "keine Cookies");
+  const html = await res.text();
+  for (const t of ["Datenschutzerklärung", "Matthias Lippek", "Render", "Frankfurt", "Stripe", "Resend", "s58_session", "Art. 15", "Baden-Württemberg"]) assert.ok(html.includes(t), t);
+  assert.ok(!html.includes("Stytch") && !html.includes("Offen</h2>"), "keine veralteten Angaben oder offenen Punkte");
 });
 
 test("Anmeldung: falsches Passwort generisch abgelehnt, richtiges klappt", async () => {
@@ -1168,6 +1191,9 @@ test("Zugänge: Betreiber hinterlegt Schlüssel in der App, Server-Werte haben V
   assert.equal(li.value, "ac_linkedin_test_1"); // nicht geheim → zur Kontrolle sichtbar
   const page = await (await op.req("/operator/zugaenge")).text();
   assert.ok(page.includes("in der App gespeichert") && page.includes("in der Server-Umgebung gesetzt"));
+  for (const url of ["https://console.anthropic.com/settings/keys", "https://aistudio.google.com/apikey", "https://resend.com/api-keys", "https://dashboard.stripe.com/apikeys", "https://dashboard.stripe.com/webhooks", "https://dashboard.stripe.com/products", "https://platform.composio.dev/"]) {
+    assert.ok(page.includes(`href="${url}"`), `Betreiber: Link zum Schlüssel ${url}`);
+  }
   assert.ok(!page.includes("ck_test_fake"));
 
   // Ohne Neustart nutzbar: Kunde kann LinkedIn jetzt verbinden
@@ -1874,8 +1900,19 @@ test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich u
   assert.equal((await B.json("/api/reichweite/kampagnen", { method: "POST", body: { titel: "x", campaignId: intern.id } })).status, 404, "fremde interne Kampagne");
   assert.equal((await new Client().json("/api/reichweite/kampagnen")).status, 401);
 
-  // Öffentliche Seite: nur öffentliche Felder, ohne Anmeldung, keine Cookies
+  // Ohne Impressum-/Datenschutzangaben des Kunden bleibt die öffentliche Seite gesperrt
   const anon = new Client();
+  const gesperrt = await anon.req(`/e/${code}`, { headers: { "user-agent": "Mozilla/5.0 Testbrowser" } });
+  assert.ok((await gesperrt.text()).includes("noch nicht freigeschaltet"));
+  assert.equal((await anon.json(`/api/empfehlung/${code}/anfrage`, { method: "POST", body: { kontakt: "x@example.com", nachricht: "Hallo", einwilligung: true } })).status, 403);
+  assert.equal((await anon.req(`/e/${code}/impressum`)).status, 404);
+  assert.equal(await prisma.empfehlungsEreignis.count({ where: { kampagneId: kid } }), 0, "gesperrte Seite zählt nicht");
+  assert.ok((await (await A.req("/reichweitenaufbau")).text()).includes("anbieter-hinweis"));
+  await prisma.sellerProfile.create({
+    data: { workspaceId: wsA, anbieter: "Rita Reichweite", firma: "Reichweite A GmbH", anschrift: "Linkweg 1\n12345 Teilstadt", email: "kontakt@reichweite-a.example", datenschutzUrl: "https://reichweite-a.example/datenschutz" },
+  });
+
+  // Öffentliche Seite: nur öffentliche Felder, ohne Anmeldung, keine Cookies
   const seite = await anon.req(`/e/${code}`, { headers: { "user-agent": "Mozilla/5.0 Testbrowser" } });
   assert.equal(seite.status, 200);
   assert.equal(seite.headers.get("set-cookie"), null, "keine Cookies");
@@ -1884,6 +1921,9 @@ test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich u
   assert.ok(!html.includes("GEHEIM-interne-Kampagne"), "interne Kampagne bleibt privat");
   assert.ok(!html.includes("Instagram-Bio"), "interne Bezeichnung bleibt privat");
   assert.ok(!html.includes(wsA), "keine Workspace-ID");
+  assert.ok(html.includes("Reichweite A GmbH") && html.includes("https://reichweite-a.example/datenschutz"), "Anbieter und Datenschutz des Kunden");
+  const imp = await (await anon.req(`/e/${code}/impressum`)).text();
+  assert.ok(imp.includes("Linkweg 1") && imp.includes("kontakt@reichweite-a.example"));
   // Messenger-Vorschau und Prefetch zählen nicht
   await anon.req(`/e/${code}`, { headers: { "user-agent": "WhatsApp/2.23" } });
   await anon.req(`/e/${code}`, { headers: { "user-agent": "Mozilla/5.0", "sec-purpose": "prefetch" } });
@@ -1921,8 +1961,22 @@ test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich u
   assert.equal(anf.status, 200, JSON.stringify(anf.data));
   const inq = await prisma.pilotInquiry.findFirst({ where: { workspaceId: wsA, channel: "empfehlung" } });
   assert.ok(inq && inq.senderContact === "interessent@example.com");
+  // Kunde A sieht die Anfrage unter „Anfragen“ (/kundenanfragen) — ohne PILOTSTUDIO_KUNDENBEREICH; Kunde B nicht
+  const seiteA = await A.req("/kundenanfragen");
+  assert.equal(seiteA.status, 200, "Anfragen-Seite ohne Pilot-Schalter erreichbar");
+  const htmlA = await seiteA.text();
+  assert.ok(htmlA.includes("interessent@example.com") && htmlA.includes("Bitte Angebot"), "Anfrage mit Kontakt und Nachricht beim richtigen Kunden");
+  assert.ok(htmlA.includes('href="/kundenanfragen"'), "Menüpunkt „Anfragen“");
+  const seiteB = await B.req("/kundenanfragen");
+  assert.equal(seiteB.status, 200);
+  const htmlB = await seiteB.text();
+  assert.ok(!htmlB.includes("interessent@example.com") && !htmlB.includes("Bitte Angebot"), "fremder Kunde sieht die Anfrage nicht");
+  assert.ok(!htmlB.includes(inq.id));
+  assert.ok((await new Client().req("/kundenanfragen")).status >= 300, "ohne Anmeldung kein Zugriff");
   assert.equal((await prisma.empfehlungsEreignis.count({ where: { art: "ANFRAGE" } })), 1);
   assert.equal(await prisma.rateLimit.count({ where: { key: { startsWith: "empf", contains: "10.77" } } }), 0, "IP nur gehasht");
+  assert.ok((await prisma.rateLimit.findMany({ where: { key: { startsWith: "empf-anfrage:" } } })).every((r) => /^empf-anfrage:[0-9a-f]{32}$/.test(r.key)), "Schlüssel per HMAC pseudonymisiert");
+  assert.equal(await prisma.rateLimit.count({ where: { key: { contains: "10.7" } } }), 0, "keine IP-Adresse in der Datenbank");
   assert.ok((await prisma.rateLimit.count({ where: { key: { startsWith: "empf-anfrage:" } } })) >= 1);
 
   a = (await A.json(`/api/reichweite/kampagnen/${kid}/auswertung`)).data.auswertung;
@@ -1938,6 +1992,33 @@ test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich u
   assert.equal((await anon.json(`/api/empfehlung/${code}/link`, { method: "POST", headers: { "x-forwarded-for": "10.77.1.3" } })).status, 404);
   assert.equal((await anon.req(`/e/${code}/weiter`)).status, 303);
   assert.ok(!(await anon.req(`/e/${code}/weiter`)).headers.get("location").startsWith("https://example.com"));
+
+  // Plattformzahlen manuell: Speicherungen und Ø Wiedergabedauer (Sekunden), Durchschnitt wird nie summiert
+  const kz = (body) => A.json(`/api/reichweite/kampagnen/${kid}/kennzahlen`, { method: "POST", body: { zeitraumVon: "2026-10-01", zeitraumBis: "2026-10-07", ...body } });
+  assert.equal((await kz({ plattform: "INSTAGRAM", metrik: "SPEICHERUNGEN", wert: 12 })).status, 200);
+  assert.equal((await kz({ plattform: "YOUTUBE", metrik: "SPEICHERUNGEN", wert: 3 })).status, 200);
+  assert.equal((await kz({ plattform: "INSTAGRAM", metrik: "WIEDERGABEDAUER_SEK", wert: 14 })).status, 200);
+  const wd = await kz({ plattform: "YOUTUBE", metrik: "WIEDERGABEDAUER_SEK", wert: 83 });
+  assert.equal(wd.status, 200, JSON.stringify(wd.data));
+  assert.equal(wd.data.kennzahl.quelle, "MANUELL");
+  const ungueltig = await kz({ plattform: "YOUTUBE", metrik: "GEFAELLT_MIR", wert: 5 });
+  assert.equal(ungueltig.status, 400, "unbekannte Kennzahl abgelehnt");
+  assert.equal((await kz({ plattform: "YOUTUBE", metrik: "WIEDERGABEDAUER_SEK", wert: 12.5 })).status, 400, "nur ganze Sekunden");
+  const zuLang = await kz({ plattform: "YOUTUBE", metrik: "WIEDERGABEDAUER_SEK", wert: 90000 });
+  assert.equal(zuLang.status, 400, "Ø Wiedergabedauer höchstens 24 h");
+  assert.ok(zuLang.data.error.includes("Sekunden"));
+  assert.equal((await B.json(`/api/reichweite/kampagnen/${kid}/kennzahlen`, { method: "POST", body: { plattform: "YOUTUBE", metrik: "SPEICHERUNGEN", wert: 1, zeitraumVon: "2026-10-01", zeitraumBis: "2026-10-07" } })).status, 404);
+  assert.equal(await prisma.reichweitenKennzahl.count({ where: { kampagneId: kid } }), 4);
+  a = (await A.json(`/api/reichweite/kampagnen/${kid}/auswertung`)).data.auswertung;
+  const dauer = a.plattformKennzahlen.filter((p) => p.metrik === "WIEDERGABEDAUER_SEK");
+  assert.deepEqual(dauer.map((p) => [p.plattform, p.zahl.wert, p.zahl.anzeige, p.art]), [
+    ["INSTAGRAM", 14, "0:14 min", "DURCHSCHNITT"],
+    ["YOUTUBE", 83, "1:23 min", "DURCHSCHNITT"],
+  ]);
+  assert.ok(dauer.every((p) => p.label === "Ø Wiedergabedauer" && p.zahl.quelle === "Manuell aus Plattform-Statistik" && !p.zahl.istDemo));
+  assert.equal(a.plattformKennzahlen.filter((p) => p.metrik === "SPEICHERUNGEN").length, 2);
+  assert.ok(!JSON.stringify(a.fluss).includes('"wert":97'), "Ø Wiedergabedauer nicht summiert");
+  assert.ok((await (await A.req("/weiterempfehlungen")).text()).includes("Speicherungen"));
 
   // Rollen: Nur-Lesen darf nichts ändern
   await prisma.user.update({ where: { email: "reichweite-a@example.com" }, data: { role: "VIEWER" } });
@@ -1961,4 +2042,699 @@ test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich u
   assert.equal((await A.json(`/api/reichweite/kampagnen/${kid}`, { method: "DELETE" })).status, 200);
   assert.equal(await prisma.empfehlungsLink.count({ where: { kampagneId: kid } }), 0);
   assert.equal(await prisma.empfehlungsEreignis.count({ where: { kampagneId: kid } }), 0);
+});
+
+test("Reichweitenaufbau: Freigabegrenzen, Rollen, Mandanten, Newsletter-Double-Opt-in ohne Versand", async () => {
+  const A = await signup("aufbau-a@example.com", "Aufbau A", "10.78.0.1");
+  const B = await signup("aufbau-b@example.com", "Aufbau B", "10.78.0.2");
+  const wsA = await workspaceIdOf("aufbau-a@example.com");
+  const mails0 = fakes.calls.filter((c) => c.path === "/emails").length;
+  const R = "/api/reichweitenaufbau";
+
+  // Demo-Ablauf vollständig, Seite rendert jeden Bereich
+  assert.equal((await A.json(`${R}/demo`, { method: "POST" })).status, 200);
+  for (const tab of ["uebersicht", "kampagnen", "ideen", "varianten", "kooperationen", "werbung", "newsletter", "testlauf"]) {
+    const res = await A.req(`/reichweitenaufbau?tab=${tab}`);
+    assert.equal(res.status, 200, tab);
+    assert.ok((await res.text()).includes("DEMO"), `${tab}: Demo gekennzeichnet`);
+  }
+
+  // Ideen: Vorschläge, Übernahme nur als Entwurf, Vorher-nachher nur mit Grundlage
+  const brief = { zielgruppe: "Cafés", problem: "wenig Stammgäste", ergebnis: "mehr Wiederkehrer", plattform: "INSTAGRAM", format: "Reel", tonalitaet: "LOCKER_DU", material: "", aufforderung: "SPEICHERN", grundlageVorherNachher: "" };
+  const vs = await A.json(`${R}/ideen/vorschlaege`, { method: "POST", body: brief });
+  assert.equal(vs.status, 200);
+  assert.equal(vs.data.vorschlaege.length, 6);
+  const vn = vs.data.vorschlaege.find((v) => v.art === "VORHER_NACHHER");
+  assert.ok(vn.gesperrt);
+  const tipp = vs.data.vorschlaege.find((v) => v.art === "TIPPS");
+  const ueb = (art, grundlage = "") => A.json(`${R}/ideen/uebernehmen`, { method: "POST", body: { ...tipp, art, plattform: "INSTAGRAM", titel: "Tipps", grundlage } });
+  assert.equal((await ueb("VORHER_NACHHER")).status, 400);
+  const hwg = await A.json(`${R}/ideen/uebernehmen`, { method: "POST", body: { ...tipp, art: "VORHER_NACHHER", plattform: "INSTAGRAM", titel: "Nasenkorrektur vorher/nachher", grundlage: "eigene Fotos" } });
+  assert.equal(hwg.status, 400, "HWG-Sperre auch auf dem Server");
+  assert.match(hwg.data.error, /HWG/);
+  const item = await ueb("TIPPS");
+  assert.equal(item.status, 200);
+  assert.equal((await prisma.contentItem.findUnique({ where: { id: item.data.item.id } })).status, "DRAFT", "nur Entwurf – Freigabe in der Content Factory");
+
+  // Variantenvergleich: festgelegt, Auswertung ohne Sieger bei wenig Daten
+  const t = await A.json(`${R}/varianten`, {
+    method: "POST",
+    body: {
+      titel: "Titeltest", ziel: "Klicks", hauptkennzahl: "LINKKLICKS", eigenschaft: "TITEL", datenquelle: "manuell", laufzeitVon: "2026-10-01", laufzeitBis: "2026-10-10",
+      varianten: [{ label: "A", plattform: "INSTAGRAM" }, { label: "B", plattform: "INSTAGRAM" }],
+    },
+  });
+  assert.equal(t.status, 200);
+  const tv = await prisma.testVariante.findMany({ where: { testId: t.data.test.id } });
+  assert.equal((await A.json(`${R}/varianten/${t.data.test.id}/messwerte`, { method: "POST", body: { varianteId: tv[0].id, metrik: "AUFRUFE", wert: 50 } })).status, 200);
+  const erg = await A.json(`${R}/varianten/${t.data.test.id}`);
+  assert.equal(erg.data.ergebnis.status, "KEINE_AUSSAGE");
+  assert.equal(erg.data.ergebnis.bezeichnung, "Variantenvergleich");
+  assert.equal((await B.json(`${R}/varianten/${t.data.test.id}`)).status, 404, "Mandantentrennung");
+  assert.equal((await B.json(`${R}/varianten/${t.data.test.id}/messwerte`, { method: "POST", body: { varianteId: tv[0].id, metrik: "AUFRUFE", wert: 1 } })).status, 404);
+
+  // Kooperation: Entwurf wird nur gespeichert, nicht versendet
+  const ko = await A.json(`${R}/kooperationen`, { method: "POST", body: { name: "Bäckerei Test", art: "REGIONAL", format: "AKTION", idee: "Stadtfest" } });
+  assert.equal(ko.status, 200);
+  const ent = await A.json(`${R}/kooperationen/${ko.data.kooperation.id}/entwurf`, { method: "POST", body: { absender: "Aufbau A" } });
+  assert.match(ent.data.kooperation.anfrageEntwurf, /Nichts wird automatisch verschickt/);
+  assert.equal(ent.data.kooperation.status, "ANFRAGE_ENTWURF");
+  assert.equal((await A.json(`${R}/kooperationen/${ko.data.kooperation.id}/link`, { method: "POST" })).status, 409, "Link nur mit Kampagne");
+  assert.equal((await B.json(`${R}/kooperationen/${ko.data.kooperation.id}`, { method: "PATCH", body: { status: "VEREINBART" } })).status, 404);
+  assert.equal(ko.data.kooperation.kennzeichnung, "OFFEN");
+  assert.match(ent.data.kooperation.anfrageEntwurf, /als Werbung bzw\. Anzeige/);
+  assert.equal((await A.json(`${R}/kooperationen/${ko.data.kooperation.id}`, { method: "PATCH", body: { kennzeichnung: "SCHLEICHWERBUNG" } })).status, 400);
+  await A.json(`${R}/kooperationen/${ko.data.kooperation.id}`, { method: "PATCH", body: { status: "VEREINBART" } });
+  assert.ok((await (await A.req("/reichweitenaufbau")).text()).includes("Werbekennzeichnung noch nicht geklärt"));
+  const gekennzeichnet = await A.json(`${R}/kooperationen/${ko.data.kooperation.id}`, { method: "PATCH", body: { kennzeichnung: "WERBUNG" } });
+  assert.equal(gekennzeichnet.data.kooperation.kennzeichnung, "WERBUNG");
+
+  // Werbung: Freigabe nur exakt bestätigt, nur Inhaber/Admin, Start immer blockiert, Änderung hebt Freigabe auf
+  const plan = await A.json(`${R}/werbung`, {
+    method: "POST",
+    body: { titel: "Test", plattform: "META", ziel: "TRAFFIC", startAm: "2026-11-01", endeAm: "2026-11-07", tagesbudgetCent: 1000, gesamtbudgetCent: 7000 },
+  });
+  assert.equal(plan.status, 200, JSON.stringify(plan.data));
+  const pid = plan.data.plan.id;
+  assert.equal((await A.json(`${R}/werbung`, { method: "POST", body: { titel: "x", plattform: "META", ziel: "TRAFFIC", startAm: "2026-11-07", endeAm: "2026-11-01", tagesbudgetCent: 1, gesamtbudgetCent: 1 } })).status, 400);
+  const fb = { gesamtbudgetCent: 7000, startAm: "2026-11-01", endeAm: "2026-11-07", ziel: "TRAFFIC", bestaetigt: true };
+  assert.equal((await A.json(`${R}/werbung/${pid}/freigabe`, { method: "POST", body: fb })).status, 409, "erst Prüfung");
+  assert.equal((await A.json(`${R}/werbung/${pid}/pruefung`, { method: "POST" })).status, 200);
+  await prisma.user.update({ where: { email: "aufbau-a@example.com" }, data: { role: "EDITOR" } });
+  assert.equal((await A.json(`${R}/werbung/${pid}/freigabe`, { method: "POST", body: fb })).status, 403, "Redaktion darf kein Budget freigeben");
+  await prisma.user.update({ where: { email: "aufbau-a@example.com" }, data: { role: "OWNER" } });
+  assert.equal((await A.json(`${R}/werbung/${pid}/freigabe`, { method: "POST", body: { ...fb, gesamtbudgetCent: 70000 } })).status, 400);
+  assert.equal((await A.json(`${R}/werbung/${pid}/freigabe`, { method: "POST", body: { ...fb, bestaetigt: false } })).status, 400);
+  assert.equal((await A.json(`${R}/werbung/${pid}/freigabe`, { method: "POST", body: fb })).status, 200);
+  const start = await A.json(`${R}/werbung/${pid}/starten`, { method: "POST" });
+  assert.equal(start.status, 409);
+  assert.match(start.data.error, /Nicht gestartet/);
+  const exp = await A.req(`${R}/werbung/${pid}/export?format=json`);
+  assert.equal(exp.status, 200);
+  const ej = await exp.json();
+  assert.equal(ej.budget.art, "geplant");
+  assert.ok(ej.freigabe.freigegebenAm);
+  assert.equal((await A.req(`${R}/werbung/${pid}/export?format=csv`)).headers.get("content-type"), "text/csv; charset=utf-8");
+  assert.equal((await B.req(`${R}/werbung/${pid}/export`)).status, 404);
+  assert.equal((await A.json(`${R}/werbung/${pid}/ausgaben`, { method: "POST", body: { ausgabenCent: 1234 } })).status, 200);
+  let gespeichert = await prisma.werbeplan.findUnique({ where: { id: pid } });
+  assert.equal(gespeichert.gemeldeteAusgabenCent, 1234);
+  assert.equal(gespeichert.gesamtbudgetCent, 7000, "Plan und gemeldete Ausgaben getrennt");
+  await A.json(`${R}/werbung/${pid}`, { method: "PATCH", body: { titel: "Test", plattform: "META", ziel: "TRAFFIC", startAm: "2026-11-01", endeAm: "2026-11-07", tagesbudgetCent: 1000, gesamtbudgetCent: 9000 } });
+  gespeichert = await prisma.werbeplan.findUnique({ where: { id: pid } });
+  assert.equal(gespeichert.status, "ENTWURF", "Änderung hebt Freigabe auf");
+  assert.equal(gespeichert.freigabeHash, null);
+
+  // Newsletter: Seite, öffentliche Anmeldung (Demo: keine Mail), Bestätigung, kein Doppelkontakt, Abmeldung
+  const seite = await A.json(`${R}/newsletter/seiten`, { method: "POST", body: { titel: "Tipps", themenBeschreibung: "Einmal im Monat drei Tipps.", themen: ["Tipps", "Angebote"] } });
+  assert.equal(seite.status, 200);
+  const code = seite.data.seite.code;
+  const anon = new Client();
+  assert.ok((await (await anon.req(`/n/${code}`)).text()).includes("noch nicht freigeschaltet"), "ohne Anbieterangaben gesperrt");
+  await prisma.sellerProfile.create({
+    data: { workspaceId: wsA, anbieter: "Anton Aufbau", anschrift: "Planweg 2\n12345 Aufbaustadt", email: "kontakt@aufbau-a.example", datenschutzUrl: "https://aufbau-a.example/datenschutz" },
+  });
+  const nlSeite = await anon.req(`/n/${code}`, { headers: { "user-agent": "Mozilla/5.0" } });
+  assert.equal(nlSeite.status, 200);
+  assert.equal(nlSeite.headers.get("set-cookie"), null);
+  assert.ok((await nlSeite.text()).includes("DEMO"));
+  assert.equal((await anon.json(`/api/nl/${code}/anmelden`, { method: "POST", body: { email: "leser@example.com", einwilligung: false } })).status, 400);
+  const an = await anon.json(`/api/nl/${code}/anmelden`, { method: "POST", headers: { "x-forwarded-for": "10.78.1.1" }, body: { email: "Leser@Example.com", themen: ["Tipps", "Fremd"], einwilligung: true } });
+  assert.equal(an.status, 200, JSON.stringify(an.data));
+  assert.equal(an.data.demo, true);
+  let kontakt = await prisma.newsletterKontakt.findFirst({ where: { workspaceId: wsA, email: "leser@example.com" } });
+  assert.equal(kontakt.status, "PENDING", "erst nach Bestätigung aktiv");
+  assert.deepEqual(JSON.parse(kontakt.themen), ["Tipps"], "nur angebotene Themen");
+  const best = await anon.req(new URL(an.data.bestaetigungsUrl).pathname + new URL(an.data.bestaetigungsUrl).search);
+  assert.equal(best.status, 200);
+  assert.ok((await best.text()).includes("bestätigt"));
+  kontakt = await prisma.newsletterKontakt.findFirst({ where: { workspaceId: wsA, email: "leser@example.com" } });
+  assert.equal(kontakt.status, "ACTIVE");
+  await anon.json(`/api/nl/${code}/anmelden`, { method: "POST", headers: { "x-forwarded-for": "10.78.1.2" }, body: { email: "leser@example.com", einwilligung: true } });
+  assert.equal(await prisma.newsletterKontakt.count({ where: { workspaceId: wsA, email: "leser@example.com" } }), 1, "kein doppelter Kontakt");
+  assert.equal((await prisma.newsletterKontakt.findFirst({ where: { workspaceId: wsA, email: "leser@example.com" } })).status, "ACTIVE");
+  const ev = await prisma.newsletterEreignis.groupBy({ by: ["art"], where: { seiteId: seite.data.seite.id }, _count: { _all: true } });
+  const z = (art) => ev.find((e) => e.art === art)?._count._all ?? 0;
+  assert.equal(z("AUFRUF"), 1);
+  assert.equal(z("BESTAETIGT"), 1, "bestätigte Anmeldungen getrennt von Formularaufrufen");
+
+  // Ausgabe: Reihenfolge, Rollen, Demo-Versand ohne E-Mail
+  const aus = await A.json(`${R}/newsletter/ausgaben`, { method: "POST", body: { betreff: "Oktober", text: "Hallo" } });
+  const aid = aus.data.ausgabe.id;
+  const akt = (c, aktion, extra = {}) => c.json(`${R}/newsletter/ausgaben/${aid}/aktion`, { method: "POST", body: { aktion, ...extra } });
+  assert.equal((await akt(A, "versenden")).status, 409);
+  assert.equal((await akt(A, "planen", { geplantAm: "2030-01-01T10:00:00Z" })).status, 409, "erst Freigabe");
+  assert.equal((await akt(A, "pruefen")).status, 200);
+  await prisma.user.update({ where: { email: "aufbau-a@example.com" }, data: { role: "EDITOR" } });
+  assert.equal((await akt(A, "freigeben")).status, 403);
+  await prisma.user.update({ where: { email: "aufbau-a@example.com" }, data: { role: "OWNER" } });
+  assert.equal((await akt(A, "freigeben")).status, 200);
+  assert.equal((await akt(A, "planen", { geplantAm: "2020-01-01T10:00:00Z" })).status, 400, "Zeitpunkt in der Zukunft");
+  assert.equal((await akt(A, "planen", { geplantAm: "2030-01-01T10:00:00Z" })).status, 200);
+  assert.equal((await akt(B, "versenden")).status, 404, "Mandantentrennung");
+  const ver = await akt(A, "versenden");
+  assert.equal(ver.status, 200);
+  assert.equal(ver.data.demo, true);
+  assert.equal(kontakt.istDemo, true, "im Demo-Modus sind auch Anmeldungen Demo");
+  assert.equal(ver.data.empfaenger, 0, "echte Ausgaben zählen keine Demo-Kontakte");
+  assert.equal((await prisma.newsletterAusgabe.findUnique({ where: { id: aid } })).status, "VERSENDET_DEMO");
+  assert.equal(fakes.calls.filter((c) => c.path === "/emails").length, mails0, "keine einzige E-Mail versendet");
+
+  // Abmeldung: ungültiger Link ändert nichts; One-Click-POST von fremdem Ursprung wird nicht vom CSRF-Schutz blockiert
+  const ungueltig = await fetch(`${BASE}/api/nl/abmelden?t=${"x".repeat(30)}`, { method: "POST", headers: { origin: "https://mail.example" } });
+  assert.equal(ungueltig.status, 200);
+  assert.match(await ungueltig.text(), /ungültig/);
+  assert.equal((await prisma.newsletterKontakt.findFirst({ where: { workspaceId: wsA, email: "leser@example.com" } })).status, "ACTIVE");
+
+  const ab = await fetch(new URL(an.data.abmeldeUrl).toString().replace(/^https?:\/\/[^/]+/, BASE), { method: "POST", headers: { origin: "https://mail.example" } });
+  assert.equal(ab.status, 200);
+  assert.equal((await prisma.newsletterKontakt.findFirst({ where: { workspaceId: wsA, email: "leser@example.com" } })).status, "UNSUBSCRIBED");
+
+  // Nur-Lesen darf nichts ändern
+  await prisma.user.update({ where: { email: "aufbau-a@example.com" }, data: { role: "VIEWER" } });
+  assert.equal((await A.json(`${R}/kooperationen`, { method: "POST", body: { name: "x", art: "CREATOR" } })).status, 403);
+  assert.equal((await A.json(`${R}/demo`, { method: "DELETE" })).status, 403);
+  assert.equal((await A.req("/reichweitenaufbau")).status, 200);
+  await prisma.user.update({ where: { email: "aufbau-a@example.com" }, data: { role: "OWNER" } });
+
+  // Demo entfernen räumt alles Demo-Gekennzeichnete auf, echte Einträge bleiben
+  assert.equal((await A.json(`${R}/demo`, { method: "DELETE" })).status, 200);
+  assert.equal(await prisma.kooperation.count({ where: { workspaceId: wsA, istDemo: true } }), 0);
+  assert.equal(await prisma.werbeplan.count({ where: { workspaceId: wsA, istDemo: true } }), 0);
+  assert.equal(await prisma.kooperation.count({ where: { workspaceId: wsA } }), 1);
+  assert.equal(await prisma.newsletterKontakt.count({ where: { workspaceId: wsA, email: "leser@example.com" } }), 0, "Demo-Anmeldungen (nie per E-Mail bestätigt) werden mitgelöscht");
+  assert.equal(await prisma.newsletterSeite.count({ where: { workspaceId: wsA, istDemo: false } }), 1, "echte Anmeldeseite bleibt");
+});
+
+test("Eigene Zugänge: Kunde trägt Resend-Schlüssel ein, echter Newsletter-Versand nur über seinen Zugang", async () => {
+  const C = await signup("zugang-c@example.com", "Zugang C", "10.79.0.1");
+  const D = await signup("zugang-d@example.com", "Zugang D", "10.79.0.2");
+  const wsC = await workspaceIdOf("zugang-c@example.com");
+  const R = "/api/reichweitenaufbau";
+  const seiteHtml = await (await C.req("/settings/zugaenge")).text();
+  assert.ok(seiteHtml.includes("resend.com/api-keys") && seiteHtml.includes("Sending access"), "Wegweiser zum Schlüssel");
+  assert.ok(seiteHtml.includes('data-testid="zugang-tabelle"') && seiteHtml.includes('data-testid="zugang-dialog"'), "Übersichtstabelle und Eintragen-Fenster");
+  for (const url of ["https://resend.com/api-keys", "https://console.anthropic.com/settings/keys", "https://platform.openai.com/api-keys", "https://aistudio.google.com/apikey"]) {
+    assert.ok(seiteHtml.includes(`href="${url}"`), `Link zum Schlüssel: ${url}`);
+  }
+  assert.ok(seiteHtml.includes('aria-modal="true"') && seiteHtml.includes('name="apiKey"'), "Inhaber: Formular im Fenster");
+  assert.ok((await (await C.req("/settings")).text()).includes("/settings/zugaenge"), "Link aus den Einstellungen");
+
+  const put = (c, werte) => c.json("/api/zugaenge", { method: "PUT", body: { anbieter: "RESEND", werte } });
+  assert.equal((await put(C, { apiKey: "falsch", absender: "C <n@news.kunde.example>" })).status, 400, "Format");
+  assert.equal((await put(C, { apiKey: "re_kunde_ungueltig_0", absender: "C <n@news.kunde.example>" })).data.pruefung.status, "FEHLER");
+  const pending = await put(C, { apiKey: "re_kunde_voll_1234", absender: "C <n@offen.example>" });
+  assert.match(pending.data.pruefung.meldung, /nicht bestätigt/);
+  const ohneDmarc = await put(C, { apiKey: "re_kunde_voll_1234", absender: "C <n@ohne-dmarc.example>" });
+  assert.equal(ohneDmarc.data.pruefung.status, "FEHLER");
+  assert.match(ohneDmarc.data.pruefung.meldung, /DMARC-Eintrag/, "ohne DMARC kein echter Versand");
+  await prisma.user.update({ where: { email: "zugang-c@example.com" }, data: { role: "EDITOR" } });
+  assert.equal((await put(C, { apiKey: "re_kunde_voll_1234", absender: "C <n@news.kunde.example>" })).status, 403, "nur Inhaber/Admin");
+  const editorHtml = await (await C.req("/settings/zugaenge")).text();
+  assert.ok(editorHtml.includes("Eintragen dürfen nur Inhaber und Admins.") && !editorHtml.includes('name="apiKey"'), "Redaktion: Eintragen gesperrt");
+  assert.ok(editorHtml.includes('href="https://resend.com/api-keys"'), "Redaktion sieht die Links");
+  await prisma.user.update({ where: { email: "zugang-c@example.com" }, data: { role: "OWNER" } });
+  const ok = await put(C, { apiKey: "re_kunde_voll_1234", absender: "Café C <newsletter@news.kunde.example>" });
+  assert.equal(ok.data.pruefung.status, "OK", JSON.stringify(ok.data));
+  assert.match(ok.data.pruefung.meldung, /DMARC vorhanden \(_dmarc\.kunde\.example\)/, "DMARC der Hauptdomain gilt für die Subdomain");
+  const liste = await C.json("/api/zugaenge");
+  assert.equal(liste.data.zugaenge[0].endung, "1234");
+  assert.ok(!JSON.stringify(liste.data).includes("re_kunde_voll_1234"), "Schlüssel kommt nie zurück");
+  assert.ok(!(await prisma.workspaceZugang.findFirst({ where: { workspaceId: wsC } })).wertEnc.includes("re_kunde"), "verschlüsselt gespeichert");
+  assert.equal((await D.json("/api/zugaenge")).data.zugaenge.length, 0, "Mandantentrennung");
+
+  // Ohne Anbieterangaben bleibt es Demo; mit Angaben echter Versand über den Kundenzugang
+  const s = await C.json(`${R}/newsletter/seiten`, { method: "POST", body: { titel: "Café-Post", themenBeschreibung: "Einmal im Monat Neuigkeiten aus dem Café.", themen: [] } });
+  const code = s.data.seite.code;
+  await prisma.sellerProfile.create({
+    data: { workspaceId: wsC, anbieter: "Clara Café", firma: "Café C GmbH", anschrift: "Bohnenweg 3\n12345 Röststadt", email: "hallo@kunde.example", datenschutzUrl: "https://kunde.example/datenschutz" },
+  });
+  const anon = new Client();
+  assert.ok(!(await (await anon.req(`/n/${code}`)).text()).includes("DEMO – Versanddienst"), "kein Demo-Hinweis");
+  const vorher = fakes.calls.length;
+  const an = await anon.json(`/api/nl/${code}/anmelden`, { method: "POST", headers: { "x-forwarded-for": "10.79.1.1" }, body: { email: "gast@example.org", einwilligung: true } });
+  assert.equal(an.status, 200, JSON.stringify(an.data));
+  assert.equal(an.data.demo, undefined);
+  const best = fakes.calls.slice(vorher).find((c) => c.path === "/emails");
+  assert.equal(best.authorization, "Bearer re_kunde_voll_1234", "Kundenschlüssel, nicht der des Betreibers");
+  assert.equal(best.email.from, "Café C <newsletter@news.kunde.example>");
+  assert.ok(best.email.text.includes("Bohnenweg 3, 12345 Röststadt") && best.email.text.includes("https://kunde.example/datenschutz"), "Anbieterangaben in der Mail");
+  const link = best.email.text.match(/\/api\/nl\/bestaetigen\?t=[A-Za-z0-9_-]+/)[0];
+  assert.equal((await anon.req(link)).status, 200);
+  const k = await prisma.newsletterKontakt.findFirst({ where: { workspaceId: wsC } });
+  assert.equal(k.status, "ACTIVE");
+  assert.equal(k.istDemo, false);
+
+  const aus = await C.json(`${R}/newsletter/ausgaben`, { method: "POST", body: { betreff: "Neu: Herbstkuchen", text: "Hallo,\n\nab Montag gibt es Zwetschgenkuchen.\n\nBis bald" } });
+  const aid = aus.data.ausgabe.id;
+  const akt = (aktion) => C.json(`${R}/newsletter/ausgaben/${aid}/aktion`, { method: "POST", body: { aktion } });
+  assert.equal((await akt("versenden")).status, 409, "erst Freigabe");
+  assert.equal((await akt("freigeben")).status, 200);
+  const v0 = fakes.calls.length;
+  const ver = await akt("versenden");
+  assert.equal(ver.status, 200, JSON.stringify(ver.data));
+  assert.equal(ver.data.demo, false);
+  const batch = fakes.calls.slice(v0).find((c) => c.path === "/emails/batch");
+  assert.equal(batch.authorization, "Bearer re_kunde_voll_1234");
+  assert.equal(batch.batch.length, 1);
+  const m = batch.batch[0];
+  assert.deepEqual(m.to, ["gast@example.org"]);
+  assert.equal(m.headers["List-Unsubscribe-Post"], "List-Unsubscribe=One-Click");
+  assert.ok(m.html.includes("Zwetschgenkuchen") && m.html.includes("Café C GmbH") && m.text.includes("Abmelden: "));
+  const a = await prisma.newsletterAusgabe.findUnique({ where: { id: aid } });
+  assert.equal(a.status, "VERSENDET");
+  assert.equal(a.zugestelltAnzahl, 1);
+  assert.equal((await akt("versenden")).status, 409, "kein zweiter Versand");
+
+  // Ein-Klick-Abmeldung über den Header-Link
+  const abUrl = m.headers["List-Unsubscribe"].slice(1, -1).replace(/^https?:\/\/[^/]+/, BASE);
+  assert.equal((await fetch(abUrl, { method: "POST", headers: { origin: "https://mail.example" } })).status, 200);
+  assert.equal((await prisma.newsletterKontakt.findUnique({ where: { id: k.id } })).status, "UNSUBSCRIBED");
+
+  // Reiner Versandschlüssel wird akzeptiert (mit Hinweis); Löschen schaltet zurück auf Demo
+  const send = await put(C, { apiKey: "re_kunde_send_5678", absender: "Café C <newsletter@news.kunde.example>" });
+  assert.equal(send.data.pruefung.status, "OK");
+  assert.match(send.data.pruefung.meldung, /nur Versand/);
+  assert.equal((await C.json("/api/zugaenge?anbieter=RESEND", { method: "DELETE" })).status, 200);
+  assert.ok((await (await anon.req(`/n/${code}`)).text()).includes("DEMO"));
+});
+
+test("Eigene KI-Schlüssel: Kunde nutzt nur seinen Schlüssel, ohne Schlüssel Vorlagen statt Betreiber-KI", async () => {
+  const messages = (ab) => fakes.calls.slice(ab).filter((c) => c.path === "/v1/messages");
+  // Ohne eigenen Schlüssel: Vorlagen (Template-Modus), obwohl der Server einen Anthropic-Schlüssel hat
+  assert.equal((await A.json("/api/zugaenge?anbieter=ANTHROPIC", { method: "DELETE" })).status, 200);
+  let v = fakes.calls.length;
+  const ohne = await A.json("/api/thumbnails/generate", { method: "POST", body: { topic: "Ohne Schlüssel" } });
+  assert.equal(ohne.status, 200, JSON.stringify(ohne.data));
+  assert.equal(messages(v).length, 0, "keine Betreiber-KI für Kunden");
+  const integ = await (await A.req("/integrations")).text();
+  assert.ok(integ.includes("Kein eigener Schlüssel eingetragen") && integ.includes("/settings/zugaenge"));
+
+  // Mit eigenem Schlüssel: Aufruf mit genau diesem Schlüssel
+  assert.equal((await A.json("/api/zugaenge", { method: "PUT", body: { anbieter: "ANTHROPIC", werte: { apiKey: KUNDEN_KI_KEY } } })).data.pruefung.status, "OK");
+  v = fakes.calls.length;
+  assert.equal((await A.json("/api/thumbnails/generate", { method: "POST", body: { topic: "Mit Schlüssel" } })).status, 200);
+  assert.ok(messages(v).length >= 1);
+  assert.ok(messages(v).every((c) => c.apiKey === KUNDEN_KI_KEY), "nur der Kundenschlüssel");
+
+  // Widget-Chat des Kunden ebenfalls über seinen Schlüssel
+  const site = await prisma.websiteConnection.findFirst({ where: { workspaceId: await workspaceIdOf("a@example.test"), revokedAt: null } });
+  if (site) {
+    v = fakes.calls.length;
+    const r = await fetch(`${BASE}/api/widget/${site.publicKey}/chat`, {
+      method: "POST",
+      headers: { "content-type": "application/json", origin: site.origin },
+      body: JSON.stringify({ messages: [{ role: "user", content: "Hallo?" }] }),
+    });
+    assert.equal(r.status, 200);
+    assert.ok(messages(v).every((c) => c.apiKey === KUNDEN_KI_KEY));
+  }
+
+  // Prüfung: ungültig wird erkannt, falsches Format abgelehnt, Wegweiser vorhanden, Mandantentrennung
+  const E = await signup("ki-e@example.com", "KI E", "10.80.0.1");
+  assert.equal((await E.json("/api/zugaenge", { method: "PUT", body: { anbieter: "ANTHROPIC", werte: { apiKey: "sk-ant-kunde-falsch-0123456789abcdef" } } })).data.pruefung.status, "FEHLER");
+  assert.equal((await E.json("/api/zugaenge", { method: "PUT", body: { anbieter: "OPENAI", werte: { apiKey: "sk-ant-xyz0123456789abcdefghij" } } })).status, 400, "Anthropic-Schlüssel nicht als OpenAI");
+  assert.ok((await (await E.req("/settings/zugaenge")).text()).includes("console.anthropic.com/settings/keys"), "Wegweiser zum KI-Schlüssel");
+  assert.ok(!(await E.json("/api/zugaenge")).data.zugaenge.some((z) => z.endung === KUNDEN_KI_KEY.slice(-4) && z.status === "OK"), "keine fremden Zugänge");
+});
+
+test("Kampagnen: Assistent ohne Duplikate, Budgetregeln, Plattformformate mit Freigaberegeln, KI-Schätzung und Limits, Angebotsseiten, Pause, Demo-Testlauf", async () => {
+  const O = await signup("kampagne-o@example.com", "Kampagne O", "10.81.0.1");
+  const B = await signup("kampagne-b@example.com", "Kampagne B", "10.81.0.2");
+  const ws = await workspaceIdOf("kampagne-o@example.com");
+  const ich = await prisma.user.findUniqueOrThrow({ where: { email: "kampagne-o@example.com" } });
+  const zweite = await prisma.user.create({ data: { workspaceId: ws, email: "kampagne-admin@example.com", name: "Zweite Admin", role: "ADMIN" } });
+  const rolle = (role) => prisma.user.update({ where: { id: ich.id }, data: { role } });
+  const R = "/api/reichweitenaufbau";
+  const mails0 = fakes.calls.filter((c) => c.path.startsWith("/emails")).length;
+  const basis = { titel: "Herbstkurs", text: "", ziel: "20 Anfragen bis Ende November", hauptkennzahl: "ANFRAGEN", zielgruppe: "Handwerk", zielUrl: "https://example.com/herbst", startAm: "2026-11-01", endeAm: "2026-11-30", verantwortlichId: ich.id, budgetCent: null };
+
+  // Assistent: Pflichtangaben, idempotent über die Kennung
+  assert.equal((await O.json(`${R}/kampagnen`, { method: "POST", body: { ...basis, ziel: "", erstellKennung: "kennung-0001" } })).status, 400);
+  assert.equal((await O.json(`${R}/kampagnen`, { method: "POST", body: { ...basis, verantwortlichId: "fremd", erstellKennung: "kennung-0002" } })).status, 400);
+  const k1 = await O.json(`${R}/kampagnen`, { method: "POST", body: { ...basis, erstellKennung: "kennung-0003" } });
+  assert.equal(k1.status, 200, JSON.stringify(k1.data));
+  assert.equal(k1.data.neu, true);
+  const k1b = await O.json(`${R}/kampagnen`, { method: "POST", body: { ...basis, erstellKennung: "kennung-0003" } });
+  assert.equal(k1b.data.neu, false);
+  assert.equal(k1b.data.kampagne.id, k1.data.kampagne.id);
+  const kid = k1.data.kampagne.id;
+  assert.equal(await prisma.reichweitenKampagne.count({ where: { workspaceId: ws } }), 1, "kein Duplikat");
+  const schritte = await prisma.kampagnenSchritt.findMany({ where: { kampagneId: kid }, orderBy: { reihenfolge: "asc" } });
+  assert.ok(schritte.length >= 6 && !schritte.some((s) => s.art === "WERBUNG"));
+  assert.ok(schritte.some((s) => s.art === "FREIGABE"));
+  assert.equal(await prisma.empfehlungsLink.count({ where: { kampagneId: kid } }), 1, "Hauptlink");
+  // Ablauf bearbeiten: verschieben, abhaken, ergänzen, löschen
+  assert.equal((await O.json(`${R}/schritte/${schritte[1].id}`, { method: "PATCH", body: { verschieben: "hoch" } })).status, 200);
+  assert.equal((await prisma.kampagnenSchritt.findUniqueOrThrow({ where: { id: schritte[1].id } })).reihenfolge, schritte[0].reihenfolge);
+  assert.ok((await O.json(`${R}/schritte/${schritte[0].id}`, { method: "PATCH", body: { erledigt: true } })).data.schritt.erledigtAm);
+  const neuS = await O.json(`${R}/kampagnen/${kid}/schritte`, { method: "POST", body: { titel: "Pressemitteilung", art: "SONSTIGES" } });
+  assert.equal(neuS.status, 200);
+  assert.equal((await O.json(`${R}/schritte/${neuS.data.schritt.id}`, { method: "DELETE" })).status, 200);
+  assert.equal((await B.json(`${R}/schritte/${schritte[0].id}`, { method: "PATCH", body: { erledigt: false } })).status, 404, "Mandanten");
+  assert.equal((await B.json(`${R}/kampagnen/${kid}`, { method: "PATCH", body: { ziel: "fremd" } })).status, 404);
+
+  // Budget: nur Inhaber/Admin; Werbung nur mit festgelegtem Budget und höchstens bis dahin
+  await rolle("EDITOR");
+  assert.equal((await O.json(`${R}/kampagnen`, { method: "POST", body: { ...basis, budgetCent: 10_000, erstellKennung: "kennung-0004" } })).status, 403);
+  assert.equal((await O.json(`${R}/kampagnen/${kid}`, { method: "PATCH", body: { budgetCent: 10_000 } })).status, 403);
+  await rolle("OWNER");
+  const wp = (cent) => O.json(`${R}/werbung`, { method: "POST", body: { titel: "Plan", kampagneId: kid, plattform: "META", ziel: "TRAFFIC", startAm: "2026-11-01", endeAm: "2026-11-07", tagesbudgetCent: 500, gesamtbudgetCent: cent } });
+  const ohneBudget = await wp(3000);
+  assert.equal(ohneBudget.status, 409);
+  assert.match(ohneBudget.data.error, /kein Budget/);
+  assert.equal((await O.json(`${R}/kampagnen/${kid}`, { method: "PATCH", body: { budgetCent: 5000 } })).status, 200);
+  assert.equal((await wp(7000)).status, 409, "über dem Budget");
+  const p1 = await wp(3000);
+  assert.equal(p1.status, 200, JSON.stringify(p1.data));
+  assert.equal((await wp(2500)).status, 409, "Summe über dem Budget");
+  assert.equal((await O.json(`${R}/werbung/${p1.data.plan.id}`, { method: "PATCH", body: { titel: "Plan", kampagneId: kid, plattform: "META", ziel: "TRAFFIC", startAm: "2026-11-01", endeAm: "2026-11-07", tagesbudgetCent: 500, gesamtbudgetCent: 5000 } })).status, 200, "eigener Plan zählt beim Ändern nicht doppelt");
+
+  // Plattformformate: Vorschau ohne Kosten, Fakten mit Quelle, ungeprüft sperrt die Freigabe
+  const eingabe = { thema: "Herbstkurs", kernaussage: "Sicherer werden", aufforderung: "Jetzt anfragen", zielUrl: "https://example.com/herbst", plattformen: ["INSTAGRAM", "LINKEDIN"],
+    fakten: [{ text: "Der Kurs hat 6 Termine.", quelle: "Kursbeschreibung", geprueft: true }, { text: "Fast alle sind zufrieden.", quelle: "", geprueft: false }] };
+  const ki0 = fakes.calls.filter((c) => c.path === "/v1/messages").length;
+  const vs = await O.json(`${R}/kampagnen/${kid}/formate`, { method: "POST", body: { aktion: "vorschau", eingabe } });
+  assert.equal(vs.status, 200, JSON.stringify(vs.data));
+  assert.equal(vs.data.varianten.length, 2);
+  assert.ok(vs.data.varianten.every((v) => v.text.includes("Der Kurs hat 6 Termine. [1]") && v.text.includes("[1] Kursbeschreibung") && v.text.includes("[UNGEPRÜFT] Fast alle sind zufrieden. [2]")));
+  const u1 = await O.json(`${R}/kampagnen/${kid}/formate`, { method: "POST", body: { aktion: "uebernehmen", variante: vs.data.varianten[0] } });
+  const u2 = await O.json(`${R}/kampagnen/${kid}/formate`, { method: "POST", body: { aktion: "uebernehmen", variante: vs.data.varianten[0] } });
+  assert.equal(u1.data.neu, true);
+  assert.equal(u2.data.neu, false);
+  assert.equal(u2.data.item.id, u1.data.item.id, "dieselbe Variante nur einmal");
+  const st = (id, action) => O.json(`/api/content-items/${id}/status`, { method: "POST", body: { action } });
+  assert.equal((await st(u1.data.item.id, "review")).status, 200);
+  const gesperrt = await st(u1.data.item.id, "approve");
+  assert.equal(gesperrt.status, 409);
+  assert.match(gesperrt.data.error, /ungeprüfte Aussagen/);
+  // Geprüfte Variante: nur die verantwortliche Person oder der Inhaber gibt frei
+  const vs2 = await O.json(`${R}/kampagnen/${kid}/formate`, { method: "POST", body: { aktion: "vorschau", eingabe: { ...eingabe, fakten: [eingabe.fakten[0]] } } });
+  const u3 = await O.json(`${R}/kampagnen/${kid}/formate`, { method: "POST", body: { aktion: "uebernehmen", variante: vs2.data.varianten[1] } });
+  assert.equal((await st(u3.data.item.id, "review")).status, 200);
+  assert.equal((await O.json(`${R}/kampagnen/${kid}`, { method: "PATCH", body: { verantwortlichId: zweite.id } })).status, 200);
+  await rolle("ADMIN");
+  const fremd = await st(u3.data.item.id, "approve");
+  assert.equal(fremd.status, 409);
+  assert.match(fremd.data.error, /verantwortliche Person/);
+  await rolle("OWNER");
+  assert.equal((await st(u3.data.item.id, "approve")).status, 200);
+  assert.equal(fakes.calls.filter((c) => c.path === "/v1/messages").length, ki0, "Formate ohne KI");
+  const seite = await (await O.req(`/reichweitenaufbau?tab=kampagnen&k=${kid}`)).text();
+  assert.ok(seite.includes("kampagnenassistent") && seite.includes("kampagne-detail") && seite.includes("ergebnis-zuordnung"));
+
+  // KI: Schätzung ohne Aufruf, ohne Schlüssel keine Kosten, Limit wird durchgesetzt, veränderte Fakten werden verworfen
+  const kiUrl = `${R}/kampagnen/${kid}/formate/ki`;
+  const kiBody = { text: vs2.data.varianten[0].text, fakten: [eingabe.fakten[0]] };
+  assert.equal((await O.json(kiUrl, { method: "POST", body: kiBody })).status, 409, "ohne eigenen Schlüssel");
+  assert.equal((await O.json("/api/zugaenge", { method: "PUT", body: { anbieter: "ANTHROPIC", werte: { apiKey: KUNDEN_KI_KEY } } })).data.pruefung.status, "OK");
+  await prisma.workspacePlan.create({ data: { workspaceId: ws, plan: "PRO", status: "ACTIVE", source: "TEST" } });
+  const ki1 = fakes.calls.filter((c) => c.path === "/v1/messages").length;
+  const sch = await O.json(kiUrl, { method: "POST", body: kiBody });
+  assert.equal(sch.status, 200, JSON.stringify(sch.data));
+  assert.equal(sch.data.schaetzung.berechenbar, true);
+  assert.ok(sch.data.schaetzung.usdMax > 0);
+  assert.equal(fakes.calls.filter((c) => c.path === "/v1/messages").length, ki1, "Schätzung ruft keine KI auf");
+  await rolle("EDITOR");
+  assert.equal((await O.json("/api/zugaenge/limits", { method: "PUT", body: { aufrufeMonat: 1, kostenMonatUsd: null } })).status, 403);
+  await rolle("OWNER");
+  assert.equal((await O.json("/api/zugaenge/limits", { method: "PUT", body: { aufrufeMonat: 1, kostenMonatUsd: null } })).status, 200);
+  const lauf = await O.json(kiUrl, { method: "POST", body: { ...kiBody, bestaetigt: true } });
+  assert.equal(lauf.status, 200, JSON.stringify(lauf.data));
+  assert.equal(lauf.data.ok, false, "Attrappe liefert Text ohne die Fakten – verworfen");
+  assert.equal(fakes.calls.filter((c) => c.path === "/v1/messages").length, ki1 + 1);
+  assert.equal(fakes.calls.at(-1).apiKey ?? fakes.calls.filter((c) => c.path === "/v1/messages").at(-1).apiKey, KUNDEN_KI_KEY);
+  const zuViel = await O.json(kiUrl, { method: "POST", body: { ...kiBody, bestaetigt: true } });
+  assert.equal(zuViel.status, 429, JSON.stringify(zuViel.data));
+  assert.equal(fakes.calls.filter((c) => c.path === "/v1/messages").length, ki1 + 1, "Limit: kein weiterer Aufruf");
+  const zug = await (await O.req("/settings/zugaenge")).text();
+  assert.ok(zug.includes("ki-verbrauch") && /1(<!-- -->)? KI-Aufrufe/.test(zug), "Verbrauch angezeigt");
+
+  // Angebotsseiten: Link führt auf seine Seite, weitergegebene Links erben sie, sonst Zielseite
+  await prisma.sellerProfile.create({ data: { workspaceId: ws, anbieter: "Olga Test", firma: "Kampagne O GmbH", anschrift: "Weg 1\n12345 Stadt", email: "kontakt@kampagne-o.example", datenschutzUrl: "https://kampagne-o.example/datenschutz" } });
+  assert.equal((await O.json(`/api/reichweite/kampagnen/${kid}/links`, { method: "POST", body: { bezeichnung: "LinkedIn", angebotUrl: "javascript:alert(1)" } })).status, 400);
+  const la = await O.json(`/api/reichweite/kampagnen/${kid}/links`, { method: "POST", body: { bezeichnung: "LinkedIn", angebotUrl: "https://example.com/firmenangebot" } });
+  assert.equal(la.status, 200);
+  const anon = new Client();
+  const ua = { "user-agent": "Mozilla/5.0 Testbrowser" };
+  const w1 = await anon.req(`/e/${la.data.link.code}/weiter`, { headers: ua });
+  assert.equal(w1.status, 303);
+  assert.equal(w1.headers.get("location"), "https://example.com/firmenangebot");
+  const kind = await anon.json(`/api/empfehlung/${la.data.link.code}/link`, { method: "POST", headers: { "x-forwarded-for": "10.81.1.1" } });
+  assert.equal(kind.status, 200);
+  assert.equal((await anon.req(`/e/${kind.data.code}/weiter`, { headers: ua })).headers.get("location"), "https://example.com/firmenangebot", "geerbt");
+  const haupt = await prisma.empfehlungsLink.findFirstOrThrow({ where: { kampagneId: kid, bezeichnung: "Hauptlink" } });
+  assert.equal((await anon.req(`/e/${haupt.code}/weiter`, { headers: ua })).headers.get("location"), "https://example.com/herbst");
+  assert.equal((await B.json(`/api/reichweite/links/${la.data.link.id}`, { method: "PATCH", body: { angebotUrl: "https://example.com/x" } })).status, 404);
+  assert.equal((await O.json(`/api/reichweite/links/${la.data.link.id}`, { method: "PATCH", body: { angebotUrl: "" } })).status, 200);
+  assert.equal((await anon.req(`/e/${la.data.link.code}/weiter`, { headers: ua })).headers.get("location"), "https://example.com/herbst");
+
+  // Pause: nur Inhaber/Admin, sichtbar in der Übersicht
+  await rolle("EDITOR");
+  assert.equal((await O.json("/api/automatik", { method: "PUT", body: { pausiert: true } })).status, 403);
+  await rolle("OWNER");
+  assert.equal((await O.json("/api/automatik", { method: "PUT", body: { pausiert: true } })).data.pausiert, true);
+  assert.equal((await O.json("/api/automatik")).data.pausiert, true);
+  assert.equal((await B.json("/api/automatik")).data.pausiert, false, "nur dieser Workspace");
+  assert.match(await (await O.req("/reichweitenaufbau")).text(), /Automatische Abläufe: (<!-- -->)?pausiert/);
+  await O.json("/api/automatik", { method: "PUT", body: { pausiert: false } });
+
+  // Demo-Testlauf: Briefing → Entwurf → Prüfung → Freigabe → simulierte Ausführung → Auswertung
+  const T = `${R}/testlauf`;
+  const weiter = () => O.json(T, { method: "POST", body: { aktion: "weiter" } });
+  for (let i = 1; i <= 4; i++) {
+    const r = await weiter();
+    assert.equal(r.status, 200, JSON.stringify(r.data));
+    assert.equal(r.data.schritt, i);
+  }
+  const tk = await prisma.reichweitenKampagne.findUniqueOrThrow({ where: { erstellKennung: `testlauf:${ws}` } });
+  assert.equal(tk.istDemo, true);
+  const items = await prisma.contentItem.findMany({ where: { reichweitenKampagneId: tk.id } });
+  assert.equal(items.length, 3);
+  assert.ok(items.every((i) => i.status === "APPROVED"));
+  // Doppelklick/Wiederholung bei der Ausführung: nur einmal
+  const [x, y] = await Promise.all([weiter(), weiter()]);
+  assert.equal(x.status, 200);
+  assert.equal(y.status, 200);
+  const ereignisse = await prisma.empfehlungsEreignis.count({ where: { kampagneId: tk.id } });
+  assert.equal(ereignisse, 73, "Demo-Ereignisse genau einmal");
+  const fertig = (await weiter()).data;
+  assert.equal(fertig.schritt, 6);
+  assert.equal((await weiter()).data.schritt, 6, "bleibt am Ende stehen");
+  assert.equal(await prisma.empfehlungsEreignis.count({ where: { kampagneId: tk.id } }), 73);
+  const nach = await prisma.contentItem.findMany({ where: { reichweitenKampagneId: tk.id } });
+  assert.ok(nach.every((i) => i.status === "APPROVED" && i.simuliertAm && !i.publishedAt), "simuliert, nicht veröffentlicht");
+  assert.equal(await prisma.publishJob.count({ where: { contentItemId: { in: nach.map((i) => i.id) } } }), 0, "kein Versandauftrag");
+  const unbekannt = fertig.ergebnis.zuordnung.zeilen.find((z) => z.schluessel === "unbekannt");
+  assert.equal(unbekannt.herkunft, "Herkunft unbekannt");
+  assert.equal(unbekannt.anfragen, 1);
+  const weitergegeben = fertig.ergebnis.zuordnung.zeilen.find((z) => z.herkunft === "gemessene Weiterempfehlung");
+  assert.equal(weitergegeben.angebotsseite, "https://example.com/demo-herbstkurs-firmen", "erbt die Angebotsseite");
+  assert.equal(fertig.ergebnis.hauptkennzahl.label, "Anfragen über das Formular");
+  assert.equal(fertig.ergebnis.hauptkennzahl.istDemo, true);
+  assert.ok(fertig.ablauf.filter((s) => ["INHALT", "PRUEFUNG", "FREIGABE", "VEROEFFENTLICHUNG", "AUSWERTUNG"].includes(s.art)).every((s) => s.erledigtAm));
+  const tl = await (await O.req("/reichweitenaufbau?tab=testlauf")).text();
+  assert.ok(tl.includes("testlauf") && tl.includes("Herkunft unbekannt") && tl.includes("DEMO"));
+  assert.equal((await B.json(T)).data.schritt, 0, "Mandanten");
+  const neu = await O.json(T, { method: "POST", body: { aktion: "neu" } });
+  assert.equal(neu.data.schritt, 1);
+  assert.equal(await prisma.contentItem.count({ where: { id: { in: nach.map((i) => i.id) } } }), 0, "alter Testlauf entfernt");
+  assert.equal((await O.json(T, { method: "POST", body: { aktion: "entfernen" } })).data.schritt, 0);
+  assert.equal(await prisma.reichweitenKampagne.count({ where: { erstellKennung: `testlauf:${ws}` } }), 0);
+  assert.equal(fakes.calls.filter((c) => c.path.startsWith("/emails")).length, mails0, "nichts versendet");
+  assert.equal(await prisma.reichweitenKampagne.count({ where: { id: kid } }), 1, "echte Kampagne bleibt");
+});
+
+test("Kündigungsbutton (§ 312k BGB): öffentlich, Bestätigung auf dem Bildschirm und per E-Mail, Posteingang, Missbrauchsschutz", async () => {
+  // Bestätigungsseite ohne Anmeldung
+  const seite = await fetch(`${BASE}/kuendigen`, { redirect: "manual" });
+  assert.equal(seite.status, 200);
+  const html = await seite.text();
+  assert.ok(html.includes("jetzt kündigen") && html.includes("Verträge hier kündigen"), "Knopf und Überschrift");
+  // Fester Platz für „App installieren“ — sonst schwebt die Schaltfläche (installieren.js) über Inhalten.
+  for (const p of ["/kuendigen", "/login", "/signup", "/setup", "/impressum", "/", "/preise", "/agb", "/datenschutz"]) {
+    const h = await (await fetch(`${BASE}${p}`)).text();
+    assert.ok(h.includes("data-s58-install") && !h.includes("data-s58-float"), `fester Platz für „App installieren“ fehlt auf ${p}`);
+  }
+  assert.ok(html.includes("Social Media KI – Pro") && html.includes("Social Media KI – Maxi") && html.includes("zum nächstmöglichen Zeitpunkt"));
+  // ständig verfügbar: Seitenfuß der öffentlichen Seiten und der Zentrale
+  for (const p of ["/login", "/signup", "/impressum", "/preise"]) {
+    assert.ok((await (await fetch(`${BASE}${p}`)).text()).includes('href="/kuendigen"'), `Link fehlt auf ${p}`);
+  }
+  assert.ok((await (await fetch(`${BASE}/buy`)).text()).includes('href="/kuendigen"'), "Link fehlt im eigenen Seitenfuß von /buy (src/app/buy/page.tsx)");
+
+  const post = (body, ip, headers = {}) =>
+    fetch(`${BASE}/api/kuendigen`, { method: "POST", headers: { "content-type": "application/json", ...ORIGIN_HDR, "x-forwarded-for": ip, ...headers }, body: JSON.stringify(body) });
+  const gueltig = (email, bestaetigungEmail, extra = {}) => ({
+    art: "ORDENTLICH", name: "Kim Kündig", email, kundennummer: "", vertrag: "PRO", zeitpunkt: "naechstmoeglich", bestaetigungEmail, ...extra,
+  });
+  const mails = () => fakes.calls.filter((c) => c.path === "/emails" && c.email);
+  const op = await prisma.user.findFirstOrThrow({ where: { isOperator: true } });
+
+  // ungültige Eingaben
+  assert.equal((await post({ name: "x" }, "10.90.1.1")).status, 400);
+  assert.equal((await post(gueltig("a@example.test", "a@example.test", { vertrag: "SONSTIGES" }), "10.90.1.2")).status, 400, "Sonstiger Vertrag ohne Beschreibung");
+  assert.equal((await post(gueltig("a@example.test", "a@example.test", { zeitpunkt: "2020-01-01" }), "10.90.1.3")).status, 400, "Datum in der Vergangenheit");
+  assert.equal((await post(gueltig("a@example.test", "a@example.test", { workspaceId: "fremd" }), "10.90.1.4")).status, 400, "keine Arbeitsbereichs-ID aus der Anfrage");
+  assert.equal((await post(gueltig("a@example.test", "keine-adresse"), "10.90.1.5")).status, 400);
+  assert.equal((await post(gueltig("a@example.test", "a@example.test", { name: "x".repeat(121) }), "10.90.1.6")).status, 400, "Längengrenze");
+  const fremd = await fetch(`${BASE}/api/kuendigen`, { method: "POST", headers: { "content-type": "application/json", origin: "https://evil.example" }, body: JSON.stringify(gueltig("a@example.test", "a@example.test")) });
+  assert.equal(fremd.status, 403);
+  assert.equal(await prisma.kuendigung.count(), 0);
+
+  // bekanntes Konto (A hat ein Paket)
+  const m0 = mails().length;
+  const r1 = await post(gueltig("A@Example.test", "kim@example.test", { kundennummer: "Firma A" }), "10.90.2.1");
+  assert.equal(r1.status, 200);
+  const d1 = await r1.json();
+  assert.match(d1.referenz, /^K-\d{4}-[2-9A-Z]{6}$/);
+  assert.equal(d1.emailGesendet, true);
+  assert.ok(d1.eingangText && d1.zeitpunktText === "zum nächstmöglichen Zeitpunkt");
+  assert.ok(d1.zeilen.some(([a, b]) => a === "Referenznummer" && b === d1.referenz));
+  assert.match(d1.meldung, /Ihre Kündigung ist bei uns eingegangen/);
+  const k1 = await prisma.kuendigung.findUniqueOrThrow({ where: { referenz: d1.referenz } });
+  assert.equal(k1.email, "a@example.test");
+  assert.equal(k1.workspaceId, await workspaceIdOf("a@example.test"), "Zuordnung serverseitig über die E-Mail");
+  assert.equal(k1.emailGesendet, true);
+  assert.equal(k1.bearbeitetAm, null);
+  assert.equal(mails().length, m0 + 1);
+  const mail = mails().at(-1).email;
+  assert.deepEqual(mail.to, ["kim@example.test"]);
+  assert.equal(mail.subject, "Eingangsbestätigung Ihrer Kündigung – SECRET 58");
+  assert.ok(mail.text.includes(d1.referenz) && mail.text.includes("Social Media KI – Pro") && mail.text.includes("zum nächstmöglichen Zeitpunkt"));
+  const conv = await prisma.conversation.findFirstOrThrow({ where: { workspaceId: op.workspaceId, participantName: { contains: d1.referenz } }, include: { messages: true } });
+  assert.match(conv.messages[0].body, new RegExp(`^Kündigung ${d1.referenz}`));
+  assert.match(conv.messages[0].body, /Konto gefunden/);
+  const planA = await prisma.workspacePlan.findUnique({ where: { workspaceId: k1.workspaceId } });
+  if (planA) assert.ok(conv.messages[0].body.includes(`Paket: ${planA.plan}`), "Paketstand für den Betreiber");
+  assert.match(conv.messages[0].body, /Nichts wurde automatisch gekündigt/);
+  if (planA) {
+    const nachher = await prisma.workspacePlan.findUniqueOrThrow({ where: { workspaceId: k1.workspaceId } });
+    assert.equal(nachher.status, planA.status);
+    assert.equal(nachher.cancelAtPeriodEnd, planA.cancelAtPeriodEnd, "keine automatische Änderung am Abo");
+  }
+  assert.ok(!fakes.calls.some((c) => c.path.includes("/v1/subscriptions") && c.method === "DELETE"), "kein Stripe-Abbruch");
+
+  // unbekannte E-Mail: gleich aufgebaute Antwort
+  const r2 = await post(gueltig("niemand@example.test", "niemand@example.test", { art: "AUSSERORDENTLICH", grund: "<script>x</script>", zeitpunkt: "2099-01-01" }), "10.90.2.2");
+  assert.equal(r2.status, 400, "Datum mehr als 5 Jahre in der Zukunft");
+  const r3 = await post(gueltig("niemand@example.test", "niemand@example.test", { art: "AUSSERORDENTLICH", grund: "<script>x</script>", vertrag: "SONSTIGES", vertragBeschreibung: "Altvertrag" }), "10.90.2.3");
+  assert.equal(r3.status, 200);
+  const d3 = await r3.json();
+  assert.deepEqual(Object.keys(d3).sort(), Object.keys(d1).sort(), "gleiche Antwortstruktur");
+  assert.deepEqual(d3.zeilen.map(([a]) => a).filter((a) => a !== "Kündigungsgrund"), d1.zeilen.map(([a]) => a));
+  assert.equal(d3.emailGesendet, true);
+  assert.equal(d3.meldung.replace("niemand@example.test", "X"), d1.meldung.replace("kim@example.test", "X"), "Meldung verrät kein Konto");
+  const k3 = await prisma.kuendigung.findUniqueOrThrow({ where: { referenz: d3.referenz } });
+  assert.equal(k3.workspaceId, null);
+  assert.equal(k3.vertrag, "Sonstiger Vertrag: Altvertrag");
+  const mail3 = mails().at(-1).email;
+  assert.ok(!mail3.html.includes("<script>") && mail3.html.includes("&lt;script&gt;"), "HTML maskiert");
+  const conv3 = await prisma.conversation.findFirstOrThrow({ where: { workspaceId: op.workspaceId, participantName: { contains: d3.referenz } }, include: { messages: true } });
+  assert.match(conv3.messages[0].body, /Kein Konto mit dieser E-Mail-Adresse/);
+
+  // Versand schlägt fehl: Kündigung bleibt gespeichert, ehrlicher Hinweis
+  fakes.mail.failNext = 1;
+  const r4 = await post(gueltig("a@example.test", "kim2@example.test", { vertrag: "MAXI", zeitpunkt: "2030-06-30" }), "10.90.2.4");
+  assert.equal(r4.status, 200);
+  const d4 = await r4.json();
+  assert.equal(d4.emailGesendet, false);
+  assert.equal(d4.zeitpunktText, "zum 30.06.2030");
+  assert.match(d4.meldung, /konnte gerade nicht versendet werden/);
+  assert.equal((await prisma.kuendigung.findUniqueOrThrow({ where: { referenz: d4.referenz } })).emailGesendet, false);
+  const conv4 = await prisma.conversation.findFirstOrThrow({ where: { participantName: { contains: d4.referenz } }, include: { messages: true } });
+  assert.match(conv4.messages[0].body, /NICHT versendet/);
+  // Kunden sehen keine Kündigungen im eigenen Posteingang
+  assert.equal(await prisma.conversation.count({ where: { participantName: { startsWith: "Kündigung " }, workspaceId: { not: op.workspaceId } } }), 0);
+
+  // Ratenbegrenzung je Anschluss
+  for (let i = 0; i < 5; i++) assert.equal((await post({ name: "x" }, "10.90.3.1")).status, 400);
+  assert.equal((await post(gueltig("a@example.test", "kim3@example.test"), "10.90.3.1")).status, 429);
+  assert.equal((await post({ name: "x" }, "10.90.3.2")).status, 400, "andere Adresse nicht betroffen");
+
+  // Betreiberansicht: nur Betreiber, als bearbeitet markieren
+  assert.equal((await A.req("/operator/kuendigungen")).status, 307);
+  assert.equal((await A.json("/api/operator/kuendigungen", { method: "PATCH", body: { id: k1.id, bearbeitet: true } })).status, 404);
+  const O = new Client();
+  assert.equal((await O.json("/api/auth/login", { method: "POST", body: { email: "op@example.test", password: "betreiber-passwort-123" }, headers: { "x-forwarded-for": "10.90.4.1" } })).status, 200);
+  // Erinnerung mit Frist: k3 seit 3 Tagen offen (rot), Laufzeitende aus dem Paket von Konto A
+  await prisma.kuendigung.update({ where: { id: k3.id }, data: { eingangAm: new Date(Date.now() - 3 * 86_400_000) } });
+  const planVorher = await prisma.workspacePlan.findUnique({ where: { workspaceId: k1.workspaceId } });
+  await prisma.workspacePlan.upsert({
+    where: { workspaceId: k1.workspaceId },
+    create: { workspaceId: k1.workspaceId, plan: "PRO", status: "ACTIVE", source: "TEST", currentPeriodEnd: new Date("2030-07-15T10:00:00Z") },
+    update: { currentPeriodEnd: new Date("2030-07-15T10:00:00Z"), cancelAtPeriodEnd: false },
+  });
+  const offenGesamt = await prisma.kuendigung.count({ where: { bearbeitetAm: null } });
+  const uebersicht = await (await O.req("/operator")).text();
+  assert.ok(uebersicht.includes('data-testid="offene-kuendigungen"') && uebersicht.includes(`${offenGesamt} offene Kündigungen`), "Zähler auf der Übersicht");
+  const liste = await (await O.req("/operator/kuendigungen")).text();
+  assert.ok(liste.includes("seit 3 Tagen offen") && liste.includes('data-dringend="ja"'), "rot ab 2 Tagen");
+  assert.ok(liste.includes('data-dringend="nein"') && liste.includes("heute eingegangen"));
+  assert.ok(liste.includes("Laufzeitende am 15. Juli 2030; in Stripe vor diesem Datum „zum Laufzeitende kündigen“ setzen."));
+  const nachPlan = await prisma.workspacePlan.findUniqueOrThrow({ where: { workspaceId: k1.workspaceId } });
+  assert.equal(nachPlan.cancelAtPeriodEnd, false, "Anzeige ändert nichts am Abo");
+  if (planVorher) await prisma.workspacePlan.update({ where: { workspaceId: k1.workspaceId }, data: { currentPeriodEnd: planVorher.currentPeriodEnd, cancelAtPeriodEnd: planVorher.cancelAtPeriodEnd } });
+  else await prisma.workspacePlan.delete({ where: { workspaceId: k1.workspaceId } });
+  assert.ok(liste.includes(d1.referenz) && liste.includes(d3.referenz) && liste.includes("E-Mail NICHT versendet"));
+  assert.equal((await O.json("/api/operator/kuendigungen", { method: "PATCH", body: { id: k1.id, bearbeitet: true } })).status, 200);
+  assert.ok((await prisma.kuendigung.findUniqueOrThrow({ where: { id: k1.id } })).bearbeitetAm);
+});
+
+test("Social Media: verbundene Facebook-Seite sichtbar, Hinweis bei mehreren Seiten, LinkedIn-Ablaufhinweis", async () => {
+  const A = await signup("sm-hinweise-a@example.com", "SM Hinweise A", "10.91.0.1");
+  const B = await signup("sm-hinweise-b@example.com", "SM Hinweise B", "10.91.0.2");
+  const wsA = await workspaceIdOf("sm-hinweise-a@example.com");
+  const tag = 86_400_000;
+  await prisma.platformAccount.create({ data: { workspaceId: wsA, platform: "FACEBOOK", accountName: "Bäckerei Seite Zwei", status: "CONNECTED", externalAccountId: "fb-2" } });
+  const li = await prisma.platformAccount.create({
+    data: { workspaceId: wsA, platform: "LINKEDIN", accountName: "Kim Linked", status: "CONNECTED", tokenExpiresAt: new Date(Date.now() + 10 * tag) },
+  });
+
+  // Name der verbundenen Seite immer sichtbar; Mehrfach-Hinweis nur direkt nach dem Verbinden
+  let html = await (await A.req("/social-media")).text();
+  assert.ok(html.includes("Bäckerei Seite Zwei"));
+  assert.ok(!html.includes('data-testid="facebook-mehrere-seiten"'));
+  html = await (await A.req("/social-media?connected=FACEBOOK&seiten=3")).text();
+  assert.ok(html.includes('data-testid="facebook-mehrere-seiten"') && html.includes("(3)"), "Hinweis auf mehrere Seiten");
+  html = await (await A.req("/social-media?connected=FACEBOOK&seiten=1")).text();
+  assert.ok(!html.includes('data-testid="facebook-mehrere-seiten"'));
+
+  // Ablaufhinweis: gelb ohne betroffene Beiträge, rot sobald ein geplanter Beitrag nach dem Ablauf liegt
+  html = await (await A.req("/social-media")).text();
+  assert.ok(html.includes('data-testid="token-ablauf"') && html.includes('data-kritisch="nein"'));
+  await prisma.contentItem.create({ data: { workspaceId: wsA, title: "Vor Ablauf", platform: "LINKEDIN", status: "SCHEDULED", scheduledAt: new Date(Date.now() + 5 * tag) } });
+  html = await (await A.req("/social-media")).text();
+  assert.ok(html.includes('data-kritisch="nein"'), "Beitrag vor Ablauf ist unkritisch");
+  await prisma.contentItem.create({ data: { workspaceId: wsA, title: "Nach Ablauf", platform: "LINKEDIN", status: "SCHEDULED", scheduledAt: new Date(Date.now() + 20 * tag) } });
+  html = await (await A.req("/social-media")).text();
+  assert.ok(html.includes('data-kritisch="ja"'), "rot bei geplantem Beitrag nach Ablauf");
+  // Mit Refresh-Token (automatisch verlängerbar) kein Hinweis
+  await prisma.platformAccount.update({ where: { id: li.id }, data: { refreshTokenEnc: "x" } });
+  assert.ok(!(await (await A.req("/social-media")).text()).includes('data-testid="token-ablauf"'));
+
+  // Mandantentrennung: B sieht weder Seite noch Hinweise von A
+  const htmlB = await (await B.req("/social-media?connected=FACEBOOK&seiten=3")).text();
+  assert.ok(!htmlB.includes("Bäckerei Seite Zwei") && !htmlB.includes('data-testid="token-ablauf"') && !htmlB.includes('data-testid="facebook-mehrere-seiten"'));
+});
+
+test("Kundenbereich: ehrliche Hinweise statt Entwicklertexte und leerer Zahlen", async () => {
+  const c = await signup("ehrlich@example.test", "Ehrlich GmbH", "10.63.0.1");
+  const settings = await (await c.req("/settings")).text();
+  assert.ok(settings.includes('data-testid="link-pausenschalter"') && settings.includes('href="/reichweitenaufbau?tab=uebersicht"'), "Link zum Pausenschalter");
+  assert.ok(settings.includes('href="/settings/zugaenge"') && settings.includes('href="/billing"'), "Eigene Zugänge und Paket verlinkt");
+  assert.ok(!settings.includes("prisma/dev.db") && !settings.includes(".env.example") && !settings.includes("Default-Workspace"), "keine Entwicklertexte");
+  const inbox = await (await c.req("/inbox")).text();
+  assert.ok(inbox.includes('data-testid="posteingang-simulation"') && inbox.includes("Antworten werden nicht versendet"), "Posteingang als Simulation gekennzeichnet");
+  const analytics = await (await c.req("/analytics")).text();
+  assert.ok(analytics.includes('data-testid="analytics-leer"') && analytics.includes("noch nicht automatisch abgerufen"), "leere Statistik ehrlich erklärt");
+  assert.ok(analytics.includes('href="/weiterempfehlungen"'), "Verweis auf manuelle Kennzahlen");
+  const dashboard = await (await c.req("/")).text();
+  assert.ok(dashboard.includes('data-testid="hinweis-keine-statistik"') && dashboard.includes("Einnahmen (manuell erfasst)"), "Dashboard: Hinweis und Beschriftung");
+  const video = await (await c.req("/video-studio")).text();
+  assert.ok(!video.includes("VideoProvider") && video.includes("Noch nicht verfügbar"), "Video Studio ohne Entwicklertext, nicht „Verbunden“");
+  const agents = await (await c.req("/agents")).text();
+  assert.ok(agents.includes("Protokoll der Assistenten") && agents.includes("Ohne Datenquelle"), "Agenten-Seite kundenverständlich, TrendAgent gekennzeichnet");
+  const social = await (await c.req("/social-media")).text();
+  assert.ok(social.includes('data-testid="composio-nur-test"'), "Composio-Test als reiner Verbindungstest gekennzeichnet");
 });

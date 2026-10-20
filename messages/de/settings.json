@@ -1,6 +1,6 @@
 {
   "title": "Einstellungen",
-  "description": "Workspace, Nutzer und Systeminformationen. Zugangsdaten werden ausschließlich über Environment-Variablen verwaltet (siehe <code>.env.example</code>).",
+  "description": "Dein Arbeitsbereich, Nutzer und eine Übersicht deiner Daten. Eigene API-Schlüssel (KI-Texte, Newsletter-Versand) trägst du unter <zugaenge>Eigene Zugänge</zugaenge> ein, dein Paket findest du unter <billing>Paket & Abrechnung</billing>.",
   "workspace": {
     "title": "Workspace",
     "name": "Name",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Nutzer & Rollen",
-    "note": "Multi-Tenant-Datenmodell ist vollständig vorbereitet (Workspace-Isolation für alle Tabellen). Eine echte Login-/Auth-Oberfläche mit mehreren Nutzern ist der nächste Ausbauschritt — aktuell arbeitet die App mit genau diesem Default-Workspace."
+    "note": "Jedes Konto hat einen eigenen, von anderen Kunden getrennten Arbeitsbereich. Weitere Nutzer kannst du derzeit noch nicht selbst hinzufügen."
   },
   "system": {
     "title": "System",
@@ -17,7 +17,7 @@
     "campaigns": "Kampagnen",
     "mediaAssets": "Medien-Assets",
     "agentRuns": "Agent-Läufe",
-    "dbNote": "Datenbank: SQLite (lokal, <code>prisma/dev.db</code>) über Prisma ORM. Für Produktion <codeSpaced>DATABASE_URL</codeSpaced> auf Postgres/MySQL umstellen (Provider in <codeSpaced>prisma/schema.prisma</codeSpaced> anpassen)."
+    "dbNote": "Anzahl der in deinem Arbeitsbereich gespeicherten Einträge. Alle Daten exportieren oder den Arbeitsbereich löschen kannst du unten unter „Meine Daten“."
   },
   "onboarding": {
     "title": "Einrichtungsassistent",

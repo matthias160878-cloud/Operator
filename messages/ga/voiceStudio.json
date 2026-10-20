@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "Inneall guth ElevenLabs — bainistigh an Voice Library, cruthaigh réamhamhairc voiceover agus iompórtáil guthanna.",
-  "envWarning": "Níl ElevenLabs cumraithe go fóill. Cuir <envKey>ELEVENLABS_API_KEY</envKey> isteach in <envFile>.env</envFile> chun voiceover agus iompórtáil guthanna a úsáid. Is féidir an Voice Library a úsáid fós chun pleanála.",
+  "envWarning": "Níl an guthú ar fáil fós: socraíonn an t-oibreoir an tseirbhís gutha (ElevenLabs). Is féidir leat an leabharlann gutha a úsáid cheana féin don phleanáil.",
   "addManual": "Cruthaigh guth de láimh",
   "importFromElevenLabs": "Iompórtáil ó ElevenLabs",
   "form": {

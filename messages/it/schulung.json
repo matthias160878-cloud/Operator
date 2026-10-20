@@ -12,7 +12,7 @@
       "title": "Primi passi",
       "description": "Fai prima queste tre cose, poi tutti gli agenti IA lavoreranno con dati reali invece che con segnaposto.",
       "steps": [
-        "In «Integrazioni» controlla se è configurato un fornitore di IA. Le funzioni IA passano dagli accessi del gestore, quindi non ti serve un abbonamento IA personale. Senza un fornitore di IA l'app lavora in modalità modelli.",
+        "In «Impostazioni → Accessi personali» inserisci la tua chiave IA di Anthropic, OpenAI o Gemini. Le funzioni IA usano esclusivamente la tua chiave; il fornitore IA ti fattura direttamente. Senza una chiave personale l'app funziona in modalità modello con blocchi di testo fissi.",
         "In «Brand DNA» compila i dati del tuo marchio (tono, target, valori): gli agenti IA li usano per ogni testo generato.",
         "In «Idee e ispirazione» o «Content Brain» fai generare la prima idea o campagna."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics e crescita",
       "description": "Numeri reali sulle tue performance, e raccomandazioni invece di automazione.",
       "steps": [
-        "Analytics mostra esclusivamente dati di performance reali, importati o registrati manualmente.",
+        "Analytics mostra solo statistiche salvate (ad es. dati di esempio). Le statistiche delle piattaforme non vengono ancora recuperate automaticamente; i numeri a mano li inserisci in «Passaparola» o nel confronto delle varianti, dove vengono valutati.",
         "La pagina Crescita calcola da questi dati i migliori orari di pubblicazione, gli hashtag e i formati di successo.",
         "Importante: non esiste volutamente alcun aumento automatizzato di follower/engagement (nessun comportamento da bot): violerebbe i termini di utilizzo di ogni piattaforma."
       ]
@@ -59,9 +59,9 @@
       "title": "Posta in arrivo",
       "description": "Bozze di risposta IA ai messaggi, con approvazione prima dell'invio.",
       "steps": [
-        "Poiché (ancora) nessuna piattaforma è collegata tramite OAuth, le conversazioni vengono attualmente create manualmente invece di essere recuperate in tempo reale.",
+        "I messaggi delle piattaforme non vengono ancora recuperati e le risposte non vengono inviate. Per provare, crei conversazioni come simulazione.",
         "MessageAgent propone una risposta in base al Brand DNA e alla cronologia della conversazione.",
-        "La bozza deve essere controllata e approvata manualmente prima di essere considerata inviata: un vero invio senza connessione alla piattaforma fallisce onestamente, invece di simulare un successo."
+        "Sei tu a controllare e approvare la bozza. L'invio alle piattaforme non è ancora realizzato: «Approva e invia» lo segnala onestamente come errore invece di simulare un successo."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Da dove viene ogni stato di connessione e dove inserire la chiave corrispondente.",
       "steps": [
         "Ogni riga mostra lo stato reale, verificato in tempo reale: mai una connessione simulata.",
-        "Con «Non configurato», «Ottieni la chiave API» porta alla pagina ufficiale del fornitore.",
-        "Le credenziali di accesso non vengono mai salvate nel browser, ma solo in forma protetta sul server. Se manca un accesso, lo configura il gestore.",
-        "Costi: Pro e Maxi sono abbonamenti, mensili o annuali. I prezzi aggiornati si trovano in «Pacchetto e fatturazione». Ogni fornitore esterno ha un proprio modello di costo indipendente (gratuito / a consumo / abbonamento): nella pagina Integrazioni, per ogni servizio è indicato quale modello vale, con un link ai prezzi aggiornati presso il fornitore."
+        "I tuoi accessi personali (chiavi IA, Resend per la newsletter) li inserisci in «Impostazioni → Accessi personali»: lì una guida porta alla pagina ufficiale delle chiavi del fornitore.",
+        "Le credenziali non vengono mai salvate nel browser, solo cifrate sul server. La sintesi vocale e gli accessi app delle piattaforme li configura il gestore; «Non ancora disponibile» significa che il collegamento non è ancora realizzato nell'app.",
+        "Costi: Pro e Maxi sono abbonamenti, mensili o annuali. I prezzi attuali sono in «Pacchetto e fatturazione». Per i tuoi accessi personali (IA, Resend) ogni fornitore ti fattura direttamente secondo il proprio modello di prezzo: SECRET 58 non addebita nulla in più."
       ]
     }
   }

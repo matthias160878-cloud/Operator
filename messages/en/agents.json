@@ -1,6 +1,6 @@
 {
-  "title": "Agent Monitor",
-  "description": "All SECRET 58 agents with status, latest task and result. Every run is logged.",
+  "title": "Assistant log",
+  "description": "All SECRET 58 assistants (agents) with status, last task and result. Every run is logged here.",
   "table": {
     "agent": "Agent",
     "description": "Description",

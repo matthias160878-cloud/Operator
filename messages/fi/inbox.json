@@ -1,6 +1,6 @@
 {
   "title": "Saapuneet",
-  "description": "Viestit ja kommentit kaikilta alustoilta. MessageAgent ehdottaa vastauksia — lähetetään vain se, minkä hyväksyt. Mihinkään alustaan ei vielä ole oikeaa OAuth-yhteyttä, joten keskustelut simuloidaan tässä käsin sen sijaan, että ne haettaisiin livenä.",
+  "description": "Viestit ja yhteydenotot yhdessä paikassa. MessageAgent ehdottaa vastausluonnoksia.",
   "emptyState": "Ei vielä keskusteluja — simuloi yksi aloittaaksesi.",
   "backToInbox": "Takaisin Saapuneisiin",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simuloi toinen saapuva viesti (testi ilman oikeaa alustayhteyttä):",
     "messagePlaceholder": "Viestin teksti …",
     "addButton": "Lisää"
-  }
+  },
+  "simulationBanner": "<strong>Esikatselu/simulaatio:</strong> alustojen viestejä ei vielä haeta eikä vastauksia lähetetä – ei myöskään ”Hyväksy ja lähetä” -toiminnolla. Alustaviestejä voit simuloida tässä kokeillaksesi. Oikeat merkinnät tulevat vain verkkosivujen lomakkeista (esim. ajanvarauspyynnöt); niihin vastaat sähköpostilla."
 }

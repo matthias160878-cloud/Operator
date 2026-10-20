@@ -1,14 +1,14 @@
 {
   "pageTitle": "Sociālie mediji",
-  "subtitle": "Platformu konti un to savienojuma statuss. Piekļuves dati tiek pārvaldīti tikai kā servera puses vides mainīgie, nekad netiek glabāti frontendā. Piekļuves tokeni pēc pievienošanas tiek šifrēti un glabāti datubāzē.",
+  "subtitle": "Tavi platformu konti un to savienojuma statuss. Savienojies, piesakoties tieši platformā; piekļuves pilnvaras tiek glabātas šifrētas serverī, nekad pārlūkā.",
   "credentialsLabel": "Lietotnes piekļuves dati",
   "accountLabel": "Konts",
   "lastPublishedLabel": "Pēdējā publikācija",
   "lastErrorLabel": "Pēdējā kļūda",
   "connectButton": "Pievienot",
   "connectButtonUnavailable": "Pievienot (vēl nav iespējams)",
-  "connectButtonTitleNoCreds": "Lietotnes piekļuves datu vēl trūkst",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY vēl nav iestatīts",
+  "connectButtonTitleNoCreds": "Operators vēl nav iestatījis",
+  "connectButtonTitleNoEncryption": "Droša piekļuves pilnvaru glabāšana vēl nav iestatīta",
   "disconnectButton": "Atvienot",
   "disconnectConfirm": "Vai tiešām atvienot šo kontu? Pēc tam piekļuve jāatjauno ar „Pievienot“.",
   "needsCredentialsNote": "Vēl trūkst: ievadi {idVar} un {secretVar} Render.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Savienojums neizdevās. Pārbaudi piekļuves datus un mēģini vēlreiz.",
   "errorUnknownPlatform": "Nezināma platforma.",
   "encryptionKeyMissingNotice": "Piezīme: TOKEN_ENCRYPTION_KEY vēl nav iestatīts — kontus var pievienot tikai pēc tam, kad šis vides mainīgais ir ievadīts Render.",
+  "connectedPageLabel": "Savienotā lapa",
+  "facebookMultiplePages": "Atrastas vairākas Facebook lapas ({count}) – savienota ir “{name}”. Cita lapa? Atvienojiet un, savienojot no jauna, Facebook logā izvēlieties tikai vajadzīgo lapu.",
+  "tokenExpiresOn": "Piekļuve beidzas {date} – lūdzu, savienojiet no jauna pirms tam.",
+  "tokenExpiredOn": "Piekļuve beidzās {date} – lūdzu, savienojiet no jauna.",
+  "tokenScheduledAfterExpiry": "Ieplānotās ziņas pēc beigu datuma: {count}. Bez jaunas savienošanas tās netiks publicētas.",
+  "reconnectButton": "Savienot no jauna",
   "composio": {
     "title": "Pievienot kontu caur Composio",
     "subtitle": "Alternatīva tiešajam pieslēgumam: tu pieslēdzies platformā, Composio glabā piekļuvi, SECRET 58 kontu tikai piešķir tavai darbvietai. Pašlaik tikai pievienošana un lasīšanas piekļuves tests – caur to nekas netiek publicēts.",
@@ -56,6 +62,10 @@
       "not_active": "Platforma nav apstiprinājusi piekļuvi vai tā tika noraidīta.",
       "composio_error": "Composio nebija sasniedzams vai ziņoja par kļūdu. Lūdzu, mēģini vēlreiz vēlāk.",
       "unknown": "Savienojums neizdevās."
-    }
-  }
+    },
+    "noPublishNotice": "Tikai savienojuma tests – šeit nekas netiek publicēts. Lasīšanas tests tikai pārbauda, vai kontu var nolasīt."
+  },
+  "needsCredentialsNoteCustomer": "Šo platformu iestata operators. Savienoties varēsi, tiklīdz tā būs iestatīta.",
+  "errorNotConfiguredCustomer": "{platform}: operators šo platformu vēl nav iestatījis. Savienoties varēsi, tiklīdz tā būs iestatīta.",
+  "encryptionKeyMissingNoticeCustomer": "Savienoties vēl nav iespējams: operators vēl nav iestatījis drošu piekļuves pilnvaru glabāšanu."
 }

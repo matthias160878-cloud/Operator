@@ -52,7 +52,7 @@ export function EigenerLink({ code, titel, texte, darfErzeugen }: { code: string
 }
 
 /** Öffentlich: Anfrage-Formular mit Einwilligung. */
-export function AnfrageFormular({ code }: { code: string }) {
+export function AnfrageFormular({ code, anbieter, datenschutzUrl }: { code: string; anbieter: string | null; datenschutzUrl: string | null }) {
   const [gesendet, setGesendet] = useState(false);
   const [fehler, setFehler] = useState<string | null>(null);
   const [laedt, setLaedt] = useState(false);
@@ -88,7 +88,14 @@ export function AnfrageFormular({ code }: { code: string }) {
       <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <label className="flex items-start gap-2 text-xs text-muted">
         <input type="checkbox" name="einwilligung" required className="mt-0.5 h-4 w-4" />
-        <span>Ich bin einverstanden, dass meine Angaben zur Beantwortung dieser Anfrage gespeichert werden. Keine Weitergabe, kein Newsletter.</span>
+        <span>
+          Ich bin einverstanden, dass {anbieter ?? "der Anbieter"} meine Angaben zur Beantwortung dieser Anfrage speichert. Keine Weitergabe, kein Newsletter.
+          {datenschutzUrl && (
+            <>
+              {" "}Details: <a href={datenschutzUrl} target="_blank" rel="noopener noreferrer nofollow" className="underline">Datenschutzerklärung</a>
+            </>
+          )}
+        </span>
       </label>
       <button type="submit" disabled={laedt} className="inline-flex min-h-11 items-center rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white disabled:opacity-60">
         {laedt ? "Wird gesendet …" : "Anfrage senden"}

@@ -1,6 +1,6 @@
 {
   "title": "Cilësimet",
-  "description": "Hapësira e punës, përdoruesit dhe informacionet e sistemit. Të dhënat e qasjes menaxhohen vetëm përmes variablave të mjedisit (shih <code>.env.example</code>).",
+  "description": "Hapësira jote e punës, përdoruesit dhe një pasqyrë e të dhënave të tua. Çelësat e tu API (tekste me IA, dërgim buletini) i fut te <zugaenge>Qasjet e mia</zugaenge>; paketën tënde e gjen te <billing>Paketa & Faturimi</billing>.",
   "workspace": {
     "title": "Hapësira e punës",
     "name": "Emri",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Përdoruesit & Rolet",
-    "note": "Modeli i të dhënave multi-tenant është përgatitur plotësisht (izolim i hapësirës së punës për të gjitha tabelat). Një ndërfaqe e vërtetë login-i/autentikimi me disa përdorues është hapi tjetër i zgjerimit — aktualisht aplikacioni punon me pikërisht këtë hapësirë pune standarde."
+    "note": "Çdo llogari ka hapësirën e vet të punës, të ndarë nga klientët e tjerë. Përdorues të tjerë ende nuk mund t'i shtosh vetë."
   },
   "system": {
     "title": "Sistemi",
@@ -17,7 +17,7 @@
     "campaigns": "Fushata",
     "mediaAssets": "Asete mediash",
     "agentRuns": "Ekzekutime agjentësh",
-    "dbNote": "Baza e të dhënave: SQLite (lokale, <code>prisma/dev.db</code>) përmes Prisma ORM. Për prodhim ndrysho <codeSpaced>DATABASE_URL</codeSpaced> në Postgres/MySQL (përshtat ofruesin te <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Numri i hyrjeve të ruajtura në hapësirën tënde të punës. Mund t'i eksportosh të gjitha të dhënat ose ta fshish hapësirën e punës më poshtë, te „Të dhënat e mia”."
   },
   "onboarding": {
     "title": "Asistenti i konfigurimit",

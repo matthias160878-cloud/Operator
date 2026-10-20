@@ -1,8 +1,7 @@
 {
   "viewAll": "Pokaż wszystko",
   "demoBanner": {
-    "before": "Dane demo aktywne — kampanie, elementy treści i analityka to dane przykładowe z ",
-    "after": ", nie prawdziwe liczby z platform."
+    "text": "Dane przykładowe aktywne – kampanie, treści i statystyki w tym obszarze roboczym to dane przykładowe, a nie prawdziwe liczby z platform."
   },
   "hero": {
     "subtitle": "Jeden pomysł. Wiele platform. Maksymalny zasięg.",
@@ -26,8 +25,9 @@
     "published": "Publikacje",
     "views": "Wyświetlenia",
     "avgEngagement": "Śr. zaangażowanie",
-    "totalRevenue": "Przychody łącznie",
-    "noComparisonWeek": "Brak jeszcze poprzedniego tygodnia jako punktu odniesienia — wskaźniki zmian pojawią się, gdy będą dane z co najmniej dwóch tygodni."
+    "totalRevenue": "Przychody (wpisane ręcznie)",
+    "noComparisonWeek": "Brak jeszcze poprzedniego tygodnia jako punktu odniesienia — wskaźniki zmian pojawią się, gdy będą dane z co najmniej dwóch tygodni.",
+    "noStats": "Wyświetlenia i zaangażowanie: brak statystyk – statystyki platform nie są jeszcze pobierane automatycznie."
   },
   "production": {
     "title": "Produkcja treści",
@@ -71,13 +71,13 @@
     "connectedCount": "Połączono: {connected}/{total}"
   },
   "agentMonitor": {
-    "title": "Monitor agentów",
+    "title": "Dziennik asystentów",
     "empty": "Brak uruchomień."
   },
   "topPerformer": {
     "title": "Najlepsze wyniki",
     "last7Days": "Ostatnie 7 dni",
-    "empty": "Brak danych o wynikach.",
+    "empty": "Brak danych o wynikach – statystyki platform nie są jeszcze pobierane automatycznie.",
     "views": "Wyświetlenia",
     "likes": "Polubienia",
     "comments": "Komentarze",

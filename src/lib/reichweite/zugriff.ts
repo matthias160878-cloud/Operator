@@ -13,3 +13,16 @@ export async function bearbeiterOderAntwort(): Promise<SessionUser | Response> {
   }
   return user;
 }
+
+/** Freigaben mit Außenwirkung (Werbebudget, Newsletter) nur durch Inhaber und Admins. */
+export function darfFreigeben(role: SessionUser["role"]): boolean {
+  return role === "OWNER" || role === "ADMIN";
+}
+
+export async function freigeberOderAntwort(): Promise<SessionUser | Response> {
+  const user = await requireSessionUser();
+  if (!darfFreigeben(user.role)) {
+    return NextResponse.json({ error: "Freigeben dürfen nur Inhaber und Admins." }, { status: 403 });
+  }
+  return user;
+}

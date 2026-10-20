@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs Voice Engine — gestionează Voice Library, generează previzualizări voiceover și importă voci.",
-  "envWarning": "ElevenLabs nu este încă configurat. Introdu <envKey>ELEVENLABS_API_KEY</envKey> în <envFile>.env</envFile> pentru a folosi voiceover și importul de voci. Voice Library poate fi folosită totuși pentru planificare.",
+  "envWarning": "Vocea off nu este încă disponibilă: serviciul vocal (ElevenLabs) este configurat de operator. Puteți folosi deja biblioteca de voci pentru planificare.",
   "addManual": "Creează o voce manual",
   "importFromElevenLabs": "Importă din ElevenLabs",
   "form": {

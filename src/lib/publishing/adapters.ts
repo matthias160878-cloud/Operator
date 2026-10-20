@@ -36,6 +36,11 @@ function buildCaption(item: ContentItem): string {
  * YouTube Data API v3. Setzt voraus, dass der Account CONNECTED ist und
  * eine echte Videodatei als MediaAsset vorliegt.
  */
+/** Video stammt aus einem KI-Videodienst (nicht vom Kunden hochgeladen) → bei der Plattform als KI-Inhalt kennzeichnen. */
+export function istKiVideo(video: Pick<MediaAsset, "provider">): boolean {
+  return !["local", "upload", ""].includes(video.provider.trim().toLowerCase());
+}
+
 export async function publishToYouTube(
   account: PlatformAccount,
   item: ContentItem,
@@ -56,7 +61,8 @@ export async function publishToYouTube(
       description: buildCaption(item),
       tags: parseHashtags(item.hashtags).map((h) => h.replace(/^#/, "")),
     },
-    status: { privacyStatus: "public" },
+    // containsSyntheticMedia: Offenlegung realistischer KI-/veränderter Inhalte (YouTube-Richtlinie)
+    status: { privacyStatus: "public", containsSyntheticMedia: istKiVideo(video) },
   };
 
   const initRes = await fetch(
@@ -290,6 +296,9 @@ export async function publishToTikTok(
         disable_duet: false,
         disable_comment: false,
         disable_stitch: false,
+        // Pflichtangabe: keine bezahlte Partnerschaft; KI-Videos werden gekennzeichnet (is_aigc)
+        brand_content_toggle: false,
+        is_aigc: istKiVideo(video),
       },
       source_info: { source: "PULL_FROM_URL", video_url: videoUrl },
     }),

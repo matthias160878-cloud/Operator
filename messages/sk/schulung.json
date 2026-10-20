@@ -12,7 +12,7 @@
       "title": "Prvé kroky",
       "description": "Vybav najprv tieto tri veci, potom budú všetci agenti AI pracovať so skutočnými údajmi namiesto zástupných.",
       "steps": [
-        "V sekcii „Integrácie“ skontroluj, či je nastavený poskytovateľ AI. Funkcie AI bežia cez prístupy prevádzkovateľa, takže nepotrebuješ vlastné predplatné AI. Bez poskytovateľa AI aplikácia funguje v režime šablón.",
+        "V „Nastavenia → Vlastné prístupy“ zadaj vlastný AI kľúč od Anthropic, OpenAI alebo Gemini. AI funkcie používajú výlučne tvoj vlastný kľúč; poskytovateľ AI ti účtuje priamo. Bez vlastného kľúča aplikácia pracuje v režime šablón s pevnými textovými blokmi.",
         "V časti „Brand DNA“ vyplň vlastnú značku (tón, cieľová skupina, hodnoty) — agenti AI to použijú pri každom vygenerovanom texte.",
         "V časti „Nápady a inšpirácia“ alebo „Content Brain“ nechaj vygenerovať prvý nápad, resp. prvú kampaň."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics a rast",
       "description": "Skutočné čísla o vlastnej výkonnosti — a odporúčania namiesto automatizácie.",
       "steps": [
-        "Analytics zobrazuje výlučne skutočné, importované alebo ručne zadané údaje o výkonnosti.",
+        "Analytics zobrazuje len uložené štatistiky (napr. ukážkové dáta). Štatistiky platforiem sa zatiaľ nenačítavajú automaticky; čísla zadávaš ručne v „Odporúčaniach“ alebo v porovnaní variantov – tam sa vyhodnocujú.",
         "Stránka Rast z týchto údajov vypočíta najlepšie časy publikovania, úspešné hashtagy a formáty.",
         "Dôležité: zámerne neexistuje automatizované zvyšovanie sledovateľov/zapojenia (žiadne správanie botov) — porušovalo by to podmienky používania každej platformy."
       ]
@@ -59,9 +59,9 @@
       "title": "Doručená pošta",
       "description": "Návrhy odpovedí od AI na správy — so schválením pred odoslaním.",
       "steps": [
-        "Keďže (zatiaľ) nie je žiadna platforma pripojená cez OAuth, konverzácie sa momentálne zakladajú ručne namiesto načítania naživo.",
+        "Správy z platforiem sa zatiaľ nenačítavajú a odpovede sa neodosielajú. Na vyskúšanie zakladáš konverzácie ako simuláciu.",
         "MessageAgent navrhne odpoveď na základe Brand DNA a priebehu konverzácie.",
-        "Návrh sa musí ručne skontrolovať a schváliť, kým sa považuje za odoslaný — skutočné odoslanie bez pripojenia k platforme čestne zlyhá namiesto predstierania úspechu."
+        "Koncept kontroluješ a schvaľuješ ty. Odosielanie na platformy zatiaľ nie je hotové – „Schváliť a odoslať“ to úprimne hlási ako chybu namiesto predstierania úspechu."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Odkiaľ pochádza každý stav pripojenia a kam sa zadáva príslušný kľúč.",
       "steps": [
         "Každý riadok zobrazuje skutočný, naživo overený stav — nikdy nie predstierané pripojenie.",
-        "Pri „Nenakonfigurované“ vedie „Získať kľúč API“ na oficiálnu stránku poskytovateľa.",
-        "Prístupové údaje sa nikdy neukladajú v prehliadači, iba chránene na serveri. Ak prístup chýba, nastaví ho prevádzkovateľ.",
-        "Náklady: Pro a Maxi sú predplatné, mesačné alebo ročné. Aktuálne ceny nájdeš v sekcii „Balík a fakturácia“. Každý externý poskytovateľ má vlastný, nezávislý model nákladov (zadarmo / podľa využitia / predplatné) — na stránke Integrácie je pri každej službe uvedené, ktorý model platí, s odkazom na aktuálne ceny u poskytovateľa."
+        "Vlastné prístupy (AI kľúče, Resend pre newsletter) zadávaš v „Nastavenia → Vlastné prístupy“ – sprievodca ťa tam dovedie na oficiálnu stránku kľúčov poskytovateľa.",
+        "Prístupové údaje sa nikdy neukladajú v prehliadači, len šifrovane na serveri. Hlasový výstup a aplikačné prístupy platforiem nastavuje prevádzkovateľ; „Zatiaľ nedostupné“ znamená, že prepojenie v aplikácii ešte nie je hotové.",
+        "Náklady: Pro a Maxi sú predplatné, mesačné alebo ročné. Aktuálne ceny nájdeš v „Balík a fakturácia“. Za tvoje vlastné prístupy (AI, Resend) ti každý poskytovateľ účtuje priamo podľa svojho cenového modelu – SECRET 58 za to nič navyše neúčtuje."
       ]
     }
   }

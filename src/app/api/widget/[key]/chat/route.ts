@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { currentTextProvider, generateText } from "@/lib/ai/textGenerator";
 import { QuotaError, reserveQuota } from "@/lib/entitlements";
 import { clientIp, hitRateLimit } from "@/lib/rateLimit";
+import { mitKiZugang } from "@/lib/ai/kundenKi";
 
 /**
  * Öffentlicher Endpunkt des Webseiten-Assistenten.
@@ -45,11 +46,15 @@ export async function OPTIONS(request: Request, { params }: { params: Promise<{ 
   return new NextResponse(null, { status: 204, headers: cors(site.origin) });
 }
 
-export async function POST(request: Request, { params }: { params: Promise<{ key: string }> }) {
-  const { key } = await params;
-  const origin = request.headers.get("origin");
-  const site = await connectionFor(key, origin);
+export async function POST(request: Request, ctx: { params: Promise<{ key: string }> }) {
+  const { key } = await ctx.params;
+  const site = await connectionFor(key, request.headers.get("origin"));
   if (!site) return NextResponse.json({ error: "Diese Einbindung ist nicht freigegeben." }, { status: 403 });
+  // Der Webseiten-Assistent des Kunden läuft über dessen eigenen KI-Zugang.
+  return mitKiZugang(site.workspaceId, () => widgetChat(request, key, site));
+}
+
+async function widgetChat(request: Request, key: string, site: NonNullable<Awaited<ReturnType<typeof connectionFor>>>) {
   const headers = cors(site.origin);
 
   const ip = clientIp(request);

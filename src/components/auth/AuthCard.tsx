@@ -21,7 +21,7 @@ export function AuthCard({ title, subtitle, children }: { title: string; subtitl
           {subtitle && <p className="mt-1 text-sm text-muted">{subtitle}</p>}
         </div>
         {children}
-        <LegalFooter className="mt-5 flex justify-center gap-4 text-xs text-muted" />
+        <LegalFooter installieren startseite className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted" />
       </div>
     </div>
   );

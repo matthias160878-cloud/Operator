@@ -1,8 +1,7 @@
 {
   "viewAll": "Féach ar gach ceann",
   "demoBanner": {
-    "before": "Sonraí taispeántais gníomhach — is sonraí samplacha ó ",
-    "after": " iad na feachtais, na míreanna inneachair agus an anailísíocht, ní fíoruimhreacha ardáin."
+    "text": "Sonraí samplacha gníomhach – is sonraí samplacha iad na feachtais, an t-ábhar agus na staitisticí sa spás oibre seo, ní fíorfhigiúirí ardán."
   },
   "hero": {
     "subtitle": "Smaoineamh amháin. Ardáin iolracha. Uasmhéid sroichte.",
@@ -26,8 +25,9 @@
     "published": "Foilsithe",
     "views": "Radhairc",
     "avgEngagement": "Ø Rannpháirtíocht",
-    "totalRevenue": "Ioncam iomlán",
-    "noComparisonWeek": "Níl aon seachtain roimhe sin ann mar bhonn comparáide go fóill — beidh rátaí athraithe le feiceáil a luaithe a bheidh sonraí ann do dhá sheachtain ar a laghad."
+    "totalRevenue": "Ioncam (curtha isteach de láimh)",
+    "noComparisonWeek": "Níl aon seachtain roimhe sin ann mar bhonn comparáide go fóill — beidh rátaí athraithe le feiceáil a luaithe a bheidh sonraí ann do dhá sheachtain ar a laghad.",
+    "noStats": "Amhairc agus rannpháirtíocht: níl aon staitisticí fós – ní fhaightear staitisticí na n-ardán go huathoibríoch fós."
   },
   "production": {
     "title": "Táirgeadh inneachair",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} nasctha"
   },
   "agentMonitor": {
-    "title": "Monatóir Gníomhairí",
+    "title": "Logáil na gcúntóirí",
     "empty": "Gan aon rith go fóill."
   },
   "topPerformer": {
     "title": "An té is fearr feidhmíocht",
     "last7Days": "Na 7 lá seo caite",
-    "empty": "Gan aon sonraí feidhmíochta go fóill.",
+    "empty": "Níl aon sonraí feidhmíochta fós – ní fhaightear staitisticí na n-ardán go huathoibríoch fós.",
     "views": "Radhairc",
     "likes": "Taitneamh",
     "comments": "Tuairimí",

@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Myndskeiðaferli óháð veitu: sniðastjóri, skiptanlegar myndskeiðaveitur, tenging við talsetningu og texta við myndskeið (sjá Content Factory fyrir hvert efnisatriði).",
+  "subtitle": "Myndbandagerð er ekki tiltæk enn: engin myndbandaþjónusta sem býr til myndbönd er tengd. Hér fyrir neðan sérðu tilbúin snið eftir miðlum; handrit, talsetningu og texta býrðu til í Script Studio, Voice Studio og Content Factory.",
   "providerCardTitle": "Myndskeiðaveitur",
-  "providerNotePrefix": "Fleiri veitur (gervigreindar-myndskeiða-API, myndasöfn með myndskeiðum) má bæta við í gegnum sama",
-  "providerNoteSuffix": "-viðmót án þess að snerta núverandi kóða.",
   "formatManagerTitle": "Sniðastjóri",
   "assetsTitle": "Myndskeiðaeignir",
-  "assetsEmpty": "Engin myndskeið unnin enn — vinnsla fer fram í gegnum efnisatriði í Content Factory þegar myndskeiðaveita hefur verið stillt."
+  "assetsEmpty": "Engin myndbönd enn. Myndbandagerð er ekki tiltæk í appinu enn.",
+  "providerNote": "Engin nothæf myndbandaþjónusta enn – ekki er hægt að búa til myndbönd í appinu eins og er."
 }

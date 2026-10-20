@@ -1,6 +1,6 @@
 {
  "title": "Doručená pošta",
- "description": "Správy a komentáre zo všetkých platforiem. MessageAgent navrhuje odpovede — odošle sa len to, čo schváliš. Zatiaľ neexistuje skutočné pripojenie OAuth k žiadnej platforme, preto sa konverzácie tu simulujú ručne namiesto načítania naživo.",
+ "description": "Správy a otázky na jednom mieste. MessageAgent navrhuje koncepty odpovedí.",
  "emptyState": "Zatiaľ žiadne konverzácie — simuluj jednu a začni.",
  "backToInbox": "Späť do doručenej pošty",
  "newConversation": {
@@ -22,5 +22,6 @@
   "simulateMoreHint": "Simulovať ďalšiu prichádzajúcu správu (test bez skutočného pripojenia k platforme):",
   "messagePlaceholder": "Text správy …",
   "addButton": "Pridať"
- }
+ },
+ "simulationBanner": "<strong>Náhľad/simulácia:</strong> správy z platforiem sa zatiaľ nenačítavajú a odpovede sa neodosielajú – ani cez „Schváliť a odoslať“. Správy z platforiem tu môžeš na vyskúšanie simulovať. Skutočné záznamy prichádzajú len z formulárov na webe (napr. žiadosti o termín); na tie odpovedáš e-mailom."
 }

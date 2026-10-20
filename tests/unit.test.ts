@@ -390,7 +390,7 @@ test("Dateiaustausch: Dateinamen, Ordner, Ansichtstypen und Webadressen werden s
 import { CODE_LAENGE, istGueltigerCode, neuerCode } from "@/lib/reichweite/codes";
 import { enthaeltPersonendaten, pruefeZielUrl } from "@/lib/reichweite/texte";
 import { teilenZiele } from "@/lib/reichweite/teilen";
-import { auswerten } from "@/lib/reichweite/auswertung";
+import { auswerten, formatiereMetrikWert, formatiereSekunden, istSummierbar, METRIK_INFO, summeUeberEintraege } from "@/lib/reichweite/auswertung";
 import { CTA_VORSCHLAEGE, begleittexte } from "@/lib/reichweite/vorschlaege";
 
 test("Empfehlung: Codes sind zufällig, gültig und ohne Personenbezug", () => {
@@ -471,7 +471,479 @@ test("Empfehlung: Auswertung erfindet keine Stufen und vermischt keine Größen"
   assert.equal(mit.enthaeltDemo, true);
 });
 
+test("Empfehlung: Speicherungen und Ø Wiedergabedauer – Durchschnitte werden nie summiert", () => {
+  const t1 = new Date("2026-10-01T00:00:00Z");
+  const t2 = new Date("2026-10-08T00:00:00Z");
+  const k = (id: string, plattform: string, metrik: string, wert: number, von = t1, bis = t2, quelle = "MANUELL") => ({
+    id, plattform, metrik, wert, quelle, zeitraumVon: von, zeitraumBis: bis, erfasstAm: bis,
+  });
+  const a = auswerten({
+    links: [],
+    ereignisse: [],
+    kennzahlen: [
+      k("1", "INSTAGRAM", "WIEDERGABEDAUER_SEK", 14),
+      k("2", "YOUTUBE", "WIEDERGABEDAUER_SEK", 83),
+      k("3", "YOUTUBE", "WIEDERGABEDAUER_SEK", 65, t2, new Date("2026-10-15T00:00:00Z")),
+      k("4", "INSTAGRAM", "SPEICHERUNGEN", 54),
+      k("5", "YOUTUBE", "SPEICHERUNGEN", 6),
+      k("6", "YOUTUBE", "GESAMTWIEDERGABEZEIT_MIN", 844),
+      k("7", "YOUTUBE", "UNBEKANNT", 1),
+    ],
+  });
+  assert.equal(METRIK_INFO.WIEDERGABEDAUER_SEK.label, "Ø Wiedergabedauer");
+  assert.equal(METRIK_INFO.SPEICHERUNGEN.label, "Speicherungen");
+  assert.equal(istSummierbar("WIEDERGABEDAUER_SEK"), false);
+  assert.equal(istSummierbar("SPEICHERUNGEN"), true);
+  // Jeder Durchschnitt bleibt ein eigener Eintrag je Plattform und Zeitraum, unverändert.
+  const dauer = a.plattformKennzahlen.filter((p) => p.metrik === "WIEDERGABEDAUER_SEK");
+  assert.deepEqual(dauer.map((d) => d.zahl.wert).sort((x, y) => x! - y!), [14, 65, 83]);
+  assert.ok(dauer.every((d) => d.art === "DURCHSCHNITT" && d.zahl.messluecken.some((m) => m.includes("nicht über Plattformen oder Zeiträume addiert"))));
+  assert.equal(dauer.find((d) => d.zahl.wert === 83)!.zahl.anzeige, "1:23 min");
+  assert.equal(dauer[0].zahl.quelle, "Manuell aus Plattform-Statistik");
+  // Keine Summe und kein Gesamtdurchschnitt für Durchschnittswerte.
+  const s = summeUeberEintraege(a.plattformKennzahlen, "WIEDERGABEDAUER_SEK");
+  assert.equal(s.wert, null);
+  assert.equal(s.status, "NICHT_MESSBAR");
+  for (const w of [14 + 83, 14 + 83 + 65, Math.round((14 + 83 + 65) / 3), Math.round((14 + 83) / 2)]) {
+    assert.ok(!a.fluss.some((f) => f.zahl.wert === w), `kein Fluss-Schritt mit ${w}`);
+  }
+  // Zählwerte dürfen ausdrücklich gekennzeichnet summiert werden (keine Personen).
+  const sp = summeUeberEintraege(a.plattformKennzahlen, "SPEICHERUNGEN");
+  assert.equal(sp.wert, 60);
+  assert.ok(sp.messluecken[0].includes("keine eindeutigen Personen"));
+  assert.equal(a.plattformKennzahlen.find((p) => p.metrik === "GESAMTWIEDERGABEZEIT_MIN")!.zahl.anzeige, "844 min");
+  assert.ok(!a.plattformKennzahlen.some((p) => (p.metrik as string) === "UNBEKANNT"));
+  assert.ok(a.hinweise.some((h) => h.includes("nie addiert")));
+  assert.equal(formatiereSekunden(65), "1:05");
+  assert.equal(formatiereSekunden(5), "0:05");
+  assert.equal(formatiereSekunden(3725), "1:02:05");
+  assert.equal(formatiereMetrikWert("SPEICHERUNGEN", 1234), (1234).toLocaleString("de-DE"));
+});
+
 test("Empfehlung: Vorschläge versprechen keine Viralität", () => {
   const alle = [...CTA_VORSCHLAEGE, ...begleittexte("Test")].join(" ").toLowerCase();
   for (const w of ["viral", "garantiert", "millionen", "alle deine kontakte"]) assert.ok(!alle.includes(w), w);
+});
+
+// ── Reichweitenaufbau ───────────────────────────────────────────────────────
+import { erzeugeVorschlaege, hwgRisiko, pruefeBriefing, versprechenImText, type Briefing } from "@/lib/reichweitenaufbau/ideen";
+import { vergleiche, zWert, type VarianteEingabe } from "@/lib/reichweitenaufbau/varianten";
+import { exportCsv, laufzeitTage, planHinweise, pruefeFreigabe, bewerbungsVorschlaege, PLATTFORM_VORAUSSETZUNGEN } from "@/lib/reichweitenaufbau/werbung";
+import { freigabeHash } from "@/lib/reichweitenaufbau/werbungHash";
+import { darfUebergang, themenBereinigen } from "@/lib/reichweitenaufbau/newsletterRegeln";
+import { naechsteSchritte, stufeAusgabe, stufeInhalt, stufeWerbeplan } from "@/lib/reichweitenaufbau/status";
+
+const BRIEF: Briefing = {
+  zielgruppe: "Handwerksbetriebe",
+  problem: "keine Zeit für Social Media",
+  ergebnis: "regelmäßig posten",
+  plattform: "INSTAGRAM",
+  format: "Reel",
+  tonalitaet: "SACHLICH_SIE",
+  material: "",
+  aufforderung: "TEILEN",
+  grundlageVorherNachher: "",
+};
+
+test("Reichweitenaufbau: Ideen – sechs Vorlagen, Vorher-nachher nur mit Grundlage, keine Versprechen", () => {
+  assert.equal(pruefeBriefing({ ...BRIEF, zielgruppe: " " }), "Bitte die Zielgruppe angeben.");
+  const v = erzeugeVorschlaege(BRIEF);
+  assert.equal(v.length, 6);
+  assert.ok(v.find((x) => x.art === "VORHER_NACHHER")!.gesperrt);
+  assert.ok(v.filter((x) => x.art !== "VORHER_NACHHER").every((x) => !x.gesperrt && x.einstieg && x.text && x.bildVideoIdee && x.beschreibung && x.aufforderung));
+  assert.ok(v.every((x) => versprechenImText(`${x.einstieg} ${x.text} ${x.aufforderung}`).length === 0), "keine Erfolgsversprechen erzeugt");
+  assert.ok(v[0].aufforderung.includes("Sie"), "Sie-Form bei sachlicher Tonalität");
+  assert.ok(erzeugeVorschlaege({ ...BRIEF, tonalitaet: "LOCKER_DU" })[0].aufforderung.includes("du"));
+  const mit = erzeugeVorschlaege({ ...BRIEF, grundlageVorherNachher: "eigenes Projekt 05/2026, Fotos vorhanden" });
+  assert.equal(mit.find((x) => x.art === "VORHER_NACHHER")!.gesperrt, null);
+  const warn = erzeugeVorschlaege({ ...BRIEF, ergebnis: "garantiert viral werden" });
+  assert.ok(warn[0].hinweise.some((h) => h.includes("Erfolgsversprechen")));
+});
+
+test("Reichweitenaufbau: Ideen – HWG-Sperre für Vorher-nachher bei Schönheitseingriffen", () => {
+  assert.equal(hwgRisiko(BRIEF), null);
+  assert.equal(hwgRisiko({ ...BRIEF, zielgruppe: "Frauen, die über eine Brustvergrößerung nachdenken" }), "EINGRIFF");
+  assert.equal(hwgRisiko({ ...BRIEF, problem: "Faltenbehandlung mit Hyaluron" }), "EINGRIFF");
+  assert.equal(hwgRisiko({ ...BRIEF, zielgruppe: "Patienten einer Zahnarztpraxis" }), "HEILBEREICH");
+  assert.equal(hwgRisiko({ ...BRIEF, problem: "Bubble-Tea-Bar" }), null, "kein Treffer in fremden Wörtern");
+  const op = erzeugeVorschlaege({ ...BRIEF, zielgruppe: "Interessierte an Schönheits-OPs", grundlageVorherNachher: "eigene Patientenfotos mit Einverständnis" });
+  const vn = op.find((x) => x.art === "VORHER_NACHHER")!;
+  assert.match(vn.gesperrt ?? "", /§ 11 Abs\. 1 S\. 3 Nr\. 1 HWG/, "auch mit Grundlage gesperrt");
+  assert.ok(vn.hinweise.some((h) => h.includes("HWG")));
+  assert.ok(op.filter((x) => x.art !== "VORHER_NACHHER").every((x) => x.hinweise.some((h) => h.includes("Heilmittelwerbegesetz"))));
+  const zahn = erzeugeVorschlaege({ ...BRIEF, zielgruppe: "Zahnarztpraxis", grundlageVorherNachher: "Fall 03/2026 mit Einverständnis" });
+  assert.equal(zahn.find((x) => x.art === "VORHER_NACHHER")!.gesperrt, null, "Heilbereich: Hinweis, keine Sperre");
+});
+
+function variante(id: string, plattform: string, aufrufe: number | null, klicks: number | null, extra: VarianteEingabe["werte"] = {}): VarianteEingabe {
+  return {
+    id,
+    label: `Variante ${id}`,
+    plattform,
+    veroeffentlichtAm: null,
+    werte: {
+      ...(aufrufe !== null ? { AUFRUFE: { wert: aufrufe, quelle: "MANUELL" } } : {}),
+      ...(klicks !== null ? { LINKKLICKS: { wert: klicks, quelle: "Eigene Messung" } } : {}),
+      ...extra,
+    },
+  };
+}
+const ENDE = new Date("2026-10-01");
+const JETZT = new Date("2026-10-19");
+
+test("Reichweitenaufbau: Varianten – kein Sieger bei zu wenig Daten oder ohne Unterschied", () => {
+  const wenig = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: false, laufzeitBis: ENDE, jetzt: JETZT, varianten: [variante("A", "INSTAGRAM", 80, 9), variante("B", "INSTAGRAM", 90, 2)] });
+  assert.equal(wenig.status, "KEINE_AUSSAGE");
+  assert.match(wenig.aussage, /Zu wenige Daten/);
+  assert.equal(wenig.bezeichnung, "Variantenvergleich");
+  const gleich = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: true, laufzeitBis: ENDE, jetzt: JETZT, varianten: [variante("A", "INSTAGRAM", 1000, 50), variante("B", "INSTAGRAM", 1000, 52)] });
+  assert.equal(gleich.status, "KEINE_AUSSAGE");
+  assert.match(gleich.aussage, /Kein belastbarer Unterschied/);
+  const fehlt = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: false, laufzeitBis: ENDE, jetzt: JETZT, varianten: [variante("A", "INSTAGRAM", null, 40), variante("B", "INSTAGRAM", 900, 20)] });
+  assert.equal(fehlt.status, "KEINE_AUSSAGE");
+});
+
+test("Reichweitenaufbau: Varianten – organisch nur Hinweis, A/B auffällig, Plattformen nicht vermischt", () => {
+  const vs = [variante("A", "INSTAGRAM", 1840, 120), variante("B", "INSTAGRAM", 1210, 30)];
+  const organisch = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: false, laufzeitBis: ENDE, jetzt: JETZT, varianten: vs });
+  assert.equal(organisch.status, "HINWEIS");
+  assert.match(organisch.aussage, /kein Beweis/);
+  assert.ok(organisch.hinweise.some((h) => h.includes("kein A/B-Test")));
+  assert.ok(organisch.einschaetzung.every((e) => e.startsWith("Einschätzung")));
+  const ab = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: true, laufzeitBis: ENDE, jetzt: JETZT, varianten: vs });
+  assert.equal(ab.status, "AUFFAELLIG");
+  assert.equal(ab.bezeichnung, "A/B-Test");
+  assert.ok(Math.abs(ab.tabelle[0].zellen.LINKKLICKS.quoteProzent! - (120 / 1840) * 100) < 1e-9, "Quote = Klicks ÷ Aufrufe × 100");
+  const gemischt = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: true, laufzeitBis: ENDE, jetzt: JETZT, varianten: [vs[0], { ...vs[1], plattform: "TIKTOK" }] });
+  assert.equal(gemischt.status, "KEINE_AUSSAGE");
+  assert.match(gemischt.aussage, /verschiedenen Plattformen/);
+  const dauer = vergleiche({
+    hauptkennzahl: "WIEDERGABEDAUER_SEK",
+    zufallsverteilt: true,
+    laufzeitBis: ENDE,
+    jetzt: JETZT,
+    varianten: [variante("A", "INSTAGRAM", 2000, null, { WIEDERGABEDAUER_SEK: { wert: 9, quelle: "M" } }), variante("B", "INSTAGRAM", 2000, null, { WIEDERGABEDAUER_SEK: { wert: 12, quelle: "M" } })],
+  });
+  assert.equal(dauer.status, "KEINE_AUSSAGE", "Durchschnittswerte ohne Einzeldaten: kein Test");
+  assert.ok(dauer.einschaetzung[0].includes("Variante B"));
+  const laeuft = vergleiche({ hauptkennzahl: "LINKKLICKS", zufallsverteilt: true, laufzeitBis: new Date("2026-12-01"), jetzt: JETZT, varianten: vs });
+  assert.ok(laeuft.hinweise.some((h) => h.includes("Zwischenstand")));
+  assert.equal(zWert(0, 0, 1, 10), null);
+  assert.ok(Math.abs(zWert(50, 1000, 50, 1000)!) < 1e-12);
+});
+
+test("Reichweitenaufbau: Werbung – Freigabe nur bei exakt bestätigtem Betrag, Laufzeit und Ziel", () => {
+  const p = { plattform: "META", ziel: "TRAFFIC", startAm: new Date("2026-11-01"), endeAm: new Date("2026-11-07"), tagesbudgetCent: 1000, gesamtbudgetCent: 7000 };
+  const ok = { gesamtbudgetCent: 7000, startAm: "2026-11-01", endeAm: "2026-11-07", ziel: "TRAFFIC", bestaetigt: true };
+  assert.equal(pruefeFreigabe(p, ok), null);
+  assert.match(pruefeFreigabe(p, { ...ok, bestaetigt: false })!, /ausdrücklich/);
+  assert.match(pruefeFreigabe(p, { ...ok, gesamtbudgetCent: 70000 })!, /Betrag/);
+  assert.match(pruefeFreigabe(p, { ...ok, endeAm: "2026-11-30" })!, /Laufzeit/);
+  assert.match(pruefeFreigabe(p, { ...ok, ziel: "LEADS" })!, /Ziel/);
+  assert.notEqual(freigabeHash(p), freigabeHash({ ...p, gesamtbudgetCent: 7001 }), "Änderung macht Freigabe ungültig");
+  assert.equal(laufzeitTage(p), 7);
+  assert.ok(planHinweise(p).some((h) => h.includes("garantiert keine")));
+  assert.match(PLATTFORM_VORAUSSETZUNGEN.LINKEDIN.zielgruppen.AEHNLICH, /eingestellt/);
+});
+
+test("Reichweitenaufbau: Werbung – Export ohne Formel-Injektion, Vorschläge nur mit Belegen", () => {
+  const csv = exportCsv({
+    plattform: "META", ziel: "TRAFFIC", startAm: new Date("2026-11-01"), endeAm: new Date("2026-11-07"), tagesbudgetCent: 1000, gesamtbudgetCent: 7000,
+    titel: "=HYPERLINK(\"x\")", zielgruppe: "", zielgruppenArt: "NEU", region: "", sprache: "Deutsch", zielUrl: "", erfolgsmessung: "", status: "ENTWURF", freigegebenAm: null, istDemo: false, inhalt: "",
+  });
+  assert.ok(csv.includes(`"'=HYPERLINK(""x"")"`));
+  assert.ok(csv.includes("nicht freigegeben"));
+  assert.ok(csv.includes("geplant"));
+  const v = bewerbungsVorschlaege([
+    { kampagneId: "a", titel: "A", aufrufe: 5, zielKlicks: 3, anfragen: 1, newsletterBestaetigt: 0, istDemo: false },
+    { kampagneId: "b", titel: "B", aufrufe: 100, zielKlicks: 10, anfragen: 0, newsletterBestaetigt: 0, istDemo: false },
+    { kampagneId: "c", titel: "C", aufrufe: 100, zielKlicks: 0, anfragen: 0, newsletterBestaetigt: 0, istDemo: false },
+    { kampagneId: "d", titel: "D", aufrufe: 50, zielKlicks: 2, anfragen: 3, newsletterBestaetigt: 0, istDemo: true },
+  ]);
+  assert.deepEqual(v.map((x) => x.kampagneId), ["d", "b"]);
+  assert.ok(v[0].begruendung.includes("DEMO"));
+  assert.ok(v[0].begruendung.includes("kein Beleg"));
+});
+
+test("Reichweitenaufbau: Newsletter-Übergänge und Statusleiste", () => {
+  assert.ok(darfUebergang("freigeben", "PRUEFUNG"));
+  assert.ok(darfUebergang("versenden", "FREIGEGEBEN"), "Versand per Klick nach Freigabe");
+  assert.ok(!darfUebergang("versenden", "VERSAND_LAEUFT"), "kein Doppelversand");
+  assert.ok(!darfUebergang("versenden", "ENTWURF"));
+  assert.ok(!darfUebergang("planen", "ENTWURF"), "Planen erst nach Freigabe");
+  assert.deepEqual(themenBereinigen(["A", "A", " B ", 3, "C"], ["A", "B"]), ["A", "B"]);
+  assert.equal(stufeAusgabe("VERSENDET_DEMO"), null, "Demo-Versand zählt nicht als versendet");
+  assert.equal(stufeAusgabe("VERSENDET"), "UMGESETZT");
+  assert.equal(stufeWerbeplan("FREIGEGEBEN", null), "FREIGEGEBEN", "Freigabe ist kein Start");
+  assert.equal(stufeInhalt("PUBLISHED", false), "UMGESETZT");
+  assert.equal(stufeInhalt("PUBLISHED", true), "AUSGEWERTET");
+  const s = naechsteSchritte({
+    inhalteInPruefung: 0, inhalteFreigegebenOhneVeroeffentlichung: 0, variantenOhneAussage: 0, kooperationenOhneNaechstenSchritt: 0, kooperationenTerminBald: 0,
+    werbeplaeneFreigegeben: 1, werbeplaeneInPruefung: 0, ausgabenGeplant: 1, ausgabenInPruefung: 0, newsletterModus: "DEMO", newsletterSeiten: 1, plattformStatistikAngebunden: false,
+  });
+  assert.ok(s.some((x) => x.text.includes("exportieren")));
+  assert.ok(s.some((x) => x.art === "FEHLT" && x.text.includes("Resend-Zugang")));
+});
+
+test("Empfehlung: Newsletter in der Auswertung nur mit Anmeldeseite, nur bestätigte Anmeldungen", () => {
+  const ohne = auswerten({ links: [], ereignisse: [], kennzahlen: [] });
+  assert.equal(ohne.newsletter.status, "NICHT_ANGEBUNDEN");
+  const mit = auswerten({ links: [], ereignisse: [], kennzahlen: [], newsletter: { bestaetigt: [{ confirmedAt: new Date("2026-10-10"), istDemo: true }] } });
+  assert.equal(mit.newsletter.wert, 1);
+  assert.equal(mit.newsletter.status, "GEMESSEN");
+  assert.equal(mit.enthaeltDemo, true);
+});
+
+test("Reichweitenaufbau: Freischaltung – Newsletter und Werbung standardmäßig aus, Kennzeichnung offen gemeldet", async () => {
+  const { newsletterFreigeschaltet, werbungFreigeschaltet, nurWenn } = await import("@/lib/reichweitenaufbau/freischaltung");
+  const { kennzeichnungWarnung, anfrageEntwurf } = await import("@/lib/reichweitenaufbau/kooperation");
+  const vorher = { nl: process.env.REICHWEITE_NEWSLETTER, wb: process.env.REICHWEITE_WERBUNG };
+  delete process.env.REICHWEITE_NEWSLETTER;
+  delete process.env.REICHWEITE_WERBUNG;
+  try {
+    assert.equal(newsletterFreigeschaltet(), false);
+    assert.equal(werbungFreigeschaltet(), false);
+    const h = nurWenn(newsletterFreigeschaltet, async () => new Response("ok"));
+    assert.equal((await h()).status, 404);
+    process.env.REICHWEITE_NEWSLETTER = "1";
+    assert.equal((await h()).status, 200);
+  } finally {
+    if (vorher.nl === undefined) delete process.env.REICHWEITE_NEWSLETTER; else process.env.REICHWEITE_NEWSLETTER = vorher.nl;
+    if (vorher.wb === undefined) delete process.env.REICHWEITE_WERBUNG; else process.env.REICHWEITE_WERBUNG = vorher.wb;
+  }
+  const lage = {
+    inhalteInPruefung: 0, inhalteFreigegebenOhneVeroeffentlichung: 0, variantenOhneAussage: 0, kooperationenOhneNaechstenSchritt: 0, kooperationenTerminBald: 0,
+    werbeplaeneFreigegeben: 1, werbeplaeneInPruefung: 1, ausgabenGeplant: 1, ausgabenInPruefung: 1, newsletterModus: "DEMO" as const, newsletterSeiten: 0, plattformStatistikAngebunden: false,
+  };
+  const aus = naechsteSchritte({ ...lage, newsletterAktiv: false, werbungAktiv: false, kooperationenOhneKennzeichnung: 2 });
+  assert.ok(aus.every((x) => x.tab !== "newsletter" && x.tab !== "werbung"), "abgeschaltete Bereiche ohne Hinweise");
+  assert.ok(aus.some((x) => x.text.includes("Werbekennzeichnung")));
+  assert.equal(kennzeichnungWarnung({ status: "VEREINBART", kennzeichnung: "OFFEN" }), "Werbekennzeichnung noch nicht geklärt.");
+  assert.equal(kennzeichnungWarnung({ status: "IDEE", kennzeichnung: "OFFEN" }), null);
+  assert.equal(kennzeichnungWarnung({ status: "UMGESETZT", kennzeichnung: "WERBUNG" }), null);
+  assert.match(anfrageEntwurf({ name: "X", format: "AKTION", idee: "", passungNotiz: "", absender: "Y", sie: true }), /Werbung bzw\. Anzeige/);
+});
+
+test("Ratenbegrenzung pseudonymisiert Schlüssel, DMARC-Prüfung erbt von der Hauptdomain", async () => {
+  const { gespeicherterSchluessel } = await import("@/lib/rateLimit");
+  const k = gespeicherterSchluessel("widget-ip:abc:203.0.113.7");
+  assert.match(k, /^widget-ip:[0-9a-f]{32}$/);
+  assert.ok(!k.includes("203.0.113.7"));
+  assert.equal(gespeicherterSchluessel("widget-ip:abc:203.0.113.7"), k, "stabil");
+  assert.notEqual(gespeicherterSchluessel("widget-ip:abc:203.0.113.8"), k);
+  assert.equal(gespeicherterSchluessel("hermespub:global"), gespeicherterSchluessel("hermespub:global"));
+  const { dmarcPruefen } = await import("@/lib/zugaenge/service");
+  const vorher = process.env.DMARC_TEST_EINTRAEGE;
+  process.env.DMARC_TEST_EINTRAEGE = JSON.stringify({ "_dmarc.firma.de": "v=DMARC1; p=none" });
+  try {
+    assert.deepEqual(await dmarcPruefen("news.firma.de"), { status: "OK", wo: "_dmarc.firma.de", basis: "firma.de" });
+    assert.equal((await dmarcPruefen("andere.de")).status, "FEHLT");
+  } finally {
+    if (vorher === undefined) delete process.env.DMARC_TEST_EINTRAEGE; else process.env.DMARC_TEST_EINTRAEGE = vorher;
+  }
+});
+
+test("Kampagnenassistent: Pflichtangaben, Zeitraum, Budget und bearbeitbarer Ablauf", async () => {
+  const { pruefeKampagne, ablaufVorschlag, kampagneFehlt } = await import("@/lib/reichweitenaufbau/kampagnenplan");
+  const e = { titel: "Herbst", ziel: "20 Anfragen bis Ende November", hauptkennzahl: "ANFRAGEN", zielgruppe: "Handwerk", zielUrl: "https://example.com/a", startAm: "2026-11-01", endeAm: "2026-11-30", verantwortlichId: "u1", verantwortlichName: "Mia", budgetCent: null };
+  assert.equal(pruefeKampagne(e), null);
+  assert.match(pruefeKampagne({ ...e, ziel: "" }) ?? "", /Ziel/);
+  assert.match(pruefeKampagne({ ...e, endeAm: "2026-10-01" }) ?? "", /vor dem Start/);
+  assert.match(pruefeKampagne({ ...e, endeAm: "2028-01-01" }) ?? "", /länger als ein Jahr/);
+  assert.match(pruefeKampagne({ ...e, verantwortlichId: "" }) ?? "", /Verantwortlichen/);
+  assert.match(pruefeKampagne({ ...e, budgetCent: 0 }) ?? "", /Budget/);
+  const ohne = ablaufVorschlag(e);
+  assert.ok(!ohne.some((s) => s.art === "WERBUNG"), "ohne Budget kein Werbeschritt");
+  assert.ok(ohne.some((s) => s.art === "FREIGABE" && s.titel.includes("Mia")));
+  assert.equal(ohne.at(-1)?.art, "AUSWERTUNG");
+  assert.ok(ablaufVorschlag({ ...e, budgetCent: 50_000 }).some((s) => s.art === "WERBUNG" && s.titel.includes("500,00")));
+  assert.deepEqual(kampagneFehlt({ ziel: "", hauptkennzahl: "", zielgruppe: "x", zielUrl: "", startAm: null, endeAm: null, verantwortlichId: null }), ["Ziel", "Hauptkennzahl", "Zielseite", "Zeitraum", "Verantwortlicher für Freigaben"]);
+});
+
+test("Plattformformate: Fakten wortgleich mit Quelle, ungeprüfte markiert, Grenzen gemeldet", async () => {
+  const { plattformVarianten, faktZeile, UNGEPRUEFT } = await import("@/lib/reichweitenaufbau/plattformformate");
+  const fakten = [
+    { text: "Der Kurs hat 6 Termine.", quelle: "Kursbeschreibung", geprueft: true },
+    { text: "Über 90 % sind zufrieden.", quelle: "", geprueft: false },
+  ];
+  const v = plattformVarianten({ thema: "Herbstkurs", kernaussage: "Sicherer werden", zielgruppe: "Handwerk", aufforderung: "Jetzt anfragen", zielUrl: "https://example.com/k", fakten, plattformen: ["INSTAGRAM", "LINKEDIN", "LINKEDIN"] });
+  assert.equal(v.length, 2, "jede Plattform nur einmal");
+  for (const x of v) {
+    for (const [i, f] of fakten.entries()) assert.ok(x.text.includes(faktZeile(f, i + 1)), "Fakt unverändert enthalten");
+    assert.ok(x.text.includes("[1] Kursbeschreibung"));
+    assert.ok(x.text.includes(`${UNGEPRUEFT} Über 90 %`));
+    assert.equal(x.ungeprueft, 1);
+    assert.ok(x.hinweise.some((h) => h.includes("ohne") || h.includes("keine Quelle")));
+    assert.ok(x.text.includes("https://example.com/k"));
+  }
+  const lang = plattformVarianten({ thema: "T", kernaussage: "x".repeat(2300), zielgruppe: "", aufforderung: "", zielUrl: "", fakten: [], plattformen: ["TIKTOK"] });
+  assert.ok(lang[0].hinweise.some((h) => h.includes("erlaubt 2200")));
+});
+
+test("Ergebnis-Zuordnung: unbekannte Herkunft bleibt unbekannt, Angebotsseite wird vererbt", async () => {
+  const { ergebnisZuordnung } = await import("@/lib/reichweite/zuordnung");
+  const links = [
+    { id: "a", bezeichnung: "LinkedIn", herkunft: "TEAM", stufe: 1, parentId: null, angebotUrl: "https://example.com/firmen", istDemo: false },
+    { id: "b", bezeichnung: "", herkunft: "BESUCHER", stufe: 2, parentId: "a", angebotUrl: "", istDemo: false },
+    { id: "c", bezeichnung: "Instagram", herkunft: "TEAM", stufe: 1, parentId: null, angebotUrl: "", istDemo: false },
+  ];
+  const r = ergebnisZuordnung(links, [
+    { linkId: "a", art: "ANFRAGE" },
+    { linkId: "b", art: "ANFRAGE" },
+    { linkId: "c", art: "AUFRUF" },
+    { linkId: null, art: "ANFRAGE" },
+    { linkId: "geloescht", art: "ZIEL_KLICK" },
+  ], "https://example.com/kampagne");
+  const z = Object.fromEntries(r.zeilen.map((x) => [x.schluessel, x]));
+  assert.equal(z.b.angebotsseite, "https://example.com/firmen");
+  assert.equal(z.c.angebotsseite, "https://example.com/kampagne");
+  assert.equal(z.unbekannt.anfragen, 1);
+  assert.equal(z.unbekannt.zielKlicks, 1);
+  assert.equal(z.unbekannt.angebotsseite, "—");
+  const firmen = r.jeAngebotsseite.find((s) => s.angebotsseite === "https://example.com/firmen");
+  assert.equal(firmen?.anfragen, 2);
+  assert.ok(!r.jeAngebotsseite.some((s) => s.angebotsseite === "—"), "Unbekanntes wird keiner Seite zugeordnet");
+});
+
+test("KI-Kosten: Schätzung für bekannte Modelle, unbekannte offen gekennzeichnet", async () => {
+  const { kostenSchaetzen } = await import("@/lib/ai/kosten");
+  const alt = process.env.ANTHROPIC_MODEL;
+  try {
+    delete process.env.ANTHROPIC_MODEL;
+    const s = kostenSchaetzen("anthropic", 3000, 900);
+    assert.equal(s.berechenbar, true);
+    assert.equal(s.eingabeToken, 1000);
+    assert.ok(Math.abs((s.usdMax ?? 0) - (1000 * 1 + 900 * 5) / 1e6) < 1e-12);
+    process.env.ANTHROPIC_MODEL = "ein-unbekanntes-modell";
+    const u = kostenSchaetzen("anthropic", 3000, 900);
+    assert.equal(u.berechenbar, false);
+    assert.equal(u.usdMax, null);
+    assert.match(u.hinweis, /nicht berechenbar/);
+  } finally {
+    if (alt === undefined) delete process.env.ANTHROPIC_MODEL;
+    else process.env.ANTHROPIC_MODEL = alt;
+  }
+});
+
+test("Plattform-Richtlinien: KI-Kennzeichnung nur für Videos aus KI-Diensten", async () => {
+  const { istKiVideo } = await import("@/lib/publishing/adapters");
+  assert.equal(istKiVideo({ provider: "local" }), false);
+  assert.equal(istKiVideo({ provider: "upload" }), false);
+  assert.equal(istKiVideo({ provider: "capcut" }), true);
+});
+
+test("Umsatzsteuer: Standard Kleinunternehmer (§ 19 UStG), Regelbesteuerung nur ausdrücklich", async () => {
+  const { kleinunternehmer, steuerHinweis, preisArt, VAT_NOTE } = await import("@/lib/plans");
+  const alt = process.env.UMSATZSTEUER_MODUS;
+  try {
+    delete process.env.UMSATZSTEUER_MODUS;
+    assert.equal(kleinunternehmer(), true);
+    assert.match(steuerHinweis(), /§ 19 UStG/);
+    assert.equal(preisArt(), "Endpreis");
+    process.env.UMSATZSTEUER_MODUS = "regel";
+    assert.equal(kleinunternehmer(), false);
+    assert.equal(steuerHinweis(), VAT_NOTE);
+    assert.equal(preisArt(), "netto");
+  } finally {
+    if (alt === undefined) delete process.env.UMSATZSTEUER_MODUS;
+    else process.env.UMSATZSTEUER_MODUS = alt;
+  }
+});
+
+test("Kündigungsbutton: Referenz, Zeitpunkt und neutrale Bestätigung", async () => {
+  const { neueReferenz, istReferenz, pruefeZeitpunkt, zeitpunktText, bestaetigungsMail, heuteInDeutschland } = await import("@/lib/kuendigung");
+  const ref = neueReferenz(new Date("2026-12-31T23:30:00Z"));
+  assert.match(ref, /^K-2027-[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{6}$/, "Jahr in deutscher Zeit");
+  assert.ok(istReferenz(ref));
+  assert.ok(!istReferenz("K-2026-0O1IL0"));
+  assert.equal(new Set(Array.from({ length: 50 }, () => neueReferenz())).size, 50);
+
+  assert.equal(heuteInDeutschland(new Date("2026-10-19T22:30:00Z")), "2026-10-20");
+  const heute = "2026-10-20";
+  assert.equal(pruefeZeitpunkt("", heute), "naechstmoeglich");
+  assert.equal(pruefeZeitpunkt("naechstmoeglich", heute), "naechstmoeglich");
+  assert.equal(pruefeZeitpunkt("2026-10-20", heute), "2026-10-20");
+  assert.equal(pruefeZeitpunkt("2026-12-31", heute), "2026-12-31");
+  assert.equal(pruefeZeitpunkt("2026-10-19", heute), null, "Vergangenheit");
+  assert.equal(pruefeZeitpunkt("2027-02-30", heute), null, "kein echtes Datum");
+  assert.equal(pruefeZeitpunkt("2032-01-01", heute), null, "mehr als 5 Jahre");
+  assert.equal(pruefeZeitpunkt("31.12.2026", heute), null);
+  assert.equal(zeitpunktText("naechstmoeglich"), "zum nächstmöglichen Zeitpunkt");
+  assert.equal(zeitpunktText("2026-12-31"), "zum 31.12.2026");
+
+  const mail = bestaetigungsMail({
+    referenz: ref, art: "AUSSERORDENTLICH", grund: "<b>Grund</b>", name: "Eva <Test>", email: "eva@example.test", kundennummer: "",
+    vertrag: "Social Media KI – Pro", zeitpunkt: "naechstmoeglich", bestaetigungEmail: "eva@example.test", eingangAm: new Date("2026-10-20T08:15:00Z"),
+  });
+  assert.equal(mail.subject, "Eingangsbestätigung Ihrer Kündigung – SECRET 58");
+  assert.ok(mail.text.includes(ref) && mail.text.includes("zum nächstmöglichen Zeitpunkt") && mail.text.includes("10:15:00"));
+  assert.ok(mail.text.includes("Ihre Kündigung ist bei uns eingegangen"));
+  assert.ok(!mail.html.includes("<b>Grund</b>") && mail.html.includes("&lt;b&gt;Grund&lt;/b&gt;") && mail.html.includes("Eva &lt;Test&gt;"), "HTML maskiert");
+  assert.ok(!/Konto (gefunden|existiert)|kein Konto/i.test(mail.text), "verrät nicht, ob ein Konto existiert");
+});
+
+test("Kundenanfragen: Empfehlungs-Anfragen immer, Pilot-Anfragen nur mit Schalter, immer nur eigener Workspace", async () => {
+  const { kundenanfragenFilter, pilotKundenbereichFreigeschaltet } = await import("@/lib/kundenanfragen");
+  assert.deepEqual(kundenanfragenFilter("ws-a", false), { workspaceId: "ws-a", OR: [{ channel: "empfehlung" }] });
+  assert.deepEqual(kundenanfragenFilter("ws-a", true), { workspaceId: "ws-a", OR: [{ channel: "empfehlung" }, { isDemo: false }] });
+  assert.throws(() => kundenanfragenFilter("", false));
+  assert.equal(pilotKundenbereichFreigeschaltet({}), false);
+  assert.equal(pilotKundenbereichFreigeschaltet({ PILOTSTUDIO_KUNDENBEREICH: "true" }), true);
+});
+
+test("Kündigungen: Erinnerung mit Frist (rot ab 2 Tagen) und Laufzeitende", async () => {
+  const { kuendigungsErinnerung, offenSeitTagen } = await import("@/lib/kuendigung");
+  const jetzt = new Date("2026-10-20T10:00:00Z");
+  assert.equal(offenSeitTagen(new Date("2026-10-20T06:00:00Z"), jetzt), 0);
+  assert.equal(offenSeitTagen(new Date("2026-10-19T21:30:00Z"), jetzt), 1, "deutsche Kalendertage");
+  assert.equal(offenSeitTagen(new Date("2026-10-19T23:30:00Z"), jetzt), 0, "nach Mitternacht deutscher Zeit = heute");
+  const heute = kuendigungsErinnerung(new Date("2026-10-20T08:00:00Z"), null, jetzt);
+  assert.equal(heute.text, "heute eingegangen");
+  assert.equal(heute.dringend, false);
+  assert.equal(heute.laufzeitHinweis, null);
+  assert.equal(kuendigungsErinnerung(new Date("2026-10-19T08:00:00Z"), null, jetzt).dringend, false);
+  const alt = kuendigungsErinnerung(new Date("2026-10-17T08:00:00Z"), new Date("2026-11-15T09:00:00Z"), jetzt);
+  assert.equal(alt.text, "seit 3 Tagen offen");
+  assert.equal(alt.dringend, true);
+  assert.equal(alt.laufzeitHinweis, "Laufzeitende am 15. November 2026; in Stripe vor diesem Datum „zum Laufzeitende kündigen“ setzen.");
+});
+
+test("Token-Ablauf: Hinweis nur ohne Refresh-Token, rot bei geplanten Beiträgen nach Ablauf", async () => {
+  const { tokenAblaufHinweis } = await import("@/lib/publishing/tokenAblauf");
+  const jetzt = new Date("2026-10-20T10:00:00Z");
+  const ablauf = new Date("2026-12-01T10:00:00Z");
+  const acc = { status: "CONNECTED", tokenExpiresAt: ablauf, refreshTokenEnc: null };
+  assert.equal(tokenAblaufHinweis({ ...acc, refreshTokenEnc: "enc" }, [], jetzt), null);
+  assert.equal(tokenAblaufHinweis({ ...acc, tokenExpiresAt: null }, [], jetzt), null);
+  assert.equal(tokenAblaufHinweis({ ...acc, status: "DISCONNECTED" }, [], jetzt), null);
+  const ok = tokenAblaufHinweis(acc, [new Date("2026-11-01T10:00:00Z"), null], jetzt)!;
+  assert.equal(ok.kritisch, false);
+  assert.equal(ok.geplantNachAblauf, 0);
+  const rot = tokenAblaufHinweis(acc, [new Date("2026-11-01T10:00:00Z"), new Date("2026-12-05T10:00:00Z")], jetzt)!;
+  assert.equal(rot.geplantNachAblauf, 1);
+  assert.equal(rot.kritisch, true);
+  const abgelaufen = tokenAblaufHinweis(acc, [], new Date("2026-12-02T00:00:00Z"))!;
+  assert.equal(abgelaufen.abgelaufen, true);
+  assert.equal(abgelaufen.kritisch, true);
+});
+
+test("Integrationen: CapCut, Canva und Trend-Datenquelle zeigen nie „Verbunden“, solange kein Client gebaut ist", async () => {
+  const { checkIntegration, INTEGRATIONS } = await import("@/lib/integrations/registry");
+  const { VIDEO_PROVIDERS } = await import("@/lib/video/provider");
+  const t = (key: string) => key;
+  const alt = { CAPCUT_API_KEY: process.env.CAPCUT_API_KEY, CANVA_API_KEY: process.env.CANVA_API_KEY, TREND_API_KEY: process.env.TREND_API_KEY, TREND_API_PROVIDER: process.env.TREND_API_PROVIDER };
+  try {
+    Object.assign(process.env, { CAPCUT_API_KEY: "x", CANVA_API_KEY: "x", TREND_API_KEY: "x", TREND_API_PROVIDER: "x" });
+    for (const key of ["capcut", "canva", "trend"]) {
+      const r = await checkIntegration(INTEGRATIONS.find((i) => i.key === key)!, t);
+      assert.equal(r.status, "NOT_AVAILABLE", key);
+      assert.equal(r.message, "notAvailable", key);
+    }
+    assert.ok(VIDEO_PROVIDERS.every((p) => !p.renderVerfuegbar), "kein Video-Dienst rendert");
+  } finally {
+    for (const [k, v] of Object.entries(alt)) {
+      if (v === undefined) delete process.env[k];
+      else process.env[k] = v;
+    }
+  }
 });

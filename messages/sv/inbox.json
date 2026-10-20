@@ -1,6 +1,6 @@
 {
   "title": "Inkorg",
-  "description": "Meddelanden och kommentarer från alla plattformar. MessageAgent föreslår svar — det enda som skickas är det du godkänner. Det finns ännu ingen riktig OAuth-anslutning till någon plattform, därför simuleras konversationer här manuellt i stället för att hämtas live.",
+  "description": "Meddelanden och förfrågningar på ett ställe. MessageAgent föreslår svarsutkast.",
   "emptyState": "Inga konversationer än — simulera en för att komma igång.",
   "backToInbox": "Tillbaka till inkorgen",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simulera ytterligare ett inkommande meddelande (test utan riktig plattformsanslutning):",
     "messagePlaceholder": "Meddelandetext …",
     "addButton": "Lägg till"
-  }
+  },
+  "simulationBanner": "<strong>Förhandsvisning/simulering:</strong> meddelanden från plattformar hämtas ännu inte och svar skickas inte – inte ens via ”Godkänn & skicka”. Plattformsmeddelanden kan du simulera här för att prova. Riktiga poster kommer bara från webbformulär (t.ex. bokningsförfrågningar); dem besvarar du via e-post."
 }

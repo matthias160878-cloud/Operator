@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Leverandøruavhengig videopipeline: formatbehandler, utskiftbare videoleverandører, tilkobling av voiceover og undertekster (se Content Factory per innholdselement).",
+  "subtitle": "Videoproduksjon er ikke tilgjengelig ennå: ingen videotjeneste som lager videoer er koblet til. Nedenfor ser du de forberedte formatene per plattform; manus, voiceover og undertekster lager du i Script Studio, Voice Studio og Content Factory.",
   "providerCardTitle": "Videoleverandører",
-  "providerNotePrefix": "Flere leverandører (KI-video-API-er, stockvideobibliotek) kan legges til via samme",
-  "providerNoteSuffix": "-grensesnitt uten å røre eksisterende kode.",
   "formatManagerTitle": "Formatbehandler",
   "assetsTitle": "Videoelementer",
-  "assetsEmpty": "Ingen videoer rendret ennå — rendering skjer via innholdselementer i Content Factory så snart en videoleverandør er konfigurert."
+  "assetsEmpty": "Ingen videoer ennå. Videoproduksjon er ikke tilgjengelig i appen ennå.",
+  "providerNote": "Ingen videotjeneste brukbar ennå – videoer kan foreløpig ikke lages i appen."
 }

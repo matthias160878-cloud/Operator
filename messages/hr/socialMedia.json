@@ -1,14 +1,14 @@
 {
   "pageTitle": "Društvene mreže",
-  "subtitle": "Računi platformi i status njihove veze. Pristupni podaci upravljaju se isključivo kao varijable okruženja na poslužitelju i nikada se ne spremaju u frontendu. Pristupni tokeni nakon povezivanja spremaju se šifrirani u bazi podataka.",
+  "subtitle": "Tvoji računi na platformama i njihovo stanje povezivanja. Povezuješ se prijavom izravno na platformi; pristupni tokeni spremaju se šifrirano na poslužitelju, nikad u pregledniku.",
   "credentialsLabel": "Pristupni podaci aplikacije",
   "accountLabel": "Račun",
   "lastPublishedLabel": "Posljednja objava",
   "lastErrorLabel": "Posljednja pogreška",
   "connectButton": "Poveži",
   "connectButtonUnavailable": "Poveži (još nije moguće)",
-  "connectButtonTitleNoCreds": "Pristupni podaci aplikacije još nedostaju",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY još nije postavljen",
+  "connectButtonTitleNoCreds": "Operater još nije postavio",
+  "connectButtonTitleNoEncryption": "Sigurno spremanje pristupnih tokena još nije postavljeno",
   "disconnectButton": "Prekini vezu",
   "disconnectConfirm": "Stvarno prekinuti vezu s ovim računom? Pristup se nakon toga mora ponovno uspostaviti preko „Poveži“.",
   "needsCredentialsNote": "Još nedostaje: unesi {idVar} i {secretVar} u Render.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Povezivanje nije uspjelo. Provjeri pristupne podatke i pokušaj ponovno.",
   "errorUnknownPlatform": "Nepoznata platforma.",
   "encryptionKeyMissingNotice": "Napomena: TOKEN_ENCRYPTION_KEY još nije postavljen — računi se mogu povezati tek kad se ta varijabla okruženja unese u Render.",
+  "connectedPageLabel": "Povezana stranica",
+  "facebookMultiplePages": "Pronađeno je više Facebook stranica ({count}) – povezana je „{name}“. Druga stranica? Prekinite vezu i pri ponovnom povezivanju u Facebook dijalogu odaberite samo željenu stranicu.",
+  "tokenExpiresOn": "Pristup istječe {date} – molimo ponovno povežite prije toga.",
+  "tokenExpiredOn": "Pristup je istekao {date} – molimo ponovno povežite.",
+  "tokenScheduledAfterExpiry": "Zakazane objave nakon datuma isteka: {count}. Bez ponovnog povezivanja neće biti objavljene.",
+  "reconnectButton": "Ponovno poveži",
   "composio": {
     "title": "Poveži račun putem Composio",
     "subtitle": "Alternativa izravnom povezivanju: prijaviš se na platformu, Composio čuva pristup, a SECRET 58 račun samo dodjeljuje tvom radnom prostoru. Trenutačno samo povezivanje i test pristupa za čitanje – time se ništa ne objavljuje.",
@@ -56,6 +62,10 @@
       "not_active": "Platforma nije potvrdila pristup ili je pristup odbijen.",
       "composio_error": "Composio nije bio dostupan ili je prijavio pogrešku. Pokušaj ponovno kasnije.",
       "unknown": "Povezivanje nije uspjelo."
-    }
-  }
+    },
+    "noPublishNotice": "Samo test veze – ovdje se ništa ne objavljuje. Test čitanja samo provjerava može li se račun čitati."
+  },
+  "needsCredentialsNoteCustomer": "Ovu platformu postavlja operater. Povezati se možeš čim bude postavljena.",
+  "errorNotConfiguredCustomer": "{platform}: operater još nije postavio ovu platformu. Povezati se možeš čim bude postavljena.",
+  "encryptionKeyMissingNoticeCustomer": "Povezivanje još nije moguće: operater još nije postavio sigurno spremanje pristupnih tokena."
 }

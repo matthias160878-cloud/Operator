@@ -23,8 +23,10 @@
     "analytics": "Analytics",
     "growth": "Growth",
     "weiterempfehlungen": "Referrals & Reach",
+    "reichweitenaufbau": "Audience Growth",
     "revenue": "Revenue",
     "inbox": "Inbox",
+    "anfragen": "Inquiries",
     "dateien": "Files",
     "agents": "Agents",
     "integrations": "Integrations",
@@ -79,14 +81,16 @@
     "ERROR": "Error",
     "REJECTED": "Rejected",
     "RECEIVED": "Received",
-    "PENDING": "Pending"
+    "PENDING": "Pending",
+    "NOT_AVAILABLE": "Not available yet"
   },
   "integrationStatus": {
     "notConfigured": "Not configured — missing variable(s): {vars}.",
     "verifyFailedGeneric": "Connection failed.",
     "verifyFailedStatus": "{service} responded with status {status}.",
     "verifyUnreachable": "{service} could not be reached.",
-    "connected": "Connected."
+    "connected": "Connected.",
+    "notAvailable": "Not available yet – this connection has not been built in the app yet."
   },
   "mediaPreview": {
     "expand": "View larger",

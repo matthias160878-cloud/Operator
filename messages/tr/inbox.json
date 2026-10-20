@@ -1,6 +1,6 @@
 {
   "title": "Gelen kutusu",
-  "description": "Tüm platformlardan mesajlar ve yorumlar. MessageAgent yanıt önerir — yalnızca onayladığın gönderilir. Henüz herhangi bir platforma gerçek bir OAuth bağlantısı yok; bu yüzden görüşmeler burada canlı çekilmek yerine elle simüle edilir.",
+  "description": "Mesajlar ve talepler tek bir yerde. MessageAgent yanıt taslakları önerir.",
   "emptyState": "Henüz görüşme yok — başlamak için bir tane simüle et.",
   "backToInbox": "Gelen kutusuna geri dön",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Gelen başka bir mesajı simüle et (gerçek platform bağlantısı olmadan test):",
     "messagePlaceholder": "Mesaj metni …",
     "addButton": "Ekle"
-  }
+  },
+  "simulationBanner": "<strong>Önizleme/simülasyon:</strong> platformlardan gelen mesajlar henüz alınmıyor ve yanıtlar gönderilmiyor – „Onayla ve gönder” ile bile. Denemek için platform mesajlarını burada simüle edebilirsin. Gerçek kayıtlar yalnızca web sitesi formlarından gelir (ör. randevu talepleri); bunları e-postayla yanıtlarsın."
 }

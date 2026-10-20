@@ -23,8 +23,10 @@
     "analytics": "Analytics",
     "growth": "Ανάπτυξη",
     "weiterempfehlungen": "Συστάσεις",
+    "reichweitenaufbau": "Ανάπτυξη απήχησης",
     "revenue": "Έσοδα",
     "inbox": "Εισερχόμενα",
+    "anfragen": "Αιτήματα",
     "dateien": "Αρχεία",
     "agents": "Πράκτορες",
     "integrations": "Ενσωματώσεις",
@@ -79,14 +81,16 @@
     "ERROR": "Σφάλμα",
     "REJECTED": "Απορρίφθηκε",
     "RECEIVED": "Ελήφθη",
-    "PENDING": "Σε εκκρεμότητα"
+    "PENDING": "Σε εκκρεμότητα",
+    "NOT_AVAILABLE": "Δεν είναι ακόμη διαθέσιμο"
   },
   "integrationStatus": {
     "notConfigured": "Δεν έχει ρυθμιστεί — λείπουν μεταβλητές: {vars}.",
     "verifyFailedGeneric": "Η σύνδεση απέτυχε.",
     "verifyFailedStatus": "Το {service} απάντησε με κατάσταση {status}.",
     "verifyUnreachable": "Δεν ήταν δυνατή η επικοινωνία με το {service}.",
-    "connected": "Συνδεδεμένο."
+    "connected": "Συνδεδεμένο.",
+    "notAvailable": "Δεν είναι ακόμη διαθέσιμο – αυτή η σύνδεση δεν έχει ακόμη υλοποιηθεί στην εφαρμογή."
   },
   "mediaPreview": {
     "expand": "Μεγέθυνση",

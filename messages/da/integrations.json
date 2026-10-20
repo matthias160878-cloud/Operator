@@ -1,6 +1,6 @@
 {
   "title": "Integrationer",
-  "description": "Livestatus for alle eksterne tjenester — udelukkende baseret på de miljøvariabler, der faktisk er sat. Ingen foregivne forbindelser.",
+  "description": "Livestatus for eksterne tjenester – kun forbindelser, der faktisk er opsat og kontrolleret, intet foregives.",
   "categories": {
     "AI": "AI-udbydere",
     "VOICE": "Voice",

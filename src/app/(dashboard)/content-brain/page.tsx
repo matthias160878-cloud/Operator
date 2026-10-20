@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
-import { currentTextProvider } from "@/lib/ai/textGenerator";
+import { kiAnbieterFuer } from "@/lib/ai/kundenKi";
 import { CampaignForm } from "@/components/content-brain/CampaignForm";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 
@@ -24,7 +24,7 @@ export default async function ContentBrainPage() {
         <p className="mt-1 max-w-2xl text-sm text-muted">{t("subtitle")}</p>
       </div>
 
-      <CampaignForm textProvider={currentTextProvider()} />
+      <CampaignForm textProvider={await kiAnbieterFuer(workspaceId)} />
 
       <div className="card p-5">
         <h2 className="mb-3 text-sm font-semibold text-foreground">{t("campaignsHeading")}</h2>

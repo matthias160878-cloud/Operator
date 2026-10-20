@@ -23,8 +23,10 @@
     "analytics": "Analytics",
     "growth": "Rast",
     "weiterempfehlungen": "Preporuke",
+    "reichweitenaufbau": "Izgradnja dosega",
     "revenue": "Prihodi",
     "inbox": "Inbox",
+    "anfragen": "Upiti",
     "dateien": "Datoteke",
     "agents": "Agenti",
     "integrations": "Integracije",
@@ -79,14 +81,16 @@
     "ERROR": "Pogreška",
     "REJECTED": "Odbijeno",
     "RECEIVED": "Primljeno",
-    "PENDING": "Na čekanju"
+    "PENDING": "Na čekanju",
+    "NOT_AVAILABLE": "Još nije dostupno"
   },
   "integrationStatus": {
     "notConfigured": "Nije konfigurirano — nedostaju varijable: {vars}.",
     "verifyFailedGeneric": "Povezivanje nije uspjelo.",
     "verifyFailedStatus": "{service} je odgovorio sa statusom {status}.",
     "verifyUnreachable": "{service} nije bilo moguće dosegnuti.",
-    "connected": "Povezano."
+    "connected": "Povezano.",
+    "notAvailable": "Još nije dostupno – ova veza u aplikaciji još nije izrađena."
   },
   "mediaPreview": {
     "expand": "Prikaži veće",

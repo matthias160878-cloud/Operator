@@ -1,6 +1,6 @@
 {
-  "title": "Agent Monitor",
-  "description": "Az összes SECRET 58 agent állapotukkal, utolsó feladatukkal és eredményükkel. Minden futás naplózva van.",
+  "title": "Az asszisztensek naplója",
+  "description": "A SECRET 58 összes asszisztense (ügynöke) állapottal, utolsó feladattal és eredménnyel. Minden futtatást itt naplózunk.",
   "table": {
     "agent": "Agent",
     "description": "Leírás",

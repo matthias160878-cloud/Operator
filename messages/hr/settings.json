@@ -1,6 +1,6 @@
 {
   "title": "Postavke",
-  "description": "Radni prostor, korisnici i informacije o sustavu. Pristupni podaci upravljaju se isključivo putem varijabli okruženja (vidi <code>.env.example</code>).",
+  "description": "Tvoj radni prostor, korisnici i pregled tvojih podataka. Vlastite API ključeve (AI tekstovi, slanje newslettera) unosiš pod <zugaenge>Vlastiti pristupi</zugaenge>; svoj paket nalaziš pod <billing>Paket i naplata</billing>.",
   "workspace": {
     "title": "Radni prostor",
     "name": "Naziv",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Korisnici i uloge",
-    "note": "Višekorisnički model podataka u potpunosti je pripremljen (izolacija radnog prostora za sve tablice). Stvarno sučelje za prijavu/autentifikaciju s više korisnika sljedeći je korak razvoja — trenutačno aplikacija radi upravo s ovim zadanim radnim prostorom."
+    "note": "Svaki račun ima vlastiti radni prostor, odvojen od drugih kupaca. Dodatne korisnike još ne možeš sam dodati."
   },
   "system": {
     "title": "Sustav",
@@ -17,7 +17,7 @@
     "campaigns": "Kampanje",
     "mediaAssets": "Medijski materijali",
     "agentRuns": "Pokretanja agenata",
-    "dbNote": "Baza podataka: SQLite (lokalno, <code>prisma/dev.db</code>) putem Prisma ORM-a. Za produkciju prebaci <codeSpaced>DATABASE_URL</codeSpaced> na Postgres/MySQL (prilagodi pružatelja u <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Broj unosa spremljenih u tvom radnom prostoru. Sve podatke možeš izvesti ili radni prostor izbrisati niže pod „Moji podaci”."
   },
   "onboarding": {
     "title": "Asistent za postavljanje",

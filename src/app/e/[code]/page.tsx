@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
+import { prisma } from "@/lib/db";
 import { istGueltigerCode } from "@/lib/reichweite/codes";
 import { MAX_STUFE, ereignisSpeichern, istZaehlbarerAufruf, oeffentlicherLink } from "@/lib/reichweite/service";
 import { empfehlungsUrl } from "@/lib/reichweite/teilen";
@@ -8,6 +9,8 @@ import { begleittexte } from "@/lib/reichweite/vorschlaege";
 import { seitenOrigin } from "@/lib/reichweite/origin";
 import { TeilenBereich } from "@/components/reichweite/TeilenBereich";
 import { AnfrageFormular, EigenerLink } from "@/components/reichweite/EmpfehlungAktionen";
+import { AnbieterFuss, NichtFreigeschaltet } from "@/components/reichweite/AnbieterFuss";
+import { newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Empfehlung", robots: { index: false, follow: false }, referrer: "no-referrer" };
@@ -34,9 +37,12 @@ export default async function EmpfehlungSeite({ params }: { params: Promise<{ co
     );
   }
 
+  if (!link.freigeschaltet) return <NichtFreigeschaltet />;
+
   if (istZaehlbarerAufruf(await headers())) await ereignisSpeichern(link, "AUFRUF");
   const url = empfehlungsUrl(await seitenOrigin(), link.code);
   const texte = begleittexte(link.kampagne.titel);
+  const newsletter = newsletterFreigeschaltet() && await prisma.newsletterSeite.findFirst({ where: { kampagneId: link.kampagneId, aktiv: true }, select: { code: true, titel: true } });
 
   return (
     <div className="min-h-screen bg-grid px-4 py-8">
@@ -50,7 +56,7 @@ export default async function EmpfehlungSeite({ params }: { params: Promise<{ co
           <div className="text-xs text-muted">Empfehlung</div>
           <h1 className="mt-1 text-xl font-semibold text-foreground">{link.kampagne.titel}</h1>
           {link.kampagne.text && <p className="mt-2 whitespace-pre-line text-sm text-muted">{link.kampagne.text}</p>}
-          {link.kampagne.zielUrl && (
+          {(link.angebotUrl || link.kampagne.zielUrl) && (
             <a
               href={`/e/${link.code}/weiter`}
               rel="nofollow noreferrer"
@@ -67,15 +73,24 @@ export default async function EmpfehlungSeite({ params }: { params: Promise<{ co
           <EigenerLink code={link.code} titel={link.kampagne.titel} texte={texte} darfErzeugen={link.stufe < MAX_STUFE} />
         </div>
 
+        {newsletter && (
+          <div className="card space-y-2 p-5">
+            <h2 className="text-sm font-semibold text-foreground">Newsletter (freiwillig)</h2>
+            <p className="text-sm text-muted">{newsletter.titel}</p>
+            <a href={`/n/${newsletter.code}?ref=${link.code}`} className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 text-sm text-foreground">
+              Zur Anmeldung
+            </a>
+          </div>
+        )}
+
         <div className="card space-y-3 p-5">
           <h2 className="text-sm font-semibold text-foreground">Frage stellen</h2>
-          <AnfrageFormular code={link.code} />
+          <AnfrageFormular code={link.code} anbieter={link.profil ? link.profil.firma || link.profil.anbieter : null} datenschutzUrl={link.profil?.datenschutzUrl ?? null} />
         </div>
 
-        <p className="px-1 text-[11px] text-muted">
+        <AnbieterFuss profil={link.profil} impressumHref={`/e/${link.code}/impressum`}>
           Diese Seite setzt keine Cookies und speichert keine Angaben zu dir. Gezählt wird nur, dass der Link geöffnet wurde – ohne Personenbezug.
-          {" "}<a href="/impressum" className="underline">Impressum</a>
-        </p>
+        </AnbieterFuss>
       </div>
     </div>
   );

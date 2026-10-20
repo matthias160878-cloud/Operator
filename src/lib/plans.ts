@@ -7,11 +7,13 @@
  *    IMMER aus dem Stripe-Preisobjekt (STRIPE_PRICE_ID_PRO / _MAXI). Der Code
  *    erfindet kein Intervall: ein wiederkehrender Stripe-Preis führt zu einem
  *    Abo, ein einmaliger zu einer Einmalzahlung.
- *  - netAmountCents: vom Betreiber bestätigte NETTO-Preise (7. Oktober 2026):
- *    Pro 590 €, Maxi 797 € — bereits nach 15 % Rabatt. Die Umsatzsteuer kommt
- *    je nach Land des Kunden hinzu (Stripe Tax, automatische Berechnung).
- *    Der Stripe-Preis muss genau diesen Nettobetrag mit tax_behavior
- *    "exclusive" haben, sonst verweigert der Checkout (src/lib/stripe.ts).
+ *  - netAmountCents: vom Betreiber bestätigte Preise (7. Oktober 2026):
+ *    Pro 590 €, Maxi 797 € — bereits nach 15 % Rabatt. Seit 20.10.2026
+ *    (Kleinunternehmer, § 19 UStG, siehe kleinunternehmer()) sind das
+ *    Endpreise ohne Umsatzsteuer; der Stripe-Preis muss genau diesen Betrag
+ *    mit tax_behavior "inclusive" (oder ohne Angabe) haben. Nur mit
+ *    UMSATZSTEUER_MODUS=REGEL gelten sie als Nettopreise mit tax_behavior
+ *    "exclusive" und Stripe Tax. Sonst verweigert der Checkout (src/lib/stripe.ts).
  *  - Ein durchgestrichener "Statt"-Preis wird bewusst NICHT angezeigt: Nach
  *    § 11 PAngV darf als Vergleich nur der niedrigste tatsächlich verlangte
  *    Preis der letzten 30 Tage dienen — ein solcher Preis existiert noch nicht.
@@ -151,6 +153,28 @@ export function packageTermsConfirmed(): boolean {
 }
 
 export const VAT_NOTE = "netto zzgl. Umsatzsteuer (je nach Land)";
+
+/**
+ * Umsatzsteuer-Modus des Betreibers. Standard: Kleinunternehmer nach § 19 UStG
+ * (bestätigt von Matthias am 20.10.2026) – Preise sind Endpreise, es wird keine
+ * Umsatzsteuer berechnet oder ausgewiesen. UMSATZSTEUER_MODUS=REGEL stellt auf
+ * Nettopreise zzgl. Umsatzsteuer (Stripe Tax) um.
+ */
+export function kleinunternehmer(): boolean {
+  return (process.env.UMSATZSTEUER_MODUS ?? "KLEINUNTERNEHMER").trim().toUpperCase() !== "REGEL";
+}
+
+export const KLEINUNTERNEHMER_NOTE = "Endpreis – gemäß § 19 UStG wird keine Umsatzsteuer berechnet";
+
+/** Preis-Hinweis für Verkaufsseite, Paketseite und Bestätigung. */
+export function steuerHinweis(): string {
+  return kleinunternehmer() ? KLEINUNTERNEHMER_NOTE : VAT_NOTE;
+}
+
+/** „Endpreis“ bzw. „netto“ – je nach Umsatzsteuer-Modus. */
+export function preisArt(): "Endpreis" | "netto" {
+  return kleinunternehmer() ? "Endpreis" : "netto";
+}
 
 /** Anzeigebetrag für Cent-Werte. */
 export function formatCents(cents: number, currency: string, locale = "de-DE"): string {

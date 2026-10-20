@@ -1,6 +1,6 @@
 {
   "title": "Integrasjoner",
-  "description": "Live-status for alle eksterne tjenester — utelukkende basert på miljøvariablene som faktisk er satt. Ingen oppdiktede tilkoblinger.",
+  "description": "Livestatus for eksterne tjenester – bare tilkoblinger som faktisk er satt opp og kontrollert, ingenting late som.",
   "categories": {
     "AI": "KI-leverandører",
     "VOICE": "Voice",

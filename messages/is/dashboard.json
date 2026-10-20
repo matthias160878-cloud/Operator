@@ -1,8 +1,7 @@
 {
   "viewAll": "Sýna allt",
   "demoBanner": {
-    "before": "Sýnigögn virk — herferðir, efnisatriði og greining eru dæmigögn úr ",
-    "after": ", ekki raunverulegar tölur af miðlum."
+    "text": "Sýnigögn virk – herferðir, efni og tölfræði í þessu vinnusvæði eru sýnigögn, ekki raunverulegar tölur frá miðlum."
   },
   "hero": {
     "subtitle": "Ein hugmynd. Margir miðlar. Hámarks útbreiðsla.",
@@ -26,8 +25,9 @@
     "published": "Birtingar",
     "views": "Áhorf",
     "avgEngagement": "Meðalþátttaka",
-    "totalRevenue": "Tekjur samtals",
-    "noComparisonWeek": "Engin fyrri vika til samanburðar enn — breytingahlutföll birtast þegar gögn ná yfir að minnsta kosti tvær vikur."
+    "totalRevenue": "Tekjur (skráðar handvirkt)",
+    "noComparisonWeek": "Engin fyrri vika til samanburðar enn — breytingahlutföll birtast þegar gögn ná yfir að minnsta kosti tvær vikur.",
+    "noStats": "Áhorf og þátttaka: engin tölfræði enn – tölfræði miðla er enn ekki sótt sjálfvirkt."
   },
   "production": {
     "title": "Efnisframleiðsla",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} tengt"
   },
   "agentMonitor": {
-    "title": "Eftirlit með fulltrúum",
+    "title": "Annáll aðstoðarmanna",
     "empty": "Engar keyrslur enn."
   },
   "topPerformer": {
     "title": "Best heppnað",
     "last7Days": "Síðustu 7 dagar",
-    "empty": "Engin frammistöðugögn enn.",
+    "empty": "Engin árangursgögn enn – tölfræði miðla er enn ekki sótt sjálfvirkt.",
     "views": "Áhorf",
     "likes": "Læk",
     "comments": "Athugasemdir",

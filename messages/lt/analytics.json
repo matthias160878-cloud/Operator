@@ -1,14 +1,15 @@
 {
   "title": "Analitika",
-  "subtitle": "Veiklos rodikliai iš tikrai turimų duomenų — kai tik platformos bus prijungtos, šis rodinys prisipildys tikrų reikšmių.",
+  "subtitle": "Platformų statistika (peržiūros, patiktukai, komentarai, pasidalijimai) dar negaunama automatiškai. Čia rodomos tik jau išsaugotos reikšmės, pvz., pavyzdiniai duomenys. Skaičius iš platformos statistikos gali įvesti rankiniu būdu skiltyje <weiter>Rekomendacijos</weiter> („Įvesti platformos skaičius“) arba <varianten>variantų palyginime</varianten> – jie vertinami ten, o ne šiame puslapyje.",
   "statViewsTotal": "Peržiūros iš viso",
   "statLikesTotal": "Patiktukai iš viso",
   "statComments": "Komentarai",
   "statShares": "Pasidalijimai",
   "chartTitle": "Turinio veikla laikui bėgant",
   "chartLegend": "Peržiūros (violetinė) · įsitraukimas % (turkio)",
-  "chartEmpty": "Analitikos duomenų dar nėra.",
+  "chartEmpty": "Statistikos dar nėra – eiga neprieinama.",
   "bestPerformingTitle": "Geriausiai veikiantis turinys",
-  "bestPerformingEmpty": "Duomenų dar nėra.",
-  "learningAgentTitle": "Learning Agent — rekomendacijos"
+  "bestPerformingEmpty": "Statistikos dar nėra – reitingas negalimas.",
+  "learningAgentTitle": "Learning Agent — rekomendacijos",
+  "statsEmpty": "Statistika dar neišsaugota – todėl čia dar nėra rodiklių. Platformų statistika dar negaunama automatiškai."
 }

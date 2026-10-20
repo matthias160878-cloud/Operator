@@ -1,6 +1,6 @@
 {
   "title": "Integrazioni",
-  "description": "Stato in tempo reale di tutti i servizi esterni, basato esclusivamente sulle variabili d'ambiente effettivamente impostate. Nessuna connessione simulata.",
+  "description": "Stato in tempo reale dei servizi esterni: solo connessioni realmente configurate e verificate, nulla viene simulato.",
   "categories": {
     "AI": "Fornitori di IA",
     "VOICE": "Voce",

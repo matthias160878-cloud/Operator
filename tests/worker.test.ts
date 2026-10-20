@@ -149,3 +149,20 @@ test("Klick-Versand läuft gerade → Auftrag wartet auf den nächsten Durchlauf
   assert.equal(await worker.processJob(job.id, ""), "REQUEUED");
   assert.equal((await prisma.publishJob.findUniqueOrThrow({ where: { id: job.id } })).status, "QUEUED");
 });
+
+test("Pausierte Automatik: fällige Aufträge bleiben stehen und laufen nach dem Fortsetzen genau einmal", async () => {
+  const { automatikSetzen } = await import("@/lib/automatik");
+  const ws = await setup();
+  const { job } = await scheduled(ws, past());
+  await automatikSetzen(ws, true);
+  const vorher = linkedInCalls;
+  await worker.tick("");
+  assert.equal(await worker.processJob(job.id, ""), "REQUEUED");
+  assert.equal(linkedInCalls, vorher, "pausiert: nichts gesendet");
+  assert.equal((await prisma.publishJob.findUniqueOrThrow({ where: { id: job.id } })).status, "QUEUED");
+  await automatikSetzen(ws, false);
+  await worker.tick("");
+  await worker.tick("");
+  assert.equal(linkedInCalls, vorher + 1, "nach dem Fortsetzen genau ein Versand");
+  assert.equal((await prisma.publishJob.findUniqueOrThrow({ where: { id: job.id } })).status, "SUCCEEDED");
+});

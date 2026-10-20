@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs Voice Engine — immaniġġja l-Voice Library, oħloq previews tal-voiceover u importa Voices.",
-  "envWarning": "ElevenLabs għadu mhux ikkonfigurat. Daħħal <envKey>ELEVENLABS_API_KEY</envKey> f'<envFile>.env</envFile> biex tuża l-voiceover u l-importazzjoni tal-Voice. Il-Voice Library tista' tintuża xorta għall-ippjanar.",
+  "envWarning": "Il-voiceover għadu mhux disponibbli: l-operatur jissettja s-servizz tal-vuċi (ElevenLabs). Tista' diġà tuża l-librerija tal-vuċijiet għall-ippjanar.",
   "addManual": "Oħloq Voice manwalment",
   "importFromElevenLabs": "Importa minn ElevenLabs",
   "form": {

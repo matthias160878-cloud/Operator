@@ -30,6 +30,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ cod
   }
   const link = await oeffentlicherLink(code);
   if (!link || !link.aktiv) return NextResponse.json({ error: "Dieser Link ist nicht mehr aktiv." }, { status: 404 });
+  if (!link.freigeschaltet) return NextResponse.json({ error: "Diese Seite ist noch nicht freigeschaltet." }, { status: 403 });
   if (!(await hitRateLimit(`empf-anfrage-link:${link.id}`, 30, 3600))) {
     return NextResponse.json({ error: "Zu viele Anfragen in kurzer Zeit. Bitte später erneut versuchen." }, { status: 429 });
   }

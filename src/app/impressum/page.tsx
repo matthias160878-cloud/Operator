@@ -23,7 +23,7 @@ export default function ImpressumPage() {
             <section>
               <h2 className="font-semibold">Diensteanbieter</h2>
               <p>{i.firma ?? i.anbieter}</p>
-              {i.firma && <p>Vertreten durch: {i.anbieter}</p>}
+              {i.firma && <p>{i.register ? "Vertreten durch" : "Inhaber"}: {i.anbieter}</p>}
               {i.anschrift.map((z) => (
                 <p key={z}>{z}</p>
               ))}
@@ -34,11 +34,22 @@ export default function ImpressumPage() {
                 E-Mail: <a className="underline" href={`mailto:${i.email}`}>{i.email}</a>
               </p>
               {i.telefon && <p>Telefon: {i.telefon}</p>}
+              {i.kontaktUrl && (
+                <p>
+                  Kontaktformular: <a className="underline" href={i.kontaktUrl}>{i.kontaktUrl.startsWith("/") ? "Anfrage stellen" : i.kontaktUrl}</a>
+                </p>
+              )}
             </section>
             {i.ustId && (
               <section>
                 <h2 className="font-semibold">Umsatzsteuer-Identifikationsnummer</h2>
                 <p>gemäß § 27 a Umsatzsteuergesetz: {i.ustId}</p>
+              </section>
+            )}
+            {!i.ustId && i.umsatzsteuer && (
+              <section>
+                <h2 className="font-semibold">Umsatzsteuer</h2>
+                <p>{i.umsatzsteuer}</p>
               </section>
             )}
             {i.register && (
@@ -69,7 +80,7 @@ export default function ImpressumPage() {
           <Link href="/buy" className="text-accent-2 underline">Zurück</Link>
         </p>
       </div>
-      <LegalFooter />
+      <LegalFooter installieren startseite />
     </div>
   );
 }

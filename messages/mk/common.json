@@ -23,8 +23,10 @@
     "analytics": "Analytics",
     "growth": "Раст",
     "weiterempfehlungen": "Препораки",
+    "reichweitenaufbau": "Градење досег",
     "revenue": "Приходи",
     "inbox": "Сандаче",
+    "anfragen": "Барања",
     "dateien": "Датотеки",
     "agents": "Агенти",
     "integrations": "Интеграции",
@@ -79,14 +81,16 @@
     "ERROR": "Грешка",
     "REJECTED": "Одбиено",
     "RECEIVED": "Примено",
-    "PENDING": "Во очекување"
+    "PENDING": "Во очекување",
+    "NOT_AVAILABLE": "Сè уште не е достапно"
   },
   "integrationStatus": {
     "notConfigured": "Не е конфигурирано — недостасуваат променливи: {vars}.",
     "verifyFailedGeneric": "Врската не успеа.",
     "verifyFailedStatus": "{service} одговори со статус {status}.",
     "verifyUnreachable": "{service} не можеше да се достигне.",
-    "connected": "Поврзано."
+    "connected": "Поврзано.",
+    "notAvailable": "Сè уште не е достапно – оваа врска сè уште не е изградена во апликацијата."
   },
   "mediaPreview": {
     "expand": "Прикажи поголемо",

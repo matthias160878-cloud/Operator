@@ -16,7 +16,10 @@
     "statusInProgress": "In Arbeit",
     "statusUsed": "Verwendet",
     "statusArchived": "Archiviert",
-    "sourceAiGenerated": "KI-generiert",
-    "sourceManual": "Manuell"
+    "sourceAiGenerated": "IdeaAgent (KI oder Vorlage)",
+    "sourceManual": "Manuell",
+    "templateResult": "Vorlage: Die eben erzeugten Ideen stammen aus festen Textbausteinen, nicht von einer KI. Für KI-Ideen einen eigenen KI-Schlüssel unter „Einstellungen → Eigene Zugänge“ eintragen.",
+    "textEngineLabel": "Text-Engine:",
+    "templateMode": "Template-Modus (kein KI-Provider konfiguriert)"
   }
 }

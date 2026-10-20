@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs Voice Engine — hantera Voice Library, skapa förhandsvisningar av voiceover och importera röster.",
-  "envWarning": "ElevenLabs är inte konfigurerat än. Lägg in <envKey>ELEVENLABS_API_KEY</envKey> i <envFile>.env</envFile> för att använda voiceover och röstimport. Voice Library kan ändå användas för planering.",
+  "envWarning": "Voiceover är inte tillgängligt ännu: operatören konfigurerar rösttjänsten (ElevenLabs). Du kan redan använda röstbiblioteket för planering.",
   "addManual": "Skapa röst manuellt",
   "importFromElevenLabs": "Importera från ElevenLabs",
   "form": {

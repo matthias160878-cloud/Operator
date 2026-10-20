@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs balso variklis — tvarkyk balsų biblioteką, kurk balso įrašų peržiūras ir importuok balsus.",
-  "envWarning": "ElevenLabs dar nesukonfigūruotas. Įrašyk <envKey>ELEVENLABS_API_KEY</envKey> į <envFile>.env</envFile>, kad galėtum naudoti balso įrašus ir balsų importą. Balsų biblioteką vis tiek galima naudoti planavimui.",
+  "envWarning": "Įgarsinimas dar negalimas: balso paslaugą (ElevenLabs) nustato operatorius. Balsų biblioteką jau galite naudoti planavimui.",
   "addManual": "Pridėti balsą rankiniu būdu",
   "importFromElevenLabs": "Importuoti iš ElevenLabs",
   "form": {

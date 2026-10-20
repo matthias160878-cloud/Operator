@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Platform accounts and their connection status. Credentials are managed exclusively as server-side environment variables and are never stored in the frontend. Access tokens are encrypted before being stored in the database once connected.",
+  "subtitle": "Your platform accounts and their connection status. You connect by signing in directly with the platform; access tokens are stored encrypted on the server, never in the browser.",
   "credentialsLabel": "App credentials",
   "accountLabel": "Account",
   "lastPublishedLabel": "Last published",
   "lastErrorLabel": "Last error",
   "connectButton": "Connect",
   "connectButtonUnavailable": "Connect (not possible yet)",
-  "connectButtonTitleNoCreds": "App credentials missing",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY not set yet",
+  "connectButtonTitleNoCreds": "Not set up by the operator yet",
+  "connectButtonTitleNoEncryption": "Secure storage of access tokens is not set up yet",
   "disconnectButton": "Disconnect",
   "disconnectConfirm": "Really disconnect this account? You'll need to reconnect it via \"Connect\" afterwards.",
   "needsCredentialsNote": "Still missing: set {idVar} and {secretVar} in Render.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Connection failed. Check the credentials and try again.",
   "errorUnknownPlatform": "Unknown platform.",
   "encryptionKeyMissingNotice": "Note: TOKEN_ENCRYPTION_KEY is not set yet — accounts can only be connected once this environment variable is set in Render.",
+  "connectedPageLabel": "Connected page",
+  "facebookMultiplePages": "Several Facebook pages found ({count}) – connected is “{name}”. Different page? Disconnect and, when reconnecting, select only the page you want in the Facebook dialog.",
+  "tokenExpiresOn": "Access expires on {date} – please reconnect before then.",
+  "tokenExpiredOn": "Access expired on {date} – please reconnect.",
+  "tokenScheduledAfterExpiry": "Scheduled posts after the expiry date: {count}. Without reconnecting they will not be published.",
+  "reconnectButton": "Reconnect",
   "composio": {
     "title": "Connect an account via Composio",
     "subtitle": "Alternative to the direct connection: you sign in at the platform, Composio holds the access, SECRET 58 only links the account to your workspace. Currently connect and read-only access test only – nothing is published this way.",
@@ -56,6 +62,10 @@
       "not_active": "The platform did not confirm access or it was declined.",
       "composio_error": "Composio was unreachable or reported an error. Please try again later.",
       "unknown": "Connection failed."
-    }
-  }
+    },
+    "noPublishNotice": "Only a connection test – nothing is published here. The read test only checks whether the account can be read."
+  },
+  "needsCredentialsNoteCustomer": "This platform is set up by the operator. You can connect as soon as it is set up.",
+  "errorNotConfiguredCustomer": "{platform}: the operator has not set up this platform yet. You can connect as soon as it is set up.",
+  "encryptionKeyMissingNoticeCustomer": "Connecting is not possible yet: the operator has not set up secure storage of access tokens yet."
 }

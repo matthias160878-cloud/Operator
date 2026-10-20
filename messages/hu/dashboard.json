@@ -1,8 +1,7 @@
 {
   "viewAll": "Összes megjelenítése",
   "demoBanner": {
-    "before": "A demóadatok aktívak — a kampányok, tartalomelemek és analitikák példaadatok innen: ",
-    "after": ", nem valódi platformszámok."
+    "text": "Mintaadatok aktívak – a munkaterület kampányai, tartalmai és statisztikái mintaadatok, nem valódi platformszámok."
   },
   "hero": {
     "subtitle": "Egy ötlet. Több platform. Maximális elérés.",
@@ -26,8 +25,9 @@
     "published": "Közzétételek",
     "views": "Megtekintések",
     "avgEngagement": "Ø elköteleződés",
-    "totalRevenue": "Bevétel összesen",
-    "noComparisonWeek": "Még nincs előző hét összehasonlítási alapként — a változási arányok akkor jelennek meg, ha legalább két hétről vannak adatok."
+    "totalRevenue": "Bevételek (kézzel rögzítve)",
+    "noComparisonWeek": "Még nincs előző hét összehasonlítási alapként — a változási arányok akkor jelennek meg, ha legalább két hétről vannak adatok.",
+    "noStats": "Megtekintések és elköteleződés: még nincs statisztika – a platformstatisztikák lekérése még nem automatikus."
   },
   "production": {
     "title": "Tartalomgyártás",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} csatlakoztatva"
   },
   "agentMonitor": {
-    "title": "Agent Monitor",
+    "title": "Az asszisztensek naplója",
     "empty": "Még nincsenek futások."
   },
   "topPerformer": {
     "title": "Top teljesítők",
     "last7Days": "Elmúlt 7 nap",
-    "empty": "Még nincsenek teljesítményadatok.",
+    "empty": "Még nincsenek teljesítményadatok – a platformstatisztikák lekérése még nem automatikus.",
     "views": "Megtekintések",
     "likes": "Kedvelések",
     "comments": "Hozzászólások",

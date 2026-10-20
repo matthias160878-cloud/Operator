@@ -12,7 +12,7 @@
       "title": "L-ewwel passi",
       "description": "Agħmel dawn it-tliet affarijiet l-ewwel, u mbagħad l-agenti tal-AI kollha jaħdmu b'dejta reali minflok placeholders.",
       "steps": [
-        "Taħt “Integrazzjonijiet” iċċekkja jekk hux imwaqqaf fornitur tal-AI. Il-funzjonijiet tal-AI jaħdmu permezz tal-aċċessi tal-operatur, għalhekk ma teħtieġx abbonament tal-AI tiegħek. Mingħajr fornitur tal-AI, l-app taħdem fil-modalità tal-mudelli.",
+        "Taħt \"Settings → Aċċessi tiegħi\" daħħal iċ-ċavetta tal-IA tiegħek minn Anthropic, OpenAI jew Gemini. Il-funzjonijiet tal-IA jużaw biss iċ-ċavetta tiegħek; il-fornitur tal-IA jibgħatlek il-kont direttament. Mingħajr ċavetta tiegħek, l-app taħdem fil-modalità tal-mudelli b'blokki tat-test fissi.",
         "Taħt “Brand DNA” imla l-marka tiegħek stess (ton, udjenza fil-mira, valuri) — l-agenti tal-AI jużaw dan għal kull test iġġenerat.",
         "Taħt “Idejat u Ispirazzjoni” jew “Content Brain” ħalli jinħolqu l-ewwel idea jew kampanja."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics u Tkabbir",
       "description": "Numri reali dwar il-prestazzjoni tiegħek stess — u rakkomandazzjonijiet minflok awtomatizzazzjoni.",
       "steps": [
-        "Analytics juri biss dejta tal-prestazzjoni reali, importata jew imdaħħla manwalment.",
+        "Analytics juri biss statistika ssejvjata (eż. dejta ta' kampjun). L-istatistika tal-pjattaformi għadha ma tinġabarx awtomatikament; in-numri ddaħħalhom manwalment taħt \"Rakkomandazzjonijiet\" jew fil-paragun tal-varjanti – hemmhekk jiġu evalwati.",
         "Il-paġna tat-Tkabbir tikkalkula minn din id-dejta l-aqwa ħinijiet biex tippostja, hashtags b'suċċess u formats.",
         "Importanti: apposta m'hemm l-ebda żieda awtomatizzata ta' segwaċi/engagement (l-ebda mgħiba ta' bot) — dan ikun kontra t-termini tal-użu ta' kull pjattaforma."
       ]
@@ -59,9 +59,9 @@
       "title": "Inbox",
       "description": "Abbozzi ta' tweġibiet bl-AI għal messaġġi — b'approvazzjoni qabel l-ibgħat.",
       "steps": [
-        "Peress li (għadha) ma hemm l-ebda pjattaforma konnessa permezz ta' OAuth, il-konversazzjonijiet bħalissa jinħolqu manwalment minflok ma jinġabru live.",
+        "Il-messaġġi mill-pjattaformi għadhom ma jinġabrux u t-tweġibiet ma jintbagħtux. Biex tipprova, toħloq konversazzjonijiet bħala simulazzjoni.",
         "MessageAgent jipproponi tweġiba abbażi tal-Brand DNA u l-andament tal-konversazzjoni.",
-        "L-abbozz irid jiġi eżaminat u approvat manwalment qabel ma jitqies bħala mibgħut — ibgħat reali mingħajr konnessjoni ma' pjattaforma tfalli onestament, minflok ma tiffinta suċċess."
+        "Int tiċċekkja u tapprova l-abbozz. Il-bgħit lill-pjattaformi għadu mhux mibni – \"Approva u ibgħat\" jirrapporta dan b'onestà bħala żball minflok ma jippretendi suċċess."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Minn fejn jiġi kull status ta' konnessjoni u fejn jiddaħħlu ċ-ċwievet xierqa.",
       "steps": [
         "Kull ringiela turi l-istatus reali, ivverifikat live — qatt konnessjoni ffintata.",
-        "Fil-każ ta' “Mhux ikkonfigurat”, “Ikseb iċ-ċavetta API” iwassal għall-paġna uffiċjali tal-fornitur.",
-        "Id-dettalji tal-aċċess qatt ma jinħażnu fil-browser, imma biss protetti fuq is-server. Jekk aċċess ikun nieqes, l-operatur iwaqqfu.",
-        "Spejjeż: Pro u Maxi huma abbonamenti, ta' kull xahar jew ta' kull sena. Il-prezzijiet kurrenti jinsabu taħt “Pakkett u Fatturar”. Kull fornitur estern għandu l-mudell tal-ispejjeż tiegħu stess, indipendenti (b'xejn / skont l-użu / abbonament) — fuq il-paġna tal-Integrazzjonijiet, għal kull servizz jingħad liema mudell japplika, b'rabta mal-prezzijiet kurrenti mal-fornitur."
+        "L-aċċessi tiegħek (ċwievet tal-IA, Resend għall-newsletter) iddaħħalhom taħt \"Settings → Aċċessi tiegħi\" – gwida hemmhekk tieħdok għall-paġna uffiċjali taċ-ċwievet tal-fornitur.",
+        "Id-dettalji tal-aċċess qatt ma jinħażnu fil-browser, iżda biss kriptati fuq is-server. L-output tal-vuċi u l-aċċessi tal-app tal-pjattaformi jissettjahom l-operatur; \"Għadu mhux disponibbli\" ifisser li l-konnessjoni għadha mhix mibnija fl-app.",
+        "Spejjeż: Pro u Maxi huma abbonamenti, kull xahar jew kull sena. Il-prezzijiet attwali jinsabu taħt \"Pakkett u Fatturar\". Għall-aċċessi tiegħek (IA, Resend), kull fornitur jibgħatlek il-kont direttament skont il-mudell tal-prezzijiet tiegħu – SECRET 58 ma jiċċarġja xejn żejjed għal dan."
       ]
     }
   }

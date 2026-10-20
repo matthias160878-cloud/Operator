@@ -16,7 +16,10 @@
     "statusInProgress": "Vykdoma",
     "statusUsed": "Panaudota",
     "statusArchived": "Archyvuota",
-    "sourceAiGenerated": "Sugeneruota DI",
-    "sourceManual": "Rankiniu būdu"
+    "sourceAiGenerated": "IdeaAgent (DI arba šablonas)",
+    "sourceManual": "Rankiniu būdu",
+    "templateResult": "Šablonas: ką tik sukurtos idėjos paimtos iš fiksuotų teksto blokų, o ne sukurtos DI. DI idėjoms įvesk savo DI raktą skiltyje „Nustatymai → Savos prieigos“.",
+    "textEngineLabel": "Teksto variklis:",
+    "templateMode": "Šablono režimas (DI tiekėjas nesukonfigūruotas)"
   }
 }

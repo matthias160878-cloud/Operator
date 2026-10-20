@@ -23,8 +23,10 @@
     "analytics": "Analytiikka",
     "growth": "Kasvu",
     "weiterempfehlungen": "Suositukset",
+    "reichweitenaufbau": "Tavoittavuuden kasvatus",
     "revenue": "Tulot",
     "inbox": "Saapuneet",
+    "anfragen": "Yhteydenotot",
     "dateien": "Tiedostot",
     "agents": "Agentit",
     "integrations": "Integraatiot",
@@ -79,14 +81,16 @@
     "ERROR": "Virhe",
     "REJECTED": "Hylätty",
     "RECEIVED": "Saatu",
-    "PENDING": "Odottaa"
+    "PENDING": "Odottaa",
+    "NOT_AVAILABLE": "Ei vielä saatavilla"
   },
   "integrationStatus": {
     "notConfigured": "Ei määritetty — puuttuvat muuttujat: {vars}.",
     "verifyFailedGeneric": "Yhteys epäonnistui.",
     "verifyFailedStatus": "{service} vastasi tilalla {status}.",
     "verifyUnreachable": "Palveluun {service} ei saatu yhteyttä.",
-    "connected": "Yhdistetty."
+    "connected": "Yhdistetty.",
+    "notAvailable": "Ei vielä saatavilla – tätä yhteyttä ei ole vielä rakennettu sovellukseen."
   },
   "mediaPreview": {
     "expand": "Näytä suurempana",

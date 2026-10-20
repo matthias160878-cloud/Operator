@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs ses motoru — ses kütüphanesini yönet, seslendirme önizlemeleri üret ve sesleri içe aktar.",
-  "envWarning": "ElevenLabs henüz yapılandırılmadı. Seslendirme ve ses içe aktarmayı kullanmak için <envKey>ELEVENLABS_API_KEY</envKey> değerini <envFile>.env</envFile> dosyasına gir. Ses kütüphanesi yine de planlama için kullanılabilir.",
+  "envWarning": "Seslendirme henüz kullanılamıyor: ses hizmetini (ElevenLabs) işletmeci kurar. Ses kitaplığını planlama için şimdiden kullanabilirsiniz.",
   "addManual": "Sesi elle ekle",
   "importFromElevenLabs": "ElevenLabs'tan içe aktar",
   "form": {

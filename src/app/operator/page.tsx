@@ -39,12 +39,13 @@ export default async function OperatorPage() {
   const user = await getSessionUser();
   if (!user?.isOperator) redirect("/");
   const o = await getOperatorOverview();
-  const [termine, chatFragen, newsletterStand, newsletterAktiv, promoCodes] = await Promise.all([
+  const [termine, chatFragen, newsletterStand, newsletterAktiv, promoCodes, offeneKuendigungen] = await Promise.all([
     upcomingAppointments(),
     prisma.websiteChatEntry.findMany({ orderBy: { createdAt: "desc" }, take: 10 }),
     prisma.newsletterSubscriber.groupBy({ by: ["status"], _count: { _all: true } }),
     prisma.newsletterSubscriber.findMany({ where: { status: "ACTIVE" }, orderBy: { confirmedAt: "desc" }, take: 50 }),
     listPromoCodes(),
+    prisma.kuendigung.count({ where: { bearbeitetAm: null } }),
   ]);
   const nlCount = (st: string) => newsletterStand.find((n) => n.status === st)?._count._all ?? 0;
 
@@ -71,6 +72,9 @@ export default async function OperatorPage() {
           <Link href="/operator/dateien" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">
             Dateiaustausch
           </Link>
+          <Link href="/operator/kuendigungen" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">
+            Kündigungen
+          </Link>
           <Link href="/operator/hermes-pilot" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">
             Hermes (Pilot)
           </Link>
@@ -80,6 +84,17 @@ export default async function OperatorPage() {
           <LogoutButton />
         </div>
       </div>
+
+      {offeneKuendigungen > 0 && (
+        <Link
+          href="/operator/kuendigungen"
+          data-testid="offene-kuendigungen"
+          className="block rounded-xl border border-red-500/60 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+        >
+          <span className="font-semibold">{offeneKuendigungen === 1 ? "1 offene Kündigung" : `${offeneKuendigungen} offene Kündigungen`}</span>
+          {" "}– bitte in Stripe umsetzen und als bearbeitet markieren. Zu den Kündigungen →
+        </Link>
+      )}
 
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div className="card p-4">
@@ -199,7 +214,7 @@ export default async function OperatorPage() {
         )}
       </section>
       <PromoCodesPanel initial={promoCodes.map((c) => ({ ...c, createdAt: c.createdAt.toISOString() }))} />
-      <LegalFooter />
+      <LegalFooter installieren />
     </div>
   );
 }

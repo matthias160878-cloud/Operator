@@ -1,8 +1,7 @@
 {
   "viewAll": "Skatīt visu",
   "demoBanner": {
-    "before": "Demonstrācijas dati aktīvi — kampaņas, satura vienības un Analytics ir piemēru dati no ",
-    "after": ", nevis īsti platformu skaitļi."
+    "text": "Parauga dati ir aktīvi – šīs darba telpas kampaņas, saturs un statistika ir parauga dati, nevis īsti platformu skaitļi."
   },
   "hero": {
     "subtitle": "Viena ideja. Vairākas platformas. Maksimāls sasniegums.",
@@ -26,8 +25,9 @@
     "published": "Publikācijas",
     "views": "Skatījumi",
     "avgEngagement": "Vid. iesaiste",
-    "totalRevenue": "Kopējie ieņēmumi",
-    "noComparisonWeek": "Iepriekšējās nedēļas salīdzinājuma bāzes vēl nav — izmaiņu rādītāji parādīsies, tiklīdz būs dati vismaz par divām nedēļām."
+    "totalRevenue": "Ieņēmumi (ievadīti manuāli)",
+    "noComparisonWeek": "Iepriekšējās nedēļas salīdzinājuma bāzes vēl nav — izmaiņu rādītāji parādīsies, tiklīdz būs dati vismaz par divām nedēļām.",
+    "noStats": "Skatījumi un iesaiste: statistikas vēl nav – platformu statistika vēl netiek iegūta automātiski."
   },
   "production": {
     "title": "Satura ražošana",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} pievienoti"
   },
   "agentMonitor": {
-    "title": "Aģentu monitors",
+    "title": "Asistentu žurnāls",
     "empty": "Palaišanu vēl nav."
   },
   "topPerformer": {
     "title": "Labākie rezultāti",
     "last7Days": "Pēdējās 7 dienas",
-    "empty": "Veiktspējas datu vēl nav.",
+    "empty": "Snieguma datu vēl nav – platformu statistika vēl netiek iegūta automātiski.",
     "views": "Skatījumi",
     "likes": "Patīk atzīmes",
     "comments": "Komentāri",

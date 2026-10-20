@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs voice engine — manage the voice library, generate voiceover previews and import voices.",
-  "envWarning": "ElevenLabs is not configured yet. Add <envKey>ELEVENLABS_API_KEY</envKey> to <envFile>.env</envFile> to use voiceover and voice import. The voice library can still be used for planning in the meantime.",
+  "envWarning": "Voiceover is not available yet: the operator sets up the voice service (ElevenLabs). You can still use the voice library for planning.",
   "addManual": "Add voice manually",
   "importFromElevenLabs": "Import from ElevenLabs",
   "form": {

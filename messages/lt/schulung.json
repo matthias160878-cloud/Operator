@@ -12,7 +12,7 @@
       "title": "Pirmieji žingsniai",
       "description": "Pirmiausia atlik šiuos tris dalykus, tada visi DI agentai dirbs su tikrais duomenimis, o ne su vietos žymėjimais.",
       "steps": [
-        "Skiltyje „Integracijos“ patikrink, ar nustatytas DI tiekėjas. DI funkcijos veikia per operatoriaus prieigas, todėl tau nereikia savo DI prenumeratos. Be DI tiekėjo programa veikia šablonų režimu.",
+        "Skiltyje „Nustatymai → Savos prieigos“ įvesk savo DI raktą iš Anthropic, OpenAI arba Gemini. DI funkcijos naudoja tik tavo raktą; DI teikėjas sąskaitas išrašo tiesiogiai tau. Be savo rakto programa veikia šablonų režimu su fiksuotais teksto blokais.",
         "Skiltyje „Brand DNA“ užpildyk savo prekės ženklą (tonas, tikslinė auditorija, vertybės) — DI agentai tai naudoja kiekvienam sugeneruotam tekstui.",
         "Skiltyje „Idėjos ir įkvėpimas“ arba „Content Brain“ leisk sukurti pirmąją idėją arba kampaniją."
       ]
@@ -50,7 +50,7 @@
       "title": "Analitika ir augimas",
       "description": "Tikri skaičiai apie savo veiklą — ir rekomendacijos, o ne automatizavimas.",
       "steps": [
-        "Analitikoje rodomi tik tikri, importuoti arba rankiniu būdu įvesti veiklos duomenys.",
+        "Analytics rodo tik išsaugotą statistiką (pvz., pavyzdinius duomenis). Platformų statistika dar negaunama automatiškai; skaičius rankiniu būdu įvedi skiltyje „Rekomendacijos“ arba variantų palyginime – ten jie ir vertinami.",
         "Augimo puslapis iš šių duomenų apskaičiuoja geriausius publikavimo laikus, sėkmingas žymas (hashtag) ir formatus.",
         "Svarbu: sąmoningai nėra automatizuoto sekėjų / įsitraukimo didinimo (jokio bot elgesio) — tai pažeistų kiekvienos platformos naudojimo sąlygas."
       ]
@@ -59,9 +59,9 @@
       "title": "Gautieji",
       "description": "DI atsakymų juodraščiai žinutėms — su patvirtinimu prieš siunčiant.",
       "steps": [
-        "Kadangi (dar) nėra jokios platformos, prijungtos per OAuth, pokalbiai šiuo metu kuriami rankiniu būdu, o ne gaunami tiesiogiai.",
+        "Žinutės iš platformų dar negaunamos, o atsakymai nesiunčiami. Norėdamas išbandyti, pokalbius kuri kaip simuliaciją.",
         "MessageAgent siūlo atsakymą pagal Brand DNA ir pokalbio eigą.",
-        "Juodraštį reikia rankiniu būdu peržiūrėti ir patvirtinti, kad jis būtų laikomas išsiųstu — tikras siuntimas be ryšio su platforma sąžiningai nepavyksta, o ne apsimetama, kad pavyko."
+        "Juodraštį peržiūri ir patvirtini tu. Siuntimas į platformas dar nesukurtas – „Patvirtinti ir siųsti“ sąžiningai praneša apie tai kaip apie klaidą, užuot apsimetęs sėkme."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Iš kur imama kiekviena ryšio būsena ir kur įrašomas tinkamas raktas.",
       "steps": [
         "Kiekvienoje eilutėje rodoma tikra, realiuoju laiku patikrinta būsena — niekada apsimestinis ryšys.",
-        "Kai rodoma „Nesukonfigūruota“, „Gauti API raktą“ nuveda į oficialų tiekėjo puslapį.",
-        "Prieigos duomenys niekada nesaugomi naršyklėje, tik apsaugoti serveryje. Jei trūksta prieigos, ją nustato operatorius.",
-        "Išlaidos: Pro ir Maxi yra prenumeratos, mėnesinės arba metinės. Dabartinės kainos pateiktos skiltyje „Paketas ir apmokėjimas“. Kiekvienas išorinis tiekėjas turi savo, nepriklausomą kainodarą (nemokama / pagal naudojimą / prenumerata) — Integracijų puslapyje prie kiekvienos paslaugos nurodyta, koks modelis taikomas, su nuoroda į dabartines kainas pas tiekėją."
+        "Savas prieigas (DI raktus, Resend naujienlaiškiui) įvedi skiltyje „Nustatymai → Savos prieigos“ – ten vedlys nuveda į oficialų teikėjo raktų puslapį.",
+        "Prisijungimo duomenys niekada nesaugomi naršyklėje, tik užšifruoti serveryje. Balso išvestį ir platformų programų prieigas nustato operatorius; „Dar neprieinama“ reiškia, kad ryšys programoje dar nesukurtas.",
+        "Išlaidos: Pro ir Maxi yra prenumeratos, mėnesinės arba metinės. Dabartinės kainos pateikiamos skiltyje „Paketas ir apmokėjimas“. Už tavo savas prieigas (DI, Resend) kiekvienas teikėjas sąskaitą išrašo tiesiogiai tau pagal savo kainodarą – SECRET 58 už tai papildomai nieko neima."
       ]
     }
   }

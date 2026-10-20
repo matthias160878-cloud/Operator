@@ -1,6 +1,6 @@
 {
- "title": "Agent Monitor",
- "description": "Svi SECRET 58 agenti sa statusom, posljednjim zadatkom i rezultatom. Svako pokretanje se bilježi.",
+ "title": "Zapisnik asistenata",
+ "description": "Svi SECRET 58 asistenti (agenti) sa stanjem, posljednjim zadatkom i rezultatom. Svako pokretanje se ovdje bilježi.",
  "table": {
   "agent": "Agent",
   "description": "Opis",

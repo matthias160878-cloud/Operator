@@ -1,6 +1,6 @@
 {
-  "title": "Nadzor agentov",
-  "description": "Vsi agenti SECRET 58 s statusom, zadnjo nalogo in rezultatom. Vsak zagon se beleži.",
+  "title": "Dnevnik asistentov",
+  "description": "Vsi asistenti (agenti) SECRET 58 s stanjem, zadnjo nalogo in rezultatom. Vsak zagon se tu zabeleži.",
   "table": {
     "agent": "Agent",
     "description": "Opis",

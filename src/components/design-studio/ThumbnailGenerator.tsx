@@ -2,18 +2,19 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Image as ImageIcon, Loader2, Sparkles } from "lucide-react";
+import { Brain, Image as ImageIcon, Loader2, Sparkles } from "lucide-react";
 import type { ThumbnailConcept } from "@/lib/agents/thumbnailAgent";
 
 const inputClass =
   "w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none";
 
-export function ThumbnailGenerator() {
+export function ThumbnailGenerator({ textProvider }: { textProvider: string }) {
   const t = useTranslations("designStudio.thumbnailAgent");
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [concept, setConcept] = useState<ThumbnailConcept | null>(null);
+  const [conceptProvider, setConceptProvider] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -28,6 +29,7 @@ export function ThumbnailGenerator() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? t("errorGenerationFailed"));
       setConcept(data.concept);
+      setConceptProvider(typeof data.provider === "string" ? data.provider : null);
     } catch (err) {
       setError(err instanceof Error ? err.message : t("errorUnknown"));
     } finally {
@@ -41,6 +43,13 @@ export function ThumbnailGenerator() {
         <ImageIcon className="h-4 w-4" /> {t("title")}
       </h3>
       <p className="text-xs text-muted">{t("description")}</p>
+      <div className="flex items-center gap-2 text-xs text-muted">
+        <Brain className="h-3.5 w-3.5 text-accent-2" />
+        {t("textEngineLabel")}{" "}
+        <span className="font-medium text-foreground">
+          {textProvider === "template" ? t("templateMode") : textProvider}
+        </span>
+      </div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:flex-row">
         <input
           className={inputClass}
@@ -59,6 +68,9 @@ export function ThumbnailGenerator() {
         </button>
       </form>
       {error && <p className="text-sm text-danger">{error}</p>}
+      {concept && conceptProvider === "template" && (
+        <p className="rounded-lg border border-warning/30 bg-warning/10 px-3 py-2 text-xs text-warning">{t("templateResult")}</p>
+      )}
       {concept && (
         <dl className="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
           {Object.entries({

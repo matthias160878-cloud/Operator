@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Canal de vídeo independent del proveïdor: gestor de formats, proveïdors de vídeo intercanviables, connexió de veu en off i subtítols (vegeu Content Factory per a cada element de contingut).",
+  "subtitle": "La creació de vídeos encara no està disponible: no hi ha connectat cap servei que generi vídeos. A sota veus els formats preparats per plataforma; els guions, les locucions i els subtítols els crees a Script Studio, Voice Studio i la Content Factory.",
   "providerCardTitle": "Proveïdors de vídeo",
-  "providerNotePrefix": "Es poden afegir més proveïdors (API de vídeo amb IA, biblioteques de vídeo d'arxiu) mitjançant la mateixa interfície",
-  "providerNoteSuffix": ", sense tocar el codi existent.",
   "formatManagerTitle": "Gestor de formats",
   "assetsTitle": "Recursos de vídeo",
-  "assetsEmpty": "Encara no s'ha renderitzat cap vídeo: la renderització es fa mitjançant els elements de contingut de Content Factory, quan hi hagi un proveïdor de vídeo configurat."
+  "assetsEmpty": "Encara no hi ha vídeos. La creació de vídeos encara no està disponible a l'app.",
+  "providerNote": "Encara no hi ha cap servei de vídeo utilitzable: de moment no es poden generar vídeos a l'app."
 }

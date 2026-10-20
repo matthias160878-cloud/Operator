@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs Voice Engine — upravljaj bibliotekom glasova, izrađuj preglede voiceovera i uvozi glasove.",
-  "envWarning": "ElevenLabs još nije konfiguriran. Unesi <envKey>ELEVENLABS_API_KEY</envKey> u <envFile>.env</envFile> kako bi koristio/la voiceover i uvoz glasova. Biblioteka glasova ipak se može koristiti za planiranje.",
+  "envWarning": "Glasovni zapis još nije dostupan: glasovnu uslugu (ElevenLabs) postavlja operater. Biblioteku glasova već možete koristiti za planiranje.",
   "addManual": "Ručno dodaj glas",
   "importFromElevenLabs": "Uvezi iz ElevenLabs",
   "form": {

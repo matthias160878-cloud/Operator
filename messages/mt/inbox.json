@@ -1,6 +1,6 @@
 {
   "title": "Inbox",
-  "description": "Messaġġi u kummenti minn kull pjattaforma. MessageAgent jissuġġerixxi tweġibiet — jintbagħat biss dak li int tapprova. Għad m'hemm l-ebda konnessjoni OAuth reali ma' pjattaforma, għalhekk il-konversazzjonijiet jiġu simulati manwalment hawn minflok ma jinġabru live.",
+  "description": "Messaġġi u talbiet f'post wieħed. MessageAgent jissuġġerixxi abbozzi ta' tweġibiet.",
   "emptyState": "Għad m'hemm l-ebda konversazzjonijiet — issimula waħda biex tibda.",
   "backToInbox": "Lura għall-Inbox",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Issimula messaġġ ieħor li jidħol (test mingħajr konnessjoni reali ma' pjattaforma):",
     "messagePlaceholder": "Test tal-messaġġ …",
     "addButton": "Żid"
-  }
+  },
+  "simulationBanner": "<strong>Previżjoni/simulazzjoni:</strong> il-messaġġi mill-pjattaformi għadhom ma jinġabrux u t-tweġibiet ma jintbagħtux – lanqas permezz ta' \"Approva u ibgħat\". Messaġġi tal-pjattaformi tista' tissimulahom hawnhekk biex tipprova. Entrati reali jiġu biss minn formoli tas-sit (eż. talbiet għal appuntament); lil dawk twieġeb bl-email."
 }

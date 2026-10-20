@@ -5,6 +5,8 @@ import { runAgent } from "@/lib/agents/runner";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { ownedContentItem } from "@/lib/ownership";
 import { route } from "@/lib/api";
+import { requireSessionUser } from "@/lib/auth/session";
+import { freigabeSperre } from "@/lib/reichweitenaufbau/kampagnenService";
 import {
   assertActionAllowed,
   cancelOpenJobs,
@@ -48,8 +50,11 @@ async function handlePOST(
   switch (input.action) {
     case "review":
       return NextResponse.json({ item: await setContentStatus(id, "IN_REVIEW") });
-    case "approve":
+    case "approve": {
+      const sperre = await freigabeSperre(id, await requireSessionUser());
+      if (sperre) return NextResponse.json({ error: sperre }, { status: 409 });
       return NextResponse.json({ item: await setContentStatus(id, "APPROVED") });
+    }
     case "reject":
       await cancelOpenJobs(id, "Beitrag abgelehnt.");
       return NextResponse.json({ item: await setContentStatus(id, "REJECTED", input.reason) });

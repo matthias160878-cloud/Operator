@@ -23,8 +23,10 @@
     "analytics": "Analytics",
     "growth": "Vekst",
     "weiterempfehlungen": "Anbefalinger",
+    "reichweitenaufbau": "Bygg rekkevidde",
     "revenue": "Inntekter",
     "inbox": "Innboks",
+    "anfragen": "Forespørsler",
     "dateien": "Filer",
     "agents": "Agenter",
     "integrations": "Integrasjoner",
@@ -79,14 +81,16 @@
     "ERROR": "Feil",
     "REJECTED": "Avvist",
     "RECEIVED": "Mottatt",
-    "PENDING": "Utestående"
+    "PENDING": "Utestående",
+    "NOT_AVAILABLE": "Ikke tilgjengelig ennå"
   },
   "integrationStatus": {
     "notConfigured": "Ikke konfigurert — manglende variabel/variabler: {vars}.",
     "verifyFailedGeneric": "Tilkoblingen mislyktes.",
     "verifyFailedStatus": "{service} svarte med status {status}.",
     "verifyUnreachable": "{service} kunne ikke nås.",
-    "connected": "Tilkoblet."
+    "connected": "Tilkoblet.",
+    "notAvailable": "Ikke tilgjengelig ennå – denne tilkoblingen er ennå ikke bygget i appen."
   },
   "mediaPreview": {
     "expand": "Vis større",

@@ -1,14 +1,15 @@
 {
   "title": "Analityka",
-  "subtitle": "Wskaźniki wydajności z rzeczywiście dostępnych danych — gdy podłączysz platformy, ten widok wypełni się prawdziwymi wartościami.",
+  "subtitle": "Statystyki platform (wyświetlenia, polubienia, komentarze, udostępnienia) nie są jeszcze pobierane automatycznie. Widać tu tylko już zapisane wartości, np. dane przykładowe. Liczby ze statystyk platformy możesz wpisać ręcznie w <weiter>Poleceniach</weiter> („Wpisz liczby z platformy”) lub w <varianten>porównaniu wariantów</varianten> – są one tam oceniane, nie na tej stronie.",
   "statViewsTotal": "Wyświetlenia łącznie",
   "statLikesTotal": "Polubienia łącznie",
   "statComments": "Komentarze",
   "statShares": "Udostępnienia",
   "chartTitle": "Wyniki treści w czasie",
   "chartLegend": "Wyświetlenia (fioletowy) · Zaangażowanie % (turkusowy)",
-  "chartEmpty": "Brak danych analitycznych.",
+  "chartEmpty": "Brak statystyk – brak przebiegu.",
   "bestPerformingTitle": "Najlepsze treści",
-  "bestPerformingEmpty": "Brak danych.",
-  "learningAgentTitle": "Learning Agent — rekomendacje"
+  "bestPerformingEmpty": "Brak statystyk – ranking niemożliwy.",
+  "learningAgentTitle": "Learning Agent — rekomendacje",
+  "statsEmpty": "Nie zapisano jeszcze żadnych statystyk – dlatego nie ma tu jeszcze wskaźników. Statystyki platform nie są jeszcze pobierane automatycznie."
 }

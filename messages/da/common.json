@@ -23,8 +23,10 @@
     "analytics": "Analytics",
     "growth": "Vækst",
     "weiterempfehlungen": "Anbefalinger",
+    "reichweitenaufbau": "Opbyg rækkevidde",
     "revenue": "Indtægter",
     "inbox": "Indbakke",
+    "anfragen": "Forespørgsler",
     "dateien": "Filer",
     "agents": "Agenter",
     "integrations": "Integrationer",
@@ -79,14 +81,16 @@
     "ERROR": "Fejl",
     "REJECTED": "Afvist",
     "RECEIVED": "Modtaget",
-    "PENDING": "Afventer"
+    "PENDING": "Afventer",
+    "NOT_AVAILABLE": "Endnu ikke tilgængelig"
   },
   "integrationStatus": {
     "notConfigured": "Ikke konfigureret — manglende variabel/variabler: {vars}.",
     "verifyFailedGeneric": "Forbindelsen mislykkedes.",
     "verifyFailedStatus": "{service} svarede med status {status}.",
     "verifyUnreachable": "{service} kunne ikke nås.",
-    "connected": "Forbundet."
+    "connected": "Forbundet.",
+    "notAvailable": "Endnu ikke tilgængelig – denne forbindelse er endnu ikke bygget i appen."
   },
   "mediaPreview": {
     "expand": "Vis større",

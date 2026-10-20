@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Comptes de plateforme et leur statut de connexion. Les identifiants sont gérés exclusivement en tant que variables d'environnement côté serveur et ne sont jamais stockés côté frontend. Les jetons d'accès sont chiffrés avant d'être enregistrés dans la base de données une fois connectés.",
+  "subtitle": "Tes comptes de plateformes et leur état de connexion. La connexion se fait en te connectant directement sur la plateforme ; les jetons d'accès sont stockés chiffrés sur le serveur, jamais dans le navigateur.",
   "credentialsLabel": "Identifiants de l'application",
   "accountLabel": "Compte",
   "lastPublishedLabel": "Dernière publication",
   "lastErrorLabel": "Dernière erreur",
   "connectButton": "Connecter",
   "connectButtonUnavailable": "Connecter (pas encore possible)",
-  "connectButtonTitleNoCreds": "Identifiants de l'application manquants",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY pas encore configurée",
+  "connectButtonTitleNoCreds": "Pas encore configuré par l'opérateur",
+  "connectButtonTitleNoEncryption": "Le stockage sécurisé des jetons d'accès n'est pas encore configuré",
   "disconnectButton": "Déconnecter",
   "disconnectConfirm": "Vraiment déconnecter ce compte ? Il faudra le reconnecter via \"Connecter\" ensuite.",
   "needsCredentialsNote": "Il manque : configurer {idVar} et {secretVar} dans Render.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Échec de la connexion. Vérifiez les identifiants et réessayez.",
   "errorUnknownPlatform": "Plateforme inconnue.",
   "encryptionKeyMissingNotice": "Remarque : TOKEN_ENCRYPTION_KEY n'est pas encore configurée — les comptes ne pourront être connectés qu'une fois cette variable d'environnement définie dans Render.",
+  "connectedPageLabel": "Page connectée",
+  "facebookMultiplePages": "Plusieurs pages Facebook trouvées ({count}) – la page connectée est « {name} ». Une autre page ? Déconnectez puis, lors de la reconnexion, sélectionnez uniquement la page souhaitée dans la boîte de dialogue Facebook.",
+  "tokenExpiresOn": "L’accès expire le {date} – veuillez vous reconnecter avant cette date.",
+  "tokenExpiredOn": "L’accès a expiré le {date} – veuillez vous reconnecter.",
+  "tokenScheduledAfterExpiry": "Publications planifiées après la date d’expiration : {count}. Sans reconnexion, elles ne seront pas publiées.",
+  "reconnectButton": "Reconnecter",
   "composio": {
     "title": "Connecter un compte via Composio",
     "subtitle": "Alternative à la connexion directe : tu te connectes à la plateforme, Composio conserve l'accès, SECRET 58 associe seulement le compte à ton espace de travail. Pour l'instant connexion et test de lecture uniquement – rien n'est publié par ce biais.",
@@ -56,6 +62,10 @@
       "not_active": "La plateforme n'a pas confirmé l'accès ou il a été refusé.",
       "composio_error": "Composio était injoignable ou a signalé une erreur. Réessaie plus tard.",
       "unknown": "Échec de la connexion."
-    }
-  }
+    },
+    "noPublishNotice": "Simple test de connexion – rien n'est publié ici. Le test de lecture vérifie seulement si le compte peut être lu."
+  },
+  "needsCredentialsNoteCustomer": "Cette plateforme est configurée par l'opérateur. Tu pourras te connecter dès qu'elle sera configurée.",
+  "errorNotConfiguredCustomer": "{platform} : l'opérateur n'a pas encore configuré cette plateforme. Tu pourras te connecter dès qu'elle sera configurée.",
+  "encryptionKeyMissingNoticeCustomer": "La connexion n'est pas encore possible : l'opérateur n'a pas encore configuré le stockage sécurisé des jetons d'accès."
 }

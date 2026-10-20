@@ -1,14 +1,14 @@
 {
   "pageTitle": "Rrjetet sociale",
-  "subtitle": "Llogaritë e platformave dhe statusi i lidhjes së tyre. Të dhënat e qasjes menaxhohen vetëm si variabla mjedisi nga ana e serverit, kurrë nuk ruhen në frontend. Tokenat e qasjes pas lidhjes ruhen të enkriptuar në bazën e të dhënave.",
+  "subtitle": "Llogaritë e tua në platforma dhe gjendja e lidhjes së tyre. Lidhesh duke hyrë drejtpërdrejt në platformë; tokenet e qasjes ruhen të enkriptuara në server, kurrë në shfletues.",
   "credentialsLabel": "Të dhënat e qasjes së aplikacionit",
   "accountLabel": "Llogaria",
   "lastPublishedLabel": "Publikimi i fundit",
   "lastErrorLabel": "Gabimi i fundit",
   "connectButton": "Lidh",
   "connectButtonUnavailable": "Lidh (ende e pamundur)",
-  "connectButtonTitleNoCreds": "Mungojnë ende të dhënat e qasjes së aplikacionit",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY ende nuk është vendosur",
+  "connectButtonTitleNoCreds": "Ende i pakonfiguruar nga operatori",
+  "connectButtonTitleNoEncryption": "Ruajtja e sigurt e tokeneve të qasjes ende nuk është konfiguruar",
   "disconnectButton": "Shkëput",
   "disconnectConfirm": "Të shkëputet vërtet kjo llogari? Qasja pastaj duhet rivendosur përmes “Lidh”.",
   "needsCredentialsNote": "Mungon ende: vendos {idVar} dhe {secretVar} në Render.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Lidhja dështoi. Kontrollo të dhënat e qasjes dhe provo përsëri.",
   "errorUnknownPlatform": "Platformë e panjohur.",
   "encryptionKeyMissingNotice": "Shënim: TOKEN_ENCRYPTION_KEY ende nuk është vendosur — llogaritë mund të lidhen vetëm sapo kjo variabël mjedisi të vendoset në Render.",
+  "connectedPageLabel": "Faqja e lidhur",
+  "facebookMultiplePages": "U gjetën disa faqe Facebook ({count}) – e lidhur është „{name}“. Faqe tjetër? Shkëputeni dhe, kur lidheni sërish, zgjidhni vetëm faqen e dëshiruar në dritaren e Facebook.",
+  "tokenExpiresOn": "Qasja skadon më {date} – ju lutemi lidhuni sërish para kësaj date.",
+  "tokenExpiredOn": "Qasja skadoi më {date} – ju lutemi lidhuni sërish.",
+  "tokenScheduledAfterExpiry": "Postime të planifikuara pas datës së skadimit: {count}. Pa u lidhur sërish nuk do të publikohen.",
+  "reconnectButton": "Lidhu sërish",
   "composio": {
     "title": "Lidh një llogari përmes Composio",
     "subtitle": "Alternativë ndaj lidhjes së drejtpërdrejtë: ti hyn në platformë, Composio ruan qasjen, SECRET 58 ia cakton llogarinë vetëm hapësirës sate të punës. Aktualisht vetëm lidhje dhe test qasjeje për lexim – nuk publikohet asgjë përmes saj.",
@@ -56,6 +62,10 @@
       "not_active": "Platforma nuk e konfirmoi qasjen ose ajo u refuzua.",
       "composio_error": "Composio nuk ishte i arritshëm ose raportoi një gabim. Provo përsëri më vonë.",
       "unknown": "Lidhja dështoi."
-    }
-  }
+    },
+    "noPublishNotice": "Vetëm një test i lidhjes – këtu nuk publikohet asgjë. Testi i leximit kontrollon vetëm nëse llogaria mund të lexohet."
+  },
+  "needsCredentialsNoteCustomer": "Këtë platformë e konfiguron operatori. Mund të lidhesh sapo të jetë konfiguruar.",
+  "errorNotConfiguredCustomer": "{platform}: operatori ende nuk e ka konfiguruar këtë platformë. Mund të lidhesh sapo të jetë konfiguruar.",
+  "encryptionKeyMissingNoticeCustomer": "Lidhja ende nuk është e mundur: operatori ende nuk e ka konfiguruar ruajtjen e sigurt të tokeneve të qasjes."
 }

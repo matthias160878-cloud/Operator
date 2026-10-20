@@ -1,6 +1,6 @@
 {
   "title": "Posta in arrivo",
-  "description": "Messaggi e commenti da tutte le piattaforme. MessageAgent propone le risposte: viene inviato solo ciò che approvi. Non esiste ancora una vera connessione OAuth con una piattaforma, quindi le conversazioni vengono simulate manualmente qui invece di essere recuperate in tempo reale.",
+  "description": "Messaggi e richieste in un unico posto. MessageAgent propone bozze di risposta.",
   "emptyState": "Ancora nessuna conversazione: simulane una per iniziare.",
   "backToInbox": "Torna alla posta in arrivo",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simula un altro messaggio in arrivo (test senza vera connessione alla piattaforma):",
     "messagePlaceholder": "Testo del messaggio …",
     "addButton": "Aggiungi"
-  }
+  },
+  "simulationBanner": "<strong>Anteprima/simulazione:</strong> i messaggi delle piattaforme non vengono ancora recuperati e le risposte non vengono inviate, nemmeno con «Approva e invia». Qui puoi simulare messaggi delle piattaforme per provare. Le voci reali arrivano solo dai moduli del sito (ad es. richieste di appuntamento); a queste rispondi via e-mail."
 }

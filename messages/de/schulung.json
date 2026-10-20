@@ -12,7 +12,7 @@
       "title": "Erste Schritte",
       "description": "Diese drei Dinge zuerst erledigen, dann arbeiten alle KI-Agenten mit echten Daten statt mit Platzhaltern.",
       "steps": [
-        "Unter „Integrationen“ prüfen, ob ein KI-Anbieter eingerichtet ist. Die KI-Funktionen laufen über die Zugänge des Betreibers, du brauchst kein eigenes KI-Abo. Ohne KI-Anbieter arbeitet die App im Vorlagen-Modus.",
+        "Unter „Einstellungen → Eigene Zugänge“ einen eigenen KI-Schlüssel von Anthropic, OpenAI oder Gemini eintragen. Die KI-Funktionen nutzen ausschließlich deinen eigenen Schlüssel; die Kosten rechnet der KI-Anbieter direkt mit dir ab. Ohne eigenen Schlüssel arbeitet die App im Vorlagen-Modus mit festen Textbausteinen.",
         "Unter \"Brand DNA\" die eigene Marke ausfüllen (Ton, Zielgruppe, Werte) — die KI-Agenten nutzen das für jeden generierten Text.",
         "Unter \"Ideen & Inspiration\" oder \"Content Brain\" die erste Idee bzw. Kampagne erzeugen lassen."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics & Wachstum",
       "description": "Echte Zahlen zur eigenen Performance — und Empfehlungen statt Automatisierung.",
       "steps": [
-        "Analytics zeigt ausschließlich echte, importierte oder manuell erfasste Performance-Daten.",
+        "Analytics zeigt nur gespeicherte Statistikdaten (z. B. Beispieldaten). Plattformstatistiken werden noch nicht automatisch abgerufen; Zahlen von Hand erfasst du unter „Weiterempfehlungen“ oder im Variantenvergleich – sie werden dort ausgewertet.",
         "Die Wachstums-Seite berechnet aus diesen Daten beste Posting-Zeiten, erfolgreiche Hashtags und Formate.",
         "Wichtig: es gibt bewusst keine automatisierte Follower-/Engagement-Steigerung (kein Bot-Verhalten) — das würde gegen die Nutzungsbedingungen jeder Plattform verstoßen."
       ]
@@ -59,9 +59,9 @@
       "title": "Posteingang",
       "description": "KI-Antwortentwürfe für Nachrichten — mit Freigabe vor dem Versand.",
       "steps": [
-        "Da (noch) keine Plattform per OAuth verbunden ist, werden Unterhaltungen aktuell manuell angelegt statt live abgerufen.",
+        "Nachrichten von Plattformen werden noch nicht abgerufen und Antworten nicht versendet. Zum Ausprobieren legst du Unterhaltungen als Simulation an.",
         "Der MessageAgent schlägt eine Antwort auf Basis von Brand DNA und Gesprächsverlauf vor.",
-        "Der Entwurf muss manuell geprüft und freigegeben werden, bevor er als gesendet gilt — ein echter Versand schlägt ohne Plattform-Verbindung ehrlich fehl, statt Erfolg vorzutäuschen."
+        "Der Entwurf wird von dir geprüft und freigegeben. Der Versand an Plattformen ist noch nicht gebaut – „Freigeben & senden“ meldet das ehrlich als Fehler, statt Erfolg vorzutäuschen."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Wo jeder Verbindungsstatus herkommt und wo der passende Schlüssel eingetragen wird.",
       "steps": [
         "Jede Zeile zeigt den echten, live geprüften Status — nie eine vorgetäuschte Verbindung.",
-        "Bei \"Nicht konfiguriert\" führt \"API-Schlüssel holen\" zur offiziellen Seite des Anbieters.",
-        "Zugangsdaten werden nie im Browser gespeichert, sondern nur geschützt auf dem Server. Fehlt ein Zugang, richtet ihn der Betreiber ein.",
-        "Kosten: Pro und Maxi sind Abos, monatlich oder jährlich. Die aktuellen Preise stehen unter „Paket & Abrechnung“. Jeder externe Anbieter hat sein eigenes, unabhängiges Kostenmodell (kostenlos / nutzungsbasiert / Abo) — auf der Integrationen-Seite steht bei jedem Dienst, welches Modell gilt, mit Link zu den aktuellen Preisen beim Anbieter."
+        "Eigene Zugänge (KI-Schlüssel, Resend für den Newsletter) trägst du unter „Einstellungen → Eigene Zugänge“ ein – dort führt ein Wegweiser zur offiziellen Schlüssel-Seite des Anbieters.",
+        "Zugangsdaten werden nie im Browser gespeichert, sondern verschlüsselt auf dem Server. Sprachausgabe und die App-Zugänge der Plattformen richtet der Betreiber ein; „Noch nicht verfügbar“ heißt, die Anbindung ist in der App noch nicht gebaut.",
+        "Kosten: Pro und Maxi sind Abos, monatlich oder jährlich. Die aktuellen Preise stehen unter „Paket & Abrechnung“. Für deine eigenen Zugänge (KI, Resend) rechnet der jeweilige Anbieter nach seinem eigenen Preismodell direkt mit dir ab – SECRET 58 stellt dafür nichts zusätzlich in Rechnung."
       ]
     }
   }

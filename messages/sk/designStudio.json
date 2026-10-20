@@ -1,8 +1,8 @@
 {
  "pageTitle": "Design Studio",
- "subtitle": "Koncepty miniatúr, obrazové podklady a integrácia Canva.",
+ "subtitle": "Koncepty miniatúr ako text a stav prepojenia s Canvou.",
  "imageAssetsTitle": "Obrazové podklady",
- "imageAssetsEmpty": "Zatiaľ nie sú k dispozícii žiadne obrazové podklady.",
+ "imageAssetsEmpty": "Zatiaľ žiadne obrázky. Agent miniatúr zatiaľ vytvára len textové koncepty, žiadne obrázkové súbory.",
  "thumbnailAgent": {
   "title": "Agent pre miniatúry",
   "description": "Vytvorí textový koncept (názov, vizuálny nápad, rozloženie, CTA) — pripravený na pripojenie generátora obrázkov. Zatiaľ sa nevytvára žiadny obrázok.",
@@ -15,6 +15,9 @@
   "fieldText": "Text",
   "fieldLayout": "Rozloženie",
   "fieldCta": "CTA",
-  "fieldImageDescription": "Popis obrázka"
+  "fieldImageDescription": "Popis obrázka",
+  "templateResult": "Šablóna: tento koncept pochádza z pevnej textovej šablóny, nie z AI. Pre AI koncepty zadaj vlastný AI kľúč v „Nastavenia → Vlastné prístupy“.",
+  "textEngineLabel": "Textový engine:",
+  "templateMode": "Režim šablóny (nie je nakonfigurovaný žiadny poskytovateľ AI)"
  }
 }

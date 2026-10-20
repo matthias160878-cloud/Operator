@@ -1,6 +1,6 @@
 {
   "title": "Ustawienia",
-  "description": "Przestrzeń robocza, użytkownicy i informacje o systemie. Dane dostępowe są zarządzane wyłącznie przez zmienne środowiskowe (zob. <code>.env.example</code>).",
+  "description": "Twój obszar roboczy, użytkownicy i przegląd Twoich danych. Własne klucze API (teksty AI, wysyłka newslettera) wpisujesz w <zugaenge>Własne dostępy</zugaenge>; swój pakiet znajdziesz w <billing>Pakiet i rozliczenia</billing>.",
   "workspace": {
     "title": "Przestrzeń robocza",
     "name": "Nazwa",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Użytkownicy i role",
-    "note": "Model danych wielu najemców jest w pełni przygotowany (izolacja przestrzeni roboczych dla wszystkich tabel). Prawdziwy interfejs logowania/uwierzytelniania z wieloma użytkownikami to następny etap rozwoju — obecnie aplikacja pracuje dokładnie z tą domyślną przestrzenią roboczą."
+    "note": "Każde konto ma własny obszar roboczy, oddzielony od innych klientów. Dodatkowych użytkowników nie możesz jeszcze dodać samodzielnie."
   },
   "system": {
     "title": "System",
@@ -17,7 +17,7 @@
     "campaigns": "Kampanie",
     "mediaAssets": "Zasoby multimedialne",
     "agentRuns": "Uruchomienia agentów",
-    "dbNote": "Baza danych: SQLite (lokalna, <code>prisma/dev.db</code>) przez Prisma ORM. Na produkcji zmień <codeSpaced>DATABASE_URL</codeSpaced> na Postgres/MySQL (dostosuj dostawcę w <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Liczba wpisów zapisanych w Twoim obszarze roboczym. Wszystkie dane możesz wyeksportować lub usunąć obszar roboczy poniżej w „Moje dane”."
   },
   "onboarding": {
     "title": "Asystent konfiguracji",

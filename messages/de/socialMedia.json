@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Plattform-Accounts und ihr Verbindungsstatus. Zugangsdaten werden ausschließlich als Server-seitige Environment-Variablen verwaltet, niemals im Frontend gespeichert. Zugangstoken nach dem Verbinden werden verschlüsselt in der Datenbank abgelegt.",
+  "subtitle": "Deine Plattform-Konten und ihr Verbindungsstatus. Verbunden wird per Anmeldung direkt bei der Plattform; Zugangstoken werden verschlüsselt auf dem Server gespeichert, nie im Browser.",
   "credentialsLabel": "App-Zugangsdaten",
   "accountLabel": "Account",
   "lastPublishedLabel": "Letzte Veröffentlichung",
   "lastErrorLabel": "Letzter Fehler",
   "connectButton": "Verbinden",
   "connectButtonUnavailable": "Verbinden (noch nicht möglich)",
-  "connectButtonTitleNoCreds": "App-Zugangsdaten fehlen noch",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY ist noch nicht gesetzt",
+  "connectButtonTitleNoCreds": "Vom Betreiber noch nicht eingerichtet",
+  "connectButtonTitleNoEncryption": "Sichere Speicherung der Zugangstoken ist noch nicht eingerichtet",
   "disconnectButton": "Trennen",
   "disconnectConfirm": "Diesen Account wirklich trennen? Der Zugriff muss danach neu über \"Verbinden\" hergestellt werden.",
   "needsCredentialsNote": "Fehlt noch: {idVar} und {secretVar} in Render eintragen.",
@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Verbindung fehlgeschlagen. Zugangsdaten prüfen und erneut versuchen.",
   "errorUnknownPlatform": "Unbekannte Plattform.",
   "encryptionKeyMissingNotice": "Hinweis: TOKEN_ENCRYPTION_KEY ist noch nicht gesetzt — Konten können erst verbunden werden, sobald diese Umgebungsvariable in Render eingetragen ist.",
+  "connectedPageLabel": "Verbundene Seite",
+  "facebookMultiplePages": "Mehrere Facebook-Seiten gefunden ({count}) – verbunden ist „{name}“. Andere Seite? Trennen und beim erneuten Verbinden im Facebook-Dialog nur die gewünschte Seite auswählen.",
+  "tokenExpiresOn": "Zugang läuft am {date} ab – bitte vorher neu verbinden.",
+  "tokenExpiredOn": "Zugang ist am {date} abgelaufen – bitte neu verbinden.",
+  "tokenScheduledAfterExpiry": "Geplante Beiträge nach dem Ablaufdatum: {count}. Ohne neues Verbinden werden sie nicht veröffentlicht.",
+  "reconnectButton": "Neu verbinden",
   "composio": {
     "title": "Konto verbinden über Composio",
     "subtitle": "Alternative zur direkten Anbindung: Du meldest dich bei der Plattform an, Composio verwahrt den Zugang, SECRET 58 ordnet das Konto nur deinem Arbeitsbereich zu. Aktuell nur Verbinden und lesender Zugriffstest – darüber wird nichts veröffentlicht.",
@@ -56,6 +62,10 @@
       "not_active": "Die Plattform hat den Zugriff nicht bestätigt oder er wurde abgelehnt.",
       "composio_error": "Composio war nicht erreichbar oder hat einen Fehler gemeldet. Bitte später erneut versuchen.",
       "unknown": "Verbindung fehlgeschlagen."
-    }
-  }
+    },
+    "noPublishNotice": "Nur ein Test der Verbindung – hier wird nichts veröffentlicht. Der Lesetest prüft lediglich, ob das Konto gelesen werden kann."
+  },
+  "needsCredentialsNoteCustomer": "Diese Plattform richtet der Betreiber ein. Verbinden ist möglich, sobald sie eingerichtet ist.",
+  "errorNotConfiguredCustomer": "{platform}: Diese Plattform hat der Betreiber noch nicht eingerichtet. Verbinden ist möglich, sobald sie eingerichtet ist.",
+  "encryptionKeyMissingNoticeCustomer": "Verbinden ist noch nicht möglich: Der Betreiber hat die sichere Speicherung der Zugangstoken noch nicht eingerichtet."
 }

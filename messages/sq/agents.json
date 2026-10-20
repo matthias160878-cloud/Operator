@@ -1,6 +1,6 @@
 {
-  "title": "Agent Monitor",
-  "description": "Të gjithë agjentët e SECRET 58 me statusin, detyrën e fundit dhe rezultatin. Çdo ekzekutim regjistrohet.",
+  "title": "Regjistri i asistentëve",
+  "description": "Të gjithë asistentët (agjentët) e SECRET 58 me gjendje, detyrën e fundit dhe rezultatin. Çdo ekzekutim regjistrohet këtu.",
   "table": {
     "agent": "Agjenti",
     "description": "Përshkrimi",

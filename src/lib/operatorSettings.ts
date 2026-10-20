@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
 import { decryptToken, encryptToken, isTokenEncryptionConfigured } from "@/lib/crypto";
+import { SCHLUESSEL_SEITEN } from "@/lib/integrations/links";
 
 /**
  * Zugänge, die der Betreiber in der App statt im Render-Dashboard hinterlegen
@@ -27,12 +28,14 @@ export interface SettingDef {
   /** Prüfmuster für die Eingabe (nach trim). */
   pattern?: RegExp;
   patternHint?: string;
+  /** Offizielle Seite des Anbieters, auf der man diesen Wert erstellt bzw. findet. */
+  keyLink?: string;
 }
 
 export const SETTING_GROUPS: Record<SettingGroup, { title: string; text: string }> = {
   composio: {
     title: "Composio (Plattformen verbinden)",
-    text: "Schlüssel aus app.composio.dev → Settings → API Keys. Je Plattform eine Auth-Config-ID (ac_…) aus „Auth Configs“.",
+    text: "Schlüssel aus platform.composio.dev → Settings → API Keys. Je Plattform eine Auth-Config-ID (ac_…) aus „Auth Configs“.",
   },
   ki: {
     title: "KI-Texte und Webseiten-Chat",
@@ -48,22 +51,22 @@ export const SETTING_GROUPS: Record<SettingGroup, { title: string; text: string 
   },
   zahlung: {
     title: "Zahlung (Stripe)",
-    text: "Testmodus zuerst (sk_test_…). Preise müssen in Stripe als Nettopreise (Steuer exklusiv) in EUR angelegt sein; die App prüft Betrag und Intervall.",
+    text: "Testmodus zuerst (sk_test_…). Preise müssen in Stripe in EUR angelegt sein – als Kleinunternehmer (Standard) als Endpreis mit Steuerverhalten „inklusive“, bei UMSATZSTEUER_MODUS=REGEL als Nettopreis „exklusiv“; die App prüft Betrag, Steuerart und Intervall.",
   },
 };
 
 export const SETTINGS: SettingDef[] = [
-  { key: "COMPOSIO_API_KEY", label: "Composio API-Schlüssel", group: "composio", secret: true, hint: "Beginnt meist mit „ak_“." },
-  { key: "COMPOSIO_AUTH_CONFIG_LINKEDIN", label: "Auth-Config LinkedIn", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen" },
-  { key: "COMPOSIO_AUTH_CONFIG_INSTAGRAM", label: "Auth-Config Instagram", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen" },
-  { key: "COMPOSIO_AUTH_CONFIG_FACEBOOK", label: "Auth-Config Facebook", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen" },
-  { key: "COMPOSIO_AUTH_CONFIG_YOUTUBE", label: "Auth-Config YouTube", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen" },
-  { key: "COMPOSIO_AUTH_CONFIG_TIKTOK", label: "Auth-Config TikTok", group: "composio", secret: false, hint: "ac_… (braucht eigene TikTok-Entwickler-App mit Login Kit + Content Posting API)", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen" },
+  { key: "COMPOSIO_API_KEY", label: "Composio API-Schlüssel", group: "composio", secret: true, hint: "Beginnt meist mit „ak_“.", keyLink: SCHLUESSEL_SEITEN.composio },
+  { key: "COMPOSIO_AUTH_CONFIG_LINKEDIN", label: "Auth-Config LinkedIn", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen", keyLink: SCHLUESSEL_SEITEN.composio },
+  { key: "COMPOSIO_AUTH_CONFIG_INSTAGRAM", label: "Auth-Config Instagram", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen", keyLink: SCHLUESSEL_SEITEN.composio },
+  { key: "COMPOSIO_AUTH_CONFIG_FACEBOOK", label: "Auth-Config Facebook", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen", keyLink: SCHLUESSEL_SEITEN.composio },
+  { key: "COMPOSIO_AUTH_CONFIG_YOUTUBE", label: "Auth-Config YouTube", group: "composio", secret: false, hint: "ac_…", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen", keyLink: SCHLUESSEL_SEITEN.composio },
+  { key: "COMPOSIO_AUTH_CONFIG_TIKTOK", label: "Auth-Config TikTok", group: "composio", secret: false, hint: "ac_… (braucht eigene TikTok-Entwickler-App mit Login Kit + Content Posting API)", pattern: /^ac_[A-Za-z0-9_-]{4,}$/, patternHint: "muss mit „ac_“ beginnen", keyLink: SCHLUESSEL_SEITEN.composio },
   { key: "COMPOSIO_USER_PREFIX", label: "Kundenkennung-Präfix", group: "composio", secret: false, hint: "z. B. s58test (Test) oder s58live (Betrieb)", pattern: /^[A-Za-z0-9-]{2,20}$/, patternHint: "nur Buchstaben, Ziffern, Bindestrich" },
 
-  { key: "ANTHROPIC_API_KEY", label: "Anthropic API-Schlüssel (Claude)", group: "ki", secret: true, hint: "Beginnt mit „sk-ant-“. Wird bevorzugt genutzt.", pattern: /^sk-ant-[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „sk-ant-“ beginnen" },
-  { key: "OPENAI_API_KEY", label: "OpenAI API-Schlüssel (GPT)", group: "ki", secret: true, hint: "Beginnt mit „sk-“. Ersatz, wenn kein Anthropic-Schlüssel gesetzt ist.", pattern: /^sk-[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „sk-“ beginnen" },
-  { key: "GEMINI_API_KEY", label: "Google Gemini API-Schlüssel", group: "ki", secret: true, hint: "Beginnt mit „AIza“. Dritter Anbieter.", pattern: /^AIza[A-Za-z0-9_-]{20,}$/, patternHint: "muss mit „AIza“ beginnen" },
+  { key: "ANTHROPIC_API_KEY", label: "Anthropic API-Schlüssel (Claude)", group: "ki", secret: true, hint: "Beginnt mit „sk-ant-“. Wird bevorzugt genutzt.", pattern: /^sk-ant-[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „sk-ant-“ beginnen", keyLink: SCHLUESSEL_SEITEN.anthropic },
+  { key: "OPENAI_API_KEY", label: "OpenAI API-Schlüssel (GPT)", group: "ki", secret: true, hint: "Beginnt mit „sk-“. Ersatz, wenn kein Anthropic-Schlüssel gesetzt ist.", pattern: /^sk-[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „sk-“ beginnen", keyLink: SCHLUESSEL_SEITEN.openai },
+  { key: "GEMINI_API_KEY", label: "Google Gemini API-Schlüssel", group: "ki", secret: true, hint: "Beginnt mit „AIza“. Dritter Anbieter.", pattern: /^AIza[A-Za-z0-9_-]{20,}$/, patternHint: "muss mit „AIza“ beginnen", keyLink: SCHLUESSEL_SEITEN.gemini },
   { key: "GEMINI_MODEL", label: "Gemini-Modell", group: "ki", secret: false, hint: "leer = aktuelles Flash-Modell (gemini-flash-latest); z. B. gemini-3.5-flash", pattern: /^[a-z0-9.-]{3,60}$/, patternHint: "nur Kleinbuchstaben, Ziffern, Punkt, Bindestrich" },
   { key: "AI_PROVIDER", label: "Bevorzugter KI-Anbieter", group: "ki", secret: false, hint: "anthropic, openai oder gemini — leer = erster Anbieter mit Schlüssel", pattern: /^(anthropic|openai|gemini)$/, patternHint: "anthropic, openai oder gemini" },
   { key: "WEBSITE_KI", label: "Webseiten-Chat mit KI", group: "ki", secret: false, hint: "„true“ = an, leer = aus (Tageslimit WEBSITE_KI_TAGESLIMIT, Standard 200)", pattern: /^(true|false)$/, patternHint: "nur „true“ oder „false“" },
@@ -80,15 +83,15 @@ export const SETTINGS: SettingDef[] = [
   { key: "HERMES_PUBLIC_MODEL", label: "Hermes öffentlich: Modellname", group: "hermes", secret: false, hint: "leer = hermes-agent", pattern: /^[A-Za-z0-9._:\/-]{2,80}$/, patternHint: "Buchstaben, Ziffern, . _ : / -" },
   { key: "HERMES_PUBLIC_RATE_LIMIT_SECRET", label: "Hermes öffentlich: Limit-Geheimnis", group: "hermes", secret: true, hint: "zufällig, mind. 16 Zeichen — damit Besucheradressen nur als Hash gezählt werden", pattern: /^[A-Za-z0-9_\-+=\/]{16,100}$/, patternHint: "mind. 16 Zeichen (Buchstaben, Ziffern, _ - + = /)" },
 
-  { key: "RESEND_API_KEY", label: "Resend API-Schlüssel", group: "email", secret: true, hint: "Beginnt mit „re_“.", pattern: /^re_[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „re_“ beginnen" },
+  { key: "RESEND_API_KEY", label: "Resend API-Schlüssel", group: "email", secret: true, hint: "Beginnt mit „re_“.", pattern: /^re_[A-Za-z0-9_-]{10,}$/, patternHint: "muss mit „re_“ beginnen", keyLink: SCHLUESSEL_SEITEN.resend },
   { key: "EMAIL_FROM", label: "Absender", group: "email", secret: false, hint: "z. B. SECRET 58 <newsletter@secret58.com>", pattern: /^[^<>@\s][^<>@]*<[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+>$|^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/, patternHint: "Form: Name <adresse@domain.de> oder adresse@domain.de" },
 
-  { key: "STRIPE_SECRET_KEY", label: "Stripe Secret Key", group: "zahlung", secret: true, hint: "sk_test_… (Test) oder sk_live_… (Betrieb)", pattern: /^sk_(test|live)_[A-Za-z0-9]{10,}$/, patternHint: "muss mit „sk_test_“ oder „sk_live_“ beginnen" },
-  { key: "STRIPE_WEBHOOK_SECRET", label: "Stripe Webhook-Secret", group: "zahlung", secret: true, hint: "whsec_… — Webhook-Ziel: <Ihre Adresse>/api/stripe/webhook", pattern: /^whsec_[A-Za-z0-9]{10,}$/, patternHint: "muss mit „whsec_“ beginnen" },
-  { key: "STRIPE_PRICE_ID_PRO", label: "Preis-ID Pro monatlich (590 € netto)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen" },
-  { key: "STRIPE_PRICE_ID_MAXI", label: "Preis-ID Maxi monatlich (797 € netto)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen" },
-  { key: "STRIPE_PRICE_ID_PRO_YEAR", label: "Preis-ID Pro jährlich (6.018 € netto)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen" },
-  { key: "STRIPE_PRICE_ID_MAXI_YEAR", label: "Preis-ID Maxi jährlich (8.129,40 € netto)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen" },
+  { key: "STRIPE_SECRET_KEY", label: "Stripe Secret Key", group: "zahlung", secret: true, hint: "sk_test_… (Test) oder sk_live_… (Betrieb)", pattern: /^sk_(test|live)_[A-Za-z0-9]{10,}$/, patternHint: "muss mit „sk_test_“ oder „sk_live_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeSchluessel },
+  { key: "STRIPE_WEBHOOK_SECRET", label: "Stripe Webhook-Secret", group: "zahlung", secret: true, hint: "whsec_… — Webhook-Ziel: <Ihre Adresse>/api/stripe/webhook", pattern: /^whsec_[A-Za-z0-9]{10,}$/, patternHint: "muss mit „whsec_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeWebhooks },
+  { key: "STRIPE_PRICE_ID_PRO", label: "Preis-ID Pro monatlich (590 €)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
+  { key: "STRIPE_PRICE_ID_MAXI", label: "Preis-ID Maxi monatlich (797 €)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
+  { key: "STRIPE_PRICE_ID_PRO_YEAR", label: "Preis-ID Pro jährlich (6.018 €)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
+  { key: "STRIPE_PRICE_ID_MAXI_YEAR", label: "Preis-ID Maxi jährlich (8.129,40 €)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
   { key: "PACKAGE_TERMS_CONFIRMED", label: "Paketkonditionen bestätigt (Verkauf freischalten)", group: "zahlung", secret: false, hint: "„true“ erst nach Abnahme — zusammen mit Stripe und Impressum öffnet das den Kauf.", pattern: /^(true|false)$/, patternHint: "nur „true“ oder „false“" },
 ];
 
@@ -168,6 +171,7 @@ export interface SettingStatus {
   updatedAt: string | null;
   /** Nur für nicht-geheime Werte aus der App. */
   value: string | null;
+  keyLink: string | null;
 }
 
 export async function operatorSettingsStatus(): Promise<SettingStatus[]> {
@@ -194,6 +198,7 @@ export async function operatorSettingsStatus(): Promise<SettingStatus[]> {
       source,
       updatedAt: row?.updatedAt.toISOString() ?? null,
       value,
+      keyLink: s.keyLink ?? null,
     };
   });
 }

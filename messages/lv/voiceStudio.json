@@ -1,7 +1,7 @@
 {
   "title": "Voice Studio",
   "subtitle": "ElevenLabs balss dzinējs — pārvaldi balsu bibliotēku, veido balss ieraksta priekšskatījumus un importē balsis.",
-  "envWarning": "ElevenLabs vēl nav nokonfigurēts. Ievadi <envKey>ELEVENLABS_API_KEY</envKey> failā <envFile>.env</envFile>, lai izmantotu balss ierakstus un balsu importu. Balsu bibliotēku tāpat var izmantot plānošanai.",
+  "envWarning": "Balss ieraksts vēl nav pieejams: balss pakalpojumu (ElevenLabs) iestata operators. Balsu bibliotēku jau varat izmantot plānošanai.",
   "addManual": "Izveidot balsi manuāli",
   "importFromElevenLabs": "Importēt no ElevenLabs",
   "form": {

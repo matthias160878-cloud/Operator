@@ -23,8 +23,10 @@
     "analytics": "Analytics",
     "growth": "Rritja",
     "weiterempfehlungen": "Rekomandime",
+    "reichweitenaufbau": "Rritja e audiencës",
     "revenue": "Të ardhurat",
     "inbox": "Kutia postare",
+    "anfragen": "Kërkesa",
     "dateien": "Skedarët",
     "agents": "Agjentët",
     "integrations": "Integrimet",
@@ -79,14 +81,16 @@
     "ERROR": "Gabim",
     "REJECTED": "Refuzuar",
     "RECEIVED": "Marrë",
-    "PENDING": "Në pritje"
+    "PENDING": "Në pritje",
+    "NOT_AVAILABLE": "Ende jo i disponueshëm"
   },
   "integrationStatus": {
     "notConfigured": "I pakonfiguruar — variabla që mungojnë: {vars}.",
     "verifyFailedGeneric": "Lidhja dështoi.",
     "verifyFailedStatus": "{service} u përgjigj me statusin {status}.",
     "verifyUnreachable": "{service} nuk mund të arrihej.",
-    "connected": "I lidhur."
+    "connected": "I lidhur.",
+    "notAvailable": "Ende jo i disponueshëm – kjo lidhje ende nuk është ndërtuar në aplikacion."
   },
   "mediaPreview": {
     "expand": "Shfaq më të madh",

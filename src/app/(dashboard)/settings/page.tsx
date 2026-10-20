@@ -110,6 +110,10 @@ export default async function SettingsPage() {
         <h2 className="text-sm font-semibold text-foreground">Eigene Zugänge (API-Schlüssel)</h2>
         <p className="mt-1 text-xs text-muted">Eigene Schlüssel eintragen: Resend für den Newsletter-Versand und Anthropic, OpenAI oder Gemini für KI-Texte – mit Link zum Anbieter und Schritt-für-Schritt-Anleitung. Verschlüsselt, nur für diesen Workspace.</p>
       </Link>
+      <Link href="/kuendigen" className="card block p-5 hover:border-accent" data-testid="link-kuendigen">
+        <h2 className="text-sm font-semibold text-foreground">Verträge hier kündigen</h2>
+        <p className="mt-1 text-xs text-muted">Kündigung Ihres Vertrags (z. B. Social Media KI – Pro oder Maxi) mit sofortiger Eingangsbestätigung auf dem Bildschirm und per E-Mail.</p>
+      </Link>
       <AccountDataPanel />
     </div>
   );

@@ -382,6 +382,36 @@ Nettopreise zzgl. USt über Stripe Tax und Preise mit „exklusive Steuer“.
 * Ohne Name, Anschrift, E-Mail und Datenschutz-Link ist ein Angebot nicht öffentlich
   (404) und nicht kaufbar. Links werden nur als http(s) angenommen.
 
+## 9b. Kündigungsbutton (§ 312k BGB)
+
+* Link **„Verträge hier kündigen“** im Seitenfuß (`LegalFooter`: Anmeldung,
+  Registrierung, Impressum, Arbeitsbereich, Betreiberbereich), in den Fußzeilen der
+  Zentrale-Seiten (`public/zentrale/seiten/*.html`) und unter Einstellungen. Er führt
+  zur öffentlichen Seite `/kuendigen` (ohne Anmeldung).
+* Abgefragt werden: Art (ordentlich / außerordentlich mit freiwilligem Grund), Name,
+  E-Mail-Adresse des Kontos, freiwillig Arbeitsbereich/Kundennummer, Vertrag
+  (Pro, Maxi oder sonstiger Vertrag mit Beschreibung), Zeitpunkt (nächstmöglich oder
+  Datum) und die E-Mail-Adresse für die Bestätigung. Absenden mit **„jetzt kündigen“**.
+* Danach: Bestätigung auf dem Bildschirm (Inhalt, Eingangsdatum und -uhrzeit,
+  Referenznummer `K-JJJJ-XXXXXX`, gewünschter Zeitpunkt; drucken/speichern) und
+  sofort eine Eingangsbestätigung per E-Mail („Eingangsbestätigung Ihrer Kündigung –
+  SECRET 58“, Betreiber-Resend: `RESEND_API_KEY`, `EMAIL_FROM`). Ist der Versand nicht
+  eingerichtet oder schlägt er fehl, wird die Kündigung trotzdem gespeichert, die Seite
+  sagt das offen, und Server-Log sowie Posteingang vermerken es — dann bestätigt der
+  Betreiber den Eingang selbst in Textform.
+* Gespeichert in der Tabelle `kuendigungen` (Modell `Kuendigung`). Konto und
+  Arbeitsbereich werden nur serverseitig über die Konto-E-Mail zugeordnet. Die Antwort
+  verrät nicht, ob zu der E-Mail ein Konto existiert.
+* Der Betreiber sieht jede Kündigung sofort im Posteingang („Kündigung K-…“, mit Paket,
+  Status, Laufzeitende und Stripe-Abo, falls ein Konto gefunden wurde) und unter
+  **Betreiberbereich → Kündigungen** (`/operator/kuendigungen`).
+* **Es wird nichts automatisch gekündigt.** Der Betreiber setzt jede Kündigung in Stripe
+  um (Kundenportal oder Dashboard, z. B. „Abo zum Laufzeitende kündigen“), teilt dem
+  Kunden das Vertragsende mit und markiert sie unter „Kündigungen“ als bearbeitet.
+* Missbrauchsschutz: höchstens 5 Kündigungen je Stunde und Anschluss sowie 5 je Tag und
+  Bestätigungsadresse, nur vom eigenen Ursprung (CSRF-Schutz im Proxy), Längengrenzen
+  für alle Felder, HTML in der E-Mail maskiert.
+
 ## 10. Datenschutz-Technik (Vorbereitung, keine rechtliche Vollständigkeit)
 
 * Datenflüsse an Dritte:

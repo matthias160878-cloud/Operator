@@ -71,6 +71,9 @@ export default async function OperatorPage() {
           <Link href="/operator/dateien" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">
             Dateiaustausch
           </Link>
+          <Link href="/operator/kuendigungen" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">
+            Kündigungen
+          </Link>
           <Link href="/operator/hermes-pilot" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">
             Hermes (Pilot)
           </Link>

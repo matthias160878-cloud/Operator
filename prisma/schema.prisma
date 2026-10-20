@@ -1543,3 +1543,32 @@ model KiVerbrauch {
   @@unique([workspaceId, monat])
   @@map("ki_verbrauch")
 }
+
+/// Kündigungen über den Kündigungsbutton (§ 312k BGB, öffentliche Seite /kuendigen).
+/// Es wird nichts automatisch in Stripe gekündigt; der Betreiber bearbeitet
+/// jede Kündigung und setzt bearbeitetAm. workspaceId/userId werden nur
+/// serverseitig über die Konto-E-Mail ermittelt (nie aus der Anfrage).
+model Kuendigung {
+  id                String    @id @default(cuid())
+  /// lesbare Referenz, z. B. K-2026-7Q4M2X
+  referenz          String    @unique
+  /// ORDENTLICH | AUSSERORDENTLICH
+  art               String
+  name              String
+  /// E-Mail-Adresse des Kontos (zur Identifizierung)
+  email             String
+  bestaetigungEmail String
+  vertrag           String
+  /// "naechstmoeglich" oder Datum JJJJ-MM-TT
+  zeitpunkt         String
+  grund             String    @default("")
+  kundennummer      String    @default("")
+  workspaceId       String?
+  userId            String?
+  emailGesendet     Boolean   @default(false)
+  eingangAm         DateTime  @default(now())
+  bearbeitetAm      DateTime?
+
+  @@index([eingangAm])
+  @@map("kuendigungen")
+}

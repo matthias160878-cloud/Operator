@@ -302,6 +302,7 @@ export default async function BuyPage({
       <footer className="fuss">
         <div className="wrap">
           <Link href="/impressum">Impressum</Link>
+          <Link href="/kuendigen">Verträge hier kündigen</Link>
           {datenschutz && (
             <a href={datenschutz} target="_blank" rel="noreferrer">
               Datenschutz

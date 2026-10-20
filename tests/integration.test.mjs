@@ -2539,6 +2539,7 @@ test("Kündigungsbutton (§ 312k BGB): öffentlich, Bestätigung auf dem Bildsch
   assert.equal(seite.status, 200);
   const html = await seite.text();
   assert.ok(html.includes("jetzt kündigen") && html.includes("Verträge hier kündigen"), "Knopf und Überschrift");
+  assert.ok(html.includes("data-s58-install"), "fester Platz für „App installieren“, damit nichts verdeckt wird");
   assert.ok(html.includes("Social Media KI – Pro") && html.includes("Social Media KI – Maxi") && html.includes("zum nächstmöglichen Zeitpunkt"));
   // ständig verfügbar: Seitenfuß der öffentlichen Seiten und der Zentrale
   for (const p of ["/login", "/signup", "/impressum", "/preise"]) {

@@ -19,9 +19,11 @@ export default function KuendigenPage() {
           Eingangsbestätigung per E-Mail.
         </p>
         <KuendigungsFormular vertraege={VERTRAEGE} heute={heuteInDeutschland()} />
-        <p className="print:hidden">
+        <div className="flex flex-wrap items-center justify-between gap-3 print:hidden">
           <Link href="/buy" className="text-accent-2 underline">Zurück</Link>
-        </p>
+          {/* Fester Platz für „App installieren“, damit die schwebende Schaltfläche (installieren.js) kein Formularfeld verdeckt. */}
+          <span data-s58-install suppressHydrationWarning />
+        </div>
       </div>
       <LegalFooter className="mt-8 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-muted print:hidden" />
     </div>

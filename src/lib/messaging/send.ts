@@ -45,6 +45,26 @@ async function assertTikTokDmWindow(conversationId: string) {
 
 export interface SendReplyResult {
   externalId?: string;
+  /** Neue Plattform-ID der Unterhaltung, z. B. die LinkedIn-Thread-URN nach der ersten Nachricht. */
+  externalThreadId?: string;
+}
+
+/**
+ * `x-linkedin-id: {thread=urn:li:messagingThread:123ABC, id=123456789}` —
+ * bei Antworten teils URL-kodiert.
+ */
+export function parseLinkedInMessageId(header: string | null): { thread?: string; id?: string } {
+  if (!header) return {};
+  let value = header;
+  try {
+    value = decodeURIComponent(header.replace(/\+/g, " "));
+  } catch {
+    // Nicht kodiert — Rohwert verwenden.
+  }
+  return {
+    thread: value.match(/thread=(urn:li:messagingThread:[^,}\s]+)/)?.[1],
+    id: value.match(/(?:^|[{,\s])id=([^,}\s]+)/)?.[1],
+  };
 }
 
 /** `urn:li:comment:(urn:li:activity:123,456)` → Beitrags-URN + Kommentar-URN. */
@@ -228,8 +248,45 @@ export async function sendPlatformReply(
       return { externalId: res.headers.get("x-restli-id") ?? data.id };
     }
 
-    case "LINKEDIN:DIRECT_MESSAGE":
-      throw new Error("LinkedIn erlaubt Drittanbieter-Apps keine Direktnachrichten — bitte direkt in LinkedIn antworten.");
+    case "LINKEDIN:DIRECT_MESSAGE": {
+      // Messages API: nur für von LinkedIn zugelassene Partner, nur Senden
+      // (kein Abruf) — als Mitglied an direkte Kontakte oder in einen Thread.
+      if (process.env.LINKEDIN_PARTNER_MESSAGING !== "true") {
+        throw new Error(
+          "LinkedIn-Direktnachrichten sind nur für von LinkedIn zugelassene Partner möglich — nach der Zulassung LINKEDIN_PARTNER_MESSAGING=true setzen und LinkedIn neu verbinden. Bis dahin bitte direkt in LinkedIn antworten."
+        );
+      }
+      const isThread = /^urn:li:messagingThread:\S+$/.test(target);
+      const isPerson = /^urn:li:person:[A-Za-z0-9_-]+$/.test(target);
+      if (!isThread && !isPerson) {
+        throw new Error(
+          "Ungültige LinkedIn-Empfänger-ID — erwartet wird eine Thread-URN (urn:li:messagingThread:…) oder eine Personen-URN (urn:li:person:…)."
+        );
+      }
+      if (/<\/?[a-z][^>]*>/i.test(text)) {
+        throw new Error("LinkedIn erlaubt in Direktnachrichten kein HTML — bitte reinen Text senden.");
+      }
+      const token = await getValidAccessToken(account);
+      const { res } = await requestJson<unknown>(
+        "https://api.linkedin.com/v2/messages",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            "X-Restli-Protocol-Version": "2.0.0",
+          },
+          body: JSON.stringify({
+            body: text,
+            messageType: "MEMBER_TO_MEMBER",
+            ...(isThread ? { thread: target } : { recipients: [target] }),
+          }),
+        },
+        "LinkedIn-Direktnachricht"
+      );
+      const ids = parseLinkedInMessageId(res.headers.get("x-linkedin-id") ?? res.headers.get("x-restli-id"));
+      return { externalId: ids.id, externalThreadId: ids.thread && ids.thread !== target ? ids.thread : undefined };
+    }
     case "YOUTUBE:DIRECT_MESSAGE":
       throw new Error("YouTube hat keine Direktnachrichten — Antworten sind nur auf Kommentare möglich.");
     case "TIKTOK:DIRECT_MESSAGE": {

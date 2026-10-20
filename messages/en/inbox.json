@@ -40,5 +40,6 @@
     "failed": "Fetching failed.",
     "result": "{platform}: {conversations} new conversation(s), {messages} new message(s)",
     "noAccounts": "No platform connected — connect accounts under Social Media."
-  }
+  },
+  "linkedinDmHint": "LinkedIn direct messages: send-only and only for approved Messages API partners (LINKEDIN_PARTNER_MESSAGING=true). Enter the thread URN (urn:li:messagingThread:…) as the ID, or for a new conversation the person URN of a first-degree connection (urn:li:person:…) — after the first send the thread URN is stored automatically. The app cannot fetch LinkedIn messages."
 }

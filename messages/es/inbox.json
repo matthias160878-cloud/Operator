@@ -40,5 +40,6 @@
     "failed": "No se pudieron obtener los mensajes.",
     "result": "{platform}: {conversations} conversación(es) nueva(s), {messages} mensaje(s) nuevo(s)",
     "noAccounts": "Ninguna plataforma conectada — conecta cuentas en Social Media."
-  }
+  },
+  "linkedinDmHint": "Mensajes directos de LinkedIn: solo envío y solo para socios aprobados de la Messages API (LINKEDIN_PARTNER_MESSAGING=true). Introduce como ID la URN del hilo (urn:li:messagingThread:…) o, para una conversación nueva, la URN de persona de un contacto directo (urn:li:person:…); tras el primer envío se guarda automáticamente la URN del hilo. La app no puede recuperar mensajes de LinkedIn."
 }

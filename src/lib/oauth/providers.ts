@@ -157,9 +157,11 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     clientSecretEnv: "LINKEDIN_CLIENT_SECRET",
     authorizeUrl: "https://www.linkedin.com/oauth/v2/authorization",
     tokenUrl: "https://www.linkedin.com/oauth/v2/accessToken",
-    scope: "openid profile w_member_social",
+    // Zugelassene Messages-API-Partner ergänzen hier die von LinkedIn
+    // vergebene Messaging-Berechtigung (LINKEDIN_SCOPE).
+    scope: process.env.LINKEDIN_SCOPE || "openid profile w_member_social",
     publishingCaveat:
-      "LinkedIn-Zugangstoken laufen nach ca. 60 Tagen ab; ein automatisches Verlängern (Refresh) ist ohne separat von LinkedIn freigegebenen Zugriff nicht möglich — danach ist ein erneutes Verbinden nötig. Antworten auf Kommentare sind möglich, das automatische Abrufen von Kommentaren und Direktnachrichten erlaubt LinkedIn nur Partner-Apps — Kommentare müssen daher mit ihrer Kommentar-URN manuell angelegt werden.",
+      "LinkedIn-Zugangstoken laufen nach ca. 60 Tagen ab; ein automatisches Verlängern (Refresh) ist ohne separat von LinkedIn freigegebenen Zugriff nicht möglich — danach ist ein erneutes Verbinden nötig. Antworten auf Kommentare sind möglich, das automatische Abrufen von Kommentaren und Direktnachrichten erlaubt LinkedIn nur Partner-Apps — Kommentare müssen daher mit ihrer Kommentar-URN manuell angelegt werden. Direktnachrichten senden können nur von LinkedIn zugelassene Partner der Messages API (LINKEDIN_PARTNER_MESSAGING=true); abrufen lassen sie sich nicht.",
     async fetchAccountInfo(accessToken) {
       const res = await fetch("https://api.linkedin.com/v2/userinfo", {
         headers: { Authorization: `Bearer ${accessToken}` },

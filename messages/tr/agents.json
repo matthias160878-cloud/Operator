@@ -1,6 +1,6 @@
 {
-  "title": "Agent Monitor",
-  "description": "Tüm SECRET 58 ajanları; durumları, son görevleri ve sonuçlarıyla. Her çalıştırma kaydedilir.",
+  "title": "Asistan günlüğü",
+  "description": "Tüm SECRET 58 asistanları (ajanları) durum, son görev ve sonuçla birlikte. Her çalıştırma burada kaydedilir.",
   "table": {
     "agent": "Ajan",
     "description": "Açıklama",

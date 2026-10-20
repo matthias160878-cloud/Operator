@@ -16,7 +16,10 @@
     "statusInProgress": "Pågår",
     "statusUsed": "Använd",
     "statusArchived": "Arkiverad",
-    "sourceAiGenerated": "AI-genererad",
-    "sourceManual": "Manuell"
+    "sourceAiGenerated": "IdeaAgent (AI eller mall)",
+    "sourceManual": "Manuell",
+    "templateResult": "Mall: de idéer som just skapades kommer från fasta textblock, inte från en AI. För AI-idéer anger du din egen AI-nyckel under ”Inställningar → Egna åtkomster”.",
+    "textEngineLabel": "Textmotor:",
+    "templateMode": "Mallläge (ingen AI-leverantör konfigurerad)"
   }
 }

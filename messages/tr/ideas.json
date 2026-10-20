@@ -16,7 +16,10 @@
     "statusInProgress": "Üzerinde çalışılıyor",
     "statusUsed": "Kullanıldı",
     "statusArchived": "Arşivlendi",
-    "sourceAiGenerated": "Yapay zekâ ürettiği",
-    "sourceManual": "Elle"
+    "sourceAiGenerated": "IdeaAgent (yapay zekâ veya şablon)",
+    "sourceManual": "Elle",
+    "templateResult": "Şablon: az önce oluşturulan fikirler bir yapay zekâdan değil, sabit metin bloklarından geliyor. Yapay zekâ fikirleri için kendi yapay zekâ anahtarını „Ayarlar → Kendi erişimlerim” altında gir.",
+    "textEngineLabel": "Metin motoru:",
+    "templateMode": "Şablon modu (yapılandırılmış yapay zekâ sağlayıcısı yok)"
   }
 }

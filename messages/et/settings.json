@@ -1,6 +1,6 @@
 {
   "title": "Seaded",
-  "description": "Tööruum, kasutajad ja süsteemiteave. Ligipääsuandmeid hallatakse ainult keskkonnamuutujate kaudu (vt <code>.env.example</code>).",
+  "description": "Sinu tööruum, kasutajad ja ülevaade sinu andmetest. Oma API-võtmed (AI-tekstid, uudiskirjade saatmine) sisestad jaotises <zugaenge>Oma ligipääsud</zugaenge>; oma paketi leiad jaotisest <billing>Pakett ja arveldus</billing>.",
   "workspace": {
     "title": "Tööruum",
     "name": "Nimi",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Kasutajad ja rollid",
-    "note": "Mitme rentniku andmemudel on täielikult ette valmistatud (tööruumide eraldatus kõigis tabelites). Päris sisselogimis-/autentimisliides mitme kasutajaga on järgmine arendusetapp — praegu töötab rakendus täpselt selle vaiketööruumiga."
+    "note": "Igal kontol on oma tööruum, mis on teistest klientidest eraldatud. Lisakasutajaid ei saa sa veel ise lisada."
   },
   "system": {
     "title": "Süsteem",
@@ -17,7 +17,7 @@
     "campaigns": "Kampaaniad",
     "mediaAssets": "Meediavarad",
     "agentRuns": "Agendi käivitused",
-    "dbNote": "Andmebaas: SQLite (kohalik, <code>prisma/dev.db</code>) Prisma ORM-i kaudu. Tootmises muuda <codeSpaced>DATABASE_URL</codeSpaced> Postgresi/MySQL-i peale (kohanda pakkujat failis <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Sinu tööruumi salvestatud kirjete arv. Kõik andmed saad eksportida või tööruumi kustutada allpool jaotises „Minu andmed“."
   },
   "onboarding": {
     "title": "Seadistusabiline",

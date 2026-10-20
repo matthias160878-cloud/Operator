@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Konta na platformach i status ich połączenia. Dane dostępowe są zarządzane wyłącznie jako zmienne środowiskowe po stronie serwera i nigdy nie są przechowywane we frontendzie. Tokeny dostępu po połączeniu są zapisywane w bazie danych w formie zaszyfrowanej.",
+  "subtitle": "Twoje konta na platformach i ich stan połączenia. Łączysz się, logując się bezpośrednio na platformie; tokeny dostępu są zapisywane zaszyfrowane na serwerze, nigdy w przeglądarce.",
   "credentialsLabel": "Dane dostępowe aplikacji",
   "accountLabel": "Konto",
   "lastPublishedLabel": "Ostatnia publikacja",
   "lastErrorLabel": "Ostatni błąd",
   "connectButton": "Połącz",
   "connectButtonUnavailable": "Połącz (jeszcze niemożliwe)",
-  "connectButtonTitleNoCreds": "Brakuje jeszcze danych dostępowych aplikacji",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY nie jest jeszcze ustawiony",
+  "connectButtonTitleNoCreds": "Operator jeszcze tego nie skonfigurował",
+  "connectButtonTitleNoEncryption": "Bezpieczne przechowywanie tokenów dostępu nie jest jeszcze skonfigurowane",
   "disconnectButton": "Rozłącz",
   "disconnectConfirm": "Na pewno rozłączyć to konto? Dostęp trzeba będzie potem przywrócić przez „Połącz”.",
   "needsCredentialsNote": "Brakuje jeszcze: wpisz {idVar} i {secretVar} w Render.",
@@ -56,6 +56,10 @@
       "not_active": "Platforma nie potwierdziła dostępu lub został on odrzucony.",
       "composio_error": "Composio było nieosiągalne lub zgłosiło błąd. Spróbuj ponownie później.",
       "unknown": "Połączenie nie powiodło się."
-    }
-  }
+    },
+    "noPublishNotice": "Tylko test połączenia – nic nie jest tu publikowane. Test odczytu sprawdza jedynie, czy konto można odczytać."
+  },
+  "needsCredentialsNoteCustomer": "Tę platformę konfiguruje operator. Połączenie będzie możliwe, gdy tylko zostanie skonfigurowana.",
+  "errorNotConfiguredCustomer": "{platform}: operator jeszcze nie skonfigurował tej platformy. Połączenie będzie możliwe, gdy tylko zostanie skonfigurowana.",
+  "encryptionKeyMissingNoticeCustomer": "Połączenie nie jest jeszcze możliwe: operator nie skonfigurował jeszcze bezpiecznego przechowywania tokenów dostępu."
 }

@@ -80,14 +80,16 @@
     "ERROR": "Fout",
     "REJECTED": "Afgewezen",
     "RECEIVED": "Ontvangen",
-    "PENDING": "In afwachting"
+    "PENDING": "In afwachting",
+    "NOT_AVAILABLE": "Nog niet beschikbaar"
   },
   "integrationStatus": {
     "notConfigured": "Niet geconfigureerd — ontbrekende variabele(n): {vars}.",
     "verifyFailedGeneric": "Verbinding mislukt.",
     "verifyFailedStatus": "{service} antwoordde met status {status}.",
     "verifyUnreachable": "{service} kon niet worden bereikt.",
-    "connected": "Verbonden."
+    "connected": "Verbonden.",
+    "notAvailable": "Nog niet beschikbaar – deze koppeling is nog niet in de app gebouwd."
   },
   "mediaPreview": {
     "expand": "Groter weergeven",

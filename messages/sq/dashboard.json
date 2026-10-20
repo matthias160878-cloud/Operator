@@ -1,8 +1,7 @@
 {
   "viewAll": "Shfaq të gjitha",
   "demoBanner": {
-    "before": "Të dhënat demo janë aktive — fushatat, njësitë e përmbajtjes dhe Analytics janë të dhëna shembull nga ",
-    "after": ", jo shifra reale të platformave."
+    "text": "Të dhënat shembull janë aktive – fushatat, përmbajtja dhe statistikat në këtë hapësirë pune janë të dhëna shembull, jo numra të vërtetë të platformave."
   },
   "hero": {
     "subtitle": "Një ide. Disa platforma. Maksimumi i shtrirjes.",
@@ -26,8 +25,9 @@
     "published": "Publikime",
     "views": "Shikime",
     "avgEngagement": "Ø Engagement",
-    "totalRevenue": "Të ardhurat gjithsej",
-    "noComparisonWeek": "Ende nuk ka javë të mëparshme si bazë krahasimi — ndryshimet shfaqen sapo të ketë të dhëna për të paktën dy javë."
+    "totalRevenue": "Të ardhurat (të futura me dorë)",
+    "noComparisonWeek": "Ende nuk ka javë të mëparshme si bazë krahasimi — ndryshimet shfaqen sapo të ketë të dhëna për të paktën dy javë.",
+    "noStats": "Shikimet dhe angazhimi: ende nuk ka statistika – statistikat e platformave ende nuk merren automatikisht."
   },
   "production": {
     "title": "Prodhimi i përmbajtjes",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} të lidhura"
   },
   "agentMonitor": {
-    "title": "Agent Monitor",
+    "title": "Regjistri i asistentëve",
     "empty": "Ende nuk ka ekzekutime."
   },
   "topPerformer": {
     "title": "Top Performer",
     "last7Days": "7 ditët e fundit",
-    "empty": "Ende nuk ka të dhëna performance.",
+    "empty": "Ende nuk ka të dhëna performance – statistikat e platformave ende nuk merren automatikisht.",
     "views": "Shikime",
     "likes": "Pëlqime",
     "comments": "Komente",

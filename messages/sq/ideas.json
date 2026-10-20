@@ -16,7 +16,10 @@
     "statusInProgress": "Në punë",
     "statusUsed": "E përdorur",
     "statusArchived": "Arkivuar",
-    "sourceAiGenerated": "Gjeneruar nga AI",
-    "sourceManual": "Me dorë"
+    "sourceAiGenerated": "IdeaAgent (IA ose shabllon)",
+    "sourceManual": "Me dorë",
+    "templateResult": "Shabllon: idetë e sapokrijuara vijnë nga blloqe teksti fikse, jo nga IA. Për ide me IA, fut çelësin tënd të IA-së te „Cilësimet → Qasjet e mia”.",
+    "textEngineLabel": "Motori i tekstit:",
+    "templateMode": "Modaliteti i shablloneve (nuk është konfiguruar asnjë ofrues AI)"
   }
 }

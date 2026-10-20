@@ -2650,3 +2650,24 @@ test("Kündigungsbutton (§ 312k BGB): öffentlich, Bestätigung auf dem Bildsch
   assert.equal((await O.json("/api/operator/kuendigungen", { method: "PATCH", body: { id: k1.id, bearbeitet: true } })).status, 200);
   assert.ok((await prisma.kuendigung.findUniqueOrThrow({ where: { id: k1.id } })).bearbeitetAm);
 });
+
+test("Kundenbereich: ehrliche Hinweise statt Entwicklertexte und leerer Zahlen", async () => {
+  const c = await signup("ehrlich@example.test", "Ehrlich GmbH", "10.63.0.1");
+  const settings = await (await c.req("/settings")).text();
+  assert.ok(settings.includes('data-testid="link-pausenschalter"') && settings.includes('href="/reichweitenaufbau?tab=uebersicht"'), "Link zum Pausenschalter");
+  assert.ok(settings.includes('href="/settings/zugaenge"') && settings.includes('href="/billing"'), "Eigene Zugänge und Paket verlinkt");
+  assert.ok(!settings.includes("prisma/dev.db") && !settings.includes(".env.example") && !settings.includes("Default-Workspace"), "keine Entwicklertexte");
+  const inbox = await (await c.req("/inbox")).text();
+  assert.ok(inbox.includes('data-testid="posteingang-simulation"') && inbox.includes("Antworten werden nicht versendet"), "Posteingang als Simulation gekennzeichnet");
+  const analytics = await (await c.req("/analytics")).text();
+  assert.ok(analytics.includes('data-testid="analytics-leer"') && analytics.includes("noch nicht automatisch abgerufen"), "leere Statistik ehrlich erklärt");
+  assert.ok(analytics.includes('href="/weiterempfehlungen"'), "Verweis auf manuelle Kennzahlen");
+  const dashboard = await (await c.req("/")).text();
+  assert.ok(dashboard.includes('data-testid="hinweis-keine-statistik"') && dashboard.includes("Einnahmen (manuell erfasst)"), "Dashboard: Hinweis und Beschriftung");
+  const video = await (await c.req("/video-studio")).text();
+  assert.ok(!video.includes("VideoProvider") && video.includes("Noch nicht verfügbar"), "Video Studio ohne Entwicklertext, nicht „Verbunden“");
+  const agents = await (await c.req("/agents")).text();
+  assert.ok(agents.includes("Protokoll der Assistenten") && agents.includes("Ohne Datenquelle"), "Agenten-Seite kundenverständlich, TrendAgent gekennzeichnet");
+  const social = await (await c.req("/social-media")).text();
+  assert.ok(social.includes('data-testid="composio-nur-test"'), "Composio-Test als reiner Verbindungstest gekennzeichnet");
+});

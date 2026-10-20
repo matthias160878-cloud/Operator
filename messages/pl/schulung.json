@@ -12,7 +12,7 @@
       "title": "Pierwsze kroki",
       "description": "Zrób najpierw te trzy rzeczy, a wszyscy agenci AI będą pracować na prawdziwych danych zamiast na wypełniaczach.",
       "steps": [
-        "W sekcji „Integracje” sprawdź, czy skonfigurowano dostawcę AI. Funkcje AI działają przez dostępy operatora, więc nie potrzebujesz własnej subskrypcji AI. Bez dostawcy AI aplikacja działa w trybie szablonów.",
+        "W „Ustawienia → Własne dostępy” wpisz własny klucz AI od Anthropic, OpenAI lub Gemini. Funkcje AI korzystają wyłącznie z Twojego klucza; dostawca AI rozlicza się z Tobą bezpośrednio. Bez własnego klucza aplikacja działa w trybie szablonów ze stałymi blokami tekstu.",
         "W „Brand DNA” uzupełnij własną markę (ton, grupa docelowa, wartości) — agenci AI używają tego przy każdym generowanym tekście.",
         "W „Pomysły i inspiracje” lub „Content Brain” wygeneruj pierwszy pomysł lub pierwszą kampanię."
       ]
@@ -50,7 +50,7 @@
       "title": "Analityka i wzrost",
       "description": "Prawdziwe liczby o własnych wynikach — i rekomendacje zamiast automatyzacji.",
       "steps": [
-        "Analityka pokazuje wyłącznie prawdziwe, zaimportowane lub ręcznie wprowadzone dane o wynikach.",
+        "Analytics pokazuje tylko zapisane statystyki (np. dane przykładowe). Statystyki platform nie są jeszcze pobierane automatycznie; liczby wpisujesz ręcznie w „Poleceniach” lub w porównaniu wariantów – tam są oceniane.",
         "Strona Wzrost wylicza z tych danych najlepsze godziny publikacji, skuteczne hashtagi i formaty.",
         "Ważne: celowo nie ma automatycznego zwiększania liczby obserwujących/zaangażowania (żadnych zachowań botów) — naruszałoby to regulamin każdej platformy."
       ]
@@ -59,9 +59,9 @@
       "title": "Skrzynka odbiorcza",
       "description": "Propozycje odpowiedzi od AI na wiadomości — z zatwierdzeniem przed wysłaniem.",
       "steps": [
-        "Ponieważ (jeszcze) żadna platforma nie jest połączona przez OAuth, rozmowy są obecnie tworzone ręcznie zamiast pobierane na żywo.",
+        "Wiadomości z platform nie są jeszcze pobierane, a odpowiedzi nie są wysyłane. Aby wypróbować, tworzysz rozmowy jako symulację.",
         "MessageAgent proponuje odpowiedź na podstawie Brand DNA i przebiegu rozmowy.",
-        "Szkic trzeba ręcznie sprawdzić i zatwierdzić, zanim zostanie uznany za wysłany — prawdziwa wysyłka bez połączenia z platformą uczciwie się nie powiedzie, zamiast udawać sukces."
+        "To Ty sprawdzasz i zatwierdzasz szkic. Wysyłka na platformy nie jest jeszcze zbudowana – „Zatwierdź i wyślij” uczciwie zgłasza to jako błąd, zamiast udawać sukces."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Skąd bierze się każdy status połączenia i gdzie wpisać odpowiedni klucz.",
       "steps": [
         "Każdy wiersz pokazuje prawdziwy, sprawdzany na żywo status — nigdy udawane połączenie.",
-        "Przy „Nie skonfigurowano” „Pobierz klucz API” prowadzi do oficjalnej strony dostawcy.",
-        "Dane dostępowe nigdy nie są zapisywane w przeglądarce, tylko w chroniony sposób na serwerze. Jeśli brakuje dostępu, konfiguruje go operator.",
-        "Koszty: Pro i Maxi to subskrypcje, miesięczne lub roczne. Aktualne ceny znajdziesz w sekcji „Pakiet i rozliczenia”. Każdy zewnętrzny dostawca ma własny, niezależny model kosztów (bezpłatny / według zużycia / subskrypcja) — na stronie Integracje przy każdej usłudze widać, który model obowiązuje, wraz z linkiem do aktualnych cen u dostawcy."
+        "Własne dostępy (klucze AI, Resend do newslettera) wpisujesz w „Ustawienia → Własne dostępy” – przewodnik prowadzi tam do oficjalnej strony kluczy dostawcy.",
+        "Dane dostępowe nigdy nie są zapisywane w przeglądarce, tylko zaszyfrowane na serwerze. Syntezę mowy i dostępy aplikacji platform konfiguruje operator; „Jeszcze niedostępne” oznacza, że połączenie nie zostało jeszcze zbudowane w aplikacji.",
+        "Koszty: Pro i Maxi to subskrypcje, miesięczne lub roczne. Aktualne ceny są w „Pakiet i rozliczenia”. Za własne dostępy (AI, Resend) każdy dostawca rozlicza się z Tobą bezpośrednio według własnego cennika – SECRET 58 nie pobiera za to żadnych dodatkowych opłat."
       ]
     }
   }

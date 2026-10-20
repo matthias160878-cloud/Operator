@@ -16,7 +16,10 @@
     "statusInProgress": "În lucru",
     "statusUsed": "Folosit",
     "statusArchived": "Arhivat",
-    "sourceAiGenerated": "Generat de IA",
-    "sourceManual": "Manual"
+    "sourceAiGenerated": "IdeaAgent (IA sau șablon)",
+    "sourceManual": "Manual",
+    "templateResult": "Șablon: ideile tocmai create provin din blocuri de text fixe, nu de la o IA. Pentru idei IA, introdu propria cheie IA la „Setări → Accese proprii”.",
+    "textEngineLabel": "Motor de text:",
+    "templateMode": "Mod șablon (niciun furnizor de IA configurat)"
   }
 }

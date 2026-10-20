@@ -16,7 +16,10 @@
     "statusInProgress": "I gang",
     "statusUsed": "Brugt",
     "statusArchived": "Arkiveret",
-    "sourceAiGenerated": "AI-genereret",
-    "sourceManual": "Manuel"
+    "sourceAiGenerated": "IdeaAgent (AI eller skabelon)",
+    "sourceManual": "Manuel",
+    "templateResult": "Skabelon: de netop oprettede idéer stammer fra faste tekstblokke, ikke fra en AI. For AI-idéer skal du indtaste din egen AI-nøgle under „Indstillinger → Egne adgange“.",
+    "textEngineLabel": "Tekstmotor:",
+    "templateMode": "Skabelontilstand (ingen AI-udbyder konfigureret)"
   }
 }

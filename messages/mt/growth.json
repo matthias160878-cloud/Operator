@@ -1,9 +1,9 @@
 {
   "title": "Tkabbir",
-  "subtitle": "Rakkomandazzjonijiet għal firxa u tkabbir — ibbażati fuq id-dejta reali tal-analytics tal-kontenut preċedenti tiegħek: l-aqwa ħinijiet biex tippostja, l-aktar hashtags b'suċċess u formats.",
+  "subtitle": "Rakkomandazzjonijiet għall-firxa u t-tkabbir – miġbura mill-istatistika ssejvjata tal-kontenut tiegħek: l-aħjar ħinijiet biex tippowstja, l-aktar hashtags u formati ta' suċċess. L-istatistika tal-pjattaformi għadha ma tinġabarx awtomatikament.",
   "warning": "<strong>Mhux</strong> inkluż apposta: segwiment/likes/kummenti awtomatizzati biex jiżdiedu artifiċjalment is-segwaċi. Dan jikser it-termini tal-użu ta' YouTube, Instagram, TikTok, LinkedIn u Facebook u jista' jwassal għas-sospensjoni tal-kont. Din il-paġna tagħti biss rakkomandazzjonijiet ibbażati fuq id-dejta għall-kontenut tiegħek stess.",
   "filterAll": "Il-pjattaformi kollha",
-  "emptyState": "Għad m'hemm l-ebda dejta ta' analytics għal {platform}. Hekk kif il-kontenut ippubblikat jiġbor dejta tal-prestazzjoni, ir-rakkomandazzjonijiet jidhru hawn.",
+  "emptyState": "Għad m'hemm l-ebda statistika ssejvjata għal {platform}, għalhekk għad m'hemmx rakkomandazzjonijiet. L-istatistika tal-pjattaformi għadha ma tinġabarx awtomatikament.",
   "emptyStateDefaultScope": "dan il-workspace",
   "bestPostingTimesTitle": "L-aqwa ħinijiet biex tippostja",
   "postingTime": "{day} · {hour}:00",

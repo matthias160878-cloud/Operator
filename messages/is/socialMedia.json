@@ -1,14 +1,14 @@
 {
   "pageTitle": "Samfélagsmiðlar",
-  "subtitle": "Reikningar á miðlum og tengingarstaða þeirra. Aðgangsgögn eru eingöngu stýrð sem umhverfisbreytur á þjóninum og aldrei vistuð í framenda. Aðgangslyklar eru dulkóðaðir í gagnagrunni eftir tengingu.",
+  "subtitle": "Aðgangar þínir að miðlum og tengistaða þeirra. Þú tengist með því að skrá þig inn beint hjá miðlinum; aðgangstókar eru vistaðir dulkóðaðir á þjóninum, aldrei í vafranum.",
   "credentialsLabel": "Aðgangsgögn forrits",
   "accountLabel": "Reikningur",
   "lastPublishedLabel": "Síðasta birting",
   "lastErrorLabel": "Síðasta villa",
   "connectButton": "Tengja",
   "connectButtonUnavailable": "Tengja (ekki enn hægt)",
-  "connectButtonTitleNoCreds": "Aðgangsgögn forrits vantar enn",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY er ekki enn stilltur",
+  "connectButtonTitleNoCreds": "Rekstraraðili hefur ekki sett upp enn",
+  "connectButtonTitleNoEncryption": "Örugg geymsla aðgangstóka hefur ekki verið sett upp enn",
   "disconnectButton": "Aftengja",
   "disconnectConfirm": "Viltu í alvöru aftengja þennan reikning? Aðgangurinn þarf þá að vera settur upp aftur með „Tengja“.",
   "needsCredentialsNote": "Vantar enn: skráðu {idVar} og {secretVar} í Render.",
@@ -56,6 +56,10 @@
       "not_active": "Miðillinn staðfesti ekki aðganginn eða honum var hafnað.",
       "composio_error": "Ekki náðist samband við Composio eða það tilkynnti villu. Reyndu aftur síðar.",
       "unknown": "Tenging mistókst."
-    }
-  }
+    },
+    "noPublishNotice": "Aðeins prófun á tengingu – hér er ekkert birt. Lesprófið athugar aðeins hvort hægt sé að lesa aðganginn."
+  },
+  "needsCredentialsNoteCustomer": "Rekstraraðilinn setur þennan miðil upp. Þú getur tengst um leið og hann hefur verið settur upp.",
+  "errorNotConfiguredCustomer": "{platform}: rekstraraðilinn hefur ekki sett þennan miðil upp enn. Þú getur tengst um leið og hann hefur verið settur upp.",
+  "encryptionKeyMissingNoticeCustomer": "Ekki er hægt að tengjast enn: rekstraraðilinn hefur ekki sett upp örugga geymslu aðgangstóka."
 }

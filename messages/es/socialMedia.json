@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Cuentas de plataforma y su estado de conexión. Las credenciales se gestionan exclusivamente como variables de entorno del servidor y nunca se almacenan en el frontend. Los tokens de acceso se cifran antes de guardarse en la base de datos una vez conectados.",
+  "subtitle": "Tus cuentas de plataformas y su estado de conexión. La conexión se hace iniciando sesión directamente en la plataforma; los tokens de acceso se guardan cifrados en el servidor, nunca en el navegador.",
   "credentialsLabel": "Credenciales de la app",
   "accountLabel": "Cuenta",
   "lastPublishedLabel": "Última publicación",
   "lastErrorLabel": "Último error",
   "connectButton": "Conectar",
   "connectButtonUnavailable": "Conectar (aún no es posible)",
-  "connectButtonTitleNoCreds": "Faltan las credenciales de la app",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY aún no está configurada",
+  "connectButtonTitleNoCreds": "El operador aún no lo ha configurado",
+  "connectButtonTitleNoEncryption": "El almacenamiento seguro de los tokens de acceso aún no está configurado",
   "disconnectButton": "Desconectar",
   "disconnectConfirm": "¿Desconectar realmente esta cuenta? Deberás volver a conectarla con \"Conectar\" después.",
   "needsCredentialsNote": "Falta: configurar {idVar} y {secretVar} en Render.",
@@ -56,6 +56,10 @@
       "not_active": "La plataforma no confirmó el acceso o fue rechazado.",
       "composio_error": "Composio no estaba disponible o informó de un error. Inténtalo más tarde.",
       "unknown": "Conexión fallida."
-    }
-  }
+    },
+    "noPublishNotice": "Solo una prueba de conexión: aquí no se publica nada. La prueba de lectura solo comprueba si se puede leer la cuenta."
+  },
+  "needsCredentialsNoteCustomer": "Esta plataforma la configura el operador. Podrás conectarte en cuanto esté configurada.",
+  "errorNotConfiguredCustomer": "{platform}: el operador aún no ha configurado esta plataforma. Podrás conectarte en cuanto esté configurada.",
+  "encryptionKeyMissingNoticeCustomer": "Aún no es posible conectar: el operador todavía no ha configurado el almacenamiento seguro de los tokens de acceso."
 }

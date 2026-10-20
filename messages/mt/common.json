@@ -80,14 +80,16 @@
     "ERROR": "Żball",
     "REJECTED": "Miċħud",
     "RECEIVED": "Riċevut",
-    "PENDING": "Pendenti"
+    "PENDING": "Pendenti",
+    "NOT_AVAILABLE": "Għadu mhux disponibbli"
   },
   "integrationStatus": {
     "notConfigured": "Mhux ikkonfigurat — varjabbli nieqsa: {vars}.",
     "verifyFailedGeneric": "Il-konnessjoni falliet.",
     "verifyFailedStatus": "{service} wieġeb bl-istatus {status}.",
     "verifyUnreachable": "{service} ma setax jintlaħaq.",
-    "connected": "Konness."
+    "connected": "Konness.",
+    "notAvailable": "Għadu mhux disponibbli – din il-konnessjoni għadha mhix mibnija fl-app."
   },
   "mediaPreview": {
     "expand": "Uri akbar",

@@ -12,7 +12,7 @@
       "title": "Prvi koraki",
       "description": "Najprej opravi teh troje, potem bodo vsi UI agenti delali s pravimi podatki namesto z nadomestnimi.",
       "steps": [
-        "Pod „Integracije“ preveri, ali je nastavljen ponudnik umetne inteligence. Funkcije umetne inteligence delujejo prek dostopov upravljavca, zato ne potrebuješ lastne naročnine na umetno inteligenco. Brez ponudnika umetne inteligence aplikacija deluje v načinu predlog.",
+        "Pod »Nastavitve → Lastni dostopi« vnesi svoj ključ UI od Anthropic, OpenAI ali Gemini. Funkcije UI uporabljajo izključno tvoj ključ; ponudnik UI ti zaračuna neposredno. Brez lastnega ključa aplikacija deluje v načinu predlog s fiksnimi besedilnimi bloki.",
         "V razdelku „Brand DNA“ izpolni lastno znamko (ton, ciljna skupina, vrednote) — UI agenti to uporabljajo za vsako generirano besedilo.",
         "V razdelku „Ideje in navdih“ ali „Content Brain“ naj se ustvari prva ideja oz. kampanja."
       ]
@@ -50,7 +50,7 @@
       "title": "Analitika in rast",
       "description": "Resnične številke o lastni uspešnosti — in priporočila namesto avtomatizacije.",
       "steps": [
-        "Analitika prikazuje izključno resnične, uvožene ali ročno vnesene podatke o uspešnosti.",
+        "Analytics prikazuje le shranjeno statistiko (npr. vzorčne podatke). Statistika platform se še ne pridobiva samodejno; številke ročno vneseš pod »Priporočila« ali v primerjavi različic – tam se ovrednotijo.",
         "Stran Rast iz teh podatkov izračuna najboljše čase objavljanja, uspešne heštage in formate.",
         "Pomembno: namenoma ni samodejnega povečevanja sledilcev/angažiranosti (brez vedenja botov) — to bi kršilo pogoje uporabe vsake platforme."
       ]
@@ -59,9 +59,9 @@
       "title": "Nabiralnik",
       "description": "Osnutki odgovorov UI na sporočila — z odobritvijo pred pošiljanjem.",
       "steps": [
-        "Ker (še) nobena platforma ni povezana prek OAuth, se pogovori trenutno ustvarjajo ročno, namesto da bi se pridobivali v živo.",
+        "Sporočila s platform se še ne pridobivajo in odgovori se ne pošiljajo. Za preizkus ustvariš pogovore kot simulacijo.",
         "MessageAgent predlaga odgovor na podlagi Brand DNA in poteka pogovora.",
-        "Osnutek je treba ročno pregledati in odobriti, preden velja za poslanega — pravo pošiljanje brez povezave s platformo pošteno spodleti, namesto da bi se izkazalo za uspešno."
+        "Osnutek pregledaš in odobriš ti. Pošiljanje na platforme še ni izdelano – »Odobri in pošlji« to pošteno javi kot napako, namesto da bi hlinilo uspeh."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Od kod prihaja vsak status povezave in kam se vnese ustrezen ključ.",
       "steps": [
         "Vsaka vrstica prikazuje resničen, v živo preverjen status — nikoli navidezne povezave.",
-        "Pri „Ni nastavljeno“ „Pridobi ključ API“ vodi na uradno stran ponudnika.",
-        "Dostopni podatki se nikoli ne shranjujejo v brskalniku, temveč le zaščiteno na strežniku. Če dostop manjka, ga nastavi upravljavec.",
-        "Stroški: Pro in Maxi sta naročnini, mesečni ali letni. Aktualne cene so pod „Paket in obračun“. Vsak zunanji ponudnik ima svoj, neodvisen model stroškov (brezplačno / glede na porabo / naročnina) — na strani Integracije je pri vsaki storitvi navedeno, kateri model velja, s povezavo do aktualnih cen pri ponudniku."
+        "Lastne dostope (ključe UI, Resend za novice) vneseš pod »Nastavitve → Lastni dostopi« – vodnik te tam pripelje na uradno stran s ključi ponudnika.",
+        "Dostopni podatki se nikoli ne shranjujejo v brskalniku, le šifrirano na strežniku. Govorni izhod in dostope aplikacij platform nastavi upravljavec; »Še ni na voljo« pomeni, da povezava v aplikaciji še ni izdelana.",
+        "Stroški: Pro in Maxi sta naročnini, mesečni ali letni. Aktualne cene so pod »Paket in obračun«. Za tvoje lastne dostope (UI, Resend) ti vsak ponudnik zaračuna neposredno po svojem cenovnem modelu – SECRET 58 za to ne zaračuna ničesar dodatno."
       ]
     }
   }

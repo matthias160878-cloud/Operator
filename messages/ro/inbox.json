@@ -1,6 +1,6 @@
 {
   "title": "Inbox",
-  "description": "Mesaje și comentarii de pe toate platformele. MessageAgent propune răspunsuri — se trimite doar ce aprobi tu. Încă nu există o conexiune OAuth reală cu o platformă, de aceea conversațiile sunt simulate manual aici, în loc să fie preluate live.",
+  "description": "Mesaje și solicitări într-un singur loc. MessageAgent propune ciorne de răspuns.",
   "emptyState": "Încă nu există conversații — simulează una pentru a începe.",
   "backToInbox": "Înapoi la Inbox",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simulează un alt mesaj primit (test fără conexiune reală cu platforma):",
     "messagePlaceholder": "Textul mesajului …",
     "addButton": "Adaugă"
-  }
+  },
+  "simulationBanner": "<strong>Previzualizare/simulare:</strong> mesajele de pe platforme nu sunt încă preluate, iar răspunsurile nu sunt trimise – nici prin „Aprobă și trimite”. Mesajele platformelor le poți simula aici pentru a încerca. Înregistrările reale provin doar din formularele site-ului (de ex. cereri de programare); la acestea răspunzi prin e-mail."
 }

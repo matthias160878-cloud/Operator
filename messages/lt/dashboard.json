@@ -1,8 +1,7 @@
 {
   "viewAll": "Rodyti visus",
   "demoBanner": {
-    "before": "Demonstraciniai duomenys aktyvūs — kampanijos, turinio elementai ir analitika yra pavyzdiniai duomenys iš ",
-    "after": ", ne tikri platformų skaičiai."
+    "text": "Pavyzdiniai duomenys aktyvūs – šios darbo srities kampanijos, turinys ir statistika yra pavyzdiniai duomenys, o ne tikri platformų skaičiai."
   },
   "hero": {
     "subtitle": "Viena idėja. Kelios platformos. Maksimalus aprėptis.",
@@ -26,8 +25,9 @@
     "published": "Paskelbimai",
     "views": "Peržiūros",
     "avgEngagement": "Vid. įsitraukimas",
-    "totalRevenue": "Pajamos iš viso",
-    "noComparisonWeek": "Praėjusios savaitės palyginimui duomenų dar nėra — pokyčių rodikliai atsiras, kai bus bent dviejų savaičių duomenys."
+    "totalRevenue": "Pajamos (įvestos rankiniu būdu)",
+    "noComparisonWeek": "Praėjusios savaitės palyginimui duomenų dar nėra — pokyčių rodikliai atsiras, kai bus bent dviejų savaičių duomenys.",
+    "noStats": "Peržiūros ir įsitraukimas: statistikos dar nėra – platformų statistika dar negaunama automatiškai."
   },
   "production": {
     "title": "Turinio gamyba",
@@ -71,13 +71,13 @@
     "connectedCount": "Prijungta: {connected}/{total}"
   },
   "agentMonitor": {
-    "title": "Agentų monitorius",
+    "title": "Asistentų žurnalas",
     "empty": "Paleidimų dar nėra."
   },
   "topPerformer": {
     "title": "Geriausi rezultatai",
     "last7Days": "Paskutinės 7 dienos",
-    "empty": "Veiklos duomenų dar nėra.",
+    "empty": "Rezultatų duomenų dar nėra – platformų statistika dar negaunama automatiškai.",
     "views": "Peržiūros",
     "likes": "Patiktukai",
     "comments": "Komentarai",

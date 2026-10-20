@@ -12,7 +12,7 @@
       "title": "Fyrstu skref",
       "description": "Gerðu þessa þrjá hluti fyrst, þá vinna allir gervigreindarfulltrúar með raunveruleg gögn í stað staðgengla.",
       "steps": [
-        "Athugaðu undir „Samþættingar“ hvort gervigreindarveita sé uppsett. Gervigreindareiginleikarnir keyra í gegnum aðgang rekstraraðilans, svo þú þarft ekki þína eigin gervigreindaráskrift. Án gervigreindarveitu virkar appið í sniðmátshamnum.",
+        "Skráðu þinn eigin gervigreindarlykil frá Anthropic, OpenAI eða Gemini undir „Stillingar → Eigin aðgangar“. Gervigreindaraðgerðirnar nota eingöngu þinn eigin lykil; gervigreindarþjónustan rukkar þig beint. Án eigin lykils vinnur appið í sniðmátsham með föstum textabútum.",
         "Fylltu út þitt eigið vörumerki undir „Brand DNA“ (tónn, markhópur, gildi) — gervigreindarfulltrúarnir nota það í hverjum texta sem þeir búa til.",
         "Láttu búa til fyrstu hugmyndina eða herferðina undir „Hugmyndir og innblástur“ eða „Content Brain“."
       ]
@@ -50,7 +50,7 @@
       "title": "Greining og vöxtur",
       "description": "Raunverulegar tölur um eigin frammistöðu — og ráðleggingar í stað sjálfvirkni.",
       "steps": [
-        "Greining sýnir eingöngu raunveruleg, innflutt eða handvirkt skráð frammistöðugögn.",
+        "Analytics sýnir aðeins vistaða tölfræði (t.d. sýnigögn). Tölfræði miðla er enn ekki sótt sjálfvirkt; tölur skráirðu handvirkt undir „Meðmæli“ eða í samanburði útgáfa – þar eru þær metnar.",
         "Vaxtarsíðan reiknar út frá þessum gögnum bestu birtingartíma, árangursrík myllumerki og snið.",
         "Mikilvægt: vísvitandi er engin sjálfvirk fjölgun fylgjenda/þátttöku (engin vélmennahegðun) — það bryti gegn notkunarskilmálum allra miðla."
       ]
@@ -59,9 +59,9 @@
       "title": "Pósthólf",
       "description": "Gervigreindardrög að svörum við skilaboðum — með samþykki fyrir sendingu.",
       "steps": [
-        "Þar sem (enn) enginn miðill er tengdur með OAuth eru samtöl nú stofnuð handvirkt í stað þess að vera sótt í beinni.",
+        "Skilaboð frá miðlum eru enn ekki sótt og svör eru ekki send. Til að prófa býrðu til samtöl sem hermun.",
         "MessageAgent leggur til svar út frá Brand DNA og samtalssögu.",
-        "Drögin þarf að fara yfir og samþykkja handvirkt áður en þau teljast send — raunveruleg sending mistekst án tengingar við miðil, í stað þess að þykjast hafa tekist."
+        "Þú ferð yfir drögin og samþykkir þau. Sending til miðla hefur ekki enn verið smíðuð – „Samþykkja og senda“ tilkynnir það heiðarlega sem villu í stað þess að þykjast hafa tekist."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Hvaðan hver tengingarstaða kemur og hvar viðeigandi lykill er skráður.",
       "steps": [
         "Hver lína sýnir raunverulega stöðu sem er athuguð í beinni — aldrei uppgerðartengingu.",
-        "Við „Ekki stillt“ leiðir „Sækja API-lykil“ á opinbera síðu veitandans.",
-        "Aðgangsupplýsingar eru aldrei vistaðar í vafranum, heldur aðeins varðar á þjóninum. Ef aðgang vantar setur rekstraraðilinn hann upp.",
-        "Kostnaður: Pro og Maxi eru áskriftir, mánaðarlegar eða árlegar. Gildandi verð má finna undir „Pakki og reikningar“. Hver ytri veita er með sitt eigið, óháða kostnaðarlíkan (ókeypis / eftir notkun / áskrift) — á síðunni Samþættingar kemur fram fyrir hverja þjónustu hvaða líkan gildir, með tengli á gildandi verð hjá veitunni."
+        "Eigin aðganga (gervigreindarlykla, Resend fyrir fréttabréfið) skráirðu undir „Stillingar → Eigin aðgangar“ – þar vísar leiðarvísir á opinbera lyklasíðu þjónustuaðilans.",
+        "Aðgangsupplýsingar eru aldrei vistaðar í vafranum, aðeins dulkóðaðar á þjóninum. Talúttak og app-aðganga miðlanna setur rekstraraðilinn upp; „Ekki tiltækt enn“ þýðir að tengingin hefur ekki enn verið smíðuð í appinu.",
+        "Kostnaður: Pro og Maxi eru áskriftir, mánaðarlega eða árlega. Núgildandi verð eru undir „Pakki og reikningar“. Fyrir eigin aðganga (gervigreind, Resend) rukkar hver þjónustuaðili þig beint samkvæmt eigin verðlíkani – SECRET 58 rukkar ekkert aukalega fyrir það."
       ]
     }
   }

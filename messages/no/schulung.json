@@ -12,7 +12,7 @@
       "title": "Kom i gang",
       "description": "Gjør disse tre tingene først, så jobber alle KI-agentene med ekte data i stedet for plassholdere.",
       "steps": [
-        "Under «Integrasjoner» sjekker du om en KI-leverandør er satt opp. KI-funksjonene går via operatørens tilganger, så du trenger ikke noe eget KI-abonnement. Uten KI-leverandør fungerer appen i malmodus.",
+        "Legg inn din egen AI-nøkkel fra Anthropic, OpenAI eller Gemini under «Innstillinger → Egne tilganger». AI-funksjonene bruker utelukkende din egen nøkkel; AI-leverandøren fakturerer deg direkte. Uten egen nøkkel jobber appen i malmodus med faste tekstblokker.",
         "Fyll ut din egen merkevare under «Brand DNA» (tone, målgruppe, verdier) — KI-agentene bruker det i hver tekst de genererer.",
         "La den første ideen eller kampanjen genereres under «Ideer og inspirasjon» eller «Content Brain»."
       ]
@@ -50,7 +50,7 @@
       "title": "Analytics og vekst",
       "description": "Ekte tall om din egen ytelse — og anbefalinger i stedet for automatisering.",
       "steps": [
-        "Analytics viser utelukkende ekte, importerte eller manuelt registrerte ytelsesdata.",
+        "Analytics viser bare lagret statistikk (f.eks. eksempeldata). Plattformstatistikk hentes ennå ikke automatisk; tall legger du inn manuelt under «Anbefalinger» eller i variantsammenligningen – der evalueres de.",
         "Vekstsiden beregner beste publiseringstidspunkter, vellykkede hashtags og formater ut fra disse dataene.",
         "Viktig: det finnes bevisst ingen automatisk økning av følgere/engasjement (ingen botadferd) — det ville brutt vilkårene til alle plattformer."
       ]
@@ -59,9 +59,9 @@
       "title": "Innboks",
       "description": "KI-svarutkast til meldinger — med godkjenning før utsending.",
       "steps": [
-        "Siden ingen plattform (ennå) er koblet til via OAuth, opprettes samtaler for øyeblikket manuelt i stedet for å hentes live.",
+        "Meldinger fra plattformer hentes ennå ikke, og svar sendes ikke. For å prøve det oppretter du samtaler som simulering.",
         "MessageAgent foreslår et svar basert på Brand DNA og samtaleforløpet.",
-        "Utkastet må vurderes og godkjennes manuelt før det regnes som sendt — en ekte utsending mislykkes ærlig uten plattformtilkobling i stedet for å late som om den lyktes."
+        "Du gjennomgår og godkjenner utkastet. Sending til plattformer er ennå ikke bygget – «Godkjenn og send» melder det ærlig som feil i stedet for å late som det lyktes."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Hvor hver tilkoblingsstatus kommer fra, og hvor den riktige nøkkelen legges inn.",
       "steps": [
         "Hver rad viser den ekte, live-kontrollerte statusen — aldri en oppdiktet tilkobling.",
-        "Ved «Ikke konfigurert» fører «Hent API-nøkkel» til leverandørens offisielle side.",
-        "Tilgangsdata lagres aldri i nettleseren, bare beskyttet på serveren. Mangler en tilgang, setter operatøren den opp.",
-        "Kostnader: Pro og Maxi er abonnementer, månedlig eller årlig. De gjeldende prisene står under «Pakke og fakturering». Hver eksterne leverandør har sin egen, uavhengige kostnadsmodell (gratis / bruksbasert / abonnement) — på Integrasjoner-siden står det for hver tjeneste hvilken modell som gjelder, med lenke til leverandørens gjeldende priser."
+        "Dine egne tilganger (AI-nøkler, Resend for nyhetsbrevet) legger du inn under «Innstillinger → Egne tilganger» – der fører en veiviser til leverandørens offisielle nøkkelside.",
+        "Påloggingsdata lagres aldri i nettleseren, bare kryptert på serveren. Taleutdata og plattformenes app-tilganger settes opp av operatøren; «Ikke tilgjengelig ennå» betyr at tilkoblingen ennå ikke er bygget i appen.",
+        "Kostnader: Pro og Maxi er abonnementer, månedlig eller årlig. Gjeldende priser står under «Pakke og fakturering». For dine egne tilganger (AI, Resend) fakturerer hver leverandør deg direkte etter sin egen prismodell – SECRET 58 tar ikke noe ekstra for dette."
       ]
     }
   }

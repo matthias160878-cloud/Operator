@@ -1,6 +1,6 @@
 {
   "title": "Setări",
-  "description": "Workspace, utilizatori și informații de sistem. Datele de acces sunt gestionate exclusiv prin variabile de mediu (vezi <code>.env.example</code>).",
+  "description": "Spațiul tău de lucru, utilizatorii și o privire de ansamblu asupra datelor tale. Propriile chei API (texte IA, trimiterea newsletterelor) le introduci la <zugaenge>Accese proprii</zugaenge>; pachetul tău îl găsești la <billing>Pachet și facturare</billing>.",
   "workspace": {
     "title": "Workspace",
     "name": "Nume",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Utilizatori și roluri",
-    "note": "Modelul de date multi-tenant este complet pregătit (izolare workspace pentru toate tabelele). O interfață reală de autentificare cu mai mulți utilizatori este următorul pas de extindere — momentan aplicația lucrează exact cu acest workspace implicit."
+    "note": "Fiecare cont are propriul spațiu de lucru, separat de alți clienți. Deocamdată nu poți adăuga singur alți utilizatori."
   },
   "system": {
     "title": "Sistem",
@@ -17,7 +17,7 @@
     "campaigns": "Campanii",
     "mediaAssets": "Resurse media",
     "agentRuns": "Rulări de agenți",
-    "dbNote": "Bază de date: SQLite (locală, <code>prisma/dev.db</code>) prin Prisma ORM. Pentru producție, schimbă <codeSpaced>DATABASE_URL</codeSpaced> la Postgres/MySQL (adaptează providerul în <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Numărul de înregistrări salvate în spațiul tău de lucru. Poți exporta toate datele sau șterge spațiul de lucru mai jos, la „Datele mele”."
   },
   "onboarding": {
     "title": "Asistent de configurare",

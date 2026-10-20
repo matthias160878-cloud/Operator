@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Thumbnail concepts, image assets, and the Canva integration.",
+  "subtitle": "Thumbnail concepts as text and the status of the Canva connection.",
   "imageAssetsTitle": "Image assets",
-  "imageAssetsEmpty": "No image assets yet.",
+  "imageAssetsEmpty": "No images yet. The thumbnail agent currently only creates text concepts, no image files.",
   "thumbnailAgent": {
     "title": "Thumbnail agent",
     "description": "Generates a text concept (title, visual idea, layout, CTA) — prepared for connecting an image generator. No image is generated yet.",
@@ -15,6 +15,9 @@
     "fieldText": "Text",
     "fieldLayout": "Layout",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Image description"
+    "fieldImageDescription": "Image description",
+    "templateResult": "Template: this concept comes from a fixed text template, not from an AI. For AI concepts, enter your own AI key under \"Settings → Own access keys\".",
+    "textEngineLabel": "Text engine:",
+    "templateMode": "Template mode (no AI provider configured)"
   }
 }

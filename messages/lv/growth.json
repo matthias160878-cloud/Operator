@@ -1,9 +1,9 @@
 {
   "title": "Izaugsme",
-  "subtitle": "Ieteikumi sasniegumam un izaugsmei — iegūti no tava līdzšinējā satura reālajiem Analytics datiem: labākie publicēšanas laiki, veiksmīgākie tēmturi un formāti.",
+  "subtitle": "Ieteikumi sasniedzamībai un izaugsmei – atvasināti no tava satura saglabātās statistikas: labākie publicēšanas laiki, veiksmīgākie tēmturi un formāti. Platformu statistika vēl netiek iegūta automātiski.",
   "warning": "Apzināti <strong>nav</strong> iekļauta: automatizēta sekošana/patīk atzīmēšana/komentēšana, lai mākslīgi palielinātu sekotāju skaitu. Tas YouTube, Instagram, TikTok, LinkedIn un Facebook pārkāpj lietošanas noteikumus un var novest pie konta bloķēšanas. Šī lapa sniedz tikai uz datiem balstītus ieteikumus tavam saturam.",
   "filterAll": "Visas platformas",
-  "emptyState": "Analytics datu par {platform} vēl nav. Tiklīdz publicētais saturs sāks uzkrāt veiktspējas datus, šeit parādīsies ieteikumi.",
+  "emptyState": "Platformai {platform} statistika vēl nav saglabāta, tāpēc ieteikumu vēl nav. Platformu statistika vēl netiek iegūta automātiski.",
   "emptyStateDefaultScope": "šo darbvietu",
   "bestPostingTimesTitle": "Labākie publicēšanas laiki",
   "postingTime": "{day} · plkst. {hour}",

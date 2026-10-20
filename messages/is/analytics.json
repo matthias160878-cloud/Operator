@@ -1,14 +1,15 @@
 {
   "title": "Greining",
-  "subtitle": "Frammistöðumælikvarðar úr gögnum sem eru raunverulega til — þegar kerfi eru tengd fyllist þessi sýn af raunverulegum gildum.",
+  "subtitle": "Tölfræði miðla (áhorf, líkar, athugasemdir, deilingar) er enn ekki sótt sjálfvirkt. Hér birtast aðeins gildi sem þegar eru vistuð, t.d. sýnigögn. Tölur úr tölfræði miðilsins geturðu skráð handvirkt undir <weiter>Meðmæli</weiter> („Skrá tölur miðils“) eða í <varianten>samanburði útgáfa</varianten> – þær eru metnar þar, ekki á þessari síðu.",
   "statViewsTotal": "Áhorf samtals",
   "statLikesTotal": "Læk samtals",
   "statComments": "Athugasemdir",
   "statShares": "Deilingar",
   "chartTitle": "Frammistaða efnis yfir tíma",
   "chartLegend": "Áhorf (fjólublátt) · Þátttaka % (blágrænt)",
-  "chartEmpty": "Engin greiningargögn til enn.",
+  "chartEmpty": "Engin tölfræði enn – engin þróun tiltæk.",
   "bestPerformingTitle": "Best heppnaða efnið",
-  "bestPerformingEmpty": "Engin gögn enn.",
-  "learningAgentTitle": "Námsfulltrúi — ráðleggingar"
+  "bestPerformingEmpty": "Engin tölfræði enn – engin röðun möguleg.",
+  "learningAgentTitle": "Námsfulltrúi — ráðleggingar",
+  "statsEmpty": "Engin tölfræði vistuð enn – þess vegna eru hér engar lykiltölur enn. Tölfræði miðla er enn ekki sótt sjálfvirkt."
 }

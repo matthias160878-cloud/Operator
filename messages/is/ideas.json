@@ -16,7 +16,10 @@
     "statusInProgress": "Í vinnslu",
     "statusUsed": "Notuð",
     "statusArchived": "Í safni",
-    "sourceAiGenerated": "Búið til af gervigreind",
-    "sourceManual": "Handvirkt"
+    "sourceAiGenerated": "IdeaAgent (gervigreind eða sniðmát)",
+    "sourceManual": "Handvirkt",
+    "templateResult": "Sniðmát: hugmyndirnar sem voru að verða til koma úr föstum textabútum, ekki frá gervigreind. Fyrir gervigreindarhugmyndir skaltu skrá eigin gervigreindarlykil undir „Stillingar → Eigin aðgangar“.",
+    "textEngineLabel": "Textavél:",
+    "templateMode": "Sniðmátsstilling (engin gervigreindarveita stillt)"
   }
 }

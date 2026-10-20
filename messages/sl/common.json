@@ -80,14 +80,16 @@
     "ERROR": "Napaka",
     "REJECTED": "Zavrnjeno",
     "RECEIVED": "Prejeto",
-    "PENDING": "Na čakanju"
+    "PENDING": "Na čakanju",
+    "NOT_AVAILABLE": "Še ni na voljo"
   },
   "integrationStatus": {
     "notConfigured": "Ni nastavljeno — manjkajoče spremenljivke: {vars}.",
     "verifyFailedGeneric": "Povezava ni uspela.",
     "verifyFailedStatus": "{service} je odgovoril s statusom {status}.",
     "verifyUnreachable": "{service} ni dosegljiv.",
-    "connected": "Povezano."
+    "connected": "Povezano.",
+    "notAvailable": "Še ni na voljo – ta povezava v aplikaciji še ni izdelana."
   },
   "mediaPreview": {
     "expand": "Prikaži večje",

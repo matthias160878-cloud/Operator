@@ -1,6 +1,6 @@
 {
   "title": "Nastavitve",
-  "description": "Delovni prostor, uporabniki in sistemske informacije. Dostopni podatki se upravljajo izključno prek okoljskih spremenljivk (glej <code>.env.example</code>).",
+  "description": "Tvoj delovni prostor, uporabniki in pregled tvojih podatkov. Lastne ključe API (besedila UI, pošiljanje novic) vneseš pod <zugaenge>Lastni dostopi</zugaenge>; svoj paket najdeš pod <billing>Paket in obračun</billing>.",
   "workspace": {
     "title": "Delovni prostor",
     "name": "Ime",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Uporabniki in vloge",
-    "note": "Večnajemniški podatkovni model je povsem pripravljen (izolacija delovnih prostorov za vse tabele). Prava prijavna/avtentikacijska površina z več uporabniki je naslednji korak razvoja — trenutno aplikacija deluje z natanko tem privzetim delovnim prostorom."
+    "note": "Vsak račun ima svoj delovni prostor, ločen od drugih strank. Dodatnih uporabnikov še ne moreš dodati sam."
   },
   "system": {
     "title": "Sistem",
@@ -17,7 +17,7 @@
     "campaigns": "Kampanje",
     "mediaAssets": "Medijska sredstva",
     "agentRuns": "Zagoni agentov",
-    "dbNote": "Podatkovna zbirka: SQLite (lokalno, <code>prisma/dev.db</code>) prek Prisma ORM. Za produkcijo <codeSpaced>DATABASE_URL</codeSpaced> preklopi na Postgres/MySQL (ponudnika v <codeSpaced>prisma/schema.prisma</codeSpaced> prilagodi)."
+    "dbNote": "Število vnosov, shranjenih v tvojem delovnem prostoru. Vse podatke lahko izvoziš ali delovni prostor izbrišeš spodaj pod »Moji podatki«."
   },
   "onboarding": {
     "title": "Pomočnik za nastavitev",

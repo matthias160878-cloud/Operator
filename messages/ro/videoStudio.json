@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Flux video independent de furnizor: Format Manager, furnizori video interschimbabili, conectarea voiceover-ului și a subtitrărilor (vezi Content Factory, pentru fiecare element de conținut).",
+  "subtitle": "Crearea de videoclipuri nu este încă disponibilă: nu este conectat niciun serviciu video care să creeze videoclipuri. Mai jos vezi formatele pregătite pentru fiecare platformă; scenariile, vocea și subtitrările le creezi în Script Studio, Voice Studio și Content Factory.",
   "providerCardTitle": "Furnizori video",
-  "providerNotePrefix": "Alți furnizori (API-uri video IA, biblioteci de videoclipuri stock) pot fi adăugați prin aceeași interfață",
-  "providerNoteSuffix": ", fără a modifica codul existent.",
   "formatManagerTitle": "Format Manager",
   "assetsTitle": "Resurse video",
-  "assetsEmpty": "Încă nu au fost randate videoclipuri — randarea se face prin elementele de conținut din Content Factory, imediat ce un furnizor video este configurat."
+  "assetsEmpty": "Încă nu există videoclipuri. Crearea de videoclipuri nu este încă disponibilă în aplicație.",
+  "providerNote": "Încă nu există niciun serviciu video utilizabil – deocamdată nu se pot crea videoclipuri în aplicație."
 }

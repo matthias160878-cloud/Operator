@@ -1,9 +1,9 @@
 {
   "title": "Kasvu",
-  "subtitle": "Suosituksia kattavuuteen ja kasvuun — johdettu aiempien sisältöjesi todellisesta analytiikkadatasta: parhaat julkaisuajat, menestyneimmät hashtagit ja formaatit.",
+  "subtitle": "Suosituksia tavoittavuuteen ja kasvuun – johdettu sisältöjesi tallennetuista tilastoista: parhaat julkaisuajat, menestyneimmät hashtagit ja formaatit. Alustojen tilastoja ei vielä haeta automaattisesti.",
   "warning": "Tarkoituksella <strong>ei</strong> sisälly: automaattinen seuraaminen/tykkääminen/kommentointi seuraajamäärän keinotekoiseksi kasvattamiseksi. Se rikkoo YouTuben, Instagramin, TikTokin, LinkedInin ja Facebookin käyttöehtoja ja voi johtaa tilin estämiseen. Tämä sivu antaa vain dataan perustuvia suosituksia omalle sisällöllesi.",
   "filterAll": "Kaikki alustat",
-  "emptyState": "Alustalle {platform} ei ole vielä analytiikkadataa. Kun julkaistu sisältö kerää suorituskykydataa, suositukset näkyvät täällä.",
+  "emptyState": "Alustalle {platform} ei ole vielä tallennettu tilastoja, joten suosituksia ei vielä ole. Alustojen tilastoja ei vielä haeta automaattisesti.",
   "emptyStateDefaultScope": "tälle työtilalle",
   "bestPostingTimesTitle": "Parhaat julkaisuajat",
   "postingTime": "{day} · klo {hour}",

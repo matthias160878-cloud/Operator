@@ -1,14 +1,14 @@
 {
   "pageTitle": "Xarxes socials",
-  "subtitle": "Comptes de plataforma i el seu estat de connexió. Les dades d'accés es gestionen exclusivament com a variables d'entorn al servidor i mai no es desen al frontend. Els tokens d'accés, un cop connectats, es desen xifrats a la base de dades.",
+  "subtitle": "Els teus comptes de plataformes i el seu estat de connexió. Et connectes iniciant sessió directament a la plataforma; els tokens d'accés es desen xifrats al servidor, mai al navegador.",
   "credentialsLabel": "Credencials de l'aplicació",
   "accountLabel": "Compte",
   "lastPublishedLabel": "Darrera publicació",
   "lastErrorLabel": "Darrer error",
   "connectButton": "Connecta",
   "connectButtonUnavailable": "Connecta (encara no és possible)",
-  "connectButtonTitleNoCreds": "Encara falten les credencials de l'aplicació",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY encara no està definit",
+  "connectButtonTitleNoCreds": "L'operador encara no ho ha configurat",
+  "connectButtonTitleNoEncryption": "L'emmagatzematge segur dels tokens d'accés encara no està configurat",
   "disconnectButton": "Desconnecta",
   "disconnectConfirm": "Segur que vols desconnectar aquest compte? Després caldrà restablir l'accés de nou amb «Connecta».",
   "needsCredentialsNote": "Encara falta: introdueix {idVar} i {secretVar} a Render.",
@@ -56,6 +56,10 @@
       "not_active": "La plataforma no ha confirmat l'accés o l'ha rebutjat.",
       "composio_error": "No s'ha pogut accedir a Composio o ha informat d'un error. Torna-ho a provar més tard.",
       "unknown": "La connexió ha fallat."
-    }
-  }
+    },
+    "noPublishNotice": "Només una prova de connexió: aquí no es publica res. La prova de lectura només comprova si el compte es pot llegir."
+  },
+  "needsCredentialsNoteCustomer": "Aquesta plataforma la configura l'operador. Et podràs connectar tan aviat com estigui configurada.",
+  "errorNotConfiguredCustomer": "{platform}: l'operador encara no ha configurat aquesta plataforma. Et podràs connectar tan aviat com estigui configurada.",
+  "encryptionKeyMissingNoticeCustomer": "Encara no és possible connectar: l'operador encara no ha configurat l'emmagatzematge segur dels tokens d'accés."
 }

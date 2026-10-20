@@ -1,9 +1,9 @@
 {
   "title": "Fás",
-  "subtitle": "Moltaí maidir le sroicheadh agus fás — díorthaithe ó fhíorshonraí anailísíochta d’inneachair roimhe seo: na hamanna postála is fearr, na hashtaganna is rathúla agus na formáidí.",
+  "subtitle": "Moltaí maidir le teacht agus fás – bunaithe ar staitisticí sábháilte d'ábhair: na hamanna postála is fearr, na haischlibeanna agus na formáidí is rathúla. Ní fhaightear staitisticí na n-ardán go huathoibríoch fós.",
   "warning": "Fágtha ar lár d’aon turas: leanúint/taitneamh/trácht uathoibrithe chun leantóirí a mhéadú go saorga. Sáraíonn sé sin na téarmaí úsáide ar YouTube, Instagram, TikTok, LinkedIn agus Facebook agus is féidir go gcuirfí do chuntas faoi chosc dá bharr. Ní thugann an leathanach seo ach moltaí bunaithe ar shonraí d’inneachar féin.",
   "filterAll": "Gach ardán",
-  "emptyState": "Gan aon sonraí anailísíochta do {platform} go fóill. A luaithe a bhailíonn inneachar foilsithe sonraí feidhmíochta, beidh moltaí le feiceáil anseo.",
+  "emptyState": "Níl aon staitisticí sábháilte fós do {platform}, mar sin níl aon mholtaí ann fós. Ní fhaightear staitisticí na n-ardán go huathoibríoch fós.",
   "emptyStateDefaultScope": "an spás oibre seo",
   "bestPostingTimesTitle": "Na hamanna postála is fearr",
   "postingTime": "{day} · {hour} a chlog",

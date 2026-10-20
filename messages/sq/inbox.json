@@ -1,6 +1,6 @@
 {
   "title": "Kutia postare",
-  "description": "Mesazhe & komente nga të gjitha platformat. MessageAgent propozon përgjigje — dërgohet vetëm ajo që miraton ti. Ende nuk ka lidhje reale OAuth me asnjë platformë, prandaj bisedat këtu simulohen me dorë në vend që të merren drejtpërdrejt.",
+  "description": "Mesazhe dhe kërkesa në një vend. MessageAgent propozon drafte përgjigjesh.",
   "emptyState": "Ende nuk ka biseda — simulo një për të nisur.",
   "backToInbox": "Kthehu te kutia postare",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simulo një mesazh tjetër hyrës (provë pa lidhje reale me platformën):",
     "messagePlaceholder": "Teksti i mesazhit …",
     "addButton": "Shto"
-  }
+  },
+  "simulationBanner": "<strong>Pamje paraprake/simulim:</strong> mesazhet nga platformat ende nuk merren dhe përgjigjet nuk dërgohen – as përmes „Mirato & dërgo”. Mesazhet e platformave mund t'i simulosh këtu për t'i provuar. Hyrjet e vërteta vijnë vetëm nga formularët e faqes së internetit (p.sh. kërkesa për takim); atyre u përgjigjesh me email."
 }

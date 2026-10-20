@@ -1,6 +1,6 @@
 {
   "title": "Entegrasyonlar",
-  "description": "Tüm harici hizmetlerin canlı durumu — yalnızca gerçekten ayarlanmış ortam değişkenlerine dayanır. Sahte bağlantı yok.",
+  "description": "Harici hizmetlerin canlı durumu – yalnızca gerçekten kurulmuş ve doğrulanmış bağlantılar, hiçbir şey taklit edilmez.",
   "categories": {
     "AI": "Yapay zekâ sağlayıcıları",
     "VOICE": "Ses",

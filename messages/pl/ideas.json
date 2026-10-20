@@ -16,7 +16,10 @@
     "statusInProgress": "W toku",
     "statusUsed": "Wykorzystany",
     "statusArchived": "Zarchiwizowany",
-    "sourceAiGenerated": "Wygenerowany przez AI",
-    "sourceManual": "Ręcznie"
+    "sourceAiGenerated": "IdeaAgent (AI lub szablon)",
+    "sourceManual": "Ręcznie",
+    "templateResult": "Szablon: właśnie utworzone pomysły pochodzą ze stałych bloków tekstu, a nie od AI. Aby otrzymać pomysły AI, wpisz własny klucz AI w „Ustawienia → Własne dostępy”.",
+    "textEngineLabel": "Silnik tekstowy:",
+    "templateMode": "Tryb szablonu (nie skonfigurowano dostawcy AI)"
   }
 }

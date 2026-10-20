@@ -1,8 +1,7 @@
 {
   "viewAll": "Näita kõiki",
   "demoBanner": {
-    "before": "Demoandmed on aktiivsed — kampaaniad, sisuühikud ja analüütika on näidisandmed failist ",
-    "after": ", mitte päris platvormide numbrid."
+    "text": "Näidisandmed on aktiivsed – selle tööruumi kampaaniad, sisu ja statistika on näidisandmed, mitte tegelikud platvormide numbrid."
   },
   "hero": {
     "subtitle": "Üks idee. Mitu platvormi. Maksimaalne ulatus.",
@@ -26,8 +25,9 @@
     "published": "Avaldamisi",
     "views": "Vaatamisi",
     "avgEngagement": "Ø haaratus",
-    "totalRevenue": "Tulud kokku",
-    "noComparisonWeek": "Võrdlusaluseks pole veel eelmist nädalat — muutuse määrad ilmuvad, kui andmeid on vähemalt kahe nädala kohta."
+    "totalRevenue": "Tulud (käsitsi sisestatud)",
+    "noComparisonWeek": "Võrdlusaluseks pole veel eelmist nädalat — muutuse määrad ilmuvad, kui andmeid on vähemalt kahe nädala kohta.",
+    "noStats": "Vaatamised ja kaasatus: statistikat veel pole – platvormide statistikat veel automaatselt ei tooda."
   },
   "production": {
     "title": "Sisutootmine",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} ühendatud"
   },
   "agentMonitor": {
-    "title": "Agendi monitor",
+    "title": "Assistentide logi",
     "empty": "Käivitusi pole veel."
   },
   "topPerformer": {
     "title": "Edukaim sisu",
     "last7Days": "Viimased 7 päeva",
-    "empty": "Tulemuslikkuse andmeid pole veel.",
+    "empty": "Tulemusandmeid veel pole – platvormide statistikat veel automaatselt ei tooda.",
     "views": "Vaatamisi",
     "likes": "Meeldimisi",
     "comments": "Kommentaare",

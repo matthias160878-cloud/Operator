@@ -1,6 +1,6 @@
 {
   "title": "Pósthólf",
-  "description": "Skilaboð og athugasemdir af öllum miðlum. MessageAgent leggur til svör — aðeins það sem þú samþykkir er sent. Engin raunveruleg OAuth-tenging við miðil er enn til staðar, því eru samtöl hér hermd handvirkt í stað þess að vera sótt í beinni.",
+  "description": "Skilaboð og fyrirspurnir á einum stað. MessageAgent leggur til svardrög.",
   "emptyState": "Engin samtöl enn — hermdu eitt til að byrja.",
   "backToInbox": "Til baka í pósthólf",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Herma eftir fleiri innkomnum skilaboðum (prófun án raunverulegrar tengingar við miðil):",
     "messagePlaceholder": "Texti skilaboða …",
     "addButton": "Bæta við"
-  }
+  },
+  "simulationBanner": "<strong>Forskoðun/hermun:</strong> skilaboð frá miðlum eru enn ekki sótt og svör eru ekki send – ekki heldur með „Samþykkja og senda“. Skilaboð frá miðlum geturðu hermt hér til að prófa. Raunverulegar færslur koma aðeins úr vefeyðublöðum (t.d. tímabeiðnum); þeim svararðu með tölvupósti."
 }

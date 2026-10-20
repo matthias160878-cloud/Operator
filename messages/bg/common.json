@@ -80,14 +80,16 @@
     "ERROR": "Грешка",
     "REJECTED": "Отхвърлено",
     "RECEIVED": "Получено",
-    "PENDING": "Изчаква"
+    "PENDING": "Изчаква",
+    "NOT_AVAILABLE": "Все още не е налично"
   },
   "integrationStatus": {
     "notConfigured": "Не е конфигурирано — липсваща(и) променлива(и): {vars}.",
     "verifyFailedGeneric": "Свързването не успя.",
     "verifyFailedStatus": "{service} отговори със статус {status}.",
     "verifyUnreachable": "{service} не можа да бъде достигнат.",
-    "connected": "Свързано."
+    "connected": "Свързано.",
+    "notAvailable": "Все още не е налично – тази връзка все още не е изградена в приложението."
   },
   "mediaPreview": {
     "expand": "Покажи по-голямо",

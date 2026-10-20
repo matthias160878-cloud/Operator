@@ -1,9 +1,9 @@
 {
   "title": "Vekst",
-  "subtitle": "Anbefalinger for rekkevidde og vekst — utledet fra de ekte analytics-dataene for innholdet ditt så langt: beste publiseringstidspunkter, mest vellykkede hashtags og formater.",
+  "subtitle": "Anbefalinger for rekkevidde og vekst – utledet fra lagret statistikk for innholdet ditt: beste publiseringstider, mest vellykkede emneknagger og formater. Plattformstatistikk hentes ennå ikke automatisk.",
   "warning": "Bevisst <strong>ikke</strong> inkludert: automatisk følging/liking/kommentering for å øke antall følgere kunstig. Det bryter vilkårene hos YouTube, Instagram, TikTok, LinkedIn og Facebook og kan føre til at kontoen blir stengt. Denne siden gir utelukkende databaserte anbefalinger for ditt eget innhold.",
   "filterAll": "Alle plattformer",
-  "emptyState": "Ingen analytics-data for {platform} tilgjengelig ennå. Så snart publisert innhold samler ytelsesdata, vises anbefalinger her.",
+  "emptyState": "Ingen statistikk lagret for {platform} ennå, derfor ingen anbefalinger ennå. Plattformstatistikk hentes ennå ikke automatisk.",
   "emptyStateDefaultScope": "denne workspacen",
   "bestPostingTimesTitle": "Beste publiseringstidspunkter",
   "postingTime": "{day} · kl. {hour}",

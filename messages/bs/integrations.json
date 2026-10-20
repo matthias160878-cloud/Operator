@@ -1,6 +1,6 @@
 {
   "title": "Integracije",
-  "description": "Status uživo svih vanjskih servisa — isključivo na osnovu stvarno postavljenih varijabli okruženja. Bez lažnih veza.",
+  "description": "Stanje vanjskih usluga uživo – samo stvarno postavljene i provjerene veze, ništa se ne glumi.",
   "categories": {
     "AI": "AI provajderi",
     "VOICE": "Voice",

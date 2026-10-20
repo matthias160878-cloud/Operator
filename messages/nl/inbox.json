@@ -1,6 +1,6 @@
 {
   "title": "Inbox",
-  "description": "Berichten en reacties van alle platforms. De MessageAgent stelt antwoorden voor — er wordt alleen verzonden wat jij goedkeurt. Er is nog geen echte OAuth-koppeling met een platform, daarom worden gesprekken hier handmatig gesimuleerd in plaats van live opgehaald.",
+  "description": "Berichten en aanvragen op één plek. De MessageAgent stelt antwoordconcepten voor.",
   "emptyState": "Nog geen gesprekken — simuleer er een om te beginnen.",
   "backToInbox": "Terug naar de inbox",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Nog een binnenkomend bericht simuleren (test zonder echte platformkoppeling):",
     "messagePlaceholder": "Berichttekst …",
     "addButton": "Toevoegen"
-  }
+  },
+  "simulationBanner": "<strong>Voorbeeld/simulatie:</strong> berichten van platforms worden nog niet opgehaald en antwoorden worden niet verzonden – ook niet via „Goedkeuren & verzenden”. Platformberichten kun je hier simuleren om het uit te proberen. Echte items komen alleen uit websiteformulieren (bijv. afspraakaanvragen); die beantwoord je per e-mail."
 }

@@ -80,14 +80,16 @@
     "ERROR": "Fel",
     "REJECTED": "Avvisad",
     "RECEIVED": "Mottagen",
-    "PENDING": "Väntande"
+    "PENDING": "Väntande",
+    "NOT_AVAILABLE": "Inte tillgänglig ännu"
   },
   "integrationStatus": {
     "notConfigured": "Inte konfigurerad — saknade variabler: {vars}.",
     "verifyFailedGeneric": "Anslutningen misslyckades.",
     "verifyFailedStatus": "{service} svarade med status {status}.",
     "verifyUnreachable": "{service} kunde inte nås.",
-    "connected": "Ansluten."
+    "connected": "Ansluten.",
+    "notAvailable": "Inte tillgänglig ännu – den här anslutningen är ännu inte byggd i appen."
   },
   "mediaPreview": {
     "expand": "Visa större",

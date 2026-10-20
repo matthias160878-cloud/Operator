@@ -1,6 +1,6 @@
 {
   "title": "Configuració",
-  "description": "Espai de treball, usuaris i informació del sistema. Les dades d'accés es gestionen exclusivament mitjançant variables d'entorn (vegeu <code>.env.example</code>).",
+  "description": "El teu espai de treball, usuaris i un resum de les teves dades. Les teves pròpies claus API (textos d'IA, enviament de butlletins) les introdueixes a <zugaenge>Accessos propis</zugaenge>; el teu paquet és a <billing>Paquet i facturació</billing>.",
   "workspace": {
     "title": "Espai de treball",
     "name": "Nom",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Usuaris i rols",
-    "note": "El model de dades multiinquilí està totalment preparat (aïllament de l'espai de treball per a totes les taules). Una interfície real d'inici de sessió/autenticació amb diversos usuaris és el pas següent d'ampliació; ara mateix l'aplicació treballa exactament amb aquest espai de treball per defecte."
+    "note": "Cada compte té el seu propi espai de treball, separat dels altres clients. De moment no pots afegir altres usuaris tu mateix."
   },
   "system": {
     "title": "Sistema",
@@ -17,7 +17,7 @@
     "campaigns": "Campanyes",
     "mediaAssets": "Recursos multimèdia",
     "agentRuns": "Execucions d'agents",
-    "dbNote": "Base de dades: SQLite (local, <code>prisma/dev.db</code>) mitjançant Prisma ORM. Per a producció, canvia <codeSpaced>DATABASE_URL</codeSpaced> a Postgres/MySQL (adapta el proveïdor a <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Nombre d'entrades desades al teu espai de treball. Pots exportar totes les dades o eliminar l'espai de treball més avall, a «Les meves dades»."
   },
   "onboarding": {
     "title": "Assistent de configuració",

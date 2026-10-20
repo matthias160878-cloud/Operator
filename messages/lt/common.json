@@ -80,14 +80,16 @@
     "ERROR": "Klaida",
     "REJECTED": "Atmesta",
     "RECEIVED": "Gauta",
-    "PENDING": "Laukiama"
+    "PENDING": "Laukiama",
+    "NOT_AVAILABLE": "Dar neprieinama"
   },
   "integrationStatus": {
     "notConfigured": "Nesukonfigūruota — trūksta kintamųjų: {vars}.",
     "verifyFailedGeneric": "Prisijungti nepavyko.",
     "verifyFailedStatus": "{service} atsakė būsena {status}.",
     "verifyUnreachable": "Nepavyko pasiekti {service}.",
-    "connected": "Prijungta."
+    "connected": "Prijungta.",
+    "notAvailable": "Dar neprieinama – šis ryšys programoje dar nesukurtas."
   },
   "mediaPreview": {
     "expand": "Rodyti didesnį",

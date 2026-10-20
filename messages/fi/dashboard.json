@@ -1,8 +1,7 @@
 {
   "viewAll": "Näytä kaikki",
   "demoBanner": {
-    "before": "Demodata käytössä — kampanjat, sisällöt ja analytiikka ovat esimerkkidataa lähteestä ",
-    "after": ", eivät oikeita alustalukuja."
+    "text": "Esimerkkidata käytössä – tämän työtilan kampanjat, sisällöt ja tilastot ovat esimerkkidataa, eivät oikeita alustojen lukuja."
   },
   "hero": {
     "subtitle": "Yksi idea. Useita alustoja. Maksimaalinen kattavuus.",
@@ -26,8 +25,9 @@
     "published": "Julkaisut",
     "views": "Katselut",
     "avgEngagement": "Ø sitoutuminen",
-    "totalRevenue": "Tulot yhteensä",
-    "noComparisonWeek": "Vertailupohjaksi ei ole vielä edellistä viikkoa — muutosprosentit näkyvät, kun dataa on vähintään kahdelta viikolta."
+    "totalRevenue": "Tulot (syötetty käsin)",
+    "noComparisonWeek": "Vertailupohjaksi ei ole vielä edellistä viikkoa — muutosprosentit näkyvät, kun dataa on vähintään kahdelta viikolta.",
+    "noStats": "Katselut ja sitoutuminen: ei vielä tilastoja – alustojen tilastoja ei vielä haeta automaattisesti."
   },
   "production": {
     "title": "Sisällöntuotanto",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} yhdistetty"
   },
   "agentMonitor": {
-    "title": "Agent Monitor",
+    "title": "Avustajien loki",
     "empty": "Ei vielä ajoja."
   },
   "topPerformer": {
     "title": "Parhaat suorittajat",
     "last7Days": "Viimeiset 7 päivää",
-    "empty": "Ei vielä suorituskykydataa.",
+    "empty": "Ei vielä suoritustietoja – alustojen tilastoja ei vielä haeta automaattisesti.",
     "views": "Katselut",
     "likes": "Tykkäykset",
     "comments": "Kommentit",

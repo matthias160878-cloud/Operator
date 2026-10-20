@@ -40,7 +40,13 @@ export default async function IntegrationsPage() {
   const eigene = isOperator ? [] : await zugaengeUebersicht(workspaceId);
   const KI_KEYS: Record<string, string> = { anthropic: "ANTHROPIC", openai: "OPENAI", gemini: "GEMINI" };
   const statuses = alleStatus.map((s) => {
-    if (isOperator || !KI_KEYS[s.key]) return s;
+    if (isOperator) return s;
+    if (!KI_KEYS[s.key]) {
+      // Kunden können diese Dienste nicht selbst einrichten – keine Variablennamen zeigen.
+      if (s.status === "NOT_CONFIGURED") return { ...s, message: "Richtet der Betreiber ein – derzeit noch nicht eingerichtet." };
+      if (s.status === "CONNECTED") return { ...s, message: "Vom Betreiber eingerichtet." };
+      return s;
+    }
     const z = eigene.find((e) => e.anbieter === KI_KEYS[s.key]);
     return {
       ...s,
@@ -64,12 +70,17 @@ export default async function IntegrationsPage() {
           <p className="mt-1 text-xs text-muted">{t("costNote")}</p>
         ) : (
           <p className="mt-1 text-xs text-muted">
-            KI-Texte laufen über deinen eigenen Schlüssel bei Anthropic, OpenAI oder Gemini – eintragen unter{" "}
+            <strong className="text-foreground">Selbst einrichten:</strong> KI-Texte laufen nur über deinen eigenen Schlüssel bei Anthropic, OpenAI oder
+            Gemini, der Newsletter-Versand über deinen eigenen Resend-Schlüssel – beides eintragen unter{" "}
             <a href="/settings/zugaenge" className="text-accent-2 underline">
               Einstellungen → Eigene Zugänge
             </a>{" "}
-            (mit Wegweiser). Sprach-, Video- und Designdienste stellt der Betreiber bereit; „Nicht konfiguriert“ heißt dort: noch nicht eingerichtet.
-            Social-Media-Konten verbindest du sicher per Anmeldung beim jeweiligen Netzwerk unter „Social Media“.
+            (mit Wegweiser). Social-Media-Konten verbindest du per Anmeldung beim jeweiligen Netzwerk unter{" "}
+            <a href="/social-media" className="text-accent-2 underline">
+              Social Media
+            </a>
+            . <strong className="text-foreground">Richtet der Betreiber ein:</strong> Sprachausgabe sowie die App-Zugänge der Plattformen; „Nicht
+            konfiguriert“ heißt dort: noch nicht eingerichtet. „Noch nicht verfügbar“ heißt: Diese Anbindung ist in der App noch nicht gebaut.
           </p>
         )}
       </div>

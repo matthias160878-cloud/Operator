@@ -1,6 +1,6 @@
 {
   "title": "Bosca isteach",
-  "description": "Teachtaireachtaí & tuairimí ar fud gach ardáin. Molann an MessageAgent freagraí — ní sheoltar ach an méid a fhormheasann tú. Níl fíornasc OAuth le hardán ar bith ann go fóill, mar sin déantar comhráite a insamhladh de láimh anseo in ionad iad a fháil beo.",
+  "description": "Teachtaireachtaí agus fiosrúcháin in aon áit amháin. Molann MessageAgent dréachtfhreagraí.",
   "emptyState": "Gan aon chomhrá go fóill — insamhail ceann chun tosú.",
   "backToInbox": "Ar ais go dtí an bosca isteach",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Insamhail teachtaireacht isteach eile (tástáil gan fíornasc ardáin):",
     "messagePlaceholder": "Téacs na teachtaireachta …",
     "addButton": "Cuir leis"
-  }
+  },
+  "simulationBanner": "<strong>Réamhamharc/insamhladh:</strong> ní fhaightear teachtaireachtaí ó ardáin fós agus ní sheoltar freagraí – fiú trí „Formheas & seol”. Is féidir leat teachtaireachtaí ardáin a insamhladh anseo chun triail a bhaint as. Ní thagann fíoriontrálacha ach ó fhoirmeacha an tsuímh (m.sh. iarratais ar choinne); freagraíonn tú iad sin trí ríomhphost."
 }

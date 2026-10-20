@@ -1,6 +1,6 @@
 {
   "title": "Nastavení",
-  "description": "Pracovní prostor, uživatelé a systémové informace. Přístupové údaje se spravují výhradně přes proměnné prostředí (viz <code>.env.example</code>).",
+  "description": "Tvůj pracovní prostor, uživatelé a přehled tvých dat. Vlastní API klíče (AI texty, rozesílání newsletteru) zadáváš v <zugaenge>Vlastní přístupy</zugaenge>; svůj balíček najdeš v <billing>Balíček a fakturace</billing>.",
   "workspace": {
     "title": "Pracovní prostor",
     "name": "Název",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Uživatelé a role",
-    "note": "Víceklientský datový model je plně připraven (izolace pracovních prostorů pro všechny tabulky). Skutečné přihlašovací rozhraní s více uživateli je dalším krokem rozvoje — aktuálně aplikace pracuje právě s tímto výchozím pracovním prostorem."
+    "note": "Každý účet má vlastní pracovní prostor oddělený od ostatních zákazníků. Další uživatele zatím nemůžeš přidat sám."
   },
   "system": {
     "title": "Systém",
@@ -17,7 +17,7 @@
     "campaigns": "Kampaně",
     "mediaAssets": "Mediální assety",
     "agentRuns": "Běhy agentů",
-    "dbNote": "Databáze: SQLite (lokální, <code>prisma/dev.db</code>) přes Prisma ORM. Pro produkci přepni <codeSpaced>DATABASE_URL</codeSpaced> na Postgres/MySQL (uprav providera v <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Počet záznamů uložených v tvém pracovním prostoru. Všechna data můžeš exportovat nebo pracovní prostor smazat níže v části „Moje data“."
   },
   "onboarding": {
     "title": "Asistent nastavení",

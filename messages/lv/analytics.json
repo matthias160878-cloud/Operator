@@ -1,14 +1,15 @@
 {
   "title": "Analytics",
-  "subtitle": "Veiktspējas rādītāji no faktiski pieejamiem datiem — tiklīdz platformas ir pievienotas, šis skats piepildīsies ar reālām vērtībām.",
+  "subtitle": "Platformu statistika (skatījumi, patīk atzīmes, komentāri, kopīgojumi) vēl netiek iegūta automātiski. Šeit redzamas tikai jau saglabātas vērtības, piem., parauga dati. Skaitļus no platformas statistikas vari ievadīt manuāli sadaļā <weiter>Ieteikumi</weiter> („Ievadīt platformas skaitļus“) vai <varianten>variantu salīdzinājumā</varianten> – tie tiek izvērtēti tur, nevis šajā lapā.",
   "statViewsTotal": "Skatījumi kopā",
   "statLikesTotal": "Patīk atzīmes kopā",
   "statComments": "Komentāri",
   "statShares": "Kopīgojumi",
   "chartTitle": "Satura veiktspēja laika gaitā",
   "chartLegend": "Skatījumi (violets) · Iesaiste % (tirkīzzils)",
-  "chartEmpty": "Analytics datu vēl nav.",
+  "chartEmpty": "Statistikas vēl nav – gaita nav pieejama.",
   "bestPerformingTitle": "Veiksmīgākais saturs",
-  "bestPerformingEmpty": "Datu vēl nav.",
-  "learningAgentTitle": "Learning Agent — ieteikumi"
+  "bestPerformingEmpty": "Statistikas vēl nav – reitings nav iespējams.",
+  "learningAgentTitle": "Learning Agent — ieteikumi",
+  "statsEmpty": "Statistika vēl nav saglabāta – tāpēc šeit vēl nav rādītāju. Platformu statistika vēl netiek iegūta automātiski."
 }

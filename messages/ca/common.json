@@ -80,14 +80,16 @@
     "ERROR": "Error",
     "REJECTED": "Rebutjat",
     "RECEIVED": "Rebut",
-    "PENDING": "Pendent"
+    "PENDING": "Pendent",
+    "NOT_AVAILABLE": "Encara no disponible"
   },
   "integrationStatus": {
     "notConfigured": "No configurat — falten variables: {vars}.",
     "verifyFailedGeneric": "La connexió ha fallat.",
     "verifyFailedStatus": "{service} ha respost amb l'estat {status}.",
     "verifyUnreachable": "No s'ha pogut accedir a {service}.",
-    "connected": "Connectat."
+    "connected": "Connectat.",
+    "notAvailable": "Encara no disponible: aquesta connexió encara no està desenvolupada a l'app."
   },
   "mediaPreview": {
     "expand": "Mostra en gran",

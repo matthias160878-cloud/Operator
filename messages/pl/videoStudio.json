@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Potok wideo niezależny od dostawcy: Format Manager, wymienni dostawcy wideo, podłączenie lektora i napisów (zob. Content Factory dla każdego elementu treści).",
+  "subtitle": "Tworzenie wideo nie jest jeszcze dostępne: nie podłączono jeszcze usługi, która tworzy filmy. Poniżej widzisz przygotowane formaty dla każdej platformy; skrypty, lektora i napisy tworzysz w Script Studio, Voice Studio i Content Factory.",
   "providerCardTitle": "Dostawcy wideo",
-  "providerNotePrefix": "Kolejnych dostawców (API wideo AI, biblioteki wideo stockowych) można dodać przez ten sam interfejs",
-  "providerNoteSuffix": ", bez ruszania istniejącego kodu.",
   "formatManagerTitle": "Format Manager",
   "assetsTitle": "Zasoby wideo",
-  "assetsEmpty": "Nie wyrenderowano jeszcze żadnych filmów — renderowanie odbywa się przez elementy treści w Content Factory, gdy tylko skonfigurowany zostanie dostawca wideo."
+  "assetsEmpty": "Brak filmów. Tworzenie wideo nie jest jeszcze dostępne w aplikacji.",
+  "providerNote": "Żadna usługa wideo nie jest jeszcze dostępna – filmów nie można obecnie tworzyć w aplikacji."
 }

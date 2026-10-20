@@ -12,7 +12,7 @@
       "title": "Céimeanna tosaigh",
       "description": "Déan na trí rud seo ar dtús, agus oibreoidh na gníomhairí AI ar fad le fíorshonraí seachas le ionadchoimeádáin.",
       "steps": [
-        "Faoi “Comhtháthuithe” seiceáil an bhfuil soláthraí AI socraithe. Ritheann na gnéithe AI trí rochtain an oibreora, mar sin níl síntiús AI uait féin. Gan soláthraí AI, oibríonn an aip i mód teimpléid.",
+        "Faoi „Socruithe → Rochtainí féin” cuir isteach d'eochair IS féin ó Anthropic, OpenAI nó Gemini. Ní úsáideann na feidhmeanna IS ach d'eochair féin; gearrann an soláthraí IS ort go díreach. Gan eochair féin, oibríonn an aip i mód teimpléid le bloic téacs seasta.",
         "Faoi “Brand DNA” líon isteach do bhranda féin (tonn, spriocghrúpa, luachanna) — úsáideann na gníomhairí AI é seo do gach téacs a ghintear.",
         "Faoi “Smaointe & Inspioráid” nó “Content Brain” lig dóibh an chéad smaoineamh nó feachtas a chruthú."
       ]
@@ -50,7 +50,7 @@
       "title": "Anailísíocht & Fás",
       "description": "Fíoruimhreacha faoi do fheidhmíocht féin — agus moltaí in ionad uathoibrithe.",
       "steps": [
-        "Ní thaispeánann an Anailísíocht ach fíorshonraí feidhmíochta, iompórtáilte nó taifeadta de láimh.",
+        "Ní thaispeánann Analytics ach staitisticí sábháilte (m.sh. sonraí samplacha). Ní fhaightear staitisticí na n-ardán go huathoibríoch fós; cuireann tú figiúirí isteach de láimh faoi „Moltaí” nó sa chomparáid leaganacha – measúnaítear ansin iad.",
         "Ríomhann an leathanach Fáis na hamanna postála is fearr, hashtaganna rathúla agus formáidí ó na sonraí seo.",
         "Tábhachtach: níl aon mhéadú uathoibrithe leantóirí/rannpháirtíochta ann d’aon turas (gan iompar róbat) — sháraigh sé sin téarmaí úsáide gach ardáin."
       ]
@@ -59,9 +59,9 @@
       "title": "Bosca isteach",
       "description": "Dréachtaí freagra AI do theachtaireachtaí — le formheas roimh sheoladh.",
       "steps": [
-        "Ós rud é nach bhfuil ardán nasctha trí OAuth (go fóill), cruthaítear comhráite de láimh faoi láthair in ionad iad a fháil beo.",
+        "Ní fhaightear teachtaireachtaí ó ardáin fós agus ní sheoltar freagraí. Chun triail a bhaint as, cruthaíonn tú comhráite mar insamhladh.",
         "Molann an MessageAgent freagra bunaithe ar Brand DNA agus ar sheicheamh an chomhrá.",
-        "Ní mór an dréacht a sheiceáil agus a fhormheas de láimh sula mbreathnaítear air mar sheolta — teipeann fíorsheoladh go hionraic gan nasc ardáin, in ionad rath a ligean air."
+        "Is tusa a sheiceálann agus a fhormheasann an dréacht. Níl seoladh chuig ardáin tógtha fós – tuairiscíonn „Formheas & seol” é seo go macánta mar earráid in ionad ligean air gur éirigh leis."
       ]
     },
     "revenue": {
@@ -77,9 +77,9 @@
       "description": "Cá as a dtagann gach stádas naisc agus cá gcuirtear isteach an eochair cheart.",
       "steps": [
         "Taispeánann gach sraith an stádas fíor, seiceáilte beo — gan aon nasc bréagach go deo.",
-        "Ag “Gan cumrú” seolann “Faigh eochair API” chuig leathanach oifigiúil an tsoláthraí thú.",
-        "Ní stóráiltear sonraí rochtana sa bhrabhsálaí riamh, ach amháin ar an bhfreastalaí faoi chosaint. Má bhíonn rochtain ar iarraidh, socraíonn an t-oibreoir í.",
-        "Costais: is síntiúis iad Pro agus Maxi, míosúil nó bliantúil. Tá na praghsanna reatha le fáil faoi “Pacáiste & Billeáil”. Tá a mhúnla costais féin, neamhspleách, ag gach soláthraí seachtrach (saor in aisce / bunaithe ar úsáid / síntiús) — ar an leathanach Comhtháthuithe luaitear le gach seirbhís an múnla atá i bhfeidhm, le nasc chuig na praghsanna reatha ag an soláthraí."
+        "Cuireann tú do rochtainí féin (eochracha IS, Resend don nuachtlitir) isteach faoi „Socruithe → Rochtainí féin” – treoraíonn treoir ansin thú chuig leathanach oifigiúil eochracha an tsoláthraí.",
+        "Ní stóráiltear sonraí rochtana riamh sa bhrabhsálaí, ach criptithe ar an bhfreastalaí amháin. Socraíonn an t-oibreoir aschur gutha agus rochtainí aipe na n-ardán; ciallaíonn „Níl ar fáil fós” nach bhfuil an nasc tógtha san aip fós.",
+        "Costais: Is síntiúis iad Pro agus Maxi, go míosúil nó go bliantúil. Tá na praghsanna reatha faoi „Pacáiste & Billeáil”. Maidir le do rochtainí féin (IS, Resend), gearrann gach soláthraí ort go díreach de réir a mhúnla praghsála féin – ní ghearrann SECRET 58 aon rud breise air seo."
       ]
     }
   }

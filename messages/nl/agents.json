@@ -1,6 +1,6 @@
 {
-  "title": "Agent Monitor",
-  "description": "Alle SECRET 58-agents met status, laatste taak en resultaat. Elke run wordt gelogd.",
+  "title": "Logboek van de assistenten",
+  "description": "Alle assistenten (agents) van SECRET 58 met status, laatste taak en resultaat. Elke run wordt hier vastgelegd.",
   "table": {
     "agent": "Agent",
     "description": "Beschrijving",

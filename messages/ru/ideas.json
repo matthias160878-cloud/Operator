@@ -16,7 +16,10 @@
     "statusInProgress": "В работе",
     "statusUsed": "Использована",
     "statusArchived": "В архиве",
-    "sourceAiGenerated": "Создано ИИ",
-    "sourceManual": "Вручную"
+    "sourceAiGenerated": "IdeaAgent (ИИ или шаблон)",
+    "sourceManual": "Вручную",
+    "templateResult": "Шаблон: только что созданные идеи взяты из фиксированных текстовых блоков, а не созданы ИИ. Для идей от ИИ введи свой ключ ИИ в разделе «Настройки → Собственные доступы».",
+    "textEngineLabel": "Текстовый движок:",
+    "templateMode": "Режим шаблонов (ИИ-провайдер не настроен)"
   }
 }

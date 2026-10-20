@@ -16,7 +16,10 @@
     "statusInProgress": "Ar siúl",
     "statusUsed": "Úsáidte",
     "statusArchived": "Cartlannaithe",
-    "sourceAiGenerated": "Ginte ag AI",
-    "sourceManual": "De láimh"
+    "sourceAiGenerated": "IdeaAgent (IS nó teimpléad)",
+    "sourceManual": "De láimh",
+    "templateResult": "Teimpléad: tagann na smaointe a cruthaíodh díreach anois ó bhloic téacs seasta, ní ó IS. Le haghaidh smaointe IS, cuir isteach d'eochair IS féin faoi „Socruithe → Rochtainí féin”.",
+    "textEngineLabel": "Inneall téacs:",
+    "templateMode": "Mód teimpléid (níl aon soláthraí AI cumraithe)"
   }
 }

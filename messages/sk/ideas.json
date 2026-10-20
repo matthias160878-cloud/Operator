@@ -16,7 +16,10 @@
   "statusInProgress": "Rozpracovaný",
   "statusUsed": "Použitý",
   "statusArchived": "Archivovaný",
-  "sourceAiGenerated": "Vygenerované AI",
-  "sourceManual": "Ručne"
+  "sourceAiGenerated": "IdeaAgent (AI alebo šablóna)",
+  "sourceManual": "Ručne",
+  "templateResult": "Šablóna: práve vytvorené nápady pochádzajú z pevných textových blokov, nie z AI. Pre AI nápady zadaj vlastný AI kľúč v „Nastavenia → Vlastné prístupy“.",
+  "textEngineLabel": "Textový engine:",
+  "templateMode": "Režim šablóny (nie je nakonfigurovaný žiadny poskytovateľ AI)"
  }
 }

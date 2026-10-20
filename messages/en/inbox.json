@@ -1,6 +1,6 @@
 {
   "title": "Inbox",
-  "description": "Messages & comments across all platforms. The MessageAgent suggests replies — only what you approve gets sent. There's no real OAuth connection to any platform yet, so conversations here are simulated manually instead of fetched live.",
+  "description": "Messages and requests in one place. The MessageAgent suggests reply drafts.",
   "emptyState": "No conversations yet — simulate one to get started.",
   "backToInbox": "Back to inbox",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simulate another incoming message (test without a real platform connection):",
     "messagePlaceholder": "Message text …",
     "addButton": "Add"
-  }
+  },
+  "simulationBanner": "<strong>Preview/simulation:</strong> messages from platforms are not fetched yet and replies are not sent – not even via \"Approve & send\". You can simulate platform messages here to try it out. Real entries only come from website forms (e.g. appointment requests); you answer those by email."
 }

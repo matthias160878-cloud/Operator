@@ -1,6 +1,6 @@
 {
   "title": "Ayarlar",
-  "description": "Çalışma alanı, kullanıcılar ve sistem bilgileri. Erişim bilgileri yalnızca ortam değişkenleriyle yönetilir (bkz. <code>.env.example</code>).",
+  "description": "Çalışma alanın, kullanıcılar ve verilerine genel bakış. Kendi API anahtarlarını (yapay zekâ metinleri, bülten gönderimi) <zugaenge>Kendi erişimlerim</zugaenge> altında girersin; paketini <billing>Paket ve faturalama</billing> altında bulursun.",
   "workspace": {
     "title": "Çalışma alanı",
     "name": "Ad",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Kullanıcılar ve roller",
-    "note": "Çok kiracılı veri modeli tamamen hazırlandı (tüm tablolar için çalışma alanı yalıtımı). Birden çok kullanıcılı gerçek bir giriş/kimlik doğrulama arayüzü bir sonraki geliştirme adımıdır — şu anda uygulama tam olarak bu varsayılan çalışma alanıyla çalışıyor."
+    "note": "Her hesabın diğer müşterilerden ayrı kendi çalışma alanı vardır. Ek kullanıcıları henüz kendin ekleyemezsin."
   },
   "system": {
     "title": "Sistem",
@@ -17,7 +17,7 @@
     "campaigns": "Kampanyalar",
     "mediaAssets": "Medya varlıkları",
     "agentRuns": "Ajan çalıştırmaları",
-    "dbNote": "Veritabanı: Prisma ORM üzerinden SQLite (yerel, <code>prisma/dev.db</code>). Üretim için <codeSpaced>DATABASE_URL</codeSpaced> değerini Postgres/MySQL'e çevir (<codeSpaced>prisma/schema.prisma</codeSpaced> içindeki sağlayıcıyı uyarla)."
+    "dbNote": "Çalışma alanında kaydedilmiş kayıt sayısı. Tüm verileri dışa aktarabilir veya çalışma alanını aşağıda „Verilerim” altında silebilirsin."
   },
   "onboarding": {
     "title": "Kurulum asistanı",

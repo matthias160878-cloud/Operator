@@ -23,7 +23,7 @@ export async function getRecommendations(
       {
         title: "Noch keine Empfehlungen möglich",
         detail:
-          "Sobald veröffentlichte Inhalte Analytics-Daten sammeln, leitet der LearningAgent hier Empfehlungen ab.",
+          "Es sind noch keine Statistikdaten gespeichert. Plattformstatistiken werden noch nicht automatisch abgerufen – ohne Daten kann der LearningAgent keine Empfehlungen ableiten.",
       },
     ];
   }

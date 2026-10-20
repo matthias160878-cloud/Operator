@@ -1,14 +1,14 @@
 {
  "pageTitle": "Sociálne médiá",
- "subtitle": "Účty na platformách a stav ich pripojenia. Prístupové údaje sa spravujú výlučne ako premenné prostredia na strane servera, nikdy sa neukladajú vo frontende. Prístupové tokeny sa po pripojení ukladajú šifrované v databáze.",
+ "subtitle": "Tvoje účty na platformách a ich stav pripojenia. Pripájaš sa prihlásením priamo na platforme; prístupové tokeny sa ukladajú šifrovane na serveri, nikdy v prehliadači.",
  "credentialsLabel": "Prístupové údaje aplikácie",
  "accountLabel": "Účet",
  "lastPublishedLabel": "Posledná publikácia",
  "lastErrorLabel": "Posledná chyba",
  "connectButton": "Pripojiť",
  "connectButtonUnavailable": "Pripojiť (zatiaľ nie je možné)",
- "connectButtonTitleNoCreds": "Prístupové údaje aplikácie zatiaľ chýbajú",
- "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY zatiaľ nie je nastavený",
+ "connectButtonTitleNoCreds": "Prevádzkovateľ zatiaľ nenastavil",
+ "connectButtonTitleNoEncryption": "Bezpečné ukladanie prístupových tokenov zatiaľ nie je nastavené",
  "disconnectButton": "Odpojiť",
  "disconnectConfirm": "Naozaj odpojiť tento účet? Prístup sa potom musí znova obnoviť cez „Pripojiť“.",
  "needsCredentialsNote": "Ešte chýba: zadaj {idVar} a {secretVar} v Render.",
@@ -56,6 +56,10 @@
    "not_active": "Platforma prístup nepotvrdila alebo bol zamietnutý.",
    "composio_error": "Composio nebolo dostupné alebo nahlásilo chybu. Skús to prosím neskôr.",
    "unknown": "Pripojenie zlyhalo."
-  }
- }
+  },
+  "noPublishNotice": "Len test pripojenia – nič sa tu nepublikuje. Test čítania len overí, či sa dá účet čítať."
+ },
+ "needsCredentialsNoteCustomer": "Túto platformu nastavuje prevádzkovateľ. Pripojiť sa bude možné, hneď ako bude nastavená.",
+ "errorNotConfiguredCustomer": "{platform}: prevádzkovateľ túto platformu zatiaľ nenastavil. Pripojiť sa bude možné, hneď ako bude nastavená.",
+ "encryptionKeyMissingNoticeCustomer": "Pripojenie zatiaľ nie je možné: prevádzkovateľ ešte nenastavil bezpečné ukladanie prístupových tokenov."
 }

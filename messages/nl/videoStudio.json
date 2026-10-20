@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Providerneutrale videopipeline: formatbeheer, uitwisselbare videoproviders, koppeling met voice-over en ondertitels (zie Content Factory per content-item).",
+  "subtitle": "Video maken is nog niet beschikbaar: er is nog geen videodienst gekoppeld die video's maakt. Hieronder zie je de voorbereide formaten per platform; scripts, voice-overs en ondertitels maak je in Script Studio, Voice Studio en de Content Factory.",
   "providerCardTitle": "Videoproviders",
-  "providerNotePrefix": "Verdere providers (AI-video-API's, stockvideobibliotheken) kunnen via dezelfde",
-  "providerNoteSuffix": "-interface worden toegevoegd, zonder bestaande code aan te raken.",
   "formatManagerTitle": "Formatbeheer",
   "assetsTitle": "Video-assets",
-  "assetsEmpty": "Nog geen video's gerenderd — rendering loopt via content-items in de Content Factory, zodra een videoprovider is geconfigureerd."
+  "assetsEmpty": "Nog geen video's. Video maken is nog niet beschikbaar in de app.",
+  "providerNote": "Nog geen videodienst bruikbaar – video's kunnen op dit moment niet in de app worden gemaakt."
 }

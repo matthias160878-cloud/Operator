@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Pakkujast sõltumatu videotoru: vormingute haldus, vahetatavad videopakkujad, häälkõne ja subtiitrite ühendus (vt Content Factory iga sisuühiku juures).",
+  "subtitle": "Videote loomine pole veel saadaval: ühendatud pole ühtegi videoteenust, mis videoid looks. Allpool näed ettevalmistatud formaate platvormide kaupa; stsenaariumid, pealelugemise ja subtiitrid lood Script Studios, Voice Studios ja Content Factorys.",
   "providerCardTitle": "Videopakkujad",
-  "providerNotePrefix": "Täiendavaid pakkujaid (tehisintellekti video-API-d, videovaramute teegid) saab lisada sama",
-  "providerNoteSuffix": "-liidese kaudu, olemasolevat koodi puutumata.",
   "formatManagerTitle": "Vormingute haldus",
   "assetsTitle": "Videovarad",
-  "assetsEmpty": "Videoid pole veel renderdatud — renderdamine toimub Content Factorys sisuühikute kaudu, kui videopakkuja on seadistatud."
+  "assetsEmpty": "Videoid veel pole. Videote loomine pole rakenduses veel saadaval.",
+  "providerNote": "Ühtegi videoteenust pole veel kasutada – videoid ei saa praegu rakenduses luua."
 }

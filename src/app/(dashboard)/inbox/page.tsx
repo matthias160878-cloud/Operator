@@ -28,6 +28,10 @@ export default async function InboxPage() {
         <NewConversationForm />
       </div>
 
+      <div role="note" data-testid="posteingang-simulation" className="rounded-lg border border-warning/30 bg-warning/10 px-4 py-3 text-xs text-warning">
+        {t.rich("simulationBanner", { strong: (chunks) => <strong>{chunks}</strong> })}
+      </div>
+
       <div className="card divide-y divide-border">
         {conversations.length === 0 && (
           <div className="flex flex-col items-center gap-2 p-10 text-center text-muted">

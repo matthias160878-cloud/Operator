@@ -1,6 +1,6 @@
 {
- "title": "Agent Monitor",
- "description": "Všetci agenti SECRET 58 so stavom, poslednou úlohou a výsledkom. Každé spustenie sa zaznamenáva.",
+ "title": "Protokol asistentov",
+ "description": "Všetci asistenti (agenti) SECRET 58 so stavom, poslednou úlohou a výsledkom. Každé spustenie sa tu zaznamenáva.",
  "table": {
   "agent": "Agent",
   "description": "Popis",

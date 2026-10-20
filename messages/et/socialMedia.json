@@ -1,14 +1,14 @@
 {
   "pageTitle": "Sotsiaalmeedia",
-  "subtitle": "Platvormikontod ja nende ühenduse olek. Ligipääsuandmeid hallatakse ainult serveripoolsete keskkonnamuutujatena, mitte kunagi esiotsas salvestatuna. Ligipääsutokenid salvestatakse pärast ühendamist krüpteeritult andmebaasi.",
+  "subtitle": "Sinu platvormikontod ja nende ühenduse olek. Ühendad end, logides otse platvormile sisse; ligipääsulubasid hoitakse krüpteeritult serveris, mitte kunagi brauseris.",
   "credentialsLabel": "Rakenduse ligipääsuandmed",
   "accountLabel": "Konto",
   "lastPublishedLabel": "Viimane avaldamine",
   "lastErrorLabel": "Viimane viga",
   "connectButton": "Ühenda",
   "connectButtonUnavailable": "Ühenda (veel pole võimalik)",
-  "connectButtonTitleNoCreds": "Rakenduse ligipääsuandmed puuduvad veel",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY pole veel seatud",
+  "connectButtonTitleNoCreds": "Haldur pole veel seadistanud",
+  "connectButtonTitleNoEncryption": "Ligipääsulubade turvaline hoiustamine pole veel seadistatud",
   "disconnectButton": "Katkesta ühendus",
   "disconnectConfirm": "Kas katkestada selle konto ühendus tõesti? Ligipääs tuleb seejärel uuesti luua nupuga „Ühenda“.",
   "needsCredentialsNote": "Puudu on veel: sisesta Renderis {idVar} ja {secretVar}.",
@@ -56,6 +56,10 @@
       "not_active": "Platvorm ei kinnitanud ligipääsu või see lükati tagasi.",
       "composio_error": "Composio polnud kättesaadav või teatas veast. Palun proovi hiljem uuesti.",
       "unknown": "Ühendamine ebaõnnestus."
-    }
-  }
+    },
+    "noPublishNotice": "Ainult ühenduse test – siin ei avaldata midagi. Lugemistest kontrollib ainult, kas kontot saab lugeda."
+  },
+  "needsCredentialsNoteCustomer": "Selle platvormi seadistab haldur. Ühendada saad kohe, kui see on seadistatud.",
+  "errorNotConfiguredCustomer": "{platform}: haldur pole seda platvormi veel seadistanud. Ühendada saad kohe, kui see on seadistatud.",
+  "encryptionKeyMissingNoticeCustomer": "Ühendamine pole veel võimalik: haldur pole ligipääsulubade turvalist hoiustamist veel seadistanud."
 }

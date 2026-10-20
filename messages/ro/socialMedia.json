@@ -1,14 +1,14 @@
 {
   "pageTitle": "Social Media",
-  "subtitle": "Conturile de platformă și starea conexiunii lor. Datele de acces sunt gestionate exclusiv ca variabile de mediu pe server și nu sunt niciodată stocate în frontend. Tokenurile de acces de după conectare sunt salvate criptat în baza de date.",
+  "subtitle": "Conturile tale de pe platforme și starea conexiunii lor. Te conectezi autentificându-te direct pe platformă; tokenurile de acces sunt salvate criptat pe server, niciodată în browser.",
   "credentialsLabel": "Date de acces ale aplicației",
   "accountLabel": "Cont",
   "lastPublishedLabel": "Ultima publicare",
   "lastErrorLabel": "Ultima eroare",
   "connectButton": "Conectează",
   "connectButtonUnavailable": "Conectează (încă imposibil)",
-  "connectButtonTitleNoCreds": "Lipsesc încă datele de acces ale aplicației",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY nu este încă setat",
+  "connectButtonTitleNoCreds": "Încă neconfigurat de operator",
+  "connectButtonTitleNoEncryption": "Stocarea sigură a tokenurilor de acces nu este încă configurată",
   "disconnectButton": "Deconectează",
   "disconnectConfirm": "Sigur vrei să deconectezi acest cont? Accesul trebuie apoi restabilit din nou prin „Conectează”.",
   "needsCredentialsNote": "Mai lipsește: introdu {idVar} și {secretVar} în Render.",
@@ -56,6 +56,10 @@
       "not_active": "Platforma nu a confirmat accesul sau acesta a fost respins.",
       "composio_error": "Composio nu a fost accesibil sau a raportat o eroare. Încearcă din nou mai târziu.",
       "unknown": "Conexiunea a eșuat."
-    }
-  }
+    },
+    "noPublishNotice": "Doar un test al conexiunii – aici nu se publică nimic. Testul de citire verifică doar dacă contul poate fi citit."
+  },
+  "needsCredentialsNoteCustomer": "Această platformă este configurată de operator. Te poți conecta imediat ce este configurată.",
+  "errorNotConfiguredCustomer": "{platform}: operatorul nu a configurat încă această platformă. Te poți conecta imediat ce este configurată.",
+  "encryptionKeyMissingNoticeCustomer": "Conectarea nu este încă posibilă: operatorul nu a configurat încă stocarea sigură a tokenurilor de acces."
 }

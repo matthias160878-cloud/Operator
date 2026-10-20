@@ -1,6 +1,6 @@
 {
   "title": "Integrimet",
-  "description": "Statusi i drejtpërdrejtë i të gjitha shërbimeve të jashtme — vetëm mbi bazën e variablave të mjedisit që janë vendosur realisht. Pa lidhje të simuluara.",
+  "description": "Gjendja e drejtpërdrejtë e shërbimeve të jashtme – vetëm lidhje të konfiguruara dhe të verifikuara realisht, asgjë nuk shtiret.",
   "categories": {
     "AI": "Ofruesit e AI",
     "VOICE": "Voice",

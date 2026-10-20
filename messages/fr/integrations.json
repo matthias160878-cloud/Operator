@@ -1,6 +1,6 @@
 {
   "title": "Intégrations",
-  "description": "Statut en direct de tous les services externes — basé uniquement sur les variables d'environnement réellement définies. Aucune connexion simulée.",
+  "description": "État en direct des services externes – uniquement les connexions réellement configurées et vérifiées, rien n'est simulé.",
   "categories": {
     "AI": "Fournisseurs IA",
     "VOICE": "Voix",

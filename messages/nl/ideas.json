@@ -16,7 +16,10 @@
     "statusInProgress": "In uitvoering",
     "statusUsed": "Gebruikt",
     "statusArchived": "Gearchiveerd",
-    "sourceAiGenerated": "AI-gegenereerd",
-    "sourceManual": "Handmatig"
+    "sourceAiGenerated": "IdeaAgent (AI of sjabloon)",
+    "sourceManual": "Handmatig",
+    "templateResult": "Sjabloon: de zojuist gemaakte ideeën komen uit vaste tekstblokken, niet van een AI. Voor AI-ideeën voer je je eigen AI-sleutel in onder „Instellingen → Eigen toegangen”.",
+    "textEngineLabel": "Tekst-engine:",
+    "templateMode": "Sjabloonmodus (geen AI-provider geconfigureerd)"
   }
 }

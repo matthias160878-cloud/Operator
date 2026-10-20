@@ -1,14 +1,14 @@
 {
   "pageTitle": "Sosyal medya",
-  "subtitle": "Platform hesapları ve bağlantı durumları. Erişim bilgileri yalnızca sunucu tarafında ortam değişkenleri olarak yönetilir, asla ön yüzde saklanmaz. Bağlandıktan sonra erişim belirteçleri veritabanında şifrelenmiş olarak saklanır.",
+  "subtitle": "Platform hesapların ve bağlantı durumları. Doğrudan platformda oturum açarak bağlanırsın; erişim belirteçleri sunucuda şifreli olarak saklanır, asla tarayıcıda değil.",
   "credentialsLabel": "Uygulama erişim bilgileri",
   "accountLabel": "Hesap",
   "lastPublishedLabel": "Son yayın",
   "lastErrorLabel": "Son hata",
   "connectButton": "Bağla",
   "connectButtonUnavailable": "Bağla (henüz mümkün değil)",
-  "connectButtonTitleNoCreds": "Uygulama erişim bilgileri henüz eksik",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY henüz ayarlanmadı",
+  "connectButtonTitleNoCreds": "İşletmeci tarafından henüz kurulmadı",
+  "connectButtonTitleNoEncryption": "Erişim belirteçlerinin güvenli saklanması henüz kurulmadı",
   "disconnectButton": "Bağlantıyı kes",
   "disconnectConfirm": "Bu hesabın bağlantısı gerçekten kesilsin mi? Erişimin sonradan “Bağla” ile yeniden kurulması gerekir.",
   "needsCredentialsNote": "Hâlâ eksik: {idVar} ve {secretVar} değerlerini Render'a gir.",
@@ -56,6 +56,10 @@
       "not_active": "Platform erişimi onaylamadı veya reddedildi.",
       "composio_error": "Composio'ya ulaşılamadı veya bir hata bildirdi. Lütfen daha sonra tekrar dene.",
       "unknown": "Bağlantı başarısız oldu."
-    }
-  }
+    },
+    "noPublishNotice": "Yalnızca bir bağlantı testi – burada hiçbir şey yayınlanmaz. Okuma testi yalnızca hesabın okunup okunamadığını kontrol eder."
+  },
+  "needsCredentialsNoteCustomer": "Bu platformu işletmeci kurar. Kurulur kurulmaz bağlanabilirsin.",
+  "errorNotConfiguredCustomer": "{platform}: işletmeci bu platformu henüz kurmadı. Kurulur kurulmaz bağlanabilirsin.",
+  "encryptionKeyMissingNoticeCustomer": "Bağlanmak henüz mümkün değil: işletmeci erişim belirteçlerinin güvenli saklanmasını henüz kurmadı."
 }

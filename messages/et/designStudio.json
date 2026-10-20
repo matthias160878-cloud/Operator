@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Pisipildikontseptsioonid, pildivarad ja Canva integratsioon.",
+  "subtitle": "Pisipiltide kontseptsioonid tekstina ja Canva ühenduse olek.",
   "imageAssetsTitle": "Pildivarad",
-  "imageAssetsEmpty": "Pildivarasid pole veel.",
+  "imageAssetsEmpty": "Pilte veel pole. Pisipiltide agent loob praegu ainult tekstikontseptsioone, mitte pildifaile.",
   "thumbnailAgent": {
     "title": "Pisipildi agent",
     "description": "Loob tekstikontseptsiooni (pealkiri, visuaalne idee, paigutus, CTA) — ette valmistatud pildigeneraatori ühendamiseks. Pilti ei looda veel.",
@@ -15,6 +15,9 @@
     "fieldText": "Tekst",
     "fieldLayout": "Paigutus",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Pildi kirjeldus"
+    "fieldImageDescription": "Pildi kirjeldus",
+    "templateResult": "Mall: see kontseptsioon pärineb kindlast tekstimallist, mitte AI-lt. AI-kontseptsioonide jaoks sisesta oma AI-võti jaotises „Seaded → Oma ligipääsud“.",
+    "textEngineLabel": "Tekstimootor:",
+    "templateMode": "Mallirežiim (tehisintellekti pakkuja pole seadistatud)"
   }
 }

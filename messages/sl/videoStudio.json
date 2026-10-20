@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Video cevovod, neodvisen od ponudnika: Format Manager, zamenljivi video ponudniki, povezava voiceovera in podnapisov (glej Content Factory za vsak vsebinski element).",
+  "subtitle": "Ustvarjanje videov še ni na voljo: povezana ni nobena videostoritev, ki bi ustvarjala videe. Spodaj vidiš pripravljene formate za posamezne platforme; scenarije, govor in podnapise ustvariš v Script Studiu, Voice Studiu in Content Factory.",
   "providerCardTitle": "Video ponudniki",
-  "providerNotePrefix": "Dodatne ponudnike (API-je za UI video, knjižnice stock videa) je mogoče dodati prek istega vmesnika",
-  "providerNoteSuffix": ", ne da bi se dotaknili obstoječe kode.",
   "formatManagerTitle": "Format Manager",
   "assetsTitle": "Video sredstva",
-  "assetsEmpty": "Videov še ni upodobljenih — upodabljanje poteka prek vsebinskih elementov v Content Factory, ko je nastavljen video ponudnik."
+  "assetsEmpty": "Še ni videov. Ustvarjanje videov v aplikaciji še ni na voljo.",
+  "providerNote": "Nobena videostoritev še ni uporabna – videov v aplikaciji trenutno ni mogoče ustvariti."
 }

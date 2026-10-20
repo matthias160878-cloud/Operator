@@ -16,7 +16,10 @@
     "statusInProgress": "V delu",
     "statusUsed": "Uporabljeno",
     "statusArchived": "Arhivirano",
-    "sourceAiGenerated": "Generirano z UI",
-    "sourceManual": "Ročno"
+    "sourceAiGenerated": "IdeaAgent (UI ali predloga)",
+    "sourceManual": "Ročno",
+    "templateResult": "Predloga: pravkar ustvarjene ideje izhajajo iz fiksnih besedilnih blokov, ne iz UI. Za ideje UI vnesi svoj ključ UI pod »Nastavitve → Lastni dostopi«.",
+    "textEngineLabel": "Besedilni motor:",
+    "templateMode": "Način predlog (ponudnik UI ni nastavljen)"
   }
 }

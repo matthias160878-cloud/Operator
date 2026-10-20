@@ -1,6 +1,6 @@
 {
-  "title": "Monitor agentów",
-  "description": "Wszyscy agenci SECRET 58 ze statusem, ostatnim zadaniem i wynikiem. Każde uruchomienie jest rejestrowane.",
+  "title": "Dziennik asystentów",
+  "description": "Wszyscy asystenci (agenci) SECRET 58 ze stanem, ostatnim zadaniem i wynikiem. Każde uruchomienie jest tu rejestrowane.",
   "table": {
     "agent": "Agent",
     "description": "Opis",

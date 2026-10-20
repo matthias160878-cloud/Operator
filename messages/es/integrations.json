@@ -1,6 +1,6 @@
 {
   "title": "Integraciones",
-  "description": "Estado en vivo de todos los servicios externos — basado exclusivamente en las variables de entorno realmente configuradas. Sin conexiones simuladas.",
+  "description": "Estado en directo de los servicios externos: solo conexiones realmente configuradas y verificadas, nada se finge.",
   "categories": {
     "AI": "Proveedores de IA",
     "VOICE": "Voz",

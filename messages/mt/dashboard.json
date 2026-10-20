@@ -1,8 +1,7 @@
 {
   "viewAll": "Uri kollha",
   "demoBanner": {
-    "before": "Dejta demo attiva — kampanji, items ta' kontenut u analytics huma dejta ta' eżempju minn ",
-    "after": ", mhux numri reali tal-pjattaformi."
+    "text": "Dejta ta' kampjun attiva – il-kampanji, il-kontenut u l-istatistika f'din iż-żona tax-xogħol huma dejta ta' kampjun, mhux numri reali tal-pjattaformi."
   },
   "hero": {
     "subtitle": "Idea waħda. Diversi pjattaformi. L-akbar firxa possibbli.",
@@ -26,8 +25,9 @@
     "published": "Pubblikazzjonijiet",
     "views": "Views",
     "avgEngagement": "Engagement medju",
-    "totalRevenue": "Total tad-dħul",
-    "noComparisonWeek": "Għad m'hemm l-ebda ġimgħa preċedenti bħala bażi ta' paragun — ir-rati ta' bidla jidhru hekk kif tkun disponibbli dejta għal mill-inqas ġimgħatejn."
+    "totalRevenue": "Dħul (imdaħħal manwalment)",
+    "noComparisonWeek": "Għad m'hemm l-ebda ġimgħa preċedenti bħala bażi ta' paragun — ir-rati ta' bidla jidhru hekk kif tkun disponibbli dejta għal mill-inqas ġimgħatejn.",
+    "noStats": "Veduti u involviment: għad m'hemmx statistika – l-istatistika tal-pjattaformi għadha ma tinġabarx awtomatikament."
   },
   "production": {
     "title": "Produzzjoni tal-kontenut",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} konnessi"
   },
   "agentMonitor": {
-    "title": "Agent Monitor",
+    "title": "Reġistru tal-assistenti",
     "empty": "Għad m'hemm l-ebda eżekuzzjonijiet."
   },
   "topPerformer": {
     "title": "Top Performer",
     "last7Days": "L-aħħar 7 ijiem",
-    "empty": "Għad m'hemm l-ebda dejta tal-prestazzjoni.",
+    "empty": "Għad m'hemmx dejta tal-prestazzjoni – l-istatistika tal-pjattaformi għadha ma tinġabarx awtomatikament.",
     "views": "Views",
     "likes": "Likes",
     "comments": "Kummenti",

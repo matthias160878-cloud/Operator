@@ -80,14 +80,16 @@
     "ERROR": "Hata",
     "REJECTED": "Reddedildi",
     "RECEIVED": "Alındı",
-    "PENDING": "Beklemede"
+    "PENDING": "Beklemede",
+    "NOT_AVAILABLE": "Henüz kullanılamıyor"
   },
   "integrationStatus": {
     "notConfigured": "Yapılandırılmadı — eksik değişken(ler): {vars}.",
     "verifyFailedGeneric": "Bağlantı başarısız oldu.",
     "verifyFailedStatus": "{service} {status} durumuyla yanıt verdi.",
     "verifyUnreachable": "{service} erişilemedi.",
-    "connected": "Bağlı."
+    "connected": "Bağlı.",
+    "notAvailable": "Henüz kullanılamıyor – bu bağlantı uygulamada henüz geliştirilmedi."
   },
   "mediaPreview": {
     "expand": "Büyük göster",

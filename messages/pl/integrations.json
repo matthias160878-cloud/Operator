@@ -1,6 +1,6 @@
 {
   "title": "Integracje",
-  "description": "Status na żywo wszystkich zewnętrznych usług — wyłącznie na podstawie rzeczywiście ustawionych zmiennych środowiskowych. Żadnych udawanych połączeń.",
+  "description": "Stan usług zewnętrznych na żywo – tylko połączenia faktycznie skonfigurowane i sprawdzone, nic nie jest udawane.",
   "categories": {
     "AI": "Dostawcy AI",
     "VOICE": "Voice",

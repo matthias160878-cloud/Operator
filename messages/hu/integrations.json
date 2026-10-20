@@ -1,6 +1,6 @@
 {
   "title": "Integrációk",
-  "description": "Az összes külső szolgáltatás élő állapota — kizárólag a ténylegesen beállított környezeti változók alapján. Nincsenek színlelt kapcsolatok.",
+  "description": "A külső szolgáltatások élő állapota – csak a ténylegesen beállított és ellenőrzött kapcsolatok, semmit sem színlelünk.",
   "categories": {
     "AI": "MI-szolgáltatók",
     "VOICE": "Hang",

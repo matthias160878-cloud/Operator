@@ -1,14 +1,14 @@
 {
   "pageTitle": "Sociālie mediji",
-  "subtitle": "Platformu konti un to savienojuma statuss. Piekļuves dati tiek pārvaldīti tikai kā servera puses vides mainīgie, nekad netiek glabāti frontendā. Piekļuves tokeni pēc pievienošanas tiek šifrēti un glabāti datubāzē.",
+  "subtitle": "Tavi platformu konti un to savienojuma statuss. Savienojies, piesakoties tieši platformā; piekļuves pilnvaras tiek glabātas šifrētas serverī, nekad pārlūkā.",
   "credentialsLabel": "Lietotnes piekļuves dati",
   "accountLabel": "Konts",
   "lastPublishedLabel": "Pēdējā publikācija",
   "lastErrorLabel": "Pēdējā kļūda",
   "connectButton": "Pievienot",
   "connectButtonUnavailable": "Pievienot (vēl nav iespējams)",
-  "connectButtonTitleNoCreds": "Lietotnes piekļuves datu vēl trūkst",
-  "connectButtonTitleNoEncryption": "TOKEN_ENCRYPTION_KEY vēl nav iestatīts",
+  "connectButtonTitleNoCreds": "Operators vēl nav iestatījis",
+  "connectButtonTitleNoEncryption": "Droša piekļuves pilnvaru glabāšana vēl nav iestatīta",
   "disconnectButton": "Atvienot",
   "disconnectConfirm": "Vai tiešām atvienot šo kontu? Pēc tam piekļuve jāatjauno ar „Pievienot“.",
   "needsCredentialsNote": "Vēl trūkst: ievadi {idVar} un {secretVar} Render.",
@@ -56,6 +56,10 @@
       "not_active": "Platforma nav apstiprinājusi piekļuvi vai tā tika noraidīta.",
       "composio_error": "Composio nebija sasniedzams vai ziņoja par kļūdu. Lūdzu, mēģini vēlreiz vēlāk.",
       "unknown": "Savienojums neizdevās."
-    }
-  }
+    },
+    "noPublishNotice": "Tikai savienojuma tests – šeit nekas netiek publicēts. Lasīšanas tests tikai pārbauda, vai kontu var nolasīt."
+  },
+  "needsCredentialsNoteCustomer": "Šo platformu iestata operators. Savienoties varēsi, tiklīdz tā būs iestatīta.",
+  "errorNotConfiguredCustomer": "{platform}: operators šo platformu vēl nav iestatījis. Savienoties varēsi, tiklīdz tā būs iestatīta.",
+  "encryptionKeyMissingNoticeCustomer": "Savienoties vēl nav iespējams: operators vēl nav iestatījis drošu piekļuves pilnvaru glabāšanu."
 }

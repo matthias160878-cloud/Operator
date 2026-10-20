@@ -122,18 +122,24 @@ export const INTEGRATIONS: IntegrationDefinition[] = [
     name: "Canva",
     category: "DESIGN",
     requiredEnv: ["CANVA_API_KEY"],
+    // Noch kein Client gebaut – ein gesetzter Schlüssel bewirkt nichts.
+    nochNichtVerfuegbar: true,
   },
   {
     key: "capcut",
     name: "CapCut",
     category: "VIDEO",
     requiredEnv: ["CAPCUT_API_KEY"],
+    // Noch kein Client gebaut – ein gesetzter Schlüssel bewirkt nichts.
+    nochNichtVerfuegbar: true,
   },
   {
     key: "trend",
     name: "Trend-Datenquelle",
     category: "TREND",
     requiredEnv: ["TREND_API_KEY", "TREND_API_PROVIDER"],
+    // Noch kein Client gebaut – ein gesetzter Schlüssel bewirkt nichts.
+    nochNichtVerfuegbar: true,
   },
 ];
 
@@ -141,6 +147,17 @@ export async function checkIntegration(
   def: IntegrationDefinition,
   t: IntegrationTranslator
 ): Promise<IntegrationStatusResult> {
+  if (def.nochNichtVerfuegbar) {
+    return {
+      key: def.key,
+      name: def.name,
+      category: def.category,
+      status: "NOT_AVAILABLE",
+      message: t("notAvailable"),
+      requiredEnv: def.requiredEnv,
+    };
+  }
+
   const missing = def.requiredEnv.filter((key) => !envPresent(key));
 
   if (missing.length > 0) {

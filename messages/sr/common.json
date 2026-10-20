@@ -80,14 +80,16 @@
     "ERROR": "Грешка",
     "REJECTED": "Одбијено",
     "RECEIVED": "Примљено",
-    "PENDING": "На чекању"
+    "PENDING": "На чекању",
+    "NOT_AVAILABLE": "Још није доступно"
   },
   "integrationStatus": {
     "notConfigured": "Није подешено — недостају променљиве: {vars}.",
     "verifyFailedGeneric": "Повезивање није успело.",
     "verifyFailedStatus": "{service} је одговорио статусом {status}.",
     "verifyUnreachable": "{service} није било могуће достићи.",
-    "connected": "Повезано."
+    "connected": "Повезано.",
+    "notAvailable": "Још није доступно – ова веза у апликацији још није израђена."
   },
   "mediaPreview": {
     "expand": "Прикажи веће",

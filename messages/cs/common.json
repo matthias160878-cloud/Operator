@@ -80,14 +80,16 @@
     "ERROR": "Chyba",
     "REJECTED": "Zamítnuto",
     "RECEIVED": "Přijato",
-    "PENDING": "Čeká na vyřízení"
+    "PENDING": "Čeká na vyřízení",
+    "NOT_AVAILABLE": "Zatím nedostupné"
   },
   "integrationStatus": {
     "notConfigured": "Není nastaveno — chybí proměnné: {vars}.",
     "verifyFailedGeneric": "Připojení se nezdařilo.",
     "verifyFailedStatus": "{service} odpověděl se stavem {status}.",
     "verifyUnreachable": "Službu {service} se nepodařilo zastihnout.",
-    "connected": "Připojeno."
+    "connected": "Připojeno.",
+    "notAvailable": "Zatím nedostupné – toto propojení v aplikaci ještě není hotové."
   },
   "mediaPreview": {
     "expand": "Zobrazit větší",

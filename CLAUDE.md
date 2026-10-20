@@ -23,7 +23,7 @@ Die folgenden Abschnitte beziehen sich auf das Next.js-Teilprojekt (`src/`).
 - `npm run db:studio` — Prisma Studio (DB-GUI) öffnen
 - `npm run mcp` — MCP-Server (stdio) mit Website-Social-, SEO- und Inbox-Tools starten (`src/mcp/server.mts`, Doku in `README-SOCIAL-MEDIA.md` → MCP-Server)
 
-- `npm run typecheck` — TypeScript-Typprüfung (`tsc --noEmit`)
+- `npm run typecheck` — TypeScript-Typprüfung (`next typegen` erzeugt die Routen-Typen wie `LayoutProps`, danach `tsc --noEmit`)
 - `npm test` — alle Tests einmal ausführen (Vitest)
 - `npm run test:watch` — Tests im Watch-Modus
 - Einzelne Datei: `npx vitest run src/lib/messaging/send.test.ts`; einzelner Test: `npx vitest run -t "Thread-URN"`

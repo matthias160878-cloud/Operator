@@ -541,22 +541,36 @@ ist er nicht erreichbar, bleibt die Nachricht trotzdem gespeichert.
 
 ## Tests
 
-Es ist noch kein automatisierter Test-Runner eingerichtet (wie im
-Haupt-`CLAUDE.md` dokumentiert). Verifiziert wurde stattdessen manuell:
+Automatisierte Tests mit [Vitest](https://vitest.dev) — ohne Netzwerk,
+Plattform-Accounts oder KI-Schlüssel:
 
-- `npm run lint` — fehlerfrei
-- `npm run build` — fehlerfrei (alle Seiten und API-Routen kompilieren)
-- End-to-End-Rauchtest aller 15 Seiten (HTTP 200)
-- End-to-End-Test der Kernflows über `curl`: Kampagne generieren
-  (Content Brain, Template-Modus), Content-Item lesen, Untertitel
-  generieren, Workflow-Übergänge (`review`/`publish`), Voiceover ohne
-  ElevenLabs-Key (erwarteter, sauberer Fehlertext), Brand-DNA lesen.
+```bash
+npm test                 # alle Tests einmal
+npm run test:watch       # Watch-Modus
+npx vitest run src/lib/messaging/send.test.ts   # eine Datei
+npm run typecheck        # TypeScript
+```
 
-Empfehlung für den nächsten Schritt: Vitest/Playwright ergänzen und in
-diesem Abschnitt sowie in `CLAUDE.md` dokumentieren (Abschnitt 36 des
-Master-Prompts: Auth, Content-Erstellung, Script-Generierung,
-API-Validierung, ElevenLabs-Integration, DB, Publishing-Workflow,
-Berechtigungen, Multi-Tenancy, Fehlerbehandlung).
+Abgedeckt sind u. a.:
+
+- Senden auf den Plattformen (`src/lib/messaging/send.test.ts`): YouTube,
+  Fehlerweitergabe, Längengrenzen, LinkedIn-URNs und LinkedIn-Partner-DMs.
+- Freigeben & Senden aus dem Posteingang (`src/lib/agents/messageAgent.test.ts`)
+  inkl. Website-Antworten und Speichern der LinkedIn-Thread-URN.
+- Website-Widget (Bibliothek und Route `/api/v1/widget/messages`): Origin-,
+  ID- und Limit-Prüfung, Honeypot, Token, Sortierung der Antworten,
+  Webhook-Signatur.
+- Externe API: Schlüssel, Limit, CORS, Eingabe-Schemas.
+- Website-Abruf: SSRF-Schutz (auch bei Weiterleitungen), Größenlimit,
+  HTML-Extraktion; SEO-Analyse und Posts aus Website im Vorlagen-Modus.
+
+Plattform-Antworten werden simuliert (`tests/helpers.ts` → `mockFetch`); die
+Tests prüfen also unsere Logik, nicht die echten APIs. Jeder Lauf nutzt eine
+eigene temporäre SQLite-Datenbank, `dev.db` bleibt unberührt.
+
+**CI:** `.github/workflows/ci.yml` läuft bei jedem Push auf `main` und jedem
+Pull Request: `npm ci` → Lint → Typprüfung → Tests → Build, dazu `pytest`
+für den Python-Assistenten in `assistant/`.
 
 ## Troubleshooting
 

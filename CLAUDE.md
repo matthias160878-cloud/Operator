@@ -23,7 +23,18 @@ Die folgenden Abschnitte beziehen sich auf das Next.js-Teilprojekt (`src/`).
 - `npm run db:studio` — Prisma Studio (DB-GUI) öffnen
 - `npm run mcp` — MCP-Server (stdio) mit Website-Social-, SEO- und Inbox-Tools starten (`src/mcp/server.mts`, Doku in `README-SOCIAL-MEDIA.md` → MCP-Server)
 
-Es ist noch kein Test-Runner eingerichtet. Sobald Tests hinzugefügt werden, hier dokumentieren, wie man die gesamte Suite und einen einzelnen Test ausführt.
+- `npm run typecheck` — TypeScript-Typprüfung (`next typegen` erzeugt die Routen-Typen wie `LayoutProps`, danach `tsc --noEmit`)
+- `npm test` — alle Tests einmal ausführen (Vitest)
+- `npm run test:watch` — Tests im Watch-Modus
+- Einzelne Datei: `npx vitest run src/lib/messaging/send.test.ts`; einzelner Test: `npx vitest run -t "Thread-URN"`
+
+### Tests
+
+- Vitest (`vitest.config.mts`), Node-Umgebung. Testdateien liegen neben dem Code als `*.test.ts` (z. B. `src/lib/messaging/send.test.ts`); gemeinsame Helfer in `tests/` (`helpers.ts`: `mockFetch`, `resetInbox`; `fixtures.ts`).
+- Kein echter Netzwerkverkehr: Plattform-APIs, Webhooks und Website-Abrufe werden mit `mockFetch` simuliert, DNS per `vi.mock("node:dns/promises")`. KI-Schlüssel sind leer, Agenten laufen im Vorlagen-Modus.
+- Datenbank: `tests/globalSetup.ts` legt pro Lauf eine eigene SQLite-Datei im Temp-Ordner an (`prisma db push`) und löscht sie danach; `dev.db` bleibt unberührt. Dateien laufen nacheinander (`fileParallelism: false`).
+- Umgebungsvariablen in Tests mit `vi.stubEnv` setzen — sie werden nach jedem Test zurückgesetzt (`tests/setup.ts`).
+- CI: `.github/workflows/ci.yml` führt bei jedem Push auf `main` und jedem PR Lint, Typprüfung, Tests und Build aus, außerdem `pytest` für `assistant/`.
 
 ## Architektur
 

@@ -116,6 +116,15 @@ export function ZugaengePanel({ initial, speicherbar }: { initial: SettingStatus
                     </div>
                     <div className="mt-0.5 text-xs text-muted">
                       <code className="text-[11px]">{s.key}</code> · {s.hint}
+                      {s.keyLink && (
+                        <>
+                          {" "}
+                          ·{" "}
+                          <a href={s.keyLink} target="_blank" rel="noopener noreferrer" className="text-accent-2 underline">
+                            Schlüssel bekommen ↗<span className="sr-only"> (öffnet die Seite des Anbieters in einem neuen Tab)</span>
+                          </a>
+                        </>
+                      )}
                       {s.value !== null && (
                         <>
                           {" "}

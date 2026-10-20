@@ -3,6 +3,8 @@
  * Felder sie brauchen und wo der Kunde den Schlüssel bekommt. Reine Daten,
  * auch im Browser nutzbar.
  */
+import { SCHLUESSEL_SEITEN } from "@/lib/integrations/links";
+
 export interface ZugangFeld {
   key: string;
   label: string;
@@ -18,7 +20,11 @@ export interface ZugangAnbieter {
   key: AnbieterKey;
   art: "EMAIL" | "KI";
   name: string;
+  /** Kurzform für die Übersichtstabelle. */
+  kurz: string;
   wofuer: string;
+  /** Offizielle Seite des Anbieters, auf der man den Schlüssel erstellt. */
+  schluesselSeite: { href: string; label: string };
   felder: ZugangFeld[];
   schritte: { text: string; link?: { href: string; label: string } }[];
   preise: { href: string; text: string };
@@ -46,6 +52,8 @@ export const ZUGANG_ANBIETER: Record<AnbieterKey, ZugangAnbieter> = {
     key: "RESEND",
     art: "EMAIL",
     name: "Resend (E-Mail-Versand)",
+    kurz: "Newsletter-Versand über Ihre Absenderdomain",
+    schluesselSeite: { href: SCHLUESSEL_SEITEN.resend, label: "resend.com/api-keys" },
     wofuer: "Newsletter: Bestätigungs-Mails (Double-Opt-in) und Ausgaben an Ihre bestätigten Kontakte – über Ihr eigenes Resend-Konto und Ihre eigene Absenderdomain.",
     felder: [
       { key: "apiKey", label: "Resend API-Schlüssel", geheim: true, platzhalter: "re_…", muster: /^re_[A-Za-z0-9_]{8,}$/, musterHinweis: "beginnt mit „re_“" },
@@ -66,7 +74,7 @@ export const ZUGANG_ANBIETER: Record<AnbieterKey, ZugangAnbieter> = {
       },
       {
         text: "API Keys → „Create API Key“: Berechtigung „Sending access“ wählen, auf Ihre Domain beschränken, Schlüssel (re_…) kopieren. Er wird nur einmal angezeigt.",
-        link: { href: "https://resend.com/api-keys", label: "resend.com/api-keys" },
+        link: { href: SCHLUESSEL_SEITEN.resend, label: "resend.com/api-keys" },
       },
       { text: "Schlüssel und Absender hier eintragen und „Speichern und prüfen“ klicken." },
     ],
@@ -81,12 +89,14 @@ export const ZUGANG_ANBIETER: Record<AnbieterKey, ZugangAnbieter> = {
     key: "ANTHROPIC",
     art: "KI",
     name: "Anthropic (Claude)",
+    kurz: "KI-Texte und Webseiten-Chat",
+    schluesselSeite: { href: SCHLUESSEL_SEITEN.anthropic, label: "console.anthropic.com/settings/keys" },
     wofuer: "KI-Texte in der App: Content Brain, Ideen, Skripte, Hooks, Hashtags, Antwortentwürfe und der Chat-Assistent auf Ihrer Webseite.",
     felder: [{ key: "apiKey", label: "Anthropic API-Schlüssel", geheim: true, platzhalter: "sk-ant-…", muster: /^sk-ant-[A-Za-z0-9_-]{20,}$/, musterHinweis: "beginnt mit „sk-ant-“" }],
     schritte: [
       { text: "Konto in der Anthropic Console anlegen.", link: { href: "https://console.anthropic.com/", label: "console.anthropic.com" } },
       { text: "Unter Billing Guthaben aufladen und ein Ausgabenlimit setzen – ohne Guthaben lehnt Anthropic Anfragen ab.", link: { href: "https://console.anthropic.com/settings/billing", label: "Billing" } },
-      { text: "Unter API Keys → „Create Key“ einen Schlüssel erstellen und kopieren (sk-ant-…).", link: { href: "https://console.anthropic.com/settings/keys", label: "console.anthropic.com/settings/keys" } },
+      { text: "Unter API Keys → „Create Key“ einen Schlüssel erstellen und kopieren (sk-ant-…).", link: { href: SCHLUESSEL_SEITEN.anthropic, label: "console.anthropic.com/settings/keys" } },
       { text: "Schlüssel hier eintragen und „Speichern und prüfen“ klicken." },
     ],
     preise: { href: "https://www.anthropic.com/pricing", text: "Preise bei Anthropic" },
@@ -96,12 +106,14 @@ export const ZUGANG_ANBIETER: Record<AnbieterKey, ZugangAnbieter> = {
     key: "OPENAI",
     art: "KI",
     name: "OpenAI (GPT)",
+    kurz: "KI-Texte (Alternative)",
+    schluesselSeite: { href: SCHLUESSEL_SEITEN.openai, label: "platform.openai.com/api-keys" },
     wofuer: "Alternative oder Ersatz für Anthropic – dieselben KI-Funktionen der App.",
     felder: [{ key: "apiKey", label: "OpenAI API-Schlüssel", geheim: true, platzhalter: "sk-…", muster: /^sk-(?!ant-)[A-Za-z0-9_-]{20,}$/, musterHinweis: "beginnt mit „sk-“ (z. B. sk-proj-…)" }],
     schritte: [
       { text: "Konto auf der OpenAI-Plattform anlegen.", link: { href: "https://platform.openai.com/signup", label: "platform.openai.com" } },
       { text: "Unter Billing Guthaben aufladen und ein Limit festlegen.", link: { href: "https://platform.openai.com/settings/organization/billing/overview", label: "Billing" } },
-      { text: "Unter API keys → „Create new secret key“ einen Schlüssel erstellen und kopieren (sk-…).", link: { href: "https://platform.openai.com/api-keys", label: "platform.openai.com/api-keys" } },
+      { text: "Unter API keys → „Create new secret key“ einen Schlüssel erstellen und kopieren (sk-…).", link: { href: SCHLUESSEL_SEITEN.openai, label: "platform.openai.com/api-keys" } },
       { text: "Schlüssel hier eintragen und „Speichern und prüfen“ klicken." },
     ],
     preise: { href: "https://openai.com/api/pricing/", text: "Preise bei OpenAI" },
@@ -111,12 +123,14 @@ export const ZUGANG_ANBIETER: Record<AnbieterKey, ZugangAnbieter> = {
     key: "GEMINI",
     art: "KI",
     name: "Google Gemini",
+    kurz: "KI-Texte (Alternative)",
+    schluesselSeite: { href: SCHLUESSEL_SEITEN.gemini, label: "aistudio.google.com/apikey" },
     wofuer: "Alternative oder Ersatz für Anthropic und OpenAI – dieselben KI-Funktionen der App.",
     felder: [{ key: "apiKey", label: "Gemini API-Schlüssel", geheim: true, platzhalter: "AIza…", muster: /^AIza[0-9A-Za-z_-]{30,}$/, musterHinweis: "beginnt mit „AIza“" }],
     schritte: [
       { text: "In Google AI Studio mit Ihrem Google-Konto anmelden.", link: { href: "https://aistudio.google.com/", label: "aistudio.google.com" } },
       { text: "Abrechnung (Cloud Billing) für das Projekt aktivieren. Wichtig: Im kostenlosen Tarif darf Google Eingaben zur Verbesserung seiner Produkte verwenden – für Kundendaten nur den kostenpflichtigen Tarif nutzen." },
-      { text: "„Get API key“ → „Create API key“ und den Schlüssel kopieren (AIza…).", link: { href: "https://aistudio.google.com/apikey", label: "aistudio.google.com/apikey" } },
+      { text: "„Get API key“ → „Create API key“ und den Schlüssel kopieren (AIza…).", link: { href: SCHLUESSEL_SEITEN.gemini, label: "aistudio.google.com/apikey" } },
       { text: "Schlüssel hier eintragen und „Speichern und prüfen“ klicken." },
     ],
     preise: { href: "https://ai.google.dev/gemini-api/docs/pricing", text: "Preise der Gemini API" },

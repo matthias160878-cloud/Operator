@@ -66,7 +66,7 @@ export function ZugangFormular({ anbieter, felder, vorhanden }: { anbieter: stri
                 type="button"
                 disabled={laedt}
                 className="inline-flex min-h-10 items-center rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-danger"
-                onClick={() => confirm("Zugang löschen? Danach läuft der Newsletter nur noch als Demo.") && senden(`/api/zugaenge?anbieter=${anbieter}`, { method: "DELETE" })}
+                onClick={() => confirm(anbieter === "RESEND" ? "Zugang löschen? Danach läuft der Newsletter nur noch als Demo." : "Zugang löschen? Die App nutzt dann einen anderen eingetragenen KI-Zugang oder arbeitet mit Vorlagen.") && senden(`/api/zugaenge?anbieter=${anbieter}`, { method: "DELETE" })}
               >
                 Löschen
               </button>

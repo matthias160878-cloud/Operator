@@ -200,6 +200,11 @@ export async function demoAnlegen(workspaceId: string) {
       { plattform: "INSTAGRAM", metrik: "SHARES", wert: 37 },
       { plattform: "YOUTUBE", metrik: "IMPRESSIONEN", wert: 2900 },
       { plattform: "YOUTUBE", metrik: "VIDEOAUFRUFE", wert: 610 },
+      // Speicherungen und Wiedergabedauer: Ø-Werte je Plattform, werden nicht addiert.
+      { plattform: "INSTAGRAM", metrik: "SPEICHERUNGEN", wert: 54 },
+      { plattform: "INSTAGRAM", metrik: "WIEDERGABEDAUER_SEK", wert: 14 },
+      { plattform: "YOUTUBE", metrik: "WIEDERGABEDAUER_SEK", wert: 83 },
+      { plattform: "YOUTUBE", metrik: "GESAMTWIEDERGABEZEIT_MIN", wert: 844 },
     ].map((k) => ({ ...k, workspaceId, kampagneId: kampagne.id, quelle: "DEMO", zeitraumVon: von, zeitraumBis: bis })),
   });
   return kampagne;

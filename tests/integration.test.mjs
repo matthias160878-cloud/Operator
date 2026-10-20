@@ -1979,6 +1979,33 @@ test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich u
   assert.equal((await anon.req(`/e/${code}/weiter`)).status, 303);
   assert.ok(!(await anon.req(`/e/${code}/weiter`)).headers.get("location").startsWith("https://example.com"));
 
+  // Plattformzahlen manuell: Speicherungen und Ø Wiedergabedauer (Sekunden), Durchschnitt wird nie summiert
+  const kz = (body) => A.json(`/api/reichweite/kampagnen/${kid}/kennzahlen`, { method: "POST", body: { zeitraumVon: "2026-10-01", zeitraumBis: "2026-10-07", ...body } });
+  assert.equal((await kz({ plattform: "INSTAGRAM", metrik: "SPEICHERUNGEN", wert: 12 })).status, 200);
+  assert.equal((await kz({ plattform: "YOUTUBE", metrik: "SPEICHERUNGEN", wert: 3 })).status, 200);
+  assert.equal((await kz({ plattform: "INSTAGRAM", metrik: "WIEDERGABEDAUER_SEK", wert: 14 })).status, 200);
+  const wd = await kz({ plattform: "YOUTUBE", metrik: "WIEDERGABEDAUER_SEK", wert: 83 });
+  assert.equal(wd.status, 200, JSON.stringify(wd.data));
+  assert.equal(wd.data.kennzahl.quelle, "MANUELL");
+  const ungueltig = await kz({ plattform: "YOUTUBE", metrik: "GEFAELLT_MIR", wert: 5 });
+  assert.equal(ungueltig.status, 400, "unbekannte Kennzahl abgelehnt");
+  assert.equal((await kz({ plattform: "YOUTUBE", metrik: "WIEDERGABEDAUER_SEK", wert: 12.5 })).status, 400, "nur ganze Sekunden");
+  const zuLang = await kz({ plattform: "YOUTUBE", metrik: "WIEDERGABEDAUER_SEK", wert: 90000 });
+  assert.equal(zuLang.status, 400, "Ø Wiedergabedauer höchstens 24 h");
+  assert.ok(zuLang.data.error.includes("Sekunden"));
+  assert.equal((await B.json(`/api/reichweite/kampagnen/${kid}/kennzahlen`, { method: "POST", body: { plattform: "YOUTUBE", metrik: "SPEICHERUNGEN", wert: 1, zeitraumVon: "2026-10-01", zeitraumBis: "2026-10-07" } })).status, 404);
+  assert.equal(await prisma.reichweitenKennzahl.count({ where: { kampagneId: kid } }), 4);
+  a = (await A.json(`/api/reichweite/kampagnen/${kid}/auswertung`)).data.auswertung;
+  const dauer = a.plattformKennzahlen.filter((p) => p.metrik === "WIEDERGABEDAUER_SEK");
+  assert.deepEqual(dauer.map((p) => [p.plattform, p.zahl.wert, p.zahl.anzeige, p.art]), [
+    ["INSTAGRAM", 14, "0:14 min", "DURCHSCHNITT"],
+    ["YOUTUBE", 83, "1:23 min", "DURCHSCHNITT"],
+  ]);
+  assert.ok(dauer.every((p) => p.label === "Ø Wiedergabedauer" && p.zahl.quelle === "Manuell aus Plattform-Statistik" && !p.zahl.istDemo));
+  assert.equal(a.plattformKennzahlen.filter((p) => p.metrik === "SPEICHERUNGEN").length, 2);
+  assert.ok(!JSON.stringify(a.fluss).includes('"wert":97'), "Ø Wiedergabedauer nicht summiert");
+  assert.ok((await (await A.req("/weiterempfehlungen")).text()).includes("Speicherungen"));
+
   // Rollen: Nur-Lesen darf nichts ändern
   await prisma.user.update({ where: { email: "reichweite-a@example.com" }, data: { role: "VIEWER" } });
   assert.equal((await A.json(`/api/reichweite/kampagnen/${kid}/links`, { method: "POST", body: {} })).status, 403);

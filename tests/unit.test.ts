@@ -390,7 +390,7 @@ test("Dateiaustausch: Dateinamen, Ordner, Ansichtstypen und Webadressen werden s
 import { CODE_LAENGE, istGueltigerCode, neuerCode } from "@/lib/reichweite/codes";
 import { enthaeltPersonendaten, pruefeZielUrl } from "@/lib/reichweite/texte";
 import { teilenZiele } from "@/lib/reichweite/teilen";
-import { auswerten } from "@/lib/reichweite/auswertung";
+import { auswerten, formatiereMetrikWert, formatiereSekunden, istSummierbar, METRIK_INFO, summeUeberEintraege } from "@/lib/reichweite/auswertung";
 import { CTA_VORSCHLAEGE, begleittexte } from "@/lib/reichweite/vorschlaege";
 
 test("Empfehlung: Codes sind zufällig, gültig und ohne Personenbezug", () => {
@@ -469,6 +469,55 @@ test("Empfehlung: Auswertung erfindet keine Stufen und vermischt keine Größen"
   assert.equal(beitrag.istDemo, true);
   assert.ok(mit.plattformKennzahlen.find((k) => k.metrik === "REICHWEITE")!.zahl.einheit.includes("keine eindeutigen Personen"));
   assert.equal(mit.enthaeltDemo, true);
+});
+
+test("Empfehlung: Speicherungen und Ø Wiedergabedauer – Durchschnitte werden nie summiert", () => {
+  const t1 = new Date("2026-10-01T00:00:00Z");
+  const t2 = new Date("2026-10-08T00:00:00Z");
+  const k = (id: string, plattform: string, metrik: string, wert: number, von = t1, bis = t2, quelle = "MANUELL") => ({
+    id, plattform, metrik, wert, quelle, zeitraumVon: von, zeitraumBis: bis, erfasstAm: bis,
+  });
+  const a = auswerten({
+    links: [],
+    ereignisse: [],
+    kennzahlen: [
+      k("1", "INSTAGRAM", "WIEDERGABEDAUER_SEK", 14),
+      k("2", "YOUTUBE", "WIEDERGABEDAUER_SEK", 83),
+      k("3", "YOUTUBE", "WIEDERGABEDAUER_SEK", 65, t2, new Date("2026-10-15T00:00:00Z")),
+      k("4", "INSTAGRAM", "SPEICHERUNGEN", 54),
+      k("5", "YOUTUBE", "SPEICHERUNGEN", 6),
+      k("6", "YOUTUBE", "GESAMTWIEDERGABEZEIT_MIN", 844),
+      k("7", "YOUTUBE", "UNBEKANNT", 1),
+    ],
+  });
+  assert.equal(METRIK_INFO.WIEDERGABEDAUER_SEK.label, "Ø Wiedergabedauer");
+  assert.equal(METRIK_INFO.SPEICHERUNGEN.label, "Speicherungen");
+  assert.equal(istSummierbar("WIEDERGABEDAUER_SEK"), false);
+  assert.equal(istSummierbar("SPEICHERUNGEN"), true);
+  // Jeder Durchschnitt bleibt ein eigener Eintrag je Plattform und Zeitraum, unverändert.
+  const dauer = a.plattformKennzahlen.filter((p) => p.metrik === "WIEDERGABEDAUER_SEK");
+  assert.deepEqual(dauer.map((d) => d.zahl.wert).sort((x, y) => x! - y!), [14, 65, 83]);
+  assert.ok(dauer.every((d) => d.art === "DURCHSCHNITT" && d.zahl.messluecken.some((m) => m.includes("nicht über Plattformen oder Zeiträume addiert"))));
+  assert.equal(dauer.find((d) => d.zahl.wert === 83)!.zahl.anzeige, "1:23 min");
+  assert.equal(dauer[0].zahl.quelle, "Manuell aus Plattform-Statistik");
+  // Keine Summe und kein Gesamtdurchschnitt für Durchschnittswerte.
+  const s = summeUeberEintraege(a.plattformKennzahlen, "WIEDERGABEDAUER_SEK");
+  assert.equal(s.wert, null);
+  assert.equal(s.status, "NICHT_MESSBAR");
+  for (const w of [14 + 83, 14 + 83 + 65, Math.round((14 + 83 + 65) / 3), Math.round((14 + 83) / 2)]) {
+    assert.ok(!a.fluss.some((f) => f.zahl.wert === w), `kein Fluss-Schritt mit ${w}`);
+  }
+  // Zählwerte dürfen ausdrücklich gekennzeichnet summiert werden (keine Personen).
+  const sp = summeUeberEintraege(a.plattformKennzahlen, "SPEICHERUNGEN");
+  assert.equal(sp.wert, 60);
+  assert.ok(sp.messluecken[0].includes("keine eindeutigen Personen"));
+  assert.equal(a.plattformKennzahlen.find((p) => p.metrik === "GESAMTWIEDERGABEZEIT_MIN")!.zahl.anzeige, "844 min");
+  assert.ok(!a.plattformKennzahlen.some((p) => (p.metrik as string) === "UNBEKANNT"));
+  assert.ok(a.hinweise.some((h) => h.includes("nie addiert")));
+  assert.equal(formatiereSekunden(65), "1:05");
+  assert.equal(formatiereSekunden(5), "0:05");
+  assert.equal(formatiereSekunden(3725), "1:02:05");
+  assert.equal(formatiereMetrikWert("SPEICHERUNGEN", 1234), (1234).toLocaleString("de-DE"));
 });
 
 test("Empfehlung: Vorschläge versprechen keine Viralität", () => {

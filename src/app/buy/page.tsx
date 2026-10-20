@@ -301,6 +301,8 @@ export default async function BuyPage({
 
       <footer className="fuss">
         <div className="wrap">
+          {/* Ohne Prefetch: „/“ ist für Besucher die statische Startseite der Zentrale. */}
+          <Link href="/" prefetch={false}>Startseite</Link>
           <Link href="/impressum">Impressum</Link>
           <Link href="/kuendigen">Verträge hier kündigen</Link>
           {datenschutz && (

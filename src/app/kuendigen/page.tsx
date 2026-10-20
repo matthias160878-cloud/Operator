@@ -23,7 +23,7 @@ export default function KuendigenPage() {
           <Link href="/buy" className="text-accent-2 underline">Zurück</Link>
         </p>
       </div>
-      <LegalFooter installieren className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted print:hidden" />
+      <LegalFooter installieren startseite className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted print:hidden" />
     </div>
   );
 }

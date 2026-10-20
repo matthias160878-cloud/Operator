@@ -1,0 +1,15 @@
+{
+  "title": "Analytika",
+  "subtitle": "Statistiky platforem (zhlédnutí, lajky, komentáře, sdílení) se zatím nenačítají automaticky. Zobrazují se tu jen již uložené hodnoty, např. ukázková data. Čísla ze statistik platformy můžeš zadat ručně v sekci <weiter>Doporučení</weiter> („Zadat čísla z platformy“) nebo ve <varianten>srovnání variant</varianten> – vyhodnocují se tam, ne na této stránce.",
+  "statViewsTotal": "Zobrazení celkem",
+  "statLikesTotal": "Lajky celkem",
+  "statComments": "Komentáře",
+  "statShares": "Sdílení",
+  "chartTitle": "Výkon obsahu v čase",
+  "chartLegend": "Zobrazení (fialová) · Engagement % (tyrkysová)",
+  "chartEmpty": "Zatím žádné statistiky – žádný průběh není k dispozici.",
+  "bestPerformingTitle": "Nejlépe fungující obsah",
+  "bestPerformingEmpty": "Zatím žádné statistiky – pořadí není možné.",
+  "learningAgentTitle": "Learning Agent — doporučení",
+  "statsEmpty": "Zatím nejsou uložené žádné statistiky – proto tu zatím nejsou žádné ukazatele. Statistiky platforem se zatím nenačítají automaticky."
+}

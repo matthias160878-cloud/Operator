@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Pisipiltide kontseptsioonid tekstina ja Canva ühenduse olek.",
+  "imageAssetsTitle": "Pildivarad",
+  "imageAssetsEmpty": "Pilte veel pole. Pisipiltide agent loob praegu ainult tekstikontseptsioone, mitte pildifaile.",
+  "thumbnailAgent": {
+    "title": "Pisipildi agent",
+    "description": "Loob tekstikontseptsiooni (pealkiri, visuaalne idee, paigutus, CTA) — ette valmistatud pildigeneraatori ühendamiseks. Pilti ei looda veel.",
+    "inputPlaceholder": "Pisipildi teema",
+    "submitButton": "Genereeri kontseptsioon",
+    "errorGenerationFailed": "Genereerimine ebaõnnestus.",
+    "errorUnknown": "Tundmatu viga.",
+    "fieldTitle": "Pealkiri",
+    "fieldVisualIdea": "Visuaalne idee",
+    "fieldText": "Tekst",
+    "fieldLayout": "Paigutus",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Pildi kirjeldus",
+    "templateResult": "Mall: see kontseptsioon pärineb kindlast tekstimallist, mitte AI-lt. AI-kontseptsioonide jaoks sisesta oma AI-võti jaotises „Seaded → Oma ligipääsud“.",
+    "textEngineLabel": "Tekstimootor:",
+    "templateMode": "Mallirežiim (tehisintellekti pakkuja pole seadistatud)"
+  }
+}

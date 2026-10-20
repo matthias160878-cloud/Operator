@@ -1,0 +1,27 @@
+{
+  "title": "Nustatymai",
+  "description": "Tavo darbo sritis, naudotojai ir tavo duomenų apžvalga. Savus API raktus (DI tekstai, naujienlaiškių siuntimas) įvedi skiltyje <zugaenge>Savos prieigos</zugaenge>; savo paketą rasi skiltyje <billing>Paketas ir apmokėjimas</billing>.",
+  "workspace": {
+    "title": "Darbo erdvė",
+    "name": "Pavadinimas",
+    "slug": "Slug",
+    "createdAt": "Sukurta"
+  },
+  "users": {
+    "title": "Naudotojai ir vaidmenys",
+    "note": "Kiekviena paskyra turi savo darbo sritį, atskirtą nuo kitų klientų. Papildomų naudotojų kol kas negali pridėti pats."
+  },
+  "system": {
+    "title": "Sistema",
+    "contentItems": "Turinio elementai",
+    "campaigns": "Kampanijos",
+    "mediaAssets": "Medijos ištekliai",
+    "agentRuns": "Agentų paleidimai",
+    "dbNote": "Tavo darbo srityje išsaugotų įrašų skaičius. Visus duomenis gali eksportuoti arba darbo sritį ištrinti žemiau, skiltyje „Mano duomenys“."
+  },
+  "onboarding": {
+    "title": "Paruošimo asistentas",
+    "description": "Maži žingsnis po žingsnio langai DI tiekėjams, socialinių tinklų platformoms ir balso išvesčiai, kurie pasirodo pirmą kartą atidarius.",
+    "reopen": "Iš naujo atidaryti paruošimo asistentą"
+  }
+}

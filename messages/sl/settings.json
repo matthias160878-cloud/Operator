@@ -1,0 +1,27 @@
+{
+  "title": "Nastavitve",
+  "description": "Tvoj delovni prostor, uporabniki in pregled tvojih podatkov. Lastne ključe API (besedila UI, pošiljanje novic) vneseš pod <zugaenge>Lastni dostopi</zugaenge>; svoj paket najdeš pod <billing>Paket in obračun</billing>.",
+  "workspace": {
+    "title": "Delovni prostor",
+    "name": "Ime",
+    "slug": "Slug",
+    "createdAt": "Ustvarjeno"
+  },
+  "users": {
+    "title": "Uporabniki in vloge",
+    "note": "Vsak račun ima svoj delovni prostor, ločen od drugih strank. Dodatnih uporabnikov še ne moreš dodati sam."
+  },
+  "system": {
+    "title": "Sistem",
+    "contentItems": "Vsebinski elementi",
+    "campaigns": "Kampanje",
+    "mediaAssets": "Medijska sredstva",
+    "agentRuns": "Zagoni agentov",
+    "dbNote": "Število vnosov, shranjenih v tvojem delovnem prostoru. Vse podatke lahko izvoziš ali delovni prostor izbrišeš spodaj pod »Moji podatki«."
+  },
+  "onboarding": {
+    "title": "Pomočnik za nastavitev",
+    "description": "Majhna okna po korakih za ponudnike UI, platforme družbenih omrežij in govorni izhod, ki se prikažejo ob prvem odprtju.",
+    "reopen": "Znova odpri pomočnika za nastavitev"
+  }
+}

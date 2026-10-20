@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Todos os itens de conteúdo num só lugar — criar, duplicar, reescrever, enriquecer com voz off/legendas e passar pelo fluxo de aprovação.",
+  "statusTabs": {
+    "all": "Todos",
+    "draft": "Rascunho",
+    "inReview": "Em revisão",
+    "approved": "Aprovado",
+    "scheduled": "Agendado",
+    "published": "Publicado",
+    "archived": "Arquivado"
+  },
+  "newItem": {
+    "openButton": "Novo item de conteúdo",
+    "titleLabel": "Título",
+    "platformLabel": "Plataforma",
+    "create": "Criar",
+    "closeAria": "Fechar"
+  },
+  "table": {
+    "empty": "Ainda não há itens de conteúdo — cria um manualmente ou através do Content Brain.",
+    "title": "Título",
+    "platform": "Plataforma",
+    "format": "Formato",
+    "status": "Estado",
+    "updated": "Atualizado",
+    "actions": "Ações",
+    "duplicate": "Duplicar",
+    "delete": "Eliminar",
+    "confirmDelete": "Eliminar mesmo este item de conteúdo?"
+  },
+  "detail": {
+    "backLink": "Voltar à Content Factory",
+    "actionFailed": "Falha na ação.",
+    "actions": {
+      "review": "Enviar para revisão",
+      "approve": "Aprovar",
+      "reject": "Rejeitar",
+      "schedule": "Agendar",
+      "publish": "Publicar",
+      "copy": "Copiar publicação",
+      "markPublished": "Publicado manualmente"
+    },
+    "rejectReasonPrompt": "Motivo da rejeição (opcional):",
+    "scheduleDatePrompt": "Data de publicação (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Título",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Legenda"
+    },
+    "save": "Guardar",
+    "saving": "A guardar…",
+    "hashtags": {
+      "heading": "Hashtags e palavras-chave",
+      "regenerate": "Gerar de novo",
+      "empty": "Ainda não foram geradas hashtags."
+    },
+    "voiceover": {
+      "heading": "Voz off",
+      "generate": "Gerar",
+      "empty": "Ainda não foi gerada voz off."
+    },
+    "subtitles": {
+      "heading": "Legendas",
+      "generate": "Gerar (SRT)",
+      "download": "Transferir {file}",
+      "empty": "Ainda não foram geradas legendas."
+    },
+    "video": {
+      "heading": "Renderização de vídeo",
+      "request": "Pedir renderização",
+      "note": "Pipeline de vídeo independente do fornecedor (secção 11/12) — de momento não há nenhum fornecedor de vídeo configurado (ver Integrações)."
+    },
+    "scriptVariants": {
+      "heading": "Variantes do script",
+      "newVariant": "Nova variante",
+      "empty": "Ainda não há variantes.",
+      "variantSummary": "Variante {label}"
+    },
+    "repurpose": {
+      "heading": "Reaproveitar conteúdo",
+      "description": "Cria a partir deste item de conteúdo derivados adequados a cada plataforma, para outros canais. Mais canais = mais hipóteses de as pessoas verem o vídeo.",
+      "selectAll": "Selecionar todas as plataformas",
+      "clearAll": "Limpar seleção",
+      "generateButton": "Gerar {count} derivados"
+    },
+    "approvalRevoked": "Aprovação retirada: a publicação foi alterada e tem de ser revista e aprovada de novo.",
+    "job": {
+      "QUEUED": "Envio automático agendado para {when}.",
+      "RUNNING": "Envio em curso (data {when}).",
+      "SUCCEEDED": "Publicado na data {when}.",
+      "FAILED": "Falha no envio na data {when}; a publicação voltou a «Aprovado».",
+      "UNKNOWN": "Envio na data {when}: resultado incerto.",
+      "CANCELED": "O envio agendado ({when}) não foi executado."
+    },
+    "copied": "Texto e hashtags copiados — agora cola na app da plataforma.",
+    "copyFailed": "Não foi possível copiar — seleciona o texto manualmente.",
+    "markPublishedConfirm": "Publicaste tu a publicação? Será marcada como publicada; um envio agendado será descartado."
+  }
+}

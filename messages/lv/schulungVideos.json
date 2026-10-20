@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Apmācības video",
+  "subtitlesLabel": "Subtitri",
+  "subtitlesOff": "Izslēgti",
+  "soundLabel": "Skaņa",
+  "soundOn": "Nolasīšanas balss ieslēgta",
+  "soundOff": "Nolasīšanas balss izslēgta",
+  "soundHint": "Nolasīšanas balss nāk no tava pārlūka. Pieejamās valodas ir atkarīgas no tavas ierīces.",
+  "soundMissing": "Šai valodai tavā ierīcē nav instalēta balss. Subtitri tāpat darbojas.",
+  "draftNote": "Melnraksts: īstās lietotnes ieraksts ar testa datiem. Subtitri tulkoti automātiski.",
+  "whatLabel": "Kas tas ir, kāda ir tā funkcija un kā to izpildīt.",
+  "videosTitle": "Skaidrojošie video par katru sadaļu",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Pirmie soļi",
+      "cues": {
+        "c1": "Laipni lūdzam apmācībā: Pirmie soļi. Viss, ko redzi, ir īstā lietotne ar testa datiem.",
+        "c2": "Pa kreisi ir navigācija. Katrai lietotnes sadaļai šeit ir ieraksts.",
+        "c3": "1. solis: sadaļā „Integrācijas“ pārbaudi, kuri pakalpojumi ir pievienoti.",
+        "c4": "Katra rinda rāda īsto, pārbaudīto statusu – nekad izliktu savienojumu.",
+        "c5": "„Nav nokonfigurēts“ nozīmē: šis pakalpojums vēl nav iestatīts. Bez MI pakalpojumu sniedzēja lietotne darbojas sagatavju režīmā.",
+        "c6": "2. solis: ievadi savu zīmolu sadaļā „Brand DNA“. Tonis, mērķauditorija un vērtības tiek iekļauti katrā ģenerētajā tekstā.",
+        "c7": "Piemērs: aizpildi nozari un mērķauditoriju un saglabā apakšā.",
+        "c8": "3. solis: sadaļā „Idejas un iedvesma“ ļauj izveidot pirmo ideju. Ievadi tēmu un noklikšķini uz „Ģenerēt idejas“.",
+        "c9": "Idejas parādās kā kartītes. Sagatavju režīmā tie ir piemēri, ar MI pakalpojumu sniedzēju tās kļūst individuālas.",
+        "c10": "Viss paliek melnraksts, kamēr tu to apstiprini. Katrai sadaļai ir savs skaidrojošais video."
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "cues": {
+        "c1": "Dashboard ir tava sākumlapa: pārskats par visu, kas notiek tavā darbvietā.",
+        "c2": "Augšā redzi aktīvos aģentus, satura ražošanu un ieplānotos ierakstus.",
+        "c3": "Zemāk ir pēdējās aktivitātes un saīsnes uz Content Factory un Brand DNA.",
+        "c4": "Ar „Nedēļa“ pārslēdz rādītāju periodu.",
+        "c5": "Kā to lietot: atver Dashboard katru dienu, pārbaudi atvērtos melnrakstus un no šejienes dodies tieši uz vajadzīgo sadaļu."
+      }
+    },
+    "schulung": {
+      "title": "Apmācība",
+      "cues": {
+        "c1": "Apmācība ir tava pamācība lietotnē. Tā soli pa solim izskaidro katru sadaļu.",
+        "c2": "Katrai tēmai ir apraksts, numurēti soļi un saite, kas atver attiecīgo lapu.",
+        "c3": "Šeit parādās arī šie skaidrojošie video, pa vienam katrai sadaļai.",
+        "c4": "Kā to lietot: izvēlies tēmu, izlasi soļus, atver lapu un uzreiz izmēģini."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory ir darbgalds visām tavām satura vienībām vienuviet.",
+        "c2": "Funkcija: izveidot, dublēt, pārrakstīt vienības, papildināt tās ar balss ierakstu un subtitriem un virzīt cauri apstiprināšanas darbplūsmai.",
+        "c3": "Filtri augšā rāda statusus: Melnraksts, Pārbaudē, Apstiprināts, Ieplānots, Publicēts un Arhivēts.",
+        "c4": "Kā to darīt: ar „Jauna satura vienība“ izveido vienību.",
+        "c5": "Atver vienību, lai rediģētu skriptu, balss ierakstu, subtitrus, tēmturus un sīktēlu.",
+        "c6": "Apstiprināšana vienmēr ir manuāls solis. Nekas netiek publicēts bez tava apstiprinājuma."
+      }
+    },
+    "ideas": {
+      "title": "Idejas un iedvesma",
+      "cues": {
+        "c1": "Šeit tu vāc idejas: tēmu kopas, sērijas un formātus nākamajam saturam.",
+        "c2": "Funkcija: IdeaAgent izveido idejas par tēmu, vai arī tu pats ievadi savas idejas ar roku.",
+        "c3": "Kā to darīt: ievadi tēmu, izvēlies platformu, mērķi un formātu un noklikšķini uz „Ģenerēt idejas“.",
+        "c4": "Katra ideja kļūst par kartīti ar nosaukumu, piesaisti un prioritāti.",
+        "c5": "Ar „Manuāli“ izveido savu ideju.",
+        "c6": "Labas idejas ņem par izejas punktu Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain no idejas izveido pilnu satura plānu.",
+        "c2": "Funkcija: tas ņem vērā tavu Brand DNA un katrai izvēlētajai platformai izveido āķus, skriptus, tēmturus un sīktēlu koncepcijas kā melnrakstu.",
+        "c3": "Kā to darīt: ievadi tēmu un mērķauditoriju.",
+        "c4": "Izvēlies mērķi un valodu, tad noklikšķini uz platformām. Šeit klāt nāk TikTok.",
+        "c5": "Ar slīdni nosaki, cik satura vienību rodas katrai platformai.",
+        "c6": "Klikšķis uz „Ģenerēt satura plānu“ sāk palaišanu.",
+        "c7": "Kampaņa parādās apakšā. Visas vienības ir melnraksti un atrodas Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA apraksta tavu zīmolu: nosaukumu, nozari, mērķauditoriju, toni un vērtības.",
+        "c2": "Funkcija: šie dati automātiski tiek nodoti Content Brain, kā arī skriptu, āķu un tēmturu aģentiem.",
+        "c3": "Kā to darīt: aizpildi laukus, piemēram, nozari un mērķauditoriju.",
+        "c4": "Zemāk uztur vēlamos un aizliegtos vārdus, aicinājumus uz darbību un zīmola vērtības.",
+        "c5": "Beigās noklikšķini uz „Saglabāt Brand DNA“."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio ir darbnīca skriptiem un āķiem.",
+        "c2": "Funkcija: tā veido skriptus pēc struktūras āķis, problēma, ieguvums, piemērs, rezultāts un aicinājums uz darbību un piedāvā vairākus āķu variantus.",
+        "c3": "Kā to darīt: ievadi tēmu un izvēlies platformu.",
+        "c4": "Tad noklikšķini uz „Ģenerēt skriptu un āķus“.",
+        "c5": "Rezultāts ir melnraksts, ko turpini izmantot Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio pārvalda balsis un izveido balss ierakstus.",
+        "c2": "Funkcija: uzturēt balsu bibliotēku, veidot priekšskatījumus un importēt balsis. Pieslēgums darbojas caur ElevenLabs.",
+        "c3": "Kā to darīt: izveido balsi manuāli vai importē no ElevenLabs. Importam vajadzīgs iestatīts pieslēgums.",
+        "c4": "Ar tekstu un balsi izveido priekšskatījumu un atskaņo to."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio ir lietotnes video konveijers.",
+        "c2": "Funkcija: formātu pārvaldnieks, aizvietojami video pakalpojumu sniedzēji, kā arī balss ieraksta un subtitru pieslēgšana.",
+        "c3": "Lapa rāda, kuri pakalpojumu sniedzēji ir iestatīti. Neiestatītie tiek godīgi atzīmēti kā tādi.",
+        "c4": "Kā to darīt: video izveido katrai satura vienībai Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio piedāvā sīktēlu koncepcijas un attēlu resursus.",
+        "c2": "Funkcija: sīktēlu aģents iesaka nosaukumu, attēla ideju, tekstu un izkārtojumu. Canva integrācija ir paredzēta šeit.",
+        "c3": "Kā to darīt: ievadi sīktēla tēmu.",
+        "c4": "Noklikšķini uz „Ģenerēt koncepciju“.",
+        "c5": "Koncepcija kalpo kā sagatave tavam attēlam."
+      }
+    },
+    "socialMedia": {
+      "title": "Sociālie mediji",
+      "cues": {
+        "c1": "Šeit tu pievieno savus platformu kontus un redzi to statusu.",
+        "c2": "Funkcija: piekļuves tiek pārvaldītas servera pusē un glabātas šifrētas. Platformā pieslēdzies caur Composio.",
+        "c3": "Katra kartīte rāda platformu, kontu, statusu un pēdējo lasīšanas testu.",
+        "c4": "„Vēl nav iestatīts“ nozīmē: operators vēl nav aktivizējis pieslēgumu serverī.",
+        "c5": "Kā to darīt: kad iestatīts, pie platformas noklikšķini uz „Pievienot“ un pieslēdzies. Tiek tikai lasīts, nekas netiek publicēts."
+      }
+    },
+    "calendar": {
+      "title": "Content kalendārs",
+      "cues": {
+        "c1": "Content kalendārs rāda plānoto un publicēto saturu īsumā.",
+        "c2": "Funkcija: šeit parādās visas satura vienības ar publicēšanas datumu, filtrējamas pēc platformas.",
+        "c3": "Kā to darīt: ieplāno vienību Content Factory ar datumu, tad tā parādīsies šeit.",
+        "c4": "Pirms katras publicēšanas lietotne tiešraidē pārbauda, vai mērķa platforma ir pievienota."
+      }
+    },
+    "analytics": {
+      "title": "Analytics",
+      "cues": {
+        "c1": "Analytics rāda tavus veiktspējas rādītājus.",
+        "c2": "Funkcija: tikai faktiski pieejami dati, importēti vai tavis ievadīti. Nekas nav izdomāts.",
+        "c3": "Redzi attīstību laika gaitā, veiksmīgāko saturu un Learning Agent ieteikumus.",
+        "c4": "Kā to darīt: tiklīdz platformas ir pievienotas vai ievadi datus, diagrammas piepildīsies."
+      }
+    },
+    "growth": {
+      "title": "Izaugsme",
+      "cues": {
+        "c1": "Izaugsmes lapa sniedz ieteikumus lielākam sasniegumam.",
+        "c2": "Funkcija: no taviem īstajiem Analytics datiem tā aprēķina labākos publicēšanas laikus, veiksmīgos tēmturus un formātus.",
+        "c3": "Kā to darīt: izvēlies platformu un izlasi ieteikumus.",
+        "c4": "Tie ir ieteikumi, nevis automātika. Sekotāji vai mijiedarbības netiek mākslīgi palielinātas."
+      }
+    },
+    "revenue": {
+      "title": "Ieņēmumi",
+      "cues": {
+        "c1": "Sadaļā Ieņēmumi tu apvieno savus ienākumus no platformām un kampaņām.",
+        "c2": "Funkcija: summas parādās tikai tad, kad tu tās ievadi. Izdomātu skaitļu nav.",
+        "c3": "Kā to darīt: noklikšķini uz „Ievadīt ieņēmumu“, izvēlies platformu un veidu un ievadi summu.",
+        "c4": "Izmaksa vienmēr notiek tieši caur platformu. SECRET 58 neapstrādā nekādas izmaksas."
+      }
+    },
+    "sales": {
+      "title": "Pārdošana un veikals",
+      "cues": {
+        "c1": "„Pārdošana un veikals“ rāda tavus paša uzņēmējdarbības ieņēmumus.",
+        "c2": "Funkcija: tie ir atdalīti no tava SECRET 58 pakotnes. Tiek skaitīti tikai faktiski pārdojumi, testa dati ir atzīmēti.",
+        "c3": "Augšā ir summas pa valūtām, zem tām — tavi pakalpojumu sniedzēja dati Impressum.",
+        "c4": "B variants: pārdot caur SECRET 58. A variants: importēt esošu veikalu.",
+        "c5": "Kā to darīt: aizpildi pakalpojumu sniedzēja datus un saglabā, tad izvēlies pārdošanas ceļu."
+      }
+    },
+    "website": {
+      "title": "Mana tīmekļa vietne",
+      "cues": {
+        "c1": "Šeit tu savā tīmekļa vietnē iebūvē vietnes asistentu.",
+        "c2": "Funkcija: asistents atbild uz tavu apmeklētāju jautājumiem.",
+        "c3": "Mēs tavu tīmekļa vietni automātiski nemainām. Kodu ievieto pats vai liec to ievietot savam tīmekļa dizaineram.",
+        "c4": "Kā to darīt: ievadi tīmekļa adresi un noklikšķini uz „Pievienot tīmekļa vietni“.",
+        "c5": "Pēc tam nokopē parādīto kodu savā tīmekļa vietnē."
+      }
+    },
+    "inbox": {
+      "title": "Iesūtne",
+      "cues": {
+        "c1": "Iesūtne apkopo ziņas un komentārus no visām platformām.",
+        "c2": "Funkcija: MessageAgent iesaka atbildes. Tiek nosūtīts tikai tas, ko tu apstiprini.",
+        "c3": "Kā to darīt: kamēr neviena platforma nav pievienota tiešraidē, noklikšķini uz „Simulēt sarunu“.",
+        "c4": "Pārbaudi ieteikto atbildi, pielāgo to un apstiprini."
+      }
+    },
+    "agents": {
+      "title": "Aģenti",
+      "cues": {
+        "c1": "Aģentu monitors rāda visus SECRET 58 aģentus.",
+        "c2": "Funkcija: katra aģenta statuss, pēdējais uzdevums un rezultāts. Katra palaišana tiek reģistrēta.",
+        "c3": "Palaišanas vēsturē redzi, kas kad darbojās un vai tas izdevās.",
+        "c4": "Kā to lietot: pārbaudi šeit, ja kaut kas netika izveidots tā, kā gaidīts."
+      }
+    },
+    "integrations": {
+      "title": "Integrācijas",
+      "cues": {
+        "c1": "Šeit redzi visu ārējo pakalpojumu tiešraides statusu.",
+        "c2": "Funkcija: katra rinda balstās uz faktiski iestatītajām piekļuvēm. Izliktu savienojumu nav.",
+        "c3": "Grupas ir: MI pakalpojumu sniedzēji, balss, sociālās platformas, dizains, video un tendences.",
+        "c4": "Kā to darīt: pie „Nav nokonfigurēts“ poga „Iegūt API atslēgu“ ved uz pakalpojumu sniedzēja lapu.",
+        "c5": "Ārējiem pakalpojumu sniedzējiem ir savas cenas. Pie katra pakalpojuma norādīts, kāds modelis ir spēkā."
+      }
+    },
+    "billing": {
+      "title": "Pakete un norēķini",
+      "cues": {
+        "c1": "Sadaļā „Pakete un norēķini“ redzi savu paketi un vari to nomainīt.",
+        "c2": "Funkcija: MI funkcijas darbojas ar operatora piekļuvēm. Tev nav vajadzīgs savs MI abonements.",
+        "c3": "Ir Pro un Maxi, ikmēneša vai ikgadējs. Cenas kartītēs norādītas bez nodokļiem.",
+        "c4": "Pirkums notiek tikai pēc skaidra klikšķa uz „Pasūtīt ar maksāšanas pienākumu“.",
+        "c5": "Ja tev ir promokods, iegūsti to laukā zemāk."
+      }
+    },
+    "settings": {
+      "title": "Iestatījumi",
+      "cues": {
+        "c1": "Iestatījumos pārvaldi darbvietu, lietotājus un sistēmas informāciju.",
+        "c2": "Funkcija: darbvieta, lomas, sistēmas statuss, iestatīšanas asistents un tavi dati ar piekļuvi un dzēšanu.",
+        "c3": "Kā to darīt: ritini cauri sadaļām. Darbvietas dzēšanai vajadzīgs papildu apstiprinājums.",
+        "c4": "Regulāri pārbaudi šeit savus datus un iestatīšanas asistentu."
+      }
+    }
+  }
+}

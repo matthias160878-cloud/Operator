@@ -1,0 +1,15 @@
+{
+  "title": "Analitika",
+  "subtitle": "A platformstatisztikák (megtekintések, kedvelések, hozzászólások, megosztások) lekérése még nem automatikus. Itt csak a már elmentett értékek jelennek meg, pl. mintaadatok. A platform statisztikájából származó számokat kézzel rögzítheted az <weiter>Ajánlások</weiter> részben („Platformszámok rögzítése”) vagy a <varianten>változatok összehasonlításában</varianten> – ott értékeljük őket, nem ezen az oldalon.",
+  "statViewsTotal": "Megtekintések összesen",
+  "statLikesTotal": "Kedvelések összesen",
+  "statComments": "Hozzászólások",
+  "statShares": "Megosztások",
+  "chartTitle": "Tartalom teljesítménye időben",
+  "chartLegend": "Megtekintések (lila) · Elköteleződés % (türkiz)",
+  "chartEmpty": "Még nincs statisztika – nincs elérhető alakulás.",
+  "bestPerformingTitle": "Legjobban teljesítő tartalmak",
+  "bestPerformingEmpty": "Még nincs statisztika – rangsor nem lehetséges.",
+  "learningAgentTitle": "Learning Agent — ajánlások",
+  "statsEmpty": "Még nincs elmentett statisztika – ezért itt még nincsenek mutatók. A platformstatisztikák lekérése még nem automatikus."
+}

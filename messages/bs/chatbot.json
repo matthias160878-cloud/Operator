@@ -1,0 +1,14 @@
+{
+ "title": "AI asistent",
+ "welcome": "Zdravo! Pitaj me bilo šta o SECRET 58 — kako nešto postaviti, gdje šta pronaći ili kako funkcioniše neki dio.",
+ "inputPlaceholder": "Upiši pitanje …",
+ "thinking": "Razmišlja …",
+ "openButton": "Otvori AI asistenta",
+ "close": "Zatvori",
+ "sendButton": "Pošalji",
+ "micButton": "Glasovni unos",
+ "speakToggle": "Čitaj odgovore naglas",
+ "notConfigured": "AI asistent još nije konfigurisan — za to je potrebno unijeti AI provajdera (Anthropic ili OpenAI).",
+ "openIntegrations": "Idi na Integracije",
+ "error": "AI asistent trenutno nije mogao odgovoriti. Pokušaj ponovo kasnije."
+}

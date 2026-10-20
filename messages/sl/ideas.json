@@ -1,0 +1,25 @@
+{
+  "title": "Ideje in navdih",
+  "subtitle": "Tematski sklopi, serije in formati za prihodnje vsebine — generirani z IdeaAgent ali vneseni ročno.",
+  "board": {
+    "topicLabel": "Tema za nove ideje",
+    "topicPlaceholder": "npr. Produktivnost z UI agenti",
+    "generateButton": "Generiraj ideje",
+    "manualButton": "Ročno",
+    "manualTitlePlaceholder": "Naslov ideje",
+    "addButton": "Dodaj",
+    "generateError": "Napaka pri generiranju idej.",
+    "unknownError": "Neznana napaka.",
+    "emptyState": "Idej še ni — generiraj jih ali jih dodaj ročno.",
+    "minutesUnit": "~{count} min",
+    "statusNew": "Novo",
+    "statusInProgress": "V delu",
+    "statusUsed": "Uporabljeno",
+    "statusArchived": "Arhivirano",
+    "sourceAiGenerated": "IdeaAgent (UI ali predloga)",
+    "sourceManual": "Ročno",
+    "templateResult": "Predloga: pravkar ustvarjene ideje izhajajo iz fiksnih besedilnih blokov, ne iz UI. Za ideje UI vnesi svoj ključ UI pod »Nastavitve → Lastni dostopi«.",
+    "textEngineLabel": "Besedilni motor:",
+    "templateMode": "Način predlog (ponudnik UI ni nastavljen)"
+  }
+}

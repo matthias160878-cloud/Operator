@@ -1,6 +1,6 @@
 {
   "title": "Posteingang",
-  "description": "Nachrichten & Kommentare über alle Plattformen. Der MessageAgent schlägt Antworten vor — gesendet wird nur, was du freigibst. Es besteht noch keine echte OAuth-Verbindung zu einer Plattform, daher werden Konversationen hier manuell simuliert statt live abgerufen.",
+  "description": "Nachrichten und Anfragen an einem Ort. Der MessageAgent schlägt Antwortentwürfe vor.",
   "emptyState": "Noch keine Konversationen — simuliere eine, um zu starten.",
   "backToInbox": "Zurück zum Posteingang",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Weitere eingehende Nachricht simulieren (Test ohne echte Plattform-Verbindung):",
     "messagePlaceholder": "Nachrichtentext …",
     "addButton": "Hinzufügen"
-  }
+  },
+  "simulationBanner": "<strong>Vorschau/Simulation:</strong> Nachrichten von Plattformen werden noch nicht abgerufen, Antworten werden nicht versendet – auch nicht über „Freigeben & senden“. Plattform-Nachrichten kannst du hier zum Ausprobieren simulieren. Echte Einträge kommen nur aus Webseiten-Formularen (z. B. Terminanfragen); diese beantwortest du per E-Mail."
 }

@@ -1,0 +1,96 @@
+{
+  "viewAll": "Vis alle",
+  "demoBanner": {
+    "text": "Eksempeldata aktive – kampanjer, innhold og statistikk i dette arbeidsområdet er eksempeldata, ikke ekte plattformtall."
+  },
+  "hero": {
+    "subtitle": "Én idé. Flere plattformer. Maksimal rekkevidde.",
+    "newCampaign": "Ny kampanje",
+    "createContent": "Lag innhold",
+    "findIdeas": "Finn ideer",
+    "aiAgents": "KI-agenter"
+  },
+  "orbit": {
+    "xNotConnected": "X (ikke koblet til)",
+    "brainAlt": "SECRET 58 KI-hjerne"
+  },
+  "activeAgents": {
+    "title": "Aktive agenter",
+    "empty": "Ingen agentkjøringer ennå."
+  },
+  "kpi": {
+    "contentCreated": "Innhold opprettet",
+    "videosCreated": "Videoer opprettet",
+    "postsCreated": "Innlegg opprettet",
+    "published": "Publiseringer",
+    "views": "Visninger",
+    "avgEngagement": "Ø engasjement",
+    "totalRevenue": "Inntekter (registrert manuelt)",
+    "noComparisonWeek": "Ingen forrige uke som sammenligningsgrunnlag ennå — endringsrater vises så snart det finnes data for minst to uker.",
+    "noStats": "Visninger og engasjement: ingen statistikk ennå – plattformstatistikk hentes ennå ikke automatisk."
+  },
+  "production": {
+    "title": "Innholdsproduksjon",
+    "thisWeek": "Denne uken"
+  },
+  "scheduled": {
+    "title": "Planlagte innlegg",
+    "empty": "Ingen planlagte innlegg."
+  },
+  "activity": {
+    "title": "Siste aktiviteter",
+    "empty": "Ingen aktiviteter ennå."
+  },
+  "contentFactory": {
+    "description": "Lag komplette innholdskampanjer for alle plattformer med bare én idé.",
+    "cta": "Kom i gang →",
+    "popularTemplates": "Populære maler",
+    "templateYoutubeVideo": "YouTube-video",
+    "templateTiktokSeries": "TikTok-serie",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn-innlegg",
+    "templateBlogPost": "Bloggartikkel",
+    "viewAllTemplates": "Alle maler →"
+  },
+  "brandDna": {
+    "tonality": "Tone",
+    "targetAudience": "Målgruppe",
+    "industry": "Bransje",
+    "language": "Språk",
+    "empty": "Ingen Brand DNA lagt inn ennå."
+  },
+  "campaigns": {
+    "title": "Aktuelle kampanjer",
+    "empty": "Ingen kampanjer ennå."
+  },
+  "platforms": {
+    "title": "Plattformer",
+    "manage": "Administrer"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} tilkoblet"
+  },
+  "agentMonitor": {
+    "title": "Assistentenes logg",
+    "empty": "Ingen kjøringer ennå."
+  },
+  "topPerformer": {
+    "title": "Toppresterende",
+    "last7Days": "Siste 7 dager",
+    "empty": "Ingen resultatdata ennå – plattformstatistikk hentes ennå ikke automatisk.",
+    "views": "Visninger",
+    "likes": "Likes",
+    "comments": "Kommentarer",
+    "shares": "Delinger",
+    "engagementRate": "+Engasjementsrate {value}"
+  },
+  "calendar": {
+    "open": "Åpne",
+    "viewMonth": "Måned",
+    "viewWeek": "Uke",
+    "viewDay": "Dag",
+    "viewCampaign": "Kampanje",
+    "moreItems": "+{count} til"
+  },
+  "weekdayLabels": ["Man", "Tir", "Ons", "Tor", "Fre", "Lør", "Søn"]
+}

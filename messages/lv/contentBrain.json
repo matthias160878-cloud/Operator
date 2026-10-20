@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Iekšā viena ideja — ārā pilns, platformām piemērots satura plāns. ContentBrainAgent ņem vērā tavu Brand DNA un katrai izvēlētajai platformai izveido piemērotus āķus, skriptus, tēmturus un sīktēlu koncepcijas kā melnrakstu.",
+  "campaignsHeading": "Kampaņas",
+  "noCampaigns": "Kampaņu vēl nav izveidots.",
+  "campaignSummary": "{count} satura vienības · {audience}",
+  "form": {
+    "textEngineLabel": "Teksta dzinējs:",
+    "templateMode": "Sagataves režīms (MI pakalpojumu sniedzējs nav nokonfigurēts)",
+    "modeTemplate": "Sagatave",
+    "topicLabel": "Tēma / ideja",
+    "topicPlaceholder": "piem., Paskaidro, kāpēc autonomi MI aģenti maina darba pasauli.",
+    "audienceLabel": "Mērķauditorija",
+    "audiencePlaceholder": "piem., 25–45, tehnoloģiju interesenti",
+    "goalLabel": "Mērķis",
+    "languageLabel": "Valoda",
+    "platformsLabel": "Platformas",
+    "itemsPerPlatformLabel": "Satura vienības katrai platformai ({count})",
+    "generateError": "Ģenerēšana neizdevās.",
+    "unknownError": "Nezināma kļūda.",
+    "submitLoading": "Content Brain strādā…",
+    "submitIdle": "Ģenerēt satura plānu",
+    "resultHeading": "Kampaņa izveidota — {count} satura vienības saglabātas kā melnraksts.",
+    "resultDescription": "Ģenerēts režīmā {mode}. Viss saturs sākas kā DRAFT — pārbaudi un rediģē to Content Factory.",
+    "resultLink": "Uz Content Factory →"
+  }
+}

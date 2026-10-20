@@ -1,0 +1,96 @@
+{
+  "viewAll": "Prikaži sve",
+  "demoBanner": {
+    "text": "Primjeri podataka aktivni – kampanje, sadržaji i statistika u ovom radnom prostoru primjeri su podataka, a ne stvarne brojke platformi."
+  },
+  "hero": {
+    "subtitle": "Jedna ideja. Više platformi. Maksimalan doseg.",
+    "newCampaign": "Nova kampanja",
+    "createContent": "Stvori sadržaj",
+    "findIdeas": "Pronađi ideje",
+    "aiAgents": "AI agenti"
+  },
+  "orbit": {
+    "xNotConnected": "X (nije povezan)",
+    "brainAlt": "SECRET 58 AI mozak"
+  },
+  "activeAgents": {
+    "title": "Aktivni agenti",
+    "empty": "Još nema pokretanja agenata."
+  },
+  "kpi": {
+    "contentCreated": "Stvoreni sadržaj",
+    "videosCreated": "Stvoreni videi",
+    "postsCreated": "Stvorene objave",
+    "published": "Objave",
+    "views": "Pregledi",
+    "avgEngagement": "Ø Engagement",
+    "totalRevenue": "Prihodi (uneseni ručno)",
+    "noComparisonWeek": "Još nema prethodnog tjedna kao osnove za usporedbu — stope promjene pojavit će se čim budu dostupni podaci za najmanje dva tjedna.",
+    "noStats": "Pregledi i angažman: još nema statistike – statistika platformi još se ne dohvaća automatski."
+  },
+  "production": {
+    "title": "Produkcija sadržaja",
+    "thisWeek": "Ovaj tjedan"
+  },
+  "scheduled": {
+    "title": "Planirane objave",
+    "empty": "Nema planiranih objava."
+  },
+  "activity": {
+    "title": "Nedavne aktivnosti",
+    "empty": "Još nema aktivnosti."
+  },
+  "contentFactory": {
+    "description": "Uz samo jednu ideju stvori cjelovite kampanje sadržaja za sve platforme.",
+    "cta": "Započni odmah →",
+    "popularTemplates": "Popularni predlošci",
+    "templateYoutubeVideo": "YouTube video",
+    "templateTiktokSeries": "TikTok serija",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn objava",
+    "templateBlogPost": "Blog članak",
+    "viewAllTemplates": "Svi predlošci →"
+  },
+  "brandDna": {
+    "tonality": "Ton komunikacije",
+    "targetAudience": "Ciljna skupina",
+    "industry": "Industrija",
+    "language": "Jezik",
+    "empty": "Brand DNA još nije unesen."
+  },
+  "campaigns": {
+    "title": "Aktualne kampanje",
+    "empty": "Još nema kampanja."
+  },
+  "platforms": {
+    "title": "Platforme",
+    "manage": "Upravljaj"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} povezano"
+  },
+  "agentMonitor": {
+    "title": "Zapisnik asistenata",
+    "empty": "Još nema pokretanja."
+  },
+  "topPerformer": {
+    "title": "Top Performer",
+    "last7Days": "Posljednjih 7 dana",
+    "empty": "Još nema podataka o uspješnosti – statistika platformi još se ne dohvaća automatski.",
+    "views": "Pregledi",
+    "likes": "Lajkovi",
+    "comments": "Komentari",
+    "shares": "Dijeljenja",
+    "engagementRate": "+Engagement rate {value}"
+  },
+  "calendar": {
+    "open": "Otvori",
+    "viewMonth": "Mjesec",
+    "viewWeek": "Tjedan",
+    "viewDay": "Dan",
+    "viewCampaign": "Kampanja",
+    "moreItems": "+{count} više"
+  },
+  "weekdayLabels": ["Pon", "Uto", "Sri", "Čet", "Pet", "Sub", "Ned"]
+}

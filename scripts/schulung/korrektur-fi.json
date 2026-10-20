@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Vaiheittaiset ohjeet ja selitysvideot jokaiseen SECRET 58:n osioon — voit tarkistaa ne täältä milloin tahansa.",
+ "schulung.topics.firstSteps.steps.0": "Tarkista kohdasta ”Integraatiot”, onko tekoälypalvelu otettu käyttöön. Tekoälytoiminnot toimivat ylläpitäjän käyttöoikeuksilla, joten et tarvitse omaa tekoälytilausta. Ilman tekoälypalvelua sovellus toimii mallipohjatilassa.",
+ "schulung.topics.integrations.steps.2": "Käyttöoikeustietoja ei koskaan tallenneta selaimeen, vaan ainoastaan suojattuna palvelimelle. Jos käyttöoikeus puuttuu, ylläpitäjä ottaa sen käyttöön.",
+ "schulung.topics.integrations.steps.3": "Kustannukset: Pro ja Maxi ovat tilauksia, kuukausittain tai vuosittain. Ajankohtaiset hinnat näkyvät kohdassa ”Paketti ja laskutus”. Jokaisella ulkoisella palveluntarjoajalla on oma, riippumaton hinnoittelumallinsa (ilmainen / käyttöön perustuva / tilaus) — Integraatiot-sivulla jokaisen palvelun kohdalla kerrotaan, mikä malli on voimassa, ja linkki palveluntarjoajan ajankohtaisiin hintoihin.",
+ "integrations.costNote": "SECRET 58 -pakettisi (Pro tai Maxi) on tilaus, katso ”Paketti ja laskutus”. Jokaisella täällä olevalla ulkoisella palvelulla on oma, riippumaton hinnoittelumallinsa kyseisellä palveluntarjoajalla — SECRET 58 ei koskaan laskuta niistä erikseen."
+}

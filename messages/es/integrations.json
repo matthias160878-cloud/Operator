@@ -1,6 +1,6 @@
 {
   "title": "Integraciones",
-  "description": "Estado en vivo de todos los servicios externos — basado exclusivamente en las variables de entorno realmente configuradas. Sin conexiones simuladas.",
+  "description": "Estado en directo de los servicios externos: solo conexiones realmente configuradas y verificadas, nada se finge.",
   "categories": {
     "AI": "Proveedores de IA",
     "VOICE": "Voz",
@@ -9,7 +9,7 @@
     "VIDEO": "Vídeo",
     "TREND": "Tendencias"
   },
-  "costNote": "El precio de compra de SECRET 58 es único y cubre el software. Cada servicio externo aquí tiene su propio modelo de costes independiente con ese proveedor — SECRET 58 nunca cobra nada adicional por ello.",
+  "costNote": "Tu plan de SECRET 58 (Pro o Maxi) es una suscripción, consulta «Plan y facturación». Cada servicio externo de aquí tiene su propio modelo de costes, independiente, con el proveedor correspondiente; SECRET 58 nunca cobra nada adicional por ellos.",
   "links": {
     "getKey": "Obtener clave API",
     "setInRender": "Configurar en Render",

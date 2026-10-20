@@ -1,0 +1,31 @@
+{
+  "pageTitle": "Kalendarju tal-Kontenut",
+  "subtitle": "Ħarsa ġenerali lejn il-kontenut ippjanat u ppubblikat.",
+  "weekdays": [
+    "Tn",
+    "Tl",
+    "Er",
+    "Ħa",
+    "Ġi",
+    "Sb",
+    "Ħd"
+  ],
+  "months": [
+    "Jannar",
+    "Frar",
+    "Marzu",
+    "April",
+    "Mejju",
+    "Ġunju",
+    "Lulju",
+    "Awwissu",
+    "Settembru",
+    "Ottubru",
+    "Novembru",
+    "Diċembru"
+  ],
+  "allPlatforms": "Il-pjattaformi kollha",
+  "moreItems": "+{count} oħra",
+  "listTitle": "Lista ta' dan ix-xahar",
+  "emptyMonth": "L-ebda posts ippjanati f'dan ix-xahar."
+}

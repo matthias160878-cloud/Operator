@@ -1,0 +1,15 @@
+{
+  "title": "Analytics",
+  "subtitle": "Platformstatistieken (weergaven, likes, reacties, shares) worden nog niet automatisch opgehaald. Hier verschijnen alleen al opgeslagen waarden, bijv. voorbeelddata. Cijfers uit de platformstatistiek kun je handmatig invoeren onder <weiter>Aanbevelingen</weiter> („Platformcijfers invoeren”) of in de <varianten>variantenvergelijking</varianten> – ze worden daar geëvalueerd, niet op deze pagina.",
+  "statViewsTotal": "Views totaal",
+  "statLikesTotal": "Likes totaal",
+  "statComments": "Reacties",
+  "statShares": "Shares",
+  "chartTitle": "Contentprestaties in de tijd",
+  "chartLegend": "Views (paars) · Engagement % (turquoise)",
+  "chartEmpty": "Nog geen statistieken – geen verloop beschikbaar.",
+  "bestPerformingTitle": "Best presterende content",
+  "bestPerformingEmpty": "Nog geen statistieken – geen ranglijst mogelijk.",
+  "learningAgentTitle": "Learning Agent — aanbevelingen",
+  "statsEmpty": "Nog geen statistieken opgeslagen – daarom zijn hier nog geen kengetallen. Platformstatistieken worden nog niet automatisch opgehaald."
+}

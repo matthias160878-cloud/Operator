@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Sense subscripció. Tots els agents. Els teus propis proveïdors d'IA.",
+  "subtitle": "Una idea. Diverses plataformes. Màxim abast. Un únic paquet complet: pagues una vegada i tens accés total a tota l'aplicació.",
+  "features": [
+    "Content Brain — una idea, totes les plataformes",
+    "Tots els agents d'IA: idees, tendències, guió, hook, hashtags, miniatures, subtítols, publicació",
+    "Voice Studio amb veus d'ElevenLabs",
+    "Video Studio amb gestor de formats — connexió de generadors de vídeo amb IA en curs",
+    "Content Factory amb flux d'aprovació i Content Kalender",
+    "Analytics, recomanacions de creixement i seguiment d'ingressos",
+    "Safata d'entrada amb esborranys de resposta amb IA",
+    "Tria lliure dels proveïdors d'IA amb els teus propis accessos — sense quotes"
+  ],
+  "priceOnetime": "pagament únic",
+  "priceRecommendedNote": "Preu recomanat: serà vinculant quan Stripe estigui configurat amb un preu adequat.",
+  "buyButton": "Compra ara",
+  "redirecting": "Redirigint a Stripe …",
+  "checkoutFailed": "El pagament ha fallat.",
+  "unknownError": "Error desconegut.",
+  "notConfigured": "El pagament encara no està configurat: l'operador ha de crear primer a Stripe un producte de {price} i definir STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Nota: aquest preu és un pagament únic pel programari. Algunes funcions (p. ex. generació de text amb IA, sortida de veu) requereixen accessos propis a proveïdors externs (p. ex. Anthropic, ElevenLabs); els seus costos són independents de SECRET 58 i es cobren directament pel proveïdor corresponent, no aquí. Detalls després de la compra a Integracions.",
+  "setupServiceTitle": "Afegeix el servei de configuració (+{price} pagament únic)",
+  "setupServiceDescription": "Et configurem les claus d'API, Brand DNA i les primeres publicacions.",
+  "setupServiceUnavailable": "Aviat es podrà contractar: l'operador ha de registrar primer el servei a Stripe.",
+  "autopilot": {
+    "kicker": "Properament",
+    "title": "Autopilot — tot inclòs",
+    "subtitle": "No calen accessos propis: tots els costos de proveïdors de text, veu i vídeo estan inclosos. Mateixes funcions que el paquet complet; les mides només difereixen en la quantitat.",
+    "comingSoon": "Properament",
+    "perMonth": "/ mes",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agència"
+    },
+    "brands": "{count, plural, one {# marca} other {# marques}}",
+    "ideas": "{count} idees de contingut al mes",
+    "videos": "{count} vídeos d'IA (de 30 s) al mes",
+    "voiceMinutes": "{count} minuts de sortida de veu al mes",
+    "note": "Preus previstos, encara no es poden contractar. Autopilot arrencarà quan es connectin els generadors de vídeo amb IA."
+  }
+}

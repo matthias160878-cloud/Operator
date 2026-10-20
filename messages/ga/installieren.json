@@ -1,0 +1,20 @@
+{
+  "button": "Suiteáil an aip",
+  "buttonHint": "Suiteáil SECRET 58 mar aip ar an ngléas seo",
+  "close": "Dún",
+  "canceled": "Cuireadh an suiteáil ar ceal. Is féidir leat í a thosú arís am ar bith.",
+  "iosTitle": "Suiteáil ar iPhone nó iPad",
+  "iosStep1": "Oscail an leathanach seo i Safari.",
+  "iosStep2": "Tapáil “Comhroinn” (an chearnóg leis an saighead ag díriú suas).",
+  "iosStep3": "Roghnaigh “Cuir leis an Scáileán Baile” agus deimhnigh le “Cuir leis”.",
+  "iosShort": "Safari: Comhroinn → Cuir leis an Scáileán Baile",
+  "iosNotSafari": "Ar iPhone agus iPad, ní oibríonn an tsuiteáil ach i Safari. Oscail an leathanach seo i Safari le do thoil.",
+  "otherTitle": "Conas an aip a shuiteáil",
+  "otherChromium": "Oscail roghchlár an bhrabhsálaí (trí phoncán) agus roghnaigh “Suiteáil an aip” nó “Cuir leis an scáileán baile”.",
+  "otherSafariMac": "I Safari ar Mac: roghchlár “Comhad” → “Cuir leis an Dock”.",
+  "otherFirefox": "Ní féidir le Firefox ar an ríomhaire aipeanna gréasáin a shuiteáil. Úsáid Chrome, Edge nó Safari.",
+  "otherGeneric": "Ní thairgeann an brabhsálaí seo dialóg suiteála faoi láthair. D’fhéadfadh sé go bhfuil an aip suiteáilte cheana féin nó nach dtacaíonn an brabhsálaí leis an suiteáil. Bain triail as i Chrome, Edge nó Safari.",
+  "insecureTitle": "Níl an tsuiteáil indéanta anseo",
+  "insecureText": "Teastaíonn suíomh gréasáin foilsithe thar HTTPS chun an aip a shuiteáil. Ní oibríonn sé ó chomhad logánta nó gan HTTPS. Ar do ríomhaire féin oibríonn sé trí “localhost” i dtimpeallacht forbartha.",
+  "installedNote": "Suiteáladh an aip."
+}

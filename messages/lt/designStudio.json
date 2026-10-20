@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Miniatiūrų koncepcijos tekstu ir Canva ryšio būsena.",
+  "imageAssetsTitle": "Vaizdų ištekliai",
+  "imageAssetsEmpty": "Paveikslėlių dar nėra. Miniatiūrų agentas šiuo metu kuria tik tekstines koncepcijas, o ne paveikslėlių failus.",
+  "thumbnailAgent": {
+    "title": "Miniatiūrų agentas",
+    "description": "Sukuria tekstinę koncepciją (pavadinimas, vizualinė idėja, maketas, CTA) — paruošta vaizdų generatoriaus prijungimui. Vaizdas kol kas nekuriamas.",
+    "inputPlaceholder": "Miniatiūros tema",
+    "submitButton": "Generuoti koncepciją",
+    "errorGenerationFailed": "Generavimas nepavyko.",
+    "errorUnknown": "Nežinoma klaida.",
+    "fieldTitle": "Pavadinimas",
+    "fieldVisualIdea": "Vizualinė idėja",
+    "fieldText": "Tekstas",
+    "fieldLayout": "Maketas",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Vaizdo aprašymas",
+    "templateResult": "Šablonas: ši koncepcija paimta iš fiksuoto teksto šablono, o ne sukurta DI. DI koncepcijoms įvesk savo DI raktą skiltyje „Nustatymai → Savos prieigos“.",
+    "textEngineLabel": "Teksto variklis:",
+    "templateMode": "Šablono režimas (DI tiekėjas nesukonfigūruotas)"
+  }
+}

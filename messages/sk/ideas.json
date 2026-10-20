@@ -1,0 +1,25 @@
+{
+ "title": "Nápady a inšpirácia",
+ "subtitle": "Tematické okruhy, série a formáty pre budúci obsah — vygenerované IdeaAgentom alebo zadané ručne.",
+ "board": {
+  "topicLabel": "Téma pre nové nápady",
+  "topicPlaceholder": "napr. Produktivita s agentmi AI",
+  "generateButton": "Vygenerovať nápady",
+  "manualButton": "Ručne",
+  "manualTitlePlaceholder": "Názov nápadu",
+  "addButton": "Pridať",
+  "generateError": "Chyba pri generovaní nápadov.",
+  "unknownError": "Neznáma chyba.",
+  "emptyState": "Zatiaľ žiadne nápady — vygeneruj ich alebo ich pridaj ručne.",
+  "minutesUnit": "~{count} min.",
+  "statusNew": "Nový",
+  "statusInProgress": "Rozpracovaný",
+  "statusUsed": "Použitý",
+  "statusArchived": "Archivovaný",
+  "sourceAiGenerated": "IdeaAgent (AI alebo šablóna)",
+  "sourceManual": "Ručne",
+  "templateResult": "Šablóna: práve vytvorené nápady pochádzajú z pevných textových blokov, nie z AI. Pre AI nápady zadaj vlastný AI kľúč v „Nastavenia → Vlastné prístupy“.",
+  "textEngineLabel": "Textový engine:",
+  "templateMode": "Režim šablóny (nie je nakonfigurovaný žiadny poskytovateľ AI)"
+ }
+}

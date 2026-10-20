@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Video oluşturma henüz kullanılamıyor: video üreten bir video hizmeti bağlı değil. Aşağıda platform bazında hazırlanmış formatları görürsün; senaryoları, seslendirmeleri ve altyazıları Script Studio, Voice Studio ve Content Factory'de oluşturursun.",
+  "providerCardTitle": "Video sağlayıcıları",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Video varlıkları",
+  "assetsEmpty": "Henüz video yok. Video oluşturma uygulamada henüz kullanılamıyor.",
+  "providerNote": "Henüz kullanılabilir bir video hizmeti yok – şu anda uygulamada video üretilemiyor."
+}

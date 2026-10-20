@@ -32,6 +32,7 @@ export interface SessionUser {
   email: string;
   name: string;
   isOperator: boolean;
+  role: "OWNER" | "ADMIN" | "EDITOR" | "VIEWER";
 }
 
 /** Löst ein Cookie-Token zur Sitzung auf. Abgelaufene Sitzungen zählen nicht. */
@@ -52,6 +53,7 @@ export async function resolveSessionToken(token: string | undefined | null): Pro
     email: session.user.email,
     name: session.user.name,
     isOperator: session.user.isOperator,
+    role: session.user.role,
   };
 }
 

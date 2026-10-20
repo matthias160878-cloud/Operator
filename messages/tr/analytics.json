@@ -1,0 +1,15 @@
+{
+  "title": "Analitik",
+  "subtitle": "Platform istatistikleri (görüntülenmeler, beğeniler, yorumlar, paylaşımlar) henüz otomatik olarak alınmıyor. Burada yalnızca önceden kaydedilmiş değerler görünür, ör. örnek veriler. Platform istatistiklerindeki sayıları <weiter>Tavsiyeler</weiter> bölümünde („Platform sayılarını gir”) veya <varianten>varyant karşılaştırmasında</varianten> elle girebilirsin – bunlar orada değerlendirilir, bu sayfada değil.",
+  "statViewsTotal": "Toplam görüntülenme",
+  "statLikesTotal": "Toplam beğeni",
+  "statComments": "Yorumlar",
+  "statShares": "Paylaşımlar",
+  "chartTitle": "Zaman içinde içerik performansı",
+  "chartLegend": "Görüntülenme (mor) · Etkileşim % (turkuaz)",
+  "chartEmpty": "Henüz istatistik yok – gelişim verisi mevcut değil.",
+  "bestPerformingTitle": "En iyi performans gösteren içerik",
+  "bestPerformingEmpty": "Henüz istatistik yok – sıralama yapılamıyor.",
+  "learningAgentTitle": "Learning Agent — Öneriler",
+  "statsEmpty": "Henüz kaydedilmiş istatistik yok – bu yüzden burada henüz gösterge yok. Platform istatistikleri henüz otomatik olarak alınmıyor."
+}

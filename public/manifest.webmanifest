@@ -1,4 +1,5 @@
 {
+  "id": "/",
   "name": "SECRET 58 — AI Social Command Center",
   "short_name": "SECRET 58",
   "description": "Eine Idee. Mehrere Plattformen. Maximale Reichweite. Das SECRET-58-Command-Center für autonome KI-Content-Produktion.",
@@ -34,5 +35,10 @@
       "type": "image/png",
       "purpose": "maskable"
     }
+  ],
+  "prefer_related_applications": false,
+  "categories": [
+    "business",
+    "productivity"
   ]
 }

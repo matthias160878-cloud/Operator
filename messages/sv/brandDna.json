@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Ditt varumärke. Din stil. Överallt. Uppgifterna flödar automatiskt in i Content Brain samt Script-, Hook- och Hashtag-agenten.",
+  "form": {
+    "nameLabel": "Varumärkesnamn",
+    "industryLabel": "Bransch",
+    "descriptionLabel": "Beskrivning",
+    "descriptionHint": "Vad kännetecknar varumärket?",
+    "audienceLabel": "Målgrupp",
+    "languageLabel": "Språk",
+    "tonalityLabel": "Tonalitet",
+    "humorLabel": "Humor",
+    "formalityLabel": "Formalitet",
+    "preferredWordsLabel": "Föredragna ord",
+    "forbiddenWordsLabel": "Förbjudna ord",
+    "preferredCtasLabel": "Föredragna CTA:er",
+    "brandValuesLabel": "Varumärkesvärden",
+    "topicsLabel": "Ämnen",
+    "csvHint": "kommaseparerat",
+    "colorsLabel": "Färger",
+    "colorsHint": "kommaseparerat, t.ex. #6D5BFF",
+    "fontsLabel": "Typsnitt",
+    "visualRulesLabel": "Visuella regler",
+    "saveError": "Det gick inte att spara.",
+    "unknownError": "Okänt fel.",
+    "saving": "Sparar…",
+    "save": "Spara Brand DNA",
+    "savedAt": "Sparad kl. {time}"
+  }
+}

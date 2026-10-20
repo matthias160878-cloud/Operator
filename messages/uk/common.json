@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Більше, ніж контент.",
+    "footerLine2": "Повноцінна контент-машина.",
+    "workspace": "Робочий простір",
+    "role": "Адміністратор"
+  },
+  "nav": {
+    "dashboard": "Панель керування",
+    "schulung": "Навчання",
+    "contentFactory": "Content Factory",
+    "ideas": "Ідеї та натхнення",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Соцмережі",
+    "calendar": "Контент-календар",
+    "analytics": "Аналітика",
+    "growth": "Зростання",
+    "weiterempfehlungen": "Рекомендації",
+    "reichweitenaufbau": "Зростання охоплення",
+    "revenue": "Доходи",
+    "inbox": "Вхідні",
+    "anfragen": "Запити",
+    "dateien": "Файли",
+    "agents": "Агенти",
+    "integrations": "Інтеграції",
+    "settings": "Налаштування",
+    "billing": "Пакет і оплата",
+    "sales": "Продажі та магазин",
+    "website": "Мій вебсайт"
+  },
+  "topbar": {
+    "menuOpen": "Відкрити меню",
+    "menuClose": "Закрити меню",
+    "searchPlaceholder": "Пошук контенту, проєктів, кампаній …",
+    "notifications": "Сповіщення",
+    "language": "Мова"
+  },
+  "footer": {
+    "help": "Довідка",
+    "privacy": "Конфіденційність",
+    "imprint": "Вихідні дані",
+    "systemOnline": "Система онлайн"
+  },
+  "actions": {
+    "save": "Зберегти",
+    "cancel": "Скасувати",
+    "delete": "Видалити",
+    "edit": "Редагувати",
+    "create": "Створити",
+    "close": "Закрити",
+    "back": "Назад",
+    "loading": "Завантаження …"
+  },
+  "status": {
+    "connected": "Підключено",
+    "notConfigured": "Не налаштовано",
+    "error": "Помилка"
+  },
+  "statusBadge": {
+    "CONNECTED": "Підключено",
+    "ACTIVE": "Активно",
+    "COMPLETED": "Завершено",
+    "RUNNING": "Виконується",
+    "SUCCESS": "Успішно",
+    "PUBLISHED": "Опубліковано",
+    "APPROVED": "Погоджено",
+    "SCHEDULED": "Заплановано",
+    "WAITING": "Очікує",
+    "IN_REVIEW": "На перевірці",
+    "NOT_CONFIGURED": "Не налаштовано",
+    "IDLE": "Готово",
+    "DRAFT": "Чернетка",
+    "ARCHIVED": "В архіві",
+    "ERROR": "Помилка",
+    "REJECTED": "Відхилено",
+    "RECEIVED": "Отримано",
+    "PENDING": "Очікується",
+    "NOT_AVAILABLE": "Поки недоступно"
+  },
+  "integrationStatus": {
+    "notConfigured": "Не налаштовано — відсутні змінні: {vars}.",
+    "verifyFailedGeneric": "Не вдалося підключитися.",
+    "verifyFailedStatus": "{service} відповів зі статусом {status}.",
+    "verifyUnreachable": "Не вдалося зв'язатися з {service}.",
+    "connected": "Підключено.",
+    "notAvailable": "Поки недоступно – це підключення в застосунку ще не реалізовано."
+  },
+  "mediaPreview": {
+    "expand": "Збільшити",
+    "close": "Закрити"
+  }
+}

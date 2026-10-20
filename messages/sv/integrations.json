@@ -1,0 +1,24 @@
+{
+  "title": "Integrationer",
+  "description": "Livestatus för externa tjänster – bara anslutningar som faktiskt är konfigurerade och kontrollerade, inget låtsas.",
+  "categories": {
+    "AI": "AI-leverantörer",
+    "VOICE": "Voice",
+    "PLATFORM": "Sociala plattformar",
+    "DESIGN": "Design",
+    "VIDEO": "Video",
+    "TREND": "Trender"
+  },
+  "costNote": "Ditt SECRET 58-paket (Pro eller Maxi) är en prenumeration, se ”Paket & fakturering”. Varje extern tjänst här har sin egen, oberoende kostnadsmodell hos respektive leverantör — SECRET 58 fakturerar aldrig extra för dem.",
+  "links": {
+    "getKey": "Hämta API-nyckel",
+    "setInRender": "Lägg in i Render",
+    "viewPricing": "Visa priser"
+  },
+  "pricing": {
+    "free": "Gratis",
+    "payAsYouGo": "Användningsbaserat",
+    "subscription": "Prenumeration",
+    "unknown": "Kontrollera priset hos leverantören"
+  }
+}

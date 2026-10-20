@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "La creació de vídeos encara no està disponible: no hi ha connectat cap servei que generi vídeos. A sota veus els formats preparats per plataforma; els guions, les locucions i els subtítols els crees a Script Studio, Voice Studio i la Content Factory.",
+  "providerCardTitle": "Proveïdors de vídeo",
+  "formatManagerTitle": "Gestor de formats",
+  "assetsTitle": "Recursos de vídeo",
+  "assetsEmpty": "Encara no hi ha vídeos. La creació de vídeos encara no està disponible a l'app.",
+  "providerNote": "Encara no hi ha cap servei de vídeo utilitzable: de moment no es poden generar vídeos a l'app."
+}

@@ -36,7 +36,7 @@ export const AGENTS: AgentDefinition[] = [
   {
     key: "trend",
     name: "TrendAgent",
-    description: "Recherchiert aktuelle Themen (sofern Datenquelle konfiguriert).",
+    description: "Ohne Datenquelle: Es ist noch keine Trend-Datenquelle angebunden, daher liefert dieser Agent derzeit keine Trends.",
   },
   {
     key: "research",

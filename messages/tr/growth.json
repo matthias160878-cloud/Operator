@@ -1,0 +1,15 @@
+{
+  "title": "Büyüme",
+  "subtitle": "Erişim ve büyüme için öneriler – içeriklerinin kaydedilmiş istatistiklerinden türetilir: en iyi paylaşım saatleri, en başarılı hashtag'ler ve formatlar. Platform istatistikleri henüz otomatik olarak alınmıyor.",
+  "warning": "Bilerek <strong>dahil edilmemiştir</strong>: takipçi sayısını yapay olarak artırmak için otomatik takip etme/beğenme/yorum yapma. Bu, YouTube, Instagram, TikTok, LinkedIn ve Facebook'ta kullanım koşullarını ihlal eder ve hesabın askıya alınmasına yol açabilir. Bu sayfa yalnızca kendi içeriğin için veriye dayalı öneriler sunar.",
+  "filterAll": "Tüm platformlar",
+  "emptyState": "{platform} için henüz kaydedilmiş istatistik yok, bu yüzden henüz öneri yok. Platform istatistikleri henüz otomatik olarak alınmıyor.",
+  "emptyStateDefaultScope": "bu çalışma alanı",
+  "bestPostingTimesTitle": "En iyi paylaşım zamanları",
+  "postingTime": "{day} · saat {hour}",
+  "avgLabel": "Ort. {percent} ({count})",
+  "topHashtagsTitle": "En başarılı hashtag'ler",
+  "topHashtagsEmpty": "Hashtag verisi yok.",
+  "hashtagTooltip": "Ort. {percent} etkileşim, {count} kez kullanıldı",
+  "topFormatsTitle": "En iyi biçimler"
+}

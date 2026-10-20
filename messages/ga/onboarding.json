@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Céim {current} de {total}",
+    "close": "Dún",
+    "back": "Ar ais",
+    "next": "Ar aghaidh",
+    "skip": "Léim thar",
+    "finish": "Críochnaithe, tosaigh",
+    "checking": "Á sheiceáil …",
+    "checkAgain": "Seiceáil anois",
+    "connected": "Nasctha",
+    "notConnected": "Gan nascadh go fóill",
+    "skippedNote": "Léimthe thar — is féidir leat é seo a dhéanamh am ar bith faoi “Comhtháthuithe”.",
+    "envHint": "Nóta: Tar éis duit sábháil i Render, tógann sé 1–2 nóiméad de ghnáth go n-atosóidh an tseirbhís agus go dtiocfaidh an t-athrú i bhfeidhm. Mura bhfaighidh “Seiceáil anois” aon rud fós, fan tamall agus cliceáil arís.",
+    "reopenHint": "Is féidir leat an cúntóir seo a oscailt arís am ar bith: sna Socruithe faoi “Cúntóir socraithe”."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Fáilte go SECRET 58",
+      "body": "Sula dtosóimid, socróimid na bunghnéithe le chéile — i gcéimeanna beaga, aonair. Is féidir leat sos a ghlacadh am ar bith agus leanúint ar aghaidh ón áit chéanna ar ball."
+    },
+    "aiProvider": {
+      "title": "Céim 1: Nasc soláthraí AI",
+      "body": "Le haghaidh téacsanna, scripteanna, hooks agus hashtaganna, teastaíonn soláthraí AI ó na bogearraí. Roghnaigh duine den bheirt — is leor ceann amháin.",
+      "steps": [
+        "Cliceáil ar “Faigh eochair API” thíos in aice le Anthropic nó OpenAI.",
+        "Cruthaigh cuntas saor in aisce ansin, más gá.",
+        "Gin eochair API nua ansin agus cóipeáil í.",
+        "Cliceáil ar “Cuir isteach i Render”, greamaigh an eochair ansin mar athróg timpeallachta agus sábháil.",
+        "Tar ar ais anseo agus cliceáil ar “Seiceáil anois” thíos."
+      ],
+      "costHint": "Ní bhíonn costais ann ach nuair a úsáidtear i ndáiríre é, go díreach leis an soláthraí faoi seach — ní trí SECRET 58 go deo."
+    },
+    "platform": {
+      "title": "Céim 2: Nasc ardán meán sóisialta (roghnach)",
+      "body": "Roghnach, ach molta: nasc ardán amháin ar a laghad ar mhaith leat foilsiú air ar ball. Is féidir leat an chéim seo a dhéanamh níos déanaí freisin.",
+      "steps": [
+        "Roghnaigh ardán thíos ar mhaith leat é a úsáid.",
+        "Cliceáil ar “Faigh eochair API” agus lean treoracha an tsoláthraí.",
+        "Cliceáil ar “Cuir isteach i Render” agus sábháil na sonraí rochtana ansin.",
+        "Tar ar ais anseo agus cliceáil ar “Seiceáil anois”."
+      ]
+    },
+    "voice": {
+      "title": "Céim 3: Nasc aschur cainte (roghnach)",
+      "body": "Ní gá ach amháin má theastaíonn voiceovers labhartha uathoibríocha uait do do chuid físeán. Gan an chéim seo oibríonn gach rud eile fós.",
+      "steps": [
+        "Cliceáil ar “Faigh eochair API” ag ElevenLabs.",
+        "Cruthaigh cuntas agus eochair API ansin.",
+        "Cliceáil ar “Cuir isteach i Render” agus sábháil an eochair ansin.",
+        "Tar ar ais anseo agus cliceáil ar “Seiceáil anois”."
+      ]
+    },
+    "done": {
+      "title": "Réidh!",
+      "body": "Is féidir leat tosú anois. Gach rud a léim tú thar, gheobhaidh tú agus cuirfidh tú leis é am ar bith sa chuid “Comhtháthuithe” — nó osclóidh tú an cúntóir seo arís trí “Socruithe”."
+    }
+  }
+}

@@ -10,6 +10,8 @@ export interface WorkspaceStats {
   totalComments: number;
   totalShares: number;
   avgEngagementRate: number;
+  /** Anzahl gespeicherter Statistik-Einträge; 0 = keine Daten (nicht „0 Aufrufe“). */
+  analyticsRecords: number;
 }
 
 export async function getWorkspaceStats(workspaceId: string): Promise<WorkspaceStats> {
@@ -25,6 +27,7 @@ export async function getWorkspaceStats(workspaceId: string): Promise<WorkspaceS
         where: { contentItem: { workspaceId } },
         _sum: { views: true, likes: true, comments: true, shares: true },
         _avg: { engagementRate: true },
+        _count: { _all: true },
       }),
     ]);
 
@@ -38,6 +41,7 @@ export async function getWorkspaceStats(workspaceId: string): Promise<WorkspaceS
     totalComments: analyticsAgg._sum.comments ?? 0,
     totalShares: analyticsAgg._sum.shares ?? 0,
     avgEngagementRate: analyticsAgg._avg.engagementRate ?? 0,
+    analyticsRecords: analyticsAgg._count._all,
   };
 }
 

@@ -1,0 +1,104 @@
+{
+  "viewAll": "Visa alla",
+  "demoBanner": {
+    "text": "Exempeldata aktiva – kampanjer, innehåll och statistik i den här arbetsytan är exempeldata, inte riktiga plattformssiffror."
+  },
+  "hero": {
+    "subtitle": "En idé. Flera plattformar. Maximal räckvidd.",
+    "newCampaign": "Ny kampanj",
+    "createContent": "Skapa innehåll",
+    "findIdeas": "Hitta idéer",
+    "aiAgents": "AI-agenter"
+  },
+  "orbit": {
+    "xNotConnected": "X (inte ansluten)",
+    "brainAlt": "SECRET 58 AI-hjärna"
+  },
+  "activeAgents": {
+    "title": "Aktiva agenter",
+    "empty": "Inga agentkörningar än."
+  },
+  "kpi": {
+    "contentCreated": "Innehåll skapat",
+    "videosCreated": "Videor skapade",
+    "postsCreated": "Inlägg skapade",
+    "published": "Publiceringar",
+    "views": "Visningar",
+    "avgEngagement": "Ø engagemang",
+    "totalRevenue": "Intäkter (manuellt registrerade)",
+    "noComparisonWeek": "Ingen föregående vecka finns än som jämförelsebas — förändringstal visas så fort det finns data för minst två veckor.",
+    "noStats": "Visningar och engagemang: ingen statistik ännu – plattformsstatistik hämtas ännu inte automatiskt."
+  },
+  "production": {
+    "title": "Innehållsproduktion",
+    "thisWeek": "Den här veckan"
+  },
+  "scheduled": {
+    "title": "Schemalagda inlägg",
+    "empty": "Inga schemalagda inlägg."
+  },
+  "activity": {
+    "title": "Senaste aktiviteter",
+    "empty": "Inga aktiviteter än."
+  },
+  "contentFactory": {
+    "description": "Skapa kompletta innehållskampanjer för alla plattformar med bara en idé.",
+    "cta": "Starta nu →",
+    "popularTemplates": "Populära mallar",
+    "templateYoutubeVideo": "YouTube-video",
+    "templateTiktokSeries": "TikTok-serie",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn-inlägg",
+    "templateBlogPost": "Blogginlägg",
+    "viewAllTemplates": "Alla mallar →"
+  },
+  "brandDna": {
+    "tonality": "Tonalitet",
+    "targetAudience": "Målgrupp",
+    "industry": "Bransch",
+    "language": "Språk",
+    "empty": "Ingen Brand DNA angiven än."
+  },
+  "campaigns": {
+    "title": "Aktuella kampanjer",
+    "empty": "Inga kampanjer än."
+  },
+  "platforms": {
+    "title": "Plattformar",
+    "manage": "Hantera"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} anslutna"
+  },
+  "agentMonitor": {
+    "title": "Assistenternas logg",
+    "empty": "Inga körningar än."
+  },
+  "topPerformer": {
+    "title": "Toppresterare",
+    "last7Days": "Senaste 7 dagarna",
+    "empty": "Inga resultatdata ännu – plattformsstatistik hämtas ännu inte automatiskt.",
+    "views": "Visningar",
+    "likes": "Likes",
+    "comments": "Kommentarer",
+    "shares": "Delningar",
+    "engagementRate": "+Engagemangsgrad {value}"
+  },
+  "calendar": {
+    "open": "Öppna",
+    "viewMonth": "Månad",
+    "viewWeek": "Vecka",
+    "viewDay": "Dag",
+    "viewCampaign": "Kampanj",
+    "moreItems": "+{count} till"
+  },
+  "weekdayLabels": [
+    "Mån",
+    "Tis",
+    "Ons",
+    "Tors",
+    "Fre",
+    "Lör",
+    "Sön"
+  ]
+}

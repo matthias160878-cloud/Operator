@@ -1,0 +1,13 @@
+{
+  "pageTitle": "İçerik Takvimi",
+  "subtitle": "Planlanan ve yayınlanan içeriklere genel bakış.",
+  "weekdays": ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"],
+  "months": [
+    "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+    "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+  ],
+  "allPlatforms": "Tüm platformlar",
+  "moreItems": "+{count} tane daha",
+  "listTitle": "Bu ayın listesi",
+  "emptyMonth": "Bu ay için planlanmış gönderi yok."
+}

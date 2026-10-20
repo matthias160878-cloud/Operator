@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — administrer stemmebiblioteket, lag voiceover-forhåndsvisninger og importer stemmer.",
+  "envWarning": "Voiceover er ikke tilgjengelig ennå: operatøren setter opp taletjenesten (ElevenLabs). Du kan allerede bruke stemmebiblioteket til planlegging.",
+  "addManual": "Opprett stemme manuelt",
+  "importFromElevenLabs": "Importer fra ElevenLabs",
+  "form": {
+    "namePlaceholder": "Navn",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Språk",
+    "submit": "Legg til"
+  },
+  "confirmDelete": "Vil du virkelig slette stemmen?",
+  "importFailed": "Importen mislyktes.",
+  "previewFailed": "Forhåndsvisningen mislyktes.",
+  "unknownError": "Ukjent feil.",
+  "empty": "Ingen stemmer i biblioteket ennå.",
+  "active": "Aktiv",
+  "inactive": "Inaktiv",
+  "remove": "Fjern",
+  "preview": {
+    "heading": "Stemmeforhåndsvisning",
+    "defaultText": "Hei, dette er et eksempel på denne stemmen.",
+    "selectPlaceholder": "Velg stemme…",
+    "play": "Spill av forhåndsvisning"
+  }
+}

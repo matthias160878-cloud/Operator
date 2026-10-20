@@ -1,0 +1,21 @@
+{
+  "title": "Registo dos assistentes",
+  "description": "Todos os assistentes (agentes) da SECRET 58 com estado, última tarefa e resultado. Cada execução é registada aqui.",
+  "table": {
+    "agent": "Agente",
+    "description": "Descrição",
+    "status": "Estado",
+    "lastTask": "Última tarefa"
+  },
+  "history": {
+    "title": "Histórico de execuções",
+    "agent": "Agente",
+    "task": "Tarefa",
+    "status": "Estado",
+    "start": "Início",
+    "end": "Fim",
+    "resultError": "Resultado / Erro",
+    "empty": "Ainda não há execuções de agentes.",
+    "completed": "Concluído"
+  }
+}

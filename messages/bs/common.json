@@ -1,0 +1,99 @@
+{
+ "appName": "SECRET 58",
+ "appTagline": "AI Social Command Center",
+ "sidebar": {
+  "footerLine1": "Više od sadržaja.",
+  "footerLine2": "Kompletna mašina za sadržaj.",
+  "workspace": "Radni prostor",
+  "role": "Administrator"
+ },
+ "nav": {
+  "dashboard": "Kontrolna tabla",
+  "schulung": "Obuka",
+  "contentFactory": "Content Factory",
+  "ideas": "Ideje i inspiracija",
+  "contentBrain": "Content Brain",
+  "brandDna": "Brand DNA",
+  "scriptStudio": "Script Studio",
+  "voiceStudio": "Voice Studio",
+  "videoStudio": "Video Studio",
+  "designStudio": "Design Studio",
+  "socialMedia": "Društvene mreže",
+  "calendar": "Content kalendar",
+  "analytics": "Analytics",
+  "growth": "Rast",
+  "weiterempfehlungen": "Preporuke",
+  "reichweitenaufbau": "Izgradnja dosega",
+  "revenue": "Prihodi",
+  "inbox": "Prijemno sanduče",
+  "anfragen": "Upiti",
+  "dateien": "Datoteke",
+  "agents": "Agenti",
+  "integrations": "Integracije",
+  "settings": "Postavke",
+  "billing": "Paket i naplata",
+  "sales": "Prodaja i shop",
+  "website": "Moja web stranica"
+ },
+ "topbar": {
+  "menuOpen": "Otvori meni",
+  "menuClose": "Zatvori meni",
+  "searchPlaceholder": "Traži sadržaje, projekte, kampanje …",
+  "notifications": "Obavijesti",
+  "language": "Jezik"
+ },
+ "footer": {
+  "help": "Pomoć",
+  "privacy": "Privatnost",
+  "imprint": "Impressum",
+  "systemOnline": "Sistem je na mreži"
+ },
+ "actions": {
+  "save": "Spremi",
+  "cancel": "Otkaži",
+  "delete": "Obriši",
+  "edit": "Uredi",
+  "create": "Kreiraj",
+  "close": "Zatvori",
+  "back": "Nazad",
+  "loading": "Učitava se …"
+ },
+ "status": {
+  "connected": "Povezano",
+  "notConfigured": "Nije konfigurisano",
+  "error": "Greška"
+ },
+ "statusBadge": {
+  "CONNECTED": "Povezano",
+  "ACTIVE": "Aktivno",
+  "COMPLETED": "Završeno",
+  "RUNNING": "Radi",
+  "SUCCESS": "Uspješno",
+  "PUBLISHED": "Objavljeno",
+  "APPROVED": "Odobreno",
+  "SCHEDULED": "Zakazano",
+  "WAITING": "Čeka",
+  "IN_REVIEW": "Na pregledu",
+  "NOT_CONFIGURED": "Nije konfigurisano",
+  "IDLE": "Spremno",
+  "DRAFT": "Nacrt",
+  "ARCHIVED": "Arhivirano",
+  "ERROR": "Greška",
+  "REJECTED": "Odbijeno",
+  "RECEIVED": "Primljeno",
+  "PENDING": "Na čekanju",
+  "NOT_AVAILABLE": "Još nije dostupno"
+ },
+ "integrationStatus": {
+  "notConfigured": "Nije konfigurisano — nedostaje varijabla/e: {vars}.",
+  "verifyFailedGeneric": "Povezivanje nije uspjelo.",
+  "verifyFailedStatus": "{service} je odgovorio statusom {status}.",
+  "verifyUnreachable": "{service} nije bilo moguće dosegnuti.",
+  "connected": "Povezano.",
+  "notAvailable": "Još nije dostupno – ova veza u aplikaciji još nije izrađena."
+ },
+ "mediaPreview": {
+  "expand": "Prikaži veće",
+  "close": "Zatvori"
+ }
+}

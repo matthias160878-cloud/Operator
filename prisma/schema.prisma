@@ -57,6 +57,8 @@ enum Platform {
   FACEBOOK
   BLOG
   NEWSLETTER
+  /// Kontaktformular der eigenen Webseite (Startseite der Zentrale) — nur Posteingang
+  WEBSITE
 }
 
 enum MediaType {
@@ -130,45 +132,71 @@ model Workspace {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  users            User[]
-  brand            Brand?
-  campaigns        Campaign[]
-  contentIdeas     ContentIdea[]
-  contentItems     ContentItem[]
-  voices           Voice[]
-  mediaAssets      MediaAsset[]
-  platformAccounts PlatformAccount[]
-  agentRuns        AgentRun[]
-  integrations     IntegrationStatus[]
-  settings         Setting[]
-  auditLogs        AuditLog[]
-  revenueEntries   RevenueEntry[]
-  conversations    Conversation[]
-  plan             WorkspacePlan?
-  usageCounters    UsageCounter[]
-  checkouts        PlanCheckout[]
-  merchantAccount  MerchantAccount?
-  merchantProducts MerchantProduct[]
-  sellerProfile    SellerProfile?
-  customerSales    CustomerSale[]
-  websites         WebsiteConnection[]
+  users               User[]
+  brand               Brand?
+  campaigns           Campaign[]
+  contentIdeas        ContentIdea[]
+  contentItems        ContentItem[]
+  voices              Voice[]
+  mediaAssets         MediaAsset[]
+  platformAccounts    PlatformAccount[]
+  agentRuns           AgentRun[]
+  integrations        IntegrationStatus[]
+  settings            Setting[]
+  auditLogs           AuditLog[]
+  revenueEntries      RevenueEntry[]
+  conversations       Conversation[]
+  plan                WorkspacePlan?
+  usageCounters       UsageCounter[]
+  checkouts           PlanCheckout[]
+  merchantAccount     MerchantAccount?
+  merchantProducts    MerchantProduct[]
+  sellerProfile       SellerProfile?
+  customerSales       CustomerSale[]
+  websites            WebsiteConnection[]
+  composioConnections ComposioConnection[]
+  publishJobs         PublishJob[]
+  pilotInquiries      PilotInquiry[]
+  pilotEvents         PilotEvent[]
+  pilotInterviews     PilotInterview[]
+  pilotConfig         PilotConfig?
+  kundenDateien       KundenDatei[]
+  kundenLinks         KundenLink[]
+  dateiFreigaben      DateiFreigabe[]
 
   @@map("workspaces")
+  reichweitenKampagnen  ReichweitenKampagne[]
+  empfehlungsLinks      EmpfehlungsLink[]
+  empfehlungsEreignisse EmpfehlungsEreignis[]
+  reichweitenKennzahlen ReichweitenKennzahl[]
+  variantenTests        VariantenTest[]
+  testVarianten         TestVariante[]
+  variantenMesswerte    VariantenMesswert[]
+  kooperationen         Kooperation[]
+  werbeplaene           Werbeplan[]
+  newsletterSeiten      NewsletterSeite[]
+  newsletterKontakte    NewsletterKontakt[]
+  newsletterEreignisse  NewsletterEreignis[]
+  newsletterAusgaben    NewsletterAusgabe[]
+  eigeneZugaenge        WorkspaceZugang[]
+  kampagnenSchritte     KampagnenSchritt[]
+  kiVerbrauch           KiVerbrauch[]
+  newsletterZustellungen NewsletterZustellung[]
 }
 
 model User {
-  id          String    @id @default(cuid())
-  workspaceId String
-  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  email       String    @unique
-  name        String
-  role        Role      @default(EDITOR)
-  createdAt   DateTime  @default(now())
+  id           String    @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  email        String    @unique
+  name         String
+  role         Role      @default(EDITOR)
+  createdAt    DateTime  @default(now())
   /// scrypt-Hash (Format: scrypt$N$r$p$salt$hash). Null = Konto ohne Passwort (Altbestand/Demo).
   passwordHash String?
   /// Betreiberkonto (Umsatz-/Betriebsansicht). Wird nur über den geschützten
   /// Einrichtungsablauf (/setup + OPERATOR_SETUP_TOKEN) gesetzt, nie per Formular.
-  isOperator  Boolean   @default(false)
+  isOperator   Boolean   @default(false)
 
   auditLogs AuditLog[]
   sessions  Session[]
@@ -221,6 +249,7 @@ model Campaign {
   revenueEntries RevenueEntry[]
 
   @@map("campaigns")
+  reichweitenKampagnen ReichweitenKampagne[]
 }
 
 model ContentIdea {
@@ -247,33 +276,47 @@ model ContentIdea {
 }
 
 model ContentItem {
-  id             String        @id @default(cuid())
-  workspaceId    String
-  workspace      Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  campaignId     String?
-  campaign       Campaign?     @relation(fields: [campaignId], references: [id], onDelete: SetNull)
-  ideaId         String?
-  idea           ContentIdea?  @relation(fields: [ideaId], references: [id], onDelete: SetNull)
-  title          String
-  platform       Platform
-  format         String        @default("")
-  status         ContentStatus @default(DRAFT)
-  hook           String        @default("")
-  script         String        @default("")
-  caption        String        @default("")
-  hashtags       String        @default("[]") // JSON string[]
-  keywords       String        @default("[]") // JSON string[]
-  language       String        @default("Deutsch")
-  thumbnailIdea  String        @default("")
-  rejectedReason String?
-  scheduledAt    DateTime?
-  publishedAt    DateTime?
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
+  id                  String        @id @default(cuid())
+  workspaceId         String
+  workspace           Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  campaignId          String?
+  campaign            Campaign?     @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  ideaId              String?
+  idea                ContentIdea?  @relation(fields: [ideaId], references: [id], onDelete: SetNull)
+  title               String
+  platform            Platform
+  format              String        @default("")
+  status              ContentStatus @default(DRAFT)
+  hook                String        @default("")
+  script              String        @default("")
+  caption             String        @default("")
+  hashtags            String        @default("[]") // JSON string[]
+  keywords            String        @default("[]") // JSON string[]
+  language            String        @default("Deutsch")
+  thumbnailIdea       String        @default("")
+  rejectedReason      String?
+  scheduledAt         DateTime?
+  publishedAt         DateTime?
+  /// Sperre gegen parallelen Doppelversand (gesetzt, solange veröffentlicht wird).
+  publishingStartedAt DateTime?
+  /// Herkunft aus dem Reichweitenaufbau (Plattformformate einer Kampagne)
+  reichweitenKampagneId String?
+  reichweitenKampagne   ReichweitenKampagne? @relation(fields: [reichweitenKampagneId], references: [id], onDelete: SetNull)
+  /// JSON [{text, quelle, geprueft}] – Fakten und Quellen der Variante
+  faktenJson          String        @default("[]")
+  /// Schutz gegen doppeltes Übernehmen derselben Variante
+  herkunftsSchluessel String?       @unique
+  /// Nur Demo-Testlauf: simulierte Veröffentlichung, es wurde nichts gepostet
+  simuliertAm         DateTime?
+  publishJobs         PublishJob[]
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
 
   scripts     Script[]
   mediaAssets MediaAsset[]
   analytics   Analytics[]
+  testVarianten TestVariante[]
+  werbeplaene   Werbeplan[]
 
   @@map("content_items")
 }
@@ -326,18 +369,18 @@ model MediaAsset {
 }
 
 model PlatformAccount {
-  id               String        @id @default(cuid())
-  workspaceId      String
-  workspace        Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  platform         Platform
-  accountName      String        @default("")
-  status           AccountStatus @default(NOT_CONFIGURED)
-  lastPublishedAt  DateTime?
-  lastError        String?
-  createdAt        DateTime      @default(now())
-  accessTokenEnc   String?
-  refreshTokenEnc  String?
-  tokenExpiresAt   DateTime?
+  id                String        @id @default(cuid())
+  workspaceId       String
+  workspace         Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  platform          Platform
+  accountName       String        @default("")
+  status            AccountStatus @default(NOT_CONFIGURED)
+  lastPublishedAt   DateTime?
+  lastError         String?
+  createdAt         DateTime      @default(now())
+  accessTokenEnc    String?
+  refreshTokenEnc   String?
+  tokenExpiresAt    DateTime?
   externalAccountId String?
 
   @@unique([workspaceId, platform])
@@ -414,6 +457,17 @@ model AuditLog {
   createdAt   DateTime  @default(now())
 
   @@map("audit_logs")
+}
+
+/// Vom Betreiber in der App hinterlegte Zugänge (verschlüsselt mit
+/// TOKEN_ENCRYPTION_KEY). Umgebungsvariablen des Servers haben Vorrang.
+model OperatorSecret {
+  key         String   @id
+  valueEnc    String
+  updatedAt   DateTime @updatedAt
+  updatedById String?
+
+  @@map("operator_secrets")
 }
 
 // Einnahmen (Abschnitt "Revenue" — nicht Teil des ursprünglichen Master-Prompts,
@@ -504,7 +558,6 @@ model License {
   @@map("licenses")
 }
 
-
 // ---------------------------------------------------------------------------
 // Anmeldung, Pakete, Kontingente, Zahlungen (Mehrkundenbetrieb)
 // ---------------------------------------------------------------------------
@@ -512,11 +565,11 @@ model License {
 /// Serverseitige Sitzung. Im Cookie steht nur ein Zufallstoken, in der
 /// Datenbank nur dessen SHA-256 — ein Datenbank-Leak liefert keine gültigen Cookies.
 model Session {
-  id         String   @id // sha256(token)
-  userId     String
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  expiresAt  DateTime
-  createdAt  DateTime @default(now())
+  id        String   @id // sha256(token)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
 
   @@index([userId])
   @@map("sessions")
@@ -537,7 +590,7 @@ model WorkspacePlan {
   id                   String    @id @default(cuid())
   workspaceId          String    @unique
   workspace            Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  plan                 String    // "PRO" | "MAXI"
+  plan                 String // "PRO" | "MAXI"
   /// NONE | PENDING | ACTIVE | PAST_DUE | CANCELED | REFUNDED | PAYMENT_FAILED
   status               String    @default("NONE")
   source               String    @default("STRIPE") // STRIPE | TEST
@@ -557,17 +610,17 @@ model WorkspacePlan {
 /// dieser Zeile (nicht den Metadaten aus dem Browser), um Paket und Workspace
 /// zu bestimmen.
 model PlanCheckout {
-  id              String    @id // Stripe Checkout Session ID
-  workspaceId     String
-  workspace       Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  userId          String
-  plan            String
-  stripePriceId   String
-  expectedAmount  Int       // kleinste Währungseinheit, vor Rabatt
-  currency        String
-  mode            String    // payment | subscription
-  status          String    @default("OPEN") // OPEN | COMPLETED | EXPIRED | FAILED
-  createdAt       DateTime  @default(now())
+  id             String    @id // Stripe Checkout Session ID
+  workspaceId    String
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  userId         String
+  plan           String
+  stripePriceId  String
+  expectedAmount Int // kleinste Währungseinheit, vor Rabatt
+  currency       String
+  mode           String // payment | subscription
+  status         String    @default("OPEN") // OPEN | COMPLETED | EXPIRED | FAILED
+  createdAt      DateTime  @default(now())
 
   @@index([workspaceId])
   @@map("plan_checkouts")
@@ -590,7 +643,7 @@ model UsageCounter {
 model StripeEvent {
   id          String   @id
   type        String
-  account     String?  // gesetzt bei Connect-Events
+  account     String? // gesetzt bei Connect-Events
   processedAt DateTime @default(now())
 
   @@map("stripe_events")
@@ -600,10 +653,10 @@ model StripeEvent {
 model OperatorPayment {
   id             String   @id @default(cuid())
   stripeObjectId String   @unique // pi_/in_/re_/cs_
-  kind           String   // PAYMENT | REFUND
+  kind           String // PAYMENT | REFUND
   workspaceId    String?
   plan           String?
-  amount         Int      // kleinste Währungseinheit, brutto; Erstattungen positiv, kind=REFUND
+  amount         Int // kleinste Währungseinheit, brutto; Erstattungen positiv, kind=REFUND
   taxAmount      Int      @default(0) // enthaltene Umsatzsteuer (bei Zahlungen)
   currency       String
   status         String
@@ -640,7 +693,7 @@ model MerchantProduct {
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   name        String
   description String    @default("")
-  amount      Int       // kleinste Währungseinheit
+  amount      Int // kleinste Währungseinheit
   currency    String    @default("eur")
   active      Boolean   @default(true)
   createdAt   DateTime  @default(now())
@@ -655,13 +708,13 @@ model CustomerSale {
   id             String    @id @default(cuid())
   workspaceId    String
   workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  source         String    // SECRET58_CHECKOUT | IMPORT_CSV
-  externalId     String    // z. B. Stripe PaymentIntent pi_..., oder Bestellnummer des Shops
+  source         String // SECRET58_CHECKOUT | IMPORT_CSV
+  externalId     String // z. B. Stripe PaymentIntent pi_..., oder Bestellnummer des Shops
   productName    String    @default("")
   amount         Int
   refundedAmount Int       @default(0)
   currency       String
-  status         String    // PAID | PARTIALLY_REFUNDED | REFUNDED | PENDING | FAILED
+  status         String // PAID | PARTIALLY_REFUNDED | REFUNDED | PENDING | FAILED
   isTestData     Boolean   @default(false)
   occurredAt     DateTime  @default(now())
   createdAt      DateTime  @default(now())
@@ -678,7 +731,7 @@ model WebsiteConnection {
   id          String    @id @default(cuid())
   workspaceId String
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  origin      String    // https://example.com (Schema + Host, ohne Pfad)
+  origin      String // https://example.com (Schema + Host, ohne Pfad)
   verifyToken String
   verifiedAt  DateTime?
   assistant   String    @default("CHAT") // nur freigegebene Assistenten, siehe src/lib/website.ts
@@ -712,4 +765,810 @@ model SellerProfile {
   updatedAt      DateTime  @updatedAt
 
   @@map("seller_profiles")
+}
+
+/// Über Composio verbundene Plattform-Konten (je Workspace und Toolkit genau
+/// ein Eintrag). Zugangstoken liegen ausschließlich bei Composio; hier stehen
+/// nur die Konto-Kennung, der Status und das Ergebnis des letzten Lesetests.
+model ComposioConnection {
+  id                 String    @id @default(cuid())
+  workspaceId        String
+  workspace          Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  toolkit            String
+  /// NONE | PENDING | ACTIVE | FAILED | EXPIRED | DISCONNECTED
+  status             String    @default("NONE")
+  connectedAccountId String?
+  pendingAccountId   String?
+  stateHash          String?
+  pendingExpiresAt   DateTime?
+  accountLabel       String    @default("")
+  lastReadTestAt     DateTime?
+  lastReadTestOk     Boolean?
+  lastError          String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@unique([workspaceId, toolkit])
+  @@map("composio_connections")
+}
+
+/// Dauerhafter Versandauftrag für einen geplanten Beitrag (Worker:
+/// scripts/publish-worker.ts). Status: QUEUED → RUNNING → SUCCEEDED | FAILED;
+/// CANCELED wenn Termin/Freigabe sich geändert hat; UNKNOWN wenn ein Versand
+/// unterbrochen wurde und unklar ist, ob die Plattform veröffentlicht hat —
+/// solche Aufträge werden NIE automatisch wiederholt.
+model PublishJob {
+  id            String      @id @default(cuid())
+  workspaceId   String
+  workspace     Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  contentItemId String
+  contentItem   ContentItem @relation(fields: [contentItemId], references: [id], onDelete: Cascade)
+  scheduledFor  DateTime
+  status        String      @default("QUEUED")
+  attempts      Int         @default(0)
+  startedAt     DateTime?
+  finishedAt    DateTime?
+  message       String      @default("")
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([status, scheduledFor])
+  @@index([contentItemId])
+  @@map("publish_jobs")
+}
+
+/// Terminfenster für Erstgespräche (Startseite der Zentrale). Der Betreiber
+/// legt freie Termine an; Besucher fragen einen an; der Betreiber bestätigt
+/// oder gibt ihn wieder frei. datum/uhrzeit wie in der Zentrale (Ortszeit
+/// Europe/Berlin), startsAt für Sortierung und „nicht in der Vergangenheit“.
+model WebsiteAppointment {
+  id             String    @id @default(cuid())
+  datum          String
+  uhrzeit        String
+  startsAt       DateTime
+  notiz          String    @default("")
+  /// FREI | ANGEFRAGT | BESTAETIGT
+  status         String    @default("FREI")
+  kundeName      String?
+  kundeEmail     String?
+  kundeNachricht String    @default("")
+  angefragtAm    DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@index([status, startsAt])
+  @@map("website_appointments")
+}
+
+/// Fragen an den Webseiten-Chat (nur mit freigeschalteter KI), damit echte
+/// Fragen im Betreiberbereich sichtbar sind.
+model WebsiteChatEntry {
+  id        String   @id @default(cuid())
+  frage     String
+  antwort   String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("website_chat_entries")
+}
+
+/// Newsletter-Anmeldungen der Startseite mit Double-Opt-in. Einwilligung
+/// (Zeitpunkt, Wortlaut) wird als Nachweis gespeichert; aktiv erst nach Klick
+/// auf den Bestätigungslink. Tokens nur als Hash gespeichert.
+model NewsletterSubscriber {
+  id               String    @id @default(cuid())
+  email            String    @unique
+  /// PENDING | ACTIVE | UNSUBSCRIBED
+  status           String    @default("PENDING")
+  confirmTokenHash String?   @unique
+  confirmExpiresAt DateTime?
+  unsubscribeHash  String    @unique
+  consentText      String
+  consentAt        DateTime
+  confirmedAt      DateTime?
+  unsubscribedAt   DateTime?
+  lastMailAt       DateTime?
+  createdAt        DateTime  @default(now())
+
+  @@map("newsletter_subscribers")
+}
+
+/// Vom Betreiber erzeugter Promocode: schaltet ein Paket dauerhaft frei (ohne
+/// Stripe). Nur der Hash wird gespeichert; der Klartext erscheint einmal beim Anlegen.
+model PromoCode {
+  id          String            @id @default(cuid())
+  codeHash    String            @unique
+  /// letzte 4 Zeichen zur Wiedererkennung in der Liste
+  hint        String
+  plan        String // "PRO" | "MAXI"
+  label       String            @default("")
+  maxUses     Int               @default(1)
+  usedCount   Int               @default(0)
+  expiresAt   DateTime?
+  createdById String?
+  createdAt   DateTime          @default(now())
+  redemptions PromoRedemption[]
+
+  @@map("promo_codes")
+}
+
+model PromoRedemption {
+  id          String    @id @default(cuid())
+  promoCodeId String
+  promoCode   PromoCode @relation(fields: [promoCodeId], references: [id], onDelete: Cascade)
+  workspaceId String
+  redeemedAt  DateTime  @default(now())
+
+  @@unique([promoCodeId, workspaceId])
+  @@map("promo_redemptions")
+}
+
+// ---------------------------------------------------------------------------
+// Pilotstudio (interner Betreiberbereich /operator/pilotstudio).
+// Alle Datensätze hängen an einem Arbeitsbereich (heute: der des Betreibers;
+// später: der jeweilige Kunde unter /kundenanfragen). Demo-Fälle sind über
+// isDemo getrennt. Nachfrage-Gespräche (PilotInterview) und Budgetangaben
+// sind ausschließlich über /api/operator erreichbar.
+model PilotInquiry {
+  id                String    @id @default(cuid())
+  workspaceId       String
+  workspace         Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  isDemo            Boolean   @default(false)
+  demoCaseNo        Int?
+  /// Herkunft bei übernommenen Anfragen (z. B. website:<conversationId>), verhindert Doppelübernahme
+  sourceRef         String?
+  channel           String    @default("manuell")
+  receivedAt        DateTime  @default(now())
+  subject           String
+  body              String
+  senderName        String    @default("")
+  senderContact     String    @default("")
+  category          String    @default("unklar")
+  assignee          String    @default("")
+  /// NEU, ENTWURF, PRUEFUNG, FREIGEGEBEN, UEBERGEBEN, VERSAND_AUSSTEHEND, VERSENDET, VERSAND_FEHLGESCHLAGEN, ABGESCHLOSSEN
+  status            String    @default("NEU")
+  needsHuman        Boolean   @default(false)
+  riskNote          String    @default("")
+  draftText         String    @default("")
+  draftVersion      Int       @default(0)
+  /// DEMO (Musterantwort), KI, MANUELL
+  draftSource       String    @default("")
+  approvedVersion   Int?
+  approvedTextHash  String?
+  approvedById      String?
+  approvedAt        DateTime?
+  sendAttempts      Int       @default(0)
+  sendKey           String?   @unique
+  sentAt            DateTime?
+  providerMessageId String?
+  deliveredAt       DateTime?
+  lastError         String    @default("")
+  /// Testart: DEMO, KI, KANAL
+  testMode          String    @default("DEMO")
+  expected          String    @default("")
+  autoCheck         String    @default("")
+  manualMinutes     Float?
+  pilotMinutes      Float?
+  corrections       Int       @default(0)
+  correctionKinds   String    @default("")
+  /// OFFEN, BESTANDEN, NICHT_BESTANDEN
+  testResult        String    @default("OFFEN")
+  testReason        String    @default("")
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  events PilotEvent[]
+
+  @@unique([workspaceId, sourceRef])
+  @@index([workspaceId, isDemo])
+  @@map("pilot_inquiries")
+}
+
+model PilotEvent {
+  id          String        @id @default(cuid())
+  workspaceId String
+  workspace   Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  inquiryId   String?
+  inquiry     PilotInquiry? @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  userId      String?
+  actor       String        @default("")
+  action      String
+  detail      String        @default("")
+  createdAt   DateTime      @default(now())
+
+  @@index([workspaceId, inquiryId])
+  @@map("pilot_events")
+}
+
+model PilotInterview {
+  id                String    @id @default(cuid())
+  workspaceId       String
+  workspace         Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  slot              Int
+  firmCode          String    @default("")
+  industry          String    @default("")
+  channels          String    @default("")
+  inquiriesPerWeek  Float?
+  minutesPerInquiry Float?
+  topIssues         String    @default("")
+  biggestEffort     String    @default("")
+  humanDecisions    String    @default("")
+  desiredOutcome    String    @default("")
+  /// UNGEFRAGT, KEIN_INTERESSE, UNKLAR, WEITERES_GESPRAECH, PILOT_PRUEFEN
+  interest          String    @default("UNGEFRAGT")
+  budgetText        String    @default("")
+  budgetCurrency    String    @default("")
+  interviewDate     String    @default("")
+  notes             String    @default("")
+  nextStep          String    @default("")
+  updatedAt         DateTime  @updatedAt
+
+  @@unique([workspaceId, slot])
+  @@map("pilot_interviews")
+}
+
+model PilotConfig {
+  workspaceId      String    @id
+  workspace        Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  knowledge        String    @default("")
+  rules            String    @default("")
+  responsibilities String    @default("")
+  checklist        String    @default("{}")
+  updatedAt        DateTime  @updatedAt
+
+  @@map("pilot_configs")
+}
+
+/// Dateiaustausch: Dateien eines Kundenkontos (Inhalt getrennt in KundenDateiInhalt,
+/// damit Listen keine Dateiinhalte laden). Gespeichert in der Datenbank, weil die
+/// Festplatte des Servers ohne Zusatz-Disk bei jedem Neustart geleert wird.
+model KundenDatei {
+  id            String             @id @default(cuid())
+  workspaceId   String
+  workspace     Workspace          @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  ordner        String
+  name          String
+  mime          String             @default("application/octet-stream")
+  groesse       Int
+  sha256        String
+  /// KUNDE | BETREIBER | AGENT
+  quelle        String             @default("KUNDE")
+  quelleName    String             @default("")
+  erstelltVonId String?
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  inhalt        KundenDateiInhalt?
+  freigaben     DateiFreigabe[]
+
+  @@index([workspaceId, ordner])
+  @@map("kunden_dateien")
+}
+
+model KundenDateiInhalt {
+  dateiId String      @id
+  datei   KundenDatei @relation(fields: [dateiId], references: [id], onDelete: Cascade)
+  daten   Bytes
+
+  @@map("kunden_datei_inhalte")
+}
+
+/// Freigabe-Link für eine Datei (z. B. an einen anderen Kunden). Gespeichert wird nur der Hash des Schlüssels.
+model DateiFreigabe {
+  id            String      @id @default(cuid())
+  dateiId       String
+  datei         KundenDatei @relation(fields: [dateiId], references: [id], onDelete: Cascade)
+  workspaceId   String
+  workspace     Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  tokenHash     String      @unique
+  ablauf        DateTime
+  maxAbrufe     Int
+  abrufe        Int         @default(0)
+  widerrufenAm  DateTime?
+  erstelltVonId String?
+  createdAt     DateTime    @default(now())
+
+  @@index([dateiId])
+  @@map("datei_freigaben")
+}
+
+model KundenLink {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  titel       String
+  url         String
+  art         String
+  createdAt   DateTime  @default(now())
+
+  @@index([workspaceId])
+  @@map("kunden_links")
+}
+
+
+// ---------------------------------------------------------------------------
+// Weiterempfehlungen & Reichweite (src/lib/reichweite, docs/WEITEREMPFEHLUNGEN.md)
+// Öffentlich ist nur, was ausdrücklich in titel/text/zielUrl steht. Keine Personendaten in
+// Codes oder Ereignissen, keine Cookies, keine Besucherkennungen.
+// ---------------------------------------------------------------------------
+
+model ReichweitenKampagne {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  /// Interne Kampagne zur Zuordnung – wird nie öffentlich angezeigt
+  campaignId  String?
+  campaign    Campaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  /// Öffentlich sichtbar auf /e/<code>
+  titel       String
+  text        String    @default("")
+  zielUrl     String    @default("")
+  aktiv       Boolean   @default(true)
+  istDemo     Boolean   @default(false)
+  /// Kampagnenplanung (Kampagnenassistent im Reichweitenaufbau)
+  ziel           String    @default("")
+  /// LINKAUFRUFE, ZIEL_KLICKS, ANFRAGEN, NEWSLETTER, WEITEREMPFEHLUNGEN
+  hauptkennzahl  String    @default("")
+  zielgruppe     String    @default("")
+  startAm        DateTime?
+  endeAm         DateTime?
+  /// Inhaber oder Admin, der Inhalte und Ausgaben dieser Kampagne freigibt
+  verantwortlichId String?
+  /// null = kein Budget; nur ausdrücklich festgelegt
+  budgetCent     Int?
+  budgetFestgelegtAm DateTime?
+  /// Fortschritt des Demo-Testlaufs (nur Demo-Kampagnen)
+  testlaufSchritt Int      @default(0)
+  /// Schutz gegen doppeltes Anlegen bei Doppelklick oder Wiederholung
+  erstellKennung String?   @unique
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  schritte   KampagnenSchritt[]
+  inhalte    ContentItem[]
+  links      EmpfehlungsLink[]
+  ereignisse EmpfehlungsEreignis[]
+  kennzahlen ReichweitenKennzahl[]
+  variantenTests     VariantenTest[]
+  kooperationen      Kooperation[]
+  werbeplaene        Werbeplan[]
+  newsletterSeiten   NewsletterSeite[]
+  newsletterKontakte NewsletterKontakt[]
+  newsletterAusgaben NewsletterAusgabe[]
+
+  @@index([workspaceId])
+  @@map("reichweiten_kampagnen")
+}
+
+model EmpfehlungsLink {
+  id           String              @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId   String
+  kampagne     ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  /// Zufälliger öffentlicher Code, kein Zugriffs- oder Login-Token, keine Personendaten
+  code         String              @unique
+  /// Angebotsseite dieses Links; leer = Zielseite der Kampagne. Besucher-Links erben sie.
+  angebotUrl   String              @default("")
+  /// Gesetzt nur, wenn jemand ausdrücklich einen eigenen Link aus diesem Link erzeugt hat
+  parentId     String?
+  parent       EmpfehlungsLink?    @relation("EmpfehlungsStufe", fields: [parentId], references: [id], onDelete: SetNull)
+  kinder       EmpfehlungsLink[]   @relation("EmpfehlungsStufe")
+  stufe        Int                 @default(1)
+  /// Interne Bezeichnung (z. B. „Instagram-Bio“), nie öffentlich
+  bezeichnung  String              @default("")
+  /// TEAM (im Kundenkonto erzeugt) oder BESUCHER (auf der öffentlichen Seite erzeugt)
+  herkunft     String              @default("TEAM")
+  istDemo      Boolean             @default(false)
+  widerrufenAm DateTime?
+  createdAt    DateTime            @default(now())
+
+  ereignisse EmpfehlungsEreignis[]
+  testVarianten      TestVariante[]
+  kooperationen      Kooperation[]
+  newsletterKontakte NewsletterKontakt[]
+
+  @@index([workspaceId, kampagneId])
+  @@map("empfehlungs_links")
+}
+
+/// Zählt Ereignisse ohne Personenbezug: AUFRUF (Seite über Link geöffnet), ZIEL_KLICK
+/// (weiter zur Zielseite), ANFRAGE (Formular abgeschickt), LINK_ERZEUGT (eigener Link erzeugt).
+/// Ein geöffneter Teilen-Dialog wird bewusst nie gezählt.
+model EmpfehlungsEreignis {
+  id          String              @id @default(cuid())
+  workspaceId String
+  workspace   Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId  String
+  kampagne    ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  linkId      String?
+  link        EmpfehlungsLink?    @relation(fields: [linkId], references: [id], onDelete: SetNull)
+  art         String
+  istDemo     Boolean             @default(false)
+  createdAt   DateTime            @default(now())
+
+  @@index([workspaceId, kampagneId, art])
+  @@index([createdAt])
+  @@map("empfehlungs_ereignisse")
+}
+
+/// Plattformzahlen je Kampagne mit Quelle (DEMO, MANUELL) und Zeitraum.
+/// Eine Plattform-Schnittstelle schreibt hier erst, wenn sie angebunden ist (Quelle API:<PLATTFORM>).
+model ReichweitenKennzahl {
+  id          String              @id @default(cuid())
+  workspaceId String
+  workspace   Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId  String
+  kampagne    ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  plattform   String
+  /// IMPRESSIONEN, REICHWEITE, VIDEOAUFRUFE, SHARES
+  metrik      String
+  wert        Int
+  quelle      String
+  zeitraumVon DateTime
+  zeitraumBis DateTime
+  erfasstAm   DateTime            @default(now())
+
+  @@index([workspaceId, kampagneId])
+  @@map("reichweiten_kennzahlen")
+}
+
+// ── Reichweitenaufbau ───────────────────────────────────────────────────────
+// Baut auf ReichweitenKampagne/EmpfehlungsLink (Weiterempfehlungen) auf.
+// Inhalte selbst laufen als ContentItem durch die bestehende Freigabe.
+
+/// Variantenvergleich (organisch) bzw. A/B-Test nur, wenn die Plattform zufällig verteilt hat.
+model VariantenTest {
+  id            String               @id @default(cuid())
+  workspaceId   String
+  workspace     Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId    String?
+  kampagne      ReichweitenKampagne? @relation(fields: [kampagneId], references: [id], onDelete: SetNull)
+  titel         String
+  ziel          String
+  /// Hauptkennzahl, vor dem Test festgelegt
+  hauptkennzahl String
+  /// EINSTIEG, TITEL, VORSCHAUBILD, LAENGE, CTA
+  eigenschaft   String
+  datenquelle   String
+  laufzeitVon   DateTime
+  laufzeitBis   DateTime
+  /// true nur, wenn die Plattform selbst zufällig verteilt hat (echter A/B-Test)
+  zufallsverteilt Boolean            @default(false)
+  istDemo       Boolean              @default(false)
+  createdAt     DateTime             @default(now())
+
+  varianten TestVariante[]
+
+  @@index([workspaceId])
+  @@map("varianten_tests")
+}
+
+model TestVariante {
+  id               String           @id @default(cuid())
+  workspaceId      String
+  workspace        Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  testId           String
+  test             VariantenTest    @relation(fields: [testId], references: [id], onDelete: Cascade)
+  label            String
+  beschreibung     String           @default("")
+  plattform        String           @default("")
+  contentItemId    String?
+  contentItem      ContentItem?     @relation(fields: [contentItemId], references: [id], onDelete: SetNull)
+  /// Eigener Empfehlungslink je Variante: Klicks/Anfragen/Newsletter werden selbst gemessen
+  linkId           String?
+  link             EmpfehlungsLink? @relation(fields: [linkId], references: [id], onDelete: SetNull)
+  veroeffentlichtAm DateTime?
+  createdAt        DateTime         @default(now())
+
+  messwerte VariantenMesswert[]
+
+  @@index([workspaceId, testId])
+  @@map("test_varianten")
+}
+
+/// Plattformwerte je Variante (DEMO oder MANUELL übertragen).
+model VariantenMesswert {
+  id          String       @id @default(cuid())
+  workspaceId String
+  workspace   Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  varianteId  String
+  variante    TestVariante @relation(fields: [varianteId], references: [id], onDelete: Cascade)
+  metrik      String
+  wert        Float
+  quelle      String
+  erfasstAm   DateTime     @default(now())
+
+  @@index([workspaceId, varianteId])
+  @@map("varianten_messwerte")
+}
+
+model Kooperation {
+  id                 String               @id @default(cuid())
+  workspaceId        String
+  workspace          Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  name               String
+  profilUrl          String               @default("")
+  /// CREATOR, REGIONAL, PARTNER, KONTAKT
+  art                String
+  /// HOCH, MITTEL, NIEDRIG, UNKLAR
+  zielgruppenpassung String               @default("UNKLAR")
+  passungNotiz       String               @default("")
+  idee               String               @default("")
+  /// GEMEINSAMER_BEITRAG, INTERVIEW, EMPFEHLUNG, AKTION
+  format             String               @default("GEMEINSAMER_BEITRAG")
+  /// IDEE, ANFRAGE_ENTWURF, ANGEFRAGT, IM_GESPRAECH, VEREINBART, UMGESETZT, ABGESCHLOSSEN, ABGESAGT
+  status             String               @default("IDEE")
+  naechsterSchritt   String               @default("")
+  termin             DateTime?
+  kampagneId         String?
+  kampagne           ReichweitenKampagne? @relation(fields: [kampagneId], references: [id], onDelete: SetNull)
+  linkId             String?
+  link               EmpfehlungsLink?     @relation(fields: [linkId], references: [id], onDelete: SetNull)
+  anfrageEntwurf     String               @default("")
+  /// Werbekennzeichnung: OFFEN, WERBUNG, ANZEIGE, KEINE_GEGENLEISTUNG
+  kennzeichnung      String               @default("OFFEN")
+  istDemo            Boolean              @default(false)
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+
+  @@index([workspaceId])
+  @@map("kooperationen")
+}
+
+/// Werbeplanung. Es gibt keine Werbe-Schnittstelle: nur Entwurf, Freigabe und Export.
+model Werbeplan {
+  id                    String               @id @default(cuid())
+  workspaceId           String
+  workspace             Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  titel                 String
+  contentItemId         String?
+  contentItem           ContentItem?         @relation(fields: [contentItemId], references: [id], onDelete: SetNull)
+  kampagneId            String?
+  kampagne              ReichweitenKampagne? @relation(fields: [kampagneId], references: [id], onDelete: SetNull)
+  plattform             String
+  ziel                  String
+  zielgruppe            String               @default("")
+  /// NEU, ERNEUT (Retargeting), AEHNLICH (Lookalike)
+  zielgruppenArt        String               @default("NEU")
+  region                String               @default("")
+  sprache               String               @default("Deutsch")
+  startAm               DateTime
+  endeAm                DateTime
+  tagesbudgetCent       Int
+  gesamtbudgetCent      Int
+  zielUrl               String               @default("")
+  erfolgsmessung        String               @default("")
+  /// ENTWURF, PRUEFUNG, FREIGEGEBEN
+  status                String               @default("ENTWURF")
+  /// Prüfsumme über Betrag, Laufzeit, Ziel und Plattform zum Zeitpunkt der Freigabe
+  freigabeHash          String?
+  freigegebenVonId      String?
+  freigegebenAm         DateTime?
+  /// Tatsächlich von der Plattform gemeldete Ausgaben (getrennt vom Plan; null = keine Meldung)
+  gemeldeteAusgabenCent Int?
+  gemeldetQuelle        String               @default("")
+  gemeldetAm            DateTime?
+  istDemo               Boolean              @default(false)
+  createdAt             DateTime             @default(now())
+  updatedAt             DateTime             @updatedAt
+
+  @@index([workspaceId])
+  @@map("werbeplaene")
+}
+
+/// Öffentliche Newsletter-Landingpage eines Kunden (/n/<code>).
+model NewsletterSeite {
+  id                 String               @id @default(cuid())
+  workspaceId        String
+  workspace          Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  code               String               @unique
+  titel              String
+  themenBeschreibung String
+  /// JSON string[]
+  themen             String               @default("[]")
+  kampagneId         String?
+  kampagne           ReichweitenKampagne? @relation(fields: [kampagneId], references: [id], onDelete: SetNull)
+  aktiv              Boolean              @default(true)
+  istDemo            Boolean              @default(false)
+  createdAt          DateTime             @default(now())
+
+  kontakte   NewsletterKontakt[]
+  ereignisse NewsletterEreignis[]
+
+  @@index([workspaceId])
+  @@map("newsletter_seiten")
+}
+
+/// Newsletter-Kontakt eines Kunden-Workspaces (Double-Opt-in). Eine Adresse je Workspace nur einmal.
+model NewsletterKontakt {
+  id               String               @id @default(cuid())
+  workspaceId      String
+  workspace        Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  email            String
+  /// PENDING, ACTIVE, UNSUBSCRIBED
+  status           String               @default("PENDING")
+  /// JSON string[]
+  themen           String               @default("[]")
+  confirmTokenHash String?              @unique
+  confirmExpiresAt DateTime?
+  unsubscribeHash  String               @unique
+  consentText      String
+  consentAt        DateTime
+  confirmedAt      DateTime?
+  unsubscribedAt   DateTime?
+  lastMailAt       DateTime?
+  seiteId          String?
+  seite            NewsletterSeite?     @relation(fields: [seiteId], references: [id], onDelete: SetNull)
+  quelleKampagneId String?
+  quelleKampagne   ReichweitenKampagne? @relation(fields: [quelleKampagneId], references: [id], onDelete: SetNull)
+  quelleLinkId     String?
+  quelleLink       EmpfehlungsLink?     @relation(fields: [quelleLinkId], references: [id], onDelete: SetNull)
+  istDemo          Boolean              @default(false)
+  createdAt        DateTime             @default(now())
+  /// Abmeldelink für alle Ausgaben (verschlüsselt, TOKEN_ENCRYPTION_KEY); Prüfung über unsubscribeHash
+  unsubscribeTokenEnc String?
+  zustellungen     NewsletterZustellung[]
+
+  @@unique([workspaceId, email])
+  @@map("newsletter_kontakte")
+}
+
+/// Zählt ohne Personenbezug: AUFRUF (Formularseite geöffnet), ANMELDUNG, BESTAETIGT, ABGEMELDET.
+model NewsletterEreignis {
+  id          String          @id @default(cuid())
+  workspaceId String
+  workspace   Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  seiteId     String
+  seite       NewsletterSeite @relation(fields: [seiteId], references: [id], onDelete: Cascade)
+  art         String
+  istDemo     Boolean         @default(false)
+  createdAt   DateTime        @default(now())
+
+  @@index([workspaceId, seiteId, art])
+  @@map("newsletter_ereignisse")
+}
+
+model NewsletterAusgabe {
+  id               String               @id @default(cuid())
+  workspaceId      String
+  workspace        Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  betreff          String
+  text             String
+  bildIdee         String               @default("")
+  /// JSON string[]; leer = alle Themen
+  themen           String               @default("[]")
+  kampagneId       String?
+  kampagne         ReichweitenKampagne? @relation(fields: [kampagneId], references: [id], onDelete: SetNull)
+  /// ENTWURF, PRUEFUNG, FREIGEGEBEN, GEPLANT, VERSENDET_DEMO, VERSENDET
+  status           String               @default("ENTWURF")
+  /// Prüfsumme von Betreff+Text zum Zeitpunkt der Freigabe
+  freigabeHash     String?
+  freigegebenVonId String?
+  freigegebenAm    DateTime?
+  geplantAm        DateTime?
+  versendetAm      DateTime?
+  empfaengerAnzahl Int?
+  /// Anzahl tatsächlich vom Versanddienst angenommener E-Mails (nur echter Versand)
+  zugestelltAnzahl Int?
+  versandFehler    String               @default("")
+  zustellungen     NewsletterZustellung[]
+  istDemo          Boolean              @default(false)
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @updatedAt
+
+  @@index([workspaceId])
+  @@map("newsletter_ausgaben")
+}
+
+/// Zugänge (API-Schlüssel), die ein Kunde für seinen eigenen Workspace
+/// hinterlegt. Wert verschlüsselt (TOKEN_ENCRYPTION_KEY), nie an den Browser.
+model WorkspaceZugang {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  /// z. B. RESEND
+  anbieter    String
+  /// verschlüsseltes JSON mit den Feldern des Anbieters
+  wertEnc     String
+  /// letzte vier Zeichen des Schlüssels zur Anzeige
+  endung      String    @default("")
+  /// nicht geheime Angaben zur Anzeige (z. B. Absender)
+  anzeige     String    @default("")
+  /// UNGEPRUEFT, OK, FEHLER
+  status      String    @default("UNGEPRUEFT")
+  meldung     String    @default("")
+  geprueftAm  DateTime?
+  updatedById String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([workspaceId, anbieter])
+  @@map("workspace_zugaenge")
+}
+
+/// Ein Empfänger einer echten Newsletter-Ausgabe — verhindert Doppelversand bei Wiederholung.
+model NewsletterZustellung {
+  id          String            @id @default(cuid())
+  workspaceId String
+  workspace   Workspace         @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  ausgabeId   String
+  ausgabe     NewsletterAusgabe @relation(fields: [ausgabeId], references: [id], onDelete: Cascade)
+  kontaktId   String
+  kontakt     NewsletterKontakt @relation(fields: [kontaktId], references: [id], onDelete: Cascade)
+  /// OFFEN, ANGENOMMEN, FEHLER
+  status      String            @default("OFFEN")
+  anbieterId  String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@unique([ausgabeId, kontaktId])
+  @@index([workspaceId])
+  @@map("newsletter_zustellungen")
+}
+
+/// Bearbeitbarer Ablauf einer Kampagne (vom Kampagnenassistenten vorgeschlagen).
+model KampagnenSchritt {
+  id          String              @id @default(cuid())
+  workspaceId String
+  workspace   Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId  String
+  kampagne    ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  reihenfolge Int
+  /// INHALT, PRUEFUNG, FREIGABE, VEROEFFENTLICHUNG, WERBUNG, AUSWERTUNG, SONSTIGES
+  art         String              @default("SONSTIGES")
+  titel       String
+  notiz       String              @default("")
+  faelligAm   DateTime?
+  erledigtAm  DateTime?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  @@index([kampagneId])
+  @@map("kampagnen_schritte")
+}
+
+/// Monatlicher KI-Verbrauch eines Workspaces mit eigenem Schlüssel (für Limits und Anzeige).
+model KiVerbrauch {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  /// YYYY-MM
+  monat       String
+  aufrufe     Int       @default(0)
+  /// geschätzte Kosten in Millionstel US-Dollar; nur berechenbare Aufrufe
+  kostenMikroUsd Int    @default(0)
+  /// Aufrufe ohne berechenbaren Preis
+  ohnePreis   Int       @default(0)
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([workspaceId, monat])
+  @@map("ki_verbrauch")
+}
+
+/// Kündigungen über den Kündigungsbutton (§ 312k BGB, öffentliche Seite /kuendigen).
+/// Es wird nichts automatisch in Stripe gekündigt; der Betreiber bearbeitet
+/// jede Kündigung und setzt bearbeitetAm. workspaceId/userId werden nur
+/// serverseitig über die Konto-E-Mail ermittelt (nie aus der Anfrage).
+model Kuendigung {
+  id                String    @id @default(cuid())
+  /// lesbare Referenz, z. B. K-2026-7Q4M2X
+  referenz          String    @unique
+  /// ORDENTLICH | AUSSERORDENTLICH
+  art               String
+  name              String
+  /// E-Mail-Adresse des Kontos (zur Identifizierung)
+  email             String
+  bestaetigungEmail String
+  vertrag           String
+  /// "naechstmoeglich" oder Datum JJJJ-MM-TT
+  zeitpunkt         String
+  grund             String    @default("")
+  kundennummer      String    @default("")
+  workspaceId       String?
+  userId            String?
+  emailGesendet     Boolean   @default(false)
+  eingangAm         DateTime  @default(now())
+  bearbeitetAm      DateTime?
+
+  @@index([eingangAm])
+  @@map("kuendigungen")
 }

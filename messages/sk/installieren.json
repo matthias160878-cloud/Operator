@@ -1,0 +1,20 @@
+{
+  "button": "Inštalovať aplikáciu",
+  "buttonHint": "Nainštalovať SECRET 58 ako aplikáciu na tomto zariadení",
+  "close": "Zavrieť",
+  "canceled": "Inštalácia bola zrušená. Môžeš ju kedykoľvek spustiť znova.",
+  "iosTitle": "Inštalácia na iPhone alebo iPad",
+  "iosStep1": "Otvor túto stránku v Safari.",
+  "iosStep2": "Ťukni na „Zdieľať“ (štvorec so šípkou smerujúcou nahor).",
+  "iosStep3": "Vyber „Pridať na plochu“ a potvrď tlačidlom „Pridať“.",
+  "iosShort": "Safari: Zdieľať → Pridať na plochu",
+  "iosNotSafari": "Na iPhone a iPade funguje inštalácia iba v Safari. Otvor túto stránku v Safari.",
+  "otherTitle": "Ako nainštalovať aplikáciu",
+  "otherChromium": "Otvor ponuku prehliadača (tri bodky) a vyber „Inštalovať aplikáciu“ alebo „Pridať na plochu“.",
+  "otherSafariMac": "V Safari na Macu: ponuka „Súbor“ → „Pridať do Docku“.",
+  "otherFirefox": "Firefox na počítači nemôže inštalovať webové aplikácie. Použi Chrome, Edge alebo Safari.",
+  "otherGeneric": "Tento prehliadač momentálne neponúka inštalačné okno. Môže to byť tým, že aplikácia je už nainštalovaná alebo prehliadač inštaláciu nepodporuje. Skús to v Chrome, Edge alebo Safari.",
+  "insecureTitle": "Inštalácia tu nie je možná",
+  "insecureText": "Inštalácia vyžaduje zverejnenú webovú stránku cez HTTPS. Z lokálneho súboru ani bez HTTPS nefunguje. Na vlastnom počítači funguje cez „localhost“ vo vývojovom prostredí.",
+  "installedNote": "Aplikácia bola nainštalovaná."
+}

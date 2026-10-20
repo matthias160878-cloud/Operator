@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Engine pro skripty a hooky: vytváří skripty přizpůsobené platformě podle struktury Hook → Problem → Value → Example → Payoff → CTA a také několik variant hooků.",
+  "form": {
+    "topicLabel": "Téma",
+    "topicPlaceholder": "např. 5 způsobů, jak AI agenti šetří čas",
+    "platformLabel": "Platforma",
+    "generateButton": "Vygenerovat skript a hooky",
+    "generateFailed": "Generování se nezdařilo.",
+    "unknownError": "Neznámá chyba."
+  },
+  "hookTypes": {
+    "direkt": "Přímý",
+    "neugierig": "Vzbuzující zvědavost",
+    "story": "Příběh",
+    "problem": "Problém",
+    "zahlen": "Čísla",
+    "kontroversSachlich": "Kontroverzní (věcný)",
+    "educational": "Vzdělávací"
+  },
+  "hooksHeading": "Varianty hooků",
+  "engine": {
+    "label": "Engine: {provider}",
+    "templateMode": "Režim šablon (není nastaven žádný poskytovatel AI)"
+  },
+  "script": {
+    "heading": "Skript",
+    "save": "Uložit jako položku obsahu",
+    "saving": "Ukládá se…"
+  }
+}

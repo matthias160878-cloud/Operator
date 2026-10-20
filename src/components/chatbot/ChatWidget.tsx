@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { Brain, Loader2, Mic, MicOff, Send, Volume2, VolumeX, X } from "lucide-react";
+import { Loader2, Mic, MicOff, Send, Volume2, VolumeX, X } from "lucide-react";
 import clsx from "clsx";
 
 interface ChatMessage {
@@ -138,7 +139,7 @@ export function ChatWidget() {
         <div className="mb-3 flex h-[32rem] w-[22rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-2xl">
           <div className="flex items-center justify-between border-b border-border bg-surface-2 px-4 py-3">
             <div className="flex items-center gap-2">
-              <Brain className="h-4 w-4 text-accent-2" />
+              <Image src="/brand/logo-58.png" alt="" width={16} height={16} className="h-4 w-4 rounded-sm" />
               <span className="text-sm font-semibold text-foreground">{t("title")}</span>
             </div>
             <div className="flex items-center gap-1">
@@ -244,7 +245,7 @@ export function ChatWidget() {
         aria-label={t("openButton")}
         className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-2 text-white shadow-[0_0_30px_rgba(109,91,255,0.5)] transition-transform hover:scale-105"
       >
-        <Brain className="h-6 w-6" />
+        <Image src="/brand/logo-58.png" alt="" width={32} height={32} className="h-8 w-8 rounded-full" />
       </button>
     </div>
   );

@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Udhëzime hap pas hapi dhe video shpjeguese për çdo fushë të SECRET 58 — mund t'i shikosh këtu në çdo kohë.",
+ "schulung.topics.firstSteps.steps.0": "Te “Integrimet” kontrollo nëse është konfiguruar një ofrues i IA-së. Funksionet e IA-së punojnë përmes qasjeve të operatorit, ndaj nuk të duhet abonim i vetin për IA. Pa ofrues të IA-së, aplikacioni punon në modalitetin e shablloneve.",
+ "schulung.topics.integrations.steps.2": "Të dhënat e qasjes nuk ruhen kurrë në shfletues, por vetëm të mbrojtura në server. Nëse mungon një qasje, e konfiguron operatori.",
+ "schulung.topics.integrations.steps.3": "Kostot: Pro dhe Maxi janë abonime, mujore ose vjetore. Çmimet aktuale gjenden te “Paketa & Faturimi”. Çdo ofrues i jashtëm ka modelin e vet të pavarur të kostos (falas / sipas përdorimit / abonim) — në faqen Integrimet, te çdo shërbim shfaqet cili model vlen, me lidhje te çmimet aktuale të ofruesit.",
+ "integrations.costNote": "Paketa jote SECRET 58 (Pro ose Maxi) është abonim, shih “Paketa & Faturimi”. Çdo shërbim i jashtëm këtu ka modelin e vet të pavarur të kostos te ofruesi përkatës — SECRET 58 nuk ngarkon kurrë shtesë për to."
+}

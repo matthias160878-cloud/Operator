@@ -1,0 +1,24 @@
+{
+  "title": "Integrácie",
+  "description": "Živý stav externých služieb – len skutočne nastavené a overené pripojenia, nič sa nepredstiera.",
+  "categories": {
+    "AI": "Poskytovatelia AI",
+    "VOICE": "Voice",
+    "PLATFORM": "Sociálne platformy",
+    "DESIGN": "Dizajn",
+    "VIDEO": "Video",
+    "TREND": "Trendy"
+  },
+  "costNote": "Tvoj balík SECRET 58 (Pro alebo Maxi) je predplatné, pozri „Balík a fakturácia“. Každá externá služba tu má vlastný, nezávislý model nákladov u príslušného poskytovateľa — SECRET 58 za ne nikdy neúčtuje nič navyše.",
+  "links": {
+    "getKey": "Získať kľúč API",
+    "setInRender": "Zadať v Render",
+    "viewPricing": "Zobraziť ceny"
+  },
+  "pricing": {
+    "free": "Zadarmo",
+    "payAsYouGo": "Podľa používania",
+    "subscription": "Predplatné",
+    "unknown": "Cenu si overte u poskytovateľa"
+  }
+}

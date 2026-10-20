@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Alle innholdselementer på ett sted — opprett, dupliser, skriv om, utvid med voiceover/undertekster og send gjennom godkjenningsflyten.",
+  "statusTabs": {
+    "all": "Alle",
+    "draft": "Utkast",
+    "inReview": "Til vurdering",
+    "approved": "Godkjent",
+    "scheduled": "Planlagt",
+    "published": "Publisert",
+    "archived": "Arkivert"
+  },
+  "newItem": {
+    "openButton": "Nytt innholdselement",
+    "titleLabel": "Tittel",
+    "platformLabel": "Plattform",
+    "create": "Opprett",
+    "closeAria": "Lukk"
+  },
+  "table": {
+    "empty": "Ingen innholdselementer ennå — opprett ett manuelt eller via Content Brain.",
+    "title": "Tittel",
+    "platform": "Plattform",
+    "format": "Format",
+    "status": "Status",
+    "updated": "Oppdatert",
+    "actions": "Handlinger",
+    "duplicate": "Dupliser",
+    "delete": "Slett",
+    "confirmDelete": "Vil du virkelig slette innholdselementet?"
+  },
+  "detail": {
+    "backLink": "Tilbake til Content Factory",
+    "actionFailed": "Handlingen mislyktes.",
+    "actions": {
+      "review": "Send til vurdering",
+      "approve": "Godkjenn",
+      "reject": "Avvis",
+      "schedule": "Planlegg",
+      "publish": "Publiser",
+      "copy": "Kopier innlegg",
+      "markPublished": "Publisert manuelt"
+    },
+    "rejectReasonPrompt": "Avvisningsgrunn (valgfritt):",
+    "scheduleDatePrompt": "Publiseringsdato (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Tittel",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caption"
+    },
+    "save": "Lagre",
+    "saving": "Lagrer…",
+    "hashtags": {
+      "heading": "Hashtags og nøkkelord",
+      "regenerate": "Generer på nytt",
+      "empty": "Ingen hashtags generert ennå."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Generer",
+      "empty": "Ingen voiceover generert ennå."
+    },
+    "subtitles": {
+      "heading": "Undertekster",
+      "generate": "Generer (SRT)",
+      "download": "Last ned {file}",
+      "empty": "Ingen undertekster generert ennå."
+    },
+    "video": {
+      "heading": "Videorendering",
+      "request": "Be om rendering",
+      "note": "Leverandøruavhengig videopipeline (avsnitt 11/12) — for øyeblikket er ingen videoleverandør konfigurert (se Integrasjoner)."
+    },
+    "scriptVariants": {
+      "heading": "Scriptvarianter",
+      "newVariant": "Ny variant",
+      "empty": "Ingen varianter ennå.",
+      "variantSummary": "Variant {label}"
+    },
+    "repurpose": {
+      "heading": "Gjenbruk innhold",
+      "description": "Lag plattformtilpassede avledninger av dette innholdselementet for flere kanaler. Flere kanaler = større sjanse for at folk ser videoen.",
+      "selectAll": "Velg alle plattformer",
+      "clearAll": "Fjern valg",
+      "generateButton": "Generer {count} avledninger"
+    },
+    "approvalRevoked": "Godkjenning trukket tilbake: Innlegget er endret og må vurderes og godkjennes på nytt.",
+    "job": {
+      "QUEUED": "Automatisk utsending planlagt for {when}.",
+      "RUNNING": "Utsending pågår (tidspunkt {when}).",
+      "SUCCEEDED": "Publisert på tidspunktet {when}.",
+      "FAILED": "Utsendingen på tidspunktet {when} mislyktes, innlegget er igjen «Godkjent».",
+      "UNKNOWN": "Utsending på tidspunktet {when}: utfallet er uklart.",
+      "CANCELED": "Planlagt utsending ({when}) ble ikke utført."
+    },
+    "copied": "Tekst og hashtags kopiert — lim dem nå inn i plattformappen.",
+    "copyFailed": "Kopiering er ikke mulig — marker teksten manuelt.",
+    "markPublishedConfirm": "Har du lagt ut innlegget selv? Det markeres som publisert; en planlagt utsending forkastes."
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "viewAll": "Mostra tutti",
+  "demoBanner": {
+    "text": "Dati di esempio attivi: campagne, contenuti e statistiche di questo spazio di lavoro sono dati di esempio, non numeri reali delle piattaforme."
+  },
+  "hero": {
+    "subtitle": "Un'idea. Più piattaforme. Massima portata.",
+    "newCampaign": "Nuova campagna",
+    "createContent": "Crea contenuto",
+    "findIdeas": "Trova idee",
+    "aiAgents": "Agenti IA"
+  },
+  "orbit": {
+    "xNotConnected": "X (non collegato)",
+    "brainAlt": "Cervello IA di SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Agenti attivi",
+    "empty": "Ancora nessuna esecuzione degli agenti."
+  },
+  "kpi": {
+    "contentCreated": "Contenuti creati",
+    "videosCreated": "Video creati",
+    "postsCreated": "Post creati",
+    "published": "Pubblicazioni",
+    "views": "Visualizzazioni",
+    "avgEngagement": "Engagement medio",
+    "totalRevenue": "Entrate (registrate manualmente)",
+    "noComparisonWeek": "Ancora nessuna settimana precedente come base di confronto: le variazioni compariranno quando saranno disponibili dati per almeno due settimane.",
+    "noStats": "Visualizzazioni ed engagement: nessuna statistica ancora; le statistiche delle piattaforme non vengono ancora recuperate automaticamente."
+  },
+  "production": {
+    "title": "Produzione di contenuti",
+    "thisWeek": "Questa settimana"
+  },
+  "scheduled": {
+    "title": "Post pianificati",
+    "empty": "Nessun post pianificato."
+  },
+  "activity": {
+    "title": "Ultime attività",
+    "empty": "Ancora nessuna attività."
+  },
+  "contentFactory": {
+    "description": "Crea con una sola idea campagne di contenuti complete per tutte le piattaforme.",
+    "cta": "Inizia ora →",
+    "popularTemplates": "Modelli popolari",
+    "templateYoutubeVideo": "Video YouTube",
+    "templateTiktokSeries": "Serie TikTok",
+    "templateInstagramReel": "Reel Instagram",
+    "templateLinkedinPost": "Post LinkedIn",
+    "templateBlogPost": "Articolo del blog",
+    "viewAllTemplates": "Tutti i modelli →"
+  },
+  "brandDna": {
+    "tonality": "Tono di voce",
+    "targetAudience": "Target",
+    "industry": "Settore",
+    "language": "Lingua",
+    "empty": "Ancora nessun Brand DNA salvato."
+  },
+  "campaigns": {
+    "title": "Campagne attuali",
+    "empty": "Ancora nessuna campagna."
+  },
+  "platforms": {
+    "title": "Piattaforme",
+    "manage": "Gestisci"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} connesse"
+  },
+  "agentMonitor": {
+    "title": "Registro degli assistenti",
+    "empty": "Ancora nessuna esecuzione."
+  },
+  "topPerformer": {
+    "title": "Top performer",
+    "last7Days": "Ultimi 7 giorni",
+    "empty": "Nessun dato di rendimento ancora: le statistiche delle piattaforme non vengono ancora recuperate automaticamente.",
+    "views": "Visualizzazioni",
+    "likes": "Mi piace",
+    "comments": "Commenti",
+    "shares": "Condivisioni",
+    "engagementRate": "+Tasso di engagement {value}"
+  },
+  "calendar": {
+    "open": "Apri",
+    "viewMonth": "Mese",
+    "viewWeek": "Settimana",
+    "viewDay": "Giorno",
+    "viewCampaign": "Campagna",
+    "moreItems": "+{count} altri"
+  },
+  "weekdayLabels": ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"]
+}

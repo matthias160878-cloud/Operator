@@ -1,0 +1,15 @@
+{
+  "title": "Analytics",
+  "subtitle": "Les estadístiques de les plataformes (visualitzacions, m'agrada, comentaris, comparticions) encara no s'obtenen automàticament. Aquí només apareixen valors ja desats, p. ex. dades d'exemple. Pots introduir a mà les xifres de les estadístiques de la plataforma a <weiter>Recomanacions</weiter> («Introduir xifres de la plataforma») o a la <varianten>comparació de variants</varianten>: s'avaluen allà, no en aquesta pàgina.",
+  "statViewsTotal": "Visualitzacions totals",
+  "statLikesTotal": "M'agrada totals",
+  "statComments": "Comentaris",
+  "statShares": "Comparticions",
+  "chartTitle": "Rendiment del contingut al llarg del temps",
+  "chartLegend": "Visualitzacions (violeta) · Engagement % (turquesa)",
+  "chartEmpty": "Encara no hi ha estadístiques: no hi ha historial disponible.",
+  "bestPerformingTitle": "Contingut amb millor rendiment",
+  "bestPerformingEmpty": "Encara no hi ha estadístiques: no és possible fer una classificació.",
+  "learningAgentTitle": "Learning Agent — Recomanacions",
+  "statsEmpty": "Encara no hi ha estadístiques desades, per això encara no hi ha indicadors aquí. Les estadístiques de les plataformes encara no s'obtenen automàticament."
+}

@@ -1,0 +1,25 @@
+{
+  "title": "Hugmyndir og innblástur",
+  "subtitle": "Efnisklasar, seríur og snið fyrir komandi efni — búin til af IdeaAgent eða skráð handvirkt.",
+  "board": {
+    "topicLabel": "Efni fyrir nýjar hugmyndir",
+    "topicPlaceholder": "t.d. Aukin framleiðni með gervigreindarfulltrúum",
+    "generateButton": "Búa til hugmyndir",
+    "manualButton": "Handvirkt",
+    "manualTitlePlaceholder": "Titill hugmyndar",
+    "addButton": "Bæta við",
+    "generateError": "Villa við gerð hugmynda.",
+    "unknownError": "Óþekkt villa.",
+    "emptyState": "Engar hugmyndir enn — búðu til nokkrar eða skráðu handvirkt.",
+    "minutesUnit": "~{count} mín.",
+    "statusNew": "Ný",
+    "statusInProgress": "Í vinnslu",
+    "statusUsed": "Notuð",
+    "statusArchived": "Í safni",
+    "sourceAiGenerated": "IdeaAgent (gervigreind eða sniðmát)",
+    "sourceManual": "Handvirkt",
+    "templateResult": "Sniðmát: hugmyndirnar sem voru að verða til koma úr föstum textabútum, ekki frá gervigreind. Fyrir gervigreindarhugmyndir skaltu skrá eigin gervigreindarlykil undir „Stillingar → Eigin aðgangar“.",
+    "textEngineLabel": "Textavél:",
+    "templateMode": "Sniðmátsstilling (engin gervigreindarveita stillt)"
+  }
+}

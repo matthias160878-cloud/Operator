@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Soli pa solim pamācības un skaidrojošie video par katru SECRET 58 sadaļu — vienmēr šeit pieejami uzziņai.",
+ "schulung.topics.firstSteps.steps.0": "Sadaļā „Integrācijas“ pārbaudi, vai ir iestatīts MI pakalpojumu sniedzējs. MI funkcijas darbojas ar operatora piekļuvēm, tāpēc tev nav vajadzīgs savs MI abonements. Bez MI pakalpojumu sniedzēja lietotne darbojas veidņu režīmā.",
+ "schulung.topics.integrations.steps.2": "Piekļuves dati nekad netiek glabāti pārlūkprogrammā, bet tikai aizsargāti serverī. Ja piekļuves trūkst, to iestata operators.",
+ "schulung.topics.integrations.steps.3": "Izmaksas: Pro un Maxi ir abonementi, mēneša vai gada. Aktuālās cenas ir sadaļā „Pakete un norēķini“. Katram ārējam pakalpojumu sniedzējam ir savs, neatkarīgs izmaksu modelis (bezmaksas / pēc lietojuma / abonements) — Integrāciju lapā pie katra pakalpojuma norādīts, kāds modelis ir spēkā, ar saiti uz aktuālajām cenām pie pakalpojumu sniedzēja.",
+ "integrations.costNote": "Tava SECRET 58 pakete (Pro vai Maxi) ir abonements, skatīt „Pakete un norēķini“. Katram šeit minētajam ārējam pakalpojumam ir savs, neatkarīgs izmaksu modelis pie attiecīgā pakalpojumu sniedzēja — SECRET 58 par tiem nekad neizraksta papildu rēķinu."
+}

@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Daugiau nei turinys.",
+    "footerLine2": "Visa turinio mašina.",
+    "workspace": "Darbo erdvė",
+    "role": "Administratorius"
+  },
+  "nav": {
+    "dashboard": "Skydelis",
+    "schulung": "Mokymai",
+    "contentFactory": "Content Factory",
+    "ideas": "Idėjos ir įkvėpimas",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Socialiniai tinklai",
+    "calendar": "Turinio kalendorius",
+    "analytics": "Analitika",
+    "growth": "Augimas",
+    "weiterempfehlungen": "Rekomendacijos",
+    "reichweitenaufbau": "Pasiekiamumo didinimas",
+    "revenue": "Pajamos",
+    "inbox": "Gautieji",
+    "anfragen": "Užklausos",
+    "dateien": "Failai",
+    "agents": "Agentai",
+    "integrations": "Integracijos",
+    "settings": "Nustatymai",
+    "billing": "Paketas ir apmokėjimas",
+    "sales": "Pardavimai ir parduotuvė",
+    "website": "Mano svetainė"
+  },
+  "topbar": {
+    "menuOpen": "Atidaryti meniu",
+    "menuClose": "Uždaryti meniu",
+    "searchPlaceholder": "Ieškoti turinio, projektų, kampanijų …",
+    "notifications": "Pranešimai",
+    "language": "Kalba"
+  },
+  "footer": {
+    "help": "Pagalba",
+    "privacy": "Privatumas",
+    "imprint": "Rekvizitai",
+    "systemOnline": "Sistema veikia"
+  },
+  "actions": {
+    "save": "Išsaugoti",
+    "cancel": "Atšaukti",
+    "delete": "Ištrinti",
+    "edit": "Redaguoti",
+    "create": "Sukurti",
+    "close": "Uždaryti",
+    "back": "Atgal",
+    "loading": "Kraunama …"
+  },
+  "status": {
+    "connected": "Prijungta",
+    "notConfigured": "Nesukonfigūruota",
+    "error": "Klaida"
+  },
+  "statusBadge": {
+    "CONNECTED": "Prijungta",
+    "ACTIVE": "Aktyvu",
+    "COMPLETED": "Baigta",
+    "RUNNING": "Vykdoma",
+    "SUCCESS": "Sėkminga",
+    "PUBLISHED": "Paskelbta",
+    "APPROVED": "Patvirtinta",
+    "SCHEDULED": "Suplanuota",
+    "WAITING": "Laukiama",
+    "IN_REVIEW": "Peržiūrima",
+    "NOT_CONFIGURED": "Nesukonfigūruota",
+    "IDLE": "Pasiruošęs",
+    "DRAFT": "Juodraštis",
+    "ARCHIVED": "Archyvuota",
+    "ERROR": "Klaida",
+    "REJECTED": "Atmesta",
+    "RECEIVED": "Gauta",
+    "PENDING": "Laukiama",
+    "NOT_AVAILABLE": "Dar neprieinama"
+  },
+  "integrationStatus": {
+    "notConfigured": "Nesukonfigūruota — trūksta kintamųjų: {vars}.",
+    "verifyFailedGeneric": "Prisijungti nepavyko.",
+    "verifyFailedStatus": "{service} atsakė būsena {status}.",
+    "verifyUnreachable": "Nepavyko pasiekti {service}.",
+    "connected": "Prijungta.",
+    "notAvailable": "Dar neprieinama – šis ryšys programoje dar nesukurtas."
+  },
+  "mediaPreview": {
+    "expand": "Rodyti didesnį",
+    "close": "Uždaryti"
+  }
+}

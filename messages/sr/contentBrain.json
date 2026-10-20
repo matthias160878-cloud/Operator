@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Једна идеја улази — излази потпун план садржаја прилагођен платформама. ContentBrainAgent узима у обзир твој Brand DNA и за сваку изабрану платформу прави одговарајуће хукове, сценарије, хештагове и концепте сличица као нацрт.",
+  "campaignsHeading": "Кампање",
+  "noCampaigns": "Још нема креираних кампања.",
+  "campaignSummary": "{count} ставки садржаја · {audience}",
+  "form": {
+    "textEngineLabel": "Текстуални мотор:",
+    "templateMode": "Режим шаблона (није подешен ниједан AI провајдер)",
+    "modeTemplate": "Шаблон",
+    "topicLabel": "Тема / идеја",
+    "topicPlaceholder": "нпр. Објасни зашто аутономни AI агенти мењају свет рада.",
+    "audienceLabel": "Циљна група",
+    "audiencePlaceholder": "нпр. 25-45, заинтересовани за технологију",
+    "goalLabel": "Циљ",
+    "languageLabel": "Језик",
+    "platformsLabel": "Платформе",
+    "itemsPerPlatformLabel": "Ставки садржаја по платформи ({count})",
+    "generateError": "Генерисање није успело.",
+    "unknownError": "Непозната грешка.",
+    "submitLoading": "Content Brain ради…",
+    "submitIdle": "Генериши план садржаја",
+    "resultHeading": "Кампања је креирана — {count} ставки садржаја сачувано као нацрт.",
+    "resultDescription": "Генерисано у режиму {mode}. Сви садржаји почињу као DRAFT — прегледај и уреди их у Content Factory.",
+    "resultLink": "На Content Factory →"
+  }
+}

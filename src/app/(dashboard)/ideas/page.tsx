@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { IdeaBoard } from "@/components/ideas/IdeaBoard";
+import { kiAnbieterFuer } from "@/lib/ai/kundenKi";
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +20,7 @@ export default async function IdeasPage() {
         <h1 className="text-xl font-semibold text-foreground">{t("title")}</h1>
         <p className="mt-1 text-sm text-muted">{t("subtitle")}</p>
       </div>
-      <IdeaBoard ideas={ideas} />
+      <IdeaBoard ideas={ideas} textProvider={await kiAnbieterFuer(workspaceId)} />
     </div>
   );
 }

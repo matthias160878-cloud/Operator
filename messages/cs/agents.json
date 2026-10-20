@@ -1,0 +1,21 @@
+{
+  "title": "Protokol asistentů",
+  "description": "Všichni asistenti (agenti) SECRET 58 se stavem, poslední úlohou a výsledkem. Každý běh se tu zaznamenává.",
+  "table": {
+    "agent": "Agent",
+    "description": "Popis",
+    "status": "Stav",
+    "lastTask": "Poslední úloha"
+  },
+  "history": {
+    "title": "Historie běhů",
+    "agent": "Agent",
+    "task": "Úloha",
+    "status": "Stav",
+    "start": "Začátek",
+    "end": "Konec",
+    "resultError": "Výsledek / chyba",
+    "empty": "Zatím žádné běhy agentů.",
+    "completed": "Dokončeno"
+  }
+}

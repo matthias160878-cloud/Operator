@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Alle content-elementer ét sted — opret, dupliker, omskriv, tilføj voiceover/undertekster og send dem gennem godkendelsesworkflowet.",
+  "statusTabs": {
+    "all": "Alle",
+    "draft": "Kladde",
+    "inReview": "Under gennemgang",
+    "approved": "Godkendt",
+    "scheduled": "Planlagt",
+    "published": "Udgivet",
+    "archived": "Arkiveret"
+  },
+  "newItem": {
+    "openButton": "Nyt content-element",
+    "titleLabel": "Titel",
+    "platformLabel": "Platform",
+    "create": "Opret",
+    "closeAria": "Luk"
+  },
+  "table": {
+    "empty": "Ingen content-elementer endnu — opret et manuelt eller via Content Brain.",
+    "title": "Titel",
+    "platform": "Platform",
+    "format": "Format",
+    "status": "Status",
+    "updated": "Opdateret",
+    "actions": "Handlinger",
+    "duplicate": "Dupliker",
+    "delete": "Slet",
+    "confirmDelete": "Vil du virkelig slette content-elementet?"
+  },
+  "detail": {
+    "backLink": "Tilbage til Content Factory",
+    "actionFailed": "Handlingen mislykkedes.",
+    "actions": {
+      "review": "Send til gennemgang",
+      "approve": "Godkend",
+      "reject": "Afvis",
+      "schedule": "Planlæg",
+      "publish": "Udgiv",
+      "copy": "Kopiér opslag",
+      "markPublished": "Udgivet manuelt"
+    },
+    "rejectReasonPrompt": "Årsag til afvisning (valgfri):",
+    "scheduleDatePrompt": "Udgivelsesdato (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Titel",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caption"
+    },
+    "save": "Gem",
+    "saving": "Gemmer…",
+    "hashtags": {
+      "heading": "Hashtags & keywords",
+      "regenerate": "Generer igen",
+      "empty": "Ingen hashtags genereret endnu."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Opret",
+      "empty": "Ingen voiceover oprettet endnu."
+    },
+    "subtitles": {
+      "heading": "Undertekster",
+      "generate": "Opret (SRT)",
+      "download": "Download {file}",
+      "empty": "Ingen undertekster oprettet endnu."
+    },
+    "video": {
+      "heading": "Video-rendering",
+      "request": "Anmod om rendering",
+      "note": "Udbyderuafhængig videopipeline (afsnit 11/12) — der er i øjeblikket ikke konfigureret nogen videoudbyder (se Integrationer)."
+    },
+    "scriptVariants": {
+      "heading": "Script-varianter",
+      "newVariant": "Ny variant",
+      "empty": "Ingen varianter endnu.",
+      "variantSummary": "Variant {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Lav platformstilpassede afledte versioner af dette content-element til flere kanaler. Flere kanaler = større chance for, at folk ser videoen.",
+      "selectAll": "Vælg alle platforme",
+      "clearAll": "Ryd valg",
+      "generateButton": "Opret {count} afledte versioner"
+    },
+    "approvalRevoked": "Godkendelse trukket tilbage: Opslaget er ændret og skal gennemgås og godkendes igen.",
+    "job": {
+      "QUEUED": "Automatisk afsendelse planlagt til {when}.",
+      "RUNNING": "Afsendelse i gang (tidspunkt {when}).",
+      "SUCCEEDED": "Udgivet på tidspunktet {when}.",
+      "FAILED": "Afsendelse på tidspunktet {when} mislykkedes, opslaget er igen »Godkendt«.",
+      "UNKNOWN": "Afsendelse på tidspunktet {when}: udfaldet er uklart.",
+      "CANCELED": "Planlagt afsendelse ({when}) blev ikke udført."
+    },
+    "copied": "Tekst og hashtags kopieret — indsæt dem nu i platformens app.",
+    "copyFailed": "Kopiering er ikke mulig — markér teksten manuelt.",
+    "markPublishedConfirm": "Har du selv postet opslaget? Det markeres som udgivet; en planlagt afsendelse kasseres."
+  }
+}

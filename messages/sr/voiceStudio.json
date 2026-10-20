@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs мотор гласа — управљај библиотеком гласова, прави прегледе војсовера и увози гласове.",
+  "envWarning": "Glasovni zapis još nije dostupan: glasovnu uslugu (ElevenLabs) podešava operater. Biblioteku glasova već možete koristiti za planiranje.",
+  "addManual": "Направи глас ручно",
+  "importFromElevenLabs": "Увези из ElevenLabs",
+  "form": {
+    "namePlaceholder": "Име",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Језик",
+    "submit": "Додај"
+  },
+  "confirmDelete": "Заиста обрисати глас?",
+  "importFailed": "Увоз није успео.",
+  "previewFailed": "Преглед није успео.",
+  "unknownError": "Непозната грешка.",
+  "empty": "Још нема гласова у библиотеци.",
+  "active": "Активан",
+  "inactive": "Неактиван",
+  "remove": "Уклони",
+  "preview": {
+    "heading": "Преглед гласа",
+    "defaultText": "Здраво, ово је пример за овај глас.",
+    "selectPlaceholder": "Изабери глас…",
+    "play": "Пусти преглед"
+  }
+}

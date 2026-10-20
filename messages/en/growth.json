@@ -1,9 +1,9 @@
 {
   "title": "Growth",
-  "subtitle": "Recommendations for reach and growth — derived from the real analytics data of your past content: best posting times, top-performing hashtags and formats.",
+  "subtitle": "Recommendations for reach and growth – derived from the stored statistics of your content: best posting times, most successful hashtags and formats. Platform statistics are not fetched automatically yet.",
   "warning": "Deliberately <strong>not</strong> included: automated follow/like/comment activity to artificially boost followers. This violates the terms of service on YouTube, Instagram, TikTok, LinkedIn and Facebook and can lead to account suspension. This page provides exclusively data-based recommendations for your own content.",
   "filterAll": "All platforms",
-  "emptyState": "No analytics data yet for {platform}. Once published content collects performance data, recommendations will appear here.",
+  "emptyState": "No statistics stored for {platform} yet, so there are no recommendations yet. Platform statistics are not fetched automatically yet.",
   "emptyStateDefaultScope": "this workspace",
   "bestPostingTimesTitle": "Best Posting Times",
   "postingTime": "{day} · {hour}",

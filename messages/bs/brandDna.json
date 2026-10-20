@@ -1,0 +1,30 @@
+{
+ "title": "Brand / Content DNA",
+ "subtitle": "Tvoj brend. Tvoj stil. Svugdje. Ovi podaci automatski ulaze u Content Brain te u agente za skripte, hookove i hashtagove.",
+ "form": {
+  "nameLabel": "Naziv brenda",
+  "industryLabel": "Branša",
+  "descriptionLabel": "Opis",
+  "descriptionHint": "Šta krasi brend?",
+  "audienceLabel": "Ciljna grupa",
+  "languageLabel": "Jezik",
+  "tonalityLabel": "Ton",
+  "humorLabel": "Humor",
+  "formalityLabel": "Formalnost",
+  "preferredWordsLabel": "Poželjne riječi",
+  "forbiddenWordsLabel": "Zabranjene riječi",
+  "preferredCtasLabel": "Poželjni CTA-ovi",
+  "brandValuesLabel": "Vrijednosti brenda",
+  "topicsLabel": "Teme",
+  "csvHint": "odvojeno zarezom",
+  "colorsLabel": "Boje",
+  "colorsHint": "odvojeno zarezom, npr. #6D5BFF",
+  "fontsLabel": "Fontovi",
+  "visualRulesLabel": "Vizualna pravila",
+  "saveError": "Spremanje nije uspjelo.",
+  "unknownError": "Nepoznata greška.",
+  "saving": "Sprema se…",
+  "save": "Spremi Brand DNA",
+  "savedAt": "Spremljeno u {time}"
+ }
+}

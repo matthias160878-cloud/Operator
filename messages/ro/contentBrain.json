@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Introduci o idee — primești un plan de conținut complet, adaptat fiecărei platforme. ContentBrainAgent ține cont de Brand DNA și creează, ca ciornă, hook-uri, script-uri, hashtag-uri și concepte de miniatură potrivite pentru fiecare platformă aleasă.",
+  "campaignsHeading": "Campanii",
+  "noCampaigns": "Încă nu a fost creată nicio campanie.",
+  "campaignSummary": "{count} elemente de conținut · {audience}",
+  "form": {
+    "textEngineLabel": "Motor de text:",
+    "templateMode": "Mod șablon (niciun furnizor de IA configurat)",
+    "modeTemplate": "Șablon",
+    "topicLabel": "Temă / idee",
+    "topicPlaceholder": "de ex. Explică de ce agenții IA autonomi schimbă lumea muncii.",
+    "audienceLabel": "Public țintă",
+    "audiencePlaceholder": "de ex. 25-45, pasionați de tehnologie",
+    "goalLabel": "Obiectiv",
+    "languageLabel": "Limbă",
+    "platformsLabel": "Platforme",
+    "itemsPerPlatformLabel": "Elemente de conținut per platformă ({count})",
+    "generateError": "Generarea a eșuat.",
+    "unknownError": "Eroare necunoscută.",
+    "submitLoading": "Content Brain lucrează…",
+    "submitIdle": "Generează planul de conținut",
+    "resultHeading": "Campanie creată — {count} elemente de conținut salvate ca ciornă.",
+    "resultDescription": "Generat în modul {mode}. Tot conținutul pornește ca DRAFT — verifică-l și editează-l în Content Factory.",
+    "resultLink": "Către Content Factory →"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "L-items kollha tal-kontenut f'post wieħed — oħloq, iddupplika, erġa' ikteb, żid voiceover/sottotitli u għaddihom mill-fluss ta' approvazzjoni.",
+  "statusTabs": {
+    "all": "Kollha",
+    "draft": "Abbozz",
+    "inReview": "Qed jiġi eżaminat",
+    "approved": "Approvat",
+    "scheduled": "Ippjanat",
+    "published": "Ippubblikat",
+    "archived": "Arkivjat"
+  },
+  "newItem": {
+    "openButton": "Item ġdid ta' kontenut",
+    "titleLabel": "Titlu",
+    "platformLabel": "Pjattaforma",
+    "create": "Oħloq",
+    "closeAria": "Agħlaq"
+  },
+  "table": {
+    "empty": "Għad m'hemm l-ebda items ta' kontenut — oħloq wieħed manwalment jew permezz ta' Content Brain.",
+    "title": "Titlu",
+    "platform": "Pjattaforma",
+    "format": "Format",
+    "status": "Status",
+    "updated": "Aġġornat",
+    "actions": "Azzjonijiet",
+    "duplicate": "Iddupplika",
+    "delete": "Ħassar",
+    "confirmDelete": "Tassew trid tħassar dan l-item ta' kontenut?"
+  },
+  "detail": {
+    "backLink": "Lura għal Content Factory",
+    "actionFailed": "L-azzjoni falliet.",
+    "actions": {
+      "review": "Għall-eżami",
+      "approve": "Approva",
+      "reject": "Irrifjuta",
+      "schedule": "Ippjana",
+      "publish": "Ippubblika",
+      "copy": "Ikkopja l-post",
+      "markPublished": "Ippubblikat manwalment"
+    },
+    "rejectReasonPrompt": "Raġuni tar-rifjut (mhux obbligatorju):",
+    "scheduleDatePrompt": "Data tal-pubblikazzjoni (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Titlu",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caption"
+    },
+    "save": "Aħżen",
+    "saving": "Qed jinħażen…",
+    "hashtags": {
+      "heading": "Hashtags u Keywords",
+      "regenerate": "Iġġenera mill-ġdid",
+      "empty": "Għad ma ġie ġġenerat l-ebda hashtag."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Oħloq",
+      "empty": "Għad ma nħoloq l-ebda voiceover."
+    },
+    "subtitles": {
+      "heading": "Sottotitli",
+      "generate": "Oħloq (SRT)",
+      "download": "Niżżel {file}",
+      "empty": "Għad ma nħolqu l-ebda sottotitli."
+    },
+    "video": {
+      "heading": "Rendering tal-vidjow",
+      "request": "Itlob ir-rendering",
+      "note": "Pipeline tal-vidjow indipendenti mill-fornitur (Taqsima 11/12) — bħalissa ma hemm l-ebda fornitur tal-vidjow ikkonfigurat (ara Integrazzjonijiet)."
+    },
+    "scriptVariants": {
+      "heading": "Varjanti tal-Script",
+      "newVariant": "Varjant ġdid",
+      "empty": "Għad m'hemm l-ebda varjanti.",
+      "variantSummary": "Varjant {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Oħloq minn dan l-item ta' kontenut derivati adattati għal kanali oħra. Aktar kanali = aktar opportunitajiet li n-nies jaraw il-vidjow.",
+      "selectAll": "Agħżel il-pjattaformi kollha",
+      "clearAll": "Neħħi l-għażla",
+      "generateButton": "Oħloq {count} derivati"
+    },
+    "approvalRevoked": "L-approvazzjoni ġiet irtirata: il-post inbidel u jrid jerġa' jiġi eżaminat u approvat.",
+    "job": {
+      "QUEUED": "Tqegħid awtomatiku ppjanat għal {when}.",
+      "RUNNING": "It-tqegħid qed isir (data {when}).",
+      "SUCCEEDED": "Ippubblikat fid-data {when}.",
+      "FAILED": "It-tqegħid fid-data {when} falla, il-post reġa' sar „Approvat“.",
+      "UNKNOWN": "Tqegħid fid-data {when}: riżultat mhux ċar.",
+      "CANCELED": "It-tqegħid ippjanat ({when}) ma twettaqx."
+    },
+    "copied": "Test u hashtags ikkupjati — issa waħħalhom fl-app tal-pjattaforma.",
+    "copyFailed": "Il-kopjar mhuwiex possibbli — jekk jogħġbok immarka t-test manwalment.",
+    "markPublishedConfirm": "Ppubblikajt il-post int stess? Se jiġi mmarkat bħala ppubblikat; it-tqegħid ippjanat jiġi skartat."
+  }
+}

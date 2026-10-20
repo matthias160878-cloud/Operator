@@ -1,0 +1,27 @@
+{
+  "title": "Definições",
+  "description": "O teu espaço de trabalho, utilizadores e um resumo dos teus dados. As tuas próprias chaves API (textos de IA, envio de newsletter) introduzes em <zugaenge>Acessos próprios</zugaenge>; o teu pacote está em <billing>Pacote e faturação</billing>.",
+  "workspace": {
+    "title": "Espaço de trabalho",
+    "name": "Nome",
+    "slug": "Slug",
+    "createdAt": "Criado em"
+  },
+  "users": {
+    "title": "Utilizadores e funções",
+    "note": "Cada conta tem o seu próprio espaço de trabalho, separado dos outros clientes. Por agora não podes adicionar outros utilizadores tu mesmo."
+  },
+  "system": {
+    "title": "Sistema",
+    "contentItems": "Itens de conteúdo",
+    "campaigns": "Campanhas",
+    "mediaAssets": "Recursos multimédia",
+    "agentRuns": "Execuções de agentes",
+    "dbNote": "Número de entradas guardadas no teu espaço de trabalho. Podes exportar todos os dados ou eliminar o espaço de trabalho mais abaixo, em «Os meus dados»."
+  },
+  "onboarding": {
+    "title": "Assistente de configuração",
+    "description": "As pequenas janelas passo a passo para fornecedores de IA, plataformas de redes sociais e saída de voz que aparecem na primeira abertura.",
+    "reopen": "Reabrir assistente de configuração"
+  }
+}

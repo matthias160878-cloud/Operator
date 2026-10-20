@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Crearea de videoclipuri nu este încă disponibilă: nu este conectat niciun serviciu video care să creeze videoclipuri. Mai jos vezi formatele pregătite pentru fiecare platformă; scenariile, vocea și subtitrările le creezi în Script Studio, Voice Studio și Content Factory.",
+  "providerCardTitle": "Furnizori video",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Resurse video",
+  "assetsEmpty": "Încă nu există videoclipuri. Crearea de videoclipuri nu este încă disponibilă în aplicație.",
+  "providerNote": "Încă nu există niciun serviciu video utilizabil – deocamdată nu se pot crea videoclipuri în aplicație."
+}

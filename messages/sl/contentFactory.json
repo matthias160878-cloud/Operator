@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Vsi vsebinski elementi na enem mestu — ustvari, podvoji, prepiši, obogati z govorom/podnapisi in jih pošlji skozi potek potrjevanja.",
+  "statusTabs": {
+    "all": "Vse",
+    "draft": "Osnutek",
+    "inReview": "V pregledu",
+    "approved": "Odobreno",
+    "scheduled": "Načrtovano",
+    "published": "Objavljeno",
+    "archived": "Arhivirano"
+  },
+  "newItem": {
+    "openButton": "Nov vsebinski element",
+    "titleLabel": "Naslov",
+    "platformLabel": "Platforma",
+    "create": "Ustvari",
+    "closeAria": "Zapri"
+  },
+  "table": {
+    "empty": "Vsebinskih elementov še ni — ustvari enega ročno ali prek Content Brain.",
+    "title": "Naslov",
+    "platform": "Platforma",
+    "format": "Format",
+    "status": "Status",
+    "updated": "Posodobljeno",
+    "actions": "Dejanja",
+    "duplicate": "Podvoji",
+    "delete": "Izbriši",
+    "confirmDelete": "Res izbrišem vsebinski element?"
+  },
+  "detail": {
+    "backLink": "Nazaj na Content Factory",
+    "actionFailed": "Dejanje ni uspelo.",
+    "actions": {
+      "review": "V pregled",
+      "approve": "Odobri",
+      "reject": "Zavrni",
+      "schedule": "Načrtuj",
+      "publish": "Objavi",
+      "copy": "Kopiraj objavo",
+      "markPublished": "Ročno objavljeno"
+    },
+    "rejectReasonPrompt": "Razlog zavrnitve (neobvezno):",
+    "scheduleDatePrompt": "Datum objave (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Naslov",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caption"
+    },
+    "save": "Shrani",
+    "saving": "Shranjujem …",
+    "hashtags": {
+      "heading": "Heštagi in ključne besede",
+      "regenerate": "Generiraj znova",
+      "empty": "Heštagi še niso generirani."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Ustvari",
+      "empty": "Voiceover še ni ustvarjen."
+    },
+    "subtitles": {
+      "heading": "Podnapisi",
+      "generate": "Ustvari (SRT)",
+      "download": "Prenesi {file}",
+      "empty": "Podnapisi še niso ustvarjeni."
+    },
+    "video": {
+      "heading": "Upodabljanje videa",
+      "request": "Zahtevaj upodobitev",
+      "note": "Video cevovod, neodvisen od ponudnika (razdelek 11/12) — trenutno ni nastavljen noben video ponudnik (glej Integracije)."
+    },
+    "scriptVariants": {
+      "heading": "Različice scenarija",
+      "newVariant": "Nova različica",
+      "empty": "Različic še ni.",
+      "variantSummary": "Različica {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Iz tega vsebinskega elementa ustvari izpeljanke, prilagojene platformam, za dodatne kanale. Več kanalov = več možnosti, da ljudje vidijo video.",
+      "selectAll": "Izberi vse platforme",
+      "clearAll": "Prekliči izbiro",
+      "generateButton": "Ustvari izpeljank: {count}"
+    },
+    "approvalRevoked": "Odobritev preklicana: objava je bila spremenjena in jo je treba znova pregledati in odobriti.",
+    "job": {
+      "QUEUED": "Samodejno pošiljanje načrtovano za {when}.",
+      "RUNNING": "Pošiljanje poteka (termin {when}).",
+      "SUCCEEDED": "Objavljeno ob terminu {when}.",
+      "FAILED": "Pošiljanje ob terminu {when} ni uspelo, objava je spet „Odobrena“.",
+      "UNKNOWN": "Pošiljanje ob terminu {when}: izid ni jasen.",
+      "CANCELED": "Načrtovano pošiljanje ({when}) ni bilo izvedeno."
+    },
+    "copied": "Besedilo in heštagi kopirani — zdaj jih prilepi v aplikacijo platforme.",
+    "copyFailed": "Kopiranje ni mogoče — besedilo označi ročno.",
+    "markPublishedConfirm": "Si objavo objavil sam? Označena bo kot objavljena; načrtovano pošiljanje bo opuščeno."
+  }
+}

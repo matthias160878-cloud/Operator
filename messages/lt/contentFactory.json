@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Visi turinio elementai vienoje vietoje — kurk, dubliuok, perrašyk, papildyk balso įrašu / subtitrais ir pravesk per patvirtinimo eigą.",
+  "statusTabs": {
+    "all": "Visi",
+    "draft": "Juodraštis",
+    "inReview": "Peržiūrima",
+    "approved": "Patvirtinta",
+    "scheduled": "Suplanuota",
+    "published": "Paskelbta",
+    "archived": "Archyvuota"
+  },
+  "newItem": {
+    "openButton": "Naujas turinio elementas",
+    "titleLabel": "Pavadinimas",
+    "platformLabel": "Platforma",
+    "create": "Sukurti",
+    "closeAria": "Uždaryti"
+  },
+  "table": {
+    "empty": "Turinio elementų dar nėra — sukurk vieną rankiniu būdu arba per Content Brain.",
+    "title": "Pavadinimas",
+    "platform": "Platforma",
+    "format": "Formatas",
+    "status": "Būsena",
+    "updated": "Atnaujinta",
+    "actions": "Veiksmai",
+    "duplicate": "Dubliuoti",
+    "delete": "Ištrinti",
+    "confirmDelete": "Tikrai ištrinti turinio elementą?"
+  },
+  "detail": {
+    "backLink": "Atgal į Content Factory",
+    "actionFailed": "Veiksmas nepavyko.",
+    "actions": {
+      "review": "Pateikti peržiūrai",
+      "approve": "Patvirtinti",
+      "reject": "Atmesti",
+      "schedule": "Suplanuoti",
+      "publish": "Paskelbti",
+      "copy": "Kopijuoti įrašą",
+      "markPublished": "Paskelbta rankiniu būdu"
+    },
+    "rejectReasonPrompt": "Atmetimo priežastis (neprivaloma):",
+    "scheduleDatePrompt": "Paskelbimo data (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Pavadinimas",
+      "hook": "Hook",
+      "script": "Scenarijus",
+      "caption": "Aprašas"
+    },
+    "save": "Išsaugoti",
+    "saving": "Saugoma…",
+    "hashtags": {
+      "heading": "Žymos (hashtag) ir raktažodžiai",
+      "regenerate": "Generuoti iš naujo",
+      "empty": "Žymų (hashtag) dar nesugeneruota."
+    },
+    "voiceover": {
+      "heading": "Balso įrašas",
+      "generate": "Sukurti",
+      "empty": "Balso įrašas dar nesukurtas."
+    },
+    "subtitles": {
+      "heading": "Subtitrai",
+      "generate": "Sukurti (SRT)",
+      "download": "Atsisiųsti {file}",
+      "empty": "Subtitrai dar nesukurti."
+    },
+    "video": {
+      "heading": "Vaizdo įrašo generavimas",
+      "request": "Užsakyti generavimą",
+      "note": "Nuo tiekėjo nepriklausomas vaizdo įrašų srautas (11/12 skyrius) — šiuo metu vaizdo įrašų tiekėjas nesukonfigūruotas (žr. Integracijos)."
+    },
+    "scriptVariants": {
+      "heading": "Scenarijaus variantai",
+      "newVariant": "Naujas variantas",
+      "empty": "Variantų dar nėra.",
+      "variantSummary": "Variantas {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Sukurk iš šio turinio elemento platformoms pritaikytus darinius kitiems kanalams. Daugiau kanalų = daugiau galimybių, kad žmonės pamatys vaizdo įrašą.",
+      "selectAll": "Pasirinkti visas platformas",
+      "clearAll": "Panaikinti pasirinkimą",
+      "generateButton": "Sukurti darinių: {count}"
+    },
+    "approvalRevoked": "Patvirtinimas atšauktas: įrašas buvo pakeistas, todėl jį reikia peržiūrėti ir patvirtinti iš naujo.",
+    "job": {
+      "QUEUED": "Automatinis siuntimas suplanuotas: {when}.",
+      "RUNNING": "Siunčiama (terminas {when}).",
+      "SUCCEEDED": "Paskelbta nustatytu laiku: {when}.",
+      "FAILED": "Siuntimas nustatytu laiku ({when}) nepavyko, įrašas vėl „Patvirtinta“.",
+      "UNKNOWN": "Siuntimas nustatytu laiku ({when}): rezultatas neaiškus.",
+      "CANCELED": "Suplanuotas siuntimas ({when}) nebuvo įvykdytas."
+    },
+    "copied": "Tekstas ir žymos (hashtag) nukopijuoti — dabar įklijuok platformos programėlėje.",
+    "copyFailed": "Nukopijuoti nepavyko — pažymėk tekstą rankiniu būdu.",
+    "markPublishedConfirm": "Įrašą paskelbei pats? Jis bus pažymėtas kaip paskelbtas; suplanuotas siuntimas bus atmestas."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Níos mó ná inneachar.",
+    "footerLine2": "Meaisín inneachair iomlán.",
+    "workspace": "Spás oibre",
+    "role": "Riarthóir"
+  },
+  "nav": {
+    "dashboard": "Painéal",
+    "schulung": "Oiliúint",
+    "contentFactory": "Content Factory",
+    "ideas": "Smaointe & Inspioráid",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Meáin shóisialta",
+    "calendar": "Féilire Inneachair",
+    "analytics": "Anailísíocht",
+    "growth": "Fás",
+    "weiterempfehlungen": "Moltaí",
+    "reichweitenaufbau": "Lucht féachana a mhéadú",
+    "revenue": "Ioncam",
+    "inbox": "Bosca isteach",
+    "anfragen": "Fiosruithe",
+    "dateien": "Comhaid",
+    "agents": "Gníomhairí",
+    "integrations": "Comhtháthuithe",
+    "settings": "Socruithe",
+    "billing": "Pacáiste & Billeáil",
+    "sales": "Díolacháin & Siopa",
+    "website": "Mo shuíomh gréasáin"
+  },
+  "topbar": {
+    "menuOpen": "Oscail an roghchlár",
+    "menuClose": "Dún an roghchlár",
+    "searchPlaceholder": "Cuardaigh inneachar, tionscadail, feachtais …",
+    "notifications": "Fógraí",
+    "language": "Teanga"
+  },
+  "footer": {
+    "help": "Cabhair",
+    "privacy": "Príobháideacht",
+    "imprint": "Fógra dlíthiúil",
+    "systemOnline": "Córas ar líne"
+  },
+  "actions": {
+    "save": "Sábháil",
+    "cancel": "Cealaigh",
+    "delete": "Scrios",
+    "edit": "Cuir in eagar",
+    "create": "Cruthaigh",
+    "close": "Dún",
+    "back": "Ar ais",
+    "loading": "Á luchtú …"
+  },
+  "status": {
+    "connected": "Nasctha",
+    "notConfigured": "Gan cumrú",
+    "error": "Earráid"
+  },
+  "statusBadge": {
+    "CONNECTED": "Nasctha",
+    "ACTIVE": "Gníomhach",
+    "COMPLETED": "Críochnaithe",
+    "RUNNING": "Ag rith",
+    "SUCCESS": "Rathúil",
+    "PUBLISHED": "Foilsithe",
+    "APPROVED": "Formheasta",
+    "SCHEDULED": "Pleanáilte",
+    "WAITING": "Ag fanacht",
+    "IN_REVIEW": "Á athbhreithniú",
+    "NOT_CONFIGURED": "Gan cumrú",
+    "IDLE": "Réidh",
+    "DRAFT": "Dréacht",
+    "ARCHIVED": "Cartlannaithe",
+    "ERROR": "Earráid",
+    "REJECTED": "Diúltaithe",
+    "RECEIVED": "Faighte",
+    "PENDING": "Ar feitheamh",
+    "NOT_AVAILABLE": "Níl ar fáil fós"
+  },
+  "integrationStatus": {
+    "notConfigured": "Gan cumrú — athróg(a) ar iarraidh: {vars}.",
+    "verifyFailedGeneric": "Theip ar an nasc.",
+    "verifyFailedStatus": "D’fhreagair {service} le stádas {status}.",
+    "verifyUnreachable": "Níorbh fhéidir {service} a bhaint amach.",
+    "connected": "Nasctha.",
+    "notAvailable": "Níl ar fáil fós – níl an nasc seo tógtha san aip fós."
+  },
+  "mediaPreview": {
+    "expand": "Taispeáin níos mó",
+    "close": "Dún"
+  }
+}

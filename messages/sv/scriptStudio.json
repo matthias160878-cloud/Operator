@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Manus- och hook-motor: skapar plattformsanpassade manus enligt strukturen Hook → Problem → Value → Example → Payoff → CTA samt flera hook-varianter.",
+  "form": {
+    "topicLabel": "Ämne",
+    "topicPlaceholder": "t.ex. 5 sätt som AI-agenter sparar tid",
+    "platformLabel": "Plattform",
+    "generateButton": "Generera manus & hooks",
+    "generateFailed": "Genereringen misslyckades.",
+    "unknownError": "Okänt fel."
+  },
+  "hookTypes": {
+    "direkt": "Direkt",
+    "neugierig": "Nyfiken",
+    "story": "Berättelse",
+    "problem": "Problem",
+    "zahlen": "Siffror",
+    "kontroversSachlich": "Kontroversiell (sakligt)",
+    "educational": "Lärorik"
+  },
+  "hooksHeading": "Hook-varianter",
+  "engine": {
+    "label": "Motor: {provider}",
+    "templateMode": "Mallläge (ingen AI-leverantör konfigurerad)"
+  },
+  "script": {
+    "heading": "Manus",
+    "save": "Spara som innehållsobjekt",
+    "saving": "Sparar…"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Entra una idea i surt un pla de contingut complet, adaptat a cada plataforma. L'agent ContentBrainAgent té en compte el teu Brand DNA i genera com a esborrany hooks, guions, hashtags i conceptes de miniatura per a cada plataforma triada.",
+  "campaignsHeading": "Campanyes",
+  "noCampaigns": "Encara no s'ha creat cap campanya.",
+  "campaignSummary": "{count} elements de contingut · {audience}",
+  "form": {
+    "textEngineLabel": "Motor de text:",
+    "templateMode": "Mode plantilla (cap proveïdor d'IA configurat)",
+    "modeTemplate": "Plantilla",
+    "topicLabel": "Tema / Idea",
+    "topicPlaceholder": "p. ex. Explica per què els agents d'IA autònoms canvien el món laboral.",
+    "audienceLabel": "Públic objectiu",
+    "audiencePlaceholder": "p. ex. 25-45, interessats en tecnologia",
+    "goalLabel": "Objectiu",
+    "languageLabel": "Idioma",
+    "platformsLabel": "Plataformes",
+    "itemsPerPlatformLabel": "Elements de contingut per plataforma ({count})",
+    "generateError": "La generació ha fallat.",
+    "unknownError": "Error desconegut.",
+    "submitLoading": "Content Brain està treballant…",
+    "submitIdle": "Genera pla de contingut",
+    "resultHeading": "Campanya creada: {count} elements de contingut desats com a esborrany.",
+    "resultDescription": "Generat en mode {mode}. Tots els continguts comencen com a DRAFT: revisa'ls i edita'ls a Content Factory.",
+    "resultLink": "Ves a Content Factory →"
+  }
+}

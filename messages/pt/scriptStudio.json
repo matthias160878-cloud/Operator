@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Motor de scripts e hooks: cria scripts adequados a cada plataforma segundo a estrutura Hook → Problema → Valor → Exemplo → Resultado → CTA, bem como várias variantes de hook.",
+  "form": {
+    "topicLabel": "Tema",
+    "topicPlaceholder": "p. ex. 5 formas como os agentes de IA poupam tempo",
+    "platformLabel": "Plataforma",
+    "generateButton": "Gerar script e hooks",
+    "generateFailed": "Falha na geração.",
+    "unknownError": "Erro desconhecido."
+  },
+  "hookTypes": {
+    "direkt": "Direto",
+    "neugierig": "Curioso",
+    "story": "História",
+    "problem": "Problema",
+    "zahlen": "Números",
+    "kontroversSachlich": "Controverso (factual)",
+    "educational": "Educativo"
+  },
+  "hooksHeading": "Variantes de hook",
+  "engine": {
+    "label": "Motor: {provider}",
+    "templateMode": "Modo de modelo (nenhum fornecedor de IA configurado)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Guardar como item de conteúdo",
+    "saving": "A guardar…"
+  }
+}

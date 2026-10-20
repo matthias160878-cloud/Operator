@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Content Kalender",
+  "subtitle": "Conținut planificat și publicat, dintr-o privire.",
+  "weekdays": ["Lu", "Ma", "Mi", "Jo", "Vi", "Sâ", "Du"],
+  "months": [
+    "ianuarie", "februarie", "martie", "aprilie", "mai", "iunie",
+    "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"
+  ],
+  "allPlatforms": "Toate platformele",
+  "moreItems": "+{count} în plus",
+  "listTitle": "Lista acestei luni",
+  "emptyMonth": "Nicio postare planificată în această lună."
+}

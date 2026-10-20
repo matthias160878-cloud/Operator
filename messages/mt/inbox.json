@@ -1,0 +1,27 @@
+{
+  "title": "Inbox",
+  "description": "Messaġġi u talbiet f'post wieħed. MessageAgent jissuġġerixxi abbozzi ta' tweġibiet.",
+  "emptyState": "Għad m'hemm l-ebda konversazzjonijiet — issimula waħda biex tibda.",
+  "backToInbox": "Lura għall-Inbox",
+  "newConversation": {
+    "simulateButton": "Issimula konversazzjoni",
+    "simulateHint": "Peress li m'hemm l-ebda konnessjoni reali ma' pjattaforma, tista' hawn issimula messaġġ li jidħol biex tipprova l-abbozz tat-tweġiba bl-AI.",
+    "close": "Agħlaq",
+    "namePlaceholder": "Isem",
+    "handlePlaceholder": "@handle (mhux obbligatorju)",
+    "messagePlaceholder": "Test tal-messaġġ …",
+    "createButton": "Oħloq"
+  },
+  "detail": {
+    "draftFailed": "L-abbozz falla.",
+    "save": "Aħżen",
+    "edit": "Editja",
+    "approveAndSend": "Approva u ibgħat",
+    "requestDraft": "Itlob abbozz ta' tweġiba bl-AI",
+    "openDraftExists": "Diġà hemm abbozz miftuħ hawn fuq — l-ewwel editja/ibgħat.",
+    "simulateMoreHint": "Issimula messaġġ ieħor li jidħol (test mingħajr konnessjoni reali ma' pjattaforma):",
+    "messagePlaceholder": "Test tal-messaġġ …",
+    "addButton": "Żid"
+  },
+  "simulationBanner": "<strong>Previżjoni/simulazzjoni:</strong> il-messaġġi mill-pjattaformi għadhom ma jinġabrux u t-tweġibiet ma jintbagħtux – lanqas permezz ta' \"Approva u ibgħat\". Messaġġi tal-pjattaformi tista' tissimulahom hawnhekk biex tipprova. Entrati reali jiġu biss minn formoli tas-sit (eż. talbiet għal appuntament); lil dawk twieġeb bl-email."
+}

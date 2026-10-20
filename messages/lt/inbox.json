@@ -1,0 +1,27 @@
+{
+  "title": "Gautieji",
+  "description": "Žinutės ir užklausos vienoje vietoje. MessageAgent siūlo atsakymų juodraščius.",
+  "emptyState": "Pokalbių dar nėra — imituok vieną, kad pradėtum.",
+  "backToInbox": "Atgal į gautuosius",
+  "newConversation": {
+    "simulateButton": "Imituoti pokalbį",
+    "simulateHint": "Kadangi tikro ryšio su platforma nėra, čia gali imituoti gaunamą žinutę ir išbandyti DI atsakymo juodraštį.",
+    "close": "Uždaryti",
+    "namePlaceholder": "Vardas",
+    "handlePlaceholder": "@handle (neprivaloma)",
+    "messagePlaceholder": "Žinutės tekstas …",
+    "createButton": "Sukurti"
+  },
+  "detail": {
+    "draftFailed": "Juodraščio sukurti nepavyko.",
+    "save": "Išsaugoti",
+    "edit": "Redaguoti",
+    "approveAndSend": "Patvirtinti ir siųsti",
+    "requestDraft": "Užsakyti DI atsakymo juodraštį",
+    "openDraftExists": "Viršuje jau yra atviras juodraštis — pirmiausia jį redaguok / išsiųsk.",
+    "simulateMoreHint": "Imituoti kitą gaunamą žinutę (bandymas be tikro ryšio su platforma):",
+    "messagePlaceholder": "Žinutės tekstas …",
+    "addButton": "Pridėti"
+  },
+  "simulationBanner": "<strong>Peržiūra/simuliacija:</strong> žinutės iš platformų dar negaunamos, o atsakymai nesiunčiami – net per „Patvirtinti ir siųsti“. Platformų žinutes čia gali simuliuoti, kad išbandytum. Tikri įrašai ateina tik iš svetainės formų (pvz., užklausų dėl laiko); į juos atsakai el. paštu."
+}

@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Kõik sisuühikud ühes kohas — loo, dubleeri, kirjuta ümber, rikasta häälkõne ja subtiitritega ning lase need läbi kinnitusprotsessi.",
+  "statusTabs": {
+    "all": "Kõik",
+    "draft": "Visand",
+    "inReview": "Ülevaatusel",
+    "approved": "Kinnitatud",
+    "scheduled": "Planeeritud",
+    "published": "Avaldatud",
+    "archived": "Arhiveeritud"
+  },
+  "newItem": {
+    "openButton": "Uus sisuühik",
+    "titleLabel": "Pealkiri",
+    "platformLabel": "Platvorm",
+    "create": "Loo",
+    "closeAria": "Sulge"
+  },
+  "table": {
+    "empty": "Sisuühikuid pole veel — loo üks käsitsi või Content Brainis.",
+    "title": "Pealkiri",
+    "platform": "Platvorm",
+    "format": "Vorming",
+    "status": "Olek",
+    "updated": "Uuendatud",
+    "actions": "Toimingud",
+    "duplicate": "Dubleeri",
+    "delete": "Kustuta",
+    "confirmDelete": "Kas kustutada sisuühik tõesti?"
+  },
+  "detail": {
+    "backLink": "Tagasi Content Factorysse",
+    "actionFailed": "Toiming ebaõnnestus.",
+    "actions": {
+      "review": "Ülevaatusele",
+      "approve": "Kinnita",
+      "reject": "Lükka tagasi",
+      "schedule": "Planeeri",
+      "publish": "Avalda",
+      "copy": "Kopeeri postitus",
+      "markPublished": "Avaldatud käsitsi"
+    },
+    "rejectReasonPrompt": "Tagasilükkamise põhjus (valikuline):",
+    "scheduleDatePrompt": "Avaldamise kuupäev (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Pealkiri",
+      "hook": "Haak",
+      "script": "Skript",
+      "caption": "Allkiri"
+    },
+    "save": "Salvesta",
+    "saving": "Salvestan…",
+    "hashtags": {
+      "heading": "Märksõnad ja võtmesõnad",
+      "regenerate": "Genereeri uuesti",
+      "empty": "Märksõnu pole veel genereeritud."
+    },
+    "voiceover": {
+      "heading": "Häälkõne",
+      "generate": "Loo",
+      "empty": "Häälkõnet pole veel loodud."
+    },
+    "subtitles": {
+      "heading": "Subtiitrid",
+      "generate": "Loo (SRT)",
+      "download": "Laadi alla {file}",
+      "empty": "Subtiitreid pole veel loodud."
+    },
+    "video": {
+      "heading": "Video renderdamine",
+      "request": "Telli renderdamine",
+      "note": "Pakkujast sõltumatu videotoru (jaotis 11/12) — praegu pole ühtegi videopakkujat seadistatud (vt Integratsioonid)."
+    },
+    "scriptVariants": {
+      "heading": "Skriptivariandid",
+      "newVariant": "Uus variant",
+      "empty": "Variante pole veel.",
+      "variantSummary": "Variant {label}"
+    },
+    "repurpose": {
+      "heading": "Kasuta sisu uuesti",
+      "description": "Loo sellest sisuühikust platvormidele sobivad tuletised teistele kanalitele. Rohkem kanaleid = rohkem võimalusi, et inimesed videot näevad.",
+      "selectAll": "Vali kõik platvormid",
+      "clearAll": "Tühista valik",
+      "generateButton": "Loo {count} tuletist"
+    },
+    "approvalRevoked": "Kinnitus tühistati: postitust muudeti ja see tuleb uuesti üle vaadata ning kinnitada.",
+    "job": {
+      "QUEUED": "Automaatne saatmine planeeritud: {when}.",
+      "RUNNING": "Saatmine käib (tähtaeg {when}).",
+      "SUCCEEDED": "Avaldatud tähtajal {when}.",
+      "FAILED": "Saatmine tähtajal {when} ebaõnnestus, postitus on taas „Kinnitatud“.",
+      "UNKNOWN": "Saatmine tähtajal {when}: tulemus on ebaselge.",
+      "CANCELED": "Planeeritud saatmist ({when}) ei tehtud."
+    },
+    "copied": "Tekst ja märksõnad kopeeritud — nüüd kleebi need platvormi rakendusse.",
+    "copyFailed": "Kopeerimine ei õnnestu — palun märgi tekst käsitsi.",
+    "markPublishedConfirm": "Kas postitasid selle ise? See märgitakse avaldatuks; planeeritud saatmine tühistatakse."
+  }
+}

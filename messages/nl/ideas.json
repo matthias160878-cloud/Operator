@@ -1,0 +1,25 @@
+{
+  "title": "Ideeën & inspiratie",
+  "subtitle": "Themaclusters, series en formaten voor toekomstige content — gegenereerd door de IdeaAgent of handmatig vastgelegd.",
+  "board": {
+    "topicLabel": "Onderwerp voor nieuwe ideeën",
+    "topicPlaceholder": "bijv. Productiviteit met AI-agents",
+    "generateButton": "Ideeën genereren",
+    "manualButton": "Handmatig",
+    "manualTitlePlaceholder": "Titel van het idee",
+    "addButton": "Toevoegen",
+    "generateError": "Fout bij het genereren van ideeën.",
+    "unknownError": "Onbekende fout.",
+    "emptyState": "Nog geen ideeën — genereer er een paar of voeg er handmatig een toe.",
+    "minutesUnit": "~{count} min.",
+    "statusNew": "Nieuw",
+    "statusInProgress": "In uitvoering",
+    "statusUsed": "Gebruikt",
+    "statusArchived": "Gearchiveerd",
+    "sourceAiGenerated": "IdeaAgent (AI of sjabloon)",
+    "sourceManual": "Handmatig",
+    "templateResult": "Sjabloon: de zojuist gemaakte ideeën komen uit vaste tekstblokken, niet van een AI. Voor AI-ideeën voer je je eigen AI-sleutel in onder „Instellingen → Eigen toegangen”.",
+    "textEngineLabel": "Tekst-engine:",
+    "templateMode": "Sjabloonmodus (geen AI-provider geconfigureerd)"
+  }
+}

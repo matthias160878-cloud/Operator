@@ -1,0 +1,14 @@
+{
+  "title": "Cúntóir AI",
+  "welcome": "Dia duit! Fiafraigh díom faoi rud ar bith a bhaineann le SECRET 58 — conas rud a shocrú, cá bhfaighidh tú rud, nó conas a oibríonn limistéar.",
+  "inputPlaceholder": "Cuir ceist isteach …",
+  "thinking": "Ag smaoineamh …",
+  "openButton": "Oscail an cúntóir AI",
+  "close": "Dún",
+  "sendButton": "Seol",
+  "micButton": "Ionchur gutha",
+  "speakToggle": "Léigh na freagraí os ard",
+  "notConfigured": "Níl an cúntóir AI cumraithe go fóill — caithfear soláthraí AI (Anthropic nó OpenAI) a shocrú dó sin.",
+  "openIntegrations": "Go dtí Comhtháthuithe",
+  "error": "Níorbh fhéidir leis an gcúntóir AI freagra a thabhairt faoi láthair. Bain triail eile as níos déanaí."
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Analytics",
+  "subtitle": "Statistikat e platformave (shikime, pëlqime, komente, shpërndarje) ende nuk merren automatikisht. Këtu shfaqen vetëm vlera të ruajtura tashmë, p.sh. të dhëna shembull. Numrat nga statistikat e platformës mund t'i futësh me dorë te <weiter>Rekomandime</weiter> („Fut numrat e platformës”) ose te <varianten>krahasimi i varianteve</varianten> – ato vlerësohen atje, jo në këtë faqe.",
+  "statViewsTotal": "Shikime gjithsej",
+  "statLikesTotal": "Pëlqime gjithsej",
+  "statComments": "Komente",
+  "statShares": "Shpërndarje",
+  "chartTitle": "Performanca e përmbajtjes me kalimin e kohës",
+  "chartLegend": "Shikime (vjollcë) · Engagement % (turkez)",
+  "chartEmpty": "Ende nuk ka statistika – nuk ka ecuri të disponueshme.",
+  "bestPerformingTitle": "Përmbajtja më e suksesshme",
+  "bestPerformingEmpty": "Ende nuk ka statistika – renditja nuk është e mundur.",
+  "learningAgentTitle": "Learning Agent — Rekomandime",
+  "statsEmpty": "Ende nuk ka statistika të ruajtura – prandaj këtu ende nuk ka tregues. Statistikat e platformave ende nuk merren automatikisht."
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Smaoineamh amháin isteach — plean inneachair iomlán, oiriúnaithe don ardán amach. Cuireann an ContentBrainAgent do Brand DNA san áireamh agus cruthaíonn sé hooks, scripteanna, hashtaganna agus coincheapa mionsamhlacha oiriúnacha do gach ardán roghnaithe mar dhréacht.",
+  "campaignsHeading": "Feachtais",
+  "noCampaigns": "Níor cruthaíodh aon fheachtas go fóill.",
+  "campaignSummary": "{count} mír inneachair · {audience}",
+  "form": {
+    "textEngineLabel": "Inneall téacs:",
+    "templateMode": "Mód teimpléid (níl aon soláthraí AI cumraithe)",
+    "modeTemplate": "Teimpléad",
+    "topicLabel": "Téama / Smaoineamh",
+    "topicPlaceholder": "m.sh. Mínigh cén fáth a n-athraíonn gníomhairí AI uathrialacha saol na hoibre.",
+    "audienceLabel": "Spriocghrúpa",
+    "audiencePlaceholder": "m.sh. 25-45, spéis sa teicneolaíocht",
+    "goalLabel": "Sprioc",
+    "languageLabel": "Teanga",
+    "platformsLabel": "Ardáin",
+    "itemsPerPlatformLabel": "Míreanna inneachair an ardán ({count})",
+    "generateError": "Theip ar an nginiúint.",
+    "unknownError": "Earráid anaithnid.",
+    "submitLoading": "Content Brain ag obair…",
+    "submitIdle": "Gin plean inneachair",
+    "resultHeading": "Feachtas cruthaithe — {count} mír inneachair curtha leis mar dhréacht.",
+    "resultDescription": "Ginte sa mhód {mode}. Tosaíonn gach inneachar mar DRAFT — seiceáil agus cuir in eagar iad sa Content Factory.",
+    "resultLink": "Go dtí an Content Factory →"
+  }
+}

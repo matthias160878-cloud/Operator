@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Gach mír inneachair in aon áit — cruthaigh, dúbail, athscríobh, saibhrigh le voiceover/fotheidil agus seol tríd an sreabhadh oibre formheasa iad.",
+  "statusTabs": {
+    "all": "Gach ceann",
+    "draft": "Dréacht",
+    "inReview": "Á athbhreithniú",
+    "approved": "Formheasta",
+    "scheduled": "Pleanáilte",
+    "published": "Foilsithe",
+    "archived": "Cartlannaithe"
+  },
+  "newItem": {
+    "openButton": "Mír inneachair nua",
+    "titleLabel": "Teideal",
+    "platformLabel": "Ardán",
+    "create": "Cruthaigh",
+    "closeAria": "Dún"
+  },
+  "table": {
+    "empty": "Gan aon mhír inneachair go fóill — cruthaigh ceann de láimh nó trí Content Brain.",
+    "title": "Teideal",
+    "platform": "Ardán",
+    "format": "Formáid",
+    "status": "Stádas",
+    "updated": "Nuashonraithe",
+    "actions": "Gníomhartha",
+    "duplicate": "Dúbail",
+    "delete": "Scrios",
+    "confirmDelete": "An bhfuil tú cinnte gur mhaith leat an mhír inneachair a scriosadh?"
+  },
+  "detail": {
+    "backLink": "Ar ais go dtí an Content Factory",
+    "actionFailed": "Theip ar an ngníomh.",
+    "actions": {
+      "review": "Chun athbhreithnithe",
+      "approve": "Formheas",
+      "reject": "Diúltaigh",
+      "schedule": "Pleanáil",
+      "publish": "Foilsigh",
+      "copy": "Cóipeáil an postáil",
+      "markPublished": "Foilsithe de láimh"
+    },
+    "rejectReasonPrompt": "Cúis an diúltaithe (roghnach):",
+    "scheduleDatePrompt": "Dáta foilsithe (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Teideal",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caipsean"
+    },
+    "save": "Sábháil",
+    "saving": "Ag sábháil…",
+    "hashtags": {
+      "heading": "Hashtaganna & Eochairfhocail",
+      "regenerate": "Gin arís",
+      "empty": "Níor gineadh aon hashtag go fóill."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Gin",
+      "empty": "Níor gineadh aon voiceover go fóill."
+    },
+    "subtitles": {
+      "heading": "Fotheidil",
+      "generate": "Gin (SRT)",
+      "download": "Íoslódáil {file}",
+      "empty": "Níor gineadh aon fhotheideal go fóill."
+    },
+    "video": {
+      "heading": "Rindreáil físe",
+      "request": "Iarr rindreáil",
+      "note": "Píblíne físe neamhspleách ar sholáthraí (Roinn 11/12) — níl aon soláthraí físe cumraithe faoi láthair (féach Comhtháthuithe)."
+    },
+    "scriptVariants": {
+      "heading": "Leaganacha scripte",
+      "newVariant": "Leagan nua",
+      "empty": "Gan aon leaganacha go fóill.",
+      "variantSummary": "Leagan {label}"
+    },
+    "repurpose": {
+      "heading": "Athúsáid inneachair",
+      "description": "Cruthaigh géaga oiriúnaithe don ardán ón mír inneachair seo le haghaidh cainéal eile. Níos mó cainéal = níos mó seans go mbeidh an físeán le feiceáil ag daoine.",
+      "selectAll": "Roghnaigh gach ardán",
+      "clearAll": "Díroghnaigh",
+      "generateButton": "Gin {count} géag"
+    },
+    "approvalRevoked": "Formheas tarraingthe siar: athraíodh an postáil agus ní mór í a athbhreithniú agus a fhormheas arís.",
+    "job": {
+      "QUEUED": "Seoladh uathoibríoch pleanáilte do {when}.",
+      "RUNNING": "Seoladh ar siúl (sceideal {when}).",
+      "SUCCEEDED": "Foilsithe ag an sceideal {when}.",
+      "FAILED": "Theip ar an seoladh ag an sceideal {when}, tá an phostáil “Formheasta” arís.",
+      "UNKNOWN": "Seoladh ag an sceideal {when}: toradh neamhchinnte.",
+      "CANCELED": "Níor rinneadh an seoladh pleanáilte ({when})."
+    },
+    "copied": "Téacs agus hashtaganna cóipeáilte — greamaigh iad san aip ardáin anois.",
+    "copyFailed": "Níorbh fhéidir cóipeáil — roghnaigh an téacs de láimh.",
+    "markPublishedConfirm": "An bhfuil an phostáil curtha suas agat féin? Marcálfar í mar fhoilsithe; caillfear an seoladh pleanáilte."
+  }
+}

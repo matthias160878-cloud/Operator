@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Więcej niż content.",
+    "footerLine2": "Kompletna maszyna do treści.",
+    "workspace": "Przestrzeń robocza",
+    "role": "Administrator"
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "schulung": "Szkolenie",
+    "contentFactory": "Content Factory",
+    "ideas": "Pomysły i inspiracje",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Social Media",
+    "calendar": "Kalendarz treści",
+    "analytics": "Analityka",
+    "growth": "Wzrost",
+    "weiterempfehlungen": "Polecenia",
+    "reichweitenaufbau": "Budowanie zasięgu",
+    "revenue": "Przychody",
+    "inbox": "Skrzynka odbiorcza",
+    "anfragen": "Zapytania",
+    "dateien": "Pliki",
+    "agents": "Agenci",
+    "integrations": "Integracje",
+    "settings": "Ustawienia",
+    "billing": "Pakiet i rozliczenia",
+    "sales": "Sprzedaż i sklep",
+    "website": "Moja strona"
+  },
+  "topbar": {
+    "menuOpen": "Otwórz menu",
+    "menuClose": "Zamknij menu",
+    "searchPlaceholder": "Szukaj treści, projektów, kampanii …",
+    "notifications": "Powiadomienia",
+    "language": "Język"
+  },
+  "footer": {
+    "help": "Pomoc",
+    "privacy": "Prywatność",
+    "imprint": "Impressum",
+    "systemOnline": "System online"
+  },
+  "actions": {
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "create": "Utwórz",
+    "close": "Zamknij",
+    "back": "Wstecz",
+    "loading": "Ładowanie …"
+  },
+  "status": {
+    "connected": "Połączono",
+    "notConfigured": "Nie skonfigurowano",
+    "error": "Błąd"
+  },
+  "statusBadge": {
+    "CONNECTED": "Połączono",
+    "ACTIVE": "Aktywny",
+    "COMPLETED": "Zakończono",
+    "RUNNING": "W toku",
+    "SUCCESS": "Sukces",
+    "PUBLISHED": "Opublikowano",
+    "APPROVED": "Zatwierdzono",
+    "SCHEDULED": "Zaplanowano",
+    "WAITING": "Oczekuje",
+    "IN_REVIEW": "W weryfikacji",
+    "NOT_CONFIGURED": "Nie skonfigurowano",
+    "IDLE": "Gotowy",
+    "DRAFT": "Szkic",
+    "ARCHIVED": "Zarchiwizowano",
+    "ERROR": "Błąd",
+    "REJECTED": "Odrzucono",
+    "RECEIVED": "Otrzymano",
+    "PENDING": "Oczekuje",
+    "NOT_AVAILABLE": "Jeszcze niedostępne"
+  },
+  "integrationStatus": {
+    "notConfigured": "Nie skonfigurowano — brakujące zmienne: {vars}.",
+    "verifyFailedGeneric": "Połączenie nie powiodło się.",
+    "verifyFailedStatus": "{service} odpowiedział ze statusem {status}.",
+    "verifyUnreachable": "Nie udało się połączyć z {service}.",
+    "connected": "Połączono.",
+    "notAvailable": "Jeszcze niedostępne – to połączenie nie zostało jeszcze zbudowane w aplikacji."
+  },
+  "mediaPreview": {
+    "expand": "Powiększ",
+    "close": "Zamknij"
+  }
+}

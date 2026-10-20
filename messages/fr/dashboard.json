@@ -1,8 +1,7 @@
 {
   "viewAll": "Voir tout",
   "demoBanner": {
-    "before": "Données de démonstration actives — les campagnes, les éléments de contenu et les analyses sont des données d'exemple provenant de ",
-    "after": ", pas de vrais chiffres de plateforme."
+    "text": "Données d'exemple actives – les campagnes, contenus et statistiques de cet espace de travail sont des données d'exemple, pas de vrais chiffres de plateformes."
   },
   "hero": {
     "subtitle": "Une idée. Plusieurs plateformes. Portée maximale.",
@@ -26,8 +25,9 @@
     "published": "Publications",
     "views": "Vues",
     "avgEngagement": "Engagement moyen",
-    "totalRevenue": "Revenus totaux",
-    "noComparisonWeek": "Aucune semaine précédente disponible comme base de comparaison — les taux de variation apparaîtront dès que des données sur au moins deux semaines seront disponibles."
+    "totalRevenue": "Revenus (saisis manuellement)",
+    "noComparisonWeek": "Aucune semaine précédente disponible comme base de comparaison — les taux de variation apparaîtront dès que des données sur au moins deux semaines seront disponibles.",
+    "noStats": "Vues et engagement : pas encore de statistiques – les statistiques des plateformes ne sont pas encore récupérées automatiquement."
   },
   "production": {
     "title": "Production de contenu",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} connectées"
   },
   "agentMonitor": {
-    "title": "Moniteur d'agents",
+    "title": "Journal des assistants",
     "empty": "Aucune exécution pour l'instant."
   },
   "topPerformer": {
     "title": "Top performance",
     "last7Days": "7 derniers jours",
-    "empty": "Aucune donnée de performance pour l'instant.",
+    "empty": "Pas encore de données de performance – les statistiques des plateformes ne sont pas encore récupérées automatiquement.",
     "views": "Vues",
     "likes": "J'aime",
     "comments": "Commentaires",

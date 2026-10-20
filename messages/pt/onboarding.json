@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Passo {current} de {total}",
+    "close": "Fechar",
+    "back": "Voltar",
+    "next": "Seguinte",
+    "skip": "Saltar",
+    "finish": "Concluído, começar",
+    "checking": "A verificar …",
+    "checkAgain": "Verificar agora",
+    "connected": "Ligado",
+    "notConnected": "Ainda não ligado",
+    "skippedNote": "Saltado — podes retomar isto em qualquer altura em «Integrações».",
+    "envHint": "Nota: depois de guardares no Render, o serviço demora normalmente 1–2 minutos a reiniciar e a alteração a ter efeito. Se «Verificar agora» ainda não encontrar nada, espera um pouco e clica de novo.",
+    "reopenHint": "Podes voltar a abrir este assistente em qualquer altura: em Definições, em «Assistente de configuração»."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Bem-vindo ao SECRET 58",
+      "body": "Antes de começar, configuramos juntos o essencial — em passos pequenos e separados. Podes fazer uma pausa em qualquer altura e continuar mais tarde do mesmo ponto."
+    },
+    "aiProvider": {
+      "title": "Passo 1: ligar o fornecedor de IA",
+      "body": "Para textos, scripts, hooks e hashtags, o software precisa de um fornecedor de IA. Escolhe um dos dois — basta um.",
+      "steps": [
+        "Clica abaixo, em Anthropic ou OpenAI, em «Obter chave de API».",
+        "Cria aí, se necessário, uma conta gratuita.",
+        "Gera aí uma nova chave de API e copia-a.",
+        "Clica em «Registar no Render», cola lá a chave como variável de ambiente e guarda.",
+        "Volta aqui e clica em «Verificar agora», abaixo."
+      ],
+      "costHint": "Os custos só surgem com a utilização efetiva, diretamente junto do respetivo fornecedor — nunca através do SECRET 58."
+    },
+    "platform": {
+      "title": "Passo 2: ligar uma plataforma de redes sociais (opcional)",
+      "body": "Opcional, mas recomendado: liga pelo menos uma plataforma onde queiras publicar mais tarde. Também podes fazer este passo depois.",
+      "steps": [
+        "Escolhe abaixo uma plataforma que queiras usar.",
+        "Clica em «Obter chave de API» e segue as instruções do fornecedor.",
+        "Clica em «Registar no Render» e guarda aí as credenciais.",
+        "Volta aqui e clica em «Verificar agora»."
+      ]
+    },
+    "voice": {
+      "title": "Passo 3: ligar a saída de voz (opcional)",
+      "body": "Só é necessário se quiseres gerar automaticamente vozes off faladas para os teus vídeos. Sem este passo, tudo o resto funciona na mesma.",
+      "steps": [
+        "Clica em «Obter chave de API» na ElevenLabs.",
+        "Cria aí uma conta e uma chave de API.",
+        "Clica em «Registar no Render» e guarda lá a chave.",
+        "Volta aqui e clica em «Verificar agora»."
+      ]
+    },
+    "done": {
+      "title": "Pronto!",
+      "body": "Já podes começar. Tudo o que saltaste podes encontrar e completar em qualquer altura na área «Integrações» — ou voltar a abrir este assistente em «Definições»."
+    }
+  }
+}

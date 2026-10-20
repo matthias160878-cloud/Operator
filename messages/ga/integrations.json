@@ -1,0 +1,24 @@
+{
+  "title": "Comhtháthuithe",
+  "description": "Stádas beo na seirbhísí seachtracha – naisc atá socraithe agus fíoraithe i ndáiríre amháin, ní ligtear aon rud orthu.",
+  "categories": {
+    "AI": "Soláthraithe AI",
+    "VOICE": "Guth",
+    "PLATFORM": "Ardáin shóisialta",
+    "DESIGN": "Dearadh",
+    "VIDEO": "Físeán",
+    "TREND": "Treochtaí"
+  },
+  "costNote": "Is síntiús é do phacáiste SECRET 58 (Pro nó Maxi), féach “Pacáiste & Billeáil”. Tá a mhúnla costais féin, neamhspleách, ag gach seirbhís sheachtrach anseo leis an soláthraí faoi seach — ní ghearrann SECRET 58 aon rud breise ina leith sin go deo.",
+  "links": {
+    "getKey": "Faigh eochair API",
+    "setInRender": "Cuir isteach i Render",
+    "viewPricing": "Féach ar na praghsanna"
+  },
+  "pricing": {
+    "free": "Saor in aisce",
+    "payAsYouGo": "Bunaithe ar úsáid",
+    "subscription": "Síntiús",
+    "unknown": "Seiceáil an praghas leis an soláthraí"
+  }
+}

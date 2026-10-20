@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Nessun abbonamento. Tutti gli agenti. I tuoi fornitori di IA.",
+  "subtitle": "Un'idea. Più piattaforme. Massima portata. Un unico pacchetto completo: paghi una volta e hai accesso a tutta l'applicazione.",
+  "features": [
+    "Content Brain — un'idea, tutte le piattaforme",
+    "Tutti gli agenti IA: idee, trend, script, hook, hashtag, miniature, sottotitoli, pubblicazione",
+    "Voice Studio con le voci di ElevenLabs",
+    "Video Studio con gestione dei formati — collegamento dei generatori video IA in corso",
+    "Content Factory con flusso di approvazione e calendario dei contenuti",
+    "Analytics, raccomandazioni di crescita e monitoraggio delle entrate",
+    "Posta in arrivo con bozze di risposta generate dall'IA",
+    "Libera scelta dei fornitori di IA tramite accessi propri — nessuna quota"
+  ],
+  "priceOnetime": "una tantum",
+  "priceRecommendedNote": "Prezzo consigliato — diventa vincolante non appena Stripe viene configurato con un prezzo corrispondente.",
+  "buyButton": "Acquista ora",
+  "redirecting": "Reindirizzamento a Stripe …",
+  "checkoutFailed": "Checkout non riuscito.",
+  "unknownError": "Errore sconosciuto.",
+  "notConfigured": "Il pagamento non è ancora configurato: il gestore deve prima creare in Stripe un prodotto a {price} e inserire STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Nota: questo prezzo è una tantum per il software. Alcune funzioni (ad es. generazione di testo con IA, sintesi vocale) richiedono accessi propri presso fornitori terzi (ad es. Anthropic, ElevenLabs): i relativi costi sono indipendenti da SECRET 58 e vengono addebitati direttamente dal rispettivo fornitore, non qui. Dettagli dopo l'acquisto in Integrazioni.",
+  "setupServiceTitle": "Aggiungi il servizio di configurazione (+{price} una tantum)",
+  "setupServiceDescription": "Configuriamo per te chiavi API, Brand DNA e i primi post.",
+  "setupServiceUnavailable": "Presto prenotabile: il gestore deve prima registrare il servizio in Stripe.",
+  "autopilot": {
+    "kicker": "Prossimamente",
+    "title": "Autopilot — tutto incluso",
+    "subtitle": "Nessun accesso proprio necessario: tutti i costi dei fornitori per testo, voce e video sono inclusi. Stesse funzionalità del pacchetto completo: le taglie si differenziano solo per la quantità.",
+    "comingSoon": "Prossimamente",
+    "perMonth": "/ mese",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agenzia"
+    },
+    "brands": "{count, plural, one {# marchio} other {# marchi}}",
+    "ideas": "{count} idee di contenuto al mese",
+    "videos": "{count} video IA (da 30 s) al mese",
+    "voiceMinutes": "{count} minuti di sintesi vocale al mese",
+    "note": "Prezzi previsti, non ancora prenotabili. Autopilot parte non appena i generatori video IA saranno collegati."
+  }
+}

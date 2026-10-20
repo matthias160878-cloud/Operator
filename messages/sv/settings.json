@@ -1,0 +1,27 @@
+{
+  "title": "Inställningar",
+  "description": "Din arbetsyta, användare och en översikt över dina data. Dina egna API-nycklar (AI-texter, utskick av nyhetsbrev) anger du under <zugaenge>Egna åtkomster</zugaenge>; ditt paket finns under <billing>Paket & fakturering</billing>.",
+  "workspace": {
+    "title": "Arbetsyta",
+    "name": "Namn",
+    "slug": "Slug",
+    "createdAt": "Skapad den"
+  },
+  "users": {
+    "title": "Användare & roller",
+    "note": "Varje konto har en egen arbetsyta, åtskild från andra kunder. Fler användare kan du ännu inte lägga till själv."
+  },
+  "system": {
+    "title": "System",
+    "contentItems": "Innehållsobjekt",
+    "campaigns": "Kampanjer",
+    "mediaAssets": "Mediaresurser",
+    "agentRuns": "Agentkörningar",
+    "dbNote": "Antal poster som sparats i din arbetsyta. Du kan exportera alla data eller radera arbetsytan längre ner under ”Mina data”."
+  },
+  "onboarding": {
+    "title": "Installationsassistent",
+    "description": "De små steg-för-steg-fönstren för AI-leverantörer, plattformar för sociala medier och talsyntes som visas vid första öppnandet.",
+    "reopen": "Öppna installationsassistenten igen"
+  }
+}

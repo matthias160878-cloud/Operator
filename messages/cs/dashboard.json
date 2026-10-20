@@ -1,0 +1,96 @@
+{
+  "viewAll": "Zobrazit vše",
+  "demoBanner": {
+    "text": "Ukázková data aktivní – kampaně, obsah a statistiky v tomto pracovním prostoru jsou ukázková data, ne skutečná čísla z platforem."
+  },
+  "hero": {
+    "subtitle": "Jeden nápad. Více platforem. Maximální dosah.",
+    "newCampaign": "Nová kampaň",
+    "createContent": "Vytvořit obsah",
+    "findIdeas": "Najít nápady",
+    "aiAgents": "AI agenti"
+  },
+  "orbit": {
+    "xNotConnected": "X (nepřipojeno)",
+    "brainAlt": "AI mozek SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Aktivní agenti",
+    "empty": "Zatím žádné běhy agentů."
+  },
+  "kpi": {
+    "contentCreated": "Vytvořený obsah",
+    "videosCreated": "Vytvořená videa",
+    "postsCreated": "Vytvořené příspěvky",
+    "published": "Publikace",
+    "views": "Zobrazení",
+    "avgEngagement": "Ø Engagement",
+    "totalRevenue": "Příjmy (zadané ručně)",
+    "noComparisonWeek": "Zatím není k dispozici předchozí týden jako základ pro srovnání — míry změn se objeví, jakmile budou data alespoň za dva týdny.",
+    "noStats": "Zhlédnutí a engagement: zatím žádné statistiky – statistiky platforem se zatím nenačítají automaticky."
+  },
+  "production": {
+    "title": "Produkce obsahu",
+    "thisWeek": "Tento týden"
+  },
+  "scheduled": {
+    "title": "Naplánované příspěvky",
+    "empty": "Žádné naplánované příspěvky."
+  },
+  "activity": {
+    "title": "Poslední aktivity",
+    "empty": "Zatím žádné aktivity."
+  },
+  "contentFactory": {
+    "description": "Vytvoř z jediného nápadu kompletní obsahové kampaně pro všechny platformy.",
+    "cta": "Začít hned →",
+    "popularTemplates": "Oblíbené šablony",
+    "templateYoutubeVideo": "Video na YouTube",
+    "templateTiktokSeries": "Série na TikTok",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "Příspěvek na LinkedIn",
+    "templateBlogPost": "Blogový článek",
+    "viewAllTemplates": "Všechny šablony →"
+  },
+  "brandDna": {
+    "tonality": "Tón komunikace",
+    "targetAudience": "Cílová skupina",
+    "industry": "Obor",
+    "language": "Jazyk",
+    "empty": "Zatím není uložena žádná Brand DNA."
+  },
+  "campaigns": {
+    "title": "Aktuální kampaně",
+    "empty": "Zatím žádné kampaně."
+  },
+  "platforms": {
+    "title": "Platformy",
+    "manage": "Spravovat"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} připojeno"
+  },
+  "agentMonitor": {
+    "title": "Protokol asistentů",
+    "empty": "Zatím žádné běhy."
+  },
+  "topPerformer": {
+    "title": "Nejúspěšnější obsah",
+    "last7Days": "Posledních 7 dní",
+    "empty": "Zatím žádná data o výkonu – statistiky platforem se zatím nenačítají automaticky.",
+    "views": "Zobrazení",
+    "likes": "Lajky",
+    "comments": "Komentáře",
+    "shares": "Sdílení",
+    "engagementRate": "+Míra engagementu {value}"
+  },
+  "calendar": {
+    "open": "Otevřít",
+    "viewMonth": "Měsíc",
+    "viewWeek": "Týden",
+    "viewDay": "Den",
+    "viewCampaign": "Kampaň",
+    "moreItems": "+{count} dalších"
+  },
+  "weekdayLabels": ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"]
+}

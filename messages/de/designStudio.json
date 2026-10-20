@@ -1,8 +1,8 @@
 {
   "pageTitle": "Design Studio",
-  "subtitle": "Thumbnail-Konzepte, Bild-Assets und die Canva-Integration.",
+  "subtitle": "Thumbnail-Konzepte als Text und der Status der Canva-Anbindung.",
   "imageAssetsTitle": "Bild-Assets",
-  "imageAssetsEmpty": "Noch keine Bild-Assets vorhanden.",
+  "imageAssetsEmpty": "Noch keine Bilder. Der Thumbnail-Agent erstellt derzeit nur Textkonzepte, keine Bilddateien.",
   "thumbnailAgent": {
     "title": "Thumbnail-Agent",
     "description": "Erzeugt ein Text-Konzept (Titel, visuelle Idee, Layout, CTA) — vorbereitet für die Anbindung eines Bildgenerators. Es wird noch kein Bild erzeugt.",
@@ -15,6 +15,9 @@
     "fieldText": "Text",
     "fieldLayout": "Layout",
     "fieldCta": "CTA",
-    "fieldImageDescription": "Bildbeschreibung"
+    "fieldImageDescription": "Bildbeschreibung",
+    "templateResult": "Vorlage: Dieses Konzept stammt aus einer festen Textvorlage, nicht von einer KI. Für KI-Konzepte einen eigenen KI-Schlüssel unter „Einstellungen → Eigene Zugänge“ eintragen.",
+    "textEngineLabel": "Text-Engine:",
+    "templateMode": "Template-Modus (kein KI-Provider konfiguriert)"
   }
 }

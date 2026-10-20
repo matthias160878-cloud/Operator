@@ -1,0 +1,27 @@
+{
+  "title": "Impostazioni",
+  "description": "Il tuo spazio di lavoro, gli utenti e una panoramica dei tuoi dati. Le tue chiavi API (testi IA, invio newsletter) le inserisci in <zugaenge>Accessi personali</zugaenge>; il tuo pacchetto è in <billing>Pacchetto e fatturazione</billing>.",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Nome",
+    "slug": "Slug",
+    "createdAt": "Creato il"
+  },
+  "users": {
+    "title": "Utenti e ruoli",
+    "note": "Ogni account ha il proprio spazio di lavoro, separato dagli altri clienti. Per ora non puoi aggiungere altri utenti da solo."
+  },
+  "system": {
+    "title": "Sistema",
+    "contentItems": "Contenuti",
+    "campaigns": "Campagne",
+    "mediaAssets": "Risorse multimediali",
+    "agentRuns": "Esecuzioni degli agenti",
+    "dbNote": "Numero di voci salvate nel tuo spazio di lavoro. Puoi esportare tutti i dati o eliminare lo spazio di lavoro più sotto, in «I miei dati»."
+  },
+  "onboarding": {
+    "title": "Assistente di configurazione",
+    "description": "Le piccole finestre passo passo per fornitori di IA, piattaforme social e sintesi vocale che compaiono alla prima apertura.",
+    "reopen": "Riapri l'assistente di configurazione"
+  }
+}

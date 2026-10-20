@@ -16,6 +16,11 @@ export interface OAuthAccountInfo {
    * Tokens verschlüsselt gespeichert.
    */
   overrideAccessToken?: string;
+  /**
+   * Facebook: Anzahl der Seiten, die beim Verbinden freigegeben wurden. Wird
+   * nicht gespeichert, nur einmalig nach dem Verbinden als Hinweis angezeigt.
+   */
+  pageCount?: number;
 }
 
 export interface OAuthProvider {
@@ -91,7 +96,7 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     tokenUrl: "https://graph.facebook.com/v19.0/oauth/access_token",
     scope: "pages_show_list,pages_manage_posts,pages_read_engagement",
     publishingCaveat:
-      "Für echtes Veröffentlichen auf verbundenen Facebook-Seiten muss die App bei Meta zusätzlich zur Prüfung (App Review) eingereicht werden — das ist ein separater Schritt bei Meta, den diese Software nicht ersetzt. Facebook postet immer über eine Seite, nicht über das persönliche Profil; falls mehrere Seiten verwaltet werden, wird automatisch die erste verbunden. Der Seiten-Zugangstoken läuft nicht automatisch ab, ein Refresh ist hier nicht nötig.",
+      "Für echtes Veröffentlichen auf verbundenen Facebook-Seiten muss die App bei Meta zusätzlich zur Prüfung (App Review) eingereicht werden — das ist ein separater Schritt bei Meta, den diese Software nicht ersetzt. Facebook postet immer über eine Seite, nicht über das persönliche Profil; falls mehrere Seiten freigegeben werden, wird automatisch die erste verbunden (Name siehe „Verbundene Seite“). Welche Seiten freigegeben werden, wählt man im Facebook-Dialog beim Verbinden. Der Seiten-Zugangstoken läuft nicht automatisch ab, ein Refresh ist hier nicht nötig.",
     async fetchAccountInfo(accessToken) {
       const res = await fetch(
         `https://graph.facebook.com/me/accounts?fields=id,name,access_token&access_token=${encodeURIComponent(accessToken)}`
@@ -105,7 +110,7 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
           "Keine Facebook-Seite gefunden, die du verwalten kannst. Lege zuerst eine Facebook-Seite an und verbinde sie mit deinem Konto, bevor du hier verbindest."
         );
       }
-      return { name: page.name, externalId: page.id, overrideAccessToken: page.access_token };
+      return { name: page.name, externalId: page.id, overrideAccessToken: page.access_token, pageCount: data.data?.length ?? 1 };
     },
   },
   INSTAGRAM: {

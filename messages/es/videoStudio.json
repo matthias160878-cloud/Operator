@@ -1,10 +1,9 @@
 {
   "pageTitle": "Video Studio",
-  "subtitle": "Pipeline de vídeo independiente del proveedor: gestor de formatos, proveedores de vídeo intercambiables, integración de voz en off y subtítulos (ver Content Factory por elemento de contenido).",
+  "subtitle": "La creación de vídeos aún no está disponible: no hay conectado ningún servicio que genere vídeos. Abajo ves los formatos preparados por plataforma; los guiones, locuciones y subtítulos los creas en Script Studio, Voice Studio y la Content Factory.",
   "providerCardTitle": "Proveedores de vídeo",
-  "providerNotePrefix": "Se pueden añadir más proveedores (APIs de vídeo con IA, bibliotecas de vídeo de stock) a través de la misma interfaz",
-  "providerNoteSuffix": "sin tocar el código existente.",
   "formatManagerTitle": "Gestor de formatos",
   "assetsTitle": "Recursos de vídeo",
-  "assetsEmpty": "Todavía no se ha renderizado ningún vídeo — el renderizado se realiza a través de los elementos de contenido en Content Factory en cuanto se configure un proveedor de vídeo."
+  "assetsEmpty": "Aún no hay vídeos. La creación de vídeos todavía no está disponible en la app.",
+  "providerNote": "Aún no hay ningún servicio de vídeo utilizable: por ahora no se pueden generar vídeos en la app."
 }

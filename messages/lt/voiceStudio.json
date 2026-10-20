@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs balso variklis — tvarkyk balsų biblioteką, kurk balso įrašų peržiūras ir importuok balsus.",
+  "envWarning": "Įgarsinimas dar negalimas: balso paslaugą (ElevenLabs) nustato operatorius. Balsų biblioteką jau galite naudoti planavimui.",
+  "addManual": "Pridėti balsą rankiniu būdu",
+  "importFromElevenLabs": "Importuoti iš ElevenLabs",
+  "form": {
+    "namePlaceholder": "Pavadinimas",
+    "voiceIdPlaceholder": "Balso ID (ElevenLabs)",
+    "languagePlaceholder": "Kalba",
+    "submit": "Pridėti"
+  },
+  "confirmDelete": "Tikrai ištrinti balsą?",
+  "importFailed": "Importuoti nepavyko.",
+  "previewFailed": "Peržiūra nepavyko.",
+  "unknownError": "Nežinoma klaida.",
+  "empty": "Bibliotekoje balsų dar nėra.",
+  "active": "Aktyvus",
+  "inactive": "Neaktyvus",
+  "remove": "Pašalinti",
+  "preview": {
+    "heading": "Balso peržiūra",
+    "defaultText": "Sveiki, tai šio balso pavyzdys.",
+    "selectPlaceholder": "Pasirink balsą…",
+    "play": "Paleisti peržiūrą"
+  }
+}

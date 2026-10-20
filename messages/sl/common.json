@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Več kot vsebina.",
+    "footerLine2": "Celoten stroj za vsebine.",
+    "workspace": "Delovni prostor",
+    "role": "Skrbnik"
+  },
+  "nav": {
+    "dashboard": "Nadzorna plošča",
+    "schulung": "Usposabljanje",
+    "contentFactory": "Content Factory",
+    "ideas": "Ideje in navdih",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Družbena omrežja",
+    "calendar": "Content Kalender",
+    "analytics": "Analitika",
+    "growth": "Rast",
+    "weiterempfehlungen": "Priporočila",
+    "reichweitenaufbau": "Gradnja dosega",
+    "revenue": "Prihodki",
+    "inbox": "Nabiralnik",
+    "anfragen": "Povpraševanja",
+    "dateien": "Datoteke",
+    "agents": "Agenti",
+    "integrations": "Integracije",
+    "settings": "Nastavitve",
+    "billing": "Paket in obračun",
+    "sales": "Prodaja in trgovina",
+    "website": "Moja spletna stran"
+  },
+  "topbar": {
+    "menuOpen": "Odpri meni",
+    "menuClose": "Zapri meni",
+    "searchPlaceholder": "Iskanje vsebin, projektov, kampanj …",
+    "notifications": "Obvestila",
+    "language": "Jezik"
+  },
+  "footer": {
+    "help": "Pomoč",
+    "privacy": "Zasebnost",
+    "imprint": "Impresum",
+    "systemOnline": "Sistem deluje"
+  },
+  "actions": {
+    "save": "Shrani",
+    "cancel": "Prekliči",
+    "delete": "Izbriši",
+    "edit": "Uredi",
+    "create": "Ustvari",
+    "close": "Zapri",
+    "back": "Nazaj",
+    "loading": "Nalaganje …"
+  },
+  "status": {
+    "connected": "Povezano",
+    "notConfigured": "Ni nastavljeno",
+    "error": "Napaka"
+  },
+  "statusBadge": {
+    "CONNECTED": "Povezano",
+    "ACTIVE": "Aktivno",
+    "COMPLETED": "Dokončano",
+    "RUNNING": "V teku",
+    "SUCCESS": "Uspešno",
+    "PUBLISHED": "Objavljeno",
+    "APPROVED": "Odobreno",
+    "SCHEDULED": "Načrtovano",
+    "WAITING": "Čaka",
+    "IN_REVIEW": "V pregledu",
+    "NOT_CONFIGURED": "Ni nastavljeno",
+    "IDLE": "Pripravljeno",
+    "DRAFT": "Osnutek",
+    "ARCHIVED": "Arhivirano",
+    "ERROR": "Napaka",
+    "REJECTED": "Zavrnjeno",
+    "RECEIVED": "Prejeto",
+    "PENDING": "Na čakanju",
+    "NOT_AVAILABLE": "Še ni na voljo"
+  },
+  "integrationStatus": {
+    "notConfigured": "Ni nastavljeno — manjkajoče spremenljivke: {vars}.",
+    "verifyFailedGeneric": "Povezava ni uspela.",
+    "verifyFailedStatus": "{service} je odgovoril s statusom {status}.",
+    "verifyUnreachable": "{service} ni dosegljiv.",
+    "connected": "Povezano.",
+    "notAvailable": "Še ni na voljo – ta povezava v aplikaciji še ni izdelana."
+  },
+  "mediaPreview": {
+    "expand": "Prikaži večje",
+    "close": "Zapri"
+  }
+}

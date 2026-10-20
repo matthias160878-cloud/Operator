@@ -1,0 +1,27 @@
+{
+  "title": "Iestatījumi",
+  "description": "Tava darba telpa, lietotāji un pārskats par taviem datiem. Savas API atslēgas (MI teksti, jaunumu vēstuļu sūtīšana) ievadi sadaļā <zugaenge>Savas piekļuves</zugaenge>; savu paketi atradīsi sadaļā <billing>Pakete un norēķini</billing>.",
+  "workspace": {
+    "title": "Darbvieta",
+    "name": "Nosaukums",
+    "slug": "Slug",
+    "createdAt": "Izveidots"
+  },
+  "users": {
+    "title": "Lietotāji un lomas",
+    "note": "Katram kontam ir sava darba telpa, nodalīta no citiem klientiem. Papildu lietotājus pagaidām nevari pievienot pats."
+  },
+  "system": {
+    "title": "Sistēma",
+    "contentItems": "Satura vienības",
+    "campaigns": "Kampaņas",
+    "mediaAssets": "Multivides resursi",
+    "agentRuns": "Aģentu palaišanas",
+    "dbNote": "Tavā darba telpā saglabāto ierakstu skaits. Visus datus vari eksportēt vai darba telpu dzēst zemāk sadaļā „Mani dati“."
+  },
+  "onboarding": {
+    "title": "Iestatīšanas asistents",
+    "description": "Mazie soli pa solim logi MI pakalpojumu sniedzējiem, sociālo mediju platformām un runas izvadei, kas parādās pirmajā atvēršanas reizē.",
+    "reopen": "Atvērt iestatīšanas asistentu vēlreiz"
+  }
+}

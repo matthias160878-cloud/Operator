@@ -1,0 +1,27 @@
+{
+ "title": "Postavke",
+ "description": "Tvoj radni prostor, korisnici i pregled tvojih podataka. Vlastite API ključeve (AI tekstovi, slanje newslettera) unosiš pod <zugaenge>Vlastiti pristupi</zugaenge>; svoj paket nalaziš pod <billing>Paket i naplata</billing>.",
+ "workspace": {
+  "title": "Radni prostor",
+  "name": "Naziv",
+  "slug": "Slug",
+  "createdAt": "Kreirano"
+ },
+ "users": {
+  "title": "Korisnici i uloge",
+  "note": "Svaki račun ima vlastiti radni prostor, odvojen od drugih kupaca. Dodatne korisnike još ne možeš sam dodati."
+ },
+ "system": {
+  "title": "Sistem",
+  "contentItems": "Stavke sadržaja",
+  "campaigns": "Kampanje",
+  "mediaAssets": "Medijski asseti",
+  "agentRuns": "Pokretanja agenata",
+  "dbNote": "Broj unosa sačuvanih u tvom radnom prostoru. Sve podatke možeš izvesti ili radni prostor izbrisati niže pod „Moji podaci”."
+ },
+ "onboarding": {
+  "title": "Asistent za postavljanje",
+  "description": "Mali prozori korak po korak za AI provajdere, platforme društvenih mreža i izgovor glasom, koji se pojavljuju pri prvom otvaranju.",
+  "reopen": "Ponovo otvori asistenta za postavljanje"
+ }
+}

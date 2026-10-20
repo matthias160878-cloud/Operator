@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Videoiden luonti ei ole vielä saatavilla: videoita tuottavaa videopalvelua ei ole vielä liitetty. Alla näet valmistellut formaatit alustoittain; käsikirjoitukset, selostukset ja tekstitykset luot Script Studiossa, Voice Studiossa ja Content Factoryssa.",
+  "providerCardTitle": "Videopalvelut",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Videomateriaalit",
+  "assetsEmpty": "Ei vielä videoita. Videoiden luonti ei ole vielä saatavilla sovelluksessa.",
+  "providerNote": "Yhtään videopalvelua ei vielä voi käyttää – videoita ei tällä hetkellä voi tuottaa sovelluksessa."
+}

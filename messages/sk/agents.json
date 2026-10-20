@@ -1,0 +1,21 @@
+{
+ "title": "Protokol asistentov",
+ "description": "Všetci asistenti (agenti) SECRET 58 so stavom, poslednou úlohou a výsledkom. Každé spustenie sa tu zaznamenáva.",
+ "table": {
+  "agent": "Agent",
+  "description": "Popis",
+  "status": "Stav",
+  "lastTask": "Posledná úloha"
+ },
+ "history": {
+  "title": "História spustení",
+  "agent": "Agent",
+  "task": "Úloha",
+  "status": "Stav",
+  "start": "Začiatok",
+  "end": "Koniec",
+  "resultError": "Výsledok / chyba",
+  "empty": "Zatiaľ žiadne spustenia agentov.",
+  "completed": "Dokončené"
+ }
+}

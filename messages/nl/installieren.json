@@ -1,0 +1,20 @@
+{
+  "button": "App installeren",
+  "buttonHint": "SECRET 58 als app op dit apparaat installeren",
+  "close": "Sluiten",
+  "canceled": "Installatie geannuleerd. Je kunt hem op elk moment opnieuw starten.",
+  "iosTitle": "Installeren op iPhone of iPad",
+  "iosStep1": "Open deze pagina in Safari.",
+  "iosStep2": "Tik op „Deel“ (het vierkant met de pijl omhoog).",
+  "iosStep3": "Kies „Zet op beginscherm“ en bevestig met „Voeg toe“.",
+  "iosShort": "Safari: Deel → Zet op beginscherm",
+  "iosNotSafari": "Op iPhone en iPad werkt de installatie alleen in Safari. Open deze pagina in Safari.",
+  "otherTitle": "Zo installeer je de app",
+  "otherChromium": "Open het browsermenu (drie puntjes) en kies „App installeren“ of „Toevoegen aan startscherm“.",
+  "otherSafariMac": "In Safari op de Mac: menu „Archief“ → „Voeg toe aan Dock“.",
+  "otherFirefox": "Firefox op de computer kan geen web-apps installeren. Gebruik Chrome, Edge of Safari.",
+  "otherGeneric": "Deze browser biedt op dit moment geen installatiedialoog aan. Mogelijk is de app al geïnstalleerd of ondersteunt de browser installatie niet. Probeer het in Chrome, Edge of Safari.",
+  "insecureTitle": "Installatie hier niet mogelijk",
+  "insecureText": "Voor de installatie is een gepubliceerde website via HTTPS nodig. Vanuit een lokaal bestand of zonder HTTPS lukt het niet. Op je eigen computer werkt het via „localhost“ in een ontwikkelomgeving.",
+  "installedNote": "De app is geïnstalleerd."
+}

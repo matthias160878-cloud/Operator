@@ -1,0 +1,15 @@
+{
+  "title": "Analüütika",
+  "subtitle": "Platvormide statistikat (vaatamised, meeldimised, kommentaarid, jagamised) veel automaatselt ei tooda. Siin kuvatakse ainult juba salvestatud väärtusi, nt näidisandmeid. Platvormi statistika numbreid saad käsitsi sisestada jaotises <weiter>Soovitused</weiter> („Sisesta platvormi numbrid“) või <varianten>variantide võrdluses</varianten> – neid hinnatakse seal, mitte sellel lehel.",
+  "statViewsTotal": "Vaatamisi kokku",
+  "statLikesTotal": "Meeldimisi kokku",
+  "statComments": "Kommentaare",
+  "statShares": "Jagamisi",
+  "chartTitle": "Sisu tulemuslikkus ajas",
+  "chartLegend": "Vaatamised (lilla) · Haaratus % (türkiis)",
+  "chartEmpty": "Statistikat veel pole – ajalugu pole saadaval.",
+  "bestPerformingTitle": "Enim tulemuslik sisu",
+  "bestPerformingEmpty": "Statistikat veel pole – edetabel pole võimalik.",
+  "learningAgentTitle": "Learning Agent — soovitused",
+  "statsEmpty": "Statistikat pole veel salvestatud – seetõttu pole siin veel näitajaid. Platvormide statistikat veel automaatselt ei tooda."
+}

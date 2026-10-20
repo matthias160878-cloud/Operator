@@ -1,0 +1,27 @@
+{
+  "title": "Skrzynka odbiorcza",
+  "description": "Wiadomości i zapytania w jednym miejscu. MessageAgent proponuje szkice odpowiedzi.",
+  "emptyState": "Brak rozmów — zasymuluj jedną, aby zacząć.",
+  "backToInbox": "Wróć do skrzynki odbiorczej",
+  "newConversation": {
+    "simulateButton": "Symuluj rozmowę",
+    "simulateHint": "Ponieważ nie ma prawdziwego połączenia z platformą, możesz tu zasymulować przychodzącą wiadomość, aby wypróbować propozycję odpowiedzi od AI.",
+    "close": "Zamknij",
+    "namePlaceholder": "Imię i nazwisko",
+    "handlePlaceholder": "@uchwyt (opcjonalnie)",
+    "messagePlaceholder": "Treść wiadomości …",
+    "createButton": "Utwórz"
+  },
+  "detail": {
+    "draftFailed": "Nie udało się utworzyć szkicu.",
+    "save": "Zapisz",
+    "edit": "Edytuj",
+    "approveAndSend": "Zatwierdź i wyślij",
+    "requestDraft": "Poproś o szkic odpowiedzi od AI",
+    "openDraftExists": "Powyżej jest już otwarty szkic — najpierw go edytuj/wyślij.",
+    "simulateMoreHint": "Zasymuluj kolejną przychodzącą wiadomość (test bez prawdziwego połączenia z platformą):",
+    "messagePlaceholder": "Treść wiadomości …",
+    "addButton": "Dodaj"
+  },
+  "simulationBanner": "<strong>Podgląd/symulacja:</strong> wiadomości z platform nie są jeszcze pobierane, a odpowiedzi nie są wysyłane – również przez „Zatwierdź i wyślij”. Wiadomości z platform możesz tu symulować, aby wypróbować. Prawdziwe wpisy pochodzą tylko z formularzy na stronie (np. prośby o termin); na nie odpowiadasz e-mailem."
+}

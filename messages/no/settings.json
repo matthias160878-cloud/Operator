@@ -1,0 +1,27 @@
+{
+  "title": "Innstillinger",
+  "description": "Arbeidsområdet ditt, brukere og en oversikt over dataene dine. Dine egne API-nøkler (AI-tekster, utsending av nyhetsbrev) legger du inn under <zugaenge>Egne tilganger</zugaenge>; pakken din finner du under <billing>Pakke og fakturering</billing>.",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Navn",
+    "slug": "Slug",
+    "createdAt": "Opprettet"
+  },
+  "users": {
+    "title": "Brukere og roller",
+    "note": "Hver konto har sitt eget arbeidsområde, atskilt fra andre kunder. Flere brukere kan du ennå ikke legge til selv."
+  },
+  "system": {
+    "title": "System",
+    "contentItems": "Innholdselementer",
+    "campaigns": "Kampanjer",
+    "mediaAssets": "Medieelementer",
+    "agentRuns": "Agentkjøringer",
+    "dbNote": "Antall oppføringer lagret i arbeidsområdet ditt. Du kan eksportere alle data eller slette arbeidsområdet lenger ned under «Mine data»."
+  },
+  "onboarding": {
+    "title": "Oppsettsassistent",
+    "description": "De små trinn-for-trinn-vinduene for KI-leverandører, sosiale medieplattformer og talesyntese som vises første gang du åpner appen.",
+    "reopen": "Åpne oppsettsassistenten på nytt"
+  }
+}

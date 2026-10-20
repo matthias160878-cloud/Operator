@@ -1,0 +1,21 @@
+{
+  "title": "Dnevnik asistentov",
+  "description": "Vsi asistenti (agenti) SECRET 58 s stanjem, zadnjo nalogo in rezultatom. Vsak zagon se tu zabeleži.",
+  "table": {
+    "agent": "Agent",
+    "description": "Opis",
+    "status": "Status",
+    "lastTask": "Zadnja naloga"
+  },
+  "history": {
+    "title": "Zgodovina zagonov",
+    "agent": "Agent",
+    "task": "Naloga",
+    "status": "Status",
+    "start": "Začetek",
+    "end": "Konec",
+    "resultError": "Rezultat / napaka",
+    "empty": "Še ni zagonov agentov.",
+    "completed": "Dokončano"
+  }
+}

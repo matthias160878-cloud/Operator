@@ -1,0 +1,27 @@
+{
+  "title": "Seaded",
+  "description": "Sinu tööruum, kasutajad ja ülevaade sinu andmetest. Oma API-võtmed (AI-tekstid, uudiskirjade saatmine) sisestad jaotises <zugaenge>Oma ligipääsud</zugaenge>; oma paketi leiad jaotisest <billing>Pakett ja arveldus</billing>.",
+  "workspace": {
+    "title": "Tööruum",
+    "name": "Nimi",
+    "slug": "Slug",
+    "createdAt": "Loodud"
+  },
+  "users": {
+    "title": "Kasutajad ja rollid",
+    "note": "Igal kontol on oma tööruum, mis on teistest klientidest eraldatud. Lisakasutajaid ei saa sa veel ise lisada."
+  },
+  "system": {
+    "title": "Süsteem",
+    "contentItems": "Sisuühikud",
+    "campaigns": "Kampaaniad",
+    "mediaAssets": "Meediavarad",
+    "agentRuns": "Agendi käivitused",
+    "dbNote": "Sinu tööruumi salvestatud kirjete arv. Kõik andmed saad eksportida või tööruumi kustutada allpool jaotises „Minu andmed“."
+  },
+  "onboarding": {
+    "title": "Seadistusabiline",
+    "description": "Väikesed samm-sammulised aknad tehisintellekti pakkujate, sotsiaalmeedia platvormide ja kõneväljundi jaoks, mis ilmuvad esmakordsel avamisel.",
+    "reopen": "Ava seadistusabiline uuesti"
+  }
+}

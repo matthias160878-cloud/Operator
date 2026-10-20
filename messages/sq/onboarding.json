@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Hapi {current} nga {total}",
+    "close": "Mbyll",
+    "back": "Kthehu",
+    "next": "Vazhdo",
+    "skip": "Kalo",
+    "finish": "Gati, fillojmë",
+    "checking": "Duke kontrolluar …",
+    "checkAgain": "Kontrollo tani",
+    "connected": "I lidhur",
+    "notConnected": "Ende i palidhur",
+    "skippedNote": "U kalua — mund ta plotësosh kurdo te “Integrimet”.",
+    "envHint": "Shënim: Pas ruajtjes në Render zakonisht duhen 1–2 minuta që shërbimi të riniset dhe ndryshimi të hyjë në fuqi. Nëse “Kontrollo tani” ende nuk gjen asgjë, prit pak dhe kliko përsëri.",
+    "reopenHint": "Këtë asistent mund ta hapësh sërish kurdo: te Cilësimet, nën “Asistenti i konfigurimit”."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Mirë se vjen në SECRET 58",
+      "body": "Para se të nisim, konfigurojmë së bashku gjërat më të domosdoshme — në hapa të vegjël, një nga një. Mund të ndalosh kurdo dhe të vazhdosh më vonë nga e njëjta pikë."
+    },
+    "aiProvider": {
+      "title": "Hapi 1: Lidh një ofrues AI",
+      "body": "Për tekste, skripte, hook-e dhe hashtag-e softueri ka nevojë për një ofrues AI. Zgjidh një nga të dy — mjafton njëri.",
+      "steps": [
+        "Më poshtë, te Anthropic ose OpenAI, kliko “Merr çelësin API”.",
+        "Krijo atje, nëse duhet, një llogari falas.",
+        "Gjenero atje një çelës të ri API dhe kopjoje.",
+        "Kliko “Vendose në Render”, ngjite çelësin atje si variabël mjedisi dhe ruaje.",
+        "Kthehu këtu dhe kliko më poshtë “Kontrollo tani”."
+      ],
+      "costHint": "Kostot lindin vetëm gjatë përdorimit real, drejtpërdrejt te ofruesi përkatës — kurrë përmes SECRET 58."
+    },
+    "platform": {
+      "title": "Hapi 2: Lidh një platformë sociale (opsionale)",
+      "body": "Opsionale, por e rekomanduar: lidh të paktën një platformë ku dëshiron të publikosh më vonë. Këtë hap mund ta plotësosh edhe më vonë.",
+      "steps": [
+        "Më poshtë zgjidh një platformë që dëshiron të përdorësh.",
+        "Kliko “Merr çelësin API” dhe ndiq udhëzimet e ofruesit.",
+        "Kliko “Vendose në Render” dhe ruaj atje të dhënat e qasjes.",
+        "Kthehu këtu dhe kliko “Kontrollo tani”."
+      ]
+    },
+    "voice": {
+      "title": "Hapi 3: Lidh zërin sintetik (opsionale)",
+      "body": "Nevojitet vetëm nëse dëshiron të krijosh automatikisht voiceover të folur për videot e tua. Pa këtë hap gjithçka tjetër funksionon prapë.",
+      "steps": [
+        "Kliko “Merr çelësin API” te ElevenLabs.",
+        "Krijo atje një llogari dhe një çelës API.",
+        "Kliko “Vendose në Render” dhe ruaje çelësin atje.",
+        "Kthehu këtu dhe kliko “Kontrollo tani”."
+      ]
+    },
+    "done": {
+      "title": "Gati!",
+      "body": "Tani mund të fillosh. Gjithçka që ke kaluar e gjen dhe e plotëson kurdo te seksioni “Integrimet” — ose e hap këtë asistent sërish përmes “Cilësimeve”."
+    }
+  }
+}

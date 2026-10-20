@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — hantera Voice Library, skapa förhandsvisningar av voiceover och importera röster.",
+  "envWarning": "Voiceover är inte tillgängligt ännu: operatören konfigurerar rösttjänsten (ElevenLabs). Du kan redan använda röstbiblioteket för planering.",
+  "addManual": "Skapa röst manuellt",
+  "importFromElevenLabs": "Importera från ElevenLabs",
+  "form": {
+    "namePlaceholder": "Namn",
+    "voiceIdPlaceholder": "Röst-ID (ElevenLabs)",
+    "languagePlaceholder": "Språk",
+    "submit": "Lägg till"
+  },
+  "confirmDelete": "Vill du verkligen ta bort rösten?",
+  "importFailed": "Importen misslyckades.",
+  "previewFailed": "Förhandsvisningen misslyckades.",
+  "unknownError": "Okänt fel.",
+  "empty": "Inga röster i biblioteket än.",
+  "active": "Aktiv",
+  "inactive": "Inaktiv",
+  "remove": "Ta bort",
+  "preview": {
+    "heading": "Förhandsvisning av röst",
+    "defaultText": "Hej, det här är ett exempel på den här rösten.",
+    "selectPlaceholder": "Välj röst…",
+    "play": "Spela upp förhandsvisning"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Alle content-items op één plek — aanmaken, dupliceren, herschrijven, verrijken met voice-over/ondertitels en door de goedkeuringsworkflow loodsen.",
+  "statusTabs": {
+    "all": "Alle",
+    "draft": "Concept",
+    "inReview": "In beoordeling",
+    "approved": "Goedgekeurd",
+    "scheduled": "Gepland",
+    "published": "Gepubliceerd",
+    "archived": "Gearchiveerd"
+  },
+  "newItem": {
+    "openButton": "Nieuw content-item",
+    "titleLabel": "Titel",
+    "platformLabel": "Platform",
+    "create": "Aanmaken",
+    "closeAria": "Sluiten"
+  },
+  "table": {
+    "empty": "Nog geen content-items — maak er een handmatig aan of via Content Brain.",
+    "title": "Titel",
+    "platform": "Platform",
+    "format": "Formaat",
+    "status": "Status",
+    "updated": "Bijgewerkt",
+    "actions": "Acties",
+    "duplicate": "Dupliceren",
+    "delete": "Verwijderen",
+    "confirmDelete": "Content-item echt verwijderen?"
+  },
+  "detail": {
+    "backLink": "Terug naar de Content Factory",
+    "actionFailed": "Actie mislukt.",
+    "actions": {
+      "review": "Ter beoordeling",
+      "approve": "Goedkeuren",
+      "reject": "Afwijzen",
+      "schedule": "Inplannen",
+      "publish": "Publiceren",
+      "copy": "Bericht kopiëren",
+      "markPublished": "Handmatig gepubliceerd"
+    },
+    "rejectReasonPrompt": "Reden van afwijzing (optioneel):",
+    "scheduleDatePrompt": "Publicatiedatum (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Titel",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caption"
+    },
+    "save": "Opslaan",
+    "saving": "Opslaan…",
+    "hashtags": {
+      "heading": "Hashtags & keywords",
+      "regenerate": "Opnieuw genereren",
+      "empty": "Nog geen hashtags gegenereerd."
+    },
+    "voiceover": {
+      "heading": "Voice-over",
+      "generate": "Aanmaken",
+      "empty": "Nog geen voice-over aangemaakt."
+    },
+    "subtitles": {
+      "heading": "Ondertitels",
+      "generate": "Aanmaken (SRT)",
+      "download": "{file} downloaden",
+      "empty": "Nog geen ondertitels aangemaakt."
+    },
+    "video": {
+      "heading": "Video-rendering",
+      "request": "Rendering aanvragen",
+      "note": "Providerneutrale videopipeline (sectie 11/12) — momenteel is er geen videoprovider geconfigureerd (zie Integraties)."
+    },
+    "scriptVariants": {
+      "heading": "Scriptvarianten",
+      "newVariant": "Nieuwe variant",
+      "empty": "Nog geen varianten.",
+      "variantSummary": "Variant {label}"
+    },
+    "repurpose": {
+      "heading": "Content hergebruiken",
+      "description": "Maak van dit content-item platformgerichte afgeleiden voor andere kanalen. Meer kanalen = meer kans dat mensen de video zien.",
+      "selectAll": "Alle platforms selecteren",
+      "clearAll": "Selectie wissen",
+      "generateButton": "{count} afgeleiden maken"
+    },
+    "approvalRevoked": "Goedkeuring ingetrokken: het bericht is gewijzigd en moet opnieuw worden beoordeeld en goedgekeurd.",
+    "job": {
+      "QUEUED": "Automatische verzending gepland voor {when}.",
+      "RUNNING": "Verzending bezig (gepland voor {when}).",
+      "SUCCEEDED": "Gepubliceerd op het geplande tijdstip {when}.",
+      "FAILED": "Verzending op het geplande tijdstip {when} mislukt, het bericht is weer “Goedgekeurd”.",
+      "UNKNOWN": "Verzending op het geplande tijdstip {when}: uitkomst onduidelijk.",
+      "CANCELED": "Geplande verzending ({when}) is niet uitgevoerd."
+    },
+    "copied": "Tekst en hashtags gekopieerd — plak ze nu in de app van het platform.",
+    "copyFailed": "Kopiëren niet mogelijk — selecteer de tekst handmatig.",
+    "markPublishedConfirm": "Zelf gepost? Het wordt als gepubliceerd gemarkeerd; een geplande verzending wordt geannuleerd."
+  }
+}

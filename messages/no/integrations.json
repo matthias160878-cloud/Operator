@@ -1,0 +1,24 @@
+{
+  "title": "Integrasjoner",
+  "description": "Livestatus for eksterne tjenester – bare tilkoblinger som faktisk er satt opp og kontrollert, ingenting late som.",
+  "categories": {
+    "AI": "KI-leverandører",
+    "VOICE": "Voice",
+    "PLATFORM": "Sosiale plattformer",
+    "DESIGN": "Design",
+    "VIDEO": "Video",
+    "TREND": "Trender"
+  },
+  "costNote": "Din SECRET 58-pakke (Pro eller Maxi) er et abonnement, se «Pakke og fakturering». Hver eksterne tjeneste her har sin egen, uavhengige kostnadsmodell hos den aktuelle leverandøren — SECRET 58 fakturerer aldri ekstra for dem.",
+  "links": {
+    "getKey": "Hent API-nøkkel",
+    "setInRender": "Legg inn i Render",
+    "viewPricing": "Se priser"
+  },
+  "pricing": {
+    "free": "Gratis",
+    "payAsYouGo": "Bruksbasert",
+    "subscription": "Abonnement",
+    "unknown": "Sjekk prisen hos leverandøren"
+  }
+}

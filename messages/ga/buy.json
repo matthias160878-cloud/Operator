@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Gan síntiús. Gach gníomhaire. Do sholáthraithe AI féin.",
+  "subtitle": "Smaoineamh amháin. Ardáin iolracha. Uasmhéid sroichte. Pacáiste iomlán amháin — íoc uair amháin agus faigh rochtain iomlán ar an iarratas ar fad.",
+  "features": [
+    "Content Brain — smaoineamh amháin, gach ardán",
+    "Gach gníomhaire AI: smaointe, treochtaí, script, hook, hashtaganna, mionsamhlacha, fotheidil, foilsiú",
+    "Voice Studio le guthanna ElevenLabs",
+    "Video Studio le bainisteoir formáidí — tá nascadh le gineadóirí físe AI á fhorbairt",
+    "Content Factory le sreabhadh oibre formheasa agus Content Calendar",
+    "Anailísíocht, moltaí fáis agus rianú ioncaim",
+    "Bosca isteach le dréachtaí freagra AI",
+    "Saorroghnú soláthraithe AI trí do rochtain féin — gan cuótaí"
+  ],
+  "priceOnetime": "uair amháin",
+  "priceRecommendedNote": "Praghas molta — beidh sé ceangailteach a luaithe a bheidh Stripe cumraithe le praghas oiriúnach.",
+  "buyButton": "Ceannaigh anois",
+  "redirecting": "Ag athsheoladh chuig Stripe …",
+  "checkoutFailed": "Theip ar an tseiceáil amach.",
+  "unknownError": "Earráid anaithnid.",
+  "notConfigured": "Níl an íocaíocht cumraithe go fóill — ní mór don oibreoir táirge ar {price} a chruthú i Stripe ar dtús agus STRIPE_SECRET_KEY / STRIPE_PRICE_ID a shocrú.",
+  "costDisclosure": "Nóta: Is íocaíocht aonuaire é an praghas seo as na bogearraí. Teastaíonn rochtain ar leith ó thríú páirtithe (m.sh. Anthropic, ElevenLabs) le haghaidh feidhmeanna áirithe (m.sh. giniúint téacs AI, aschur cainte) — tá a gcostais neamhspleách ar SECRET 58 agus dlitear go díreach leis an soláthraí faoi seach iad; ní ghearrtar anseo iad. Sonraí tar éis an cheannaigh faoi Comhtháthuithe.",
+  "setupServiceTitle": "Cuir seirbhís socraithe leis (+{price} uair amháin)",
+  "setupServiceDescription": "Socróimid eochracha API, Brand DNA agus na chéad phostálacha duit.",
+  "setupServiceUnavailable": "Ar fáil go luath — ní mór don oibreoir an tseirbhís a chur isteach i Stripe ar dtús.",
+  "autopilot": {
+    "kicker": "Go luath",
+    "title": "Autopilot — gach rud san áireamh",
+    "subtitle": "Níl aon rochtain féin de dhíth: tá costais uile na soláthraithe le haghaidh téacs, gutha agus físe san áireamh. An réim feidhmeanna chéanna leis an bpacáiste iomlán — ní athraíonn ach an méid.",
+    "comingSoon": "Go luath",
+    "perMonth": "/ mí",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Gníomhaireacht"
+    },
+    "brands": "{count, plural, one {# bhranda} other {# branda}}",
+    "ideas": "{count} smaoineamh inneachair sa mhí",
+    "videos": "{count} físeán AI (30 s an ceann) sa mhí",
+    "voiceMinutes": "{count} nóiméad d’aschur cainte sa mhí",
+    "note": "Praghsanna pleanáilte, nach bhfuil ar fáil go fóill. Tosóidh an Autopilot a luaithe a bheidh na gineadóirí físe AI nasctha."
+  }
+}

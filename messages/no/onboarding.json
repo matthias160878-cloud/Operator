@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Trinn {current} av {total}",
+    "close": "Lukk",
+    "back": "Tilbake",
+    "next": "Neste",
+    "skip": "Hopp over",
+    "finish": "Ferdig, sett i gang",
+    "checking": "Sjekker …",
+    "checkAgain": "Sjekk nå",
+    "connected": "Tilkoblet",
+    "notConnected": "Ikke tilkoblet ennå",
+    "skippedNote": "Hoppet over — du kan når som helst ta det igjen under «Integrasjoner».",
+    "envHint": "Merk: Etter at du har lagret i Render, tar det vanligvis 1–2 minutter før tjenesten starter på nytt og endringen trer i kraft. Hvis «Sjekk nå» ikke finner noe ennå, vent litt og klikk på nytt.",
+    "reopenHint": "Du kan åpne denne assistenten på nytt når som helst: i Innstillinger under «Oppsettsassistent»."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Velkommen til SECRET 58",
+      "body": "Før vi setter i gang, setter vi opp det viktigste sammen — i helt små, enkeltstående trinn. Du kan når som helst ta en pause og fortsette på samme sted senere."
+    },
+    "aiProvider": {
+      "title": "Trinn 1: Koble til KI-leverandør",
+      "body": "For tekster, script, hooks og hashtags trenger programvaren en KI-leverandør. Velg en av de to — én er nok.",
+      "steps": [
+        "Klikk nedenfor på «Hent API-nøkkel» ved Anthropic eller OpenAI.",
+        "Opprett en gratis konto der om nødvendig.",
+        "Lag en ny API-nøkkel der og kopier den.",
+        "Klikk på «Legg inn i Render», lim inn nøkkelen der som miljøvariabel og lagre.",
+        "Kom tilbake hit og klikk på «Sjekk nå» nedenfor."
+      ],
+      "costHint": "Kostnader oppstår først ved faktisk bruk, direkte hos den enkelte leverandøren — aldri via SECRET 58."
+    },
+    "platform": {
+      "title": "Trinn 2: Koble til sosial medieplattform (valgfritt)",
+      "body": "Valgfritt, men anbefalt: Koble til minst én plattform du vil publisere på senere. Du kan også ta dette trinnet senere.",
+      "steps": [
+        "Velg nedenfor en plattform du vil bruke.",
+        "Klikk på «Hent API-nøkkel» og følg leverandørens instruksjoner.",
+        "Klikk på «Legg inn i Render» og lagre tilgangsdataene der.",
+        "Kom tilbake hit og klikk på «Sjekk nå»."
+      ]
+    },
+    "voice": {
+      "title": "Trinn 3: Koble til talesyntese (valgfritt)",
+      "body": "Bare nødvendig hvis du vil lage automatisk innleste voiceovers til videoene dine. Uten dette trinnet fungerer alt annet likevel.",
+      "steps": [
+        "Klikk på «Hent API-nøkkel» ved ElevenLabs.",
+        "Opprett en konto og en API-nøkkel der.",
+        "Klikk på «Legg inn i Render» og lagre nøkkelen der.",
+        "Kom tilbake hit og klikk på «Sjekk nå»."
+      ]
+    },
+    "done": {
+      "title": "Ferdig!",
+      "body": "Nå kan du sette i gang. Alt du har hoppet over, finner og fyller du ut når som helst under «Integrasjoner» — eller du åpner denne assistenten på nytt via «Innstillinger»."
+    }
+  }
+}

@@ -1,14 +1,15 @@
 {
   "title": "Analytics",
-  "subtitle": "Performance metrics from real data — as soon as platforms are connected, this view fills with actual values.",
+  "subtitle": "Platform statistics (views, likes, comments, shares) are not fetched automatically yet. Only values that are already stored appear here, e.g. sample data. You can enter numbers from the platform's statistics by hand under <weiter>Referrals</weiter> (\"Enter platform numbers\") or in the <varianten>variant comparison</varianten> – they are evaluated there, not on this page.",
   "statViewsTotal": "Total views",
   "statLikesTotal": "Total likes",
   "statComments": "Comments",
   "statShares": "Shares",
   "chartTitle": "Content performance over time",
   "chartLegend": "Views (purple) · Engagement % (teal)",
-  "chartEmpty": "No analytics data yet.",
+  "chartEmpty": "No statistics yet – no history available.",
   "bestPerformingTitle": "Best Performing Content",
-  "bestPerformingEmpty": "No data yet.",
-  "learningAgentTitle": "Learning Agent — Recommendations"
+  "bestPerformingEmpty": "No statistics yet – no ranking possible.",
+  "learningAgentTitle": "Learning Agent — Recommendations",
+  "statsEmpty": "No statistics stored yet – so there are no metrics here yet. Platform statistics are not fetched automatically yet."
 }

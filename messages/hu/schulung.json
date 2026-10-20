@@ -1,0 +1,86 @@
+{
+  "title": "Oktatás",
+  "subtitle": "Lépésről lépésre útmutatók és magyarázó videók a SECRET 58 minden területéhez — bármikor itt nézhetsz utána.",
+  "welcomeBanner": {
+    "title": "Üdvözlünk a SECRET 58-ban!",
+    "body": "Köszönjük a vásárlást. Mielőtt elindulsz, érdemes gyorsan megnézned lent az „Első lépések” részt — hogy az MI-agentek az elejétől fogva a valódi adataiddal dolgozzanak."
+  },
+  "stepsLabel": "Lépések",
+  "openPage": "Oldal megnyitása",
+  "topics": {
+    "firstSteps": {
+      "title": "Első lépések",
+      "description": "Ezt a hármat intézd el először, és onnantól az összes MI-agent valódi adatokkal dolgozik helyőrzők helyett.",
+      "steps": [
+        "A „Beállítások → Saját hozzáférések” alatt add meg a saját MI-kulcsodat az Anthropictól, az OpenAI-tól vagy a Geminitől. Az MI-funkciók kizárólag a saját kulcsodat használják; az MI-szolgáltató közvetlenül neked számláz. Saját kulcs nélkül az alkalmazás sablonmódban, rögzített szövegblokkokkal működik.",
+        "A „Brand DNA” alatt töltsd ki a saját márkádat (hangnem, célközönség, értékek) — az MI-agentek ezt használják minden generált szöveghez.",
+        "Az „Ötletek és inspiráció” vagy a „Content Brain” alatt generáltasd le az első ötletet, illetve kampányt."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Így lesz egy ötletből kész, jóváhagyott tartalom.",
+      "steps": [
+        "A Content Brainben hozz létre egy új kampányt témával és célplatformokkal — ebből automatikusan több tartalomelem jön létre.",
+        "A Content Factoryban minden tartalomelem végigmegy az állapotokon: Vázlat → Ellenőrzés alatt → Jóváhagyva → Ütemezve → Közzétéve.",
+        "A jóváhagyás kézi lépés, és kötelező — semmi sem kerül közzétételre automatikusan megerősítés nélkül.",
+        "A tartalomelem részletnézetében a script, a hangalámondás, a feliratok, a hashtagek és a bélyegkép külön-külön újragenerálhatók."
+      ]
+    },
+    "studios": {
+      "title": "Script-, Voice-, Video- és Design Studio",
+      "description": "A speciális eszközök minden tartalmi építőelemhez.",
+      "steps": [
+        "Script Studio: scripteket készít a Hook → Probléma → Érték → Példa → Hozadék → CTA felépítés szerint.",
+        "Voice Studio: importálj vagy hozz létre saját ElevenLabs-hangot, majd készíts hangalámondást közvetlenül egy scriptből.",
+        "Design Studio: a bélyegkép-agent címet, vizuális ötletet, szöveget, elrendezést és képleírást javasol.",
+        "Video Studio: a videószolgáltató-kapcsolat aktuális állását mutatja (formátumkezelő, szolgáltatói állapot)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Tartalomnaptár és közzététel",
+      "description": "Hová kerülnek az ütemezett bejegyzések — és miért megy ki egy poszt ténylegesen (vagy miért nem).",
+      "steps": [
+        "A tartalomnaptárban megjelenik minden tartalomelem, amelynek van ütemezett közzétételi dátuma.",
+        "Minden közzététel előtt a PublishingAgent élőben ellenőrzi, hogy a célplatform a „Közösségi média” alatt valóban „Csatlakoztatva” állapotú-e.",
+        "Valódi platformkapcsolat nélkül őszintén hibát jelez a közzététel színlelése helyett."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analitika és növekedés",
+      "description": "Valódi számok a saját teljesítményedről — és ajánlások automatizálás helyett.",
+      "steps": [
+        "Az Analytics csak elmentett statisztikákat mutat (pl. mintaadatokat). A platformstatisztikák lekérése még nem automatikus; a számokat kézzel az „Ajánlások” részben vagy a változatok összehasonlításában rögzíted – ott értékeljük őket.",
+        "A Növekedés oldal ezekből az adatokból számítja ki a legjobb posztolási időpontokat, a sikeres hashtageket és formátumokat.",
+        "Fontos: szándékosan nincs automatizált követő-/elköteleződésnövelés (nincs botviselkedés) — ez minden platform felhasználási feltételeibe ütközne."
+      ]
+    },
+    "inbox": {
+      "title": "Beérkezett üzenetek",
+      "description": "MI-válaszvázlatok az üzenetekhez — küldés előtti jóváhagyással.",
+      "steps": [
+        "A platformok üzeneteit még nem kérjük le, és a válaszok nem kerülnek elküldésre. Kipróbáláshoz szimulációként hozol létre beszélgetéseket.",
+        "A MessageAgent a Brand DNA és a beszélgetés menete alapján javasol választ.",
+        "A piszkozatot te ellenőrzöd és hagyod jóvá. A platformokra küldés még nincs kiépítve – a „Jóváhagyás és küldés” ezt őszintén hibaként jelzi ahelyett, hogy sikert színlelne."
+      ]
+    },
+    "revenue": {
+      "title": "Bevételkövetés",
+      "description": "Az összes platformbevétel áttekintése egy helyen — a kifizetés ettől függetlenül magukon a platformokon keresztül történik.",
+      "steps": [
+        "A bevételeket kézzel kell megadni, mert a TikTok/Meta nem kínál nyilvános bevételi API-t, a YouTube-hoz pedig partnerprogram-hozzáférés kell (még nincs csatlakoztatva).",
+        "A tényleges kifizetés mindig közvetlenül az adott platformon keresztül történik (pl. a YouTube esetében a Google AdSense-en át) — a SECRET 58 nem bonyolít le kifizetéseket."
+      ]
+    },
+    "integrations": {
+      "title": "Integrációk és API-kulcsok",
+      "description": "Honnan származik az egyes kapcsolatok állapota, és hová kell megadni a megfelelő kulcsot.",
+      "steps": [
+        "Minden sor a valódi, élőben ellenőrzött állapotot mutatja — soha nem színlelt kapcsolatot.",
+        "A saját hozzáféréseidet (MI-kulcsok, Resend a hírlevélhez) a „Beállítások → Saját hozzáférések” alatt adod meg – ott egy útmutató a szolgáltató hivatalos kulcsoldalára vezet.",
+        "A hozzáférési adatokat soha nem tároljuk a böngészőben, csak titkosítva a szerveren. A hangkimenetet és a platformok alkalmazás-hozzáféréseit az üzemeltető állítja be; a „Még nem érhető el” azt jelenti, hogy a kapcsolat még nincs kiépítve az alkalmazásban.",
+        "Költségek: a Pro és a Maxi előfizetés, havi vagy éves. Az aktuális árak a „Csomag és számlázás” alatt találhatók. A saját hozzáféréseidért (MI, Resend) minden szolgáltató közvetlenül neked számláz a saját díjmodellje szerint – a SECRET 58 ezért semmit sem számol fel külön."
+      ]
+    }
+  }
+}

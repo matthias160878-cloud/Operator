@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Kalendari i përmbajtjes",
+  "subtitle": "Përmbajtja e planifikuar dhe e publikuar në një vështrim.",
+  "weekdays": ["Hë", "Ma", "Më", "En", "Pr", "Sh", "Di"],
+  "months": [
+    "Janar", "Shkurt", "Mars", "Prill", "Maj", "Qershor",
+    "Korrik", "Gusht", "Shtator", "Tetor", "Nëntor", "Dhjetor"
+  ],
+  "allPlatforms": "Të gjitha platformat",
+  "moreItems": "+{count} të tjera",
+  "listTitle": "Lista e këtij muaji",
+  "emptyMonth": "Nuk ka postime të planifikuara këtë muaj."
+}

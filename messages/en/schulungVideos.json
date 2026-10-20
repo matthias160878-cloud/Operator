@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Training video",
+  "subtitlesLabel": "Subtitles",
+  "subtitlesOff": "Off",
+  "soundLabel": "Sound",
+  "soundOn": "Voice on",
+  "soundOff": "Voice off",
+  "soundHint": "The voice comes from your browser. Which languages are available depends on your device.",
+  "soundMissing": "No voice for this language is installed on your device. Subtitles still work.",
+  "draftNote": "Draft: recording of the real app with test data. Subtitles machine-translated.",
+  "whatLabel": "What it is, what it does and how to use it.",
+  "videosTitle": "Explainer videos for every area",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "First steps",
+      "cues": {
+        "c1": "Welcome to the training: first steps. Everything you see is the real app with test data.",
+        "c2": "The navigation is on the left. Every area of the app has an entry here.",
+        "c3": "Step 1: Check under \"Integrations\" which services are connected.",
+        "c4": "Each row shows the real, verified status – never a faked connection.",
+        "c5": "\"Not configured\" means this service has not been set up yet. Without an AI provider, the app works in template mode.",
+        "c6": "Step 2: Enter your brand under \"Brand DNA\". Tone, audience and values flow into every generated text.",
+        "c7": "Example: fill in industry and target audience, then save at the bottom.",
+        "c8": "Step 3: Generate your first idea under \"Ideas & Inspiration\". Enter a topic and click \"Generate ideas\".",
+        "c9": "The ideas appear as cards. In template mode they are examples; with an AI provider they become tailored to you.",
+        "c10": "Everything stays a draft until you approve it. Every area has its own explainer video."
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "cues": {
+        "c1": "The dashboard is your home page: an overview of everything happening in your workspace.",
+        "c2": "At the top you see active agents, content production and scheduled posts.",
+        "c3": "Further down you find the latest activity and shortcuts to Content Factory and Brand DNA.",
+        "c4": "Use \"Week\" to change the period of the figures.",
+        "c5": "How to use it: open the dashboard daily, check open drafts and jump straight to the right area from here."
+      }
+    },
+    "schulung": {
+      "title": "Training",
+      "cues": {
+        "c1": "The training section is your guide inside the app. It explains every area step by step.",
+        "c2": "Each topic has a description, numbered steps and a link that opens the matching page.",
+        "c3": "These explainer videos appear here too, one for each area.",
+        "c4": "How to use it: pick a topic, read the steps, open the page and try it right away."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "The Content Factory is the workbench for all your content items in one place.",
+        "c2": "Function: create, duplicate and rewrite items, enrich them with voiceover and subtitles and run them through the approval workflow.",
+        "c3": "The filters at the top show the statuses: Draft, In review, Approved, Scheduled, Published and Archived.",
+        "c4": "How to: use \"New content item\" to create an item.",
+        "c5": "Open an item to edit script, voiceover, subtitles, hashtags and thumbnail.",
+        "c6": "Approval is always a manual step. Nothing is published without your confirmation."
+      }
+    },
+    "ideas": {
+      "title": "Ideas & Inspiration",
+      "cues": {
+        "c1": "Here you collect ideas: topic clusters, series and formats for upcoming content.",
+        "c2": "Function: the IdeaAgent generates ideas for a topic, or you add your own by hand.",
+        "c3": "How to: enter a topic, choose platform, goal and format and click \"Generate ideas\".",
+        "c4": "Each idea becomes a card with title, hook and priority.",
+        "c5": "Use \"Manual\" to add your own idea.",
+        "c6": "Take good ideas as the starting point for the Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "The Content Brain turns one idea into a complete content plan.",
+        "c2": "Function: it takes your Brand DNA into account and creates hooks, scripts, hashtags and thumbnail concepts as drafts for every chosen platform.",
+        "c3": "How to: enter the topic and the target audience.",
+        "c4": "Choose goal and language, then click the platforms. Here, TikTok is added.",
+        "c5": "The slider sets how many content items are created per platform.",
+        "c6": "One click on \"Generate content plan\" starts the run.",
+        "c7": "The campaign appears below. All items are drafts and are stored in the Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "The Brand DNA describes your brand: name, industry, target audience, tone and values.",
+        "c2": "Function: this information flows automatically into the Content Brain and the script, hook and hashtag agents.",
+        "c3": "How to: fill in the fields, for example industry and target audience.",
+        "c4": "Further down you maintain preferred and forbidden words, calls to action and brand values.",
+        "c5": "Finally, click \"Save Brand DNA\"."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "The Script Studio is the workshop for scripts and hooks.",
+        "c2": "Function: it builds scripts using the structure hook, problem, value, example, payoff and call to action and delivers several hook variants.",
+        "c3": "How to: enter a topic and choose the platform.",
+        "c4": "Then click \"Generate script & hooks\".",
+        "c5": "The result is a draft that you continue to use in the Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "The Voice Studio manages voices and creates voiceovers.",
+        "c2": "Function: maintain the voice library, create previews and import voices. The connection runs via ElevenLabs.",
+        "c3": "How to: add a voice manually or import it from ElevenLabs. The import needs a configured connection.",
+        "c4": "With a text and a voice you create a preview and play it."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "The Video Studio is the video pipeline of the app.",
+        "c2": "Function: format manager, interchangeable video providers and connection of voiceover and subtitles.",
+        "c3": "The page shows which providers are set up. Providers that are not set up are honestly marked as such.",
+        "c4": "How to: you create videos per content item in the Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "The Design Studio delivers thumbnail concepts and image assets.",
+        "c2": "Function: the thumbnail agent suggests title, visual idea, text and layout. The Canva integration is planned here.",
+        "c3": "How to: enter the topic for the thumbnail.",
+        "c4": "Click \"Generate concept\".",
+        "c5": "The concept serves as a template for your image."
+      }
+    },
+    "socialMedia": {
+      "title": "Social Media",
+      "cues": {
+        "c1": "Here you connect your platform accounts and see their status.",
+        "c2": "Function: access is managed on the server and stored encrypted. You sign in to the platform via Composio.",
+        "c3": "Each card shows platform, account, status and the last read test.",
+        "c4": "\"Not set up yet\" means the operator has not yet activated the connection on the server.",
+        "c5": "How to: once set up, click \"Connect\" on the platform and sign in. It only reads, nothing is published."
+      }
+    },
+    "calendar": {
+      "title": "Content Calendar",
+      "cues": {
+        "c1": "The Content Calendar shows scheduled and published content at a glance.",
+        "c2": "Function: all content items with a publishing date appear here, filterable by platform.",
+        "c3": "How to: schedule an item with a date in the Content Factory, then it appears here.",
+        "c4": "Before every publication the app checks live whether the target platform is connected."
+      }
+    },
+    "analytics": {
+      "title": "Analytics",
+      "cues": {
+        "c1": "Analytics shows your performance figures.",
+        "c2": "Function: only data that really exists, imported or entered by you. Nothing is made up.",
+        "c3": "You see the trend over time, the best performing content and recommendations from the Learning Agent.",
+        "c4": "How to: as soon as platforms are connected or you enter data, the charts fill up."
+      }
+    },
+    "growth": {
+      "title": "Growth",
+      "cues": {
+        "c1": "The Growth page gives recommendations for more reach.",
+        "c2": "Function: from your real analytics data it calculates the best posting times, successful hashtags and formats.",
+        "c3": "How to: choose a platform and read the recommendations.",
+        "c4": "These are recommendations, not automation. Followers or interactions are never artificially boosted."
+      }
+    },
+    "revenue": {
+      "title": "Revenue",
+      "cues": {
+        "c1": "Under Revenue you bring together your earnings across platforms and campaigns.",
+        "c2": "Function: amounts only appear once you enter them. There are no made-up numbers.",
+        "c3": "How to: click \"Record revenue\", choose platform and type and enter the amount.",
+        "c4": "Payouts always happen directly through the platform. SECRET 58 does not process payouts."
+      }
+    },
+    "sales": {
+      "title": "Sales & Shop",
+      "cues": {
+        "c1": "\"Sales & Shop\" shows your own business revenue.",
+        "c2": "Function: it is separate from your SECRET 58 plan. Only actual sales are counted, test data is marked.",
+        "c3": "At the top are the totals per currency, below that your provider details for the legal notice.",
+        "c4": "Option B: sell via SECRET 58. Option A: import an existing shop.",
+        "c5": "How to: fill in and save your provider details, then choose the sales route."
+      }
+    },
+    "website": {
+      "title": "My website",
+      "cues": {
+        "c1": "Here you add the website assistant to your own website.",
+        "c2": "Function: the assistant answers your visitors' questions.",
+        "c3": "We do not change your website automatically. You add the code yourself or have your web designer add it.",
+        "c4": "How to: enter your web address and click \"Add website\".",
+        "c5": "Then copy the code shown into your website."
+      }
+    },
+    "inbox": {
+      "title": "Inbox",
+      "cues": {
+        "c1": "The inbox collects messages and comments across all platforms.",
+        "c2": "Function: the MessageAgent suggests replies. Only what you approve is sent.",
+        "c3": "How to: as long as no platform is connected live, click \"Simulate conversation\".",
+        "c4": "Check the suggested reply, adjust it and approve it."
+      }
+    },
+    "agents": {
+      "title": "Agents",
+      "cues": {
+        "c1": "The Agent Monitor shows all SECRET 58 agents.",
+        "c2": "Function: status, last task and result of every agent. Every run is logged.",
+        "c3": "The run history shows what ran when and whether it worked.",
+        "c4": "How to use it: check here when something was not created as expected."
+      }
+    },
+    "integrations": {
+      "title": "Integrations",
+      "cues": {
+        "c1": "Here you see the live status of all external services.",
+        "c2": "Function: every row is based on the access that is actually set. There are no faked connections.",
+        "c3": "The groups are: AI providers, voice, social platforms, design, video and trends.",
+        "c4": "How to: for \"Not configured\", \"Get API key\" leads to the provider's page.",
+        "c5": "External providers have their own prices. Each service shows which model applies."
+      }
+    },
+    "billing": {
+      "title": "Plan & billing",
+      "cues": {
+        "c1": "Under \"Plan & billing\" you see your plan and can change it.",
+        "c2": "Function: the AI features run through the operator's access. You do not need your own AI subscription.",
+        "c3": "There are Pro and Maxi, monthly or yearly. The prices are shown net on the cards.",
+        "c4": "A purchase only happens with an explicit click on \"Order with obligation to pay\".",
+        "c5": "If you have a promo code, redeem it in the field below."
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "cues": {
+        "c1": "In Settings you manage workspace, users and system information.",
+        "c2": "Function: workspace, roles, system status, setup assistant and your data with access and deletion.",
+        "c3": "How to: scroll through the sections. Deleting the workspace requires an additional confirmation.",
+        "c4": "Check your data and the setup assistant here regularly."
+      }
+    }
+  }
+}

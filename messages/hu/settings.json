@@ -1,0 +1,27 @@
+{
+  "title": "Beállítások",
+  "description": "A munkaterületed, a felhasználók és az adataid áttekintése. A saját API-kulcsaidat (MI-szövegek, hírlevélküldés) a <zugaenge>Saját hozzáférések</zugaenge> alatt adod meg; a csomagodat a <billing>Csomag és számlázás</billing> alatt találod.",
+  "workspace": {
+    "title": "Munkaterület",
+    "name": "Név",
+    "slug": "Slug",
+    "createdAt": "Létrehozva"
+  },
+  "users": {
+    "title": "Felhasználók és szerepkörök",
+    "note": "Minden fióknak saját, a többi ügyféltől elkülönített munkaterülete van. További felhasználókat egyelőre nem adhatsz hozzá magad."
+  },
+  "system": {
+    "title": "Rendszer",
+    "contentItems": "Tartalomelemek",
+    "campaigns": "Kampányok",
+    "mediaAssets": "Médiaanyagok",
+    "agentRuns": "Agent-futások",
+    "dbNote": "A munkaterületeden elmentett bejegyzések száma. Az összes adatot exportálhatod, vagy törölheted a munkaterületet lent, a „Saját adataim” részben."
+  },
+  "onboarding": {
+    "title": "Üzembe helyezési segéd",
+    "description": "A kis, lépésről lépésre haladó ablakok MI-szolgáltatókhoz, közösségi platformokhoz és hangkimenethez, amelyek az első megnyitáskor jelennek meg.",
+    "reopen": "Üzembe helyezési segéd újranyitása"
+  }
+}

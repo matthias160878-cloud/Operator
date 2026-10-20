@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Двигател за скриптове и hooks: създава скриптове, съобразени с платформата, по структурата Hook → Problem → Value → Example → Payoff → CTA, както и няколко варианта на hook.",
+  "form": {
+    "topicLabel": "Тема",
+    "topicPlaceholder": "напр. 5 начина, по които ИИ агентите спестяват време",
+    "platformLabel": "Платформа",
+    "generateButton": "Генерирай скрипт и hooks",
+    "generateFailed": "Генерирането не успя.",
+    "unknownError": "Неизвестна грешка."
+  },
+  "hookTypes": {
+    "direkt": "Директен",
+    "neugierig": "Любопитен",
+    "story": "История",
+    "problem": "Проблем",
+    "zahlen": "Числа",
+    "kontroversSachlich": "Спорен (по същество)",
+    "educational": "Образователен"
+  },
+  "hooksHeading": "Варианти на hook",
+  "engine": {
+    "label": "Двигател: {provider}",
+    "templateMode": "Режим на шаблони (не е конфигуриран доставчик на ИИ)"
+  },
+  "script": {
+    "heading": "Скрипт",
+    "save": "Запази като единица съдържание",
+    "saving": "Запазва се…"
+  }
+}

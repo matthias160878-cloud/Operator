@@ -1,0 +1,59 @@
+{
+ "wizard": {
+  "stepIndicator": "Korak {current} od {total}",
+  "close": "Zatvori",
+  "back": "Nazad",
+  "next": "Dalje",
+  "skip": "Preskoči",
+  "finish": "Gotovo, kreni",
+  "checking": "Provjerava se …",
+  "checkAgain": "Provjeri sada",
+  "connected": "Povezano",
+  "notConnected": "Još nije povezano",
+  "skippedNote": "Preskočeno — to možeš nadoknaditi bilo kada pod „Integracije“.",
+  "envHint": "Napomena: nakon spremanja u Renderu obično treba 1–2 minute da se servis ponovo pokrene i da promjena stupi na snagu. Ako „Provjeri sada“ još ništa ne pronađe, malo pričekaj i klikni ponovo.",
+  "reopenHint": "Ovaj asistent možeš ponovo otvoriti bilo kada: u Postavkama pod „Asistent za postavljanje“."
+ },
+ "steps": {
+  "welcome": {
+   "title": "Dobro došao/la u SECRET 58",
+   "body": "Prije nego što počnemo, zajedno ćemo postaviti ono najnužnije — u sasvim malim, pojedinačnim koracima. Možeš pauzirati bilo kada i kasnije nastaviti od istog mjesta."
+  },
+  "aiProvider": {
+   "title": "Korak 1: Poveži AI provajdera",
+   "body": "Za tekstove, skripte, hookove i hashtagove softveru je potreban AI provajder. Odaberi jednog od dvojice — dovoljan je jedan.",
+   "steps": [
+    "Dolje kod Anthropic ili OpenAI klikni na „Nabavi API ključ“.",
+    "Ako je potrebno, tamo kreiraj besplatan nalog.",
+    "Tamo kreiraj novi API ključ i kopiraj ga.",
+    "Klikni na „Unesi u Render“, zalijepi ključ tamo kao varijablu okruženja i spremi.",
+    "Vrati se ovdje i dolje klikni na „Provjeri sada“."
+   ],
+   "costHint": "Troškovi nastaju tek pri stvarnom korištenju, direktno kod dotičnog pružatelja — nikada preko SECRET 58."
+  },
+  "platform": {
+   "title": "Korak 2: Poveži platformu društvenih mreža (opcionalno)",
+   "body": "Opcionalno, ali preporučeno: poveži najmanje jednu platformu na kojoj želiš kasnije objavljivati. Ovaj korak možeš nadoknaditi i kasnije.",
+   "steps": [
+    "Dolje odaberi platformu koju želiš koristiti.",
+    "Klikni na „Nabavi API ključ“ i slijedi upute pružatelja.",
+    "Klikni na „Unesi u Render“ i tamo spremi pristupne podatke.",
+    "Vrati se ovdje i klikni na „Provjeri sada“."
+   ]
+  },
+  "voice": {
+   "title": "Korak 3: Poveži izgovor glasom (opcionalno)",
+   "body": "Potrebno samo ako želiš automatski generisati izgovorene voiceovere za svoje videe. Bez ovog koraka sve ostalo ipak radi.",
+   "steps": [
+    "Klikni na „Nabavi API ključ“ kod ElevenLabs.",
+    "Tamo kreiraj nalog i API ključ.",
+    "Klikni na „Unesi u Render“ i tamo spremi ključ.",
+    "Vrati se ovdje i klikni na „Provjeri sada“."
+   ]
+  },
+  "done": {
+   "title": "Gotovo!",
+   "body": "Sada možeš krenuti. Sve što si preskočio/la možeš bilo kada pronaći i dopuniti u dijelu „Integracije“ — ili ponovo otvoriti ovaj asistent preko „Postavke“."
+  }
+ }
+}

@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Steg {current} av {total}",
+    "close": "Stäng",
+    "back": "Tillbaka",
+    "next": "Nästa",
+    "skip": "Hoppa över",
+    "finish": "Klart, kom igång",
+    "checking": "Kontrollerar …",
+    "checkAgain": "Kontrollera nu",
+    "connected": "Ansluten",
+    "notConnected": "Inte ansluten än",
+    "skippedNote": "Överhoppat — du kan komplettera det när som helst under ”Integrationer”.",
+    "envHint": "Obs: Efter att du sparat i Render tar det oftast 1–2 minuter innan tjänsten startar om och ändringen börjar gälla. Om ”Kontrollera nu” ännu inte hittar något, vänta en stund och klicka igen.",
+    "reopenHint": "Du kan öppna den här assistenten igen när som helst: i Inställningar under ”Installationsassistent”."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Välkommen till SECRET 58",
+      "body": "Innan det börjar ställer vi tillsammans in det allra nödvändigaste — i riktigt små, enskilda steg. Du kan pausa när som helst och fortsätta senare på samma ställe."
+    },
+    "aiProvider": {
+      "title": "Steg 1: Anslut AI-leverantör",
+      "body": "För texter, manus, hooks och hashtags behöver programvaran en AI-leverantör. Välj en av de två — en räcker.",
+      "steps": [
+        "Klicka nedan vid Anthropic eller OpenAI på ”Hämta API-nyckel”.",
+        "Skapa där ett gratis konto om det behövs.",
+        "Skapa där en ny API-nyckel och kopiera den.",
+        "Klicka på ”Lägg in i Render”, klistra in nyckeln där som miljövariabel och spara.",
+        "Kom tillbaka hit och klicka nedan på ”Kontrollera nu”."
+      ],
+      "costHint": "Kostnader uppstår först vid faktisk användning, direkt hos respektive leverantör — aldrig via SECRET 58."
+    },
+    "platform": {
+      "title": "Steg 2: Anslut en plattform för sociala medier (valfritt)",
+      "body": "Valfritt, men rekommenderat: Anslut minst en plattform där du vill publicera senare. Du kan också göra det här steget senare.",
+      "steps": [
+        "Välj nedan en plattform som du vill använda.",
+        "Klicka på ”Hämta API-nyckel” och följ leverantörens anvisningar.",
+        "Klicka på ”Lägg in i Render” och spara åtkomstuppgifterna där.",
+        "Kom tillbaka hit och klicka på ”Kontrollera nu”."
+      ]
+    },
+    "voice": {
+      "title": "Steg 3: Anslut talsyntes (valfritt)",
+      "body": "Behövs bara om du vill skapa automatiskt uppläst voiceover till dina videor. Utan det här steget fungerar allt annat ändå.",
+      "steps": [
+        "Klicka på ”Hämta API-nyckel” vid ElevenLabs.",
+        "Skapa där ett konto och en API-nyckel.",
+        "Klicka på ”Lägg in i Render” och spara nyckeln där.",
+        "Kom tillbaka hit och klicka på ”Kontrollera nu”."
+      ]
+    },
+    "done": {
+      "title": "Klart!",
+      "body": "Du kan komma igång nu. Allt du hoppat över hittar och kompletterar du när som helst under ”Integrationer” — eller så öppnar du den här assistenten igen via ”Inställningar”."
+    }
+  }
+}

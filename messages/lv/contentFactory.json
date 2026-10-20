@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Visas satura vienības vienuviet — izveido, dublē, pārraksti, papildini ar balss ierakstu/subtitriem un virzi cauri apstiprināšanas darbplūsmai.",
+  "statusTabs": {
+    "all": "Visi",
+    "draft": "Melnraksts",
+    "inReview": "Pārbaudē",
+    "approved": "Apstiprināts",
+    "scheduled": "Ieplānots",
+    "published": "Publicēts",
+    "archived": "Arhivēts"
+  },
+  "newItem": {
+    "openButton": "Jauna satura vienība",
+    "titleLabel": "Nosaukums",
+    "platformLabel": "Platforma",
+    "create": "Izveidot",
+    "closeAria": "Aizvērt"
+  },
+  "table": {
+    "empty": "Satura vienību vēl nav — izveido vienu manuāli vai ar Content Brain.",
+    "title": "Nosaukums",
+    "platform": "Platforma",
+    "format": "Formāts",
+    "status": "Statuss",
+    "updated": "Atjaunināts",
+    "actions": "Darbības",
+    "duplicate": "Dublēt",
+    "delete": "Dzēst",
+    "confirmDelete": "Vai tiešām dzēst satura vienību?"
+  },
+  "detail": {
+    "backLink": "Atpakaļ uz Content Factory",
+    "actionFailed": "Darbība neizdevās.",
+    "actions": {
+      "review": "Uz pārbaudi",
+      "approve": "Apstiprināt",
+      "reject": "Noraidīt",
+      "schedule": "Ieplānot",
+      "publish": "Publicēt",
+      "copy": "Kopēt ierakstu",
+      "markPublished": "Publicēts manuāli"
+    },
+    "rejectReasonPrompt": "Noraidīšanas iemesls (neobligāts):",
+    "scheduleDatePrompt": "Publicēšanas datums (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Nosaukums",
+      "hook": "Āķis",
+      "script": "Skripts",
+      "caption": "Parakstis"
+    },
+    "save": "Saglabāt",
+    "saving": "Saglabā…",
+    "hashtags": {
+      "heading": "Tēmturi un atslēgvārdi",
+      "regenerate": "Ģenerēt no jauna",
+      "empty": "Tēmturi vēl nav ģenerēti."
+    },
+    "voiceover": {
+      "heading": "Balss ieraksts",
+      "generate": "Izveidot",
+      "empty": "Balss ieraksts vēl nav izveidots."
+    },
+    "subtitles": {
+      "heading": "Subtitri",
+      "generate": "Izveidot (SRT)",
+      "download": "Lejupielādēt {file}",
+      "empty": "Subtitri vēl nav izveidoti."
+    },
+    "video": {
+      "heading": "Video renderēšana",
+      "request": "Pieprasīt renderēšanu",
+      "note": "Pakalpojumu sniedzējiem neatkarīgs video konveijers (11./12. sadaļa) — pašlaik nav nokonfigurēts neviens video pakalpojumu sniedzējs (skatīt Integrācijas)."
+    },
+    "scriptVariants": {
+      "heading": "Skripta varianti",
+      "newVariant": "Jauns variants",
+      "empty": "Variantu vēl nav.",
+      "variantSummary": "Variants {label}"
+    },
+    "repurpose": {
+      "heading": "Satura pārveide",
+      "description": "Izveido no šīs satura vienības platformām piemērotus atvasinājumus citiem kanāliem. Vairāk kanālu = lielāka iespēja, ka cilvēki redzēs video.",
+      "selectAll": "Atlasīt visas platformas",
+      "clearAll": "Atcelt atlasi",
+      "generateButton": "Izveidot {count} atvasinājumus"
+    },
+    "approvalRevoked": "Apstiprinājums atsaukts: ieraksts tika mainīts un jāpārbauda un jāapstiprina vēlreiz.",
+    "job": {
+      "QUEUED": "Automātiska nosūtīšana ieplānota uz {when}.",
+      "RUNNING": "Notiek nosūtīšana (termiņš {when}).",
+      "SUCCEEDED": "Publicēts termiņā {when}.",
+      "FAILED": "Nosūtīšana termiņā {when} neizdevās, ieraksts atkal ir „Apstiprināts“.",
+      "UNKNOWN": "Nosūtīšana termiņā {when}: iznākums nav skaidrs.",
+      "CANCELED": "Ieplānotā nosūtīšana ({when}) netika izpildīta."
+    },
+    "copied": "Teksts un tēmturi nokopēti — tagad ielīmē tos platformas lietotnē.",
+    "copyFailed": "Kopēšana nav iespējama — lūdzu, atlasi tekstu manuāli.",
+    "markPublishedConfirm": "Vai ierakstu publicēji pats? Tas tiks atzīmēts kā publicēts; ieplānotā nosūtīšana tiks atmesta."
+  }
+}

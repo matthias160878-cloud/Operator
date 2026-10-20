@@ -1,0 +1,44 @@
+{
+ "kicker": "AI Social Command Center",
+ "title": "SECRET 58 — {packageName}",
+ "claim": "Bez predplatného. Všetci agenti. Tvoji vlastní poskytovatelia AI.",
+ "subtitle": "Jeden nápad. Viac platforiem. Maximálny dosah. Jediný kompletný balík — raz zaplatíš, získaš plný prístup k celej aplikácii.",
+ "features": [
+  "Content Brain — jeden nápad, všetky platformy",
+  "Všetci agenti AI: nápady, trendy, skript, háčik, hashtagy, miniatúry, titulky, publikovanie",
+  "Voice Studio s hlasmi ElevenLabs",
+  "Video Studio so správcom formátov — pripojenie generátorov videa AI sa pripravuje",
+  "Content Factory s procesom schvaľovania a Content Kalendárom",
+  "Analytics, odporúčania na rast a sledovanie príjmov",
+  "Doručená pošta s návrhmi odpovedí od AI",
+  "Voľný výber poskytovateľov AI cez vlastné prístupy — žiadne kontingenty"
+ ],
+ "priceOnetime": "jednorazovo",
+ "priceRecommendedNote": "Odporúčaná cena — stane sa záväznou, hneď ako bude Stripe nakonfigurovaný s vhodnou cenou.",
+ "buyButton": "Kúpiť teraz",
+ "redirecting": "Presmerovanie na Stripe …",
+ "checkoutFailed": "Platba zlyhala.",
+ "unknownError": "Neznáma chyba.",
+ "notConfigured": "Platba ešte nie je nakonfigurovaná — prevádzkovateľ musí najprv vo Stripe vytvoriť produkt za {price} a uložiť STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+ "costDisclosure": "Upozornenie: Táto cena je jednorazová za softvér. Jednotlivé funkcie (napr. generovanie textu pomocou AI, hlasový výstup) vyžadujú vlastné prístupy u externých poskytovateľov (napr. Anthropic, ElevenLabs) — ich náklady sú nezávislé od SECRET 58 a platia sa priamo príslušnému poskytovateľovi, nie sú účtované tu. Podrobnosti po nákupe v časti Integrácie.",
+ "setupServiceTitle": "Pridať službu nastavenia (+{price} jednorazovo)",
+ "setupServiceDescription": "Nastavíme ti kľúče API, Brand DNA a prvé príspevky.",
+ "setupServiceUnavailable": "Čoskoro dostupné — prevádzkovateľ musí službu najprv vytvoriť vo Stripe.",
+ "autopilot": {
+  "kicker": "Čoskoro",
+  "title": "Autopilot — všetko v cene",
+  "subtitle": "Nepotrebuješ vlastné prístupy: všetky náklady poskytovateľov na text, hlas a video sú zahrnuté. Rovnaký rozsah funkcií ako kompletný balík — veľkosti sa líšia len množstvom.",
+  "comingSoon": "Čoskoro",
+  "perMonth": "/ mesiac",
+  "tiers": {
+   "s": "Autopilot S",
+   "m": "Autopilot M",
+   "l": "Autopilot L · Agentúra"
+  },
+  "brands": "{count, plural, one {# značka} other {# značiek}}",
+  "ideas": "{count} nápadov na obsah mesačne",
+  "videos": "{count} videí AI (po 30 s) mesačne",
+  "voiceMinutes": "{count} minút hlasového výstupu mesačne",
+  "note": "Plánované ceny, zatiaľ nedostupné na objednanie. Autopilot sa spustí, hneď ako budú pripojené generátory videa AI."
+ }
+}

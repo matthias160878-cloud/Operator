@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Tvorba videí zatím není k dispozici: není připojena žádná videoslužba, která by videa vytvářela. Níže vidíš připravené formáty pro jednotlivé platformy; skripty, namluvení a titulky vytváříš ve Script Studiu, Voice Studiu a Content Factory.",
+  "providerCardTitle": "Poskytovatelé videa",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Video assety",
+  "assetsEmpty": "Zatím žádná videa. Tvorba videí zatím v aplikaci není k dispozici.",
+  "providerNote": "Zatím není použitelná žádná videoslužba – videa teď v aplikaci nelze vytvářet."
+}

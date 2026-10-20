@@ -6,6 +6,7 @@ import { prisma } from "@/lib/db";
 import { requireSessionUser, SESSION_COOKIE } from "@/lib/auth/session";
 import { verifyPassword } from "@/lib/auth/password";
 import { route } from "@/lib/api";
+import { ComposioError, deleteConnectedAccount } from "@/lib/composio/client";
 
 const schema = z.object({ password: z.string().min(1).max(200), confirm: z.literal("LÖSCHEN") });
 
@@ -28,6 +29,20 @@ async function handlePOST(request: Request) {
   const plan = await prisma.workspacePlan.findUnique({ where: { workspaceId: user.workspaceId } });
   if (plan?.billingMode === "subscription" && ["ACTIVE", "PAST_DUE", "PENDING"].includes(plan.status) && !plan.cancelAtPeriodEnd) {
     return NextResponse.json({ error: "Bitte beende zuerst dein Abo unter „Paket & Abrechnung“." }, { status: 409 });
+  }
+  // Über Composio verbundene Plattformzugänge zuerst dort löschen, sonst
+  // blieben sie nach der Kontolöschung bei Composio bestehen.
+  const composio = await prisma.composioConnection.findMany({ where: { workspaceId: user.workspaceId } });
+  try {
+    for (const row of composio) {
+      for (const id of [row.connectedAccountId, row.pendingAccountId]) if (id) await deleteConnectedAccount(id);
+    }
+  } catch (err) {
+    if (!(err instanceof ComposioError)) throw err;
+    return NextResponse.json(
+      { error: "Verbundene Konten konnten bei Composio nicht getrennt werden. Bitte später erneut versuchen." },
+      { status: 502 }
+    );
   }
   // Betreiber-Buchungen bleiben (Aufbewahrungspflicht), verlieren aber den Bezug zum Arbeitsbereich.
   await prisma.operatorPayment.updateMany({ where: { workspaceId: user.workspaceId }, data: { workspaceId: null } });

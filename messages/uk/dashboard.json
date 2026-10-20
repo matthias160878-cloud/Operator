@@ -1,0 +1,96 @@
+{
+  "viewAll": "Показати все",
+  "demoBanner": {
+    "text": "Демо-дані активні – кампанії, контент і статистика в цьому робочому просторі є демо-даними, а не реальними цифрами платформ."
+  },
+  "hero": {
+    "subtitle": "Одна ідея. Кілька платформ. Максимальне охоплення.",
+    "newCampaign": "Нова кампанія",
+    "createContent": "Створити контент",
+    "findIdeas": "Знайти ідеї",
+    "aiAgents": "ШІ-агенти"
+  },
+  "orbit": {
+    "xNotConnected": "X (не підключено)",
+    "brainAlt": "ШІ-мозок SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Активні агенти",
+    "empty": "Запусків агентів ще немає."
+  },
+  "kpi": {
+    "contentCreated": "Створено контенту",
+    "videosCreated": "Створено відео",
+    "postsCreated": "Створено постів",
+    "published": "Публікації",
+    "views": "Перегляди",
+    "avgEngagement": "Сер. залученість",
+    "totalRevenue": "Доходи (внесені вручну)",
+    "noComparisonWeek": "Попереднього тижня для порівняння ще немає — показники змін з'являться, щойно з'являться дані щонайменше за два тижні.",
+    "noStats": "Перегляди та залученість: статистики ще немає – статистика платформ поки не завантажується автоматично."
+  },
+  "production": {
+    "title": "Виробництво контенту",
+    "thisWeek": "Цього тижня"
+  },
+  "scheduled": {
+    "title": "Заплановані публікації",
+    "empty": "Запланованих публікацій немає."
+  },
+  "activity": {
+    "title": "Остання активність",
+    "empty": "Активності ще немає."
+  },
+  "contentFactory": {
+    "description": "Створюй із однієї ідеї повні контент-кампанії для всіх платформ.",
+    "cta": "Почати →",
+    "popularTemplates": "Популярні шаблони",
+    "templateYoutubeVideo": "Відео YouTube",
+    "templateTiktokSeries": "Серія TikTok",
+    "templateInstagramReel": "Reel Instagram",
+    "templateLinkedinPost": "Пост LinkedIn",
+    "templateBlogPost": "Стаття в блозі",
+    "viewAllTemplates": "Усі шаблони →"
+  },
+  "brandDna": {
+    "tonality": "Тональність",
+    "targetAudience": "Цільова аудиторія",
+    "industry": "Галузь",
+    "language": "Мова",
+    "empty": "Brand DNA ще не вказано."
+  },
+  "campaigns": {
+    "title": "Поточні кампанії",
+    "empty": "Кампаній ще немає."
+  },
+  "platforms": {
+    "title": "Платформи",
+    "manage": "Керувати"
+  },
+  "integrations": {
+    "connectedCount": "Підключено: {connected}/{total}"
+  },
+  "agentMonitor": {
+    "title": "Журнал асистентів",
+    "empty": "Запусків ще немає."
+  },
+  "topPerformer": {
+    "title": "Топ-результати",
+    "last7Days": "Останні 7 днів",
+    "empty": "Даних про ефективність ще немає – статистика платформ поки не завантажується автоматично.",
+    "views": "Перегляди",
+    "likes": "Лайки",
+    "comments": "Коментарі",
+    "shares": "Поширення",
+    "engagementRate": "+Рівень залученості {value}"
+  },
+  "calendar": {
+    "open": "Відкрити",
+    "viewMonth": "Місяць",
+    "viewWeek": "Тиждень",
+    "viewDay": "День",
+    "viewCampaign": "Кампанія",
+    "moreItems": "+ ще {count}"
+  },
+  "weekdayLabels": ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"]
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Tkabbir",
+  "subtitle": "Rakkomandazzjonijiet għall-firxa u t-tkabbir – miġbura mill-istatistika ssejvjata tal-kontenut tiegħek: l-aħjar ħinijiet biex tippowstja, l-aktar hashtags u formati ta' suċċess. L-istatistika tal-pjattaformi għadha ma tinġabarx awtomatikament.",
+  "warning": "<strong>Mhux</strong> inkluż apposta: segwiment/likes/kummenti awtomatizzati biex jiżdiedu artifiċjalment is-segwaċi. Dan jikser it-termini tal-użu ta' YouTube, Instagram, TikTok, LinkedIn u Facebook u jista' jwassal għas-sospensjoni tal-kont. Din il-paġna tagħti biss rakkomandazzjonijiet ibbażati fuq id-dejta għall-kontenut tiegħek stess.",
+  "filterAll": "Il-pjattaformi kollha",
+  "emptyState": "Għad m'hemm l-ebda statistika ssejvjata għal {platform}, għalhekk għad m'hemmx rakkomandazzjonijiet. L-istatistika tal-pjattaformi għadha ma tinġabarx awtomatikament.",
+  "emptyStateDefaultScope": "dan il-workspace",
+  "bestPostingTimesTitle": "L-aqwa ħinijiet biex tippostja",
+  "postingTime": "{day} · {hour}:00",
+  "avgLabel": "Medja {percent} ({count})",
+  "topHashtagsTitle": "L-aktar hashtags b'suċċess",
+  "topHashtagsEmpty": "M'hemm l-ebda dejta tal-hashtags.",
+  "hashtagTooltip": "Engagement medju {percent}, użat {count}×",
+  "topFormatsTitle": "L-aqwa formats"
+}

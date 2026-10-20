@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Mokomasis vaizdo įrašas",
+  "subtitlesLabel": "Subtitrai",
+  "subtitlesOff": "Išjungta",
+  "soundLabel": "Garsas",
+  "soundOn": "Skaitymo balsas įjungtas",
+  "soundOff": "Skaitymo balsas išjungtas",
+  "soundHint": "Skaitymo balsas imamas iš tavo naršyklės. Kokios kalbos prieinamos, priklauso nuo tavo įrenginio.",
+  "soundMissing": "Šiai kalbai tavo įrenginyje neįdiegta jokio balso. Subtitrai vis tiek veikia.",
+  "draftNote": "Juodraštis: tikros programos įrašas su bandomaisiais duomenimis. Subtitrai išversti automatiškai.",
+  "whatLabel": "Kas tai yra, kokią funkciją atlieka ir kaip tai atlikti.",
+  "videosTitle": "Aiškinamieji vaizdo įrašai apie kiekvieną skiltį",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Pirmieji žingsniai",
+      "cues": {
+        "c1": "Sveiki atvykę į mokymus: pirmieji žingsniai. Viskas, ką matai, yra tikra programa su bandomaisiais duomenimis.",
+        "c2": "Kairėje yra naršymas. Kiekviena programos skiltis čia turi savo įrašą.",
+        "c3": "1 žingsnis: skiltyje „Integracijos“ patikrink, kurios paslaugos prijungtos.",
+        "c4": "Kiekvienoje eilutėje rodoma tikra, patikrinta būsena – niekada apsimestinis ryšys.",
+        "c5": "„Nesukonfigūruota“ reiškia: ši paslauga dar nenustatyta. Be DI tiekėjo programa veikia šablonų režimu.",
+        "c6": "2 žingsnis: įvesk savo prekės ženklą skiltyje „Brand DNA“. Tonas, tikslinė auditorija ir vertybės patenka į kiekvieną sugeneruotą tekstą.",
+        "c7": "Pavyzdys: užpildyk sritį ir tikslinę auditoriją, o apačioje išsaugok.",
+        "c8": "3 žingsnis: skiltyje „Idėjos ir įkvėpimas“ sugeneruok pirmąją idėją. Įvesk temą ir spustelėk „Generuoti idėjas“.",
+        "c9": "Idėjos rodomos kaip kortelės. Šablonų režimu tai pavyzdžiai, su DI tiekėju jos tampa individualios.",
+        "c10": "Viskas lieka juodraščiu, kol tu patvirtini. Apie kiekvieną skiltį yra atskiras aiškinamasis vaizdo įrašas."
+      }
+    },
+    "dashboard": {
+      "title": "Skydelis",
+      "cues": {
+        "c1": "Skydelis yra tavo pradžios puslapis: apžvalga to, kas vyksta tavo darbo erdvėje.",
+        "c2": "Viršuje matai aktyvius agentus, turinio gamybą ir suplanuotus įrašus.",
+        "c3": "Žemiau yra paskutinė veikla ir nuorodos į Content Factory bei Brand DNA.",
+        "c4": "Per „Savaitė“ perjungi rodiklių laikotarpį.",
+        "c5": "Kaip naudoti: kasdien atidaryk skydelį, patikrink neužbaigtus juodraščius ir iš čia pereik tiesiai į reikiamą skiltį."
+      }
+    },
+    "schulung": {
+      "title": "Mokymai",
+      "cues": {
+        "c1": "Mokymai yra tavo instrukcija programoje. Jie paaiškina kiekvieną skiltį žingsnis po žingsnio.",
+        "c2": "Kiekviena tema turi aprašymą, sunumeruotus žingsnius ir nuorodą, kuri atidaro atitinkamą puslapį.",
+        "c3": "Čia rodomi ir šie aiškinamieji vaizdo įrašai, po vieną apie kiekvieną skiltį.",
+        "c4": "Kaip naudoti: pasirink temą, perskaityk žingsnius, atidaryk puslapį ir iškart išbandyk."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory yra darbo stalas visiems tavo turinio elementams vienoje vietoje.",
+        "c2": "Funkcija: kurti elementus, dubliuoti, perrašyti, papildyti balso įrašu ir subtitrais bei pravesti per patvirtinimo eigą.",
+        "c3": "Filtrai viršuje rodo būsenas: Juodraštis, Peržiūrima, Patvirtinta, Suplanuota, Paskelbta ir Archyvuota.",
+        "c4": "Kaip tai daryti: spustelėjęs „Naujas turinio elementas“ sukuri elementą.",
+        "c5": "Atidaryk elementą, kad redaguotum scenarijų, balso įrašą, subtitrus, žymas (hashtag) ir miniatiūrą.",
+        "c6": "Patvirtinimas visada yra rankinis žingsnis. Niekas nepaskelbiama be tavo patvirtinimo."
+      }
+    },
+    "ideas": {
+      "title": "Idėjos ir įkvėpimas",
+      "cues": {
+        "c1": "Čia renki idėjas: temų grupes, serijas ir formatus būsimam turiniui.",
+        "c2": "Funkcija: IdeaAgent sukuria idėjų pagal temą arba pats įvedi savo idėjas ranka.",
+        "c3": "Kaip tai daryti: įvesk temą, pasirink platformą, tikslą ir formatą ir spustelėk „Generuoti idėjas“.",
+        "c4": "Kiekviena idėja tampa kortele su pavadinimu, užuomazga ir prioritetu.",
+        "c5": "Per „Rankiniu būdu“ sukuri savo idėją.",
+        "c6": "Gerąsias idėjas naudoji kaip atspirties tašką Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain iš idėjos padaro pilną turinio planą.",
+        "c2": "Funkcija: atsižvelgia į tavo Brand DNA ir kiekvienai pasirinktai platformai sukuria hook, scenarijus, žymas (hashtag) ir miniatiūrų koncepcijas kaip juodraštį.",
+        "c3": "Kaip tai daryti: įvesk temą ir tikslinę auditoriją.",
+        "c4": "Pasirink tikslą ir kalbą, tada paspausk platformas. Čia pridedama TikTok.",
+        "c5": "Slankikliu nustatai, kiek turinio elementų sukuriama kiekvienai platformai.",
+        "c6": "Spustelėjus „Generuoti turinio planą“ paleidžiamas vykdymas.",
+        "c7": "Kampanija atsiranda apačioje. Visi elementai yra juodraščiai ir yra Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA aprašo tavo prekės ženklą: pavadinimą, sritį, tikslinę auditoriją, toną ir vertybes.",
+        "c2": "Funkcija: šie duomenys automatiškai patenka į Content Brain bei scenarijų, hook ir žymų (hashtag) agentus.",
+        "c3": "Kaip tai daryti: užpildyk laukus, pavyzdžiui, sritį ir tikslinę auditoriją.",
+        "c4": "Žemiau tvarkai pageidaujamus ir draudžiamus žodžius, kvietimus veikti ir prekės ženklo vertybes.",
+        "c5": "Pabaigoje spustelėk „Išsaugoti Brand DNA“."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio yra scenarijų ir hook dirbtuvės.",
+        "c2": "Funkcija: kuria scenarijus pagal struktūrą Hook, problema, nauda, pavyzdys, rezultatas ir kvietimas veikti bei pateikia kelis hook variantus.",
+        "c3": "Kaip tai daryti: įvesk temą ir pasirink platformą.",
+        "c4": "Tada spustelėk „Generuoti scenarijų ir hook“.",
+        "c5": "Rezultatas yra juodraštis, kurį toliau naudoji Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio tvarko balsus ir kuria balso įrašus.",
+        "c2": "Funkcija: tvarkyti balsų biblioteką, kurti peržiūras ir importuoti balsus. Prijungimas vyksta per ElevenLabs.",
+        "c3": "Kaip tai daryti: sukurk balsą rankiniu būdu arba importuok iš ElevenLabs. Importui reikia nustatyto prijungimo.",
+        "c4": "Su tekstu ir balsu sukuri peržiūrą ir ją paleidi."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio yra programos vaizdo įrašų srautas.",
+        "c2": "Funkcija: formatų tvarkyklė, keičiami vaizdo įrašų tiekėjai bei balso įrašo ir subtitrų prijungimas.",
+        "c3": "Puslapyje rodoma, kurie tiekėjai nustatyti. Nenustatyti sąžiningai pažymimi kaip tokie.",
+        "c4": "Kaip tai daryti: vaizdo įrašus kuri kiekvienam turinio elementui Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio pateikia miniatiūrų koncepcijas ir vaizdų išteklius.",
+        "c2": "Funkcija: miniatiūrų agentas siūlo pavadinimą, vaizdo idėją, tekstą ir maketą. Čia numatyta Canva integracija.",
+        "c3": "Kaip tai daryti: įvesk miniatiūros temą.",
+        "c4": "Spustelėk „Generuoti koncepciją“.",
+        "c5": "Koncepcija tau tarnauja kaip vaizdo šablonas."
+      }
+    },
+    "socialMedia": {
+      "title": "Socialiniai tinklai",
+      "cues": {
+        "c1": "Čia prijungi savo platformų paskyras ir matai jų būseną.",
+        "c2": "Funkcija: prieigos valdomos serverio pusėje ir saugomos užšifruotos. Prie platformos prisijungi per Composio.",
+        "c3": "Kiekvienoje kortelėje rodoma platforma, paskyra, būsena ir paskutinis skaitymo testas.",
+        "c4": "„Dar nenustatyta“ reiškia: operatorius dar neįjungė prijungimo serveryje.",
+        "c5": "Kaip tai daryti: kai nustatyta, prie platformos spustelėk „Prijungti“ ir prisijunk. Tik skaitoma, niekas neskelbiama."
+      }
+    },
+    "calendar": {
+      "title": "Turinio kalendorius",
+      "cues": {
+        "c1": "Turinio kalendorius iš karto rodo suplanuotą ir paskelbtą turinį.",
+        "c2": "Funkcija: čia rodomi visi turinio elementai su paskelbimo data, filtruojami pagal platformą.",
+        "c3": "Kaip tai daryti: suplanuok elementą Content Factory su data, tada jis atsiras čia.",
+        "c4": "Prieš kiekvieną paskelbimą programa realiuoju laiku patikrina, ar tikslinė platforma prijungta."
+      }
+    },
+    "analytics": {
+      "title": "Analitika",
+      "cues": {
+        "c1": "Analitika rodo tavo veiklos rodiklius.",
+        "c2": "Funkcija: tik iš tikrųjų turimi duomenys, importuoti arba tavo įvesti. Nieko neišgalvota.",
+        "c3": "Matai raidą laikui bėgant, geriausiai veikiantį turinį ir Learning Agent rekomendacijas.",
+        "c4": "Kaip tai daryti: kai tik prijungiamos platformos arba įrašai duomenis, diagramos prisipildo."
+      }
+    },
+    "growth": {
+      "title": "Augimas",
+      "cues": {
+        "c1": "Augimo puslapis pateikia rekomendacijas didesnei aprėpčiai.",
+        "c2": "Funkcija: iš tavo tikrų analitikos duomenų apskaičiuoja geriausius publikavimo laikus, sėkmingas žymas (hashtag) ir formatus.",
+        "c3": "Kaip tai daryti: pasirink platformą ir perskaityk rekomendacijas.",
+        "c4": "Tai rekomendacijos, o ne automatika. Sekėjai ar sąveikos dirbtinai nedidinami."
+      }
+    },
+    "revenue": {
+      "title": "Pajamos",
+      "cues": {
+        "c1": "Skiltyje Pajamos sujungi savo uždarbį iš platformų ir kampanijų.",
+        "c2": "Funkcija: sumos atsiranda tik tada, kai jas įrašai. Jokių išgalvotų skaičių nėra.",
+        "c3": "Kaip tai daryti: spustelėk „Įrašyti pajamas“, pasirink platformą ir rūšį ir įvesk sumą.",
+        "c4": "Išmokama visada tiesiogiai per platformą. SECRET 58 jokių išmokėjimų neapdoroja."
+      }
+    },
+    "sales": {
+      "title": "Pardavimai ir parduotuvė",
+      "cues": {
+        "c1": "„Pardavimai ir parduotuvė“ rodo tavo paties verslo pajamas.",
+        "c2": "Funkcija: jos atskirtos nuo tavo SECRET 58 paketo. Skaičiuojami tik faktiniai pardavimai, bandomieji duomenys pažymimi.",
+        "c3": "Viršuje yra sumos pagal valiutą, žemiau – tavo teikėjo duomenys rekvizitams.",
+        "c4": "B variantas: parduoti per SECRET 58. A variantas: importuoti esamą parduotuvę.",
+        "c5": "Kaip tai daryti: užpildyk teikėjo duomenis ir išsaugok, tada pasirink pardavimo kelią."
+      }
+    },
+    "website": {
+      "title": "Mano svetainė",
+      "cues": {
+        "c1": "Čia į savo svetainę įdiegi svetainės asistentą.",
+        "c2": "Funkcija: asistentas atsako į tavo lankytojų klausimus.",
+        "c3": "Mes tavo svetainės automatiškai nekeičiame. Kodą įterpi pats arba paprašai savo svetainių kūrėjo.",
+        "c4": "Kaip tai daryti: įvesk svetainės adresą ir spustelėk „Pridėti svetainę“.",
+        "c5": "Tada nukopijuok rodomą kodą į savo svetainę."
+      }
+    },
+    "inbox": {
+      "title": "Gautieji",
+      "cues": {
+        "c1": "Gautieji surenka žinutes ir komentarus iš visų platformų.",
+        "c2": "Funkcija: MessageAgent siūlo atsakymus. Siunčiama tik tai, ką patvirtini.",
+        "c3": "Kaip tai daryti: kol nėra tiesiogiai prijungtos platformos, spustelėk „Imituoti pokalbį“.",
+        "c4": "Peržiūrėk atsakymo pasiūlymą, pakoreguok jį ir patvirtink."
+      }
+    },
+    "agents": {
+      "title": "Agentai",
+      "cues": {
+        "c1": "Agentų monitorius rodo visus SECRET 58 agentus.",
+        "c2": "Funkcija: kiekvieno agento būsena, paskutinė užduotis ir rezultatas. Kiekvienas paleidimas įrašomas į žurnalą.",
+        "c3": "Paleidimų istorijoje matai, kas ir kada vyko ir ar pavyko.",
+        "c4": "Kaip naudoti: patikrink čia, jei kas nors sukurta ne taip, kaip tikėtasi."
+      }
+    },
+    "integrations": {
+      "title": "Integracijos",
+      "cues": {
+        "c1": "Čia matai visų išorinių paslaugų būseną realiuoju laiku.",
+        "c2": "Funkcija: kiekviena eilutė pagrįsta iš tikrųjų nustatytomis prieigomis. Apsimestinių ryšių nėra.",
+        "c3": "Grupės: DI tiekėjai, balsas, socialinės platformos, dizainas, vaizdo įrašai ir tendencijos.",
+        "c4": "Kaip tai daryti: kai „Nesukonfigūruota“, „Gauti API raktą“ nuveda į tiekėjo puslapį.",
+        "c5": "Išoriniai tiekėjai turi savo kainas. Prie kiekvienos paslaugos nurodyta, koks modelis taikomas."
+      }
+    },
+    "billing": {
+      "title": "Paketas ir apmokėjimas",
+      "cues": {
+        "c1": "Skiltyje „Paketas ir apmokėjimas“ matai savo paketą ir gali jį pakeisti.",
+        "c2": "Funkcija: DI funkcijos veikia per operatoriaus prieigas. Tau nereikia savo DI prenumeratos.",
+        "c3": "Yra Pro ir Maxi, mėnesinis arba metinis. Kainos kortelėse nurodytos be mokesčių.",
+        "c4": "Perkama tik aiškiai spustelėjus „Užsakyti su mokėjimo įsipareigojimu“.",
+        "c5": "Jei turi nuolaidos kodą, jį įvedi žemiau esančiame lauke."
+      }
+    },
+    "settings": {
+      "title": "Nustatymai",
+      "cues": {
+        "c1": "Nustatymuose tvarkai darbo erdvę, naudotojus ir sistemos informaciją.",
+        "c2": "Funkcija: Workspace, vaidmenys, sistemos būsena, paruošimo asistentas ir tavo duomenys su informacijos pateikimu ir ištrynimu.",
+        "c3": "Kaip tai daryti: slinkk per skiltis. Darbo erdvės ištrynimas reikalauja papildomo patvirtinimo.",
+        "c4": "Reguliariai čia tikrink savo duomenis ir paruošimo asistentą."
+      }
+    }
+  }
+}

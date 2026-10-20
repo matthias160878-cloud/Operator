@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Koncepte miniaturash si tekst dhe gjendja e lidhjes me Canva.",
+  "imageAssetsTitle": "Asetet e imazheve",
+  "imageAssetsEmpty": "Ende nuk ka imazhe. Agjenti i miniaturave aktualisht krijon vetëm koncepte teksti, jo skedarë imazhi.",
+  "thumbnailAgent": {
+    "title": "Agjenti i miniaturave",
+    "description": "Krijon një koncept tekstual (titull, ide vizuale, layout, CTA) — i përgatitur për lidhjen me një gjenerator imazhesh. Ende nuk krijohet asnjë imazh.",
+    "inputPlaceholder": "Tema e miniaturës",
+    "submitButton": "Gjenero konceptin",
+    "errorGenerationFailed": "Gjenerimi dështoi.",
+    "errorUnknown": "Gabim i panjohur.",
+    "fieldTitle": "Titulli",
+    "fieldVisualIdea": "Ideja vizuale",
+    "fieldText": "Teksti",
+    "fieldLayout": "Layout",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Përshkrimi i imazhit",
+    "templateResult": "Shabllon: ky koncept vjen nga një shabllon teksti fiks, jo nga IA. Për koncepte me IA, fut çelësin tënd të IA-së te „Cilësimet → Qasjet e mia”.",
+    "textEngineLabel": "Motori i tekstit:",
+    "templateMode": "Modaliteti i shablloneve (nuk është konfiguruar asnjë ofrues AI)"
+  }
+}

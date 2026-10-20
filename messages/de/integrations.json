@@ -1,6 +1,6 @@
 {
   "title": "Integrationen",
-  "description": "Live-Status aller externen Dienste — ausschließlich auf Basis der tatsächlich gesetzten Environment-Variablen. Keine vorgetäuschten Verbindungen.",
+  "description": "Live-Status der externen Dienste – nur tatsächlich eingerichtete und geprüfte Verbindungen, nichts wird vorgetäuscht.",
   "categories": {
     "AI": "KI-Provider",
     "VOICE": "Voice",
@@ -9,7 +9,7 @@
     "VIDEO": "Video",
     "TREND": "Trends"
   },
-  "costNote": "Der SECRET-58-Kaufpreis ist einmalig und deckt die Software ab. Jeder externe Dienst hier hat sein eigenes, unabhängiges Kostenmodell beim jeweiligen Anbieter — SECRET 58 stellt dafür nie zusätzlich in Rechnung.",
+  "costNote": "Dein SECRET-58-Paket (Pro oder Maxi) ist ein Abo, siehe „Paket & Abrechnung“. Jeder externe Dienst hier hat sein eigenes, unabhängiges Kostenmodell beim jeweiligen Anbieter — SECRET 58 stellt dafür nie zusätzlich in Rechnung.",
   "links": {
     "getKey": "API-Schlüssel holen",
     "setInRender": "In Render eintragen",

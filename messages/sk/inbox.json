@@ -1,0 +1,27 @@
+{
+ "title": "Doručená pošta",
+ "description": "Správy a otázky na jednom mieste. MessageAgent navrhuje koncepty odpovedí.",
+ "emptyState": "Zatiaľ žiadne konverzácie — simuluj jednu a začni.",
+ "backToInbox": "Späť do doručenej pošty",
+ "newConversation": {
+  "simulateButton": "Simulovať konverzáciu",
+  "simulateHint": "Keďže neexistuje skutočné pripojenie k platforme, môžeš tu simulovať prichádzajúcu správu a vyskúšať návrh odpovede od AI.",
+  "close": "Zavrieť",
+  "namePlaceholder": "Meno",
+  "handlePlaceholder": "@handle (voliteľné)",
+  "messagePlaceholder": "Text správy …",
+  "createButton": "Vytvoriť"
+ },
+ "detail": {
+  "draftFailed": "Návrh zlyhal.",
+  "save": "Uložiť",
+  "edit": "Upraviť",
+  "approveAndSend": "Schváliť a odoslať",
+  "requestDraft": "Vyžiadať návrh odpovede od AI",
+  "openDraftExists": "Hore už existuje otvorený návrh — najprv ho uprav/odošli.",
+  "simulateMoreHint": "Simulovať ďalšiu prichádzajúcu správu (test bez skutočného pripojenia k platforme):",
+  "messagePlaceholder": "Text správy …",
+  "addButton": "Pridať"
+ },
+ "simulationBanner": "<strong>Náhľad/simulácia:</strong> správy z platforiem sa zatiaľ nenačítavajú a odpovede sa neodosielajú – ani cez „Schváliť a odoslať“. Správy z platforiem tu môžeš na vyskúšanie simulovať. Skutočné záznamy prichádzajú len z formulárov na webe (napr. žiadosti o termín); na tie odpovedáš e-mailom."
+}

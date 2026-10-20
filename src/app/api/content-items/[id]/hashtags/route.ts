@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revokeApprovalOnChange } from "@/lib/contentWorkflow";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { getBrandDNA } from "@/lib/brand";
@@ -28,7 +29,8 @@ async function handlePOST(
     },
   });
 
-  return NextResponse.json({ item: updated });
+  const approvalRevoked = await revokeApprovalOnChange(id);
+  return NextResponse.json({ item: updated, approvalRevoked });
 }
 
 export const POST = route(handlePOST);

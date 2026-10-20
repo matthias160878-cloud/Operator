@@ -4,19 +4,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Brain } from "lucide-react";
 import { NAV_ITEMS } from "@/components/layout/nav-items";
 import clsx from "clsx";
 
-export function Sidebar() {
+export function Sidebar({
+  userName,
+  initials,
+  workspaceName,
+  isAdmin,
+}: {
+  userName: string;
+  initials: string;
+  workspaceName: string;
+  isAdmin: boolean;
+}) {
   const t = useTranslations("common");
   const pathname = usePathname();
 
   return (
     <aside className="hidden lg:flex w-64 shrink-0 flex-col border-r border-border bg-surface/60 backdrop-blur-xl">
       <div className="flex items-center gap-2 px-5 py-5 border-b border-border">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-accent-2 shadow-[0_0_20px_rgba(109,91,255,0.45)]">
-          <Brain className="h-5 w-5 text-white" />
+        <div className="relative h-9 w-9 overflow-hidden rounded-lg shadow-[0_0_20px_rgba(109,91,255,0.45)]">
+          <Image src="/brand/logo-58.png" alt="" fill sizes="36px" className="object-cover" />
         </div>
         <div className="leading-tight">
           <div className="font-semibold tracking-wide text-foreground">{t("appName")}</div>
@@ -53,7 +62,7 @@ export function Sidebar() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(109,91,255,0.25),transparent_65%)]" />
           <div className="relative h-16 w-16 overflow-hidden rounded-full shadow-[0_0_30px_rgba(109,91,255,0.5)]">
             <Image
-              src="/brand/brain-core.png"
+              src="/brand/logo-58.png"
               alt="SECRET 58"
               fill
               sizes="64px"
@@ -75,15 +84,15 @@ export function Sidebar() {
             <span className="status-dot bg-success" />
             {t("sidebar.workspace")}
           </div>
-          <div className="mt-1 text-sm font-medium text-foreground">Secret 58 Media</div>
+          <div className="mt-1 truncate text-sm font-medium text-foreground" title={workspaceName}>{workspaceName}</div>
         </div>
         <div className="flex items-center gap-2 px-1">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent-3 to-accent text-xs font-semibold text-white">
-            MM
+            {initials}
           </div>
           <div className="leading-tight">
-            <div className="text-sm text-foreground">Max Mustermann</div>
-            <div className="text-xs text-muted">{t("sidebar.role")}</div>
+            <div className="max-w-[9.5rem] truncate text-sm text-foreground" title={userName}>{userName}</div>
+            {isAdmin && <div className="text-xs text-muted">{t("sidebar.role")}</div>}
           </div>
         </div>
       </div>

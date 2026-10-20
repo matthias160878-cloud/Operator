@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Intet abonnement. Alle agenter. Dine egne AI-udbydere.",
+  "subtitle": "Én idé. Flere platforme. Maksimal rækkevidde. Én samlet pakke — betal én gang, fuld adgang til hele applikationen.",
+  "features": [
+    "Content Brain — én idé, alle platforme",
+    "Alle AI-agenter: idéer, trends, script, hook, hashtags, thumbnails, undertekster, publicering",
+    "Voice Studio med ElevenLabs-stemmer",
+    "Video Studio med formatmanager — tilslutning af AI-videogeneratorer er under udvikling",
+    "Content Factory med godkendelsesworkflow og content-kalender",
+    "Analytics, vækstanbefalinger og indtægtssporing",
+    "Indbakke med AI-svarudkast",
+    "Frit valg af AI-udbydere via egne adgange — ingen kvoter"
+  ],
+  "priceOnetime": "engangsbetaling",
+  "priceRecommendedNote": "Anbefalet pris — bliver bindende, så snart Stripe er konfigureret med en passende pris.",
+  "buyButton": "Køb nu",
+  "redirecting": "Sender dig videre til Stripe …",
+  "checkoutFailed": "Betalingen mislykkedes.",
+  "unknownError": "Ukendt fejl.",
+  "notConfigured": "Betaling er endnu ikke konfigureret — operatøren skal først oprette et produkt til {price} i Stripe og angive STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Bemærk: Denne pris er en engangsbetaling for softwaren. Enkelte funktioner (f.eks. AI-tekstgenerering, stemmeoutput) kræver egne adgange hos tredjepartsudbydere (f.eks. Anthropic, ElevenLabs) — deres omkostninger er uafhængige af SECRET 58 og forfalder direkte hos den pågældende udbyder, de opkræves ikke her. Detaljer efter købet under Integrationer.",
+  "setupServiceTitle": "Tilføj opsætningsservice (+{price} engangsbetaling)",
+  "setupServiceDescription": "Vi sætter API-nøgler, Brand DNA og de første opslag op for dig.",
+  "setupServiceUnavailable": "Kan snart bookes — operatøren skal først oprette servicen i Stripe.",
+  "autopilot": {
+    "kicker": "Kommer snart",
+    "title": "Autopilot — alt inkluderet",
+    "subtitle": "Ingen egne adgange nødvendige: Alle udbyderomkostninger til tekst, stemme og video er inkluderet. Samme funktionsomfang som den samlede pakke — størrelserne adskiller sig kun i mængde.",
+    "comingSoon": "Kommer snart",
+    "perMonth": "/ måned",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Bureau"
+    },
+    "brands": "{count, plural, one {# brand} other {# brands}}",
+    "ideas": "{count} content-idéer pr. måned",
+    "videos": "{count} AI-videoer (à 30 sek.) pr. måned",
+    "voiceMinutes": "{count} minutters stemmeoutput pr. måned",
+    "note": "Planlagte priser, kan endnu ikke bookes. Autopilot starter, så snart AI-videogeneratorerne er tilsluttet."
+  }
+}

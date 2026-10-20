@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Nincs előfizetés. Minden agent. Saját MI-szolgáltatóid.",
+  "subtitle": "Egy ötlet. Több platform. Maximális elérés. Egyetlen teljes csomag — egyszer fizetsz, és teljes hozzáférést kapsz az egész alkalmazáshoz.",
+  "features": [
+    "Content Brain — egy ötlet, minden platform",
+    "Az összes MI-agent: ötletek, trendek, script, hook, hashtagek, bélyegképek, feliratok, publikálás",
+    "Voice Studio ElevenLabs-hangokkal",
+    "Video Studio formátumkezelővel — az MI-videógenerátorok csatlakoztatása folyamatban",
+    "Content Factory jóváhagyási munkafolyamattal és tartalomnaptárral",
+    "Analitika, növekedési ajánlások és bevételkövetés",
+    "Beérkező üzenetek MI-válaszvázlatokkal",
+    "Szabadon választható MI-szolgáltatók saját hozzáféréssel — nincsenek keretek"
+  ],
+  "priceOnetime": "egyszeri",
+  "priceRecommendedNote": "Ajánlott ár — akkor lesz kötelező érvényű, ha a Stripe-ban be van állítva egy megfelelő ár.",
+  "buyButton": "Vásárlás most",
+  "redirecting": "Átirányítás a Stripe-hoz …",
+  "checkoutFailed": "A fizetés nem sikerült.",
+  "unknownError": "Ismeretlen hiba.",
+  "notConfigured": "A fizetés még nincs beállítva — az üzemeltetőnek először létre kell hoznia a Stripe-ban egy {price} árú terméket, és meg kell adnia a STRIPE_SECRET_KEY / STRIPE_PRICE_ID értékeket.",
+  "costDisclosure": "Megjegyzés: Ez az ár egyszeri, és a szoftverre vonatkozik. Egyes funkciókhoz (pl. MI-szöveggenerálás, hangkimenet) külön hozzáférés kell harmadik felek szolgáltatásaihoz (pl. Anthropic, ElevenLabs) — ezek költségei függetlenek a SECRET 58-tól, és közvetlenül az adott szolgáltatónál esedékesek, itt nem kerülnek felszámításra. Részletek a vásárlás után az Integrációk menüpontban.",
+  "setupServiceTitle": "Beüzemelési szolgáltatás hozzáadása (+{price} egyszeri)",
+  "setupServiceDescription": "Beállítjuk neked az API-kulcsokat, a Brand DNA-t és az első posztokat.",
+  "setupServiceUnavailable": "Hamarosan foglalható — az üzemeltetőnek először rögzítenie kell a szolgáltatást a Stripe-ban.",
+  "autopilot": {
+    "kicker": "Hamarosan",
+    "title": "Autopilot — minden benne van",
+    "subtitle": "Nincs szükség saját hozzáférésre: a szöveg, hang és videó szolgáltatói költségei benne vannak. Ugyanaz a funkcionalitás, mint a teljes csomagban — a méretek csak a mennyiségben különböznek.",
+    "comingSoon": "Hamarosan",
+    "perMonth": "/ hó",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Ügynökség"
+    },
+    "brands": "{count, plural, one {# márka} other {# márka}}",
+    "ideas": "{count} tartalomötlet havonta",
+    "videos": "{count} MI-videó (á 30 mp) havonta",
+    "voiceMinutes": "{count} perc hangkimenet havonta",
+    "note": "Tervezett árak, még nem foglalhatók. Az Autopilot akkor indul, amint az MI-videógenerátorok csatlakoztatva vannak."
+  }
+}

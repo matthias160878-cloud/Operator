@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine: gestisci la Voice Library, crea anteprime di voiceover e importa voci.",
+  "envWarning": "Il voiceover non è ancora disponibile: il servizio vocale (ElevenLabs) viene configurato dal gestore. Puoi comunque usare la libreria delle voci per la pianificazione.",
+  "addManual": "Aggiungi voce manualmente",
+  "importFromElevenLabs": "Importa da ElevenLabs",
+  "form": {
+    "namePlaceholder": "Nome",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Lingua",
+    "submit": "Aggiungi"
+  },
+  "confirmDelete": "Eliminare davvero la voce?",
+  "importFailed": "Importazione non riuscita.",
+  "previewFailed": "Anteprima non riuscita.",
+  "unknownError": "Errore sconosciuto.",
+  "empty": "Ancora nessuna voce nella Library.",
+  "active": "Attiva",
+  "inactive": "Inattiva",
+  "remove": "Rimuovi",
+  "preview": {
+    "heading": "Anteprima della voce",
+    "defaultText": "Ciao, questo è un esempio per questa voce.",
+    "selectPlaceholder": "Scegli una voce…",
+    "play": "Riproduci anteprima"
+  }
+}

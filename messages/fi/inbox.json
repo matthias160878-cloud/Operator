@@ -1,0 +1,27 @@
+{
+  "title": "Saapuneet",
+  "description": "Viestit ja yhteydenotot yhdessä paikassa. MessageAgent ehdottaa vastausluonnoksia.",
+  "emptyState": "Ei vielä keskusteluja — simuloi yksi aloittaaksesi.",
+  "backToInbox": "Takaisin Saapuneisiin",
+  "newConversation": {
+    "simulateButton": "Simuloi keskustelu",
+    "simulateHint": "Koska oikeaa alustayhteyttä ei ole, voit täällä simuloida saapuvan viestin kokeillaksesi tekoälyn vastausluonnosta.",
+    "close": "Sulje",
+    "namePlaceholder": "Nimi",
+    "handlePlaceholder": "@käyttäjätunnus (valinnainen)",
+    "messagePlaceholder": "Viestin teksti …",
+    "createButton": "Luo"
+  },
+  "detail": {
+    "draftFailed": "Luonnos epäonnistui.",
+    "save": "Tallenna",
+    "edit": "Muokkaa",
+    "approveAndSend": "Hyväksy ja lähetä",
+    "requestDraft": "Pyydä tekoälyn vastausluonnos",
+    "openDraftExists": "Yllä on jo avoin luonnos — muokkaa tai lähetä se ensin.",
+    "simulateMoreHint": "Simuloi toinen saapuva viesti (testi ilman oikeaa alustayhteyttä):",
+    "messagePlaceholder": "Viestin teksti …",
+    "addButton": "Lisää"
+  },
+  "simulationBanner": "<strong>Esikatselu/simulaatio:</strong> alustojen viestejä ei vielä haeta eikä vastauksia lähetetä – ei myöskään ”Hyväksy ja lähetä” -toiminnolla. Alustaviestejä voit simuloida tässä kokeillaksesi. Oikeat merkinnät tulevat vain verkkosivujen lomakkeista (esim. ajanvarauspyynnöt); niihin vastaat sähköpostilla."
+}

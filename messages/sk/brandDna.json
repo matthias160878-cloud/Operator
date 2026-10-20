@@ -1,0 +1,30 @@
+{
+ "title": "Brand / Content DNA",
+ "subtitle": "Tvoja značka. Tvoj štýl. Všade. Tieto údaje sa automaticky prenášajú do Content Brain, agenta pre skripty, háčiky a hashtagy.",
+ "form": {
+  "nameLabel": "Názov značky",
+  "industryLabel": "Odvetvie",
+  "descriptionLabel": "Popis",
+  "descriptionHint": "Čím sa značka vyznačuje?",
+  "audienceLabel": "Cieľová skupina",
+  "languageLabel": "Jazyk",
+  "tonalityLabel": "Tón komunikácie",
+  "humorLabel": "Humor",
+  "formalityLabel": "Formálnosť",
+  "preferredWordsLabel": "Uprednostňované slová",
+  "forbiddenWordsLabel": "Zakázané slová",
+  "preferredCtasLabel": "Uprednostňované CTA",
+  "brandValuesLabel": "Hodnoty značky",
+  "topicsLabel": "Témy",
+  "csvHint": "oddelené čiarkami",
+  "colorsLabel": "Farby",
+  "colorsHint": "oddelené čiarkami, napr. #6D5BFF",
+  "fontsLabel": "Písma",
+  "visualRulesLabel": "Vizuálne pravidlá",
+  "saveError": "Uloženie zlyhalo.",
+  "unknownError": "Neznáma chyba.",
+  "saving": "Ukladá sa…",
+  "save": "Uložiť Brand DNA",
+  "savedAt": "Uložené o {time}"
+ }
+}

@@ -1,0 +1,86 @@
+{
+  "title": "Koolitus",
+  "subtitle": "Samm-sammulised juhendid ja selgitusvideod SECRET 58 igale valdkonnale — alati siin järelevaatamiseks.",
+  "welcomeBanner": {
+    "title": "Tere tulemast SECRET 58-sse!",
+    "body": "Aitäh ostu eest. Enne kui alustad, tasub heita põgus pilk allolevale jaotisele „Esimesed sammud“ — et tehisintellekti agendid töötaksid algusest peale sinu päris andmetega."
+  },
+  "stepsLabel": "Sammud",
+  "openPage": "Ava leht",
+  "topics": {
+    "firstSteps": {
+      "title": "Esimesed sammud",
+      "description": "Tee need kolm asja esimesena ära, siis töötavad kõik tehisintellekti agendid päris andmetega, mitte kohatäitjatega.",
+      "steps": [
+        "Sisesta jaotises „Seaded → Oma ligipääsud“ oma AI-võti Anthropicult, OpenAI-lt või Geminilt. AI-funktsioonid kasutavad ainult sinu võtit; AI-teenuse pakkuja esitab arve otse sulle. Ilma oma võtmeta töötab rakendus mallirežiimis kindlate tekstiplokkidega.",
+        "Täida jaotises „Brand DNA“ oma bränd (toon, sihtrühm, väärtused) — tehisintellekti agendid kasutavad seda iga loodud teksti jaoks.",
+        "Lase jaotises „Ideed ja inspiratsioon“ või „Content Brain“ luua esimene idee või kampaania."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Nii saab ideest valmis, kinnitatud sisu.",
+      "steps": [
+        "Loo Content Brainis uus kampaania teema ja sihtplatvormidega — sellest tekib automaatselt mitu sisuühikut.",
+        "Content Factorys läbib iga sisuühik olekud: Visand → Ülevaatusel → Kinnitatud → Planeeritud → Avaldatud.",
+        "Kinnitamine on käsitsi samm ja kohustuslik — midagi ei avaldata automaatselt ilma kinnituseta.",
+        "Sisuühiku detailvaates saab skripti, häälkõne, subtiitrid, märksõnad ja pisipildi eraldi uuesti genereerida."
+      ]
+    },
+    "studios": {
+      "title": "Script-, Voice-, Video- ja Design Studio",
+      "description": "Spetsialiseeritud tööriistad iga sisuosa jaoks.",
+      "steps": [
+        "Script Studio: loob skriptid struktuuriga Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: impordi või loo oma ElevenLabsi hääl, seejärel loo häälkõne otse skriptist.",
+        "Design Studio: pisipildi agent pakub pealkirja, visuaalse idee, teksti, paigutuse ja pildi kirjelduse.",
+        "Video Studio: näitab videopakkuja ühenduse praegust seisu (vormingute haldus, pakkuja olek)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Sisukalender ja avaldamine",
+      "description": "Kuhu planeeritud postitused jõuavad — ja miks postitus tõesti välja läheb (või ei lähe).",
+      "steps": [
+        "Sisukalendris kuvatakse kõik sisuühikud, millel on planeeritud avaldamiskuupäev.",
+        "Enne iga avaldamist kontrollib PublishingAgent reaalajas, kas sihtplatvorm on jaotises „Sotsiaalmeedia“ tõesti märgitud kui „Ühendatud“.",
+        "Ilma päris platvormiühenduseta kuvatakse ausalt viga, mitte ei tehta nägu, et avaldati."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analüütika ja kasv",
+      "description": "Päris numbrid oma tulemuslikkuse kohta — ja soovitused automatiseerimise asemel.",
+      "steps": [
+        "Analytics näitab ainult salvestatud statistikat (nt näidisandmeid). Platvormide statistikat veel automaatselt ei tooda; numbrid sisestad käsitsi jaotises „Soovitused“ või variantide võrdluses – seal neid hinnatakse.",
+        "Kasvu leht arvutab nendest andmetest parimad postitusajad, edukad märksõnad ja vormingud.",
+        "Oluline: automatiseeritud jälgijate/haaratuse suurendamist (botikäitumist) teadlikult ei ole — see rikuks iga platvormi kasutustingimusi."
+      ]
+    },
+    "inbox": {
+      "title": "Postkast",
+      "description": "Tehisintellekti vastusevisandid sõnumitele — kinnitusega enne saatmist.",
+      "steps": [
+        "Platvormide sõnumeid veel ei tooda ja vastuseid ei saadeta. Proovimiseks lood vestlusi simulatsioonina.",
+        "MessageAgent pakub vastuse Brand DNA ja vestluse käigu põhjal.",
+        "Mustandi vaatad üle ja kinnitad sina. Platvormidele saatmist pole veel ehitatud – „Kinnita ja saada“ teatab sellest ausalt veana, selle asemel et edu teeselda."
+      ]
+    },
+    "revenue": {
+      "title": "Tulude jälgimine",
+      "description": "Ülevaade kõigist platvormituludest ühes kohas — väljamaksed käivad siiski platvormide endi kaudu.",
+      "steps": [
+        "Tulud sisestatakse käsitsi, kuna TikTok/Meta ei paku avalikku tulu-API-t ning YouTube vajab selleks partnerprogrammi ligipääsu (veel ühendamata).",
+        "Tegelik väljamakse käib alati otse vastava platvormi kaudu (nt YouTube Google AdSense'i kaudu) — SECRET 58 ei tee väljamakseid."
+      ]
+    },
+    "integrations": {
+      "title": "Integratsioonid ja API võtmed",
+      "description": "Kust iga ühenduse olek pärineb ja kuhu sobiv võti sisestada.",
+      "steps": [
+        "Iga rida näitab päris, reaalajas kontrollitud olekut — mitte kunagi näilikku ühendust.",
+        "Oma ligipääsud (AI-võtmed, Resend uudiskirja jaoks) sisestad jaotises „Seaded → Oma ligipääsud“ – seal viib juhend teenusepakkuja ametlikule võtmelehele.",
+        "Ligipääsuandmeid ei salvestata kunagi brauserisse, vaid ainult krüpteeritult serverisse. Kõneväljundi ja platvormide rakenduste ligipääsud seadistab haldur; „Pole veel saadaval“ tähendab, et ühendust pole rakenduses veel ehitatud.",
+        "Kulud: Pro ja Maxi on tellimused, kuu- või aastapõhised. Kehtivad hinnad on jaotises „Pakett ja arveldus“. Oma ligipääsude (AI, Resend) eest esitab iga teenusepakkuja arve otse sulle oma hinnamudeli järgi – SECRET 58 ei küsi selle eest midagi lisaks."
+      ]
+    }
+  }
+}

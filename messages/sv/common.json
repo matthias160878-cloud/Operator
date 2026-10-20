@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Mer än innehåll.",
+    "footerLine2": "En komplett innehållsmaskin.",
+    "workspace": "Arbetsyta",
+    "role": "Administratör"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "schulung": "Utbildning",
+    "contentFactory": "Content Factory",
+    "ideas": "Idéer & inspiration",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Sociala medier",
+    "calendar": "Innehållskalender",
+    "analytics": "Analytics",
+    "growth": "Tillväxt",
+    "weiterempfehlungen": "Rekommendationer",
+    "reichweitenaufbau": "Bygga räckvidd",
+    "revenue": "Intäkter",
+    "inbox": "Inkorg",
+    "anfragen": "Förfrågningar",
+    "dateien": "Filer",
+    "agents": "Agenter",
+    "integrations": "Integrationer",
+    "settings": "Inställningar",
+    "billing": "Paket & fakturering",
+    "sales": "Försäljning & butik",
+    "website": "Min webbplats"
+  },
+  "topbar": {
+    "menuOpen": "Öppna menyn",
+    "menuClose": "Stäng menyn",
+    "searchPlaceholder": "Sök efter innehåll, projekt, kampanjer …",
+    "notifications": "Aviseringar",
+    "language": "Språk"
+  },
+  "footer": {
+    "help": "Hjälp",
+    "privacy": "Integritet",
+    "imprint": "Juridisk information",
+    "systemOnline": "Systemet är online"
+  },
+  "actions": {
+    "save": "Spara",
+    "cancel": "Avbryt",
+    "delete": "Ta bort",
+    "edit": "Redigera",
+    "create": "Skapa",
+    "close": "Stäng",
+    "back": "Tillbaka",
+    "loading": "Laddar …"
+  },
+  "status": {
+    "connected": "Ansluten",
+    "notConfigured": "Inte konfigurerad",
+    "error": "Fel"
+  },
+  "statusBadge": {
+    "CONNECTED": "Ansluten",
+    "ACTIVE": "Aktiv",
+    "COMPLETED": "Slutförd",
+    "RUNNING": "Pågår",
+    "SUCCESS": "Lyckades",
+    "PUBLISHED": "Publicerad",
+    "APPROVED": "Godkänd",
+    "SCHEDULED": "Schemalagd",
+    "WAITING": "Väntar",
+    "IN_REVIEW": "Under granskning",
+    "NOT_CONFIGURED": "Inte konfigurerad",
+    "IDLE": "Redo",
+    "DRAFT": "Utkast",
+    "ARCHIVED": "Arkiverad",
+    "ERROR": "Fel",
+    "REJECTED": "Avvisad",
+    "RECEIVED": "Mottagen",
+    "PENDING": "Väntande",
+    "NOT_AVAILABLE": "Inte tillgänglig ännu"
+  },
+  "integrationStatus": {
+    "notConfigured": "Inte konfigurerad — saknade variabler: {vars}.",
+    "verifyFailedGeneric": "Anslutningen misslyckades.",
+    "verifyFailedStatus": "{service} svarade med status {status}.",
+    "verifyUnreachable": "{service} kunde inte nås.",
+    "connected": "Ansluten.",
+    "notAvailable": "Inte tillgänglig ännu – den här anslutningen är ännu inte byggd i appen."
+  },
+  "mediaPreview": {
+    "expand": "Visa större",
+    "close": "Stäng"
+  }
+}

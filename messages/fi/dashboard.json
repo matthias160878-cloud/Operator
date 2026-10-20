@@ -1,0 +1,96 @@
+{
+  "viewAll": "Näytä kaikki",
+  "demoBanner": {
+    "text": "Esimerkkidata käytössä – tämän työtilan kampanjat, sisällöt ja tilastot ovat esimerkkidataa, eivät oikeita alustojen lukuja."
+  },
+  "hero": {
+    "subtitle": "Yksi idea. Useita alustoja. Maksimaalinen kattavuus.",
+    "newCampaign": "Uusi kampanja",
+    "createContent": "Luo sisältöä",
+    "findIdeas": "Etsi ideoita",
+    "aiAgents": "Tekoälyagentit"
+  },
+  "orbit": {
+    "xNotConnected": "X (ei yhdistetty)",
+    "brainAlt": "SECRET 58 tekoälyaivot"
+  },
+  "activeAgents": {
+    "title": "Aktiiviset agentit",
+    "empty": "Ei vielä agenttiajoja."
+  },
+  "kpi": {
+    "contentCreated": "Sisältöjä luotu",
+    "videosCreated": "Videoita luotu",
+    "postsCreated": "Postauksia luotu",
+    "published": "Julkaisut",
+    "views": "Katselut",
+    "avgEngagement": "Ø sitoutuminen",
+    "totalRevenue": "Tulot (syötetty käsin)",
+    "noComparisonWeek": "Vertailupohjaksi ei ole vielä edellistä viikkoa — muutosprosentit näkyvät, kun dataa on vähintään kahdelta viikolta.",
+    "noStats": "Katselut ja sitoutuminen: ei vielä tilastoja – alustojen tilastoja ei vielä haeta automaattisesti."
+  },
+  "production": {
+    "title": "Sisällöntuotanto",
+    "thisWeek": "Tällä viikolla"
+  },
+  "scheduled": {
+    "title": "Ajastetut julkaisut",
+    "empty": "Ei ajastettuja julkaisuja."
+  },
+  "activity": {
+    "title": "Viimeisimmät tapahtumat",
+    "empty": "Ei vielä tapahtumia."
+  },
+  "contentFactory": {
+    "description": "Luo yhdestä ideasta kokonaisia sisältökampanjoita kaikille alustoille.",
+    "cta": "Aloita nyt →",
+    "popularTemplates": "Suositut mallit",
+    "templateYoutubeVideo": "YouTube-video",
+    "templateTiktokSeries": "TikTok-sarja",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn-postaus",
+    "templateBlogPost": "Blogikirjoitus",
+    "viewAllTemplates": "Kaikki mallit →"
+  },
+  "brandDna": {
+    "tonality": "Sävy",
+    "targetAudience": "Kohderyhmä",
+    "industry": "Toimiala",
+    "language": "Kieli",
+    "empty": "Brand DNA:ta ei ole vielä tallennettu."
+  },
+  "campaigns": {
+    "title": "Nykyiset kampanjat",
+    "empty": "Ei vielä kampanjoita."
+  },
+  "platforms": {
+    "title": "Alustat",
+    "manage": "Hallitse"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} yhdistetty"
+  },
+  "agentMonitor": {
+    "title": "Avustajien loki",
+    "empty": "Ei vielä ajoja."
+  },
+  "topPerformer": {
+    "title": "Parhaat suorittajat",
+    "last7Days": "Viimeiset 7 päivää",
+    "empty": "Ei vielä suoritustietoja – alustojen tilastoja ei vielä haeta automaattisesti.",
+    "views": "Katselut",
+    "likes": "Tykkäykset",
+    "comments": "Kommentit",
+    "shares": "Jaot",
+    "engagementRate": "+Sitoutumisaste {value}"
+  },
+  "calendar": {
+    "open": "Avaa",
+    "viewMonth": "Kuukausi",
+    "viewWeek": "Viikko",
+    "viewDay": "Päivä",
+    "viewCampaign": "Kampanja",
+    "moreItems": "+{count} lisää"
+  },
+  "weekdayLabels": ["Ma", "Ti", "Ke", "To", "Pe", "La", "Su"]
+}

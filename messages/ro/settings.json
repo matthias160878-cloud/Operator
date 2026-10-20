@@ -1,0 +1,27 @@
+{
+  "title": "Setări",
+  "description": "Spațiul tău de lucru, utilizatorii și o privire de ansamblu asupra datelor tale. Propriile chei API (texte IA, trimiterea newsletterelor) le introduci la <zugaenge>Accese proprii</zugaenge>; pachetul tău îl găsești la <billing>Pachet și facturare</billing>.",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Nume",
+    "slug": "Slug",
+    "createdAt": "Creat la"
+  },
+  "users": {
+    "title": "Utilizatori și roluri",
+    "note": "Fiecare cont are propriul spațiu de lucru, separat de alți clienți. Deocamdată nu poți adăuga singur alți utilizatori."
+  },
+  "system": {
+    "title": "Sistem",
+    "contentItems": "Elemente de conținut",
+    "campaigns": "Campanii",
+    "mediaAssets": "Resurse media",
+    "agentRuns": "Rulări de agenți",
+    "dbNote": "Numărul de înregistrări salvate în spațiul tău de lucru. Poți exporta toate datele sau șterge spațiul de lucru mai jos, la „Datele mele”."
+  },
+  "onboarding": {
+    "title": "Asistent de configurare",
+    "description": "Ferestrele mici, pas cu pas, pentru furnizori de IA, platforme de social media și sinteză vocală, care apar la prima deschidere.",
+    "reopen": "Redeschide asistentul de configurare"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Integraatiot",
+  "description": "Ulkoisten palvelujen reaaliaikainen tila – vain todella määritetyt ja tarkistetut yhteydet, mitään ei teeskennellä.",
+  "categories": {
+    "AI": "Tekoälypalvelut",
+    "VOICE": "Voice",
+    "PLATFORM": "Sosiaalisen median alustat",
+    "DESIGN": "Design",
+    "VIDEO": "Video",
+    "TREND": "Trendit"
+  },
+  "costNote": "SECRET 58 -pakettisi (Pro tai Maxi) on tilaus, katso ”Paketti ja laskutus”. Jokaisella täällä olevalla ulkoisella palvelulla on oma, riippumaton hinnoittelumallinsa kyseisellä palveluntarjoajalla — SECRET 58 ei koskaan laskuta niistä erikseen.",
+  "links": {
+    "getKey": "Hae API-avain",
+    "setInRender": "Tallenna Renderiin",
+    "viewPricing": "Näytä hinnat"
+  },
+  "pricing": {
+    "free": "Ilmainen",
+    "payAsYouGo": "Käyttöön perustuva",
+    "subscription": "Tilaus",
+    "unknown": "Tarkista hinta palveluntarjoajalta"
+  }
+}

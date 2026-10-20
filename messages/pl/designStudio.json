@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Koncepcje miniatur jako tekst i stan połączenia z Canva.",
+  "imageAssetsTitle": "Zasoby graficzne",
+  "imageAssetsEmpty": "Brak obrazów. Agent miniatur tworzy obecnie tylko koncepcje tekstowe, bez plików graficznych.",
+  "thumbnailAgent": {
+    "title": "Agent miniatur",
+    "description": "Tworzy koncepcję tekstową (tytuł, pomysł wizualny, układ, CTA) — przygotowaną pod podłączenie generatora obrazów. Obraz nie jest jeszcze generowany.",
+    "inputPlaceholder": "Temat miniatury",
+    "submitButton": "Generuj koncepcję",
+    "errorGenerationFailed": "Generowanie nie powiodło się.",
+    "errorUnknown": "Nieznany błąd.",
+    "fieldTitle": "Tytuł",
+    "fieldVisualIdea": "Pomysł wizualny",
+    "fieldText": "Tekst",
+    "fieldLayout": "Układ",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Opis obrazu",
+    "templateResult": "Szablon: ta koncepcja pochodzi ze stałego szablonu tekstu, a nie od AI. Aby otrzymać koncepcje AI, wpisz własny klucz AI w „Ustawienia → Własne dostępy”.",
+    "textEngineLabel": "Silnik tekstowy:",
+    "templateMode": "Tryb szablonu (nie skonfigurowano dostawcy AI)"
+  }
+}

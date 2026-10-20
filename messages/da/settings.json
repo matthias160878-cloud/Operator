@@ -1,0 +1,27 @@
+{
+  "title": "Indstillinger",
+  "description": "Dit arbejdsområde, brugere og et overblik over dine data. Dine egne API-nøgler (AI-tekster, udsendelse af nyhedsbreve) indtaster du under <zugaenge>Egne adgange</zugaenge>; din pakke finder du under <billing>Pakke & fakturering</billing>.",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Navn",
+    "slug": "Slug",
+    "createdAt": "Oprettet den"
+  },
+  "users": {
+    "title": "Brugere & roller",
+    "note": "Hver konto har sit eget arbejdsområde, adskilt fra andre kunder. Flere brugere kan du endnu ikke selv tilføje."
+  },
+  "system": {
+    "title": "System",
+    "contentItems": "Content-elementer",
+    "campaigns": "Kampagner",
+    "mediaAssets": "Medieassets",
+    "agentRuns": "Agentkørsler",
+    "dbNote": "Antal poster gemt i dit arbejdsområde. Du kan eksportere alle data eller slette arbejdsområdet nedenfor under „Mine data“."
+  },
+  "onboarding": {
+    "title": "Opsætningsguide",
+    "description": "De små trin-for-trin-vinduer til AI-udbydere, sociale medie-platforme og stemmeoutput, som vises ved første åbning.",
+    "reopen": "Åbn opsætningsguiden igen"
+  }
+}

@@ -1,14 +1,15 @@
 {
   "title": "Analítica",
-  "subtitle": "Métricas de rendimiento a partir de datos reales — en cuanto se conecten plataformas, esta vista se llenará con valores reales.",
+  "subtitle": "Las estadísticas de las plataformas (visualizaciones, likes, comentarios, compartidos) aún no se obtienen automáticamente. Aquí solo aparecen valores ya guardados, p. ej. datos de ejemplo. Puedes introducir a mano las cifras de las estadísticas de la plataforma en <weiter>Recomendaciones</weiter> («Introducir cifras de la plataforma») o en la <varianten>comparación de variantes</varianten>: se evalúan allí, no en esta página.",
   "statViewsTotal": "Visualizaciones totales",
   "statLikesTotal": "Me gusta totales",
   "statComments": "Comentarios",
   "statShares": "Compartidos",
   "chartTitle": "Rendimiento del contenido en el tiempo",
   "chartLegend": "Visualizaciones (violeta) · Engagement % (turquesa)",
-  "chartEmpty": "Aún no hay datos de analítica.",
+  "chartEmpty": "Aún no hay estadísticas: no hay historial disponible.",
   "bestPerformingTitle": "Contenido con mejor rendimiento",
-  "bestPerformingEmpty": "Aún no hay datos.",
-  "learningAgentTitle": "Learning Agent — Recomendaciones"
+  "bestPerformingEmpty": "Aún no hay estadísticas: no es posible una clasificación.",
+  "learningAgentTitle": "Learning Agent — Recomendaciones",
+  "statsEmpty": "Aún no hay estadísticas guardadas, por eso todavía no hay métricas aquí. Las estadísticas de las plataformas aún no se obtienen automáticamente."
 }

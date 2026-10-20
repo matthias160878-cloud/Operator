@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Abonelik yok. Tüm ajanlar. Kendi yapay zekâ sağlayıcıların.",
+  "subtitle": "Tek fikir. Birden çok platform. Maksimum erişim. Tek bir komple paket — bir kez öde, uygulamanın tamamına tam erişim.",
+  "features": [
+    "Content Brain — tek fikir, tüm platformlar",
+    "Tüm yapay zekâ ajanları: fikirler, trendler, script, hook, hashtag'ler, küçük resimler, altyazılar, yayınlama",
+    "ElevenLabs seslerine sahip Voice Studio",
+    "Format yöneticisine sahip Video Studio — yapay zekâ video üreticilerinin bağlanması üzerinde çalışılıyor",
+    "Onay akışına sahip Content Factory ve içerik takvimi",
+    "Analitik, büyüme önerileri ve gelir takibi",
+    "Yapay zekâ yanıt taslaklarına sahip gelen kutusu",
+    "Yapay zekâ sağlayıcılarını kendi erişimlerinle özgürce seç — kota yok"
+  ],
+  "priceOnetime": "tek seferlik",
+  "priceRecommendedNote": "Önerilen fiyat — Stripe uygun bir fiyatla yapılandırıldığında bağlayıcı hâle gelir.",
+  "buyButton": "Şimdi satın al",
+  "redirecting": "Stripe'a yönlendiriliyor …",
+  "checkoutFailed": "Ödeme başarısız oldu.",
+  "unknownError": "Bilinmeyen hata.",
+  "notConfigured": "Ödeme henüz yapılandırılmadı — işletmecinin önce Stripe'ta {price} tutarında bir ürün oluşturması ve STRIPE_SECRET_KEY / STRIPE_PRICE_ID değerlerini tanımlaması gerekir.",
+  "costDisclosure": "Not: Bu fiyat yazılım için tek seferliktir. Bazı işlevler (ör. yapay zekâ ile metin üretimi, sesli çıktı) üçüncü taraf sağlayıcılarda (ör. Anthropic, ElevenLabs) kendi erişimlerini gerektirir — bunların maliyetleri SECRET 58'den bağımsızdır, doğrudan ilgili sağlayıcıya ödenir ve burada tahsil edilmez. Satın almadan sonra ayrıntılar Entegrasyonlar bölümünde.",
+  "setupServiceTitle": "Kurulum hizmetini ekle (+{price} tek seferlik)",
+  "setupServiceDescription": "Senin için API anahtarlarını, Brand DNA'yı ve ilk gönderileri kurarız.",
+  "setupServiceUnavailable": "Yakında satın alınabilir — işletmecinin hizmeti önce Stripe'a tanımlaması gerekir.",
+  "autopilot": {
+    "kicker": "Yakında",
+    "title": "Autopilot — her şey dahil",
+    "subtitle": "Kendi erişimlerine gerek yok: metin, ses ve video için tüm sağlayıcı maliyetleri dahildir. Komple paketle aynı işlev kapsamı — boyutlar yalnızca miktarda farklılaşır.",
+    "comingSoon": "Yakında",
+    "perMonth": "/ ay",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Ajans"
+    },
+    "brands": "{count, plural, one {# marka} other {# marka}}",
+    "ideas": "Ayda {count} içerik fikri",
+    "videos": "Ayda {count} yapay zekâ videosu (30 sn'lik)",
+    "voiceMinutes": "Ayda {count} dakika sesli çıktı",
+    "note": "Planlanan fiyatlar, henüz satın alınamaz. Autopilot, yapay zekâ video üreticileri bağlandığında başlar."
+  }
+}

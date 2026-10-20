@@ -1,0 +1,31 @@
+{
+ "title": "Script Studio",
+ "subtitle": "Engine pre skripty a háčiky: vytvára skripty šité na platformy podľa štruktúry Hook → Problem → Value → Example → Payoff → CTA a niekoľko variantov háčikov.",
+ "form": {
+  "topicLabel": "Téma",
+  "topicPlaceholder": "napr. 5 spôsobov, ako agenti AI šetria čas",
+  "platformLabel": "Platforma",
+  "generateButton": "Vygenerovať skript a háčiky",
+  "generateFailed": "Generovanie zlyhalo.",
+  "unknownError": "Neznáma chyba."
+ },
+ "hookTypes": {
+  "direkt": "Priamy",
+  "neugierig": "Zvedavý",
+  "story": "Príbeh",
+  "problem": "Problém",
+  "zahlen": "Čísla",
+  "kontroversSachlich": "Kontroverzný (vecne)",
+  "educational": "Vzdelávací"
+ },
+ "hooksHeading": "Varianty háčikov",
+ "engine": {
+  "label": "Engine: {provider}",
+  "templateMode": "Režim šablóny (nie je nakonfigurovaný žiadny poskytovateľ AI)"
+ },
+ "script": {
+  "heading": "Skript",
+  "save": "Uložiť ako položku obsahu",
+  "saving": "Ukladá sa…"
+ }
+}

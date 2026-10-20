@@ -1,0 +1,99 @@
+{
+ "appName": "SECRET 58",
+ "appTagline": "AI Social Command Center",
+ "sidebar": {
+  "footerLine1": "Viac než obsah.",
+  "footerLine2": "Kompletný stroj na obsah.",
+  "workspace": "Pracovný priestor",
+  "role": "Administrátor"
+ },
+ "nav": {
+  "dashboard": "Dashboard",
+  "schulung": "Školenie",
+  "contentFactory": "Content Factory",
+  "ideas": "Nápady a inšpirácia",
+  "contentBrain": "Content Brain",
+  "brandDna": "Brand DNA",
+  "scriptStudio": "Script Studio",
+  "voiceStudio": "Voice Studio",
+  "videoStudio": "Video Studio",
+  "designStudio": "Design Studio",
+  "socialMedia": "Sociálne médiá",
+  "calendar": "Content Kalendár",
+  "analytics": "Analytics",
+  "growth": "Rast",
+  "weiterempfehlungen": "Odporúčania",
+  "reichweitenaufbau": "Budovanie dosahu",
+  "revenue": "Príjmy",
+  "inbox": "Doručená pošta",
+  "anfragen": "Dopyty",
+  "dateien": "Súbory",
+  "agents": "Agenti",
+  "integrations": "Integrácie",
+  "settings": "Nastavenia",
+  "billing": "Balík a fakturácia",
+  "sales": "Predaj a obchod",
+  "website": "Moja webstránka"
+ },
+ "topbar": {
+  "menuOpen": "Otvoriť menu",
+  "menuClose": "Zavrieť menu",
+  "searchPlaceholder": "Hľadaj obsah, projekty, kampane …",
+  "notifications": "Upozornenia",
+  "language": "Jazyk"
+ },
+ "footer": {
+  "help": "Pomoc",
+  "privacy": "Ochrana údajov",
+  "imprint": "Právne informácie",
+  "systemOnline": "Systém online"
+ },
+ "actions": {
+  "save": "Uložiť",
+  "cancel": "Zrušiť",
+  "delete": "Odstrániť",
+  "edit": "Upraviť",
+  "create": "Vytvoriť",
+  "close": "Zavrieť",
+  "back": "Späť",
+  "loading": "Načítava sa …"
+ },
+ "status": {
+  "connected": "Pripojené",
+  "notConfigured": "Nenakonfigurované",
+  "error": "Chyba"
+ },
+ "statusBadge": {
+  "CONNECTED": "Pripojené",
+  "ACTIVE": "Aktívne",
+  "COMPLETED": "Dokončené",
+  "RUNNING": "Beží",
+  "SUCCESS": "Úspešné",
+  "PUBLISHED": "Publikované",
+  "APPROVED": "Schválené",
+  "SCHEDULED": "Naplánované",
+  "WAITING": "Čaká",
+  "IN_REVIEW": "Na kontrole",
+  "NOT_CONFIGURED": "Nenakonfigurované",
+  "IDLE": "Pripravené",
+  "DRAFT": "Koncept",
+  "ARCHIVED": "Archivované",
+  "ERROR": "Chyba",
+  "REJECTED": "Zamietnuté",
+  "RECEIVED": "Prijaté",
+  "PENDING": "Nevybavené",
+  "NOT_AVAILABLE": "Zatiaľ nedostupné"
+ },
+ "integrationStatus": {
+  "notConfigured": "Nenakonfigurované — chýbajúce premenné: {vars}.",
+  "verifyFailedGeneric": "Pripojenie zlyhalo.",
+  "verifyFailedStatus": "{service} odpovedal so stavom {status}.",
+  "verifyUnreachable": "{service} sa nepodarilo kontaktovať.",
+  "connected": "Pripojené.",
+  "notAvailable": "Zatiaľ nedostupné – toto prepojenie v aplikácii ešte nie je hotové."
+ },
+ "mediaPreview": {
+  "expand": "Zobraziť väčšie",
+  "close": "Zavrieť"
+ }
+}

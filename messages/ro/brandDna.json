@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Brandul tău. Stilul tău. Peste tot. Aceste informații ajung automat în Content Brain, în agentul de script, de hook și de hashtag-uri.",
+  "form": {
+    "nameLabel": "Numele brandului",
+    "industryLabel": "Domeniu",
+    "descriptionLabel": "Descriere",
+    "descriptionHint": "Ce definește brandul?",
+    "audienceLabel": "Public țintă",
+    "languageLabel": "Limbă",
+    "tonalityLabel": "Ton",
+    "humorLabel": "Umor",
+    "formalityLabel": "Formalitate",
+    "preferredWordsLabel": "Cuvinte preferate",
+    "forbiddenWordsLabel": "Cuvinte interzise",
+    "preferredCtasLabel": "CTA-uri preferate",
+    "brandValuesLabel": "Valorile brandului",
+    "topicsLabel": "Teme",
+    "csvHint": "separate prin virgulă",
+    "colorsLabel": "Culori",
+    "colorsHint": "separate prin virgulă, de ex. #6D5BFF",
+    "fontsLabel": "Fonturi",
+    "visualRulesLabel": "Reguli vizuale",
+    "saveError": "Salvarea a eșuat.",
+    "unknownError": "Eroare necunoscută.",
+    "saving": "Se salvează…",
+    "save": "Salvează Brand DNA",
+    "savedAt": "Salvat la {time}"
+  }
+}

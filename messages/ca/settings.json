@@ -1,0 +1,27 @@
+{
+  "title": "Configuració",
+  "description": "El teu espai de treball, usuaris i un resum de les teves dades. Les teves pròpies claus API (textos d'IA, enviament de butlletins) les introdueixes a <zugaenge>Accessos propis</zugaenge>; el teu paquet és a <billing>Paquet i facturació</billing>.",
+  "workspace": {
+    "title": "Espai de treball",
+    "name": "Nom",
+    "slug": "Slug",
+    "createdAt": "Creat el"
+  },
+  "users": {
+    "title": "Usuaris i rols",
+    "note": "Cada compte té el seu propi espai de treball, separat dels altres clients. De moment no pots afegir altres usuaris tu mateix."
+  },
+  "system": {
+    "title": "Sistema",
+    "contentItems": "Elements de contingut",
+    "campaigns": "Campanyes",
+    "mediaAssets": "Recursos multimèdia",
+    "agentRuns": "Execucions d'agents",
+    "dbNote": "Nombre d'entrades desades al teu espai de treball. Pots exportar totes les dades o eliminar l'espai de treball més avall, a «Les meves dades»."
+  },
+  "onboarding": {
+    "title": "Assistent de configuració",
+    "description": "Les petites finestres pas a pas per a proveïdors d'IA, plataformes de xarxes socials i sortida de veu que apareixen en obrir-ho per primera vegada.",
+    "reopen": "Torna a obrir l'assistent de configuració"
+  }
+}

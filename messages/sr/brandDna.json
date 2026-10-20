@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Твој бренд. Твој стил. Свуда. Ови подаци аутоматски улазе у Content Brain, Script, Hook и Hashtag агента.",
+  "form": {
+    "nameLabel": "Назив бренда",
+    "industryLabel": "Област",
+    "descriptionLabel": "Опис",
+    "descriptionHint": "Шта издваја бренд?",
+    "audienceLabel": "Циљна група",
+    "languageLabel": "Језик",
+    "tonalityLabel": "Тон",
+    "humorLabel": "Хумор",
+    "formalityLabel": "Формалност",
+    "preferredWordsLabel": "Жељене речи",
+    "forbiddenWordsLabel": "Забрањене речи",
+    "preferredCtasLabel": "Жељени CTA-ови",
+    "brandValuesLabel": "Вредности бренда",
+    "topicsLabel": "Теме",
+    "csvHint": "одвојено зарезом",
+    "colorsLabel": "Боје",
+    "colorsHint": "одвојено зарезом, нпр. #6D5BFF",
+    "fontsLabel": "Фонтови",
+    "visualRulesLabel": "Визуелна правила",
+    "saveError": "Чување није успело.",
+    "unknownError": "Непозната грешка.",
+    "saving": "Чува се…",
+    "save": "Сачувај Brand DNA",
+    "savedAt": "Сачувано у {time}"
+  }
+}

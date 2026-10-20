@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — spravuj knihovnu hlasů, vytvářej náhledy voiceoveru a importuj hlasy.",
+  "envWarning": "Hlasový komentář zatím není k dispozici: hlasovou službu (ElevenLabs) nastavuje provozovatel. Knihovnu hlasů už můžete používat pro plánování.",
+  "addManual": "Přidat hlas ručně",
+  "importFromElevenLabs": "Importovat z ElevenLabs",
+  "form": {
+    "namePlaceholder": "Název",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Jazyk",
+    "submit": "Přidat"
+  },
+  "confirmDelete": "Opravdu smazat hlas?",
+  "importFailed": "Import se nezdařil.",
+  "previewFailed": "Náhled se nezdařil.",
+  "unknownError": "Neznámá chyba.",
+  "empty": "V knihovně zatím nejsou žádné hlasy.",
+  "active": "Aktivní",
+  "inactive": "Neaktivní",
+  "remove": "Odebrat",
+  "preview": {
+    "heading": "Náhled hlasu",
+    "defaultText": "Ahoj, tohle je ukázka tohoto hlasu.",
+    "selectPlaceholder": "Vyber hlas…",
+    "play": "Přehrát náhled"
+  }
+}

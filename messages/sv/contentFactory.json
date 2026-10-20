@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Allt innehåll på ett ställe — skapa, duplicera, skriv om, berika med voiceover/undertexter och skicka genom godkännandeflödet.",
+  "statusTabs": {
+    "all": "Alla",
+    "draft": "Utkast",
+    "inReview": "Under granskning",
+    "approved": "Godkänd",
+    "scheduled": "Schemalagd",
+    "published": "Publicerad",
+    "archived": "Arkiverad"
+  },
+  "newItem": {
+    "openButton": "Nytt innehållsobjekt",
+    "titleLabel": "Titel",
+    "platformLabel": "Plattform",
+    "create": "Skapa",
+    "closeAria": "Stäng"
+  },
+  "table": {
+    "empty": "Inga innehållsobjekt än — skapa ett manuellt eller via Content Brain.",
+    "title": "Titel",
+    "platform": "Plattform",
+    "format": "Format",
+    "status": "Status",
+    "updated": "Uppdaterad",
+    "actions": "Åtgärder",
+    "duplicate": "Duplicera",
+    "delete": "Ta bort",
+    "confirmDelete": "Vill du verkligen ta bort innehållsobjektet?"
+  },
+  "detail": {
+    "backLink": "Tillbaka till Content Factory",
+    "actionFailed": "Åtgärden misslyckades.",
+    "actions": {
+      "review": "Till granskning",
+      "approve": "Godkänn",
+      "reject": "Avvisa",
+      "schedule": "Schemalägg",
+      "publish": "Publicera",
+      "copy": "Kopiera inlägg",
+      "markPublished": "Publicerad manuellt"
+    },
+    "rejectReasonPrompt": "Skäl till avvisning (valfritt):",
+    "scheduleDatePrompt": "Publiceringsdatum (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Titel",
+      "hook": "Hook",
+      "script": "Manus",
+      "caption": "Bildtext"
+    },
+    "save": "Spara",
+    "saving": "Sparar…",
+    "hashtags": {
+      "heading": "Hashtags & nyckelord",
+      "regenerate": "Generera om",
+      "empty": "Inga hashtags genererade än."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Skapa",
+      "empty": "Ingen voiceover skapad än."
+    },
+    "subtitles": {
+      "heading": "Undertexter",
+      "generate": "Skapa (SRT)",
+      "download": "Ladda ner {file}",
+      "empty": "Inga undertexter skapade än."
+    },
+    "video": {
+      "heading": "Videorendering",
+      "request": "Begär rendering",
+      "note": "Leverantörsoberoende videopipeline (avsnitt 11/12) — för närvarande är ingen videoleverantör konfigurerad (se Integrationer)."
+    },
+    "scriptVariants": {
+      "heading": "Manusvarianter",
+      "newVariant": "Ny variant",
+      "empty": "Inga varianter än.",
+      "variantSummary": "Variant {label}"
+    },
+    "repurpose": {
+      "heading": "Återanvänd innehåll",
+      "description": "Skapa plattformsanpassade avläggare av det här innehållsobjektet för fler kanaler. Fler kanaler = större chans att folk ser videon.",
+      "selectAll": "Välj alla plattformar",
+      "clearAll": "Avmarkera allt",
+      "generateButton": "Skapa {count} avläggare"
+    },
+    "approvalRevoked": "Godkännandet har återkallats: Inlägget har ändrats och måste granskas och godkännas på nytt.",
+    "job": {
+      "QUEUED": "Automatisk sändning planerad till {when}.",
+      "RUNNING": "Sändning pågår (tidpunkt {when}).",
+      "SUCCEEDED": "Publicerad vid tidpunkten {when}.",
+      "FAILED": "Sändningen vid tidpunkten {when} misslyckades, inlägget är åter ”Godkänd”.",
+      "UNKNOWN": "Sändning vid tidpunkten {when}: oklart utfall.",
+      "CANCELED": "Den planerade sändningen ({when}) genomfördes inte."
+    },
+    "copied": "Text och hashtags kopierade — klistra in dem nu i plattformens app.",
+    "copyFailed": "Det gick inte att kopiera — markera texten manuellt.",
+    "markPublishedConfirm": "Har du postat inlägget själv? Det markeras som publicerat; en planerad sändning kasseras."
+  }
+}

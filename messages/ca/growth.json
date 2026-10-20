@@ -1,0 +1,15 @@
+{
+  "title": "Creixement",
+  "subtitle": "Recomanacions d'abast i creixement, derivades de les estadístiques desades dels teus continguts: millors horaris de publicació, hashtags i formats amb més èxit. Les estadístiques de les plataformes encara no s'obtenen automàticament.",
+  "warning": "Deliberadament <strong>no</strong> inclòs: seguir/donar m'agrada/comentar de forma automatitzada per augmentar artificialment els seguidors. Això infringeix les condicions d'ús de YouTube, Instagram, TikTok, LinkedIn i Facebook i pot comportar el bloqueig del compte. Aquesta pàgina només ofereix recomanacions basades en dades per al teu propi contingut.",
+  "filterAll": "Totes les plataformes",
+  "emptyState": "Encara no hi ha estadístiques desades per a {platform}, per tant encara no hi ha recomanacions. Les estadístiques de les plataformes encara no s'obtenen automàticament.",
+  "emptyStateDefaultScope": "aquest espai de treball",
+  "bestPostingTimesTitle": "Millors hores de publicació",
+  "postingTime": "{day} · {hour} h",
+  "avgLabel": "Mitjana {percent} ({count})",
+  "topHashtagsTitle": "Hashtags amb més èxit",
+  "topHashtagsEmpty": "No hi ha dades de hashtags.",
+  "hashtagTooltip": "Engagement mitjà {percent}, utilitzat {count}×",
+  "topFormatsTitle": "Millors formats"
+}

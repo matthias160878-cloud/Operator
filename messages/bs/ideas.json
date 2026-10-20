@@ -1,0 +1,25 @@
+{
+ "title": "Ideje i inspiracija",
+ "subtitle": "Klasteri tema, serije i formati za budući sadržaj — generiše ih IdeaAgent ili se unose ručno.",
+ "board": {
+  "topicLabel": "Tema za nove ideje",
+  "topicPlaceholder": "npr. Produktivnost uz AI agente",
+  "generateButton": "Generiši ideje",
+  "manualButton": "Ručno",
+  "manualTitlePlaceholder": "Naslov ideje",
+  "addButton": "Dodaj",
+  "generateError": "Greška pri generisanju ideja.",
+  "unknownError": "Nepoznata greška.",
+  "emptyState": "Još nema ideja — generiši ih ili ih dodaj ručno.",
+  "minutesUnit": "~{count} min",
+  "statusNew": "Novo",
+  "statusInProgress": "U toku",
+  "statusUsed": "Iskorišteno",
+  "statusArchived": "Arhivirano",
+  "sourceAiGenerated": "IdeaAgent (AI ili šablon)",
+  "sourceManual": "Ručno",
+  "templateResult": "Šablon: upravo kreirane ideje potiču iz fiksnih tekstualnih blokova, a ne od AI-ja. Za AI ideje unesi vlastiti AI ključ pod „Postavke → Vlastiti pristupi”.",
+  "textEngineLabel": "Tekstualni pogon:",
+  "templateMode": "Način šablona (nije konfigurisan AI provajder)"
+ }
+}

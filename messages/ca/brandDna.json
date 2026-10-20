@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "La teva marca. El teu estil. A tot arreu. Aquestes dades passen automàticament a Content Brain i als agents de guions, hooks i hashtags.",
+  "form": {
+    "nameLabel": "Nom de la marca",
+    "industryLabel": "Sector",
+    "descriptionLabel": "Descripció",
+    "descriptionHint": "Què defineix la marca?",
+    "audienceLabel": "Públic objectiu",
+    "languageLabel": "Idioma",
+    "tonalityLabel": "To",
+    "humorLabel": "Humor",
+    "formalityLabel": "Formalitat",
+    "preferredWordsLabel": "Paraules preferides",
+    "forbiddenWordsLabel": "Paraules prohibides",
+    "preferredCtasLabel": "CTA preferits",
+    "brandValuesLabel": "Valors de la marca",
+    "topicsLabel": "Temes",
+    "csvHint": "separats per comes",
+    "colorsLabel": "Colors",
+    "colorsHint": "separats per comes, p. ex. #6D5BFF",
+    "fontsLabel": "Tipografies",
+    "visualRulesLabel": "Regles visuals",
+    "saveError": "No s'ha pogut desar.",
+    "unknownError": "Error desconegut.",
+    "saving": "Desant…",
+    "save": "Desa Brand DNA",
+    "savedAt": "Desat a les {time}"
+  }
+}

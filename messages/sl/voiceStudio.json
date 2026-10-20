@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — upravljanje Voice Library, ustvarjanje predogledov voiceovera in uvoz glasov.",
+  "envWarning": "Glasovni posnetek še ni na voljo: glasovno storitev (ElevenLabs) nastavi upravljavec. Knjižnico glasov lahko že uporabljate za načrtovanje.",
+  "addManual": "Ustvari glas ročno",
+  "importFromElevenLabs": "Uvozi iz ElevenLabs",
+  "form": {
+    "namePlaceholder": "Ime",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Jezik",
+    "submit": "Dodaj"
+  },
+  "confirmDelete": "Res izbrišem glas?",
+  "importFailed": "Uvoz ni uspel.",
+  "previewFailed": "Predogled ni uspel.",
+  "unknownError": "Neznana napaka.",
+  "empty": "V knjižnici še ni glasov.",
+  "active": "Aktivno",
+  "inactive": "Neaktivno",
+  "remove": "Odstrani",
+  "preview": {
+    "heading": "Predogled glasu",
+    "defaultText": "Živjo, to je primer za ta glas.",
+    "selectPlaceholder": "Izberi glas …",
+    "play": "Predvajaj predogled"
+  }
+}

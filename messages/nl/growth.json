@@ -1,0 +1,15 @@
+{
+  "title": "Groei",
+  "subtitle": "Aanbevelingen voor bereik en groei – afgeleid uit de opgeslagen statistieken van je content: beste posttijden, succesvolste hashtags en formats. Platformstatistieken worden nog niet automatisch opgehaald.",
+  "warning": "Bewust <strong>niet</strong> inbegrepen: geautomatiseerd volgen/liken/reageren om kunstmatig volgers te krijgen. Dat is bij YouTube, Instagram, TikTok, LinkedIn en Facebook in strijd met de gebruiksvoorwaarden en kan leiden tot blokkering van je account. Deze pagina geeft uitsluitend datagebaseerde aanbevelingen voor je eigen content.",
+  "filterAll": "Alle platforms",
+  "emptyState": "Nog geen statistieken opgeslagen voor {platform}, dus nog geen aanbevelingen. Platformstatistieken worden nog niet automatisch opgehaald.",
+  "emptyStateDefaultScope": "deze workspace",
+  "bestPostingTimesTitle": "Beste posttijden",
+  "postingTime": "{day} · {hour} uur",
+  "avgLabel": "Ø {percent} ({count})",
+  "topHashtagsTitle": "Meest succesvolle hashtags",
+  "topHashtagsEmpty": "Geen hashtagdata beschikbaar.",
+  "hashtagTooltip": "Ø {percent} engagement, {count}× gebruikt",
+  "topFormatsTitle": "Beste formaten"
+}

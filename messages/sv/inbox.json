@@ -1,0 +1,27 @@
+{
+  "title": "Inkorg",
+  "description": "Meddelanden och förfrågningar på ett ställe. MessageAgent föreslår svarsutkast.",
+  "emptyState": "Inga konversationer än — simulera en för att komma igång.",
+  "backToInbox": "Tillbaka till inkorgen",
+  "newConversation": {
+    "simulateButton": "Simulera konversation",
+    "simulateHint": "Eftersom det inte finns någon riktig plattformsanslutning kan du här simulera ett inkommande meddelande för att testa AI-svarsutkastet.",
+    "close": "Stäng",
+    "namePlaceholder": "Namn",
+    "handlePlaceholder": "@handle (valfritt)",
+    "messagePlaceholder": "Meddelandetext …",
+    "createButton": "Skapa"
+  },
+  "detail": {
+    "draftFailed": "Utkastet misslyckades.",
+    "save": "Spara",
+    "edit": "Redigera",
+    "approveAndSend": "Godkänn & skicka",
+    "requestDraft": "Begär AI-svarsutkast",
+    "openDraftExists": "Det finns redan ett öppet utkast ovan — redigera/skicka det först.",
+    "simulateMoreHint": "Simulera ytterligare ett inkommande meddelande (test utan riktig plattformsanslutning):",
+    "messagePlaceholder": "Meddelandetext …",
+    "addButton": "Lägg till"
+  },
+  "simulationBanner": "<strong>Förhandsvisning/simulering:</strong> meddelanden från plattformar hämtas ännu inte och svar skickas inte – inte ens via ”Godkänn & skicka”. Plattformsmeddelanden kan du simulera här för att prova. Riktiga poster kommer bara från webbformulär (t.ex. bokningsförfrågningar); dem besvarar du via e-post."
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Egy ötlet be — egy teljes, platformra szabott tartalomterv ki. A ContentBrainAgent figyelembe veszi a Brand DNA-dat, és minden kiválasztott platformhoz illő hookokat, scripteket, hashtageket és bélyegkép-koncepciókat készít vázlatként.",
+  "campaignsHeading": "Kampányok",
+  "noCampaigns": "Még nincs létrehozott kampány.",
+  "campaignSummary": "{count} tartalomelem · {audience}",
+  "form": {
+    "textEngineLabel": "Szövegmotor:",
+    "templateMode": "Sablon mód (nincs beállítva MI-szolgáltató)",
+    "modeTemplate": "Sablon",
+    "topicLabel": "Téma / ötlet",
+    "topicPlaceholder": "pl. Magyarázd el, miért változtatják meg a munka világát az önálló MI-agentek.",
+    "audienceLabel": "Célközönség",
+    "audiencePlaceholder": "pl. 25–45 évesek, technológia iránt érdeklődők",
+    "goalLabel": "Cél",
+    "languageLabel": "Nyelv",
+    "platformsLabel": "Platformok",
+    "itemsPerPlatformLabel": "Tartalomelemek platformonként ({count})",
+    "generateError": "A generálás nem sikerült.",
+    "unknownError": "Ismeretlen hiba.",
+    "submitLoading": "A Content Brain dolgozik…",
+    "submitIdle": "Tartalomterv generálása",
+    "resultHeading": "Kampány létrehozva — {count} tartalomelem vázlatként létrehozva.",
+    "resultDescription": "{mode} módban generálva. Minden tartalom DRAFT állapotban indul — ellenőrizd és szerkeszd őket a Content Factoryban.",
+    "resultLink": "A Content Factoryhoz →"
+  }
+}

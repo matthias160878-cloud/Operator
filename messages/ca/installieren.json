@@ -1,0 +1,20 @@
+{
+  "button": "Instal·la l’aplicació",
+  "buttonHint": "Instal·la SECRET 58 com a aplicació en aquest dispositiu",
+  "close": "Tanca",
+  "canceled": "S’ha cancel·lat la instal·lació. Pots tornar-la a iniciar en qualsevol moment.",
+  "iosTitle": "Instal·la a l’iPhone o l’iPad",
+  "iosStep1": "Obre aquesta pàgina al Safari.",
+  "iosStep2": "Toca «Comparteix» (el quadrat amb la fletxa cap amunt).",
+  "iosStep3": "Tria «Afegeix a la pantalla d’inici» i confirma amb «Afegeix».",
+  "iosShort": "Safari: Comparteix → Afegeix a la pantalla d’inici",
+  "iosNotSafari": "A l’iPhone i l’iPad la instal·lació només funciona al Safari. Obre aquesta pàgina al Safari, si us plau.",
+  "otherTitle": "Com instal·lar l’aplicació",
+  "otherChromium": "Obre el menú del navegador (tres punts) i tria «Instal·la l’aplicació» o «Afegeix a la pantalla d’inici».",
+  "otherSafariMac": "Al Safari del Mac: menú «Arxiu» → «Afegeix al Dock».",
+  "otherFirefox": "Firefox a l’ordinador no pot instal·lar aplicacions web. Fes servir Chrome, Edge o Safari.",
+  "otherGeneric": "Aquest navegador ara mateix no ofereix cap diàleg d’instal·lació. Potser l’aplicació ja està instal·lada o el navegador no admet la instal·lació. Prova-ho a Chrome, Edge o Safari.",
+  "insecureTitle": "Aquí no es pot instal·lar",
+  "insecureText": "La instal·lació necessita un lloc web publicat mitjançant HTTPS. No funciona des d’un fitxer local ni sense HTTPS. Al teu propi ordinador funciona mitjançant «localhost» en un entorn de desenvolupament.",
+  "installedNote": "L’aplicació s’ha instal·lat."
+}

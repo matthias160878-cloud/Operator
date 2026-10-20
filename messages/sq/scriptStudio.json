@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Motor skriptesh dhe hook-esh: krijon skripte të përshtatura për platformën sipas strukturës Hook → Problem → Value → Example → Payoff → CTA si dhe disa variante hook-esh.",
+  "form": {
+    "topicLabel": "Tema",
+    "topicPlaceholder": "p.sh. 5 mënyra si agjentët e AI kursejnë kohë",
+    "platformLabel": "Platforma",
+    "generateButton": "Gjenero skript & hook-e",
+    "generateFailed": "Gjenerimi dështoi.",
+    "unknownError": "Gabim i panjohur."
+  },
+  "hookTypes": {
+    "direkt": "I drejtpërdrejtë",
+    "neugierig": "Kureshtar",
+    "story": "Histori",
+    "problem": "Problem",
+    "zahlen": "Numra",
+    "kontroversSachlich": "Kontrovers (objektiv)",
+    "educational": "Edukativ"
+  },
+  "hooksHeading": "Variante hook-esh",
+  "engine": {
+    "label": "Motori: {provider}",
+    "templateMode": "Modaliteti i shablloneve (nuk është konfiguruar asnjë ofrues AI)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Ruaj si njësi përmbajtjeje",
+    "saving": "Duke ruajtur…"
+  }
+}

@@ -1,0 +1,15 @@
+{
+ "title": "Rast",
+ "subtitle": "Odporúčania pre dosah a rast – odvodené z uložených štatistík tvojho obsahu: najlepšie časy publikovania, najúspešnejšie hashtagy a formáty. Štatistiky platforiem sa zatiaľ nenačítavajú automaticky.",
+ "warning": "Zámerne <strong>nie je</strong> zahrnuté: automatizované sledovanie/lajkovanie/komentovanie na umelé zvyšovanie počtu sledovateľov. Na YouTube, Instagrame, TikToku, LinkedIne a Facebooku to porušuje podmienky používania a môže viesť k zablokovaniu účtu. Táto stránka poskytuje výlučne odporúčania založené na údajoch pre tvoj vlastný obsah.",
+ "filterAll": "Všetky platformy",
+ "emptyState": "Pre {platform} zatiaľ nie sú uložené žiadne štatistiky, preto zatiaľ žiadne odporúčania. Štatistiky platforiem sa zatiaľ nenačítavajú automaticky.",
+ "emptyStateDefaultScope": "tento pracovný priestor",
+ "bestPostingTimesTitle": "Najlepšie časy publikovania",
+ "postingTime": "{day} · {hour} h",
+ "avgLabel": "Ø {percent} ({count})",
+ "topHashtagsTitle": "Najúspešnejšie hashtagy",
+ "topHashtagsEmpty": "Nie sú k dispozícii žiadne údaje o hashtagoch.",
+ "hashtagTooltip": "Ø {percent} zapojenie, použité {count}×",
+ "topFormatsTitle": "Najlepšie formáty"
+}

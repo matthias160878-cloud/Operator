@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Μία ιδέα μέσα — ένα πλήρες πλάνο περιεχομένου προσαρμοσμένο σε κάθε πλατφόρμα έξω. Ο ContentBrainAgent λαμβάνει υπόψη το Brand DNA σου και δημιουργεί για κάθε επιλεγμένη πλατφόρμα κατάλληλα hooks, σενάρια, hashtags και ιδέες μικρογραφιών ως πρόχειρο.",
+  "campaignsHeading": "Καμπάνιες",
+  "noCampaigns": "Δεν έχουν δημιουργηθεί ακόμα καμπάνιες.",
+  "campaignSummary": "{count} στοιχεία περιεχομένου · {audience}",
+  "form": {
+    "textEngineLabel": "Μηχανή κειμένου:",
+    "templateMode": "Λειτουργία προτύπων (δεν έχει ρυθμιστεί πάροχος AI)",
+    "modeTemplate": "Πρότυπο",
+    "topicLabel": "Θέμα / Ιδέα",
+    "topicPlaceholder": "π.χ. Εξήγησε γιατί οι αυτόνομοι πράκτορες AI αλλάζουν τον κόσμο της εργασίας.",
+    "audienceLabel": "Κοινό-στόχος",
+    "audiencePlaceholder": "π.χ. 25-45, λάτρεις της τεχνολογίας",
+    "goalLabel": "Στόχος",
+    "languageLabel": "Γλώσσα",
+    "platformsLabel": "Πλατφόρμες",
+    "itemsPerPlatformLabel": "Στοιχεία περιεχομένου ανά πλατφόρμα ({count})",
+    "generateError": "Η δημιουργία απέτυχε.",
+    "unknownError": "Άγνωστο σφάλμα.",
+    "submitLoading": "Το Content Brain δουλεύει…",
+    "submitIdle": "Δημιουργία πλάνου περιεχομένου",
+    "resultHeading": "Η καμπάνια δημιουργήθηκε — {count} στοιχεία περιεχομένου αποθηκεύτηκαν ως πρόχειρα.",
+    "resultDescription": "Δημιουργήθηκε στη λειτουργία {mode}. Όλο το περιεχόμενο ξεκινά ως DRAFT — έλεγξέ το και επεξεργάσου το στο Content Factory.",
+    "resultLink": "Προς το Content Factory →"
+  }
+}

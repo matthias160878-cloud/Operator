@@ -1,0 +1,96 @@
+{
+  "viewAll": "Shfaq të gjitha",
+  "demoBanner": {
+    "text": "Të dhënat shembull janë aktive – fushatat, përmbajtja dhe statistikat në këtë hapësirë pune janë të dhëna shembull, jo numra të vërtetë të platformave."
+  },
+  "hero": {
+    "subtitle": "Një ide. Disa platforma. Maksimumi i shtrirjes.",
+    "newCampaign": "Fushatë e re",
+    "createContent": "Krijo përmbajtje",
+    "findIdeas": "Gjej ide",
+    "aiAgents": "Agjentët e AI"
+  },
+  "orbit": {
+    "xNotConnected": "X (i palidhur)",
+    "brainAlt": "Truri AI i SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Agjentët aktivë",
+    "empty": "Ende nuk ka ekzekutime të agjentëve."
+  },
+  "kpi": {
+    "contentCreated": "Përmbajtje e krijuar",
+    "videosCreated": "Video të krijuara",
+    "postsCreated": "Postime të krijuara",
+    "published": "Publikime",
+    "views": "Shikime",
+    "avgEngagement": "Ø Engagement",
+    "totalRevenue": "Të ardhurat (të futura me dorë)",
+    "noComparisonWeek": "Ende nuk ka javë të mëparshme si bazë krahasimi — ndryshimet shfaqen sapo të ketë të dhëna për të paktën dy javë.",
+    "noStats": "Shikimet dhe angazhimi: ende nuk ka statistika – statistikat e platformave ende nuk merren automatikisht."
+  },
+  "production": {
+    "title": "Prodhimi i përmbajtjes",
+    "thisWeek": "Këtë javë"
+  },
+  "scheduled": {
+    "title": "Postimet e planifikuara",
+    "empty": "Nuk ka postime të planifikuara."
+  },
+  "activity": {
+    "title": "Aktivitetet e fundit",
+    "empty": "Ende nuk ka aktivitete."
+  },
+  "contentFactory": {
+    "description": "Krijo me vetëm një ide fushata të plota përmbajtjeje për të gjitha platformat.",
+    "cta": "Fillo tani →",
+    "popularTemplates": "Shabllone të popullarizuara",
+    "templateYoutubeVideo": "Video YouTube",
+    "templateTiktokSeries": "Seri TikTok",
+    "templateInstagramReel": "Reel Instagram",
+    "templateLinkedinPost": "Postim LinkedIn",
+    "templateBlogPost": "Artikull blogu",
+    "viewAllTemplates": "Të gjitha shabllonet →"
+  },
+  "brandDna": {
+    "tonality": "Toni",
+    "targetAudience": "Audienca e synuar",
+    "industry": "Sektori",
+    "language": "Gjuha",
+    "empty": "Ende nuk është vendosur Brand DNA."
+  },
+  "campaigns": {
+    "title": "Fushatat aktuale",
+    "empty": "Ende nuk ka fushata."
+  },
+  "platforms": {
+    "title": "Platformat",
+    "manage": "Menaxho"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} të lidhura"
+  },
+  "agentMonitor": {
+    "title": "Regjistri i asistentëve",
+    "empty": "Ende nuk ka ekzekutime."
+  },
+  "topPerformer": {
+    "title": "Top Performer",
+    "last7Days": "7 ditët e fundit",
+    "empty": "Ende nuk ka të dhëna performance – statistikat e platformave ende nuk merren automatikisht.",
+    "views": "Shikime",
+    "likes": "Pëlqime",
+    "comments": "Komente",
+    "shares": "Shpërndarje",
+    "engagementRate": "+Engagement Rate {value}"
+  },
+  "calendar": {
+    "open": "Hap",
+    "viewMonth": "Muaji",
+    "viewWeek": "Java",
+    "viewDay": "Dita",
+    "viewCampaign": "Fushata",
+    "moreItems": "+{count} të tjera"
+  },
+  "weekdayLabels": ["Hë", "Ma", "Më", "En", "Pr", "Sh", "Di"]
+}

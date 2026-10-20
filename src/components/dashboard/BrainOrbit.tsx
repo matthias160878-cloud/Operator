@@ -35,7 +35,7 @@ export function BrainOrbit({ platforms }: { platforms: OrbitPlatform[] }) {
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <div className="relative h-28 w-28 overflow-hidden rounded-full shadow-[0_0_50px_rgba(109,91,255,0.55)]">
           <Image
-            src="/brand/brain-core.png"
+            src="/brand/logo-58.png"
             alt={t("orbit.brainAlt")}
             fill
             sizes="112px"

@@ -1,0 +1,24 @@
+{
+  "title": "Integrimet",
+  "description": "Gjendja e drejtpërdrejtë e shërbimeve të jashtme – vetëm lidhje të konfiguruara dhe të verifikuara realisht, asgjë nuk shtiret.",
+  "categories": {
+    "AI": "Ofruesit e AI",
+    "VOICE": "Voice",
+    "PLATFORM": "Platforma sociale",
+    "DESIGN": "Dizajn",
+    "VIDEO": "Video",
+    "TREND": "Trende"
+  },
+  "costNote": "Paketa jote SECRET 58 (Pro ose Maxi) është abonim, shih “Paketa & Faturimi”. Çdo shërbim i jashtëm këtu ka modelin e vet të pavarur të kostos te ofruesi përkatës — SECRET 58 nuk ngarkon kurrë shtesë për to.",
+  "links": {
+    "getKey": "Merr çelësin API",
+    "setInRender": "Vendose në Render",
+    "viewPricing": "Shiko çmimet"
+  },
+  "pricing": {
+    "free": "Falas",
+    "payAsYouGo": "Sipas përdorimit",
+    "subscription": "Abonim",
+    "unknown": "Kontrollo çmimin te ofruesi"
+  }
+}

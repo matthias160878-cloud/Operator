@@ -1,0 +1,21 @@
+{
+  "title": "Logboek van de assistenten",
+  "description": "Alle assistenten (agents) van SECRET 58 met status, laatste taak en resultaat. Elke run wordt hier vastgelegd.",
+  "table": {
+    "agent": "Agent",
+    "description": "Beschrijving",
+    "status": "Status",
+    "lastTask": "Laatste taak"
+  },
+  "history": {
+    "title": "Run-geschiedenis",
+    "agent": "Agent",
+    "task": "Taak",
+    "status": "Status",
+    "start": "Start",
+    "end": "Einde",
+    "resultError": "Resultaat / fout",
+    "empty": "Nog geen agent-runs.",
+    "completed": "Voltooid"
+  }
+}

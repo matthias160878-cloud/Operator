@@ -1,0 +1,27 @@
+{
+  "title": "Cilësimet",
+  "description": "Hapësira jote e punës, përdoruesit dhe një pasqyrë e të dhënave të tua. Çelësat e tu API (tekste me IA, dërgim buletini) i fut te <zugaenge>Qasjet e mia</zugaenge>; paketën tënde e gjen te <billing>Paketa & Faturimi</billing>.",
+  "workspace": {
+    "title": "Hapësira e punës",
+    "name": "Emri",
+    "slug": "Slug",
+    "createdAt": "Krijuar më"
+  },
+  "users": {
+    "title": "Përdoruesit & Rolet",
+    "note": "Çdo llogari ka hapësirën e vet të punës, të ndarë nga klientët e tjerë. Përdorues të tjerë ende nuk mund t'i shtosh vetë."
+  },
+  "system": {
+    "title": "Sistemi",
+    "contentItems": "Njësi përmbajtjeje",
+    "campaigns": "Fushata",
+    "mediaAssets": "Asete mediash",
+    "agentRuns": "Ekzekutime agjentësh",
+    "dbNote": "Numri i hyrjeve të ruajtura në hapësirën tënde të punës. Mund t'i eksportosh të gjitha të dhënat ose ta fshish hapësirën e punës më poshtë, te „Të dhënat e mia”."
+  },
+  "onboarding": {
+    "title": "Asistenti i konfigurimit",
+    "description": "Dritaret e vogla hap pas hapi për ofruesit e AI, platformat e rrjeteve sociale dhe zërin sintetik, që shfaqen kur e hap për herë të parë.",
+    "reopen": "Hap sërish asistentin e konfigurimit"
+  }
+}

@@ -7,16 +7,23 @@
  *    IMMER aus dem Stripe-Preisobjekt (STRIPE_PRICE_ID_PRO / _MAXI). Der Code
  *    erfindet kein Intervall: ein wiederkehrender Stripe-Preis führt zu einem
  *    Abo, ein einmaliger zu einer Einmalzahlung.
- *  - netAmountCents: vom Betreiber bestätigte NETTO-Preise (7. Oktober 2026):
- *    Pro 590 €, Maxi 797 € — bereits nach 15 % Rabatt. Die Umsatzsteuer kommt
- *    je nach Land des Kunden hinzu (Stripe Tax, automatische Berechnung).
- *    Der Stripe-Preis muss genau diesen Nettobetrag mit tax_behavior
- *    "exclusive" haben, sonst verweigert der Checkout (src/lib/stripe.ts).
+ *  - netAmountCents: vom Betreiber bestätigte Preise (7. Oktober 2026):
+ *    Pro 590 €, Maxi 797 € — bereits nach 15 % Rabatt. Seit 20.10.2026
+ *    (Kleinunternehmer, § 19 UStG, siehe kleinunternehmer()) sind das
+ *    Endpreise ohne Umsatzsteuer; der Stripe-Preis muss genau diesen Betrag
+ *    mit tax_behavior "inclusive" (oder ohne Angabe) haben. Nur mit
+ *    UMSATZSTEUER_MODUS=REGEL gelten sie als Nettopreise mit tax_behavior
+ *    "exclusive" und Stripe Tax. Sonst verweigert der Checkout (src/lib/stripe.ts).
  *  - Ein durchgestrichener "Statt"-Preis wird bewusst NICHT angezeigt: Nach
  *    § 11 PAngV darf als Vergleich nur der niedrigste tatsächlich verlangte
  *    Preis der letzten 30 Tage dienen — ein solcher Preis existiert noch nicht.
- *  - Abrechnung: monatliches Abo (bestätigt am 7. Oktober 2026). Der Checkout
- *    verweigert Stripe-Preise, die nicht monatlich wiederkehren.
+ *  - Abrechnung: Monatsabo (bestätigt am 7. Oktober 2026) oder Jahresabo
+ *    mit 15 % Rabatt auf zwölf Monatsbeträge (Pro 6.018 €, Maxi 8.129,40 €
+ *    netto/Jahr; Stand der Unterlagen vom 10. Oktober 2026). Je Paket und
+ *    Intervall ein eigener Stripe-Preis (STRIPE_PRICE_ID_PRO, _MAXI,
+ *    _PRO_YEAR, _MAXI_YEAR). Der Checkout verweigert Preise, deren Betrag,
+ *    Währung, Steuerart oder Intervall nicht genau passen. Die Kontingente
+ *    gelten auch beim Jahresabo je Kalendermonat.
  *  - Kontingente je Monat (bestätigt am 7. Oktober 2026): Pro = bisherige
  *    Autopilot-Stufe S plus 300 KI-Texte, 500 Widget-Antworten, 1 Webseite;
  *    Maxi = dreifache Mengen.
@@ -85,6 +92,32 @@ export const PLANS: Record<PlanKey, PlanDefinition> = {
 
 export const PLAN_KEYS = Object.keys(PLANS) as PlanKey[];
 
+export type BillingInterval = "month" | "year";
+export const BILLING_INTERVALS: BillingInterval[] = ["month", "year"];
+export const YEARLY_DISCOUNT_PERCENT = 15;
+
+export function parseBillingInterval(value: unknown): BillingInterval | null {
+  if (value === undefined || value === null || value === "") return "month";
+  if (value === "month" || value === "monat" || value === "monthly") return "month";
+  if (value === "year" || value === "jahr" || value === "yearly") return "year";
+  return null;
+}
+
+/** Nettobetrag je Intervall: Jahr = 12 Monatsbeträge abzüglich 15 %. */
+export function netAmountFor(plan: PlanKey, interval: BillingInterval): number {
+  const monthly = PLANS[plan].netAmountCents;
+  return interval === "month" ? monthly : Math.round((monthly * 12 * (100 - YEARLY_DISCOUNT_PERCENT)) / 100);
+}
+
+/** Rechnerischer Monatsbetrag beim Jahresabo (nur Anzeige). */
+export function yearlyMonthlyEquivalent(plan: PlanKey): number {
+  return Math.round(netAmountFor(plan, "year") / 12);
+}
+
+function priceEnvVarFor(plan: PlanKey, interval: BillingInterval): string {
+  return interval === "month" ? PLANS[plan].priceEnvVar : `${PLANS[plan].priceEnvVar}_YEAR`;
+}
+
 export function isPlanKey(value: unknown): value is PlanKey {
   return typeof value === "string" && value in PLANS;
 }
@@ -96,14 +129,23 @@ export function parsePlanKey(value: unknown): PlanKey | null {
   return isPlanKey(upper) ? upper : null;
 }
 
-export function stripePriceIdFor(plan: PlanKey): string | null {
-  return process.env[PLANS[plan].priceEnvVar] || null;
+export function stripePriceIdFor(plan: PlanKey, interval: BillingInterval = "month"): string | null {
+  return process.env[priceEnvVarFor(plan, interval)] || null;
+}
+
+/** Paket und Intervall zu einer Stripe-Preis-ID (für Webhook und Anzeige). */
+export function lookupStripePrice(priceId: string | null | undefined): { plan: PlanKey; interval: BillingInterval } | null {
+  if (!priceId) return null;
+  for (const plan of PLAN_KEYS) {
+    for (const interval of BILLING_INTERVALS) {
+      if (stripePriceIdFor(plan, interval) === priceId) return { plan, interval };
+    }
+  }
+  return null;
 }
 
 export function planForStripePrice(priceId: string | null | undefined): PlanKey | null {
-  if (!priceId) return null;
-  for (const key of PLAN_KEYS) if (stripePriceIdFor(key) === priceId) return key;
-  return null;
+  return lookupStripePrice(priceId)?.plan ?? null;
 }
 
 export function packageTermsConfirmed(): boolean {
@@ -111,6 +153,28 @@ export function packageTermsConfirmed(): boolean {
 }
 
 export const VAT_NOTE = "netto zzgl. Umsatzsteuer (je nach Land)";
+
+/**
+ * Umsatzsteuer-Modus des Betreibers. Standard: Kleinunternehmer nach § 19 UStG
+ * (bestätigt von Matthias am 20.10.2026) – Preise sind Endpreise, es wird keine
+ * Umsatzsteuer berechnet oder ausgewiesen. UMSATZSTEUER_MODUS=REGEL stellt auf
+ * Nettopreise zzgl. Umsatzsteuer (Stripe Tax) um.
+ */
+export function kleinunternehmer(): boolean {
+  return (process.env.UMSATZSTEUER_MODUS ?? "KLEINUNTERNEHMER").trim().toUpperCase() !== "REGEL";
+}
+
+export const KLEINUNTERNEHMER_NOTE = "Endpreis – gemäß § 19 UStG wird keine Umsatzsteuer berechnet";
+
+/** Preis-Hinweis für Verkaufsseite, Paketseite und Bestätigung. */
+export function steuerHinweis(): string {
+  return kleinunternehmer() ? KLEINUNTERNEHMER_NOTE : VAT_NOTE;
+}
+
+/** „Endpreis“ bzw. „netto“ – je nach Umsatzsteuer-Modus. */
+export function preisArt(): "Endpreis" | "netto" {
+  return kleinunternehmer() ? "Endpreis" : "netto";
+}
 
 /** Anzeigebetrag für Cent-Werte. */
 export function formatCents(cents: number, currency: string, locale = "de-DE"): string {

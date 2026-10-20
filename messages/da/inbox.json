@@ -1,0 +1,27 @@
+{
+  "title": "Indbakke",
+  "description": "Beskeder og forespørgsler samlet ét sted. MessageAgent foreslår svarudkast.",
+  "emptyState": "Ingen samtaler endnu — simuler en for at komme i gang.",
+  "backToInbox": "Tilbage til indbakken",
+  "newConversation": {
+    "simulateButton": "Simuler samtale",
+    "simulateHint": "Da der ikke er nogen rigtig platformforbindelse, kan du her simulere en indkommende besked for at prøve AI-svarudkastet.",
+    "close": "Luk",
+    "namePlaceholder": "Navn",
+    "handlePlaceholder": "@handle (valgfrit)",
+    "messagePlaceholder": "Beskedtekst …",
+    "createButton": "Opret"
+  },
+  "detail": {
+    "draftFailed": "Udkastet mislykkedes.",
+    "save": "Gem",
+    "edit": "Rediger",
+    "approveAndSend": "Godkend & send",
+    "requestDraft": "Anmod om AI-svarudkast",
+    "openDraftExists": "Der er allerede et åbent udkast ovenfor — rediger/send det først.",
+    "simulateMoreHint": "Simuler endnu en indkommende besked (test uden rigtig platformforbindelse):",
+    "messagePlaceholder": "Beskedtekst …",
+    "addButton": "Tilføj"
+  },
+  "simulationBanner": "<strong>Forhåndsvisning/simulering:</strong> beskeder fra platforme hentes endnu ikke, og svar sendes ikke – heller ikke via „Godkend & send“. Platformbeskeder kan du simulere her for at prøve det af. Rigtige poster kommer kun fra webstedsformularer (f.eks. tidsbestillinger); dem besvarer du via e-mail."
+}

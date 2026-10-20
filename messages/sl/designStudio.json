@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Koncepti sličic kot besedilo in stanje povezave s Canvo.",
+  "imageAssetsTitle": "Slikovna sredstva",
+  "imageAssetsEmpty": "Še ni slik. Agent za sličice trenutno ustvarja le besedilne koncepte, ne slikovnih datotek.",
+  "thumbnailAgent": {
+    "title": "Agent za sličice",
+    "description": "Ustvari besedilno zasnovo (naslov, vizualna ideja, postavitev, CTA) — pripravljeno za povezavo z generatorjem slik. Slika se še ne ustvari.",
+    "inputPlaceholder": "Tema za sličico",
+    "submitButton": "Generiraj zasnovo",
+    "errorGenerationFailed": "Generiranje ni uspelo.",
+    "errorUnknown": "Neznana napaka.",
+    "fieldTitle": "Naslov",
+    "fieldVisualIdea": "Vizualna ideja",
+    "fieldText": "Besedilo",
+    "fieldLayout": "Postavitev",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Opis slike",
+    "templateResult": "Predloga: ta koncept izhaja iz fiksne besedilne predloge, ne iz UI. Za koncepte UI vnesi svoj ključ UI pod »Nastavitve → Lastni dostopi«.",
+    "textEngineLabel": "Besedilni motor:",
+    "templateMode": "Način predlog (ponudnik UI ni nastavljen)"
+  }
+}

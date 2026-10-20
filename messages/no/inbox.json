@@ -1,0 +1,27 @@
+{
+  "title": "Innboks",
+  "description": "Meldinger og henvendelser på ett sted. MessageAgent foreslår svarutkast.",
+  "emptyState": "Ingen samtaler ennå — simuler en for å komme i gang.",
+  "backToInbox": "Tilbake til innboksen",
+  "newConversation": {
+    "simulateButton": "Simuler samtale",
+    "simulateHint": "Siden det ikke finnes noen ekte plattformtilkobling, kan du her simulere en innkommende melding for å prøve ut KI-svarutkastet.",
+    "close": "Lukk",
+    "namePlaceholder": "Navn",
+    "handlePlaceholder": "@handle (valgfritt)",
+    "messagePlaceholder": "Meldingstekst …",
+    "createButton": "Opprett"
+  },
+  "detail": {
+    "draftFailed": "Utkastet mislyktes.",
+    "save": "Lagre",
+    "edit": "Rediger",
+    "approveAndSend": "Godkjenn og send",
+    "requestDraft": "Be om KI-svarutkast",
+    "openDraftExists": "Det finnes allerede et åpent utkast øverst — rediger/send det først.",
+    "simulateMoreHint": "Simuler en ny innkommende melding (test uten ekte plattformtilkobling):",
+    "messagePlaceholder": "Meldingstekst …",
+    "addButton": "Legg til"
+  },
+  "simulationBanner": "<strong>Forhåndsvisning/simulering:</strong> meldinger fra plattformer hentes ennå ikke, og svar sendes ikke – heller ikke via «Godkjenn og send». Plattformmeldinger kan du simulere her for å prøve. Ekte oppføringer kommer bare fra nettskjemaer (f.eks. timeforespørsler); dem svarer du på via e-post."
+}

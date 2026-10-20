@@ -1,0 +1,15 @@
+{
+  "title": "Analytiikka",
+  "subtitle": "Alustojen tilastoja (katselut, tykkäykset, kommentit, jaot) ei vielä haeta automaattisesti. Tässä näkyvät vain jo tallennetut arvot, esim. esimerkkidata. Alustan tilastojen lukuja voit syöttää käsin kohdassa <weiter>Suositukset</weiter> (”Syötä alustan luvut”) tai <varianten>versiovertailussa</varianten> – ne arvioidaan siellä, eivät tällä sivulla.",
+  "statViewsTotal": "Katselut yhteensä",
+  "statLikesTotal": "Tykkäykset yhteensä",
+  "statComments": "Kommentit",
+  "statShares": "Jaot",
+  "chartTitle": "Sisällön suorituskyky ajan yli",
+  "chartLegend": "Katselut (violetti) · Sitoutuminen % (turkoosi)",
+  "chartEmpty": "Ei vielä tilastoja – kehitystä ei ole saatavilla.",
+  "bestPerformingTitle": "Parhaiten menestynyt sisältö",
+  "bestPerformingEmpty": "Ei vielä tilastoja – järjestys ei ole mahdollinen.",
+  "learningAgentTitle": "Learning Agent — suositukset",
+  "statsEmpty": "Tilastoja ei ole vielä tallennettu – siksi tässä ei vielä ole tunnuslukuja. Alustojen tilastoja ei vielä haeta automaattisesti."
+}

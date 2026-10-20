@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "A videókészítés még nem érhető el: nincs csatlakoztatva olyan videószolgáltatás, amely videókat készítene. Lent láthatod az előkészített formátumokat platformonként; forgatókönyveket, hangalámondást és feliratokat a Script Studióban, a Voice Studióban és a Content Factoryban készítesz.",
+  "providerCardTitle": "Videószolgáltatók",
+  "formatManagerTitle": "Formátumkezelő",
+  "assetsTitle": "Videóanyagok",
+  "assetsEmpty": "Még nincsenek videók. A videókészítés még nem érhető el az alkalmazásban.",
+  "providerNote": "Még nincs használható videószolgáltatás – videók jelenleg nem készíthetők az alkalmazásban."
+}

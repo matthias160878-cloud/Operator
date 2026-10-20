@@ -1,0 +1,15 @@
+{
+  "title": "Analytics",
+  "subtitle": "Platformstatistikker (visninger, likes, kommentarer, delinger) hentes endnu ikke automatisk. Her vises kun allerede gemte værdier, f.eks. eksempeldata. Tal fra platformens statistik kan du indtaste manuelt under <weiter>Anbefalinger</weiter> („Indtast platformtal“) eller i <varianten>variantsammenligningen</varianten> – de evalueres dér, ikke på denne side.",
+  "statViewsTotal": "Visninger i alt",
+  "statLikesTotal": "Likes i alt",
+  "statComments": "Kommentarer",
+  "statShares": "Delinger",
+  "chartTitle": "Content-præstation over tid",
+  "chartLegend": "Visninger (violet) · Engagement % (turkis)",
+  "chartEmpty": "Ingen statistik endnu – intet forløb tilgængeligt.",
+  "bestPerformingTitle": "Bedst præsterende content",
+  "bestPerformingEmpty": "Ingen statistik endnu – ingen rangliste mulig.",
+  "learningAgentTitle": "Learning Agent — anbefalinger",
+  "statsEmpty": "Ingen statistik gemt endnu – derfor er der endnu ingen nøgletal her. Platformstatistikker hentes endnu ikke automatisk."
+}

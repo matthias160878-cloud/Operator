@@ -28,6 +28,8 @@ interface Props {
   hasSubscription: boolean;
   hasCustomer: boolean;
   activePlan: string | null;
+  /** § 19 UStG: Endpreise ohne Umsatzsteuer */
+  kleinunternehmer: boolean;
 }
 
 export function BillingClient({
@@ -40,6 +42,7 @@ export function BillingClient({
   hasSubscription,
   hasCustomer,
   activePlan,
+  kleinunternehmer,
 }: Props) {
   const router = useRouter();
   const [promo, setPromo] = useState("");
@@ -222,8 +225,8 @@ export function BillingClient({
               <span>
                 {selectedCard
                   ? interval === "year"
-                    ? `Ich möchte ${selectedCard.name} im Jahresabo für ${selectedCard.yearPriceText} netto pro Jahr (im Voraus, zzgl. Umsatzsteuer) kostenpflichtig kaufen und bestätige das ausdrücklich.`
-                    : `Ich möchte ${selectedCard.name} im Monatsabo für ${selectedCard.priceText} netto pro Monat (zzgl. Umsatzsteuer) kostenpflichtig kaufen und bestätige das ausdrücklich.`
+                    ? `Ich möchte ${selectedCard.name} im Jahresabo für ${selectedCard.yearPriceText} ${kleinunternehmer ? "pro Jahr (im Voraus, Endpreis ohne Umsatzsteuer nach § 19 UStG)" : "netto pro Jahr (im Voraus, zzgl. Umsatzsteuer)"} kostenpflichtig kaufen und bestätige das ausdrücklich.`
+                    : `Ich möchte ${selectedCard.name} im Monatsabo für ${selectedCard.priceText} ${kleinunternehmer ? "pro Monat (Endpreis ohne Umsatzsteuer nach § 19 UStG)" : "netto pro Monat (zzgl. Umsatzsteuer)"} kostenpflichtig kaufen und bestätige das ausdrücklich.`
                   : "Bitte zuerst ein Paket wählen."}
               </span>
             </label>

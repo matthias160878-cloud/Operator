@@ -831,3 +831,21 @@ test("Plattform-Richtlinien: KI-Kennzeichnung nur für Videos aus KI-Diensten", 
   assert.equal(istKiVideo({ provider: "upload" }), false);
   assert.equal(istKiVideo({ provider: "capcut" }), true);
 });
+
+test("Umsatzsteuer: Standard Kleinunternehmer (§ 19 UStG), Regelbesteuerung nur ausdrücklich", async () => {
+  const { kleinunternehmer, steuerHinweis, preisArt, VAT_NOTE } = await import("@/lib/plans");
+  const alt = process.env.UMSATZSTEUER_MODUS;
+  try {
+    delete process.env.UMSATZSTEUER_MODUS;
+    assert.equal(kleinunternehmer(), true);
+    assert.match(steuerHinweis(), /§ 19 UStG/);
+    assert.equal(preisArt(), "Endpreis");
+    process.env.UMSATZSTEUER_MODUS = "regel";
+    assert.equal(kleinunternehmer(), false);
+    assert.equal(steuerHinweis(), VAT_NOTE);
+    assert.equal(preisArt(), "netto");
+  } finally {
+    if (alt === undefined) delete process.env.UMSATZSTEUER_MODUS;
+    else process.env.UMSATZSTEUER_MODUS = alt;
+  }
+});

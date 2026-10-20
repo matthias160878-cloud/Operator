@@ -5,7 +5,8 @@ import {
   METRIC_LABELS,
   PLANS,
   PLAN_KEYS,
-  VAT_NOTE,
+  kleinunternehmer,
+  steuerHinweis,
   YEARLY_DISCOUNT_PERCENT,
   formatCents,
   lookupStripePrice,
@@ -70,9 +71,9 @@ export default async function BillingPage({
       name: def.name,
       priceText: formatCents(def.netAmountCents, def.displayCurrency),
       priceIsLive: Boolean(price),
-      intervalText: `${VAT_NOTE} · ${price ? intervalText(price) : "monatlich"}`,
+      intervalText: `${steuerHinweis()} · ${price ? intervalText(price) : "monatlich"}`,
       yearPriceText: formatCents(netAmountFor(key, "year"), def.displayCurrency),
-      yearIntervalText: `${VAT_NOTE} · ${yearPrices[i] ? intervalText(yearPrices[i]) : "jährlich"} · entspricht ${formatCents(
+      yearIntervalText: `${steuerHinweis()} · ${yearPrices[i] ? intervalText(yearPrices[i]) : "jährlich"} · entspricht ${formatCents(
         yearlyMonthlyEquivalent(key),
         def.displayCurrency
       )} / Monat (${YEARLY_DISCOUNT_PERCENT} % günstiger als 12 Monatszahlungen)`,
@@ -140,6 +141,7 @@ export default async function BillingPage({
         hasSubscription={current?.billingMode === "subscription" && Boolean(current.stripeCustomerId)}
         hasCustomer={Boolean(current?.stripeCustomerId)}
         activePlan={activePlanKey}
+        kleinunternehmer={kleinunternehmer()}
       />
       <p className="text-xs text-muted">
         Kontingente sind feste Obergrenzen je Kalendermonat (Marken und Webseiten: gleichzeitig). Es gibt keine

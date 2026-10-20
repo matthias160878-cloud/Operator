@@ -121,6 +121,8 @@ before(async () => {
     STRIPE_PRICE_ID_MAXI: "price_maxi",
     STRIPE_PRICE_ID_PRO_YEAR: "price_pro_year",
     PACKAGE_TERMS_CONFIRMED: "true",
+    // Die Tests prüfen den Steuerweg mit Stripe Tax (Nettopreise); Kleinunternehmer ist in Unit-Tests abgedeckt.
+    UMSATZSTEUER_MODUS: "REGEL",
     // Testangaben — keine echten Anbieterdaten
     IMPRESSUM_NAME: "Test Anbieter",
     IMPRESSUM_ANSCHRIFT: "Teststraße 1 | 00000 Teststadt",

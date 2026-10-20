@@ -307,22 +307,41 @@ Sicherung und Wiederherstellung:
 
 ## 9. Stripe-Einrichtung (Betreiber, zuerst im Testmodus)
 
-0. **Stripe Tax aktivieren** (Einstellungen → Steuern): Ursprungsadresse,
-   Steuerregistrierungen (z. B. Deutschland; OSS für EU-Privatkunden), Produktsteuercode
-   für Software/SaaS. Stripe Tax ist bei Stripe kostenpflichtig.
-1. Im Testmodus zwei Produkte *Pro* und *Maxi* mit je **zwei wiederkehrenden Preisen**
-   anlegen, alle in EUR mit **Steuerverhalten „exklusive Steuer“**:
+**Umsatzsteuer-Modus** (`UMSATZSTEUER_MODUS`, Standard `KLEINUNTERNEHMER`):
+SECRET 58 ist Kleinunternehmer nach § 19 UStG. Alle Paketpreise sind **Endpreise**,
+es wird keine Umsatzsteuer berechnet oder ausgewiesen, Stripe Tax bleibt aus
+(`automatic_tax` deaktiviert, keine USt-IdNr.-Abfrage). Nur wer später zur
+Regelbesteuerung wechselt, setzt `UMSATZSTEUER_MODUS=REGEL` – dann gelten wieder
+Nettopreise zzgl. USt über Stripe Tax und Preise mit „exklusive Steuer“.
 
-   | Variable | Preis | Intervall |
+0. (Nur bei `REGEL`) Stripe Tax aktivieren (Einstellungen → Steuern). Im
+   Kleinunternehmer-Modus **nicht** nötig.
+1. **Neue Preise anlegen (Kleinunternehmer, Stand 20.10.2026).** Bestehende Stripe-Preise
+   lassen sich nicht ändern; deshalb legst du neue an und trägst nur deren IDs neu ein:
+   1. Stripe-Dashboard → *Produktkatalog* → Produkt *Pro* öffnen → *Weiteren Preis hinzufügen*.
+   2. Betrag eingeben, Währung **EUR**, *Wiederkehrend*, Intervall wie in der Tabelle.
+   3. Unter *Weitere Optionen* → *Steuerverhalten* **„Inklusive Steuer“** wählen
+      (nicht „exklusive“; „exklusive“ wird im Kleinunternehmer-Modus abgelehnt).
+   4. Speichern, die Preis-ID (`price_…`) kopieren. Für *Maxi* genauso.
+
+   | Variable | Preis (Endpreis) | Intervall |
    |---|---|---|
    | `STRIPE_PRICE_ID_PRO` | 590,00 € | monatlich |
    | `STRIPE_PRICE_ID_MAXI` | 797,00 € | monatlich |
    | `STRIPE_PRICE_ID_PRO_YEAR` | 6.018,00 € | jährlich |
    | `STRIPE_PRICE_ID_MAXI_YEAR` | 8.129,40 € | jährlich |
 
+   5. Die vier neuen IDs in Render (Service → *Environment*) oder unter
+      `/operator/zugaenge` eintragen; Render stellt danach neu bereit.
+   6. Die alten Preise mit „exklusive Steuer“ im Stripe-Dashboard archivieren
+      (laufende Abos mit diesen Preisen bleiben davon unberührt; solche Abos gibt es
+      vor dem Verkaufsstart nicht).
+
    Jahrespreis = 12 Monatsbeträge minus 15 %. Der Checkout verweigert jeden Preis, dessen
-   Betrag, Währung, Steuerart oder Intervall nicht genau passt. Fehlt ein Jahrespreis, ist
-   nur das Jahresabo dieses Pakets gesperrt („noch nicht eingerichtet“).
+   Betrag, Währung, Steuerverhalten oder Intervall nicht genau passt – solange noch die
+   alten „exklusive“-Preise eingetragen sind, ist der Kauf also **gesperrt**, statt falsch
+   abzurechnen. Fehlt ein Jahrespreis, ist nur das Jahresabo dieses Pakets gesperrt
+   („noch nicht eingerichtet“).
 2. Webhook-Endpunkt (dein Konto) auf `/api/stripe/webhook` mit diesen Events:
    - `checkout.session.completed`
    - `checkout.session.async_payment_succeeded`

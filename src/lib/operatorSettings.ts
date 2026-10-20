@@ -51,7 +51,7 @@ export const SETTING_GROUPS: Record<SettingGroup, { title: string; text: string 
   },
   zahlung: {
     title: "Zahlung (Stripe)",
-    text: "Testmodus zuerst (sk_test_…). Preise müssen in Stripe als Nettopreise (Steuer exklusiv) in EUR angelegt sein; die App prüft Betrag und Intervall.",
+    text: "Testmodus zuerst (sk_test_…). Preise müssen in Stripe in EUR angelegt sein – als Kleinunternehmer (Standard) als Endpreis mit Steuerverhalten „inklusive“, bei UMSATZSTEUER_MODUS=REGEL als Nettopreis „exklusiv“; die App prüft Betrag, Steuerart und Intervall.",
   },
 };
 
@@ -88,10 +88,10 @@ export const SETTINGS: SettingDef[] = [
 
   { key: "STRIPE_SECRET_KEY", label: "Stripe Secret Key", group: "zahlung", secret: true, hint: "sk_test_… (Test) oder sk_live_… (Betrieb)", pattern: /^sk_(test|live)_[A-Za-z0-9]{10,}$/, patternHint: "muss mit „sk_test_“ oder „sk_live_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeSchluessel },
   { key: "STRIPE_WEBHOOK_SECRET", label: "Stripe Webhook-Secret", group: "zahlung", secret: true, hint: "whsec_… — Webhook-Ziel: <Ihre Adresse>/api/stripe/webhook", pattern: /^whsec_[A-Za-z0-9]{10,}$/, patternHint: "muss mit „whsec_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeWebhooks },
-  { key: "STRIPE_PRICE_ID_PRO", label: "Preis-ID Pro monatlich (590 € netto)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
-  { key: "STRIPE_PRICE_ID_MAXI", label: "Preis-ID Maxi monatlich (797 € netto)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
-  { key: "STRIPE_PRICE_ID_PRO_YEAR", label: "Preis-ID Pro jährlich (6.018 € netto)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
-  { key: "STRIPE_PRICE_ID_MAXI_YEAR", label: "Preis-ID Maxi jährlich (8.129,40 € netto)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
+  { key: "STRIPE_PRICE_ID_PRO", label: "Preis-ID Pro monatlich (590 €)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
+  { key: "STRIPE_PRICE_ID_MAXI", label: "Preis-ID Maxi monatlich (797 €)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
+  { key: "STRIPE_PRICE_ID_PRO_YEAR", label: "Preis-ID Pro jährlich (6.018 €)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
+  { key: "STRIPE_PRICE_ID_MAXI_YEAR", label: "Preis-ID Maxi jährlich (8.129,40 €)", group: "zahlung", secret: false, hint: "price_…", pattern: /^price_[A-Za-z0-9]{6,}$/, patternHint: "muss mit „price_“ beginnen", keyLink: SCHLUESSEL_SEITEN.stripeProdukte },
   { key: "PACKAGE_TERMS_CONFIRMED", label: "Paketkonditionen bestätigt (Verkauf freischalten)", group: "zahlung", secret: false, hint: "„true“ erst nach Abnahme — zusammen mit Stripe und Impressum öffnet das den Kauf.", pattern: /^(true|false)$/, patternHint: "nur „true“ oder „false“" },
 ];
 

@@ -6,7 +6,9 @@ import {
   METRIC_LABELS,
   PLANS,
   PLAN_KEYS,
-  VAT_NOTE,
+  kleinunternehmer,
+  preisArt,
+  steuerHinweis,
   YEARLY_DISCOUNT_PERCENT,
   formatCents,
   netAmountFor,
@@ -115,11 +117,11 @@ export default async function BuyPage({
                 <h3>{def.name}</h3>
                 <div className="betrag">
                   {formatCents(def.netAmountCents, def.displayCurrency)}{" "}
-                  <span>{interval ? `netto / ${interval}, zzgl. Steuer` : VAT_NOTE}</span>
+                  <span>{interval ? (kleinunternehmer() ? `/ ${interval}, Endpreis – keine USt (§ 19 UStG)` : `netto / ${interval}, zzgl. Steuer`) : steuerHinweis()}</span>
                 </div>
                 {showYear && (
                   <p className="jahr">
-                    oder <b>{formatCents(netAmountFor(key, "year"), def.displayCurrency)}</b> netto / Jahr im Jahresabo,
+                    oder <b>{formatCents(netAmountFor(key, "year"), def.displayCurrency)}</b> {preisArt()} / Jahr im Jahresabo,
                     als Jahresbetrag im Voraus bezahlt. Entspricht {formatCents(yearlyMonthlyEquivalent(key), def.displayCurrency)}{" "}
                     / Monat, {YEARLY_DISCOUNT_PERCENT} % günstiger als 12 Monatszahlungen.
                   </p>
@@ -146,7 +148,7 @@ export default async function BuyPage({
                   </span>
                 )}
                 <p className="klein">
-                  Preise {VAT_NOTE}; die Steuer wird im Checkout berechnet. Ein gültiger Aktionscode kann im Checkout
+                  Preise: {steuerHinweis()}{kleinunternehmer() ? "." : "; die Steuer wird im Checkout berechnet."} Ein gültiger Aktionscode kann im Checkout
                   eingegeben werden. Kontingente sind feste Obergrenzen je Monat, ohne automatische Zusatzkäufe.
                 </p>
               </div>
@@ -195,8 +197,7 @@ export default async function BuyPage({
         </div>
         <p className="note">
           Zusatzpakete (vorläufig, nur auf ausdrücklichen Kauf, nie automatisch): Video-Paket +300 Sekunden 99 €
-          einmalig, Premium-Video 4K +60 Sekunden 149 € einmalig, Einrichtungsservice 299 € einmalig. Ob die Preise
-          netto gelten, wird vor dem Start festgelegt.
+          einmalig, Premium-Video 4K +60 Sekunden 149 € einmalig, Einrichtungsservice 299 € einmalig ({preisArt() === "Endpreis" ? "Endpreise, keine Umsatzsteuer nach § 19 UStG" : "netto"}).
         </p>
 
         <div className="hinweis" id="app" style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>

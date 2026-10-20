@@ -150,6 +150,7 @@ Freigegebene Antworten gehen über die native API raus
 | Instagram | Kommentare unter eigenen Medien, DMs | Kommentar-Antwort, DM (24-h-Fenster) | `instagram_business_manage_comments`, `instagram_business_manage_messages` (Meta App Review) |
 | LinkedIn (Unternehmensseite) | Kommentare + Antworten unter den letzten Seitenbeiträgen | Antwort als Seite | Separate App mit Community Management API: `rw_organization_admin`, `r/w_organization_social(_feed)` (LinkedIn-Prüfung) |
 | LinkedIn (persönliches Profil) | — (LinkedIn gibt das nicht frei) | Antwort per Kommentar-URN | `w_member_social` |
+| LinkedIn-Direktnachrichten | — (kein Abruf möglich) | Senden nur als zugelassener Messages-API-Partner (`LINKEDIN_PARTNER_MESSAGING=true`) | Partner-Berechtigung von LinkedIn in `LINKEDIN_SCOPE` |
 | TikTok | Kommentare + Antworten unter den letzten Videos; Direktnachrichten (optional) | Kommentar-Antwort; Direktnachricht (48-h-Fenster, max. 10 Nachrichten) | Separate App im TikTok-for-Business-Portal (Accounts API): `video.list`, `comment.list`, `comment.list.manage`; für DMs zusätzlich Business Messaging API (TikTok-Zugangsprüfung) |
 
 **TikTok & LinkedIn: zweite Verbindung „Posteingang verbinden“.** Beide
@@ -175,7 +176,32 @@ TikToks Regel (max. 10 Nachrichten innerhalb von 48 h nach der letzten
 Kundennachricht) und meldet einen Verstoß, ohne TikTok aufzurufen. Selbst ein
 Gespräch beginnen ist laut TikTok nicht erlaubt.
 
-LinkedIn bietet weiterhin keine DM-API für Drittanbieter.
+**LinkedIn-Direktnachrichten (nur Partner, nur Senden).** Die
+[Messages API](https://learn.microsoft.com/en-us/linkedin/shared/integrations/communications/messages)
+ist laut LinkedIn nur für zugelassene Partner per Vertrag freigegeben und kann
+nur **senden** — an direkte Kontakte oder in bestehende Unterhaltungen.
+Abrufen lassen sich LinkedIn-Nachrichten nicht, der Posteingang bekommt sie
+also nie automatisch. Ablauf für zugelassene Partner:
+
+1. Die von LinkedIn vergebene Messaging-Berechtigung in `LINKEDIN_SCOPE`
+   ergänzen (Standard `openid profile w_member_social`),
+   `LINKEDIN_PARTNER_MESSAGING=true` setzen und LinkedIn unter Social Media
+   neu verbinden. Gesendet wird als das verbundene Mitglied.
+2. Im Posteingang eine Konversation „LinkedIn · Direktnachricht“ manuell
+   anlegen. Als Plattform-ID die Thread-URN (`urn:li:messagingThread:…`)
+   eintragen oder — für eine neue Unterhaltung — die Personen-URN eines
+   direkten Kontakts (`urn:li:person:…`).
+3. Antwort schreiben oder entwerfen lassen → „Freigeben & senden“ →
+   `POST https://api.linkedin.com/v2/messages` mit
+   `messageType: MEMBER_TO_MEMBER` und `thread` bzw. `recipients`. Die
+   Thread-URN aus dem Antwort-Header `x-linkedin-id` wird gespeichert, weitere
+   Antworten gehen in denselben Thread.
+
+LinkedIns Vorgaben: Jede Nachricht muss von einer konkreten Aktion des
+Mitglieds ausgehen (hier: Freigabe pro Nachricht, kein automatisches oder
+zeitgesteuertes Senden), kein HTML (die App lehnt HTML-Tags vor dem Senden ab),
+keine Anreize für Absender oder Empfänger. Ohne `LINKEDIN_PARTNER_MESSAGING`
+meldet die App beim Senden einen klaren Fehler, statt LinkedIn aufzurufen.
 
 - Die zusätzlichen Berechtigungen wurden in `src/lib/oauth/providers.ts`
   ergänzt — **bereits verbundene Accounts müssen einmal neu verbunden

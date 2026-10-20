@@ -135,6 +135,9 @@ export function ConversationDetail({
             </button>
           </div>
           {!conversation.externalThreadId && <p className="text-xs text-warning">{t("detail.noExternalId")}</p>}
+          {conversation.platform === "LINKEDIN" && conversation.channel === "DIRECT_MESSAGE" && (
+            <p className="text-xs text-muted">{t("linkedinDmHint")}</p>
+          )}
         </form>
         )}
       </div>

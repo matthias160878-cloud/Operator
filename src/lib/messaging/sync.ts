@@ -545,7 +545,9 @@ async function collectThreads(account: PlatformAccount, notes: string[], failure
         break;
       }
       await attempt("Kommentare", () => fetchLinkedInPage(account));
-      notes.push("Direktnachrichten: LinkedIn bietet dafür keine API für Drittanbieter.");
+      notes.push(
+        "Direktnachrichten: LinkedIn erlaubt keinen Abruf. Zugelassene Partner können Antworten senden (LINKEDIN_PARTNER_MESSAGING) — Unterhaltung dafür manuell mit Thread- oder Personen-URN anlegen."
+      );
       break;
     default:
       notes.push(`${account.platform} bietet keine API zum Abrufen von Kommentaren oder Nachrichten.`);

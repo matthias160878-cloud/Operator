@@ -40,5 +40,6 @@
     "failed": "La récupération a échoué.",
     "result": "{platform} : {conversations} nouvelle(s) conversation(s), {messages} nouveau(x) message(s)",
     "noAccounts": "Aucune plateforme connectée — connectez des comptes sous Social Media."
-  }
+  },
+  "linkedinDmHint": "Messages directs LinkedIn : envoi uniquement et seulement pour les partenaires agréés de la Messages API (LINKEDIN_PARTNER_MESSAGING=true). Saisis comme ID l'URN du fil (urn:li:messagingThread:…) ou, pour une nouvelle conversation, l'URN de personne d'une relation directe (urn:li:person:…) ; après le premier envoi, l'URN du fil est enregistrée automatiquement. L'app ne peut pas récupérer les messages LinkedIn."
 }

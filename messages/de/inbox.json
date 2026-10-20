@@ -40,5 +40,6 @@
     "failed": "Abruf fehlgeschlagen.",
     "result": "{platform}: {conversations} neue Konversation(en), {messages} neue Nachricht(en)",
     "noAccounts": "Keine Plattform verbunden — verbinde Accounts unter Social Media."
-  }
+  },
+  "linkedinDmHint": "LinkedIn-Direktnachrichten: nur Senden und nur für von LinkedIn zugelassene Partner der Messages API (LINKEDIN_PARTNER_MESSAGING=true). Als ID die Thread-URN (urn:li:messagingThread:…) eintragen oder für eine neue Unterhaltung die Personen-URN eines direkten Kontakts (urn:li:person:…) — nach dem ersten Senden wird automatisch die Thread-URN übernommen. Abrufen kann die App LinkedIn-Nachrichten nicht."
 }

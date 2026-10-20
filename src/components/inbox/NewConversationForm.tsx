@@ -98,6 +98,9 @@ export function NewConversationForm() {
           onChange={(e) => setExternalThreadId(e.target.value)}
         />
       </div>
+      {platform === "LINKEDIN" && channel === "DIRECT_MESSAGE" && (
+        <p className="text-xs text-muted">{t("linkedinDmHint")}</p>
+      )}
       <textarea
         className={inputClass}
         rows={2}

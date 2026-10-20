@@ -133,7 +133,9 @@ export async function approveAndSend(messageId: string) {
     });
     await prisma.conversation.update({
       where: { id: message.conversationId },
-      data: { lastMessageAt: sentAt },
+      // Nach der ersten Nachricht an eine Person liefert LinkedIn die Thread-URN —
+      // weitere Antworten gehen dann in diesen Thread.
+      data: { lastMessageAt: sentAt, ...(result.externalThreadId ? { externalThreadId: result.externalThreadId } : {}) },
     });
     return { sent: true, message: `Antwort auf ${message.conversation.platform} gesendet.`, externalId: result.externalId };
   } catch (error) {

@@ -1,4 +1,37 @@
+import { createHmac, randomBytes } from "node:crypto";
 import { prisma } from "@/lib/db";
+
+/**
+ * Schlüssel werden vor dem Speichern pseudonymisiert: Der Teil vor dem ersten
+ * „:“ (Art der Grenze) bleibt lesbar, alles danach (z. B. IP-Adresse,
+ * Besucherkennung) wird mit einem geheimen Server-Wert per HMAC verkürzt.
+ * So steht keine IP-Adresse und kein umkehrbarer einfacher Hash in der
+ * Datenbank. Geheimnis: RATE_LIMIT_SECRET, sonst abgeleitet aus
+ * TOKEN_ENCRYPTION_KEY, sonst zufällig je Prozess (dann gelten Grenzen nur
+ * bis zum Neustart).
+ */
+let geheim: Buffer | null = null;
+function schluesselGeheimnis(): Buffer {
+  if (geheim) return geheim;
+  const basis = process.env.RATE_LIMIT_SECRET?.trim() || process.env.TOKEN_ENCRYPTION_KEY?.trim();
+  geheim = basis ? createHmac("sha256", "secret58-ratenbegrenzung").update(basis).digest() : randomBytes(32);
+  return geheim;
+}
+
+export function gespeicherterSchluessel(key: string): string {
+  const i = key.indexOf(":");
+  if (i < 0) return key;
+  return `${key.slice(0, i)}:${createHmac("sha256", schluesselGeheimnis()).update(key.slice(i + 1)).digest("hex").slice(0, 32)}`;
+}
+
+/** Abgelaufene Zähler (älter als 2 Tage) höchstens einmal pro Stunde je Prozess löschen. */
+let letzteBereinigung = 0;
+async function alteZaehlerLoeschen() {
+  const jetzt = Date.now();
+  if (jetzt - letzteBereinigung < 3_600_000) return;
+  letzteBereinigung = jetzt;
+  await prisma.rateLimit.deleteMany({ where: { windowStart: { lt: new Date(jetzt - 2 * 86_400_000) } } }).catch(() => undefined);
+}
 
 /**
  * Fester Zeitfenster-Zähler in der Datenbank. Damit wirkt die Grenze auch
@@ -7,7 +40,9 @@ import { prisma } from "@/lib/db";
  * parallele Anfragen können die Grenze daher nicht gemeinsam überspringen.
  * Gibt true zurück, wenn die Anfrage noch erlaubt ist.
  */
-export async function hitRateLimit(key: string, limit: number, windowSeconds: number): Promise<boolean> {
+export async function hitRateLimit(rohSchluessel: string, limit: number, windowSeconds: number): Promise<boolean> {
+  const key = gespeicherterSchluessel(rohSchluessel);
+  await alteZaehlerLoeschen();
   const windowMs = windowSeconds * 1000;
   const windowStart = new Date(Math.floor(Date.now() / windowMs) * windowMs);
   const row = await prisma.rateLimit.upsert({

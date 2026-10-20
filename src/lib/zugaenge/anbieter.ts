@@ -61,7 +61,7 @@ export const ZUGANG_ANBIETER: Record<AnbieterKey, ZugangAnbieter> = {
     schritte: [
       { text: "Konto bei Resend anlegen.", link: { href: "https://resend.com/signup", label: "resend.com/signup" } },
       {
-        text: "Domains → „Add Domain“: eigene (Sub-)Domain eintragen, z. B. news.ihre-firma.de. Die angezeigten DNS-Einträge (SPF, DKIM) beim Domain-Anbieter setzen und warten, bis die Domain „Verified“ ist.",
+        text: "Domains → „Add Domain“: eigene (Sub-)Domain eintragen, z. B. news.ihre-firma.de. Die angezeigten DNS-Einträge (SPF, DKIM) beim Domain-Anbieter setzen und warten, bis die Domain „Verified“ ist. Zusätzlich einen DMARC-Eintrag anlegen: TXT-Eintrag „_dmarc.ihre-firma.de“ mit dem Wert „v=DMARC1; p=none;“ – Gmail und Yahoo verlangen ihn.",
         link: { href: "https://resend.com/domains", label: "resend.com/domains" },
       },
       {

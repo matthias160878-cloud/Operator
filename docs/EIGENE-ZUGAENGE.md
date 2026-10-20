@@ -4,7 +4,7 @@ Seite: **Einstellungen → Eigene Zugänge** (`/settings/zugaenge`). Inhaber und
 
 | Anbieter | Wofür | Prüfung beim Speichern |
 |---|---|---|
-| Resend | Newsletter: Bestätigungsmails und Ausgaben | `GET /domains`: Schlüssel gültig, Absenderdomain bestätigt (reiner Versandschlüssel: nur Schlüsselprüfung) |
+| Resend | Newsletter: Bestätigungsmails und Ausgaben | `GET /domains`: Schlüssel gültig, Absenderdomain bestätigt (reiner Versandschlüssel: nur Schlüsselprüfung); zusätzlich DNS-Abfrage des DMARC-Eintrags (`_dmarc.<domain>` oder der Hauptdomain) – ohne DMARC kein echter Versand |
 | Anthropic | KI-Texte (Agenten, Content Brain, Antwortentwürfe, Webseiten-Widget) | `GET /v1/models` (kostenlos, nichts wird generiert) |
 | OpenAI | wie Anthropic (Ersatz) | `GET /v1/models` |
 | Google Gemini | wie Anthropic (Ersatz); nur mit Abrechnung (Paid Tier) für Kundendaten | `GET /v1beta/models` |

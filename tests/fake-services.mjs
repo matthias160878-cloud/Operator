@@ -66,7 +66,7 @@ export function startFakeServices() {
       if (p === "/domains" && req.method === "GET") {
         if (req.headers.authorization === "Bearer re_kunde_send_5678") return json(res, 401, { statusCode: 401, name: "restricted_api_key", message: "This API key is restricted to only send emails" });
         if (req.headers.authorization !== "Bearer re_kunde_voll_1234") return json(res, 401, { statusCode: 401, name: "validation_error", message: "API key is invalid" });
-        return json(res, 200, { data: [{ name: "news.kunde.example", status: "verified" }, { name: "offen.example", status: "pending" }] });
+        return json(res, 200, { data: [{ name: "news.kunde.example", status: "verified" }, { name: "offen.example", status: "pending" }, { name: "ohne-dmarc.example", status: "verified" }] });
       }
       if (p === "/emails/batch" && req.method === "POST") {
         if (!KUNDEN_KEYS.includes((req.headers.authorization ?? "").replace("Bearer ", ""))) return json(res, 401, { message: "invalid key" });

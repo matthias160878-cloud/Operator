@@ -674,3 +674,22 @@ test("Reichweitenaufbau: Freischaltung – Newsletter und Werbung standardmäßi
   assert.equal(kennzeichnungWarnung({ status: "UMGESETZT", kennzeichnung: "WERBUNG" }), null);
   assert.match(anfrageEntwurf({ name: "X", format: "AKTION", idee: "", passungNotiz: "", absender: "Y", sie: true }), /Werbung bzw\. Anzeige/);
 });
+
+test("Ratenbegrenzung pseudonymisiert Schlüssel, DMARC-Prüfung erbt von der Hauptdomain", async () => {
+  const { gespeicherterSchluessel } = await import("@/lib/rateLimit");
+  const k = gespeicherterSchluessel("widget-ip:abc:203.0.113.7");
+  assert.match(k, /^widget-ip:[0-9a-f]{32}$/);
+  assert.ok(!k.includes("203.0.113.7"));
+  assert.equal(gespeicherterSchluessel("widget-ip:abc:203.0.113.7"), k, "stabil");
+  assert.notEqual(gespeicherterSchluessel("widget-ip:abc:203.0.113.8"), k);
+  assert.equal(gespeicherterSchluessel("hermespub:global"), gespeicherterSchluessel("hermespub:global"));
+  const { dmarcPruefen } = await import("@/lib/zugaenge/service");
+  const vorher = process.env.DMARC_TEST_EINTRAEGE;
+  process.env.DMARC_TEST_EINTRAEGE = JSON.stringify({ "_dmarc.firma.de": "v=DMARC1; p=none" });
+  try {
+    assert.deepEqual(await dmarcPruefen("news.firma.de"), { status: "OK", wo: "_dmarc.firma.de", basis: "firma.de" });
+    assert.equal((await dmarcPruefen("andere.de")).status, "FEHLT");
+  } finally {
+    if (vorher === undefined) delete process.env.DMARC_TEST_EINTRAEGE; else process.env.DMARC_TEST_EINTRAEGE = vorher;
+  }
+});

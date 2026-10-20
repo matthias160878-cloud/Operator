@@ -80,8 +80,9 @@ interface PlanFelder {
   budgetEuro: string;
 }
 
-function PlanFormular({ wert, setWert, freigeber, darfBudget }: { wert: PlanFelder; setWert: (w: PlanFelder) => void; freigeber: Person[]; darfBudget: boolean }) {
-  const set = <K extends keyof PlanFelder>(k: K, v: PlanFelder[K]) => setWert({ ...wert, [k]: v });
+function PlanFormular({ wert, setWert, freigeber, darfBudget }: { wert: PlanFelder; setWert: React.Dispatch<React.SetStateAction<PlanFelder>>; freigeber: Person[]; darfBudget: boolean }) {
+  // Funktionale Aktualisierung: mehrere Felder auf einmal (z. B. Autofill) überschreiben sich nicht.
+  const set = <K extends keyof PlanFelder>(k: K, v: PlanFelder[K]) => setWert((alt) => ({ ...alt, [k]: v }));
   return (
     <div className="grid gap-2 sm:grid-cols-2">
       <label className="space-y-1 text-xs text-muted">

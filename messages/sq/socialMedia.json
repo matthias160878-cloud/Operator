@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Lidhja dështoi. Kontrollo të dhënat e qasjes dhe provo përsëri.",
   "errorUnknownPlatform": "Platformë e panjohur.",
   "encryptionKeyMissingNotice": "Shënim: TOKEN_ENCRYPTION_KEY ende nuk është vendosur — llogaritë mund të lidhen vetëm sapo kjo variabël mjedisi të vendoset në Render.",
+  "connectedPageLabel": "Faqja e lidhur",
+  "facebookMultiplePages": "U gjetën disa faqe Facebook ({count}) – e lidhur është „{name}“. Faqe tjetër? Shkëputeni dhe, kur lidheni sërish, zgjidhni vetëm faqen e dëshiruar në dritaren e Facebook.",
+  "tokenExpiresOn": "Qasja skadon më {date} – ju lutemi lidhuni sërish para kësaj date.",
+  "tokenExpiredOn": "Qasja skadoi më {date} – ju lutemi lidhuni sërish.",
+  "tokenScheduledAfterExpiry": "Postime të planifikuara pas datës së skadimit: {count}. Pa u lidhur sërish nuk do të publikohen.",
+  "reconnectButton": "Lidhu sërish",
   "composio": {
     "title": "Lidh një llogari përmes Composio",
     "subtitle": "Alternativë ndaj lidhjes së drejtpërdrejtë: ti hyn në platformë, Composio ruan qasjen, SECRET 58 ia cakton llogarinë vetëm hapësirës sate të punës. Aktualisht vetëm lidhje dhe test qasjeje për lexim – nuk publikohet asgjë përmes saj.",

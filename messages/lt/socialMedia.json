@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Prijungti nepavyko. Patikrink prieigos duomenis ir pabandyk dar kartą.",
   "errorUnknownPlatform": "Nežinoma platforma.",
   "encryptionKeyMissingNotice": "Pastaba: TOKEN_ENCRYPTION_KEY dar nenustatytas — paskyras bus galima prijungti tik tada, kai šis aplinkos kintamasis bus įrašytas Render.",
+  "connectedPageLabel": "Prijungtas puslapis",
+  "facebookMultiplePages": "Rasti keli „Facebook“ puslapiai ({count}) – prijungtas „{name}“. Kitas puslapis? Atjunkite ir, jungdami iš naujo, „Facebook“ lange pasirinkite tik norimą puslapį.",
+  "tokenExpiresOn": "Prieiga baigiasi {date} – prašome prisijungti iš naujo iki tol.",
+  "tokenExpiredOn": "Prieiga baigėsi {date} – prašome prisijungti iš naujo.",
+  "tokenScheduledAfterExpiry": "Suplanuoti įrašai po galiojimo pabaigos: {count}. Neprisijungus iš naujo jie nebus paskelbti.",
+  "reconnectButton": "Prijungti iš naujo",
   "composio": {
     "title": "Prijungti paskyrą per Composio",
     "subtitle": "Alternatyva tiesioginiam prijungimui: prisijungi prie platformos, Composio saugo prieigą, o SECRET 58 paskyrą tik priskiria tavo darbo erdvei. Šiuo metu tik prijungimas ir skaitymo prieigos testas – per tai niekas neskelbiama.",

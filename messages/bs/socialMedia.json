@@ -21,6 +21,12 @@
  "errorExchangeFailed": "Povezivanje nije uspjelo. Provjeri pristupne podatke i pokušaj ponovo.",
  "errorUnknownPlatform": "Nepoznata platforma.",
  "encryptionKeyMissingNotice": "Napomena: TOKEN_ENCRYPTION_KEY još nije postavljen — nalozi se mogu povezati tek kada se ova varijabla okruženja unese u Render.",
+ "connectedPageLabel": "Povezana stranica",
+ "facebookMultiplePages": "Pronađeno je više Facebook stranica ({count}) – povezana je „{name}“. Druga stranica? Prekinite vezu i pri ponovnom povezivanju u Facebook dijalogu odaberite samo željenu stranicu.",
+ "tokenExpiresOn": "Pristup ističe {date} – molimo ponovo povežite prije toga.",
+ "tokenExpiredOn": "Pristup je istekao {date} – molimo ponovo povežite.",
+ "tokenScheduledAfterExpiry": "Planirane objave nakon datuma isteka: {count}. Bez ponovnog povezivanja neće biti objavljene.",
+ "reconnectButton": "Ponovo poveži",
  "composio": {
   "title": "Poveži nalog preko Composio",
   "subtitle": "Alternativa direktnom povezivanju: prijaviš se na platformu, Composio čuva pristup, a SECRET 58 nalog samo dodjeljuje tvom radnom prostoru. Trenutno samo povezivanje i test pristupa za čitanje – preko toga se ništa ne objavljuje.",

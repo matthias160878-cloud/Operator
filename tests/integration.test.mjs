@@ -1961,6 +1961,18 @@ test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich u
   assert.equal(anf.status, 200, JSON.stringify(anf.data));
   const inq = await prisma.pilotInquiry.findFirst({ where: { workspaceId: wsA, channel: "empfehlung" } });
   assert.ok(inq && inq.senderContact === "interessent@example.com");
+  // Kunde A sieht die Anfrage unter „Anfragen“ (/kundenanfragen) — ohne PILOTSTUDIO_KUNDENBEREICH; Kunde B nicht
+  const seiteA = await A.req("/kundenanfragen");
+  assert.equal(seiteA.status, 200, "Anfragen-Seite ohne Pilot-Schalter erreichbar");
+  const htmlA = await seiteA.text();
+  assert.ok(htmlA.includes("interessent@example.com") && htmlA.includes("Bitte Angebot"), "Anfrage mit Kontakt und Nachricht beim richtigen Kunden");
+  assert.ok(htmlA.includes('href="/kundenanfragen"'), "Menüpunkt „Anfragen“");
+  const seiteB = await B.req("/kundenanfragen");
+  assert.equal(seiteB.status, 200);
+  const htmlB = await seiteB.text();
+  assert.ok(!htmlB.includes("interessent@example.com") && !htmlB.includes("Bitte Angebot"), "fremder Kunde sieht die Anfrage nicht");
+  assert.ok(!htmlB.includes(inq.id));
+  assert.ok((await new Client().req("/kundenanfragen")).status >= 300, "ohne Anmeldung kein Zugriff");
   assert.equal((await prisma.empfehlungsEreignis.count({ where: { art: "ANFRAGE" } })), 1);
   assert.equal(await prisma.rateLimit.count({ where: { key: { startsWith: "empf", contains: "10.77" } } }), 0, "IP nur gehasht");
   assert.ok((await prisma.rateLimit.findMany({ where: { key: { startsWith: "empf-anfrage:" } } })).every((r) => /^empf-anfrage:[0-9a-f]{32}$/.test(r.key)), "Schlüssel per HMAC pseudonymisiert");
@@ -2645,8 +2657,63 @@ test("Kündigungsbutton (§ 312k BGB): öffentlich, Bestätigung auf dem Bildsch
   assert.equal((await A.json("/api/operator/kuendigungen", { method: "PATCH", body: { id: k1.id, bearbeitet: true } })).status, 404);
   const O = new Client();
   assert.equal((await O.json("/api/auth/login", { method: "POST", body: { email: "op@example.test", password: "betreiber-passwort-123" }, headers: { "x-forwarded-for": "10.90.4.1" } })).status, 200);
+  // Erinnerung mit Frist: k3 seit 3 Tagen offen (rot), Laufzeitende aus dem Paket von Konto A
+  await prisma.kuendigung.update({ where: { id: k3.id }, data: { eingangAm: new Date(Date.now() - 3 * 86_400_000) } });
+  const planVorher = await prisma.workspacePlan.findUnique({ where: { workspaceId: k1.workspaceId } });
+  await prisma.workspacePlan.upsert({
+    where: { workspaceId: k1.workspaceId },
+    create: { workspaceId: k1.workspaceId, plan: "PRO", status: "ACTIVE", source: "TEST", currentPeriodEnd: new Date("2030-07-15T10:00:00Z") },
+    update: { currentPeriodEnd: new Date("2030-07-15T10:00:00Z"), cancelAtPeriodEnd: false },
+  });
+  const offenGesamt = await prisma.kuendigung.count({ where: { bearbeitetAm: null } });
+  const uebersicht = await (await O.req("/operator")).text();
+  assert.ok(uebersicht.includes('data-testid="offene-kuendigungen"') && uebersicht.includes(`${offenGesamt} offene Kündigungen`), "Zähler auf der Übersicht");
   const liste = await (await O.req("/operator/kuendigungen")).text();
+  assert.ok(liste.includes("seit 3 Tagen offen") && liste.includes('data-dringend="ja"'), "rot ab 2 Tagen");
+  assert.ok(liste.includes('data-dringend="nein"') && liste.includes("heute eingegangen"));
+  assert.ok(liste.includes("Laufzeitende am 15. Juli 2030; in Stripe vor diesem Datum „zum Laufzeitende kündigen“ setzen."));
+  const nachPlan = await prisma.workspacePlan.findUniqueOrThrow({ where: { workspaceId: k1.workspaceId } });
+  assert.equal(nachPlan.cancelAtPeriodEnd, false, "Anzeige ändert nichts am Abo");
+  if (planVorher) await prisma.workspacePlan.update({ where: { workspaceId: k1.workspaceId }, data: { currentPeriodEnd: planVorher.currentPeriodEnd, cancelAtPeriodEnd: planVorher.cancelAtPeriodEnd } });
+  else await prisma.workspacePlan.delete({ where: { workspaceId: k1.workspaceId } });
   assert.ok(liste.includes(d1.referenz) && liste.includes(d3.referenz) && liste.includes("E-Mail NICHT versendet"));
   assert.equal((await O.json("/api/operator/kuendigungen", { method: "PATCH", body: { id: k1.id, bearbeitet: true } })).status, 200);
   assert.ok((await prisma.kuendigung.findUniqueOrThrow({ where: { id: k1.id } })).bearbeitetAm);
+});
+
+test("Social Media: verbundene Facebook-Seite sichtbar, Hinweis bei mehreren Seiten, LinkedIn-Ablaufhinweis", async () => {
+  const A = await signup("sm-hinweise-a@example.com", "SM Hinweise A", "10.91.0.1");
+  const B = await signup("sm-hinweise-b@example.com", "SM Hinweise B", "10.91.0.2");
+  const wsA = await workspaceIdOf("sm-hinweise-a@example.com");
+  const tag = 86_400_000;
+  await prisma.platformAccount.create({ data: { workspaceId: wsA, platform: "FACEBOOK", accountName: "Bäckerei Seite Zwei", status: "CONNECTED", externalAccountId: "fb-2" } });
+  const li = await prisma.platformAccount.create({
+    data: { workspaceId: wsA, platform: "LINKEDIN", accountName: "Kim Linked", status: "CONNECTED", tokenExpiresAt: new Date(Date.now() + 10 * tag) },
+  });
+
+  // Name der verbundenen Seite immer sichtbar; Mehrfach-Hinweis nur direkt nach dem Verbinden
+  let html = await (await A.req("/social-media")).text();
+  assert.ok(html.includes("Bäckerei Seite Zwei"));
+  assert.ok(!html.includes('data-testid="facebook-mehrere-seiten"'));
+  html = await (await A.req("/social-media?connected=FACEBOOK&seiten=3")).text();
+  assert.ok(html.includes('data-testid="facebook-mehrere-seiten"') && html.includes("(3)"), "Hinweis auf mehrere Seiten");
+  html = await (await A.req("/social-media?connected=FACEBOOK&seiten=1")).text();
+  assert.ok(!html.includes('data-testid="facebook-mehrere-seiten"'));
+
+  // Ablaufhinweis: gelb ohne betroffene Beiträge, rot sobald ein geplanter Beitrag nach dem Ablauf liegt
+  html = await (await A.req("/social-media")).text();
+  assert.ok(html.includes('data-testid="token-ablauf"') && html.includes('data-kritisch="nein"'));
+  await prisma.contentItem.create({ data: { workspaceId: wsA, title: "Vor Ablauf", platform: "LINKEDIN", status: "SCHEDULED", scheduledAt: new Date(Date.now() + 5 * tag) } });
+  html = await (await A.req("/social-media")).text();
+  assert.ok(html.includes('data-kritisch="nein"'), "Beitrag vor Ablauf ist unkritisch");
+  await prisma.contentItem.create({ data: { workspaceId: wsA, title: "Nach Ablauf", platform: "LINKEDIN", status: "SCHEDULED", scheduledAt: new Date(Date.now() + 20 * tag) } });
+  html = await (await A.req("/social-media")).text();
+  assert.ok(html.includes('data-kritisch="ja"'), "rot bei geplantem Beitrag nach Ablauf");
+  // Mit Refresh-Token (automatisch verlängerbar) kein Hinweis
+  await prisma.platformAccount.update({ where: { id: li.id }, data: { refreshTokenEnc: "x" } });
+  assert.ok(!(await (await A.req("/social-media")).text()).includes('data-testid="token-ablauf"'));
+
+  // Mandantentrennung: B sieht weder Seite noch Hinweise von A
+  const htmlB = await (await B.req("/social-media?connected=FACEBOOK&seiten=3")).text();
+  assert.ok(!htmlB.includes("Bäckerei Seite Zwei") && !htmlB.includes('data-testid="token-ablauf"') && !htmlB.includes('data-testid="facebook-mehrere-seiten"'));
 });

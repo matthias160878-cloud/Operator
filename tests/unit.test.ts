@@ -881,3 +881,48 @@ test("Kündigungsbutton: Referenz, Zeitpunkt und neutrale Bestätigung", async (
   assert.ok(!mail.html.includes("<b>Grund</b>") && mail.html.includes("&lt;b&gt;Grund&lt;/b&gt;") && mail.html.includes("Eva &lt;Test&gt;"), "HTML maskiert");
   assert.ok(!/Konto (gefunden|existiert)|kein Konto/i.test(mail.text), "verrät nicht, ob ein Konto existiert");
 });
+
+test("Kundenanfragen: Empfehlungs-Anfragen immer, Pilot-Anfragen nur mit Schalter, immer nur eigener Workspace", async () => {
+  const { kundenanfragenFilter, pilotKundenbereichFreigeschaltet } = await import("@/lib/kundenanfragen");
+  assert.deepEqual(kundenanfragenFilter("ws-a", false), { workspaceId: "ws-a", OR: [{ channel: "empfehlung" }] });
+  assert.deepEqual(kundenanfragenFilter("ws-a", true), { workspaceId: "ws-a", OR: [{ channel: "empfehlung" }, { isDemo: false }] });
+  assert.throws(() => kundenanfragenFilter("", false));
+  assert.equal(pilotKundenbereichFreigeschaltet({}), false);
+  assert.equal(pilotKundenbereichFreigeschaltet({ PILOTSTUDIO_KUNDENBEREICH: "true" }), true);
+});
+
+test("Kündigungen: Erinnerung mit Frist (rot ab 2 Tagen) und Laufzeitende", async () => {
+  const { kuendigungsErinnerung, offenSeitTagen } = await import("@/lib/kuendigung");
+  const jetzt = new Date("2026-10-20T10:00:00Z");
+  assert.equal(offenSeitTagen(new Date("2026-10-20T06:00:00Z"), jetzt), 0);
+  assert.equal(offenSeitTagen(new Date("2026-10-19T21:30:00Z"), jetzt), 1, "deutsche Kalendertage");
+  assert.equal(offenSeitTagen(new Date("2026-10-19T23:30:00Z"), jetzt), 0, "nach Mitternacht deutscher Zeit = heute");
+  const heute = kuendigungsErinnerung(new Date("2026-10-20T08:00:00Z"), null, jetzt);
+  assert.equal(heute.text, "heute eingegangen");
+  assert.equal(heute.dringend, false);
+  assert.equal(heute.laufzeitHinweis, null);
+  assert.equal(kuendigungsErinnerung(new Date("2026-10-19T08:00:00Z"), null, jetzt).dringend, false);
+  const alt = kuendigungsErinnerung(new Date("2026-10-17T08:00:00Z"), new Date("2026-11-15T09:00:00Z"), jetzt);
+  assert.equal(alt.text, "seit 3 Tagen offen");
+  assert.equal(alt.dringend, true);
+  assert.equal(alt.laufzeitHinweis, "Laufzeitende am 15. November 2026; in Stripe vor diesem Datum „zum Laufzeitende kündigen“ setzen.");
+});
+
+test("Token-Ablauf: Hinweis nur ohne Refresh-Token, rot bei geplanten Beiträgen nach Ablauf", async () => {
+  const { tokenAblaufHinweis } = await import("@/lib/publishing/tokenAblauf");
+  const jetzt = new Date("2026-10-20T10:00:00Z");
+  const ablauf = new Date("2026-12-01T10:00:00Z");
+  const acc = { status: "CONNECTED", tokenExpiresAt: ablauf, refreshTokenEnc: null };
+  assert.equal(tokenAblaufHinweis({ ...acc, refreshTokenEnc: "enc" }, [], jetzt), null);
+  assert.equal(tokenAblaufHinweis({ ...acc, tokenExpiresAt: null }, [], jetzt), null);
+  assert.equal(tokenAblaufHinweis({ ...acc, status: "DISCONNECTED" }, [], jetzt), null);
+  const ok = tokenAblaufHinweis(acc, [new Date("2026-11-01T10:00:00Z"), null], jetzt)!;
+  assert.equal(ok.kritisch, false);
+  assert.equal(ok.geplantNachAblauf, 0);
+  const rot = tokenAblaufHinweis(acc, [new Date("2026-11-01T10:00:00Z"), new Date("2026-12-05T10:00:00Z")], jetzt)!;
+  assert.equal(rot.geplantNachAblauf, 1);
+  assert.equal(rot.kritisch, true);
+  const abgelaufen = tokenAblaufHinweis(acc, [], new Date("2026-12-02T00:00:00Z"))!;
+  assert.equal(abgelaufen.abgelaufen, true);
+  assert.equal(abgelaufen.kritisch, true);
+});

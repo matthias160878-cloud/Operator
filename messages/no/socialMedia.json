@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Tilkoblingen mislyktes. Kontroller tilgangsdataene og prøv igjen.",
   "errorUnknownPlatform": "Ukjent plattform.",
   "encryptionKeyMissingNotice": "Merk: TOKEN_ENCRYPTION_KEY er ikke satt ennå — kontoer kan først kobles til når denne miljøvariabelen er lagt inn i Render.",
+  "connectedPageLabel": "Tilkoblet side",
+  "facebookMultiplePages": "Flere Facebook-sider funnet ({count}) – tilkoblet er «{name}». En annen side? Koble fra, og velg bare ønsket side i Facebook-dialogen når du kobler til igjen.",
+  "tokenExpiresOn": "Tilgangen utløper {date} – koble til på nytt før det.",
+  "tokenExpiredOn": "Tilgangen utløp {date} – koble til på nytt.",
+  "tokenScheduledAfterExpiry": "Planlagte innlegg etter utløpsdatoen: {count}. Uten ny tilkobling blir de ikke publisert.",
+  "reconnectButton": "Koble til på nytt",
   "composio": {
     "title": "Koble til konto via Composio",
     "subtitle": "Alternativ til direkte tilkobling: Du logger inn på plattformen, Composio oppbevarer tilgangen, og SECRET 58 tilordner bare kontoen til arbeidsområdet ditt. For øyeblikket bare tilkobling og lesende tilgangstest – ingenting publiseres via dette.",

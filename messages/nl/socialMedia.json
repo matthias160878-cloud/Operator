@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Verbinding mislukt. Controleer de toegangsgegevens en probeer het opnieuw.",
   "errorUnknownPlatform": "Onbekend platform.",
   "encryptionKeyMissingNotice": "Let op: TOKEN_ENCRYPTION_KEY is nog niet ingesteld — accounts kunnen pas worden verbonden zodra deze omgevingsvariabele bij Render is ingevoerd.",
+  "connectedPageLabel": "Verbonden pagina",
+  "facebookMultiplePages": "Meerdere Facebook-pagina’s gevonden ({count}) – verbonden is ‘{name}’. Andere pagina? Verbreek de verbinding en selecteer bij het opnieuw verbinden in het Facebook-venster alleen de gewenste pagina.",
+  "tokenExpiresOn": "Toegang verloopt op {date} – verbind vóór die datum opnieuw.",
+  "tokenExpiredOn": "Toegang is verlopen op {date} – verbind opnieuw.",
+  "tokenScheduledAfterExpiry": "Geplande berichten na de vervaldatum: {count}. Zonder opnieuw verbinden worden ze niet gepubliceerd.",
+  "reconnectButton": "Opnieuw verbinden",
   "composio": {
     "title": "Account verbinden via Composio",
     "subtitle": "Alternatief voor de directe koppeling: je meldt je aan bij het platform, Composio bewaart de toegang en SECRET 58 koppelt het account alleen aan jouw werkruimte. Momenteel alleen verbinden en een leestoegangstest – hiermee wordt niets gepubliceerd.",

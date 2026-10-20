@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Theip ar an nasc. Seiceáil na sonraí rochtana agus bain triail eile as.",
   "errorUnknownPlatform": "Ardán anaithnid.",
   "encryptionKeyMissingNotice": "Nóta: níl TOKEN_ENCRYPTION_KEY socraithe go fóill — ní féidir cuntais a nascadh ach amháin nuair a bheidh an athróg timpeallachta seo curtha isteach i Render.",
+  "connectedPageLabel": "Leathanach ceangailte",
+  "facebookMultiplePages": "Aimsíodh roinnt leathanach Facebook ({count}) – tá „{name}“ ceangailte. Leathanach eile? Dícheangail agus, nuair a cheanglaíonn tú arís, roghnaigh an leathanach atá uait amháin i ndialóg Facebook.",
+  "tokenExpiresOn": "Rachaidh an rochtain in éag ar {date} – ceangail arís roimhe sin, le do thoil.",
+  "tokenExpiredOn": "Chuaigh an rochtain in éag ar {date} – ceangail arís, le do thoil.",
+  "tokenScheduledAfterExpiry": "Postálacha sceidealaithe tar éis an dáta éaga: {count}. Gan athcheangal ní fhoilseofar iad.",
+  "reconnectButton": "Ceangail arís",
   "composio": {
     "title": "Nasc cuntas trí Composio",
     "subtitle": "Rogha eile seachas an nasc díreach: logálann tú isteach ar an ardán, coinníonn Composio an rochtain, agus ní shanntar an cuntas ach do do spás oibre féin trí SECRET 58. Faoi láthair is nasc agus tástáil rochtana léite amháin atá ann – ní fhoilsítear faic tríd.",

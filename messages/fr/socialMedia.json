@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Échec de la connexion. Vérifiez les identifiants et réessayez.",
   "errorUnknownPlatform": "Plateforme inconnue.",
   "encryptionKeyMissingNotice": "Remarque : TOKEN_ENCRYPTION_KEY n'est pas encore configurée — les comptes ne pourront être connectés qu'une fois cette variable d'environnement définie dans Render.",
+  "connectedPageLabel": "Page connectée",
+  "facebookMultiplePages": "Plusieurs pages Facebook trouvées ({count}) – la page connectée est « {name} ». Une autre page ? Déconnectez puis, lors de la reconnexion, sélectionnez uniquement la page souhaitée dans la boîte de dialogue Facebook.",
+  "tokenExpiresOn": "L’accès expire le {date} – veuillez vous reconnecter avant cette date.",
+  "tokenExpiredOn": "L’accès a expiré le {date} – veuillez vous reconnecter.",
+  "tokenScheduledAfterExpiry": "Publications planifiées après la date d’expiration : {count}. Sans reconnexion, elles ne seront pas publiées.",
+  "reconnectButton": "Reconnecter",
   "composio": {
     "title": "Connecter un compte via Composio",
     "subtitle": "Alternative à la connexion directe : tu te connectes à la plateforme, Composio conserve l'accès, SECRET 58 associe seulement le compte à ton espace de travail. Pour l'instant connexion et test de lecture uniquement – rien n'est publié par ce biais.",

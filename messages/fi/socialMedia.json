@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Yhteys epäonnistui. Tarkista tunnukset ja yritä uudelleen.",
   "errorUnknownPlatform": "Tuntematon alusta.",
   "encryptionKeyMissingNotice": "Huom.: TOKEN_ENCRYPTION_KEY ei ole vielä asetettu — tilejä voi yhdistää vasta, kun tämä ympäristömuuttuja on tallennettu Renderiin.",
+  "connectedPageLabel": "Yhdistetty sivu",
+  "facebookMultiplePages": "Löytyi useita Facebook-sivuja ({count}) – yhdistettynä on ”{name}”. Eri sivu? Katkaise yhteys ja valitse uudelleen yhdistäessä Facebookin ikkunassa vain haluamasi sivu.",
+  "tokenExpiresOn": "Käyttöoikeus vanhenee {date} – yhdistä uudelleen ennen sitä.",
+  "tokenExpiredOn": "Käyttöoikeus vanheni {date} – yhdistä uudelleen.",
+  "tokenScheduledAfterExpiry": "Ajastettuja julkaisuja vanhenemispäivän jälkeen: {count}. Ilman uudelleenyhdistämistä niitä ei julkaista.",
+  "reconnectButton": "Yhdistä uudelleen",
   "composio": {
     "title": "Yhdistä tili Composion kautta",
     "subtitle": "Vaihtoehto suoralle yhteydelle: kirjaudut alustalle, Composio säilyttää pääsyn ja SECRET 58 liittää tilin vain työtilaasi. Tällä hetkellä vain yhdistäminen ja lukuoikeuden testaus – sen kautta ei julkaista mitään.",

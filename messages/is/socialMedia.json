@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Tenging mistókst. Athugaðu aðgangsgögnin og reyndu aftur.",
   "errorUnknownPlatform": "Óþekktur miðill.",
   "encryptionKeyMissingNotice": "Athugið: TOKEN_ENCRYPTION_KEY er ekki enn stilltur — ekki er hægt að tengja reikninga fyrr en þessi umhverfisbreyta hefur verið skráð í Render.",
+  "connectedPageLabel": "Tengd síða",
+  "facebookMultiplePages": "Margar Facebook-síður fundust ({count}) – tengd er „{name}“. Önnur síða? Aftengdu og veldu aðeins þá síðu sem þú vilt í Facebook-glugganum þegar þú tengir aftur.",
+  "tokenExpiresOn": "Aðgangur rennur út {date} – vinsamlegast tengdu aftur fyrir þann tíma.",
+  "tokenExpiredOn": "Aðgangur rann út {date} – vinsamlegast tengdu aftur.",
+  "tokenScheduledAfterExpiry": "Áætlaðar færslur eftir lokadagsetningu: {count}. Án nýrrar tengingar verða þær ekki birtar.",
+  "reconnectButton": "Tengja aftur",
   "composio": {
     "title": "Tengja reikning með Composio",
     "subtitle": "Valkostur við beina tengingu: þú skráir þig inn á miðilinn, Composio geymir aðganginn, SECRET 58 tengir reikninginn aðeins við vinnusvæðið þitt. Eins og er aðeins tenging og lesprófun á aðgangi – ekkert er birt í gegnum hana.",

@@ -21,6 +21,12 @@
   "errorExchangeFailed": "A kapcsolódás nem sikerült. Ellenőrizd a hozzáférési adatokat, és próbáld újra.",
   "errorUnknownPlatform": "Ismeretlen platform.",
   "encryptionKeyMissingNotice": "Megjegyzés: a TOKEN_ENCRYPTION_KEY még nincs beállítva — a fiókok csak akkor csatlakoztathatók, ha ezt a környezeti változót megadtad a Renderben.",
+  "connectedPageLabel": "Csatlakoztatott oldal",
+  "facebookMultiplePages": "Több Facebook-oldal található ({count}) – a csatlakoztatott: „{name}”. Másik oldal? Bontsa a kapcsolatot, és újracsatlakozáskor a Facebook párbeszédablakában csak a kívánt oldalt jelölje ki.",
+  "tokenExpiresOn": "A hozzáférés lejár: {date} – kérjük, előtte csatlakozzon újra.",
+  "tokenExpiredOn": "A hozzáférés lejárt: {date} – kérjük, csatlakozzon újra.",
+  "tokenScheduledAfterExpiry": "Ütemezett bejegyzések a lejárati dátum után: {count}. Újracsatlakozás nélkül nem jelennek meg.",
+  "reconnectButton": "Újracsatlakozás",
   "composio": {
     "title": "Fiók csatlakoztatása a Composión keresztül",
     "subtitle": "Alternatíva a közvetlen csatlakoztatáshoz: te bejelentkezel a platformra, a Composio őrzi a hozzáférést, a SECRET 58 pedig csak a munkaterületedhez rendeli a fiókot. Jelenleg csak csatlakoztatás és olvasó hozzáférési teszt lehetséges – ezen keresztül semmi nem kerül közzétételre.",

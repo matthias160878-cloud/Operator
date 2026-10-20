@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/auth/session";
 import { prisma } from "@/lib/db";
-import { eingangText, KUENDIGUNGS_ARTEN, zeitpunktText, type KuendigungsArt } from "@/lib/kuendigung";
+import { eingangText, KUENDIGUNG_DRINGEND_AB_TAGEN, KUENDIGUNGS_ARTEN, kuendigungsErinnerung, zeitpunktText, type KuendigungsArt } from "@/lib/kuendigung";
 import { KuendigungBearbeitet } from "@/components/operator/KuendigungBearbeitet";
 
 export const dynamic = "force-dynamic";
@@ -27,7 +27,7 @@ export default async function BetreiberKuendigungenPage() {
           <h1 className="text-xl font-semibold text-foreground">Kündigungen</h1>
           <p className="mt-1 max-w-2xl text-xs text-muted">
             Eingänge über „Verträge hier kündigen“ (/kuendigen). Es wird nichts automatisch gekündigt: Bitte jede Kündigung in
-            Stripe (Kundenportal oder Dashboard) umsetzen und danach als bearbeitet markieren. Offen: {offen}.
+            Stripe (Kundenportal oder Dashboard) umsetzen und danach als bearbeitet markieren. Offen: {offen}. Offene Kündigungen werden ab {KUENDIGUNG_DRINGEND_AB_TAGEN} Tagen rot markiert.
           </p>
         </div>
         <Link href="/operator" className="rounded-lg border border-border px-3 py-1.5 text-sm text-foreground">Zurück zum Betreiberbereich</Link>
@@ -38,6 +38,7 @@ export default async function BetreiberKuendigungenPage() {
         <div className="space-y-3">
           {liste.map((k) => {
             const plan = k.workspaceId ? planVon.get(k.workspaceId) : undefined;
+            const erinnerung = k.bearbeitetAm ? null : kuendigungsErinnerung(k.eingangAm, plan?.currentPeriodEnd);
             return (
               <div key={k.id} className="card space-y-2 p-4 text-sm" data-testid="kuendigung-eintrag">
                 <div className="flex flex-wrap items-center justify-between gap-2">
@@ -49,6 +50,21 @@ export default async function BetreiberKuendigungenPage() {
                   </div>
                   <KuendigungBearbeitet id={k.id} bearbeitet={Boolean(k.bearbeitetAm)} />
                 </div>
+                {erinnerung && (
+                  <div
+                    data-testid="kuendigung-erinnerung"
+                    data-dringend={erinnerung.dringend ? "ja" : "nein"}
+                    className={`rounded-lg border px-3 py-2 text-xs ${erinnerung.dringend ? "border-red-500/60 bg-red-500/10 text-red-300" : "border-amber-500/50 bg-amber-500/10 text-amber-300"}`}
+                  >
+                    <span className="font-semibold">Erinnerung: {erinnerung.text}</span>
+                    {erinnerung.dringend && <> – bitte jetzt bearbeiten (Frist: {KUENDIGUNG_DRINGEND_AB_TAGEN} Tage überschritten).</>}
+                    {plan?.cancelAtPeriodEnd ? (
+                      <span className="block">In Stripe ist die Kündigung zum Laufzeitende bereits vorgemerkt – danach als bearbeitet markieren.</span>
+                    ) : erinnerung.laufzeitHinweis ? (
+                      <span className="block">{erinnerung.laufzeitHinweis}</span>
+                    ) : null}
+                  </div>
+                )}
                 <dl className="grid grid-cols-1 gap-x-4 gap-y-1 text-xs sm:grid-cols-2">
                   <div><dt className="inline text-muted">Eingang: </dt><dd className="inline">{eingangText(k.eingangAm)}</dd></div>
                   <div><dt className="inline text-muted">Art: </dt><dd className="inline">{KUENDIGUNGS_ARTEN[k.art as KuendigungsArt] ?? k.art}</dd></div>

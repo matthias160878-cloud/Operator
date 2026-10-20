@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Savienojums neizdevās. Pārbaudi piekļuves datus un mēģini vēlreiz.",
   "errorUnknownPlatform": "Nezināma platforma.",
   "encryptionKeyMissingNotice": "Piezīme: TOKEN_ENCRYPTION_KEY vēl nav iestatīts — kontus var pievienot tikai pēc tam, kad šis vides mainīgais ir ievadīts Render.",
+  "connectedPageLabel": "Savienotā lapa",
+  "facebookMultiplePages": "Atrastas vairākas Facebook lapas ({count}) – savienota ir “{name}”. Cita lapa? Atvienojiet un, savienojot no jauna, Facebook logā izvēlieties tikai vajadzīgo lapu.",
+  "tokenExpiresOn": "Piekļuve beidzas {date} – lūdzu, savienojiet no jauna pirms tam.",
+  "tokenExpiredOn": "Piekļuve beidzās {date} – lūdzu, savienojiet no jauna.",
+  "tokenScheduledAfterExpiry": "Ieplānotās ziņas pēc beigu datuma: {count}. Bez jaunas savienošanas tās netiks publicētas.",
+  "reconnectButton": "Savienot no jauna",
   "composio": {
     "title": "Pievienot kontu caur Composio",
     "subtitle": "Alternatīva tiešajam pieslēgumam: tu pieslēdzies platformā, Composio glabā piekļuvi, SECRET 58 kontu tikai piešķir tavai darbvietai. Pašlaik tikai pievienošana un lasīšanas piekļuves tests – caur to nekas netiek publicēts.",

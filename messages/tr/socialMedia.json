@@ -21,6 +21,12 @@
   "errorExchangeFailed": "Bağlantı başarısız oldu. Erişim bilgilerini kontrol et ve tekrar dene.",
   "errorUnknownPlatform": "Bilinmeyen platform.",
   "encryptionKeyMissingNotice": "Not: TOKEN_ENCRYPTION_KEY henüz ayarlanmadı — hesaplar, bu ortam değişkeni Render'a girilene kadar bağlanamaz.",
+  "connectedPageLabel": "Bağlı sayfa",
+  "facebookMultiplePages": "Birden fazla Facebook sayfası bulundu ({count}) – bağlı olan: “{name}”. Başka bir sayfa mı? Bağlantıyı kesin ve yeniden bağlanırken Facebook penceresinde yalnızca istediğiniz sayfayı seçin.",
+  "tokenExpiresOn": "Erişim {date} tarihinde sona eriyor – lütfen bu tarihten önce yeniden bağlanın.",
+  "tokenExpiredOn": "Erişim {date} tarihinde sona erdi – lütfen yeniden bağlanın.",
+  "tokenScheduledAfterExpiry": "Bitiş tarihinden sonra planlanan gönderiler: {count}. Yeniden bağlanmadan yayınlanmayacaklar.",
+  "reconnectButton": "Yeniden bağlan",
   "composio": {
     "title": "Hesabı Composio ile bağla",
     "subtitle": "Doğrudan bağlantıya alternatif: Platforma giriş yaparsın, Composio erişimi saklar, SECRET 58 hesabı yalnızca senin çalışma alanına atar. Şu anda yalnızca bağlama ve salt okunur erişim testi — bunun üzerinden hiçbir şey yayınlanmaz.",

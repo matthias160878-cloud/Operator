@@ -126,3 +126,37 @@ export function bestaetigungsMail(k: KuendigungsAngaben): { subject: string; tex
     `<p>${escapeHtml(schluss)}</p><p>SECRET 58</p>`;
   return { subject: BESTAETIGUNG_BETREFF, text, html };
 }
+
+/** Ab so vielen Kalendertagen gilt eine offene Kündigung als dringend (rot). */
+export const KUENDIGUNG_DRINGEND_AB_TAGEN = 2;
+
+/** Volle Kalendertage (deutsche Zeit) zwischen Eingang und jetzt. */
+export function offenSeitTagen(eingangAm: Date, jetzt: Date = new Date()): number {
+  const tag = (d: Date) => Date.parse(`${heuteInDeutschland(d)}T00:00:00Z`);
+  return Math.max(0, Math.round((tag(jetzt) - tag(eingangAm)) / 86_400_000));
+}
+
+export interface KuendigungsErinnerung {
+  tage: number;
+  dringend: boolean;
+  text: string;
+  /** Hinweis zum Laufzeitende, wenn ein Paket mit currentPeriodEnd bekannt ist. */
+  laufzeitHinweis: string | null;
+}
+
+/**
+ * Erinnerung für eine offene Kündigung im Betreiberbereich. Rein informativ:
+ * In Stripe wird nichts automatisch geändert.
+ */
+export function kuendigungsErinnerung(
+  eingangAm: Date,
+  currentPeriodEnd: Date | null | undefined,
+  jetzt: Date = new Date(),
+): KuendigungsErinnerung {
+  const tage = offenSeitTagen(eingangAm, jetzt);
+  const text = tage === 0 ? "heute eingegangen" : tage === 1 ? "seit 1 Tag offen" : `seit ${tage} Tagen offen`;
+  const laufzeitHinweis = currentPeriodEnd
+    ? `Laufzeitende am ${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", dateStyle: "long" }).format(currentPeriodEnd)}; in Stripe vor diesem Datum „zum Laufzeitende kündigen“ setzen.`
+    : null;
+  return { tage, dringend: tage >= KUENDIGUNG_DRINGEND_AB_TAGEN, text, laufzeitHinweis };
+}

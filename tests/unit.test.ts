@@ -775,3 +775,10 @@ test("KI-Kosten: Schätzung für bekannte Modelle, unbekannte offen gekennzeichn
     else process.env.ANTHROPIC_MODEL = alt;
   }
 });
+
+test("Plattform-Richtlinien: KI-Kennzeichnung nur für Videos aus KI-Diensten", async () => {
+  const { istKiVideo } = await import("@/lib/publishing/adapters");
+  assert.equal(istKiVideo({ provider: "local" }), false);
+  assert.equal(istKiVideo({ provider: "upload" }), false);
+  assert.equal(istKiVideo({ provider: "capcut" }), true);
+});

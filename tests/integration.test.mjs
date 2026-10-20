@@ -125,6 +125,9 @@ before(async () => {
     IMPRESSUM_NAME: "Test Anbieter",
     IMPRESSUM_ANSCHRIFT: "Teststraße 1 | 00000 Teststadt",
     IMPRESSUM_EMAIL: "kontakt@example.test",
+    IMPRESSUM_FIRMA: "Testfirma",
+    IMPRESSUM_UMSATZSTEUER: "Kleinunternehmer im Sinne von § 19 UStG – es wird keine Umsatzsteuer ausgewiesen.",
+    IMPRESSUM_KONTAKT_URL: "/hauptseite/index.html#/kontakt",
     AGB_URL: "https://example.test/agb",
     DATENSCHUTZ_URL: "https://example.test/datenschutz",
     OPERATOR_SETUP_TOKEN: SETUP_TOKEN,
@@ -203,6 +206,17 @@ test("Impressum ist ohne Anmeldung erreichbar und überall verlinkt", async () =
     assert.ok(h.includes('href="/impressum"'), `Impressum-Link fehlt auf ${p}`);
     assert.ok(h.includes("https://example.test/datenschutz") && h.includes("https://example.test/agb"), `AGB/Datenschutz fehlen auf ${p}`);
   }
+  assert.ok(html.includes("Kleinunternehmer") && html.includes("/hauptseite/index.html#/kontakt"), "USt-Hinweis und Kontaktformular");
+  assert.ok(html.includes("Inhaber"), "Einzelunternehmen: Inhaber statt Vertreten durch");
+});
+
+test("Datenschutzerklärung der App ist ohne Anmeldung erreichbar und nennt die Dienste", async () => {
+  const res = await fetch(`${BASE}/datenschutz`, { redirect: "manual" });
+  assert.equal(res.status, 200);
+  assert.equal(res.headers.get("set-cookie"), null, "keine Cookies");
+  const html = await res.text();
+  for (const t of ["Datenschutzerklärung", "Matthias Lippek", "Render", "Frankfurt", "Stripe", "Resend", "s58_session", "Art. 15", "Baden-Württemberg"]) assert.ok(html.includes(t), t);
+  assert.ok(!html.includes("Stytch") && !html.includes("Offen</h2>"), "keine veralteten Angaben oder offenen Punkte");
 });
 
 test("Anmeldung: falsches Passwort generisch abgelehnt, richtiges klappt", async () => {

@@ -25,7 +25,7 @@ Modul in der Social-Media-App (`/weiterempfehlungen`). Stand: Vorschau im Branch
 Reichweite, die über Plattformen summiert wird, ergibt keine Zahl eindeutiger Personen. Aufrufe, Klicks und Ausspielungen werden nicht miteinander verrechnet.
 
 ## Datenschutz
-- Ereignisse speichern nur Art, Link, Kampagne und Zeit. Sie speichern keine IP-Adresse, keinen User-Agent und kein Cookie. Für den Missbrauchsschutz wird nur ein Hash der IP als Zähler-Schlüssel verwendet.
+- Ereignisse speichern nur Art, Link, Kampagne und Zeit. Sie speichern keine IP-Adresse, keinen User-Agent und kein Cookie. Für den Missbrauchsschutz werden Zähler-Schlüssel (auch die IP-Adresse) mit einem geheimen Server-Wert per HMAC pseudonymisiert (`src/lib/rateLimit.ts`); abgelaufene Zähler werden nach 2 Tagen gelöscht.
 - Es gibt keine Einwilligungsverwaltung. Deshalb ist bewusst kein Tracking mit Personenbezug eingebaut. Bevor echtes Tracking (Pixel, Cookies, Analytics) kommt, muss eine Einwilligungsverwaltung eingerichtet werden.
 - Es gibt keinen Adressbuchzugriff, keine automatischen Nachrichten und keine Massen-DMs.
 - Mandantentrennung: Alle Abfragen laufen über `workspaceId` aus der Sitzung, fremde IDs ergeben 404. Rollen: `VIEWER` darf nur lesen, alle anderen Rollen dürfen auch bearbeiten. Änderungen stehen im Audit-Log.

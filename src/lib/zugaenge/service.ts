@@ -1,3 +1,4 @@
+import { Resolver } from "node:dns/promises";
 import { prisma } from "@/lib/db";
 import { decryptToken, encryptToken, isTokenEncryptionConfigured } from "@/lib/crypto";
 import { ZUGANG_ANBIETER, absenderDomain, zugangFehler, type AnbieterKey } from "@/lib/zugaenge/anbieter";
@@ -85,17 +86,58 @@ async function resendPruefen(z: ResendZugang): Promise<{ status: "OK" | "FEHLER"
     return { status: "FEHLER", meldung: "Resend ist gerade nicht erreichbar. Bitte später erneut prüfen." };
   }
   const body = (await res.json().catch(() => null)) as { name?: string; data?: { name?: string; status?: string }[] } | null;
+  let ergebnis: { status: "OK" | "FEHLER"; meldung: string };
   if (res.status === 401 && body?.name === "restricted_api_key") {
-    return {
+    ergebnis = {
       status: "OK",
       meldung: `Schlüssel gültig (nur Versand). Ob ${domain} bei Resend bestätigt ist, kann mit diesem Schlüssel nicht abgefragt werden – unbestätigte Domains lehnt Resend beim Versand ab.`,
     };
+  } else {
+    if (!res.ok) return { status: "FEHLER", meldung: res.status === 401 || res.status === 403 ? "Schlüssel ungültig oder deaktiviert." : `Resend antwortete mit Status ${res.status}.` };
+    const eintrag = (body?.data ?? []).find((d) => d.name?.toLowerCase() === domain);
+    if (!eintrag) return { status: "FEHLER", meldung: `Die Domain ${domain} ist in diesem Resend-Konto nicht angelegt.` };
+    if (eintrag.status !== "verified") return { status: "FEHLER", meldung: `Die Domain ${domain} ist bei Resend noch nicht bestätigt (Status: ${eintrag.status ?? "unbekannt"}). DNS-Einträge prüfen.` };
+    ergebnis = { status: "OK", meldung: `Schlüssel gültig, Domain ${domain} bestätigt.` };
   }
-  if (!res.ok) return { status: "FEHLER", meldung: res.status === 401 || res.status === 403 ? "Schlüssel ungültig oder deaktiviert." : `Resend antwortete mit Status ${res.status}.` };
-  const eintrag = (body?.data ?? []).find((d) => d.name?.toLowerCase() === domain);
-  if (!eintrag) return { status: "FEHLER", meldung: `Die Domain ${domain} ist in diesem Resend-Konto nicht angelegt.` };
-  if (eintrag.status !== "verified") return { status: "FEHLER", meldung: `Die Domain ${domain} ist bei Resend noch nicht bestätigt (Status: ${eintrag.status ?? "unbekannt"}). DNS-Einträge prüfen.` };
-  return { status: "OK", meldung: `Schlüssel gültig, Domain ${domain} bestätigt.` };
+  const dmarc = await dmarcPruefen(domain);
+  if (dmarc.status === "FEHLT") {
+    return {
+      status: "FEHLER",
+      meldung: `Für ${domain} fehlt ein DMARC-Eintrag. Gmail und Yahoo verlangen ihn von Massenversendern, sonst landen Mails im Spam oder werden abgelehnt. Beim Domain-Anbieter einen TXT-Eintrag „_dmarc.${dmarc.basis}“ mit dem Wert „v=DMARC1; p=none;“ anlegen und erneut prüfen.`,
+    };
+  }
+  return { ...ergebnis, meldung: `${ergebnis.meldung} ${dmarc.status === "OK" ? `DMARC vorhanden (${dmarc.wo}).` : "DMARC konnte gerade nicht geprüft werden – bitte später erneut prüfen."}` };
+}
+
+/**
+ * DMARC-Eintrag der Absenderdomain oder einer übergeordneten Domain
+ * (_dmarc.<domain>, dann die Elternteile bis zur Registrierungsdomain).
+ * DMARC_TEST_EINTRAEGE (JSON {name: wert}) ersetzt die DNS-Abfrage nur in Tests.
+ */
+export async function dmarcPruefen(domain: string): Promise<{ status: "OK" | "FEHLT" | "UNBEKANNT"; wo?: string; basis: string }> {
+  const teile = domain.toLowerCase().split(".").filter(Boolean);
+  const kandidaten: string[] = [];
+  for (let i = 0; i <= teile.length - 2; i++) kandidaten.push(teile.slice(i).join("."));
+  const basis = kandidaten[kandidaten.length - 1] ?? domain;
+  const test = process.env.DMARC_TEST_EINTRAEGE;
+  let unbekannt = false;
+  for (const name of kandidaten) {
+    let eintraege: string[] = [];
+    if (test) {
+      const wert = (JSON.parse(test) as Record<string, string>)[`_dmarc.${name}`];
+      eintraege = wert ? [wert] : [];
+    } else {
+      try {
+        const r = new Resolver({ timeout: 4000, tries: 2 });
+        eintraege = (await r.resolveTxt(`_dmarc.${name}`)).map((t) => t.join(""));
+      } catch (e) {
+        const code = (e as { code?: string }).code;
+        if (code !== "ENOTFOUND" && code !== "ENODATA") unbekannt = true;
+      }
+    }
+    if (eintraege.some((t) => /^v=DMARC1\b/i.test(t.trim()))) return { status: "OK", wo: `_dmarc.${name}`, basis };
+  }
+  return { status: unbekannt ? "UNBEKANNT" : "FEHLT", basis };
 }
 
 /** Resend-Zugang des Workspaces, nur wenn zuletzt erfolgreich geprüft. */

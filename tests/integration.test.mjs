@@ -147,6 +147,7 @@ before(async () => {
     TOKEN_ENCRYPTION_KEY: "test-schluessel-nur-fuer-die-integrationstests",
     RESEND_API_KEY: "re_test_fake",
     REICHWEITE_NEWSLETTER: "1",
+    DMARC_TEST_EINTRAEGE: JSON.stringify({ "_dmarc.kunde.example": "v=DMARC1; p=none" }),
     REICHWEITE_WERBUNG: "1",
     EMAIL_FROM: "Secret 58 <newsletter@example.test>",
     EMAIL_API_BASE: `http://127.0.0.1:${fakes.stripePort}`,
@@ -1943,6 +1944,8 @@ test("Weiterempfehlungen: Links, Zählung, Stufen, Trennung privat/öffentlich u
   assert.ok(inq && inq.senderContact === "interessent@example.com");
   assert.equal((await prisma.empfehlungsEreignis.count({ where: { art: "ANFRAGE" } })), 1);
   assert.equal(await prisma.rateLimit.count({ where: { key: { startsWith: "empf", contains: "10.77" } } }), 0, "IP nur gehasht");
+  assert.ok((await prisma.rateLimit.findMany({ where: { key: { startsWith: "empf-anfrage:" } } })).every((r) => /^empf-anfrage:[0-9a-f]{32}$/.test(r.key)), "Schlüssel per HMAC pseudonymisiert");
+  assert.equal(await prisma.rateLimit.count({ where: { key: { contains: "10.7" } } }), 0, "keine IP-Adresse in der Datenbank");
   assert.ok((await prisma.rateLimit.count({ where: { key: { startsWith: "empf-anfrage:" } } })) >= 1);
 
   a = (await A.json(`/api/reichweite/kampagnen/${kid}/auswertung`)).data.auswertung;
@@ -2179,11 +2182,15 @@ test("Eigene Zugänge: Kunde trägt Resend-Schlüssel ein, echter Newsletter-Ver
   assert.equal((await put(C, { apiKey: "re_kunde_ungueltig_0", absender: "C <n@news.kunde.example>" })).data.pruefung.status, "FEHLER");
   const pending = await put(C, { apiKey: "re_kunde_voll_1234", absender: "C <n@offen.example>" });
   assert.match(pending.data.pruefung.meldung, /nicht bestätigt/);
+  const ohneDmarc = await put(C, { apiKey: "re_kunde_voll_1234", absender: "C <n@ohne-dmarc.example>" });
+  assert.equal(ohneDmarc.data.pruefung.status, "FEHLER");
+  assert.match(ohneDmarc.data.pruefung.meldung, /DMARC-Eintrag/, "ohne DMARC kein echter Versand");
   await prisma.user.update({ where: { email: "zugang-c@example.com" }, data: { role: "EDITOR" } });
   assert.equal((await put(C, { apiKey: "re_kunde_voll_1234", absender: "C <n@news.kunde.example>" })).status, 403, "nur Inhaber/Admin");
   await prisma.user.update({ where: { email: "zugang-c@example.com" }, data: { role: "OWNER" } });
   const ok = await put(C, { apiKey: "re_kunde_voll_1234", absender: "Café C <newsletter@news.kunde.example>" });
   assert.equal(ok.data.pruefung.status, "OK", JSON.stringify(ok.data));
+  assert.match(ok.data.pruefung.meldung, /DMARC vorhanden \(_dmarc\.kunde\.example\)/, "DMARC der Hauptdomain gilt für die Subdomain");
   const liste = await C.json("/api/zugaenge");
   assert.equal(liste.data.zugaenge[0].endung, "1234");
   assert.ok(!JSON.stringify(liste.data).includes("re_kunde_voll_1234"), "Schlüssel kommt nie zurück");

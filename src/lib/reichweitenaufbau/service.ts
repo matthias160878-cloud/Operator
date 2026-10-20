@@ -202,6 +202,7 @@ export async function demoEntfernen(workspaceId: string) {
     prisma.newsletterKontakt.deleteMany({ where: w }),
     prisma.newsletterSeite.deleteMany({ where: w }),
     prisma.contentItem.deleteMany({ where: { workspaceId, format: DEMO_FORMAT } }),
+    prisma.contentItem.deleteMany({ where: { workspaceId, reichweitenKampagne: { istDemo: true } } }),
   ]);
   await weiterempfehlungDemoEntfernen(workspaceId);
 }

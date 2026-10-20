@@ -1995,7 +1995,7 @@ test("Reichweitenaufbau: Freigabegrenzen, Rollen, Mandanten, Newsletter-Double-O
 
   // Demo-Ablauf vollständig, Seite rendert jeden Bereich
   assert.equal((await A.json(`${R}/demo`, { method: "POST" })).status, 200);
-  for (const tab of ["uebersicht", "ideen", "varianten", "kooperationen", "werbung", "newsletter"]) {
+  for (const tab of ["uebersicht", "kampagnen", "ideen", "varianten", "kooperationen", "werbung", "newsletter", "testlauf"]) {
     const res = await A.req(`/reichweitenaufbau?tab=${tab}`);
     assert.equal(res.status, 200, tab);
     assert.ok((await res.text()).includes("DEMO"), `${tab}: Demo gekennzeichnet`);
@@ -2290,4 +2290,191 @@ test("Eigene KI-Schlüssel: Kunde nutzt nur seinen Schlüssel, ohne Schlüssel V
   assert.equal((await E.json("/api/zugaenge", { method: "PUT", body: { anbieter: "OPENAI", werte: { apiKey: "sk-ant-xyz0123456789abcdefghij" } } })).status, 400, "Anthropic-Schlüssel nicht als OpenAI");
   assert.ok((await (await E.req("/settings/zugaenge")).text()).includes("console.anthropic.com/settings/keys"), "Wegweiser zum KI-Schlüssel");
   assert.ok(!(await E.json("/api/zugaenge")).data.zugaenge.some((z) => z.endung === KUNDEN_KI_KEY.slice(-4) && z.status === "OK"), "keine fremden Zugänge");
+});
+
+test("Kampagnen: Assistent ohne Duplikate, Budgetregeln, Plattformformate mit Freigaberegeln, KI-Schätzung und Limits, Angebotsseiten, Pause, Demo-Testlauf", async () => {
+  const O = await signup("kampagne-o@example.com", "Kampagne O", "10.81.0.1");
+  const B = await signup("kampagne-b@example.com", "Kampagne B", "10.81.0.2");
+  const ws = await workspaceIdOf("kampagne-o@example.com");
+  const ich = await prisma.user.findUniqueOrThrow({ where: { email: "kampagne-o@example.com" } });
+  const zweite = await prisma.user.create({ data: { workspaceId: ws, email: "kampagne-admin@example.com", name: "Zweite Admin", role: "ADMIN" } });
+  const rolle = (role) => prisma.user.update({ where: { id: ich.id }, data: { role } });
+  const R = "/api/reichweitenaufbau";
+  const mails0 = fakes.calls.filter((c) => c.path.startsWith("/emails")).length;
+  const basis = { titel: "Herbstkurs", text: "", ziel: "20 Anfragen bis Ende November", hauptkennzahl: "ANFRAGEN", zielgruppe: "Handwerk", zielUrl: "https://example.com/herbst", startAm: "2026-11-01", endeAm: "2026-11-30", verantwortlichId: ich.id, budgetCent: null };
+
+  // Assistent: Pflichtangaben, idempotent über die Kennung
+  assert.equal((await O.json(`${R}/kampagnen`, { method: "POST", body: { ...basis, ziel: "", erstellKennung: "kennung-0001" } })).status, 400);
+  assert.equal((await O.json(`${R}/kampagnen`, { method: "POST", body: { ...basis, verantwortlichId: "fremd", erstellKennung: "kennung-0002" } })).status, 400);
+  const k1 = await O.json(`${R}/kampagnen`, { method: "POST", body: { ...basis, erstellKennung: "kennung-0003" } });
+  assert.equal(k1.status, 200, JSON.stringify(k1.data));
+  assert.equal(k1.data.neu, true);
+  const k1b = await O.json(`${R}/kampagnen`, { method: "POST", body: { ...basis, erstellKennung: "kennung-0003" } });
+  assert.equal(k1b.data.neu, false);
+  assert.equal(k1b.data.kampagne.id, k1.data.kampagne.id);
+  const kid = k1.data.kampagne.id;
+  assert.equal(await prisma.reichweitenKampagne.count({ where: { workspaceId: ws } }), 1, "kein Duplikat");
+  const schritte = await prisma.kampagnenSchritt.findMany({ where: { kampagneId: kid }, orderBy: { reihenfolge: "asc" } });
+  assert.ok(schritte.length >= 6 && !schritte.some((s) => s.art === "WERBUNG"));
+  assert.ok(schritte.some((s) => s.art === "FREIGABE"));
+  assert.equal(await prisma.empfehlungsLink.count({ where: { kampagneId: kid } }), 1, "Hauptlink");
+  // Ablauf bearbeiten: verschieben, abhaken, ergänzen, löschen
+  assert.equal((await O.json(`${R}/schritte/${schritte[1].id}`, { method: "PATCH", body: { verschieben: "hoch" } })).status, 200);
+  assert.equal((await prisma.kampagnenSchritt.findUniqueOrThrow({ where: { id: schritte[1].id } })).reihenfolge, schritte[0].reihenfolge);
+  assert.ok((await O.json(`${R}/schritte/${schritte[0].id}`, { method: "PATCH", body: { erledigt: true } })).data.schritt.erledigtAm);
+  const neuS = await O.json(`${R}/kampagnen/${kid}/schritte`, { method: "POST", body: { titel: "Pressemitteilung", art: "SONSTIGES" } });
+  assert.equal(neuS.status, 200);
+  assert.equal((await O.json(`${R}/schritte/${neuS.data.schritt.id}`, { method: "DELETE" })).status, 200);
+  assert.equal((await B.json(`${R}/schritte/${schritte[0].id}`, { method: "PATCH", body: { erledigt: false } })).status, 404, "Mandanten");
+  assert.equal((await B.json(`${R}/kampagnen/${kid}`, { method: "PATCH", body: { ziel: "fremd" } })).status, 404);
+
+  // Budget: nur Inhaber/Admin; Werbung nur mit festgelegtem Budget und höchstens bis dahin
+  await rolle("EDITOR");
+  assert.equal((await O.json(`${R}/kampagnen`, { method: "POST", body: { ...basis, budgetCent: 10_000, erstellKennung: "kennung-0004" } })).status, 403);
+  assert.equal((await O.json(`${R}/kampagnen/${kid}`, { method: "PATCH", body: { budgetCent: 10_000 } })).status, 403);
+  await rolle("OWNER");
+  const wp = (cent) => O.json(`${R}/werbung`, { method: "POST", body: { titel: "Plan", kampagneId: kid, plattform: "META", ziel: "TRAFFIC", startAm: "2026-11-01", endeAm: "2026-11-07", tagesbudgetCent: 500, gesamtbudgetCent: cent } });
+  const ohneBudget = await wp(3000);
+  assert.equal(ohneBudget.status, 409);
+  assert.match(ohneBudget.data.error, /kein Budget/);
+  assert.equal((await O.json(`${R}/kampagnen/${kid}`, { method: "PATCH", body: { budgetCent: 5000 } })).status, 200);
+  assert.equal((await wp(7000)).status, 409, "über dem Budget");
+  const p1 = await wp(3000);
+  assert.equal(p1.status, 200, JSON.stringify(p1.data));
+  assert.equal((await wp(2500)).status, 409, "Summe über dem Budget");
+  assert.equal((await O.json(`${R}/werbung/${p1.data.plan.id}`, { method: "PATCH", body: { titel: "Plan", kampagneId: kid, plattform: "META", ziel: "TRAFFIC", startAm: "2026-11-01", endeAm: "2026-11-07", tagesbudgetCent: 500, gesamtbudgetCent: 5000 } })).status, 200, "eigener Plan zählt beim Ändern nicht doppelt");
+
+  // Plattformformate: Vorschau ohne Kosten, Fakten mit Quelle, ungeprüft sperrt die Freigabe
+  const eingabe = { thema: "Herbstkurs", kernaussage: "Sicherer werden", aufforderung: "Jetzt anfragen", zielUrl: "https://example.com/herbst", plattformen: ["INSTAGRAM", "LINKEDIN"],
+    fakten: [{ text: "Der Kurs hat 6 Termine.", quelle: "Kursbeschreibung", geprueft: true }, { text: "Fast alle sind zufrieden.", quelle: "", geprueft: false }] };
+  const ki0 = fakes.calls.filter((c) => c.path === "/v1/messages").length;
+  const vs = await O.json(`${R}/kampagnen/${kid}/formate`, { method: "POST", body: { aktion: "vorschau", eingabe } });
+  assert.equal(vs.status, 200, JSON.stringify(vs.data));
+  assert.equal(vs.data.varianten.length, 2);
+  assert.ok(vs.data.varianten.every((v) => v.text.includes("Der Kurs hat 6 Termine. [1]") && v.text.includes("[1] Kursbeschreibung") && v.text.includes("[UNGEPRÜFT] Fast alle sind zufrieden. [2]")));
+  const u1 = await O.json(`${R}/kampagnen/${kid}/formate`, { method: "POST", body: { aktion: "uebernehmen", variante: vs.data.varianten[0] } });
+  const u2 = await O.json(`${R}/kampagnen/${kid}/formate`, { method: "POST", body: { aktion: "uebernehmen", variante: vs.data.varianten[0] } });
+  assert.equal(u1.data.neu, true);
+  assert.equal(u2.data.neu, false);
+  assert.equal(u2.data.item.id, u1.data.item.id, "dieselbe Variante nur einmal");
+  const st = (id, action) => O.json(`/api/content-items/${id}/status`, { method: "POST", body: { action } });
+  assert.equal((await st(u1.data.item.id, "review")).status, 200);
+  const gesperrt = await st(u1.data.item.id, "approve");
+  assert.equal(gesperrt.status, 409);
+  assert.match(gesperrt.data.error, /ungeprüfte Aussagen/);
+  // Geprüfte Variante: nur die verantwortliche Person oder der Inhaber gibt frei
+  const vs2 = await O.json(`${R}/kampagnen/${kid}/formate`, { method: "POST", body: { aktion: "vorschau", eingabe: { ...eingabe, fakten: [eingabe.fakten[0]] } } });
+  const u3 = await O.json(`${R}/kampagnen/${kid}/formate`, { method: "POST", body: { aktion: "uebernehmen", variante: vs2.data.varianten[1] } });
+  assert.equal((await st(u3.data.item.id, "review")).status, 200);
+  assert.equal((await O.json(`${R}/kampagnen/${kid}`, { method: "PATCH", body: { verantwortlichId: zweite.id } })).status, 200);
+  await rolle("ADMIN");
+  const fremd = await st(u3.data.item.id, "approve");
+  assert.equal(fremd.status, 409);
+  assert.match(fremd.data.error, /verantwortliche Person/);
+  await rolle("OWNER");
+  assert.equal((await st(u3.data.item.id, "approve")).status, 200);
+  assert.equal(fakes.calls.filter((c) => c.path === "/v1/messages").length, ki0, "Formate ohne KI");
+  const seite = await (await O.req(`/reichweitenaufbau?tab=kampagnen&k=${kid}`)).text();
+  assert.ok(seite.includes("kampagnenassistent") && seite.includes("kampagne-detail") && seite.includes("ergebnis-zuordnung"));
+
+  // KI: Schätzung ohne Aufruf, ohne Schlüssel keine Kosten, Limit wird durchgesetzt, veränderte Fakten werden verworfen
+  const kiUrl = `${R}/kampagnen/${kid}/formate/ki`;
+  const kiBody = { text: vs2.data.varianten[0].text, fakten: [eingabe.fakten[0]] };
+  assert.equal((await O.json(kiUrl, { method: "POST", body: kiBody })).status, 409, "ohne eigenen Schlüssel");
+  assert.equal((await O.json("/api/zugaenge", { method: "PUT", body: { anbieter: "ANTHROPIC", werte: { apiKey: KUNDEN_KI_KEY } } })).data.pruefung.status, "OK");
+  await prisma.workspacePlan.create({ data: { workspaceId: ws, plan: "PRO", status: "ACTIVE", source: "TEST" } });
+  const ki1 = fakes.calls.filter((c) => c.path === "/v1/messages").length;
+  const sch = await O.json(kiUrl, { method: "POST", body: kiBody });
+  assert.equal(sch.status, 200, JSON.stringify(sch.data));
+  assert.equal(sch.data.schaetzung.berechenbar, true);
+  assert.ok(sch.data.schaetzung.usdMax > 0);
+  assert.equal(fakes.calls.filter((c) => c.path === "/v1/messages").length, ki1, "Schätzung ruft keine KI auf");
+  await rolle("EDITOR");
+  assert.equal((await O.json("/api/zugaenge/limits", { method: "PUT", body: { aufrufeMonat: 1, kostenMonatUsd: null } })).status, 403);
+  await rolle("OWNER");
+  assert.equal((await O.json("/api/zugaenge/limits", { method: "PUT", body: { aufrufeMonat: 1, kostenMonatUsd: null } })).status, 200);
+  const lauf = await O.json(kiUrl, { method: "POST", body: { ...kiBody, bestaetigt: true } });
+  assert.equal(lauf.status, 200, JSON.stringify(lauf.data));
+  assert.equal(lauf.data.ok, false, "Attrappe liefert Text ohne die Fakten – verworfen");
+  assert.equal(fakes.calls.filter((c) => c.path === "/v1/messages").length, ki1 + 1);
+  assert.equal(fakes.calls.at(-1).apiKey ?? fakes.calls.filter((c) => c.path === "/v1/messages").at(-1).apiKey, KUNDEN_KI_KEY);
+  const zuViel = await O.json(kiUrl, { method: "POST", body: { ...kiBody, bestaetigt: true } });
+  assert.equal(zuViel.status, 429, JSON.stringify(zuViel.data));
+  assert.equal(fakes.calls.filter((c) => c.path === "/v1/messages").length, ki1 + 1, "Limit: kein weiterer Aufruf");
+  const zug = await (await O.req("/settings/zugaenge")).text();
+  assert.ok(zug.includes("ki-verbrauch") && /1(<!-- -->)? KI-Aufrufe/.test(zug), "Verbrauch angezeigt");
+
+  // Angebotsseiten: Link führt auf seine Seite, weitergegebene Links erben sie, sonst Zielseite
+  await prisma.sellerProfile.create({ data: { workspaceId: ws, anbieter: "Olga Test", firma: "Kampagne O GmbH", anschrift: "Weg 1\n12345 Stadt", email: "kontakt@kampagne-o.example", datenschutzUrl: "https://kampagne-o.example/datenschutz" } });
+  assert.equal((await O.json(`/api/reichweite/kampagnen/${kid}/links`, { method: "POST", body: { bezeichnung: "LinkedIn", angebotUrl: "javascript:alert(1)" } })).status, 400);
+  const la = await O.json(`/api/reichweite/kampagnen/${kid}/links`, { method: "POST", body: { bezeichnung: "LinkedIn", angebotUrl: "https://example.com/firmenangebot" } });
+  assert.equal(la.status, 200);
+  const anon = new Client();
+  const ua = { "user-agent": "Mozilla/5.0 Testbrowser" };
+  const w1 = await anon.req(`/e/${la.data.link.code}/weiter`, { headers: ua });
+  assert.equal(w1.status, 303);
+  assert.equal(w1.headers.get("location"), "https://example.com/firmenangebot");
+  const kind = await anon.json(`/api/empfehlung/${la.data.link.code}/link`, { method: "POST", headers: { "x-forwarded-for": "10.81.1.1" } });
+  assert.equal(kind.status, 200);
+  assert.equal((await anon.req(`/e/${kind.data.code}/weiter`, { headers: ua })).headers.get("location"), "https://example.com/firmenangebot", "geerbt");
+  const haupt = await prisma.empfehlungsLink.findFirstOrThrow({ where: { kampagneId: kid, bezeichnung: "Hauptlink" } });
+  assert.equal((await anon.req(`/e/${haupt.code}/weiter`, { headers: ua })).headers.get("location"), "https://example.com/herbst");
+  assert.equal((await B.json(`/api/reichweite/links/${la.data.link.id}`, { method: "PATCH", body: { angebotUrl: "https://example.com/x" } })).status, 404);
+  assert.equal((await O.json(`/api/reichweite/links/${la.data.link.id}`, { method: "PATCH", body: { angebotUrl: "" } })).status, 200);
+  assert.equal((await anon.req(`/e/${la.data.link.code}/weiter`, { headers: ua })).headers.get("location"), "https://example.com/herbst");
+
+  // Pause: nur Inhaber/Admin, sichtbar in der Übersicht
+  await rolle("EDITOR");
+  assert.equal((await O.json("/api/automatik", { method: "PUT", body: { pausiert: true } })).status, 403);
+  await rolle("OWNER");
+  assert.equal((await O.json("/api/automatik", { method: "PUT", body: { pausiert: true } })).data.pausiert, true);
+  assert.equal((await O.json("/api/automatik")).data.pausiert, true);
+  assert.equal((await B.json("/api/automatik")).data.pausiert, false, "nur dieser Workspace");
+  assert.match(await (await O.req("/reichweitenaufbau")).text(), /Automatische Abläufe: (<!-- -->)?pausiert/);
+  await O.json("/api/automatik", { method: "PUT", body: { pausiert: false } });
+
+  // Demo-Testlauf: Briefing → Entwurf → Prüfung → Freigabe → simulierte Ausführung → Auswertung
+  const T = `${R}/testlauf`;
+  const weiter = () => O.json(T, { method: "POST", body: { aktion: "weiter" } });
+  for (let i = 1; i <= 4; i++) {
+    const r = await weiter();
+    assert.equal(r.status, 200, JSON.stringify(r.data));
+    assert.equal(r.data.schritt, i);
+  }
+  const tk = await prisma.reichweitenKampagne.findUniqueOrThrow({ where: { erstellKennung: `testlauf:${ws}` } });
+  assert.equal(tk.istDemo, true);
+  const items = await prisma.contentItem.findMany({ where: { reichweitenKampagneId: tk.id } });
+  assert.equal(items.length, 3);
+  assert.ok(items.every((i) => i.status === "APPROVED"));
+  // Doppelklick/Wiederholung bei der Ausführung: nur einmal
+  const [x, y] = await Promise.all([weiter(), weiter()]);
+  assert.equal(x.status, 200);
+  assert.equal(y.status, 200);
+  const ereignisse = await prisma.empfehlungsEreignis.count({ where: { kampagneId: tk.id } });
+  assert.equal(ereignisse, 73, "Demo-Ereignisse genau einmal");
+  const fertig = (await weiter()).data;
+  assert.equal(fertig.schritt, 6);
+  assert.equal((await weiter()).data.schritt, 6, "bleibt am Ende stehen");
+  assert.equal(await prisma.empfehlungsEreignis.count({ where: { kampagneId: tk.id } }), 73);
+  const nach = await prisma.contentItem.findMany({ where: { reichweitenKampagneId: tk.id } });
+  assert.ok(nach.every((i) => i.status === "APPROVED" && i.simuliertAm && !i.publishedAt), "simuliert, nicht veröffentlicht");
+  assert.equal(await prisma.publishJob.count({ where: { contentItemId: { in: nach.map((i) => i.id) } } }), 0, "kein Versandauftrag");
+  const unbekannt = fertig.ergebnis.zuordnung.zeilen.find((z) => z.schluessel === "unbekannt");
+  assert.equal(unbekannt.herkunft, "Herkunft unbekannt");
+  assert.equal(unbekannt.anfragen, 1);
+  const weitergegeben = fertig.ergebnis.zuordnung.zeilen.find((z) => z.herkunft === "gemessene Weiterempfehlung");
+  assert.equal(weitergegeben.angebotsseite, "https://example.com/demo-herbstkurs-firmen", "erbt die Angebotsseite");
+  assert.equal(fertig.ergebnis.hauptkennzahl.label, "Anfragen über das Formular");
+  assert.equal(fertig.ergebnis.hauptkennzahl.istDemo, true);
+  assert.ok(fertig.ablauf.filter((s) => ["INHALT", "PRUEFUNG", "FREIGABE", "VEROEFFENTLICHUNG", "AUSWERTUNG"].includes(s.art)).every((s) => s.erledigtAm));
+  const tl = await (await O.req("/reichweitenaufbau?tab=testlauf")).text();
+  assert.ok(tl.includes("testlauf") && tl.includes("Herkunft unbekannt") && tl.includes("DEMO"));
+  assert.equal((await B.json(T)).data.schritt, 0, "Mandanten");
+  const neu = await O.json(T, { method: "POST", body: { aktion: "neu" } });
+  assert.equal(neu.data.schritt, 1);
+  assert.equal(await prisma.contentItem.count({ where: { id: { in: nach.map((i) => i.id) } } }), 0, "alter Testlauf entfernt");
+  assert.equal((await O.json(T, { method: "POST", body: { aktion: "entfernen" } })).data.schritt, 0);
+  assert.equal(await prisma.reichweitenKampagne.count({ where: { erstellKennung: `testlauf:${ws}` } }), 0);
+  assert.equal(fakes.calls.filter((c) => c.path.startsWith("/emails")).length, mails0, "nichts versendet");
+  assert.equal(await prisma.reichweitenKampagne.count({ where: { id: kid } }), 1, "echte Kampagne bleibt");
 });

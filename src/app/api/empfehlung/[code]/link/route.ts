@@ -30,6 +30,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ cod
       parentId: eltern.id,
       stufe: eltern.stufe + 1,
       herkunft: "BESUCHER",
+      angebotUrl: eltern.angebotUrl,
       istDemo: eltern.istDemo,
       code: await eindeutigerCode(),
     },

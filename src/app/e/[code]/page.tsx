@@ -56,7 +56,7 @@ export default async function EmpfehlungSeite({ params }: { params: Promise<{ co
           <div className="text-xs text-muted">Empfehlung</div>
           <h1 className="mt-1 text-xl font-semibold text-foreground">{link.kampagne.titel}</h1>
           {link.kampagne.text && <p className="mt-2 whitespace-pre-line text-sm text-muted">{link.kampagne.text}</p>}
-          {link.kampagne.zielUrl && (
+          {(link.angebotUrl || link.kampagne.zielUrl) && (
             <a
               href={`/e/${link.code}/weiter`}
               rel="nofollow noreferrer"

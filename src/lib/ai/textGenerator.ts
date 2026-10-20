@@ -14,6 +14,8 @@
  */
 
 import { kiSpeicher } from "@/lib/ai/kiKontext";
+import { aktivesModell } from "@/lib/ai/modelle";
+import { kiLimitPruefen, kiVerbrauchBuchen } from "@/lib/ai/kiLimits";
 
 export type TextGenProvider = "anthropic" | "openai" | "gemini" | "template";
 
@@ -40,12 +42,11 @@ export interface GenerateTextResult {
   provider: TextGenProvider;
 }
 
-const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || "claude-haiku-4-5-20251001";
-const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
+
 // Google benennt Modelle häufig um; der Alias zeigt auf das aktuelle Flash-Modell
 // und lässt sich über GEMINI_MODEL festnageln (z. B. "gemini-3.5-flash"). Bei
 // jedem Aufruf gelesen, damit eine Änderung über „Zugänge“ sofort gilt.
-const geminiModel = () => process.env.GEMINI_MODEL?.trim() || "gemini-flash-latest";
+const geminiModel = () => aktivesModell("gemini");
 
 /** Zeitlimit je Anbieter-Aufruf — hängende Aufrufe blockieren sonst Kontingent und Server. */
 const AI_TIMEOUT_MS = Number(process.env.AI_TIMEOUT_MS) || 60_000;
@@ -61,7 +62,7 @@ function schluessel(p: Echt): string {
   return ({ anthropic: process.env.ANTHROPIC_API_KEY, openai: process.env.OPENAI_API_KEY, gemini: process.env.GEMINI_API_KEY }[p] ?? "").trim();
 }
 
-function cappedTokens(requested: number | undefined): number {
+export function cappedTokens(requested: number | undefined): number {
   return Math.min(requested ?? 1024, MAX_TOKENS_CAP);
 }
 
@@ -74,7 +75,7 @@ async function callAnthropic(input: GenerateTextInput): Promise<string> {
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model: ANTHROPIC_MODEL,
+      model: aktivesModell("anthropic"),
       max_tokens: cappedTokens(input.maxTokens),
       system: input.system,
       messages: toChatMessages(input),
@@ -109,7 +110,7 @@ async function callOpenAI(input: GenerateTextInput): Promise<string> {
       authorization: `Bearer ${schluessel("openai")}`,
     },
     body: JSON.stringify({
-      model: OPENAI_MODEL,
+      model: aktivesModell("openai"),
       max_tokens: cappedTokens(input.maxTokens),
       messages: [{ role: "system", content: input.system }, ...toChatMessages(input)],
     }),
@@ -174,8 +175,13 @@ export async function generateText(
   const provider = currentTextProvider();
   if (provider === "template") return { text: "", provider: "template" };
   const { call, name } = CALLERS[provider];
+  // Kunden mit eigenem Schlüssel: konfigurierbares Verbrauchslimit vor dem Aufruf prüfen, danach buchen.
+  const ctx = kiSpeicher.getStore();
+  const eingabeZeichen = input.system.length + toChatMessages(input).reduce((n, m) => n + m.content.length, 0);
+  if (ctx?.quelle === "KUNDE" && ctx.workspaceId) await kiLimitPruefen(ctx.workspaceId, provider, eingabeZeichen, cappedTokens(input.maxTokens));
   try {
     const text = await call(input);
+    if (ctx?.quelle === "KUNDE" && ctx.workspaceId) await kiVerbrauchBuchen(ctx.workspaceId, provider, eingabeZeichen, text.length).catch(() => undefined);
     return { text, provider };
   } catch (error) {
     throw new Error(`${name} konnte nicht erreicht werden: ${error instanceof Error ? error.message : "unbekannter Fehler"}`);

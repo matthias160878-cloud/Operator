@@ -16,3 +16,8 @@ Seite: **Einstellungen → Eigene Zugänge** (`/settings/zugaenge`). Inhaber und
 - Sprach-, Video- und Designdienste (ElevenLabs usw.) stellt weiterhin der Betreiber.
 - Paket-Kontingente gelten unverändert.
 - Datenschutz: Die Auftragsverarbeitung mit KI-Anbieter bzw. Resend schließt der Kunde selbst ab; für die Daten seiner Kontakte auf SECRET-58-Servern braucht es einen Auftragsverarbeitungsvertrag zwischen SECRET 58 und dem Kunden (Art. 28 DSGVO).
+
+## KI-Kosten und Verbrauchslimits
+- Vor kostenpflichtigen KI-Funktionen im Reichweitenaufbau (z. B. „Sprachlich glätten“) zeigt die App eine **Kostenschätzung als Höchstbetrag** (Eingabe ≈ Zeichen ÷ 3, volle Ausgabelänge) und führt erst nach Bestätigung aus (`src/lib/ai/kosten.ts`). Preise je Modell sind hinterlegt (Stand 10/2026, US-$ je 1 Mio. Token); eigene Werte über `KI_PREIS_ANTHROPIC|OPENAI|GEMINI="ein,aus"`. Unbekannte Modelle: „nicht berechenbar – Kosten offen“.
+- **Limits je Workspace** (Einstellungen → Eigene Zugänge → „KI-Verbrauch und Limits“, nur Inhaber/Admin): Aufrufe pro Monat und geschätzte Kosten pro Monat. Geprüft vor jedem KI-Aufruf mit Kundenschlüssel (`src/lib/ai/kiLimits.ts`); bei Überschreitung 429 ohne Aufruf. Ist ein Kostenlimit gesetzt, werden Aufrufe mit nicht berechenbaren Kosten abgelehnt. Der Verbrauch wird je Monat gezählt (`KiVerbrauch`).
+- Die Zahlen sind Schätzungen; verbindlich ist die Abrechnung des Anbieters.

@@ -18,21 +18,29 @@ import { VariantenTab } from "@/components/reichweitenaufbau/VariantenTab";
 import { KooperationenTab } from "@/components/reichweitenaufbau/KooperationenTab";
 import { WerbungTab } from "@/components/reichweitenaufbau/WerbungTab";
 import { NewsletterTab } from "@/components/reichweitenaufbau/NewsletterTab";
+import { KampagnenTab } from "@/components/reichweitenaufbau/KampagnenTab";
+import { TestlaufTab } from "@/components/reichweitenaufbau/TestlaufTab";
+import { AutomatikSchalter } from "@/components/reichweitenaufbau/AutomatikSchalter";
+import { freigeber as freigeberLaden, kampagnenErgebnis } from "@/lib/reichweitenaufbau/kampagnenService";
+import { testlaufZustand } from "@/lib/reichweitenaufbau/testlauf";
+import { automatikPausiert } from "@/lib/automatik";
 
 export const dynamic = "force-dynamic";
 
 const TABS = [
   { key: "uebersicht", label: "Übersicht" },
+  { key: "kampagnen", label: "Kampagnen" },
   { key: "ideen", label: "Content-Ideen" },
   { key: "varianten", label: "Variantenvergleich" },
   { key: "kooperationen", label: "Kooperationen" },
   { key: "werbung", label: "Werbeplanung" },
   { key: "newsletter", label: "Newsletter" },
+  { key: "testlauf", label: "Demo-Testlauf" },
 ] as const;
 type TabKey = (typeof TABS)[number]["key"];
 
-export default async function ReichweitenaufbauPage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
-  const { tab: tabParam } = await searchParams;
+export default async function ReichweitenaufbauPage({ searchParams }: { searchParams: Promise<{ tab?: string; k?: string }> }) {
+  const { tab: tabParam, k: kParam } = await searchParams;
   const frei = { newsletter: newsletterFreigeschaltet(), werbung: werbungFreigeschaltet() };
   const tabs = TABS.filter((t) => (t.key !== "newsletter" || frei.newsletter) && (t.key !== "werbung" || frei.werbung));
   const tab: TabKey = (tabs.find((t) => t.key === tabParam)?.key ?? "uebersicht") as TabKey;
@@ -102,6 +110,25 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
   const hatDemo =
     kampagnen.some((k) => k.istDemo) || tests.some((t) => t.istDemo) || kooperationen.some((k) => k.istDemo) || werbeplaene.some((w) => w.istDemo) || seiten.some((s) => s.istDemo);
   const rechte = { bearbeiten: darfBearbeiten(user.role), freigeben: darfFreigeben(user.role) };
+  const pausiert = await automatikPausiert(workspaceId);
+  const kampagnenDaten = tab !== "kampagnen" ? null : await (async () => {
+    const liste = await prisma.reichweitenKampagne.findMany({
+      where: { workspaceId },
+      select: { id: true, titel: true, istDemo: true, ziel: true, hauptkennzahl: true, zielgruppe: true, zielUrl: true, startAm: true, endeAm: true, verantwortlichId: true, budgetCent: true, schritte: { orderBy: { reihenfolge: "asc" } } },
+      orderBy: { createdAt: "desc" },
+    });
+    const auswahl = liste.find((x) => x.id === kParam)?.id ?? liste[0]?.id ?? null;
+    const [kInhalte, kLinks, ergebnis, personen] = await Promise.all([
+      auswahl
+        ? prisma.contentItem.findMany({ where: { workspaceId, reichweitenKampagneId: auswahl }, select: { id: true, title: true, platform: true, status: true, hook: true, caption: true, faktenJson: true, simuliertAm: true, reichweitenKampagneId: true }, orderBy: { createdAt: "asc" } })
+        : leer<never>(),
+      auswahl ? prisma.empfehlungsLink.findMany({ where: { workspaceId, kampagneId: auswahl }, orderBy: { createdAt: "asc" } }) : leer<never>(),
+      auswahl ? kampagnenErgebnis(workspaceId, auswahl) : Promise.resolve(null),
+      freigeberLaden(workspaceId),
+    ]);
+    return { liste, auswahl, kInhalte, kLinks, ergebnis, personen };
+  })();
+  const testlauf = tab === "testlauf" ? await testlaufZustand(workspaceId) : null;
 
   return (
     <div className="space-y-5">
@@ -148,6 +175,24 @@ export default async function ReichweitenaufbauPage({ searchParams }: { searchPa
         ))}
       </nav>
 
+      {tab === "uebersicht" && <AutomatikSchalter pausiert={pausiert} darfFreigeben={rechte.freigeben} />}
+      {pausiert && tab !== "uebersicht" && (
+        <div className="rounded-lg border border-warning/50 bg-warning/10 px-4 py-3 text-xs text-warning">Automatische Abläufe sind pausiert (siehe Übersicht).</div>
+      )}
+      {tab === "kampagnen" && kampagnenDaten && (
+        <KampagnenTab
+          kampagnen={plain(kampagnenDaten.liste)}
+          auswahl={kampagnenDaten.auswahl}
+          inhalte={plain(kampagnenDaten.kInhalte)}
+          links={plain(kampagnenDaten.kLinks)}
+          ergebnis={kampagnenDaten.ergebnis ? plain(kampagnenDaten.ergebnis) : null}
+          freigeber={kampagnenDaten.personen}
+          rechte={rechte}
+          ichId={user.userId}
+          origin={origin}
+        />
+      )}
+      {tab === "testlauf" && testlauf && <TestlaufTab daten={plain(testlauf)} darfBearbeiten={rechte.bearbeiten} />}
       {tab === "uebersicht" && (
         <UebersichtTab
           kampagnen={plain(kampagnen)}

@@ -64,6 +64,7 @@ export async function oeffentlicherLink(code: string) {
       id: true,
       code: true,
       stufe: true,
+      angebotUrl: true,
       workspaceId: true,
       kampagneId: true,
       istDemo: true,

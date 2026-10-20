@@ -8,6 +8,8 @@ import { AsyncLocalStorage } from "node:async_hooks";
  */
 export interface KiSchluessel {
   quelle: "KUNDE" | "BETREIBER";
+  /** Workspace des Kunden – für Verbrauchslimits */
+  workspaceId?: string;
   anthropic?: string;
   openai?: string;
   gemini?: string;

@@ -179,6 +179,8 @@ model Workspace {
   newsletterEreignisse  NewsletterEreignis[]
   newsletterAusgaben    NewsletterAusgabe[]
   eigeneZugaenge        WorkspaceZugang[]
+  kampagnenSchritte     KampagnenSchritt[]
+  kiVerbrauch           KiVerbrauch[]
   newsletterZustellungen NewsletterZustellung[]
 }
 
@@ -297,6 +299,15 @@ model ContentItem {
   publishedAt         DateTime?
   /// Sperre gegen parallelen Doppelversand (gesetzt, solange veröffentlicht wird).
   publishingStartedAt DateTime?
+  /// Herkunft aus dem Reichweitenaufbau (Plattformformate einer Kampagne)
+  reichweitenKampagneId String?
+  reichweitenKampagne   ReichweitenKampagne? @relation(fields: [reichweitenKampagneId], references: [id], onDelete: SetNull)
+  /// JSON [{text, quelle, geprueft}] – Fakten und Quellen der Variante
+  faktenJson          String        @default("[]")
+  /// Schutz gegen doppeltes Übernehmen derselben Variante
+  herkunftsSchluessel String?       @unique
+  /// Nur Demo-Testlauf: simulierte Veröffentlichung, es wurde nichts gepostet
+  simuliertAm         DateTime?
   publishJobs         PublishJob[]
   createdAt           DateTime      @default(now())
   updatedAt           DateTime      @updatedAt
@@ -1092,9 +1103,27 @@ model ReichweitenKampagne {
   zielUrl     String    @default("")
   aktiv       Boolean   @default(true)
   istDemo     Boolean   @default(false)
+  /// Kampagnenplanung (Kampagnenassistent im Reichweitenaufbau)
+  ziel           String    @default("")
+  /// LINKAUFRUFE, ZIEL_KLICKS, ANFRAGEN, NEWSLETTER, WEITEREMPFEHLUNGEN
+  hauptkennzahl  String    @default("")
+  zielgruppe     String    @default("")
+  startAm        DateTime?
+  endeAm         DateTime?
+  /// Inhaber oder Admin, der Inhalte und Ausgaben dieser Kampagne freigibt
+  verantwortlichId String?
+  /// null = kein Budget; nur ausdrücklich festgelegt
+  budgetCent     Int?
+  budgetFestgelegtAm DateTime?
+  /// Fortschritt des Demo-Testlaufs (nur Demo-Kampagnen)
+  testlaufSchritt Int      @default(0)
+  /// Schutz gegen doppeltes Anlegen bei Doppelklick oder Wiederholung
+  erstellKennung String?   @unique
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
+  schritte   KampagnenSchritt[]
+  inhalte    ContentItem[]
   links      EmpfehlungsLink[]
   ereignisse EmpfehlungsEreignis[]
   kennzahlen ReichweitenKennzahl[]
@@ -1117,6 +1146,8 @@ model EmpfehlungsLink {
   kampagne     ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
   /// Zufälliger öffentlicher Code, kein Zugriffs- oder Login-Token, keine Personendaten
   code         String              @unique
+  /// Angebotsseite dieses Links; leer = Zielseite der Kampagne. Besucher-Links erben sie.
+  angebotUrl   String              @default("")
   /// Gesetzt nur, wenn jemand ausdrücklich einen eigenen Link aus diesem Link erzeugt hat
   parentId     String?
   parent       EmpfehlungsLink?    @relation("EmpfehlungsStufe", fields: [parentId], references: [id], onDelete: SetNull)
@@ -1472,4 +1503,43 @@ model NewsletterZustellung {
   @@unique([ausgabeId, kontaktId])
   @@index([workspaceId])
   @@map("newsletter_zustellungen")
+}
+
+/// Bearbeitbarer Ablauf einer Kampagne (vom Kampagnenassistenten vorgeschlagen).
+model KampagnenSchritt {
+  id          String              @id @default(cuid())
+  workspaceId String
+  workspace   Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  kampagneId  String
+  kampagne    ReichweitenKampagne @relation(fields: [kampagneId], references: [id], onDelete: Cascade)
+  reihenfolge Int
+  /// INHALT, PRUEFUNG, FREIGABE, VEROEFFENTLICHUNG, WERBUNG, AUSWERTUNG, SONSTIGES
+  art         String              @default("SONSTIGES")
+  titel       String
+  notiz       String              @default("")
+  faelligAm   DateTime?
+  erledigtAm  DateTime?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  @@index([kampagneId])
+  @@map("kampagnen_schritte")
+}
+
+/// Monatlicher KI-Verbrauch eines Workspaces mit eigenem Schlüssel (für Limits und Anzeige).
+model KiVerbrauch {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  /// YYYY-MM
+  monat       String
+  aufrufe     Int       @default(0)
+  /// geschätzte Kosten in Millionstel US-Dollar; nur berechenbare Aufrufe
+  kostenMikroUsd Int    @default(0)
+  /// Aufrufe ohne berechenbaren Preis
+  ohnePreis   Int       @default(0)
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([workspaceId, monat])
+  @@map("ki_verbrauch")
 }

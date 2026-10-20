@@ -6,6 +6,10 @@ import { WERBE_WEGWEISER, ZUGANG_ANBIETER } from "@/lib/zugaenge/anbieter";
 import { zugaengeUebersicht } from "@/lib/zugaenge/service";
 import { werbungFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 import { ZugangFormular } from "@/components/settings/ZugangFormular";
+import { KiLimitFormular } from "@/components/settings/KiLimitFormular";
+import { kiLimitsLesen, kiVerbrauch } from "@/lib/ai/kiLimits";
+import { kostenSchaetzen, usdBetrag } from "@/lib/ai/kosten";
+import type { KiAnbieter } from "@/lib/ai/modelle";
 
 export const dynamic = "force-dynamic";
 
@@ -14,6 +18,8 @@ export default async function ZugaengePage() {
   const user = await requireSessionUser();
   const zugaenge = await zugaengeUebersicht(user.workspaceId);
   const darf = darfFreigeben(user.role);
+  const [limits, verbrauch] = await Promise.all([kiLimitsLesen(user.workspaceId), kiVerbrauch(user.workspaceId)]);
+  const beispiele = (["anthropic", "openai", "gemini"] as KiAnbieter[]).map((p) => kostenSchaetzen(p, 3000, 900));
   return (
     <div className="space-y-5">
       <div>
@@ -94,6 +100,26 @@ export default async function ZugaengePage() {
       })}
         </div>
       ))}
+
+      <section className="card space-y-3 p-5" data-testid="ki-verbrauch">
+        <h2 className="text-sm font-semibold text-foreground">KI-Verbrauch und Limits</h2>
+        <p className="text-xs text-muted">
+          Diesen Monat ({verbrauch.monat}): {verbrauch.aufrufe} KI-Aufrufe mit eigenem Schlüssel, geschätzt {usdBetrag(verbrauch.kostenUsd)}
+          {verbrauch.ohnePreis > 0 && ` – davon ${verbrauch.ohnePreis} Aufruf(e) mit unbekanntem Modellpreis (Kosten offen)`}. Die verbindliche Abrechnung steht bei Ihrem Anbieter.
+        </p>
+        <p className="text-xs text-muted">
+          Kostenpflichtige KI-Funktionen zeigen vorher eine Schätzung und laufen erst nach Bestätigung. Beispiel für einen Text (ca. 3.000 Zeichen Eingabe, bis 900 Token Ausgabe):{" "}
+          {beispiele.map((b) => `${b.modell}: ${b.berechenbar && b.usdMax !== null ? `höchstens ca. ${usdBetrag(b.usdMax)}` : "nicht berechenbar"}`).join(" · ")}.
+        </p>
+        {darf ? (
+          <KiLimitFormular aufrufe={limits.aufrufeMonat} kostenUsd={limits.kostenMonatUsd} />
+        ) : (
+          <p className="text-xs text-muted">
+            Limits: {limits.aufrufeMonat ?? "keins"} Aufrufe / {limits.kostenMonatUsd !== null ? usdBetrag(limits.kostenMonatUsd) : "keins"} pro Monat (ändern nur Inhaber und Admins).
+          </p>
+        )}
+        <p className="text-[11px] text-muted">Ist ein Kostenlimit gesetzt, werden Aufrufe mit nicht berechenbaren Kosten zur Sicherheit abgelehnt.</p>
+      </section>
 
       <section className="card space-y-2 p-5">
         <h2 className="text-sm font-semibold text-foreground">Werbekonten (Meta, Google Ads, LinkedIn, TikTok)</h2>

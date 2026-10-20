@@ -179,7 +179,7 @@ export async function kiSchluesselFuer(workspaceId: string): Promise<KiSchluesse
   const betreiber = await prisma.user.findFirst({ where: { workspaceId, isOperator: true }, select: { id: true } });
   if (betreiber) return { quelle: "BETREIBER" };
   const rows = await prisma.workspaceZugang.findMany({ where: { workspaceId, anbieter: { in: ["ANTHROPIC", "OPENAI", "GEMINI"] }, status: "OK" }, select: { anbieter: true } });
-  const out: KiSchluessel = { quelle: "KUNDE" };
+  const out: KiSchluessel = { quelle: "KUNDE", workspaceId };
   for (const r of rows) {
     const w = await werteLaden(workspaceId, r.anbieter as AnbieterKey);
     if (!w?.apiKey) continue;

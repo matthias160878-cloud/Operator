@@ -21,7 +21,7 @@ export const werbeplanSchema = z.object({
   erfolgsmessung: z.string().max(500).default(""),
 });
 
-export async function werbeplanDaten(workspaceId: string, d: z.infer<typeof werbeplanSchema>) {
+export async function werbeplanDaten(workspaceId: string, d: z.infer<typeof werbeplanSchema>, planId?: string) {
   const startAm = new Date(d.startAm);
   const endeAm = new Date(d.endeAm);
   const fehler = pruefePlan({ plattform: d.plattform, ziel: d.ziel, startAm, endeAm, tagesbudgetCent: d.tagesbudgetCent, gesamtbudgetCent: d.gesamtbudgetCent });
@@ -31,6 +31,15 @@ export async function werbeplanDaten(workspaceId: string, d: z.infer<typeof werb
   if (d.contentItemId && !(await prisma.contentItem.findFirst({ where: { id: d.contentItemId, workspaceId } }))) return { error: "Inhalt nicht gefunden.", status: 404 };
   const kampagne = d.kampagneId ? await prisma.reichweitenKampagne.findFirst({ where: { id: d.kampagneId, workspaceId } }) : null;
   if (d.kampagneId && !kampagne) return { error: "Kampagne nicht gefunden.", status: 404 };
+  if (kampagne) {
+    // Werbung nur mit ausdrücklich festgelegtem Kampagnenbudget und höchstens bis zu dessen Höhe.
+    if (kampagne.budgetCent === null) return { error: "Für diese Kampagne ist kein Budget festgelegt. Inhaber oder Admin legen es in der Kampagne fest.", status: 409 };
+    const andere = await prisma.werbeplan.aggregate({ where: { kampagneId: kampagne.id, ...(planId ? { id: { not: planId } } : {}) }, _sum: { gesamtbudgetCent: true } });
+    const summe = (andere._sum.gesamtbudgetCent ?? 0) + d.gesamtbudgetCent;
+    if (summe > kampagne.budgetCent) {
+      return { error: `Die Werbepläne dieser Kampagne (${(summe / 100).toFixed(2)} €) würden das festgelegte Budget von ${(kampagne.budgetCent / 100).toFixed(2)} € überschreiten.`, status: 409 };
+    }
+  }
   return {
     daten: {
       titel: kuerzen(d.titel, 160),

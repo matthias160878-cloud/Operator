@@ -693,3 +693,85 @@ test("Ratenbegrenzung pseudonymisiert Schlüssel, DMARC-Prüfung erbt von der Ha
     if (vorher === undefined) delete process.env.DMARC_TEST_EINTRAEGE; else process.env.DMARC_TEST_EINTRAEGE = vorher;
   }
 });
+
+test("Kampagnenassistent: Pflichtangaben, Zeitraum, Budget und bearbeitbarer Ablauf", async () => {
+  const { pruefeKampagne, ablaufVorschlag, kampagneFehlt } = await import("@/lib/reichweitenaufbau/kampagnenplan");
+  const e = { titel: "Herbst", ziel: "20 Anfragen bis Ende November", hauptkennzahl: "ANFRAGEN", zielgruppe: "Handwerk", zielUrl: "https://example.com/a", startAm: "2026-11-01", endeAm: "2026-11-30", verantwortlichId: "u1", verantwortlichName: "Mia", budgetCent: null };
+  assert.equal(pruefeKampagne(e), null);
+  assert.match(pruefeKampagne({ ...e, ziel: "" }) ?? "", /Ziel/);
+  assert.match(pruefeKampagne({ ...e, endeAm: "2026-10-01" }) ?? "", /vor dem Start/);
+  assert.match(pruefeKampagne({ ...e, endeAm: "2028-01-01" }) ?? "", /länger als ein Jahr/);
+  assert.match(pruefeKampagne({ ...e, verantwortlichId: "" }) ?? "", /Verantwortlichen/);
+  assert.match(pruefeKampagne({ ...e, budgetCent: 0 }) ?? "", /Budget/);
+  const ohne = ablaufVorschlag(e);
+  assert.ok(!ohne.some((s) => s.art === "WERBUNG"), "ohne Budget kein Werbeschritt");
+  assert.ok(ohne.some((s) => s.art === "FREIGABE" && s.titel.includes("Mia")));
+  assert.equal(ohne.at(-1)?.art, "AUSWERTUNG");
+  assert.ok(ablaufVorschlag({ ...e, budgetCent: 50_000 }).some((s) => s.art === "WERBUNG" && s.titel.includes("500,00")));
+  assert.deepEqual(kampagneFehlt({ ziel: "", hauptkennzahl: "", zielgruppe: "x", zielUrl: "", startAm: null, endeAm: null, verantwortlichId: null }), ["Ziel", "Hauptkennzahl", "Zielseite", "Zeitraum", "Verantwortlicher für Freigaben"]);
+});
+
+test("Plattformformate: Fakten wortgleich mit Quelle, ungeprüfte markiert, Grenzen gemeldet", async () => {
+  const { plattformVarianten, faktZeile, UNGEPRUEFT } = await import("@/lib/reichweitenaufbau/plattformformate");
+  const fakten = [
+    { text: "Der Kurs hat 6 Termine.", quelle: "Kursbeschreibung", geprueft: true },
+    { text: "Über 90 % sind zufrieden.", quelle: "", geprueft: false },
+  ];
+  const v = plattformVarianten({ thema: "Herbstkurs", kernaussage: "Sicherer werden", zielgruppe: "Handwerk", aufforderung: "Jetzt anfragen", zielUrl: "https://example.com/k", fakten, plattformen: ["INSTAGRAM", "LINKEDIN", "LINKEDIN"] });
+  assert.equal(v.length, 2, "jede Plattform nur einmal");
+  for (const x of v) {
+    for (const [i, f] of fakten.entries()) assert.ok(x.text.includes(faktZeile(f, i + 1)), "Fakt unverändert enthalten");
+    assert.ok(x.text.includes("[1] Kursbeschreibung"));
+    assert.ok(x.text.includes(`${UNGEPRUEFT} Über 90 %`));
+    assert.equal(x.ungeprueft, 1);
+    assert.ok(x.hinweise.some((h) => h.includes("ohne") || h.includes("keine Quelle")));
+    assert.ok(x.text.includes("https://example.com/k"));
+  }
+  const lang = plattformVarianten({ thema: "T", kernaussage: "x".repeat(2300), zielgruppe: "", aufforderung: "", zielUrl: "", fakten: [], plattformen: ["TIKTOK"] });
+  assert.ok(lang[0].hinweise.some((h) => h.includes("erlaubt 2200")));
+});
+
+test("Ergebnis-Zuordnung: unbekannte Herkunft bleibt unbekannt, Angebotsseite wird vererbt", async () => {
+  const { ergebnisZuordnung } = await import("@/lib/reichweite/zuordnung");
+  const links = [
+    { id: "a", bezeichnung: "LinkedIn", herkunft: "TEAM", stufe: 1, parentId: null, angebotUrl: "https://example.com/firmen", istDemo: false },
+    { id: "b", bezeichnung: "", herkunft: "BESUCHER", stufe: 2, parentId: "a", angebotUrl: "", istDemo: false },
+    { id: "c", bezeichnung: "Instagram", herkunft: "TEAM", stufe: 1, parentId: null, angebotUrl: "", istDemo: false },
+  ];
+  const r = ergebnisZuordnung(links, [
+    { linkId: "a", art: "ANFRAGE" },
+    { linkId: "b", art: "ANFRAGE" },
+    { linkId: "c", art: "AUFRUF" },
+    { linkId: null, art: "ANFRAGE" },
+    { linkId: "geloescht", art: "ZIEL_KLICK" },
+  ], "https://example.com/kampagne");
+  const z = Object.fromEntries(r.zeilen.map((x) => [x.schluessel, x]));
+  assert.equal(z.b.angebotsseite, "https://example.com/firmen");
+  assert.equal(z.c.angebotsseite, "https://example.com/kampagne");
+  assert.equal(z.unbekannt.anfragen, 1);
+  assert.equal(z.unbekannt.zielKlicks, 1);
+  assert.equal(z.unbekannt.angebotsseite, "—");
+  const firmen = r.jeAngebotsseite.find((s) => s.angebotsseite === "https://example.com/firmen");
+  assert.equal(firmen?.anfragen, 2);
+  assert.ok(!r.jeAngebotsseite.some((s) => s.angebotsseite === "—"), "Unbekanntes wird keiner Seite zugeordnet");
+});
+
+test("KI-Kosten: Schätzung für bekannte Modelle, unbekannte offen gekennzeichnet", async () => {
+  const { kostenSchaetzen } = await import("@/lib/ai/kosten");
+  const alt = process.env.ANTHROPIC_MODEL;
+  try {
+    delete process.env.ANTHROPIC_MODEL;
+    const s = kostenSchaetzen("anthropic", 3000, 900);
+    assert.equal(s.berechenbar, true);
+    assert.equal(s.eingabeToken, 1000);
+    assert.ok(Math.abs((s.usdMax ?? 0) - (1000 * 1 + 900 * 5) / 1e6) < 1e-12);
+    process.env.ANTHROPIC_MODEL = "ein-unbekanntes-modell";
+    const u = kostenSchaetzen("anthropic", 3000, 900);
+    assert.equal(u.berechenbar, false);
+    assert.equal(u.usdMax, null);
+    assert.match(u.hinweis, /nicht berechenbar/);
+  } finally {
+    if (alt === undefined) delete process.env.ANTHROPIC_MODEL;
+    else process.env.ANTHROPIC_MODEL = alt;
+  }
+});

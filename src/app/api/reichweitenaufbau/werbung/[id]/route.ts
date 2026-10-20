@@ -16,7 +16,7 @@ async function handlePATCH(request: Request, { params }: Ctx) {
   if (!(await prisma.werbeplan.findFirst({ where: { id, workspaceId: user.workspaceId } }))) throw new NotFoundError();
   const parsed = werbeplanSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Ungültige Eingabe." }, { status: 400 });
-  const r = await werbeplanDaten(user.workspaceId, parsed.data);
+  const r = await werbeplanDaten(user.workspaceId, parsed.data, id);
   if ("error" in r) return NextResponse.json({ error: r.error }, { status: r.status });
   const plan = await prisma.werbeplan.update({
     where: { id },

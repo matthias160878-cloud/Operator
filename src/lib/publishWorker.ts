@@ -3,6 +3,7 @@ import { hasUsableEntitlement } from "@/lib/entitlements";
 import { runAgent } from "@/lib/agents/runner";
 import { publishContentItem } from "@/lib/agents/publishingAgent";
 import { claimPublishLock, releasePublishLock } from "@/lib/contentWorkflow";
+import { automatikPausiert, pausierteWorkspaces } from "@/lib/automatik";
 
 export { queuePublishJob, cancelOpenJobs } from "@/lib/contentWorkflow";
 
@@ -48,6 +49,9 @@ export async function recoverStaleJobs(now = new Date()): Promise<number> {
 
 export async function processJob(jobId: string, publicOrigin: string, now = new Date()): Promise<JobOutcome> {
   // Atomar übernehmen — ein zweiter Worker bekommt count 0.
+  // Pausierte Workspaces: Auftrag bleibt in der Warteschlange.
+  const offen = await prisma.publishJob.findUnique({ where: { id: jobId }, select: { workspaceId: true } });
+  if (offen && (await automatikPausiert(offen.workspaceId))) return "REQUEUED";
   const claimed = await prisma.publishJob.updateMany({
     where: { id: jobId, status: "QUEUED", scheduledFor: { lte: now } },
     data: { status: "RUNNING", startedAt: now, attempts: { increment: 1 } },
@@ -94,8 +98,9 @@ export async function processJob(jobId: string, publicOrigin: string, now = new 
 
 export async function tick(publicOrigin: string, now = new Date()) {
   const recovered = await recoverStaleJobs(now);
+  const pausiert = await pausierteWorkspaces();
   const due = await prisma.publishJob.findMany({
-    where: { status: "QUEUED", scheduledFor: { lte: now } },
+    where: { status: "QUEUED", scheduledFor: { lte: now }, ...(pausiert.length ? { workspaceId: { notIn: pausiert } } : {}) },
     orderBy: { scheduledFor: "asc" },
     take: BATCH,
     select: { id: true },

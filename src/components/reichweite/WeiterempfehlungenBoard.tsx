@@ -195,7 +195,7 @@ export function WeiterempfehlungenBoard(props: {
     if (!kampagne) return;
     const form = e.currentTarget;
     const f = new FormData(form);
-    if (await aufruf(`/api/reichweite/kampagnen/${kampagne.id}/links`, "POST", { bezeichnung: String(f.get("bezeichnung") ?? "") })) form.reset();
+    if (await aufruf(`/api/reichweite/kampagnen/${kampagne.id}/links`, "POST", { bezeichnung: String(f.get("bezeichnung") ?? ""), angebotUrl: String(f.get("angebotUrl") ?? "") })) form.reset();
   }
 
   async function kennzahlAnlegen(e: React.FormEvent<HTMLFormElement>) {
@@ -403,6 +403,7 @@ export function WeiterempfehlungenBoard(props: {
             {darfBearbeiten && (
               <form onSubmit={linkAnlegen} className="flex flex-col gap-2 sm:flex-row">
                 <input name="bezeichnung" maxLength={80} placeholder="Interne Bezeichnung, z. B. „Instagram-Bio“ (keine Personendaten)" className={feld} />
+                <input name="angebotUrl" type="url" maxLength={500} placeholder="Angebotsseite (optional, sonst Zielseite)" aria-label="Angebotsseite" className={feld} />
                 <button type="submit" className={knopfPrimaer} disabled={laedt}>
                   <Plus className="h-4 w-4" /> Team-Link
                 </button>

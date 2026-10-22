@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="de">
+<head>
+<title>Muster Broker</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Spectral:ital,wght@0,300;0,500;1,300&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Layout: Hero mit Schnellstart-Karte, danach Leistungen mit Umschalter Privat/Firmen, Ablauf, Kontakt und ein Rechtsblock (Impressum, Erstinformation, Datenschutz, AGB). */
+:root {
+  --ink: #1c1b2e;
+  --ink-2: #55526a;
+  --paper: #f7f4ee;
+  --card: #fffdf9;
+  --line: #dcd7cc;
+  --tint: #ebe8f6;
+  --accent: #4a3fb5;
+  --accent-ink: #ffffff;
+  --signal: #d9531e;
+  --mark: #fff1b8;
+  --mark-ink: #4a3a00;
+  --font-display: "Spectral", Georgia, "Times New Roman", serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #ece9f7; --ink-2: #aeaac6; --paper: #14131f; --card: #1d1c2c; --line: #323049;
+    --tint: #25233d; --accent: #a59bff; --accent-ink: #14131f; --signal: #ff8a5c;
+    --mark: #4a3f12; --mark-ink: #ffe9a0; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #ece9f7; --ink-2: #aeaac6; --paper: #14131f; --card: #1d1c2c; --line: #323049;
+  --tint: #25233d; --accent: #a59bff; --accent-ink: #14131f; --signal: #ff8a5c;
+  --mark: #4a3f12; --mark-ink: #ffe9a0; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin-inline: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.12; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.3rem, 5.4vw, 3.9rem); font-weight: 300; letter-spacing: -0.015em; }
+h1 em { font-style: italic; color: var(--accent); }
+h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+h3 { font-size: 1.28rem; }
+p { margin: 0; }
+.label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+.ph { background: var(--mark); color: var(--mark-ink); padding: 0 4px; border-radius: 2px; }
+
+.muster { background: var(--ink); color: var(--paper); font-size: 0.82rem; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: 8px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px)); text-align: center; }
+
+header.top { display: flex; align-items: center; justify-content: space-between; gap: 14px 24px; flex-wrap: wrap; padding-block: 20px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand svg { flex: none; }
+.brand b { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; line-height: 1; display: block; }
+.brand small { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+nav.main { display: flex; gap: 8px 22px; flex-wrap: wrap; align-items: center; font-size: 0.95rem; }
+nav.main a { text-decoration: none; padding-block: 4px; border-bottom: 2px solid transparent; }
+nav.main a:hover { border-color: var(--accent); }
+nav.main a.btn { border: 0; padding: 10px 18px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--accent); color: var(--accent-ink); font: 500 1rem var(--font-body); border: 0; padding: 13px 22px; border-radius: 3px; text-decoration: none; cursor: pointer; }
+.btn:hover { filter: brightness(1.08); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(28px, 5vw, 64px); align-items: start; padding-block: clamp(24px, 5vw, 64px) clamp(40px, 7vw, 84px); }
+.hero .lead { font-size: 1.15rem; color: var(--ink-2); max-width: 34em; margin-top: 22px; }
+.hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+dl.facts { display: flex; gap: 10px 28px; flex-wrap: wrap; margin: 36px 0 0; padding-top: 20px; border-top: 1px solid var(--line); }
+dl.facts div { min-width: 0; }
+dl.facts dt { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+dl.facts dd { margin: 2px 0 0; font-weight: 500; }
+
+/* Schnellstart-Karte */
+.finder { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: clamp(18px, 3vw, 28px); box-shadow: 0 1px 0 var(--line), 0 18px 40px -28px rgba(19, 35, 46, 0.45); min-width: 0; }
+.finder h2 { font-size: 1.5rem; margin-top: 8px; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; margin-top: 18px; border: 1.5px solid var(--ink); border-radius: 3px; overflow: hidden; }
+.seg button { font: 500 0.95rem var(--font-body); padding: 11px 10px; background: transparent; color: var(--ink); border: 0; cursor: pointer; }
+.seg button + button { border-left: 1.5px solid var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+fieldset.picks { border: 0; margin: 16px 0 0; padding: 0; min-width: 0; display: grid; gap: 2px; }
+.pick { display: flex; gap: 10px; align-items: flex-start; padding: 8px 4px; border-bottom: 1px solid var(--line); cursor: pointer; font-size: 0.97rem; }
+.pick input { margin-top: 5px; accent-color: var(--accent); flex: none; width: 16px; height: 16px; }
+.finder .btn { width: 100%; margin-top: 18px; }
+.note { font-size: 0.8rem; color: var(--ink-2); margin-top: 12px; }
+
+/* Abschnitte */
+section { padding-block: clamp(40px, 7vw, 84px); border-top: 1px solid var(--line); }
+.sec-head { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 20px clamp(24px, 5vw, 64px); align-items: end; margin-bottom: clamp(26px, 4vw, 44px); }
+.sec-head p { color: var(--ink-2); max-width: 38em; }
+
+.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
+.why article { padding: 22px 0 8px; border-top: 1.5px solid var(--ink); min-width: 0; }
+.why h3 { margin-bottom: 10px; }
+.why p { color: var(--ink-2); font-size: 0.97rem; }
+
+.tabs { display: inline-grid; grid-auto-flow: column; border: 1.5px solid var(--ink); border-radius: 3px; overflow: hidden; margin-bottom: 26px; max-width: 100%; }
+.tabs button { font: 500 1rem var(--font-body); padding: 11px 22px; background: transparent; color: var(--ink); border: 0; cursor: pointer; }
+.tabs button + button { border-left: 1.5px solid var(--ink); }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
+.service { padding: 20px 0 26px; border-top: 1.5px solid var(--ink); min-width: 0; }
+.service .label { color: var(--accent); }
+.service h3 { margin: 8px 0 8px; }
+.service p { color: var(--ink-2); font-size: 0.96rem; }
+
+.deadlines { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); margin: 0; }
+.deadlines div { padding: 16px 0; border-top: 1px solid var(--line); min-width: 0; }
+.deadlines dt { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.deadlines dd { margin: 6px 0 0; color: var(--ink-2); font-size: 0.96rem; }
+
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); counter-reset: step; }
+.steps li { counter-increment: step; padding: 22px 22px 8px 0; border-top: 1.5px solid var(--ink); min-width: 0; }
+.steps li::before { content: "Schritt " counter(step); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); }
+.steps h3 { font-size: 1.2rem; margin: 8px 0; }
+.steps p { font-size: 0.95rem; color: var(--ink-2); }
+
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 64px); }
+.about { background: var(--tint); padding: clamp(20px, 3.4vw, 34px); border-radius: 6px; min-width: 0; }
+.about dl { margin: 0; display: grid; gap: 14px; }
+.about dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+.about dd { margin: 2px 0 0; }
+
+.contact { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(24px, 5vw, 64px); }
+.contact address { font-style: normal; margin-top: 22px; display: grid; gap: 14px; }
+.contact address b { display: block; font-family: var(--font-mono); font-weight: 400; font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+.field { display: grid; gap: 6px; margin-top: 16px; }
+.field label { font-size: 0.86rem; font-weight: 500; }
+.field input[type="text"], .field select, .field textarea { width: 100%; font: 400 1rem var(--font-body); color: var(--ink); background: var(--card); border: 1.5px solid var(--line); border-radius: 3px; padding: 11px 12px; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+form.req { min-width: 0; }
+form.req .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 16px; }
+form.req .row .field:first-child { margin-top: 16px; }
+.consent { display: flex; gap: 10px; align-items: flex-start; margin-top: 18px; font-size: 0.9rem; color: var(--ink-2); }
+.consent input { margin-top: 5px; accent-color: var(--accent); flex: none; width: 16px; height: 16px; }
+form.req .btn { margin-top: 20px; }
+#sent { margin-top: 14px; font-size: 0.92rem; color: var(--accent); min-height: 1.4em; }
+
+/* Rechtsblock */
+.legal-intro { color: var(--ink-2); max-width: 44em; margin-bottom: 24px; }
+details.doc { border-top: 1px solid var(--line); }
+details.doc:last-of-type { border-bottom: 1px solid var(--line); }
+details.doc summary { cursor: pointer; list-style: none; padding: 18px 0; display: flex; justify-content: space-between; gap: 16px; align-items: baseline; font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; }
+details.doc summary::-webkit-details-marker { display: none; }
+details.doc summary::after { content: "+"; font-family: var(--font-mono); color: var(--accent); flex: none; }
+details.doc[open] summary::after { content: "–"; }
+details.doc summary small { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); font-weight: 400; margin-left: auto; padding-right: 8px; text-align: right; }
+.doc-body { padding: 0 0 26px; max-width: 52em; color: var(--ink-2); font-size: 0.97rem; }
+.doc-body h4 { margin: 20px 0 6px; font-size: 1rem; color: var(--ink); font-family: var(--font-body); }
+.doc-body p + p { margin-top: 10px; }
+.doc-body ul, .doc-body ol { margin: 8px 0 0; padding-left: 1.3em; }
+.doc-body li { margin-top: 4px; }
+.doc-body dl { margin: 0; display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: 8px 18px; }
+.doc-body dt { color: var(--ink); font-weight: 500; }
+.doc-body dd { margin: 0; }
+
+.operator { margin-top: 40px; border: 1.5px dashed var(--signal); border-radius: 6px; padding: clamp(18px, 3vw, 28px); }
+.operator h2 { font-size: 1.5rem; }
+.operator .label { color: var(--signal); }
+.operator ul { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(20px, 4vw, 48px); }
+.operator li { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-top: 1px solid var(--line); font-size: 0.94rem; }
+.operator li input { margin-top: 5px; accent-color: var(--accent); flex: none; width: 16px; height: 16px; }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; font-size: 0.86rem; color: var(--ink-2); }
+footer nav { display: flex; gap: 8px 18px; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .hero, .sec-head, .split, .contact { grid-template-columns: minmax(0, 1fr); }
+  .services, .why, .deadlines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .services, .why, .deadlines, .steps, .operator ul { grid-template-columns: minmax(0, 1fr); }
+  form.req .row { grid-template-columns: minmax(0, 1fr); }
+  .doc-body dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .doc-body dd { margin-bottom: 8px; }
+  details.doc summary small { display: none; }
+  .tabs button { padding: 11px 14px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+.lang { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 3px; overflow: hidden; margin-left: 4px; }
+.lang button { font: 500 0.78rem var(--font-mono); letter-spacing: 0.06em; padding: 6px 11px; min-width: 42px; background: transparent; color: var(--ink); border: 0; cursor: pointer; }
+.lang button + button { border-left: 1.5px solid var(--ink); }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+html[lang="fr"] .steps li::before { content: "Étape " counter(step); }
+html[lang="it"] .steps li::before { content: "Passo " counter(step); }
+
+header.top { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px 12px 18px; margin-top: 16px; margin-bottom: 8px; box-shadow: 0 10px 30px -22px rgba(28, 27, 46, 0.55); }
+.brand small { color: var(--accent); }
+nav.main { gap: 4px 6px; }
+nav.main a { padding: 8px 12px; border-bottom: 0; border-radius: 999px; }
+nav.main a:hover { background: var(--tint); }
+nav.main a.btn { padding: 10px 18px; margin-left: 6px; }
+nav.main a.btn:hover { background: var(--accent); }
+.lang { border: 0; background: var(--tint); border-radius: 999px; padding: 3px; gap: 2px; margin-left: 8px; }
+.lang button { border-radius: 999px; padding: 5px 11px; min-width: 40px; }
+.lang button + button { border-left: 0; }
+.lang button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.btn { border-radius: 999px; }
+.tbl-wrap { overflow-x: auto; border-top: 1.5px solid var(--ink); }
+table.mods { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+table.mods th, table.mods td { text-align: left; vertical-align: top; padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line); }
+table.mods thead th { font: 500 0.72rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+table.mods tbody th { font-weight: 700; min-width: 11em; }
+table.mods td.c-n { color: var(--ink-2); min-width: 16em; }
+table.mods td.c-b, table.mods td.c-s { white-space: normal; min-width: 8em; }
+.lvl { display: inline-block; font: 500 0.74rem var(--font-mono); letter-spacing: 0.04em; padding: 3px 9px; border-radius: 999px; background: var(--tint); color: var(--ink); white-space: nowrap; }
+.lvl.lvl1 { background: var(--accent); color: var(--accent-ink); }
+.lim-h { margin-top: 30px; }
+ul.lim { margin: 10px 0 0 1.1em; color: var(--ink-2); }
+ul.lim li { margin: 4px 0; }
+@media (max-width: 760px) {
+  .tbl-wrap { overflow-x: visible; }
+  table.mods thead { position: absolute; left: -9999px; }
+  table.mods, table.mods tbody, table.mods tr, table.mods th, table.mods td { display: block; width: 100%; }
+  table.mods tr { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  table.mods th, table.mods td { border: 0; padding: 3px 0; min-width: 0 !important; }
+  table.mods td::before { display: inline-block; min-width: 5.5em; margin-right: 8px; font: 500 0.7rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+  td.c-b::before { content: "Bereich"; } td.c-n::before { content: "Nutzen"; } td.c-s::before { content: "Stand"; } td.c-l::before { content: "Stufe"; }
+  html[lang="fr"] td.c-b::before { content: "Domaine"; } html[lang="fr"] td.c-n::before { content: "Utilité"; } html[lang="fr"] td.c-s::before { content: "État"; } html[lang="fr"] td.c-l::before { content: "Niveau"; }
+  html[lang="it"] td.c-b::before { content: "Ambito"; } html[lang="it"] td.c-n::before { content: "Utilità"; } html[lang="it"] td.c-s::before { content: "Stato"; } html[lang="it"] td.c-l::before { content: "Livello"; }
+}
+</style>
+</head>
+<body>
+<div class="muster" data-t="t001">Mustervorlage für einen Schweizer Versicherungsbroker. <span class="ph">Gelb markierte Stellen</span> sind Platzhalter und vor dem Livegang zu ersetzen. Die Rechtstexte ersetzen keine Prüfung durch eine Schweizer Fachperson.</div>
+<div class="wrap">
+<header class="top">
+<a aria-label="Muster Broker, Startseite" class="brand" data-a-aria-label="a01" href="#oben" id="oben">
+<svg aria-hidden="true" height="40" viewbox="0 0 40 40" width="40"><rect fill="var(--accent)" height="40" rx="11" width="40"></rect><path d="M20 8 L31 12.5 V20 C31 26 26.5 30.5 20 33 C13.5 30.5 9 26 9 20 V12.5 Z" fill="none" stroke="var(--accent-ink)" stroke-linejoin="round" stroke-width="2"></path><path d="M14.5 20.5 L18.5 24.5 L26 16" fill="none" stroke="var(--accent-ink)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg>
+<span><b data-t="t002">Muster Broker</b><small data-t="t003">Versicherungsbroker Schweiz</small></span>
+</a>
+<nav aria-label="Hauptnavigation" class="main" data-a-aria-label="a02">
+<a data-t="t004" href="#leistungen">Leistungen</a>
+<a data-t="t005" href="#ablauf">Ablauf</a>
+<a data-t="t006" href="#ueber-uns">Über uns</a>
+<a data-t="t007" href="#recht">Rechtliches</a>
+<a class="btn" data-t="t008" href="#kontakt">Beratung anfragen</a>
+<div aria-label="Sprache · Langue · Lingua" class="lang" role="group"><button aria-label="Deutsch" aria-pressed="true" data-lang="de" lang="de" type="button">DE</button><button aria-label="Français" aria-pressed="false" data-lang="fr" lang="fr" type="button">FR</button><button aria-label="Italiano" aria-pressed="false" data-lang="it" lang="it" type="button">IT</button></div></nav>
+</header>
+<main>
+<div class="hero">
+<div>
+<p class="label" data-t="t009">Für Privatpersonen und Unternehmen in der Schweiz</p>
+<h1 data-t="t010" style="margin-top:14px">Ihr unabhängiger Versicherungs­broker. <em>Ohne Kleingedrucktes.</em></h1>
+<p class="lead" data-t="t011">Wir vergleichen Angebote Schweizer Versicherer, erklären Ihnen die Unterschiede und betreuen Ihre Verträge bis zum Schadenfall. Sie zahlen für die Beratung nichts extra, die Vergütung legen wir vorab offen.</p>
+<div class="actions">
+<a class="btn" data-t="t012" href="#kontakt">Beratung anfragen</a>
+<a class="btn ghost" data-t="t013" href="#leistungen">Leistungen ansehen</a>
+</div>
+<dl class="facts">
+<div><dt data-t="t014">Status</dt><dd data-t="t015">Ungebundener Vermittler</dd></div>
+<div><dt data-t="t016">Aufsicht</dt><dd data-t="t017">FINMA-Register <span class="ph">Nr. XXXXXX</span></dd></div>
+<div><dt data-t="t018">Sprachen</dt><dd><span class="ph" data-t="t019">DE, FR, IT</span></dd></div><div><dt data-t="x01">Standorte</dt><dd><span class="ph">Zürich, Lausanne, Lugano</span></dd></div>
+</dl>
+</div>
+<aside aria-labelledby="finder-h" class="finder">
+<p class="label" data-t="t020">Schnellstart</p>
+<h2 data-t="t021" id="finder-h">Was möchten Sie absichern?</h2>
+<div aria-label="Kundenart" class="seg" data-a-aria-label="a03" role="group">
+<button aria-pressed="true" data-t="t022" data-typ="privat" type="button">Privatperson</button>
+<button aria-pressed="false" data-t="t023" data-typ="firma" type="button">Unternehmen</button>
+</div>
+<fieldset class="picks" id="picks"><legend class="sr" data-t="t024">Themen auswählen</legend></fieldset>
+<button class="btn" data-t="t025" id="go" type="button">Beratung zu diesen Themen anfragen</button>
+<p class="note" data-t="t026">Unverbindlich. Bitte schreiben Sie keine Gesundheitsdaten in das Formular, die besprechen wir im Gespräch.</p>
+</aside>
+</div>
+<section aria-labelledby="why-h">
+<div class="sec-head">
+<h2 data-t="t027" id="why-h">Was ein Broker für Sie anders macht</h2>
+<p data-t="t028">Ein Versicherungsberater eines einzelnen Versicherers verkauft dessen Produkte. Wir arbeiten in Ihrem Auftrag und vergleichen quer über den Markt.</p>
+</div>
+<div class="why">
+<article>
+<h3 data-t="t029">Marktvergleich statt Hausprodukt</h3>
+<p data-t="t030">Wir holen Offerten bei mehreren Schweizer Versicherern ein und stellen Prämie, Deckung, Selbstbehalt und Ausschlüsse nebeneinander.</p>
+</article>
+<article>
+<h3 data-t="t031">Vergütung auf dem Tisch</h3>
+<p data-t="t032">Wir werden in der Regel über Courtage der Versicherer bezahlt, die in der Prämie enthalten ist. Auf Wunsch rechnen wir stattdessen nach Honorar ab. Beides erfahren Sie vor Beginn.</p>
+</article>
+<article>
+<h3 data-t="t033">Keine unaufgeforderten Anrufe</h3>
+<p data-t="t034">Wir kontaktieren Sie nur, wenn Sie sich bei uns gemeldet haben. Im Schadenfall sind wir Ihr Ansprechpartner gegenüber dem Versicherer.</p>
+</article>
+</div>
+</section>
+<section aria-labelledby="leist-h" id="leistungen">
+<div class="sec-head">
+<h2 data-t="t035" id="leist-h">Leistungen</h2>
+<p data-t="t036">Wählen Sie, ob Sie als Privatperson oder für Ihr Unternehmen anfragen. Alle Beträge verstehen sich in Schweizer Franken.</p>
+</div>
+<div aria-label="Kundenart" class="tabs" data-a-aria-label="a04" role="tablist">
+<button aria-controls="panel-privat" aria-selected="true" data-t="t037" data-typ="privat" id="tab-privat" role="tab" type="button">Privatkunden</button>
+<button aria-controls="panel-firma" aria-selected="false" data-t="t038" data-typ="firma" id="tab-firma" role="tab" type="button">Firmenkunden</button>
+</div>
+<div aria-labelledby="tab-privat" class="services" id="panel-privat" role="tabpanel">
+<article class="service"><p class="label" data-t="t039">Gesundheit</p><h3 data-t="t040">Krankenkasse und Zusatzversicherung</h3><p data-t="t041">Grundversicherung nach KVG mit Franchise von CHF 300 bis 2'500 und Zusatzversicherungen nach VVG im Vergleich, abgestimmt auf Ihre Gesundheitskosten.</p></article>
+<article class="service"><p class="label" data-t="t042">Haushalt</p><h3 data-t="t043">Hausrat und Privathaftpflicht</h3><p data-t="t044">Deckung für Einbruch, Feuer, Wasser und Schäden, die Sie anderen zufügen. Wir prüfen Versicherungssumme und Unterversicherung.</p></article>
+<article class="service"><p class="label" data-t="t045">Mobilität</p><h3 data-t="t046">Motorfahrzeug</h3><p data-t="t047">Obligatorische Haftpflicht, Teil- und Vollkasko, Bonusschutz. Wir vergleichen Prämien und Selbstbehalte der gängigen Anbieter.</p></article>
+<article class="service"><p class="label" data-t="t048">Vorsorge</p><h3 data-t="t049">Säule 3a, 3b und Risikoschutz</h3><p data-t="t050">Altersvorsorge, Todesfall- und Invaliditätsdeckung. Wir zeigen Bankkonto, Fonds und Police im Vergleich, ohne Abschlussdruck.</p></article>
+<article class="service"><p class="label" data-t="t051">Eigenheim</p><h3 data-t="t052">Gebäude und Wohneigentum</h3><p data-t="t053">Gebäudeversicherung, Gebäudewasser, Solaranlagen und Erweiterungen. Wir klären, welche Deckung kantonal vorgeschrieben ist.</p></article>
+<article class="service"><p class="label" data-t="t054">Absichern</p><h3 data-t="t055">Rechtsschutz und Reise</h3><p data-t="t056">Privat-, Verkehrs- und Mietrechtsschutz sowie Reiseversicherung. Kurz erklärt, welche Deckung zu Ihrem Alltag passt.</p></article>
+</div>
+<div aria-labelledby="tab-firma" class="services" hidden="" id="panel-firma" role="tabpanel">
+<article class="service"><p class="label" data-t="t057">Betrieb</p><h3 data-t="t058">Betriebshaftpflicht</h3><p data-t="t059">Deckt Personen-, Sach- und Vermögensschäden, die Ihr Betrieb Dritten verursacht. Branchenspezifisch gerechnet, nicht nach Schema.</p></article>
+<article class="service"><p class="label" data-t="t060">Sachwerte</p><h3 data-t="t061">Sach- und Betriebsunterbruch</h3><p data-t="t062">Inventar, Maschinen, Waren und der Ertragsausfall nach einem Schaden. Wir prüfen Versicherungssummen und Karenzzeiten.</p></article>
+<article class="service"><p class="label" data-t="t063">Personal</p><h3 data-t="t064">Unfall (UVG) und Krankentaggeld</h3><p data-t="t065">Obligatorische Unfallversicherung nach UVG, Zusatzdeckung UVGZ und Krankentaggeld für Ihre Mitarbeitenden. Für Inhaber klären wir freiwillige Lösungen.</p></article>
+<article class="service"><p class="label" data-t="t066">Vorsorge</p><h3 data-t="t067">Berufliche Vorsorge (BVG)</h3><p data-t="t068">Pensionskassenlösungen im Vergleich, Anschlussverträge und Beratung zu Leistungen und Verwaltungskosten für Ihr Team.</p></article>
+<article class="service"><p class="label" data-t="t069">Fahrzeuge</p><h3 data-t="t070">Flotten- und Transportversicherung</h3><p data-t="t071">Firmenfahrzeuge, Warentransport und Werkverkehr in einem abgestimmten Konzept statt vieler Einzelpolicen.</p></article>
+<article class="service"><p class="label" data-t="t072">Risiken</p><h3 data-t="t073">Cyber, D&amp;O und Rechtsschutz</h3><p data-t="t074">Datenverlust, Erpressung durch Schadsoftware, Haftung der Geschäftsleitung und Firmenrechtsschutz, mit klarer Empfehlung, was für Ihre Grösse sinnvoll ist.</p></article>
+</div>
+</section>
+<section aria-labelledby="fr-h">
+<div class="sec-head">
+<h2 data-t="t075" id="fr-h">Fristen, die wir für Sie im Blick behalten</h2>
+<p data-t="t076">Wer zu spät kündigt, zahlt ein weiteres Jahr. Typische Beispiele, die genauen Fristen stehen in Ihrer Police. <span class="ph">Vor Veröffentlichung fachlich prüfen.</span></p>
+</div>
+<dl class="deadlines">
+<div><dt data-t="t077">Grundversicherung</dt><dd data-t="t078">Wechsel der Krankenkasse in der Regel auf den 31. Dezember. Die Kündigung muss bis 30. November beim Versicherer eintreffen.</dd></div>
+<div><dt data-t="t079">Mehrjahresverträge</dt><dd data-t="t080">Sach- und Haftpflichtpolicen laufen oft drei bis fünf Jahre und verlängern sich stillschweigend. Gekündigt wird meist drei Monate vor Ablauf.</dd></div>
+<div><dt data-t="t081">Prämienerhöhung</dt><dd data-t="t082">Bei einer Erhöhung gibt es je nach Vertrag ein Sonderkündigungsrecht. Die Frist ist kurz, deshalb melden wir uns, sobald Ihre Post eintrifft.</dd></div>
+</dl>
+</section>
+<section aria-labelledby="abl-h" id="ablauf">
+<div class="sec-head">
+<h2 data-t="t083" id="abl-h">So läuft die Beratung ab</h2>
+<p data-t="t084">Vier Schritte, in dieser Reihenfolge. Zwischen den Schritten entscheiden Sie, ob es weitergeht.</p>
+</div>
+<ol class="steps">
+<li><h3 data-t="t085">Anfrage und Erstinformation</h3><p data-t="t086">Sie schildern Ihr Anliegen. Vor der Beratung erhalten Sie unsere Angaben zu Status, Vergütung und Aufsicht.</p></li>
+<li><h3 data-t="t087">Mandat</h3><p data-t="t088">Mit Ihrer Unterschrift unter das Vermittlungsmandat dürfen wir Offerten einholen und Ihre bestehenden Verträge einsehen.</p></li>
+<li><h3 data-t="t089">Vergleich und Empfehlung</h3><p data-t="t090">Sie erhalten eine Gegenüberstellung mit unserer begründeten Empfehlung. Den Entscheid treffen Sie.</p></li>
+<li><h3 data-t="t091">Abschluss und Betreuung</h3><p data-t="t092">Wir begleiten den Abschluss, helfen bei Schadenmeldungen und prüfen Ihre Verträge regelmässig. Bei Anträgen gilt das gesetzliche Widerrufsrecht von 14 Tagen (Art. 2a VVG).</p></li>
+</ol>
+</section>
+<section aria-labelledby="ueber-h" id="ueber-uns">
+<div class="split">
+<div>
+<p class="label" data-t="t093">Über uns</p>
+<h2 data-t="t094" id="ueber-h" style="margin-top:10px">Beratung von Menschen, die Entscheide treffen müssen</h2>
+<p data-t="t095" style="color:var(--ink-2);margin-top:18px;max-width:34em"><span class="ph">[Firmenname]</span> berät seit <span class="ph">[Jahr]</span> Privatpersonen und Unternehmen in <span class="ph">[Region/Kantone]</span>. Wir sind ein kleines Team mit eidgenössischem Fachausweis im Versicherungsbereich und kennen die Produkte der grossen Schweizer Versicherer aus der Praxis.</p>
+<p style="color:var(--ink-2);margin-top:12px;max-width:34em"><span class="ph" data-t="t096">[Kurzer Absatz zur Geschichte, zu den Werten und zur Zusammenarbeit mit Treuhändern und Banken.]</span></p>
+</div>
+<div class="about">
+<p class="label" data-t="t097" style="margin-bottom:14px">Registrierung und Aufsicht</p>
+<dl>
+<div><dt data-t="t098">Vermittlerregister</dt><dd data-t="t099">Eingetragen im Register der Versicherungsvermittler der FINMA unter Nr. <span class="ph">XXXXXX</span></dd></div>
+<div><dt data-t="t100">Status</dt><dd data-t="t101">Ungebundener Vermittler (Broker)</dd></div>
+<div><dt data-t="t102">Berufshaftpflicht</dt><dd><span class="ph" data-t="t103">[Versicherer, Policen-Nr.]</span></dd></div>
+<div><dt data-t="t104">Ombudsstelle</dt><dd data-t="t105">Angeschlossen an <span class="ph">[Name der Ombudsstelle]</span></dd></div>
+<div><dt data-t="t106">Branchenverband</dt><dd><span class="ph" data-t="t107">[Falls Mitglied, Verband nennen]</span></dd></div>
+</dl>
+</div>
+</div>
+</section>
+<section aria-labelledby="bau-h" id="bausteine">
+<div class="sec-head">
+<h2 data-t="x94" id="bau-h">Digitale Bausteine für Ihr Maklerbüro</h2>
+<p data-t="x95">Referenzliste: Diese Bausteine von Secret 58 lassen sich an diese Webseite anbinden, um Kosten zu sparen und die Bedienung zu verbessern. Stufe 1 ist der empfohlene Start. Umfang und Preis nach Absprache.</p>
+</div>
+<div class="tbl-wrap">
+<table class="mods">
+<thead><tr><th data-t="x40" scope="col">Baustein</th><th data-t="x41" scope="col">Bereich</th><th data-t="x42" scope="col">Nutzen</th><th data-t="x43" scope="col">Stand</th><th data-t="x44" scope="col">Stufe</th></tr></thead>
+<tbody>
+<tr><th data-t="x45" scope="row">Lead-Automatisierung</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x46">Anfrage landet sofort im CRM oder Postfach, mit Eingangsbestätigung und Wiedervorlage</td><td class="c-s" data-t="x48">Angeboten</td><td class="c-l"><span class="lvl lvl1" data-t="x49">Stufe 1</span></td></tr>
+<tr><th data-t="x50" scope="row">Fristen- und Erinnerungsagent</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x51">Meldet Kündigungs- und Wechselfristen an Büro und Kundschaft, mehr Abschlüsse zum Stichtag</td><td class="c-s" data-t="x52">Neu zu bauen</td><td class="c-l"><span class="lvl lvl1" data-t="x49">Stufe 1</span></td></tr>
+<tr><th data-t="x53" scope="row">Dokumenten-Automatisierung</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x54">Erstinformation, Vermittlungsmandat und Beratungsprotokoll aus den Kundendaten vorbefüllt</td><td class="c-s" data-t="x52">Neu zu bauen</td><td class="c-l"><span class="lvl lvl1" data-t="x49">Stufe 1</span></td></tr>
+<tr><th data-t="x55" scope="row">Terminbuchung</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x56">Zeitfenster direkt wählen statt Mailverkehr</td><td class="c-s" data-t="x52">Neu zu bauen</td><td class="c-l"><span class="lvl lvl1" data-t="x49">Stufe 1</span></td></tr>
+<tr><th data-t="x58" scope="row">Online-Bedarfscheck</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x59">Kurzer Fragebogen führt zu den passenden Themen und zur Anfrage</td><td class="c-s" data-t="x60">Vorlage vorhanden, Anpassung nötig</td><td class="c-l"><span class="lvl lvl1" data-t="x49">Stufe 1</span></td></tr>
+<tr><th data-t="x61" scope="row">Website-Chat</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x62">Beantwortet Standardfragen, sammelt Daten vor, keine Beratung</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x65" scope="row">Telefonassistent</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x66">Nimmt Anrufe ausserhalb der Bürozeiten an und vereinbart Rückruf</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x67" scope="row">Kundenbereich mit Login</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x68">Verträge, Dokumente und Schadenmeldung an einem Ort, mit Upload und Download</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x69" scope="row">Police fotografieren oder hochladen</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x70">Eckdaten einer bestehenden Police werden ausgelesen, kein Abtippen</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x71" scope="row">Schadenmeldung mit Fotos</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x72">Strukturiertes Formular, das beim richtigen Versicherer ankommt</td><td class="c-s" data-t="x52">Neu zu bauen</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x73" scope="row">FAQ und Chat in einfacher Sprache</th><td class="c-b" data-t="x57">Bedienung</td><td class="c-n" data-t="x74">Was ist ein Makler, was kostet es, wie läuft ein Schadenfall</td><td class="c-s" data-t="x60">Vorlage vorhanden, Anpassung nötig</td><td class="c-l"><span class="lvl lvl2" data-t="x64">Stufe 2</span></td></tr>
+<tr><th data-t="x75" scope="row">Social-Media-KI</th><td class="c-b" data-t="x47">Kosten sparen</td><td class="c-n" data-t="x76">Beiträge und Kurzvideos mit Freigabe, ersetzt Agentur- oder Eigenaufwand</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+<tr><th data-t="x78" scope="row">Büro-Kennzahlen</th><td class="c-b" data-t="x80">Intern</td><td class="c-n" data-t="x79">Anfragen, Antwortzeit, Abschlüsse pro Kanal</td><td class="c-s" data-t="x81">Geplant, Umbau nötig</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+<tr><th data-t="x82" scope="row">Kontrollagent</th><td class="c-b" data-t="x84">Qualität</td><td class="c-n" data-t="x83">Prüft vor der Veröffentlichung, ob Pflichtangaben wie Registernummer und Erstinformation vollständig sind</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+<tr><th data-t="x85" scope="row">Eskalationsagent</th><td class="c-b" data-t="x84">Qualität</td><td class="c-n" data-t="x86">Übergibt schwierige oder sensible Fälle automatisch an einen Menschen</td><td class="c-s" data-t="x87">Konzept erstellt, Umsetzung offen</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+<tr><th data-t="x88" scope="row">Security-Agent</th><td class="c-b" data-t="x90">Sicherheit</td><td class="c-n" data-t="x89">Überwacht Formulare und Uploads (Gesundheits- und Vertragsdaten)</td><td class="c-s" data-t="x63">Geplant</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+<tr><th data-t="x91" scope="row">Wöchentlicher Statusbericht</th><td class="c-b" data-t="x80">Intern</td><td class="c-n" data-t="x92">Neue Anfragen, offene Rückrufe und anstehende Fristen auf einer Seite</td><td class="c-s" data-t="x93">Gewünscht, Start offen</td><td class="c-l"><span class="lvl lvl3" data-t="x77">Stufe 3</span></td></tr>
+</tbody>
+</table>
+</div>
+<h3 class="lim-h" data-t="x96">Grenzen beim Einsatz</h3>
+<ul class="lim">
+<li data-t="x97">KI ersetzt keine Beratung oder Empfehlung. Die Pflichten dazu bleiben bei Ihrem Team.</li>
+<li data-t="x98">Bei Gesundheitsdaten, Chat und Telefon sind Datenschutzerklärung, Einwilligung und Auftragsbearbeitung nach nDSG anzupassen.</li>
+<li data-t="x99">Keine Einsparungen in Franken versprechen, solange keine Zahlen der Kundschaft vorliegen.</li>
+</ul>
+<p class="note"><span class="ph" data-t="x100">Vor dem Livegang fachlich prüfen.</span></p>
+<p style="margin-top:18px"><a class="btn ghost" data-t="x101" href="https://www.secret58.com" rel="noopener" target="_blank">Mehr zu Secret 58</a></p>
+</section>
+<section aria-labelledby="kont-h" id="kontakt">
+<div class="contact">
+<div>
+<p class="label" data-t="t108">Kontakt</p>
+<h2 data-t="t109" id="kont-h" style="margin-top:10px">Beratung anfragen</h2>
+<p data-t="t110" style="color:var(--ink-2);margin-top:16px">Wir melden uns innert eines Arbeitstags, per E-Mail oder Telefon, ganz wie Sie es wünschen.</p>
+<address>
+<div><b data-t="t111">Büro</b><span class="ph" data-t="t112">[Strasse Nr.], [PLZ Ort]</span></div>
+<div><b data-t="t113">Telefon</b><span class="ph" data-t="t114">+41 00 000 00 00</span></div>
+<div><b data-t="t115">E-Mail</b><span class="ph" data-t="t116">kontakt@muster-broker.ch</span></div>
+<div><b data-t="t117">Erreichbar</b><span class="ph" data-t="t118">Mo bis Fr 08:00 bis 17:30 Uhr</span></div>
+</address>
+</div>
+<form class="req" id="req" novalidate="">
+<div class="row">
+<div class="field"><label data-t="t119" for="f-typ">Ich frage an als</label>
+<select id="f-typ"><option data-t="t120" value="privat">Privatperson</option><option data-t="t121" value="firma">Unternehmen</option></select>
+</div>
+<div class="field"><label data-t="t122" for="f-name">Name oder Firma</label><input autocomplete="name" id="f-name" required="" type="text"/></div>
+</div>
+<div class="field"><label data-t="t123" for="f-kontakt">Telefon oder E-Mail</label><input autocomplete="email" id="f-kontakt" required="" type="text"/></div>
+<div class="field"><label data-t="t124" for="f-msg">Ihr Anliegen</label><textarea data-a-placeholder="a05" id="f-msg" placeholder="Worum geht es? Bitte keine Gesundheitsdaten angeben." rows="5"></textarea></div>
+<label class="consent" for="f-consent">
+<input id="f-consent" required="" type="checkbox"/>
+<span data-t="t125">Ich habe die <a data-open="datenschutz" href="#datenschutz">Datenschutzerklärung</a> und die <a data-open="erstinformation" href="#erstinformation">Erstinformation</a> gelesen und bin mit der Bearbeitung meiner Angaben zur Beantwortung der Anfrage einverstanden.</span>
+</label>
+<button class="btn" data-t="t126" type="submit">Anfrage senden</button>
+<p id="sent" role="status"></p>
+</form>
+</div>
+</section>
+<section aria-labelledby="recht-h" id="recht">
+<div class="sec-head">
+<h2 data-t="t127" id="recht-h">Rechtliche Angaben</h2>
+<p data-t="t128">Pflichtangaben nach Schweizer Recht. Klicken Sie auf einen Titel, um den Text zu öffnen.</p>
+</div>
+<p class="legal-intro" data-t="t129"><strong style="color:var(--ink)">Hinweis zur Vorlage:</strong> Die folgenden Texte sind ein Entwurf nach dem Stand der Schweizer Rechtslage, wie sie üblicherweise für Versicherungsvermittler gilt. Sie müssen an das konkrete Unternehmen angepasst und vor Veröffentlichung von einer in der Schweiz zugelassenen Rechtsperson geprüft werden.</p>
+<details class="doc" id="impressum">
+<summary data-t="t130">Impressum <small>Art. 3 Abs. 1 lit. s UWG</small></summary>
+<div class="doc-body">
+<dl>
+<dt data-t="t131">Firma</dt><dd><span class="ph" data-t="t132">[Firmenname] [AG / GmbH / Einzelfirma]</span></dd>
+<dt data-t="t133">Sitz und Adresse</dt><dd><span class="ph" data-t="t134">[Strasse Nr.], [PLZ Ort], Schweiz</span></dd>
+<dt data-t="t135">Rechtsform</dt><dd><span class="ph" data-t="t136">Aktiengesellschaft / GmbH / Einzelfirma</span></dd>
+<dt data-t="t137">UID</dt><dd data-t="t138"><span class="ph">CHE-000.000.000</span>, Handelsregister des Kantons <span class="ph">[Kanton]</span></dd>
+<dt data-t="t139">MWST-Nr.</dt><dd data-t="t140"><span class="ph">CHE-000.000.000 MWST</span> (nur falls mehrwertsteuerpflichtig)</dd>
+<dt data-t="t141">Vertretung</dt><dd><span class="ph" data-t="t142">[Name], Geschäftsführer/in oder Inhaber/in</span></dd>
+<dt data-t="t143">Kontakt</dt><dd data-t="t144">Telefon <span class="ph">+41 00 000 00 00</span>, E-Mail <span class="ph">kontakt@muster-broker.ch</span></dd>
+<dt data-t="t145">Registrierung</dt><dd data-t="t146">Register der Versicherungsvermittler der FINMA, Nr. <span class="ph">XXXXXX</span></dd>
+<dt data-t="t147">Berufshaftpflicht</dt><dd><span class="ph" data-t="t148">[Versicherer, Policen-Nr.]</span></dd>
+<dt data-t="t149">Ombudsstelle</dt><dd><span class="ph" data-t="t150">[Name und Adresse der Ombudsstelle]</span></dd>
+</dl>
+<h4 data-t="t151">Haftungsausschluss</h4>
+<p data-t="t152">Die Inhalte dieser Webseite dienen der allgemeinen Information und sind keine Offerte und keine individuelle Beratung. Wir erstellen sie mit Sorgfalt, übernehmen aber keine Gewähr für Richtigkeit, Vollständigkeit und Aktualität. Für Inhalte verlinkter Seiten Dritter sind deren Betreiber verantwortlich.</p>
+<h4 data-t="t153">Urheberrecht</h4>
+<p data-t="t154">Texte, Bilder und Gestaltung dieser Webseite sind urheberrechtlich geschützt. Eine Verwendung ausserhalb des gesetzlich Erlaubten bedarf unserer schriftlichen Zustimmung.</p>
+</div>
+</details>
+<details class="doc" id="erstinformation">
+<summary data-t="t155">Erstinformation für Kundinnen und Kunden <small>Art. 45 VAG</small></summary>
+<div class="doc-body">
+<p data-t="t156">Als Versicherungsvermittler informieren wir Sie bei der ersten Kontaktaufnahme über folgende Punkte. Diese Angaben erhalten Sie vor der Beratung auch schriftlich oder in anderer Textform.</p>
+<h4 data-t="t157">1. Identität</h4>
+<p><span class="ph" data-t="t158">[Firmenname] [AG / GmbH / Einzelfirma], [Adresse], UID CHE-000.000.000</span></p>
+<h4 data-t="t159">2. Status</h4>
+<p data-t="t160">Wir sind ungebundener Versicherungsvermittler (Broker). Wir handeln in Ihrem Auftrag und vermitteln Verträge verschiedener Versicherer. Wir sind keinem einzelnen Versicherer vertraglich zur ausschliesslichen Vermittlung verpflichtet.</p>
+<h4 data-t="t161">3. Vertragsbeziehungen zu Versicherern</h4>
+<p data-t="t162">Wir haben Courtage- und Zusammenarbeitsvereinbarungen mit mehreren Versicherern. Eine Liste der Versicherer, mit denen wir zusammenarbeiten, erhalten Sie auf Anfrage. <span class="ph">[Liste ergänzen oder auf Anfrage]</span></p>
+<h4 data-t="t163">4. Vergütung</h4>
+<p data-t="t164">Wir erhalten für die Vermittlung in der Regel eine Courtage vom Versicherer, die in der Prämie einkalkuliert ist. Alternativ vereinbaren wir mit Ihnen ein Honorar. Art und Höhe der Vergütung nennen wir Ihnen vor Abschluss des Mandats auf Anfrage in Franken oder in Prozent der Prämie. <span class="ph">[Vergütungsmodell des Kunden einsetzen]</span></p>
+<h4 data-t="t165">5. Registrierung und Aufsicht</h4>
+<p data-t="t166">Wir sind im Register der Versicherungsvermittler der FINMA unter der Nr. <span class="ph">XXXXXX</span> eingetragen. Das Register ist öffentlich einsehbar.</p>
+<h4 data-t="t167">6. Berufshaftpflicht</h4>
+<p data-t="t168">Wir verfügen über eine Berufshaftpflichtversicherung bzw. gleichwertige Sicherheiten gemäss den aufsichtsrechtlichen Vorgaben. <span class="ph">[Versicherer angeben]</span></p>
+<h4 data-t="t169">7. Streitbeilegung</h4>
+<p data-t="t170">Bei Meinungsverschiedenheiten wenden Sie sich zuerst an uns. Können wir keine Lösung finden, steht Ihnen die Ombudsstelle <span class="ph">[Name]</span> offen. Das Verfahren ist für Sie in der Regel kostenlos.</p>
+</div>
+</details>
+<details class="doc" id="datenschutz">
+<summary data-t="t171">Datenschutzerklärung <small>nDSG, in Kraft seit 1.9.2023</small></summary>
+<div class="doc-body">
+<h4 data-t="t172">1. Verantwortliche Stelle</h4>
+<p data-t="t173"><span class="ph">[Firmenname] [AG / GmbH / Einzelfirma], [Adresse], E-Mail [datenschutz@muster-broker.ch]</span>. Wir bearbeiten Personendaten nach dem Schweizer Bundesgesetz über den Datenschutz (DSG) und, soweit anwendbar, nach weiterem Datenschutzrecht.</p>
+<h4 data-t="t174">2. Welche Daten wir bearbeiten</h4>
+<ul>
+<li data-t="t175">Kontaktdaten wie Name, Adresse, Telefon, E-Mail</li>
+<li data-t="t176">Angaben zu Ihren Versicherungsverträgen, Risiken und Schäden</li>
+<li data-t="t177">Besonders schützenswerte Personendaten wie Gesundheitsdaten, nur soweit für die Beratung oder Vermittlung nötig und mit Ihrer ausdrücklichen Einwilligung</li>
+<li data-t="t178">Technische Daten beim Besuch der Webseite, zum Beispiel IP-Adresse und Zeitpunkt des Zugriffs</li>
+</ul>
+<h4 data-t="t179">3. Zwecke</h4>
+<p data-t="t180">Beantwortung von Anfragen, Beratung und Vermittlung von Versicherungen, Vertragsverwaltung und Schadenbegleitung, Erfüllung gesetzlicher und aufsichtsrechtlicher Pflichten, Betrieb und Sicherheit der Webseite.</p>
+<h4 data-t="t181">4. Weitergabe an Dritte</h4>
+<p data-t="t182">Wir geben Daten nur weiter, soweit es für Ihren Auftrag nötig ist, insbesondere an Versicherer, an Rückversicherer und Schadenregulierer sowie an IT- und Hosting-Dienstleister, die in unserem Auftrag handeln. Alle Empfänger sind zur Vertraulichkeit verpflichtet.</p>
+<h4 data-t="t183">5. Bekanntgabe ins Ausland</h4>
+<p data-t="t184">Wir bearbeiten Daten grundsätzlich in der Schweiz. Falls ein Dienstleister Daten in einem Land ohne angemessenes Datenschutzniveau bearbeitet, sichern wir dies durch geeignete Garantien, zum Beispiel Standardvertragsklauseln. <span class="ph">[Hosting-Standort und Dienstleister ergänzen]</span></p>
+<h4 data-t="t185">6. Aufbewahrung</h4>
+<p data-t="t186">Wir bewahren Daten so lange auf, wie es der Zweck erfordert oder gesetzliche Aufbewahrungsfristen es verlangen, in der Regel zehn Jahre für geschäftsrelevante Unterlagen. <span class="ph">[Fristen prüfen]</span></p>
+<h4 data-t="t187">7. Ihre Rechte</h4>
+<p data-t="t188">Sie können Auskunft über Ihre Daten verlangen, Berichtigung, Löschung oder Einschränkung der Bearbeitung beantragen, der Bearbeitung widersprechen und die Herausgabe Ihrer Daten in einem gängigen Format verlangen. Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Schreiben Sie dazu an die oben genannte Adresse, wir können einen Identitätsnachweis verlangen.</p>
+<h4 data-t="t189">8. Beschwerde</h4>
+<p data-t="t190">Sie können sich an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) wenden.</p>
+<h4 data-t="t191">9. Datensicherheit</h4>
+<p data-t="t192">Wir schützen Ihre Daten durch angemessene technische und organisatorische Massnahmen, zum Beispiel verschlüsselte Übertragung und Zugriffsbeschränkungen.</p>
+<h4 data-t="t193">10. Änderungen</h4>
+<p data-t="t194">Wir können diese Erklärung anpassen. Es gilt die jeweils auf der Webseite veröffentlichte Fassung. Stand: <span class="ph">[Datum]</span></p>
+</div>
+</details>
+<details class="doc" id="agb">
+<summary data-t="t195">Allgemeine Geschäftsbedingungen und Vermittlungsmandat <small>OR, VVG</small></summary>
+<div class="doc-body">
+<h4 data-t="t196">1. Geltungsbereich</h4>
+<p data-t="t197">Diese Bedingungen gelten für die Beratung und Vermittlung von Versicherungen durch <span class="ph">[Firmenname] [AG / GmbH / Einzelfirma]</span> (der Broker) gegenüber Privatpersonen und Unternehmen mit Sitz oder Wohnsitz in der Schweiz.</p>
+<h4 data-t="t198">2. Mandat und Vollmacht</h4>
+<p data-t="t199">Das Mandat kommt mit der schriftlichen Annahme zustande. Es berechtigt den Broker, im Namen der Kundin oder des Kunden Offerten einzuholen, Anträge zu stellen und mit Versicherern zu verkehren. Das Mandat unterliegt den Bestimmungen des Auftragsrechts (Art. 394 ff. OR).</p>
+<h4 data-t="t200">3. Pflichten der Kundschaft</h4>
+<p data-t="t201">Die Kundschaft gibt alle für die Risikobeurteilung erheblichen Tatsachen vollständig und wahrheitsgemäss an. Eine falsche oder unvollständige Angabe kann nach dem Versicherungsvertragsgesetz (vorvertragliche Anzeigepflicht, Art. 4 ff. VVG) zum Verlust des Versicherungsschutzes führen. Änderungen wie Umzug, neue Fahrzeuge oder Betriebsanpassungen sind uns unverzüglich zu melden.</p>
+<h4 data-t="t202">4. Pflichten des Brokers</h4>
+<p data-t="t203">Der Broker berät nach bestem Wissen und Gewissen, vergleicht die ihm zugänglichen Angebote und empfiehlt jene, die dem ermittelten Bedarf am besten entspricht. Er weist auf Ausschlüsse und Fristen hin. Der Vergleich beschränkt sich auf Versicherer, mit denen der Broker zusammenarbeitet oder von denen er Offerten erhalten kann.</p>
+<h4 data-t="t204">5. Vergütung</h4>
+<p data-t="t205">Die Vergütung erfolgt über Courtage des Versicherers oder über ein vorher schriftlich vereinbartes Honorar. Einzelheiten stehen in der Erstinformation und im Mandat. <span class="ph">[Konditionen und Stundensatz ergänzen]</span></p>
+<h4 data-t="t206">6. Haftung</h4>
+<p data-t="t207">Der Broker haftet für Schäden aus schuldhafter Verletzung seiner Pflichten. Die Haftung für leichte Fahrlässigkeit ist im gesetzlich zulässigen Rahmen ausgeschlossen. Für Entscheide und Leistungen der Versicherer haftet der Broker nicht. <span class="ph">[Haftungsregelung anwaltlich prüfen]</span></p>
+<h4 data-t="t208">7. Dauer und Beendigung</h4>
+<p data-t="t209">Das Mandat gilt unbefristet. Es kann von beiden Seiten jederzeit beendet werden (Art. 404 OR). Bereits entstandene Vergütungsansprüche bleiben bestehen.</p>
+<h4 data-t="t210">8. Anwendbares Recht und Gerichtsstand</h4>
+<p data-t="t211">Es gilt schweizerisches Recht. Gerichtsstand ist <span class="ph">[Ort des Sitzes]</span>, soweit nicht zwingende Gerichtsstände zum Schutz von Konsumentinnen und Konsumenten (Art. 32 ZPO) gelten.</p>
+</div>
+</details>
+<details class="doc" id="cookies">
+<summary data-t="t212">Cookies und Webanalyse <small>Art. 45c FMG</small></summary>
+<div class="doc-body">
+<p data-t="t213">Diese Webseite verwendet <span class="ph">[nur technisch notwendige Cookies / zusätzlich Analyse-Cookies von Anbieter X]</span>. Notwendige Cookies stellen den Betrieb der Seite sicher und lassen sich nicht abschalten. <span class="ph">[Falls Analyse oder Marketing eingesetzt wird: Zweck, Anbieter, Speicherdauer und Widerspruchsmöglichkeit angeben und eine Auswahl im Cookie-Banner anbieten.]</span></p>
+<p data-t="t214">Sie können Cookies in Ihrem Browser jederzeit blockieren oder löschen. Dann funktionieren einzelne Teile der Seite möglicherweise nicht mehr.</p>
+</div>
+</details>
+<details class="doc" id="beschwerde">
+<summary data-t="t215">Beschwerden und Ombudsstelle <small>Streitbeilegung</small></summary>
+<div class="doc-body">
+<p data-t="t216">Sind Sie mit unserer Beratung nicht zufrieden, schreiben Sie uns an <span class="ph">beschwerde@muster-broker.ch</span>. Wir bestätigen den Eingang innert fünf Arbeitstagen und antworten schriftlich.</p>
+<p data-t="t217">Kommen wir nicht zu einer Lösung, können Sie sich an die Ombudsstelle <span class="ph">[Name, Adresse, Webseite]</span> wenden. Das Verfahren ist vertraulich und für Privatpersonen in der Regel kostenlos. Der Rechtsweg bleibt Ihnen offen.</p>
+</div>
+</details>
+<div class="operator">
+<p class="label" data-t="t218">Nur für den Betreiber, vor Veröffentlichung entfernen</p>
+<h2 data-t="t219" style="margin-top:8px">Checkliste für den Livegang</h2>
+<ul>
+<li><input id="c1" type="checkbox"/><label data-t="t220" for="c1">FINMA-Eintragung vorhanden und Registernummer eingesetzt</label></li>
+<li><input id="c2" type="checkbox"/><label data-t="t221" for="c2">Berufshaftpflichtversicherung abgeschlossen und genannt</label></li>
+<li><input id="c3" type="checkbox"/><label data-t="t222" for="c3">Ombudsstelle gewählt und angeschlossen</label></li>
+<li><input id="c4" type="checkbox"/><label data-t="t223" for="c4">Firmendaten, UID und Handelsregister im Impressum geprüft</label></li>
+<li><input id="c5" type="checkbox"/><label data-t="t224" for="c5">Vergütungsmodell (Courtage oder Honorar) in Erstinformation und Mandat beschrieben</label></li>
+<li><input id="c6" type="checkbox"/><label data-t="t225" for="c6">Datenschutzerklärung an echte Dienstleister, Hosting und Tools angepasst</label></li>
+<li><input id="c7" type="checkbox"/><label data-t="t226" for="c7">Cookie-Hinweis nur so weit nötig eingebaut, nach Tracking-Einsatz</label></li>
+<li><input id="c8" type="checkbox"/><label data-t="t227" for="c8">Kontaktformular an echten Dienst angebunden, Daten in der Schweiz oder EU gehostet</label></li>
+<li><input id="c9" type="checkbox"/><label data-t="t228" for="c9">Alle Rechtstexte durch eine in der Schweiz zugelassene Rechtsperson geprüft</label></li>
+<li><input id="c10" type="checkbox"/><label data-t="t229" for="c10">Muster-Hinweis und gelbe Markierungen entfernt</label></li>
+<li><input id="c11" type="checkbox"/><label data-t="t230" for="c11">Französische und italienische Texte durch Muttersprachler und eine Rechtsperson prüfen lassen</label></li>
+<li><input id="c12" type="checkbox"/><label data-t="t231" for="c12">Werbeaussagen und Vergleiche auf Lauterkeit (UWG) geprüft</label></li>
+</ul>
+</div>
+</section>
+</main>
+<footer>
+<span data-t="t232">© 2026 <span class="ph">[Firmenname] [AG / GmbH / Einzelfirma]</span>, Schweiz</span>
+<nav aria-label="Rechtliches" data-a-aria-label="a06">
+<a data-open="impressum" data-t="t233" href="#impressum">Impressum</a>
+<a data-open="erstinformation" data-t="t234" href="#erstinformation">Erstinformation</a>
+<a data-open="datenschutz" data-t="t235" href="#datenschutz">Datenschutz</a>
+<a data-open="agb" data-t="t236" href="#agb">AGB</a>
+<a data-open="cookies" data-t="t237" href="#cookies">Cookies</a>
+<a data-open="beschwerde" data-t="t238" href="#beschwerde">Beschwerden</a>
+</nav>
+</footer>
+</div>
+<script>(function () {
+  var T = {"fr": {"t001": "Modèle de site pour un courtier en assurances suisse. <span class=\"ph\">Les passages surlignés en jaune<\/span> sont des champs à compléter avant la mise en ligne. Les textes juridiques ne remplacent pas l'examen par un spécialiste suisse.", "t003": "Courtier en assurances Suisse", "t004": "Prestations", "t005": "Déroulement", "t006": "À propos", "t007": "Informations juridiques", "t008": "Demander un conseil", "t009": "Pour les particuliers et les entreprises en Suisse", "t010": "Votre courtier en assurances indépendant. <em>Sans petits caractères.<\/em>", "t011": "Nous comparons les offres des assureurs suisses, vous expliquons les différences et suivons vos contrats jusqu'au sinistre. Le conseil ne vous coûte rien de plus ; notre rémunération est communiquée à l'avance.", "t012": "Demander un conseil", "t013": "Voir les prestations", "t014": "Statut", "t015": "Intermédiaire non lié", "t016": "Surveillance", "t017": "Registre de la FINMA <span class=\"ph\">n° XXXXXX<\/span>", "t018": "Langues", "x01": "Sites", "t020": "Démarrage rapide", "t021": "Que souhaitez-vous assurer ?", "t022": "Particulier", "t023": "Entreprise", "t024": "Choisir les thèmes", "t025": "Demander un conseil sur ces thèmes", "t026": "Sans engagement. Merci de ne pas saisir de données de santé dans le formulaire ; nous en parlerons lors de l'entretien.", "t027": "Ce que change un courtier pour vous", "t028": "Le conseiller d'un assureur vend les produits de cet assureur. Nous travaillons sur votre mandat et comparons l'ensemble du marché.", "t029": "Comparaison du marché plutôt que produit maison", "t030": "Nous demandons des offres à plusieurs assureurs suisses et mettons côte à côte prime, couverture, franchise et exclusions.", "t031": "Rémunération en toute transparence", "t032": "Nous sommes en règle générale rémunérés par la commission de courtage des assureurs, comprise dans la prime. Sur demande, nous facturons des honoraires à la place. Vous connaissez les deux modèles avant de commencer.", "t033": "Pas d'appels non sollicités", "t034": "Nous ne vous contactons que si vous nous avez écrit. En cas de sinistre, nous sommes votre interlocuteur auprès de l'assureur.", "t035": "Prestations", "t036": "Choisissez si vous faites votre demande en tant que particulier ou pour votre entreprise. Tous les montants sont indiqués en francs suisses.", "t037": "Clients privés", "t038": "Clients entreprises", "t039": "Santé", "t040": "Assurance-maladie et assurances complémentaires", "t041": "Assurance de base selon la LAMal avec franchise de CHF 300 à 2'500 et assurances complémentaires selon la LCA, comparées en fonction de vos frais de santé.", "t042": "Ménage", "t043": "Ménage et responsabilité civile privée", "t044": "Couverture en cas de cambriolage, d'incendie, de dégâts d'eau et de dommages causés à autrui. Nous vérifions la somme assurée et le risque de sous-assurance.", "t045": "Mobilité", "t046": "Véhicules à moteur", "t047": "Responsabilité civile obligatoire, casco partielle et complète, protection du bonus. Nous comparons primes et franchises des principaux assureurs.", "t048": "Prévoyance", "t049": "Piliers 3a et 3b et couverture des risques", "t050": "Prévoyance vieillesse, couverture en cas de décès et d'invalidité. Nous comparons compte bancaire, fonds et police, sans pression pour conclure.", "t051": "Logement", "t052": "Bâtiment et propriété du logement", "t053": "Assurance bâtiment, dégâts d'eau, installations solaires et agrandissements. Nous clarifions quelle couverture est prescrite au niveau cantonal.", "t054": "Protection", "t055": "Protection juridique et voyages", "t056": "Protection juridique privée, circulation et bail, ainsi qu'assurance voyage. Nous vous expliquons brièvement quelle couverture convient à votre quotidien.", "t057": "Exploitation", "t058": "Responsabilité civile d'entreprise", "t059": "Couvre les dommages corporels, matériels et financiers que votre entreprise cause à des tiers. Calculée selon la branche, pas selon un schéma.", "t060": "Valeurs matérielles", "t061": "Choses et pertes d'exploitation", "t062": "Inventaire, machines, marchandises et perte de gain après un sinistre. Nous vérifions les sommes assurées et les délais d'attente.", "t063": "Personnel", "t064": "Accidents (LAA) et indemnités journalières maladie", "t065": "Assurance-accidents obligatoire selon la LAA, couverture complémentaire LAAC et indemnités journalières maladie pour vos collaborateurs. Pour les propriétaires d'entreprise, nous étudions des solutions facultatives.", "t066": "Prévoyance", "t067": "Prévoyance professionnelle (LPP)", "t068": "Solutions de caisse de pension comparées, contrats d'affiliation et conseil sur les prestations et les frais d'administration pour votre équipe.", "t069": "Véhicules", "t070": "Assurance de flotte et de transport", "t071": "Véhicules d'entreprise, transport de marchandises et transports pour compte propre dans un concept coordonné plutôt que de nombreuses polices isolées.", "t072": "Risques", "t073": "Cyber, D&amp;O et protection juridique", "t074": "Perte de données, extorsion par logiciel malveillant, responsabilité de la direction et protection juridique d'entreprise, avec une recommandation claire de ce qui est judicieux pour votre taille.", "t075": "Les délais que nous surveillons pour vous", "t076": "Qui résilie trop tard paie une année de plus. Exemples typiques ; les délais exacts figurent dans votre police. <span class=\"ph\">À faire vérifier par un spécialiste avant la publication.<\/span>", "t077": "Assurance de base", "t078": "Changement de caisse-maladie en règle générale au 31 décembre. La résiliation doit parvenir à l'assureur au plus tard le 30 novembre.", "t079": "Contrats pluriannuels", "t080": "Les polices choses et responsabilité civile durent souvent de trois à cinq ans et se renouvellent tacitement. La résiliation se fait en général trois mois avant l'échéance.", "t081": "Hausse de prime", "t082": "En cas de hausse, un droit de résiliation extraordinaire existe selon le contrat. Le délai est court ; c'est pourquoi nous vous contactons dès que votre courrier arrive.", "t083": "Comment se déroule le conseil", "t084": "Quatre étapes, dans cet ordre. Entre deux étapes, c'est vous qui décidez de continuer ou non.", "t085": "Demande et information initiale", "t086": "Vous nous exposez votre besoin. Avant le conseil, vous recevez nos indications sur notre statut, notre rémunération et la surveillance.", "t087": "Mandat", "t088": "Avec votre signature au bas du mandat de courtage, nous pouvons demander des offres et consulter vos contrats existants.", "t089": "Comparaison et recommandation", "t090": "Vous recevez un comparatif accompagné de notre recommandation motivée. La décision vous appartient.", "t091": "Conclusion et suivi", "t092": "Nous vous accompagnons lors de la conclusion, vous aidons pour les déclarations de sinistre et contrôlons régulièrement vos contrats. Pour les propositions, le droit légal de révocation de 14 jours s'applique (art. 2a LCA).", "t093": "À propos", "t094": "Du conseil pour des personnes qui doivent prendre des décisions", "t095": "<span class=\"ph\">[Nom de l'entreprise]<\/span> conseille depuis <span class=\"ph\">[année]<\/span> des particuliers et des entreprises dans <span class=\"ph\">[région/cantons]<\/span>. Nous sommes une petite équipe titulaire du brevet fédéral dans le domaine de l'assurance et connaissons par la pratique les produits des grands assureurs suisses.", "t096": "[Court paragraphe sur l'histoire, les valeurs et la collaboration avec les fiduciaires et les banques.]", "t097": "Enregistrement et surveillance", "t098": "Registre des intermédiaires", "t099": "Inscrit au registre des intermédiaires d'assurance de la FINMA sous le n° <span class=\"ph\">XXXXXX<\/span>", "t100": "Statut", "t101": "Intermédiaire non lié (courtier)", "t102": "Responsabilité civile professionnelle", "t103": "[Assureur, n° de police]", "t104": "Organe de médiation", "t105": "Affilié à <span class=\"ph\">[nom de l'organe de médiation]<\/span>", "t106": "Association professionnelle", "t107": "[Si membre, indiquer l'association]", "t108": "Contact", "t109": "Demander un conseil", "t110": "Nous vous répondons dans un délai d'un jour ouvrable, par e-mail ou par téléphone, comme vous le souhaitez.", "t111": "Bureau", "t112": "[Rue n°], [NPA localité]", "t113": "Téléphone", "t117": "Joignable", "t118": "Lu au ve, 08h00 à 17h30", "t119": "Je fais ma demande en tant que", "t120": "Particulier", "t121": "Entreprise", "t122": "Nom ou entreprise", "t123": "Téléphone ou e-mail", "t124": "Votre demande", "t125": "J'ai lu la <a data-open=\"datenschutz\" href=\"#datenschutz\">déclaration de protection des données<\/a> et l'<a data-open=\"erstinformation\" href=\"#erstinformation\">information initiale<\/a> et j'accepte que mes données soient traitées pour répondre à ma demande.", "t126": "Envoyer la demande", "t127": "Informations juridiques", "t128": "Indications obligatoires selon le droit suisse. Cliquez sur un titre pour ouvrir le texte.", "t129": "<strong style=\"color:var(--ink)\">Remarque sur le modèle :<\/strong> les textes suivants sont un projet établi selon l'état du droit suisse tel qu'il s'applique usuellement aux intermédiaires d'assurance. Ils doivent être adaptés à l'entreprise concernée et vérifiés avant publication par un juriste autorisé en Suisse.", "t130": "Mentions légales <small>Art. 3 al. 1 let. s LCD<\/small>", "t131": "Raison sociale", "t132": "<span class=\"ph\">[Nom de l'entreprise] [SA / Sàrl / raison individuelle]<\/span>", "t133": "Siège et adresse", "t134": "[Rue n°], [NPA localité], Suisse", "t135": "Forme juridique", "t136": "Société anonyme / Sàrl / Entreprise individuelle", "t137": "IDE", "t138": "<span class=\"ph\">CHE-000.000.000<\/span>, registre du commerce du canton de <span class=\"ph\">[canton]<\/span>", "t139": "N° TVA", "t140": "<span class=\"ph\">CHE-000.000.000 TVA<\/span> (uniquement si assujetti à la TVA)", "t141": "Représentation", "t142": "[Nom], directeur/directrice ou titulaire", "t143": "Contact", "t144": "Téléphone <span class=\"ph\">+41 00 000 00 00<\/span>, e-mail <span class=\"ph\">kontakt@muster-broker.ch<\/span>", "t145": "Enregistrement", "t146": "Registre des intermédiaires d'assurance de la FINMA, n° <span class=\"ph\">XXXXXX<\/span>", "t147": "Responsabilité civile professionnelle", "t148": "[Assureur, n° de police]", "t149": "Organe de médiation", "t150": "[Nom et adresse de l'organe de médiation]", "t151": "Exclusion de responsabilité", "t152": "Les contenus de ce site servent à l'information générale ; ils ne constituent ni une offre ni un conseil individuel. Nous les élaborons avec soin, mais n'offrons aucune garantie quant à leur exactitude, leur exhaustivité et leur actualité. Les exploitants des sites tiers vers lesquels renvoient des liens sont responsables de leurs contenus.", "t153": "Droits d'auteur", "t154": "Les textes, images et la conception de ce site sont protégés par le droit d'auteur. Toute utilisation dépassant ce que la loi permet requiert notre accord écrit.", "t155": "Information initiale à la clientèle <small>Art. 45 LSA<\/small>", "t156": "En tant qu'intermédiaire d'assurance, nous vous informons lors du premier contact sur les points suivants. Vous recevez ces indications avant le conseil également par écrit ou sous une autre forme textuelle.", "t157": "1. Identité", "t158": "[Nom de l'entreprise] [SA / Sàrl / raison individuelle], [adresse], IDE CHE-000.000.000", "t159": "2. Statut", "t160": "Nous sommes intermédiaire d'assurance non lié (courtier). Nous agissons sur votre mandat et proposons des contrats de plusieurs assureurs. Nous ne sommes liés contractuellement à aucun assureur pour une intermédiation exclusive.", "t161": "3. Relations contractuelles avec les assureurs", "t162": "Nous avons des conventions de courtage et de collaboration avec plusieurs assureurs. Vous recevez sur demande la liste des assureurs avec lesquels nous collaborons. <span class=\"ph\">[Compléter la liste ou indiquer « sur demande »]<\/span>", "t163": "4. Rémunération", "t164": "Pour notre activité d'intermédiation, nous recevons en règle générale une commission de courtage de l'assureur, comprise dans la prime. Nous pouvons aussi convenir avec vous d'honoraires. Nous vous indiquons, sur demande, le type et le montant de la rémunération avant la conclusion du mandat, en francs ou en pourcentage de la prime. <span class=\"ph\">[Insérer le modèle de rémunération du client]<\/span>", "t165": "5. Enregistrement et surveillance", "t166": "Nous sommes inscrits au registre des intermédiaires d'assurance de la FINMA sous le n° <span class=\"ph\">XXXXXX<\/span>. Le registre est accessible au public.", "t167": "6. Responsabilité civile professionnelle", "t168": "Nous disposons d'une assurance responsabilité civile professionnelle ou de sûretés équivalentes conformément aux exigences prudentielles. <span class=\"ph\">[Indiquer l'assureur]<\/span>", "t169": "7. Règlement des litiges", "t170": "En cas de différend, adressez-vous d'abord à nous. Si nous ne trouvons pas de solution, l'organe de médiation <span class=\"ph\">[nom]<\/span> vous est ouvert. La procédure est en règle générale gratuite pour vous.", "t171": "Déclaration de protection des données <small>nLPD, en vigueur depuis le 1.9.2023<\/small>", "t172": "1. Responsable du traitement", "t173": "<span class=\"ph\">[Nom de l'entreprise] [SA / Sàrl / raison individuelle], [adresse], e-mail [datenschutz@muster-broker.ch]<\/span>. Nous traitons les données personnelles conformément à la loi fédérale sur la protection des données (LPD) et, dans la mesure applicable, à d'autres dispositions en matière de protection des données.", "t174": "2. Données que nous traitons", "t175": "Coordonnées telles que nom, adresse, téléphone, e-mail", "t176": "Indications sur vos contrats d'assurance, vos risques et vos sinistres", "t177": "Données personnelles sensibles, telles que les données de santé, uniquement dans la mesure nécessaire au conseil ou à l'intermédiation et avec votre consentement explicite", "t178": "Données techniques lors de la visite du site, par exemple l'adresse IP et l'heure de l'accès", "t179": "3. Finalités", "t180": "Réponse aux demandes, conseil et intermédiation en assurances, gestion des contrats et accompagnement en cas de sinistre, respect des obligations légales et prudentielles, exploitation et sécurité du site.", "t181": "4. Communication à des tiers", "t182": "Nous ne transmettons des données que dans la mesure nécessaire à votre mandat, notamment aux assureurs, aux réassureurs et aux gestionnaires de sinistres, ainsi qu'aux prestataires informatiques et d'hébergement agissant pour notre compte. Tous les destinataires sont tenus à la confidentialité.", "t183": "5. Communication à l'étranger", "t184": "En principe, nous traitons les données en Suisse. Si un prestataire traite des données dans un pays dépourvu d'un niveau de protection adéquat, nous le garantissons par des mesures appropriées, par exemple des clauses contractuelles types. <span class=\"ph\">[Compléter le lieu d'hébergement et les prestataires]<\/span>", "t185": "6. Conservation", "t186": "Nous conservons les données aussi longtemps que la finalité l'exige ou que des obligations légales de conservation l'imposent, en règle générale dix ans pour les documents commerciaux. <span class=\"ph\">[Vérifier les délais]<\/span>", "t187": "7. Vos droits", "t188": "Vous pouvez demander l'accès à vos données, solliciter leur rectification, leur effacement ou la limitation de leur traitement, vous opposer au traitement et demander la remise de vos données dans un format courant. Vous pouvez révoquer à tout moment un consentement donné, avec effet pour l'avenir. Écrivez-nous pour cela à l'adresse indiquée ci-dessus ; nous pouvons exiger une preuve d'identité.", "t189": "8. Réclamation", "t190": "Vous pouvez vous adresser au Préposé fédéral à la protection des données et à la transparence (PFPDT).", "t191": "9. Sécurité des données", "t192": "Nous protégeons vos données par des mesures techniques et organisationnelles appropriées, par exemple une transmission chiffrée et des restrictions d'accès.", "t193": "10. Modifications", "t194": "Nous pouvons adapter la présente déclaration. La version publiée sur le site fait foi. État au : <span class=\"ph\">[date]<\/span>", "t195": "Conditions générales et mandat de courtage <small>CO, LCA<\/small>", "t196": "1. Champ d'application", "t197": "Les présentes conditions s'appliquent au conseil et à l'intermédiation en assurances fournis par <span class=\"ph\">[Nom de l'entreprise] [SA / Sàrl / raison individuelle]<\/span> (le courtier) à des particuliers et à des entreprises ayant leur siège ou leur domicile en Suisse.", "t198": "2. Mandat et procuration", "t199": "Le mandat est conclu par acceptation écrite. Il autorise le courtier à demander des offres au nom de la cliente ou du client, à déposer des propositions et à communiquer avec les assureurs. Le mandat est soumis aux dispositions du droit du mandat (art. 394 ss CO).", "t200": "3. Obligations de la clientèle", "t201": "La clientèle indique de manière complète et conforme à la vérité tous les faits importants pour l'appréciation du risque. Une indication inexacte ou incomplète peut entraîner la perte de la couverture d'assurance selon la loi sur le contrat d'assurance (réticence, art. 4 ss LCA). Les changements tels qu'un déménagement, de nouveaux véhicules ou des modifications dans l'entreprise doivent nous être annoncés sans délai.", "t202": "4. Obligations du courtier", "t203": "Le courtier conseille en toute bonne foi et au mieux de ses connaissances, compare les offres qui lui sont accessibles et recommande celles qui correspondent le mieux au besoin identifié. Il signale les exclusions et les délais. La comparaison se limite aux assureurs avec lesquels le courtier collabore ou dont il peut obtenir des offres.", "t204": "5. Rémunération", "t205": "La rémunération est versée sous forme de commission de courtage de l'assureur ou d'honoraires convenus préalablement par écrit. Les détails figurent dans l'information initiale et dans le mandat. <span class=\"ph\">[Compléter les conditions et le tarif horaire]<\/span>", "t206": "6. Responsabilité", "t207": "Le courtier répond des dommages résultant d'une violation fautive de ses obligations. La responsabilité pour faute légère est exclue dans la mesure permise par la loi. Le courtier ne répond pas des décisions et des prestations des assureurs. <span class=\"ph\">[Faire vérifier la clause de responsabilité par un avocat]<\/span>", "t208": "7. Durée et fin", "t209": "Le mandat est de durée indéterminée. Il peut être résilié en tout temps par chacune des parties (art. 404 CO). Les droits à rémunération déjà nés subsistent.", "t210": "8. Droit applicable et for", "t211": "Le droit suisse est applicable. Le for est à <span class=\"ph\">[lieu du siège]<\/span>, sauf si des fors impératifs de protection des consommateurs s'appliquent (art. 32 CPC).", "t212": "Cookies et analyse web <small>Art. 45c LTC<\/small>", "t213": "Ce site utilise <span class=\"ph\">[uniquement des cookies techniquement nécessaires / en plus des cookies d'analyse du fournisseur X]<\/span>. Les cookies nécessaires assurent le fonctionnement du site et ne peuvent pas être désactivés. <span class=\"ph\">[Si analyse ou marketing : indiquer la finalité, le fournisseur, la durée de conservation et la possibilité de s'opposer, et proposer un choix dans la bannière de cookies.]<\/span>", "t214": "Vous pouvez bloquer ou supprimer les cookies à tout moment dans votre navigateur. Certaines parties du site risquent alors de ne plus fonctionner.", "t215": "Réclamations et organe de médiation <small>Règlement des litiges<\/small>", "t216": "Si vous n'êtes pas satisfait de notre conseil, écrivez-nous à <span class=\"ph\">beschwerde@muster-broker.ch<\/span>. Nous accusons réception dans les cinq jours ouvrables et répondons par écrit.", "t217": "Si nous ne parvenons pas à une solution, vous pouvez vous adresser à l'organe de médiation <span class=\"ph\">[nom, adresse, site web]<\/span>. La procédure est confidentielle et, pour les particuliers, en règle générale gratuite. La voie judiciaire vous reste ouverte.", "t218": "Réservé à l'exploitant, à supprimer avant la publication", "t219": "Liste de contrôle avant la mise en ligne", "t220": "Inscription auprès de la FINMA obtenue et numéro de registre inséré", "t221": "Assurance responsabilité civile professionnelle conclue et mentionnée", "t222": "Organe de médiation choisi et affiliation effectuée", "t223": "Données de l'entreprise, IDE et registre du commerce vérifiés dans les mentions légales", "t224": "Modèle de rémunération (courtage ou honoraires) décrit dans l'information initiale et le mandat", "t225": "Déclaration de protection des données adaptée aux prestataires, à l'hébergement et aux outils réels", "t226": "Avis sur les cookies intégré uniquement dans la mesure nécessaire, selon l'usage de traceurs", "t227": "Formulaire de contact relié à un service réel, données hébergées en Suisse ou dans l'UE", "t228": "Tous les textes juridiques vérifiés par un juriste autorisé en Suisse", "t229": "Avis de modèle et surlignages jaunes supprimés", "t230": "Textes français et italiens relus par des locuteurs natifs et par un juriste", "t231": "Allégations publicitaires et comparaisons vérifiées au regard de la loyauté (LCD)", "t232": "© 2026 <span class=\"ph\">[Nom de l'entreprise] [SA / Sàrl / raison individuelle]<\/span>, Suisse", "t233": "Mentions légales", "t234": "Information initiale", "t235": "Protection des données", "t236": "CG", "t237": "Cookies", "t238": "Réclamations", "x40": "Module", "x41": "Domaine", "x42": "Utilité", "x43": "État", "x44": "Niveau", "x45": "Automatisation des demandes", "x46": "La demande arrive aussitôt dans le CRM ou la boîte de réception, avec accusé de réception et suivi", "x47": "Économies", "x48": "Proposé", "x49": "Niveau 1", "x50": "Agent de délais et de rappels", "x51": "Signale les délais de résiliation et de changement au bureau et à la clientèle, davantage de conclusions à l'échéance", "x52": "À développer", "x53": "Automatisation des documents", "x54": "Information initiale, mandat de courtage et procès-verbal de conseil préremplis à partir des données clients", "x55": "Prise de rendez-vous", "x56": "Choisir directement un créneau au lieu d'échanger des e-mails", "x57": "Confort d'utilisation", "x58": "Check des besoins en ligne", "x59": "Un court questionnaire mène aux thèmes pertinents et à la demande", "x60": "Base existante, adaptation nécessaire", "x61": "Chat sur le site", "x62": "Répond aux questions courantes, recueille des données, sans conseil", "x63": "Prévu", "x64": "Niveau 2", "x65": "Assistant téléphonique", "x66": "Prend les appels hors des heures de bureau et convient d'un rappel", "x67": "Espace client avec connexion", "x68": "Contrats, documents et déclaration de sinistre au même endroit, avec téléversement et téléchargement", "x69": "Photographier ou téléverser la police", "x70": "Les données clés d'une police existante sont lues, sans saisie manuelle", "x71": "Déclaration de sinistre avec photos", "x72": "Formulaire structuré qui arrive chez le bon assureur", "x73": "FAQ et chat en langage simple", "x74": "Qu'est-ce qu'un courtier, combien cela coûte, comment se déroule un sinistre", "x75": "IA pour les réseaux sociaux", "x76": "Publications et courtes vidéos avec validation, remplace l'agence ou le travail interne", "x77": "Niveau 3", "x78": "Indicateurs du bureau", "x79": "Demandes, délai de réponse, conclusions par canal", "x80": "Interne", "x81": "Prévu, transformation nécessaire", "x82": "Agent de contrôle", "x83": "Vérifie avant la publication que les mentions obligatoires comme le numéro de registre et l'information initiale sont complètes", "x84": "Qualité", "x85": "Agent d'escalade", "x86": "Transmet automatiquement les cas difficiles ou sensibles à une personne", "x87": "Concept établi, mise en œuvre ouverte", "x88": "Agent de sécurité", "x89": "Surveille les formulaires et les téléversements (données de santé et de contrat)", "x90": "Sécurité", "x91": "Rapport d'état hebdomadaire", "x92": "Nouvelles demandes, rappels en suspens et délais à venir sur une page", "x93": "Souhaité, démarrage ouvert", "x94": "Modules numériques pour votre cabinet de courtage", "x95": "Liste de référence : ces modules de Secret 58 peuvent être raccordés à ce site pour réduire les coûts et améliorer l'utilisation. Le niveau 1 est le départ recommandé. Étendue et prix sur demande.", "x96": "Limites d'utilisation", "x97": "L'IA ne remplace ni le conseil ni la recommandation. Les obligations à ce sujet restent à votre équipe.", "x98": "Pour les données de santé, le chat et le téléphone, la déclaration de protection des données, le consentement et le traitement par un sous-traitant sont à adapter selon la nLPD.", "x99": "Ne promettez pas d'économies en francs tant qu'aucun chiffre de la clientèle n'est disponible.", "x100": "À faire vérifier par un spécialiste avant la mise en ligne.", "x101": "En savoir plus sur Secret 58"}, "it": {"t001": "Modello di sito per un broker assicurativo svizzero. <span class=\"ph\">I passaggi evidenziati in giallo<\/span> sono segnaposto da sostituire prima della messa online. I testi giuridici non sostituiscono la verifica da parte di un professionista svizzero.", "t003": "Broker assicurativo Svizzera", "t004": "Prestazioni", "t005": "Svolgimento", "t006": "Chi siamo", "t007": "Informazioni giuridiche", "t008": "Richiedere una consulenza", "t009": "Per privati e aziende in Svizzera", "t010": "Il Suo broker assicurativo indipendente. <em>Senza clausole nascoste.<\/em>", "t011": "Confrontiamo le offerte degli assicuratori svizzeri, Le spieghiamo le differenze e seguiamo i Suoi contratti fino al sinistro. La consulenza non Le costa nulla in più; la nostra rimunerazione Le viene comunicata in anticipo.", "t012": "Richiedere una consulenza", "t013": "Vedere le prestazioni", "t014": "Statuto", "t015": "Intermediario non vincolato", "t016": "Vigilanza", "t017": "Registro FINMA <span class=\"ph\">n. XXXXXX<\/span>", "t018": "Lingue", "x01": "Sedi", "t020": "Avvio rapido", "t021": "Che cosa desidera assicurare?", "t022": "Privato", "t023": "Azienda", "t024": "Selezionare i temi", "t025": "Richiedere consulenza su questi temi", "t026": "Senza impegno. La preghiamo di non inserire dati sanitari nel modulo; ne parleremo durante il colloquio.", "t027": "Che cosa cambia con un broker", "t028": "Il consulente di un singolo assicuratore vende i prodotti di quell'assicuratore. Noi lavoriamo su Suo incarico e confrontiamo l'intero mercato.", "t029": "Confronto del mercato invece del prodotto della casa", "t030": "Richiediamo offerte a più assicuratori svizzeri e mettiamo a confronto premio, copertura, franchigia ed esclusioni.", "t031": "Rimunerazione a carte scoperte", "t032": "Di regola siamo retribuiti con la provvigione degli assicuratori, inclusa nel premio. Su richiesta fatturiamo invece un onorario. Lei conosce entrambe le modalità prima di iniziare.", "t033": "Nessuna telefonata non richiesta", "t034": "La contattiamo solo se si è rivolto a noi. In caso di sinistro siamo il Suo interlocutore nei confronti dell'assicuratore.", "t035": "Prestazioni", "t036": "Scelga se fa la richiesta come privato o per la Sua azienda. Tutti gli importi sono indicati in franchi svizzeri.", "t037": "Clienti privati", "t038": "Clienti aziendali", "t039": "Salute", "t040": "Cassa malati e assicurazioni complementari", "t041": "Assicurazione di base secondo la LAMal con franchigia da CHF 300 a 2'500 e assicurazioni complementari secondo la LCA a confronto, in funzione dei Suoi costi sanitari.", "t042": "Economia domestica", "t043": "Mobilia domestica e responsabilità civile privata", "t044": "Copertura per furto con scasso, incendio, danni d'acqua e danni che causa ad altri. Verifichiamo la somma assicurata e il rischio di sottoassicurazione.", "t045": "Mobilità", "t046": "Veicoli a motore", "t047": "Responsabilità civile obbligatoria, casco parziale e totale, protezione del bonus. Confrontiamo premi e franchigie dei principali assicuratori.", "t048": "Previdenza", "t049": "Pilastri 3a e 3b e copertura dei rischi", "t050": "Previdenza per la vecchiaia, copertura in caso di decesso e invalidità. Mettiamo a confronto conto bancario, fondi e polizza, senza pressioni a concludere.", "t051": "Abitazione", "t052": "Stabili e proprietà abitativa", "t053": "Assicurazione stabili, danni d'acqua, impianti solari e ampliamenti. Chiariamo quale copertura è prescritta a livello cantonale.", "t054": "Protezione", "t055": "Protezione giuridica e viaggi", "t056": "Protezione giuridica privata, della circolazione e della locazione, nonché assicurazione viaggi. Spieghiamo in breve quale copertura è adatta alla Sua quotidianità.", "t057": "Azienda", "t058": "Responsabilità civile aziendale", "t059": "Copre i danni a persone, cose e patrimoniali che la Sua azienda causa a terzi. Calcolata in base al settore, non secondo uno schema.", "t060": "Beni materiali", "t061": "Cose e interruzione d'esercizio", "t062": "Inventario, macchinari, merci e perdita di guadagno dopo un danno. Verifichiamo le somme assicurate e i periodi di carenza.", "t063": "Personale", "t064": "Infortuni (LAINF) e indennità giornaliera di malattia", "t065": "Assicurazione infortuni obbligatoria secondo la LAINF, copertura complementare alla LAINF e indennità giornaliera di malattia per i Suoi collaboratori. Per i titolari valutiamo soluzioni facoltative.", "t066": "Previdenza", "t067": "Previdenza professionale (LPP)", "t068": "Soluzioni di cassa pensione a confronto, contratti di affiliazione e consulenza su prestazioni e costi amministrativi per il Suo team.", "t069": "Veicoli", "t070": "Assicurazione flotte e trasporti", "t071": "Veicoli aziendali, trasporto di merci e traffico interno all'azienda in un concetto coordinato invece di molte polizze singole.", "t072": "Rischi", "t073": "Cyber, D&amp;O e protezione giuridica", "t074": "Perdita di dati, ricatti tramite software dannoso, responsabilità della direzione e protezione giuridica aziendale, con una raccomandazione chiara su ciò che è sensato per le Sue dimensioni.", "t075": "Le scadenze che teniamo d'occhio per Lei", "t076": "Chi disdice troppo tardi paga un anno in più. Esempi tipici; le scadenze esatte figurano nella Sua polizza. <span class=\"ph\">Da far verificare da un professionista prima della pubblicazione.<\/span>", "t077": "Assicurazione di base", "t078": "Il cambio di cassa malati avviene di regola al 31 dicembre. La disdetta deve pervenire all'assicuratore entro il 30 novembre.", "t079": "Contratti pluriennali", "t080": "Le polizze cose e di responsabilità civile durano spesso da tre a cinque anni e si rinnovano tacitamente. Di regola si disdice tre mesi prima della scadenza.", "t081": "Aumento del premio", "t082": "In caso di aumento, a seconda del contratto esiste un diritto di disdetta straordinario. Il termine è breve: per questo ci attiviamo non appena arriva la Sua posta.", "t083": "Come si svolge la consulenza", "t084": "Quattro passi, in quest'ordine. Tra un passo e l'altro decide Lei se proseguire.", "t085": "Richiesta e informazione iniziale", "t086": "Lei ci espone la Sua esigenza. Prima della consulenza riceve le nostre indicazioni su statuto, rimunerazione e vigilanza.", "t087": "Mandato", "t088": "Con la Sua firma sul mandato di intermediazione possiamo richiedere offerte e consultare i Suoi contratti esistenti.", "t089": "Confronto e raccomandazione", "t090": "Riceve un confronto con la nostra raccomandazione motivata. La decisione spetta a Lei.", "t091": "Conclusione e assistenza", "t092": "La accompagniamo nella conclusione, La aiutiamo nelle notifiche di sinistro e verifichiamo regolarmente i Suoi contratti. Per le proposte vale il diritto legale di revoca di 14 giorni (art. 2a LCA).", "t093": "Chi siamo", "t094": "Consulenza per persone che devono prendere decisioni", "t095": "<span class=\"ph\">[Nome dell'azienda]<\/span> consiglia dal <span class=\"ph\">[anno]<\/span> privati e aziende in <span class=\"ph\">[regione/cantoni]<\/span>. Siamo un piccolo team con attestato professionale federale nel settore assicurativo e conosciamo per esperienza diretta i prodotti dei grandi assicuratori svizzeri.", "t096": "[Breve paragrafo sulla storia, sui valori e sulla collaborazione con fiduciari e banche.]", "t097": "Registrazione e vigilanza", "t098": "Registro degli intermediari", "t099": "Iscritto nel registro degli intermediari assicurativi della FINMA con il n. <span class=\"ph\">XXXXXX<\/span>", "t100": "Statuto", "t101": "Intermediario non vincolato (broker)", "t102": "Responsabilità civile professionale", "t103": "[Assicuratore, n. di polizza]", "t104": "Organo di mediazione", "t105": "Affiliato a <span class=\"ph\">[nome dell'organo di mediazione]<\/span>", "t106": "Associazione di categoria", "t107": "[Se membro, indicare l'associazione]", "t108": "Contatto", "t109": "Richiedere una consulenza", "t110": "Ci facciamo vivi entro un giorno lavorativo, per e-mail o per telefono, come preferisce.", "t111": "Ufficio", "t112": "[Via n.], [NPA località]", "t113": "Telefono", "t117": "Raggiungibilità", "t118": "Lun–ven 08:00–17:30", "t119": "Faccio la richiesta come", "t120": "Privato", "t121": "Azienda", "t122": "Nome o azienda", "t123": "Telefono o e-mail", "t124": "La Sua richiesta", "t125": "Ho letto l'<a data-open=\"datenschutz\" href=\"#datenschutz\">informativa sulla protezione dei dati<\/a> e l'<a data-open=\"erstinformation\" href=\"#erstinformation\">informazione iniziale<\/a> e acconsento al trattamento dei miei dati per rispondere alla richiesta.", "t126": "Inviare la richiesta", "t127": "Informazioni giuridiche", "t128": "Indicazioni obbligatorie secondo il diritto svizzero. Clicchi su un titolo per aprire il testo.", "t129": "<strong style=\"color:var(--ink)\">Nota sul modello:<\/strong> i testi seguenti sono una bozza secondo lo stato del diritto svizzero, quale si applica di regola agli intermediari assicurativi. Devono essere adattati all'azienda concreta e verificati prima della pubblicazione da un giurista autorizzato in Svizzera.", "t130": "Impressum <small>Art. 3 cpv. 1 lett. s LCSl<\/small>", "t131": "Ditta", "t132": "<span class=\"ph\">[Nome dell'azienda] [SA / Sagl / ditta individuale]<\/span>", "t133": "Sede e indirizzo", "t134": "[Via n.], [NPA località], Svizzera", "t135": "Forma giuridica", "t136": "Società anonima / Sagl / Ditta individuale", "t137": "IDI", "t138": "<span class=\"ph\">CHE-000.000.000<\/span>, registro di commercio del Cantone <span class=\"ph\">[Cantone]<\/span>", "t139": "N. IVA", "t140": "<span class=\"ph\">CHE-000.000.000 IVA<\/span> (solo se assoggettato all'IVA)", "t141": "Rappresentanza", "t142": "[Nome], direttore/direttrice o titolare", "t143": "Contatto", "t144": "Telefono <span class=\"ph\">+41 00 000 00 00<\/span>, e-mail <span class=\"ph\">kontakt@muster-broker.ch<\/span>", "t145": "Registrazione", "t146": "Registro degli intermediari assicurativi della FINMA, n. <span class=\"ph\">XXXXXX<\/span>", "t147": "Responsabilità civile professionale", "t148": "[Assicuratore, n. di polizza]", "t149": "Organo di mediazione", "t150": "[Nome e indirizzo dell'organo di mediazione]", "t151": "Esclusione di responsabilità", "t152": "I contenuti di questo sito servono all'informazione generale e non costituiscono né un'offerta né una consulenza individuale. Li redigiamo con cura, ma non garantiamo correttezza, completezza e attualità. Per i contenuti dei siti di terzi collegati sono responsabili i rispettivi gestori.", "t153": "Diritto d'autore", "t154": "Testi, immagini e impostazione grafica di questo sito sono protetti dal diritto d'autore. Un utilizzo oltre i limiti consentiti dalla legge richiede il nostro consenso scritto.", "t155": "Informazione iniziale per la clientela <small>Art. 45 LSA<\/small>", "t156": "In quanto intermediario assicurativo, al primo contatto Le forniamo le informazioni seguenti. Riceve queste indicazioni prima della consulenza anche per scritto o in altra forma testuale.", "t157": "1. Identità", "t158": "[Nome dell'azienda] [SA / Sagl / ditta individuale], [indirizzo], IDI CHE-000.000.000", "t159": "2. Statuto", "t160": "Siamo intermediari assicurativi non vincolati (broker). Agiamo su Suo incarico e intermediamo contratti di diversi assicuratori. Non siamo vincolati contrattualmente a un singolo assicuratore per l'intermediazione in esclusiva.", "t161": "3. Rapporti contrattuali con gli assicuratori", "t162": "Abbiamo accordi di corretaggio e di collaborazione con diversi assicuratori. Su richiesta riceve l'elenco degli assicuratori con cui collaboriamo. <span class=\"ph\">[Completare l'elenco o indicare «su richiesta»]<\/span>", "t163": "4. Rimunerazione", "t164": "Per l'intermediazione riceviamo di regola una provvigione dall'assicuratore, inclusa nel premio. In alternativa concordiamo con Lei un onorario. Natura e importo della rimunerazione Le vengono comunicati, su richiesta, prima della conclusione del mandato, in franchi o in percentuale del premio. <span class=\"ph\">[Inserire il modello di rimunerazione del cliente]<\/span>", "t165": "5. Registrazione e vigilanza", "t166": "Siamo iscritti nel registro degli intermediari assicurativi della FINMA con il n. <span class=\"ph\">XXXXXX<\/span>. Il registro è consultabile pubblicamente.", "t167": "6. Responsabilità civile professionale", "t168": "Disponiamo di un'assicurazione di responsabilità civile professionale o di garanzie equivalenti conformemente alle disposizioni di vigilanza. <span class=\"ph\">[Indicare l'assicuratore]<\/span>", "t169": "7. Composizione delle controversie", "t170": "In caso di divergenze si rivolga dapprima a noi. Se non troviamo una soluzione, può rivolgersi all'organo di mediazione <span class=\"ph\">[nome]<\/span>. La procedura è di regola gratuita per Lei.", "t171": "Informativa sulla protezione dei dati <small>nLPD, in vigore dal 1.9.2023<\/small>", "t172": "1. Titolare del trattamento", "t173": "<span class=\"ph\">[Nome dell'azienda] [SA / Sagl / ditta individuale], [indirizzo], e-mail [datenschutz@muster-broker.ch]<\/span>. Trattiamo i dati personali secondo la legge federale sulla protezione dei dati (LPD) e, per quanto applicabile, secondo altre norme in materia di protezione dei dati.", "t174": "2. Quali dati trattiamo", "t175": "Dati di contatto come nome, indirizzo, telefono, e-mail", "t176": "Indicazioni sui Suoi contratti assicurativi, rischi e sinistri", "t177": "Dati personali degni di particolare protezione, come i dati sanitari, soltanto nella misura necessaria per la consulenza o l'intermediazione e con il Suo consenso esplicito", "t178": "Dati tecnici in occasione della visita del sito, ad esempio l'indirizzo IP e l'ora dell'accesso", "t179": "3. Finalità", "t180": "Risposta alle richieste, consulenza e intermediazione assicurativa, gestione dei contratti e assistenza in caso di sinistro, adempimento di obblighi legali e di vigilanza, esercizio e sicurezza del sito.", "t181": "4. Comunicazione a terzi", "t182": "Comunichiamo i dati soltanto nella misura necessaria al Suo mandato, in particolare ad assicuratori, riassicuratori e liquidatori di sinistri nonché a fornitori di servizi informatici e di hosting che agiscono per nostro conto. Tutti i destinatari sono tenuti alla riservatezza.", "t183": "5. Comunicazione all'estero", "t184": "Trattiamo i dati in linea di principio in Svizzera. Se un fornitore tratta dati in un Paese privo di un livello di protezione adeguato, lo garantiamo con misure adeguate, ad esempio clausole contrattuali standard. <span class=\"ph\">[Completare luogo di hosting e fornitori]<\/span>", "t185": "6. Conservazione", "t186": "Conserviamo i dati per il tempo richiesto dalla finalità o dagli obblighi legali di conservazione, di regola dieci anni per i documenti rilevanti ai fini commerciali. <span class=\"ph\">[Verificare i termini]<\/span>", "t187": "7. I Suoi diritti", "t188": "Può chiedere informazioni sui Suoi dati, la rettifica, la cancellazione o la limitazione del trattamento, opporsi al trattamento e chiedere la consegna dei Suoi dati in un formato usuale. Può revocare in ogni momento un consenso prestato, con effetto per il futuro. A tal fine ci scriva all'indirizzo sopra indicato; possiamo richiedere una prova d'identità.", "t189": "8. Reclamo", "t190": "Può rivolgersi all'Incaricato federale della protezione dei dati e della trasparenza (IFPDT).", "t191": "9. Sicurezza dei dati", "t192": "Proteggiamo i Suoi dati con misure tecniche e organizzative adeguate, ad esempio la trasmissione cifrata e restrizioni d'accesso.", "t193": "10. Modifiche", "t194": "Possiamo modificare la presente informativa. Fa fede la versione pubblicata sul sito. Aggiornamento: <span class=\"ph\">[data]<\/span>", "t195": "Condizioni generali e mandato di intermediazione <small>CO, LCA<\/small>", "t196": "1. Campo di applicazione", "t197": "Le presenti condizioni si applicano alla consulenza e all'intermediazione assicurativa fornite da <span class=\"ph\">[Nome dell'azienda] [SA / Sagl / ditta individuale]<\/span> (il broker) a privati e aziende con sede o domicilio in Svizzera.", "t198": "2. Mandato e procura", "t199": "Il mandato si perfeziona con l'accettazione scritta. Autorizza il broker a richiedere offerte, presentare proposte e comunicare con gli assicuratori in nome della cliente o del cliente. Il mandato è soggetto alle disposizioni del diritto del mandato (art. 394 segg. CO).", "t200": "3. Obblighi della clientela", "t201": "La clientela indica in modo completo e veritiero tutti i fatti rilevanti per la valutazione del rischio. Un'indicazione errata o incompleta può comportare la perdita della copertura assicurativa secondo la legge sul contratto d'assicurazione (obbligo di dichiarazione precontrattuale, art. 4 segg. LCA). Cambiamenti come un trasloco, nuovi veicoli o modifiche dell'azienda devono esserci comunicati senza indugio.", "t202": "4. Obblighi del broker", "t203": "Il broker consiglia secondo scienza e coscienza, confronta le offerte a lui accessibili e raccomanda quelle che meglio corrispondono al fabbisogno accertato. Segnala esclusioni e scadenze. Il confronto si limita agli assicuratori con cui il broker collabora o da cui può ottenere offerte.", "t204": "5. Rimunerazione", "t205": "La rimunerazione avviene tramite la provvigione dell'assicuratore o un onorario concordato per scritto in precedenza. I dettagli figurano nell'informazione iniziale e nel mandato. <span class=\"ph\">[Completare condizioni e tariffa oraria]<\/span>", "t206": "6. Responsabilità", "t207": "Il broker risponde dei danni derivanti da una violazione colposa dei suoi obblighi. La responsabilità per negligenza lieve è esclusa nei limiti consentiti dalla legge. Il broker non risponde delle decisioni e delle prestazioni degli assicuratori. <span class=\"ph\">[Far verificare la clausola di responsabilità da un avvocato]<\/span>", "t208": "7. Durata e fine", "t209": "Il mandato è a tempo indeterminato. Può essere disdetto in ogni momento da entrambe le parti (art. 404 CO). I diritti alla rimunerazione già maturati restano acquisiti.", "t210": "8. Diritto applicabile e foro", "t211": "Si applica il diritto svizzero. Il foro è <span class=\"ph\">[luogo della sede]<\/span>, salvo che si applichino fori imperativi a tutela dei consumatori (art. 32 CPC).", "t212": "Cookie e analisi web <small>Art. 45c LTC<\/small>", "t213": "Questo sito utilizza <span class=\"ph\">[soltanto cookie tecnicamente necessari / inoltre cookie di analisi del fornitore X]<\/span>. I cookie necessari garantiscono il funzionamento del sito e non possono essere disattivati. <span class=\"ph\">[Se si usano analisi o marketing: indicare scopo, fornitore, durata di conservazione e possibilità di opposizione e offrire una scelta nel banner dei cookie.]<\/span>", "t214": "Può bloccare o eliminare i cookie in ogni momento nel Suo browser. In tal caso alcune parti del sito potrebbero non funzionare più.", "t215": "Reclami e organo di mediazione <small>Composizione delle controversie<\/small>", "t216": "Se non è soddisfatto della nostra consulenza, ci scriva a <span class=\"ph\">beschwerde@muster-broker.ch<\/span>. Confermiamo la ricezione entro cinque giorni lavorativi e rispondiamo per scritto.", "t217": "Se non troviamo una soluzione, può rivolgersi all'organo di mediazione <span class=\"ph\">[nome, indirizzo, sito web]<\/span>. La procedura è riservata e, per i privati, di regola gratuita. La via giudiziaria Le rimane aperta.", "t218": "Solo per il gestore, da rimuovere prima della pubblicazione", "t219": "Lista di controllo per la messa online", "t220": "Iscrizione alla FINMA ottenuta e numero di registro inserito", "t221": "Assicurazione di responsabilità civile professionale stipulata e indicata", "t222": "Organo di mediazione scelto e affiliazione effettuata", "t223": "Dati aziendali, IDI e registro di commercio verificati nell'impressum", "t224": "Modello di rimunerazione (provvigione od onorario) descritto nell'informazione iniziale e nel mandato", "t225": "Informativa sulla protezione dei dati adattata a fornitori, hosting e strumenti reali", "t226": "Avviso sui cookie inserito solo nella misura necessaria, in base all'uso di tracciamento", "t227": "Modulo di contatto collegato a un servizio reale, dati ospitati in Svizzera o nell'UE", "t228": "Tutti i testi giuridici verificati da un giurista autorizzato in Svizzera", "t229": "Nota sul modello ed evidenziazioni gialle rimosse", "t230": "Testi francesi e italiani rivisti da madrelingua e da un giurista", "t231": "Affermazioni pubblicitarie e confronti verificati sotto il profilo della correttezza (LCSl)", "t232": "© 2026 <span class=\"ph\">[Nome dell'azienda] [SA / Sagl / ditta individuale]<\/span>, Svizzera", "t233": "Impressum", "t234": "Informazione iniziale", "t235": "Protezione dei dati", "t236": "CG", "t237": "Cookie", "t238": "Reclami", "x40": "Modulo", "x41": "Ambito", "x42": "Utilità", "x43": "Stato", "x44": "Livello", "x45": "Automazione delle richieste", "x46": "La richiesta arriva subito nel CRM o nella casella, con conferma di ricezione e promemoria di follow-up", "x47": "Risparmio", "x48": "Offerto", "x49": "Livello 1", "x50": "Agente per scadenze e promemoria", "x51": "Segnala le scadenze di disdetta e di cambio a studio e clientela, più conclusioni alla data limite", "x52": "Da sviluppare", "x53": "Automazione dei documenti", "x54": "Informazione iniziale, mandato di intermediazione e verbale di consulenza precompilati dai dati dei clienti", "x55": "Prenotazione appuntamenti", "x56": "Scegliere direttamente una fascia oraria invece di scambiare e-mail", "x57": "Facilità d'uso", "x58": "Check dei bisogni online", "x59": "Un breve questionario porta ai temi adatti e alla richiesta", "x60": "Base esistente, adattamento necessario", "x61": "Chat sul sito", "x62": "Risponde alle domande ricorrenti, raccoglie dati, senza consulenza", "x63": "Pianificato", "x64": "Livello 2", "x65": "Assistente telefonico", "x66": "Risponde alle chiamate fuori orario d'ufficio e fissa una richiamata", "x67": "Area clienti con login", "x68": "Contratti, documenti e denuncia di sinistro in un unico posto, con caricamento e scaricamento", "x69": "Fotografare o caricare la polizza", "x70": "I dati principali di una polizza esistente vengono letti, senza digitare", "x71": "Denuncia di sinistro con foto", "x72": "Modulo strutturato che arriva all'assicuratore giusto", "x73": "FAQ e chat in linguaggio semplice", "x74": "Che cos'è un broker, quanto costa, come funziona un sinistro", "x75": "IA per i social media", "x76": "Post e brevi video con approvazione, sostituisce l'agenzia o il lavoro interno", "x77": "Livello 3", "x78": "Indicatori dello studio", "x79": "Richieste, tempo di risposta, conclusioni per canale", "x80": "Interno", "x81": "Pianificato, adeguamento necessario", "x82": "Agente di controllo", "x83": "Verifica prima della pubblicazione che le indicazioni obbligatorie come il numero di registro e l'informazione iniziale siano complete", "x84": "Qualità", "x85": "Agente di escalation", "x86": "Passa automaticamente i casi difficili o sensibili a una persona", "x87": "Concetto redatto, attuazione aperta", "x88": "Agente di sicurezza", "x89": "Sorveglia moduli e caricamenti (dati sanitari e contrattuali)", "x90": "Sicurezza", "x91": "Rapporto di stato settimanale", "x92": "Nuove richieste, richiamate in sospeso e scadenze imminenti in una pagina", "x93": "Richiesto, avvio aperto", "x94": "Moduli digitali per il Suo studio di intermediazione", "x95": "Elenco di riferimento: questi moduli di Secret 58 si possono collegare a questo sito per risparmiare costi e migliorare l'uso. Il livello 1 è l'avvio consigliato. Estensione e prezzo su richiesta.", "x96": "Limiti d'impiego", "x97": "L'IA non sostituisce la consulenza né la raccomandazione. Gli obblighi al riguardo restano al Suo team.", "x98": "Per dati sanitari, chat e telefono vanno adeguati l'informativa sulla protezione dei dati, il consenso e il trattamento su incarico secondo la nLPD.", "x99": "Non promettere risparmi in franchi finché non ci sono cifre della clientela.", "x100": "Da far verificare da un professionista prima della messa online.", "x101": "Scopri di più su Secret 58"}};
+  var A = {"fr": {"a01": "Muster Broker, page d'accueil", "a02": "Navigation principale", "a03": "Type de clientèle", "a04": "Type de clientèle", "a05": "De quoi s'agit-il ? Merci de ne pas indiquer de données de santé.", "a06": "Informations juridiques"}, "it": {"a01": "Muster Broker, pagina iniziale", "a02": "Navigazione principale", "a03": "Tipo di clientela", "a04": "Tipo di clientela", "a05": "Di che cosa si tratta? La preghiamo di non indicare dati sanitari.", "a06": "Informazioni giuridiche"}};
+  var UI = {
+    de: { pick: "Ich interessiere mich für: ", err1: "Bitte Name und Telefon oder E-Mail angeben.", err2: "Bitte bestätigen Sie die Kenntnisnahme der Datenschutzerklärung.", ok: "Mustervorlage: Die Anfrage wird nicht übertragen. Hier binden Sie Ihren Formular-Dienst ein." },
+    fr: { pick: "Je m'intéresse à : ", err1: "Merci d'indiquer votre nom et un numéro de téléphone ou une adresse e-mail.", err2: "Merci de confirmer que vous avez pris connaissance de la déclaration de protection des données.", ok: "Modèle : la demande n'est pas transmise. Intégrez ici votre service de formulaire." },
+    it: { pick: "Mi interesso a: ", err1: "Inserisca nome e telefono o e-mail.", err2: "La preghiamo di confermare di aver letto l'informativa sulla protezione dei dati.", ok: "Modello: la richiesta non viene trasmessa. Qui va integrato il Suo servizio di moduli." }
+  };
+  var lang = "de", current = "privat";
+  var tabs = document.querySelectorAll('.tabs [role="tab"]');
+  var segs = document.querySelectorAll(".seg button");
+  var picks = document.getElementById("picks");
+  var typSel = document.getElementById("f-typ");
+  var msg = document.getElementById("f-msg");
+  var sent = document.getElementById("sent");
+  var langBtns = document.querySelectorAll(".lang button");
+
+  var DE = {}, textEls = document.querySelectorAll("[data-t]");
+  Array.prototype.forEach.call(textEls, function (el) { DE[el.getAttribute("data-t")] = el.innerHTML; });
+  var attrEls = [];
+  ["aria-label", "placeholder"].forEach(function (a) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-a-" + a + "]"), function (el) {
+      attrEls.push({ el: el, attr: a, key: el.getAttribute("data-a-" + a), de: el.getAttribute(a) });
+    });
+  });
+
+  function renderPicks(keep) {
+    picks.innerHTML = "";
+    var titles = document.querySelectorAll("#panel-" + current + " .service h3");
+    Array.prototype.forEach.call(titles, function (h, i) {
+      var id = "pick-" + current + "-" + i;
+      var label = document.createElement("label");
+      label.className = "pick";
+      label.setAttribute("for", id);
+      var input = document.createElement("input");
+      input.type = "checkbox"; input.id = id; input.value = h.textContent;
+      if (keep && keep[i]) { input.checked = true; }
+      var span = document.createElement("span");
+      span.textContent = h.textContent;
+      label.appendChild(input); label.appendChild(span);
+      picks.appendChild(label);
+    });
+  }
+
+  function setTyp(t) {
+    current = t;
+    Array.prototype.forEach.call(tabs, function (b) { b.setAttribute("aria-selected", b.dataset.typ === t ? "true" : "false"); });
+    Array.prototype.forEach.call(segs, function (b) { b.setAttribute("aria-pressed", b.dataset.typ === t ? "true" : "false"); });
+    document.getElementById("panel-privat").hidden = t !== "privat";
+    document.getElementById("panel-firma").hidden = t !== "firma";
+    typSel.value = t;
+    renderPicks();
+  }
+  Array.prototype.forEach.call(tabs, function (b) { b.addEventListener("click", function () { setTyp(b.dataset.typ); }); });
+  Array.prototype.forEach.call(segs, function (b) { b.addEventListener("click", function () { setTyp(b.dataset.typ); }); });
+  typSel.addEventListener("change", function () { setTyp(typSel.value); });
+
+  function setLang(l, store) {
+    var keep = Array.prototype.map.call(picks.querySelectorAll("input"), function (i) { return i.checked; });
+    lang = l;
+    Array.prototype.forEach.call(textEls, function (el) {
+      var k = el.getAttribute("data-t");
+      var v = l === "de" ? DE[k] : (T[l] && T[l][k]);
+      el.innerHTML = v != null ? v : DE[k];
+    });
+    attrEls.forEach(function (o) {
+      var v = l === "de" ? o.de : (A[l] && A[l][o.key]);
+      o.el.setAttribute(o.attr, v != null ? v : o.de);
+    });
+    document.documentElement.lang = l;
+    Array.prototype.forEach.call(langBtns, function (b) { b.setAttribute("aria-pressed", b.dataset.lang === l ? "true" : "false"); });
+    sent.textContent = "";
+    renderPicks(keep);
+    if (store) { try { localStorage.setItem("lang", l); } catch (e) {} }
+  }
+  Array.prototype.forEach.call(langBtns, function (b) { b.addEventListener("click", function () { setLang(b.dataset.lang, true); }); });
+
+  setTyp("privat");
+  var start = "de";
+  try {
+    var s = localStorage.getItem("lang");
+    if (s === "de" || s === "fr" || s === "it") { start = s; }
+    else {
+      var nl = (navigator.language || "").slice(0, 2).toLowerCase();
+      if (nl === "fr" || nl === "it") { start = nl; }
+    }
+  } catch (e) {}
+  if (start !== "de") { setLang(start, false); }
+
+  document.getElementById("go").addEventListener("click", function () {
+    var chosen = Array.prototype.map.call(picks.querySelectorAll("input:checked"), function (i) { return i.value; });
+    typSel.value = current;
+    if (chosen.length) { msg.value = UI[lang].pick + chosen.join(", ") + "."; }
+    var target = document.getElementById("kontakt");
+    if (target && target.scrollIntoView) { target.scrollIntoView(); }
+    document.getElementById("f-name").focus({ preventScroll: true });
+  });
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("[data-open]") : null;
+    if (!a) { return; }
+    var d = document.getElementById(a.getAttribute("data-open"));
+    if (!d) { return; }
+    e.preventDefault();
+    d.open = true;
+    if (d.scrollIntoView) { d.scrollIntoView(); }
+  });
+
+  document.getElementById("req").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var ok = document.getElementById("f-name").value.trim() && document.getElementById("f-kontakt").value.trim();
+    if (!ok) { sent.textContent = UI[lang].err1; return; }
+    if (!document.getElementById("f-consent").checked) { sent.textContent = UI[lang].err2; return; }
+    sent.textContent = UI[lang].ok;
+  });
+})();
+</script>
+
+</body></html>

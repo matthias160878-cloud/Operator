@@ -1,0 +1,17 @@
+Secret 58 Zentrale Neu – Vorschau (Stand 21.10.2026)
+
+Aufbau:
+- index.html: die ganze Seite (Single-Page, Unterseiten per #/<seite>, z. B. #/start, #/ki-agenten, #/preise)
+  - Seiteninhalte stehen im Objekt SEITEN.<name> = {titel, render}
+  - Navigation im Menü-Array (Eintrag "Mehr" mit Unterpunkten)
+  - Design-Fenster rechts unten (Knopf "Design"): Schalter und Regler, Zustand in localStorage "s58-design-2"
+- hintergrund.js: bewegter Hintergrund (window.grundSetzen, window.grundEinstellen)
+- motion.css / motion.js: Einblend-Effekte
+- bilder/, video/, referenzen/: Bilder, Videos, Referenzseiten
+
+Wichtig:
+- Reine Demo mit Beispieldaten, läuft nur im Browser, ohne Server.
+- Nicht angebundene Funktionen als Demo / vorbereitet kennzeichnen.
+- Preise (Kleinunternehmer § 19 UStG, Endpreise ohne USt) nicht ändern.
+- Zum Testen: Ordner entpacken und index.html im Browser öffnen
+  (oder im Ordner "python3 -m http.server" starten und http://localhost:8000 öffnen).

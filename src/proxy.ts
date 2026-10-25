@@ -71,6 +71,17 @@ const CROSS_ORIGIN_ALLOWED = ["/api/stripe/webhook", "/api/stripe/connect-webhoo
 /** Nur exakt diese Pfade (ein Präfix würde z. B. /api/chatbot mit öffnen). */
 const PUBLIC_EXACT = new Set(["/api/chat", "/api/public-hermes-chat", "/api/dateien/status"]);
 
+/**
+ * Die echte Domain (secret58.com) zeigt Besuchern ohne Sitzung die neue Zentrale als Startseite;
+ * angemeldete Kunden kommen unter „/“ wie bisher in die App. Freigabe Matthias, 25.10.2026.
+ */
+const HAUPTDOMAIN = /^(www\.)?secret58\.com$/i;
+const HAUPTSEITE = "/zentrale-neu/index.html";
+
+function istHauptdomain(request: NextRequest): boolean {
+  return HAUPTDOMAIN.test((request.headers.get("host") ?? "").split(":")[0]);
+}
+
 function isPublic(pathname: string): boolean {
   if (pathname in ZENTRALE_PAGES || PUBLIC_EXACT.has(pathname)) return true;
   return PUBLIC_PREFIXES.some((prefix) => pathname === prefix.replace(/\/$/, "") || pathname.startsWith(prefix));
@@ -122,7 +133,13 @@ export async function proxy(request: NextRequest) {
     }
     const url = request.nextUrl.clone();
     if (pathname === "/") {
-      // Besucher ohne Konto sehen unter „/“ die Startseite der Zentrale.
+      // Auf secret58.com: die neue Zentrale (Weiterleitung, damit ihre relativen Pfade stimmen).
+      if (istHauptdomain(request)) {
+        url.pathname = HAUPTSEITE;
+        url.search = "";
+        return NextResponse.redirect(url);
+      }
+      // Sonst sehen Besucher ohne Konto unter „/“ die Startseite der Zentrale.
       url.pathname = VISITOR_HOME_FILE;
       return NextResponse.rewrite(url);
     }

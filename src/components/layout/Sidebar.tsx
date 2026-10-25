@@ -46,12 +46,12 @@ export function Sidebar({
               className={clsx(
                 "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
                 active
-                  ? "bg-accent/15 text-foreground border border-accent/30"
+                  ? "nav-aktiv bg-accent/15 text-foreground border border-accent/30"
                   : "text-muted hover:bg-surface-2 hover:text-foreground border border-transparent"
               )}
             >
               <Icon className={clsx("h-4 w-4", active && "text-accent-2")} />
-              {t(`nav.${item.labelKey}`)}
+              <span className="nav-text">{t(`nav.${item.labelKey}`)}</span>
             </Link>
           );
         })}

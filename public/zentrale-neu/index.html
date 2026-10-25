@@ -982,6 +982,45 @@ footer.fuss{border-top:1px solid var(--nacht-line)}
 .alt .alt-hero.k-kopf h1{font-size:clamp(2.2rem,4.8vw,3.8rem);line-height:1.04;max-width:17ch;margin-top:10px}
 .alt .alt-hero.k-kopf > p,.alt .alt-hero.k-kopf .lede,.alt .alt-hero.k-kopf .note{max-width:46ch}
 .alt .alt-hero.k-kopf .k-aktionen{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+/* Social Media KI: eigener Kolibri-Kopf (schillernder Grund, Federbänder, fünf Plattform-Perlen) */
+.alt .alt-hero.smk-kopf{--k1:#ff5fa2;--k2:#b06bff;--k3:#2fd3c4;--k4:#4aa8ff;--k5:#ffc24d}
+.alt .alt-hero.smk-kopf::before{z-index:-3}
+.alt .alt-hero.smk-kopf::after{z-index:-2;background:radial-gradient(38% 60% at 8% 18%,color-mix(in srgb,var(--k1) 26%,transparent),transparent 70%),radial-gradient(34% 55% at 30% 92%,color-mix(in srgb,var(--k3) 24%,transparent),transparent 70%),radial-gradient(30% 50% at 42% 30%,color-mix(in srgb,var(--k2) 20%,transparent),transparent 70%),linear-gradient(90deg,color-mix(in srgb,var(--nacht-bg) 88%,transparent) 0%,color-mix(in srgb,var(--nacht-bg) 66%,transparent) 36%,color-mix(in srgb,var(--nacht-bg) 8%,transparent) 66%,transparent 100%),linear-gradient(0deg,color-mix(in srgb,var(--nacht-bg) 60%,transparent),transparent 30%)}
+.s-champagner .alt .alt-hero.smk-kopf::after{background:radial-gradient(38% 60% at 8% 18%,rgba(255,95,162,.2),transparent 70%),radial-gradient(34% 55% at 30% 92%,rgba(47,211,196,.2),transparent 70%),radial-gradient(30% 50% at 42% 30%,rgba(176,107,255,.16),transparent 70%),linear-gradient(90deg,rgba(250,246,238,.9) 0%,rgba(250,246,238,.74) 36%,rgba(250,246,238,.1) 66%,rgba(250,246,238,0) 100%),linear-gradient(0deg,rgba(250,246,238,.7),transparent 26%)}
+.smk-deko{position:absolute;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);z-index:-1;pointer-events:none;overflow:hidden}
+.smk-deko svg{position:absolute;inset:0;width:100%;height:100%}
+.smk-deko .band{fill:none;stroke-width:1.6;stroke-linecap:round;opacity:.55;stroke-dasharray:6 14;animation:smk-band 14s linear infinite}
+.smk-deko .band.b2{stroke-width:1;opacity:.4;animation-duration:19s;animation-direction:reverse}
+.smk-deko .band.b3{stroke-width:2.4;opacity:.28;stroke-dasharray:2 22;animation-duration:24s}
+.smk-deko .glanz{position:absolute;border-radius:50%;filter:blur(38px);opacity:.42;mix-blend-mode:screen;animation:smk-glanz 16s ease-in-out infinite alternate}
+.s-champagner .smk-deko .glanz{mix-blend-mode:multiply;opacity:.18}
+.smk-deko .glanz.g1{width:34vw;height:34vw;left:-6vw;top:-14vw;background:var(--k1)}
+.smk-deko .glanz.g2{width:28vw;height:28vw;left:22vw;bottom:-14vw;background:var(--k3);animation-delay:-5s}
+.smk-deko .glanz.g3{width:20vw;height:20vw;left:36vw;top:10%;background:var(--k2);animation-delay:-9s}
+.smk-deko i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 6px 2px color-mix(in srgb,var(--f,#fff) 80%,transparent);opacity:0;animation:smk-funke 6s ease-in-out infinite}
+@keyframes smk-band{to{stroke-dashoffset:-400}}
+@keyframes smk-glanz{0%{transform:translate(0,0) scale(1)}100%{transform:translate(4vw,2vw) scale(1.15)}}
+@keyframes smk-funke{0%,100%{opacity:0;transform:translateY(0) scale(.6)}40%{opacity:.95}70%{opacity:.5;transform:translateY(-18px) scale(1)}}
+:is(#seite,.alt) .alt .alt-hero.smk-kopf.k-kopf h1:not(#smk-x):not(.smk-x){background:linear-gradient(100deg,var(--k1),var(--k2) 26%,var(--k4) 46%,var(--k3) 64%,var(--k5) 82%,var(--k1));background-size:170% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:smk-titel 9s ease-in-out infinite alternate}
+:is(#seite,.alt) .alt .alt-hero.smk-kopf.k-kopf h1 .verlauf:not(#smk-x):not(.smk-x){animation:none;background:none;-webkit-text-fill-color:transparent;color:transparent}
+.s-champagner .alt .alt-hero.smk-kopf h1{filter:saturate(1.1) brightness(.8)}
+@keyframes smk-titel{to{background-position:100% 0}}
+.smk-orbit{position:relative;display:flex;align-items:flex-start;flex-wrap:wrap;gap:6px 14px;margin-top:26px;max-width:560px;padding-bottom:6px}
+.smk-orbit .faden{position:absolute;left:0;right:0;top:4px;height:80px;width:100%;overflow:visible;z-index:0;pointer-events:none}
+.smk-orbit .faden path{fill:none;stroke-width:1.6;stroke-dasharray:5 9;animation:smk-band 9s linear infinite}
+.smk-perle{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;width:64px;transform:translateY(var(--y,0));animation:smk-schweben 5s ease-in-out infinite;animation-delay:calc(var(--i)*-.9s)}
+.smk-perle b{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;font:600 .82rem/1 Archivo,system-ui,sans-serif;letter-spacing:.04em;color:#fff;
+ background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.9),rgba(255,255,255,.15) 30%,transparent 46%),radial-gradient(circle at 60% 70%,var(--f),color-mix(in srgb,var(--f) 55%,#14102a));
+ box-shadow:0 0 0 1px rgba(255,255,255,.35) inset,0 0 18px color-mix(in srgb,var(--f) 60%,transparent),0 6px 18px rgba(0,0,0,.18);text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.smk-perle small{font:500 .72rem/1.1 Archivo,system-ui,sans-serif;color:var(--ink-2);text-align:center}
+.smk-ziel{position:relative;z-index:1;align-self:center;margin-left:4px;padding:9px 15px;border-radius:999px;font:600 .82rem/1 Archivo,system-ui,sans-serif;color:var(--ink);
+ background:color-mix(in srgb,var(--nacht-bg) 55%,transparent);backdrop-filter:blur(6px);border:1px solid transparent;
+ background-image:linear-gradient(color-mix(in srgb,var(--nacht-bg) 80%,transparent),color-mix(in srgb,var(--nacht-bg) 80%,transparent)),linear-gradient(100deg,var(--k1),var(--k2),var(--k4),var(--k3),var(--k5));background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 0 22px color-mix(in srgb,var(--k2) 30%,transparent)}
+.s-champagner .smk-ziel{background-image:linear-gradient(rgba(250,246,238,.92),rgba(250,246,238,.92)),linear-gradient(100deg,var(--k1),var(--k2),var(--k4),var(--k3),var(--k5))}
+@keyframes smk-schweben{0%,100%{transform:translateY(var(--y,0))}50%{transform:translateY(calc(var(--y,0px) - 7px))}}
+@media (max-width:720px){.smk-orbit{gap:8px 6px}.smk-perle{width:54px}.smk-perle b{width:44px;height:44px;font-size:.74rem}.smk-orbit .faden{display:none}.smk-ziel{margin:6px 0 0}
+ .smk-deko .glanz.g1{width:70vw;height:70vw}.smk-deko .glanz.g2{width:60vw;height:60vw;left:20vw}}
+@media (prefers-reduced-motion:reduce){.smk-deko .band,.smk-deko .glanz,.smk-deko i,.smk-perle,.smk-orbit .faden path,.alt .alt-hero.smk-kopf h1{animation:none}.smk-deko i{opacity:.6}}
 .alt .fin-head.k-kopf{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
 @media (max-width:760px){
  .alt .alt-hero.k-kopf{min-height:0;padding-block:236px 34px}
@@ -3156,8 +3195,8 @@ var KOLIBRI={
  gold:["k-gold-1","k-mir-1","k-gold-2","k-aurora-1","k-gold-3","k-feder-1","k-neon-1","k-mir-2","k-aurora-3","k-neon-4"],
  champagner:["k-champ-1","k-champ-2","k-champ-3","k-champ-4","k-champ-5"]};
 var KOPF_ROUTEN=["ki-dienstleistungen","kundenanfragen-pilot","pakete-karten","einstieg","quellen","ki-agenten","ki-automation","content-erstellung","social-media-ki","ki-beratung","schulung","webdesign","webseiten-aufbau","ueber-uns","kontakt","bildvorschlaege","rechner","referenzen","webseitenkonzepte","portfolio","preise","faq","demo","finanzen","login","checkout","impressum","datenschutz","agb","privatkunden","unternehmen","konzept-1","konzept-2","konzept-3","konzept-7"];
-var NEU_DUNKEL={webdesign:"k-color","social-media-ki":"k-vision","ueber-uns":"k-magic",portfolio:"k-wings",webseitenkonzepte:"k-bloom"};
-var EIGEN_BILD={privatkunden:{neon:"neon-privat",champagner:"champ-hero",aurora:"aurora-privat",gold:"gold-privat"},unternehmen:{neon:"neon-firma",aurora:"aurora-firma",gold:"gold-firma"}};
+var NEU_DUNKEL={webdesign:"k-color","ueber-uns":"k-magic",portfolio:"k-wings",webseitenkonzepte:"k-bloom"};
+var EIGEN_BILD={"social-media-ki":{neon:"k-mir-1",aurora:"k-aurora-1",gold:"k-gold-1"},privatkunden:{neon:"neon-privat",champagner:"champ-hero",aurora:"aurora-privat",gold:"gold-privat"},unternehmen:{neon:"neon-firma",aurora:"aurora-firma",gold:"gold-firma"}};
 function kolibriBilder(r){var l=KOLIBRI[S.stil]||KOLIBRI.neon,i=KOPF_ROUTEN.indexOf(r==="social-media"?"social-media-ki":r==="pakete"?"preise":r==="zentrale"?"ki-agenten":r);if(i<0)i=0;
   var out=[];for(var j=0;j<3;j++){var b="bilder/"+l[(i+j*4)%l.length]+".webp";if(out.indexOf(b)<0)out.push(b)}
   var e=EIGEN_BILD[r];if(e&&e[S.stil]){out.unshift("bilder/"+e[S.stil]+".webp")}
@@ -3182,10 +3221,26 @@ function kopfAusbauen(h,r){var h1=h.querySelector("h1");
     if(k>0&&k<t.length){h1.textContent=t.slice(0,k);var sp=document.createElement("span");sp.className="verlauf";sp.textContent=t.slice(k);h1.appendChild(sp)}}
   if(KOPF_KNOEPFE[r]&&!h.querySelector(".btn,.knopf,.k-aktionen,.cta")){var d=document.createElement("div");d.className="k-aktionen";
     d.innerHTML='<a class="knopf voll" href="#kontakt">Kostenloses Erstgespräch '+ic("pfeil",1.8)+'</a><a class="knopf rand" href="#pakete">Pakete und Preise</a>';h.appendChild(d)}}
+function smkKopf(h){if(h.querySelector(".smk-deko"))return;h.classList.add("smk-kopf");
+  var grad='<defs><linearGradient id="smkVerlauf" x1="0" x2="1"><stop offset="0" stop-color="#ff5fa2"/><stop offset=".3" stop-color="#b06bff"/><stop offset=".55" stop-color="#4aa8ff"/><stop offset=".78" stop-color="#2fd3c4"/><stop offset="1" stop-color="#ffc24d"/></linearGradient></defs>';
+  var d=document.createElement("div");d.className="smk-deko";d.setAttribute("aria-hidden","true");
+  var f=["#ff5fa2","#b06bff","#2fd3c4","#4aa8ff","#ffc24d"],funken="";
+  for(var i=0;i<18;i++){funken+='<i style="left:'+(4+((i*37)%56))+'%;top:'+(8+((i*53)%82))+'%;--f:'+f[i%5]+';animation-delay:'+(-(i*.7)).toFixed(1)+'s"></i>'}
+  d.innerHTML='<span class="glanz g1"></span><span class="glanz g2"></span><span class="glanz g3"></span><svg viewBox="0 0 1440 560" preserveAspectRatio="none">'+grad+
+   '<path class="band" stroke="url(#smkVerlauf)" d="M-20 470 C 260 330, 420 540, 700 380 S 1100 120, 1460 200"/>'+
+   '<path class="band b2" stroke="url(#smkVerlauf)" d="M-20 120 C 220 40, 380 260, 640 190 S 980 40, 1460 90"/>'+
+   '<path class="band b3" stroke="url(#smkVerlauf)" d="M-20 300 C 300 220, 520 420, 820 300 S 1200 260, 1460 360"/></svg>'+funken;
+  h.insertBefore(d,h.firstChild);
+  var pl=[["YT","YouTube","#ff5fa2"],["FB","Facebook","#4aa8ff"],["IG","Instagram","#b06bff"],["IN","LinkedIn","#2fd3c4"],["TT","TikTok","#ffc24d"]],y=[14,2,-6,2,14];
+  var o=document.createElement("div");o.className="smk-orbit";o.setAttribute("role","img");o.setAttribute("aria-label","Fünf Plattformen – YouTube, Facebook, Instagram, LinkedIn, TikTok – laufen in einem Kommandostand zusammen");
+  o.innerHTML='<svg class="faden" viewBox="0 0 560 80" preserveAspectRatio="none" aria-hidden="true">'+grad.replace("smkVerlauf","smkFaden")+'<path stroke="url(#smkFaden)" d="M26 54 C 90 34, 130 26, 180 30 S 300 22, 340 38 S 420 60, 470 34"/></svg>'+
+   pl.map(function(p,i){return '<span class="smk-perle" aria-hidden="true" style="--i:'+i+';--f:'+p[2]+';--y:'+y[i]+'px"><b>'+p[0]+'</b><small>'+p[1]+'</small></span>'}).join('')+
+   '<span class="smk-ziel" aria-hidden="true">Ein Kommandostand</span>';
+  var lede=h.querySelector(".lede");if(lede)lede.insertAdjacentElement("afterend",o);else h.appendChild(o)}
 function heroBild(r){
   var img=bgAktuell(r),url=img==="ohne"?"none":"url("+bgPfad(img)+")";
   var h=main.querySelector(".alt-seite section.block > .head")||main.querySelector(".alt-seite section.block > .fin-head");
-  if(h){h.classList.add("alt-hero","k-kopf");h.classList.toggle("ohne-bild",img==="ohne");h.style.setProperty("--seiten-bild",url);kopfAusbauen(h,r)}
+  if(h){h.classList.add("alt-hero","k-kopf");h.classList.toggle("ohne-bild",img==="ohne");h.style.setProperty("--seiten-bild",url);kopfAusbauen(h,r);if(r==="social-media-ki"||r==="social-media")smkKopf(h)}
   var sh=main.querySelector(".s-hero");
   if(sh&&TSEITEN[r]&&r!=="bildvorschlaege"){sh.style.backgroundImage=img==="ohne"?"none":url}
 }
@@ -3224,7 +3279,7 @@ var VORSCHLAEGE=[
  ["unternehmen","Für Unternehmen",["Kleiner Betrieb von außen in der Dämmerung, im Fenster leuchtet das Agenten-Dashboard","Besprechungstisch mit Ablaufplan, drei Spalten mit Haken"]],
  ["impressum","Impressum, Datenschutz und AGB",["Bewusst ruhig: heller Papierton mit feiner Linienstruktur, kein Motiv","Sehr dunkler Grund mit kaum sichtbarem Diamant-Wasserzeichen"]]
 ];
-var ARCHIV=[["welt-kreativ","Colorverse · Kreativ","Kopf von Webdesign, Designwelt Kreativ (Konzept 7)"],["welt-agenturen","Vision Control · Agenturen","Kopf von Social Media KI, Designwelt Agenturen"],["welt-events","Wings of Experience · Events","Kopf von Portfolio, Designwelt Events"],["welt-lifestyle","Magic Moments · Lifestyle","Kopf von Über uns, Designwelt Lifestyle"],["welt-beauty","Bloom Beauty · Beauty","Kopf von Webseitenkonzepte, Designwelt Beauty"]];
+var ARCHIV=[["welt-kreativ","Colorverse · Kreativ","Kopf von Webdesign, Designwelt Kreativ (Konzept 7)"],["welt-agenturen","Vision Control · Agenturen","Wählbar bei Social Media KI, Designwelt Agenturen"],["welt-events","Wings of Experience · Events","Kopf von Portfolio, Designwelt Events"],["welt-lifestyle","Magic Moments · Lifestyle","Kopf von Über uns, Designwelt Lifestyle"],["welt-beauty","Bloom Beauty · Beauty","Kopf von Webseitenkonzepte, Designwelt Beauty"]];
 TSEITEN.bildvorschlaege=function(){
   var karte=function(v){var r=v[0],pool=bgPool(r==="impressum"?"impressum":r),g=grundVorgabe(r)[0];
     return '<div class="karte bv-karte"><span class="chip">'+esc(v[1])+'</span>'+

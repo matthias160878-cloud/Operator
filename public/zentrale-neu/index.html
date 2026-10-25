@@ -982,45 +982,65 @@ footer.fuss{border-top:1px solid var(--nacht-line)}
 .alt .alt-hero.k-kopf h1{font-size:clamp(2.2rem,4.8vw,3.8rem);line-height:1.04;max-width:17ch;margin-top:10px}
 .alt .alt-hero.k-kopf > p,.alt .alt-hero.k-kopf .lede,.alt .alt-hero.k-kopf .note{max-width:46ch}
 .alt .alt-hero.k-kopf .k-aktionen{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-/* Social Media KI: eigener Kolibri-Kopf (schillernder Grund, Federbänder, fünf Plattform-Perlen) */
-.alt .alt-hero.smk-kopf{--k1:#ff5fa2;--k2:#b06bff;--k3:#2fd3c4;--k4:#4aa8ff;--k5:#ffc24d}
-.alt .alt-hero.smk-kopf::before{z-index:-3}
-.alt .alt-hero.smk-kopf::after{z-index:-2;background:radial-gradient(38% 60% at 8% 18%,color-mix(in srgb,var(--k1) 26%,transparent),transparent 70%),radial-gradient(34% 55% at 30% 92%,color-mix(in srgb,var(--k3) 24%,transparent),transparent 70%),radial-gradient(30% 50% at 42% 30%,color-mix(in srgb,var(--k2) 20%,transparent),transparent 70%),linear-gradient(90deg,color-mix(in srgb,var(--nacht-bg) 88%,transparent) 0%,color-mix(in srgb,var(--nacht-bg) 66%,transparent) 36%,color-mix(in srgb,var(--nacht-bg) 8%,transparent) 66%,transparent 100%),linear-gradient(0deg,color-mix(in srgb,var(--nacht-bg) 60%,transparent),transparent 30%)}
-.s-champagner .alt .alt-hero.smk-kopf::after{background:radial-gradient(38% 60% at 8% 18%,rgba(255,95,162,.2),transparent 70%),radial-gradient(34% 55% at 30% 92%,rgba(47,211,196,.2),transparent 70%),radial-gradient(30% 50% at 42% 30%,rgba(176,107,255,.16),transparent 70%),linear-gradient(90deg,rgba(250,246,238,.9) 0%,rgba(250,246,238,.74) 36%,rgba(250,246,238,.1) 66%,rgba(250,246,238,0) 100%),linear-gradient(0deg,rgba(250,246,238,.7),transparent 26%)}
-.smk-deko{position:absolute;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);z-index:-1;pointer-events:none;overflow:hidden}
-.smk-deko svg{position:absolute;inset:0;width:100%;height:100%}
-.smk-deko .band{fill:none;stroke-width:1.6;stroke-linecap:round;opacity:.55;stroke-dasharray:6 14;animation:smk-band 14s linear infinite}
-.smk-deko .band.b2{stroke-width:1;opacity:.4;animation-duration:19s;animation-direction:reverse}
-.smk-deko .band.b3{stroke-width:2.4;opacity:.28;stroke-dasharray:2 22;animation-duration:24s}
-.smk-deko .glanz{position:absolute;border-radius:50%;filter:blur(38px);opacity:.42;mix-blend-mode:screen;animation:smk-glanz 16s ease-in-out infinite alternate}
-.s-champagner .smk-deko .glanz{mix-blend-mode:multiply;opacity:.18}
-.smk-deko .glanz.g1{width:34vw;height:34vw;left:-6vw;top:-14vw;background:var(--k1)}
-.smk-deko .glanz.g2{width:28vw;height:28vw;left:22vw;bottom:-14vw;background:var(--k3);animation-delay:-5s}
-.smk-deko .glanz.g3{width:20vw;height:20vw;left:36vw;top:10%;background:var(--k2);animation-delay:-9s}
-.smk-deko i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 6px 2px color-mix(in srgb,var(--f,#fff) 80%,transparent);opacity:0;animation:smk-funke 6s ease-in-out infinite}
+/* Social Media KI: fünf Plattform-Perlen schweben im Kopfbild */
+.smk-orbit{position:absolute;z-index:1;right:calc(50% - 50vw + 3vw);bottom:7%;width:min(620px,44vw);height:150px;pointer-events:none}
+.smk-orbit .faden{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.smk-orbit .faden path{fill:none;stroke-width:1.8;stroke-dasharray:5 9;opacity:.9;animation:smk-band 9s linear infinite}
+.smk-perle{position:absolute;left:var(--x);top:var(--y);display:flex;flex-direction:column;align-items:center;gap:5px;width:70px;margin-left:-35px;animation:smk-schweben 5s ease-in-out infinite;animation-delay:calc(var(--i)*-.9s)}
+.smk-perle b{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;font:600 .82rem/1 Archivo,system-ui,sans-serif;letter-spacing:.04em;color:#fff;
+ background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.92),rgba(255,255,255,.18) 30%,transparent 46%),radial-gradient(circle at 60% 70%,color-mix(in srgb,var(--f) 88%,transparent),color-mix(in srgb,var(--f) 50%,#14102a));
+ box-shadow:0 0 0 1px rgba(255,255,255,.4) inset,0 0 22px color-mix(in srgb,var(--f) 70%,transparent),0 8px 20px rgba(0,0,0,.25);text-shadow:0 1px 2px rgba(0,0,0,.35);backdrop-filter:blur(3px)}
+.smk-perle small{font:600 .72rem/1.1 Archivo,system-ui,sans-serif;color:#fff;padding:2px 7px;border-radius:999px;background:rgba(10,8,24,.45);backdrop-filter:blur(4px)}
+.smk-ziel{position:absolute;left:50%;top:-6px;transform:translateX(-50%);white-space:nowrap;padding:9px 16px;border-radius:999px;font:600 .84rem/1 Archivo,system-ui,sans-serif;color:#fff;border:1px solid transparent;
+ background:linear-gradient(rgba(14,10,30,.62),rgba(14,10,30,.62)) padding-box,linear-gradient(100deg,#ff5fa2,#b06bff,#4aa8ff,#2fd3c4,#ffc24d) border-box;backdrop-filter:blur(6px);box-shadow:0 0 26px rgba(176,107,255,.45)}
 @keyframes smk-band{to{stroke-dashoffset:-400}}
-@keyframes smk-glanz{0%{transform:translate(0,0) scale(1)}100%{transform:translate(4vw,2vw) scale(1.15)}}
-@keyframes smk-funke{0%,100%{opacity:0;transform:translateY(0) scale(.6)}40%{opacity:.95}70%{opacity:.5;transform:translateY(-18px) scale(1)}}
-:is(#seite,.alt) .alt .alt-hero.smk-kopf.k-kopf h1:not(#smk-x):not(.smk-x){background:linear-gradient(100deg,var(--k1),var(--k2) 26%,var(--k4) 46%,var(--k3) 64%,var(--k5) 82%,var(--k1));background-size:170% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:smk-titel 9s ease-in-out infinite alternate}
-:is(#seite,.alt) .alt .alt-hero.smk-kopf.k-kopf h1 .verlauf:not(#smk-x):not(.smk-x){animation:none;background:none;-webkit-text-fill-color:transparent;color:transparent}
-.s-champagner .alt .alt-hero.smk-kopf h1{filter:saturate(1.1) brightness(.8)}
-@keyframes smk-titel{to{background-position:100% 0}}
-.smk-orbit{position:relative;display:flex;align-items:flex-start;flex-wrap:wrap;gap:6px 14px;margin-top:26px;max-width:560px;padding-bottom:6px}
-.smk-orbit .faden{position:absolute;left:0;right:0;top:4px;height:80px;width:100%;overflow:visible;z-index:0;pointer-events:none}
-.smk-orbit .faden path{fill:none;stroke-width:1.6;stroke-dasharray:5 9;animation:smk-band 9s linear infinite}
-.smk-perle{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;width:64px;transform:translateY(var(--y,0));animation:smk-schweben 5s ease-in-out infinite;animation-delay:calc(var(--i)*-.9s)}
-.smk-perle b{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;font:600 .82rem/1 Archivo,system-ui,sans-serif;letter-spacing:.04em;color:#fff;
- background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.9),rgba(255,255,255,.15) 30%,transparent 46%),radial-gradient(circle at 60% 70%,var(--f),color-mix(in srgb,var(--f) 55%,#14102a));
- box-shadow:0 0 0 1px rgba(255,255,255,.35) inset,0 0 18px color-mix(in srgb,var(--f) 60%,transparent),0 6px 18px rgba(0,0,0,.18);text-shadow:0 1px 2px rgba(0,0,0,.35)}
-.smk-perle small{font:500 .72rem/1.1 Archivo,system-ui,sans-serif;color:var(--ink-2);text-align:center}
-.smk-ziel{position:relative;z-index:1;align-self:center;margin-left:4px;padding:9px 15px;border-radius:999px;font:600 .82rem/1 Archivo,system-ui,sans-serif;color:var(--ink);
- background:color-mix(in srgb,var(--nacht-bg) 55%,transparent);backdrop-filter:blur(6px);border:1px solid transparent;
- background-image:linear-gradient(color-mix(in srgb,var(--nacht-bg) 80%,transparent),color-mix(in srgb,var(--nacht-bg) 80%,transparent)),linear-gradient(100deg,var(--k1),var(--k2),var(--k4),var(--k3),var(--k5));background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 0 22px color-mix(in srgb,var(--k2) 30%,transparent)}
-.s-champagner .smk-ziel{background-image:linear-gradient(rgba(250,246,238,.92),rgba(250,246,238,.92)),linear-gradient(100deg,var(--k1),var(--k2),var(--k4),var(--k3),var(--k5))}
-@keyframes smk-schweben{0%,100%{transform:translateY(var(--y,0))}50%{transform:translateY(calc(var(--y,0px) - 7px))}}
-@media (max-width:720px){.smk-orbit{gap:8px 6px}.smk-perle{width:54px}.smk-perle b{width:44px;height:44px;font-size:.74rem}.smk-orbit .faden{display:none}.smk-ziel{margin:6px 0 0}
- .smk-deko .glanz.g1{width:70vw;height:70vw}.smk-deko .glanz.g2{width:60vw;height:60vw;left:20vw}}
-@media (prefers-reduced-motion:reduce){.smk-deko .band,.smk-deko .glanz,.smk-deko i,.smk-perle,.smk-orbit .faden path,.alt .alt-hero.smk-kopf h1{animation:none}.smk-deko i{opacity:.6}}
+@keyframes smk-schweben{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@media (max-width:720px){
+ .alt .alt-hero.k-kopf.smk-kopf{padding-top:356px}
+ .smk-orbit{left:0;right:0;width:auto;top:226px;bottom:auto;height:110px}
+ .smk-perle{width:58px;margin-left:-29px}.smk-perle b{width:42px;height:42px;font-size:.72rem}.smk-perle small{font-size:.64rem;padding:1px 5px}
+ .smk-ziel{top:-14px;font-size:.76rem;padding:7px 12px}}
+@media (prefers-reduced-motion:reduce){.smk-perle,.smk-orbit .faden path{animation:none}}
+/* Social Media KI: Pakete Pro und Maxi */
+.smk-pakete{margin-top:8px}
+.smk-leiste{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 18px;margin-bottom:18px}
+.smk-leiste h2{margin:0}
+.smk-schalter{display:inline-flex;padding:4px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 5%,transparent)}
+.smk-schalter button{border:0;background:none;color:var(--ink-2);font:600 .86rem/1 Archivo,system-ui,sans-serif;padding:9px 16px;border-radius:999px;cursor:pointer}
+.smk-schalter button[aria-pressed="true"]{background:var(--akzent);color:var(--nacht-bg,#fff);box-shadow:0 4px 14px color-mix(in srgb,var(--akzent) 35%,transparent)}
+.s-champagner .smk-schalter button[aria-pressed="true"]{color:#fff}
+.smk-schalter small{opacity:.8;font-weight:500;margin-left:4px}
+.smk-karten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
+.smk-karte{position:relative;display:flex;flex-direction:column;gap:14px;padding:clamp(20px,2.4vw,30px)}
+.smk-karte.maxi{border-color:var(--akzent);box-shadow:0 0 0 1px var(--akzent),0 18px 44px color-mix(in srgb,var(--akzent) 18%,transparent)}
+.smk-karte .band{position:absolute;top:-12px;right:20px;padding:6px 12px;border-radius:999px;font:600 .74rem/1 Archivo,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:linear-gradient(100deg,#ff5fa2,#b06bff,#4aa8ff)}
+.smk-karte h3{margin:0;font-size:1.6rem}
+.smk-karte .fuer{margin:-8px 0 0;color:var(--ink-2)}
+.smk-betrag{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.smk-betrag b{font-size:clamp(2.2rem,4vw,3rem);line-height:1;font-family:inherit}
+.smk-betrag span{color:var(--ink-2);font-size:.92rem}
+.smk-pakete .jahr-an,.smk-pakete.zeige-jahr .monat-an{display:none}
+.smk-pakete.zeige-jahr .jahr-an{display:flex}
+.smk-karte p.jahr-an{display:none}.smk-pakete.zeige-jahr .smk-karte p.jahr-an{display:block}
+.smk-karte ul.plain{margin:0}
+.smk-mengen{display:grid;gap:8px;margin:0;padding:14px 0 0;border-top:1px solid var(--line);list-style:none}
+.smk-mengen li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font-size:.88rem;color:var(--ink-2)}
+.smk-mengen li b{color:var(--ink);font-variant-numeric:tabular-nums}
+.smk-mengen li i{grid-column:1/-1;height:5px;border-radius:9px;background:color-mix(in srgb,var(--ink) 10%,transparent);overflow:hidden}
+.smk-mengen li i::before{content:"";display:block;height:100%;width:var(--w);border-radius:inherit;background:linear-gradient(90deg,#ff5fa2,#b06bff,#4aa8ff,#2fd3c4)}
+.smk-karte .knopf{margin-top:auto;align-self:flex-start}
+.smk-beide{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.smk-beide .kicker{margin-right:6px}
+.smk-beide span.chip{padding:7px 12px;border-radius:999px;border:1px solid var(--line);font-size:.86rem;color:var(--ink)}
+.smk-weg{margin-top:26px;padding:clamp(20px,2.6vw,32px)}
+.smk-schritte{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:16px 0 20px;list-style:none;padding:0;counter-reset:smk;position:relative}
+.smk-schritte::before{content:"";position:absolute;left:24px;right:calc(33% - 24px);top:23px;height:2px;background:linear-gradient(90deg,#ff5fa2,#b06bff,#4aa8ff,#2fd3c4);opacity:.6}
+.smk-schritte li{position:relative;counter-increment:smk;padding-top:60px}
+.smk-schritte li::before{content:counter(smk);position:absolute;top:0;left:0;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;font:600 1.1rem/1 Archivo,system-ui,sans-serif;color:#fff;background:linear-gradient(135deg,#ff5fa2,#b06bff 55%,#4aa8ff);box-shadow:0 6px 18px rgba(176,107,255,.35)}
+.smk-schritte h4{margin:0 0 4px}.smk-schritte p{margin:0;color:var(--ink-2)}
+.smk-weg .k-reihe{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+@media (max-width:760px){.smk-karten,.smk-schritte{grid-template-columns:1fr}.smk-schritte::before{left:23px;right:auto;top:24px;bottom:24px;width:2px;height:auto;background:linear-gradient(180deg,#ff5fa2,#b06bff,#4aa8ff)}
+ .smk-schritte li{padding:0 0 0 64px;min-height:48px}}
 .alt .fin-head.k-kopf{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
 @media (max-width:760px){
  .alt .alt-hero.k-kopf{min-height:0;padding-block:236px 34px}
@@ -1261,8 +1281,27 @@ function smkKaufUrl(){return SMK_APP+'/buy'}
 function smkPlanPreis(n){const a=smkAktion();return a?Math.round(n*(100-a.rabatt)/100):n}
 function smkPreisBlock(){const a=smkAktion();
  if(!a)return '<span class="price">Pro 590 &euro;<small> / Monat</small></span><span class="price" style="margin-top:4px">Maxi 797 &euro;<small> / Monat</small></span><p class="note" style="margin:2px 0 0">Endpreise, keine Umsatzsteuer (Kleinunternehmer, &sect; 19 UStG), monatlich k&uuml;ndbar. Jahresabo auf Wunsch: Pro 6.018 &euro;, Maxi 8.129,40 &euro;.</p>';
- return '<span class="price">Pro '+smkPlanPreis(590)+' &euro;<small> / erster Monat</small></span><span class="price" style="margin-top:4px">Maxi '+smkPlanPreis(797)+' &euro;<small> / erster Monat</small></span><p class="note" style="margin:2px 0 0">statt 590 &euro; / 797 &euro; &middot; danach normaler Preis, Endpreise ohne Umsatzsteuer (&sect; 19 UStG), monatlich k&uuml;ndbar. Code im Bestellvorgang eingeben.</p>'} function smkCodeZeile(){const a=smkAktion();
- if(!a)return '<div class="mod-kopf"><span class="kicker">Aktionscode</span><p class="note" style="margin:4px 0 0">Zurzeit laeuft keine Aktion. Der naechste Code steht hier.</p></div>';
+ return '<span class="price">Pro '+smkPlanPreis(590)+' &euro;<small> / erster Monat</small></span><span class="price" style="margin-top:4px">Maxi '+smkPlanPreis(797)+' &euro;<small> / erster Monat</small></span><p class="note" style="margin:2px 0 0">statt 590 &euro; / 797 &euro; &middot; danach normaler Preis, Endpreise ohne Umsatzsteuer (&sect; 19 UStG), monatlich k&uuml;ndbar. Code im Bestellvorgang eingeben.</p>'} function smkPakete(){const a=smkAktion(),m=[['KI-Textaufträge',300],['Ideen-Generierungen',30],['Videos',10],['Voiceovers',10],['Antworten des Webseiten-Assistenten',500],['Marken',1],['Verbundene Webseiten',1]],
+ eur=n=>n.toLocaleString('de-DE',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2})+' &euro;',
+ karte=(k,name,fuer,mon,jahr,feat,f,maxi)=>`<div class="card smk-karte${maxi?' maxi':''}" id="paket-${k}">${maxi?'<span class="band">Empfohlen</span>':''}<span class="meta">Paket</span><h3>${name}</h3><p class="fuer">${fuer}</p>
+  <div class="smk-betrag monat-an"><b>${eur(smkPlanPreis(mon))}</b><span>${a?'erster Monat, danach '+eur(mon):'/ Monat'}</span></div>
+  <div class="smk-betrag jahr-an"><b>${eur(jahr)}</b><span>/ Jahr im Voraus</span></div><p class="note jahr-an" style="margin:-8px 0 0">entspricht ${eur(Math.round(jahr/12*100)/100)} / Monat, 15 % günstiger als 12 Monatszahlungen</p>
+  <ul class="plain">${feat.map(x=>`<li>${x}</li>`).join('')}</ul>
+  <ul class="smk-mengen" aria-label="Kontingente je Monat">${m.map(q=>`<li><span>${q[0]}</span><b>${(q[1]*f).toLocaleString('de-DE')}</b><i style="--w:${f===3?100:34}%"></i></li>`).join('')}</ul>
+  <a class="knopf ${maxi?'voll':'rand'}" href="${SMK_APP}/buy?plan=${k}#paket-${k}" target="_blank" rel="noopener">${name} ansehen →</a></div>`;
+ return `<div class="smk-pakete" id="pakete"><div class="smk-leiste"><div><span class="kicker">Monatlich kündbar</span><h2>Pro oder Maxi</h2></div>
+  <div class="smk-schalter" role="group" aria-label="Abrechnung"><button type="button" data-smk-int="monat" aria-pressed="true">Monatlich</button><button type="button" data-smk-int="jahr" aria-pressed="false">Jährlich <small>−15 %</small></button></div></div>
+  ${smkCodeZeile()}
+  <div class="smk-karten" style="margin-top:16px">${karte('pro','Pro','Für eine Marke und eine Webseite',590,6018,['Eigener privater Arbeitsbereich','KI-Funktionen über Betreiber-Zugänge – kein eigenes KI-Abo nötig','Social Media AI, Marken-DNA, Schulung, Wachstum, Posteingang','Webseiten-Assistent für 1 Webseite'],1,false)}
+  ${karte('maxi','Maxi','Für mehrere Marken und Webseiten',797,8129.4,['Alles aus Pro','Dreifache Kontingente','Bis zu 3 Marken','Webseiten-Assistent für bis zu 3 Webseiten'],3,true)}</div>
+  <div class="smk-beide"><span class="kicker">In beiden Paketen</span>${['YouTube','Facebook','Instagram','LinkedIn','TikTok','Redaktionsplan und Varianten je Kanal','Videovorschau vor der Freigabe','Auswertung je Kanal','Einrichtungsassistent beim ersten Start'].map(x=>`<span class="chip">${x}</span>`).join('')}</div>
+  <p class="note" style="margin-top:14px">${a?'Der Aktionspreis gilt für den ersten Monat. ':''}Endpreise – als Kleinunternehmer nach § 19 UStG wird keine Umsatzsteuer berechnet; monatlich kündbar zum Laufzeitende. Kontingente sind feste Obergrenzen je Monat, auch im Jahresabo. Der Kauf ist noch nicht freigeschaltet: Die App zeigt die Pakete derzeit nur an, bezahlt wird nichts.</p>
+  <div class="plate smk-weg"><span class="kicker">So kommen Sie hinein</span><ol class="smk-schritte"><li><h4>Kaufen</h4><p>Sobald der Kauf freigeschaltet ist, über „Pro ansehen“ oder „Maxi ansehen“.</p></li><li><h4>Freischalten</h4><p>Nach bestätigter Zahlung wird der Zugang freigeschaltet.</p></li><li><h4>Verbinden</h4><p>Der Assistent führt Sie durch die Anmeldung Ihrer Kanäle.</p></li></ol>
+  <div class="k-reihe"><a class="knopf voll" href="${SMK_APP}/buy" target="_blank" rel="noopener">Social Media KI öffnen →</a><a class="knopf rand" href="${SMK_APP_LIVE}" target="_blank" rel="noopener">Anmelden</a><span class="note" style="margin:0">Die App öffnet sich in einem neuen Tab. Zum Arbeiten legen Sie dort ein Konto an oder melden sich an.</span></div></div></div>`}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-smk-int]');if(!b)return;const w=b.closest('.smk-pakete');if(!w)return;
+ w.classList.toggle('zeige-jahr',b.dataset.smkInt==='jahr');w.querySelectorAll('[data-smk-int]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))});
+function smkCodeZeile(){const a=smkAktion();
+ if(!a)return '<div class="mod-kopf"><span class="kicker">Aktionscode</span><p class="note" style="margin:4px 0 0">Zurzeit läuft keine Aktion. Der nächste Code steht hier.</p></div>';
  return '<div class="mod-kopf" style="border-color:var(--gold)"><span class="kicker">'+a.titel+' &middot; noch bis '+smkDatum(a.bis)+'</span><p style="margin:4px 0 0">Code <b class="mono">'+a.code+'</b> &mdash; '+a.text+'</p></div>'} function smkBanner(){const a=smkAktion();if(!a)return '';
  return '<div class="demo-bar" style="margin-bottom:14px;border-radius:var(--r)">'+a.titel+': Code <b>'+a.code+'</b> &mdash; '+a.text+' &middot; noch bis '+smkDatum(a.bis)+'</div>'}
 /* Läuft die Seite in der Staging-App (echte Server-Funktionen) oder als Vorschau ohne Server? */
@@ -1536,7 +1575,7 @@ SEITEN.start={titel:'Start',render:()=>`
 
 `};
 
-SEITEN['social-media-ki']={titel:'Social Media KI',render:()=>`${smkBanner()}<section class="block"><div class="head"><span class="kicker">Monatsabo</span><h1>Social Media KI</h1><p class="lede">Fünf Plattformen, ein Kommandostand. Inhalte entstehen, werden Ihnen zur Freigabe vorgelegt und erst danach veröffentlicht — nie ungefragt. Welche Anbindungen schon laufen, steht weiter unten im Stand der Anbindungen.</p></div><div class="two"><div class="card empfehlung"><span class="meta">Monatlich kündbar</span><h3>Pro und Maxi</h3>${smkPreisBlock()}${smkCodeZeile()}<ul class="plain"><li>YouTube, Facebook, Instagram, LinkedIn, TikTok</li><li>Redaktionsplan und Varianten je Kanal</li><li>Videovorschau vor der Freigabe</li><li>Auswertung je Kanal</li><li>Einrichtungsassistent beim ersten Start</li></ul><a class="btn" href="${SMK_APP}/buy?plan=pro#paket-pro" target="_blank" rel="noopener">Pro ansehen</a> <a class="btn" href="${SMK_APP}/buy?plan=maxi#paket-maxi" target="_blank" rel="noopener">Maxi ansehen</a><p class="note" style="margin-top:8px">${smkAktion()?'Der Aktionspreis gilt für den ersten Monat. ':''}Endpreise – als Kleinunternehmer nach § 19 UStG wird keine Umsatzsteuer berechnet; monatlich kündbar zum Laufzeitende. Der Kauf ist noch nicht freigeschaltet: Die App zeigt die Pakete derzeit nur an, bezahlt wird nichts.</p></div><div class="plate"><span class="kicker">So kommen Sie hinein</span><div class="steps" style="margin-top:10px"><div><h4>Kaufen</h4><p>Sobald der Kauf freigeschaltet ist, über die Knöpfe nebenan.</p></div><div><h4>Freischalten</h4><p>Nach bestätigter Zahlung wird der Zugang freigeschaltet.</p></div><div><h4>Verbinden</h4><p>Der Assistent führt Sie durch die Anmeldung Ihrer Kanäle.</p></div></div><a class="btn ghost" style="margin-top:12px" href="${SMK_APP}/buy" target="_blank" rel="noopener">Social Media KI öffnen</a></div></div><div class="mod-kopf" style="border-color:var(--blau);margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap"><div style="flex:1 1 20rem"><span class="kicker">Social Media KI ansehen</span><p style="margin:4px 0 0">Die App öffnet sich in einem neuen Tab. Zum Arbeiten legen Sie dort ein Konto an oder melden sich an.</p></div><a class="btn" href="${SMK_APP}/buy" target="_blank" rel="noopener">Social Media KI öffnen</a><a class="btn ghost sm" href="${SMK_APP_LIVE}" target="_blank" rel="noopener" style="margin-left:8px">Anmelden</a></div></section><section class="block" id="reichweitenaufbau"><div class="head"><span class="kicker">Neu in der App · Stand 19.10.2026</span><h2>Reichweitenaufbau &amp; Weiterempfehlungen</h2><p class="note">Mehr Reichweite ohne gekaufte Follower: Inhalte, die Menschen gern weitergeben, ehrlich gemessene Empfehlungslinks, Kooperationen, Werbeplanung und ein eigener Newsletter. Veröffentlicht, versendet oder bezahlt wird nur, was Sie selbst freigeben.</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px"><a class="btn" href="${SMK_APP}/reichweitenaufbau" target="_blank" rel="noopener">Reichweitenaufbau öffnen</a><a class="btn ghost" href="${SMK_APP}/weiterempfehlungen" target="_blank" rel="noopener">Weiterempfehlungen</a><a class="btn ghost" href="${SMK_APP}/settings/zugaenge" target="_blank" rel="noopener">Eigene Zugänge (API-Schlüssel)</a></div></div><div class="grid g3">${[
+SEITEN['social-media-ki']={titel:'Social Media KI',render:()=>`${smkBanner()}<section class="block"><div class="head"><span class="kicker">Monatsabo</span><h1>Social Media KI</h1><p class="lede">Fünf Plattformen, ein Kommandostand. Inhalte entstehen, werden Ihnen zur Freigabe vorgelegt und erst danach veröffentlicht — nie ungefragt. Welche Anbindungen schon laufen, steht weiter unten im Stand der Anbindungen.</p></div>${smkPakete()}</section><section class="block" id="reichweitenaufbau"><div class="head"><span class="kicker">Neu in der App · Stand 19.10.2026</span><h2>Reichweitenaufbau &amp; Weiterempfehlungen</h2><p class="note">Mehr Reichweite ohne gekaufte Follower: Inhalte, die Menschen gern weitergeben, ehrlich gemessene Empfehlungslinks, Kooperationen, Werbeplanung und ein eigener Newsletter. Veröffentlicht, versendet oder bezahlt wird nur, was Sie selbst freigeben.</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px"><a class="btn" href="${SMK_APP}/reichweitenaufbau" target="_blank" rel="noopener">Reichweitenaufbau öffnen</a><a class="btn ghost" href="${SMK_APP}/weiterempfehlungen" target="_blank" rel="noopener">Weiterempfehlungen</a><a class="btn ghost" href="${SMK_APP}/settings/zugaenge" target="_blank" rel="noopener">Eigene Zugänge (API-Schlüssel)</a></div></div><div class="grid g3">${[
 ['Weiterempfehlungen','Kampagnen- und Empfehlungslinks ohne Personendaten, freiwilliges Teilen, Auswertung: was gemessen ist und was nicht.','Läuft','Plattformzahlen manuell'],
 ['Content-Ideen','Geführtes Briefing, sechs Vorlagen, Übernahme nur als Entwurf zur Freigabe. Vorher-nachher bei Schönheitseingriffen gesperrt (§ 11 HWG).','Läuft',''],
 ['Variantenvergleich','Ziel und Kennzahl vorher festlegen, eigener Link je Variante. Eine Aussage gibt es nur bei genug Daten.','Läuft','Plattformwerte manuell'],
@@ -3195,8 +3234,8 @@ var KOLIBRI={
  gold:["k-gold-1","k-mir-1","k-gold-2","k-aurora-1","k-gold-3","k-feder-1","k-neon-1","k-mir-2","k-aurora-3","k-neon-4"],
  champagner:["k-champ-1","k-champ-2","k-champ-3","k-champ-4","k-champ-5"]};
 var KOPF_ROUTEN=["ki-dienstleistungen","kundenanfragen-pilot","pakete-karten","einstieg","quellen","ki-agenten","ki-automation","content-erstellung","social-media-ki","ki-beratung","schulung","webdesign","webseiten-aufbau","ueber-uns","kontakt","bildvorschlaege","rechner","referenzen","webseitenkonzepte","portfolio","preise","faq","demo","finanzen","login","checkout","impressum","datenschutz","agb","privatkunden","unternehmen","konzept-1","konzept-2","konzept-3","konzept-7"];
-var NEU_DUNKEL={webdesign:"k-color","ueber-uns":"k-magic",portfolio:"k-wings",webseitenkonzepte:"k-bloom"};
-var EIGEN_BILD={"social-media-ki":{neon:"k-mir-1",aurora:"k-aurora-1",gold:"k-gold-1"},privatkunden:{neon:"neon-privat",champagner:"champ-hero",aurora:"aurora-privat",gold:"gold-privat"},unternehmen:{neon:"neon-firma",aurora:"aurora-firma",gold:"gold-firma"}};
+var NEU_DUNKEL={webdesign:"k-color","social-media-ki":"k-vision","ueber-uns":"k-magic",portfolio:"k-wings",webseitenkonzepte:"k-bloom"};
+var EIGEN_BILD={privatkunden:{neon:"neon-privat",champagner:"champ-hero",aurora:"aurora-privat",gold:"gold-privat"},unternehmen:{neon:"neon-firma",aurora:"aurora-firma",gold:"gold-firma"}};
 function kolibriBilder(r){var l=KOLIBRI[S.stil]||KOLIBRI.neon,i=KOPF_ROUTEN.indexOf(r==="social-media"?"social-media-ki":r==="pakete"?"preise":r==="zentrale"?"ki-agenten":r);if(i<0)i=0;
   var out=[];for(var j=0;j<3;j++){var b="bilder/"+l[(i+j*4)%l.length]+".webp";if(out.indexOf(b)<0)out.push(b)}
   var e=EIGEN_BILD[r];if(e&&e[S.stil]){out.unshift("bilder/"+e[S.stil]+".webp")}
@@ -3221,22 +3260,15 @@ function kopfAusbauen(h,r){var h1=h.querySelector("h1");
     if(k>0&&k<t.length){h1.textContent=t.slice(0,k);var sp=document.createElement("span");sp.className="verlauf";sp.textContent=t.slice(k);h1.appendChild(sp)}}
   if(KOPF_KNOEPFE[r]&&!h.querySelector(".btn,.knopf,.k-aktionen,.cta")){var d=document.createElement("div");d.className="k-aktionen";
     d.innerHTML='<a class="knopf voll" href="#kontakt">Kostenloses Erstgespräch '+ic("pfeil",1.8)+'</a><a class="knopf rand" href="#pakete">Pakete und Preise</a>';h.appendChild(d)}}
-function smkKopf(h){if(h.querySelector(".smk-deko"))return;h.classList.add("smk-kopf");
-  var grad='<defs><linearGradient id="smkVerlauf" x1="0" x2="1"><stop offset="0" stop-color="#ff5fa2"/><stop offset=".3" stop-color="#b06bff"/><stop offset=".55" stop-color="#4aa8ff"/><stop offset=".78" stop-color="#2fd3c4"/><stop offset="1" stop-color="#ffc24d"/></linearGradient></defs>';
-  var d=document.createElement("div");d.className="smk-deko";d.setAttribute("aria-hidden","true");
-  var f=["#ff5fa2","#b06bff","#2fd3c4","#4aa8ff","#ffc24d"],funken="";
-  for(var i=0;i<18;i++){funken+='<i style="left:'+(4+((i*37)%56))+'%;top:'+(8+((i*53)%82))+'%;--f:'+f[i%5]+';animation-delay:'+(-(i*.7)).toFixed(1)+'s"></i>'}
-  d.innerHTML='<span class="glanz g1"></span><span class="glanz g2"></span><span class="glanz g3"></span><svg viewBox="0 0 1440 560" preserveAspectRatio="none">'+grad+
-   '<path class="band" stroke="url(#smkVerlauf)" d="M-20 470 C 260 330, 420 540, 700 380 S 1100 120, 1460 200"/>'+
-   '<path class="band b2" stroke="url(#smkVerlauf)" d="M-20 120 C 220 40, 380 260, 640 190 S 980 40, 1460 90"/>'+
-   '<path class="band b3" stroke="url(#smkVerlauf)" d="M-20 300 C 300 220, 520 420, 820 300 S 1200 260, 1460 360"/></svg>'+funken;
-  h.insertBefore(d,h.firstChild);
-  var pl=[["YT","YouTube","#ff5fa2"],["FB","Facebook","#4aa8ff"],["IG","Instagram","#b06bff"],["IN","LinkedIn","#2fd3c4"],["TT","TikTok","#ffc24d"]],y=[14,2,-6,2,14];
+function smkKopf(h){if(h.querySelector(".smk-orbit"))return;h.classList.add("smk-kopf");
+  var pl=[["YT","YouTube","#ff5fa2"],["FB","Facebook","#4aa8ff"],["IG","Instagram","#b06bff"],["IN","LinkedIn","#2fd3c4"],["TT","TikTok","#ffc24d"]],
+   pos=[[8,52],[29,24],[50,58],[71,24],[92,52]];
   var o=document.createElement("div");o.className="smk-orbit";o.setAttribute("role","img");o.setAttribute("aria-label","Fünf Plattformen – YouTube, Facebook, Instagram, LinkedIn, TikTok – laufen in einem Kommandostand zusammen");
-  o.innerHTML='<svg class="faden" viewBox="0 0 560 80" preserveAspectRatio="none" aria-hidden="true">'+grad.replace("smkVerlauf","smkFaden")+'<path stroke="url(#smkFaden)" d="M26 54 C 90 34, 130 26, 180 30 S 300 22, 340 38 S 420 60, 470 34"/></svg>'+
-   pl.map(function(p,i){return '<span class="smk-perle" aria-hidden="true" style="--i:'+i+';--f:'+p[2]+';--y:'+y[i]+'px"><b>'+p[0]+'</b><small>'+p[1]+'</small></span>'}).join('')+
+  o.innerHTML='<svg class="faden" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="smkFaden" x1="0" x2="1"><stop offset="0" stop-color="#ff5fa2"/><stop offset=".3" stop-color="#b06bff"/><stop offset=".55" stop-color="#4aa8ff"/><stop offset=".78" stop-color="#2fd3c4"/><stop offset="1" stop-color="#ffc24d"/></linearGradient></defs>'+
+   '<path vector-effect="non-scaling-stroke" stroke="url(#smkFaden)" d="M8 70 C 16 50, 22 42, 29 42 S 42 74, 50 76 S 64 42, 71 42 S 86 54, 92 70"/></svg>'+
+   pl.map(function(p,i){return '<span class="smk-perle" aria-hidden="true" style="--i:'+i+';--f:'+p[2]+';--x:'+pos[i][0]+'%;--y:'+pos[i][1]+'px"><b>'+p[0]+'</b><small>'+p[1]+'</small></span>'}).join('')+
    '<span class="smk-ziel" aria-hidden="true">Ein Kommandostand</span>';
-  var lede=h.querySelector(".lede");if(lede)lede.insertAdjacentElement("afterend",o);else h.appendChild(o)}
+  h.appendChild(o)}
 function heroBild(r){
   var img=bgAktuell(r),url=img==="ohne"?"none":"url("+bgPfad(img)+")";
   var h=main.querySelector(".alt-seite section.block > .head")||main.querySelector(".alt-seite section.block > .fin-head");
@@ -3279,7 +3311,7 @@ var VORSCHLAEGE=[
  ["unternehmen","Für Unternehmen",["Kleiner Betrieb von außen in der Dämmerung, im Fenster leuchtet das Agenten-Dashboard","Besprechungstisch mit Ablaufplan, drei Spalten mit Haken"]],
  ["impressum","Impressum, Datenschutz und AGB",["Bewusst ruhig: heller Papierton mit feiner Linienstruktur, kein Motiv","Sehr dunkler Grund mit kaum sichtbarem Diamant-Wasserzeichen"]]
 ];
-var ARCHIV=[["welt-kreativ","Colorverse · Kreativ","Kopf von Webdesign, Designwelt Kreativ (Konzept 7)"],["welt-agenturen","Vision Control · Agenturen","Wählbar bei Social Media KI, Designwelt Agenturen"],["welt-events","Wings of Experience · Events","Kopf von Portfolio, Designwelt Events"],["welt-lifestyle","Magic Moments · Lifestyle","Kopf von Über uns, Designwelt Lifestyle"],["welt-beauty","Bloom Beauty · Beauty","Kopf von Webseitenkonzepte, Designwelt Beauty"]];
+var ARCHIV=[["welt-kreativ","Colorverse · Kreativ","Kopf von Webdesign, Designwelt Kreativ (Konzept 7)"],["welt-agenturen","Vision Control · Agenturen","Kopf von Social Media KI, Designwelt Agenturen"],["welt-events","Wings of Experience · Events","Kopf von Portfolio, Designwelt Events"],["welt-lifestyle","Magic Moments · Lifestyle","Kopf von Über uns, Designwelt Lifestyle"],["welt-beauty","Bloom Beauty · Beauty","Kopf von Webseitenkonzepte, Designwelt Beauty"]];
 TSEITEN.bildvorschlaege=function(){
   var karte=function(v){var r=v[0],pool=bgPool(r==="impressum"?"impressum":r),g=grundVorgabe(r)[0];
     return '<div class="karte bv-karte"><span class="chip">'+esc(v[1])+'</span>'+

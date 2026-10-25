@@ -32,6 +32,13 @@ const PERLEN = [
   ["TT", "TikTok", "#ffc24d", 92, 52],
 ] as const;
 
+/** Funken im Kopfbild (Lage in %, Farbe) – feste Werte, damit Server und Browser gleich rendern. */
+const FUNKEN = Array.from({ length: 18 }, (_, i) => [
+  52 + ((i * 37) % 46),
+  8 + ((i * 53) % 82),
+  ["#ff5fa2", "#b06bff", "#2fd3c4", "#4aa8ff", "#ffc24d"][i % 5],
+] as const);
+
 /** Geplante Autopilot-Größen (noch nicht buchbar, Preise vorläufig) — wie in der Hauptseite. */
 const AUTOPILOT = [
   { name: "Autopilot S", preis: "149 €", agency: false, punkte: ["1 Marke", "30 Content-Ideen pro Monat", "10 KI-Videos (à 30 s) pro Monat", "10 Minuten Sprachausgabe pro Monat"] },
@@ -92,6 +99,11 @@ export default async function BuyPage({
         <p className="brotkrumen">SECRET 58 / Social Media KI</p>
 
         <section className="smk-hero">
+          <span className="smk-funken" aria-hidden="true">
+            {FUNKEN.map((f, i) => (
+              <i key={i} style={{ left: `${f[0]}%`, top: `${f[1]}%`, "--f": f[2], animationDelay: `${-i * 0.7}s` } as CSSProperties} />
+            ))}
+          </span>
           <span className="smk-kicker">Monatsabo</span>
           <h1>Social Media KI</h1>
           <p className="lead">

@@ -138,3 +138,43 @@
 .zentrale .smk-mengen i { height: 5px; border-radius: 9px; background: var(--line); overflow: hidden; }
 .zentrale .smk-mengen i::before { content: ""; display: block; height: 100%; width: var(--w); border-radius: inherit; background: linear-gradient(90deg, #ff5fa2, #b06bff, #4aa8ff, #2fd3c4); }
 .zentrale .preis-karte .betrag span { display: block; margin-top: .3rem; font-size: .78rem; line-height: 1.4; }
+
+/* Kolibri-Effekte wie auf der Hauptseite: fließende Farbverläufe in Schriftzügen,
+   umlaufendes Licht („Wurm“) um Kästchen und Knöpfe, Funkeln im Kopfbild. */
+.zentrale { --k1: #ff5fa2; --k2: #b06bff; --k3: #4aa8ff; --k4: #2fd3c4; --verlauf: linear-gradient(100deg, var(--k1), var(--amber) 28%, var(--k2) 52%, var(--k3) 74%, var(--k4)); }
+@property --s58w { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes s58-wurm { to { --s58w: 360deg; } }
+@keyframes verlauf-fliessen { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+.zentrale .seite-inhalt h1, .zentrale .seite-inhalt h2 {
+  background: var(--verlauf); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent; animation: verlauf-fliessen 7s ease-in-out infinite alternate;
+}
+.zentrale :is(.preis-karte, .karte, .cta-box):is(:hover, :focus-within) :is(h3, .betrag),
+.zentrale header.kopf :is(a):is(:hover, :focus-visible),
+.zentrale footer.fuss a:is(:hover, :focus-visible),
+.zentrale .seite-inhalt li b:hover {
+  background: var(--verlauf); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent; animation: verlauf-fliessen 1.6s ease-in-out infinite alternate;
+}
+.zentrale :is(.preis-karte, .karte, .cta-box, .preisanker, .hinweis, .smk-schalter) { position: relative; }
+.zentrale :is(.preis-karte, .karte, .cta-box, .preisanker, .hinweis, .smk-schalter)::after,
+.zentrale .knopf-link:not(.gesperrt)::after {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 2px; pointer-events: none; opacity: 0; transition: opacity .25s;
+  background: conic-gradient(from var(--s58w), transparent 0 50%, var(--k1) 64%, var(--amber) 78%, var(--k2) 87%, var(--k4) 95%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.zentrale .knopf-link:not(.gesperrt) { position: relative; }
+.zentrale :is(.preis-karte, .karte, .cta-box, .preisanker, .hinweis, .smk-schalter):is(:hover, :focus-within)::after,
+.zentrale .knopf-link:not(.gesperrt):is(:hover, :focus-visible)::after,
+.zentrale .preis-karte.hervorgehoben::after { opacity: 1; animation: s58-wurm 2.8s linear infinite; }
+.zentrale .preis-karte:is(:hover, :focus-within) { box-shadow: 0 0 28px -6px rgba(176, 107, 255, .45); }
+.zentrale .smk-perle b { transition: transform .25s; }
+.zentrale .smk-funken i { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #fff; opacity: 0; pointer-events: none;
+  box-shadow: 0 0 6px 2px color-mix(in srgb, var(--f) 80%, transparent); animation: smk-funke 6s ease-in-out infinite; }
+.zentrale .smk-funken { position: absolute; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); z-index: 0; pointer-events: none; overflow: hidden; }
+@keyframes smk-funke { 0%, 100% { opacity: 0; transform: translateY(0) scale(.6); } 40% { opacity: .95; } 70% { opacity: .5; transform: translateY(-18px) scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .zentrale *, .zentrale *::after { animation: none !important; }
+  .zentrale .smk-funken i { opacity: .5; }
+}

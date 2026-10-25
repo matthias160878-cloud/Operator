@@ -1,10 +1,15 @@
-Secret 58 Zentrale Neu – Vorschau (Stand 21.10.2026)
+Secret 58 Zentrale Neu – Vorschau (Stand 25.10.2026, Version 18)
 
 Aufbau:
 - index.html: die ganze Seite (Single-Page, Unterseiten per #/<seite>, z. B. #/start, #/ki-agenten, #/preise)
   - Seiteninhalte stehen im Objekt SEITEN.<name> = {titel, render}
   - Navigation im Menü-Array (Eintrag "Mehr" mit Unterpunkten)
   - Design-Fenster rechts unten (Knopf "Design"): Schalter und Regler, Zustand in localStorage "s58-design-2"
+  - Effekte (alle im Design-Fenster schaltbar): Überschriften mit Farbwechsel, Farbwechsel
+    beim Darüberfahren in Kopf-/Fußzeile und Karten, umlaufender Leuchtrahmen an Menüs,
+    Karten, Knöpfen und Bildern, Kolibri-Funkenspur, Kolibri-Farbwechsel
+  - Startseite ohne Gehirn, ohne "Agenten ohne Abo" (jetzt auf #/preise), ohne Social-Media-
+    Paket (jetzt oben auf #/social-media-ki) und ohne Ablauf (jetzt auf #/ki-automation)
 - hintergrund.js: bewegter Hintergrund (window.grundSetzen, window.grundEinstellen)
 - motion.css / motion.js: Einblend-Effekte
 - bilder/, video/, referenzen/: Bilder, Videos, Referenzseiten

@@ -12,6 +12,7 @@ const eslintConfig = defineConfig([
     "public/zentrale/**",
     "public/verlauf/**",
     "public/hauptseite/**",
+    "public/zentrale-neu/**",
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",

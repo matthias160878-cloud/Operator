@@ -2,7 +2,9 @@
 
 Echter, serverseitiger Dateiaustausch je Kundenkonto. Die Demo im Arbeitsbereich der Hauptseiten-Kopie
 (`public/hauptseite/`, nur im Browser) bleibt unverändert als Demo bestehen. Ist man angemeldet,
-zeigt sie den Serverstand an und verlinkt den echten Dateibereich.
+zeigt sie den Serverstand an und verlinkt den echten Dateibereich. Die neue Zentrale (`public/zentrale-neu/`,
+auf Staging `/zentrale-neu`, ohne Anmeldung, noindex) übernimmt Arbeitsbereich, Kontaktformular
+(`/api/kontakt`) und Chat (`/api/chat`) der Kopie und soll später die Hauptseite ablösen.
 
 - **Kunde:** Menü „Dateien“ → `/dateien`
 - **Betreiber:** `/operator` → „Dateiaustausch“ → `/operator/dateien`

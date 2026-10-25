@@ -23,6 +23,7 @@ const PUBLIC_PREFIXES = [
   "/zentrale/",
   "/verlauf",
   "/hauptseite",
+  "/zentrale-neu",
   "/login",
   "/signup",
   "/setup",

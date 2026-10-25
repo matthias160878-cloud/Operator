@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { getSessionUser } from "@/lib/auth/session";
 import { legalInfoComplete, legalLinks } from "@/lib/legal";
 import {
@@ -21,6 +22,15 @@ import { getPlanPrice, isStripeConfigured, isStripeWebhookConfigured } from "@/l
 import "./zentrale.css";
 
 export const dynamic = "force-dynamic";
+
+/** Fünf Plattformen als Perlen im Kopfbild (wie in der Zentrale): Kürzel, Name, Farbe, Lage. */
+const PERLEN = [
+  ["YT", "YouTube", "#ff5fa2", 8, 52],
+  ["FB", "Facebook", "#4aa8ff", 29, 24],
+  ["IG", "Instagram", "#b06bff", 50, 58],
+  ["IN", "LinkedIn", "#2fd3c4", 71, 24],
+  ["TT", "TikTok", "#ffc24d", 92, 52],
+] as const;
 
 /** Geplante Autopilot-Größen (noch nicht buchbar, Preise vorläufig) — wie in der Hauptseite. */
 const AUTOPILOT = [
@@ -81,12 +91,51 @@ export default async function BuyPage({
       <main className="wrap seite-inhalt">
         <p className="brotkrumen">SECRET 58 / Social Media KI</p>
 
-        <h1>Social Media KI</h1>
-        <p className="lead">
-          Die eigenständige Software von SECRET 58: Aus einer Idee wird fertiger, freigegebener Content für YouTube,
-          TikTok, Instagram, LinkedIn und Facebook. 14 KI-Agenten erzeugen Skripte, Hooks, Hashtags, Thumbnails,
-          Untertitel und Voiceover.
-        </p>
+        <section className="smk-hero">
+          <span className="smk-kicker">Monatsabo</span>
+          <h1>Social Media KI</h1>
+          <p className="lead">
+            Die eigenständige Software von SECRET 58: Aus einer Idee wird fertiger, freigegebener Content für YouTube,
+            TikTok, Instagram, LinkedIn und Facebook. 14 KI-Agenten erzeugen Skripte, Hooks, Hashtags, Thumbnails,
+            Untertitel und Voiceover.
+          </p>
+          <div
+            className="smk-orbit"
+            role="img"
+            aria-label="Fünf Plattformen – YouTube, Facebook, Instagram, LinkedIn, TikTok – laufen in einem Kommandostand zusammen"
+          >
+            <svg className="faden" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="smkFaden" x1="0" x2="1">
+                  <stop offset="0" stopColor="#ff5fa2" />
+                  <stop offset=".3" stopColor="#b06bff" />
+                  <stop offset=".55" stopColor="#4aa8ff" />
+                  <stop offset=".78" stopColor="#2fd3c4" />
+                  <stop offset="1" stopColor="#ffc24d" />
+                </linearGradient>
+              </defs>
+              <path
+                vectorEffect="non-scaling-stroke"
+                stroke="url(#smkFaden)"
+                d="M8 70 C 16 50, 22 42, 29 42 S 42 74, 50 76 S 64 42, 71 42 S 86 54, 92 70"
+              />
+            </svg>
+            {PERLEN.map(([kurz, name, farbe, x, y], i) => (
+              <span
+                key={kurz}
+                className="smk-perle"
+                aria-hidden="true"
+                style={{ "--i": i, "--f": farbe, "--x": `${x}%`, "--y": `${y}px` } as CSSProperties}
+              >
+                <b>{kurz}</b>
+                <small>{name}</small>
+              </span>
+            ))}
+            <span className="smk-ziel" aria-hidden="true">
+              Ein Kommandostand
+            </span>
+          </div>
+        </section>
 
         <div className="preisanker">
           <span>Zwei Pakete im Monats- oder Jahresabo, Zugriff nach bestätigter Zahlung</span>
@@ -94,7 +143,20 @@ export default async function BuyPage({
           <span>Eigener, privater Arbeitsbereich je Kunde</span>
         </div>
 
-        <h2 id="pakete">Pro oder Maxi</h2>
+        {/* Monat/Jahr-Schalter ohne JavaScript: wirkt nur auf Karten mit eingerichtetem Jahrespreis. */}
+        <input className="smk-wahl" type="radio" name="smk-intervall" id="smk-monat" defaultChecked />
+        <input className="smk-wahl" type="radio" name="smk-intervall" id="smk-jahr" />
+        <div className="smk-leiste">
+          <h2 id="pakete">Pro oder Maxi</h2>
+          {PLAN_KEYS.some((k) => Boolean(stripePriceIdFor(k, "year")) || !saleOpen) && (
+            <div className="smk-schalter" role="group" aria-label="Abrechnung anzeigen">
+              <label htmlFor="smk-monat">Monatlich</label>
+              <label htmlFor="smk-jahr">
+                Jährlich <small>−{YEARLY_DISCOUNT_PERCENT} %</small>
+              </label>
+            </div>
+          )}
+        </div>
         <div className="preis-tabelle">
           {PLAN_KEYS.map((key, i) => {
             const def = PLANS[key];
@@ -108,17 +170,23 @@ export default async function BuyPage({
               <div
                 key={key}
                 id={`paket-${key.toLowerCase()}`}
-                className={`preis-karte${highlighted ? " hervorgehoben" : ""}${preselected === key ? " ausgewaehlt" : ""}`}
+                className={`preis-karte${highlighted ? " hervorgehoben" : ""}${preselected === key ? " ausgewaehlt" : ""}${showYear ? " hat-jahr" : ""}`}
               >
+                {highlighted && <span className="smk-band">Empfohlen</span>}
                 <small>
                   {def.name.toUpperCase()}
                   {highlighted ? " · empfohlen" : ""}
                 </small>
                 <h3>{def.name}</h3>
-                <div className="betrag">
+                <div className="betrag betrag-monat">
                   {formatCents(def.netAmountCents, def.displayCurrency)}{" "}
                   <span>{interval ? (kleinunternehmer() ? `/ ${interval}, Endpreis – keine USt (§ 19 UStG)` : `netto / ${interval}, zzgl. Steuer`) : steuerHinweis()}</span>
                 </div>
+                {showYear && (
+                  <div className="betrag betrag-jahr">
+                    {formatCents(netAmountFor(key, "year"), def.displayCurrency)} <span>/ Jahr im Voraus, {preisArt()}</span>
+                  </div>
+                )}
                 {showYear && (
                   <p className="jahr">
                     oder <b>{formatCents(netAmountFor(key, "year"), def.displayCurrency)}</b> {preisArt()} / Jahr im Jahresabo,
@@ -131,12 +199,18 @@ export default async function BuyPage({
                     <li key={f}>{f}</li>
                   ))}
                 </ul>
-                <ul>
-                  {(Object.keys(def.quotas) as Metric[]).map((m) => (
-                    <li key={m}>
-                      {def.quotas[m]} × {METRIC_LABELS[m]}
-                    </li>
-                  ))}
+                <ul className="smk-mengen" aria-label="Kontingente je Monat">
+                  {(Object.keys(def.quotas) as Metric[]).map((m) => {
+                    const hoechst = Math.max(...PLAN_KEYS.map((k) => PLANS[k].quotas[m]));
+                    return (
+                      <li key={m}>
+                        <span>
+                          {def.quotas[m]} × {METRIC_LABELS[m]}
+                        </span>
+                        <i style={{ "--w": `${Math.round((def.quotas[m] / hoechst) * 100)}%` } as CSSProperties} />
+                      </li>
+                    );
+                  })}
                 </ul>
                 {saleOpen ? (
                   <Link className="knopf-link" href={href}>

@@ -1,6 +1,6 @@
 {
   "title": "Analytics",
-  "subtitle": "Plattformstatistikk (visninger, likerklikk, kommentarer, delinger) hentes ennå ikke automatisk. Her vises bare verdier som allerede er lagret, f.eks. eksempeldata. Tall fra plattformens statistikk kan du legge inn manuelt under <weiter>Anbefalinger</weiter> («Legg inn plattformtall») eller i <varianten>variantsammenligningen</varianten> – de evalueres der, ikke på denne siden.",
+  "subtitle": "Plattformstatistikk (visninger, likerklikk, kommentarer, delinger) hentes automatisk for YouTube og Facebook så snart et innlegg er publisert via appen – omtrent hver sjette time. Instagram, TikTok og LinkedIn følger så snart plattformen har gitt tilgang. Tall fra andre innlegg kan du legge inn manuelt under <weiter>Anbefalinger</weiter> («Legg inn plattformtall») eller i <varianten>variantsammenligningen</varianten>.",
   "statViewsTotal": "Visninger totalt",
   "statLikesTotal": "Likes totalt",
   "statComments": "Kommentarer",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Best presterende innhold",
   "bestPerformingEmpty": "Ingen statistikk ennå – ingen rangering mulig.",
   "learningAgentTitle": "Learning Agent — anbefalinger",
-  "statsEmpty": "Ingen statistikk lagret ennå – derfor finnes det ingen nøkkeltall her ennå. Plattformstatistikk hentes ennå ikke automatisk."
+  "statsEmpty": "Ingen statistikk lagret ennå. For YouTube og Facebook vises tallene automatisk så snart et innlegg er publisert via appen."
 }

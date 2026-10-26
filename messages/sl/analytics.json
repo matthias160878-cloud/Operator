@@ -1,6 +1,6 @@
 {
   "title": "Analitika",
-  "subtitle": "Statistika platform (ogledi, všečki, komentarji, deljenja) se še ne pridobiva samodejno. Tu so prikazane le že shranjene vrednosti, npr. vzorčni podatki. Številke iz statistike platforme lahko ročno vneseš pod <weiter>Priporočila</weiter> (»Vnesi številke platforme«) ali v <varianten>primerjavi različic</varianten> – tam se ovrednotijo, ne na tej strani.",
+  "subtitle": "Statistika platform (ogledi, všečki, komentarji, deljenja) se za YouTube in Facebook pridobiva samodejno, ko je prispevek objavljen prek aplikacije – približno vsakih šest ur. Instagram, TikTok in LinkedIn bodo sledili, ko bo platforma odobrila dostop. Številke iz drugih prispevkov lahko ročno vneseš pod <weiter>Priporočila</weiter> (»Vnesi številke platforme«) ali v <varianten>primerjavi različic</varianten>.",
   "statViewsTotal": "Ogledi skupaj",
   "statLikesTotal": "Všečki skupaj",
   "statComments": "Komentarji",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Najuspešnejše vsebine",
   "bestPerformingEmpty": "Še ni statističnih podatkov – razvrstitev ni mogoča.",
   "learningAgentTitle": "Learning Agent — priporočila",
-  "statsEmpty": "Še ni shranjenih statističnih podatkov – zato tu še ni kazalnikov. Statistika platform se še ne pridobiva samodejno."
+  "statsEmpty": "Še ni shranjenih statističnih podatkov. Za YouTube in Facebook se številke prikažejo samodejno, ko je prispevek objavljen prek aplikacije."
 }

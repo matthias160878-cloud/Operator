@@ -27,7 +27,7 @@
     "avgEngagement": "Ø elköteleződés",
     "totalRevenue": "Bevételek (kézzel rögzítve)",
     "noComparisonWeek": "Még nincs előző hét összehasonlítási alapként — a változási arányok akkor jelennek meg, ha legalább két hétről vannak adatok.",
-    "noStats": "Megtekintések és elköteleződés: még nincs statisztika – a platformstatisztikák lekérése még nem automatikus."
+    "noStats": "Megtekintések és interakciók: még nincs statisztika – automatikusan megjelenik, amint egy bejegyzés megjelent az alkalmazáson keresztül a YouTube-on vagy a Facebookon."
   },
   "production": {
     "title": "Tartalomgyártás",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Top teljesítők",
     "last7Days": "Elmúlt 7 nap",
-    "empty": "Még nincsenek teljesítményadatok – a platformstatisztikák lekérése még nem automatikus.",
+    "empty": "Még nincsenek teljesítményadatok – automatikusan megjelennek azoknál a bejegyzéseknél, amelyek az alkalmazáson keresztül jelentek meg a YouTube-on vagy a Facebookon.",
     "views": "Megtekintések",
     "likes": "Kedvelések",
     "comments": "Hozzászólások",

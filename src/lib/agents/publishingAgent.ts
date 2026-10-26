@@ -107,7 +107,7 @@ export async function publishContentItem(
     if (result.published) {
       await prisma.contentItem.update({
         where: { id: item.id },
-        data: { status: "PUBLISHED", publishedAt: new Date() },
+        data: { status: "PUBLISHED", publishedAt: new Date(), externalPostId: result.externalPostId ?? null },
       });
     }
     return result;

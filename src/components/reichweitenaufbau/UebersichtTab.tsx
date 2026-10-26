@@ -82,7 +82,7 @@ export function UebersichtTab(props: {
           </div>
         )}
         <p className="text-[11px] text-muted">
-          Eigene Messung über Empfehlungslinks: Aufrufe und Klicks sind keine Personen. Plattformzahlen (Impressionen, Reichweite) siehe Weiterempfehlungen – nur Demo oder manuell.
+          Eigene Messung über Empfehlungslinks: Aufrufe und Klicks sind keine Personen. Plattformzahlen siehe Weiterempfehlungen – für YouTube und Facebook automatisch, sonst von Hand.
         </p>
       </section>
 
@@ -96,7 +96,7 @@ export function UebersichtTab(props: {
             Kampagnenlinks und eigene Messung: <Chip ton="gut">angebunden</Chip> (Weiterempfehlungen)
           </li>
           <li>
-            Plattform-Statistiken (Wiedergabedauer, Speicherungen …): <Chip ton="warn">nicht angebunden</Chip> – manuell oder Demo
+            Plattform-Statistiken: <Chip ton="gut">YouTube, Facebook automatisch</Chip> <Chip ton="warn">Instagram, TikTok, LinkedIn nach Freigabe</Chip> – bis dahin von Hand
           </li>
           {props.anbindungen.werbungAktiv ? (
             <li>

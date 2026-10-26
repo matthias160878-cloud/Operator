@@ -27,7 +27,7 @@
     "avgEngagement": "Ø engagemang",
     "totalRevenue": "Intäkter (manuellt registrerade)",
     "noComparisonWeek": "Ingen föregående vecka finns än som jämförelsebas — förändringstal visas så fort det finns data för minst två veckor.",
-    "noStats": "Visningar och engagemang: ingen statistik ännu – plattformsstatistik hämtas ännu inte automatiskt."
+    "noStats": "Visningar och interaktioner: ingen statistik ännu – de visas automatiskt så snart ett inlägg har publicerats via appen på YouTube eller Facebook."
   },
   "production": {
     "title": "Innehållsproduktion",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Toppresterare",
     "last7Days": "Senaste 7 dagarna",
-    "empty": "Inga resultatdata ännu – plattformsstatistik hämtas ännu inte automatiskt.",
+    "empty": "Inga resultatdata ännu – de visas automatiskt för inlägg som har publicerats via appen på YouTube eller Facebook.",
     "views": "Visningar",
     "likes": "Likes",
     "comments": "Kommentarer",

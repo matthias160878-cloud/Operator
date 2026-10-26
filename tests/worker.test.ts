@@ -82,7 +82,9 @@ test("fälliger Auftrag wird genau einmal gesendet; künftiger bleibt liegen", a
   await worker.tick("https://app.example.test");
   assert.equal(linkedInCalls - before, 1);
   assert.equal((await prisma.publishJob.findUniqueOrThrow({ where: { id: due.job.id } })).status, "SUCCEEDED");
-  assert.equal((await prisma.contentItem.findUniqueOrThrow({ where: { id: due.item.id } })).status, "PUBLISHED");
+  const veroeffentlicht = await prisma.contentItem.findUniqueOrThrow({ where: { id: due.item.id } });
+  assert.equal(veroeffentlicht.status, "PUBLISHED");
+  assert.match(veroeffentlicht.externalPostId ?? "", /^urn:li:share:\d+$/, "Beitragskennung der Plattform für den Statistik-Abruf gespeichert");
   assert.equal((await prisma.publishJob.findUniqueOrThrow({ where: { id: later.job.id } })).status, "QUEUED");
 });
 

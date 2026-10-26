@@ -50,7 +50,7 @@
       "title": "Analytics și creștere",
       "description": "Cifre reale despre propria performanță — și recomandări în loc de automatizare.",
       "steps": [
-        "Analytics afișează doar statistici salvate (de ex. date exemplu). Statisticile platformelor nu sunt încă preluate automat; cifrele le introduci manual la „Recomandări” sau în compararea variantelor – acolo sunt evaluate.",
+        "Analytics afișează statistici salvate. Pentru YouTube și Facebook, aplicația preia automat cifrele postărilor publicate; Instagram, TikTok și LinkedIn vor urma după aprobarea platformei. Celelalte cifre le introduci manual la „Recomandări” sau în compararea variantelor.",
         "Pagina Creștere calculează din aceste date cele mai bune momente de postare, hashtag-urile și formatele de succes.",
         "Important: intenționat nu există nicio creștere automatizată a urmăritorilor/engagement-ului (fără comportament de bot) — aceasta ar încălca condițiile de utilizare ale oricărei platforme."
       ]

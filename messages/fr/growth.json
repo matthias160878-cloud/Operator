@@ -1,9 +1,9 @@
 {
   "title": "Croissance",
-  "subtitle": "Recommandations pour la portée et la croissance – déduites des statistiques enregistrées de tes contenus : meilleurs horaires de publication, hashtags et formats les plus efficaces. Les statistiques des plateformes ne sont pas encore récupérées automatiquement.",
+  "subtitle": "Recommandations pour la portée et la croissance – déduites des statistiques enregistrées de tes contenus : meilleurs horaires de publication, hashtags et formats les plus efficaces. Pour YouTube et Facebook, les chiffres sont récupérés automatiquement.",
   "warning": "Volontairement <strong>non</strong> inclus : le suivi/like/commentaire automatisé visant à augmenter artificiellement le nombre d'abonnés. Cela enfreint les conditions d'utilisation de YouTube, Instagram, TikTok, LinkedIn et Facebook et peut entraîner la suspension du compte. Cette page fournit exclusivement des recommandations basées sur les données de votre propre contenu.",
   "filterAll": "Toutes les plateformes",
-  "emptyState": "Aucune statistique enregistrée pour {platform}, donc pas encore de recommandations. Les statistiques des plateformes ne sont pas encore récupérées automatiquement.",
+  "emptyState": "Aucune statistique enregistrée pour {platform}, donc pas encore de recommandations. Pour YouTube et Facebook, les chiffres apparaissent automatiquement après la mise en ligne via l'application.",
   "emptyStateDefaultScope": "cet espace de travail",
   "bestPostingTimesTitle": "Meilleurs horaires de publication",
   "postingTime": "{day} · {hour}",

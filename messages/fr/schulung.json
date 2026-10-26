@@ -50,7 +50,7 @@
       "title": "Analytique & Croissance",
       "description": "De vrais chiffres sur votre propre performance — et des recommandations plutôt que de l'automatisation.",
       "steps": [
-        "Analytics affiche uniquement les statistiques enregistrées (p. ex. des données d'exemple). Les statistiques des plateformes ne sont pas encore récupérées automatiquement ; tu saisis les chiffres à la main sous « Recommandations » ou dans la comparaison de variantes – ils y sont évalués.",
+        "Analytics affiche les statistiques enregistrées. Pour YouTube et Facebook, l'application récupère automatiquement les chiffres des publications mises en ligne ; Instagram, TikTok et LinkedIn suivront après autorisation par la plateforme. Les autres chiffres, tu les saisis à la main sous « Recommandations » ou dans la comparaison de variantes.",
         "La page Croissance calcule à partir de ces données les meilleurs horaires de publication, les hashtags les plus efficaces et les formats les plus performants.",
         "Important : il n'y a volontairement aucune croissance automatisée des abonnés/de l'engagement (aucun comportement de bot) — cela enfreindrait les conditions d'utilisation de toute plateforme."
       ]

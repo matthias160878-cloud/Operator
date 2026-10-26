@@ -27,7 +27,7 @@
     "avgEngagement": "Avg. Engagement",
     "totalRevenue": "Revenue (entered manually)",
     "noComparisonWeek": "No previous week available for comparison yet — change rates will appear once at least two weeks of data are available.",
-    "noStats": "Views and engagement: no statistics yet – platform statistics are not fetched automatically yet."
+    "noStats": "Views and interactions: no statistics yet – they appear automatically as soon as a post has been published via the app on YouTube or Facebook."
   },
   "production": {
     "title": "Content Production",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Top Performer",
     "last7Days": "Last 7 days",
-    "empty": "No performance data yet – platform statistics are not fetched automatically yet.",
+    "empty": "No performance data yet – it appears automatically for posts published via the app on YouTube or Facebook.",
     "views": "Views",
     "likes": "Likes",
     "comments": "Comments",

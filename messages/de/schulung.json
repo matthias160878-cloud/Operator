@@ -50,7 +50,7 @@
       "title": "Analytics & Wachstum",
       "description": "Echte Zahlen zur eigenen Performance — und Empfehlungen statt Automatisierung.",
       "steps": [
-        "Analytics zeigt nur gespeicherte Statistikdaten (z. B. Beispieldaten). Plattformstatistiken werden noch nicht automatisch abgerufen; Zahlen von Hand erfasst du unter „Weiterempfehlungen“ oder im Variantenvergleich – sie werden dort ausgewertet.",
+        "Analytics zeigt gespeicherte Statistikdaten. Für YouTube und Facebook ruft die App die Zahlen veröffentlichter Beiträge automatisch ab; Instagram, TikTok und LinkedIn folgen nach Freigabe durch die Plattform. Andere Zahlen erfasst du von Hand unter „Weiterempfehlungen“ oder im Variantenvergleich.",
         "Die Wachstums-Seite berechnet aus diesen Daten beste Posting-Zeiten, erfolgreiche Hashtags und Formate.",
         "Wichtig: es gibt bewusst keine automatisierte Follower-/Engagement-Steigerung (kein Bot-Verhalten) — das würde gegen die Nutzungsbedingungen jeder Plattform verstoßen."
       ]

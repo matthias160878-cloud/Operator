@@ -50,7 +50,7 @@
       "title": "Analytics og vekst",
       "description": "Ekte tall om din egen ytelse — og anbefalinger i stedet for automatisering.",
       "steps": [
-        "Analytics viser bare lagret statistikk (f.eks. eksempeldata). Plattformstatistikk hentes ennå ikke automatisk; tall legger du inn manuelt under «Anbefalinger» eller i variantsammenligningen – der evalueres de.",
+        "Analytics viser lagret statistikk. For YouTube og Facebook henter appen tallene for publiserte innlegg automatisk; Instagram, TikTok og LinkedIn følger etter godkjenning fra plattformen. Andre tall legger du inn manuelt under «Anbefalinger» eller i variantsammenligningen.",
         "Vekstsiden beregner beste publiseringstidspunkter, vellykkede hashtags og formater ut fra disse dataene.",
         "Viktig: det finnes bevisst ingen automatisk økning av følgere/engasjement (ingen botadferd) — det ville brutt vilkårene til alle plattformer."
       ]

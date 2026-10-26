@@ -1,6 +1,6 @@
 {
   "title": "Analytics",
-  "subtitle": "Statistikat e platformave (shikime, pëlqime, komente, shpërndarje) ende nuk merren automatikisht. Këtu shfaqen vetëm vlera të ruajtura tashmë, p.sh. të dhëna shembull. Numrat nga statistikat e platformës mund t'i futësh me dorë te <weiter>Rekomandime</weiter> („Fut numrat e platformës”) ose te <varianten>krahasimi i varianteve</varianten> – ato vlerësohen atje, jo në këtë faqe.",
+  "subtitle": "Statistikat e platformave (shikime, pëlqime, komente, shpërndarje) për YouTube dhe Facebook merren automatikisht sapo një postim të jetë publikuar përmes aplikacionit – afërsisht çdo gjashtë orë. Instagram, TikTok dhe LinkedIn do të pasojnë sapo platforma të japë qasje. Numrat nga postime të tjera mund t'i futësh me dorë te <weiter>Rekomandime</weiter> („Fut numrat e platformës”) ose te <varianten>krahasimi i varianteve</varianten>.",
   "statViewsTotal": "Shikime gjithsej",
   "statLikesTotal": "Pëlqime gjithsej",
   "statComments": "Komente",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Përmbajtja më e suksesshme",
   "bestPerformingEmpty": "Ende nuk ka statistika – renditja nuk është e mundur.",
   "learningAgentTitle": "Learning Agent — Rekomandime",
-  "statsEmpty": "Ende nuk ka statistika të ruajtura – prandaj këtu ende nuk ka tregues. Statistikat e platformave ende nuk merren automatikisht."
+  "statsEmpty": "Ende nuk ka statistika të ruajtura. Për YouTube dhe Facebook numrat shfaqen automatikisht sapo një postim të jetë publikuar përmes aplikacionit."
 }

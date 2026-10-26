@@ -27,7 +27,7 @@
     "avgEngagement": "Vid. įsitraukimas",
     "totalRevenue": "Pajamos (įvestos rankiniu būdu)",
     "noComparisonWeek": "Praėjusios savaitės palyginimui duomenų dar nėra — pokyčių rodikliai atsiras, kai bus bent dviejų savaičių duomenys.",
-    "noStats": "Peržiūros ir įsitraukimas: statistikos dar nėra – platformų statistika dar negaunama automatiškai."
+    "noStats": "Peržiūros ir sąveikos: statistikos dar nėra – ji atsiras automatiškai, kai tik įrašas bus paskelbtas per programą YouTube arba Facebook."
   },
   "production": {
     "title": "Turinio gamyba",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Geriausi rezultatai",
     "last7Days": "Paskutinės 7 dienos",
-    "empty": "Rezultatų duomenų dar nėra – platformų statistika dar negaunama automatiškai.",
+    "empty": "Rezultatų duomenų dar nėra – jie atsiranda automatiškai įrašams, paskelbtiems per programą YouTube arba Facebook.",
     "views": "Peržiūros",
     "likes": "Patiktukai",
     "comments": "Komentarai",

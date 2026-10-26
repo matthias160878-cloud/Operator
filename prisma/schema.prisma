@@ -308,6 +308,10 @@ model ContentItem {
   herkunftsSchluessel String?       @unique
   /// Nur Demo-Testlauf: simulierte Veröffentlichung, es wurde nichts gepostet
   simuliertAm         DateTime?
+  /// Kennung des Beitrags bei der Plattform (Rückgabe beim Veröffentlichen) – Grundlage für den Statistik-Abruf
+  externalPostId      String?
+  /// Letzter automatischer Abruf der Plattformzahlen
+  statistikAbgerufenAm DateTime?
   publishJobs         PublishJob[]
   createdAt           DateTime      @default(now())
   updatedAt           DateTime      @updatedAt
@@ -401,6 +405,8 @@ model Analytics {
   watchTimeSeconds Int         @default(0)
   ctr              Float?
   recordedAt       DateTime    @default(now())
+  /// "" = bisherige Einträge, "API:<Plattform>" = automatisch abgerufen (wird je Beitrag aktualisiert, nicht addiert)
+  quelle           String      @default("")
 
   @@map("analytics")
 }

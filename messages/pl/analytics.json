@@ -1,6 +1,6 @@
 {
   "title": "Analityka",
-  "subtitle": "Statystyki platform (wyświetlenia, polubienia, komentarze, udostępnienia) nie są jeszcze pobierane automatycznie. Widać tu tylko już zapisane wartości, np. dane przykładowe. Liczby ze statystyk platformy możesz wpisać ręcznie w <weiter>Poleceniach</weiter> („Wpisz liczby z platformy”) lub w <varianten>porównaniu wariantów</varianten> – są one tam oceniane, nie na tej stronie.",
+  "subtitle": "Statystyki platform (wyświetlenia, polubienia, komentarze, udostępnienia) są pobierane automatycznie dla YouTube i Facebook, gdy tylko post zostanie opublikowany przez aplikację – mniej więcej co sześć godzin. Instagram, TikTok i LinkedIn dołączą, gdy tylko platforma udzieli dostępu. Liczby z innych postów możesz wpisać ręcznie w <weiter>Poleceniach</weiter> („Wpisz liczby z platformy”) lub w <varianten>porównaniu wariantów</varianten>.",
   "statViewsTotal": "Wyświetlenia łącznie",
   "statLikesTotal": "Polubienia łącznie",
   "statComments": "Komentarze",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Najlepsze treści",
   "bestPerformingEmpty": "Brak statystyk – ranking niemożliwy.",
   "learningAgentTitle": "Learning Agent — rekomendacje",
-  "statsEmpty": "Nie zapisano jeszcze żadnych statystyk – dlatego nie ma tu jeszcze wskaźników. Statystyki platform nie są jeszcze pobierane automatycznie."
+  "statsEmpty": "Nie zapisano jeszcze żadnych statystyk. Dla YouTube i Facebook liczby pojawiają się automatycznie, gdy tylko post zostanie opublikowany przez aplikację."
 }

@@ -50,7 +50,7 @@
       "title": "Analítica y crecimiento",
       "description": "Cifras reales sobre tu propio rendimiento — y recomendaciones en lugar de automatización.",
       "steps": [
-        "Analytics solo muestra estadísticas guardadas (p. ej. datos de ejemplo). Las estadísticas de las plataformas aún no se obtienen automáticamente; las cifras a mano las introduces en «Recomendaciones» o en la comparación de variantes, donde se evalúan.",
+        "Analytics muestra estadísticas guardadas. Para YouTube y Facebook, la app obtiene automáticamente las cifras de los posts publicados; Instagram, TikTok y LinkedIn se añadirán cuando la plataforma lo autorice. Las demás cifras las introduces a mano en «Recomendaciones» o en la comparación de variantes.",
         "La página de crecimiento calcula, a partir de esos datos, los mejores horarios de publicación, los hashtags más eficaces y los mejores formatos.",
         "Importante: deliberadamente no hay crecimiento automatizado de seguidores/interacción (sin comportamiento de bot) — eso infringiría las condiciones de uso de cualquier plataforma."
       ]

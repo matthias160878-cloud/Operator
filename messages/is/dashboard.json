@@ -27,7 +27,7 @@
     "avgEngagement": "Meðalþátttaka",
     "totalRevenue": "Tekjur (skráðar handvirkt)",
     "noComparisonWeek": "Engin fyrri vika til samanburðar enn — breytingahlutföll birtast þegar gögn ná yfir að minnsta kosti tvær vikur.",
-    "noStats": "Áhorf og þátttaka: engin tölfræði enn – tölfræði miðla er enn ekki sótt sjálfvirkt."
+    "noStats": "Áhorf og samskipti: engin tölfræði enn – hún birtist sjálfvirkt um leið og færsla hefur verið birt í gegnum forritið á YouTube eða Facebook."
   },
   "production": {
     "title": "Efnisframleiðsla",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Best heppnað",
     "last7Days": "Síðustu 7 dagar",
-    "empty": "Engin árangursgögn enn – tölfræði miðla er enn ekki sótt sjálfvirkt.",
+    "empty": "Engin árangursgögn enn – þau birtast sjálfvirkt fyrir færslur sem birtar hafa verið í gegnum forritið á YouTube eða Facebook.",
     "views": "Áhorf",
     "likes": "Læk",
     "comments": "Athugasemdir",

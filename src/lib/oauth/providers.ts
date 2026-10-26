@@ -119,7 +119,8 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     clientSecretEnv: "INSTAGRAM_CLIENT_SECRET",
     authorizeUrl: "https://www.instagram.com/oauth/authorize",
     tokenUrl: "https://api.instagram.com/oauth/access_token",
-    scope: "instagram_business_basic,instagram_business_content_publish",
+    // Statistik-Umfang erst nach Freigabe durch Meta anfordern (src/lib/statistik/abruf.ts).
+    scope: "instagram_business_basic,instagram_business_content_publish" + (process.env.STATISTIK_INSTAGRAM === "1" ? ",instagram_business_manage_insights" : ""),
     publishingCaveat:
       "Setzt ein verknüpftes Instagram-Business- oder Creator-Konto voraus. Für echtes Veröffentlichen prüft Meta die App zusätzlich (App Review) — ein separater Schritt bei Meta.",
     async fetchAccountInfo(accessToken) {
@@ -139,7 +140,8 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     clientSecretEnv: "LINKEDIN_CLIENT_SECRET",
     authorizeUrl: "https://www.linkedin.com/oauth/v2/authorization",
     tokenUrl: "https://www.linkedin.com/oauth/v2/accessToken",
-    scope: "openid profile w_member_social",
+    // r_member_social nur für von LinkedIn geprüfte Partner (STATISTIK_LINKEDIN=1).
+    scope: "openid profile w_member_social" + (process.env.STATISTIK_LINKEDIN === "1" ? " r_member_social" : ""),
     publishingCaveat:
       "LinkedIn-Zugangstoken laufen nach ca. 60 Tagen ab; ein automatisches Verlängern (Refresh) ist ohne separat von LinkedIn freigegebenen Zugriff nicht möglich — danach ist ein erneutes Verbinden nötig.",
     async fetchAccountInfo(accessToken) {
@@ -156,7 +158,8 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     clientSecretEnv: "TIKTOK_CLIENT_SECRET",
     authorizeUrl: "https://www.tiktok.com/v2/auth/authorize/",
     tokenUrl: "https://open.tiktokapis.com/v2/oauth/token/",
-    scope: "user.info.basic,video.publish",
+    // video.list erst nach Freigabe durch TikTok (STATISTIK_TIKTOK=1).
+    scope: "user.info.basic,video.publish" + (process.env.STATISTIK_TIKTOK === "1" ? ",video.list" : ""),
     usesPkce: true,
     publishingCaveat:
       "TikTok schaltet den Veröffentlichungs-Zugriff (video.publish) erst nach eigener Prüfung der App durch TikTok frei — das ist ein separater Freigabeprozess bei TikTok, den diese Software nicht ersetzt. Bis dahin funktioniert nur das Verbinden/Anzeigen des Kontos.",

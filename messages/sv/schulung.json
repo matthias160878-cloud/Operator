@@ -50,7 +50,7 @@
       "title": "Analytics & tillväxt",
       "description": "Verkliga siffror om din egen prestanda — och rekommendationer i stället för automatisering.",
       "steps": [
-        "Analytics visar bara sparad statistik (t.ex. exempeldata). Plattformsstatistik hämtas ännu inte automatiskt; siffror anger du manuellt under ”Rekommendationer” eller i variantjämförelsen – där utvärderas de.",
+        "Analytics visar sparad statistik. För YouTube och Facebook hämtar appen automatiskt siffrorna för publicerade inlägg; Instagram, TikTok och LinkedIn följer efter godkännande från plattformen. Andra siffror anger du manuellt under ”Rekommendationer” eller i variantjämförelsen.",
         "Tillväxtsidan beräknar utifrån dessa data bästa publiceringstider, framgångsrika hashtags och format.",
         "Viktigt: det finns medvetet ingen automatiserad ökning av följare/engagemang (inget botbeteende) — det skulle strida mot varje plattforms användarvillkor."
       ]

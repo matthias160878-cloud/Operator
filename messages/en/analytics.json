@@ -1,6 +1,6 @@
 {
   "title": "Analytics",
-  "subtitle": "Platform statistics (views, likes, comments, shares) are not fetched automatically yet. Only values that are already stored appear here, e.g. sample data. You can enter numbers from the platform's statistics by hand under <weiter>Referrals</weiter> (\"Enter platform numbers\") or in the <varianten>variant comparison</varianten> – they are evaluated there, not on this page.",
+  "subtitle": "Platform statistics (views, likes, comments, shares) are fetched automatically for YouTube and Facebook as soon as a post has been published via the app – roughly every six hours. Instagram, TikTok and LinkedIn will follow as soon as the platform has granted access. You can enter numbers from other posts by hand under <weiter>Referrals</weiter> (\"Enter platform numbers\") or in the <varianten>variant comparison</varianten>.",
   "statViewsTotal": "Total views",
   "statLikesTotal": "Total likes",
   "statComments": "Comments",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Best Performing Content",
   "bestPerformingEmpty": "No statistics yet – no ranking possible.",
   "learningAgentTitle": "Learning Agent — Recommendations",
-  "statsEmpty": "No statistics stored yet – so there are no metrics here yet. Platform statistics are not fetched automatically yet."
+  "statsEmpty": "No statistics stored yet. For YouTube and Facebook, the numbers appear automatically as soon as a post has been published via the app."
 }

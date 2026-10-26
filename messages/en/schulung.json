@@ -50,7 +50,7 @@
       "title": "Analytics & Growth",
       "description": "Real numbers on your own performance — and recommendations instead of automation.",
       "steps": [
-        "Analytics only shows stored statistics (e.g. sample data). Platform statistics are not fetched automatically yet; you enter numbers by hand under \"Referrals\" or in the variant comparison – they are evaluated there.",
+        "Analytics shows stored statistics. For YouTube and Facebook, the app automatically fetches the numbers of published posts; Instagram, TikTok and LinkedIn will follow after approval by the platform. You enter other numbers by hand under \"Referrals\" or in the variant comparison.",
         "The Growth page calculates best posting times, top hashtags, and best-performing formats from that data.",
         "Important: there is deliberately no automated follower/engagement growth (no bot behavior) — that would violate every platform's terms of service."
       ]

@@ -43,7 +43,7 @@ export async function variantenAuswertung(workspaceId: string, testId: string) {
     const werte: VarianteEingabe["werte"] = {};
     // Neuester Eintrag je Metrik gilt.
     for (const m of [...v.messwerte].sort((a, b) => a.erfasstAm.getTime() - b.erfasstAm.getTime())) {
-      werte[m.metrik as VariantenMetrik] = { wert: m.wert, quelle: m.quelle === "DEMO" ? "Demo-Daten" : "Manuell aus Plattform-Statistik" };
+      werte[m.metrik as VariantenMetrik] = { wert: m.wert, quelle: m.quelle === "DEMO" ? "Demo-Daten" : m.quelle.startsWith("API:") ? `Automatisch (${m.quelle.slice(4)})` : "Manuell aus Plattform-Statistik" };
     }
     if (v.linkId) {
       const eigen = await eigeneVariantenWerte(workspaceId, v.linkId, test.laufzeitVon, test.laufzeitBis);

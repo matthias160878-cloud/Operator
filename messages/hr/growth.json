@@ -1,9 +1,9 @@
 {
   "title": "Rast",
-  "subtitle": "Preporuke za doseg i rast – izvedene iz spremljene statistike tvojih sadržaja: najbolja vremena objave, najuspješniji hashtagovi i formati. Statistika platformi još se ne dohvaća automatski.",
+  "subtitle": "Preporuke za doseg i rast – izvedene iz spremljene statistike tvojih sadržaja: najbolja vremena objave, najuspješniji hashtagovi i formati. Za YouTube i Facebook brojke se dohvaćaju automatski.",
   "warning": "Namjerno <strong>nije</strong> uključeno: automatizirano praćenje/lajkanje/komentiranje radi umjetnog povećanja broja pratitelja. To na YouTubeu, Instagramu, TikToku, LinkedInu i Facebooku krši uvjete korištenja i može dovesti do blokade računa. Ova stranica daje isključivo preporuke temeljene na podacima za tvoj vlastiti sadržaj.",
   "filterAll": "Sve platforme",
-  "emptyState": "Za {platform} još nema spremljene statistike, pa još nema preporuka. Statistika platformi još se ne dohvaća automatski.",
+  "emptyState": "Za {platform} još nema spremljene statistike, pa još nema preporuka. Za YouTube i Facebook brojke se pojavljuju automatski nakon objave putem aplikacije.",
   "emptyStateDefaultScope": "ovaj radni prostor",
   "bestPostingTimesTitle": "Najbolja vremena objave",
   "postingTime": "{day} · {hour} h",

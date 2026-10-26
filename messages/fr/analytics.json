@@ -1,6 +1,6 @@
 {
   "title": "Analytique",
-  "subtitle": "Les statistiques des plateformes (vues, likes, commentaires, partages) ne sont pas encore récupérées automatiquement. Seules les valeurs déjà enregistrées apparaissent ici, p. ex. des données d'exemple. Tu peux saisir à la main les chiffres des statistiques de la plateforme sous <weiter>Recommandations</weiter> (« Saisir les chiffres de la plateforme ») ou dans la <varianten>comparaison de variantes</varianten> – ils y sont évalués, pas sur cette page.",
+  "subtitle": "Les statistiques des plateformes (vues, likes, commentaires, partages) sont récupérées automatiquement pour YouTube et Facebook dès qu'une publication est mise en ligne via l'application – environ toutes les six heures. Instagram, TikTok et LinkedIn suivront dès que la plateforme aura autorisé l'accès. Tu peux saisir à la main les chiffres d'autres publications sous <weiter>Recommandations</weiter> (« Saisir les chiffres de la plateforme ») ou dans la <varianten>comparaison de variantes</varianten>.",
   "statViewsTotal": "Vues totales",
   "statLikesTotal": "Mentions J'aime totales",
   "statComments": "Commentaires",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Contenu le plus performant",
   "bestPerformingEmpty": "Pas encore de statistiques – aucun classement possible.",
   "learningAgentTitle": "Learning Agent — Recommandations",
-  "statsEmpty": "Aucune statistique enregistrée pour l'instant – il n'y a donc pas encore d'indicateurs ici. Les statistiques des plateformes ne sont pas encore récupérées automatiquement."
+  "statsEmpty": "Aucune statistique enregistrée pour l'instant. Pour YouTube et Facebook, les chiffres apparaissent automatiquement dès qu'une publication est mise en ligne via l'application."
 }

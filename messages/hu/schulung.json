@@ -50,7 +50,7 @@
       "title": "Analitika és növekedés",
       "description": "Valódi számok a saját teljesítményedről — és ajánlások automatizálás helyett.",
       "steps": [
-        "Az Analytics csak elmentett statisztikákat mutat (pl. mintaadatokat). A platformstatisztikák lekérése még nem automatikus; a számokat kézzel az „Ajánlások” részben vagy a változatok összehasonlításában rögzíted – ott értékeljük őket.",
+        "Az Analytics elmentett statisztikákat mutat. YouTube és Facebook esetén az alkalmazás automatikusan lekéri a közzétett bejegyzések számait; az Instagram, a TikTok és a LinkedIn a platform jóváhagyása után következik. Más számokat kézzel rögzítesz az „Ajánlások” részben vagy a változatok összehasonlításában.",
         "A Növekedés oldal ezekből az adatokból számítja ki a legjobb posztolási időpontokat, a sikeres hashtageket és formátumokat.",
         "Fontos: szándékosan nincs automatizált követő-/elköteleződésnövelés (nincs botviselkedés) — ez minden platform felhasználási feltételeibe ütközne."
       ]

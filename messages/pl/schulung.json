@@ -50,7 +50,7 @@
       "title": "Analityka i wzrost",
       "description": "Prawdziwe liczby o własnych wynikach — i rekomendacje zamiast automatyzacji.",
       "steps": [
-        "Analytics pokazuje tylko zapisane statystyki (np. dane przykładowe). Statystyki platform nie są jeszcze pobierane automatycznie; liczby wpisujesz ręcznie w „Poleceniach” lub w porównaniu wariantów – tam są oceniane.",
+        "Analytics pokazuje zapisane statystyki. Dla YouTube i Facebook aplikacja automatycznie pobiera liczby opublikowanych postów; Instagram, TikTok i LinkedIn dołączą po zatwierdzeniu przez platformę. Inne liczby wpisujesz ręcznie w „Poleceniach” lub w porównaniu wariantów.",
         "Strona Wzrost wylicza z tych danych najlepsze godziny publikacji, skuteczne hashtagi i formaty.",
         "Ważne: celowo nie ma automatycznego zwiększania liczby obserwujących/zaangażowania (żadnych zachowań botów) — naruszałoby to regulamin każdej platformy."
       ]

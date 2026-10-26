@@ -27,7 +27,7 @@
     "avgEngagement": "Vid. iesaiste",
     "totalRevenue": "Ieņēmumi (ievadīti manuāli)",
     "noComparisonWeek": "Iepriekšējās nedēļas salīdzinājuma bāzes vēl nav — izmaiņu rādītāji parādīsies, tiklīdz būs dati vismaz par divām nedēļām.",
-    "noStats": "Skatījumi un iesaiste: statistikas vēl nav – platformu statistika vēl netiek iegūta automātiski."
+    "noStats": "Skatījumi un mijiedarbība: statistikas vēl nav – tā parādās automātiski, tiklīdz ieraksts ir publicēts ar lietotnes starpniecību YouTube vai Facebook."
   },
   "production": {
     "title": "Satura ražošana",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Labākie rezultāti",
     "last7Days": "Pēdējās 7 dienas",
-    "empty": "Snieguma datu vēl nav – platformu statistika vēl netiek iegūta automātiski.",
+    "empty": "Snieguma datu vēl nav – tie parādās automātiski ierakstiem, kas publicēti ar lietotnes starpniecību YouTube vai Facebook.",
     "views": "Skatījumi",
     "likes": "Patīk atzīmes",
     "comments": "Komentāri",

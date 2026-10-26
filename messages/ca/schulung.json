@@ -50,7 +50,7 @@
       "title": "Analytics i creixement",
       "description": "Xifres reals del teu propi rendiment i recomanacions en lloc d'automatització.",
       "steps": [
-        "Analytics només mostra estadístiques desades (p. ex. dades d'exemple). Les estadístiques de les plataformes encara no s'obtenen automàticament; les xifres a mà les introdueixes a «Recomanacions» o a la comparació de variants, on s'avaluen.",
+        "Analytics mostra estadístiques desades. Per a YouTube i Facebook, l'aplicació obté automàticament les xifres de les entrades publicades; Instagram, TikTok i LinkedIn s'hi afegiran quan la plataforma ho autoritzi. Les altres xifres les introdueixes a mà a «Recomanacions» o a la comparació de variants.",
         "La pàgina de creixement calcula a partir d'aquestes dades les millors hores de publicació, els hashtags i els formats amb més èxit.",
         "Important: deliberadament no hi ha cap augment automatitzat de seguidors/engagement (cap comportament de bot): infringiria les condicions d'ús de totes les plataformes."
       ]

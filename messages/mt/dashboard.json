@@ -27,7 +27,7 @@
     "avgEngagement": "Engagement medju",
     "totalRevenue": "Dħul (imdaħħal manwalment)",
     "noComparisonWeek": "Għad m'hemm l-ebda ġimgħa preċedenti bħala bażi ta' paragun — ir-rati ta' bidla jidhru hekk kif tkun disponibbli dejta għal mill-inqas ġimgħatejn.",
-    "noStats": "Veduti u involviment: għad m'hemmx statistika – l-istatistika tal-pjattaformi għadha ma tinġabarx awtomatikament."
+    "noStats": "Veduti u interazzjonijiet: għad m'hemmx statistika – tidher awtomatikament hekk kif post ikun ġie ppubblikat permezz tal-app fuq YouTube jew Facebook."
   },
   "production": {
     "title": "Produzzjoni tal-kontenut",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Top Performer",
     "last7Days": "L-aħħar 7 ijiem",
-    "empty": "Għad m'hemmx dejta tal-prestazzjoni – l-istatistika tal-pjattaformi għadha ma tinġabarx awtomatikament.",
+    "empty": "Għad m'hemmx dejta tal-prestazzjoni – tidher awtomatikament għal posts ippubblikati permezz tal-app fuq YouTube jew Facebook.",
     "views": "Views",
     "likes": "Likes",
     "comments": "Kummenti",

@@ -1,6 +1,6 @@
 {
   "title": "Analytics",
-  "subtitle": "Platformstatistikker (visninger, likes, kommentarer, delinger) hentes endnu ikke automatisk. Her vises kun allerede gemte værdier, f.eks. eksempeldata. Tal fra platformens statistik kan du indtaste manuelt under <weiter>Anbefalinger</weiter> („Indtast platformtal“) eller i <varianten>variantsammenligningen</varianten> – de evalueres dér, ikke på denne side.",
+  "subtitle": "Platformstatistikker (visninger, likes, kommentarer, delinger) hentes automatisk for YouTube og Facebook, så snart et opslag er udgivet via appen – cirka hver sjette time. Instagram, TikTok og LinkedIn følger, så snart platformen har givet adgang. Tal fra andre opslag kan du indtaste manuelt under <weiter>Anbefalinger</weiter> („Indtast platformtal“) eller i <varianten>variantsammenligningen</varianten>.",
   "statViewsTotal": "Visninger i alt",
   "statLikesTotal": "Likes i alt",
   "statComments": "Kommentarer",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Bedst præsterende content",
   "bestPerformingEmpty": "Ingen statistik endnu – ingen rangliste mulig.",
   "learningAgentTitle": "Learning Agent — anbefalinger",
-  "statsEmpty": "Ingen statistik gemt endnu – derfor er der endnu ingen nøgletal her. Platformstatistikker hentes endnu ikke automatisk."
+  "statsEmpty": "Ingen statistik gemt endnu. For YouTube og Facebook vises tallene automatisk, så snart et opslag er udgivet via appen."
 }

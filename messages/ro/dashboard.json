@@ -27,7 +27,7 @@
     "avgEngagement": "Ø Engagement",
     "totalRevenue": "Venituri (introduse manual)",
     "noComparisonWeek": "Încă nu există o săptămână anterioară ca bază de comparație — ratele de schimbare apar imediat ce există date pentru cel puțin două săptămâni.",
-    "noStats": "Vizualizări și implicare: încă nu există statistici – statisticile platformelor nu sunt încă preluate automat."
+    "noStats": "Vizualizări și interacțiuni: încă nu există statistici – apar automat imediat ce o postare a fost publicată prin aplicație pe YouTube sau Facebook."
   },
   "production": {
     "title": "Producție de conținut",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Top Performer",
     "last7Days": "Ultimele 7 zile",
-    "empty": "Încă nu există date de performanță – statisticile platformelor nu sunt încă preluate automat.",
+    "empty": "Încă nu există date de performanță – apar automat pentru postările publicate prin aplicație pe YouTube sau Facebook.",
     "views": "Vizualizări",
     "likes": "Aprecieri",
     "comments": "Comentarii",

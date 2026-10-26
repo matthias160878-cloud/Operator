@@ -260,14 +260,14 @@ export function WeiterempfehlungenBoard(props: {
                   <td className="py-1.5 pr-3">{p.anmeldungEingerichtet ? "eingerichtet" : "nicht eingerichtet"}</td>
                   <td className="py-1.5 pr-3">{p.konto === "CONNECTED" ? "verbunden" : p.konto === "ERROR" ? "Fehler" : "nicht verbunden"}</td>
                   <td className="py-1.5 pr-3">{p.composio === "ACTIVE" ? "aktiv" : p.composio === "NONE" ? "—" : p.composio.toLowerCase()}</td>
-                  <td className="py-1.5 text-muted">nicht angebunden</td>
+                  <td className="py-1.5 text-muted">{p.statistikAbruf}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
         <ul className="mt-3 list-disc space-y-0.5 pl-4 text-[11px] text-muted">
-          <li>Plattformzahlen (Impressionen, Reichweite, Videoaufrufe, Shares) werden derzeit nur als DEMO oder manuell übertragen angezeigt.</li>
+          <li>Plattformzahlen: Videoaufrufe und Teilungen von Beiträgen, die über die App auf YouTube oder Facebook veröffentlicht wurden, kommen automatisch (etwa alle sechs Stunden). Instagram, TikTok und LinkedIn folgen nach Freigabe durch die Plattform; bis dahin von Hand eintragen.</li>
           <li>Newsletter: nur wenn der Newsletter-Baustein freigeschaltet ist – dann über eine Anmeldeseite im „Reichweitenaufbau“ je Kampagne messbar (bestätigte Anmeldungen). Website-Besuche: nur „Klicks zur Zielseite“ über den Empfehlungslink.</li>
           <li>Keine Einwilligungsverwaltung vorhanden – deshalb keine Cookies und keine Besucherkennung; gezählt wird nur ohne Personenbezug.</li>
           <li>Zähl-Ereignisse werden nach {props.aufbewahrungTage} Tagen automatisch gelöscht. Anfragen landen im Menü unter <Link className="underline" href="/kundenanfragen">„Anfragen“</Link> (mit Kontakt und Nachricht, keine automatische Antwort).</li>
@@ -447,7 +447,7 @@ export function WeiterempfehlungenBoard(props: {
               <div>
                 <h3 className="text-xs font-semibold text-foreground">Plattformzahlen</h3>
                 {auswertung.plattformKennzahlen.length === 0 ? (
-                  <p className="mt-1 text-xs text-muted">Keine Plattformzahlen erfasst – automatischer Abruf nicht angebunden.</p>
+                  <p className="mt-1 text-xs text-muted">Noch keine Plattformzahlen. Für YouTube und Facebook kommen sie automatisch, sobald ein Beitrag dieser Kampagne über die App veröffentlicht wurde.</p>
                 ) : (
                   <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
                     {auswertung.plattformKennzahlen.map((k, i) => (
@@ -482,8 +482,8 @@ export function WeiterempfehlungenBoard(props: {
           <section className="card space-y-3 p-4">
             <h2 className="text-sm font-semibold text-foreground">Plattformzahlen eintragen</h2>
             <p className="text-[11px] text-muted">
-              Solange keine Statistik-Schnittstelle angebunden ist, können Zahlen aus der Plattform-Statistik von Hand übertragen werden – auch
-              Speicherungen und Wiedergabedauer. Sie erscheinen mit Quelle „Manuell aus Plattform-Statistik“
+              Für YouTube und Facebook kommen Videoaufrufe und Teilungen automatisch. Alles andere – Instagram, TikTok, LinkedIn,
+              Speicherungen, Wiedergabedauer oder Beiträge, die nicht über die App veröffentlicht wurden – kann hier von Hand übertragen werden. Sie erscheinen mit Quelle „Manuell aus Plattform-Statistik“
               {kampagne.istDemo ? " (in Demo-Kampagnen als DEMO)" : ""}. Durchschnittswerte (Ø Wiedergabedauer) gelten nur für die
               eingetragene Plattform und den Zeitraum und werden nie addiert.
             </p>
@@ -495,7 +495,7 @@ export function WeiterempfehlungenBoard(props: {
                       {z.plattform} · {istMetrik(z.metrik) ? METRIK_INFO[z.metrik].label : z.metrik}: {formatiereMetrikWert(z.metrik, z.wert)}
                     </span>
                     <span className="text-muted">
-                      {datum(z.zeitraumVon)} – {datum(z.zeitraumBis)} · {z.quelle === "DEMO" ? "DEMO" : "Manuell aus Plattform-Statistik"}
+                      {datum(z.zeitraumVon)} – {datum(z.zeitraumBis)} · {z.quelle === "DEMO" ? "DEMO" : z.quelle.startsWith("API:") ? `Automatisch (${z.quelle.slice(4)})` : "Manuell aus Plattform-Statistik"}
                     </span>
                     {darfBearbeiten && (
                       <button type="button" className="ml-auto text-muted hover:text-danger" disabled={laedt} onClick={() => aufruf(`/api/reichweite/kennzahlen/${z.id}`, "DELETE")} aria-label="Kennzahl löschen">

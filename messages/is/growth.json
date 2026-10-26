@@ -1,9 +1,9 @@
 {
   "title": "Vöxtur",
-  "subtitle": "Ráðleggingar um útbreiðslu og vöxt – leiddar af vistaðri tölfræði efnisins þíns: bestu birtingartímar, árangursríkustu myllumerki og snið. Tölfræði miðla er enn ekki sótt sjálfvirkt.",
+  "subtitle": "Ráðleggingar um útbreiðslu og vöxt – leiddar af vistaðri tölfræði efnisins þíns: bestu birtingartímar, árangursríkustu myllumerki og snið. Fyrir YouTube og Facebook eru tölurnar sóttar sjálfvirkt.",
   "warning": "Vísvitandi <strong>ekki</strong> innifalið: sjálfvirkt að fylgja/læka/gera athugasemdir til að fjölga fylgjendum gervilega. Það brýtur notkunarskilmála YouTube, Instagram, TikTok, LinkedIn og Facebook og getur leitt til lokunar reiknings. Þessi síða gefur eingöngu gagnadrifnar ráðleggingar fyrir þitt eigið efni.",
   "filterAll": "Allir miðlar",
-  "emptyState": "Engin tölfræði vistuð fyrir {platform} enn, því engar ráðleggingar enn. Tölfræði miðla er enn ekki sótt sjálfvirkt.",
+  "emptyState": "Engin tölfræði vistuð fyrir {platform} enn, því engar ráðleggingar enn. Fyrir YouTube og Facebook birtast tölurnar sjálfvirkt eftir birtingu í gegnum forritið.",
   "emptyStateDefaultScope": "þetta vinnusvæði",
   "bestPostingTimesTitle": "Bestu birtingartímar",
   "postingTime": "{day} · kl. {hour}",

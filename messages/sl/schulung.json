@@ -50,7 +50,7 @@
       "title": "Analitika in rast",
       "description": "Resnične številke o lastni uspešnosti — in priporočila namesto avtomatizacije.",
       "steps": [
-        "Analytics prikazuje le shranjeno statistiko (npr. vzorčne podatke). Statistika platform se še ne pridobiva samodejno; številke ročno vneseš pod »Priporočila« ali v primerjavi različic – tam se ovrednotijo.",
+        "Analytics prikazuje shranjeno statistiko. Za YouTube in Facebook aplikacija samodejno pridobi številke objavljenih prispevkov; Instagram, TikTok in LinkedIn bodo sledili po odobritvi platforme. Druge številke ročno vneseš pod »Priporočila« ali v primerjavi različic.",
         "Stran Rast iz teh podatkov izračuna najboljše čase objavljanja, uspešne heštage in formate.",
         "Pomembno: namenoma ni samodejnega povečevanja sledilcev/angažiranosti (brez vedenja botov) — to bi kršilo pogoje uporabe vsake platforme."
       ]

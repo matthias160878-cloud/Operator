@@ -1,9 +1,9 @@
 {
   "title": "Wachstum",
-  "subtitle": "Empfehlungen für Reichweite und Wachstum – abgeleitet aus gespeicherten Statistikdaten deiner Inhalte: beste Posting-Zeiten, erfolgreichste Hashtags und Formate. Plattformstatistiken werden noch nicht automatisch abgerufen.",
+  "subtitle": "Empfehlungen für Reichweite und Wachstum – abgeleitet aus gespeicherten Statistikdaten deiner Inhalte: beste Posting-Zeiten, erfolgreichste Hashtags und Formate. Für YouTube und Facebook werden die Zahlen automatisch abgerufen.",
   "warning": "Bewusst <strong>nicht</strong> enthalten: automatisiertes Folgen/Liken/Kommentieren zur künstlichen Follower-Steigerung. Das verstößt bei YouTube, Instagram, TikTok, LinkedIn und Facebook gegen die Nutzungsbedingungen und kann zur Kontosperrung führen. Diese Seite gibt ausschließlich daten-basierte Empfehlungen für deinen eigenen Content.",
   "filterAll": "Alle Plattformen",
-  "emptyState": "Noch keine Statistikdaten für {platform} gespeichert, daher noch keine Empfehlungen. Plattformstatistiken werden noch nicht automatisch abgerufen.",
+  "emptyState": "Noch keine Statistikdaten für {platform} gespeichert, daher noch keine Empfehlungen. Für YouTube und Facebook erscheinen die Zahlen automatisch nach der Veröffentlichung über die App.",
   "emptyStateDefaultScope": "diesen Workspace",
   "bestPostingTimesTitle": "Beste Posting-Zeiten",
   "postingTime": "{day} · {hour} Uhr",

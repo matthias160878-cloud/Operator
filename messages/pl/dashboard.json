@@ -27,7 +27,7 @@
     "avgEngagement": "Śr. zaangażowanie",
     "totalRevenue": "Przychody (wpisane ręcznie)",
     "noComparisonWeek": "Brak jeszcze poprzedniego tygodnia jako punktu odniesienia — wskaźniki zmian pojawią się, gdy będą dane z co najmniej dwóch tygodni.",
-    "noStats": "Wyświetlenia i zaangażowanie: brak statystyk – statystyki platform nie są jeszcze pobierane automatycznie."
+    "noStats": "Wyświetlenia i interakcje: brak statystyk – pojawią się automatycznie, gdy tylko post zostanie opublikowany przez aplikację w serwisie YouTube lub Facebook."
   },
   "production": {
     "title": "Produkcja treści",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Najlepsze wyniki",
     "last7Days": "Ostatnie 7 dni",
-    "empty": "Brak danych o wynikach – statystyki platform nie są jeszcze pobierane automatycznie.",
+    "empty": "Brak danych o wynikach – pojawiają się automatycznie dla postów opublikowanych przez aplikację w serwisie YouTube lub Facebook.",
     "views": "Wyświetlenia",
     "likes": "Polubienia",
     "comments": "Komentarze",

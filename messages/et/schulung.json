@@ -50,7 +50,7 @@
       "title": "Analüütika ja kasv",
       "description": "Päris numbrid oma tulemuslikkuse kohta — ja soovitused automatiseerimise asemel.",
       "steps": [
-        "Analytics näitab ainult salvestatud statistikat (nt näidisandmeid). Platvormide statistikat veel automaatselt ei tooda; numbrid sisestad käsitsi jaotises „Soovitused“ või variantide võrdluses – seal neid hinnatakse.",
+        "Analytics näitab salvestatud statistikat. YouTube'i ja Facebooki puhul toob rakendus avaldatud postituste numbrid automaatselt; Instagram, TikTok ja LinkedIn lisanduvad pärast platvormi heakskiitu. Muud numbrid sisestad käsitsi jaotises „Soovitused“ või variantide võrdluses.",
         "Kasvu leht arvutab nendest andmetest parimad postitusajad, edukad märksõnad ja vormingud.",
         "Oluline: automatiseeritud jälgijate/haaratuse suurendamist (botikäitumist) teadlikult ei ole — see rikuks iga platvormi kasutustingimusi."
       ]

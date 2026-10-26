@@ -27,7 +27,7 @@
     "avgEngagement": "Ø Engagement",
     "totalRevenue": "Inkomsten (handmatig ingevoerd)",
     "noComparisonWeek": "Nog geen vorige week als vergelijkingsbasis beschikbaar — veranderingspercentages verschijnen zodra er data over minstens twee weken is.",
-    "noStats": "Weergaven en engagement: nog geen statistieken – platformstatistieken worden nog niet automatisch opgehaald."
+    "noStats": "Weergaven en interacties: nog geen statistieken – ze verschijnen automatisch zodra een bericht via de app op YouTube of Facebook is gepubliceerd."
   },
   "production": {
     "title": "Contentproductie",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Topprestatie",
     "last7Days": "Laatste 7 dagen",
-    "empty": "Nog geen prestatiegegevens – platformstatistieken worden nog niet automatisch opgehaald.",
+    "empty": "Nog geen prestatiegegevens – ze verschijnen automatisch voor berichten die via de app op YouTube of Facebook zijn gepubliceerd.",
     "views": "Views",
     "likes": "Likes",
     "comments": "Reacties",

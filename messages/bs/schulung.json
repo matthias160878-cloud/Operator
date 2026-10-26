@@ -50,7 +50,7 @@
       "title": "Analytics i rast",
       "description": "Stvarni brojevi o vlastitom učinku — i preporuke umjesto automatizacije.",
       "steps": [
-        "Analytics prikazuje samo sačuvanu statistiku (npr. primjere podataka). Statistika platformi još se ne preuzima automatski; brojke ručno unosiš pod „Preporuke” ili u poređenju varijanti – tamo se ocjenjuju.",
+        "Analytics prikazuje sačuvanu statistiku. Za YouTube i Facebook aplikacija automatski preuzima brojke objavljenih postova; Instagram, TikTok i LinkedIn slijede nakon odobrenja platforme. Ostale brojke ručno unosiš pod „Preporuke” ili u poređenju varijanti.",
         "Stranica Rast iz tih podataka izračunava najbolja vremena objavljivanja, uspješne hashtagove i formate.",
         "Važno: namjerno nema automatskog povećanja broja pratilaca/angažmana (nema ponašanja botova) — to bi kršilo uslove korištenja svake platforme."
       ]

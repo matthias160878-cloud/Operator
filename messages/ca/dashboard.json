@@ -27,7 +27,7 @@
     "avgEngagement": "Engagement mitjà",
     "totalRevenue": "Ingressos (registrats manualment)",
     "noComparisonWeek": "Encara no hi ha cap setmana anterior com a base de comparació: les taxes de variació apareixeran quan hi hagi dades d'almenys dues setmanes.",
-    "noStats": "Visualitzacions i interacció: encara no hi ha estadístiques; les estadístiques de les plataformes encara no s'obtenen automàticament."
+    "noStats": "Visualitzacions i interaccions: encara no hi ha estadístiques; apareixen automàticament tan bon punt es publica una entrada a través de l'aplicació a YouTube o Facebook."
   },
   "production": {
     "title": "Producció de contingut",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Millor rendiment",
     "last7Days": "Darrers 7 dies",
-    "empty": "Encara no hi ha dades de rendiment: les estadístiques de les plataformes encara no s'obtenen automàticament.",
+    "empty": "Encara no hi ha dades de rendiment: apareixen automàticament per a les entrades publicades a través de l'aplicació a YouTube o Facebook.",
     "views": "Visualitzacions",
     "likes": "M'agrada",
     "comments": "Comentaris",

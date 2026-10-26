@@ -1,6 +1,6 @@
 {
   "title": "Greining",
-  "subtitle": "Tölfræði miðla (áhorf, líkar, athugasemdir, deilingar) er enn ekki sótt sjálfvirkt. Hér birtast aðeins gildi sem þegar eru vistuð, t.d. sýnigögn. Tölur úr tölfræði miðilsins geturðu skráð handvirkt undir <weiter>Meðmæli</weiter> („Skrá tölur miðils“) eða í <varianten>samanburði útgáfa</varianten> – þær eru metnar þar, ekki á þessari síðu.",
+  "subtitle": "Tölfræði miðla (áhorf, líkar, athugasemdir, deilingar) er sótt sjálfvirkt fyrir YouTube og Facebook um leið og færsla hefur verið birt í gegnum forritið – um það bil á sex klukkustunda fresti. Instagram, TikTok og LinkedIn bætast við um leið og miðillinn hefur veitt aðgang. Tölur úr öðrum færslum geturðu skráð handvirkt undir <weiter>Meðmæli</weiter> („Skrá tölur miðils“) eða í <varianten>samanburði útgáfa</varianten>.",
   "statViewsTotal": "Áhorf samtals",
   "statLikesTotal": "Læk samtals",
   "statComments": "Athugasemdir",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Best heppnaða efnið",
   "bestPerformingEmpty": "Engin tölfræði enn – engin röðun möguleg.",
   "learningAgentTitle": "Námsfulltrúi — ráðleggingar",
-  "statsEmpty": "Engin tölfræði vistuð enn – þess vegna eru hér engar lykiltölur enn. Tölfræði miðla er enn ekki sótt sjálfvirkt."
+  "statsEmpty": "Engin tölfræði vistuð enn. Fyrir YouTube og Facebook birtast tölurnar sjálfvirkt um leið og færsla hefur verið birt í gegnum forritið."
 }

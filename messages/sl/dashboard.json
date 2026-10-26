@@ -27,7 +27,7 @@
     "avgEngagement": "Povpr. angažiranost",
     "totalRevenue": "Prihodki (vneseni ročno)",
     "noComparisonWeek": "Prejšnjega tedna za primerjavo še ni — stopnje sprememb se prikažejo, ko bodo na voljo podatki za vsaj dva tedna.",
-    "noStats": "Ogledi in angažiranost: še ni statističnih podatkov – statistika platform se še ne pridobiva samodejno."
+    "noStats": "Ogledi in interakcije: še ni statističnih podatkov – prikažejo se samodejno, ko je prispevek objavljen prek aplikacije na platformi YouTube ali Facebook."
   },
   "production": {
     "title": "Produkcija vsebin",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Najuspešnejše",
     "last7Days": "Zadnjih 7 dni",
-    "empty": "Še ni podatkov o uspešnosti – statistika platform se še ne pridobiva samodejno.",
+    "empty": "Še ni podatkov o uspešnosti – prikažejo se samodejno za prispevke, objavljene prek aplikacije na platformi YouTube ali Facebook.",
     "views": "Ogledi",
     "likes": "Všečki",
     "comments": "Komentarji",

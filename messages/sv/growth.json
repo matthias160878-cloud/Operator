@@ -1,9 +1,9 @@
 {
   "title": "Tillväxt",
-  "subtitle": "Rekommendationer för räckvidd och tillväxt – härledda ur den sparade statistiken för ditt innehåll: bästa publiceringstider, mest framgångsrika hashtaggar och format. Plattformsstatistik hämtas ännu inte automatiskt.",
+  "subtitle": "Rekommendationer för räckvidd och tillväxt – härledda ur den sparade statistiken för ditt innehåll: bästa publiceringstider, mest framgångsrika hashtaggar och format. För YouTube och Facebook hämtas siffrorna automatiskt.",
   "warning": "Medvetet <strong>inte</strong> inkluderat: automatiserat följande/gillande/kommenterande för att artificiellt öka antalet följare. Det strider mot användarvillkoren hos YouTube, Instagram, TikTok, LinkedIn och Facebook och kan leda till att kontot spärras. Den här sidan ger uteslutande databaserade rekommendationer för ditt eget innehåll.",
   "filterAll": "Alla plattformar",
-  "emptyState": "Ingen statistik sparad för {platform} ännu, därför inga rekommendationer ännu. Plattformsstatistik hämtas ännu inte automatiskt.",
+  "emptyState": "Ingen statistik sparad för {platform} ännu, därför inga rekommendationer ännu. För YouTube och Facebook visas siffrorna automatiskt efter publicering via appen.",
   "emptyStateDefaultScope": "den här arbetsytan",
   "bestPostingTimesTitle": "Bästa publiceringstider",
   "postingTime": "{day} · kl. {hour}",

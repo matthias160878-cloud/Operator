@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { prisma } from "@/lib/db";
+import { abrufAktiv } from "@/lib/statistik/abruf";
 import { sellerProfileComplete } from "@/lib/connect/sellerProfile";
 import { newsletterFreigeschaltet } from "@/lib/reichweitenaufbau/freischaltung";
 import { NotFoundError } from "@/lib/api";
@@ -136,7 +137,7 @@ export async function plattformStatus(workspaceId: string) {
       anmeldungEingerichtet: provider ? isProviderConfigured(provider) : false,
       konto: konten.find((k) => k.platform === p)?.status ?? "NICHT_VERBUNDEN",
       composio: composio.find((c) => c.toolkit === p)?.status ?? "NONE",
-      statistikAbruf: "NICHT_ANGEBUNDEN" as const,
+      statistikAbruf: abrufAktiv(p).grund,
     };
   });
 }

@@ -50,7 +50,7 @@
       "title": "Analytika a růst",
       "description": "Skutečná čísla o tvém výkonu — a doporučení místo automatizace.",
       "steps": [
-        "Analytics zobrazuje jen uložené statistiky (např. ukázková data). Statistiky platforem se zatím nenačítají automaticky; čísla zadáváš ručně v „Doporučení“ nebo ve srovnání variant – tam se vyhodnocují.",
+        "Analytics zobrazuje uložené statistiky. Pro YouTube a Facebook aplikace automaticky načítá čísla publikovaných příspěvků; Instagram, TikTok a LinkedIn budou následovat po schválení platformou. Ostatní čísla zadáváš ručně v „Doporučení“ nebo ve srovnání variant.",
         "Stránka Růst z těchto dat vypočítá nejlepší časy publikování, úspěšné hashtagy a formáty.",
         "Důležité: záměrně neexistuje žádné automatizované zvyšování počtu sledujících/engagementu (žádné chování botů) — to by porušovalo podmínky používání každé platformy."
       ]

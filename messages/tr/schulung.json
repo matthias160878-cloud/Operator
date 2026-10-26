@@ -50,7 +50,7 @@
       "title": "Analitik ve büyüme",
       "description": "Kendi performansına dair gerçek rakamlar — ve otomasyon yerine öneriler.",
       "steps": [
-        "Analytics yalnızca kaydedilmiş istatistikleri gösterir (ör. örnek veriler). Platform istatistikleri henüz otomatik olarak alınmıyor; sayıları „Tavsiyeler” bölümünde veya varyant karşılaştırmasında elle girersin – orada değerlendirilirler.",
+        "Analytics kaydedilmiş istatistikleri gösterir. YouTube ve Facebook için uygulama, yayınlanan gönderilerin sayılarını otomatik olarak alır; Instagram, TikTok ve LinkedIn platformun onayından sonra eklenecek. Diğer sayıları „Tavsiyeler” bölümünde veya varyant karşılaştırmasında elle girersin.",
         "Büyüme sayfası bu verilerden en iyi paylaşım zamanlarını, başarılı hashtag'leri ve biçimleri hesaplar.",
         "Önemli: bilerek otomatik takipçi/etkileşim artırma (bot davranışı) yoktur — bu, her platformun kullanım koşullarını ihlal ederdi."
       ]

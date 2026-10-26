@@ -50,7 +50,7 @@
       "title": "Greining og vöxtur",
       "description": "Raunverulegar tölur um eigin frammistöðu — og ráðleggingar í stað sjálfvirkni.",
       "steps": [
-        "Analytics sýnir aðeins vistaða tölfræði (t.d. sýnigögn). Tölfræði miðla er enn ekki sótt sjálfvirkt; tölur skráirðu handvirkt undir „Meðmæli“ eða í samanburði útgáfa – þar eru þær metnar.",
+        "Analytics sýnir vistaða tölfræði. Fyrir YouTube og Facebook sækir forritið tölur birtra færslna sjálfvirkt; Instagram, TikTok og LinkedIn bætast við eftir samþykki miðilsins. Aðrar tölur skráirðu handvirkt undir „Meðmæli“ eða í samanburði útgáfa.",
         "Vaxtarsíðan reiknar út frá þessum gögnum bestu birtingartíma, árangursrík myllumerki og snið.",
         "Mikilvægt: vísvitandi er engin sjálfvirk fjölgun fylgjenda/þátttöku (engin vélmennahegðun) — það bryti gegn notkunarskilmálum allra miðla."
       ]

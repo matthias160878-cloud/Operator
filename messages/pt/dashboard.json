@@ -27,7 +27,7 @@
     "avgEngagement": "Ø Envolvimento",
     "totalRevenue": "Receitas (registadas manualmente)",
     "noComparisonWeek": "Ainda não há semana anterior como base de comparação — as taxas de variação aparecem quando houver dados de pelo menos duas semanas.",
-    "noStats": "Visualizações e envolvimento: ainda não há estatísticas – as estatísticas das plataformas ainda não são obtidas automaticamente."
+    "noStats": "Visualizações e interações: ainda não há estatísticas – aparecem automaticamente assim que uma publicação é feita através da app no YouTube ou no Facebook."
   },
   "production": {
     "title": "Produção de conteúdo",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Melhor desempenho",
     "last7Days": "Últimos 7 dias",
-    "empty": "Ainda não há dados de desempenho – as estatísticas das plataformas ainda não são obtidas automaticamente.",
+    "empty": "Ainda não há dados de desempenho – aparecem automaticamente para publicações feitas através da app no YouTube ou no Facebook.",
     "views": "Visualizações",
     "likes": "Gostos",
     "comments": "Comentários",

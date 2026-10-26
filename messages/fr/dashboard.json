@@ -27,7 +27,7 @@
     "avgEngagement": "Engagement moyen",
     "totalRevenue": "Revenus (saisis manuellement)",
     "noComparisonWeek": "Aucune semaine précédente disponible comme base de comparaison — les taux de variation apparaîtront dès que des données sur au moins deux semaines seront disponibles.",
-    "noStats": "Vues et engagement : pas encore de statistiques – les statistiques des plateformes ne sont pas encore récupérées automatiquement."
+    "noStats": "Vues et interactions : pas encore de statistiques – elles apparaissent automatiquement dès qu'une publication est mise en ligne via l'application sur YouTube ou Facebook."
   },
   "production": {
     "title": "Production de contenu",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Top performance",
     "last7Days": "7 derniers jours",
-    "empty": "Pas encore de données de performance – les statistiques des plateformes ne sont pas encore récupérées automatiquement.",
+    "empty": "Pas encore de données de performance – elles apparaissent automatiquement pour les publications mises en ligne via l'application sur YouTube ou Facebook.",
     "views": "Vues",
     "likes": "J'aime",
     "comments": "Commentaires",

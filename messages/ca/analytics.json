@@ -1,6 +1,6 @@
 {
   "title": "Analytics",
-  "subtitle": "Les estadístiques de les plataformes (visualitzacions, m'agrada, comentaris, comparticions) encara no s'obtenen automàticament. Aquí només apareixen valors ja desats, p. ex. dades d'exemple. Pots introduir a mà les xifres de les estadístiques de la plataforma a <weiter>Recomanacions</weiter> («Introduir xifres de la plataforma») o a la <varianten>comparació de variants</varianten>: s'avaluen allà, no en aquesta pàgina.",
+  "subtitle": "Les estadístiques de les plataformes (visualitzacions, m'agrada, comentaris, comparticions) s'obtenen automàticament per a YouTube i Facebook tan bon punt es publica una entrada a través de l'aplicació, aproximadament cada sis hores. Instagram, TikTok i LinkedIn s'hi afegiran tan bon punt la plataforma hagi autoritzat l'accés. Pots introduir a mà les xifres d'altres entrades a <weiter>Recomanacions</weiter> («Introduir xifres de la plataforma») o a la <varianten>comparació de variants</varianten>.",
   "statViewsTotal": "Visualitzacions totals",
   "statLikesTotal": "M'agrada totals",
   "statComments": "Comentaris",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Contingut amb millor rendiment",
   "bestPerformingEmpty": "Encara no hi ha estadístiques: no és possible fer una classificació.",
   "learningAgentTitle": "Learning Agent — Recomanacions",
-  "statsEmpty": "Encara no hi ha estadístiques desades, per això encara no hi ha indicadors aquí. Les estadístiques de les plataformes encara no s'obtenen automàticament."
+  "statsEmpty": "Encara no hi ha estadístiques desades. Per a YouTube i Facebook, les xifres apareixen automàticament tan bon punt es publica una entrada a través de l'aplicació."
 }

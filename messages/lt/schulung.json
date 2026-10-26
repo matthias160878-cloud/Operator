@@ -50,7 +50,7 @@
       "title": "Analitika ir augimas",
       "description": "Tikri skaičiai apie savo veiklą — ir rekomendacijos, o ne automatizavimas.",
       "steps": [
-        "Analytics rodo tik išsaugotą statistiką (pvz., pavyzdinius duomenis). Platformų statistika dar negaunama automatiškai; skaičius rankiniu būdu įvedi skiltyje „Rekomendacijos“ arba variantų palyginime – ten jie ir vertinami.",
+        "Analytics rodo išsaugotą statistiką. YouTube ir Facebook paskelbtų įrašų skaičius programa gauna automatiškai; Instagram, TikTok ir LinkedIn bus pridėti, kai platforma suteiks leidimą. Kitus skaičius rankiniu būdu įvedi skiltyje „Rekomendacijos“ arba variantų palyginime.",
         "Augimo puslapis iš šių duomenų apskaičiuoja geriausius publikavimo laikus, sėkmingas žymas (hashtag) ir formatus.",
         "Svarbu: sąmoningai nėra automatizuoto sekėjų / įsitraukimo didinimo (jokio bot elgesio) — tai pažeistų kiekvienos platformos naudojimo sąlygas."
       ]

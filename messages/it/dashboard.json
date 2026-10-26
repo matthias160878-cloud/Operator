@@ -27,7 +27,7 @@
     "avgEngagement": "Engagement medio",
     "totalRevenue": "Entrate (registrate manualmente)",
     "noComparisonWeek": "Ancora nessuna settimana precedente come base di confronto: le variazioni compariranno quando saranno disponibili dati per almeno due settimane.",
-    "noStats": "Visualizzazioni ed engagement: nessuna statistica ancora; le statistiche delle piattaforme non vengono ancora recuperate automaticamente."
+    "noStats": "Visualizzazioni e interazioni: nessuna statistica ancora; compaiono automaticamente non appena un post è stato pubblicato tramite l'app su YouTube o Facebook."
   },
   "production": {
     "title": "Produzione di contenuti",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Top performer",
     "last7Days": "Ultimi 7 giorni",
-    "empty": "Nessun dato di rendimento ancora: le statistiche delle piattaforme non vengono ancora recuperate automaticamente.",
+    "empty": "Nessun dato di rendimento ancora: i dati compaiono automaticamente per i post pubblicati tramite l'app su YouTube o Facebook.",
     "views": "Visualizzazioni",
     "likes": "Mi piace",
     "comments": "Commenti",

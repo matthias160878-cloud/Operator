@@ -1,6 +1,6 @@
 {
  "title": "Analytics",
- "subtitle": "Štatistiky platforiem (zhliadnutia, lajky, komentáre, zdieľania) sa zatiaľ nenačítavajú automaticky. Zobrazujú sa tu len už uložené hodnoty, napr. ukážkové dáta. Čísla zo štatistík platformy môžeš zadať ručne v časti <weiter>Odporúčania</weiter> („Zadať čísla z platformy“) alebo v <varianten>porovnaní variantov</varianten> – vyhodnocujú sa tam, nie na tejto stránke.",
+ "subtitle": "Štatistiky platforiem (zhliadnutia, lajky, komentáre, zdieľania) sa pre YouTube a Facebook načítavajú automaticky, hneď ako je príspevok publikovaný cez aplikáciu – približne každých šesť hodín. Instagram, TikTok a LinkedIn budú nasledovať, hneď ako platforma udelí prístup. Čísla z iných príspevkov môžeš zadať ručne v časti <weiter>Odporúčania</weiter> („Zadať čísla z platformy“) alebo v <varianten>porovnaní variantov</varianten>.",
  "statViewsTotal": "Zobrazenia spolu",
  "statLikesTotal": "Páči sa mi to spolu",
  "statComments": "Komentáre",
@@ -11,5 +11,5 @@
  "bestPerformingTitle": "Najvýkonnejší obsah",
  "bestPerformingEmpty": "Zatiaľ žiadne štatistiky – poradie nie je možné.",
  "learningAgentTitle": "Learning Agent — odporúčania",
- "statsEmpty": "Zatiaľ nie sú uložené žiadne štatistiky – preto tu zatiaľ nie sú žiadne ukazovatele. Štatistiky platforiem sa zatiaľ nenačítavajú automaticky."
+ "statsEmpty": "Zatiaľ nie sú uložené žiadne štatistiky. Pre YouTube a Facebook sa čísla zobrazia automaticky, hneď ako je príspevok publikovaný cez aplikáciu."
 }

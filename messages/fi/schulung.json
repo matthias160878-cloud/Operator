@@ -50,7 +50,7 @@
       "title": "Analytiikka ja kasvu",
       "description": "Oikeita lukuja omasta suorituskyvystäsi — ja suosituksia automaation sijaan.",
       "steps": [
-        "Analytics näyttää vain tallennetut tilastot (esim. esimerkkidatan). Alustojen tilastoja ei vielä haeta automaattisesti; luvut syötät käsin kohdassa ”Suositukset” tai versiovertailussa – ne arvioidaan siellä.",
+        "Analytics näyttää tallennetut tilastot. YouTuben ja Facebookin osalta sovellus hakee julkaistujen postausten luvut automaattisesti; Instagram, TikTok ja LinkedIn seuraavat, kun alusta on antanut luvan. Muut luvut syötät käsin kohdassa ”Suositukset” tai versiovertailussa.",
         "Kasvu-sivu laskee tästä datasta parhaat julkaisuajat, menestyneet hashtagit ja formaatit.",
         "Tärkeää: automaattista seuraaja- tai sitoutumismäärän kasvattamista (botti-toimintaa) ei tarkoituksella ole — se rikkoisi jokaisen alustan käyttöehtoja."
       ]

@@ -27,7 +27,7 @@
     "avgEngagement": "Ø engagement",
     "totalRevenue": "Indtægter (indtastet manuelt)",
     "noComparisonWeek": "Der er endnu ingen forrige uge at sammenligne med — ændringsrater vises, når der foreligger data for mindst to uger.",
-    "noStats": "Visninger og engagement: endnu ingen statistik – platformstatistikker hentes endnu ikke automatisk."
+    "noStats": "Visninger og interaktioner: endnu ingen statistik – de vises automatisk, så snart et opslag er udgivet via appen på YouTube eller Facebook."
   },
   "production": {
     "title": "Content-produktion",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Top-præstation",
     "last7Days": "Seneste 7 dage",
-    "empty": "Endnu ingen præstationsdata – platformstatistikker hentes endnu ikke automatisk.",
+    "empty": "Endnu ingen præstationsdata – de vises automatisk for opslag, der er udgivet via appen på YouTube eller Facebook.",
     "views": "Visninger",
     "likes": "Likes",
     "comments": "Kommentarer",

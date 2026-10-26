@@ -50,7 +50,7 @@
       "title": "Analytics e crescita",
       "description": "Numeri reali sulle tue performance, e raccomandazioni invece di automazione.",
       "steps": [
-        "Analytics mostra solo statistiche salvate (ad es. dati di esempio). Le statistiche delle piattaforme non vengono ancora recuperate automaticamente; i numeri a mano li inserisci in «Passaparola» o nel confronto delle varianti, dove vengono valutati.",
+        "Analytics mostra le statistiche salvate. Per YouTube e Facebook l'app recupera automaticamente i numeri dei post pubblicati; Instagram, TikTok e LinkedIn seguiranno dopo l'autorizzazione della piattaforma. Gli altri numeri li inserisci a mano in «Passaparola» o nel confronto delle varianti.",
         "La pagina Crescita calcola da questi dati i migliori orari di pubblicazione, gli hashtag e i formati di successo.",
         "Importante: non esiste volutamente alcun aumento automatizzato di follower/engagement (nessun comportamento da bot): violerebbe i termini di utilizzo di ogni piattaforma."
       ]

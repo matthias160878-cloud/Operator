@@ -1,6 +1,6 @@
 {
   "title": "Analytics",
-  "subtitle": "Platformstatistieken (weergaven, likes, reacties, shares) worden nog niet automatisch opgehaald. Hier verschijnen alleen al opgeslagen waarden, bijv. voorbeelddata. Cijfers uit de platformstatistiek kun je handmatig invoeren onder <weiter>Aanbevelingen</weiter> („Platformcijfers invoeren”) of in de <varianten>variantenvergelijking</varianten> – ze worden daar geëvalueerd, niet op deze pagina.",
+  "subtitle": "Platformstatistieken (weergaven, likes, reacties, shares) worden voor YouTube en Facebook automatisch opgehaald zodra een bericht via de app is gepubliceerd – ongeveer elke zes uur. Instagram, TikTok en LinkedIn volgen zodra het platform toegang heeft verleend. Cijfers van andere berichten kun je handmatig invoeren onder <weiter>Aanbevelingen</weiter> („Platformcijfers invoeren”) of in de <varianten>variantenvergelijking</varianten>.",
   "statViewsTotal": "Views totaal",
   "statLikesTotal": "Likes totaal",
   "statComments": "Reacties",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Best presterende content",
   "bestPerformingEmpty": "Nog geen statistieken – geen ranglijst mogelijk.",
   "learningAgentTitle": "Learning Agent — aanbevelingen",
-  "statsEmpty": "Nog geen statistieken opgeslagen – daarom zijn hier nog geen kengetallen. Platformstatistieken worden nog niet automatisch opgehaald."
+  "statsEmpty": "Nog geen statistieken opgeslagen. Voor YouTube en Facebook verschijnen de cijfers automatisch zodra een bericht via de app is gepubliceerd."
 }

@@ -1,6 +1,6 @@
 {
   "title": "Analitika",
-  "subtitle": "Platformų statistika (peržiūros, patiktukai, komentarai, pasidalijimai) dar negaunama automatiškai. Čia rodomos tik jau išsaugotos reikšmės, pvz., pavyzdiniai duomenys. Skaičius iš platformos statistikos gali įvesti rankiniu būdu skiltyje <weiter>Rekomendacijos</weiter> („Įvesti platformos skaičius“) arba <varianten>variantų palyginime</varianten> – jie vertinami ten, o ne šiame puslapyje.",
+  "subtitle": "Platformų statistika (peržiūros, patiktukai, komentarai, pasidalijimai) YouTube ir Facebook gaunama automatiškai, kai tik įrašas paskelbiamas per programą – maždaug kas šešias valandas. Instagram, TikTok ir LinkedIn bus pridėti, kai tik platforma suteiks prieigą. Kitų įrašų skaičius gali įvesti rankiniu būdu skiltyje <weiter>Rekomendacijos</weiter> („Įvesti platformos skaičius“) arba <varianten>variantų palyginime</varianten>.",
   "statViewsTotal": "Peržiūros iš viso",
   "statLikesTotal": "Patiktukai iš viso",
   "statComments": "Komentarai",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Geriausiai veikiantis turinys",
   "bestPerformingEmpty": "Statistikos dar nėra – reitingas negalimas.",
   "learningAgentTitle": "Learning Agent — rekomendacijos",
-  "statsEmpty": "Statistika dar neišsaugota – todėl čia dar nėra rodiklių. Platformų statistika dar negaunama automatiškai."
+  "statsEmpty": "Statistika dar neišsaugota. YouTube ir Facebook skaičiai atsiranda automatiškai, kai tik įrašas paskelbiamas per programą."
 }

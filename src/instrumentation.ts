@@ -23,6 +23,9 @@ export async function register() {
   );
   const { currentTextProvider } = await import("@/lib/ai/textGenerator");
   console.log(`[start] KI-Anbieter: ${currentTextProvider()}; Webseiten-Chat mit KI: ${process.env.WEBSITE_KI === "true" ? "an" : "aus"}`);
+  // Plattformzahlen veröffentlichter Beiträge automatisch abrufen (nur lesend).
+  const { startStatistikAbruf } = await import("@/lib/statistik/abruf");
+  startStatistikAbruf();
   if (process.env.PUBLISH_WORKER !== "inline") return;
   const { startPublishWorker } = await import("@/lib/publishWorker");
   const origin = process.env.PUBLIC_APP_URL?.trim().replace(/\/+$/, "") ?? "";

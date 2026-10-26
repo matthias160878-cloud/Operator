@@ -1,6 +1,6 @@
 {
   "title": "Analytics",
-  "subtitle": "Plattformstatistiken (Views, Likes, Kommentare, Shares) werden noch nicht automatisch abgerufen. Hier erscheinen nur bereits gespeicherte Werte, z. B. Beispieldaten. Zahlen aus der Plattform-Statistik kannst du von Hand unter <weiter>Weiterempfehlungen</weiter> („Plattformzahlen eintragen“) oder im <varianten>Variantenvergleich</varianten> erfassen – sie werden dort ausgewertet, nicht auf dieser Seite.",
+  "subtitle": "Plattformstatistiken (Aufrufe, Likes, Kommentare, Teilungen) werden für YouTube und Facebook automatisch abgerufen, sobald ein Beitrag über die App veröffentlicht wurde – etwa alle sechs Stunden. Instagram, TikTok und LinkedIn folgen, sobald die Plattform den Zugriff freigegeben hat. Zahlen von anderen Beiträgen kannst du von Hand unter <weiter>Weiterempfehlungen</weiter> („Plattformzahlen eintragen“) oder im <varianten>Variantenvergleich</varianten> erfassen.",
   "statViewsTotal": "Views gesamt",
   "statLikesTotal": "Likes gesamt",
   "statComments": "Kommentare",
@@ -11,5 +11,5 @@
   "bestPerformingTitle": "Best Performing Content",
   "bestPerformingEmpty": "Noch keine Statistikdaten – keine Rangliste möglich.",
   "learningAgentTitle": "Learning Agent — Empfehlungen",
-  "statsEmpty": "Noch keine Statistikdaten gespeichert – deshalb gibt es hier noch keine Kennzahlen. Plattformstatistiken werden noch nicht automatisch abgerufen."
+  "statsEmpty": "Noch keine Statistikdaten gespeichert. Für YouTube und Facebook erscheinen die Zahlen automatisch, sobald ein Beitrag über die App veröffentlicht wurde."
 }

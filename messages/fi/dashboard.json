@@ -27,7 +27,7 @@
     "avgEngagement": "Ø sitoutuminen",
     "totalRevenue": "Tulot (syötetty käsin)",
     "noComparisonWeek": "Vertailupohjaksi ei ole vielä edellistä viikkoa — muutosprosentit näkyvät, kun dataa on vähintään kahdelta viikolta.",
-    "noStats": "Katselut ja sitoutuminen: ei vielä tilastoja – alustojen tilastoja ei vielä haeta automaattisesti."
+    "noStats": "Katselut ja vuorovaikutukset: ei vielä tilastoja – ne näkyvät automaattisesti heti, kun postaus on julkaistu sovelluksen kautta YouTubessa tai Facebookissa."
   },
   "production": {
     "title": "Sisällöntuotanto",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Parhaat suorittajat",
     "last7Days": "Viimeiset 7 päivää",
-    "empty": "Ei vielä suoritustietoja – alustojen tilastoja ei vielä haeta automaattisesti.",
+    "empty": "Ei vielä suoritustietoja – ne näkyvät automaattisesti postauksille, jotka on julkaistu sovelluksen kautta YouTubessa tai Facebookissa.",
     "views": "Katselut",
     "likes": "Tykkäykset",
     "comments": "Kommentit",

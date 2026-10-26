@@ -27,7 +27,7 @@
     "avgEngagement": "Ø Engagement",
     "totalRevenue": "Příjmy (zadané ručně)",
     "noComparisonWeek": "Zatím není k dispozici předchozí týden jako základ pro srovnání — míry změn se objeví, jakmile budou data alespoň za dva týdny.",
-    "noStats": "Zhlédnutí a engagement: zatím žádné statistiky – statistiky platforem se zatím nenačítají automaticky."
+    "noStats": "Zhlédnutí a interakce: zatím žádné statistiky – zobrazí se automaticky, jakmile je příspěvek publikován přes aplikaci na platformě YouTube nebo Facebook."
   },
   "production": {
     "title": "Produkce obsahu",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Nejúspěšnější obsah",
     "last7Days": "Posledních 7 dní",
-    "empty": "Zatím žádná data o výkonu – statistiky platforem se zatím nenačítají automaticky.",
+    "empty": "Zatím žádná data o výkonu – zobrazí se automaticky u příspěvků publikovaných přes aplikaci na platformě YouTube nebo Facebook.",
     "views": "Zobrazení",
     "likes": "Lajky",
     "comments": "Komentáře",

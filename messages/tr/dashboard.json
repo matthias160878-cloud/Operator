@@ -27,7 +27,7 @@
     "avgEngagement": "Ort. etkileşim",
     "totalRevenue": "Gelirler (elle girilen)",
     "noComparisonWeek": "Karşılaştırma için henüz önceki hafta yok — değişim oranları, en az iki haftalık veri olduğunda görünür.",
-    "noStats": "Görüntülenme ve etkileşim: henüz istatistik yok – platform istatistikleri henüz otomatik olarak alınmıyor."
+    "noStats": "Görüntülenme ve etkileşimler: henüz istatistik yok – bir gönderi uygulama üzerinden YouTube veya Facebook'ta yayınlandığı anda otomatik olarak görünür."
   },
   "production": {
     "title": "İçerik üretimi",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "En iyi performans",
     "last7Days": "Son 7 gün",
-    "empty": "Henüz performans verisi yok – platform istatistikleri henüz otomatik olarak alınmıyor.",
+    "empty": "Henüz performans verisi yok – uygulama üzerinden YouTube veya Facebook'ta yayınlanan gönderiler için otomatik olarak görünür.",
     "views": "Görüntülenme",
     "likes": "Beğeni",
     "comments": "Yorumlar",

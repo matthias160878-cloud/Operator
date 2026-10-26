@@ -254,7 +254,7 @@ export function summeUeberEintraege(plattformKennzahlen: Auswertung["plattformKe
   }
   const rows = plattformKennzahlen.filter((k) => k.metrik === metrik);
   if (rows.length === 0) {
-    return leer("NICHT_ANGEBUNDEN", METRIK_INFO[metrik].einheit, ["Keine Plattformzahl erfasst; automatischer Abruf ist nicht angebunden."]);
+    return leer("NICHT_ANGEBUNDEN", METRIK_INFO[metrik].einheit, ["Noch keine Plattformzahl. Für YouTube und Facebook kommt sie automatisch nach der Veröffentlichung über die App."]);
   }
   const von = Math.min(...rows.map((r) => Date.parse(r.zahl.zeitraum!.von)));
   const bis = Math.max(...rows.map((r) => Date.parse(r.zahl.zeitraum!.bis)));

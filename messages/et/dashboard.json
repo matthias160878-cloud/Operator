@@ -27,7 +27,7 @@
     "avgEngagement": "Ø haaratus",
     "totalRevenue": "Tulud (käsitsi sisestatud)",
     "noComparisonWeek": "Võrdlusaluseks pole veel eelmist nädalat — muutuse määrad ilmuvad, kui andmeid on vähemalt kahe nädala kohta.",
-    "noStats": "Vaatamised ja kaasatus: statistikat veel pole – platvormide statistikat veel automaatselt ei tooda."
+    "noStats": "Vaatamised ja interaktsioonid: statistikat veel pole – need ilmuvad automaatselt kohe, kui postitus on rakenduse kaudu YouTube'is või Facebookis avaldatud."
   },
   "production": {
     "title": "Sisutootmine",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Edukaim sisu",
     "last7Days": "Viimased 7 päeva",
-    "empty": "Tulemusandmeid veel pole – platvormide statistikat veel automaatselt ei tooda.",
+    "empty": "Tulemusandmeid veel pole – need ilmuvad automaatselt postituste kohta, mis on rakenduse kaudu YouTube'is või Facebookis avaldatud.",
     "views": "Vaatamisi",
     "likes": "Meeldimisi",
     "comments": "Kommentaare",

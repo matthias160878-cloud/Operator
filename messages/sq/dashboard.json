@@ -27,7 +27,7 @@
     "avgEngagement": "Ø Engagement",
     "totalRevenue": "Të ardhurat (të futura me dorë)",
     "noComparisonWeek": "Ende nuk ka javë të mëparshme si bazë krahasimi — ndryshimet shfaqen sapo të ketë të dhëna për të paktën dy javë.",
-    "noStats": "Shikimet dhe angazhimi: ende nuk ka statistika – statistikat e platformave ende nuk merren automatikisht."
+    "noStats": "Shikimet dhe ndërveprimet: ende nuk ka statistika – ato shfaqen automatikisht sapo një postim të jetë publikuar përmes aplikacionit në YouTube ose Facebook."
   },
   "production": {
     "title": "Prodhimi i përmbajtjes",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "Top Performer",
     "last7Days": "7 ditët e fundit",
-    "empty": "Ende nuk ka të dhëna performance – statistikat e platformave ende nuk merren automatikisht.",
+    "empty": "Ende nuk ka të dhëna performance – ato shfaqen automatikisht për postimet e publikuara përmes aplikacionit në YouTube ose Facebook.",
     "views": "Shikime",
     "likes": "Pëlqime",
     "comments": "Komente",

@@ -50,7 +50,7 @@
       "title": "Analytics a rast",
       "description": "Skutočné čísla o vlastnej výkonnosti — a odporúčania namiesto automatizácie.",
       "steps": [
-        "Analytics zobrazuje len uložené štatistiky (napr. ukážkové dáta). Štatistiky platforiem sa zatiaľ nenačítavajú automaticky; čísla zadávaš ručne v „Odporúčaniach“ alebo v porovnaní variantov – tam sa vyhodnocujú.",
+        "Analytics zobrazuje uložené štatistiky. Pre YouTube a Facebook aplikácia automaticky načítava čísla publikovaných príspevkov; Instagram, TikTok a LinkedIn budú nasledovať po schválení platformou. Ostatné čísla zadávaš ručne v „Odporúčaniach“ alebo v porovnaní variantov.",
         "Stránka Rast z týchto údajov vypočíta najlepšie časy publikovania, úspešné hashtagy a formáty.",
         "Dôležité: zámerne neexistuje automatizované zvyšovanie sledovateľov/zapojenia (žiadne správanie botov) — porušovalo by to podmienky používania každej platformy."
       ]

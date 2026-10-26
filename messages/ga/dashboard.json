@@ -27,7 +27,7 @@
     "avgEngagement": "Ø Rannpháirtíocht",
     "totalRevenue": "Ioncam (curtha isteach de láimh)",
     "noComparisonWeek": "Níl aon seachtain roimhe sin ann mar bhonn comparáide go fóill — beidh rátaí athraithe le feiceáil a luaithe a bheidh sonraí ann do dhá sheachtain ar a laghad.",
-    "noStats": "Amhairc agus rannpháirtíocht: níl aon staitisticí fós – ní fhaightear staitisticí na n-ardán go huathoibríoch fós."
+    "noStats": "Amhairc agus idirghníomhaíochtaí: níl aon staitisticí fós – taispeántar iad go huathoibríoch a luaithe a fhoilsítear post tríd an aip ar YouTube nó ar Facebook."
   },
   "production": {
     "title": "Táirgeadh inneachair",
@@ -77,7 +77,7 @@
   "topPerformer": {
     "title": "An té is fearr feidhmíocht",
     "last7Days": "Na 7 lá seo caite",
-    "empty": "Níl aon sonraí feidhmíochta fós – ní fhaightear staitisticí na n-ardán go huathoibríoch fós.",
+    "empty": "Níl aon sonraí feidhmíochta fós – taispeántar iad go huathoibríoch do phoist a foilsíodh tríd an aip ar YouTube nó ar Facebook.",
     "views": "Radhairc",
     "likes": "Taitneamh",
     "comments": "Tuairimí",

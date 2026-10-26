@@ -50,7 +50,7 @@
       "title": "Analytics & groei",
       "description": "Echte cijfers over je eigen prestaties — en aanbevelingen in plaats van automatisering.",
       "steps": [
-        "Analytics toont alleen opgeslagen statistieken (bijv. voorbeelddata). Platformstatistieken worden nog niet automatisch opgehaald; cijfers voer je handmatig in onder „Aanbevelingen” of in de variantenvergelijking – daar worden ze geëvalueerd.",
+        "Analytics toont opgeslagen statistieken. Voor YouTube en Facebook haalt de app de cijfers van gepubliceerde berichten automatisch op; Instagram, TikTok en LinkedIn volgen na vrijgave door het platform. Andere cijfers voer je handmatig in onder „Aanbevelingen” of in de variantenvergelijking.",
         "De groeipagina berekent uit deze data de beste posttijden, succesvolle hashtags en formaten.",
         "Belangrijk: er is bewust geen geautomatiseerde toename van volgers/engagement (geen botgedrag) — dat zou in strijd zijn met de gebruiksvoorwaarden van elk platform."
       ]

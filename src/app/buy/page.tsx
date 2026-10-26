@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { getSessionUser } from "@/lib/auth/session";
@@ -86,6 +87,7 @@ export default async function BuyPage({
             <a href="#pakete">Preise</a>
             <a href="#leistungen">Leistungen</a>
             <a href="#grenzen">Ehrliche Grenzen</a>
+            <span data-sprachwahl-platz="" suppressHydrationWarning />
             {user ? (
               <Link href="/" className="nav-login">Zum Arbeitsbereich</Link>
             ) : (
@@ -385,6 +387,8 @@ export default async function BuyPage({
         </div>
       </main>
 
+      {/* Sprachwahl wie auf der Hauptseite: gleiches Wörterbuch, Übersetzung im Browser, Rechtstexte bleiben deutsch. */}
+      <Script src="/zentrale-neu/uebersetzen.js" strategy="afterInteractive" />
       <footer className="fuss">
         <div className="wrap">
           {/* Ohne Prefetch: „/“ ist für Besucher die statische Startseite der Zentrale. */}

@@ -178,3 +178,5 @@
   .zentrale *, .zentrale *::after { animation: none !important; }
   .zentrale .smk-funken i { opacity: .5; }
 }
+.zentrale .sprachwahl-liste { background: var(--ink-2); color: var(--paper); }
+.zentrale .sprachwahl-knopf { color: var(--dim); border-color: var(--line); }

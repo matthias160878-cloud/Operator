@@ -1,6 +1,6 @@
 {
-  "title": "Moniteur d'agents",
-  "description": "Tous les agents SECRET 58 avec leur statut, dernière tâche et résultat. Chaque exécution est enregistrée.",
+  "title": "Journal des assistants",
+  "description": "Tous les assistants (agents) de SECRET 58 avec leur état, leur dernière tâche et leur résultat. Chaque exécution est consignée ici.",
   "table": {
     "agent": "Agent",
     "description": "Description",

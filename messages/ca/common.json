@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Més que contingut.",
+    "footerLine2": "Una màquina de contingut completa.",
+    "workspace": "Espai de treball",
+    "role": "Administrador"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "schulung": "Formació",
+    "contentFactory": "Content Factory",
+    "ideas": "Idees i inspiració",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Xarxes socials",
+    "calendar": "Content Kalender",
+    "analytics": "Analytics",
+    "growth": "Creixement",
+    "weiterempfehlungen": "Recomanacions",
+    "reichweitenaufbau": "Creixement d'audiència",
+    "revenue": "Ingressos",
+    "inbox": "Safata d'entrada",
+    "anfragen": "Sol·licituds",
+    "dateien": "Fitxers",
+    "agents": "Agents",
+    "integrations": "Integracions",
+    "settings": "Configuració",
+    "billing": "Paquet i facturació",
+    "sales": "Vendes i botiga",
+    "website": "El meu web"
+  },
+  "topbar": {
+    "menuOpen": "Obre el menú",
+    "menuClose": "Tanca el menú",
+    "searchPlaceholder": "Cerca continguts, projectes, campanyes …",
+    "notifications": "Notificacions",
+    "language": "Idioma"
+  },
+  "footer": {
+    "help": "Ajuda",
+    "privacy": "Privadesa",
+    "imprint": "Avís legal",
+    "systemOnline": "Sistema en línia"
+  },
+  "actions": {
+    "save": "Desa",
+    "cancel": "Cancel·la",
+    "delete": "Elimina",
+    "edit": "Edita",
+    "create": "Crea",
+    "close": "Tanca",
+    "back": "Enrere",
+    "loading": "Carregant …"
+  },
+  "status": {
+    "connected": "Connectat",
+    "notConfigured": "No configurat",
+    "error": "Error"
+  },
+  "statusBadge": {
+    "CONNECTED": "Connectat",
+    "ACTIVE": "Actiu",
+    "COMPLETED": "Completat",
+    "RUNNING": "En execució",
+    "SUCCESS": "Correcte",
+    "PUBLISHED": "Publicat",
+    "APPROVED": "Aprovat",
+    "SCHEDULED": "Planificat",
+    "WAITING": "En espera",
+    "IN_REVIEW": "En revisió",
+    "NOT_CONFIGURED": "No configurat",
+    "IDLE": "Preparat",
+    "DRAFT": "Esborrany",
+    "ARCHIVED": "Arxivat",
+    "ERROR": "Error",
+    "REJECTED": "Rebutjat",
+    "RECEIVED": "Rebut",
+    "PENDING": "Pendent",
+    "NOT_AVAILABLE": "Encara no disponible"
+  },
+  "integrationStatus": {
+    "notConfigured": "No configurat — falten variables: {vars}.",
+    "verifyFailedGeneric": "La connexió ha fallat.",
+    "verifyFailedStatus": "{service} ha respost amb l'estat {status}.",
+    "verifyUnreachable": "No s'ha pogut accedir a {service}.",
+    "connected": "Connectat.",
+    "notAvailable": "Encara no disponible: aquesta connexió encara no està desenvolupada a l'app."
+  },
+  "mediaPreview": {
+    "expand": "Mostra en gran",
+    "close": "Tanca"
+  }
+}

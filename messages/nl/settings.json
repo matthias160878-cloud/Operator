@@ -1,0 +1,27 @@
+{
+  "title": "Instellingen",
+  "description": "Je werkruimte, gebruikers en een overzicht van je gegevens. Je eigen API-sleutels (AI-teksten, nieuwsbriefverzending) voer je in onder <zugaenge>Eigen toegangen</zugaenge>; je pakket vind je onder <billing>Pakket & facturering</billing>.",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Naam",
+    "slug": "Slug",
+    "createdAt": "Aangemaakt op"
+  },
+  "users": {
+    "title": "Gebruikers & rollen",
+    "note": "Elk account heeft een eigen werkruimte, gescheiden van andere klanten. Extra gebruikers kun je nog niet zelf toevoegen."
+  },
+  "system": {
+    "title": "Systeem",
+    "contentItems": "Content-items",
+    "campaigns": "Campagnes",
+    "mediaAssets": "Media-assets",
+    "agentRuns": "Agent-runs",
+    "dbNote": "Aantal items dat in je werkruimte is opgeslagen. Alle gegevens exporteren of de werkruimte verwijderen kan hieronder bij „Mijn gegevens”."
+  },
+  "onboarding": {
+    "title": "Installatie-assistent",
+    "description": "De kleine stapsgewijze vensters voor AI-aanbieders, socialemediaplatforms en spraakuitvoer die bij de eerste keer openen verschijnen.",
+    "reopen": "Installatie-assistent opnieuw openen"
+  }
+}

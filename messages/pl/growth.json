@@ -1,0 +1,15 @@
+{
+  "title": "Wzrost",
+  "subtitle": "Rekomendacje dotyczące zasięgu i wzrostu – wyprowadzone z zapisanych statystyk Twoich treści: najlepsze godziny publikacji, najskuteczniejsze hashtagi i formaty. Dla YouTube i Facebook liczby są pobierane automatycznie.",
+  "warning": "Celowo <strong>nie</strong> uwzględniono: automatycznego obserwowania/polubień/komentowania w celu sztucznego zwiększania liczby obserwujących. Narusza to regulaminy YouTube, Instagrama, TikTok, LinkedIn i Facebooka i może prowadzić do zablokowania konta. Ta strona zawiera wyłącznie rekomendacje oparte na danych dla Twoich własnych treści.",
+  "filterAll": "Wszystkie platformy",
+  "emptyState": "Nie zapisano jeszcze statystyk dla {platform}, więc nie ma jeszcze rekomendacji. Dla YouTube i Facebook liczby pojawiają się automatycznie po publikacji przez aplikację.",
+  "emptyStateDefaultScope": "tej przestrzeni roboczej",
+  "bestPostingTimesTitle": "Najlepsze godziny publikacji",
+  "postingTime": "{day} · godz. {hour}",
+  "avgLabel": "Śr. {percent} ({count})",
+  "topHashtagsTitle": "Najskuteczniejsze hashtagi",
+  "topHashtagsEmpty": "Brak danych o hashtagach.",
+  "hashtagTooltip": "Śr. {percent} zaangażowania, użyty {count}×",
+  "topFormatsTitle": "Najlepsze formaty"
+}

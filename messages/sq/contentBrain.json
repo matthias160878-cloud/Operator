@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Një ide brenda — një plan i plotë përmbajtjeje, i përshtatur për çdo platformë, jashtë. ContentBrainAgent merr parasysh Brand DNA-në tënde dhe krijon për çdo platformë të zgjedhur hook-e, skripte, hashtag-e dhe koncepte miniaturash si draft.",
+  "campaignsHeading": "Fushatat",
+  "noCampaigns": "Ende nuk është krijuar asnjë fushatë.",
+  "campaignSummary": "{count} njësi përmbajtjeje · {audience}",
+  "form": {
+    "textEngineLabel": "Motori i tekstit:",
+    "templateMode": "Modaliteti i shablloneve (nuk është konfiguruar asnjë ofrues AI)",
+    "modeTemplate": "Shabllon",
+    "topicLabel": "Tema / Ideja",
+    "topicPlaceholder": "p.sh. Shpjego pse agjentët autonomë të AI po ndryshojnë botën e punës.",
+    "audienceLabel": "Audienca e synuar",
+    "audiencePlaceholder": "p.sh. 25-45, të interesuar për teknologji",
+    "goalLabel": "Qëllimi",
+    "languageLabel": "Gjuha",
+    "platformsLabel": "Platformat",
+    "itemsPerPlatformLabel": "Njësi përmbajtjeje për platformë ({count})",
+    "generateError": "Gjenerimi dështoi.",
+    "unknownError": "Gabim i panjohur.",
+    "submitLoading": "Content Brain po punon…",
+    "submitIdle": "Gjenero planin e përmbajtjes",
+    "resultHeading": "Fushata u krijua — {count} njësi përmbajtjeje u ruajtën si draft.",
+    "resultDescription": "Gjeneruar në modalitetin {mode}. Çdo përmbajtje fillon si DRAFT — kontrolloje dhe ndryshoje në Content Factory.",
+    "resultLink": "Te Content Factory →"
+  }
+}

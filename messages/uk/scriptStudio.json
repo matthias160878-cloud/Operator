@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Рушій скриптів і хуків: створює скрипти для платформ за структурою Hook → Problem → Value → Example → Payoff → CTA, а також кілька варіантів хуків.",
+  "form": {
+    "topicLabel": "Тема",
+    "topicPlaceholder": "напр. 5 способів, як ШІ-агенти економлять час",
+    "platformLabel": "Платформа",
+    "generateButton": "Згенерувати скрипт і хуки",
+    "generateFailed": "Не вдалося згенерувати.",
+    "unknownError": "Невідома помилка."
+  },
+  "hookTypes": {
+    "direkt": "Прямий",
+    "neugierig": "Інтригуючий",
+    "story": "Історія",
+    "problem": "Проблема",
+    "zahlen": "Цифри",
+    "kontroversSachlich": "Контроверсійний (по суті)",
+    "educational": "Освітній"
+  },
+  "hooksHeading": "Варіанти хуків",
+  "engine": {
+    "label": "Рушій: {provider}",
+    "templateMode": "Режим шаблонів (ШІ-провайдера не налаштовано)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Зберегти як контент-елемент",
+    "saving": "Збереження…"
+  }
+}

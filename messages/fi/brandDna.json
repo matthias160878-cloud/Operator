@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Brändisi. Tyylisi. Kaikkialla. Nämä tiedot siirtyvät automaattisesti Content Brainiin sekä skripti-, hook- ja hashtag-agenteille.",
+  "form": {
+    "nameLabel": "Brändin nimi",
+    "industryLabel": "Toimiala",
+    "descriptionLabel": "Kuvaus",
+    "descriptionHint": "Mikä tekee brändistä erityisen?",
+    "audienceLabel": "Kohderyhmä",
+    "languageLabel": "Kieli",
+    "tonalityLabel": "Sävy",
+    "humorLabel": "Huumori",
+    "formalityLabel": "Muodollisuus",
+    "preferredWordsLabel": "Suosittavat sanat",
+    "forbiddenWordsLabel": "Kielletyt sanat",
+    "preferredCtasLabel": "Suosittavat CTA:t",
+    "brandValuesLabel": "Brändin arvot",
+    "topicsLabel": "Aiheet",
+    "csvHint": "pilkuilla erotettuna",
+    "colorsLabel": "Värit",
+    "colorsHint": "pilkuilla erotettuna, esim. #6D5BFF",
+    "fontsLabel": "Fontit",
+    "visualRulesLabel": "Visuaaliset säännöt",
+    "saveError": "Tallennus epäonnistui.",
+    "unknownError": "Tuntematon virhe.",
+    "saving": "Tallennetaan…",
+    "save": "Tallenna Brand DNA",
+    "savedAt": "Tallennettu klo {time}"
+  }
+}

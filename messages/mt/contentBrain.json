@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Idea waħda tidħol — pjan sħiħ ta' kontenut adattat għal kull pjattaforma joħroġ. ContentBrainAgent iqis il-Brand DNA tiegħek u joħloq bħala abbozz hooks, scripts, hashtags u kunċetti ta' thumbnail xierqa għal kull pjattaforma magħżula.",
+  "campaignsHeading": "Kampanji",
+  "noCampaigns": "Għad ma nħolqot l-ebda kampanja.",
+  "campaignSummary": "{count} items ta' kontenut · {audience}",
+  "form": {
+    "textEngineLabel": "Magna tat-test:",
+    "templateMode": "Modalità Template (l-ebda fornitur tal-AI ikkonfigurat)",
+    "modeTemplate": "Template",
+    "topicLabel": "Suġġett / Idea",
+    "topicPlaceholder": "eż. Spjega għaliex l-agenti awtonomi tal-AI qed ibiddlu d-dinja tax-xogħol.",
+    "audienceLabel": "Udjenza fil-mira",
+    "audiencePlaceholder": "eż. 25-45, interessati fit-teknoloġija",
+    "goalLabel": "Għan",
+    "languageLabel": "Lingwa",
+    "platformsLabel": "Pjattaformi",
+    "itemsPerPlatformLabel": "Items ta' kontenut għal kull pjattaforma ({count})",
+    "generateError": "Il-ġenerazzjoni falliet.",
+    "unknownError": "Żball mhux magħruf.",
+    "submitLoading": "Content Brain qed jaħdem…",
+    "submitIdle": "Iġġenera pjan ta' kontenut",
+    "resultHeading": "Il-kampanja nħolqot — {count} items ta' kontenut inħolqu bħala abbozz.",
+    "resultDescription": "Iġġenerat fil-modalità {mode}. Il-kontenut kollu jibda bħala DRAFT — eżaminah u editjah f'Content Factory.",
+    "resultLink": "Mur għal Content Factory →"
+  }
+}

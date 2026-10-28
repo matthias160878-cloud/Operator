@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Meer dan content.",
+    "footerLine2": "Een complete contentmachine.",
+    "workspace": "Workspace",
+    "role": "Beheerder"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "schulung": "Training",
+    "contentFactory": "Content Factory",
+    "ideas": "Ideeën & inspiratie",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Social media",
+    "calendar": "Contentkalender",
+    "analytics": "Analytics",
+    "growth": "Groei",
+    "weiterempfehlungen": "Aanbevelingen",
+    "reichweitenaufbau": "Bereik opbouwen",
+    "revenue": "Inkomsten",
+    "inbox": "Inbox",
+    "anfragen": "Aanvragen",
+    "dateien": "Bestanden",
+    "agents": "Agents",
+    "integrations": "Integraties",
+    "settings": "Instellingen",
+    "billing": "Pakket & facturering",
+    "sales": "Verkoop & shop",
+    "website": "Mijn website"
+  },
+  "topbar": {
+    "menuOpen": "Menu openen",
+    "menuClose": "Menu sluiten",
+    "searchPlaceholder": "Zoek naar content, projecten, campagnes …",
+    "notifications": "Meldingen",
+    "language": "Taal"
+  },
+  "footer": {
+    "help": "Help",
+    "privacy": "Privacy",
+    "imprint": "Colofon",
+    "systemOnline": "Systeem online"
+  },
+  "actions": {
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "edit": "Bewerken",
+    "create": "Aanmaken",
+    "close": "Sluiten",
+    "back": "Terug",
+    "loading": "Laden …"
+  },
+  "status": {
+    "connected": "Verbonden",
+    "notConfigured": "Niet geconfigureerd",
+    "error": "Fout"
+  },
+  "statusBadge": {
+    "CONNECTED": "Verbonden",
+    "ACTIVE": "Actief",
+    "COMPLETED": "Voltooid",
+    "RUNNING": "Bezig",
+    "SUCCESS": "Geslaagd",
+    "PUBLISHED": "Gepubliceerd",
+    "APPROVED": "Goedgekeurd",
+    "SCHEDULED": "Gepland",
+    "WAITING": "Wacht",
+    "IN_REVIEW": "In beoordeling",
+    "NOT_CONFIGURED": "Niet geconfigureerd",
+    "IDLE": "Gereed",
+    "DRAFT": "Concept",
+    "ARCHIVED": "Gearchiveerd",
+    "ERROR": "Fout",
+    "REJECTED": "Afgewezen",
+    "RECEIVED": "Ontvangen",
+    "PENDING": "In afwachting",
+    "NOT_AVAILABLE": "Nog niet beschikbaar"
+  },
+  "integrationStatus": {
+    "notConfigured": "Niet geconfigureerd — ontbrekende variabele(n): {vars}.",
+    "verifyFailedGeneric": "Verbinding mislukt.",
+    "verifyFailedStatus": "{service} antwoordde met status {status}.",
+    "verifyUnreachable": "{service} kon niet worden bereikt.",
+    "connected": "Verbonden.",
+    "notAvailable": "Nog niet beschikbaar – deze koppeling is nog niet in de app gebouwd."
+  },
+  "mediaPreview": {
+    "expand": "Groter weergeven",
+    "close": "Sluiten"
+  }
+}

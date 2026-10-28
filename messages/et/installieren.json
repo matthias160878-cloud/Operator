@@ -1,0 +1,20 @@
+{
+  "button": "Installi rakendus",
+  "buttonHint": "Installi SECRET 58 seadmesse rakendusena",
+  "close": "Sulge",
+  "canceled": "Installimine katkestati. Saad selle igal ajal uuesti käivitada.",
+  "iosTitle": "Installimine iPhone’i või iPadi",
+  "iosStep1": "Ava see leht Safaris.",
+  "iosStep2": "Puuduta „Jaga“ (ruut ülesnoolega).",
+  "iosStep3": "Vali „Lisa avakuvale“ ja kinnita nupuga „Lisa“.",
+  "iosShort": "Safari: Jaga → Lisa avakuvale",
+  "iosNotSafari": "iPhone’is ja iPadis töötab installimine ainult Safaris. Ava see leht palun Safaris.",
+  "otherTitle": "Kuidas rakendust installida",
+  "otherChromium": "Ava brauseri menüü (kolm punkti) ja vali „Installi rakendus“ või „Lisa avakuvale“.",
+  "otherSafariMac": "Safaris Macis: menüü „Fail“ → „Lisa Dockile“.",
+  "otherFirefox": "Firefox arvutis ei saa veebirakendusi installida. Kasuta Chrome’i, Edge’i või Safarit.",
+  "otherGeneric": "See brauser ei paku praegu installimisdialoogi. Põhjus võib olla see, et rakendus on juba installitud või brauser ei toeta installimist. Proovi Chrome’is, Edge’is või Safaris.",
+  "insecureTitle": "Installimine pole siin võimalik",
+  "insecureText": "Installimiseks on vaja avaldatud veebisaiti HTTPS-i kaudu. Kohalikust failist või ilma HTTPS-ita see ei tööta. Oma arvutis töötab see arenduskeskkonnas „localhost“ kaudu.",
+  "installedNote": "Rakendus on installitud."
+}

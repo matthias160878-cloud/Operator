@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Trin-for-trin-vejledninger og forklaringsvideoer til hvert område i SECRET 58 — altid tilgængelige her, når du vil slå noget op.",
+ "schulung.topics.firstSteps.steps.0": "Under „Integrationer“ kan du tjekke, om en AI-udbyder er sat op. AI-funktionerne kører via operatørens adgange, så du behøver ikke dit eget AI-abonnement. Uden AI-udbyder arbejder appen i skabelontilstand.",
+ "schulung.topics.integrations.steps.2": "Adgangsdata gemmes aldrig i browseren, kun beskyttet på serveren. Mangler der en adgang, sætter operatøren den op.",
+ "schulung.topics.integrations.steps.3": "Omkostninger: Pro og Maxi er abonnementer, månedlige eller årlige. De aktuelle priser findes under „Pakke & fakturering“. Hver ekstern udbyder har sin egen, uafhængige omkostningsmodel (gratis / brugsbaseret / abonnement) — på siden Integrationer står der ved hver tjeneste, hvilken model der gælder, med et link til udbyderens aktuelle priser.",
+ "integrations.costNote": "Din SECRET 58-pakke (Pro eller Maxi) er et abonnement, se „Pakke & fakturering“. Hver ekstern tjeneste her har sin egen, uafhængige omkostningsmodel hos den pågældende udbyder — SECRET 58 fakturerer aldrig ekstra for dem."
+}

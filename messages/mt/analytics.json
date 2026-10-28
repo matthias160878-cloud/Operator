@@ -1,0 +1,15 @@
+{
+  "title": "Analytics",
+  "subtitle": "L-istatistika tal-pjattaformi (veduti, likes, kummenti, qsim) għal YouTube u Facebook tinġabar awtomatikament hekk kif post ikun ġie ppubblikat permezz tal-app – bejn wieħed u ieħor kull sitt sigħat. Instagram, TikTok u LinkedIn se jsegwu hekk kif il-pjattaforma tagħti aċċess. In-numri minn posts oħra tista' ddaħħalhom manwalment taħt <weiter>Rakkomandazzjonijiet</weiter> (\"Daħħal in-numri tal-pjattaforma\") jew fil-<varianten>paragun tal-varjanti</varianten>.",
+  "statViewsTotal": "Total tal-views",
+  "statLikesTotal": "Total tal-likes",
+  "statComments": "Kummenti",
+  "statShares": "Shares",
+  "chartTitle": "Prestazzjoni tal-kontenut maż-żmien",
+  "chartLegend": "Views (vjola) · Engagement % (turkważ)",
+  "chartEmpty": "Għad m'hemmx statistika – l-ebda żvilupp disponibbli.",
+  "bestPerformingTitle": "L-aqwa kontenut",
+  "bestPerformingEmpty": "Għad m'hemmx statistika – l-ebda klassifika possibbli.",
+  "learningAgentTitle": "Learning Agent — Rakkomandazzjonijiet",
+  "statsEmpty": "Għad m'hemm l-ebda statistika ssejvjata. Għal YouTube u Facebook in-numri jidhru awtomatikament hekk kif post ikun ġie ppubblikat permezz tal-app."
+}

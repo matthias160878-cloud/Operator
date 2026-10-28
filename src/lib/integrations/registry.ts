@@ -32,6 +32,12 @@ export const INTEGRATIONS: IntegrationDefinition[] = [
     requiredEnv: ["OPENAI_API_KEY"],
   },
   {
+    key: "gemini",
+    name: "Google Gemini",
+    category: "AI",
+    requiredEnv: ["GEMINI_API_KEY"],
+  },
+  {
     key: "elevenlabs",
     name: "ElevenLabs",
     category: "VOICE",
@@ -89,22 +95,51 @@ export const INTEGRATIONS: IntegrationDefinition[] = [
     requiredEnv: ["FACEBOOK_APP_ID", "FACEBOOK_APP_SECRET"],
   },
   {
+    key: "composio",
+    name: "Composio (Konto verbinden, nur Lesetest)",
+    category: "PLATFORM",
+    requiredEnv: ["COMPOSIO_API_KEY"],
+    verify: async (t) => {
+      // Prüft nur, ob Composio den Server-Schlüssel annimmt (lesender Aufruf).
+      const base = (process.env.COMPOSIO_BASE_URL?.trim() || "https://backend.composio.dev").replace(/\/+$/, "");
+      try {
+        const res = await withTimeout(
+          fetch(`${base}/api/v3/auth_configs?limit=1`, {
+            headers: { "x-api-key": process.env.COMPOSIO_API_KEY ?? "" },
+            cache: "no-store",
+          }),
+          4000
+        );
+        if (res.ok) return { ok: true };
+        return { ok: false, message: t("verifyFailedStatus", { service: "Composio", status: res.status }) };
+      } catch {
+        return { ok: false, message: t("verifyUnreachable", { service: "Composio" }) };
+      }
+    },
+  },
+  {
     key: "canva",
     name: "Canva",
     category: "DESIGN",
     requiredEnv: ["CANVA_API_KEY"],
+    // Noch kein Client gebaut – ein gesetzter Schlüssel bewirkt nichts.
+    nochNichtVerfuegbar: true,
   },
   {
     key: "capcut",
     name: "CapCut",
     category: "VIDEO",
     requiredEnv: ["CAPCUT_API_KEY"],
+    // Noch kein Client gebaut – ein gesetzter Schlüssel bewirkt nichts.
+    nochNichtVerfuegbar: true,
   },
   {
     key: "trend",
     name: "Trend-Datenquelle",
     category: "TREND",
     requiredEnv: ["TREND_API_KEY", "TREND_API_PROVIDER"],
+    // Noch kein Client gebaut – ein gesetzter Schlüssel bewirkt nichts.
+    nochNichtVerfuegbar: true,
   },
 ];
 
@@ -112,6 +147,17 @@ export async function checkIntegration(
   def: IntegrationDefinition,
   t: IntegrationTranslator
 ): Promise<IntegrationStatusResult> {
+  if (def.nochNichtVerfuegbar) {
+    return {
+      key: def.key,
+      name: def.name,
+      category: def.category,
+      status: "NOT_AVAILABLE",
+      message: t("notAvailable"),
+      requiredEnv: def.requiredEnv,
+    };
+  }
+
   const missing = def.requiredEnv.filter((key) => !envPresent(key));
 
   if (missing.length > 0) {

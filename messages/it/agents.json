@@ -1,0 +1,21 @@
+{
+  "title": "Registro degli assistenti",
+  "description": "Tutti gli assistenti (agenti) di SECRET 58 con stato, ultima attività e risultato. Ogni esecuzione viene registrata qui.",
+  "table": {
+    "agent": "Agente",
+    "description": "Descrizione",
+    "status": "Stato",
+    "lastTask": "Ultima attività"
+  },
+  "history": {
+    "title": "Cronologia esecuzioni",
+    "agent": "Agente",
+    "task": "Attività",
+    "status": "Stato",
+    "start": "Inizio",
+    "end": "Fine",
+    "resultError": "Risultato / Errore",
+    "empty": "Ancora nessuna esecuzione degli agenti.",
+    "completed": "Completata"
+  }
+}

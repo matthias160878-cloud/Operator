@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — Voice Library beheren, voice-over-previews maken en stemmen importeren.",
+  "envWarning": "Voice-over is nog niet beschikbaar: de beheerder richt de spraakdienst (ElevenLabs) in. De stemmenbibliotheek kun je al gebruiken voor de planning.",
+  "addManual": "Stem handmatig toevoegen",
+  "importFromElevenLabs": "Importeren uit ElevenLabs",
+  "form": {
+    "namePlaceholder": "Naam",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Taal",
+    "submit": "Toevoegen"
+  },
+  "confirmDelete": "Stem echt verwijderen?",
+  "importFailed": "Import mislukt.",
+  "previewFailed": "Preview mislukt.",
+  "unknownError": "Onbekende fout.",
+  "empty": "Nog geen stemmen in de Library.",
+  "active": "Actief",
+  "inactive": "Inactief",
+  "remove": "Verwijderen",
+  "preview": {
+    "heading": "Voice Preview",
+    "defaultText": "Hallo, dit is een voorbeeld voor deze stem.",
+    "selectPlaceholder": "Kies een stem…",
+    "play": "Preview afspelen"
+  }
+}

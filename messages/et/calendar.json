@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Sisukalender",
+  "subtitle": "Planeeritud ja avaldatud sisu ülevaade.",
+  "weekdays": ["E", "T", "K", "N", "R", "L", "P"],
+  "months": [
+    "Jaanuar", "Veebruar", "Märts", "Aprill", "Mai", "Juuni",
+    "Juuli", "August", "September", "Oktoober", "November", "Detsember"
+  ],
+  "allPlatforms": "Kõik platvormid",
+  "moreItems": "+{count} veel",
+  "listTitle": "Selle kuu loend",
+  "emptyMonth": "Sel kuul pole planeeritud postitusi."
+}

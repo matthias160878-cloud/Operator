@@ -1,0 +1,25 @@
+{
+  "title": "Smaointe & Inspioráid",
+  "subtitle": "Braislí téamaí, sraitheanna agus formáidí d’inneachar atá le teacht — ginte ag an IdeaAgent nó curtha isteach de láimh.",
+  "board": {
+    "topicLabel": "Téama do smaointe nua",
+    "topicPlaceholder": "m.sh. Táirgiúlacht le gníomhairí AI",
+    "generateButton": "Gin smaointe",
+    "manualButton": "De láimh",
+    "manualTitlePlaceholder": "Teideal an smaoinimh",
+    "addButton": "Cuir leis",
+    "generateError": "Earráid agus smaointe á nginiúint.",
+    "unknownError": "Earráid anaithnid.",
+    "emptyState": "Gan aon smaointe go fóill — gin cúpla ceann nó cuir isteach de láimh iad.",
+    "minutesUnit": "~{count} nóim.",
+    "statusNew": "Nua",
+    "statusInProgress": "Ar siúl",
+    "statusUsed": "Úsáidte",
+    "statusArchived": "Cartlannaithe",
+    "sourceAiGenerated": "IdeaAgent (IS nó teimpléad)",
+    "sourceManual": "De láimh",
+    "templateResult": "Teimpléad: tagann na smaointe a cruthaíodh díreach anois ó bhloic téacs seasta, ní ó IS. Le haghaidh smaointe IS, cuir isteach d'eochair IS féin faoi „Socruithe → Rochtainí féin”.",
+    "textEngineLabel": "Inneall téacs:",
+    "templateMode": "Mód teimpléid (níl aon soláthraí AI cumraithe)"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "viewAll": "Összes megjelenítése",
+  "demoBanner": {
+    "text": "Mintaadatok aktívak – a munkaterület kampányai, tartalmai és statisztikái mintaadatok, nem valódi platformszámok."
+  },
+  "hero": {
+    "subtitle": "Egy ötlet. Több platform. Maximális elérés.",
+    "newCampaign": "Új kampány",
+    "createContent": "Tartalom létrehozása",
+    "findIdeas": "Ötletek keresése",
+    "aiAgents": "MI-agentek"
+  },
+  "orbit": {
+    "xNotConnected": "X (nincs csatlakoztatva)",
+    "brainAlt": "SECRET 58 MI-agy"
+  },
+  "activeAgents": {
+    "title": "Aktív agentek",
+    "empty": "Még nincs agent-futás."
+  },
+  "kpi": {
+    "contentCreated": "Létrehozott tartalom",
+    "videosCreated": "Létrehozott videók",
+    "postsCreated": "Létrehozott posztok",
+    "published": "Közzétételek",
+    "views": "Megtekintések",
+    "avgEngagement": "Ø elköteleződés",
+    "totalRevenue": "Bevételek (kézzel rögzítve)",
+    "noComparisonWeek": "Még nincs előző hét összehasonlítási alapként — a változási arányok akkor jelennek meg, ha legalább két hétről vannak adatok.",
+    "noStats": "Megtekintések és interakciók: még nincs statisztika – automatikusan megjelenik, amint egy bejegyzés megjelent az alkalmazáson keresztül a YouTube-on vagy a Facebookon."
+  },
+  "production": {
+    "title": "Tartalomgyártás",
+    "thisWeek": "Ezen a héten"
+  },
+  "scheduled": {
+    "title": "Ütemezett bejegyzések",
+    "empty": "Nincs ütemezett bejegyzés."
+  },
+  "activity": {
+    "title": "Legutóbbi tevékenységek",
+    "empty": "Még nincs tevékenység."
+  },
+  "contentFactory": {
+    "description": "Egyetlen ötletből teljes tartalomkampányokat készíthetsz az összes platformra.",
+    "cta": "Indítás most →",
+    "popularTemplates": "Népszerű sablonok",
+    "templateYoutubeVideo": "YouTube-videó",
+    "templateTiktokSeries": "TikTok-sorozat",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn-poszt",
+    "templateBlogPost": "Blogcikk",
+    "viewAllTemplates": "Az összes sablon →"
+  },
+  "brandDna": {
+    "tonality": "Hangnem",
+    "targetAudience": "Célközönség",
+    "industry": "Iparág",
+    "language": "Nyelv",
+    "empty": "Még nincs megadva Brand DNA."
+  },
+  "campaigns": {
+    "title": "Aktuális kampányok",
+    "empty": "Még nincsenek kampányok."
+  },
+  "platforms": {
+    "title": "Platformok",
+    "manage": "Kezelés"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} csatlakoztatva"
+  },
+  "agentMonitor": {
+    "title": "Az asszisztensek naplója",
+    "empty": "Még nincsenek futások."
+  },
+  "topPerformer": {
+    "title": "Top teljesítők",
+    "last7Days": "Elmúlt 7 nap",
+    "empty": "Még nincsenek teljesítményadatok – automatikusan megjelennek azoknál a bejegyzéseknél, amelyek az alkalmazáson keresztül jelentek meg a YouTube-on vagy a Facebookon.",
+    "views": "Megtekintések",
+    "likes": "Kedvelések",
+    "comments": "Hozzászólások",
+    "shares": "Megosztások",
+    "engagementRate": "+Elköteleződési arány {value}"
+  },
+  "calendar": {
+    "open": "Megnyitás",
+    "viewMonth": "Hónap",
+    "viewWeek": "Hét",
+    "viewDay": "Nap",
+    "viewCampaign": "Kampány",
+    "moreItems": "+{count} további"
+  },
+  "weekdayLabels": ["H", "K", "Sze", "Cs", "P", "Szo", "V"]
+}

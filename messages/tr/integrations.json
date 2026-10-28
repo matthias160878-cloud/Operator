@@ -1,0 +1,24 @@
+{
+  "title": "Entegrasyonlar",
+  "description": "Harici hizmetlerin canlı durumu – yalnızca gerçekten kurulmuş ve doğrulanmış bağlantılar, hiçbir şey taklit edilmez.",
+  "categories": {
+    "AI": "Yapay zekâ sağlayıcıları",
+    "VOICE": "Ses",
+    "PLATFORM": "Sosyal platformlar",
+    "DESIGN": "Tasarım",
+    "VIDEO": "Video",
+    "TREND": "Trendler"
+  },
+  "costNote": "SECRET 58 paketin (Pro veya Maxi) bir aboneliktir, bkz. “Paket ve faturalama”. Buradaki her harici hizmetin ilgili sağlayıcı nezdinde kendi bağımsız maliyet modeli vardır — SECRET 58 bunlar için asla ek ücret yansıtmaz.",
+  "links": {
+    "getKey": "API anahtarı al",
+    "setInRender": "Render'a gir",
+    "viewPricing": "Fiyatları gör"
+  },
+  "pricing": {
+    "free": "Ücretsiz",
+    "payAsYouGo": "Kullanıma göre",
+    "subscription": "Abonelik",
+    "unknown": "Fiyatı sağlayıcıda kontrol et"
+  }
+}

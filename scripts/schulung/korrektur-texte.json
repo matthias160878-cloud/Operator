@@ -1,0 +1,16 @@
+{
+ "de": {
+  "schulung.subtitle": "Schritt-für-Schritt-Anleitungen und Erklärvideos zu jedem Bereich von SECRET 58 — jederzeit hier nachschlagbar.",
+  "schulung.topics.firstSteps.steps.0": "Unter „Integrationen“ prüfen, ob ein KI-Anbieter eingerichtet ist. Die KI-Funktionen laufen über die Zugänge des Betreibers, du brauchst kein eigenes KI-Abo. Ohne KI-Anbieter arbeitet die App im Vorlagen-Modus.",
+  "schulung.topics.integrations.steps.2": "Zugangsdaten werden nie im Browser gespeichert, sondern nur geschützt auf dem Server. Fehlt ein Zugang, richtet ihn der Betreiber ein.",
+  "schulung.topics.integrations.steps.3": "Kosten: Pro und Maxi sind Abos, monatlich oder jährlich. Die aktuellen Preise stehen unter „Paket & Abrechnung“. Jeder externe Anbieter hat sein eigenes, unabhängiges Kostenmodell (kostenlos / nutzungsbasiert / Abo) — auf der Integrationen-Seite steht bei jedem Dienst, welches Modell gilt, mit Link zu den aktuellen Preisen beim Anbieter.",
+  "integrations.costNote": "Dein SECRET-58-Paket (Pro oder Maxi) ist ein Abo, siehe „Paket & Abrechnung“. Jeder externe Dienst hier hat sein eigenes, unabhängiges Kostenmodell beim jeweiligen Anbieter — SECRET 58 stellt dafür nie zusätzlich in Rechnung."
+ },
+ "en": {
+  "schulung.subtitle": "Step-by-step guides and explainer videos for every area of SECRET 58 — always available here for reference.",
+  "schulung.topics.firstSteps.steps.0": "Under \"Integrations\", check whether an AI provider is set up. The AI features run through the operator's access, so you do not need your own AI subscription. Without an AI provider, the app works in template mode.",
+  "schulung.topics.integrations.steps.2": "Access credentials are never stored in the browser, only protected on the server. If an access is missing, the operator sets it up.",
+  "schulung.topics.integrations.steps.3": "Costs: Pro and Maxi are subscriptions, monthly or yearly. Current prices are shown under \"Plan & billing\". Every external provider has its own independent cost model (free / usage-based / subscription) — the Integrations page shows which model applies to each service, with a link to the provider's current prices.",
+  "integrations.costNote": "Your SECRET 58 plan (Pro or Maxi) is a subscription, see \"Plan & billing\". Every external service here has its own, independent cost model with the respective provider — SECRET 58 never bills extra for them."
+ }
+}

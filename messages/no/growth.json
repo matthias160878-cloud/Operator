@@ -1,0 +1,15 @@
+{
+  "title": "Vekst",
+  "subtitle": "Anbefalinger for rekkevidde og vekst – utledet fra lagret statistikk for innholdet ditt: beste publiseringstider, mest vellykkede emneknagger og formater. For YouTube og Facebook hentes tallene automatisk.",
+  "warning": "Bevisst <strong>ikke</strong> inkludert: automatisk følging/liking/kommentering for å øke antall følgere kunstig. Det bryter vilkårene hos YouTube, Instagram, TikTok, LinkedIn og Facebook og kan føre til at kontoen blir stengt. Denne siden gir utelukkende databaserte anbefalinger for ditt eget innhold.",
+  "filterAll": "Alle plattformer",
+  "emptyState": "Ingen statistikk lagret for {platform} ennå, derfor ingen anbefalinger ennå. For YouTube og Facebook vises tallene automatisk etter publisering via appen.",
+  "emptyStateDefaultScope": "denne workspacen",
+  "bestPostingTimesTitle": "Beste publiseringstidspunkter",
+  "postingTime": "{day} · kl. {hour}",
+  "avgLabel": "Ø {percent} ({count})",
+  "topHashtagsTitle": "Mest vellykkede hashtags",
+  "topHashtagsEmpty": "Ingen hashtag-data tilgjengelig.",
+  "hashtagTooltip": "Ø {percent} engasjement, brukt {count}×",
+  "topFormatsTitle": "Beste formater"
+}

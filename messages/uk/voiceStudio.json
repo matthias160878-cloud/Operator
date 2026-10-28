@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "Голосовий рушій ElevenLabs — керуй бібліотекою голосів, створюй попередні прослуховування озвучення та імпортуй голоси.",
+  "envWarning": "Озвучення поки недоступне: голосовий сервіс (ElevenLabs) налаштовує оператор. Бібліотеку голосів уже можна використовувати для планування.",
+  "addManual": "Додати голос вручну",
+  "importFromElevenLabs": "Імпортувати з ElevenLabs",
+  "form": {
+    "namePlaceholder": "Ім'я",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Мова",
+    "submit": "Додати"
+  },
+  "confirmDelete": "Справді видалити голос?",
+  "importFailed": "Не вдалося імпортувати.",
+  "previewFailed": "Не вдалося створити прослуховування.",
+  "unknownError": "Невідома помилка.",
+  "empty": "У бібліотеці ще немає голосів.",
+  "active": "Активний",
+  "inactive": "Неактивний",
+  "remove": "Прибрати",
+  "preview": {
+    "heading": "Прослуховування голосу",
+    "defaultText": "Привіт, це приклад для цього голосу.",
+    "selectPlaceholder": "Обери голос…",
+    "play": "Відтворити прослуховування"
+  }
+}

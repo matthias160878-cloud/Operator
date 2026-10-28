@@ -16,6 +16,11 @@ export interface OAuthAccountInfo {
    * Tokens verschlüsselt gespeichert.
    */
   overrideAccessToken?: string;
+  /**
+   * Facebook: Anzahl der Seiten, die beim Verbinden freigegeben wurden. Wird
+   * nicht gespeichert, nur einmalig nach dem Verbinden als Hinweis angezeigt.
+   */
+  pageCount?: number;
 }
 
 export interface OAuthProvider {
@@ -91,7 +96,7 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     tokenUrl: "https://graph.facebook.com/v19.0/oauth/access_token",
     scope: "pages_show_list,pages_manage_posts,pages_read_engagement",
     publishingCaveat:
-      "Für echtes Veröffentlichen auf verbundenen Facebook-Seiten muss die App bei Meta zusätzlich zur Prüfung (App Review) eingereicht werden — das ist ein separater Schritt bei Meta, den diese Software nicht ersetzt. Facebook postet immer über eine Seite, nicht über das persönliche Profil; falls mehrere Seiten verwaltet werden, wird automatisch die erste verbunden. Der Seiten-Zugangstoken läuft nicht automatisch ab, ein Refresh ist hier nicht nötig.",
+      "Für echtes Veröffentlichen auf verbundenen Facebook-Seiten muss die App bei Meta zusätzlich zur Prüfung (App Review) eingereicht werden — das ist ein separater Schritt bei Meta, den diese Software nicht ersetzt. Facebook postet immer über eine Seite, nicht über das persönliche Profil; falls mehrere Seiten freigegeben werden, wird automatisch die erste verbunden (Name siehe „Verbundene Seite“). Welche Seiten freigegeben werden, wählt man im Facebook-Dialog beim Verbinden. Der Seiten-Zugangstoken läuft nicht automatisch ab, ein Refresh ist hier nicht nötig.",
     async fetchAccountInfo(accessToken) {
       const res = await fetch(
         `https://graph.facebook.com/me/accounts?fields=id,name,access_token&access_token=${encodeURIComponent(accessToken)}`
@@ -105,7 +110,7 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
           "Keine Facebook-Seite gefunden, die du verwalten kannst. Lege zuerst eine Facebook-Seite an und verbinde sie mit deinem Konto, bevor du hier verbindest."
         );
       }
-      return { name: page.name, externalId: page.id, overrideAccessToken: page.access_token };
+      return { name: page.name, externalId: page.id, overrideAccessToken: page.access_token, pageCount: data.data?.length ?? 1 };
     },
   },
   INSTAGRAM: {
@@ -114,7 +119,8 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     clientSecretEnv: "INSTAGRAM_CLIENT_SECRET",
     authorizeUrl: "https://www.instagram.com/oauth/authorize",
     tokenUrl: "https://api.instagram.com/oauth/access_token",
-    scope: "instagram_business_basic,instagram_business_content_publish",
+    // Statistik-Umfang erst nach Freigabe durch Meta anfordern (src/lib/statistik/abruf.ts).
+    scope: "instagram_business_basic,instagram_business_content_publish" + (process.env.STATISTIK_INSTAGRAM === "1" ? ",instagram_business_manage_insights" : ""),
     publishingCaveat:
       "Setzt ein verknüpftes Instagram-Business- oder Creator-Konto voraus. Für echtes Veröffentlichen prüft Meta die App zusätzlich (App Review) — ein separater Schritt bei Meta.",
     async fetchAccountInfo(accessToken) {
@@ -134,7 +140,8 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     clientSecretEnv: "LINKEDIN_CLIENT_SECRET",
     authorizeUrl: "https://www.linkedin.com/oauth/v2/authorization",
     tokenUrl: "https://www.linkedin.com/oauth/v2/accessToken",
-    scope: "openid profile w_member_social",
+    // r_member_social nur für von LinkedIn geprüfte Partner (STATISTIK_LINKEDIN=1).
+    scope: "openid profile w_member_social" + (process.env.STATISTIK_LINKEDIN === "1" ? " r_member_social" : ""),
     publishingCaveat:
       "LinkedIn-Zugangstoken laufen nach ca. 60 Tagen ab; ein automatisches Verlängern (Refresh) ist ohne separat von LinkedIn freigegebenen Zugriff nicht möglich — danach ist ein erneutes Verbinden nötig.",
     async fetchAccountInfo(accessToken) {
@@ -151,7 +158,8 @@ export const OAUTH_PROVIDERS: Record<string, OAuthProvider> = {
     clientSecretEnv: "TIKTOK_CLIENT_SECRET",
     authorizeUrl: "https://www.tiktok.com/v2/auth/authorize/",
     tokenUrl: "https://open.tiktokapis.com/v2/oauth/token/",
-    scope: "user.info.basic,video.publish",
+    // video.list erst nach Freigabe durch TikTok (STATISTIK_TIKTOK=1).
+    scope: "user.info.basic,video.publish" + (process.env.STATISTIK_TIKTOK === "1" ? ",video.list" : ""),
     usesPkce: true,
     publishingCaveat:
       "TikTok schaltet den Veröffentlichungs-Zugriff (video.publish) erst nach eigener Prüfung der App durch TikTok frei — das ist ein separater Freigabeprozess bei TikTok, den diese Software nicht ersetzt. Bis dahin funktioniert nur das Verbinden/Anzeigen des Kontos.",

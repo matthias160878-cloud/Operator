@@ -1,0 +1,15 @@
+{
+  "title": "Analitik",
+  "subtitle": "Platform istatistikleri (görüntülenmeler, beğeniler, yorumlar, paylaşımlar), bir gönderi uygulama üzerinden yayınlandığı anda YouTube ve Facebook için otomatik olarak alınır – yaklaşık altı saatte bir. Instagram, TikTok ve LinkedIn, platform erişim izni verdiğinde eklenecek. Diğer gönderilerin sayılarını <weiter>Tavsiyeler</weiter> bölümünde („Platform sayılarını gir”) veya <varianten>varyant karşılaştırmasında</varianten> elle girebilirsin.",
+  "statViewsTotal": "Toplam görüntülenme",
+  "statLikesTotal": "Toplam beğeni",
+  "statComments": "Yorumlar",
+  "statShares": "Paylaşımlar",
+  "chartTitle": "Zaman içinde içerik performansı",
+  "chartLegend": "Görüntülenme (mor) · Etkileşim % (turkuaz)",
+  "chartEmpty": "Henüz istatistik yok – gelişim verisi mevcut değil.",
+  "bestPerformingTitle": "En iyi performans gösteren içerik",
+  "bestPerformingEmpty": "Henüz istatistik yok – sıralama yapılamıyor.",
+  "learningAgentTitle": "Learning Agent — Öneriler",
+  "statsEmpty": "Henüz kaydedilmiş istatistik yok. YouTube ve Facebook için sayılar, bir gönderi uygulama üzerinden yayınlandığı anda otomatik olarak görünür."
+}

@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Ingen prenumeration. Alla agenter. Dina egna AI-leverantörer.",
+  "subtitle": "En idé. Flera plattformar. Maximal räckvidd. Ett enda komplett paket — betala en gång, full tillgång till hela applikationen.",
+  "features": [
+    "Content Brain — en idé, alla plattformar",
+    "Alla AI-agenter: idéer, trender, manus, hook, hashtags, miniatyrbilder, undertexter, publicering",
+    "Voice Studio med ElevenLabs-röster",
+    "Video Studio med formathanterare — anslutning av AI-videogeneratorer pågår",
+    "Content Factory med godkännandeflöde och innehållskalender",
+    "Analytics, tillväxtrekommendationer och intäktsspårning",
+    "Inkorg med AI-svarsutkast",
+    "Fritt val av AI-leverantörer via egna åtkomster — inga kvoter"
+  ],
+  "priceOnetime": "engångs",
+  "priceRecommendedNote": "Rekommenderat pris — blir bindande så snart Stripe är konfigurerat med ett motsvarande pris.",
+  "buyButton": "Köp nu",
+  "redirecting": "Omdirigerar till Stripe …",
+  "checkoutFailed": "Betalningen misslyckades.",
+  "unknownError": "Okänt fel.",
+  "notConfigured": "Betalning är inte konfigurerad än — operatören måste först skapa en produkt i Stripe för {price} och lägga in STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Observera: Det här priset är en engångsavgift för programvaran. Enskilda funktioner (t.ex. AI-textgenerering, talsyntes) kräver egna åtkomster hos tredjepartsleverantörer (t.ex. Anthropic, ElevenLabs) — deras kostnader är oberoende av SECRET 58 och faktureras direkt av respektive leverantör, inte här. Mer information efter köpet under Integrationer.",
+  "setupServiceTitle": "Lägg till installationstjänst (+{price} engångs)",
+  "setupServiceDescription": "Vi ställer in API-nycklar, Brand DNA och de första inläggen åt dig.",
+  "setupServiceUnavailable": "Kan snart bokas — operatören måste först lägga in tjänsten i Stripe.",
+  "autopilot": {
+    "kicker": "Kommer snart",
+    "title": "Autopilot — allt ingår",
+    "subtitle": "Inga egna åtkomster behövs: alla leverantörskostnader för text, röst och video ingår. Samma funktionsomfång som det kompletta paketet — storlekarna skiljer sig bara i mängd.",
+    "comingSoon": "Kommer snart",
+    "perMonth": "/ månad",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Byrå"
+    },
+    "brands": "{count, plural, one {# varumärke} other {# varumärken}}",
+    "ideas": "{count} innehållsidéer per månad",
+    "videos": "{count} AI-videor (à 30 s) per månad",
+    "voiceMinutes": "{count} minuter talsyntes per månad",
+    "note": "Planerade priser, kan inte bokas än. Autopiloten startar så fort AI-videogeneratorerna är anslutna."
+  }
+}

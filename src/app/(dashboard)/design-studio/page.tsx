@@ -4,6 +4,7 @@ import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { checkIntegration, INTEGRATIONS } from "@/lib/integrations/registry";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { ThumbnailGenerator } from "@/components/design-studio/ThumbnailGenerator";
+import { kiAnbieterFuer } from "@/lib/ai/kundenKi";
 
 export const dynamic = "force-dynamic";
 
@@ -11,13 +12,14 @@ export default async function DesignStudioPage() {
   const t = await getTranslations("designStudio");
   const ti = await getTranslations("common.integrationStatus");
   const workspaceId = await getCurrentWorkspaceId();
-  const [images, canva] = await Promise.all([
+  const [images, canva, textProvider] = await Promise.all([
     prisma.mediaAsset.findMany({
       where: { workspaceId, type: { in: ["IMAGE", "THUMBNAIL"] } },
       orderBy: { createdAt: "desc" },
       take: 12,
     }),
     checkIntegration(INTEGRATIONS.find((i) => i.key === "canva")!, ti),
+    kiAnbieterFuer(workspaceId),
   ]);
 
   return (
@@ -35,7 +37,7 @@ export default async function DesignStudioPage() {
         <StatusBadge status={canva.status} />
       </div>
 
-      <ThumbnailGenerator />
+      <ThumbnailGenerator textProvider={textProvider} />
 
       <div className="card p-5">
         <h3 className="mb-3 text-sm font-semibold text-foreground">{t("imageAssetsTitle")}</h3>

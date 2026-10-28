@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Adım {current} / {total}",
+    "close": "Kapat",
+    "back": "Geri",
+    "next": "İleri",
+    "skip": "Atla",
+    "finish": "Bitti, başlayalım",
+    "checking": "Kontrol ediliyor …",
+    "checkAgain": "Şimdi kontrol et",
+    "connected": "Bağlı",
+    "notConnected": "Henüz bağlı değil",
+    "skippedNote": "Atlandı — bunu istediğin zaman “Entegrasyonlar” bölümünden tamamlayabilirsin.",
+    "envHint": "Not: Render'da kaydettikten sonra hizmetin yeniden başlaması ve değişikliğin etkili olması genellikle 1–2 dakika sürer. “Şimdi kontrol et” henüz bir şey bulamazsa, kısa bir süre bekle ve tekrar tıkla.",
+    "reopenHint": "Bu asistanı istediğin zaman yeniden açabilirsin: Ayarlar'da “Kurulum asistanı” altında."
+  },
+  "steps": {
+    "welcome": {
+      "title": "SECRET 58'e hoş geldin",
+      "body": "Başlamadan önce, gerekli olan en temel şeyleri birlikte kuruyoruz — çok küçük, tek tek adımlarla. İstediğin zaman ara verebilir ve daha sonra aynı yerden devam edebilirsin."
+    },
+    "aiProvider": {
+      "title": "Adım 1: Yapay zekâ sağlayıcısını bağla",
+      "body": "Metinler, script'ler, hook'lar ve hashtag'ler için yazılımın bir yapay zekâ sağlayıcısına ihtiyacı var. İkisinden birini seç — biri yeterli.",
+      "steps": [
+        "Aşağıda Anthropic veya OpenAI için “API anahtarı al”a tıkla.",
+        "Gerekirse orada ücretsiz bir hesap oluştur.",
+        "Orada yeni bir API anahtarı oluştur ve kopyala.",
+        "“Render'a gir”e tıkla, anahtarı orada ortam değişkeni olarak yapıştır ve kaydet.",
+        "Buraya geri dön ve aşağıda “Şimdi kontrol et”e tıkla."
+      ],
+      "costHint": "Maliyet yalnızca gerçekten kullandığında doğar, doğrudan ilgili sağlayıcıda — asla SECRET 58 üzerinden değil."
+    },
+    "platform": {
+      "title": "Adım 2: Sosyal medya platformunu bağla (isteğe bağlı)",
+      "body": "İsteğe bağlı ama önerilir: İleride yayın yapmak istediğin en az bir platformu bağla. Bu adımı daha sonra da tamamlayabilirsin.",
+      "steps": [
+        "Aşağıdan kullanmak istediğin bir platformu seç.",
+        "“API anahtarı al”a tıkla ve sağlayıcının talimatlarını izle.",
+        "“Render'a gir”e tıkla ve erişim bilgilerini orada kaydet.",
+        "Buraya geri dön ve “Şimdi kontrol et”e tıkla."
+      ]
+    },
+    "voice": {
+      "title": "Adım 3: Sesli çıktıyı bağla (isteğe bağlı)",
+      "body": "Yalnızca videoların için otomatik seslendirme üretmek istiyorsan gerekir. Bu adım olmadan da diğer her şey çalışır.",
+      "steps": [
+        "ElevenLabs için “API anahtarı al”a tıkla.",
+        "Orada bir hesap ve bir API anahtarı oluştur.",
+        "“Render'a gir”e tıkla ve anahtarı orada kaydet.",
+        "Buraya geri dön ve “Şimdi kontrol et”e tıkla."
+      ]
+    },
+    "done": {
+      "title": "Tamam!",
+      "body": "Artık başlayabilirsin. Atladığın her şeyi istediğin zaman “Entegrasyonlar” bölümünde bulup tamamlayabilirsin — ya da bu asistanı “Ayarlar” üzerinden yeniden açabilirsin."
+    }
+  }
+}

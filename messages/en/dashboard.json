@@ -1,8 +1,7 @@
 {
   "viewAll": "View all",
   "demoBanner": {
-    "before": "Demo data active — campaigns, content items, and analytics are sample data from ",
-    "after": ", not real platform numbers."
+    "text": "Sample data active – campaigns, content and statistics in this workspace are sample data, not real platform numbers."
   },
   "hero": {
     "subtitle": "One idea. Multiple platforms. Maximum reach.",
@@ -26,8 +25,9 @@
     "published": "Published",
     "views": "Views",
     "avgEngagement": "Avg. Engagement",
-    "totalRevenue": "Total Revenue",
-    "noComparisonWeek": "No previous week available for comparison yet — change rates will appear once at least two weeks of data are available."
+    "totalRevenue": "Revenue (entered manually)",
+    "noComparisonWeek": "No previous week available for comparison yet — change rates will appear once at least two weeks of data are available.",
+    "noStats": "Views and interactions: no statistics yet – they appear automatically as soon as a post has been published via the app on YouTube or Facebook."
   },
   "production": {
     "title": "Content Production",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} connected"
   },
   "agentMonitor": {
-    "title": "Agent Monitor",
+    "title": "Assistant log",
     "empty": "No runs yet."
   },
   "topPerformer": {
     "title": "Top Performer",
     "last7Days": "Last 7 days",
-    "empty": "No performance data yet.",
+    "empty": "No performance data yet – it appears automatically for posts published via the app on YouTube or Facebook.",
     "views": "Views",
     "likes": "Likes",
     "comments": "Comments",

@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — hallitse äänikirjastoa, luo voiceover-esikuunteluja ja tuo ääniä.",
+  "envWarning": "Selostus ei ole vielä käytettävissä: puhepalvelun (ElevenLabs) määrittää ylläpitäjä. Voit jo käyttää äänikirjastoa suunnitteluun.",
+  "addManual": "Lisää ääni käsin",
+  "importFromElevenLabs": "Tuo ElevenLabsista",
+  "form": {
+    "namePlaceholder": "Nimi",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Kieli",
+    "submit": "Lisää"
+  },
+  "confirmDelete": "Poistetaanko ääni varmasti?",
+  "importFailed": "Tuonti epäonnistui.",
+  "previewFailed": "Esikuuntelu epäonnistui.",
+  "unknownError": "Tuntematon virhe.",
+  "empty": "Äänikirjastossa ei ole vielä ääniä.",
+  "active": "Aktiivinen",
+  "inactive": "Ei aktiivinen",
+  "remove": "Poista",
+  "preview": {
+    "heading": "Äänen esikuuntelu",
+    "defaultText": "Hei, tämä on esimerkki tästä äänestä.",
+    "selectPlaceholder": "Valitse ääni…",
+    "play": "Toista esikuuntelu"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Innholdskalender",
+  "subtitle": "Planlagt og publisert innhold i oversikt.",
+  "weekdays": ["Man", "Tir", "Ons", "Tor", "Fre", "Lør", "Søn"],
+  "months": [
+    "Januar", "Februar", "Mars", "April", "Mai", "Juni",
+    "Juli", "August", "September", "Oktober", "November", "Desember"
+  ],
+  "allPlatforms": "Alle plattformer",
+  "moreItems": "+{count} til",
+  "listTitle": "Liste for denne måneden",
+  "emptyMonth": "Ingen planlagte innlegg i denne måneden."
+}

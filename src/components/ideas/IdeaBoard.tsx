@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Lightbulb, Loader2, Plus, Sparkles } from "lucide-react";
+import { Brain, Lightbulb, Loader2, Plus, Sparkles } from "lucide-react";
 import type { ContentIdea } from "@prisma/client";
 import { PLATFORM_LABELS } from "@/lib/format";
 
@@ -16,7 +16,7 @@ const PRIORITY_COLORS: Record<string, string> = {
   LOW: "text-muted",
 };
 
-export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
+export function IdeaBoard({ ideas, textProvider }: { ideas: ContentIdea[]; textProvider: string }) {
   const t = useTranslations("ideas.board");
   const router = useRouter();
   const [topic, setTopic] = useState("");
@@ -24,6 +24,7 @@ export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
   const [error, setError] = useState<string | null>(null);
   const [showManual, setShowManual] = useState(false);
   const [manualTitle, setManualTitle] = useState("");
+  const [lastProvider, setLastProvider] = useState<string | null>(null);
 
   async function handleGenerate(e: React.FormEvent) {
     e.preventDefault();
@@ -37,6 +38,7 @@ export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? t("generateError"));
+      setLastProvider(typeof data.provider === "string" ? data.provider : null);
       setTopic("");
       router.refresh();
     } catch (err) {
@@ -96,6 +98,17 @@ export function IdeaBoard({ ideas }: { ideas: ContentIdea[] }) {
           <Plus className="h-4 w-4" /> {t("manualButton")}
         </button>
       </form>
+
+      <div className="-mt-3 flex items-center gap-2 text-xs text-muted">
+        <Brain className="h-3.5 w-3.5 text-accent-2" />
+        {t("textEngineLabel")}{" "}
+        <span className="font-medium text-foreground">
+          {textProvider === "template" ? t("templateMode") : textProvider}
+        </span>
+      </div>
+      {lastProvider === "template" && (
+        <p className="rounded-lg border border-warning/30 bg-warning/10 px-3 py-2 text-xs text-warning">{t("templateResult")}</p>
+      )}
 
       {showManual && (
         <form onSubmit={handleManualAdd} className="card flex gap-2 p-4">

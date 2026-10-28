@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Koulutusvideo",
+  "subtitlesLabel": "Tekstitys",
+  "subtitlesOff": "Pois",
+  "soundLabel": "Ääni",
+  "soundOn": "Ääneen lukeva ääni päällä",
+  "soundOff": "Ääneen lukeva ääni pois",
+  "soundHint": "Ääneen lukeva ääni tulee selaimestasi. Käytettävissä olevat kielet riippuvat laitteestasi.",
+  "soundMissing": "Tälle kielelle ei ole laitteellesi asennettu ääntä. Tekstitys toimii silti.",
+  "draftNote": "Luonnos: tallenne oikeasta sovelluksesta testidatalla. Tekstitys konekäännetty.",
+  "whatLabel": "Mikä tämä on, mikä sen tehtävä on ja miten sitä käytetään.",
+  "videosTitle": "Esittelyvideot jokaiseen osioon",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Ensimmäiset askeleet",
+      "cues": {
+        "c1": "Tervetuloa koulutukseen: Ensimmäiset askeleet. Kaikki näkemäsi on oikea sovellus testidatalla.",
+        "c2": "Vasemmalla on navigaatio. Jokaisella sovelluksen osiolla on siinä oma kohtansa.",
+        "c3": "Vaihe 1: Tarkista kohdasta ”Integraatiot”, mitkä palvelut on yhdistetty.",
+        "c4": "Jokainen rivi näyttää todellisen, tarkistetun tilan – ei koskaan teeskenneltyä yhteyttä.",
+        "c5": "”Ei määritetty” tarkoittaa: tätä palvelua ei ole vielä otettu käyttöön. Ilman tekoälypalvelua sovellus toimii mallipohjatilassa.",
+        "c6": "Vaihe 2: Kirjaa brändisi kohtaan ”Brand DNA”. Sävy, kohderyhmä ja arvot siirtyvät jokaiseen luotuun tekstiin.",
+        "c7": "Esimerkki: täytä toimiala ja kohderyhmä ja tallenna alhaalta.",
+        "c8": "Vaihe 3: Anna luoda ensimmäinen idea kohdassa ”Ideat ja inspiraatio”. Kirjoita aihe ja klikkaa ”Luo ideoita”.",
+        "c9": "Ideat näkyvät korteilla. Mallipohjatilassa ne ovat esimerkkejä, tekoälypalvelun kanssa ne muuttuvat yksilöllisiksi.",
+        "c10": "Kaikki pysyy luonnoksena, kunnes hyväksyt sen. Jokaiseen osioon on oma esittelyvideo."
+      }
+    },
+    "dashboard": {
+      "title": "Kojelauta",
+      "cues": {
+        "c1": "Kojelauta on aloitussivusi: yleiskuva kaikesta, mitä työtilassasi tapahtuu.",
+        "c2": "Ylhäällä näet aktiiviset agentit, sisällöntuotannon ja ajastetut julkaisut.",
+        "c3": "Alempana ovat viimeisimmät tapahtumat sekä oikotiet Content Factoryyn ja Brand DNA:han.",
+        "c4": "”Viikko”-valinnalla vaihdat lukujen aikajaksoa.",
+        "c5": "Näin käytät sitä: avaa kojelauta päivittäin, tarkista avoimet luonnokset ja siirry täältä suoraan sopivaan osioon."
+      }
+    },
+    "schulung": {
+      "title": "Koulutus",
+      "cues": {
+        "c1": "Koulutus on sovelluksen sisäinen ohjeesi. Se selittää jokaisen osion vaihe vaiheelta.",
+        "c2": "Jokaisella aiheella on kuvaus, numeroidut vaiheet ja linkki, joka avaa sopivan sivun.",
+        "c3": "Täällä näkyvät myös nämä esittelyvideot, yksi jokaiseen osioon.",
+        "c4": "Näin käytät sitä: valitse aihe, lue vaiheet, avaa sivu ja kokeile heti."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory on työpöytä kaikille sisällöillesi yhdessä paikassa.",
+        "c2": "Toiminto: luo ja monista sisältöjä, kirjoita ne uusiksi, rikasta voiceoverilla ja tekstityksillä ja vie ne hyväksyntätyönkulun läpi.",
+        "c3": "Ylhäällä olevat suodattimet näyttävät tilat: Luonnos, Tarkistuksessa, Hyväksytty, Ajastettu, Julkaistu ja Arkistoitu.",
+        "c4": "Näin se toimii: ”Uusi sisältö” -painikkeella luot uuden sisällön.",
+        "c5": "Avaa sisältö muokataksesi skriptiä, voiceoveria, tekstityksiä, hashtageja ja pikkukuvaa.",
+        "c6": "Hyväksyntä on aina manuaalinen vaihe. Mitään ei julkaista ilman vahvistustasi."
+      }
+    },
+    "ideas": {
+      "title": "Ideat ja inspiraatio",
+      "cues": {
+        "c1": "Täällä keräät ideoita: aiheklustereita, sarjoja ja formaatteja tulevalle sisällölle.",
+        "c2": "Toiminto: IdeaAgent luo ideoita aiheesta, tai voit kirjata omia ideoita käsin.",
+        "c3": "Näin se toimii: kirjoita aihe, valitse alusta, tavoite ja formaatti ja klikkaa ”Luo ideoita”.",
+        "c4": "Jokaisesta ideasta tulee kortti, jossa on otsikko, koukku ja prioriteetti.",
+        "c5": "”Käsin”-valinnalla lisäät oman idean.",
+        "c6": "Hyvät ideat otat lähtökohdaksi Content Brainiin."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain tekee yhdestä ideasta täydellisen sisältösuunnitelman.",
+        "c2": "Toiminto: se huomioi Brand DNA:si ja luo jokaiselle valitulle alustalle hookit, skriptit, hashtagit ja pikkukuvakonseptit luonnoksina.",
+        "c3": "Näin se toimii: kirjoita aihe ja kohderyhmä.",
+        "c4": "Valitse tavoite ja kieli ja klikkaa sitten alustat. Tässä mukaan tulee TikTok.",
+        "c5": "Liukusäätimellä määrität, kuinka monta sisältöä alustaa kohti syntyy.",
+        "c6": "Klikkaus kohtaan ”Luo sisältösuunnitelma” käynnistää ajon.",
+        "c7": "Kampanja näkyy alhaalla. Kaikki sisällöt ovat luonnoksia ja ovat Content Factoryssa."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA kuvaa brändisi: nimi, toimiala, kohderyhmä, sävy ja arvot.",
+        "c2": "Toiminto: nämä tiedot siirtyvät automaattisesti Content Brainiin sekä skripti-, hook- ja hashtag-agenteille.",
+        "c3": "Näin se toimii: täytä kentät, esimerkiksi toimiala ja kohderyhmä.",
+        "c4": "Alempana ylläpidät suosittavia ja kiellettyjä sanoja, toimintakehotuksia ja brändin arvoja.",
+        "c5": "Lopuksi klikkaat ”Tallenna Brand DNA”."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio on skriptien ja hookien työpaja.",
+        "c2": "Toiminto: se rakentaa skriptit rakenteella hook, ongelma, hyöty, esimerkki, lopputulos ja toimintakehotus ja tarjoaa useita hook-variantteja.",
+        "c3": "Näin se toimii: kirjoita aihe ja valitse alusta.",
+        "c4": "Klikkaa sitten ”Luo skripti ja hookit”.",
+        "c5": "Tulos on luonnos, jota käytät edelleen Content Factoryssa."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio hallitsee ääniä ja luo voiceoverin.",
+        "c2": "Toiminto: ylläpidä äänikirjastoa, luo esikuunteluja ja tuo ääniä. Yhteys toimii ElevenLabsin kautta.",
+        "c3": "Näin se toimii: lisää ääni käsin tai tuo se ElevenLabsista. Tuonti vaatii käyttöön otetun yhteyden.",
+        "c4": "Tekstillä ja äänellä luot esikuuntelun ja toistat sen."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio on sovelluksen videoputki.",
+        "c2": "Toiminto: Format Manager, vaihdettavat videopalvelut sekä voiceoverin ja tekstitysten liittäminen.",
+        "c3": "Sivu näyttää, mitkä palvelut on otettu käyttöön. Käyttöön ottamattomat merkitään rehellisesti sellaisiksi.",
+        "c4": "Näin se toimii: videot luot sisältökohtaisesti Content Factoryssa."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio tarjoaa pikkukuvakonsepteja ja kuvamateriaaleja.",
+        "c2": "Toiminto: pikkukuva-agentti ehdottaa otsikon, kuvaidean, tekstin ja asettelun. Canva-integraatio on suunniteltu tähän.",
+        "c3": "Näin se toimii: kirjoita pikkukuvan aihe.",
+        "c4": "Klikkaa ”Luo konsepti”.",
+        "c5": "Konsepti toimii mallina kuvallesi."
+      }
+    },
+    "socialMedia": {
+      "title": "Sosiaalinen media",
+      "cues": {
+        "c1": "Täällä yhdistät alustatilisi ja näet niiden tilan.",
+        "c2": "Toiminto: tunnuksia hallitaan palvelinpuolella ja ne tallennetaan salattuina. Composion kautta kirjaudut alustalle.",
+        "c3": "Jokainen kortti näyttää alustan, tilin, tilan ja viimeisimmän lukutestin.",
+        "c4": "”Ei vielä otettu käyttöön” tarkoittaa: ylläpitäjä ei ole vielä aktivoinut yhteyttä palvelimella.",
+        "c5": "Näin se toimii: kun käyttöönotto on tehty, klikkaat alustan kohdalla ”Yhdistä” ja kirjaudut sisään. Vain luetaan, mitään ei julkaista."
+      }
+    },
+    "calendar": {
+      "title": "Sisältökalenteri",
+      "cues": {
+        "c1": "Sisältökalenteri näyttää ajastetut ja julkaistut sisällöt yleiskatsauksena.",
+        "c2": "Toiminto: kaikki sisällöt, joilla on julkaisupäivä, näkyvät täällä, suodatettavissa alustan mukaan.",
+        "c3": "Näin se toimii: ajasta sisältö Content Factoryssa päivämäärällä, niin se näkyy täällä.",
+        "c4": "Ennen jokaista julkaisua sovellus tarkistaa livenä, onko kohdealusta yhdistetty."
+      }
+    },
+    "analytics": {
+      "title": "Analytiikka",
+      "cues": {
+        "c1": "Analytiikka näyttää suorituskykylukusi.",
+        "c2": "Toiminto: vain todellisuudessa olemassa olevaa dataa, tuotua tai itse kirjaamaasi. Mitään ei ole keksitty.",
+        "c3": "Näet kehityksen ajan yli, parhaiten menestyneen sisällön ja Learning Agentin suositukset.",
+        "c4": "Näin se toimii: kun alustat on yhdistetty tai kirjaat dataa, kaaviot täyttyvät."
+      }
+    },
+    "growth": {
+      "title": "Kasvu",
+      "cues": {
+        "c1": "Kasvu-sivu antaa suosituksia suurempaan kattavuuteen.",
+        "c2": "Toiminto: oikeasta analytiikkadatastasi se laskee parhaat julkaisuajat, menestyneet hashtagit ja formaatit.",
+        "c3": "Näin se toimii: valitse alusta ja lue suositukset.",
+        "c4": "Nämä ovat suosituksia, ei automatiikkaa. Seuraajia tai vuorovaikutusta ei kasvateta keinotekoisesti."
+      }
+    },
+    "revenue": {
+      "title": "Tulot",
+      "cues": {
+        "c1": "Kohdassa Tulot kokoat ansiosi alustoilta ja kampanjoista yhteen.",
+        "c2": "Toiminto: summat näkyvät vasta, kun kirjaat ne. Keksittyjä lukuja ei ole.",
+        "c3": "Näin se toimii: klikkaa ”Kirjaa tulo”, valitse alusta ja laji ja kirjoita summa.",
+        "c4": "Maksu tapahtuu aina suoraan alustan kautta. SECRET 58 ei hoida maksuja."
+      }
+    },
+    "sales": {
+      "title": "Myynti ja verkkokauppa",
+      "cues": {
+        "c1": "”Myynti ja verkkokauppa” näyttää omat liiketulosi.",
+        "c2": "Toiminto: ne ovat erillään SECRET 58 -paketistasi. Lasketaan vain todelliset myynnit, testidata on merkitty.",
+        "c3": "Ylhäällä ovat summat valuutoittain, niiden alla omat palveluntarjoajan tietosi yhteystietosivua varten.",
+        "c4": "Vaihtoehto B: myyminen SECRET 58:n kautta. Vaihtoehto A: olemassa olevan verkkokaupan tuonti.",
+        "c5": "Näin se toimii: täytä palveluntarjoajan tiedot ja tallenna, valitse sitten myyntitapa."
+      }
+    },
+    "website": {
+      "title": "Oma verkkosivuni",
+      "cues": {
+        "c1": "Täällä liität verkkosivuavustajan omalle verkkosivullesi.",
+        "c2": "Toiminto: avustaja vastaa kävijöidesi kysymyksiin.",
+        "c3": "Emme muuta verkkosivuasi automaattisesti. Lisäät koodin itse tai pyydät verkkosuunnittelijaasi lisäämään sen.",
+        "c4": "Näin se toimii: kirjoita verkko-osoite ja klikkaa ”Lisää verkkosivu”.",
+        "c5": "Sen jälkeen kopioit näytetyn koodin verkkosivullesi."
+      }
+    },
+    "inbox": {
+      "title": "Saapuneet",
+      "cues": {
+        "c1": "Saapuneet kokoaa viestit ja kommentit kaikilta alustoilta.",
+        "c2": "Toiminto: MessageAgent ehdottaa vastauksia. Lähetetään vain se, minkä hyväksyt.",
+        "c3": "Näin se toimii: kunhan yhtään alustaa ei ole yhdistetty livenä, klikkaat ”Simuloi keskustelu”.",
+        "c4": "Tarkista vastausehdotus, muokkaa sitä ja hyväksy se."
+      }
+    },
+    "agents": {
+      "title": "Agentit",
+      "cues": {
+        "c1": "Agent Monitor näyttää kaikki SECRET 58 -agentit.",
+        "c2": "Toiminto: jokaisen agentin tila, viimeisin tehtävä ja tulos. Jokainen ajo kirjataan lokiin.",
+        "c3": "Ajohistoriassa näet, mitä on ajettu ja milloin ja onnistuiko se.",
+        "c4": "Näin käytät sitä: tarkista täältä, jos jotain ei luotu odotetusti."
+      }
+    },
+    "integrations": {
+      "title": "Integraatiot",
+      "cues": {
+        "c1": "Täällä näet kaikkien ulkoisten palveluiden live-tilan.",
+        "c2": "Toiminto: jokainen rivi perustuu todellisuudessa asetettuihin tunnuksiin. Teeskenneltyjä yhteyksiä ei ole.",
+        "c3": "Ryhmät ovat: tekoälypalvelut, Voice, sosiaalisen median alustat, Design, Video ja Trendit.",
+        "c4": "Näin se toimii: kun tila on ”Ei määritetty”, ”Hae API-avain” johtaa palveluntarjoajan sivulle.",
+        "c5": "Ulkoisilla palveluntarjoajilla on omat hintansa. Jokaisen palvelun kohdalla kerrotaan, mikä malli on voimassa."
+      }
+    },
+    "billing": {
+      "title": "Paketti ja laskutus",
+      "cues": {
+        "c1": "Kohdassa ”Paketti ja laskutus” näet pakettisi ja voit vaihtaa sitä.",
+        "c2": "Toiminto: tekoälytoiminnot toimivat ylläpitäjän tunnusten kautta. Et tarvitse omaa tekoälytilausta.",
+        "c3": "Tarjolla on Pro ja Maxi, kuukausittain tai vuosittain. Hinnat näkyvät korteilla ilman veroa.",
+        "c4": "Ostos tehdään vain klikkaamalla nimenomaisesti ”Tilaa maksullisena”.",
+        "c5": "Jos sinulla on kampanjakoodi, lunastat sen alla olevassa kentässä."
+      }
+    },
+    "settings": {
+      "title": "Asetukset",
+      "cues": {
+        "c1": "Asetuksissa hallitset työtilaa, käyttäjiä ja järjestelmätietoja.",
+        "c2": "Toiminto: työtila, roolit, järjestelmän tila, käyttöönottoavustaja ja omat tietosi tietopyynnöin ja poistoin.",
+        "c3": "Näin se toimii: selaa osioita. Työtilan poistaminen vaatii lisävahvistuksen.",
+        "c4": "Tarkista täältä säännöllisesti tietosi ja käyttöönottoavustaja."
+      }
+    }
+  }
+}

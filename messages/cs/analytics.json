@@ -1,0 +1,15 @@
+{
+  "title": "Analytika",
+  "subtitle": "Statistiky platforem (zhlédnutí, lajky, komentáře, sdílení) se pro YouTube a Facebook načítají automaticky, jakmile je příspěvek publikován přes aplikaci – zhruba každých šest hodin. Instagram, TikTok a LinkedIn budou následovat, jakmile platforma udělí přístup. Čísla z jiných příspěvků můžeš zadat ručně v sekci <weiter>Doporučení</weiter> („Zadat čísla z platformy“) nebo ve <varianten>srovnání variant</varianten>.",
+  "statViewsTotal": "Zobrazení celkem",
+  "statLikesTotal": "Lajky celkem",
+  "statComments": "Komentáře",
+  "statShares": "Sdílení",
+  "chartTitle": "Výkon obsahu v čase",
+  "chartLegend": "Zobrazení (fialová) · Engagement % (tyrkysová)",
+  "chartEmpty": "Zatím žádné statistiky – žádný průběh není k dispozici.",
+  "bestPerformingTitle": "Nejlépe fungující obsah",
+  "bestPerformingEmpty": "Zatím žádné statistiky – pořadí není možné.",
+  "learningAgentTitle": "Learning Agent — doporučení",
+  "statsEmpty": "Zatím nejsou uložené žádné statistiky. Pro YouTube a Facebook se čísla zobrazí automaticky, jakmile je příspěvek publikován přes aplikaci."
+}

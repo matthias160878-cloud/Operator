@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
         disabled={isPending}
         aria-label={t("language")}
         aria-expanded={open}
-        className="hidden items-center gap-1 rounded-lg border border-border px-2 py-1 text-xs text-muted hover:text-foreground sm:flex disabled:opacity-60"
+        className="flex items-center gap-1 rounded-lg border border-border px-2 py-1 text-xs text-muted hover:text-foreground disabled:opacity-60"
       >
         {LOCALE_LABELS[locale].flag} {locale.toUpperCase()}
         <ChevronDown className="h-3 w-3" />
@@ -44,7 +44,7 @@ export function LanguageSwitcher() {
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-full z-50 mt-1 w-40 overflow-hidden rounded-lg border border-border bg-surface shadow-lg">
+          <div className="absolute right-0 top-full z-50 mt-1 max-h-80 w-48 overflow-y-auto rounded-lg border border-border bg-surface shadow-lg">
             {LOCALES.map((code) => (
               <button
                 key={code}

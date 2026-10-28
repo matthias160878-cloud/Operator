@@ -1,0 +1,25 @@
+{
+  "title": "Pomysły i inspiracje",
+  "subtitle": "Klastry tematów, serie i formaty dla nadchodzących treści — generowane przez IdeaAgent lub dodane ręcznie.",
+  "board": {
+    "topicLabel": "Temat dla nowych pomysłów",
+    "topicPlaceholder": "np. Produktywność z agentami AI",
+    "generateButton": "Generuj pomysły",
+    "manualButton": "Ręcznie",
+    "manualTitlePlaceholder": "Tytuł pomysłu",
+    "addButton": "Dodaj",
+    "generateError": "Błąd podczas generowania pomysłów.",
+    "unknownError": "Nieznany błąd.",
+    "emptyState": "Brak pomysłów — wygeneruj je lub dodaj ręcznie.",
+    "minutesUnit": "~{count} min",
+    "statusNew": "Nowy",
+    "statusInProgress": "W toku",
+    "statusUsed": "Wykorzystany",
+    "statusArchived": "Zarchiwizowany",
+    "sourceAiGenerated": "IdeaAgent (AI lub szablon)",
+    "sourceManual": "Ręcznie",
+    "templateResult": "Szablon: właśnie utworzone pomysły pochodzą ze stałych bloków tekstu, a nie od AI. Aby otrzymać pomysły AI, wpisz własny klucz AI w „Ustawienia → Własne dostępy”.",
+    "textEngineLabel": "Silnik tekstowy:",
+    "templateMode": "Tryb szablonu (nie skonfigurowano dostawcy AI)"
+  }
+}

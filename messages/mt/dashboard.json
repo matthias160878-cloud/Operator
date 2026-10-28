@@ -1,0 +1,104 @@
+{
+  "viewAll": "Uri kollha",
+  "demoBanner": {
+    "text": "Dejta ta' kampjun attiva – il-kampanji, il-kontenut u l-istatistika f'din iż-żona tax-xogħol huma dejta ta' kampjun, mhux numri reali tal-pjattaformi."
+  },
+  "hero": {
+    "subtitle": "Idea waħda. Diversi pjattaformi. L-akbar firxa possibbli.",
+    "newCampaign": "Kampanja ġdida",
+    "createContent": "Oħloq kontenut",
+    "findIdeas": "Sib idejat",
+    "aiAgents": "Agenti tal-AI"
+  },
+  "orbit": {
+    "xNotConnected": "X (mhux konness)",
+    "brainAlt": "Moħħ tal-AI ta' SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Agenti attivi",
+    "empty": "Għad m'hemm l-ebda eżekuzzjoni ta' agenti."
+  },
+  "kpi": {
+    "contentCreated": "Kontenut maħluq",
+    "videosCreated": "Vidjows maħluqa",
+    "postsCreated": "Posts maħluqa",
+    "published": "Pubblikazzjonijiet",
+    "views": "Views",
+    "avgEngagement": "Engagement medju",
+    "totalRevenue": "Dħul (imdaħħal manwalment)",
+    "noComparisonWeek": "Għad m'hemm l-ebda ġimgħa preċedenti bħala bażi ta' paragun — ir-rati ta' bidla jidhru hekk kif tkun disponibbli dejta għal mill-inqas ġimgħatejn.",
+    "noStats": "Veduti u interazzjonijiet: għad m'hemmx statistika – tidher awtomatikament hekk kif post ikun ġie ppubblikat permezz tal-app fuq YouTube jew Facebook."
+  },
+  "production": {
+    "title": "Produzzjoni tal-kontenut",
+    "thisWeek": "Din il-ġimgħa"
+  },
+  "scheduled": {
+    "title": "Posts ippjanati",
+    "empty": "L-ebda posts ippjanati."
+  },
+  "activity": {
+    "title": "L-aħħar attivitajiet",
+    "empty": "Għad m'hemm l-ebda attivitajiet."
+  },
+  "contentFactory": {
+    "description": "Oħloq kampanji kompluti ta' kontenut għall-pjattaformi kollha b'idea waħda biss.",
+    "cta": "Ibda issa →",
+    "popularTemplates": "Mudelli popolari",
+    "templateYoutubeVideo": "YouTube Video",
+    "templateTiktokSeries": "TikTok Serje",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn Post",
+    "templateBlogPost": "Artiklu tal-blog",
+    "viewAllTemplates": "Il-mudelli kollha →"
+  },
+  "brandDna": {
+    "tonality": "Ton",
+    "targetAudience": "Udjenza fil-mira",
+    "industry": "Settur",
+    "language": "Lingwa",
+    "empty": "Għad ma ġie rreġistrat l-ebda Brand DNA."
+  },
+  "campaigns": {
+    "title": "Kampanji kurrenti",
+    "empty": "Għad m'hemm l-ebda kampanji."
+  },
+  "platforms": {
+    "title": "Pjattaformi",
+    "manage": "Immaniġġja"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} konnessi"
+  },
+  "agentMonitor": {
+    "title": "Reġistru tal-assistenti",
+    "empty": "Għad m'hemm l-ebda eżekuzzjonijiet."
+  },
+  "topPerformer": {
+    "title": "Top Performer",
+    "last7Days": "L-aħħar 7 ijiem",
+    "empty": "Għad m'hemmx dejta tal-prestazzjoni – tidher awtomatikament għal posts ippubblikati permezz tal-app fuq YouTube jew Facebook.",
+    "views": "Views",
+    "likes": "Likes",
+    "comments": "Kummenti",
+    "shares": "Shares",
+    "engagementRate": "+Engagement Rate {value}"
+  },
+  "calendar": {
+    "open": "Iftaħ",
+    "viewMonth": "Xahar",
+    "viewWeek": "Ġimgħa",
+    "viewDay": "Jum",
+    "viewCampaign": "Kampanja",
+    "moreItems": "+{count} oħra"
+  },
+  "weekdayLabels": [
+    "Tn",
+    "Tl",
+    "Er",
+    "Ħa",
+    "Ġi",
+    "Sb",
+    "Ħd"
+  ]
+}

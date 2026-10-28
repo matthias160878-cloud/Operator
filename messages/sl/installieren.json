@@ -1,0 +1,20 @@
+{
+  "button": "Namesti aplikacijo",
+  "buttonHint": "Namesti SECRET 58 kot aplikacijo na tej napravi",
+  "close": "Zapri",
+  "canceled": "Namestitev je preklicana. Kadar koli jo lahko znova začneš.",
+  "iosTitle": "Namestitev na iPhone ali iPad",
+  "iosStep1": "Odpri to stran v Safariju.",
+  "iosStep2": "Tapni »Deli« (kvadrat s puščico, ki kaže navzgor).",
+  "iosStep3": "Izberi »Dodaj na začetni zaslon« in potrdi z »Dodaj«.",
+  "iosShort": "Safari: Deli → Dodaj na začetni zaslon",
+  "iosNotSafari": "Na iPhonu in iPadu namestitev deluje samo v Safariju. Odpri to stran v Safariju.",
+  "otherTitle": "Kako namestiš aplikacijo",
+  "otherChromium": "Odpri meni brskalnika (tri pike) in izberi »Namesti aplikacijo« ali »Dodaj na začetni zaslon«.",
+  "otherSafariMac": "V Safariju na Macu: meni »Datoteka« → »Dodaj v Dock«.",
+  "otherFirefox": "Firefox v računalniku ne more nameščati spletnih aplikacij. Uporabi Chrome, Edge ali Safari.",
+  "otherGeneric": "Ta brskalnik trenutno ne ponuja namestitvenega okna. Morda je aplikacija že nameščena ali pa brskalnik namestitve ne podpira. Poskusi v Chromu, Edgeu ali Safariju.",
+  "insecureTitle": "Namestitev tukaj ni mogoča",
+  "insecureText": "Namestitev zahteva objavljeno spletno mesto prek HTTPS. Iz lokalne datoteke ali brez HTTPS ne deluje. Na lastnem računalniku deluje prek »localhost« v razvojnem okolju.",
+  "installedNote": "Aplikacija je nameščena."
+}

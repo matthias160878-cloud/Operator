@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — halda häälteeki, loo häälkõne eelvaateid ja impordi hääli.",
+  "envWarning": "Pealelugemine pole veel saadaval: kõneteenuse (ElevenLabs) seadistab haldur. Häälteeki saad juba planeerimiseks kasutada.",
+  "addManual": "Lisa hääl käsitsi",
+  "importFromElevenLabs": "Impordi ElevenLabsist",
+  "form": {
+    "namePlaceholder": "Nimi",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Keel",
+    "submit": "Lisa"
+  },
+  "confirmDelete": "Kas kustutada hääl tõesti?",
+  "importFailed": "Import ebaõnnestus.",
+  "previewFailed": "Eelvaade ebaõnnestus.",
+  "unknownError": "Tundmatu viga.",
+  "empty": "Häälteegis pole veel hääli.",
+  "active": "Aktiivne",
+  "inactive": "Mitteaktiivne",
+  "remove": "Eemalda",
+  "preview": {
+    "heading": "Hääle eelvaade",
+    "defaultText": "Tere, see on selle hääle näide.",
+    "selectPlaceholder": "Vali hääl…",
+    "play": "Esita eelvaade"
+  }
+}

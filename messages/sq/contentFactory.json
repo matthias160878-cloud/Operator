@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Të gjitha njësitë e përmbajtjes në një vend — krijo, dyfisho, rishkruaj, pasuro me voiceover/titra dhe kalo ato nëpër rrjedhën e miratimit.",
+  "statusTabs": {
+    "all": "Të gjitha",
+    "draft": "Draft",
+    "inReview": "Në shqyrtim",
+    "approved": "Miratuar",
+    "scheduled": "Planifikuar",
+    "published": "Publikuar",
+    "archived": "Arkivuar"
+  },
+  "newItem": {
+    "openButton": "Njësi e re përmbajtjeje",
+    "titleLabel": "Titulli",
+    "platformLabel": "Platforma",
+    "create": "Krijo",
+    "closeAria": "Mbyll"
+  },
+  "table": {
+    "empty": "Ende nuk ka njësi përmbajtjeje — krijo një me dorë ose përmes Content Brain.",
+    "title": "Titulli",
+    "platform": "Platforma",
+    "format": "Formati",
+    "status": "Statusi",
+    "updated": "Përditësuar",
+    "actions": "Veprime",
+    "duplicate": "Dyfisho",
+    "delete": "Fshi",
+    "confirmDelete": "Të fshihet vërtet kjo njësi përmbajtjeje?"
+  },
+  "detail": {
+    "backLink": "Kthehu te Content Factory",
+    "actionFailed": "Veprimi dështoi.",
+    "actions": {
+      "review": "Dërgo për shqyrtim",
+      "approve": "Mirato",
+      "reject": "Refuzo",
+      "schedule": "Planifiko",
+      "publish": "Publiko",
+      "copy": "Kopjo postimin",
+      "markPublished": "Publikuar me dorë"
+    },
+    "rejectReasonPrompt": "Arsyeja e refuzimit (opsionale):",
+    "scheduleDatePrompt": "Data e publikimit (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Titulli",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Caption"
+    },
+    "save": "Ruaj",
+    "saving": "Duke ruajtur…",
+    "hashtags": {
+      "heading": "Hashtag-e & fjalë kyçe",
+      "regenerate": "Gjenero përsëri",
+      "empty": "Ende nuk janë gjeneruar hashtag-e."
+    },
+    "voiceover": {
+      "heading": "Voiceover",
+      "generate": "Krijo",
+      "empty": "Ende nuk është krijuar voiceover."
+    },
+    "subtitles": {
+      "heading": "Titra",
+      "generate": "Krijo (SRT)",
+      "download": "Shkarko {file}",
+      "empty": "Ende nuk janë krijuar titra."
+    },
+    "video": {
+      "heading": "Renderimi i videos",
+      "request": "Kërko renderimin",
+      "note": "Pipeline video i pavarur nga ofruesi (seksioni 11/12) — aktualisht nuk është konfiguruar asnjë ofrues video (shih Integrimet)."
+    },
+    "scriptVariants": {
+      "heading": "Variante skripti",
+      "newVariant": "Variant i ri",
+      "empty": "Ende nuk ka variante.",
+      "variantSummary": "Varianti {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Krijo nga kjo njësi përmbajtjeje variante të përshtatura për platforma të tjera. Më shumë kanale = më shumë shanse që njerëzit ta shohin videon.",
+      "selectAll": "Zgjidh të gjitha platformat",
+      "clearAll": "Hiq zgjedhjen",
+      "generateButton": "Krijo {count} variante"
+    },
+    "approvalRevoked": "Miratimi u tërhoq: Postimi u ndryshua dhe duhet të shqyrtohet e miratohet sërish.",
+    "job": {
+      "QUEUED": "Dërgimi automatik është planifikuar për {when}.",
+      "RUNNING": "Dërgimi është në ecuri (afati {when}).",
+      "SUCCEEDED": "U publikua në afatin {when}.",
+      "FAILED": "Dërgimi në afatin {when} dështoi, postimi është sërish “Miratuar”.",
+      "UNKNOWN": "Dërgimi në afatin {when}: rezultati nuk është i qartë.",
+      "CANCELED": "Dërgimi i planifikuar ({when}) nuk u ekzekutua."
+    },
+    "copied": "Teksti dhe hashtag-et u kopjuan — tani ngjitini në aplikacionin e platformës.",
+    "copyFailed": "Kopjimi nuk është i mundur — ju lutemi përzgjidhni tekstin me dorë.",
+    "markPublishedConfirm": "E ke postuar vetë? Do të shënohet si i publikuar; dërgimi i planifikuar do të hiqet."
+  }
+}

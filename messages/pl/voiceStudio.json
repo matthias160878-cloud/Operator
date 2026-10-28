@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "Silnik głosu ElevenLabs — zarządzaj biblioteką głosów, twórz podglądy lektora i importuj głosy.",
+  "envWarning": "Lektor nie jest jeszcze dostępny: usługę głosową (ElevenLabs) konfiguruje operator. Bibliotekę głosów możesz już używać do planowania.",
+  "addManual": "Dodaj głos ręcznie",
+  "importFromElevenLabs": "Importuj z ElevenLabs",
+  "form": {
+    "namePlaceholder": "Nazwa",
+    "voiceIdPlaceholder": "ID głosu (ElevenLabs)",
+    "languagePlaceholder": "Język",
+    "submit": "Dodaj"
+  },
+  "confirmDelete": "Na pewno usunąć głos?",
+  "importFailed": "Import nie powiódł się.",
+  "previewFailed": "Podgląd nie powiódł się.",
+  "unknownError": "Nieznany błąd.",
+  "empty": "Brak głosów w bibliotece.",
+  "active": "Aktywny",
+  "inactive": "Nieaktywny",
+  "remove": "Usuń",
+  "preview": {
+    "heading": "Podgląd głosu",
+    "defaultText": "Cześć, to przykład dla tego głosu.",
+    "selectPlaceholder": "Wybierz głos…",
+    "play": "Odtwórz podgląd"
+  }
+}

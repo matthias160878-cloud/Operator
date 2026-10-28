@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Öll efnisatriði á einum stað — búðu til, afritaðu, endurskrifaðu, bættu við talsetningu/texta og sendu í gegnum samþykktarferlið.",
+  "statusTabs": {
+    "all": "Allt",
+    "draft": "Drög",
+    "inReview": "Í yfirferð",
+    "approved": "Samþykkt",
+    "scheduled": "Áætlað",
+    "published": "Birt",
+    "archived": "Í safni"
+  },
+  "newItem": {
+    "openButton": "Nýtt efnisatriði",
+    "titleLabel": "Titill",
+    "platformLabel": "Miðill",
+    "create": "Búa til",
+    "closeAria": "Loka"
+  },
+  "table": {
+    "empty": "Engin efnisatriði enn — búðu til eitt handvirkt eða í gegnum Content Brain.",
+    "title": "Titill",
+    "platform": "Miðill",
+    "format": "Snið",
+    "status": "Staða",
+    "updated": "Uppfært",
+    "actions": "Aðgerðir",
+    "duplicate": "Afrita",
+    "delete": "Eyða",
+    "confirmDelete": "Viltu í alvöru eyða efnisatriðinu?"
+  },
+  "detail": {
+    "backLink": "Til baka í Content Factory",
+    "actionFailed": "Aðgerð mistókst.",
+    "actions": {
+      "review": "Senda í yfirferð",
+      "approve": "Samþykkja",
+      "reject": "Hafna",
+      "schedule": "Áætla",
+      "publish": "Birta",
+      "copy": "Afrita færslu",
+      "markPublished": "Birt handvirkt"
+    },
+    "rejectReasonPrompt": "Ástæða höfnunar (valfrjálst):",
+    "scheduleDatePrompt": "Birtingardagur (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Titill",
+      "hook": "Krækja",
+      "script": "Handrit",
+      "caption": "Myndatexti"
+    },
+    "save": "Vista",
+    "saving": "Vistar…",
+    "hashtags": {
+      "heading": "Myllumerki og leitarorð",
+      "regenerate": "Búa til aftur",
+      "empty": "Engin myllumerki búin til enn."
+    },
+    "voiceover": {
+      "heading": "Talsetning",
+      "generate": "Búa til",
+      "empty": "Engin talsetning búin til enn."
+    },
+    "subtitles": {
+      "heading": "Texti við myndskeið",
+      "generate": "Búa til (SRT)",
+      "download": "Sækja {file}",
+      "empty": "Enginn texti búinn til enn."
+    },
+    "video": {
+      "heading": "Myndskeiðavinnsla",
+      "request": "Biðja um vinnslu",
+      "note": "Myndskeiðaferli óháð veitu (kafli 11/12) — enginn myndskeiðaveita er stillt eins og er (sjá Samþættingar)."
+    },
+    "scriptVariants": {
+      "heading": "Handritsafbrigði",
+      "newVariant": "Nýtt afbrigði",
+      "empty": "Engin afbrigði enn.",
+      "variantSummary": "Afbrigði {label}"
+    },
+    "repurpose": {
+      "heading": "Endurnýta efni",
+      "description": "Búðu til afleidd atriði úr þessu efnisatriði sem henta fleiri miðlum. Fleiri miðlar = meiri líkur á að fólk sjái myndskeiðið.",
+      "selectAll": "Velja alla miðla",
+      "clearAll": "Afvelja allt",
+      "generateButton": "Búa til {count} afleidd atriði"
+    },
+    "approvalRevoked": "Samþykki afturkallað: Færslunni var breytt og þarf að fara aftur í yfirferð og samþykki.",
+    "job": {
+      "QUEUED": "Sjálfvirk sending áætluð {when}.",
+      "RUNNING": "Sending í gangi (tími {when}).",
+      "SUCCEEDED": "Birt á áætluðum tíma {when}.",
+      "FAILED": "Sending á áætluðum tíma {when} mistókst, færslan er aftur „Samþykkt“.",
+      "UNKNOWN": "Sending á áætluðum tíma {when}: óljós niðurstaða.",
+      "CANCELED": "Áætluð sending ({when}) var ekki framkvæmd."
+    },
+    "copied": "Texti og myllumerki afrituð — límdu þau nú inn í forrit miðilsins.",
+    "copyFailed": "Ekki var hægt að afrita — veldu textann handvirkt.",
+    "markPublishedConfirm": "Birtir þú færsluna sjálf(ur)? Hún verður merkt sem birt; áætlaðri sendingu verður hent."
+  }
+}

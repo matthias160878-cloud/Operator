@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Koolitusvideo",
+  "subtitlesLabel": "Subtiitrid",
+  "subtitlesOff": "Väljas",
+  "soundLabel": "Heli",
+  "soundOn": "Ettelugemishääl sees",
+  "soundOff": "Ettelugemishääl väljas",
+  "soundHint": "Ettelugemishääl tuleb sinu brauserist. Millised keeled on saadaval, sõltub sinu seadmest.",
+  "soundMissing": "Sinu seadmesse pole selle keele jaoks häält paigaldatud. Subtiitrid töötavad siiski.",
+  "draftNote": "Visand: päris rakenduse salvestus testandmetega. Subtiitrid on masintõlgitud.",
+  "whatLabel": "Mis see on, milline funktsioon sellel on ja kuidas seda kasutada.",
+  "videosTitle": "Selgitusvideod igale valdkonnale",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Esimesed sammud",
+      "cues": {
+        "c1": "Tere tulemast koolitusele: Esimesed sammud. Kõik, mida näed, on päris rakendus testandmetega.",
+        "c2": "Vasakul on navigeerimine. Rakenduse igal valdkonnal on siin oma kirje.",
+        "c3": "Samm 1: kontrolli jaotises „Integratsioonid“, millised teenused on ühendatud.",
+        "c4": "Iga rida näitab päris, kontrollitud olekut – mitte kunagi näilikku ühendust.",
+        "c5": "„Seadistamata“ tähendab: see teenus pole veel seadistatud. Ilma tehisintellekti pakkujata töötab rakendus mallirežiimis.",
+        "c6": "Samm 2: sisesta oma bränd jaotises „Brand DNA“. Toon, sihtrühm ja väärtused liiguvad igasse loodud teksti.",
+        "c7": "Näide: täida valdkond ja sihtrühm ning salvesta all.",
+        "c8": "Samm 3: lase jaotises „Ideed ja inspiratsioon“ luua esimene idee. Sisesta teema ja klõpsa „Genereeri ideid“.",
+        "c9": "Ideed ilmuvad kaartidena. Mallirežiimis on need näited, tehisintellekti pakkujaga muutuvad need individuaalseks.",
+        "c10": "Kõik jääb visandiks, kuni sina selle kinnitad. Iga valdkonna kohta on oma selgitusvideo."
+      }
+    },
+    "dashboard": {
+      "title": "Töölaud",
+      "cues": {
+        "c1": "Töölaud on sinu avaleht: ülevaade kõigest, mis sinu tööruumis toimub.",
+        "c2": "Üleval näed aktiivseid agente, sisutootmist ja planeeritud postitusi.",
+        "c3": "Allpool on viimased tegevused ning otseteed Content Factorysse ja Brand DNA-sse.",
+        "c4": "„Nädal“ abil vahetad näitajate ajavahemikku.",
+        "c5": "Nii kasutad seda: ava töölaud iga päev, vaata üle pooleli visandid ja hüppa siit otse sobivasse valdkonda."
+      }
+    },
+    "schulung": {
+      "title": "Koolitus",
+      "cues": {
+        "c1": "Koolitus on sinu juhend rakenduses. See selgitab iga valdkonda samm-sammult.",
+        "c2": "Igal teemal on kirjeldus, nummerdatud sammud ja link, mis avab sobiva lehe.",
+        "c3": "Siin ilmuvad ka need selgitusvideod, iga valdkonna kohta üks.",
+        "c4": "Nii kasutad seda: vali teema, loe sammud, ava leht ja proovi kohe järele."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory on tööpink kõigile sinu sisuühikutele ühes kohas.",
+        "c2": "Funktsioon: ühikuid luua, dubleerida, ümber kirjutada, häälkõne ja subtiitritega rikastada ning kinnitusprotsessist läbi viia.",
+        "c3": "Ülemised filtrid näitavad olekuid: Visand, Ülevaatusel, Kinnitatud, Planeeritud, Avaldatud ja Arhiveeritud.",
+        "c4": "Nii see käib: nupuga „Uus sisuühik“ lood ühiku.",
+        "c5": "Ava ühik, et muuta skripti, häälkõnet, subtiitreid, märksõnu ja pisipilti.",
+        "c6": "Kinnitamine on alati käsitsi samm. Midagi ei avaldata ilma sinu kinnituseta."
+      }
+    },
+    "ideas": {
+      "title": "Ideed ja inspiratsioon",
+      "cues": {
+        "c1": "Siin kogud ideid: teemaklastreid, sarju ja vorminguid tulevase sisu jaoks.",
+        "c2": "Funktsioon: IdeaAgent loob teemale ideid või lisad oma ideed käsitsi.",
+        "c3": "Nii see käib: sisesta teema, vali platvorm, eesmärk ja vorming ning klõpsa „Genereeri ideid“.",
+        "c4": "Iga idee muutub kaardiks, millel on pealkiri, tõmbenumber ja prioriteet.",
+        "c5": "Nupuga „Käsitsi“ lood oma idee.",
+        "c6": "Head ideed võtad Content Braini lähtepunktiks."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain teeb ideest täieliku sisuplaani.",
+        "c2": "Funktsioon: ta arvestab sinu Brand DNA-d ja loob iga valitud platvormi jaoks haagid, skriptid, märksõnad ja pisipildikontseptsioonid visandina.",
+        "c3": "Nii see käib: sisesta teema ja sihtrühm.",
+        "c4": "Vali eesmärk ja keel, seejärel klõpsa platvormidele. Siin lisandub TikTok.",
+        "c5": "Liuguriga määrad, mitu sisuühikut platvormi kohta tekib.",
+        "c6": "Klõps nupul „Genereeri sisuplaan“ käivitab töö.",
+        "c7": "Kampaania ilmub alla. Kõik ühikud on visandid ja asuvad Content Factorys."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA kirjeldab sinu brändi: nimi, valdkond, sihtrühm, toon ja väärtused.",
+        "c2": "Funktsioon: need andmed liiguvad automaatselt Content Brainisse ning skripti-, haagi- ja märksõnaagenti.",
+        "c3": "Nii see käib: täida väljad, näiteks valdkond ja sihtrühm.",
+        "c4": "Allpool hoiad eelistatud ja keelatud sõnu, tegevuskutseid ja brändi väärtusi.",
+        "c5": "Lõpuks klõpsad nupul „Salvesta Brand DNA“."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio on skriptide ja haakide töökoda.",
+        "c2": "Funktsioon: see ehitab skriptid struktuuriga haak, probleem, kasu, näide, tulemus ja tegevuskutse ning pakub mitu haagivarianti.",
+        "c3": "Nii see käib: sisesta teema ja vali platvorm.",
+        "c4": "Seejärel klõpsa „Genereeri skript ja haagid“.",
+        "c5": "Tulemus on visand, mida kasutad edasi Content Factorys."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio haldab hääli ja loob häälkõnet.",
+        "c2": "Funktsioon: häälteegi haldamine, eelvaadete loomine ja häälte import. Ühendus käib ElevenLabsi kaudu.",
+        "c3": "Nii see käib: lisa hääl käsitsi või impordi ElevenLabsist. Import vajab seadistatud ühendust.",
+        "c4": "Tekstist ja häälest loodud eelvaadet saad kohe esitada."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio on rakenduse videotoru.",
+        "c2": "Funktsioon: vormingute haldus, vahetatavad videopakkujad ning häälkõne ja subtiitrite ühendus.",
+        "c3": "Leht näitab, millised pakkujad on seadistatud. Seadistamata pakkujad märgitakse ausalt seadistamata.",
+        "c4": "Nii see käib: videoid lood Content Factorys iga sisuühiku juures."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio pakub pisipildikontseptsioone ja pildivarasid.",
+        "c2": "Funktsioon: pisipildi agent pakub pealkirja, pildiidee, teksti ja paigutuse. Canva integratsioon on siia ette nähtud.",
+        "c3": "Nii see käib: sisesta pisipildi teema.",
+        "c4": "Klõpsa „Genereeri kontseptsioon“.",
+        "c5": "Kontseptsioon on sulle malliks oma pildi jaoks."
+      }
+    },
+    "socialMedia": {
+      "title": "Sotsiaalmeedia",
+      "cues": {
+        "c1": "Siin ühendad oma platvormikontod ja näed nende olekut.",
+        "c2": "Funktsioon: ligipääsusid hallatakse serveri poolel ja salvestatakse krüpteeritult. Composio kaudu logid platvormi sisse.",
+        "c3": "Iga kaart näitab platvormi, kontot, olekut ja viimast lugemistesti.",
+        "c4": "„Pole veel seadistatud“ tähendab: haldur pole ühendust serveris veel aktiveerinud.",
+        "c5": "Nii see käib: kui see on seadistatud, klõpsad platvormi juures „Ühenda“ ja logid sisse. Loetakse ainult, midagi ei avaldata."
+      }
+    },
+    "calendar": {
+      "title": "Sisukalender",
+      "cues": {
+        "c1": "Sisukalender näitab planeeritud ja avaldatud sisu ülevaadet.",
+        "c2": "Funktsioon: siin ilmuvad kõik avaldamiskuupäevaga sisuühikud, platvormi järgi filtreeritavad.",
+        "c3": "Nii see käib: planeeri ühik Content Factorys kuupäevaga, siis ilmub see siia.",
+        "c4": "Enne iga avaldamist kontrollib rakendus reaalajas, kas sihtplatvorm on ühendatud."
+      }
+    },
+    "analytics": {
+      "title": "Analüütika",
+      "cues": {
+        "c1": "Analüütika näitab sinu tulemuslikkuse näitajaid.",
+        "c2": "Funktsioon: ainult tegelikult olemasolevad andmed, imporditud või sinu sisestatud. Midagi pole välja mõeldud.",
+        "c3": "Näed arengut ajas, enim tulemuslikku sisu ja Learning Agenti soovitusi.",
+        "c4": "Nii see käib: kui platvormid on ühendatud või sisestad andmeid, täituvad diagrammid."
+      }
+    },
+    "growth": {
+      "title": "Kasv",
+      "cues": {
+        "c1": "Kasvu leht annab soovitusi suurema ulatuse jaoks.",
+        "c2": "Funktsioon: sinu päris analüütikaandmetest arvutab see parimad postitusajad, edukad märksõnad ja vormingud.",
+        "c3": "Nii see käib: vali platvorm ja loe soovitusi.",
+        "c4": "Need on soovitused, mitte automaatika. Jälgijaid ega interaktsioone ei suurendata kunstlikult."
+      }
+    },
+    "revenue": {
+      "title": "Tulud",
+      "cues": {
+        "c1": "Jaotises Tulud koondad oma tulud platvormide ja kampaaniate lõikes.",
+        "c2": "Funktsioon: summad ilmuvad alles siis, kui need sisestad. Väljamõeldud numbreid pole.",
+        "c3": "Nii see käib: klõpsa „Registreeri tulu“, vali platvorm ja liik ning sisesta summa.",
+        "c4": "Välja makstakse alati otse platvormi kaudu. SECRET 58 ei tee väljamakseid."
+      }
+    },
+    "sales": {
+      "title": "Müük ja pood",
+      "cues": {
+        "c1": "„Müük ja pood“ näitab sinu enda ärituludesid.",
+        "c2": "Funktsioon: need on lahus sinu SECRET 58 paketist. Loetakse ainult tegelikud müügid, testandmed on märgitud.",
+        "c3": "Üleval on summad valuutade kaupa, all sinu pakkuja andmed väljaandja andmete jaoks.",
+        "c4": "Variant B: müük SECRET 58 kaudu. Variant A: olemasoleva poe import.",
+        "c5": "Nii see käib: täida pakkuja andmed ja salvesta, seejärel vali müügitee."
+      }
+    },
+    "website": {
+      "title": "Minu veebileht",
+      "cues": {
+        "c1": "Siin lisad veebilehe abilise oma veebilehele.",
+        "c2": "Funktsioon: abiline vastab sinu külastajate küsimustele.",
+        "c3": "Me ei muuda sinu veebilehte automaatselt. Lisad koodi ise või lased selle lisada oma veebidisaineril.",
+        "c4": "Nii see käib: sisesta veebiaadress ja klõpsa „Lisa veebileht“.",
+        "c5": "Seejärel kopeerid kuvatud koodi oma veebilehele."
+      }
+    },
+    "inbox": {
+      "title": "Postkast",
+      "cues": {
+        "c1": "Postkast koondab sõnumid ja kommentaarid kõigilt platvormidelt.",
+        "c2": "Funktsioon: MessageAgent pakub vastuseid. Saadetakse ainult see, mille sina kinnitad.",
+        "c3": "Nii see käib: kuni ükski platvorm pole otse ühendatud, klõpsad „Simuleeri vestlust“.",
+        "c4": "Vaata vastusevisand üle, kohanda seda ja kinnita."
+      }
+    },
+    "agents": {
+      "title": "Agendid",
+      "cues": {
+        "c1": "Agendi monitor näitab kõiki SECRET 58 agente.",
+        "c2": "Funktsioon: iga agendi olek, viimane ülesanne ja tulemus. Iga käivitus logitakse.",
+        "c3": "Käivituste ajaloost näed, mis millal töötas ja kas see õnnestus.",
+        "c4": "Nii kasutad seda: vaata siit, kui midagi pole oodatult loodud."
+      }
+    },
+    "integrations": {
+      "title": "Integratsioonid",
+      "cues": {
+        "c1": "Siin näed kõigi väliste teenuste reaalajas olekut.",
+        "c2": "Funktsioon: iga rida põhineb tegelikult seatud ligipääsudel. Näilikke ühendusi pole.",
+        "c3": "Rühmad on: tehisintellekti pakkujad, hääl, sotsiaalplatvormid, disain, video ja trendid.",
+        "c4": "Nii see käib: olekus „Seadistamata“ viib „Hangi API võti“ pakkuja lehele.",
+        "c5": "Välispakkujatel on oma hinnad. Iga teenuse juures on kirjas, milline mudel kehtib."
+      }
+    },
+    "billing": {
+      "title": "Pakett ja arveldus",
+      "cues": {
+        "c1": "Jaotises „Pakett ja arveldus“ näed oma paketti ja saad seda vahetada.",
+        "c2": "Funktsioon: tehisintellekti funktsioonid töötavad halduri ligipääsude kaudu. Sul pole oma tehisintellekti tellimust vaja.",
+        "c3": "Saadaval on Pro ja Maxi, kuu- või aastatasuga. Hinnad on kaartidel neto.",
+        "c4": "Ostetakse ainult selge klõpsuga nupul „Telli maksekohustusega“.",
+        "c5": "Kui sul on sooduskood, lunastad selle allolevas väljas."
+      }
+    },
+    "settings": {
+      "title": "Seaded",
+      "cues": {
+        "c1": "Seadetes haldad tööruumi, kasutajaid ja süsteemiteavet.",
+        "c2": "Funktsioon: tööruum, rollid, süsteemi olek, seadistusabiline ning sinu andmed koos andmete väljastamise ja kustutamisega.",
+        "c3": "Nii see käib: keri läbi jaotised. Tööruumi kustutamine nõuab lisakinnitust.",
+        "c4": "Vaata siin regulaarselt oma andmeid ja seadistusabilist."
+      }
+    }
+  }
+}

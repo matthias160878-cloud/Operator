@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Ghiduri pas cu pas și videoclipuri explicative pentru fiecare zonă din SECRET 58 — le poți consulta oricând aici.",
+ "schulung.topics.firstSteps.steps.0": "La „Integrări”, verifică dacă este configurat un furnizor de IA. Funcțiile IA rulează prin accesele operatorului, așa că nu ai nevoie de un abonament IA propriu. Fără furnizor de IA, aplicația funcționează în modul șabloane.",
+ "schulung.topics.integrations.steps.2": "Datele de acces nu sunt niciodată salvate în browser, ci doar protejat pe server. Dacă lipsește un acces, îl configurează operatorul.",
+ "schulung.topics.integrations.steps.3": "Costuri: Pro și Maxi sunt abonamente, lunare sau anuale. Prețurile actuale se află la „Pachet și facturare”. Fiecare furnizor extern are propriul model de costuri, independent (gratuit / în funcție de utilizare / abonament) — pe pagina Integrări, la fiecare serviciu se vede ce model se aplică, cu link către prețurile actuale ale furnizorului.",
+ "integrations.costNote": "Pachetul tău SECRET 58 (Pro sau Maxi) este un abonament, vezi „Pachet și facturare”. Fiecare serviciu extern de aici are propriul model de costuri, independent, la furnizorul respectiv — SECRET 58 nu facturează niciodată în plus pentru ele."
+}

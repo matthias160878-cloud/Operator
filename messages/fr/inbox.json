@@ -1,6 +1,6 @@
 {
   "title": "Boîte de réception",
-  "description": "Messages et commentaires de toutes les plateformes. Le MessageAgent propose des réponses — seul ce que tu approuves est envoyé. Il n'existe pas encore de véritable connexion OAuth à une plateforme, les conversations sont donc simulées manuellement ici plutôt que récupérées en direct.",
+  "description": "Messages et demandes au même endroit. Le MessageAgent propose des brouillons de réponse.",
   "emptyState": "Aucune conversation pour l'instant — simules-en une pour commencer.",
   "backToInbox": "Retour à la boîte de réception",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simuler un autre message entrant (test sans véritable connexion à la plateforme) :",
     "messagePlaceholder": "Texte du message …",
     "addButton": "Ajouter"
-  }
+  },
+  "simulationBanner": "<strong>Aperçu/simulation :</strong> les messages des plateformes ne sont pas encore récupérés et les réponses ne sont pas envoyées – pas même via « Approuver et envoyer ». Tu peux simuler ici des messages de plateformes pour essayer. Les vraies entrées proviennent uniquement des formulaires du site (p. ex. demandes de rendez-vous) ; tu y réponds par e-mail."
 }

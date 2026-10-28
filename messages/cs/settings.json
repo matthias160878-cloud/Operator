@@ -1,0 +1,27 @@
+{
+  "title": "Nastavení",
+  "description": "Tvůj pracovní prostor, uživatelé a přehled tvých dat. Vlastní API klíče (AI texty, rozesílání newsletteru) zadáváš v <zugaenge>Vlastní přístupy</zugaenge>; svůj balíček najdeš v <billing>Balíček a fakturace</billing>.",
+  "workspace": {
+    "title": "Pracovní prostor",
+    "name": "Název",
+    "slug": "Slug",
+    "createdAt": "Vytvořeno dne"
+  },
+  "users": {
+    "title": "Uživatelé a role",
+    "note": "Každý účet má vlastní pracovní prostor oddělený od ostatních zákazníků. Další uživatele zatím nemůžeš přidat sám."
+  },
+  "system": {
+    "title": "Systém",
+    "contentItems": "Položky obsahu",
+    "campaigns": "Kampaně",
+    "mediaAssets": "Mediální assety",
+    "agentRuns": "Běhy agentů",
+    "dbNote": "Počet záznamů uložených v tvém pracovním prostoru. Všechna data můžeš exportovat nebo pracovní prostor smazat níže v části „Moje data“."
+  },
+  "onboarding": {
+    "title": "Asistent nastavení",
+    "description": "Malá okna s postupem krok za krokem pro poskytovatele AI, platformy sociálních sítí a hlasový výstup, která se zobrazí při prvním otevření.",
+    "reopen": "Znovu otevřít asistenta nastavení"
+  }
+}

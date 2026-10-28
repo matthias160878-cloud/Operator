@@ -1,0 +1,21 @@
+{
+  "title": "Avustajien loki",
+  "description": "Kaikki SECRET 58 -avustajat (agentit) tilan, viimeisimmän tehtävän ja tuloksen kera. Jokainen ajo kirjataan tänne.",
+  "table": {
+    "agent": "Agentti",
+    "description": "Kuvaus",
+    "status": "Tila",
+    "lastTask": "Viimeisin tehtävä"
+  },
+  "history": {
+    "title": "Ajohistoria",
+    "agent": "Agentti",
+    "task": "Tehtävä",
+    "status": "Tila",
+    "start": "Alku",
+    "end": "Loppu",
+    "resultError": "Tulos / virhe",
+    "empty": "Ei vielä agenttiajoja.",
+    "completed": "Valmis"
+  }
+}

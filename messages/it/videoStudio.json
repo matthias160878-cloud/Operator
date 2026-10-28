@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "La creazione di video non è ancora disponibile: non è collegato alcun servizio che generi video. Qui sotto vedi i formati preparati per piattaforma; script, voce fuori campo e sottotitoli li crei in Script Studio, Voice Studio e nella Content Factory.",
+  "providerCardTitle": "Fornitori video",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Risorse video",
+  "assetsEmpty": "Nessun video ancora. La creazione di video non è ancora disponibile nell'app.",
+  "providerNote": "Nessun servizio video ancora utilizzabile: per ora i video non possono essere generati nell'app."
+}

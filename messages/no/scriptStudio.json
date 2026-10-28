@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Script- og hook-motor: lager plattformtilpassede script etter strukturen Hook → Problem → Value → Example → Payoff → CTA, samt flere hook-varianter.",
+  "form": {
+    "topicLabel": "Tema",
+    "topicPlaceholder": "f.eks. 5 måter KI-agenter sparer tid på",
+    "platformLabel": "Plattform",
+    "generateButton": "Generer script og hooks",
+    "generateFailed": "Genereringen mislyktes.",
+    "unknownError": "Ukjent feil."
+  },
+  "hookTypes": {
+    "direkt": "Direkte",
+    "neugierig": "Nysgjerrig",
+    "story": "Historie",
+    "problem": "Problem",
+    "zahlen": "Tall",
+    "kontroversSachlich": "Kontroversiell (saklig)",
+    "educational": "Pedagogisk"
+  },
+  "hooksHeading": "Hook-varianter",
+  "engine": {
+    "label": "Motor: {provider}",
+    "templateMode": "Malmodus (ingen KI-leverandør konfigurert)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Lagre som innholdselement",
+    "saving": "Lagrer…"
+  }
+}

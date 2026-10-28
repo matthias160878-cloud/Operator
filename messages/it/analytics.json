@@ -1,0 +1,15 @@
+{
+  "title": "Analytics",
+  "subtitle": "Le statistiche delle piattaforme (visualizzazioni, like, commenti, condivisioni) vengono recuperate automaticamente per YouTube e Facebook non appena un post è stato pubblicato tramite l'app, circa ogni sei ore. Instagram, TikTok e LinkedIn seguiranno non appena la piattaforma avrà concesso l'accesso. Puoi inserire a mano i numeri di altri post in <weiter>Passaparola</weiter> («Inserisci i numeri della piattaforma») o nel <varianten>confronto delle varianti</varianten>.",
+  "statViewsTotal": "Visualizzazioni totali",
+  "statLikesTotal": "Mi piace totali",
+  "statComments": "Commenti",
+  "statShares": "Condivisioni",
+  "chartTitle": "Performance dei contenuti nel tempo",
+  "chartLegend": "Visualizzazioni (viola) · Engagement % (turchese)",
+  "chartEmpty": "Nessuna statistica ancora: nessuno storico disponibile.",
+  "bestPerformingTitle": "Contenuti con le migliori performance",
+  "bestPerformingEmpty": "Nessuna statistica ancora: nessuna classifica possibile.",
+  "learningAgentTitle": "Learning Agent — Raccomandazioni",
+  "statsEmpty": "Nessuna statistica ancora salvata. Per YouTube e Facebook i numeri compaiono automaticamente non appena un post è stato pubblicato tramite l'app."
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Posta in arrivo",
+  "description": "Messaggi e richieste in un unico posto. MessageAgent propone bozze di risposta.",
+  "emptyState": "Ancora nessuna conversazione: simulane una per iniziare.",
+  "backToInbox": "Torna alla posta in arrivo",
+  "newConversation": {
+    "simulateButton": "Simula conversazione",
+    "simulateHint": "Poiché non esiste una vera connessione con una piattaforma, qui puoi simulare un messaggio in arrivo per provare la bozza di risposta generata dall'IA.",
+    "close": "Chiudi",
+    "namePlaceholder": "Nome",
+    "handlePlaceholder": "@handle (facoltativo)",
+    "messagePlaceholder": "Testo del messaggio …",
+    "createButton": "Crea"
+  },
+  "detail": {
+    "draftFailed": "Bozza non riuscita.",
+    "save": "Salva",
+    "edit": "Modifica",
+    "approveAndSend": "Approva e invia",
+    "requestDraft": "Richiedi bozza di risposta IA",
+    "openDraftExists": "C'è già una bozza aperta qui sopra: prima modificala/inviala.",
+    "simulateMoreHint": "Simula un altro messaggio in arrivo (test senza vera connessione alla piattaforma):",
+    "messagePlaceholder": "Testo del messaggio …",
+    "addButton": "Aggiungi"
+  },
+  "simulationBanner": "<strong>Anteprima/simulazione:</strong> i messaggi delle piattaforme non vengono ancora recuperati e le risposte non vengono inviate, nemmeno con «Approva e invia». Qui puoi simulare messaggi delle piattaforme per provare. Le voci reali arrivano solo dai moduli del sito (ad es. richieste di appuntamento); a queste rispondi via e-mail."
+}

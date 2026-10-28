@@ -1,0 +1,15 @@
+{
+  "title": "Analitika",
+  "subtitle": "A platformstatisztikák (megtekintések, kedvelések, hozzászólások, megosztások) lekérése YouTube és Facebook esetén automatikus, amint egy bejegyzés megjelent az alkalmazáson keresztül – nagyjából hatóránként. Az Instagram, a TikTok és a LinkedIn akkor következik, amint a platform engedélyezte a hozzáférést. Más bejegyzések számait kézzel rögzítheted az <weiter>Ajánlások</weiter> részben („Platformszámok rögzítése”) vagy a <varianten>változatok összehasonlításában</varianten>.",
+  "statViewsTotal": "Megtekintések összesen",
+  "statLikesTotal": "Kedvelések összesen",
+  "statComments": "Hozzászólások",
+  "statShares": "Megosztások",
+  "chartTitle": "Tartalom teljesítménye időben",
+  "chartLegend": "Megtekintések (lila) · Elköteleződés % (türkiz)",
+  "chartEmpty": "Még nincs statisztika – nincs elérhető alakulás.",
+  "bestPerformingTitle": "Legjobban teljesítő tartalmak",
+  "bestPerformingEmpty": "Még nincs statisztika – rangsor nem lehetséges.",
+  "learningAgentTitle": "Learning Agent — ajánlások",
+  "statsEmpty": "Még nincs elmentett statisztika. YouTube és Facebook esetén a számok automatikusan megjelennek, amint egy bejegyzés megjelent az alkalmazáson keresztül."
+}

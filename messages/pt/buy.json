@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Sem subscrição. Todos os agentes. Os teus próprios fornecedores de IA.",
+  "subtitle": "Uma ideia. Várias plataformas. Máximo alcance. Um único pacote completo — pagas uma vez e tens acesso total a toda a aplicação.",
+  "features": [
+    "Content Brain — uma ideia, todas as plataformas",
+    "Todos os agentes de IA: ideias, tendências, script, hook, hashtags, miniaturas, legendas, publicação",
+    "Voice Studio com vozes da ElevenLabs",
+    "Video Studio com gestor de formatos — ligação a geradores de vídeo com IA em desenvolvimento",
+    "Content Factory com fluxo de aprovação e Calendário de conteúdo",
+    "Analytics, recomendações de crescimento e acompanhamento de receitas",
+    "Caixa de entrada com rascunhos de resposta por IA",
+    "Livre escolha dos fornecedores de IA através de acessos próprios — sem quotas"
+  ],
+  "priceOnetime": "pagamento único",
+  "priceRecommendedNote": "Preço recomendado — só passa a ser vinculativo depois de o Stripe estar configurado com um preço adequado.",
+  "buyButton": "Comprar agora",
+  "redirecting": "A redirecionar para o Stripe …",
+  "checkoutFailed": "Falha no checkout.",
+  "unknownError": "Erro desconhecido.",
+  "notConfigured": "O pagamento ainda não está configurado — o operador tem primeiro de criar no Stripe um produto a {price} e registar STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Aviso: este preço é único e refere-se ao software. Algumas funções (p. ex. geração de texto por IA, saída de voz) requerem acessos próprios junto de fornecedores terceiros (p. ex. Anthropic, ElevenLabs) — os respetivos custos são independentes do SECRET 58 e são cobrados diretamente pelo fornecedor em causa, não aqui. Detalhes após a compra em Integrações.",
+  "setupServiceTitle": "Adicionar serviço de configuração (+{price} pagamento único)",
+  "setupServiceDescription": "Configuramos por ti as chaves de API, o Brand DNA e as primeiras publicações.",
+  "setupServiceUnavailable": "Disponível em breve — o operador tem primeiro de registar o serviço no Stripe.",
+  "autopilot": {
+    "kicker": "Em breve",
+    "title": "Autopilot — tudo incluído",
+    "subtitle": "Não precisas de acessos próprios: todos os custos de fornecedores para texto, voz e vídeo estão incluídos. Mesmas funcionalidades do pacote completo — os tamanhos só diferem na quantidade.",
+    "comingSoon": "Em breve",
+    "perMonth": "/ mês",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agência"
+    },
+    "brands": "{count, plural, one {# marca} other {# marcas}}",
+    "ideas": "{count} ideias de conteúdo por mês",
+    "videos": "{count} vídeos com IA (de 30 s) por mês",
+    "voiceMinutes": "{count} minutos de saída de voz por mês",
+    "note": "Preços previstos, ainda não disponíveis para reserva. O Autopilot arranca quando os geradores de vídeo com IA estiverem ligados."
+  }
+}

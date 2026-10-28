@@ -1,0 +1,15 @@
+{
+  "title": "Rritja",
+  "subtitle": "Rekomandime për shtrirje dhe rritje – të nxjerra nga statistikat e ruajtura të përmbajtjes sate: oraret më të mira të postimit, hashtag-ët dhe formatet më të suksesshme. Për YouTube dhe Facebook numrat merren automatikisht.",
+  "warning": "Qëllimisht <strong>nuk</strong> përfshihet: ndjekja/pëlqimi/komentimi i automatizuar për rritje artificiale të ndjekësve. Kjo shkel kushtet e përdorimit të YouTube, Instagram, TikTok, LinkedIn dhe Facebook dhe mund të çojë në bllokimin e llogarisë. Kjo faqe jep vetëm rekomandime të bazuara në të dhëna për përmbajtjen tënde.",
+  "filterAll": "Të gjitha platformat",
+  "emptyState": "Ende nuk ka statistika të ruajtura për {platform}, prandaj ende nuk ka rekomandime. Për YouTube dhe Facebook numrat shfaqen automatikisht pas publikimit përmes aplikacionit.",
+  "emptyStateDefaultScope": "këtë hapësirë pune",
+  "bestPostingTimesTitle": "Kohët më të mira të postimit",
+  "postingTime": "{day} · ora {hour}",
+  "avgLabel": "Ø {percent} ({count})",
+  "topHashtagsTitle": "Hashtag-et më të suksesshme",
+  "topHashtagsEmpty": "Nuk ka të dhëna hashtag-esh.",
+  "hashtagTooltip": "Ø {percent} engagement, përdorur {count}×",
+  "topFormatsTitle": "Formatet më të mira"
+}

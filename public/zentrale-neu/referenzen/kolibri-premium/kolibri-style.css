@@ -1,0 +1,114 @@
+/* Komplett auf #secret58-kolibri-section beschränkt: keine globalen Styles */
+#secret58-kolibri-section{--bg:#080a15;--ink:#f7f5ff;--muted:#b9b8cb;--line:#ffffff25;--soft:#131528;--violet:#b8a8ff;--cyan:#73f4f2;display:block;isolation:isolate;position:relative;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.55;font-size:16px}
+#secret58-kolibri-section *{box-sizing:border-box}
+#secret58-kolibri-section a{color:inherit;text-decoration:none}
+#secret58-kolibri-section button,#secret58-kolibri-section select,#secret58-kolibri-section textarea{font:inherit}
+#secret58-kolibri-section .k58-inner{position:relative;z-index:1;max-width:1320px;margin:auto;padding:0 30px}
+#secret58-kolibri-section .k58-ambient{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+#secret58-kolibri-section .k58-glow{position:absolute;border-radius:50%;filter:blur(65px);opacity:.33;mix-blend-mode:screen;animation:k58float 12s ease-in-out infinite alternate}
+#secret58-kolibri-section .g1{top:-110px;right:-200px;width:780px;height:680px;background:radial-gradient(circle,#8f6cf2,transparent 68%)}
+#secret58-kolibri-section .g2{top:760px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,#42bece,transparent 70%);animation-delay:-5s}
+#secret58-kolibri-section .g3{top:1950px;right:8%;width:680px;height:580px;background:radial-gradient(circle,#d35bcb,transparent 70%);animation-delay:-9s}
+#secret58-kolibri-section .k58-topbar{height:95px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);gap:15px}
+#secret58-kolibri-section .k58-mark{letter-spacing:.16em;font-weight:760;font-size:12px}#secret58-kolibri-section .k58-mark strong{color:#dbd1ff}#secret58-kolibri-section .k58-star{display:inline-block;margin-right:9px;color:#c4b4ff;font-size:21px}
+#secret58-kolibri-section .k58-toplink{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:760}#secret58-kolibri-section .k58-toplink span{margin-left:10px;color:var(--cyan)}
+#secret58-kolibri-section .k58-hero{min-height:660px;position:relative;padding:115px 0 130px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+#secret58-kolibri-section .k58-eyebrow,#secret58-kolibri-section .k58-kicker{font-size:11px;font-weight:760;letter-spacing:.2em;color:#bfb4ff;text-transform:uppercase}
+#secret58-kolibri-section .k58-live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#83edec;box-shadow:0 0 15px #83edec;vertical-align:middle;margin-right:8px}
+#secret58-kolibri-section h1,#secret58-kolibri-section h2,#secret58-kolibri-section h3,#secret58-kolibri-section p{margin-top:0}
+#secret58-kolibri-section h1{font-weight:750;letter-spacing:-.085em;line-height:.95;font-size:clamp(60px,8.4vw,127px);max-width:820px;margin:29px 0}
+#secret58-kolibri-section h1 em,#secret58-kolibri-section h2 em,#secret58-kolibri-section h3 em{font-weight:420;font-style:italic;color:#c7b7ff}
+#secret58-kolibri-section .k58-hero>p{color:var(--muted);font-size:18px;max-width:600px;line-height:1.8;position:relative;z-index:1}
+#secret58-kolibri-section .k58-hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:21px;position:relative;z-index:2}
+#secret58-kolibri-section .k58-btn{display:inline-flex;align-items:center;justify-content:center;gap:25px;min-height:48px;padding:15px 23px;border-radius:40px;font-size:13px;font-weight:760;border:1px solid #ffffff4a;cursor:pointer;transition:background .25s,transform .25s,color .25s;white-space:normal;text-align:center}
+#secret58-kolibri-section .k58-btn:hover{transform:translateY(-3px)}#secret58-kolibri-section .k58-primary{background:#eeeaff;color:#10101a;border-color:#eeeaff}#secret58-kolibri-section .k58-primary:hover{background:#c5b6ff}
+#secret58-kolibri-section .k58-outline{background:#ffffff0c;color:#fff}#secret58-kolibri-section .k58-outline:hover{background:#ffffff2c}
+#secret58-kolibri-section .k58-orbit{position:absolute;right:-60px;top:120px;width:430px;height:430px;transform:rotate(-20deg);opacity:.86;pointer-events:none;animation:k58orb 13s ease-in-out infinite alternate}
+#secret58-kolibri-section .k58-orb{position:absolute;inset:70px;border-radius:50%;background:conic-gradient(from 30deg,#86ffee,#895cfc,#f695cc,#7da3f8,#fff2ab,#86ffee);filter:blur(1px);box-shadow:0 0 90px #895cfc80;animation:k58hue 11s linear infinite}
+#secret58-kolibri-section .k58-rim{position:absolute;inset:20px;border:1px solid #ffffff35;border-radius:50%;box-shadow:0 0 0 42px #ffffff05,0 0 0 75px #ffffff05}
+#secret58-kolibri-section .k58-wing{position:absolute;background:linear-gradient(75deg,#86ffff4a,#d483ffb8,#ffa8d4a8);filter:blur(3px);border-radius:90% 0 90% 0;transform-origin:bottom right}
+#secret58-kolibri-section .wing1{width:285px;height:135px;top:16px;left:40px;transform:rotate(34deg)}#secret58-kolibri-section .wing2{width:230px;height:100px;top:35px;left:125px;transform:rotate(96deg)}#secret58-kolibri-section .wing3{width:280px;height:100px;bottom:20px;left:90px;transform:rotate(-25deg)}
+#secret58-kolibri-section .k58-features{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;padding:23px 0;font-size:12px;font-weight:650;letter-spacing:.04em;color:#d9d8e8;flex-wrap:wrap}
+#secret58-kolibri-section .k58-heading{scroll-margin-top:80px;margin:118px 0 37px;display:flex;align-items:end;justify-content:space-between;gap:55px}
+#secret58-kolibri-section .k58-heading h2,#secret58-kolibri-section .k58-calc h2,#secret58-kolibri-section .k58-platform h2{font-size:clamp(47px,5.3vw,74px);line-height:1.01;letter-spacing:-.072em;margin:20px 0 0}
+#secret58-kolibri-section .k58-heading>p{max-width:400px;font-size:14px;color:var(--muted);line-height:1.9;margin:0 0 10px}
+#secret58-kolibri-section .k58-demos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+#secret58-kolibri-section .k58-demo{border-radius:19px;overflow:hidden;border:1px solid #ffffff27;background:#15182b;transition:transform .25s,border-color .25s}
+#secret58-kolibri-section .k58-demo:hover{transform:translateY(-7px);border-color:#c6b7ff80}
+#secret58-kolibri-section .k58-cover{display:block;position:relative;height:270px;overflow:hidden;background:#24283a}
+#secret58-kolibri-section .k58-cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .55s}
+#secret58-kolibri-section .k58-cover:hover img{transform:scale(1.05)}
+#secret58-kolibri-section .k58-open{position:absolute;right:16px;bottom:16px;padding:9px 13px;background:#100f21d9;border:1px solid #ffffff85;border-radius:30px;color:white;font-size:11px;font-weight:760;backdrop-filter:blur(12px)}
+#secret58-kolibri-section .k58-demo-info{padding:24px;display:flex;flex-direction:column;justify-content:space-between;min-height:235px;gap:16px}
+#secret58-kolibri-section .k58-num{font-size:10px;letter-spacing:.15em;color:#b5b0d5;font-weight:760}
+#secret58-kolibri-section .k58-demo h3{font-size:37px;letter-spacing:-.055em;line-height:1;margin:9px 0 13px}
+#secret58-kolibri-section .k58-demo p{font-size:13px;color:#b6bad2;line-height:1.7;margin:0}
+#secret58-kolibri-section .k58-link{display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:760;border-top:1px solid #ffffff23;padding-top:15px}
+#secret58-kolibri-section .k58-link span{color:#9ef1e8;font-size:18px}
+#secret58-kolibri-section .k58-packages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+#secret58-kolibri-section .k58-plan{display:flex;flex-direction:column;align-items:stretch;background:#111425;border:1px solid #ffffff27;border-radius:21px;padding:25px;min-height:625px}
+#secret58-kolibri-section .k58-featured{background:linear-gradient(180deg,#252042,#141527 85%);border-color:#b5a0ff90}
+#secret58-kolibri-section .k58-plan-index{letter-spacing:.14em;font-size:11px;color:#c7baff;font-weight:800}
+#secret58-kolibri-section .k58-plan-art{position:relative;height:127px;border-radius:13px;margin:20px 0 19px;overflow:hidden;display:flex;justify-content:space-between;align-items:flex-end;padding:12px 15px;font-weight:800;font-size:10px;letter-spacing:.15em;color:#fff}
+#secret58-kolibri-section .plan-art-premium{background:radial-gradient(circle at 75% 65%,#ffaee8,#b38deb 38%,#443e85 80%)}
+#secret58-kolibri-section .plan-art-ultimate{background:conic-gradient(from 90deg,#8e66dc,#68ccda,#6a9bff,#d77ccf,#8e66dc)}
+#secret58-kolibri-section .plan-art-signature{background:radial-gradient(circle at 82% 10%,#8d6c67,#352537 45%,#080e1b 90%)}
+#secret58-kolibri-section .k58-art-letter{font-size:100px;line-height:.9;font-weight:860;letter-spacing:-.14em;opacity:.3}
+#secret58-kolibri-section .k58-plan h3{font-size:26px;letter-spacing:-.04em;line-height:1.1;margin:0 0 10px}
+#secret58-kolibri-section .k58-plan p{color:var(--muted);font-size:12px;line-height:1.7;min-height:88px;margin:0}
+#secret58-kolibri-section .k58-price{font-size:34px;font-weight:770;letter-spacing:-.06em;line-height:1.1;margin-top:16px}
+#secret58-kolibri-section .k58-price small{font-size:13px;letter-spacing:0;font-weight:500;color:#c8c3de}
+#secret58-kolibri-section .k58-subprice{color:#a5a3bf;font-size:11px;margin-top:5px}
+#secret58-kolibri-section .k58-plan ul{margin:24px 0 25px;padding:0;list-style:none;display:grid;gap:10px;font-size:12px;color:#dad9e8}
+#secret58-kolibri-section .k58-plan li{position:relative;padding-left:19px}
+#secret58-kolibri-section .k58-plan li:before{content:'✦';position:absolute;left:0;color:#b6b0ff}
+#secret58-kolibri-section .k58-plan .k58-btn{margin-top:auto;width:100%}
+#secret58-kolibri-section .k58-platform{position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:45px;align-items:center;margin-top:110px;padding:50px;border:1px solid #ffffff2f;background:linear-gradient(125deg,#15182d,#211934 70%,#111624);border-radius:28px;overflow:hidden}
+#secret58-kolibri-section .k58-platform-icon{display:grid;place-items:center;position:relative;border-radius:50%;width:min(100%,320px);aspect-ratio:1;font-size:clamp(100px,15vw,165px);font-weight:800;letter-spacing:-.1em;color:#d7c8ff;background:conic-gradient(from 45deg,#2b2851,#654ca1,#2a7392,#32235b,#2b2851);border:1px solid #f6edff70;box-shadow:0 0 0 28px #ffffff09,0 0 90px #7e55de65}
+#secret58-kolibri-section .k58-platform-icon span{position:absolute;font-size:29px;top:25px;right:60px;color:#aefaf3}
+#secret58-kolibri-section .k58-platform p{color:var(--muted);line-height:1.85;font-size:14px;margin-top:22px}
+#secret58-kolibri-section .k58-flag{display:inline-flex;margin-top:10px;padding:9px 13px;background:#ffffff12;border:1px solid #ffffff25;border-radius:20px;font-size:11px;color:#d3cae7}
+#secret58-kolibri-section .k58-calc{scroll-margin-top:60px;margin:110px 0 110px;display:grid;grid-template-columns:.92fr 1.08fr;gap:70px;align-items:start}
+#secret58-kolibri-section .k58-calc p{color:var(--muted);font-size:15px;line-height:1.85;max-width:430px;margin-top:26px}
+#secret58-kolibri-section .k58-calc-fine{margin-top:45px;font-size:11px;color:#9c9ab1;line-height:1.8;max-width:330px}
+#secret58-kolibri-section .k58-form{display:flex;flex-direction:column;gap:12px;padding:30px;background:#15182a;border:1px solid #ffffff30;border-radius:23px}
+#secret58-kolibri-section .k58-form>label,#secret58-kolibri-section .k58-form legend{font-size:12px;font-weight:700;color:#f0eefa}
+#secret58-kolibri-section .k58-form select{width:100%;border:1px solid #ffffff42;border-radius:10px;background:#0d1020;color:white;padding:12px 11px;font-size:13px;min-height:48px;margin-bottom:9px;cursor:pointer}
+#secret58-kolibri-section .k58-form fieldset{border:0;padding:0;margin:0;min-width:0}
+#secret58-kolibri-section .k58-form legend{margin-bottom:15px}
+#secret58-kolibri-section .k58-check{display:flex;align-items:center;gap:11px;font-size:12px;margin:0 0 16px;color:#d1cfe0;cursor:pointer}
+#secret58-kolibri-section .k58-check input{accent-color:#aa93fa;width:16px;height:16px;flex:none}
+#secret58-kolibri-section .k58-check span{display:flex;justify-content:space-between;width:100%;gap:12px;flex-wrap:wrap}#secret58-kolibri-section .k58-check b{font-weight:660;color:white}
+#secret58-kolibri-section .k58-result{border-top:1px solid #ffffff30;margin-top:8px;padding:24px 0 14px;display:flex;flex-direction:column;gap:6px}
+#secret58-kolibri-section .k58-result>span{font-size:12px;color:#c6c3df}#secret58-kolibri-section .k58-result>strong{font-size:clamp(40px,4vw,58px);letter-spacing:-.065em}#secret58-kolibri-section .k58-result>small{font-size:10px;color:#abaac3;line-height:1.7}
+#secret58-kolibri-section .k58-print{width:100%;border:0}
+#secret58-kolibri-section .k58-output{margin-top:8px;font-size:12px}#secret58-kolibri-section .k58-output label{display:block;margin-bottom:9px}
+#secret58-kolibri-section .k58-output textarea{display:block;width:100%;border:1px solid #ffffff48;background:#080b17;color:#f3f0ff;border-radius:12px;padding:14px;resize:vertical;font-size:12px;line-height:1.6}
+#secret58-kolibri-section .k58-footer{border-top:1px solid #ffffff32;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;padding:25px 0 38px;color:#a6a5bb;font-size:11px;letter-spacing:.07em}
+@keyframes k58float{to{transform:translate(75px,110px) scale(1.12)}}@keyframes k58orb{to{transform:rotate(20deg) translateY(-18px)}}@keyframes k58hue{to{filter:hue-rotate(360deg)}}
+@media(max-width:1020px){#secret58-kolibri-section .k58-demos,#secret58-kolibri-section .k58-packages{grid-template-columns:repeat(2,minmax(0,1fr))}#secret58-kolibri-section .k58-plan{min-height:595px}#secret58-kolibri-section .k58-orbit{opacity:.34;right:-160px}}
+@media(max-width:690px){#secret58-kolibri-section .k58-inner{padding:0 18px}#secret58-kolibri-section .k58-topbar{height:75px}#secret58-kolibri-section .k58-mark{font-size:10px}#secret58-kolibri-section .k58-toplink{font-size:10px}#secret58-kolibri-section .k58-hero{min-height:565px;padding:85px 0 90px}#secret58-kolibri-section .k58-hero>p{font-size:15px;max-width:470px}#secret58-kolibri-section .k58-orbit{width:340px;height:340px;right:-145px;top:135px;opacity:.2}#secret58-kolibri-section .k58-heading{margin-top:80px;display:block}#secret58-kolibri-section .k58-heading>p{margin-top:23px}#secret58-kolibri-section .k58-demos,#secret58-kolibri-section .k58-packages,#secret58-kolibri-section .k58-platform,#secret58-kolibri-section .k58-calc{grid-template-columns:1fr}#secret58-kolibri-section .k58-demo-info{min-height:200px}#secret58-kolibri-section .k58-cover{height:330px}#secret58-kolibri-section .k58-platform{padding:30px;gap:45px}#secret58-kolibri-section .k58-platform-icon{max-width:220px;justify-self:center}#secret58-kolibri-section .k58-calc{gap:25px;margin:80px 0}#secret58-kolibri-section .k58-calc-fine{margin-top:15px}#secret58-kolibri-section .k58-plan{min-height:unset}#secret58-kolibri-section .k58-plan p{min-height:unset}#secret58-kolibri-section .k58-plan ul{margin-top:22px}}
+@media(prefers-reduced-motion:reduce){#secret58-kolibri-section .k58-glow,#secret58-kolibri-section .k58-orbit,#secret58-kolibri-section .k58-orb{animation:none}#secret58-kolibri-section .k58-btn,#secret58-kolibri-section .k58-demo,#secret58-kolibri-section .k58-cover img{transition:none}}
+
+/* Zusätzliche Galerie – vollständig auf den Kolibri-Bereich beschränkt. */
+#secret58-kolibri-section .k58-concept-heading{margin-top:100px}
+#secret58-kolibri-section .k58-concept-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+#secret58-kolibri-section .k58-concept-card{background:linear-gradient(152deg,#1c2034,#111424);border:1px solid #ffffff25;border-radius:20px;overflow:hidden;transition:transform .3s,border-color .3s;display:flex;flex-direction:column}
+#secret58-kolibri-section .k58-concept-card:hover{transform:translateY(-7px);border-color:#cdbfff99}
+#secret58-kolibri-section .k58-concept-image{display:block;height:260px;position:relative;overflow:hidden;background:#141526}
+#secret58-kolibri-section .k58-concept-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s ease,filter .8s ease;object-position:center}
+#secret58-kolibri-section .k58-concept-card:hover img{transform:scale(1.06);filter:saturate(1.2)}
+#secret58-kolibri-section .k58-concept-image:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#080a1699,transparent 46%)}
+#secret58-kolibri-section .k58-concept-tap{position:absolute;z-index:1;bottom:14px;left:15px;right:15px;display:inline-flex;width:max-content;max-width:calc(100% - 30px);align-items:center;padding:9px 13px;border-radius:20px;font-size:11px;color:white;background:#0b0d20db;border:1px solid #ffffff65;backdrop-filter:blur(8px)}
+#secret58-kolibri-section .k58-concept-body{padding:24px;display:flex;flex-direction:column;flex:1;min-height:230px}
+#secret58-kolibri-section .k58-concept-metadata{color:#b5addd;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+#secret58-kolibri-section .k58-concept-body h3{font-size:29px;letter-spacing:-.04em;margin:8px 0 11px;line-height:1.16}
+#secret58-kolibri-section .k58-concept-body p{color:#bdbbd3;font-size:13px;line-height:1.75;flex:1;margin:0 0 18px}
+#secret58-kolibri-section .k58-concept-action{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #ffffff24;padding-top:14px;font-size:12px;font-weight:750}
+#secret58-kolibri-section .k58-concept-action b{font-size:18px;color:#87f8ee}
+#secret58-kolibri-section .k58-concept-note{margin-top:17px;color:#aaa8c2;font-size:11px;line-height:1.65}
+#secret58-kolibri-section.k58-gallery-only{background:transparent}
+#secret58-kolibri-section.k58-gallery-only .k58-inner{padding-bottom:25px}
+@media(max-width:1020px){#secret58-kolibri-section .k58-concept-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:690px){#secret58-kolibri-section .k58-concept-grid{grid-template-columns:1fr}#secret58-kolibri-section .k58-concept-image{height:250px}#secret58-kolibri-section .k58-concept-body{min-height:190px}}
+@media(prefers-reduced-motion:reduce){#secret58-kolibri-section .k58-concept-card,#secret58-kolibri-section .k58-concept-image img{transition:none}}

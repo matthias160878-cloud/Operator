@@ -18,7 +18,7 @@ Rechtsberatung und ersetzt weder AGB noch Datenschutzerklärung.
 | KI-Kontext | Agenten erhalten nur Daten des eigenen Workspaces. Der Webseiten-Assistent erhält nur öffentliche Markenangaben. |
 | Hintergrundjobs | Es gibt keine zeitgesteuerten Hintergrundjobs; alle Agenten laufen in Anfragen des angemeldeten Kunden. |
 | Export / Löschung | `Einstellungen → Meine Daten`: JSON-Export, endgültige Löschung des Arbeitsbereichs inkl. Dateien (Passwort + „LÖSCHEN“). |
-| Betreiber | Konto nur über `/setup` mit `OPERATOR_SETUP_TOKEN` (mind. 32 Zeichen), nur solange noch kein Betreiber existiert. Kein einfaches Admin-Passwort. |
+| Betreiber | Konto nur über `/setup` mit `OPERATOR_SETUP_TOKEN` (mind. 32 Zeichen), nur solange noch kein Betreiber existiert. Alternativ (Datenbank von außen nicht erreichbar, z. B. Render): bereits registriertes Konto über `OPERATOR_PROMOTE_EMAIL` beim Serverstart befördern — ebenfalls nur, solange es keinen Betreiber gibt. Kein einfaches Admin-Passwort. |
 | Support-Zugriff | **Nicht umgesetzt.** Der Betreiber hat keine Ansicht auf Kundeninhalte. Ein autorisierter, befristeter und protokollierter Supportzugang wäre eine eigene Erweiterung. |
 
 Bestehende Kundenkonten aus dem früheren Einzelzugang (`OWNER_ACCESS_KEY`,
@@ -31,7 +31,9 @@ Die zentrale Definition steht in `src/lib/plans.ts`. Verkaufsseite (`/buy`),
 Paketseite (`/billing`), Checkout, Berechtigungen und Kontingente greifen alle
 darauf zu.
 
-* **Abgerechnet wird über den Stripe-Preis** (`STRIPE_PRICE_ID_PRO` / `STRIPE_PRICE_ID_MAXI`).
+* **Abgerechnet wird über den Stripe-Preis** (`STRIPE_PRICE_ID_PRO` / `_MAXI` monatlich,
+  `STRIPE_PRICE_ID_PRO_YEAR` / `_MAXI_YEAR` jährlich). Kontingente gelten auch im Jahresabo
+  je Kalendermonat; nicht genutzte Mengen verfallen am Monatsende.
   Die Anwendung prüft vor jedem Checkout, dass er zu den bestätigten Konditionen passt.
   (Die Webhook-Verarbeitung kann technisch auch Einmalzahlungen, sie werden aber nicht verkauft.)
 * **Preise (bestätigt am 7. Oktober 2026):** Pro **590 € netto**, Maxi **797 € netto**,
@@ -164,6 +166,49 @@ Summen werden je Währung getrennt angezeigt, Testdaten (`livemode=false`) sind 
 * Ein **Telefonassistent ist nicht umgesetzt** (dafür wären Telefonie-Anbindung,
   Rufnummer, Einwilligungen und Datenschutzabläufe nötig).
 
+## 7b. Composio: „Konto verbinden“ (nur lesender Zugriffstest)
+
+Composio ist eine **zusätzliche** Anmeldemöglichkeit neben den nativen
+OAuth-Anbindungen (`src/lib/oauth/providers.ts`). Über Composio wird in
+SECRET 58 **nichts veröffentlicht**; es gibt nur Verbinden, Lesetest,
+Erneuern und Trennen. Eine Composio-Verbindung in Claude/Claude Code ist
+davon unabhängig und beweist keine Integration in diese Anwendung.
+
+| Funktion | Native OAuth | Composio |
+|---|---|---|
+| Plattformen | YouTube, TikTok, Instagram, Facebook, LinkedIn | Instagram, Facebook-Seite, LinkedIn, YouTube |
+| Zugangstoken | verschlüsselt in eigener DB (`TOKEN_ENCRYPTION_KEY`) | nur bei Composio; DB speichert Konto-ID + Status |
+| Veröffentlichen | vorbereitet, nur nach Freigabe | nicht vorgesehen |
+| Lesetest | — | ja (`/api/composio/[id]/test`) |
+
+Ablauf (`src/lib/composio/`, `src/app/api/composio/`):
+
+1. „Konto verbinden“ → `POST /api/composio/connect` → Composio
+   `POST /api/v3/connected_accounts/link` mit `user_id = <COMPOSIO_USER_PREFIX>-ws-<workspaceId>`
+   und einem einmaligen Sicherheitscode im Rückkehr-Link (nur HMAC-Hash in der DB, 15 Min. gültig).
+2. Rückkehr `GET /api/composio/callback` verlangt die Sitzung desselben Kunden
+   (ohne Sitzung: erst Anmeldung, dann derselbe Link), prüft Sicherheitscode,
+   Konto-ID und fragt das Konto bei Composio nach: `user_id` und Toolkit müssen
+   passen, Status muss `ACTIVE` sein. Sonst wird nichts zugeordnet.
+3. Erneuern behält die alte Verbindung, bis die neue aktiv ist, und löscht sie dann bei Composio.
+4. Trennen und Kontolöschung löschen die Verbindung auch bei Composio.
+5. Grenzen: 10 Verbindungsversuche/Stunde, 30 Lesetests/Tag je Arbeitsbereich. Audit-Log `composio.*`.
+
+Einrichtung (Betreiber, nur Server-Umgebung, nie im Repo/Chat):
+
+- `COMPOSIO_API_KEY` — Projekt-Schlüssel aus platform.composio.dev.
+- `COMPOSIO_AUTH_CONFIG_INSTAGRAM|FACEBOOK|LINKEDIN|YOUTUBE` — Auth-Config-IDs (`ac_…`);
+  ohne Eintrag erscheint die Plattform als „Noch nicht eingerichtet“.
+- `COMPOSIO_USER_PREFIX` — z. B. `s58test` (Staging) bzw. `s58live`, damit sich Umgebungen nicht mischen.
+- `PUBLIC_APP_URL` — **Pflicht hinter Render/Proxy**, sonst kann die Rückkehr-Adresse falsch sein.
+- Optional `COMPOSIO_READ_TOOL_<PLATTFORM>`: Lese-Werkzeug überschreiben. Dokumentiert bestätigt sind
+  `INSTAGRAM_GET_USER_INFO` und `YOUTUBE_GET_CHANNEL_STATISTICS`; `LINKEDIN_GET_MY_INFO` und
+  `FACEBOOK_LIST_MANAGED_PAGES` vor dem ersten echten Test im Composio-Dashboard prüfen.
+
+Ob der Schlüssel wirkt, zeigt „Integrationen“ (lesender Aufruf `GET /api/v3/auth_configs`).
+Geprüft ist der Ablauf nur gegen eine lokale Attrappe (`tests/fake-services.mjs`) — **kein echter
+Composio-Aufruf, kein echtes Plattformkonto**.
+
 ## 7a. Missbrauchsschutz
 
 * Ratenbegrenzung über die Datenbank. Die Client-Adresse ist der Eintrag, den der
@@ -221,14 +266,90 @@ Empfohlener Aufbau (Windows Server 2022/2025):
    - Wiederherstellung regelmäßig testen
 8. **Updates:** `git pull`, `npm ci`, Migrationen, Build, Dienst neu starten.
 
+## 8a. Private Staging-Umgebung auf Render (PostgreSQL + persistente Medien)
+
+Lokal und in den Tests bleibt SQLite. Für den Serverbetrieb stellt
+`scripts/use-postgres.mjs` das Schema beim Build auf PostgreSQL um.
+
+| Einstellung | Wert |
+|---|---|
+| Build Command | `npm ci && npm run build:server` |
+| Start Command | `npm run start:server` (`prisma db push` ohne `--accept-data-loss`, dann `next start`) |
+| Health Check Path | `/api/health` (prüft Datenbank und Medienablage, gibt keine Inhalte preis) |
+| Persistent Disk | Mount `/var/data`, `MEDIA_STORAGE_DIR=/var/data/media` |
+| Datenbank | Render PostgreSQL 16, `DATABASE_URL` = **interne** Verbindungsadresse |
+
+Umgebungsvariablen nur im Render-Dashboard setzen, Geheimnisse dort mit „Generate“
+erzeugen, nie im Chat oder Repo: `DATABASE_URL`, `TOKEN_ENCRYPTION_KEY`,
+`MEDIA_URL_SECRET`, `OPERATOR_SETUP_TOKEN`. Ohne Geheimnis gesetzt:
+`NODE_ENV=production`, `PUBLIC_APP_URL`, `SITE_NOINDEX=true` (kein Suchmaschinen-Index),
+`SIGNUP_ALLOWED_EMAILS` (Komma-Liste; nur diese Adressen dürfen sich registrieren),
+`COMPOSIO_USER_PREFIX=s58test`. `PACKAGE_TERMS_CONFIRMED` bleibt im Staging ungesetzt
+(kein Verkauf).
+
+Versand zum Termin: entweder `PUBLISH_WORKER=inline` (im Webdienst; schläft im
+Gratistarif mit) oder ein eigener Render-Background-Worker mit Build
+`npm ci && npm run build:server`, Start `npm run worker` und denselben Variablen
+(`DATABASE_URL`, `TOKEN_ENCRYPTION_KEY`, `MEDIA_URL_SECRET`, `PUBLIC_APP_URL`).
+Nie beide gleichzeitig. `.npmrc` (`include=dev`) sorgt dafür, dass Prisma/tsx auch
+mit `NODE_ENV=production` installiert werden.
+
+Sicherung und Wiederherstellung:
+
+- Render-PostgreSQL (kostenpflichtiger Plan) bietet Point-in-Time-Recovery im Dashboard;
+  zusätzlich vor jeder Schemaänderung `pg_dump -Fc` über die externe Adresse ziehen.
+- Persistente Disks werden von Render täglich als Snapshot gesichert (Wiederherstellung im Dashboard).
+- Geprüft am 10.10.2026 lokal mit PostgreSQL 16: `pg_dump -Fc` → Datenbank gelöscht →
+  `pg_restore --no-owner` → Anmeldung und Daten wieder vorhanden, `/api/health` ok.
+  Eine Wiederherstellung **auf Render** ist damit noch nicht geprüft.
+- Integrationssuite gegen PostgreSQL: leere Datenbank anlegen, `DATABASE_URL=… npm run build:server`,
+  dann `TEST_DATABASE_URL=… npm run test:integration` (am 10.10.2026: 25/25).
+
+**Datenbank seit 20.10.2026 bei Neon** (Projekt „secret58“, Region AWS Frankfurt, kostenloser Tarif ohne
+Ablaufdatum, 1 GB). `DATABASE_URL` des Render-Dienstes zeigt auf die direkte (nicht gepoolte) Neon-Adresse
+mit `sslmode=require`; die Tabellen legt `npm run start:server` per `prisma db push` an. Die alte
+kostenlose Render-Datenbank „secret58-staging-db“ läuft am 09.11.2026 ab und wird nicht mehr genutzt.
+Sicherung: Neon stellt nur die letzten 6 Stunden wieder her – regelmäßig `pg_dump -Fc "<Neon-URL>"`
+von einem eigenen Rechner ziehen. Im Betreiberbereich gespeicherte Zugänge (`/operator/zugaenge`)
+lagen in der alten Datenbank und müssen einmal neu eingetragen werden.
+
 ## 9. Stripe-Einrichtung (Betreiber, zuerst im Testmodus)
 
-0. **Stripe Tax aktivieren** (Einstellungen → Steuern): Ursprungsadresse,
-   Steuerregistrierungen (z. B. Deutschland; OSS für EU-Privatkunden), Produktsteuercode
-   für Software/SaaS. Stripe Tax ist bei Stripe kostenpflichtig.
-1. Im Testmodus zwei Produkte *Pro* (590,00 €) und *Maxi* (797,00 €) mit je einem
-   **monatlich wiederkehrenden** Preis anlegen, **Steuerverhalten „exklusive Steuer“**.
-   Die Preis-IDs in `STRIPE_PRICE_ID_PRO/MAXI` eintragen.
+**Umsatzsteuer-Modus** (`UMSATZSTEUER_MODUS`, Standard `KLEINUNTERNEHMER`):
+SECRET 58 ist Kleinunternehmer nach § 19 UStG. Alle Paketpreise sind **Endpreise**,
+es wird keine Umsatzsteuer berechnet oder ausgewiesen, Stripe Tax bleibt aus
+(`automatic_tax` deaktiviert, keine USt-IdNr.-Abfrage). Nur wer später zur
+Regelbesteuerung wechselt, setzt `UMSATZSTEUER_MODUS=REGEL` – dann gelten wieder
+Nettopreise zzgl. USt über Stripe Tax und Preise mit „exklusive Steuer“.
+
+0. (Nur bei `REGEL`) Stripe Tax aktivieren (Einstellungen → Steuern). Im
+   Kleinunternehmer-Modus **nicht** nötig.
+1. **Neue Preise anlegen (Kleinunternehmer, Stand 20.10.2026).** Bestehende Stripe-Preise
+   lassen sich nicht ändern; deshalb legst du neue an und trägst nur deren IDs neu ein:
+   1. Stripe-Dashboard → *Produktkatalog* → Produkt *Pro* öffnen → *Weiteren Preis hinzufügen*.
+   2. Betrag eingeben, Währung **EUR**, *Wiederkehrend*, Intervall wie in der Tabelle.
+   3. Unter *Weitere Optionen* → *Steuerverhalten* **„Inklusive Steuer“** wählen
+      (nicht „exklusive“; „exklusive“ wird im Kleinunternehmer-Modus abgelehnt).
+   4. Speichern, die Preis-ID (`price_…`) kopieren. Für *Maxi* genauso.
+
+   | Variable | Preis (Endpreis) | Intervall |
+   |---|---|---|
+   | `STRIPE_PRICE_ID_PRO` | 590,00 € | monatlich |
+   | `STRIPE_PRICE_ID_MAXI` | 797,00 € | monatlich |
+   | `STRIPE_PRICE_ID_PRO_YEAR` | 6.018,00 € | jährlich |
+   | `STRIPE_PRICE_ID_MAXI_YEAR` | 8.129,40 € | jährlich |
+
+   5. Die vier neuen IDs in Render (Service → *Environment*) oder unter
+      `/operator/zugaenge` eintragen; Render stellt danach neu bereit.
+   6. Die alten Preise mit „exklusive Steuer“ im Stripe-Dashboard archivieren
+      (laufende Abos mit diesen Preisen bleiben davon unberührt; solche Abos gibt es
+      vor dem Verkaufsstart nicht).
+
+   Jahrespreis = 12 Monatsbeträge minus 15 %. Der Checkout verweigert jeden Preis, dessen
+   Betrag, Währung, Steuerverhalten oder Intervall nicht genau passt – solange noch die
+   alten „exklusive“-Preise eingetragen sind, ist der Kauf also **gesperrt**, statt falsch
+   abzurechnen. Fehlt ein Jahrespreis, ist nur das Jahresabo dieses Pakets gesperrt
+   („noch nicht eingerichtet“).
 2. Webhook-Endpunkt (dein Konto) auf `/api/stripe/webhook` mit diesen Events:
    - `checkout.session.completed`
    - `checkout.session.async_payment_succeeded`
@@ -268,6 +389,36 @@ Empfohlener Aufbau (Windows Server 2022/2025):
   (`/shop/<produkt>/impressum`), mit Hinweis auf SECRET 58 als technische Plattform.
 * Ohne Name, Anschrift, E-Mail und Datenschutz-Link ist ein Angebot nicht öffentlich
   (404) und nicht kaufbar. Links werden nur als http(s) angenommen.
+
+## 9b. Kündigungsbutton (§ 312k BGB)
+
+* Link **„Verträge hier kündigen“** im Seitenfuß (`LegalFooter`: Anmeldung,
+  Registrierung, Impressum, Arbeitsbereich, Betreiberbereich), in den Fußzeilen der
+  Zentrale-Seiten (`public/zentrale/seiten/*.html`) und unter Einstellungen. Er führt
+  zur öffentlichen Seite `/kuendigen` (ohne Anmeldung).
+* Abgefragt werden: Art (ordentlich / außerordentlich mit freiwilligem Grund), Name,
+  E-Mail-Adresse des Kontos, freiwillig Arbeitsbereich/Kundennummer, Vertrag
+  (Pro, Maxi oder sonstiger Vertrag mit Beschreibung), Zeitpunkt (nächstmöglich oder
+  Datum) und die E-Mail-Adresse für die Bestätigung. Absenden mit **„jetzt kündigen“**.
+* Danach: Bestätigung auf dem Bildschirm (Inhalt, Eingangsdatum und -uhrzeit,
+  Referenznummer `K-JJJJ-XXXXXX`, gewünschter Zeitpunkt; drucken/speichern) und
+  sofort eine Eingangsbestätigung per E-Mail („Eingangsbestätigung Ihrer Kündigung –
+  SECRET 58“, Betreiber-Resend: `RESEND_API_KEY`, `EMAIL_FROM`). Ist der Versand nicht
+  eingerichtet oder schlägt er fehl, wird die Kündigung trotzdem gespeichert, die Seite
+  sagt das offen, und Server-Log sowie Posteingang vermerken es — dann bestätigt der
+  Betreiber den Eingang selbst in Textform.
+* Gespeichert in der Tabelle `kuendigungen` (Modell `Kuendigung`). Konto und
+  Arbeitsbereich werden nur serverseitig über die Konto-E-Mail zugeordnet. Die Antwort
+  verrät nicht, ob zu der E-Mail ein Konto existiert.
+* Der Betreiber sieht jede Kündigung sofort im Posteingang („Kündigung K-…“, mit Paket,
+  Status, Laufzeitende und Stripe-Abo, falls ein Konto gefunden wurde) und unter
+  **Betreiberbereich → Kündigungen** (`/operator/kuendigungen`).
+* **Es wird nichts automatisch gekündigt.** Der Betreiber setzt jede Kündigung in Stripe
+  um (Kundenportal oder Dashboard, z. B. „Abo zum Laufzeitende kündigen“), teilt dem
+  Kunden das Vertragsende mit und markiert sie unter „Kündigungen“ als bearbeitet.
+* Missbrauchsschutz: höchstens 5 Kündigungen je Stunde und Anschluss sowie 5 je Tag und
+  Bestätigungsadresse, nur vom eigenen Ursprung (CSRF-Schutz im Proxy), Längengrenzen
+  für alle Felder, HTML in der E-Mail maskiert.
 
 ## 10. Datenschutz-Technik (Vorbereitung, keine rechtliche Vollständigkeit)
 

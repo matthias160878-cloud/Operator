@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Одна ідея на вході — повний контент-план для кожної платформи на виході. ContentBrainAgent враховує твій Brand DNA і створює для кожної обраної платформи відповідні хуки, скрипти, хештеги та концепти прев'ю у вигляді чернетки.",
+  "campaignsHeading": "Кампанії",
+  "noCampaigns": "Кампаній ще не створено.",
+  "campaignSummary": "{count} контент-елементів · {audience}",
+  "form": {
+    "textEngineLabel": "Текстовий рушій:",
+    "templateMode": "Режим шаблонів (ШІ-провайдера не налаштовано)",
+    "modeTemplate": "Шаблон",
+    "topicLabel": "Тема / ідея",
+    "topicPlaceholder": "напр. Поясни, чому автономні ШІ-агенти змінюють світ праці.",
+    "audienceLabel": "Цільова аудиторія",
+    "audiencePlaceholder": "напр. 25-45, цікавляться технологіями",
+    "goalLabel": "Мета",
+    "languageLabel": "Мова",
+    "platformsLabel": "Платформи",
+    "itemsPerPlatformLabel": "Контент-елементів на платформу ({count})",
+    "generateError": "Не вдалося згенерувати.",
+    "unknownError": "Невідома помилка.",
+    "submitLoading": "Content Brain працює…",
+    "submitIdle": "Згенерувати контент-план",
+    "resultHeading": "Кампанію створено — {count} контент-елементів додано як чернетки.",
+    "resultDescription": "Згенеровано в режимі {mode}. Увесь контент починається як DRAFT — перевір і відредагуй його в Content Factory.",
+    "resultLink": "До Content Factory →"
+  }
+}

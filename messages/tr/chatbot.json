@@ -1,0 +1,14 @@
+{
+  "title": "Yapay Zekâ Asistanı",
+  "welcome": "Merhaba! SECRET 58 hakkında bana her şeyi sor — bir şeyi nasıl kuracağını, bir şeyi nerede bulacağını ya da bir bölümün nasıl çalıştığını.",
+  "inputPlaceholder": "Sorunu yaz …",
+  "thinking": "Düşünüyor …",
+  "openButton": "Yapay zekâ asistanını aç",
+  "close": "Kapat",
+  "sendButton": "Gönder",
+  "micButton": "Sesli giriş",
+  "speakToggle": "Yanıtları sesli oku",
+  "notConfigured": "Yapay zekâ asistanı henüz yapılandırılmadı — bunun için bir yapay zekâ sağlayıcısı (Anthropic veya OpenAI) tanımlanmalıdır.",
+  "openIntegrations": "Entegrasyonlara git",
+  "error": "Yapay zekâ asistanı şu anda yanıt veremedi. Lütfen daha sonra tekrar dene."
+}

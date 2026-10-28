@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Wchodzi jeden pomysł — wychodzi kompletny plan treści dopasowany do platform. ContentBrainAgent uwzględnia Twoje Brand DNA i tworzy dla każdej wybranej platformy odpowiednie hooki, skrypty, hashtagi i koncepcje miniatur jako szkic.",
+  "campaignsHeading": "Kampanie",
+  "noCampaigns": "Nie utworzono jeszcze żadnych kampanii.",
+  "campaignSummary": "{count} elementów treści · {audience}",
+  "form": {
+    "textEngineLabel": "Silnik tekstowy:",
+    "templateMode": "Tryb szablonu (nie skonfigurowano dostawcy AI)",
+    "modeTemplate": "Szablon",
+    "topicLabel": "Temat / pomysł",
+    "topicPlaceholder": "np. Wyjaśnij, dlaczego autonomiczni agenci AI zmieniają świat pracy.",
+    "audienceLabel": "Grupa docelowa",
+    "audiencePlaceholder": "np. 25-45, zainteresowani technologią",
+    "goalLabel": "Cel",
+    "languageLabel": "Język",
+    "platformsLabel": "Platformy",
+    "itemsPerPlatformLabel": "Elementów treści na platformę ({count})",
+    "generateError": "Generowanie nie powiodło się.",
+    "unknownError": "Nieznany błąd.",
+    "submitLoading": "Content Brain pracuje…",
+    "submitIdle": "Generuj plan treści",
+    "resultHeading": "Kampania utworzona — {count} elementów treści zapisano jako szkic.",
+    "resultDescription": "Wygenerowano w trybie {mode}. Wszystkie treści zaczynają jako DRAFT — sprawdź je i edytuj w Content Factory.",
+    "resultLink": "Do Content Factory →"
+  }
+}

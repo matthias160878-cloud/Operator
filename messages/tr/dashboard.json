@@ -1,0 +1,96 @@
+{
+  "viewAll": "Tümünü göster",
+  "demoBanner": {
+    "text": "Örnek veriler etkin – bu çalışma alanındaki kampanyalar, içerikler ve istatistikler örnek verilerdir, gerçek platform sayıları değildir."
+  },
+  "hero": {
+    "subtitle": "Tek fikir. Birden çok platform. Maksimum erişim.",
+    "newCampaign": "Yeni kampanya",
+    "createContent": "İçerik oluştur",
+    "findIdeas": "Fikir bul",
+    "aiAgents": "Yapay zekâ ajanları"
+  },
+  "orbit": {
+    "xNotConnected": "X (bağlı değil)",
+    "brainAlt": "SECRET 58 yapay zekâ beyni"
+  },
+  "activeAgents": {
+    "title": "Etkin ajanlar",
+    "empty": "Henüz ajan çalıştırması yok."
+  },
+  "kpi": {
+    "contentCreated": "Oluşturulan içerik",
+    "videosCreated": "Oluşturulan video",
+    "postsCreated": "Oluşturulan gönderi",
+    "published": "Yayınlar",
+    "views": "Görüntülenme",
+    "avgEngagement": "Ort. etkileşim",
+    "totalRevenue": "Gelirler (elle girilen)",
+    "noComparisonWeek": "Karşılaştırma için henüz önceki hafta yok — değişim oranları, en az iki haftalık veri olduğunda görünür.",
+    "noStats": "Görüntülenme ve etkileşimler: henüz istatistik yok – bir gönderi uygulama üzerinden YouTube veya Facebook'ta yayınlandığı anda otomatik olarak görünür."
+  },
+  "production": {
+    "title": "İçerik üretimi",
+    "thisWeek": "Bu hafta"
+  },
+  "scheduled": {
+    "title": "Planlanan gönderiler",
+    "empty": "Planlanmış gönderi yok."
+  },
+  "activity": {
+    "title": "Son etkinlikler",
+    "empty": "Henüz etkinlik yok."
+  },
+  "contentFactory": {
+    "description": "Tek bir fikirle tüm platformlar için eksiksiz içerik kampanyaları oluştur.",
+    "cta": "Hemen başla →",
+    "popularTemplates": "Popüler şablonlar",
+    "templateYoutubeVideo": "YouTube videosu",
+    "templateTiktokSeries": "TikTok serisi",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn gönderisi",
+    "templateBlogPost": "Blog yazısı",
+    "viewAllTemplates": "Tüm şablonlar →"
+  },
+  "brandDna": {
+    "tonality": "Ton",
+    "targetAudience": "Hedef kitle",
+    "industry": "Sektör",
+    "language": "Dil",
+    "empty": "Henüz Brand DNA tanımlanmadı."
+  },
+  "campaigns": {
+    "title": "Güncel kampanyalar",
+    "empty": "Henüz kampanya yok."
+  },
+  "platforms": {
+    "title": "Platformlar",
+    "manage": "Yönet"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} bağlı"
+  },
+  "agentMonitor": {
+    "title": "Asistan günlüğü",
+    "empty": "Henüz çalıştırma yok."
+  },
+  "topPerformer": {
+    "title": "En iyi performans",
+    "last7Days": "Son 7 gün",
+    "empty": "Henüz performans verisi yok – uygulama üzerinden YouTube veya Facebook'ta yayınlanan gönderiler için otomatik olarak görünür.",
+    "views": "Görüntülenme",
+    "likes": "Beğeni",
+    "comments": "Yorumlar",
+    "shares": "Paylaşımlar",
+    "engagementRate": "+Etkileşim oranı {value}"
+  },
+  "calendar": {
+    "open": "Aç",
+    "viewMonth": "Ay",
+    "viewWeek": "Hafta",
+    "viewDay": "Gün",
+    "viewCampaign": "Kampanya",
+    "moreItems": "+{count} tane daha"
+  },
+  "weekdayLabels": ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"]
+}

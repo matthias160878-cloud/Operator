@@ -1,0 +1,96 @@
+{
+  "viewAll": "Vis alle",
+  "demoBanner": {
+    "text": "Eksempeldata aktive – kampagner, indhold og statistik i dette arbejdsområde er eksempeldata, ikke rigtige platformtal."
+  },
+  "hero": {
+    "subtitle": "Én idé. Flere platforme. Maksimal rækkevidde.",
+    "newCampaign": "Ny kampagne",
+    "createContent": "Opret content",
+    "findIdeas": "Find idéer",
+    "aiAgents": "AI-agenter"
+  },
+  "orbit": {
+    "xNotConnected": "X (ikke forbundet)",
+    "brainAlt": "SECRET 58 AI-hjerne"
+  },
+  "activeAgents": {
+    "title": "Aktive agenter",
+    "empty": "Ingen agentkørsler endnu."
+  },
+  "kpi": {
+    "contentCreated": "Content oprettet",
+    "videosCreated": "Videoer oprettet",
+    "postsCreated": "Opslag oprettet",
+    "published": "Udgivelser",
+    "views": "Visninger",
+    "avgEngagement": "Ø engagement",
+    "totalRevenue": "Indtægter (indtastet manuelt)",
+    "noComparisonWeek": "Der er endnu ingen forrige uge at sammenligne med — ændringsrater vises, når der foreligger data for mindst to uger.",
+    "noStats": "Visninger og interaktioner: endnu ingen statistik – de vises automatisk, så snart et opslag er udgivet via appen på YouTube eller Facebook."
+  },
+  "production": {
+    "title": "Content-produktion",
+    "thisWeek": "Denne uge"
+  },
+  "scheduled": {
+    "title": "Planlagte opslag",
+    "empty": "Ingen planlagte opslag."
+  },
+  "activity": {
+    "title": "Seneste aktiviteter",
+    "empty": "Ingen aktiviteter endnu."
+  },
+  "contentFactory": {
+    "description": "Lav komplette content-kampagner til alle platforme ud fra blot én idé.",
+    "cta": "Kom i gang →",
+    "popularTemplates": "Populære skabeloner",
+    "templateYoutubeVideo": "YouTube-video",
+    "templateTiktokSeries": "TikTok-serie",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn-opslag",
+    "templateBlogPost": "Blogindlæg",
+    "viewAllTemplates": "Alle skabeloner →"
+  },
+  "brandDna": {
+    "tonality": "Tonefald",
+    "targetAudience": "Målgruppe",
+    "industry": "Branche",
+    "language": "Sprog",
+    "empty": "Ingen Brand DNA gemt endnu."
+  },
+  "campaigns": {
+    "title": "Aktuelle kampagner",
+    "empty": "Ingen kampagner endnu."
+  },
+  "platforms": {
+    "title": "Platforme",
+    "manage": "Administrer"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} forbundet"
+  },
+  "agentMonitor": {
+    "title": "Assistenternes log",
+    "empty": "Ingen kørsler endnu."
+  },
+  "topPerformer": {
+    "title": "Top-præstation",
+    "last7Days": "Seneste 7 dage",
+    "empty": "Endnu ingen præstationsdata – de vises automatisk for opslag, der er udgivet via appen på YouTube eller Facebook.",
+    "views": "Visninger",
+    "likes": "Likes",
+    "comments": "Kommentarer",
+    "shares": "Delinger",
+    "engagementRate": "+Engagementrate {value}"
+  },
+  "calendar": {
+    "open": "Åbn",
+    "viewMonth": "Måned",
+    "viewWeek": "Uge",
+    "viewDay": "Dag",
+    "viewCampaign": "Kampagne",
+    "moreItems": "+{count} flere"
+  },
+  "weekdayLabels": ["Man", "Tir", "Ons", "Tor", "Fre", "Lør", "Søn"]
+}

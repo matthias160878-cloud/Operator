@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Miniatyrbildekonsepter som tekst og status for Canva-tilkoblingen.",
+  "imageAssetsTitle": "Bildeelementer",
+  "imageAssetsEmpty": "Ingen bilder ennå. Miniatyragenten lager foreløpig bare tekstkonsepter, ingen bildefiler.",
+  "thumbnailAgent": {
+    "title": "Thumbnail-agent",
+    "description": "Lager et tekstkonsept (tittel, visuell idé, layout, CTA) — forberedt for tilkobling av en bildegenerator. Det genereres ikke noe bilde ennå.",
+    "inputPlaceholder": "Tema for thumbnailen",
+    "submitButton": "Generer konsept",
+    "errorGenerationFailed": "Genereringen mislyktes.",
+    "errorUnknown": "Ukjent feil.",
+    "fieldTitle": "Tittel",
+    "fieldVisualIdea": "Visuell idé",
+    "fieldText": "Tekst",
+    "fieldLayout": "Layout",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Bildebeskrivelse",
+    "templateResult": "Mal: dette konseptet kommer fra en fast tekstmal, ikke fra en AI. For AI-konsepter legger du inn din egen AI-nøkkel under «Innstillinger → Egne tilganger».",
+    "textEngineLabel": "Tekstmotor:",
+    "templateMode": "Malmodus (ingen KI-leverandør konfigurert)"
+  }
+}

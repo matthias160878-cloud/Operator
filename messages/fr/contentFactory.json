@@ -37,7 +37,9 @@
       "approve": "Valider",
       "reject": "Refuser",
       "schedule": "Planifier",
-      "publish": "Publier"
+      "publish": "Publier",
+      "copy": "Copier la publication",
+      "markPublished": "Publié manuellement"
     },
     "rejectReasonPrompt": "Motif du refus (facultatif) :",
     "scheduleDatePrompt": "Date de publication (AAAA-MM-JJTHH:mm) :",
@@ -82,6 +84,18 @@
       "selectAll": "Sélectionner toutes les plateformes",
       "clearAll": "Effacer la sélection",
       "generateButton": "Générer {count} déclinaisons"
-    }
+    },
+    "approvalRevoked": "Validation retirée : la publication a été modifiée et doit être revue et validée à nouveau.",
+    "job": {
+      "QUEUED": "Publication automatique prévue le {when}.",
+      "RUNNING": "Publication en cours (prévue le {when}).",
+      "SUCCEEDED": "Publié comme prévu le {when}.",
+      "FAILED": "La publication prévue le {when} a échoué ; la publication est de nouveau « Validée ».",
+      "UNKNOWN": "Publication prévue le {when} : résultat incertain.",
+      "CANCELED": "La publication prévue ({when}) n'a pas été effectuée."
+    },
+    "copied": "Texte et hashtags copiés — collez-les dans l’application de la plateforme.",
+    "copyFailed": "Copie impossible — sélectionnez le texte manuellement.",
+    "markPublishedConfirm": "Publié vous-même ? Il sera marqué comme publié ; tout envoi planifié est annulé."
   }
 }

@@ -1,0 +1,27 @@
+{
+  "title": "Caixa de entrada",
+  "description": "Mensagens e pedidos num só lugar. O MessageAgent sugere rascunhos de resposta.",
+  "emptyState": "Ainda não há conversas — simula uma para começar.",
+  "backToInbox": "Voltar à caixa de entrada",
+  "newConversation": {
+    "simulateButton": "Simular conversa",
+    "simulateHint": "Como não existe uma ligação real a uma plataforma, podes aqui simular uma mensagem recebida para experimentar o rascunho de resposta por IA.",
+    "close": "Fechar",
+    "namePlaceholder": "Nome",
+    "handlePlaceholder": "@handle (opcional)",
+    "messagePlaceholder": "Texto da mensagem …",
+    "createButton": "Criar"
+  },
+  "detail": {
+    "draftFailed": "Falha no rascunho.",
+    "save": "Guardar",
+    "edit": "Editar",
+    "approveAndSend": "Aprovar e enviar",
+    "requestDraft": "Pedir rascunho de resposta por IA",
+    "openDraftExists": "Já existe um rascunho aberto acima — edita-o/envia-o primeiro.",
+    "simulateMoreHint": "Simular outra mensagem recebida (teste sem ligação real à plataforma):",
+    "messagePlaceholder": "Texto da mensagem …",
+    "addButton": "Adicionar"
+  },
+  "simulationBanner": "<strong>Pré-visualização/simulação:</strong> as mensagens das plataformas ainda não são obtidas e as respostas não são enviadas – nem mesmo com «Aprovar e enviar». Aqui podes simular mensagens de plataformas para experimentar. Entradas reais só chegam de formulários do site (p. ex. pedidos de marcação); a essas respondes por e-mail."
+}

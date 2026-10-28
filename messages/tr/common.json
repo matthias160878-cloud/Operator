@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "İçerikten fazlası.",
+    "footerLine2": "Eksiksiz bir içerik makinesi.",
+    "workspace": "Çalışma alanı",
+    "role": "Yönetici"
+  },
+  "nav": {
+    "dashboard": "Gösterge paneli",
+    "schulung": "Eğitim",
+    "contentFactory": "Content Factory",
+    "ideas": "Fikirler ve ilham",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Sosyal medya",
+    "calendar": "İçerik Takvimi",
+    "analytics": "Analitik",
+    "growth": "Büyüme",
+    "weiterempfehlungen": "Tavsiyeler",
+    "reichweitenaufbau": "Erişim oluşturma",
+    "revenue": "Gelirler",
+    "inbox": "Gelen kutusu",
+    "anfragen": "Talepler",
+    "dateien": "Dosyalar",
+    "agents": "Ajanlar",
+    "integrations": "Entegrasyonlar",
+    "settings": "Ayarlar",
+    "billing": "Paket ve faturalama",
+    "sales": "Satış ve mağaza",
+    "website": "Web sitem"
+  },
+  "topbar": {
+    "menuOpen": "Menüyü aç",
+    "menuClose": "Menüyü kapat",
+    "searchPlaceholder": "İçeriklerde, projelerde, kampanyalarda ara …",
+    "notifications": "Bildirimler",
+    "language": "Dil"
+  },
+  "footer": {
+    "help": "Yardım",
+    "privacy": "Gizlilik",
+    "imprint": "Yasal bilgiler",
+    "systemOnline": "Sistem çevrimiçi"
+  },
+  "actions": {
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "create": "Oluştur",
+    "close": "Kapat",
+    "back": "Geri",
+    "loading": "Yükleniyor …"
+  },
+  "status": {
+    "connected": "Bağlı",
+    "notConfigured": "Yapılandırılmadı",
+    "error": "Hata"
+  },
+  "statusBadge": {
+    "CONNECTED": "Bağlı",
+    "ACTIVE": "Etkin",
+    "COMPLETED": "Tamamlandı",
+    "RUNNING": "Çalışıyor",
+    "SUCCESS": "Başarılı",
+    "PUBLISHED": "Yayınlandı",
+    "APPROVED": "Onaylandı",
+    "SCHEDULED": "Planlandı",
+    "WAITING": "Bekliyor",
+    "IN_REVIEW": "İncelemede",
+    "NOT_CONFIGURED": "Yapılandırılmadı",
+    "IDLE": "Hazır",
+    "DRAFT": "Taslak",
+    "ARCHIVED": "Arşivlendi",
+    "ERROR": "Hata",
+    "REJECTED": "Reddedildi",
+    "RECEIVED": "Alındı",
+    "PENDING": "Beklemede",
+    "NOT_AVAILABLE": "Henüz kullanılamıyor"
+  },
+  "integrationStatus": {
+    "notConfigured": "Yapılandırılmadı — eksik değişken(ler): {vars}.",
+    "verifyFailedGeneric": "Bağlantı başarısız oldu.",
+    "verifyFailedStatus": "{service} {status} durumuyla yanıt verdi.",
+    "verifyUnreachable": "{service} erişilemedi.",
+    "connected": "Bağlı.",
+    "notAvailable": "Henüz kullanılamıyor – bu bağlantı uygulamada henüz geliştirilmedi."
+  },
+  "mediaPreview": {
+    "expand": "Büyük göster",
+    "close": "Kapat"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Iesūtne",
+  "description": "Ziņas un pieprasījumi vienuviet. MessageAgent piedāvā atbilžu melnrakstus.",
+  "emptyState": "Sarunu vēl nav — simulē vienu, lai sāktu.",
+  "backToInbox": "Atpakaļ uz iesūtni",
+  "newConversation": {
+    "simulateButton": "Simulēt sarunu",
+    "simulateHint": "Tā kā patiesa platformas savienojuma nav, šeit vari simulēt ienākošu ziņu, lai izmēģinātu MI atbildes melnrakstu.",
+    "close": "Aizvērt",
+    "namePlaceholder": "Vārds",
+    "handlePlaceholder": "@handle (neobligāti)",
+    "messagePlaceholder": "Ziņas teksts …",
+    "createButton": "Izveidot"
+  },
+  "detail": {
+    "draftFailed": "Melnraksta izveide neizdevās.",
+    "save": "Saglabāt",
+    "edit": "Rediģēt",
+    "approveAndSend": "Apstiprināt un nosūtīt",
+    "requestDraft": "Pieprasīt MI atbildes melnrakstu",
+    "openDraftExists": "Augstāk jau ir atvērts melnraksts — vispirms rediģē/nosūti to.",
+    "simulateMoreHint": "Simulēt vēl vienu ienākošu ziņu (tests bez patiesa platformas savienojuma):",
+    "messagePlaceholder": "Ziņas teksts …",
+    "addButton": "Pievienot"
+  },
+  "simulationBanner": "<strong>Priekšskatījums/simulācija:</strong> ziņas no platformām vēl netiek iegūtas, un atbildes netiek sūtītas – arī ne ar „Apstiprināt un nosūtīt“. Platformu ziņas vari šeit simulēt, lai izmēģinātu. Īsti ieraksti nāk tikai no tīmekļa vietnes veidlapām (piem., pierakstu pieprasījumiem); uz tiem atbildi pa e-pastu."
+}

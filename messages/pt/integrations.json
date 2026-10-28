@@ -1,0 +1,24 @@
+{
+  "title": "Integrações",
+  "description": "Estado em tempo real dos serviços externos – apenas ligações realmente configuradas e verificadas, nada é simulado.",
+  "categories": {
+    "AI": "Fornecedores de IA",
+    "VOICE": "Voz",
+    "PLATFORM": "Plataformas sociais",
+    "DESIGN": "Design",
+    "VIDEO": "Vídeo",
+    "TREND": "Tendências"
+  },
+  "costNote": "O teu pacote SECRET 58 (Pro ou Maxi) é uma subscrição, vê “Pacote e faturação”. Cada serviço externo aqui tem o seu próprio modelo de custos, independente, junto do respetivo fornecedor — o SECRET 58 nunca cobra nada a mais por eles.",
+  "links": {
+    "getKey": "Obter chave de API",
+    "setInRender": "Registar no Render",
+    "viewPricing": "Ver preços"
+  },
+  "pricing": {
+    "free": "Gratuito",
+    "payAsYouGo": "Pago consoante a utilização",
+    "subscription": "Subscrição",
+    "unknown": "Verificar o preço junto do fornecedor"
+  }
+}

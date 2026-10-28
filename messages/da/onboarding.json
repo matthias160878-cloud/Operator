@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Trin {current} af {total}",
+    "close": "Luk",
+    "back": "Tilbage",
+    "next": "Næste",
+    "skip": "Spring over",
+    "finish": "Færdig, kom i gang",
+    "checking": "Tjekker …",
+    "checkAgain": "Tjek nu",
+    "connected": "Forbundet",
+    "notConnected": "Endnu ikke forbundet",
+    "skippedNote": "Sprunget over — du kan til enhver tid indhente det under »Integrationer«.",
+    "envHint": "Bemærk: Efter du har gemt i Render, tager det som regel 1–2 minutter, før tjenesten genstarter, og ændringen træder i kraft. Hvis »Tjek nu« endnu ikke finder noget, så vent lidt og klik igen.",
+    "reopenHint": "Du kan til enhver tid åbne denne guide igen: i Indstillinger under »Opsætningsguide«."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Velkommen til SECRET 58",
+      "body": "Før vi går i gang, sætter vi sammen det nødvendigste op — i helt små, enkeltstående trin. Du kan til enhver tid holde pause og fortsætte senere samme sted."
+    },
+    "aiProvider": {
+      "title": "Trin 1: Forbind en AI-udbyder",
+      "body": "Til tekster, scripts, hooks og hashtags har softwaren brug for en AI-udbyder. Vælg en af de to — én er nok.",
+      "steps": [
+        "Klik nedenfor på »Hent API-nøgle« ved Anthropic eller OpenAI.",
+        "Opret om nødvendigt en gratis konto dér.",
+        "Opret en ny API-nøgle dér, og kopiér den.",
+        "Klik på »Indtast i Render«, indsæt nøglen dér som miljøvariabel, og gem.",
+        "Kom tilbage hertil, og klik på »Tjek nu« nedenfor."
+      ],
+      "costHint": "Der opstår først omkostninger ved faktisk brug, direkte hos den pågældende udbyder — aldrig via SECRET 58."
+    },
+    "platform": {
+      "title": "Trin 2: Forbind en social media-platform (valgfrit)",
+      "body": "Valgfrit, men anbefalet: Forbind mindst én platform, du senere vil udgive på. Du kan også springe dette trin over og tage det senere.",
+      "steps": [
+        "Vælg nedenfor en platform, du vil bruge.",
+        "Klik på »Hent API-nøgle«, og følg udbyderens anvisninger.",
+        "Klik på »Indtast i Render«, og gem adgangsoplysningerne dér.",
+        "Kom tilbage hertil, og klik på »Tjek nu«."
+      ]
+    },
+    "voice": {
+      "title": "Trin 3: Forbind stemmeoutput (valgfrit)",
+      "body": "Kun nødvendigt, hvis du vil lave automatisk indtalte voiceovers til dine videoer. Uden dette trin virker alt andet stadig.",
+      "steps": [
+        "Klik på »Hent API-nøgle« ved ElevenLabs.",
+        "Opret en konto og en API-nøgle dér.",
+        "Klik på »Indtast i Render«, og gem nøglen dér.",
+        "Kom tilbage hertil, og klik på »Tjek nu«."
+      ]
+    },
+    "done": {
+      "title": "Færdig!",
+      "body": "Nu kan du komme i gang. Alt, hvad du har sprunget over, finder og tilføjer du til enhver tid under »Integrationer« — eller du åbner denne guide igen via »Indstillinger«."
+    }
+  }
+}

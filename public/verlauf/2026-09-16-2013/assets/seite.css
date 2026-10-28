@@ -1,0 +1,297 @@
+/* Gemeinsame Gestaltung der Unterseiten — gleiche Tokens wie die Startseite. */
+@font-face{
+  font-family:'Archivo';
+  font-style:normal;
+  font-weight:400 900;
+  font-stretch:62% 125%;
+  font-display:swap;
+  src:url('archivo-latin.woff2') format('woff2');
+}
+:root{
+  --ink:#05070F; --ink-2:#0A0F20; --line:#1C2542;
+  --paper:#ECE8DE; --dim:#8891A9; --amber:#F5AE3C;
+  --maxw:52rem;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--ink); color:var(--paper);
+  font-family:'Archivo',system-ui,sans-serif; line-height:1.65;
+  font-size:1.0625rem;
+}
+.wrap{max-width:var(--maxw); margin-inline:auto; padding:clamp(1.25rem,5vw,2.5rem);}
+header.kopf{border-bottom:1px solid var(--line); background:var(--ink-2);}
+header.kopf .wrap{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-block:1rem; flex-wrap:wrap;}
+.marke{display:inline-flex; align-items:center; gap:.6rem; color:var(--paper); text-decoration:none; font-weight:800; letter-spacing:-.01em;}
+.marke span{color:var(--amber);}
+.zurueck{color:var(--dim); text-decoration:none; font-size:.92rem;}
+.zurueck:hover{color:var(--paper);}
+h1{font-size:clamp(1.8rem,4.5vw,2.6rem); line-height:1.12; letter-spacing:-.02em; margin:0 0 .5rem;}
+h2{font-size:1.2rem; margin:2.2rem 0 .6rem;}
+p,li{color:var(--dim);}
+a{color:var(--amber);}
+.lead{font-size:1.1rem; margin-top:0;}
+dl{display:grid; grid-template-columns:auto 1fr; gap:.5rem 1.5rem; margin:0;}
+dt{color:var(--paper); font-weight:600;}
+dd{margin:0; color:var(--dim);}
+@media (max-width:34rem){ dl{grid-template-columns:1fr; gap:.15rem;} dd{margin-bottom:.75rem;} }
+.hinweis{
+  border:1px dashed var(--amber); border-radius:12px;
+  background:rgba(245,174,60,.07); padding:1rem 1.15rem; margin:1.5rem 0;
+}
+.hinweis strong{color:var(--amber); display:block; margin-bottom:.25rem;}
+.hinweis p{color:var(--paper); margin:0;}
+.luecke{
+  background:rgba(245,174,60,.16); color:var(--amber);
+  padding:.05rem .4rem; border-radius:5px; font-weight:600;
+}
+/* Lange Wörter und Adressen dürfen umbrechen, sonst sprengen sie schmale Displays. */
+dd, p, li{overflow-wrap:anywhere;}
+footer.fuss{border-top:1px solid var(--line); margin-top:3rem; font-size:.88rem;}
+footer.fuss .wrap{display:flex; gap:1.25rem; flex-wrap:wrap;}
+footer.fuss a{color:var(--dim); text-decoration:none;}
+footer.fuss a:hover{color:var(--amber);}
+
+/* ---------- Konto: Registrieren, Anmelden ---------- */
+
+.konto{max-width:26rem; margin-inline:auto;}
+.konto h1{margin-bottom:.35rem;}
+.konto .lead{margin-bottom:2rem;}
+
+.feld{display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.1rem;}
+.feld label{color:var(--paper); font-size:.9rem; font-weight:600;}
+.feld input{
+  font:inherit; color:var(--paper);
+  background:var(--ink-2); border:1px solid var(--line); border-radius:10px;
+  padding:.7rem .85rem;
+}
+.feld input:focus-visible{outline:2px solid var(--amber); outline-offset:2px; border-color:var(--amber);}
+.feld input[aria-invalid="true"]{border-color:#E0644B;}
+.feld .hilfe{color:var(--dim); font-size:.82rem;}
+
+.knopf{
+  width:100%; font:inherit; font-weight:700; cursor:pointer;
+  background:var(--amber); color:#1A1512;
+  border:0; border-radius:999px; padding:.8rem 1.4rem;
+}
+.knopf:hover{background:#ffc061;}
+.knopf[disabled]{opacity:.6; cursor:progress;}
+.knopf.stumm{background:transparent; color:var(--paper); border:1px solid var(--line);}
+.knopf.stumm:hover{border-color:var(--amber); background:transparent;}
+
+.meldung{border-radius:10px; padding:.75rem .9rem; margin-bottom:1.1rem; font-size:.92rem;}
+.meldung[hidden]{display:none;}
+.meldung.fehler{background:rgba(224,100,75,.14); color:#FFB4A2; border:1px solid rgba(224,100,75,.45);}
+.meldung.erfolg{background:rgba(46,212,122,.12); color:#8DE8B4; border:1px solid rgba(46,212,122,.4);}
+
+.wechsel{margin-top:1.5rem; font-size:.92rem; color:var(--dim);}
+
+/* ---------- Dashboard ---------- */
+
+.dash-kopf{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap;}
+.dash-kopf p{margin:.25rem 0 0;}
+.bereiche{display:grid; gap:1.25rem; margin-top:2rem;}
+@media (min-width:56rem){ .bereiche{grid-template-columns:repeat(2,1fr);} .bereich.breit{grid-column:1 / -1;} }
+
+.bereich{
+  background:var(--ink-2); border:1px solid var(--line);
+  border-radius:14px; padding:1.4rem;
+  /* Rasterfelder haben von Haus aus min-width:auto und koennen deshalb nicht
+     schmaler werden als ihr breitestes Kind. Ein <select> mit langen Eintraegen
+     hat das Dashboard so auf 1056px aufgeblasen — im 390px-Fenster lief es
+     waagrecht ueber. min-width:0 erlaubt das Schrumpfen. */
+  min-width:0;
+}
+/* Und die Felder selbst duerfen ihren Kasten nicht sprengen. */
+.bereich input, .bereich select, .bereich textarea{ max-width:100%; min-width:0; box-sizing:border-box; }
+.bereich table{ display:block; overflow-x:auto; }
+/* Dieselbe Regel eine Ebene tiefer: viele Formulare im Dashboard setzen per
+   Inline-Stil drei feste Spalten (grid-template-columns:1fr 1fr 1fr). Auch
+   deren Felder muessen schrumpfen duerfen, sonst bleibt der Kasten zu breit. */
+.bereich form, .bereich form > div, .bereich form > div > *{ min-width:0; }
+/* Zeilen aus Feldern und Knopf umbrechen lassen, statt den Knopf hinauszuschieben. */
+.bereich form, .bereich form > div{ flex-wrap:wrap; }
+/* Unter 40rem wird aus jedem solchen Raster eine Spalte — drei Eingabefelder
+   nebeneinander sind auf einem Telefon ohnehin nicht zu bedienen. */
+@media (max-width:40rem){
+  .bereich form[style*="grid-template-columns"],
+  .bereich form > div[style*="grid-template-columns"],
+  .bereich > div[style*="grid-template-columns"]{ grid-template-columns:1fr !important; }
+}
+.bereich h2{margin:0 0 .2rem; font-size:1.05rem; color:var(--paper);}
+.bereich .worum{margin:0 0 1rem; font-size:.88rem;}
+.leer{
+  border:1px dashed var(--line); border-radius:10px;
+  padding:1.1rem; text-align:center; color:var(--dim); font-size:.9rem;
+}
+.leer strong{display:block; color:var(--paper); font-weight:600; margin-bottom:.2rem;}
+
+/* ---------- Sicherheitscode ---------- */
+
+.code-feld{
+  font-size:1.6rem; letter-spacing:.42em; text-align:center;
+  font-variant-numeric:tabular-nums; padding-inline:.85rem;
+}
+.alslink{
+  background:none; border:0; padding:0; font:inherit; cursor:pointer;
+  color:var(--amber); text-decoration:underline; text-underline-offset:3px;
+}
+.alslink[disabled]{opacity:.6; cursor:progress;}
+
+/* Lebender Hintergrund: liegt hinter allem und faengt keine Klicks ab. */
+#grund{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:block}
+@media print{#grund{display:none}}
+
+/* Schalter fuer den bewegten Hintergrund — unauffaellig, aber auffindbar. */
+#grund-schalter{position:fixed;left:12px;bottom:12px;z-index:5;
+  font:inherit;font-size:.74rem;font-weight:600;letter-spacing:.02em;
+  color:var(--dim,#8891A9);background:rgba(10,15,32,.82);
+  border:1px solid var(--line,#1C2542);border-radius:999px;
+  padding:.4rem .8rem;cursor:pointer;opacity:.55;transition:opacity .15s,color .15s}
+#grund-schalter:hover,#grund-schalter:focus-visible{opacity:1;color:var(--paper,#ECE8DE)}
+#grund-schalter:focus-visible{outline:2px solid var(--amber,#F5AE3C);outline-offset:2px}
+@media print{#grund-schalter{display:none}}
+
+/* ---- Einstellungen im Dashboard ---- */
+.ein-reiter{display:flex;gap:.3rem;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:.2rem 0 1rem}
+.ein-tab{font:inherit;font-size:.85rem;font-weight:600;color:var(--dim);background:none;border:0;
+  border-bottom:2px solid transparent;padding:.5rem .8rem;margin-bottom:-1px;cursor:pointer}
+.ein-tab:hover{color:var(--paper)}
+.ein-tab.an{color:var(--amber);border-bottom-color:var(--amber)}
+.ein-feld{display:grid;gap:.3rem;margin-bottom:.8rem;max-width:34rem}
+.ein-feld label{font-size:.74rem;letter-spacing:.07em;text-transform:uppercase;color:var(--dim)}
+.ein-feld input,.ein-zeile select,.ein-zeile input[type=number]{font:inherit;font-size:.92rem;
+  color:var(--paper);background:var(--ink-2);border:1px solid var(--line);border-radius:3px;
+  padding:.5rem .7rem;width:100%}
+.ein-haupt{display:flex;gap:.6rem;align-items:center;padding:.6rem .8rem;margin-bottom:.8rem;
+  border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:3px;
+  background:rgba(245,174,60,.05);font-size:.9rem;cursor:pointer}
+.ein-haupt input{width:auto;accent-color:var(--amber)}
+.ein-zeile{display:grid;grid-template-columns:auto minmax(8rem,1fr) 11rem 6rem;gap:.5rem .7rem;
+  align-items:center;padding:.45rem 0;border-bottom:1px solid rgba(233,229,219,.06)}
+.ein-zeile input[type=checkbox]{width:auto;accent-color:var(--amber)}
+.ein-zeile.aus{opacity:.45}
+.ein-zeile .sn{font-size:.88rem;color:var(--dim)}
+@media (max-width:44rem){.ein-zeile{grid-template-columns:auto 1fr}}
+.ein-sperre{border:1px solid rgba(245,174,60,.35);border-left:3px solid var(--amber);
+  background:rgba(245,174,60,.07);border-radius:3px;padding:.8rem .9rem;margin-bottom:.9rem;
+  font-size:.88rem;color:var(--dim)}
+.ein-fuss{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap;margin-top:1rem}
+
+/* Zahnrad: fuehrt von der Kopfzeile zu den Einstellungen. */
+/* Die Dashboard-Kopfzeile traegt sechs Knoepfe und darf deshalb breiter sein
+   als der Lesebereich von 52rem — sonst bricht sie in zwei Zeilen um. Wird es
+   trotzdem eng, schiebt sich die Knopfleiste waagrecht statt umzubrechen:
+   eine zweizeilige Kopfzeile verschiebt den ganzen Seiteninhalt. */
+header.kopf-breit .wrap{max-width:78rem; flex-wrap:nowrap; gap:.6rem;}
+.kopf .seiten{display:flex; align-items:center; gap:.4rem; margin-left:auto;
+  min-width:0; overflow-x:auto; scrollbar-width:none;}
+.kopf .seiten::-webkit-scrollbar{display:none}
+.kopf .seiten .knopf{width:auto; white-space:nowrap; padding:.42rem .75rem;
+  font-size:.85rem; text-decoration:none;}
+@media (max-width:40rem){ .kopf .seiten .knopf{padding:.38rem .6rem; font-size:.8rem;} }
+
+.kopf .seiten .zahnrad{margin-left:.2rem;margin-right:.2rem;flex:0 0 auto}
+.kopf .zahnrad{display:inline-flex;align-items:center;
+  color:var(--dim);padding:.35rem;border-radius:4px;text-decoration:none;transition:color .15s,background .15s}
+.kopf .zahnrad:hover{color:var(--amber);background:rgba(245,174,60,.08)}
+.kopf .zahnrad:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.zahnrad-klein{color:var(--amber);font-size:.9em}
+#einstellungen:target{scroll-margin-top:5rem}
+
+
+/* ---------- Zentrale: Menü über alle Bereiche ---------- */
+
+.zentrale-knopf{display:inline-flex; align-items:center; gap:.5rem; margin-right:.4rem;
+  background:transparent; border:1px solid var(--line); border-radius:999px;
+  color:var(--paper); font:inherit; font-size:.85rem; padding:.42rem .8rem; cursor:pointer;
+  white-space:nowrap; flex:0 0 auto;}
+.zentrale-knopf:hover{border-color:var(--amber)}
+.zentrale-knopf:focus-visible{outline:2px solid var(--amber); outline-offset:2px}
+.zentrale-knopf .striche{display:inline-flex; flex-direction:column; gap:3px; width:16px}
+.zentrale-knopf .striche i{display:block; height:2px; background:currentColor; border-radius:1px}
+@media (max-width:30rem){ .zentrale-knopf .zentrale-wort{display:none} }
+
+.zentrale-menue{position:fixed; inset:0; z-index:60; background:rgba(5,7,15,.72);
+  backdrop-filter:blur(2px); display:flex; align-items:flex-start; justify-content:center;
+  padding:4.5rem 1rem 2rem; overflow-y:auto;}
+.zentrale-menue[hidden]{display:none}
+.zentrale-innen{width:min(60rem,100%); background:var(--ink-2); border:1px solid var(--line);
+  border-radius:14px; padding:1.1rem 1.2rem 1.4rem;}
+.zentrale-suche{display:flex; gap:.6rem; margin-bottom:1rem}
+.zentrale-suche input{flex:1; min-width:0; background:var(--ink); color:var(--paper);
+  border:1px solid var(--line); border-radius:.45rem; padding:.6rem .8rem; font:inherit;}
+.zentrale-suche input:focus-visible{outline:2px solid var(--amber); outline-offset:1px}
+.zentrale-zu{background:transparent; border:1px solid var(--line); border-radius:.45rem;
+  color:var(--dim); font:inherit; font-size:.85rem; padding:.5rem .8rem; cursor:pointer}
+.zentrale-zu:hover{color:var(--paper); border-color:var(--amber)}
+
+.zentrale-gruppen{display:grid; gap:1.1rem; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.zentrale-gruppe h3{margin:0 0 .45rem; font-size:.74rem; text-transform:uppercase;
+  letter-spacing:.07em; color:var(--dim); border-bottom:1px solid var(--line); padding-bottom:.3rem}
+.zentrale-gruppe h3 .zahl{color:var(--amber); margin-left:.3rem}
+.zentrale-gruppe ul{list-style:none; margin:0; padding:0}
+.zentrale-gruppe li a{display:block; color:var(--paper); text-decoration:none;
+  font-size:.9rem; padding:.3rem .45rem; border-radius:.35rem}
+.zentrale-gruppe li a:hover{background:rgba(245,174,60,.1); color:var(--amber)}
+.zentrale-gruppe li a:focus-visible{outline:2px solid var(--amber); outline-offset:1px}
+.zentrale-leer{color:var(--dim); font-size:.9rem; margin:0}
+
+body.zentrale-offen{overflow:hidden}
+
+/* Nach dem Sprung kurz hervorheben — bei 54 gleich aussehenden Kaesten
+   sieht man sonst nicht, wo man gelandet ist. */
+.bereich.zentrale-ziel{border-color:var(--amber); transition:border-color .2s}
+@media (prefers-reduced-motion:reduce){ .bereich.zentrale-ziel{transition:none} }
+
+
+/* ---------- Kontomenü rechts oben ---------- */
+
+/* Heisst kopfkonto und nicht konto: .konto ist schon die Login-/Registrier-
+   Karte (weiter oben, "max-width:26rem; margin-inline:auto"). Beide Regeln
+   gleich zu benennen hat das "margin-left:.2rem" von hier auf die Karte
+   durchschlagen lassen — sie klebte am linken Rand statt mittig zu stehen. */
+.kopfkonto{position:relative; flex:0 0 auto; margin-left:.2rem}
+.konto-knopf{display:inline-flex; align-items:center; gap:.45rem;
+  background:transparent; border:1px solid var(--line); border-radius:999px;
+  color:var(--paper); font:inherit; font-size:.85rem; padding:.34rem .5rem .34rem .7rem;
+  cursor:pointer; white-space:nowrap}
+.konto-knopf:hover{border-color:var(--amber)}
+.konto-knopf:focus-visible{outline:2px solid var(--amber); outline-offset:2px}
+.konto-knopf .striche{display:inline-flex; flex-direction:column; gap:3px; width:15px}
+.konto-knopf .striche i{display:block; height:2px; background:currentColor; border-radius:1px}
+.konto-kuerzel{display:inline-flex; align-items:center; justify-content:center;
+  width:1.55rem; height:1.55rem; border-radius:50%; background:var(--amber); color:var(--ink);
+  font-weight:700; font-size:.8rem}
+.konto-kuerzel.konto-aus{background:var(--line); color:var(--dim)}
+
+.konto-menue{position:absolute; right:0; top:calc(100% + .5rem); z-index:70;
+  width:min(22rem,calc(100vw - 2rem)); background:var(--ink-2);
+  border:1px solid var(--line); border-radius:12px; padding:.9rem 1rem 1rem;
+  box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.konto-menue[hidden]{display:none}
+
+.konto-kopf{padding-bottom:.7rem; margin-bottom:.6rem; border-bottom:1px solid var(--line)}
+.konto-name{margin:0 0 .5rem; font-weight:700; color:var(--paper)}
+.konto-hinweis{margin:0 0 .7rem; color:var(--dim); font-size:.86rem}
+.konto-daten{display:grid; grid-template-columns:auto 1fr; gap:.25rem .7rem; margin:0; font-size:.85rem}
+.konto-daten dt{color:var(--dim); white-space:nowrap}
+.konto-daten dd{margin:0; color:var(--paper); word-break:break-all}
+.konto-daten code{font-size:.85rem; letter-spacing:.04em}
+
+.konto-liste{list-style:none; margin:0; padding:0}
+.konto-liste li a, .konto-liste li.ohne-ziel{display:block; padding:.42rem .5rem;
+  border-radius:.4rem; text-decoration:none; color:var(--paper)}
+.konto-liste li a:hover{background:rgba(245,174,60,.1)}
+.konto-liste li a:focus-visible{outline:2px solid var(--amber); outline-offset:1px}
+.konto-liste .titel{display:block; font-size:.92rem}
+.konto-liste .was{display:block; color:var(--dim); font-size:.79rem; margin-top:.05rem}
+.konto-liste .ohne-ziel{opacity:.68}
+.konto-liste .ohne-ziel em{font-style:normal; font-size:.7rem; text-transform:uppercase;
+  letter-spacing:.05em; color:var(--amber); border:1px solid #5C4620; border-radius:.3rem;
+  padding:.05rem .35rem; margin-left:.35rem}
+
+.zentrale-gruppe a.ist-hier{color:var(--amber)}
+.zentrale-hier{font-size:.7rem; text-transform:uppercase; letter-spacing:.05em;
+  color:var(--dim); margin-left:.4rem}
+
+.konto-fuss{border-top:1px solid var(--line); margin-top:.6rem; padding-top:.6rem; text-align:right}

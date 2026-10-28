@@ -77,7 +77,11 @@ async function handleGET(
       },
     });
 
-    const response = NextResponse.redirect(new URL(`/social-media?connected=${platform}`, origin));
+    const ziel = new URL(`/social-media?connected=${platform}`, origin);
+    if (platform === "FACEBOOK" && accountInfo.pageCount && accountInfo.pageCount > 1) {
+      ziel.searchParams.set("seiten", String(Math.min(accountInfo.pageCount, 999)));
+    }
+    const response = NextResponse.redirect(ziel);
     response.cookies.delete(STATE_COOKIE);
     response.cookies.delete(PKCE_COOKIE);
     return response;

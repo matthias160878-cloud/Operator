@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — управувај со библиотеката на гласови, создавај прегледи на говор (voiceover) и увезувај гласови.",
+  "envWarning": "Гласовниот запис сè уште не е достапен: гласовната услуга (ElevenLabs) ја поставува операторот. Библиотеката на гласови веќе може да ја користите за планирање.",
+  "addManual": "Додај глас рачно",
+  "importFromElevenLabs": "Увези од ElevenLabs",
+  "form": {
+    "namePlaceholder": "Име",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Јазик",
+    "submit": "Додај"
+  },
+  "confirmDelete": "Навистина да се избрише гласот?",
+  "importFailed": "Увозот не успеа.",
+  "previewFailed": "Прегледот не успеа.",
+  "unknownError": "Непозната грешка.",
+  "empty": "Сè уште нема гласови во библиотеката.",
+  "active": "Активен",
+  "inactive": "Неактивен",
+  "remove": "Отстрани",
+  "preview": {
+    "heading": "Преглед на глас",
+    "defaultText": "Здраво, ова е пример за овој глас.",
+    "selectPlaceholder": "Избери глас…",
+    "play": "Пушти преглед"
+  }
+}

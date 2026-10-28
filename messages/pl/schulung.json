@@ -1,0 +1,86 @@
+{
+  "title": "Szkolenie",
+  "subtitle": "Instrukcje krok po kroku i filmy wyjaśniające do każdego obszaru SECRET 58 — zawsze możesz tu do nich zajrzeć.",
+  "welcomeBanner": {
+    "title": "Witaj w SECRET 58!",
+    "body": "Dziękujemy za zakup. Zanim zaczniesz, warto rzucić okiem na „Pierwsze kroki” poniżej — aby agenci AI od początku pracowali na Twoich prawdziwych danych."
+  },
+  "stepsLabel": "Kroki",
+  "openPage": "Otwórz stronę",
+  "topics": {
+    "firstSteps": {
+      "title": "Pierwsze kroki",
+      "description": "Zrób najpierw te trzy rzeczy, a wszyscy agenci AI będą pracować na prawdziwych danych zamiast na wypełniaczach.",
+      "steps": [
+        "W „Ustawienia → Własne dostępy” wpisz własny klucz AI od Anthropic, OpenAI lub Gemini. Funkcje AI korzystają wyłącznie z Twojego klucza; dostawca AI rozlicza się z Tobą bezpośrednio. Bez własnego klucza aplikacja działa w trybie szablonów ze stałymi blokami tekstu.",
+        "W „Brand DNA” uzupełnij własną markę (ton, grupa docelowa, wartości) — agenci AI używają tego przy każdym generowanym tekście.",
+        "W „Pomysły i inspiracje” lub „Content Brain” wygeneruj pierwszy pomysł lub pierwszą kampanię."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Tak z pomysłu powstaje gotowa, zatwierdzona treść.",
+      "steps": [
+        "W Content Brain utwórz nową kampanię z tematem i platformami docelowymi — automatycznie powstanie z niej kilka elementów treści.",
+        "W Content Factory każdy element treści przechodzi przez statusy: Szkic → W weryfikacji → Zatwierdzono → Zaplanowano → Opublikowano.",
+        "Zatwierdzenie to krok ręczny i obowiązkowy — nic nie jest publikowane automatycznie bez potwierdzenia.",
+        "W widoku szczegółów elementu treści możesz osobno wygenerować ponownie skrypt, lektora, napisy, hashtagi i miniaturę."
+      ]
+    },
+    "studios": {
+      "title": "Script Studio, Voice Studio, Video Studio i Design Studio",
+      "description": "Wyspecjalizowane narzędzia do każdego elementu treści.",
+      "steps": [
+        "Script Studio: tworzy skrypty według struktury Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: zaimportuj lub utwórz własny głos ElevenLabs, a następnie wygeneruj lektora bezpośrednio ze skryptu.",
+        "Design Studio: agent miniatur proponuje tytuł, pomysł wizualny, tekst, układ i opis obrazu.",
+        "Video Studio: pokazuje aktualny stan połączenia z dostawcami wideo (menedżer formatów, status dostawców)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Kalendarz treści i publikowanie",
+      "description": "Gdzie trafiają zaplanowane posty — i dlaczego post naprawdę się ukazuje (albo nie).",
+      "steps": [
+        "W kalendarzu treści pojawiają się wszystkie elementy treści z zaplanowaną datą publikacji.",
+        "Przed każdą publikacją PublishingAgent na żywo sprawdza, czy platforma docelowa jest w „Social Media” rzeczywiście oznaczona jako „Połączono”.",
+        "Bez prawdziwego połączenia z platformą uczciwie wyświetlany jest błąd, zamiast udawać publikację."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analityka i wzrost",
+      "description": "Prawdziwe liczby o własnych wynikach — i rekomendacje zamiast automatyzacji.",
+      "steps": [
+        "Analytics pokazuje zapisane statystyki. Dla YouTube i Facebook aplikacja automatycznie pobiera liczby opublikowanych postów; Instagram, TikTok i LinkedIn dołączą po zatwierdzeniu przez platformę. Inne liczby wpisujesz ręcznie w „Poleceniach” lub w porównaniu wariantów.",
+        "Strona Wzrost wylicza z tych danych najlepsze godziny publikacji, skuteczne hashtagi i formaty.",
+        "Ważne: celowo nie ma automatycznego zwiększania liczby obserwujących/zaangażowania (żadnych zachowań botów) — naruszałoby to regulamin każdej platformy."
+      ]
+    },
+    "inbox": {
+      "title": "Skrzynka odbiorcza",
+      "description": "Propozycje odpowiedzi od AI na wiadomości — z zatwierdzeniem przed wysłaniem.",
+      "steps": [
+        "Wiadomości z platform nie są jeszcze pobierane, a odpowiedzi nie są wysyłane. Aby wypróbować, tworzysz rozmowy jako symulację.",
+        "MessageAgent proponuje odpowiedź na podstawie Brand DNA i przebiegu rozmowy.",
+        "To Ty sprawdzasz i zatwierdzasz szkic. Wysyłka na platformy nie jest jeszcze zbudowana – „Zatwierdź i wyślij” uczciwie zgłasza to jako błąd, zamiast udawać sukces."
+      ]
+    },
+    "revenue": {
+      "title": "Śledzenie przychodów",
+      "description": "Przegląd wszystkich przychodów z platform w jednym miejscu — wypłata i tak odbywa się przez same platformy.",
+      "steps": [
+        "Przychody wprowadzasz ręcznie, ponieważ TikTok/Meta nie oferują publicznego API przychodów, a YouTube wymaga do tego dostępu do programu partnerskiego (jeszcze niepodłączonego).",
+        "Faktyczna wypłata zawsze odbywa się bezpośrednio przez daną platformę (np. YouTube przez Google AdSense) — SECRET 58 nie obsługuje żadnych wypłat."
+      ]
+    },
+    "integrations": {
+      "title": "Integracje i klucze API",
+      "description": "Skąd bierze się każdy status połączenia i gdzie wpisać odpowiedni klucz.",
+      "steps": [
+        "Każdy wiersz pokazuje prawdziwy, sprawdzany na żywo status — nigdy udawane połączenie.",
+        "Własne dostępy (klucze AI, Resend do newslettera) wpisujesz w „Ustawienia → Własne dostępy” – przewodnik prowadzi tam do oficjalnej strony kluczy dostawcy.",
+        "Dane dostępowe nigdy nie są zapisywane w przeglądarce, tylko zaszyfrowane na serwerze. Syntezę mowy i dostępy aplikacji platform konfiguruje operator; „Jeszcze niedostępne” oznacza, że połączenie nie zostało jeszcze zbudowane w aplikacji.",
+        "Koszty: Pro i Maxi to subskrypcje, miesięczne lub roczne. Aktualne ceny są w „Pakiet i rozliczenia”. Za własne dostępy (AI, Resend) każdy dostawca rozlicza się z Tobą bezpośrednio według własnego cennika – SECRET 58 nie pobiera za to żadnych dodatkowych opłat."
+      ]
+    }
+  }
+}

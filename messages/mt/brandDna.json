@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Il-marka tiegħek. L-istil tiegħek. Kullimkien. Dawn id-dettalji jidħlu awtomatikament f'Content Brain, fl-agent tas-Script, tal-Hook u tal-Hashtag.",
+  "form": {
+    "nameLabel": "Isem tal-marka",
+    "industryLabel": "Settur",
+    "descriptionLabel": "Deskrizzjoni",
+    "descriptionHint": "X'jagħmel il-marka speċjali?",
+    "audienceLabel": "Udjenza fil-mira",
+    "languageLabel": "Lingwa",
+    "tonalityLabel": "Ton",
+    "humorLabel": "Umoriżmu",
+    "formalityLabel": "Formalità",
+    "preferredWordsLabel": "Kliem preferut",
+    "forbiddenWordsLabel": "Kliem projbit",
+    "preferredCtasLabel": "CTAs preferuti",
+    "brandValuesLabel": "Valuri tal-marka",
+    "topicsLabel": "Suġġetti",
+    "csvHint": "separati b'virgola",
+    "colorsLabel": "Kuluri",
+    "colorsHint": "separati b'virgola, eż. #6D5BFF",
+    "fontsLabel": "Tipi ta' ittri",
+    "visualRulesLabel": "Regoli viżwali",
+    "saveError": "Il-ħażna falliet.",
+    "unknownError": "Żball mhux magħruf.",
+    "saving": "Qed jinħażen…",
+    "save": "Aħżen Brand DNA",
+    "savedAt": "Inħażen fil-{time}"
+  }
+}

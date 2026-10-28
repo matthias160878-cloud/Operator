@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Mais do que conteúdo.",
+    "footerLine2": "Uma máquina de conteúdo completa.",
+    "workspace": "Espaço de trabalho",
+    "role": "Administrador"
+  },
+  "nav": {
+    "dashboard": "Painel",
+    "schulung": "Formação",
+    "contentFactory": "Content Factory",
+    "ideas": "Ideias e inspiração",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Redes sociais",
+    "calendar": "Calendário de conteúdo",
+    "analytics": "Analytics",
+    "growth": "Crescimento",
+    "weiterempfehlungen": "Recomendações",
+    "reichweitenaufbau": "Crescimento de audiência",
+    "revenue": "Receitas",
+    "inbox": "Caixa de entrada",
+    "anfragen": "Pedidos",
+    "dateien": "Arquivos",
+    "agents": "Agentes",
+    "integrations": "Integrações",
+    "settings": "Definições",
+    "billing": "Pacote e faturação",
+    "sales": "Vendas e loja",
+    "website": "O meu site"
+  },
+  "topbar": {
+    "menuOpen": "Abrir menu",
+    "menuClose": "Fechar menu",
+    "searchPlaceholder": "Pesquisar conteúdos, projetos, campanhas …",
+    "notifications": "Notificações",
+    "language": "Idioma"
+  },
+  "footer": {
+    "help": "Ajuda",
+    "privacy": "Privacidade",
+    "imprint": "Aviso legal",
+    "systemOnline": "Sistema online"
+  },
+  "actions": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Criar",
+    "close": "Fechar",
+    "back": "Voltar",
+    "loading": "A carregar …"
+  },
+  "status": {
+    "connected": "Ligado",
+    "notConfigured": "Não configurado",
+    "error": "Erro"
+  },
+  "statusBadge": {
+    "CONNECTED": "Ligado",
+    "ACTIVE": "Ativo",
+    "COMPLETED": "Concluído",
+    "RUNNING": "Em execução",
+    "SUCCESS": "Com êxito",
+    "PUBLISHED": "Publicado",
+    "APPROVED": "Aprovado",
+    "SCHEDULED": "Agendado",
+    "WAITING": "Em espera",
+    "IN_REVIEW": "Em revisão",
+    "NOT_CONFIGURED": "Não configurado",
+    "IDLE": "Pronto",
+    "DRAFT": "Rascunho",
+    "ARCHIVED": "Arquivado",
+    "ERROR": "Erro",
+    "REJECTED": "Rejeitado",
+    "RECEIVED": "Recebido",
+    "PENDING": "Pendente",
+    "NOT_AVAILABLE": "Ainda não disponível"
+  },
+  "integrationStatus": {
+    "notConfigured": "Não configurado — variável(is) em falta: {vars}.",
+    "verifyFailedGeneric": "Falha na ligação.",
+    "verifyFailedStatus": "{service} respondeu com o estado {status}.",
+    "verifyUnreachable": "Não foi possível contactar {service}.",
+    "connected": "Ligado.",
+    "notAvailable": "Ainda não disponível – esta ligação ainda não está desenvolvida na app."
+  },
+  "mediaPreview": {
+    "expand": "Ver maior",
+    "close": "Fechar"
+  }
+}

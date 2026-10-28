@@ -68,3 +68,63 @@ body {
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
+/*
+ * Kolibri-Effekte wie auf der Hauptseite (Zentrale): fließende Farbverläufe in
+ * Überschriften, umlaufendes Licht („Wurm“) um Karten beim Darüberfahren und um
+ * den aktiven Menüpunkt, Farbwechsel der Menütexte. Der Lichtverlauf steht direkt
+ * an den Regeln (nicht als Variable an :root), sonst wird der Drehwinkel dort
+ * festgeschrieben und das Licht läuft nicht um. Nur Text-Füllfarbe wird
+ * ersetzt, damit Symbole (currentColor) sichtbar bleiben.
+ */
+:root {
+  --k1: #ff5fa2;
+  --k2: #b06bff;
+  --k3: #4aa8ff;
+  --k4: #2fd3c4;
+  --k5: #ffc24d;
+  --verlauf: linear-gradient(100deg, var(--k1), var(--k5) 26%, var(--k2) 50%, var(--k3) 74%, var(--k4));
+}
+@property --s58w { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes s58-wurm { to { --s58w: 360deg; } }
+@keyframes verlauf-fliessen { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+
+main h1,
+.card h1 {
+  background-image: var(--verlauf);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: verlauf-fliessen 7s ease-in-out infinite alternate;
+}
+.card:is(:hover, :focus-within) :is(h2, h3) ,
+nav a:is(:hover, :focus-visible) .nav-text,
+.nav-aktiv .nav-text {
+  background-image: var(--verlauf);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: verlauf-fliessen 1.8s ease-in-out infinite alternate;
+}
+.card:is(:hover, :focus-within) {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    conic-gradient(from var(--s58w), transparent 0 50%, var(--k1) 64%, var(--k5) 78%, var(--k2) 87%, var(--k4) 95%, transparent 100%) border-box,
+    linear-gradient(var(--border), var(--border)) border-box;
+  animation: s58-wurm 2.8s linear infinite;
+  box-shadow: 0 0 26px -8px rgba(176, 107, 255, 0.45);
+}
+.nav-aktiv {
+  border-color: transparent !important;
+  background:
+    linear-gradient(color-mix(in srgb, var(--accent) 15%, var(--surface)), color-mix(in srgb, var(--accent) 15%, var(--surface))) padding-box,
+    conic-gradient(from var(--s58w), transparent 0 50%, var(--k1) 64%, var(--k5) 78%, var(--k2) 87%, var(--k4) 95%, transparent 100%) border-box,
+    linear-gradient(var(--border), var(--border)) border-box !important;
+  animation: s58-wurm 3.2s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  main h1, .card h1, .card :is(h2, h3), nav .nav-text, .card, .nav-aktiv { animation: none !important; }
+}

@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "{current} žingsnis iš {total}",
+    "close": "Uždaryti",
+    "back": "Atgal",
+    "next": "Toliau",
+    "skip": "Praleisti",
+    "finish": "Baigta, pradėkime",
+    "checking": "Tikrinama …",
+    "checkAgain": "Tikrinti dabar",
+    "connected": "Prijungta",
+    "notConnected": "Dar neprijungta",
+    "skippedNote": "Praleista — tai gali padaryti bet kada skiltyje „Integracijos“.",
+    "envHint": "Pastaba: išsaugojus Render, paprastai užtrunka 1–2 minutes, kol paslauga persikrauna ir pakeitimas įsigalioja. Jei „Tikrinti dabar“ dar nieko neranda, šiek tiek palauk ir spustelėk dar kartą.",
+    "reopenHint": "Šį asistentą gali bet kada atidaryti iš naujo: nustatymuose, skiltyje „Paruošimo asistentas“."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Sveiki atvykę į SECRET 58",
+      "body": "Prieš pradedant kartu paruošime būtiniausia — labai mažais, atskirais žingsniais. Gali bet kada padaryti pertrauką ir vėliau tęsti toje pačioje vietoje."
+    },
+    "aiProvider": {
+      "title": "1 žingsnis: prijunk DI tiekėją",
+      "body": "Tekstams, scenarijams, hook ir žymoms (hashtag) programai reikia DI tiekėjo. Pasirink vieną iš dviejų — užtenka vieno.",
+      "steps": [
+        "Apačioje prie Anthropic arba OpenAI spustelėk „Gauti API raktą“.",
+        "Jei reikia, ten susikurk nemokamą paskyrą.",
+        "Ten sugeneruok naują API raktą ir nukopijuok jį.",
+        "Spustelėk „Įrašyti Render“, įklijuok raktą ten kaip aplinkos kintamąjį ir išsaugok.",
+        "Grįžk čia ir apačioje spustelėk „Tikrinti dabar“."
+      ],
+      "costHint": "Išlaidos atsiranda tik faktiškai naudojant, tiesiogiai pas atitinkamą tiekėją — niekada per SECRET 58."
+    },
+    "platform": {
+      "title": "2 žingsnis: prijunk socialinio tinklo platformą (neprivaloma)",
+      "body": "Neprivaloma, bet rekomenduojama: prijunk bent vieną platformą, kurioje vėliau norėsi skelbti. Šį žingsnį gali atlikti ir vėliau.",
+      "steps": [
+        "Apačioje pasirink platformą, kurią nori naudoti.",
+        "Spustelėk „Gauti API raktą“ ir vykdyk tiekėjo nurodymus.",
+        "Spustelėk „Įrašyti Render“ ir ten išsaugok prieigos duomenis.",
+        "Grįžk čia ir spustelėk „Tikrinti dabar“."
+      ]
+    },
+    "voice": {
+      "title": "3 žingsnis: prijunk balso išvestį (neprivaloma)",
+      "body": "Reikalinga tik jei nori automatiškai kurti ištartus balso įrašus savo vaizdo įrašams. Be šio žingsnio visa kita vis tiek veikia.",
+      "steps": [
+        "Spustelėk „Gauti API raktą“ prie ElevenLabs.",
+        "Ten susikurk paskyrą ir API raktą.",
+        "Spustelėk „Įrašyti Render“ ir ten išsaugok raktą.",
+        "Grįžk čia ir spustelėk „Tikrinti dabar“."
+      ]
+    },
+    "done": {
+      "title": "Baigta!",
+      "body": "Dabar gali pradėti. Viską, ką praleidai, bet kada rasi ir papildysi skiltyje „Integracijos“ — arba iš naujo atidarysi šį asistentą per „Nustatymai“."
+    }
+  }
+}

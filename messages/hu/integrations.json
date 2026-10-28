@@ -1,0 +1,24 @@
+{
+  "title": "Integrációk",
+  "description": "A külső szolgáltatások élő állapota – csak a ténylegesen beállított és ellenőrzött kapcsolatok, semmit sem színlelünk.",
+  "categories": {
+    "AI": "MI-szolgáltatók",
+    "VOICE": "Hang",
+    "PLATFORM": "Közösségi platformok",
+    "DESIGN": "Dizájn",
+    "VIDEO": "Videó",
+    "TREND": "Trendek"
+  },
+  "costNote": "A SECRET 58 csomagod (Pro vagy Maxi) előfizetés, lásd „Csomag és számlázás”. Az itt szereplő minden külső szolgáltatásnak saját, független költségmodellje van az adott szolgáltatónál — a SECRET 58 ezekért soha nem számláz külön.",
+  "links": {
+    "getKey": "API-kulcs beszerzése",
+    "setInRender": "Megadás a Renderben",
+    "viewPricing": "Árak megtekintése"
+  },
+  "pricing": {
+    "free": "Ingyenes",
+    "payAsYouGo": "Használatalapú",
+    "subscription": "Előfizetés",
+    "unknown": "Az árat nézd meg a szolgáltatónál"
+  }
+}

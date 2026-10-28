@@ -1,0 +1,44 @@
+{
+  "kicker": "AI Social Command Center",
+  "title": "SECRET 58 — {packageName}",
+  "claim": "Bla abbonament. L-agenti kollha. Il-fornituri tal-AI tiegħek stess.",
+  "subtitle": "Idea waħda. Diversi pjattaformi. L-akbar firxa possibbli. Pakkett sħiħ wieħed — ħallas darba, aċċess sħiħ għall-applikazzjoni kollha.",
+  "features": [
+    "Content Brain — idea waħda, il-pjattaformi kollha",
+    "L-agenti tal-AI kollha: idejat, xejriet, script, hook, hashtags, thumbnails, sottotitli, pubblikazzjoni",
+    "Voice Studio b'vuċijiet ta' ElevenLabs",
+    "Video Studio b'Format Manager — il-konnessjoni ta' ġeneraturi tal-vidjows tal-AI għaddejja",
+    "Content Factory b'fluss ta' approvazzjoni u Kalendarju tal-Kontenut",
+    "Analytics, rakkomandazzjonijiet ta' tkabbir u traċċar tad-dħul",
+    "Inbox b'abbozzi ta' tweġibiet bl-AI",
+    "Għażla libera tal-fornituri tal-AI permezz ta' aċċessi proprji — bla kwoti"
+  ],
+  "priceOnetime": "darba biss",
+  "priceRecommendedNote": "Prezz rakkomandat — isir vinkolanti hekk kif Stripe jiġi kkonfigurat b'prezz xieraq.",
+  "buyButton": "Ixtri issa",
+  "redirecting": "Qed tiġi rindirizzat lejn Stripe …",
+  "checkoutFailed": "Iċ-checkout falla.",
+  "unknownError": "Żball mhux magħruf.",
+  "notConfigured": "Il-ħlas għadu mhux ikkonfigurat — l-operatur l-ewwel irid joħloq prodott f'Stripe bi prezz ta' {price} u jniżżel STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
+  "costDisclosure": "Nota: Dan il-prezz huwa darba biss għas-software. Xi funzjonijiet (eż. ġenerazzjoni tat-test bl-AI, output tal-vuċi) jeħtieġu aċċessi proprji ma' fornituri terzi (eż. Anthropic, ElevenLabs) — l-ispejjeż tagħhom huma indipendenti minn SECRET 58 u jitħallsu direttament lil kull fornitur, mhux hawn. Dettalji wara x-xiri taħt Integrazzjonijiet.",
+  "setupServiceTitle": "Żid is-servizz ta' konfigurazzjoni (+{price} darba biss)",
+  "setupServiceDescription": "Aħna nissettjjaw għalik iċ-ċwievet API, Brand DNA u l-ewwel posts.",
+  "setupServiceUnavailable": "Dalwaqt disponibbli — l-operatur l-ewwel irid jirreġistra s-servizz f'Stripe.",
+  "autopilot": {
+    "kicker": "Dalwaqt",
+    "title": "Autopilot — kollox inkluż",
+    "subtitle": "M'hemmx bżonn ta' aċċessi proprji: l-ispejjeż kollha tal-fornituri għat-test, il-vuċi u l-vidjow huma inklużi. L-istess firxa ta' funzjonijiet bħall-pakkett sħiħ — id-daqsijiet jvarjaw biss fil-kwantità.",
+    "comingSoon": "Dalwaqt",
+    "perMonth": "/ xahar",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Aġenzija"
+    },
+    "brands": "{count, plural, one {# marka} other {# marki}}",
+    "ideas": "{count} idejat ta' kontenut fix-xahar",
+    "videos": "{count} vidjows bl-AI (ta' 30 s) fix-xahar",
+    "voiceMinutes": "{count} minuti ta' output tal-vuċi fix-xahar",
+    "note": "Prezzijiet ippjanati, għadhom ma jistgħux jiġu rriżervati. L-Autopilot jibda hekk kif jiġu konnessi l-ġeneraturi tal-vidjows tal-AI."
+  }
+}

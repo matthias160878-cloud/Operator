@@ -1,6 +1,6 @@
 {
   "title": "Bandeja de entrada",
-  "description": "Mensajes y comentarios de todas las plataformas. El MessageAgent sugiere respuestas — solo se envía lo que tú apruebes. Todavía no existe una conexión OAuth real con ninguna plataforma, así que las conversaciones aquí se simulan manualmente en lugar de obtenerse en tiempo real.",
+  "description": "Mensajes y solicitudes en un solo lugar. El MessageAgent sugiere borradores de respuesta.",
   "emptyState": "Aún no hay conversaciones — simula una para empezar.",
   "backToInbox": "Volver a la bandeja de entrada",
   "newConversation": {
@@ -22,5 +22,6 @@
     "simulateMoreHint": "Simular otro mensaje entrante (prueba sin conexión real a la plataforma):",
     "messagePlaceholder": "Texto del mensaje …",
     "addButton": "Añadir"
-  }
+  },
+  "simulationBanner": "<strong>Vista previa/simulación:</strong> los mensajes de las plataformas aún no se obtienen y las respuestas no se envían, ni siquiera con «Aprobar y enviar». Aquí puedes simular mensajes de plataformas para probar. Las entradas reales solo proceden de formularios web (p. ej. solicitudes de cita); a esas respondes por correo electrónico."
 }

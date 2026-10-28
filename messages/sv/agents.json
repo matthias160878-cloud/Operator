@@ -1,0 +1,21 @@
+{
+  "title": "Assistenternas logg",
+  "description": "Alla SECRET 58-assistenter (agenter) med status, senaste uppgift och resultat. Varje körning loggas här.",
+  "table": {
+    "agent": "Agent",
+    "description": "Beskrivning",
+    "status": "Status",
+    "lastTask": "Senaste uppgift"
+  },
+  "history": {
+    "title": "Körhistorik",
+    "agent": "Agent",
+    "task": "Uppgift",
+    "status": "Status",
+    "start": "Start",
+    "end": "Slut",
+    "resultError": "Resultat / fel",
+    "empty": "Inga agentkörningar än.",
+    "completed": "Slutförd"
+  }
+}

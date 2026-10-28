@@ -1,0 +1,25 @@
+{
+  "title": "Idei și inspirație",
+  "subtitle": "Clustere de teme, serii și formate pentru conținutul viitor — generate de IdeaAgent sau introduse manual.",
+  "board": {
+    "topicLabel": "Tema pentru idei noi",
+    "topicPlaceholder": "de ex. Productivitate cu agenți IA",
+    "generateButton": "Generează idei",
+    "manualButton": "Manual",
+    "manualTitlePlaceholder": "Titlul ideii",
+    "addButton": "Adaugă",
+    "generateError": "Eroare la generarea ideilor.",
+    "unknownError": "Eroare necunoscută.",
+    "emptyState": "Încă nu există idei — generează câteva sau adaugă manual.",
+    "minutesUnit": "~{count} min.",
+    "statusNew": "Nou",
+    "statusInProgress": "În lucru",
+    "statusUsed": "Folosit",
+    "statusArchived": "Arhivat",
+    "sourceAiGenerated": "IdeaAgent (IA sau șablon)",
+    "sourceManual": "Manual",
+    "templateResult": "Șablon: ideile tocmai create provin din blocuri de text fixe, nu de la o IA. Pentru idei IA, introdu propria cheie IA la „Setări → Accese proprii”.",
+    "textEngineLabel": "Motor de text:",
+    "templateMode": "Mod șablon (niciun furnizor de IA configurat)"
+  }
+}

@@ -27,7 +27,18 @@ export default async function SettingsPage() {
       <div>
         <h1 className="text-xl font-semibold text-foreground">{t("title")}</h1>
         <p className="mt-1 text-sm text-muted">
-          {t.rich("description", { code: (chunks) => <code>{chunks}</code> })}
+          {t.rich("description", {
+            zugaenge: (chunks) => (
+              <Link href="/settings/zugaenge" className="text-accent-2 underline">
+                {chunks}
+              </Link>
+            ),
+            billing: (chunks) => (
+              <Link href="/billing" className="text-accent-2 underline">
+                {chunks}
+              </Link>
+            ),
+          })}
         </p>
       </div>
 
@@ -87,12 +98,7 @@ export default async function SettingsPage() {
             <dd className="text-foreground">{agentRuns}</dd>
           </div>
         </dl>
-        <p className="mt-3 text-xs text-muted">
-          {t.rich("system.dbNote", {
-            code: (chunks) => <code>{chunks}</code>,
-            codeSpaced: (chunks) => <code className="mx-1">{chunks}</code>,
-          })}
-        </p>
+        <p className="mt-3 text-xs text-muted">{t("system.dbNote")}</p>
       </div>
 
       <div className="card p-5">
@@ -106,6 +112,22 @@ export default async function SettingsPage() {
           {t("onboarding.reopen")}
         </Link>
       </div>
+      <Link href="/settings/zugaenge" className="card block p-5 hover:border-accent" data-testid="link-zugaenge">
+        <h2 className="text-sm font-semibold text-foreground">Eigene Zugänge (API-Schlüssel)</h2>
+        <p className="mt-1 text-xs text-muted">Eigene Schlüssel eintragen: Resend für den Newsletter-Versand und Anthropic, OpenAI oder Gemini für KI-Texte – mit Link zum Anbieter und Schritt-für-Schritt-Anleitung. Verschlüsselt, nur für diesen Workspace.</p>
+      </Link>
+      <Link href="/reichweitenaufbau?tab=uebersicht" className="card block p-5 hover:border-accent" data-testid="link-pausenschalter">
+        <h2 className="text-sm font-semibold text-foreground">Alle Veröffentlichungen pausieren</h2>
+        <p className="mt-1 text-xs text-muted">Der Pausenschalter für geplante Veröffentlichungen liegt unter Reichweitenaufbau → Übersicht („Alle pausieren“). Pausierte Aufträge bleiben erhalten und laufen nach dem Fortsetzen weiter – ohne doppelte Veröffentlichung.</p>
+      </Link>
+      <Link href="/billing" className="card block p-5 hover:border-accent" data-testid="link-paket">
+        <h2 className="text-sm font-semibold text-foreground">Paket &amp; Abrechnung</h2>
+        <p className="mt-1 text-xs text-muted">Aktuelles Paket, Kontingente und Abrechnung ansehen.</p>
+      </Link>
+      <Link href="/kuendigen" className="card block p-5 hover:border-accent" data-testid="link-kuendigen">
+        <h2 className="text-sm font-semibold text-foreground">Verträge hier kündigen</h2>
+        <p className="mt-1 text-xs text-muted">Kündigung Ihres Vertrags (z. B. Social Media KI – Pro oder Maxi) mit sofortiger Eingangsbestätigung auf dem Bildschirm und per E-Mail.</p>
+      </Link>
       <AccountDataPanel />
     </div>
   );

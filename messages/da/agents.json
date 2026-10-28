@@ -1,0 +1,21 @@
+{
+  "title": "Assistenternes log",
+  "description": "Alle SECRET 58-assistenter (agenter) med status, seneste opgave og resultat. Hver kørsel logges her.",
+  "table": {
+    "agent": "Agent",
+    "description": "Beskrivelse",
+    "status": "Status",
+    "lastTask": "Seneste opgave"
+  },
+  "history": {
+    "title": "Kørselshistorik",
+    "agent": "Agent",
+    "task": "Opgave",
+    "status": "Status",
+    "start": "Start",
+    "end": "Slut",
+    "resultError": "Resultat / fejl",
+    "empty": "Ingen agentkørsler endnu.",
+    "completed": "Afsluttet"
+  }
+}

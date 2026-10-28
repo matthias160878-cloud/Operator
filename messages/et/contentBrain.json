@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Üks idee sisse — täielik platvormile sobiv sisuplaan välja. ContentBrainAgent arvestab sinu Brand DNA-d ja loob iga valitud platvormi jaoks sobivad haagid, skriptid, märksõnad ja pisipildikontseptsioonid visandina.",
+  "campaignsHeading": "Kampaaniad",
+  "noCampaigns": "Kampaaniaid pole veel loodud.",
+  "campaignSummary": "{count} sisuühikut · {audience}",
+  "form": {
+    "textEngineLabel": "Tekstimootor:",
+    "templateMode": "Mallirežiim (tehisintellekti pakkuja pole seadistatud)",
+    "modeTemplate": "Mall",
+    "topicLabel": "Teema / idee",
+    "topicPlaceholder": "nt Selgita, miks autonoomsed tehisintellekti agendid muudavad töömaailma.",
+    "audienceLabel": "Sihtrühm",
+    "audiencePlaceholder": "nt 25–45, tehnikahuvilised",
+    "goalLabel": "Eesmärk",
+    "languageLabel": "Keel",
+    "platformsLabel": "Platvormid",
+    "itemsPerPlatformLabel": "Sisuühikuid platvormi kohta ({count})",
+    "generateError": "Genereerimine ebaõnnestus.",
+    "unknownError": "Tundmatu viga.",
+    "submitLoading": "Content Brain töötab…",
+    "submitIdle": "Genereeri sisuplaan",
+    "resultHeading": "Kampaania loodud — {count} sisuühikut lisatud visandina.",
+    "resultDescription": "Genereeritud režiimis {mode}. Kogu sisu algab olekus DRAFT — vaata see üle ja muuda Content Factorys.",
+    "resultLink": "Content Factorysse →"
+  }
+}

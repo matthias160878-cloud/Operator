@@ -1,0 +1,25 @@
+{
+  "title": "Fikirler ve ilham",
+  "subtitle": "Gelecek içerikler için konu kümeleri, seriler ve biçimler — IdeaAgent tarafından üretilir ya da elle girilir.",
+  "board": {
+    "topicLabel": "Yeni fikirler için konu",
+    "topicPlaceholder": "ör. Yapay zekâ ajanlarıyla verimlilik",
+    "generateButton": "Fikir üret",
+    "manualButton": "Elle",
+    "manualTitlePlaceholder": "Fikir başlığı",
+    "addButton": "Ekle",
+    "generateError": "Fikir üretiminde hata.",
+    "unknownError": "Bilinmeyen hata.",
+    "emptyState": "Henüz fikir yok — üret ya da elle ekle.",
+    "minutesUnit": "~{count} dk.",
+    "statusNew": "Yeni",
+    "statusInProgress": "Üzerinde çalışılıyor",
+    "statusUsed": "Kullanıldı",
+    "statusArchived": "Arşivlendi",
+    "sourceAiGenerated": "IdeaAgent (yapay zekâ veya şablon)",
+    "sourceManual": "Elle",
+    "templateResult": "Şablon: az önce oluşturulan fikirler bir yapay zekâdan değil, sabit metin bloklarından geliyor. Yapay zekâ fikirleri için kendi yapay zekâ anahtarını „Ayarlar → Kendi erişimlerim” altında gir.",
+    "textEngineLabel": "Metin motoru:",
+    "templateMode": "Şablon modu (yapılandırılmış yapay zekâ sağlayıcısı yok)"
+  }
+}

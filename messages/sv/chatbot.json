@@ -1,0 +1,14 @@
+{
+  "title": "AI-assistent",
+  "welcome": "Hej! Fråga mig vad som helst om SECRET 58 — hur du ställer in något, var du hittar något eller hur ett område fungerar.",
+  "inputPlaceholder": "Skriv en fråga …",
+  "thinking": "Tänker …",
+  "openButton": "Öppna AI-assistenten",
+  "close": "Stäng",
+  "sendButton": "Skicka",
+  "micButton": "Röstinmatning",
+  "speakToggle": "Läs upp svar",
+  "notConfigured": "AI-assistenten är inte konfigurerad än — för det måste en AI-leverantör (Anthropic eller OpenAI) läggas in.",
+  "openIntegrations": "Till Integrationer",
+  "error": "AI-assistenten kunde inte svara just nu. Försök igen senare."
+}

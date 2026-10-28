@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Vidjow tat-taħriġ",
+  "subtitlesLabel": "Sottotitli",
+  "subtitlesOff": "Mitfi",
+  "soundLabel": "Ħoss",
+  "soundOn": "Leħen li jaqra: mixgħul",
+  "soundOff": "Leħen li jaqra: mitfi",
+  "soundHint": "Il-leħen li jaqra jiġi mill-browser tiegħek. Liema lingwi huma disponibbli jiddependi mill-apparat tiegħek.",
+  "soundMissing": "Għal din il-lingwa m'hemm l-ebda leħen installat fuq l-apparat tiegħek. Is-sottotitli jaħdmu xorta.",
+  "draftNote": "Abbozz: Reġistrazzjoni tal-app reali b'dejta tat-test. Sottotitli tradotti awtomatikament.",
+  "whatLabel": "X'inhu, x'funzjoni għandu u kif twettqu.",
+  "videosTitle": "Vidjows ta' spjegazzjoni għal kull żona",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "L-ewwel passi",
+      "cues": {
+        "c1": "Merħba għat-taħriġ: L-ewwel passi. Dak kollu li tara huwa l-app reali b'dejta tat-test.",
+        "c2": "Fuq ix-xellug hemm in-navigazzjoni. Kull żona tal-app għandha entrata hawn.",
+        "c3": "Pass 1: Iċċekkja taħt “Integrazzjonijiet” liema servizzi huma konnessi.",
+        "c4": "Kull ringiela turi l-istatus reali u vverifikat – qatt konnessjoni ffintata.",
+        "c5": "“Mhux ikkonfigurat” tfisser: Dan is-servizz għadu mhux issettjat. Mingħajr fornitur tal-AI l-app taħdem fil-modalità tal-mudelli.",
+        "c6": "Pass 2: Daħħal il-marka tiegħek taħt “Brand DNA”. It-ton, l-udjenza fil-mira u l-valuri jidħlu f'kull test iġġenerat.",
+        "c7": "Eżempju: imla s-settur u l-udjenza fil-mira u aħżen hawn taħt.",
+        "c8": "Pass 3: Ħalli taħt “Idejat u Ispirazzjoni” tinħoloq l-ewwel idea. Daħħal suġġett u ikklikkja fuq “Iġġenera idejat”.",
+        "c9": "L-idejat jidhru bħala kards. Fil-modalità tal-mudelli huma eżempji, b'fornitur tal-AI isiru individwali.",
+        "c10": "Kollox jibqa' abbozz sakemm int tapprovah. Għal kull żona hemm vidjow ta' spjegazzjoni tiegħu."
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "cues": {
+        "c1": "Id-Dashboard hija l-paġna tal-bidu tiegħek: ħarsa ġenerali lejn dak kollu li jiġri fl-ispazju tax-xogħol tiegħek.",
+        "c2": "Fuq tara l-agenti attivi, il-produzzjoni tal-kontenut u l-posts ippjanati.",
+        "c3": "Aktar 'l isfel hemm l-aħħar attivitajiet u shortcuts lejn Content Factory u Brand DNA.",
+        "c4": "B'“Ġimgħa” tibdel il-perjodu tal-indikaturi.",
+        "c5": "Hekk tużah: Iftaħ id-Dashboard kuljum, iċċekkja l-abbozzi miftuħa u aqbeż minn hawn direttament għaż-żona xierqa."
+      }
+    },
+    "schulung": {
+      "title": "Taħriġ",
+      "cues": {
+        "c1": "It-Taħriġ huwa l-gwida tiegħek fl-app. Jispjega kull żona pass pass.",
+        "c2": "Kull suġġett għandu deskrizzjoni, passi numerati u rabta li tiftaħ il-paġna xierqa.",
+        "c3": "Hawnhekk jidhru wkoll dawn il-vidjows ta' spjegazzjoni, wieħed għal kull żona.",
+        "c4": "Hekk tużah: Agħżel suġġett, aqra l-passi, iftaħ il-paġna u pprovaha minnufih."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory hija l-bank tax-xogħol għall-items kollha tal-kontenut tiegħek f'post wieħed.",
+        "c2": "Funzjoni: toħloq items, tiddupplika, terġa' tikteb, iżżid voiceover u sottotitli u tgħaddihom mill-fluss ta' approvazzjoni.",
+        "c3": "Il-filtri fuq juru l-istatus: Abbozz, Qed jiġi eżaminat, Approvat, Ippjanat, Ippubblikat u Arkivjat.",
+        "c4": "Hekk issir: B'“Item ġdid ta' kontenut” toħloq item.",
+        "c5": "Iftaħ item biex teditja l-iscript, il-voiceover, is-sottotitli, il-hashtags u t-thumbnail.",
+        "c6": "L-approvazzjoni hija dejjem pass manwali. Xejn ma jiġi ppubblikat mingħajr il-konferma tiegħek."
+      }
+    },
+    "ideas": {
+      "title": "Idejat u Ispirazzjoni",
+      "cues": {
+        "c1": "Hawnhekk tiġbor l-idejat: clusters ta' suġġetti, serje u formats għall-kontenut li jmiss.",
+        "c2": "Funzjoni: L-IdeaAgent joħloq idejat dwar suġġett, jew int tirreġistra idejat tiegħek bl-idejn.",
+        "c3": "Hekk issir: Daħħal is-suġġett, agħżel pjattaforma, għan u format u ikklikkja fuq “Iġġenera idejat”.",
+        "c4": "Kull idea ssir kard b'titlu, hook u prijorità.",
+        "c5": "B'“Manwalment” toħloq idea tiegħek.",
+        "c6": "L-idejat tajbin tieħdhom bħala punt tat-tluq għal Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain jagħmel minn idea pjan sħiħ ta' kontenut.",
+        "c2": "Funzjoni: Iqis il-Brand DNA tiegħek u joħloq bħala abbozz hooks, scripts, hashtags u kunċetti ta' thumbnail għal kull pjattaforma magħżula.",
+        "c3": "Hekk issir: Daħħal is-suġġett u l-udjenza fil-mira.",
+        "c4": "Agħżel l-għan u l-lingwa, imbagħad ikklikkja fuq il-pjattaformi. Hawn tiżdied TikTok.",
+        "c5": "Bis-slider tiddeċiedi kemm items ta' kontenut jinħolqu għal kull pjattaforma.",
+        "c6": "Klikk fuq “Iġġenera pjan ta' kontenut” jibda l-eżekuzzjoni.",
+        "c7": "Il-kampanja tidher hawn taħt. L-items kollha huma abbozzi u jinsabu f'Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Il-Brand DNA tiddeskrivi l-marka tiegħek: isem, settur, udjenza fil-mira, ton u valuri.",
+        "c2": "Funzjoni: Dawn id-dettalji jidħlu awtomatikament f'Content Brain kif ukoll fl-agenti tal-Script, tal-Hook u tal-Hashtag.",
+        "c3": "Hekk issir: Imla l-oqsma, per eżempju s-settur u l-udjenza fil-mira.",
+        "c4": "Aktar 'l isfel iżżomm kliem preferut u projbit, sejħiet għall-azzjoni u valuri tal-marka.",
+        "c5": "Fl-aħħar ikklikkja fuq “Aħżen Brand DNA”."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio huwa l-workshop għall-iscripts u l-hooks.",
+        "c2": "Funzjoni: Jibni scripts skont l-istruttura Hook, Problema, Benefiċċju, Eżempju, Riżultat u Sejħa għall-azzjoni u jagħti diversi varjanti ta' hook.",
+        "c3": "Hekk issir: Daħħal is-suġġett u agħżel il-pjattaforma.",
+        "c4": "Imbagħad ikklikkja fuq “Iġġenera Script u Hooks”.",
+        "c5": "Ir-riżultat huwa abbozz li tkompli tuża f'Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio jamministra l-vuċijiet u joħloq voiceover.",
+        "c2": "Funzjoni: Iżżomm il-Voice Library, toħloq previews u timporta vuċijiet. Il-konnessjoni tgħaddi minn ElevenLabs.",
+        "c3": "Hekk issir: Oħloq vuċi manwalment jew importaha minn ElevenLabs. L-importazzjoni teħtieġ konnessjoni mfassla.",
+        "c4": "B'test u vuċi toħloq preview u tisimgħu."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio huwa l-pipeline tal-vidjow tal-app.",
+        "c2": "Funzjoni: Format Manager, fornituri tal-vidjow li jistgħu jinbidlu, kif ukoll konnessjoni tal-voiceover u tas-sottotitli.",
+        "c3": "Il-paġna turi liema fornituri huma mfassla. Dawk li mhumiex mfassla jiġu mmarkati onestament bħala tali.",
+        "c4": "Hekk issir: Il-vidjows toħolqom għal kull item ta' kontenut f'Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio jagħti kunċetti ta' thumbnail u assi tal-immaġini.",
+        "c2": "Funzjoni: It-Thumbnail-Agent jipproponi titlu, idea tal-immaġni, test u layout. L-integrazzjoni ma' Canva hija prevista hawn.",
+        "c3": "Hekk issir: Daħħal is-suġġett għat-thumbnail.",
+        "c4": "Ikklikkja fuq “Iġġenera kunċett”.",
+        "c5": "Il-kunċett iservi bħala mudell għall-immaġni tiegħek."
+      }
+    },
+    "socialMedia": {
+      "title": "Social Media",
+      "cues": {
+        "c1": "Hawnhekk tqabbad il-kontijiet tal-pjattaformi tiegħek u tara l-istatus tagħhom.",
+        "c2": "Funzjoni: L-aċċessi jiġu mmaniġġjati min-naħa tas-server u maħżuna kriptati. Permezz ta' Composio tidħol fil-pjattaforma.",
+        "c3": "Kull kard turi l-pjattaforma, il-kont, l-istatus u l-aħħar test tal-qari.",
+        "c4": "“Għadu mhux imfassal” tfisser: L-operatur għadu ma attivax il-konnessjoni fuq is-server.",
+        "c5": "Hekk issir: Hekk kif imfassla, ikklikkja fuq il-pjattaforma fuq “Qabbad” u idħol. Jinqara biss, xejn ma jiġi ppubblikat."
+      }
+    },
+    "calendar": {
+      "title": "Kalendarju tal-Kontenut",
+      "cues": {
+        "c1": "Il-Kalendarju tal-Kontenut juri ħarsa ġenerali lejn il-kontenut ippjanat u ppubblikat.",
+        "c2": "Funzjoni: L-items kollha ta' kontenut b'data ta' pubblikazzjoni jidhru hawn, filtrabbli skont il-pjattaforma.",
+        "c3": "Hekk issir: Ippjana item f'Content Factory b'data, imbagħad jidher hawn.",
+        "c4": "Qabel kull pubblikazzjoni l-app tivverifika live jekk il-pjattaforma fil-mira hijiex konnessa."
+      }
+    },
+    "analytics": {
+      "title": "Analytics",
+      "cues": {
+        "c1": "Analytics juri l-indikaturi tal-prestazzjoni tiegħek.",
+        "c2": "Funzjoni: Biss dejta li teżisti verament, importata jew irreġistrata minnek. Xejn ma hu maħluq.",
+        "c3": "Tara l-iżvilupp maż-żmien, l-aqwa kontenut u r-rakkomandazzjonijiet tal-Learning Agent.",
+        "c4": "Hekk issir: Hekk kif jitqabblu l-pjattaformi jew tidħol dejta, id-dijagrammi jimtlew."
+      }
+    },
+    "growth": {
+      "title": "Tkabbir",
+      "cues": {
+        "c1": "Il-paġna tat-Tkabbir tagħti rakkomandazzjonijiet għal aktar firxa.",
+        "c2": "Funzjoni: Mid-dejta reali tal-analytics tiegħek tikkalkula l-aqwa ħinijiet biex tippostja, hashtags b'suċċess u formats.",
+        "c3": "Hekk issir: Agħżel pjattaforma u aqra r-rakkomandazzjonijiet.",
+        "c4": "Dawn huma rakkomandazzjonijiet, mhux awtomatizzazzjoni. Is-segwaċi jew l-interazzjonijiet ma jiżdidux artifiċjalment."
+      }
+    },
+    "revenue": {
+      "title": "Dħul",
+      "cues": {
+        "c1": "Taħt Dħul tgħaqqad id-dħul tiegħek mill-pjattaformi u l-kampanji.",
+        "c2": "Funzjoni: L-ammonti jidhru biss meta tidħolhom int. M'hemm l-ebda numri maħluqa.",
+        "c3": "Hekk issir: Ikklikkja fuq “Irreġistra dħul”, agħżel pjattaforma u tip u daħħal l-ammont.",
+        "c4": "Il-ħlas isir dejjem direttament mill-pjattaforma. SECRET 58 ma jmexxi l-ebda ħlas."
+      }
+    },
+    "sales": {
+      "title": "Bejgħ u Shop",
+      "cues": {
+        "c1": "“Bejgħ u Shop” juri d-dħul tan-negozju tiegħek stess.",
+        "c2": "Funzjoni: Huwa separat mill-pakkett tiegħek ta' SECRET 58. Jingħaddu biss il-bejgħ effettiv, id-dejta tat-test hija mmarkata.",
+        "c3": "Fuq hemm is-somom għal kull munita, taħthom id-dettalji tiegħek bħala fornitur għall-Impressum.",
+        "c4": "Għażla B: Ibigħ permezz ta' SECRET 58. Għażla A: importa shop eżistenti.",
+        "c5": "Hekk issir: Imla d-dettalji tal-fornitur u aħżen, imbagħad agħżel it-triq tal-bejgħ."
+      }
+    },
+    "website": {
+      "title": "Is-sit tiegħi",
+      "cues": {
+        "c1": "Hawnhekk iddaħħal l-assistent tas-sit fuq is-sit tiegħek stess.",
+        "c2": "Funzjoni: L-assistent iwieġeb il-mistoqsijiet tal-viżitaturi tiegħek.",
+        "c3": "Ma nibdlux is-sit tiegħek awtomatikament. Int iddaħħal il-kodiċi int stess jew tħallih jiddaħħal mid-disinjatur tas-sit tiegħek.",
+        "c4": "Hekk issir: Daħħal l-indirizz tas-sit u ikklikkja fuq “Żid is-sit”.",
+        "c5": "Wara tikkopja l-kodiċi murija fis-sit tiegħek."
+      }
+    },
+    "inbox": {
+      "title": "Inbox",
+      "cues": {
+        "c1": "L-Inbox tiġbor messaġġi u kummenti mill-pjattaformi kollha.",
+        "c2": "Funzjoni: MessageAgent jissuġġerixxi tweġibiet. Jintbagħat biss dak li int tapprova.",
+        "c3": "Hekk issir: Sakemm ma hemm l-ebda pjattaforma konnessa live, ikklikkja fuq “Issimula konversazzjoni”.",
+        "c4": "Iċċekkja t-tweġiba proposta, adattaha u approvaha."
+      }
+    },
+    "agents": {
+      "title": "Agenti",
+      "cues": {
+        "c1": "L-Agent Monitor juri l-agenti kollha ta' SECRET 58.",
+        "c2": "Funzjoni: Status, l-aħħar kompitu u r-riżultat ta' kull agent. Kull eżekuzzjoni tiġi rreġistrata.",
+        "c3": "Fl-Istorja tal-eżekuzzjonijiet tara x'ħadem meta u jekk irnexxiex.",
+        "c4": "Hekk tużah: Iċċekkja hawn meta xi ħaġa ma nħolqitx kif kien mistenni."
+      }
+    },
+    "integrations": {
+      "title": "Integrazzjonijiet",
+      "cues": {
+        "c1": "Hawnhekk tara l-istatus live tas-servizzi esterni kollha.",
+        "c2": "Funzjoni: Kull ringiela hija bbażata fuq l-aċċessi li verament ġew issettjati. M'hemm l-ebda konnessjonijiet iffintati.",
+        "c3": "Il-gruppi huma: Fornituri tal-AI, Voice, Pjattaformi Social, Disinn, Vidjow u Xejriet.",
+        "c4": "Hekk issir: Fil-każ ta' “Mhux ikkonfigurat”, “Ikseb iċ-ċavetta API” iwassal għall-paġna tal-fornitur.",
+        "c5": "Il-fornituri esterni għandhom il-prezzijiet tagħhom stess. Għal kull servizz jingħad liema mudell japplika."
+      }
+    },
+    "billing": {
+      "title": "Pakkett u Fatturar",
+      "cues": {
+        "c1": "Taħt “Pakkett u Fatturar” tara l-pakkett tiegħek u tista' tibdlu.",
+        "c2": "Funzjoni: Il-funzjonijiet tal-AI jaħdmu permezz tal-aċċessi tal-operatur. Ma teħtieġx abbonament tal-AI tiegħek.",
+        "c3": "Hemm Pro u Maxi, kull xahar jew kull sena. Il-prezzijiet jidhru nett fuq il-kards.",
+        "c4": "Jinxtara biss b'klikk espliċitu fuq “Ordna bl-obbligu ta' ħlas”.",
+        "c5": "Jekk għandek promocode, tirredimih fil-qasam ta' taħt."
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "cues": {
+        "c1": "Fis-Settings timmaniġġja l-ispazju tax-xogħol, l-utenti u l-informazzjoni tas-sistema.",
+        "c2": "Funzjoni: Workspace, rwoli, status tas-sistema, assistent tal-konfigurazzjoni u d-dejta tiegħek b'aċċess u tħassir.",
+        "c3": "Hekk issir: Mexxi mit-taqsimiet. It-tħassir tal-ispazju tax-xogħol jitlob konferma addizzjonali.",
+        "c4": "Iċċekkja hawn regolarment id-dejta tiegħek u l-assistent tal-konfigurazzjoni."
+      }
+    }
+  }
+}

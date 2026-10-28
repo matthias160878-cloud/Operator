@@ -45,7 +45,8 @@ export default async function AgentsPage() {
                   <td className="px-4 py-3 text-foreground">{agent.name}</td>
                   <td className="px-4 py-3 text-muted">{agent.description}</td>
                   <td className="px-4 py-3">
-                    <StatusBadge status={run?.status ?? "IDLE"} />
+                    {/* TrendAgent hat keine Datenquelle – nicht als „Bereit“ zeigen. */}
+                    <StatusBadge status={agent.key === "trend" ? "NOT_AVAILABLE" : run?.status ?? "IDLE"} />
                   </td>
                   <td className="px-4 py-3 text-muted">{run?.task ?? "—"}</td>
                 </tr>

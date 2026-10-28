@@ -1,0 +1,104 @@
+{
+  "viewAll": "Skatīt visu",
+  "demoBanner": {
+    "text": "Parauga dati ir aktīvi – šīs darba telpas kampaņas, saturs un statistika ir parauga dati, nevis īsti platformu skaitļi."
+  },
+  "hero": {
+    "subtitle": "Viena ideja. Vairākas platformas. Maksimāls sasniegums.",
+    "newCampaign": "Jauna kampaņa",
+    "createContent": "Izveidot saturu",
+    "findIdeas": "Atrast idejas",
+    "aiAgents": "MI aģenti"
+  },
+  "orbit": {
+    "xNotConnected": "X (nav pieslēgts)",
+    "brainAlt": "SECRET 58 MI smadzenes"
+  },
+  "activeAgents": {
+    "title": "Aktīvie aģenti",
+    "empty": "Aģentu palaišanu vēl nav."
+  },
+  "kpi": {
+    "contentCreated": "Izveidotais saturs",
+    "videosCreated": "Izveidotie video",
+    "postsCreated": "Izveidotie ieraksti",
+    "published": "Publikācijas",
+    "views": "Skatījumi",
+    "avgEngagement": "Vid. iesaiste",
+    "totalRevenue": "Ieņēmumi (ievadīti manuāli)",
+    "noComparisonWeek": "Iepriekšējās nedēļas salīdzinājuma bāzes vēl nav — izmaiņu rādītāji parādīsies, tiklīdz būs dati vismaz par divām nedēļām.",
+    "noStats": "Skatījumi un mijiedarbība: statistikas vēl nav – tā parādās automātiski, tiklīdz ieraksts ir publicēts ar lietotnes starpniecību YouTube vai Facebook."
+  },
+  "production": {
+    "title": "Satura ražošana",
+    "thisWeek": "Šonedēļ"
+  },
+  "scheduled": {
+    "title": "Ieplānotie ieraksti",
+    "empty": "Nav ieplānotu ierakstu."
+  },
+  "activity": {
+    "title": "Pēdējās aktivitātes",
+    "empty": "Aktivitāšu vēl nav."
+  },
+  "contentFactory": {
+    "description": "Izveido pilnas satura kampaņas visām platformām ar vienu ideju.",
+    "cta": "Sākt tagad →",
+    "popularTemplates": "Populārās veidnes",
+    "templateYoutubeVideo": "YouTube video",
+    "templateTiktokSeries": "TikTok sērija",
+    "templateInstagramReel": "Instagram Reel",
+    "templateLinkedinPost": "LinkedIn ieraksts",
+    "templateBlogPost": "Emuāra raksts",
+    "viewAllTemplates": "Visas veidnes →"
+  },
+  "brandDna": {
+    "tonality": "Tonalitāte",
+    "targetAudience": "Mērķauditorija",
+    "industry": "Nozare",
+    "language": "Valoda",
+    "empty": "Brand DNA vēl nav saglabāts."
+  },
+  "campaigns": {
+    "title": "Aktuālās kampaņas",
+    "empty": "Kampaņu vēl nav."
+  },
+  "platforms": {
+    "title": "Platformas",
+    "manage": "Pārvaldīt"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} pievienoti"
+  },
+  "agentMonitor": {
+    "title": "Asistentu žurnāls",
+    "empty": "Palaišanu vēl nav."
+  },
+  "topPerformer": {
+    "title": "Labākie rezultāti",
+    "last7Days": "Pēdējās 7 dienas",
+    "empty": "Snieguma datu vēl nav – tie parādās automātiski ierakstiem, kas publicēti ar lietotnes starpniecību YouTube vai Facebook.",
+    "views": "Skatījumi",
+    "likes": "Patīk atzīmes",
+    "comments": "Komentāri",
+    "shares": "Kopīgojumi",
+    "engagementRate": "+Iesaistes līmenis {value}"
+  },
+  "calendar": {
+    "open": "Atvērt",
+    "viewMonth": "Mēnesis",
+    "viewWeek": "Nedēļa",
+    "viewDay": "Diena",
+    "viewCampaign": "Kampaņa",
+    "moreItems": "+{count} vēl"
+  },
+  "weekdayLabels": [
+    "Pr",
+    "Ot",
+    "Tr",
+    "Ce",
+    "Pk",
+    "Se",
+    "Sv"
+  ]
+}

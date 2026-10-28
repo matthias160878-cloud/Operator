@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Thumbnail-koncepter som tekst og status for Canva-forbindelsen.",
+  "imageAssetsTitle": "Billedassets",
+  "imageAssetsEmpty": "Endnu ingen billeder. Thumbnail-agenten laver i øjeblikket kun tekstkoncepter, ingen billedfiler.",
+  "thumbnailAgent": {
+    "title": "Thumbnail-agent",
+    "description": "Laver et tekstkoncept (titel, visuel idé, layout, CTA) — forberedt til tilslutning af en billedgenerator. Der oprettes endnu intet billede.",
+    "inputPlaceholder": "Emne for thumbnailen",
+    "submitButton": "Generer koncept",
+    "errorGenerationFailed": "Genereringen mislykkedes.",
+    "errorUnknown": "Ukendt fejl.",
+    "fieldTitle": "Titel",
+    "fieldVisualIdea": "Visuel idé",
+    "fieldText": "Tekst",
+    "fieldLayout": "Layout",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Billedbeskrivelse",
+    "templateResult": "Skabelon: dette koncept stammer fra en fast tekstskabelon, ikke fra en AI. For AI-koncepter skal du indtaste din egen AI-nøgle under „Indstillinger → Egne adgange“.",
+    "textEngineLabel": "Tekstmotor:",
+    "templateMode": "Skabelontilstand (ingen AI-udbyder konfigureret)"
+  }
+}

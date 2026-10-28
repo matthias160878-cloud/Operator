@@ -1,18 +1,36 @@
 import Link from "next/link";
 import { legalLinks } from "@/lib/legal";
 
-/** Impressum, Datenschutz und AGB — von jeder Seite aus mit einem Klick erreichbar. */
-export function LegalFooter({ className }: { className?: string }) {
+/** Impressum, Datenschutz, AGB und Kündigungsbutton (§ 312k BGB) — von jeder Seite aus mit einem Klick erreichbar.
+ *  installieren: fester Platz für „App installieren“ (public/installieren.js), damit keine schwebende Schaltfläche Inhalte verdeckt.
+ *  startseite: Link „Startseite“ voranstellen (öffentliche Seiten wie /impressum, /kuendigen, /login, /signup).
+ *  Ohne Prefetch: „/“ ist für Besucher die statische Startseite der Zentrale (Rewrite), kein App-Router-Ziel. */
+export function LegalFooter({
+  className,
+  installieren = false,
+  startseite = false,
+}: {
+  className?: string;
+  installieren?: boolean;
+  startseite?: boolean;
+}) {
   const { agb, datenschutz } = legalLinks();
   return (
     <footer className={className ?? "mt-8 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-muted"}>
+      {startseite && (
+        <Link href="/" prefetch={false} className="hover:text-foreground">Startseite</Link>
+      )}
       <Link href="/impressum" className="hover:text-foreground">Impressum</Link>
-      {datenschutz && (
+      {datenschutz.startsWith("/") ? (
+        <Link href={datenschutz} className="hover:text-foreground">Datenschutz</Link>
+      ) : (
         <a href={datenschutz} className="hover:text-foreground" target="_blank" rel="noreferrer">Datenschutz</a>
       )}
       {agb && (
         <a href={agb} className="hover:text-foreground" target="_blank" rel="noreferrer">AGB</a>
       )}
+      <Link href="/kuendigen" className="hover:text-foreground">Verträge hier kündigen</Link>
+      {installieren && <span data-s58-install suppressHydrationWarning />}
     </footer>
   );
 }

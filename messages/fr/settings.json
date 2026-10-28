@@ -1,6 +1,6 @@
 {
   "title": "Paramètres",
-  "description": "Workspace, utilisateurs et informations système. Les identifiants sont gérés exclusivement via des variables d'environnement (voir <code>.env.example</code>).",
+  "description": "Ton espace de travail, les utilisateurs et un aperçu de tes données. Tu saisis tes propres clés API (textes IA, envoi de newsletter) sous <zugaenge>Accès personnels</zugaenge> ; ton offre se trouve sous <billing>Offre et facturation</billing>.",
   "workspace": {
     "title": "Workspace",
     "name": "Nom",
@@ -9,7 +9,7 @@
   },
   "users": {
     "title": "Utilisateurs & rôles",
-    "note": "Le modèle de données multi-tenant est entièrement prêt (isolation par workspace sur toutes les tables). Une véritable interface de connexion/authentification avec plusieurs utilisateurs est la prochaine étape — pour l'instant, l'application fonctionne avec cet unique workspace par défaut."
+    "note": "Chaque compte dispose de son propre espace de travail, séparé des autres clients. Tu ne peux pas encore ajouter toi-même d'autres utilisateurs."
   },
   "system": {
     "title": "Système",
@@ -17,7 +17,7 @@
     "campaigns": "Campagnes",
     "mediaAssets": "Ressources média",
     "agentRuns": "Exécutions d'agents",
-    "dbNote": "Base de données : SQLite (locale, <code>prisma/dev.db</code>) via Prisma ORM. Pour la production, basculer <codeSpaced>DATABASE_URL</codeSpaced> vers Postgres/MySQL (ajuster le fournisseur dans <codeSpaced>prisma/schema.prisma</codeSpaced>)."
+    "dbNote": "Nombre d'entrées enregistrées dans ton espace de travail. Tu peux exporter toutes les données ou supprimer l'espace de travail ci-dessous sous « Mes données »."
   },
   "onboarding": {
     "title": "Assistant de configuration",

@@ -1,0 +1,86 @@
+{
+  "title": "Training",
+  "subtitle": "Stapsgewijze handleidingen en uitlegvideo’s voor elk onderdeel van SECRET 58 — hier altijd terug te vinden.",
+  "welcomeBanner": {
+    "title": "Welkom bij SECRET 58!",
+    "body": "Bedankt voor je aankoop. Voordat het begint, loont het om hieronder even naar “Eerste stappen” te kijken — zodat de AI-agents vanaf het begin met jouw echte gegevens werken."
+  },
+  "stepsLabel": "Stappen",
+  "openPage": "Pagina openen",
+  "topics": {
+    "firstSteps": {
+      "title": "Eerste stappen",
+      "description": "Doe deze drie dingen eerst, dan werken alle AI-agents met echte gegevens in plaats van met plaatshouders.",
+      "steps": [
+        "Voer onder „Instellingen → Eigen toegangen” je eigen AI-sleutel van Anthropic, OpenAI of Gemini in. De AI-functies gebruiken uitsluitend je eigen sleutel; de AI-aanbieder factureert jou rechtstreeks. Zonder eigen sleutel werkt de app in sjabloonmodus met vaste tekstblokken.",
+        "Vul onder “Brand DNA” je eigen merk in (toon, doelgroep, waarden) — de AI-agents gebruiken dat voor elke gegenereerde tekst.",
+        "Laat onder “Ideeën & inspiratie” of “Content Brain” het eerste idee of de eerste campagne maken."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Zo wordt van een idee kant-en-klare, goedgekeurde content.",
+      "steps": [
+        "Maak in Content Brain een nieuwe campagne aan met onderwerp en doelplatforms — daaruit ontstaan automatisch meerdere content-items.",
+        "In de Content Factory doorloopt elk content-item een status: Concept → In beoordeling → Goedgekeurd → Gepland → Gepubliceerd.",
+        "Goedkeuring is een handmatige stap en verplicht — er wordt niets automatisch gepubliceerd zonder bevestiging.",
+        "In de detailweergave van een content-item kun je script, voice-over, ondertitels, hashtags en thumbnail afzonderlijk opnieuw laten genereren."
+      ]
+    },
+    "studios": {
+      "title": "Script-, Voice-, Video- & Design Studio",
+      "description": "De gespecialiseerde tools voor elk contentonderdeel.",
+      "steps": [
+        "Script Studio: maakt scripts volgens de structuur Hook → Probleem → Waarde → Voorbeeld → Resultaat → CTA.",
+        "Voice Studio: importeer of maak je eigen ElevenLabs-stem en maak daarna direct vanuit een script een voice-over.",
+        "Design Studio: de thumbnail-agent stelt titel, visueel idee, tekst, lay-out en beeldbeschrijving voor.",
+        "Video Studio: toont de actuele stand van de koppeling met videoproviders (formatbeheer, providerstatus)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Contentkalender & publicatie",
+      "description": "Waar geplande berichten terechtkomen — en waarom een post echt wordt verstuurd (of juist niet).",
+      "steps": [
+        "In de contentkalender verschijnen alle content-items met een geplande publicatiedatum.",
+        "Vóór elke publicatie controleert de PublishingAgent live of het doelplatform onder “Social media” echt als “Verbonden” staat.",
+        "Zonder echte platformkoppeling wordt eerlijk een fout getoond in plaats van een publicatie voor te wenden."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics & groei",
+      "description": "Echte cijfers over je eigen prestaties — en aanbevelingen in plaats van automatisering.",
+      "steps": [
+        "Analytics toont opgeslagen statistieken. Voor YouTube en Facebook haalt de app de cijfers van gepubliceerde berichten automatisch op; Instagram, TikTok en LinkedIn volgen na vrijgave door het platform. Andere cijfers voer je handmatig in onder „Aanbevelingen” of in de variantenvergelijking.",
+        "De groeipagina berekent uit deze data de beste posttijden, succesvolle hashtags en formaten.",
+        "Belangrijk: er is bewust geen geautomatiseerde toename van volgers/engagement (geen botgedrag) — dat zou in strijd zijn met de gebruiksvoorwaarden van elk platform."
+      ]
+    },
+    "inbox": {
+      "title": "Inbox",
+      "description": "AI-antwoordconcepten voor berichten — met goedkeuring vóór verzending.",
+      "steps": [
+        "Berichten van platforms worden nog niet opgehaald en antwoorden worden niet verzonden. Om het uit te proberen maak je gesprekken aan als simulatie.",
+        "De MessageAgent stelt een antwoord voor op basis van Brand DNA en gespreksverloop.",
+        "Jij controleert en keurt het concept goed. Verzenden naar platforms is nog niet gebouwd – „Goedkeuren & verzenden” meldt dat eerlijk als fout in plaats van succes te veinzen."
+      ]
+    },
+    "revenue": {
+      "title": "Inkomstentracking",
+      "description": "Overzicht van alle platforminkomsten op één plek — uitbetaling loopt nog steeds via de platforms zelf.",
+      "steps": [
+        "Inkomsten worden handmatig ingevoerd, omdat TikTok/Meta geen openbare omzet-API aanbieden en YouTube daarvoor toegang tot het partnerprogramma (nog niet gekoppeld) nodig heeft.",
+        "De daadwerkelijke uitbetaling loopt altijd rechtstreeks via het betreffende platform (bijv. YouTube via Google AdSense) — SECRET 58 handelt geen uitbetalingen af."
+      ]
+    },
+    "integrations": {
+      "title": "Integraties & API-sleutels",
+      "description": "Waar elke verbindingsstatus vandaan komt en waar de bijbehorende sleutel wordt ingevoerd.",
+      "steps": [
+        "Elke rij toont de echte, live gecontroleerde status — nooit een schijnverbinding.",
+        "Je eigen toegangen (AI-sleutels, Resend voor de nieuwsbrief) voer je in onder „Instellingen → Eigen toegangen” – een wegwijzer leidt daar naar de officiële sleutelpagina van de aanbieder.",
+        "Inloggegevens worden nooit in de browser opgeslagen, alleen versleuteld op de server. Spraakuitvoer en de app-toegangen van de platforms richt de beheerder in; „Nog niet beschikbaar” betekent dat de koppeling nog niet in de app is gebouwd.",
+        "Kosten: Pro en Maxi zijn abonnementen, maandelijks of jaarlijks. De actuele prijzen staan onder „Pakket & facturering”. Voor je eigen toegangen (AI, Resend) factureert elke aanbieder je rechtstreeks volgens zijn eigen prijsmodel – SECRET 58 rekent daarvoor niets extra."
+      ]
+    }
+  }
+}

@@ -1,11 +1,10 @@
 {
   "title": "Training",
-  "subtitle": "Step-by-step guides for every area of SECRET 58 — always here to look up. Videos will be added as soon as they're recorded.",
+  "subtitle": "Step-by-step guides and explainer videos for every area of SECRET 58 — always available here for reference.",
   "welcomeBanner": {
     "title": "Welcome to SECRET 58!",
     "body": "Thanks for your purchase. Before you dive in, take a quick look at \"First steps\" below — so the AI agents work with your real data from the start."
   },
-  "videoPending": "Video coming soon",
   "stepsLabel": "Steps",
   "openPage": "Open page",
   "topics": {
@@ -13,7 +12,7 @@
       "title": "First steps",
       "description": "Do these three things first, then every AI agent works with real data instead of placeholders.",
       "steps": [
-        "Under \"Integrations\", connect at least one AI provider (Anthropic or OpenAI) — click \"Get API key\" on the row, create the key with the provider, then add it via \"Set in Render\".",
+        "Under \"Settings → Own access keys\", enter your own AI key from Anthropic, OpenAI or Gemini. The AI features use only your own key; the AI provider bills you directly. Without your own key, the app works in template mode with fixed text blocks.",
         "Under \"Brand DNA\", fill in your own brand (tone, audience, values) — every AI agent uses this for the text it generates.",
         "Under \"Ideas & Inspiration\" or \"Content Brain\", generate your first idea or campaign."
       ]
@@ -51,7 +50,7 @@
       "title": "Analytics & Growth",
       "description": "Real numbers on your own performance — and recommendations instead of automation.",
       "steps": [
-        "Analytics shows only real, imported or manually logged performance data.",
+        "Analytics shows stored statistics. For YouTube and Facebook, the app automatically fetches the numbers of published posts; Instagram, TikTok and LinkedIn will follow after approval by the platform. You enter other numbers by hand under \"Referrals\" or in the variant comparison.",
         "The Growth page calculates best posting times, top hashtags, and best-performing formats from that data.",
         "Important: there is deliberately no automated follower/engagement growth (no bot behavior) — that would violate every platform's terms of service."
       ]
@@ -60,9 +59,9 @@
       "title": "Inbox",
       "description": "AI-drafted replies to messages — with approval before sending.",
       "steps": [
-        "Since no platform is connected via OAuth yet, conversations are currently added manually instead of pulled live.",
+        "Messages from platforms are not fetched yet and replies are not sent. To try it out, you create conversations as a simulation.",
         "The MessageAgent drafts a reply based on Brand DNA and conversation history.",
-        "The draft must be manually reviewed and approved before it counts as sent — an actual send honestly fails without a platform connection instead of faking success."
+        "You review and approve the draft. Sending to platforms is not built yet – \"Approve & send\" honestly reports this as an error instead of faking success."
       ]
     },
     "revenue": {
@@ -78,9 +77,9 @@
       "description": "Where every connection status comes from, and where to set the matching key.",
       "steps": [
         "Every row shows the real, live-checked status — never a faked connection.",
-        "For \"Not configured\", \"Get API key\" leads to the provider's official page.",
-        "\"Set in Render\" leads directly to the environment variables where the key is stored — there is deliberately no key input form inside the app itself, for security.",
-        "Costs: the SECRET 58 purchase price is one-time. Every external provider has its own, independent cost model (free / pay-as-you-go / subscription) — the Integrations page shows which model applies to each service, with a link to that provider's current pricing."
+        "You enter your own access keys (AI keys, Resend for the newsletter) under \"Settings → Own access keys\" – a guide there leads to the provider's official key page.",
+        "Credentials are never stored in the browser, only encrypted on the server. Voice output and the platforms' app credentials are set up by the operator; \"Not available yet\" means the connection has not been built in the app yet.",
+        "Costs: Pro and Maxi are subscriptions, monthly or yearly. Current prices are under \"Plan & billing\". For your own access keys (AI, Resend), each provider bills you directly under its own pricing model – SECRET 58 never charges extra for this."
       ]
     }
   }

@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Az összes tartalomelem egy helyen — létrehozás, duplikálás, átírás, kiegészítés hangalámondással/feliratokkal, és végigvezetés a jóváhagyási munkafolyamaton.",
+  "statusTabs": {
+    "all": "Mind",
+    "draft": "Vázlat",
+    "inReview": "Ellenőrzés alatt",
+    "approved": "Jóváhagyva",
+    "scheduled": "Ütemezve",
+    "published": "Közzétéve",
+    "archived": "Archiválva"
+  },
+  "newItem": {
+    "openButton": "Új tartalomelem",
+    "titleLabel": "Cím",
+    "platformLabel": "Platform",
+    "create": "Létrehozás",
+    "closeAria": "Bezárás"
+  },
+  "table": {
+    "empty": "Még nincsenek tartalomelemek — hozz létre egyet kézzel vagy a Content Brainen keresztül.",
+    "title": "Cím",
+    "platform": "Platform",
+    "format": "Formátum",
+    "status": "Állapot",
+    "updated": "Frissítve",
+    "actions": "Műveletek",
+    "duplicate": "Duplikálás",
+    "delete": "Törlés",
+    "confirmDelete": "Biztosan törlöd a tartalomelemet?"
+  },
+  "detail": {
+    "backLink": "Vissza a Content Factoryhoz",
+    "actionFailed": "A művelet nem sikerült.",
+    "actions": {
+      "review": "Ellenőrzésre",
+      "approve": "Jóváhagyás",
+      "reject": "Elutasítás",
+      "schedule": "Ütemezés",
+      "publish": "Közzététel",
+      "copy": "Bejegyzés másolása",
+      "markPublished": "Kézzel közzétéve"
+    },
+    "rejectReasonPrompt": "Elutasítás oka (opcionális):",
+    "scheduleDatePrompt": "Közzététel dátuma (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Cím",
+      "hook": "Hook",
+      "script": "Script",
+      "caption": "Képaláírás"
+    },
+    "save": "Mentés",
+    "saving": "Mentés…",
+    "hashtags": {
+      "heading": "Hashtagek és kulcsszavak",
+      "regenerate": "Újragenerálás",
+      "empty": "Még nincsenek generált hashtagek."
+    },
+    "voiceover": {
+      "heading": "Hangalámondás",
+      "generate": "Létrehozás",
+      "empty": "Még nincs létrehozott hangalámondás."
+    },
+    "subtitles": {
+      "heading": "Feliratok",
+      "generate": "Létrehozás (SRT)",
+      "download": "{file} letöltése",
+      "empty": "Még nincsenek létrehozott feliratok."
+    },
+    "video": {
+      "heading": "Videórenderelés",
+      "request": "Renderelés kérése",
+      "note": "Szolgáltatófüggetlen videócsővezeték (11/12. szakasz) — jelenleg nincs beállítva videószolgáltató (lásd Integrációk)."
+    },
+    "scriptVariants": {
+      "heading": "Script-változatok",
+      "newVariant": "Új változat",
+      "empty": "Még nincsenek változatok.",
+      "variantSummary": "{label} változat"
+    },
+    "repurpose": {
+      "heading": "Tartalom újrahasznosítása",
+      "description": "Készíts ebből a tartalomelemből platformra szabott származékokat további csatornákra. Több csatorna = nagyobb esély, hogy az emberek meglássák a videót.",
+      "selectAll": "Minden platform kiválasztása",
+      "clearAll": "Kijelölés megszüntetése",
+      "generateButton": "{count} származék létrehozása"
+    },
+    "approvalRevoked": "A jóváhagyás visszavonva: a bejegyzés megváltozott, ezért újra ellenőrizni és jóváhagyni kell.",
+    "job": {
+      "QUEUED": "Automatikus küldés ütemezve: {when}.",
+      "RUNNING": "A küldés folyamatban (időpont: {when}).",
+      "SUCCEEDED": "Közzétéve a megadott időpontban: {when}.",
+      "FAILED": "A küldés nem sikerült a megadott időpontban ({when}), a bejegyzés ismét „Jóváhagyva” állapotú.",
+      "UNKNOWN": "Küldés a megadott időpontban ({when}): a kimenetel nem tisztázott.",
+      "CANCELED": "Az ütemezett küldés ({when}) nem futott le."
+    },
+    "copied": "A szöveg és a hashtagek kimásolva — most illeszd be őket a platform alkalmazásába.",
+    "copyFailed": "A másolás nem lehetséges — kérjük, jelöld ki kézzel a szöveget.",
+    "markPublishedConfirm": "Magad posztoltad a bejegyzést? Közzétettként lesz megjelölve; az ütemezett küldés elvetésre kerül."
+  }
+}

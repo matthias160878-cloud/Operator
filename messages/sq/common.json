@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Më shumë se përmbajtje.",
+    "footerLine2": "Një makinë e plotë përmbajtjeje.",
+    "workspace": "Hapësira e punës",
+    "role": "Administrator"
+  },
+  "nav": {
+    "dashboard": "Paneli",
+    "schulung": "Trajnim",
+    "contentFactory": "Content Factory",
+    "ideas": "Ide & Frymëzim",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Rrjetet sociale",
+    "calendar": "Kalendari i përmbajtjes",
+    "analytics": "Analytics",
+    "growth": "Rritja",
+    "weiterempfehlungen": "Rekomandime",
+    "reichweitenaufbau": "Rritja e audiencës",
+    "revenue": "Të ardhurat",
+    "inbox": "Kutia postare",
+    "anfragen": "Kërkesa",
+    "dateien": "Skedarët",
+    "agents": "Agjentët",
+    "integrations": "Integrimet",
+    "settings": "Cilësimet",
+    "billing": "Paketa & Faturimi",
+    "sales": "Shitje & Dyqani",
+    "website": "Faqja ime e internetit"
+  },
+  "topbar": {
+    "menuOpen": "Hap menunë",
+    "menuClose": "Mbyll menunë",
+    "searchPlaceholder": "Kërko përmbajtje, projekte, fushata …",
+    "notifications": "Njoftimet",
+    "language": "Gjuha"
+  },
+  "footer": {
+    "help": "Ndihmë",
+    "privacy": "Privatësia",
+    "imprint": "Të dhënat ligjore",
+    "systemOnline": "Sistemi në linjë"
+  },
+  "actions": {
+    "save": "Ruaj",
+    "cancel": "Anulo",
+    "delete": "Fshi",
+    "edit": "Ndrysho",
+    "create": "Krijo",
+    "close": "Mbyll",
+    "back": "Kthehu",
+    "loading": "Po ngarkohet …"
+  },
+  "status": {
+    "connected": "I lidhur",
+    "notConfigured": "I pakonfiguruar",
+    "error": "Gabim"
+  },
+  "statusBadge": {
+    "CONNECTED": "I lidhur",
+    "ACTIVE": "Aktiv",
+    "COMPLETED": "Përfunduar",
+    "RUNNING": "Në ekzekutim",
+    "SUCCESS": "Me sukses",
+    "PUBLISHED": "Publikuar",
+    "APPROVED": "Miratuar",
+    "SCHEDULED": "Planifikuar",
+    "WAITING": "Në pritje",
+    "IN_REVIEW": "Në shqyrtim",
+    "NOT_CONFIGURED": "I pakonfiguruar",
+    "IDLE": "Gati",
+    "DRAFT": "Draft",
+    "ARCHIVED": "Arkivuar",
+    "ERROR": "Gabim",
+    "REJECTED": "Refuzuar",
+    "RECEIVED": "Marrë",
+    "PENDING": "Në pritje",
+    "NOT_AVAILABLE": "Ende jo i disponueshëm"
+  },
+  "integrationStatus": {
+    "notConfigured": "I pakonfiguruar — variabla që mungojnë: {vars}.",
+    "verifyFailedGeneric": "Lidhja dështoi.",
+    "verifyFailedStatus": "{service} u përgjigj me statusin {status}.",
+    "verifyUnreachable": "{service} nuk mund të arrihej.",
+    "connected": "I lidhur.",
+    "notAvailable": "Ende jo i disponueshëm – kjo lidhje ende nuk është ndërtuar në aplikacion."
+  },
+  "mediaPreview": {
+    "expand": "Shfaq më të madh",
+    "close": "Mbyll"
+  }
+}

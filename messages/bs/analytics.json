@@ -1,0 +1,15 @@
+{
+ "title": "Analytics",
+ "subtitle": "Statistika platformi (pregledi, lajkovi, komentari, dijeljenja) za YouTube i Facebook preuzima se automatski čim je post objavljen putem aplikacije – otprilike svakih šest sati. Instagram, TikTok i LinkedIn slijede čim platforma odobri pristup. Brojke iz drugih postova možeš ručno unijeti pod <weiter>Preporuke</weiter> („Unesi brojke platforme”) ili u <varianten>poređenju varijanti</varianten>.",
+ "statViewsTotal": "Ukupno pregleda",
+ "statLikesTotal": "Ukupno lajkova",
+ "statComments": "Komentari",
+ "statShares": "Dijeljenja",
+ "chartTitle": "Učinak sadržaja kroz vrijeme",
+ "chartLegend": "Pregledi (ljubičasto) · Angažman % (tirkizno)",
+ "chartEmpty": "Još nema statistike – nema dostupnog toka.",
+ "bestPerformingTitle": "Najuspješniji sadržaj",
+ "bestPerformingEmpty": "Još nema statistike – rang-lista nije moguća.",
+ "learningAgentTitle": "Learning Agent — preporuke",
+ "statsEmpty": "Još nema sačuvane statistike. Za YouTube i Facebook brojke se pojavljuju automatski čim je post objavljen putem aplikacije."
+}

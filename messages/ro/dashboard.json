@@ -1,0 +1,96 @@
+{
+  "viewAll": "Afișează tot",
+  "demoBanner": {
+    "text": "Date exemplu active – campaniile, conținutul și statisticile din acest spațiu de lucru sunt date exemplu, nu cifre reale ale platformelor."
+  },
+  "hero": {
+    "subtitle": "O idee. Mai multe platforme. Acoperire maximă.",
+    "newCampaign": "Campanie nouă",
+    "createContent": "Creează conținut",
+    "findIdeas": "Găsește idei",
+    "aiAgents": "Agenți IA"
+  },
+  "orbit": {
+    "xNotConnected": "X (neconectat)",
+    "brainAlt": "Creierul IA SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Agenți activi",
+    "empty": "Încă nu există rulări de agenți."
+  },
+  "kpi": {
+    "contentCreated": "Conținut creat",
+    "videosCreated": "Videoclipuri create",
+    "postsCreated": "Postări create",
+    "published": "Publicări",
+    "views": "Vizualizări",
+    "avgEngagement": "Ø Engagement",
+    "totalRevenue": "Venituri (introduse manual)",
+    "noComparisonWeek": "Încă nu există o săptămână anterioară ca bază de comparație — ratele de schimbare apar imediat ce există date pentru cel puțin două săptămâni.",
+    "noStats": "Vizualizări și interacțiuni: încă nu există statistici – apar automat imediat ce o postare a fost publicată prin aplicație pe YouTube sau Facebook."
+  },
+  "production": {
+    "title": "Producție de conținut",
+    "thisWeek": "Săptămâna aceasta"
+  },
+  "scheduled": {
+    "title": "Postări planificate",
+    "empty": "Nicio postare planificată."
+  },
+  "activity": {
+    "title": "Ultimele activități",
+    "empty": "Încă nu există activități."
+  },
+  "contentFactory": {
+    "description": "Creează campanii de conținut complete pentru toate platformele pornind de la o singură idee.",
+    "cta": "Începe acum →",
+    "popularTemplates": "Șabloane populare",
+    "templateYoutubeVideo": "Videoclip YouTube",
+    "templateTiktokSeries": "Serie TikTok",
+    "templateInstagramReel": "Reel Instagram",
+    "templateLinkedinPost": "Postare LinkedIn",
+    "templateBlogPost": "Articol de blog",
+    "viewAllTemplates": "Toate șabloanele →"
+  },
+  "brandDna": {
+    "tonality": "Ton",
+    "targetAudience": "Public țintă",
+    "industry": "Domeniu",
+    "language": "Limbă",
+    "empty": "Încă nu există Brand DNA salvat."
+  },
+  "campaigns": {
+    "title": "Campanii actuale",
+    "empty": "Încă nu există campanii."
+  },
+  "platforms": {
+    "title": "Platforme",
+    "manage": "Gestionează"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} conectate"
+  },
+  "agentMonitor": {
+    "title": "Jurnalul asistenților",
+    "empty": "Încă nu există rulări."
+  },
+  "topPerformer": {
+    "title": "Top Performer",
+    "last7Days": "Ultimele 7 zile",
+    "empty": "Încă nu există date de performanță – apar automat pentru postările publicate prin aplicație pe YouTube sau Facebook.",
+    "views": "Vizualizări",
+    "likes": "Aprecieri",
+    "comments": "Comentarii",
+    "shares": "Distribuiri",
+    "engagementRate": "+Rată de engagement {value}"
+  },
+  "calendar": {
+    "open": "Deschide",
+    "viewMonth": "Lună",
+    "viewWeek": "Săptămână",
+    "viewDay": "Zi",
+    "viewCampaign": "Campanie",
+    "moreItems": "+{count} în plus"
+  },
+  "weekdayLabels": ["Lu", "Ma", "Mi", "Jo", "Vi", "Sâ", "Du"]
+}

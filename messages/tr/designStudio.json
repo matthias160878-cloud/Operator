@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Metin olarak küçük resim konseptleri ve Canva bağlantısının durumu.",
+  "imageAssetsTitle": "Görsel varlıklar",
+  "imageAssetsEmpty": "Henüz görsel yok. Küçük resim ajanı şu anda yalnızca metin konseptleri oluşturuyor, görsel dosyaları değil.",
+  "thumbnailAgent": {
+    "title": "Küçük resim ajanı",
+    "description": "Bir metin konsepti (başlık, görsel fikir, yerleşim, CTA) üretir — bir görsel üreticisinin bağlanmasına hazırlanmıştır. Henüz görsel üretilmez.",
+    "inputPlaceholder": "Küçük resim için konu",
+    "submitButton": "Konsept üret",
+    "errorGenerationFailed": "Üretim başarısız oldu.",
+    "errorUnknown": "Bilinmeyen hata.",
+    "fieldTitle": "Başlık",
+    "fieldVisualIdea": "Görsel fikir",
+    "fieldText": "Metin",
+    "fieldLayout": "Yerleşim",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Görsel açıklaması",
+    "templateResult": "Şablon: bu konsept bir yapay zekâdan değil, sabit bir metin şablonundan geliyor. Yapay zekâ konseptleri için kendi yapay zekâ anahtarını „Ayarlar → Kendi erişimlerim” altında gir.",
+    "textEngineLabel": "Metin motoru:",
+    "templateMode": "Şablon modu (yapılandırılmış yapay zekâ sağlayıcısı yok)"
+  }
+}

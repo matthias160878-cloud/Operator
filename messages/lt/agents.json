@@ -1,0 +1,21 @@
+{
+  "title": "Asistentų žurnalas",
+  "description": "Visi SECRET 58 asistentai (agentai) su būsena, paskutine užduotimi ir rezultatu. Kiekvienas paleidimas registruojamas čia.",
+  "table": {
+    "agent": "Agentas",
+    "description": "Aprašymas",
+    "status": "Būsena",
+    "lastTask": "Paskutinė užduotis"
+  },
+  "history": {
+    "title": "Paleidimų istorija",
+    "agent": "Agentas",
+    "task": "Užduotis",
+    "status": "Būsena",
+    "start": "Pradžia",
+    "end": "Pabaiga",
+    "resultError": "Rezultatas / klaida",
+    "empty": "Agentų paleidimų dar nėra.",
+    "completed": "Baigta"
+  }
+}

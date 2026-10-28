@@ -1,0 +1,96 @@
+{
+  "viewAll": "Näita kõiki",
+  "demoBanner": {
+    "text": "Näidisandmed on aktiivsed – selle tööruumi kampaaniad, sisu ja statistika on näidisandmed, mitte tegelikud platvormide numbrid."
+  },
+  "hero": {
+    "subtitle": "Üks idee. Mitu platvormi. Maksimaalne ulatus.",
+    "newCampaign": "Uus kampaania",
+    "createContent": "Loo sisu",
+    "findIdeas": "Leia ideid",
+    "aiAgents": "Tehisintellekti agendid"
+  },
+  "orbit": {
+    "xNotConnected": "X (ühendamata)",
+    "brainAlt": "SECRET 58 tehisintellekti aju"
+  },
+  "activeAgents": {
+    "title": "Aktiivsed agendid",
+    "empty": "Agentide käivitusi pole veel."
+  },
+  "kpi": {
+    "contentCreated": "Sisu loodud",
+    "videosCreated": "Videoid loodud",
+    "postsCreated": "Postitusi loodud",
+    "published": "Avaldamisi",
+    "views": "Vaatamisi",
+    "avgEngagement": "Ø haaratus",
+    "totalRevenue": "Tulud (käsitsi sisestatud)",
+    "noComparisonWeek": "Võrdlusaluseks pole veel eelmist nädalat — muutuse määrad ilmuvad, kui andmeid on vähemalt kahe nädala kohta.",
+    "noStats": "Vaatamised ja interaktsioonid: statistikat veel pole – need ilmuvad automaatselt kohe, kui postitus on rakenduse kaudu YouTube'is või Facebookis avaldatud."
+  },
+  "production": {
+    "title": "Sisutootmine",
+    "thisWeek": "Sel nädalal"
+  },
+  "scheduled": {
+    "title": "Planeeritud postitused",
+    "empty": "Planeeritud postitusi pole."
+  },
+  "activity": {
+    "title": "Viimased tegevused",
+    "empty": "Tegevusi pole veel."
+  },
+  "contentFactory": {
+    "description": "Loo vaid ühest ideest täielikud sisukampaaniad kõigile platvormidele.",
+    "cta": "Alusta kohe →",
+    "popularTemplates": "Populaarsed mallid",
+    "templateYoutubeVideo": "YouTube'i video",
+    "templateTiktokSeries": "TikToki sari",
+    "templateInstagramReel": "Instagrami Reel",
+    "templateLinkedinPost": "LinkedIni postitus",
+    "templateBlogPost": "Blogipostitus",
+    "viewAllTemplates": "Kõik mallid →"
+  },
+  "brandDna": {
+    "tonality": "Tonaalsus",
+    "targetAudience": "Sihtrühm",
+    "industry": "Valdkond",
+    "language": "Keel",
+    "empty": "Brand DNA-d pole veel lisatud."
+  },
+  "campaigns": {
+    "title": "Praegused kampaaniad",
+    "empty": "Kampaaniaid pole veel."
+  },
+  "platforms": {
+    "title": "Platvormid",
+    "manage": "Halda"
+  },
+  "integrations": {
+    "connectedCount": "{connected}/{total} ühendatud"
+  },
+  "agentMonitor": {
+    "title": "Assistentide logi",
+    "empty": "Käivitusi pole veel."
+  },
+  "topPerformer": {
+    "title": "Edukaim sisu",
+    "last7Days": "Viimased 7 päeva",
+    "empty": "Tulemusandmeid veel pole – need ilmuvad automaatselt postituste kohta, mis on rakenduse kaudu YouTube'is või Facebookis avaldatud.",
+    "views": "Vaatamisi",
+    "likes": "Meeldimisi",
+    "comments": "Kommentaare",
+    "shares": "Jagamisi",
+    "engagementRate": "+Haaratuse määr {value}"
+  },
+  "calendar": {
+    "open": "Ava",
+    "viewMonth": "Kuu",
+    "viewWeek": "Nädal",
+    "viewDay": "Päev",
+    "viewCampaign": "Kampaania",
+    "moreItems": "+{count} veel"
+  },
+  "weekdayLabels": ["E", "T", "K", "N", "R", "L", "P"]
+}

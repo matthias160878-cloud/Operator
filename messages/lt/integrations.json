@@ -1,0 +1,24 @@
+{
+  "title": "Integracijos",
+  "description": "Išorinių paslaugų būsena realiuoju laiku – tik tikrai nustatyti ir patikrinti ryšiai, niekas neapsimetama.",
+  "categories": {
+    "AI": "DI tiekėjai",
+    "VOICE": "Balsas",
+    "PLATFORM": "Socialinės platformos",
+    "DESIGN": "Dizainas",
+    "VIDEO": "Vaizdo įrašai",
+    "TREND": "Tendencijos"
+  },
+  "costNote": "Tavo SECRET 58 paketas (Pro arba Maxi) yra prenumerata, žr. „Paketas ir apmokėjimas“. Kiekviena čia nurodyta išorinė paslauga turi savo, nepriklausomą kainodarą pas atitinkamą tiekėją — SECRET 58 už jas niekada papildomai neišrašo sąskaitų.",
+  "links": {
+    "getKey": "Gauti API raktą",
+    "setInRender": "Įrašyti Render",
+    "viewPricing": "Žiūrėti kainas"
+  },
+  "pricing": {
+    "free": "Nemokama",
+    "payAsYouGo": "Pagal naudojimą",
+    "subscription": "Prenumerata",
+    "unknown": "Kainą patikrink pas tiekėją"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Conceptes de miniatures com a text i l'estat de la connexió amb Canva.",
+  "imageAssetsTitle": "Recursos d'imatge",
+  "imageAssetsEmpty": "Encara no hi ha imatges. L'agent de miniatures de moment només crea conceptes de text, no fitxers d'imatge.",
+  "thumbnailAgent": {
+    "title": "Agent de miniatures",
+    "description": "Genera un concepte de text (títol, idea visual, disseny, CTA) preparat per connectar un generador d'imatges. Encara no es genera cap imatge.",
+    "inputPlaceholder": "Tema de la miniatura",
+    "submitButton": "Genera concepte",
+    "errorGenerationFailed": "La generació ha fallat.",
+    "errorUnknown": "Error desconegut.",
+    "fieldTitle": "Títol",
+    "fieldVisualIdea": "Idea visual",
+    "fieldText": "Text",
+    "fieldLayout": "Disseny",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Descripció de la imatge",
+    "templateResult": "Plantilla: aquest concepte prové d'una plantilla de text fixa, no d'una IA. Per a conceptes amb IA, introdueix la teva clau d'IA a «Configuració → Accessos propis».",
+    "textEngineLabel": "Motor de text:",
+    "templateMode": "Mode plantilla (cap proveïdor d'IA configurat)"
+  }
+}

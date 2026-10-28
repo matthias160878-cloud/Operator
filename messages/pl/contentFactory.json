@@ -1,0 +1,101 @@
+{
+  "title": "Content Factory",
+  "subtitle": "Wszystkie elementy treści w jednym miejscu — twórz, duplikuj, przepisuj, wzbogacaj lektorem/napisami i prowadź przez proces akceptacji.",
+  "statusTabs": {
+    "all": "Wszystkie",
+    "draft": "Szkic",
+    "inReview": "W weryfikacji",
+    "approved": "Zatwierdzono",
+    "scheduled": "Zaplanowano",
+    "published": "Opublikowano",
+    "archived": "Zarchiwizowano"
+  },
+  "newItem": {
+    "openButton": "Nowy element treści",
+    "titleLabel": "Tytuł",
+    "platformLabel": "Platforma",
+    "create": "Utwórz",
+    "closeAria": "Zamknij"
+  },
+  "table": {
+    "empty": "Brak elementów treści — utwórz jeden ręcznie lub przez Content Brain.",
+    "title": "Tytuł",
+    "platform": "Platforma",
+    "format": "Format",
+    "status": "Status",
+    "updated": "Zaktualizowano",
+    "actions": "Akcje",
+    "duplicate": "Duplikuj",
+    "delete": "Usuń",
+    "confirmDelete": "Na pewno usunąć element treści?"
+  },
+  "detail": {
+    "backLink": "Wróć do Content Factory",
+    "actionFailed": "Akcja nie powiodła się.",
+    "actions": {
+      "review": "Do weryfikacji",
+      "approve": "Zatwierdź",
+      "reject": "Odrzuć",
+      "schedule": "Zaplanuj",
+      "publish": "Opublikuj",
+      "copy": "Kopiuj post",
+      "markPublished": "Opublikowano ręcznie"
+    },
+    "rejectReasonPrompt": "Powód odrzucenia (opcjonalnie):",
+    "scheduleDatePrompt": "Data publikacji (YYYY-MM-DDTHH:mm):",
+    "fields": {
+      "title": "Tytuł",
+      "hook": "Hook",
+      "script": "Skrypt",
+      "caption": "Opis"
+    },
+    "save": "Zapisz",
+    "saving": "Zapisywanie…",
+    "hashtags": {
+      "heading": "Hashtagi i słowa kluczowe",
+      "regenerate": "Generuj ponownie",
+      "empty": "Nie wygenerowano jeszcze hashtagów."
+    },
+    "voiceover": {
+      "heading": "Lektor",
+      "generate": "Generuj",
+      "empty": "Nie wygenerowano jeszcze lektora."
+    },
+    "subtitles": {
+      "heading": "Napisy",
+      "generate": "Generuj (SRT)",
+      "download": "Pobierz {file}",
+      "empty": "Nie wygenerowano jeszcze napisów."
+    },
+    "video": {
+      "heading": "Renderowanie wideo",
+      "request": "Zleć renderowanie",
+      "note": "Potok wideo niezależny od dostawcy (sekcja 11/12) — obecnie nie skonfigurowano żadnego dostawcy wideo (zob. Integracje)."
+    },
+    "scriptVariants": {
+      "heading": "Warianty skryptu",
+      "newVariant": "Nowy wariant",
+      "empty": "Brak wariantów.",
+      "variantSummary": "Wariant {label}"
+    },
+    "repurpose": {
+      "heading": "Repurpose Content",
+      "description": "Utwórz z tego elementu treści pochodne dopasowane do platform dla kolejnych kanałów. Więcej kanałów = większa szansa, że ludzie zobaczą film.",
+      "selectAll": "Zaznacz wszystkie platformy",
+      "clearAll": "Wyczyść zaznaczenie",
+      "generateButton": "Utwórz pochodne: {count}"
+    },
+    "approvalRevoked": "Zatwierdzenie cofnięte: post został zmieniony i musi zostać ponownie sprawdzony i zatwierdzony.",
+    "job": {
+      "QUEUED": "Automatyczna wysyłka zaplanowana na {when}.",
+      "RUNNING": "Wysyłka w toku (termin {when}).",
+      "SUCCEEDED": "Opublikowano w terminie {when}.",
+      "FAILED": "Wysyłka w terminie {when} nie powiodła się, post ma ponownie status „Zatwierdzono”.",
+      "UNKNOWN": "Wysyłka w terminie {when}: wynik niejasny.",
+      "CANCELED": "Zaplanowana wysyłka ({when}) nie została wykonana."
+    },
+    "copied": "Tekst i hashtagi skopiowane — wklej je teraz w aplikacji platformy.",
+    "copyFailed": "Nie można skopiować — zaznacz tekst ręcznie.",
+    "markPublishedConfirm": "Opublikowałeś post samodzielnie? Zostanie oznaczony jako opublikowany; zaplanowana wysyłka zostanie odrzucona."
+  }
+}

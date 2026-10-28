@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Enemmän kuin sisältöä.",
+    "footerLine2": "Kokonainen sisältökone.",
+    "workspace": "Työtila",
+    "role": "Ylläpitäjä"
+  },
+  "nav": {
+    "dashboard": "Kojelauta",
+    "schulung": "Koulutus",
+    "contentFactory": "Content Factory",
+    "ideas": "Ideat ja inspiraatio",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Sosiaalinen media",
+    "calendar": "Sisältökalenteri",
+    "analytics": "Analytiikka",
+    "growth": "Kasvu",
+    "weiterempfehlungen": "Suositukset",
+    "reichweitenaufbau": "Tavoittavuuden kasvatus",
+    "revenue": "Tulot",
+    "inbox": "Saapuneet",
+    "anfragen": "Yhteydenotot",
+    "dateien": "Tiedostot",
+    "agents": "Agentit",
+    "integrations": "Integraatiot",
+    "settings": "Asetukset",
+    "billing": "Paketti ja laskutus",
+    "sales": "Myynti ja verkkokauppa",
+    "website": "Oma verkkosivuni"
+  },
+  "topbar": {
+    "menuOpen": "Avaa valikko",
+    "menuClose": "Sulje valikko",
+    "searchPlaceholder": "Hae sisältöjä, projekteja, kampanjoita …",
+    "notifications": "Ilmoitukset",
+    "language": "Kieli"
+  },
+  "footer": {
+    "help": "Ohje",
+    "privacy": "Tietosuoja",
+    "imprint": "Yhteystiedot",
+    "systemOnline": "Järjestelmä online"
+  },
+  "actions": {
+    "save": "Tallenna",
+    "cancel": "Peruuta",
+    "delete": "Poista",
+    "edit": "Muokkaa",
+    "create": "Luo",
+    "close": "Sulje",
+    "back": "Takaisin",
+    "loading": "Ladataan …"
+  },
+  "status": {
+    "connected": "Yhdistetty",
+    "notConfigured": "Ei määritetty",
+    "error": "Virhe"
+  },
+  "statusBadge": {
+    "CONNECTED": "Yhdistetty",
+    "ACTIVE": "Aktiivinen",
+    "COMPLETED": "Valmis",
+    "RUNNING": "Käynnissä",
+    "SUCCESS": "Onnistui",
+    "PUBLISHED": "Julkaistu",
+    "APPROVED": "Hyväksytty",
+    "SCHEDULED": "Ajastettu",
+    "WAITING": "Odottaa",
+    "IN_REVIEW": "Tarkistuksessa",
+    "NOT_CONFIGURED": "Ei määritetty",
+    "IDLE": "Valmiina",
+    "DRAFT": "Luonnos",
+    "ARCHIVED": "Arkistoitu",
+    "ERROR": "Virhe",
+    "REJECTED": "Hylätty",
+    "RECEIVED": "Saatu",
+    "PENDING": "Odottaa",
+    "NOT_AVAILABLE": "Ei vielä saatavilla"
+  },
+  "integrationStatus": {
+    "notConfigured": "Ei määritetty — puuttuvat muuttujat: {vars}.",
+    "verifyFailedGeneric": "Yhteys epäonnistui.",
+    "verifyFailedStatus": "{service} vastasi tilalla {status}.",
+    "verifyUnreachable": "Palveluun {service} ei saatu yhteyttä.",
+    "connected": "Yhdistetty.",
+    "notAvailable": "Ei vielä saatavilla – tätä yhteyttä ei ole vielä rakennettu sovellukseen."
+  },
+  "mediaPreview": {
+    "expand": "Näytä suurempana",
+    "close": "Sulje"
+  }
+}

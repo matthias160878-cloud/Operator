@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Video usposabljanja",
+  "subtitlesLabel": "Podnapisi",
+  "subtitlesOff": "Izklopljeno",
+  "soundLabel": "Zvok",
+  "soundOn": "Glas bralnika vklopljen",
+  "soundOff": "Glas bralnika izklopljen",
+  "soundHint": "Glas bralnika prihaja iz tvojega brskalnika. Kateri jeziki so na voljo, je odvisno od tvoje naprave.",
+  "soundMissing": "Za ta jezik na tvoji napravi ni nameščen noben glas. Podnapisi kljub temu delujejo.",
+  "draftNote": "Osnutek: posnetek prave aplikacije s testnimi podatki. Podnapisi strojno prevedeni.",
+  "whatLabel": "Kaj je to, kakšno funkcijo ima in kako to izvedeš.",
+  "videosTitle": "Razlagalni videi za vsako področje",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Prvi koraki",
+      "cues": {
+        "c1": "Dobrodošel pri usposabljanju: Prvi koraki. Vse, kar vidiš, je prava aplikacija s testnimi podatki.",
+        "c2": "Na levi je navigacija. Vsako področje aplikacije ima tu svoj vnos.",
+        "c3": "Korak 1: v razdelku „Integracije“ preveri, katere storitve so povezane.",
+        "c4": "Vsaka vrstica prikazuje resničen, preverjen status – nikoli navidezne povezave.",
+        "c5": "„Ni nastavljeno“ pomeni: ta storitev še ni nastavljena. Brez ponudnika UI aplikacija deluje v načinu predlog.",
+        "c6": "Korak 2: vnesi svojo znamko v razdelku „Brand DNA“. Ton, ciljna skupina in vrednote vplivajo na vsako generirano besedilo.",
+        "c7": "Primer: izpolni panogo in ciljno skupino ter spodaj shrani.",
+        "c8": "Korak 3: v razdelku „Ideje in navdih“ si daj ustvariti prvo idejo. Vnesi temo in klikni „Generiraj ideje“.",
+        "c9": "Ideje se prikažejo kot kartice. V načinu predlog so to primeri, s ponudnikom UI postanejo individualne.",
+        "c10": "Vse ostane osnutek, dokler ga ne odobriš. Za vsako področje obstaja svoj razlagalni video."
+      }
+    },
+    "dashboard": {
+      "title": "Nadzorna plošča",
+      "cues": {
+        "c1": "Nadzorna plošča je tvoja začetna stran: pregled vsega, kar se dogaja v tvojem delovnem prostoru.",
+        "c2": "Zgoraj vidiš aktivne agente, produkcijo vsebin in načrtovane objave.",
+        "c3": "Nižje so zadnje dejavnosti in bližnjice do Content Factory in Brand DNA.",
+        "c4": "Z „Teden“ preklopiš obdobje kazalnikov.",
+        "c5": "Tako jo uporabljaš: nadzorno ploščo odpri vsak dan, preveri odprte osnutke in od tu skoči neposredno na ustrezno področje."
+      }
+    },
+    "schulung": {
+      "title": "Usposabljanje",
+      "cues": {
+        "c1": "Usposabljanje je tvoj vodnik v aplikaciji. Vsako področje razlaga korak za korakom.",
+        "c2": "Vsaka tema ima opis, oštevilčene korake in povezavo, ki odpre ustrezno stran.",
+        "c3": "Tu se pojavijo tudi ti razlagalni videi, po eden za vsako področje.",
+        "c4": "Tako ga uporabljaš: izberi temo, preberi korake, odpri stran in takoj preizkusi."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory je delovna miza za vse tvoje vsebinske elemente na enem mestu.",
+        "c2": "Funkcija: ustvarjanje, podvajanje, prepisovanje elementov, obogatitev z voiceoverjem in podnapisi ter vodenje skozi potek potrjevanja.",
+        "c3": "Filtri zgoraj prikazujejo statuse: Osnutek, V pregledu, Odobreno, Načrtovano, Objavljeno in Arhivirano.",
+        "c4": "Tako gre: z „Nov vsebinski element“ ustvariš element.",
+        "c5": "Odpri element, da urediš scenarij, voiceover, podnapise, heštage in sličico.",
+        "c6": "Odobritev je vedno ročen korak. Nič se ne objavi brez tvoje potrditve."
+      }
+    },
+    "ideas": {
+      "title": "Ideje in navdih",
+      "cues": {
+        "c1": "Tu zbiraš ideje: tematske sklope, serije in formate za prihodnje vsebine.",
+        "c2": "Funkcija: IdeaAgent ustvari ideje za temo, ali pa lastne ideje vneseš na roke.",
+        "c3": "Tako gre: vnesi temo, izberi platformo, cilj in format ter klikni „Generiraj ideje“.",
+        "c4": "Vsaka ideja postane kartica z naslovom, uvodno mislijo in prioriteto.",
+        "c5": "Z „Ročno“ ustvariš lastno idejo.",
+        "c6": "Dobre ideje vzameš za izhodišče za Content Brain."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain iz ideje naredi celoten vsebinski načrt.",
+        "c2": "Funkcija: upošteva tvoj Brand DNA in za vsako izbrano platformo ustvari Hooke, Scripte, heštage in zasnove sličic kot osnutek.",
+        "c3": "Tako gre: vnesi temo in ciljno skupino.",
+        "c4": "Izberi cilj in jezik, nato klikni platforme. Tu se doda TikTok.",
+        "c5": "Z drsnikom določiš, koliko vsebinskih elementov nastane na platformo.",
+        "c6": "Klik na „Generiraj vsebinski načrt“ požene zagon.",
+        "c7": "Kampanja se prikaže spodaj. Vsi elementi so osnutki in ležijo v Content Factory."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA opisuje tvojo znamko: ime, panogo, ciljno skupino, ton in vrednote.",
+        "c2": "Funkcija: ti podatki samodejno vplivajo na Content Brain ter agente Script, Hook in Hashtag.",
+        "c3": "Tako gre: izpolni polja, na primer panogo in ciljno skupino.",
+        "c4": "Nižje vzdržuješ zaželene in prepovedane besede, pozive k dejanju in vrednote znamke.",
+        "c5": "Na koncu klikneš „Shrani Brand DNA“."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio je delavnica za scenarije in Hooke.",
+        "c2": "Funkcija: gradi scenarije po strukturi Hook, problem, korist, primer, rezultat in poziv k dejanju ter ponudi več različic Hooka.",
+        "c3": "Tako gre: vnesi temo in izberi platformo.",
+        "c4": "Nato klikni „Generiraj Script in Hooke“.",
+        "c5": "Rezultat je osnutek, ki ga uporabiš naprej v Content Factory."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio upravlja glasove in ustvarja voiceover.",
+        "c2": "Funkcija: vzdrževanje Voice Library, ustvarjanje predogledov in uvoz glasov. Povezava poteka prek ElevenLabs.",
+        "c3": "Tako gre: glas ustvari ročno ali ga uvozi iz ElevenLabs. Uvoz zahteva nastavljeno povezavo.",
+        "c4": "Z besedilom in glasom ustvariš predogled in ga predvajaš."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio je video cevovod aplikacije.",
+        "c2": "Funkcija: Format Manager, zamenljivi video ponudniki ter povezava voiceovera in podnapisov.",
+        "c3": "Stran prikazuje, kateri ponudniki so nastavljeni. Nenastavljeni so pošteno označeni kot taki.",
+        "c4": "Tako gre: videe ustvarjaš za vsak vsebinski element v Content Factory."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio ponuja zasnove sličic in slikovna sredstva.",
+        "c2": "Funkcija: agent za sličice predlaga naslov, idejo slike, besedilo in postavitev. Integracija Canva je predvidena tu.",
+        "c3": "Tako gre: vnesi temo za sličico.",
+        "c4": "Klikni „Generiraj zasnovo“.",
+        "c5": "Zasnova ti služi kot predloga za tvojo sliko."
+      }
+    },
+    "socialMedia": {
+      "title": "Družbena omrežja",
+      "cues": {
+        "c1": "Tu povežeš račune platform in vidiš njihov status.",
+        "c2": "Funkcija: dostopi se upravljajo na strežniku in shranjujejo šifrirano. Prek Composio se prijaviš na platformo.",
+        "c3": "Vsaka kartica prikazuje platformo, račun, status in zadnji bralni test.",
+        "c4": "„Še ni nastavljeno“ pomeni: upravljavec povezave na strežniku še ni aktiviral.",
+        "c5": "Tako gre: ko je nastavljeno, pri platformi klikneš „Poveži“ in se prijaviš. Samo bere, nič se ne objavi."
+      }
+    },
+    "calendar": {
+      "title": "Content Kalender",
+      "cues": {
+        "c1": "Content Kalender prikazuje pregled načrtovanih in objavljenih vsebin.",
+        "c2": "Funkcija: tu se prikažejo vsi vsebinski elementi z datumom objave, filtrirni po platformi.",
+        "c3": "Tako gre: element v Content Factory načrtuj z datumom, nato se prikaže tu.",
+        "c4": "Pred vsako objavo aplikacija v živo preveri, ali je ciljna platforma povezana."
+      }
+    },
+    "analytics": {
+      "title": "Analitika",
+      "cues": {
+        "c1": "Analitika prikazuje tvoje kazalnike uspešnosti.",
+        "c2": "Funkcija: samo dejansko razpoložljivi podatki, uvoženi ali tvoj vnos. Nič ni izmišljeno.",
+        "c3": "Vidiš razvoj skozi čas, najuspešnejšo vsebino in priporočila Learning Agenta.",
+        "c4": "Tako gre: ko so platforme povezane ali vneseš podatke, se grafikoni napolnijo."
+      }
+    },
+    "growth": {
+      "title": "Rast",
+      "cues": {
+        "c1": "Stran Rast daje priporočila za večji doseg.",
+        "c2": "Funkcija: iz tvojih resničnih podatkov analitike izračuna najboljše čase objavljanja, uspešne heštage in formate.",
+        "c3": "Tako gre: izberi platformo in preberi priporočila.",
+        "c4": "To so priporočila, ne avtomatika. Sledilci ali interakcije se ne povečujejo umetno."
+      }
+    },
+    "revenue": {
+      "title": "Prihodki",
+      "cues": {
+        "c1": "V razdelku Prihodki združuješ svoje zaslužke prek platform in kampanj.",
+        "c2": "Funkcija: zneski se prikažejo šele, ko jih vneseš. Izmišljenih številk ni.",
+        "c3": "Tako gre: klikni „Vnesi prihodek“, izberi platformo in vrsto ter vnesi znesek.",
+        "c4": "Izplačilo vedno poteka neposredno prek platforme. SECRET 58 ne izvaja izplačil."
+      }
+    },
+    "sales": {
+      "title": "Prodaja in trgovina",
+      "cues": {
+        "c1": "„Prodaja in trgovina“ prikazuje tvoje lastne poslovne prihodke.",
+        "c2": "Funkcija: ločeni so od tvojega paketa SECRET 58. Štejejo se samo dejanske prodaje, testni podatki so označeni.",
+        "c3": "Zgoraj so vsote po valutah, pod njimi tvoji podatki o ponudniku za impresum.",
+        "c4": "Možnost B: prodaja prek SECRET 58. Možnost A: uvoz obstoječe trgovine.",
+        "c5": "Tako gre: izpolni podatke o ponudniku in shrani, nato izberi prodajno pot."
+      }
+    },
+    "website": {
+      "title": "Moja spletna stran",
+      "cues": {
+        "c1": "Tu na svojo spletno stran vgradiš pomočnika za spletno stran.",
+        "c2": "Funkcija: pomočnik odgovarja na vprašanja tvojih obiskovalcev.",
+        "c3": "Tvoje spletne strani ne spreminjamo samodejno. Kodo vstaviš sam ali pa jo da vstaviti tvoj spletni oblikovalec.",
+        "c4": "Tako gre: vnesi spletni naslov in klikni „Dodaj spletno stran“.",
+        "c5": "Nato prikazano kodo skopiraš v svojo spletno stran."
+      }
+    },
+    "inbox": {
+      "title": "Nabiralnik",
+      "cues": {
+        "c1": "Nabiralnik zbira sporočila in komentarje z vseh platform.",
+        "c2": "Funkcija: MessageAgent predlaga odgovore. Pošlje se le tisto, kar odobriš.",
+        "c3": "Tako gre: dokler nobena platforma ni povezana v živo, klikni „Simuliraj pogovor“.",
+        "c4": "Preglej predlog odgovora, ga prilagodi in odobri."
+      }
+    },
+    "agents": {
+      "title": "Agenti",
+      "cues": {
+        "c1": "Nadzor agentov prikazuje vse agente SECRET 58.",
+        "c2": "Funkcija: status, zadnja naloga in rezultat vsakega agenta. Vsak zagon se beleži.",
+        "c3": "V zgodovini zagonov vidiš, kaj je kdaj teklo in ali je uspelo.",
+        "c4": "Tako ga uporabljaš: preveri tu, če se kaj ni ustvarilo, kot je bilo pričakovano."
+      }
+    },
+    "integrations": {
+      "title": "Integracije",
+      "cues": {
+        "c1": "Tu vidiš stanje vseh zunanjih storitev v živo.",
+        "c2": "Funkcija: vsaka vrstica temelji na dejansko nastavljenih dostopih. Navideznih povezav ni.",
+        "c3": "Skupine so: ponudniki UI, glas, družbena omrežja, oblikovanje, video in trendi.",
+        "c4": "Tako gre: pri „Ni nastavljeno“ „Pridobi ključ API“ vodi na stran ponudnika.",
+        "c5": "Zunanji ponudniki imajo svoje cene. Pri vsaki storitvi je navedeno, kateri model velja."
+      }
+    },
+    "billing": {
+      "title": "Paket in obračun",
+      "cues": {
+        "c1": "V razdelku „Paket in obračun“ vidiš svoj paket in ga lahko zamenjaš.",
+        "c2": "Funkcija: funkcije UI tečejo prek dostopov upravljavca. Lastne naročnine na UI ne potrebuješ.",
+        "c3": "Na voljo sta Pro in Maxi, mesečno ali letno. Cene so na karticah navedene brez davka.",
+        "c4": "Nakup se izvede samo z izrecnim klikom na „Naroči z obveznostjo plačila“.",
+        "c5": "Če imaš promocijsko kodo, jo vneseš v polje spodaj."
+      }
+    },
+    "settings": {
+      "title": "Nastavitve",
+      "cues": {
+        "c1": "V nastavitvah upravljaš delovni prostor, uporabnike in sistemske informacije.",
+        "c2": "Funkcija: delovni prostor, vloge, stanje sistema, pomočnik za nastavitev in tvoji podatki z vpogledom in izbrisom.",
+        "c3": "Tako gre: pomikaj se skozi razdelke. Brisanje delovnega prostora zahteva dodatno potrditev.",
+        "c4": "Tu redno preverjaj svoje podatke in pomočnika za nastavitev."
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Analytics",
+  "subtitle": "As estatísticas das plataformas (visualizações, gostos, comentários, partilhas) são obtidas automaticamente para o YouTube e o Facebook assim que uma publicação é feita através da app – aproximadamente a cada seis horas. O Instagram, o TikTok e o LinkedIn seguir-se-ão assim que a plataforma tiver autorizado o acesso. Podes introduzir à mão os números de outras publicações em <weiter>Recomendações</weiter> («Introduzir números da plataforma») ou na <varianten>comparação de variantes</varianten>.",
+  "statViewsTotal": "Total de visualizações",
+  "statLikesTotal": "Total de gostos",
+  "statComments": "Comentários",
+  "statShares": "Partilhas",
+  "chartTitle": "Desempenho do conteúdo ao longo do tempo",
+  "chartLegend": "Visualizações (violeta) · Envolvimento % (turquesa)",
+  "chartEmpty": "Ainda não há estatísticas – sem histórico disponível.",
+  "bestPerformingTitle": "Conteúdo com melhor desempenho",
+  "bestPerformingEmpty": "Ainda não há estatísticas – não é possível uma classificação.",
+  "learningAgentTitle": "Learning Agent — Recomendações",
+  "statsEmpty": "Ainda não há estatísticas guardadas. Para o YouTube e o Facebook, os números aparecem automaticamente assim que uma publicação é feita através da app."
+}

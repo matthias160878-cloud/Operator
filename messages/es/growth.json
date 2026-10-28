@@ -1,9 +1,9 @@
 {
   "title": "Crecimiento",
-  "subtitle": "Recomendaciones de alcance y crecimiento — derivadas de los datos reales de analítica de tu contenido anterior: mejores horarios de publicación, hashtags y formatos con mejor rendimiento.",
+  "subtitle": "Recomendaciones de alcance y crecimiento, derivadas de las estadísticas guardadas de tus contenidos: mejores horarios de publicación, hashtags y formatos con más éxito. Para YouTube y Facebook, las cifras se obtienen automáticamente.",
   "warning": "Deliberadamente <strong>no</strong> incluido: seguir/dar me gusta/comentar de forma automatizada para aumentar artificialmente los seguidores. Esto infringe las condiciones de uso de YouTube, Instagram, TikTok, LinkedIn y Facebook y puede provocar el bloqueo de la cuenta. Esta página ofrece exclusivamente recomendaciones basadas en datos para tu propio contenido.",
   "filterAll": "Todas las plataformas",
-  "emptyState": "Aún no hay datos de analítica para {platform}. En cuanto el contenido publicado recopile datos de rendimiento, aquí aparecerán recomendaciones.",
+  "emptyState": "Aún no hay estadísticas guardadas para {platform}, por lo que todavía no hay recomendaciones. Para YouTube y Facebook, las cifras aparecen automáticamente tras publicar a través de la app.",
   "emptyStateDefaultScope": "este workspace",
   "bestPostingTimesTitle": "Mejores horarios de publicación",
   "postingTime": "{day} · {hour}",

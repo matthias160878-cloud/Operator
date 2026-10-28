@@ -1,0 +1,25 @@
+{
+  "title": "Ideias e inspiração",
+  "subtitle": "Grupos de temas, séries e formatos para conteúdo futuro — gerados pelo IdeaAgent ou registados manualmente.",
+  "board": {
+    "topicLabel": "Tema para novas ideias",
+    "topicPlaceholder": "p. ex. Produtividade com agentes de IA",
+    "generateButton": "Gerar ideias",
+    "manualButton": "Manual",
+    "manualTitlePlaceholder": "Título da ideia",
+    "addButton": "Adicionar",
+    "generateError": "Erro na geração de ideias.",
+    "unknownError": "Erro desconhecido.",
+    "emptyState": "Ainda não há ideias — gera algumas ou cria manualmente.",
+    "minutesUnit": "~{count} min",
+    "statusNew": "Nova",
+    "statusInProgress": "Em curso",
+    "statusUsed": "Utilizada",
+    "statusArchived": "Arquivada",
+    "sourceAiGenerated": "IdeaAgent (IA ou modelo)",
+    "sourceManual": "Manual",
+    "templateResult": "Modelo: as ideias acabadas de criar vêm de blocos de texto fixos, não de uma IA. Para ideias com IA, introduz a tua própria chave de IA em «Definições → Acessos próprios».",
+    "textEngineLabel": "Motor de texto:",
+    "templateMode": "Modo de modelo (nenhum fornecedor de IA configurado)"
+  }
+}

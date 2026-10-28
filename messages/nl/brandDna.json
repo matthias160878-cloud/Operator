@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Jouw merk. Jouw stijl. Overal. Deze gegevens vloeien automatisch door naar Content Brain en de script-, hook- en hashtag-agent.",
+  "form": {
+    "nameLabel": "Merknaam",
+    "industryLabel": "Branche",
+    "descriptionLabel": "Beschrijving",
+    "descriptionHint": "Wat maakt het merk bijzonder?",
+    "audienceLabel": "Doelgroep",
+    "languageLabel": "Taal",
+    "tonalityLabel": "Toonzetting",
+    "humorLabel": "Humor",
+    "formalityLabel": "Formaliteit",
+    "preferredWordsLabel": "Voorkeurswoorden",
+    "forbiddenWordsLabel": "Verboden woorden",
+    "preferredCtasLabel": "Voorkeurs-CTA's",
+    "brandValuesLabel": "Merkwaarden",
+    "topicsLabel": "Onderwerpen",
+    "csvHint": "gescheiden door komma's",
+    "colorsLabel": "Kleuren",
+    "colorsHint": "gescheiden door komma's, bijv. #6D5BFF",
+    "fontsLabel": "Lettertypen",
+    "visualRulesLabel": "Visuele regels",
+    "saveError": "Opslaan mislukt.",
+    "unknownError": "Onbekende fout.",
+    "saving": "Opslaan…",
+    "save": "Brand DNA opslaan",
+    "savedAt": "Opgeslagen om {time}"
+  }
+}

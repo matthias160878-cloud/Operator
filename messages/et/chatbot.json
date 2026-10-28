@@ -1,0 +1,14 @@
+{
+  "title": "Tehisintellekti assistent",
+  "welcome": "Tere! Küsi minult kõike SECRET 58 kohta — kuidas midagi seadistada, kust midagi leida või kuidas mingi valdkond töötab.",
+  "inputPlaceholder": "Sisesta küsimus …",
+  "thinking": "Mõtleb …",
+  "openButton": "Ava tehisintellekti assistent",
+  "close": "Sulge",
+  "sendButton": "Saada",
+  "micButton": "Häälsisend",
+  "speakToggle": "Loe vastused ette",
+  "notConfigured": "Tehisintellekti assistent pole veel seadistatud — selleks tuleb lisada tehisintellekti pakkuja (Anthropic või OpenAI).",
+  "openIntegrations": "Integratsioonide juurde",
+  "error": "Tehisintellekti assistent ei saanud praegu vastata. Palun proovi hiljem uuesti."
+}

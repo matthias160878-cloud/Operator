@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "Μηχανή φωνής ElevenLabs — διαχείριση της βιβλιοθήκης φωνών, δημιουργία προεπισκοπήσεων voiceover και εισαγωγή φωνών.",
+  "envWarning": "Η εκφώνηση δεν είναι ακόμη διαθέσιμη: την υπηρεσία φωνής (ElevenLabs) τη ρυθμίζει ο διαχειριστής. Μπορείτε ήδη να χρησιμοποιείτε τη βιβλιοθήκη φωνών για σχεδιασμό.",
+  "addManual": "Χειροκίνητη προσθήκη φωνής",
+  "importFromElevenLabs": "Εισαγωγή από το ElevenLabs",
+  "form": {
+    "namePlaceholder": "Όνομα",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Γλώσσα",
+    "submit": "Προσθήκη"
+  },
+  "confirmDelete": "Να διαγραφεί πράγματι η φωνή;",
+  "importFailed": "Η εισαγωγή απέτυχε.",
+  "previewFailed": "Η προεπισκόπηση απέτυχε.",
+  "unknownError": "Άγνωστο σφάλμα.",
+  "empty": "Δεν υπάρχουν ακόμα φωνές στη βιβλιοθήκη.",
+  "active": "Ενεργή",
+  "inactive": "Ανενεργή",
+  "remove": "Αφαίρεση",
+  "preview": {
+    "heading": "Προεπισκόπηση φωνής",
+    "defaultText": "Γεια σου, αυτό είναι ένα παράδειγμα για αυτή τη φωνή.",
+    "selectPlaceholder": "Διάλεξε φωνή…",
+    "play": "Αναπαραγωγή προεπισκόπησης"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Asystent AI",
+  "welcome": "Cześć! Pytaj mnie o wszystko w SECRET 58 — jak coś skonfigurować, gdzie coś znaleźć albo jak działa dany obszar.",
+  "inputPlaceholder": "Wpisz pytanie …",
+  "thinking": "Myśli …",
+  "openButton": "Otwórz asystenta AI",
+  "close": "Zamknij",
+  "sendButton": "Wyślij",
+  "micButton": "Wprowadzanie głosowe",
+  "speakToggle": "Czytaj odpowiedzi na głos",
+  "notConfigured": "Asystent AI nie jest jeszcze skonfigurowany — wymaga to podania dostawcy AI (Anthropic lub OpenAI).",
+  "openIntegrations": "Przejdź do Integracji",
+  "error": "Asystent AI nie mógł teraz odpowiedzieć. Spróbuj ponownie później."
+}

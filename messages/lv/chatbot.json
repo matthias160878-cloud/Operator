@@ -1,0 +1,14 @@
+{
+  "title": "MI asistents",
+  "welcome": "Sveiks! Jautā man jebko par SECRET 58 — kā kaut ko iestatīt, kur kaut ko atrast vai kā darbojas kāda sadaļa.",
+  "inputPlaceholder": "Ievadi jautājumu …",
+  "thinking": "Domā …",
+  "openButton": "Atvērt MI asistentu",
+  "close": "Aizvērt",
+  "sendButton": "Sūtīt",
+  "micButton": "Balss ievade",
+  "speakToggle": "Nolasīt atbildes",
+  "notConfigured": "MI asistents vēl nav nokonfigurēts — šim nolūkam jāiestata MI pakalpojumu sniedzējs (Anthropic vai OpenAI).",
+  "openIntegrations": "Uz Integrācijām",
+  "error": "MI asistents pašlaik nevarēja atbildēt. Lūdzu, mēģini vēlreiz vēlāk."
+}

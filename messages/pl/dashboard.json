@@ -1,0 +1,96 @@
+{
+  "viewAll": "Pokaż wszystko",
+  "demoBanner": {
+    "text": "Dane przykładowe aktywne – kampanie, treści i statystyki w tym obszarze roboczym to dane przykładowe, a nie prawdziwe liczby z platform."
+  },
+  "hero": {
+    "subtitle": "Jeden pomysł. Wiele platform. Maksymalny zasięg.",
+    "newCampaign": "Nowa kampania",
+    "createContent": "Utwórz treść",
+    "findIdeas": "Znajdź pomysły",
+    "aiAgents": "Agenci AI"
+  },
+  "orbit": {
+    "xNotConnected": "X (niepodłączony)",
+    "brainAlt": "Mózg AI SECRET 58"
+  },
+  "activeAgents": {
+    "title": "Aktywni agenci",
+    "empty": "Brak uruchomień agentów."
+  },
+  "kpi": {
+    "contentCreated": "Utworzone treści",
+    "videosCreated": "Utworzone filmy",
+    "postsCreated": "Utworzone posty",
+    "published": "Publikacje",
+    "views": "Wyświetlenia",
+    "avgEngagement": "Śr. zaangażowanie",
+    "totalRevenue": "Przychody (wpisane ręcznie)",
+    "noComparisonWeek": "Brak jeszcze poprzedniego tygodnia jako punktu odniesienia — wskaźniki zmian pojawią się, gdy będą dane z co najmniej dwóch tygodni.",
+    "noStats": "Wyświetlenia i interakcje: brak statystyk – pojawią się automatycznie, gdy tylko post zostanie opublikowany przez aplikację w serwisie YouTube lub Facebook."
+  },
+  "production": {
+    "title": "Produkcja treści",
+    "thisWeek": "Ten tydzień"
+  },
+  "scheduled": {
+    "title": "Zaplanowane posty",
+    "empty": "Brak zaplanowanych postów."
+  },
+  "activity": {
+    "title": "Ostatnia aktywność",
+    "empty": "Brak aktywności."
+  },
+  "contentFactory": {
+    "description": "Twórz kompletne kampanie treści na wszystkie platformy z jednego pomysłu.",
+    "cta": "Zacznij teraz →",
+    "popularTemplates": "Popularne szablony",
+    "templateYoutubeVideo": "Film na YouTube",
+    "templateTiktokSeries": "Seria na TikTok",
+    "templateInstagramReel": "Reel na Instagramie",
+    "templateLinkedinPost": "Post na LinkedIn",
+    "templateBlogPost": "Artykuł na blogu",
+    "viewAllTemplates": "Wszystkie szablony →"
+  },
+  "brandDna": {
+    "tonality": "Ton komunikacji",
+    "targetAudience": "Grupa docelowa",
+    "industry": "Branża",
+    "language": "Język",
+    "empty": "Brak zapisanego Brand DNA."
+  },
+  "campaigns": {
+    "title": "Aktualne kampanie",
+    "empty": "Brak kampanii."
+  },
+  "platforms": {
+    "title": "Platformy",
+    "manage": "Zarządzaj"
+  },
+  "integrations": {
+    "connectedCount": "Połączono: {connected}/{total}"
+  },
+  "agentMonitor": {
+    "title": "Dziennik asystentów",
+    "empty": "Brak uruchomień."
+  },
+  "topPerformer": {
+    "title": "Najlepsze wyniki",
+    "last7Days": "Ostatnie 7 dni",
+    "empty": "Brak danych o wynikach – pojawiają się automatycznie dla postów opublikowanych przez aplikację w serwisie YouTube lub Facebook.",
+    "views": "Wyświetlenia",
+    "likes": "Polubienia",
+    "comments": "Komentarze",
+    "shares": "Udostępnienia",
+    "engagementRate": "+Wskaźnik zaangażowania {value}"
+  },
+  "calendar": {
+    "open": "Otwórz",
+    "viewMonth": "Miesiąc",
+    "viewWeek": "Tydzień",
+    "viewDay": "Dzień",
+    "viewCampaign": "Kampania",
+    "moreItems": "+{count} więcej"
+  },
+  "weekdayLabels": ["Pn", "Wt", "Śr", "Cz", "Pt", "So", "Nd"]
+}

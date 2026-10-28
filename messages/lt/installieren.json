@@ -1,0 +1,20 @@
+{
+  "button": "Įdiegti programą",
+  "buttonHint": "Įdiegti SECRET 58 kaip programą šiame įrenginyje",
+  "close": "Uždaryti",
+  "canceled": "Diegimas atšauktas. Gali jį paleisti iš naujo bet kada.",
+  "iosTitle": "Diegimas iPhone ar iPad",
+  "iosStep1": "Atidaryk šį puslapį naršyklėje Safari.",
+  "iosStep2": "Bakstelėk „Bendrinti“ (kvadratas su rodykle į viršų).",
+  "iosStep3": "Pasirink „Pridėti prie pagrindinio ekrano“ ir patvirtink spustelėdamas „Pridėti“.",
+  "iosShort": "Safari: Bendrinti → Pridėti prie pagrindinio ekrano",
+  "iosNotSafari": "iPhone ir iPad įrenginiuose diegimas veikia tik naršyklėje Safari. Atidaryk šį puslapį naršyklėje Safari.",
+  "otherTitle": "Kaip įdiegti programą",
+  "otherChromium": "Atidaryk naršyklės meniu (trys taškai) ir pasirink „Įdiegti programą“ arba „Pridėti prie pagrindinio ekrano“.",
+  "otherSafariMac": "Safari naršyklėje Mac kompiuteryje: meniu „Failas“ → „Pridėti prie Dock“.",
+  "otherFirefox": "Firefox kompiuteryje negali įdiegti žiniatinklio programų. Naudok Chrome, Edge arba Safari.",
+  "otherGeneric": "Ši naršyklė šiuo metu nesiūlo diegimo lango. Taip gali būti dėl to, kad programa jau įdiegta arba naršyklė nepalaiko diegimo. Išbandyk Chrome, Edge arba Safari.",
+  "insecureTitle": "Čia įdiegti neįmanoma",
+  "insecureText": "Diegimui reikalinga paskelbta svetainė per HTTPS. Iš vietinio failo ar be HTTPS tai neveikia. Savo kompiuteryje tai veikia per „localhost“ kūrimo aplinkoje.",
+  "installedNote": "Programa įdiegta."
+}

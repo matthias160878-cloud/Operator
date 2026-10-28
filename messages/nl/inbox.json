@@ -1,0 +1,27 @@
+{
+  "title": "Inbox",
+  "description": "Berichten en aanvragen op één plek. De MessageAgent stelt antwoordconcepten voor.",
+  "emptyState": "Nog geen gesprekken — simuleer er een om te beginnen.",
+  "backToInbox": "Terug naar de inbox",
+  "newConversation": {
+    "simulateButton": "Gesprek simuleren",
+    "simulateHint": "Omdat er geen echte platformkoppeling is, kun je hier een binnenkomend bericht simuleren om het AI-antwoordconcept uit te proberen.",
+    "close": "Sluiten",
+    "namePlaceholder": "Naam",
+    "handlePlaceholder": "@handle (optioneel)",
+    "messagePlaceholder": "Berichttekst …",
+    "createButton": "Aanmaken"
+  },
+  "detail": {
+    "draftFailed": "Concept mislukt.",
+    "save": "Opslaan",
+    "edit": "Bewerken",
+    "approveAndSend": "Goedkeuren & verzenden",
+    "requestDraft": "AI-antwoordconcept aanvragen",
+    "openDraftExists": "Er staat hierboven al een openstaand concept — bewerk of verzend dat eerst.",
+    "simulateMoreHint": "Nog een binnenkomend bericht simuleren (test zonder echte platformkoppeling):",
+    "messagePlaceholder": "Berichttekst …",
+    "addButton": "Toevoegen"
+  },
+  "simulationBanner": "<strong>Voorbeeld/simulatie:</strong> berichten van platforms worden nog niet opgehaald en antwoorden worden niet verzonden – ook niet via „Goedkeuren & verzenden”. Platformberichten kun je hier simuleren om het uit te proberen. Echte items komen alleen uit websiteformulieren (bijv. afspraakaanvragen); die beantwoord je per e-mail."
+}

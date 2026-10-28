@@ -1,0 +1,25 @@
+{
+  "title": "Idees i inspiració",
+  "subtitle": "Agrupacions de temes, sèries i formats per a contingut futur: generats per l'IdeaAgent o introduïts manualment.",
+  "board": {
+    "topicLabel": "Tema per a noves idees",
+    "topicPlaceholder": "p. ex. Productivitat amb agents d'IA",
+    "generateButton": "Genera idees",
+    "manualButton": "Manual",
+    "manualTitlePlaceholder": "Títol de la idea",
+    "addButton": "Afegeix",
+    "generateError": "Error en generar les idees.",
+    "unknownError": "Error desconegut.",
+    "emptyState": "Encara no hi ha idees: genera'n o crea'n manualment.",
+    "minutesUnit": "~{count} min",
+    "statusNew": "Nova",
+    "statusInProgress": "En curs",
+    "statusUsed": "Utilitzada",
+    "statusArchived": "Arxivada",
+    "sourceAiGenerated": "IdeaAgent (IA o plantilla)",
+    "sourceManual": "Manual",
+    "templateResult": "Plantilla: les idees que acabes de crear provenen de blocs de text fixos, no d'una IA. Per a idees amb IA, introdueix la teva clau d'IA a «Configuració → Accessos propis».",
+    "textEngineLabel": "Motor de text:",
+    "templateMode": "Mode plantilla (cap proveïdor d'IA configurat)"
+  }
+}

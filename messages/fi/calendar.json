@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Sisältökalenteri",
+  "subtitle": "Yleiskatsaus ajastettuun ja julkaistuun sisältöön.",
+  "weekdays": ["Ma", "Ti", "Ke", "To", "Pe", "La", "Su"],
+  "months": [
+    "Tammikuu", "Helmikuu", "Maaliskuu", "Huhtikuu", "Toukokuu", "Kesäkuu",
+    "Heinäkuu", "Elokuu", "Syyskuu", "Lokakuu", "Marraskuu", "Joulukuu"
+  ],
+  "allPlatforms": "Kaikki alustat",
+  "moreItems": "+{count} lisää",
+  "listTitle": "Tämän kuukauden lista",
+  "emptyMonth": "Ei ajastettuja julkaisuja tässä kuussa."
+}

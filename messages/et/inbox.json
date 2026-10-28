@@ -1,0 +1,27 @@
+{
+  "title": "Postkast",
+  "description": "Sõnumid ja päringud ühes kohas. MessageAgent pakub välja vastuste mustandeid.",
+  "emptyState": "Vestlusi pole veel — alustamiseks simuleeri üks.",
+  "backToInbox": "Tagasi postkasti",
+  "newConversation": {
+    "simulateButton": "Simuleeri vestlust",
+    "simulateHint": "Kuna päris platvormi ühendust pole, saad siin simuleerida sissetuleva sõnumi, et proovida tehisintellekti vastusevisandit.",
+    "close": "Sulge",
+    "namePlaceholder": "Nimi",
+    "handlePlaceholder": "@kasutajanimi (valikuline)",
+    "messagePlaceholder": "Sõnumi tekst …",
+    "createButton": "Loo"
+  },
+  "detail": {
+    "draftFailed": "Visand ebaõnnestus.",
+    "save": "Salvesta",
+    "edit": "Muuda",
+    "approveAndSend": "Kinnita ja saada",
+    "requestDraft": "Telli tehisintellekti vastusevisand",
+    "openDraftExists": "Ülal on juba avatud visand — esmalt muuda/saada see.",
+    "simulateMoreHint": "Simuleeri veel üks sissetulev sõnum (test ilma päris platvormi ühenduseta):",
+    "messagePlaceholder": "Sõnumi tekst …",
+    "addButton": "Lisa"
+  },
+  "simulationBanner": "<strong>Eelvaade/simulatsioon:</strong> platvormide sõnumeid veel ei tooda ja vastuseid ei saadeta – ka mitte nupuga „Kinnita ja saada“. Platvormi sõnumeid saad proovimiseks siin simuleerida. Päris kirjed tulevad ainult veebisaidi vormidest (nt aja broneerimise päringud); neile vastad e-posti teel."
+}

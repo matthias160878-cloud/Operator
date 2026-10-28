@@ -1,0 +1,21 @@
+{
+  "title": "Asistentu žurnāls",
+  "description": "Visi SECRET 58 asistenti (aģenti) ar statusu, pēdējo uzdevumu un rezultātu. Katra palaišana tiek reģistrēta šeit.",
+  "table": {
+    "agent": "Aģents",
+    "description": "Apraksts",
+    "status": "Statuss",
+    "lastTask": "Pēdējais uzdevums"
+  },
+  "history": {
+    "title": "Palaišanas vēsture",
+    "agent": "Aģents",
+    "task": "Uzdevums",
+    "status": "Statuss",
+    "start": "Sākums",
+    "end": "Beigas",
+    "resultError": "Rezultāts / kļūda",
+    "empty": "Aģentu palaišanu vēl nav.",
+    "completed": "Pabeigts"
+  }
+}

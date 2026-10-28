@@ -15,6 +15,7 @@ const STATUS_STYLES: Record<string, string> = {
   WAITING: "bg-warning/15 text-warning border-warning/30",
   IN_REVIEW: "bg-warning/15 text-warning border-warning/30",
   NOT_CONFIGURED: "bg-warning/15 text-warning border-warning/30",
+  NOT_AVAILABLE: "bg-muted/15 text-muted border-border",
   IDLE: "bg-muted/15 text-muted border-border",
   DRAFT: "bg-muted/15 text-muted border-border",
   ARCHIVED: "bg-muted/15 text-muted border-border",

@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Mer enn innhold.",
+    "footerLine2": "En komplett innholdsmaskin.",
+    "workspace": "Workspace",
+    "role": "Administrator"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "schulung": "Opplæring",
+    "contentFactory": "Content Factory",
+    "ideas": "Ideer og inspirasjon",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Sosiale medier",
+    "calendar": "Innholdskalender",
+    "analytics": "Analytics",
+    "growth": "Vekst",
+    "weiterempfehlungen": "Anbefalinger",
+    "reichweitenaufbau": "Bygg rekkevidde",
+    "revenue": "Inntekter",
+    "inbox": "Innboks",
+    "anfragen": "Forespørsler",
+    "dateien": "Filer",
+    "agents": "Agenter",
+    "integrations": "Integrasjoner",
+    "settings": "Innstillinger",
+    "billing": "Pakke og fakturering",
+    "sales": "Salg og butikk",
+    "website": "Nettsiden min"
+  },
+  "topbar": {
+    "menuOpen": "Åpne meny",
+    "menuClose": "Lukk meny",
+    "searchPlaceholder": "Søk etter innhold, prosjekter, kampanjer …",
+    "notifications": "Varsler",
+    "language": "Språk"
+  },
+  "footer": {
+    "help": "Hjelp",
+    "privacy": "Personvern",
+    "imprint": "Juridisk informasjon",
+    "systemOnline": "System online"
+  },
+  "actions": {
+    "save": "Lagre",
+    "cancel": "Avbryt",
+    "delete": "Slett",
+    "edit": "Rediger",
+    "create": "Opprett",
+    "close": "Lukk",
+    "back": "Tilbake",
+    "loading": "Laster …"
+  },
+  "status": {
+    "connected": "Tilkoblet",
+    "notConfigured": "Ikke konfigurert",
+    "error": "Feil"
+  },
+  "statusBadge": {
+    "CONNECTED": "Tilkoblet",
+    "ACTIVE": "Aktiv",
+    "COMPLETED": "Fullført",
+    "RUNNING": "Kjører",
+    "SUCCESS": "Vellykket",
+    "PUBLISHED": "Publisert",
+    "APPROVED": "Godkjent",
+    "SCHEDULED": "Planlagt",
+    "WAITING": "Venter",
+    "IN_REVIEW": "Til vurdering",
+    "NOT_CONFIGURED": "Ikke konfigurert",
+    "IDLE": "Klar",
+    "DRAFT": "Utkast",
+    "ARCHIVED": "Arkivert",
+    "ERROR": "Feil",
+    "REJECTED": "Avvist",
+    "RECEIVED": "Mottatt",
+    "PENDING": "Utestående",
+    "NOT_AVAILABLE": "Ikke tilgjengelig ennå"
+  },
+  "integrationStatus": {
+    "notConfigured": "Ikke konfigurert — manglende variabel/variabler: {vars}.",
+    "verifyFailedGeneric": "Tilkoblingen mislyktes.",
+    "verifyFailedStatus": "{service} svarte med status {status}.",
+    "verifyUnreachable": "{service} kunne ikke nås.",
+    "connected": "Tilkoblet.",
+    "notAvailable": "Ikke tilgjengelig ennå – denne tilkoblingen er ennå ikke bygget i appen."
+  },
+  "mediaPreview": {
+    "expand": "Vis større",
+    "close": "Lukk"
+  }
+}

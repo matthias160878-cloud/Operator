@@ -1,0 +1,15 @@
+{
+  "title": "Analytics",
+  "subtitle": "Plattformsstatistik (visningar, gilla-markeringar, kommentarer, delningar) hämtas automatiskt för YouTube och Facebook så snart ett inlägg har publicerats via appen – ungefär var sjätte timme. Instagram, TikTok och LinkedIn följer så snart plattformen har gett åtkomst. Siffror från andra inlägg kan du ange manuellt under <weiter>Rekommendationer</weiter> (”Ange plattformssiffror”) eller i <varianten>variantjämförelsen</varianten>.",
+  "statViewsTotal": "Visningar totalt",
+  "statLikesTotal": "Likes totalt",
+  "statComments": "Kommentarer",
+  "statShares": "Delningar",
+  "chartTitle": "Innehållets prestanda över tid",
+  "chartLegend": "Visningar (lila) · Engagemang % (turkos)",
+  "chartEmpty": "Ingen statistik ännu – inget förlopp tillgängligt.",
+  "bestPerformingTitle": "Bäst presterande innehåll",
+  "bestPerformingEmpty": "Ingen statistik ännu – ingen rangordning möjlig.",
+  "learningAgentTitle": "Learning Agent — rekommendationer",
+  "statsEmpty": "Ingen statistik sparad ännu. För YouTube och Facebook visas siffrorna automatiskt så snart ett inlägg har publicerats via appen."
+}

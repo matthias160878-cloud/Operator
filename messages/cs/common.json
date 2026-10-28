@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Víc než obsah.",
+    "footerLine2": "Kompletní stroj na obsah.",
+    "workspace": "Pracovní prostor",
+    "role": "Administrátor"
+  },
+  "nav": {
+    "dashboard": "Přehled",
+    "schulung": "Školení",
+    "contentFactory": "Content Factory",
+    "ideas": "Nápady a inspirace",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Sociální sítě",
+    "calendar": "Kalendář obsahu",
+    "analytics": "Analytika",
+    "growth": "Růst",
+    "weiterempfehlungen": "Doporučení",
+    "reichweitenaufbau": "Budování dosahu",
+    "revenue": "Příjmy",
+    "inbox": "Doručená pošta",
+    "anfragen": "Poptávky",
+    "dateien": "Soubory",
+    "agents": "Agenti",
+    "integrations": "Integrace",
+    "settings": "Nastavení",
+    "billing": "Balíček a fakturace",
+    "sales": "Prodej a obchod",
+    "website": "Můj web"
+  },
+  "topbar": {
+    "menuOpen": "Otevřít menu",
+    "menuClose": "Zavřít menu",
+    "searchPlaceholder": "Hledat obsah, projekty, kampaně …",
+    "notifications": "Oznámení",
+    "language": "Jazyk"
+  },
+  "footer": {
+    "help": "Nápověda",
+    "privacy": "Ochrana osobních údajů",
+    "imprint": "Impressum",
+    "systemOnline": "Systém online"
+  },
+  "actions": {
+    "save": "Uložit",
+    "cancel": "Zrušit",
+    "delete": "Smazat",
+    "edit": "Upravit",
+    "create": "Vytvořit",
+    "close": "Zavřít",
+    "back": "Zpět",
+    "loading": "Načítá se …"
+  },
+  "status": {
+    "connected": "Připojeno",
+    "notConfigured": "Není nastaveno",
+    "error": "Chyba"
+  },
+  "statusBadge": {
+    "CONNECTED": "Připojeno",
+    "ACTIVE": "Aktivní",
+    "COMPLETED": "Dokončeno",
+    "RUNNING": "Běží",
+    "SUCCESS": "Úspěšné",
+    "PUBLISHED": "Publikováno",
+    "APPROVED": "Schváleno",
+    "SCHEDULED": "Naplánováno",
+    "WAITING": "Čeká",
+    "IN_REVIEW": "V kontrole",
+    "NOT_CONFIGURED": "Není nastaveno",
+    "IDLE": "Připraveno",
+    "DRAFT": "Koncept",
+    "ARCHIVED": "Archivováno",
+    "ERROR": "Chyba",
+    "REJECTED": "Zamítnuto",
+    "RECEIVED": "Přijato",
+    "PENDING": "Čeká na vyřízení",
+    "NOT_AVAILABLE": "Zatím nedostupné"
+  },
+  "integrationStatus": {
+    "notConfigured": "Není nastaveno — chybí proměnné: {vars}.",
+    "verifyFailedGeneric": "Připojení se nezdařilo.",
+    "verifyFailedStatus": "{service} odpověděl se stavem {status}.",
+    "verifyUnreachable": "Službu {service} se nepodařilo zastihnout.",
+    "connected": "Připojeno.",
+    "notAvailable": "Zatím nedostupné – toto propojení v aplikaci ještě není hotové."
+  },
+  "mediaPreview": {
+    "expand": "Zobrazit větší",
+    "close": "Zavřít"
+  }
+}

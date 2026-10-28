@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Vaihe {current} / {total}",
+    "close": "Sulje",
+    "back": "Takaisin",
+    "next": "Seuraava",
+    "skip": "Ohita",
+    "finish": "Valmis, aloitetaan",
+    "checking": "Tarkistetaan …",
+    "checkAgain": "Tarkista nyt",
+    "connected": "Yhdistetty",
+    "notConnected": "Ei vielä yhdistetty",
+    "skippedNote": "Ohitettu — voit tehdä tämän milloin tahansa kohdassa ”Integraatiot”.",
+    "envHint": "Huom.: Renderiin tallentamisen jälkeen kestää yleensä 1–2 minuuttia, ennen kuin palvelu käynnistyy uudelleen ja muutos tulee voimaan. Jos ”Tarkista nyt” ei vielä löydä mitään, odota hetki ja klikkaa uudelleen.",
+    "reopenHint": "Voit avata tämän avustajan uudelleen milloin tahansa: Asetuksissa kohdassa ”Käyttöönottoavustaja”."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Tervetuloa SECRET 58:aan",
+      "body": "Ennen kuin aloitetaan, otamme yhdessä käyttöön välttämättömimmän — pienissä, yksittäisissä vaiheissa. Voit keskeyttää milloin tahansa ja jatkaa myöhemmin samasta kohdasta."
+    },
+    "aiProvider": {
+      "title": "Vaihe 1: Yhdistä tekoälypalvelu",
+      "body": "Tekstejä, skriptejä, hookeja ja hashtageja varten ohjelmisto tarvitsee tekoälypalvelun. Valitse jompikumpi — yksi riittää.",
+      "steps": [
+        "Klikkaa alla Anthropicin tai OpenAI:n kohdalla ”Hae API-avain”.",
+        "Luo siellä tarvittaessa ilmainen tili.",
+        "Luo siellä uusi API-avain ja kopioi se.",
+        "Klikkaa ”Tallenna Renderiin”, liitä avain sinne ympäristömuuttujaksi ja tallenna.",
+        "Palaa tänne ja klikkaa alhaalla ”Tarkista nyt”."
+      ],
+      "costHint": "Kustannuksia syntyy vasta todellisesta käytöstä, suoraan kyseiseltä palveluntarjoajalta — ei koskaan SECRET 58:n kautta."
+    },
+    "platform": {
+      "title": "Vaihe 2: Yhdistä sosiaalisen median alusta (valinnainen)",
+      "body": "Valinnainen mutta suositeltava: yhdistä vähintään yksi alusta, jolla haluat myöhemmin julkaista. Voit tehdä tämän vaiheen myös myöhemmin.",
+      "steps": [
+        "Valitse alla alusta, jota haluat käyttää.",
+        "Klikkaa ”Hae API-avain” ja seuraa palveluntarjoajan ohjeita.",
+        "Klikkaa ”Tallenna Renderiin” ja tallenna tunnukset sinne.",
+        "Palaa tänne ja klikkaa ”Tarkista nyt”."
+      ]
+    },
+    "voice": {
+      "title": "Vaihe 3: Yhdistä puhesynteesi (valinnainen)",
+      "body": "Tarvitaan vain, jos haluat luoda videoillesi automaattisesti puhutun voiceoverin. Ilman tätä vaihetta kaikki muu toimii silti.",
+      "steps": [
+        "Klikkaa ElevenLabsin kohdalla ”Hae API-avain”.",
+        "Luo siellä tili ja API-avain.",
+        "Klikkaa ”Tallenna Renderiin” ja tallenna avain sinne.",
+        "Palaa tänne ja klikkaa ”Tarkista nyt”."
+      ]
+    },
+    "done": {
+      "title": "Valmista!",
+      "body": "Voit nyt aloittaa. Kaiken ohittamasi löydät ja voit täydentää milloin tahansa osiossa ”Integraatiot” — tai avata tämän avustajan uudelleen kohdasta ”Asetukset”."
+    }
+  }
+}

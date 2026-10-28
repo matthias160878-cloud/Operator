@@ -1,0 +1,27 @@
+{
+  "title": "Stillingar",
+  "description": "Vinnusvæðið þitt, notendur og yfirlit yfir gögnin þín. Eigin API-lykla (gervigreindartexta, útsendingu fréttabréfa) skráirðu undir <zugaenge>Eigin aðgangar</zugaenge>; pakkann þinn finnurðu undir <billing>Pakki og reikningar</billing>.",
+  "workspace": {
+    "title": "Vinnusvæði",
+    "name": "Nafn",
+    "slug": "Slug",
+    "createdAt": "Stofnað"
+  },
+  "users": {
+    "title": "Notendur og hlutverk",
+    "note": "Hver aðgangur hefur sitt eigið vinnusvæði, aðskilið frá öðrum viðskiptavinum. Fleiri notendum geturðu enn ekki bætt við sjálf(ur)."
+  },
+  "system": {
+    "title": "Kerfi",
+    "contentItems": "Efnisatriði",
+    "campaigns": "Herferðir",
+    "mediaAssets": "Miðlaeignir",
+    "agentRuns": "Keyrslur fulltrúa",
+    "dbNote": "Fjöldi færslna sem vistaðar eru í vinnusvæðinu þínu. Þú getur flutt út öll gögn eða eytt vinnusvæðinu hér fyrir neðan undir „Gögnin mín“."
+  },
+  "onboarding": {
+    "title": "Uppsetningaraðstoð",
+    "description": "Litlu gluggarnir með skrefum fyrir skref fyrir gervigreindarveitur, samfélagsmiðla og talgervil sem birtast við fyrstu opnun.",
+    "reopen": "Opna uppsetningaraðstoð aftur"
+  }
+}

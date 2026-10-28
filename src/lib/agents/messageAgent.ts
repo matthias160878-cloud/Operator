@@ -68,6 +68,11 @@ export async function approveAndSend(messageId: string) {
     include: { conversation: true },
   });
 
+  if (message.conversation.platform === "WEBSITE") {
+    const errorText = `Anfrage über das Kontaktformular: bitte per E-Mail antworten (${message.conversation.participantHandle || "Adresse in der Anfrage"}). Ein E-Mail-Versand ist in der App noch nicht eingerichtet.`;
+    await prisma.message.update({ where: { id: message.id }, data: { status: "FAILED", error: errorText } });
+    return { sent: false, message: errorText };
+  }
   const account = await prisma.platformAccount.findUnique({
     where: {
       workspaceId_platform: {

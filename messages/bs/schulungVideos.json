@@ -1,0 +1,269 @@
+{
+ "playerTitle": "Video obuka",
+ "subtitlesLabel": "Titlovi",
+ "subtitlesOff": "Isključeno",
+ "soundLabel": "Zvuk",
+ "soundOn": "Glas čitača uključen",
+ "soundOff": "Glas čitača isključen",
+ "soundHint": "Glas čitača dolazi iz tvog preglednika. Koji su jezici dostupni zavisi od tvog uređaja.",
+ "soundMissing": "Za ovaj jezik na tvom uređaju nije instaliran glas. Titlovi ipak rade.",
+ "draftNote": "Nacrt: snimak prave aplikacije s testnim podacima. Titlovi automatski prevedeni.",
+ "whatLabel": "Šta je to, koju funkciju ima i kako se izvodi.",
+ "videosTitle": "Videi s objašnjenjima za svaki dio",
+ "order": [
+  "start",
+  "dashboard",
+  "schulung",
+  "contentFactory",
+  "ideas",
+  "contentBrain",
+  "brandDna",
+  "scriptStudio",
+  "voiceStudio",
+  "videoStudio",
+  "designStudio",
+  "socialMedia",
+  "calendar",
+  "analytics",
+  "growth",
+  "revenue",
+  "sales",
+  "website",
+  "inbox",
+  "agents",
+  "integrations",
+  "billing",
+  "settings"
+ ],
+ "videos": {
+  "start": {
+   "title": "Prvi koraci",
+   "cues": {
+    "c1": "Dobro došao/la na obuku: Prvi koraci. Sve što vidiš je prava aplikacija s testnim podacima.",
+    "c2": "Lijevo je navigacija. Svaki dio aplikacije ima ovdje svoju stavku.",
+    "c3": "Korak 1: Pod „Integracije“ provjeri koji su servisi povezani.",
+    "c4": "Svaki red prikazuje stvaran, provjeren status – nikada lažnu vezu.",
+    "c5": "„Nije konfigurisano“ znači: ovaj servis još nije postavljen. Bez AI provajdera aplikacija radi u načinu šablona.",
+    "c6": "Korak 2: Upiši svoj brend pod „Brand DNA“. Ton, ciljna grupa i vrijednosti ulaze u svaki generisani tekst.",
+    "c7": "Primjer: popuni branšu i ciljnu grupu i dolje spremi.",
+    "c8": "Korak 3: Pod „Ideje i inspiracija“ daj da se kreira prva ideja. Upiši temu i klikni na „Generiši ideje“.",
+    "c9": "Ideje se pojavljuju kao kartice. U načinu šablona to su primjeri, a s AI provajderom postaju individualne.",
+    "c10": "Sve ostaje nacrt dok ga ne odobriš. Za svaki dio postoji poseban video s objašnjenjem."
+   }
+  },
+  "dashboard": {
+   "title": "Kontrolna tabla",
+   "cues": {
+    "c1": "Kontrolna tabla je tvoja početna stranica: pregled svega što se događa u tvom radnom prostoru.",
+    "c2": "Gore vidiš aktivne agente, produkciju sadržaja i zakazane objave.",
+    "c3": "Niže su posljednje aktivnosti i prečice do Content Factory i Brand DNA.",
+    "c4": "Pomoću „Sedmica“ mijenjaš period pokazatelja.",
+    "c5": "Ovako je koristiš: otvaraj kontrolnu tablu svaki dan, provjeri otvorene nacrte i odavde skoči direktno u odgovarajući dio."
+   }
+  },
+  "schulung": {
+   "title": "Obuka",
+   "cues": {
+    "c1": "Obuka je tvoje uputstvo u aplikaciji. Objašnjava svaki dio korak po korak.",
+    "c2": "Svaka tema ima opis, numerisane korake i link koji otvara odgovarajuću stranicu.",
+    "c3": "Ovdje se pojavljuju i ovi videi s objašnjenjima, po jedan za svaki dio.",
+    "c4": "Ovako je koristiš: odaberi temu, pročitaj korake, otvori stranicu i odmah isprobaj."
+   }
+  },
+  "contentFactory": {
+   "title": "Content Factory",
+   "cues": {
+    "c1": "Content Factory je radni stol za sve tvoje stavke sadržaja na jednom mjestu.",
+    "c2": "Funkcija: kreiranje, dupliciranje, prepisivanje stavki, obogaćivanje voiceoverom i titlovima te vođenje kroz tok odobravanja.",
+    "c3": "Filteri gore prikazuju statuse: Nacrt, Na pregledu, Odobreno, Zakazano, Objavljeno i Arhivirano.",
+    "c4": "Ovako ide: sa „Nova stavka sadržaja“ kreiraš stavku.",
+    "c5": "Otvori stavku da urediš skriptu, voiceover, titlove, hashtagove i thumbnail.",
+    "c6": "Odobrenje je uvijek ručni korak. Ništa se ne objavljuje bez tvoje potvrde."
+   }
+  },
+  "ideas": {
+   "title": "Ideje i inspiracija",
+   "cues": {
+    "c1": "Ovdje skupljaš ideje: klastere tema, serije i formate za budući sadržaj.",
+    "c2": "Funkcija: IdeaAgent kreira ideje za temu, ili ti sam ručno unosiš vlastite ideje.",
+    "c3": "Ovako ide: upiši temu, odaberi platformu, cilj i format te klikni na „Generiši ideje“.",
+    "c4": "Svaka ideja postaje kartica s naslovom, uvodom i prioritetom.",
+    "c5": "Sa „Ručno“ dodaješ vlastitu ideju.",
+    "c6": "Dobre ideje uzimaš kao polaznu tačku za Content Brain."
+   }
+  },
+  "contentBrain": {
+   "title": "Content Brain",
+   "cues": {
+    "c1": "Content Brain od jedne ideje pravi kompletan content plan.",
+    "c2": "Funkcija: uzima u obzir tvoj Brand DNA i za svaku odabranu platformu kreira hookove, skripte, hashtagove i koncepte thumbnaila kao nacrt.",
+    "c3": "Ovako ide: upiši temu i ciljnu grupu.",
+    "c4": "Odaberi cilj i jezik, pa klikni na platforme. Ovdje se dodaje TikTok.",
+    "c5": "Klizačem određuješ koliko stavki sadržaja nastaje po platformi.",
+    "c6": "Klik na „Generiši content plan“ pokreće proces.",
+    "c7": "Kampanja se pojavljuje dolje. Sve stavke su nacrti i nalaze se u Content Factory."
+   }
+  },
+  "brandDna": {
+   "title": "Brand DNA",
+   "cues": {
+    "c1": "Brand DNA opisuje tvoj brend: naziv, branšu, ciljnu grupu, ton i vrijednosti.",
+    "c2": "Funkcija: ovi podaci automatski ulaze u Content Brain te u agente za skripte, hookove i hashtagove.",
+    "c3": "Ovako ide: popuni polja, na primjer branšu i ciljnu grupu.",
+    "c4": "Niže održavaš poželjne i zabranjene riječi, pozive na akciju i vrijednosti brenda.",
+    "c5": "Na kraju klikni na „Spremi Brand DNA“."
+   }
+  },
+  "scriptStudio": {
+   "title": "Script Studio",
+   "cues": {
+    "c1": "Script Studio je radionica za skripte i hookove.",
+    "c2": "Funkcija: gradi skripte prema strukturi hook, problem, korist, primjer, rezultat i poziv na akciju te daje više varijanti hookova.",
+    "c3": "Ovako ide: upiši temu i odaberi platformu.",
+    "c4": "Zatim klikni na „Generiši skriptu i hookove“.",
+    "c5": "Rezultat je nacrt koji dalje koristiš u Content Factory."
+   }
+  },
+  "voiceStudio": {
+   "title": "Voice Studio",
+   "cues": {
+    "c1": "Voice Studio upravlja glasovima i kreira voiceovere.",
+    "c2": "Funkcija: održavanje Voice Library, kreiranje pregleda i uvoz glasova. Povezivanje ide preko ElevenLabs.",
+    "c3": "Ovako ide: dodaj glas ručno ili ga uvezi iz ElevenLabs. Uvoz zahtijeva postavljeno povezivanje.",
+    "c4": "Uz tekst i glas kreiraš pregled i reproduciraš ga."
+   }
+  },
+  "videoStudio": {
+   "title": "Video Studio",
+   "cues": {
+    "c1": "Video Studio je video pipeline aplikacije.",
+    "c2": "Funkcija: Format Manager, zamjenjivi video pružatelji te povezivanje voiceovera i titlova.",
+    "c3": "Stranica prikazuje koji su pružatelji postavljeni. Oni koji nisu postavljeni iskreno su tako i označeni.",
+    "c4": "Ovako ide: videe kreiraš po stavci sadržaja u Content Factory."
+   }
+  },
+  "designStudio": {
+   "title": "Design Studio",
+   "cues": {
+    "c1": "Design Studio daje koncepte thumbnaila i slikovne assete.",
+    "c2": "Funkcija: thumbnail agent predlaže naslov, ideju slike, tekst i layout. Canva integracija je ovdje predviđena.",
+    "c3": "Ovako ide: upiši temu za thumbnail.",
+    "c4": "Klikni na „Generiši koncept“.",
+    "c5": "Koncept ti služi kao predložak za tvoju sliku."
+   }
+  },
+  "socialMedia": {
+   "title": "Društvene mreže",
+   "cues": {
+    "c1": "Ovdje povezuješ naloge svojih platformi i vidiš njihov status.",
+    "c2": "Funkcija: pristupi se vode na strani servera i spremaju šifrirano. Preko Composio se prijavljuješ na platformu.",
+    "c3": "Svaka kartica prikazuje platformu, nalog, status i posljednji test čitanja.",
+    "c4": "„Još nije postavljeno“ znači: operater još nije aktivirao povezivanje na serveru.",
+    "c5": "Ovako ide: čim se postavi, kod platforme klikni na „Poveži“ i prijavi se. Samo se čita, ništa se ne objavljuje."
+   }
+  },
+  "calendar": {
+   "title": "Content kalendar",
+   "cues": {
+    "c1": "Content kalendar prikazuje pregled planiranog i objavljenog sadržaja.",
+    "c2": "Funkcija: sve stavke sadržaja s datumom objave pojavljuju se ovdje, mogu se filtrirati po platformi.",
+    "c3": "Ovako ide: zakaži stavku u Content Factory s datumom, pa će se pojaviti ovdje.",
+    "c4": "Prije svake objave aplikacija uživo provjerava je li ciljna platforma povezana."
+   }
+  },
+  "analytics": {
+   "title": "Analytics",
+   "cues": {
+    "c1": "Analytics prikazuje tvoje pokazatelje učinka.",
+    "c2": "Funkcija: samo stvarno dostupni podaci, uvezeni ili koje si ti unio/unijela. Ništa nije izmišljeno.",
+    "c3": "Vidiš razvoj kroz vrijeme, najuspješniji sadržaj i preporuke Learning Agenta.",
+    "c4": "Ovako ide: čim se povežu platforme ili uneseš podatke, dijagrami se popunjavaju."
+   }
+  },
+  "growth": {
+   "title": "Rast",
+   "cues": {
+    "c1": "Stranica Rast daje preporuke za veći doseg.",
+    "c2": "Funkcija: iz tvojih stvarnih Analytics podataka izračunava najbolja vremena objavljivanja, uspješne hashtagove i formate.",
+    "c3": "Ovako ide: odaberi platformu i pročitaj preporuke.",
+    "c4": "To su preporuke, a ne automatika. Pratioci ili interakcije se ne povećavaju vještački."
+   }
+  },
+  "revenue": {
+   "title": "Prihodi",
+   "cues": {
+    "c1": "Pod Prihodi objedinjuješ svoje zarade preko platformi i kampanja.",
+    "c2": "Funkcija: iznosi se pojavljuju tek kad ih upišeš. Nema izmišljenih brojeva.",
+    "c3": "Ovako ide: klikni na „Unesi prihod“, odaberi platformu i vrstu te upiši iznos.",
+    "c4": "Isplata uvijek ide direktno preko platforme. SECRET 58 ne obavlja isplate."
+   }
+  },
+  "sales": {
+   "title": "Prodaja i shop",
+   "cues": {
+    "c1": "„Prodaja i shop“ prikazuje tvoje vlastite poslovne prihode.",
+    "c2": "Funkcija: odvojeni su od tvog SECRET 58 paketa. Računaju se samo stvarne prodaje, a testni podaci su označeni.",
+    "c3": "Gore su zbirovi po valutama, ispod su tvoji podaci o pružatelju za impressum.",
+    "c4": "Opcija B: prodaja preko SECRET 58. Opcija A: uvoz postojećeg shopa.",
+    "c5": "Ovako ide: popuni podatke o pružatelju i spremi, zatim odaberi način prodaje."
+   }
+  },
+  "website": {
+   "title": "Moja web stranica",
+   "cues": {
+    "c1": "Ovdje ugrađuješ asistenta za web stranicu na svoju vlastitu web stranicu.",
+    "c2": "Funkcija: asistent odgovara na pitanja tvojih posjetilaca.",
+    "c3": "Tvoju web stranicu ne mijenjamo automatski. Kod ubacuješ sam/a ili ga daš da ubaci tvoj web dizajner.",
+    "c4": "Ovako ide: upiši web adresu i klikni na „Dodaj web stranicu“.",
+    "c5": "Zatim prikazani kod kopiraš u svoju web stranicu."
+   }
+  },
+  "inbox": {
+   "title": "Prijemno sanduče",
+   "cues": {
+    "c1": "Prijemno sanduče skuplja poruke i komentare sa svih platformi.",
+    "c2": "Funkcija: MessageAgent predlaže odgovore. Šalje se samo ono što ti odobriš.",
+    "c3": "Ovako ide: dok nijedna platforma nije povezana uživo, klikni na „Simuliraj razgovor“.",
+    "c4": "Provjeri prijedlog odgovora, prilagodi ga i odobri."
+   }
+  },
+  "agents": {
+   "title": "Agenti",
+   "cues": {
+    "c1": "Agent Monitor prikazuje sve SECRET 58 agente.",
+    "c2": "Funkcija: status, posljednji zadatak i rezultat svakog agenta. Svako pokretanje se bilježi.",
+    "c3": "U historiji pokretanja vidiš šta je i kada radilo i je li uspjelo.",
+    "c4": "Ovako ga koristiš: provjeri ovdje kada nešto nije kreirano kako se očekivalo."
+   }
+  },
+  "integrations": {
+   "title": "Integracije",
+   "cues": {
+    "c1": "Ovdje vidiš status uživo svih vanjskih servisa.",
+    "c2": "Funkcija: svaki red se zasniva na stvarno postavljenim pristupima. Nema lažnih veza.",
+    "c3": "Grupe su: AI provajderi, Voice, društvene platforme, dizajn, video i trendovi.",
+    "c4": "Ovako ide: kod „Nije konfigurisano“, „Nabavi API ključ“ vodi na stranicu pružatelja.",
+    "c5": "Vanjski pružatelji imaju vlastite cijene. Kod svakog servisa piše koji model važi."
+   }
+  },
+  "billing": {
+   "title": "Paket i naplata",
+   "cues": {
+    "c1": "Pod „Paket i naplata“ vidiš svoj paket i možeš ga promijeniti.",
+    "c2": "Funkcija: AI funkcije rade preko pristupa operatera. Ne treba ti vlastita AI pretplata.",
+    "c3": "Postoje Pro i Maxi, mjesečno ili godišnje. Cijene su na karticama navedene bez poreza.",
+    "c4": "Kupuje se samo izričitim klikom na „Naruči uz obavezu plaćanja“.",
+    "c5": "Ako imaš promo kod, unosiš ga u polje ispod."
+   }
+  },
+  "settings": {
+   "title": "Postavke",
+   "cues": {
+    "c1": "U postavkama upravljaš radnim prostorom, korisnicima i informacijama o sistemu.",
+    "c2": "Funkcija: radni prostor, uloge, status sistema, asistent za postavljanje i tvoji podaci s uvidom i brisanjem.",
+    "c3": "Ovako ide: pređi kroz odjeljke. Brisanje radnog prostora zahtijeva dodatnu potvrdu.",
+    "c4": "Redovno ovdje provjeravaj svoje podatke i asistenta za postavljanje."
+   }
+  }
+ }
+}

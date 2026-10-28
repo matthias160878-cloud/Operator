@@ -1,0 +1,27 @@
+{
+  "title": "Asetukset",
+  "description": "Työtilasi, käyttäjät ja yleiskatsaus tietoihisi. Omat API-avaimesi (tekoälytekstit, uutiskirjeiden lähetys) syötät kohdassa <zugaenge>Omat käyttöoikeudet</zugaenge>; pakettisi löytyy kohdasta <billing>Paketti ja laskutus</billing>.",
+  "workspace": {
+    "title": "Työtila",
+    "name": "Nimi",
+    "slug": "Slug",
+    "createdAt": "Luotu"
+  },
+  "users": {
+    "title": "Käyttäjät ja roolit",
+    "note": "Jokaisella tilillä on oma, muista asiakkaista erillinen työtila. Lisäkäyttäjiä et voi vielä lisätä itse."
+  },
+  "system": {
+    "title": "Järjestelmä",
+    "contentItems": "Sisällöt",
+    "campaigns": "Kampanjat",
+    "mediaAssets": "Mediamateriaalit",
+    "agentRuns": "Agenttiajot",
+    "dbNote": "Työtilaasi tallennettujen merkintöjen määrä. Voit viedä kaikki tiedot tai poistaa työtilan alempana kohdassa ”Omat tiedot”."
+  },
+  "onboarding": {
+    "title": "Käyttöönottoavustaja",
+    "description": "Pienet vaiheittaiset ikkunat tekoälypalveluille, sosiaalisen median alustoille ja puhesynteesille, jotka näkyvät ensimmäisellä avauskerralla.",
+    "reopen": "Avaa käyttöönottoavustaja uudelleen"
+  }
+}

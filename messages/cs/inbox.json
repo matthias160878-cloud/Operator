@@ -1,0 +1,27 @@
+{
+  "title": "Doručená pošta",
+  "description": "Zprávy a dotazy na jednom místě. MessageAgent navrhuje koncepty odpovědí.",
+  "emptyState": "Zatím žádné konverzace — nasimuluj jednu a začni.",
+  "backToInbox": "Zpět do doručené pošty",
+  "newConversation": {
+    "simulateButton": "Nasimulovat konverzaci",
+    "simulateHint": "Protože neexistuje skutečné připojení k platformě, můžeš zde nasimulovat příchozí zprávu a vyzkoušet návrh odpovědi od AI.",
+    "close": "Zavřít",
+    "namePlaceholder": "Jméno",
+    "handlePlaceholder": "@handle (nepovinné)",
+    "messagePlaceholder": "Text zprávy …",
+    "createButton": "Vytvořit"
+  },
+  "detail": {
+    "draftFailed": "Návrh se nezdařil.",
+    "save": "Uložit",
+    "edit": "Upravit",
+    "approveAndSend": "Schválit a odeslat",
+    "requestDraft": "Vyžádat návrh odpovědi od AI",
+    "openDraftExists": "Nahoře už je otevřený návrh — nejdřív ho uprav/odešli.",
+    "simulateMoreHint": "Nasimulovat další příchozí zprávu (test bez skutečného připojení k platformě):",
+    "messagePlaceholder": "Text zprávy …",
+    "addButton": "Přidat"
+  },
+  "simulationBanner": "<strong>Náhled/simulace:</strong> zprávy z platforem se zatím nenačítají a odpovědi se neodesílají – ani přes „Schválit a odeslat“. Zprávy z platforem tu můžeš pro vyzkoušení simulovat. Skutečné záznamy přicházejí jen z formulářů na webu (např. žádosti o termín); na ty odpovídáš e-mailem."
+}

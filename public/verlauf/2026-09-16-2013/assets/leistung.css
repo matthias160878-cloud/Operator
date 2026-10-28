@@ -1,0 +1,560 @@
+img{max-width:100%}
+[hidden]:not([hidden=until-found i]){display:none!important}
+
+
+/* Secret58 – Leitstand-Gestaltung
+   Bildwelt: ein Schaltpult. Kaltes Aluminium als Grund, Blaupausen-Blau für
+   Struktur, Signallampen für Zustände. Serifen für Fließtext, damit die
+   technische Anmutung nicht kalt wirkt. */
+
+:root {
+  --alu:        #E6E9EB;
+  --alu-tief:   #D6DBDF;
+  --panel:      #FFFFFF;
+  --ink:        #16212B;
+  --ink-leise:  #56646F;
+  --blau:       #274B8F;
+  --blau-hell:  #EAEFF8;
+  --lampe:      #1D7A55;
+  --amber:      #9A6B04;
+  --rot:        #A32F22;
+  --linie:      #C3CAD0;
+
+  --schrift-anzeige: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --schrift-text: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+
+  --bahn: 74rem;
+  --rand: 1.5rem;
+}
+
+
+*, *::before, *::after { box-sizing: border-box; }
+
+
+h1, h2, h3, h4, .anzeige {
+  font-family: var(--schrift-anzeige);
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  line-height: 1.08;
+  margin: 0 0 0.6em;
+  text-wrap: balance;
+}
+
+
+h1 { font-size: clamp(2.3rem, 6vw, 4rem); }
+
+h2 { font-size: clamp(1.6rem, 3.4vw, 2.35rem); }
+
+h3 { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.012em; }
+
+h4 { font-size: 1rem; font-weight: 600; }
+
+
+p { margin: 0 0 1rem; max-width: 68ch; }
+
+
+a { color: var(--blau); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+
+a:hover { color: var(--ink); }
+
+
+:focus-visible {
+  outline: 2px solid var(--blau);
+  outline-offset: 2px;
+}
+
+
+.nur-vorleser {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+
+.bahn {
+  width: min(var(--bahn), 100% - var(--rand) * 2);
+  margin-inline: auto;
+}
+
+.nav a.ist-hier { border-bottom-color: var(--blau); }
+
+.nav-form { margin: 0; }
+
+.knopf-leise {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font-family: var(--schrift-anzeige); font-size: 0.95rem; font-weight: 500;
+  color: var(--ink-leise); text-decoration: underline; text-underline-offset: 0.2em;
+}
+
+.knopf-leise:hover { color: var(--rot); }
+
+.knopf-gefahr { background: var(--rot); border-color: var(--rot); }
+
+
+/* ---------- Meldungen ---------- */
+
+.meldung {
+  margin: 1rem 0 0; padding: 0.75rem 1rem; border-left: 3px solid var(--blau);
+  background: var(--panel); font-size: 0.97rem;
+}
+
+.meldung-erfolg { border-left-color: var(--lampe); }
+
+.meldung-fehler { border-left-color: var(--rot); }
+
+.meldung-hinweis { border-left-color: var(--amber); }
+
+
+/* ---------- Startseite: Leitstand ---------- */
+
+.leitstand { padding: clamp(3rem, 7vw, 5.5rem) 0 3rem; }
+
+
+.leitstand-raster {
+  display: grid; gap: clamp(2rem, 5vw, 3.5rem);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: start;
+}
+
+
+.leitstand-text h1 { margin-bottom: 0.5em; }
+
+.leitstand-lead { font-size: 1.2rem; color: var(--ink-leise); max-width: 34ch; }
+
+
+/* Das Pult: die eine Stelle, an der die Seite laut sein darf */
+.pult {
+  background: var(--ink);
+  border-radius: 3px;
+  padding: 1.1rem 1.1rem 1.25rem;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+.pult-kopf {
+  display: flex; justify-content: space-between; align-items: baseline;
+  color: #9FB0BE; font-family: var(--schrift-anzeige); font-size: 0.82rem;
+  padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.pult-kopf strong { color: #fff; font-weight: 600; }
+
+
+.pult-zeile {
+  display: grid; grid-template-columns: 0.7rem 1fr auto;
+  gap: 0.7rem; align-items: baseline;
+  padding: 0.62rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-family: var(--schrift-anzeige); font-size: 0.88rem; color: #DCE4EA;
+}
+
+.pult-zeile:last-child { border-bottom: 0; }
+
+.pult-zeile .was { color: #fff; font-weight: 500; }
+
+.pult-zeile .wer { display: block; color: #8FA3B3; font-size: 0.8rem; font-weight: 500; }
+
+.pult-zeile .zeit { color: #7E93A3; font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+
+
+.lampe {
+  width: 0.6rem; height: 0.6rem; border-radius: 50%;
+  background: #4E6272; align-self: center;
+}
+
+.lampe-ok { background: #35C08A; box-shadow: 0 0 8px rgba(53,192,138,0.55); }
+
+.lampe-wartet { background: #D9A227; box-shadow: 0 0 8px rgba(217,162,39,0.45); }
+
+.lampe-fehler { background: #D9614E; }
+
+
+.pult-fuss {
+  margin: 0.9rem 0 0; padding-top: 0.8rem;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  color: #8FA3B3; font-family: var(--schrift-anzeige); font-size: 0.78rem;
+}
+
+
+/* ---------- Abschnitte ---------- */
+
+.abschnitt { padding: clamp(3rem, 6vw, 4.5rem) 0; }
+
+.abschnitt-hell { background: var(--panel); border-block: 1px solid var(--linie); }
+
+.abschnitt-kopf { max-width: 46ch; margin-bottom: 2.5rem; }
+
+.abschnitt-kopf p { color: var(--ink-leise); }
+
+
+.zwei-wege {
+  display: grid; gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+}
+
+.weg {
+  background: var(--panel); border: 1px solid var(--linie);
+  padding: 1.75rem; display: flex; flex-direction: column;
+}
+
+.weg-marke {
+  font-family: var(--schrift-anzeige); font-size: 0.82rem; font-weight: 600;
+  color: var(--blau); margin-bottom: 0.5rem;
+}
+
+.weg p { flex: 1; color: var(--ink-leise); }
+
+.weg .knopf { align-self: flex-start; margin-top: 0.75rem; }
+
+
+/* Agentenkarten */
+
+.agenten-raster {
+  display: grid; gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+}
+
+
+.agent-karte {
+  background: var(--panel); border: 1px solid var(--linie);
+  padding: 1.5rem; display: flex; flex-direction: column; gap: 0.35rem;
+  text-decoration: none; color: inherit;
+  border-left: 3px solid var(--blau);
+}
+
+.agent-karte:hover { border-left-color: var(--lampe); color: inherit; }
+
+.agent-karte h3 { margin-bottom: 0.15rem; }
+
+.agent-karte .kanal {
+  font-family: var(--schrift-anzeige); font-size: 0.78rem;
+  color: var(--ink-leise); font-weight: 500;
+}
+
+.agent-karte .satz { color: var(--ink-leise); margin: 0.4rem 0 1rem; flex: 1; }
+
+.agent-karte .ab {
+  font-family: var(--schrift-anzeige); font-weight: 600; font-size: 0.95rem;
+  border-top: 1px solid var(--linie); padding-top: 0.85rem;
+}
+
+
+.zustand {
+  font-family: var(--schrift-anzeige); font-size: 0.72rem; font-weight: 600;
+  padding: 0.15rem 0.45rem; border: 1px solid currentColor; border-radius: 2px;
+}
+
+.zustand-aktiv { color: var(--lampe); }
+
+.zustand-beta { color: var(--amber); }
+
+.zustand-entwurf { color: var(--ink-leise); }
+
+
+/* Ablauf – hier sind Nummern richtig, weil es eine Reihenfolge ist */
+
+.ablauf { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); counter-reset: schritt; }
+
+.ablauf li { counter-increment: schritt; padding-top: 2.4rem; position: relative; }
+
+.ablauf li::before {
+  content: counter(schritt); position: absolute; top: 0; left: 0;
+  font-family: var(--schrift-anzeige); font-weight: 800; font-size: 1.05rem;
+  color: var(--blau); border-top: 2px solid var(--blau); padding-top: 0.4rem; width: 100%;
+}
+
+.ablauf h3 { margin-bottom: 0.3rem; }
+
+.ablauf p { color: var(--ink-leise); font-size: 0.98rem; margin: 0; }
+
+
+/* ---------- Preise ---------- */
+
+.paket-raster { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr)); }
+
+
+.paket {
+  background: var(--panel); border: 1px solid var(--linie);
+  padding: 1.5rem; display: flex; flex-direction: column;
+}
+
+.paket-name { font-family: var(--schrift-anzeige); font-weight: 600; font-size: 1.05rem; }
+
+.paket-preis {
+  font-family: var(--schrift-anzeige); font-weight: 800; font-size: 2rem;
+  letter-spacing: -0.03em; margin: 0.35rem 0 0.15rem; font-variant-numeric: tabular-nums;
+}
+
+.paket-preis .takt { font-size: 0.95rem; font-weight: 500; color: var(--ink-leise); }
+
+.paket-einrichtung { color: var(--ink-leise); font-size: 0.9rem; margin-bottom: 1rem; }
+
+.paket ul { list-style: none; padding: 0; margin: 0 0 1.5rem; flex: 1; }
+
+.paket li {
+  padding: 0.4rem 0 0.4rem 1.35rem; position: relative;
+  border-bottom: 1px solid var(--alu-tief); font-size: 0.97rem;
+}
+
+.paket li::before {
+  content: ''; position: absolute; left: 0; top: 0.95em;
+  width: 0.5rem; height: 0.5rem; background: var(--lampe); border-radius: 50%;
+}
+
+
+.paket-empfehlung { border-color: var(--blau); border-width: 2px; padding: calc(1.5rem - 1px); }
+
+.paket-empfehlung .paket-name { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+
+
+/* ---------- Tabellen ---------- */
+
+.tabelle { width: 100%; border-collapse: collapse; background: var(--panel); font-size: 0.95rem; }
+
+.tabelle th, .tabelle td { text-align: left; padding: 0.7rem 0.85rem; border-bottom: 1px solid var(--linie); vertical-align: top; }
+
+.tabelle th { font-family: var(--schrift-anzeige); font-weight: 600; font-size: 0.85rem; background: var(--blau-hell); }
+
+.tabelle tr:last-child td { border-bottom: 0; }
+
+.tabelle-huelle { overflow-x: auto; border: 1px solid var(--linie); }
+
+
+/* ---------- Formulare ---------- */
+
+.formular { background: var(--panel); border: 1px solid var(--linie); padding: clamp(1.5rem, 4vw, 2.25rem); max-width: 40rem; }
+
+.feld { margin-bottom: 1.1rem; }
+
+.feld label { display: block; font-family: var(--schrift-anzeige); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
+
+.feld-hinweis { font-family: var(--schrift-text); font-weight: 400; color: var(--ink-leise); font-size: 0.87rem; }
+
+
+input[type=text], input[type=email], input[type=tel], input[type=password],
+input[type=number], select, textarea {
+  width: 100%; padding: 0.6rem 0.7rem; font: inherit; font-size: 1rem;
+  border: 1px solid var(--linie); border-radius: 2px; background: #fff; color: var(--ink);
+}
+
+input:focus, select:focus, textarea:focus { border-color: var(--blau); outline: 2px solid var(--blau-hell); }
+
+textarea { min-height: 8rem; resize: vertical; }
+
+
+.feld-paar { display: grid; gap: 1.1rem; grid-template-columns: 1fr 1fr; }
+
+.feld-kasten { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 1.1rem; font-size: 0.94rem; }
+
+.feld-kasten input { margin-top: 0.35rem; }
+
+.honigtopf { position: absolute; left: -9999px; }
+
+
+.formular-fehler {
+  border-left: 3px solid var(--rot); background: #FBF0EE;
+  padding: 0.7rem 0.9rem; margin-bottom: 1.25rem; font-size: 0.95rem;
+}
+
+
+.kennzahlen { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); margin-bottom: 2.5rem; }
+
+.kennzahl { background: var(--panel); border: 1px solid var(--linie); padding: 1rem 1.1rem; }
+
+.kennzahl .wert { font-family: var(--schrift-anzeige); font-weight: 800; font-size: 1.9rem; line-height: 1; font-variant-numeric: tabular-nums; }
+
+.kennzahl .was { font-family: var(--schrift-anzeige); font-size: 0.85rem; color: var(--ink-leise); }
+
+
+.verwaltung-nav { display: flex; flex-wrap: wrap; gap: 1.1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--linie); font-family: var(--schrift-anzeige); font-size: 0.93rem; background: var(--panel); }
+
+.verwaltung-nav a { text-decoration: none; color: var(--ink); }
+
+.verwaltung-nav a.ist-hier { color: var(--blau); font-weight: 600; }
+
+
+.kasten { background: var(--panel); border: 1px solid var(--linie); padding: 1.5rem; margin-bottom: 1.5rem; }
+
+.kasten > h2 { font-size: 1.25rem; }
+
+
+.dashboard-raster { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); margin-bottom: 1.5rem; }
+
+.dashboard-karte {
+  background: var(--panel); border: 1px solid var(--linie); border-left: 4px solid var(--blau);
+  padding: 2rem; display: flex; flex-direction: column; gap: 0.15rem;
+  text-decoration: none; color: inherit; transition: border-color 0.12s ease;
+}
+
+.dashboard-karte:hover { border-left-color: var(--lampe); color: inherit; }
+
+.dashboard-marke { font-family: var(--schrift-anzeige); font-size: 0.78rem; font-weight: 600; color: var(--blau); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.dashboard-karte h2 { margin: 0.1rem 0 0.15rem; }
+
+.dashboard-karte p { color: var(--ink-leise); margin: 0 0 0.5rem; }
+
+.dashboard-kennzahl { font-family: var(--schrift-anzeige); font-weight: 800; font-size: 1.5rem; color: var(--ink); margin: 0.25rem 0 0.75rem !important; }
+
+.dashboard-pfeil { font-family: var(--schrift-anzeige); font-weight: 600; font-size: 0.92rem; color: var(--blau); }
+
+
+.skill-liste { list-style: none; padding: 0; margin: 0; }
+
+.skill-liste li { border-bottom: 1px solid var(--alu-tief); padding: 0.65rem 0; }
+
+.skill-liste li:last-child { border-bottom: 0; }
+
+.skill-schluessel { font-family: var(--schrift-anzeige); font-weight: 600; font-size: 0.92rem; color: var(--blau); }
+
+.skill-liste p { margin: 0.15rem 0 0; font-size: 0.94rem; color: var(--ink-leise); }
+
+
+.verlauf-zeile { border-bottom: 1px solid var(--alu-tief); padding: 0.75rem 0; }
+
+.verlauf-rolle { font-family: var(--schrift-anzeige); font-size: 0.8rem; font-weight: 600; color: var(--ink-leise); }
+
+
+/* ---------- Chat ---------- */
+
+.chat { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 50; font-family: var(--schrift-anzeige); }
+
+
+.chat-griff {
+  display: flex; align-items: center; gap: 0.55rem;
+  background: var(--ink); color: #fff; border: 0; border-radius: 2px;
+  padding: 0.75rem 1.15rem; font: inherit; font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; box-shadow: 0 6px 20px rgba(22,33,43,0.22);
+}
+
+.chat-griff:hover { background: var(--blau); }
+
+.chat-lampe { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: #35C08A; }
+
+
+.chat-fenster {
+  width: min(23rem, calc(100vw - 2.5rem));
+  background: var(--panel); border: 1px solid var(--linie);
+  box-shadow: 0 12px 40px rgba(22,33,43,0.2);
+  display: flex; flex-direction: column; max-height: min(32rem, 80vh);
+}
+
+.chat-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 0.9rem 1rem; background: var(--ink); color: #fff; }
+
+.chat-titel { margin: 0; font-weight: 600; font-size: 0.98rem; }
+
+.chat-unter { margin: 0.1rem 0 0; font-size: 0.8rem; color: #9FB0BE; }
+
+.chat-zu { background: none; border: 0; color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer; padding: 0 0.2rem; }
+
+
+.chat-verlauf { padding: 0.9rem 1rem; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 0.6rem; }
+
+.chat-blase { margin: 0; padding: 0.55rem 0.75rem; font-family: var(--schrift-text); font-size: 0.95rem; line-height: 1.5; max-width: 90%; border-radius: 2px; }
+
+.chat-von-agent { background: var(--blau-hell); align-self: flex-start; }
+
+.chat-von-mir { background: var(--ink); color: #fff; align-self: flex-end; }
+
+.chat-fehler { background: #FBF0EE; color: var(--rot); align-self: flex-start; }
+
+
+.chat-form { display: flex; gap: 0.5rem; padding: 0.75rem 1rem; border-top: 1px solid var(--linie); }
+
+.chat-form input { flex: 1; }
+
+.chat-fuss { margin: 0; padding: 0 1rem 0.85rem; font-size: 0.76rem; color: var(--ink-leise); }
+
+
+.chat-zeile { display: flex; flex-direction: column; }
+
+.chat-unsicher { border-left: 3px solid var(--amber); }
+
+.chat-feedback { display: flex; gap: 0.35rem; margin-top: 0.2rem; align-self: flex-start; font-size: 0.78rem; color: var(--ink-leise); }
+
+.chat-feedback-knopf {
+  background: none; border: 1px solid var(--linie); border-radius: 2px; cursor: pointer;
+  padding: 0.05rem 0.4rem; font-size: 0.85rem; line-height: 1.5;
+}
+
+.chat-feedback-knopf:hover { border-color: var(--blau); }
+
+.chat-feedback-knopf:disabled { opacity: 0.5; cursor: default; }
+
+
+/* ---------- Rechtstexte ---------- */
+
+.rechtstext { background: var(--panel); border: 1px solid var(--linie); padding: clamp(1.5rem, 4vw, 2.5rem); }
+
+.rechtstext h2 { font-size: 1.3rem; margin-top: 2rem; }
+
+.rechtstext h2:first-of-type { margin-top: 0; }
+
+.rechtstext p, .rechtstext li { font-size: 0.98rem; }
+
+.platzhalter { background: #FDF6E3; border-left: 3px solid var(--amber); padding: 0.75rem 1rem; font-size: 0.94rem; }
+
+
+/* ---------- Schmale Bildschirme ---------- */
+
+@media (max-width: 60rem) {
+  .leitstand-raster { grid-template-columns: 1fr; }
+}
+
+
+@media (max-width: 46rem) {
+  .menue-knopf {
+    display: flex; align-items: center; gap: 0.4rem; cursor: pointer;
+    font-family: var(--schrift-anzeige); font-weight: 600; font-size: 0.95rem;
+    padding: 0.4rem 0.6rem; border: 1px solid var(--linie); border-radius: 2px;
+  }
+  .menue-knopf span {
+    width: 1rem; height: 2px; background: var(--ink);
+    box-shadow: 0 5px 0 var(--ink), 0 -5px 0 var(--ink);
+  }
+  .nav {
+    display: none; width: 100%; flex-direction: column; align-items: flex-start;
+    gap: 0.1rem; padding-bottom: 1rem;
+  }
+  .menue-schalter:checked ~ .nav { display: flex; }
+  .nav a { width: 100%; padding: 0.6rem 0; border-bottom: 1px solid var(--alu-tief); }
+  .nav a.knopf { border-bottom: 1px solid var(--ink); margin-top: 0.6rem; width: auto; }
+  .feld-paar { grid-template-columns: 1fr; }
+  .chat { right: 0.75rem; bottom: 0.75rem; left: 0.75rem; }
+  .chat-griff { width: 100%; justify-content: center; }
+  .chat-fenster { width: 100%; }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+
+
+/* Agenten, die noch gebaut werden. Bewusst warnfarben und nicht gruen:
+   wer das sieht, soll nicht denken, er koenne es buchen. */
+.zustand-vorbereitung {
+  background: #f5e6d8;
+  color: #8a3f14;
+  border: 1px solid #e0c3a8;
+}
+
+
+/* AP-02: Bereichsseiten – FAQ und Abschluss */
+.faq-liste { display: grid; gap: 0.5rem; max-width: 52rem; }
+
+.faq { background: var(--panel); border: 1px solid var(--linie); padding: 0.9rem 1.1rem; }
+
+.faq summary { cursor: pointer; font-family: var(--schrift-anzeige); font-weight: 600; }
+
+.faq[open] summary { margin-bottom: 0.5rem; }
+
+.faq p { margin: 0; color: var(--ink-leise); }
+
+.cta-kasten { text-align: center; }
+
+.cta-kasten .knopf { margin-top: 0.75rem; }
+
+.vleiste .vt.on{background:#fff;color:#16212B;border-color:#fff;font-weight:600}
+
+.vhinweis.an{opacity:1}
+
+@media (max-width:640px){.vleiste .vm{width:100%;margin-bottom:3px}}

@@ -1,8 +1,7 @@
 {
   "viewAll": "Alle anzeigen",
   "demoBanner": {
-    "before": "Demo-Daten aktiv — Kampagnen, Content-Items und Analytics sind Beispieldaten aus ",
-    "after": ", keine echten Plattform-Zahlen."
+    "text": "Beispieldaten aktiv – Kampagnen, Inhalte und Statistiken in diesem Arbeitsbereich sind Beispieldaten, keine echten Plattform-Zahlen."
   },
   "hero": {
     "subtitle": "Eine Idee. Mehrere Plattformen. Maximale Reichweite.",
@@ -26,8 +25,9 @@
     "published": "Veröffentlichungen",
     "views": "Views",
     "avgEngagement": "Ø Engagement",
-    "totalRevenue": "Einnahmen gesamt",
-    "noComparisonWeek": "Noch keine Vorwoche als Vergleichsbasis vorhanden — Veränderungsraten erscheinen, sobald Daten über mindestens zwei Wochen vorliegen."
+    "totalRevenue": "Einnahmen (manuell erfasst)",
+    "noComparisonWeek": "Noch keine Vorwoche als Vergleichsbasis vorhanden — Veränderungsraten erscheinen, sobald Daten über mindestens zwei Wochen vorliegen.",
+    "noStats": "Aufrufe und Interaktionen: noch keine Statistikdaten – sie erscheinen automatisch, sobald ein Beitrag über die App auf YouTube oder Facebook veröffentlicht wurde."
   },
   "production": {
     "title": "Content Produktion",
@@ -71,13 +71,13 @@
     "connectedCount": "{connected}/{total} verbunden"
   },
   "agentMonitor": {
-    "title": "Agent Monitor",
+    "title": "Protokoll der Assistenten",
     "empty": "Noch keine Läufe."
   },
   "topPerformer": {
     "title": "Top Performer",
     "last7Days": "Letzte 7 Tage",
-    "empty": "Noch keine Performance-Daten.",
+    "empty": "Noch keine Leistungsdaten – sie erscheinen automatisch für Beiträge, die über die App auf YouTube oder Facebook veröffentlicht wurden.",
     "views": "Views",
     "likes": "Likes",
     "comments": "Kommentare",

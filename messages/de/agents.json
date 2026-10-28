@@ -1,6 +1,6 @@
 {
-  "title": "Agent Monitor",
-  "description": "Alle SECRET-58-Agenten mit Status, letzter Aufgabe und Ergebnis. Jeder Lauf wird protokolliert.",
+  "title": "Protokoll der Assistenten",
+  "description": "Alle Assistenten (Agenten) von SECRET 58 mit Status, letzter Aufgabe und Ergebnis. Jeder Lauf wird hier protokolliert.",
   "table": {
     "agent": "Agent",
     "description": "Beschreibung",

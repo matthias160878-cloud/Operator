@@ -1,0 +1,182 @@
+/*
+ * Gestaltung der Zentrale (secret58-web, assets/seite.css, Stand
+ * claude/abo-umstellung-promo) für die Verkaufsseite. Alle Regeln sind unter
+ * .zentrale eingegrenzt, damit sie das Command-Center-Theme der App nicht
+ * berühren. Farben, Schrift und Abstände unverändert übernommen.
+ */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/zentrale/archivo-latin.woff2") format("woff2");
+}
+.zentrale {
+  --ink: #05070f; --ink-2: #0a0f20; --line: #1c2542;
+  --paper: #ece8de; --dim: #8891a9; --amber: #f5ae3c;
+  --maxw: 52rem;
+  min-height: 100vh; width: 100%;
+  background: var(--ink); color: var(--paper);
+  font-family: "Archivo", system-ui, sans-serif; line-height: 1.65; font-size: 1.0625rem;
+}
+.zentrale *, .zentrale *::before, .zentrale *::after { box-sizing: border-box; }
+.zentrale .wrap { max-width: var(--maxw); margin-inline: auto; padding: clamp(1.25rem, 5vw, 2.5rem); }
+.zentrale h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.12; letter-spacing: -.02em; margin: 0 0 .5rem; font-weight: 800; }
+.zentrale h2 { font-size: 1.2rem; margin: 2.2rem 0 .6rem; font-weight: 700; }
+.zentrale h3 { font-weight: 700; }
+.zentrale p, .zentrale li { color: var(--dim); overflow-wrap: anywhere; }
+.zentrale a { color: var(--amber); }
+.zentrale .lead { font-size: 1.1rem; margin-top: 0; }
+
+.zentrale header.kopf { border-bottom: 1px solid var(--line); background: var(--ink-2); }
+.zentrale header.kopf .kopf-wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; flex-wrap: wrap; padding-block: 1rem; }
+.zentrale .marke { display: inline-flex; align-items: center; gap: .6rem; color: var(--paper); text-decoration: none; font-weight: 800; letter-spacing: -.01em; }
+.zentrale .marke span { color: var(--amber); }
+.zentrale .hauptnav { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; font-size: .92rem; }
+.zentrale .hauptnav a { color: var(--dim); text-decoration: none; }
+.zentrale .hauptnav a:hover, .zentrale .hauptnav a:focus-visible { color: var(--paper); }
+.zentrale .hauptnav a.nav-login { color: var(--amber); }
+
+.zentrale .seite-inhalt { max-width: 44rem; }
+.zentrale .brotkrumen { margin: 0 0 1.25rem; font-size: .85rem; color: var(--dim); }
+.zentrale .brotkrumen a { color: var(--dim); }
+.zentrale .seite-inhalt h2 { color: var(--paper); font-size: 1.35rem; margin: 2.4rem 0 .7rem; }
+.zentrale .seite-inhalt ul { padding-left: 1.2rem; margin: 0 0 1rem; list-style: disc; }
+.zentrale .seite-inhalt li { margin-bottom: .4rem; }
+.zentrale b, .zentrale strong { color: var(--paper); }
+
+.zentrale .preisanker { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; align-items: baseline; border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.2rem; margin: 1.4rem 0; background: var(--ink-2); color: var(--dim); font-size: .95rem; }
+.zentrale .hinweis { border: 1px dashed var(--amber); border-radius: 12px; background: rgba(245, 174, 60, .07); padding: 1rem 1.15rem; margin: 1.5rem 0; }
+.zentrale .hinweis strong { color: var(--amber); display: block; margin-bottom: .25rem; }
+.zentrale .hinweis p { color: var(--paper); margin: 0; }
+.zentrale .note { font-size: .92rem; }
+
+.zentrale .preis-tabelle { display: grid; gap: 1.1rem; margin: 1.5rem 0; grid-template-columns: 1fr; }
+@media (min-width: 40rem) { .zentrale .preis-tabelle { grid-template-columns: 1fr 1fr; } }
+.zentrale .preis-karte { background: var(--ink-2); border: 1px solid var(--line); border-radius: 14px; padding: 1.3rem; display: flex; flex-direction: column; }
+.zentrale .preis-karte.hervorgehoben { border-color: var(--amber); }
+.zentrale .preis-karte.ausgewaehlt { border-color: var(--amber); box-shadow: 0 0 0 2px rgba(245, 174, 60, .25); }
+.zentrale .preis-karte small { color: var(--amber); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; font-size: .72rem; }
+.zentrale .preis-karte h3 { margin: .2rem 0 0; color: var(--paper); font-size: 1.15rem; }
+.zentrale .preis-karte .betrag { font-size: 1.4rem; font-weight: 800; color: var(--paper); margin: .3rem 0 .6rem; }
+.zentrale .preis-karte .betrag span { font-size: .75rem; font-weight: 400; color: var(--dim); }
+.zentrale .preis-karte ul { padding-left: 1.1rem; margin: .4rem 0 1rem; list-style: disc; font-size: .92rem; }
+.zentrale .preis-karte .klein { color: var(--dim); font-size: .78rem; margin: .6rem 0 0; }
+.zentrale .preis-karte .knopf-link { margin-top: auto; }
+
+.zentrale .karten { display: grid; gap: 1.1rem; margin: 1.5rem 0; grid-template-columns: 1fr; }
+@media (min-width: 40rem) { .zentrale .karten { grid-template-columns: 1fr 1fr; } }
+.zentrale .karte { background: var(--ink-2); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem 1.4rem; }
+.zentrale .karte h3 { margin: 0 0 .4rem; color: var(--paper); font-size: 1.05rem; }
+.zentrale .karte p { margin: 0; font-size: .92rem; }
+
+.zentrale .cta-box { margin-top: 2.6rem; padding: 1.6rem 1.8rem; border-radius: 16px; background: rgba(245, 174, 60, .08); border: 1px solid rgba(245, 174, 60, .35); }
+.zentrale .cta-box h2 { margin-top: 0; }
+.zentrale .knopf-reihe { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+.zentrale .knopf-link { display: inline-block; font: inherit; font-weight: 700; text-decoration: none; text-align: center; background: var(--amber); color: #1a1512; border-radius: 999px; padding: .7rem 1.3rem; min-height: 44px; }
+.zentrale .knopf-link:hover { background: #ffc061; }
+.zentrale .knopf-link.stumm { background: transparent; color: var(--paper); border: 1px solid var(--line); }
+.zentrale .knopf-link.gesperrt { background: transparent; color: var(--dim); border: 1px dashed var(--line); cursor: not-allowed; }
+
+.zentrale footer.fuss { border-top: 1px solid var(--line); margin-top: 3rem; font-size: .88rem; }
+.zentrale footer.fuss .wrap { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.zentrale footer.fuss a { color: var(--dim); text-decoration: none; }
+.zentrale footer.fuss a:hover { color: var(--amber); }
+.zentrale .preis-karte .jahr { font-size: .85rem; margin: -.3rem 0 .6rem; }
+
+/* Kopf wie in der Zentrale (Social Media KI): Bild rechts, fünf Plattform-Perlen im Bild. */
+.zentrale .smk-hero { position: relative; isolation: isolate; min-height: clamp(360px, 40vw, 520px); display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 6vw, 90px) 0 clamp(40px, 5vw, 70px); margin-bottom: 1rem; }
+.zentrale .smk-hero::before, .zentrale .smk-hero::after { content: ""; position: absolute; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); z-index: -1; }
+.zentrale .smk-hero::before { background: url("/zentrale-neu/bilder/k-vision.webp") right center / cover no-repeat, var(--ink); }
+.zentrale .smk-hero::after { background: linear-gradient(90deg, rgba(5,7,15,.95) 0%, rgba(5,7,15,.78) 34%, rgba(5,7,15,.12) 64%, transparent 100%), linear-gradient(0deg, rgba(5,7,15,.6), transparent 30%); }
+.zentrale .smk-hero h1, .zentrale .smk-hero .lead { max-width: 30rem; }
+.zentrale .smk-hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+.zentrale .smk-kicker { color: var(--amber); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .4rem; }
+.zentrale .smk-orbit { position: absolute; z-index: 1; right: calc(50% - 50vw + 3vw); bottom: 7%; width: min(560px, 44vw); height: 150px; pointer-events: none; }
+.zentrale .smk-orbit .faden { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.zentrale .smk-orbit .faden path { fill: none; stroke-width: 1.8; stroke-dasharray: 5 9; animation: smk-band 9s linear infinite; }
+.zentrale .smk-perle { position: absolute; left: var(--x); top: var(--y); width: 70px; margin-left: -35px; display: flex; flex-direction: column; align-items: center; gap: 5px; animation: smk-schweben 5s ease-in-out infinite; animation-delay: calc(var(--i) * -.9s); }
+.zentrale .smk-perle b { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; font-size: .82rem; font-weight: 700; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.35);
+  background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.92), rgba(255,255,255,.18) 30%, transparent 46%), radial-gradient(circle at 60% 70%, color-mix(in srgb, var(--f) 88%, transparent), color-mix(in srgb, var(--f) 50%, #14102a));
+  box-shadow: 0 0 0 1px rgba(255,255,255,.4) inset, 0 0 22px color-mix(in srgb, var(--f) 70%, transparent), 0 8px 20px rgba(0,0,0,.25); }
+.zentrale .smk-perle small { font-size: .72rem; font-weight: 600; color: #fff; padding: 2px 7px; border-radius: 999px; background: rgba(10,8,24,.5); }
+.zentrale .smk-ziel { position: absolute; left: 50%; top: -6px; transform: translateX(-50%); white-space: nowrap; padding: 9px 16px; border-radius: 999px; font-size: .84rem; font-weight: 700; color: #fff; border: 1px solid transparent;
+  background: linear-gradient(rgba(14,10,30,.65), rgba(14,10,30,.65)) padding-box, linear-gradient(100deg, #ff5fa2, #b06bff, #4aa8ff, #2fd3c4, #ffc24d) border-box; box-shadow: 0 0 26px rgba(176,107,255,.45); }
+@keyframes smk-band { to { stroke-dashoffset: -400; } }
+@keyframes smk-schweben { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@media (max-width: 720px) {
+  .zentrale .smk-hero { min-height: 0; padding-top: 356px; }
+  .zentrale .smk-hero::before { background-position: 72% top; background-size: auto 270px; }
+  .zentrale .smk-hero::after { background: linear-gradient(180deg, transparent 0, transparent 170px, rgba(5,7,15,.92) 232px, var(--ink) 272px); }
+  .zentrale .smk-orbit { left: 0; right: 0; width: auto; top: 226px; bottom: auto; height: 110px; }
+  .zentrale .smk-perle { width: 58px; margin-left: -29px; }
+  .zentrale .smk-perle b { width: 42px; height: 42px; font-size: .72rem; }
+  .zentrale .smk-perle small { font-size: .64rem; padding: 1px 5px; }
+  .zentrale .smk-ziel { top: -14px; font-size: .76rem; padding: 7px 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .zentrale .smk-perle, .zentrale .smk-orbit .faden path { animation: none; } }
+
+/* Pakete: Monat/Jahr-Schalter, Empfohlen-Band, Kontingent-Balken. */
+.zentrale .smk-wahl { position: absolute; opacity: 0; pointer-events: none; }
+.zentrale .smk-leiste { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem 1.2rem; margin: 2.4rem 0 0; }
+.zentrale .smk-leiste h2 { margin: 0 !important; }
+.zentrale .smk-schalter { display: inline-flex; padding: 4px; border-radius: 999px; border: 1px solid var(--line); background: var(--ink-2); }
+.zentrale .smk-schalter label { cursor: pointer; padding: .55rem 1rem; border-radius: 999px; font-size: .88rem; font-weight: 700; color: var(--dim); }
+.zentrale .smk-schalter small { font-weight: 500; opacity: .85; }
+#smk-monat:checked ~ .smk-leiste label[for="smk-monat"], #smk-jahr:checked ~ .smk-leiste label[for="smk-jahr"] { background: var(--amber); color: #1a1512; }
+#smk-monat:focus-visible ~ .smk-leiste label[for="smk-monat"], #smk-jahr:focus-visible ~ .smk-leiste label[for="smk-jahr"] { outline: 2px solid var(--amber); outline-offset: 2px; }
+.zentrale .preis-karte .betrag-jahr { display: none; }
+#smk-jahr:checked ~ .preis-tabelle .hat-jahr .betrag-monat { display: none; }
+#smk-jahr:checked ~ .preis-tabelle .hat-jahr .betrag-jahr { display: block; }
+.zentrale .preis-karte { position: relative; }
+.zentrale .preis-karte.hervorgehoben { box-shadow: 0 18px 44px rgba(245, 174, 60, .12); }
+.zentrale .smk-band { position: absolute; top: -11px; right: 18px; padding: 5px 11px; border-radius: 999px; font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: linear-gradient(100deg, #ff5fa2, #b06bff, #4aa8ff); }
+.zentrale .preis-karte .betrag { font-size: clamp(1.8rem, 4vw, 2.4rem); }
+.zentrale .preis-karte ul.smk-mengen { list-style: none; padding: .9rem 0 0; border-top: 1px solid var(--line); display: grid; gap: .55rem; }
+.zentrale .smk-mengen li { display: grid; gap: 4px; font-size: .86rem; }
+.zentrale .smk-mengen i { height: 5px; border-radius: 9px; background: var(--line); overflow: hidden; }
+.zentrale .smk-mengen i::before { content: ""; display: block; height: 100%; width: var(--w); border-radius: inherit; background: linear-gradient(90deg, #ff5fa2, #b06bff, #4aa8ff, #2fd3c4); }
+.zentrale .preis-karte .betrag span { display: block; margin-top: .3rem; font-size: .78rem; line-height: 1.4; }
+
+/* Kolibri-Effekte wie auf der Hauptseite: fließende Farbverläufe in Schriftzügen,
+   umlaufendes Licht („Wurm“) um Kästchen und Knöpfe, Funkeln im Kopfbild. */
+.zentrale { --k1: #ff5fa2; --k2: #b06bff; --k3: #4aa8ff; --k4: #2fd3c4; --verlauf: linear-gradient(100deg, var(--k1), var(--amber) 28%, var(--k2) 52%, var(--k3) 74%, var(--k4)); }
+@property --s58w { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes s58-wurm { to { --s58w: 360deg; } }
+@keyframes verlauf-fliessen { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+.zentrale .seite-inhalt h1, .zentrale .seite-inhalt h2 {
+  background: var(--verlauf); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent; animation: verlauf-fliessen 7s ease-in-out infinite alternate;
+}
+.zentrale :is(.preis-karte, .karte, .cta-box):is(:hover, :focus-within) :is(h3, .betrag),
+.zentrale header.kopf :is(a):is(:hover, :focus-visible),
+.zentrale footer.fuss a:is(:hover, :focus-visible),
+.zentrale .seite-inhalt li b:hover {
+  background: var(--verlauf); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent; animation: verlauf-fliessen 1.6s ease-in-out infinite alternate;
+}
+.zentrale :is(.preis-karte, .karte, .cta-box, .preisanker, .hinweis, .smk-schalter) { position: relative; }
+.zentrale :is(.preis-karte, .karte, .cta-box, .preisanker, .hinweis, .smk-schalter)::after,
+.zentrale .knopf-link:not(.gesperrt)::after {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 2px; pointer-events: none; opacity: 0; transition: opacity .25s;
+  background: conic-gradient(from var(--s58w), transparent 0 50%, var(--k1) 64%, var(--amber) 78%, var(--k2) 87%, var(--k4) 95%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.zentrale .knopf-link:not(.gesperrt) { position: relative; }
+.zentrale :is(.preis-karte, .karte, .cta-box, .preisanker, .hinweis, .smk-schalter):is(:hover, :focus-within)::after,
+.zentrale .knopf-link:not(.gesperrt):is(:hover, :focus-visible)::after,
+.zentrale .preis-karte.hervorgehoben::after { opacity: 1; animation: s58-wurm 2.8s linear infinite; }
+.zentrale .preis-karte:is(:hover, :focus-within) { box-shadow: 0 0 28px -6px rgba(176, 107, 255, .45); }
+.zentrale .smk-perle b { transition: transform .25s; }
+.zentrale .smk-funken i { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #fff; opacity: 0; pointer-events: none;
+  box-shadow: 0 0 6px 2px color-mix(in srgb, var(--f) 80%, transparent); animation: smk-funke 6s ease-in-out infinite; }
+.zentrale .smk-funken { position: absolute; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); z-index: 0; pointer-events: none; overflow: hidden; }
+@keyframes smk-funke { 0%, 100% { opacity: 0; transform: translateY(0) scale(.6); } 40% { opacity: .95; } 70% { opacity: .5; transform: translateY(-18px) scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .zentrale *, .zentrale *::after { animation: none !important; }
+  .zentrale .smk-funken i { opacity: .5; }
+}
+.zentrale .sprachwahl-liste { background: var(--ink-2); color: var(--paper); }
+.zentrale .sprachwahl-knopf { color: var(--dim); border-color: var(--line); }

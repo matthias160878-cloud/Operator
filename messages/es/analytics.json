@@ -1,14 +1,15 @@
 {
   "title": "Analítica",
-  "subtitle": "Métricas de rendimiento a partir de datos reales — en cuanto se conecten plataformas, esta vista se llenará con valores reales.",
+  "subtitle": "Las estadísticas de las plataformas (visualizaciones, likes, comentarios, compartidos) se obtienen automáticamente para YouTube y Facebook en cuanto se publica un post a través de la app, aproximadamente cada seis horas. Instagram, TikTok y LinkedIn se añadirán en cuanto la plataforma haya autorizado el acceso. Puedes introducir a mano las cifras de otros posts en <weiter>Recomendaciones</weiter> («Introducir cifras de la plataforma») o en la <varianten>comparación de variantes</varianten>.",
   "statViewsTotal": "Visualizaciones totales",
   "statLikesTotal": "Me gusta totales",
   "statComments": "Comentarios",
   "statShares": "Compartidos",
   "chartTitle": "Rendimiento del contenido en el tiempo",
   "chartLegend": "Visualizaciones (violeta) · Engagement % (turquesa)",
-  "chartEmpty": "Aún no hay datos de analítica.",
+  "chartEmpty": "Aún no hay estadísticas: no hay historial disponible.",
   "bestPerformingTitle": "Contenido con mejor rendimiento",
-  "bestPerformingEmpty": "Aún no hay datos.",
-  "learningAgentTitle": "Learning Agent — Recomendaciones"
+  "bestPerformingEmpty": "Aún no hay estadísticas: no es posible una clasificación.",
+  "learningAgentTitle": "Learning Agent — Recomendaciones",
+  "statsEmpty": "Aún no hay estadísticas guardadas. Para YouTube y Facebook, las cifras aparecen automáticamente en cuanto se publica un post a través de la app."
 }

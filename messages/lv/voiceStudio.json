@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs balss dzinējs — pārvaldi balsu bibliotēku, veido balss ieraksta priekšskatījumus un importē balsis.",
+  "envWarning": "Balss ieraksts vēl nav pieejams: balss pakalpojumu (ElevenLabs) iestata operators. Balsu bibliotēku jau varat izmantot plānošanai.",
+  "addManual": "Izveidot balsi manuāli",
+  "importFromElevenLabs": "Importēt no ElevenLabs",
+  "form": {
+    "namePlaceholder": "Nosaukums",
+    "voiceIdPlaceholder": "Balss ID (ElevenLabs)",
+    "languagePlaceholder": "Valoda",
+    "submit": "Pievienot"
+  },
+  "confirmDelete": "Vai tiešām dzēst balsi?",
+  "importFailed": "Imports neizdevās.",
+  "previewFailed": "Priekšskatījums neizdevās.",
+  "unknownError": "Nezināma kļūda.",
+  "empty": "Bibliotēkā balsu vēl nav.",
+  "active": "Aktīva",
+  "inactive": "Neaktīva",
+  "remove": "Noņemt",
+  "preview": {
+    "heading": "Balss priekšskatījums",
+    "defaultText": "Sveiks, šis ir šīs balss piemērs.",
+    "selectPlaceholder": "Izvēlies balsi…",
+    "play": "Atskaņot priekšskatījumu"
+  }
+}

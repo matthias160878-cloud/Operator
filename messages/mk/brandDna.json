@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Твојот бренд. Твојот стил. Насекаде. Овие податоци автоматски се користат во Content Brain и во агентите за скрипти, хукови и хаштагови.",
+  "form": {
+    "nameLabel": "Име на брендот",
+    "industryLabel": "Дејност",
+    "descriptionLabel": "Опис",
+    "descriptionHint": "Што го краси брендот?",
+    "audienceLabel": "Целна публика",
+    "languageLabel": "Јазик",
+    "tonalityLabel": "Тон",
+    "humorLabel": "Хумор",
+    "formalityLabel": "Формалност",
+    "preferredWordsLabel": "Претпочитани зборови",
+    "forbiddenWordsLabel": "Забранети зборови",
+    "preferredCtasLabel": "Претпочитани CTA",
+    "brandValuesLabel": "Вредности на брендот",
+    "topicsLabel": "Теми",
+    "csvHint": "одделени со запирки",
+    "colorsLabel": "Бои",
+    "colorsHint": "одделени со запирки, на пр. #6D5BFF",
+    "fontsLabel": "Фонтови",
+    "visualRulesLabel": "Визуелни правила",
+    "saveError": "Зачувувањето не успеа.",
+    "unknownError": "Непозната грешка.",
+    "saving": "Се зачувува…",
+    "save": "Зачувај Brand DNA",
+    "savedAt": "Зачувано во {time}"
+  }
+}

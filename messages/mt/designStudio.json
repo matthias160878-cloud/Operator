@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Design Studio",
+  "subtitle": "Kunċetti ta' thumbnails bħala test u l-istatus tal-konnessjoni ma' Canva.",
+  "imageAssetsTitle": "Assi tal-immaġini",
+  "imageAssetsEmpty": "Għad m'hemmx stampi. L-aġent tat-thumbnails bħalissa joħloq biss kunċetti tat-test, mhux fajls tal-istampi.",
+  "thumbnailAgent": {
+    "title": "Thumbnail-Agent",
+    "description": "Joħloq kunċett bit-test (titlu, idea viżwali, layout, CTA) — mħejji għall-konnessjoni ta' ġeneratur tal-immaġini. Għadha ma tinħoloq l-ebda immaġni.",
+    "inputPlaceholder": "Suġġett għat-thumbnail",
+    "submitButton": "Iġġenera kunċett",
+    "errorGenerationFailed": "Il-ġenerazzjoni falliet.",
+    "errorUnknown": "Żball mhux magħruf.",
+    "fieldTitle": "Titlu",
+    "fieldVisualIdea": "Idea viżwali",
+    "fieldText": "Test",
+    "fieldLayout": "Layout",
+    "fieldCta": "CTA",
+    "fieldImageDescription": "Deskrizzjoni tal-immaġni",
+    "templateResult": "Mudell: dan il-kunċett ġej minn mudell tat-test fiss, mhux minn IA. Għal kunċetti tal-IA, daħħal iċ-ċavetta tal-IA tiegħek taħt \"Settings → Aċċessi tiegħi\".",
+    "textEngineLabel": "Magna tat-test:",
+    "templateMode": "Modalità Template (l-ebda fornitur tal-AI ikkonfigurat)"
+  }
+}

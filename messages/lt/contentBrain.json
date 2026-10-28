@@ -1,0 +1,27 @@
+{
+  "title": "Content Brain",
+  "subtitle": "Įdedi vieną idėją — gauni pilną, platformoms pritaikytą turinio planą. ContentBrainAgent atsižvelgia į tavo Brand DNA ir kiekvienai pasirinktai platformai sukuria tinkamus hook, scenarijus, žymas (hashtag) ir miniatiūrų koncepcijas kaip juodraštį.",
+  "campaignsHeading": "Kampanijos",
+  "noCampaigns": "Kampanijų dar nesukurta.",
+  "campaignSummary": "{count} turinio elementai · {audience}",
+  "form": {
+    "textEngineLabel": "Teksto variklis:",
+    "templateMode": "Šablono režimas (DI tiekėjas nesukonfigūruotas)",
+    "modeTemplate": "Šablono",
+    "topicLabel": "Tema / idėja",
+    "topicPlaceholder": "pvz. Paaiškink, kodėl autonominiai DI agentai keičia darbo pasaulį.",
+    "audienceLabel": "Tikslinė auditorija",
+    "audiencePlaceholder": "pvz. 25–45 m., technologijų entuziastai",
+    "goalLabel": "Tikslas",
+    "languageLabel": "Kalba",
+    "platformsLabel": "Platformos",
+    "itemsPerPlatformLabel": "Turinio elementų kiekvienai platformai ({count})",
+    "generateError": "Generavimas nepavyko.",
+    "unknownError": "Nežinoma klaida.",
+    "submitLoading": "Content Brain dirba…",
+    "submitIdle": "Generuoti turinio planą",
+    "resultHeading": "Kampanija sukurta — {count} turinio elementai sukurti kaip juodraštis.",
+    "resultDescription": "Sugeneruota režimu „{mode}“. Visas turinys prasideda kaip DRAFT — peržiūrėk ir redaguok jį Content Factory.",
+    "resultLink": "Į Content Factory →"
+  }
+}

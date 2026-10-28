@@ -1,0 +1,21 @@
+{
+  "title": "Regjistri i asistentëve",
+  "description": "Të gjithë asistentët (agjentët) e SECRET 58 me gjendje, detyrën e fundit dhe rezultatin. Çdo ekzekutim regjistrohet këtu.",
+  "table": {
+    "agent": "Agjenti",
+    "description": "Përshkrimi",
+    "status": "Statusi",
+    "lastTask": "Detyra e fundit"
+  },
+  "history": {
+    "title": "Historiku i ekzekutimeve",
+    "agent": "Agjenti",
+    "task": "Detyra",
+    "status": "Statusi",
+    "start": "Fillimi",
+    "end": "Mbarimi",
+    "resultError": "Rezultati / Gabimi",
+    "empty": "Ende nuk ka ekzekutime të agjentëve.",
+    "completed": "Përfunduar"
+  }
+}

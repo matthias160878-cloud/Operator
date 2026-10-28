@@ -136,9 +136,7 @@ export default async function DashboardPage() {
     <div className="space-y-5">
       {demoSetting && (
         <div className="rounded-lg border border-accent/30 bg-accent/10 px-4 py-2 text-xs text-accent">
-          {t("demoBanner.before")}
-          <code>prisma/seed.ts</code>
-          {t("demoBanner.after")}
+          {t("demoBanner.text")}
         </div>
       )}
 
@@ -250,14 +248,14 @@ export default async function DashboardPage() {
         <StatCard
           icon={Eye}
           label={t("kpi.views")}
-          value={formatNumber(stats.totalViews)}
+          value={stats.analyticsRecords > 0 ? formatNumber(stats.totalViews) : "—"}
           accent="accent"
           delta={weekOverWeek.totalViews != null ? `${weekOverWeek.totalViews > 0 ? "+" : ""}${weekOverWeek.totalViews}%` : undefined}
         />
         <StatCard
           icon={Heart}
           label={t("kpi.avgEngagement")}
-          value={formatPercent(stats.avgEngagementRate)}
+          value={stats.analyticsRecords > 0 ? formatPercent(stats.avgEngagementRate) : "—"}
           accent="accent-3"
           delta={weekOverWeek.avgEngagementRate != null ? `${weekOverWeek.avgEngagementRate > 0 ? "+" : ""}${weekOverWeek.avgEngagementRate}%` : undefined}
         />
@@ -272,6 +270,11 @@ export default async function DashboardPage() {
           accent="success"
         />
       </div>
+      {stats.analyticsRecords === 0 && (
+        <p className="-mt-2 text-[11px] text-muted" data-testid="hinweis-keine-statistik">
+          {t("kpi.noStats")}
+        </p>
+      )}
       {Object.values(weekOverWeek).every((v) => v == null) && (
         <p className="-mt-2 text-[11px] text-muted">
           {t("kpi.noComparisonWeek")}

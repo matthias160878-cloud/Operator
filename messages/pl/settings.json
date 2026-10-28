@@ -1,0 +1,27 @@
+{
+  "title": "Ustawienia",
+  "description": "Twój obszar roboczy, użytkownicy i przegląd Twoich danych. Własne klucze API (teksty AI, wysyłka newslettera) wpisujesz w <zugaenge>Własne dostępy</zugaenge>; swój pakiet znajdziesz w <billing>Pakiet i rozliczenia</billing>.",
+  "workspace": {
+    "title": "Przestrzeń robocza",
+    "name": "Nazwa",
+    "slug": "Slug",
+    "createdAt": "Utworzono"
+  },
+  "users": {
+    "title": "Użytkownicy i role",
+    "note": "Każde konto ma własny obszar roboczy, oddzielony od innych klientów. Dodatkowych użytkowników nie możesz jeszcze dodać samodzielnie."
+  },
+  "system": {
+    "title": "System",
+    "contentItems": "Elementy treści",
+    "campaigns": "Kampanie",
+    "mediaAssets": "Zasoby multimedialne",
+    "agentRuns": "Uruchomienia agentów",
+    "dbNote": "Liczba wpisów zapisanych w Twoim obszarze roboczym. Wszystkie dane możesz wyeksportować lub usunąć obszar roboczy poniżej w „Moje dane”."
+  },
+  "onboarding": {
+    "title": "Asystent konfiguracji",
+    "description": "Małe okna krok po kroku dla dostawców AI, platform społecznościowych i syntezy mowy, które pojawiają się przy pierwszym otwarciu.",
+    "reopen": "Otwórz asystenta konfiguracji ponownie"
+  }
+}

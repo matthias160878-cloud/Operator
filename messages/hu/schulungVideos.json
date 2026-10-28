@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Oktatóvideó",
+  "subtitlesLabel": "Feliratok",
+  "subtitlesOff": "Ki",
+  "soundLabel": "Hang",
+  "soundOn": "Felolvasóhang be",
+  "soundOff": "Felolvasóhang ki",
+  "soundHint": "A felolvasóhang a böngésződből származik. Hogy mely nyelvek érhetők el, az az eszközödtől függ.",
+  "soundMissing": "Ehhez a nyelvhez nincs hang telepítve az eszközödön. A feliratok ettől még működnek.",
+  "draftNote": "Vázlat: a valódi alkalmazás felvétele tesztadatokkal. A feliratok gépi fordítással készültek.",
+  "whatLabel": "Mi ez, mi a funkciója, és hogyan használod.",
+  "videosTitle": "Magyarázóvideók minden területhez",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "Első lépések",
+      "cues": {
+        "c1": "Üdvözlünk az oktatásban: Első lépések. Minden, amit látsz, a valódi alkalmazás tesztadatokkal.",
+        "c2": "Balra van a navigáció. Az alkalmazás minden területének van itt egy bejegyzése.",
+        "c3": "1. lépés: Az „Integrációk” alatt nézd meg, mely szolgáltatások vannak csatlakoztatva.",
+        "c4": "Minden sor a valódi, ellenőrzött állapotot mutatja – soha nem színlelt kapcsolatot.",
+        "c5": "A „Nincs beállítva” azt jelenti: ez a szolgáltatás még nincs beállítva. MI-szolgáltató nélkül az alkalmazás sablon módban dolgozik.",
+        "c6": "2. lépés: Add meg a márkádat a „Brand DNA” alatt. A hangnem, a célközönség és az értékek minden generált szövegbe beépülnek.",
+        "c7": "Példa: töltsd ki az iparágat és a célközönséget, majd mentsd lent.",
+        "c8": "3. lépés: Az „Ötletek és inspiráció” alatt generáltasd le az első ötletet. Írd be a témát, és kattints az „Ötletek generálása” gombra.",
+        "c9": "Az ötletek kártyákként jelennek meg. Sablon módban ezek példák, MI-szolgáltatóval egyedivé válnak.",
+        "c10": "Minden vázlat marad, amíg jóvá nem hagyod. Minden területhez külön magyarázóvideó tartozik."
+      }
+    },
+    "dashboard": {
+      "title": "Irányítópult",
+      "cues": {
+        "c1": "Az irányítópult a kezdőoldalad: áttekintés mindenről, ami a munkaterületeden történik.",
+        "c2": "Fent az aktív agenteket, a tartalomgyártást és az ütemezett bejegyzéseket látod.",
+        "c3": "Lejjebb a legutóbbi tevékenységek, valamint a Content Factoryhoz és a Brand DNA-hoz vezető gyorsparancsok vannak.",
+        "c4": "A „Hét” gombbal állítod át a mutatók időszakát.",
+        "c5": "Így használd: nyisd meg naponta az irányítópultot, nézd át a nyitott vázlatokat, és innen ugorj közvetlenül a megfelelő területre."
+      }
+    },
+    "schulung": {
+      "title": "Oktatás",
+      "cues": {
+        "c1": "Az oktatás az alkalmazáson belüli útmutatód. Lépésről lépésre elmagyaráz minden területet.",
+        "c2": "Minden témához tartozik leírás, számozott lépések és egy link, amely megnyitja a megfelelő oldalt.",
+        "c3": "Itt jelennek meg ezek a magyarázóvideók is, minden területhez egy.",
+        "c4": "Így használd: válassz témát, olvasd el a lépéseket, nyisd meg az oldalt, és próbáld ki rögtön."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "A Content Factory a munkapad az összes tartalomelemedhez, egy helyen.",
+        "c2": "Funkció: elemek létrehozása, duplikálása, átírása, kiegészítése hangalámondással és feliratokkal, és végigvezetése a jóváhagyási munkafolyamaton.",
+        "c3": "A fenti szűrők az állapotokat mutatják: Vázlat, Ellenőrzés alatt, Jóváhagyva, Ütemezve, Közzétéve és Archiválva.",
+        "c4": "Így megy: az „Új tartalomelem” gombbal veszel fel egy elemet.",
+        "c5": "Nyiss meg egy elemet, hogy szerkeszd a scriptet, a hangalámondást, a feliratokat, a hashtageket és a bélyegképet.",
+        "c6": "A jóváhagyás mindig kézi lépés. Semmi sem kerül közzétételre a te megerősítésed nélkül."
+      }
+    },
+    "ideas": {
+      "title": "Ötletek és inspiráció",
+      "cues": {
+        "c1": "Itt gyűjtöd az ötleteket: témaköröket, sorozatokat és formátumokat a következő tartalmakhoz.",
+        "c2": "Funkció: az IdeaAgent ötleteket generál egy témához, vagy te kézzel rögzíted a sajátjaidat.",
+        "c3": "Így megy: írd be a témát, válassz platformot, célt és formátumot, majd kattints az „Ötletek generálása” gombra.",
+        "c4": "Minden ötletből egy kártya lesz címmel, felvezetéssel és prioritással.",
+        "c5": "A „Kézzel” gombbal saját ötletet veszel fel.",
+        "c6": "A jó ötleteket kiindulópontként viheted a Content Brainbe."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "A Content Brain egy ötletből teljes tartalomtervet készít.",
+        "c2": "Funkció: figyelembe veszi a Brand DNA-dat, és minden kiválasztott platformhoz hookokat, scripteket, hashtageket és bélyegkép-koncepciókat készít vázlatként.",
+        "c3": "Így megy: írd be a témát és a célközönséget.",
+        "c4": "Válassz célt és nyelvet, majd kattints a platformokra. Itt jön hozzá a TikTok.",
+        "c5": "A csúszkával állítod be, hány tartalomelem készüljön platformonként.",
+        "c6": "A „Tartalomterv generálása” gombra kattintva indul el a futás.",
+        "c7": "A kampány lent jelenik meg. Minden elem vázlat, és a Content Factoryban található."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "A Brand DNA a márkádat írja le: név, iparág, célközönség, hangnem és értékek.",
+        "c2": "Funkció: ezek az adatok automatikusan beépülnek a Content Brainbe, valamint a script-, hook- és hashtag-agentbe.",
+        "c3": "Így megy: töltsd ki a mezőket, például az iparágat és a célközönséget.",
+        "c4": "Lejjebb a kedvelt és tiltott szavakat, a cselekvésre ösztönző felhívásokat és a márkaértékeket kezeled.",
+        "c5": "Végül kattints a „Brand DNA mentése” gombra."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "A Script Studio a scriptek és hookok műhelye.",
+        "c2": "Funkció: a Hook, Probléma, Haszon, Példa, Eredmény és Cselekvésre ösztönző felhívás felépítés szerint épít scripteket, és több hookváltozatot ad.",
+        "c3": "Így megy: írd be a témát, és válaszd ki a platformot.",
+        "c4": "Majd kattints a „Script és hookok generálása” gombra.",
+        "c5": "Az eredmény egy vázlat, amelyet a Content Factoryban használhatsz tovább."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "A Voice Studio a hangokat kezeli, és hangalámondást készít.",
+        "c2": "Funkció: hangkönyvtár kezelése, előnézetek készítése és hangok importálása. A kapcsolat az ElevenLabsen keresztül működik.",
+        "c3": "Így megy: vegyél fel hangot kézzel, vagy importálj az ElevenLabsből. Az importhoz beállított kapcsolat kell.",
+        "c4": "Egy szöveggel és egy hanggal előnézetet készítesz, és lejátszod."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "A Video Studio az alkalmazás videócsővezetéke.",
+        "c2": "Funkció: formátumkezelő, cserélhető videószolgáltatók, valamint a hangalámondás és a feliratok csatlakoztatása.",
+        "c3": "Az oldal mutatja, mely szolgáltatók vannak beállítva. A be nem állítottakat őszintén annak jelöli.",
+        "c4": "Így megy: a videókat tartalomelemenként készíted a Content Factoryban."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "A Design Studio bélyegkép-koncepciókat és képi anyagokat ad.",
+        "c2": "Funkció: a bélyegkép-agent címet, képötletet, szöveget és elrendezést javasol. A Canva-integráció itt van tervezve.",
+        "c3": "Így megy: írd be a bélyegkép témáját.",
+        "c4": "Kattints a „Koncepció generálása” gombra.",
+        "c5": "A koncepció sablonként szolgál a képedhez."
+      }
+    },
+    "socialMedia": {
+      "title": "Közösségi média",
+      "cues": {
+        "c1": "Itt csatlakoztatod a platformfiókjaidat, és látod az állapotukat.",
+        "c2": "Funkció: a hozzáférések szerveroldalon kezeltek és titkosítva tároltak. A Composión keresztül jelentkezel be a platformra.",
+        "c3": "Minden kártya mutatja a platformot, a fiókot, az állapotot és az utolsó olvasási tesztet.",
+        "c4": "A „Még nincs beállítva” azt jelenti: az üzemeltető még nem aktiválta a kapcsolatot a szerveren.",
+        "c5": "Így megy: amint be van állítva, a platformnál kattints a „Csatlakoztatás” gombra, és jelentkezz be. Csak olvasás történik, semmi sem kerül közzétételre."
+      }
+    },
+    "calendar": {
+      "title": "Tartalomnaptár",
+      "cues": {
+        "c1": "A tartalomnaptár áttekintést ad a tervezett és közzétett tartalmakról.",
+        "c2": "Funkció: itt jelenik meg minden közzétételi dátummal rendelkező tartalomelem, platform szerint szűrhetően.",
+        "c3": "Így megy: ütemezz egy elemet a Content Factoryban dátummal, és akkor itt megjelenik.",
+        "c4": "Minden közzététel előtt az alkalmazás élőben ellenőrzi, hogy a célplatform csatlakoztatva van-e."
+      }
+    },
+    "analytics": {
+      "title": "Analitika",
+      "cues": {
+        "c1": "Az analitika a teljesítménymutatóidat mutatja.",
+        "c2": "Funkció: csak a ténylegesen meglévő adatok, importálva vagy általad rögzítve. Semmi sincs kitalálva.",
+        "c3": "Látod az időbeli alakulást, a legjobban teljesítő tartalmat és a Learning Agent ajánlásait.",
+        "c4": "Így megy: amint platformokat csatlakoztatsz vagy adatokat írsz be, a diagramok megtelnek."
+      }
+    },
+    "growth": {
+      "title": "Növekedés",
+      "cues": {
+        "c1": "A Növekedés oldal ajánlásokat ad a nagyobb eléréshez.",
+        "c2": "Funkció: a valódi analitikai adataidból kiszámítja a legjobb posztolási időpontokat, a sikeres hashtageket és formátumokat.",
+        "c3": "Így megy: válassz platformot, és olvasd el az ajánlásokat.",
+        "c4": "Ezek ajánlások, nem automatika. A követők vagy az interakciók száma nem nő mesterségesen."
+      }
+    },
+    "revenue": {
+      "title": "Bevételek",
+      "cues": {
+        "c1": "A Bevételek alatt egyesíted a bevételeidet platformok és kampányok szerint.",
+        "c2": "Funkció: az összegek csak akkor jelennek meg, ha te megadod őket. Nincsenek kitalált számok.",
+        "c3": "Így megy: kattints a „Bevétel rögzítése” gombra, válassz platformot és típust, és írd be az összeget.",
+        "c4": "A kifizetés mindig közvetlenül a platformon keresztül történik. A SECRET 58 nem bonyolít le kifizetéseket."
+      }
+    },
+    "sales": {
+      "title": "Értékesítés és bolt",
+      "cues": {
+        "c1": "Az „Értékesítés és bolt” a saját üzleti bevételeidet mutatja.",
+        "c2": "Funkció: ezek elkülönülnek a SECRET 58-csomagodtól. Csak a tényleges eladások számítanak, a tesztadatok meg vannak jelölve.",
+        "c3": "Fent az összegek pénznemenként, alatta az impresszumhoz tartozó szolgáltatói adataid.",
+        "c4": "B opció: értékesítés a SECRET 58-on keresztül. A opció: meglévő bolt importálása.",
+        "c5": "Így megy: töltsd ki és mentsd el a szolgáltatói adatokat, majd válaszd ki az értékesítési utat."
+      }
+    },
+    "website": {
+      "title": "Saját weboldalam",
+      "cues": {
+        "c1": "Itt építed be a weboldal-asszisztenst a saját weboldaladba.",
+        "c2": "Funkció: az asszisztens megválaszolja a látogatóid kérdéseit.",
+        "c3": "A weboldaladat nem módosítjuk automatikusan. A kódot te illeszted be, vagy megkéred a webdizájneredet, hogy illessze be.",
+        "c4": "Így megy: írd be a webcímet, és kattints a „Weboldal hozzáadása” gombra.",
+        "c5": "Ezután másold a megjelenített kódot a weboldaladba."
+      }
+    },
+    "inbox": {
+      "title": "Beérkezett üzenetek",
+      "cues": {
+        "c1": "A beérkezett üzenetek között az összes platform üzenetei és hozzászólásai gyűlnek.",
+        "c2": "Funkció: a MessageAgent válaszokat javasol. Csak az kerül elküldésre, amit jóváhagysz.",
+        "c3": "Így megy: amíg egy platform sincs élőben csatlakoztatva, kattints a „Beszélgetés szimulálása” gombra.",
+        "c4": "Ellenőrizd a válaszjavaslatot, igazítsd át, és hagyd jóvá."
+      }
+    },
+    "agents": {
+      "title": "Agentek",
+      "cues": {
+        "c1": "Az Agent Monitor az összes SECRET 58 agentet mutatja.",
+        "c2": "Funkció: minden agent állapota, utolsó feladata és eredménye. Minden futás naplózva van.",
+        "c3": "A futási előzményekben látod, mi mikor futott le, és sikerült-e.",
+        "c4": "Így használd: itt nézz utána, ha valami nem a várt módon készült el."
+      }
+    },
+    "integrations": {
+      "title": "Integrációk",
+      "cues": {
+        "c1": "Itt látod az összes külső szolgáltatás élő állapotát.",
+        "c2": "Funkció: minden sor a ténylegesen beállított hozzáféréseken alapul. Nincsenek színlelt kapcsolatok.",
+        "c3": "A csoportok: MI-szolgáltatók, hang, közösségi platformok, dizájn, videó és trendek.",
+        "c4": "Így megy: „Nincs beállítva” esetén az „API-kulcs beszerzése” a szolgáltató oldalára vezet.",
+        "c5": "A külső szolgáltatóknak saját áraik vannak. Minden szolgáltatásnál látszik, melyik modell érvényes."
+      }
+    },
+    "billing": {
+      "title": "Csomag és számlázás",
+      "cues": {
+        "c1": "A „Csomag és számlázás” alatt látod a csomagodat, és válthatsz is.",
+        "c2": "Funkció: az MI-funkciók az üzemeltető hozzáférésein keresztül futnak. Nincs szükséged saját MI-előfizetésre.",
+        "c3": "Van Pro és Maxi, havi vagy éves fizetéssel. Az árak nettóban szerepelnek a kártyákon.",
+        "c4": "Vásárlás csak a „Fizetési kötelezettséggel megrendelem” gombra kattintva történik.",
+        "c5": "Ha van promóciós kódod, az alatta lévő mezőben váltod be."
+      }
+    },
+    "settings": {
+      "title": "Beállítások",
+      "cues": {
+        "c1": "A beállításokban a munkaterületet, a felhasználókat és a rendszerinformációkat kezeled.",
+        "c2": "Funkció: munkaterület, szerepkörök, rendszerállapot, üzembe helyezési segéd, valamint az adataid tájékoztatással és törléssel.",
+        "c3": "Így megy: görgess végig a szakaszokon. A munkaterület törlése további megerősítést kér.",
+        "c4": "Itt rendszeresen ellenőrizd az adataidat és az üzembe helyezési segédet."
+      }
+    }
+  }
+}

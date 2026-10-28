@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import { NewConversationForm } from "@/components/inbox/NewConversationForm";
-import { PLATFORM_LABELS, relativeTime } from "@/lib/format";
+import { CONVERSATION_SOURCE_LABELS, relativeTime } from "@/lib/format";
 import { PlatformGlyph, type PlatformGlyphKey } from "@/components/dashboard/PlatformGlyph";
 
 export const dynamic = "force-dynamic";
@@ -26,6 +26,10 @@ export default async function InboxPage() {
           <p className="mt-1 max-w-2xl text-sm text-muted">{t("description")}</p>
         </div>
         <NewConversationForm />
+      </div>
+
+      <div role="note" data-testid="posteingang-simulation" className="rounded-lg border border-warning/30 bg-warning/10 px-4 py-3 text-xs text-warning">
+        {t.rich("simulationBanner", { strong: (chunks) => <strong>{chunks}</strong> })}
       </div>
 
       <div className="card divide-y divide-border">
@@ -52,7 +56,7 @@ export default async function InboxPage() {
                   <span className="shrink-0 text-xs text-muted">{relativeTime(c.lastMessageAt)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted">
-                  <span>{PLATFORM_LABELS[c.platform] ?? c.platform}</span>
+                  <span>{CONVERSATION_SOURCE_LABELS[c.platform] ?? c.platform}</span>
                   {last && <span className="truncate">· {last.body}</span>}
                 </div>
               </div>

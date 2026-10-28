@@ -1,0 +1,15 @@
+{
+  "title": "Analytics",
+  "subtitle": "Platformu statistika (skatījumi, patīk atzīmes, komentāri, kopīgojumi) YouTube un Facebook tiek iegūta automātiski, tiklīdz ieraksts ir publicēts ar lietotnes starpniecību – aptuveni ik pēc sešām stundām. Instagram, TikTok un LinkedIn sekos, tiklīdz platforma būs piešķīrusi piekļuvi. Skaitļus no citiem ierakstiem vari ievadīt manuāli sadaļā <weiter>Ieteikumi</weiter> („Ievadīt platformas skaitļus“) vai <varianten>variantu salīdzinājumā</varianten>.",
+  "statViewsTotal": "Skatījumi kopā",
+  "statLikesTotal": "Patīk atzīmes kopā",
+  "statComments": "Komentāri",
+  "statShares": "Kopīgojumi",
+  "chartTitle": "Satura veiktspēja laika gaitā",
+  "chartLegend": "Skatījumi (violets) · Iesaiste % (tirkīzzils)",
+  "chartEmpty": "Statistikas vēl nav – gaita nav pieejama.",
+  "bestPerformingTitle": "Veiksmīgākais saturs",
+  "bestPerformingEmpty": "Statistikas vēl nav – reitings nav iespējams.",
+  "learningAgentTitle": "Learning Agent — ieteikumi",
+  "statsEmpty": "Statistika vēl nav saglabāta. YouTube un Facebook skaitļi parādās automātiski, tiklīdz ieraksts ir publicēts ar lietotnes starpniecību."
+}

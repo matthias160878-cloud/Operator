@@ -1,0 +1,14 @@
+{
+  "title": "AI asistent",
+  "welcome": "Ahoj! Zeptej se mě na cokoli kolem SECRET 58 — jak něco nastavit, kde co najdeš nebo jak funguje daná oblast.",
+  "inputPlaceholder": "Zadej otázku …",
+  "thinking": "Přemýšlí …",
+  "openButton": "Otevřít AI asistenta",
+  "close": "Zavřít",
+  "sendButton": "Odeslat",
+  "micButton": "Hlasový vstup",
+  "speakToggle": "Číst odpovědi nahlas",
+  "notConfigured": "AI asistent ještě není nastaven — je potřeba k tomu uložit poskytovatele AI (Anthropic nebo OpenAI).",
+  "openIntegrations": "Přejít na Integrace",
+  "error": "AI asistent teď nemohl odpovědět. Zkus to prosím později."
+}

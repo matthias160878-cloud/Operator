@@ -29,15 +29,11 @@ export default async function VideoStudioPage() {
           {VIDEO_PROVIDERS.map((p) => (
             <div key={p.key} className="flex items-center justify-between rounded-lg border border-border bg-surface-2 px-3 py-2">
               <span className="text-sm text-foreground">{p.name}</span>
-              <StatusBadge status={p.isConfigured() ? "CONNECTED" : "NOT_CONFIGURED"} />
+              <StatusBadge status={!p.renderVerfuegbar ? "NOT_AVAILABLE" : p.isConfigured() ? "CONNECTED" : "NOT_CONFIGURED"} />
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-muted">
-          {t("providerNotePrefix")}
-          <code className="mx-1 rounded bg-surface-2 px-1">VideoProvider</code>
-          {t("providerNoteSuffix")}
-        </p>
+        <p className="mt-3 text-xs text-muted">{t("providerNote")}</p>
       </div>
 
       <div className="card p-5">

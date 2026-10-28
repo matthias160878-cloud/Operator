@@ -1,0 +1,27 @@
+{
+  "title": "Nabiralnik",
+  "description": "Sporočila in povpraševanja na enem mestu. MessageAgent predlaga osnutke odgovorov.",
+  "emptyState": "Pogovorov še ni — simuliraj enega, da začneš.",
+  "backToInbox": "Nazaj v nabiralnik",
+  "newConversation": {
+    "simulateButton": "Simuliraj pogovor",
+    "simulateHint": "Ker prave povezave s platformo ni, lahko tu simuliraš dohodno sporočilo in preizkusiš osnutek odgovora UI.",
+    "close": "Zapri",
+    "namePlaceholder": "Ime",
+    "handlePlaceholder": "@uporabniško ime (neobvezno)",
+    "messagePlaceholder": "Besedilo sporočila …",
+    "createButton": "Ustvari"
+  },
+  "detail": {
+    "draftFailed": "Osnutek ni uspel.",
+    "save": "Shrani",
+    "edit": "Uredi",
+    "approveAndSend": "Odobri in pošlji",
+    "requestDraft": "Zahtevaj osnutek odgovora UI",
+    "openDraftExists": "Zgoraj že obstaja odprt osnutek — najprej ga uredi/pošlji.",
+    "simulateMoreHint": "Simuliraj še eno dohodno sporočilo (test brez prave povezave s platformo):",
+    "messagePlaceholder": "Besedilo sporočila …",
+    "addButton": "Dodaj"
+  },
+  "simulationBanner": "<strong>Predogled/simulacija:</strong> sporočila s platform se še ne pridobivajo in odgovori se ne pošiljajo – tudi ne prek »Odobri in pošlji«. Sporočila s platform lahko tu za preizkus simuliraš. Pravi vnosi prihajajo le iz spletnih obrazcev (npr. prošnje za termin); nanje odgovoriš po e-pošti."
+}

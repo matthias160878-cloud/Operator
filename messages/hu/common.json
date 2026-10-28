@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Több mint tartalom.",
+    "footerLine2": "Egy teljes tartalomgyár.",
+    "workspace": "Munkaterület",
+    "role": "Adminisztrátor"
+  },
+  "nav": {
+    "dashboard": "Irányítópult",
+    "schulung": "Oktatás",
+    "contentFactory": "Content Factory",
+    "ideas": "Ötletek és inspiráció",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Közösségi média",
+    "calendar": "Tartalomnaptár",
+    "analytics": "Analitika",
+    "growth": "Növekedés",
+    "weiterempfehlungen": "Ajánlások",
+    "reichweitenaufbau": "Elérés építése",
+    "revenue": "Bevételek",
+    "inbox": "Beérkezett üzenetek",
+    "anfragen": "Megkeresések",
+    "dateien": "Fájlok",
+    "agents": "Agentek",
+    "integrations": "Integrációk",
+    "settings": "Beállítások",
+    "billing": "Csomag és számlázás",
+    "sales": "Értékesítés és bolt",
+    "website": "Saját weboldalam"
+  },
+  "topbar": {
+    "menuOpen": "Menü megnyitása",
+    "menuClose": "Menü bezárása",
+    "searchPlaceholder": "Keresés tartalmak, projektek, kampányok között …",
+    "notifications": "Értesítések",
+    "language": "Nyelv"
+  },
+  "footer": {
+    "help": "Súgó",
+    "privacy": "Adatvédelem",
+    "imprint": "Impresszum",
+    "systemOnline": "A rendszer online"
+  },
+  "actions": {
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "edit": "Szerkesztés",
+    "create": "Létrehozás",
+    "close": "Bezárás",
+    "back": "Vissza",
+    "loading": "Betöltés …"
+  },
+  "status": {
+    "connected": "Csatlakoztatva",
+    "notConfigured": "Nincs beállítva",
+    "error": "Hiba"
+  },
+  "statusBadge": {
+    "CONNECTED": "Csatlakoztatva",
+    "ACTIVE": "Aktív",
+    "COMPLETED": "Befejezve",
+    "RUNNING": "Fut",
+    "SUCCESS": "Sikeres",
+    "PUBLISHED": "Közzétéve",
+    "APPROVED": "Jóváhagyva",
+    "SCHEDULED": "Ütemezve",
+    "WAITING": "Várakozik",
+    "IN_REVIEW": "Ellenőrzés alatt",
+    "NOT_CONFIGURED": "Nincs beállítva",
+    "IDLE": "Készenlétben",
+    "DRAFT": "Vázlat",
+    "ARCHIVED": "Archiválva",
+    "ERROR": "Hiba",
+    "REJECTED": "Elutasítva",
+    "RECEIVED": "Beérkezett",
+    "PENDING": "Függőben",
+    "NOT_AVAILABLE": "Még nem érhető el"
+  },
+  "integrationStatus": {
+    "notConfigured": "Nincs beállítva — hiányzó változó(k): {vars}.",
+    "verifyFailedGeneric": "A kapcsolódás nem sikerült.",
+    "verifyFailedStatus": "{service} a következő állapottal válaszolt: {status}.",
+    "verifyUnreachable": "{service} nem érhető el.",
+    "connected": "Csatlakoztatva.",
+    "notAvailable": "Még nem érhető el – ez a kapcsolat még nincs kiépítve az alkalmazásban."
+  },
+  "mediaPreview": {
+    "expand": "Nagyobb megjelenítés",
+    "close": "Bezárás"
+  }
+}

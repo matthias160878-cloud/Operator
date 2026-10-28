@@ -1,0 +1,86 @@
+{
+  "title": "Træning",
+  "subtitle": "Trin-for-trin-vejledninger og forklaringsvideoer til hvert område i SECRET 58 — altid tilgængelige her, når du vil slå noget op.",
+  "welcomeBanner": {
+    "title": "Velkommen til SECRET 58!",
+    "body": "Tak for dit køb. Før du går i gang, er det værd at kigge kort på »Første skridt« nedenfor — så AI-agenterne arbejder med dine rigtige data fra begyndelsen."
+  },
+  "stepsLabel": "Trin",
+  "openPage": "Åbn side",
+  "topics": {
+    "firstSteps": {
+      "title": "Første skridt",
+      "description": "Gør disse tre ting først, så arbejder alle AI-agenter med rigtige data i stedet for pladsholdere.",
+      "steps": [
+        "Indtast under „Indstillinger → Egne adgange“ din egen AI-nøgle fra Anthropic, OpenAI eller Gemini. AI-funktionerne bruger udelukkende din egen nøgle; AI-udbyderen fakturerer dig direkte. Uden egen nøgle arbejder appen i skabelontilstand med faste tekstblokke.",
+        "Udfyld dit eget brand under »Brand DNA« (tone, målgruppe, værdier) — AI-agenterne bruger det til hver eneste genererede tekst.",
+        "Lad den første idé eller kampagne blive oprettet under »Idéer & inspiration« eller »Content Brain«."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Sådan bliver en idé til færdigt, godkendt content.",
+      "steps": [
+        "Opret i Content Brain en ny kampagne med emne og målplatforme — det giver automatisk flere content-elementer.",
+        "I Content Factory gennemløber hvert content-element en status: Kladde → Under gennemgang → Godkendt → Planlagt → Udgivet.",
+        "Godkendelsen er et manuelt trin og er obligatorisk — intet bliver udgivet automatisk uden bekræftelse.",
+        "I detaljevisningen af et content-element kan script, voiceover, undertekster, hashtags og thumbnail genereres enkeltvis igen."
+      ]
+    },
+    "studios": {
+      "title": "Script-, Voice-, Video- & Design Studio",
+      "description": "De specialiserede værktøjer til hver content-byggesten.",
+      "steps": [
+        "Script Studio: laver scripts efter strukturen Hook → Problem → Value → Example → Payoff → CTA.",
+        "Voice Studio: importér eller opret din egen ElevenLabs-stemme, og opret derefter voiceover direkte ud fra et script.",
+        "Design Studio: thumbnail-agenten foreslår titel, visuel idé, tekst, layout og billedbeskrivelse.",
+        "Video Studio: viser den aktuelle status for tilslutningen af videoudbydere (formatmanager, udbyderstatus)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Content-kalender & udgivelse",
+      "description": "Hvor planlagte opslag havner — og hvorfor et opslag rent faktisk bliver sendt afsted (eller netop ikke).",
+      "steps": [
+        "I content-kalenderen vises alle content-elementer med planlagt udgivelsesdato.",
+        "Før hver udgivelse tjekker PublishingAgent live, om målplatformen under »Sociale medier« virkelig er markeret som »Forbundet«.",
+        "Uden en rigtig platformforbindelse vises ærligt en fejl, i stedet for at en udgivelse foregives."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics & vækst",
+      "description": "Rigtige tal for din egen præstation — og anbefalinger i stedet for automatisering.",
+      "steps": [
+        "Analytics viser gemt statistik. For YouTube og Facebook henter appen automatisk tallene for udgivne opslag; Instagram, TikTok og LinkedIn følger efter godkendelse fra platformen. Andre tal indtaster du manuelt under „Anbefalinger“ eller i variantsammenligningen.",
+        "Vækstsiden beregner ud fra disse data de bedste opslagstidspunkter samt succesfulde hashtags og formater.",
+        "Vigtigt: Der findes bevidst ingen automatisk forøgelse af følgere/engagement (ingen bot-adfærd) — det ville overtræde brugsvilkårene på enhver platform."
+      ]
+    },
+    "inbox": {
+      "title": "Indbakke",
+      "description": "AI-svarudkast til beskeder — med godkendelse før afsendelse.",
+      "steps": [
+        "Beskeder fra platforme hentes endnu ikke, og svar sendes ikke. For at prøve det af opretter du samtaler som simulering.",
+        "MessageAgent foreslår et svar på baggrund af Brand DNA og samtaleforløbet.",
+        "Du gennemgår og godkender udkastet. Afsendelse til platforme er endnu ikke bygget – „Godkend & send“ melder det ærligt som fejl i stedet for at foregive succes."
+      ]
+    },
+    "revenue": {
+      "title": "Indtægtssporing",
+      "description": "Overblik over alle platformindtægter ét sted — udbetalingen sker stadig via selve platformene.",
+      "steps": [
+        "Indtægter indtastes manuelt, da TikTok/Meta ikke tilbyder et offentligt omsætnings-API, og YouTube kræver adgang til partnerprogrammet (endnu ikke tilsluttet).",
+        "Selve udbetalingen sker altid direkte via den pågældende platform (f.eks. YouTube via Google AdSense) — SECRET 58 håndterer ingen udbetalinger."
+      ]
+    },
+    "integrations": {
+      "title": "Integrationer & API-nøgler",
+      "description": "Hvor hver forbindelsesstatus kommer fra, og hvor den rigtige nøgle indtastes.",
+      "steps": [
+        "Hver række viser den rigtige, live-tjekkede status — aldrig en foregivet forbindelse.",
+        "Dine egne adgange (AI-nøgler, Resend til nyhedsbrevet) indtaster du under „Indstillinger → Egne adgange“ – en guide fører dér til udbyderens officielle nøgleside.",
+        "Adgangsdata gemmes aldrig i browseren, kun krypteret på serveren. Taleoutput og platformenes app-adgange opsættes af operatøren; „Endnu ikke tilgængelig“ betyder, at forbindelsen endnu ikke er bygget i appen.",
+        "Omkostninger: Pro og Maxi er abonnementer, månedligt eller årligt. De aktuelle priser står under „Pakke & fakturering“. For dine egne adgange (AI, Resend) fakturerer hver udbyder dig direkte efter sin egen prismodel – SECRET 58 opkræver intet ekstra for det."
+      ]
+    }
+  }
+}

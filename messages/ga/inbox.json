@@ -1,0 +1,27 @@
+{
+  "title": "Bosca isteach",
+  "description": "Teachtaireachtaí agus fiosrúcháin in aon áit amháin. Molann MessageAgent dréachtfhreagraí.",
+  "emptyState": "Gan aon chomhrá go fóill — insamhail ceann chun tosú.",
+  "backToInbox": "Ar ais go dtí an bosca isteach",
+  "newConversation": {
+    "simulateButton": "Insamhail comhrá",
+    "simulateHint": "Ós rud é nach bhfuil fíornasc ardáin ann, is féidir leat teachtaireacht isteach a insamhladh anseo chun triail a bhaint as an dréacht freagra AI.",
+    "close": "Dún",
+    "namePlaceholder": "Ainm",
+    "handlePlaceholder": "@handle (roghnach)",
+    "messagePlaceholder": "Téacs na teachtaireachta …",
+    "createButton": "Cruthaigh"
+  },
+  "detail": {
+    "draftFailed": "Theip ar an dréacht.",
+    "save": "Sábháil",
+    "edit": "Cuir in eagar",
+    "approveAndSend": "Formheas & seol",
+    "requestDraft": "Iarr dréacht freagra AI",
+    "openDraftExists": "Tá dréacht oscailte thuas cheana — cuir in eagar/seol é ar dtús.",
+    "simulateMoreHint": "Insamhail teachtaireacht isteach eile (tástáil gan fíornasc ardáin):",
+    "messagePlaceholder": "Téacs na teachtaireachta …",
+    "addButton": "Cuir leis"
+  },
+  "simulationBanner": "<strong>Réamhamharc/insamhladh:</strong> ní fhaightear teachtaireachtaí ó ardáin fós agus ní sheoltar freagraí – fiú trí „Formheas & seol”. Is féidir leat teachtaireachtaí ardáin a insamhladh anseo chun triail a bhaint as. Ní thagann fíoriontrálacha ach ó fhoirmeacha an tsuímh (m.sh. iarratais ar choinne); freagraíonn tú iad sin trí ríomhphost."
+}

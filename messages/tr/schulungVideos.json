@@ -1,0 +1,269 @@
+{
+  "playerTitle": "Eğitim videosu",
+  "subtitlesLabel": "Altyazılar",
+  "subtitlesOff": "Kapalı",
+  "soundLabel": "Ses",
+  "soundOn": "Seslendirme açık",
+  "soundOff": "Seslendirme kapalı",
+  "soundHint": "Seslendirme sesi tarayıcından gelir. Hangi dillerin kullanılabildiği cihazına bağlıdır.",
+  "soundMissing": "Bu dil için cihazında yüklü bir ses yok. Altyazılar yine de çalışır.",
+  "draftNote": "Taslak: Test verileriyle gerçek uygulamanın kaydı. Altyazılar makine çevirisidir.",
+  "whatLabel": "Bunun ne olduğu, ne işe yaradığı ve nasıl kullanılacağı.",
+  "videosTitle": "Her bölüm için açıklayıcı videolar",
+  "order": [
+    "start",
+    "dashboard",
+    "schulung",
+    "contentFactory",
+    "ideas",
+    "contentBrain",
+    "brandDna",
+    "scriptStudio",
+    "voiceStudio",
+    "videoStudio",
+    "designStudio",
+    "socialMedia",
+    "calendar",
+    "analytics",
+    "growth",
+    "revenue",
+    "sales",
+    "website",
+    "inbox",
+    "agents",
+    "integrations",
+    "billing",
+    "settings"
+  ],
+  "videos": {
+    "start": {
+      "title": "İlk adımlar",
+      "cues": {
+        "c1": "Eğitime hoş geldin: İlk adımlar. Gördüğün her şey, test verileriyle gerçek uygulamadır.",
+        "c2": "Solda gezinme menüsü var. Uygulamanın her bölümü için burada bir giriş bulunur.",
+        "c3": "Adım 1: “Entegrasyonlar” bölümünde hangi hizmetlerin bağlı olduğunu kontrol et.",
+        "c4": "Her satır gerçek, denetlenmiş durumu gösterir – asla sahte bir bağlantıyı değil.",
+        "c5": "“Yapılandırılmadı”, bu hizmetin henüz kurulmadığı anlamına gelir. Yapay zekâ sağlayıcısı olmadan uygulama şablon modunda çalışır.",
+        "c6": "Adım 2: Markanı “Brand DNA” bölümüne gir. Ton, hedef kitle ve değerler üretilen her metne yansır.",
+        "c7": "Örnek: Sektörü ve hedef kitleyi doldur ve aşağıda kaydet.",
+        "c8": "Adım 3: “Fikirler ve ilham” bölümünde ilk fikri ürettir. Konuyu gir ve “Fikir üret”e tıkla.",
+        "c9": "Fikirler kartlar olarak görünür. Şablon modunda bunlar örneklerdir, yapay zekâ sağlayıcısıyla kişiye özel olur.",
+        "c10": "Sen onaylayana kadar her şey taslak kalır. Her bölüm için ayrı bir açıklayıcı video var."
+      }
+    },
+    "dashboard": {
+      "title": "Gösterge paneli",
+      "cues": {
+        "c1": "Gösterge paneli senin başlangıç sayfan: çalışma alanında olan her şeye genel bakış.",
+        "c2": "Üstte etkin ajanları, içerik üretimini ve planlanan gönderileri görürsün.",
+        "c3": "Daha aşağıda son etkinlikler ile Content Factory ve Brand DNA'ya kısayollar yer alır.",
+        "c4": "“Hafta” ile göstergelerin zaman aralığını değiştirirsin.",
+        "c5": "Böyle kullanırsın: Gösterge panelini her gün aç, açık taslakları kontrol et ve buradan doğrudan ilgili bölüme geç."
+      }
+    },
+    "schulung": {
+      "title": "Eğitim",
+      "cues": {
+        "c1": "Eğitim, uygulamadaki kılavuzundur. Her bölümü adım adım açıklar.",
+        "c2": "Her konuda bir açıklama, numaralı adımlar ve ilgili sayfayı açan bir bağlantı vardır.",
+        "c3": "Bu açıklayıcı videolar da burada görünür, her bölüm için bir tane.",
+        "c4": "Böyle kullanırsın: Bir konu seç, adımları oku, sayfayı aç ve hemen dene."
+      }
+    },
+    "contentFactory": {
+      "title": "Content Factory",
+      "cues": {
+        "c1": "Content Factory, tüm içerik öğelerinin tek yerde olduğu çalışma tezgâhıdır.",
+        "c2": "İşlev: Öğeleri oluştur, çoğalt, yeniden yaz, seslendirme ve altyazıyla zenginleştir ve onay akışından geçir.",
+        "c3": "Üstteki filtreler durumları gösterir: Taslak, İncelemede, Onaylandı, Planlandı, Yayınlandı ve Arşivlendi.",
+        "c4": "Şöyle yapılır: “Yeni içerik öğesi” ile bir öğe oluşturursun.",
+        "c5": "Script, seslendirme, altyazı, hashtag'ler ve küçük resmi düzenlemek için bir öğeyi aç.",
+        "c6": "Onay her zaman elle yapılan bir adımdır. Senin onayın olmadan hiçbir şey yayınlanmaz."
+      }
+    },
+    "ideas": {
+      "title": "Fikirler ve ilham",
+      "cues": {
+        "c1": "Burada fikir toplarsın: gelecek içerikler için konu kümeleri, seriler ve biçimler.",
+        "c2": "İşlev: IdeaAgent bir konuya fikirler üretir ya da kendi fikirlerini elle girersin.",
+        "c3": "Şöyle yapılır: Konuyu gir, platformu, hedefi ve biçimi seç ve “Fikir üret”e tıkla.",
+        "c4": "Her fikir; başlık, giriş cümlesi ve öncelik içeren bir kart olur.",
+        "c5": "“Elle” ile kendi fikrini oluşturursun.",
+        "c6": "İyi fikirleri Content Brain için başlangıç noktası olarak alırsın."
+      }
+    },
+    "contentBrain": {
+      "title": "Content Brain",
+      "cues": {
+        "c1": "Content Brain, bir fikirden eksiksiz bir içerik planı çıkarır.",
+        "c2": "İşlev: Brand DNA'ni dikkate alır ve seçilen her platform için hook'ları, script'leri, hashtag'leri ve küçük resim konseptlerini taslak olarak üretir.",
+        "c3": "Şöyle yapılır: Konuyu ve hedef kitleyi gir.",
+        "c4": "Hedefi ve dili seç, sonra platformlara tıkla. İşte buraya TikTok da ekleniyor.",
+        "c5": "Kaydırıcıyla platform başına kaç içerik öğesi oluşacağını belirlersin.",
+        "c6": "“İçerik planı üret”e tek tıklama çalıştırmayı başlatır.",
+        "c7": "Kampanya aşağıda görünür. Tüm öğeler taslaktır ve Content Factory'dedir."
+      }
+    },
+    "brandDna": {
+      "title": "Brand DNA",
+      "cues": {
+        "c1": "Brand DNA markanı tanımlar: ad, sektör, hedef kitle, ton ve değerler.",
+        "c2": "İşlev: Bu bilgiler otomatik olarak Content Brain'e ve script, hook ve hashtag ajanlarına aktarılır.",
+        "c3": "Şöyle yapılır: Alanları doldur, örneğin sektörü ve hedef kitleyi.",
+        "c4": "Daha aşağıda tercih edilen ve yasaklı kelimeleri, harekete geçirici çağrıları ve marka değerlerini düzenlersin.",
+        "c5": "Son olarak “Brand DNA'yı kaydet”e tıklarsın."
+      }
+    },
+    "scriptStudio": {
+      "title": "Script Studio",
+      "cues": {
+        "c1": "Script Studio, script'lerin ve hook'ların atölyesidir.",
+        "c2": "İşlev: Script'leri hook, problem, fayda, örnek, sonuç ve harekete geçirici çağrı yapısına göre kurar ve birden çok hook varyantı sunar.",
+        "c3": "Şöyle yapılır: Konuyu gir ve platformu seç.",
+        "c4": "Sonra “Script ve hook üret”e tıkla.",
+        "c5": "Sonuç bir taslaktır; bunu Content Factory'de kullanmaya devam edersin."
+      }
+    },
+    "voiceStudio": {
+      "title": "Voice Studio",
+      "cues": {
+        "c1": "Voice Studio sesleri yönetir ve seslendirme üretir.",
+        "c2": "İşlev: Ses kütüphanesini yönet, önizlemeler üret ve sesleri içe aktar. Bağlantı ElevenLabs üzerinden çalışır.",
+        "c3": "Şöyle yapılır: Sesi elle oluştur ya da ElevenLabs'tan içe aktar. İçe aktarma, kurulmuş bir bağlantı gerektirir.",
+        "c4": "Bir metin ve bir sesle önizleme üretir ve oynatırsın."
+      }
+    },
+    "videoStudio": {
+      "title": "Video Studio",
+      "cues": {
+        "c1": "Video Studio, uygulamanın video hattıdır.",
+        "c2": "İşlev: Format yöneticisi, değiştirilebilir video sağlayıcıları ve seslendirme ile altyazıların bağlanması.",
+        "c3": "Sayfa hangi sağlayıcıların kurulu olduğunu gösterir. Kurulu olmayanlar dürüstçe öyle işaretlenir.",
+        "c4": "Şöyle yapılır: Videoları Content Factory'de içerik öğesi başına üretirsin."
+      }
+    },
+    "designStudio": {
+      "title": "Design Studio",
+      "cues": {
+        "c1": "Design Studio küçük resim konseptleri ve görsel varlıklar sunar.",
+        "c2": "İşlev: Küçük resim ajanı başlık, görsel fikri, metin ve yerleşim önerir. Canva entegrasyonu burada öngörülmüştür.",
+        "c3": "Şöyle yapılır: Küçük resim için konuyu gir.",
+        "c4": "“Konsept üret”e tıkla.",
+        "c5": "Konsept, görselin için sana şablon olarak hizmet eder."
+      }
+    },
+    "socialMedia": {
+      "title": "Sosyal medya",
+      "cues": {
+        "c1": "Burada platform hesaplarını bağlar ve durumlarını görürsün.",
+        "c2": "İşlev: Erişimler sunucu tarafında yönetilir ve şifreli saklanır. Platforma Composio üzerinden giriş yaparsın.",
+        "c3": "Her kart platformu, hesabı, durumu ve son okuma testini gösterir.",
+        "c4": "“Henüz kurulmadı”, işletmecinin bağlantıyı sunucuda henüz etkinleştirmediği anlamına gelir.",
+        "c5": "Şöyle yapılır: Kurulduktan sonra platformda “Bağla”ya tıklayıp giriş yaparsın. Yalnızca okunur, hiçbir şey yayınlanmaz."
+      }
+    },
+    "calendar": {
+      "title": "İçerik Takvimi",
+      "cues": {
+        "c1": "İçerik Takvimi, planlanan ve yayınlanan içeriklere genel bakış sunar.",
+        "c2": "İşlev: Yayın tarihi olan tüm içerik öğeleri burada görünür, platforma göre filtrelenebilir.",
+        "c3": "Şöyle yapılır: Bir öğeyi Content Factory'de tarihle planla, sonra burada görünür.",
+        "c4": "Her yayından önce uygulama, hedef platformun bağlı olup olmadığını canlı kontrol eder."
+      }
+    },
+    "analytics": {
+      "title": "Analitik",
+      "cues": {
+        "c1": "Analitik performans göstergelerini gösterir.",
+        "c2": "İşlev: Yalnızca gerçekten mevcut, içe aktarılmış veya senin girdiğin veriler. Hiçbir şey uydurma değil.",
+        "c3": "Zaman içindeki gelişimi, en iyi performans gösteren içeriği ve Learning Agent'ın önerilerini görürsün.",
+        "c4": "Şöyle yapılır: Platformlar bağlandığında ya da veri girdiğinde grafikler dolar."
+      }
+    },
+    "growth": {
+      "title": "Büyüme",
+      "cues": {
+        "c1": "Büyüme sayfası daha fazla erişim için öneriler sunar.",
+        "c2": "İşlev: Gerçek analitik verilerinden en iyi paylaşım zamanlarını, başarılı hashtag'leri ve biçimleri hesaplar.",
+        "c3": "Şöyle yapılır: Platformu seç ve önerileri oku.",
+        "c4": "Bunlar öneridir, otomatik işlem değil. Takipçi veya etkileşimler yapay olarak artırılmaz."
+      }
+    },
+    "revenue": {
+      "title": "Gelirler",
+      "cues": {
+        "c1": "Gelirler bölümünde platformlardaki ve kampanyalardaki kazançlarını bir araya getirirsin.",
+        "c2": "İşlev: Tutarlar, ancak sen girdiğinde görünür. Uydurma rakam yok.",
+        "c3": "Şöyle yapılır: “Gelir ekle”ye tıkla, platformu ve türü seç ve tutarı gir.",
+        "c4": "Ödeme her zaman doğrudan platform üzerinden yapılır. SECRET 58 hiçbir ödeme işlemi yürütmez."
+      }
+    },
+    "sales": {
+      "title": "Satış ve mağaza",
+      "cues": {
+        "c1": "“Satış ve mağaza”, kendi işletme gelirlerini gösterir.",
+        "c2": "İşlev: Bunlar SECRET 58 paketinden ayrıdır. Yalnızca gerçek satışlar sayılır, test verileri işaretlenir.",
+        "c3": "Üstte para birimi başına toplamlar, altında yasal bilgiler için sağlayıcı bilgilerin yer alır.",
+        "c4": "B seçeneği: SECRET 58 üzerinden satış. A seçeneği: mevcut bir mağazayı içe aktarma.",
+        "c5": "Şöyle yapılır: Sağlayıcı bilgilerini doldurup kaydet, sonra satış yolunu seç."
+      }
+    },
+    "website": {
+      "title": "Web sitem",
+      "cues": {
+        "c1": "Burada web sitesi asistanını kendi web sitene eklersin.",
+        "c2": "İşlev: Asistan, ziyaretçilerinin sorularını yanıtlar.",
+        "c3": "Web siteni otomatik olarak değiştirmiyoruz. Kodu kendin eklersin ya da web tasarımcına ekletirsin.",
+        "c4": "Şöyle yapılır: Web adresini gir ve “Web sitesi ekle”ye tıkla.",
+        "c5": "Ardından gösterilen kodu web sitene kopyalarsın."
+      }
+    },
+    "inbox": {
+      "title": "Gelen kutusu",
+      "cues": {
+        "c1": "Gelen kutusu, tüm platformlardan mesajları ve yorumları toplar.",
+        "c2": "İşlev: MessageAgent yanıt önerir. Yalnızca onayladığın gönderilir.",
+        "c3": "Şöyle yapılır: Hiçbir platform canlı bağlı olmadığı sürece “Görüşme simüle et”e tıklarsın.",
+        "c4": "Yanıt önerisini incele, uyarla ve onayla."
+      }
+    },
+    "agents": {
+      "title": "Ajanlar",
+      "cues": {
+        "c1": "Agent Monitor tüm SECRET 58 ajanlarını gösterir.",
+        "c2": "İşlev: Her ajanın durumu, son görevi ve sonucu. Her çalıştırma kaydedilir.",
+        "c3": "Çalıştırma geçmişinde neyin ne zaman çalıştığını ve başarılı olup olmadığını görürsün.",
+        "c4": "Böyle kullanırsın: Bir şey beklendiği gibi üretilmediğinde buraya bak."
+      }
+    },
+    "integrations": {
+      "title": "Entegrasyonlar",
+      "cues": {
+        "c1": "Burada tüm harici hizmetlerin canlı durumunu görürsün.",
+        "c2": "İşlev: Her satır, gerçekten ayarlanmış erişimlere dayanır. Sahte bağlantı yoktur.",
+        "c3": "Gruplar şunlardır: yapay zekâ sağlayıcıları, ses, sosyal platformlar, tasarım, video ve trendler.",
+        "c4": "Şöyle yapılır: “Yapılandırılmadı” durumunda “API anahtarı al” sağlayıcının sayfasına götürür.",
+        "c5": "Harici sağlayıcıların kendi fiyatları vardır. Her hizmette hangi modelin geçerli olduğu yazar."
+      }
+    },
+    "billing": {
+      "title": "Paket ve faturalama",
+      "cues": {
+        "c1": "“Paket ve faturalama” bölümünde paketini görür ve değiştirebilirsin.",
+        "c2": "İşlev: Yapay zekâ işlevleri işletmecinin erişimleri üzerinden çalışır. Kendi yapay zekâ aboneliğine ihtiyacın yok.",
+        "c3": "Pro ve Maxi var, aylık veya yıllık. Fiyatlar kartlarda net olarak yazar.",
+        "c4": "Satın alma yalnızca “Ödeme yükümlülüğüyle sipariş ver”e açıkça tıklayarak yapılır.",
+        "c5": "Promosyon kodun varsa, onu aşağıdaki alana girerek kullanırsın."
+      }
+    },
+    "settings": {
+      "title": "Ayarlar",
+      "cues": {
+        "c1": "Ayarlar'da çalışma alanını, kullanıcıları ve sistem bilgilerini yönetirsin.",
+        "c2": "İşlev: Çalışma alanı, roller, sistem durumu, kurulum asistanı ve verilerin; bilgi alma ve silme seçenekleriyle.",
+        "c3": "Şöyle yapılır: Bölümler arasında kaydır. Çalışma alanını silmek ek bir onay gerektirir.",
+        "c4": "Verilerini ve kurulum asistanını burada düzenli olarak kontrol et."
+      }
+    }
+  }
+}

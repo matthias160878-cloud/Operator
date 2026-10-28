@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Content Kalender",
+  "subtitle": "Pregled načrtovanih in objavljenih vsebin.",
+  "weekdays": ["Pon", "Tor", "Sre", "Čet", "Pet", "Sob", "Ned"],
+  "months": [
+    "Januar", "Februar", "Marec", "April", "Maj", "Junij",
+    "Julij", "Avgust", "September", "Oktober", "November", "December"
+  ],
+  "allPlatforms": "Vse platforme",
+  "moreItems": "+{count} več",
+  "listTitle": "Seznam tega meseca",
+  "emptyMonth": "V tem mesecu ni načrtovanih objav."
+}

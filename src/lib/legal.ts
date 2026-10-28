@@ -17,6 +17,10 @@ export interface Impressum {
   aufsicht: string | null;
   verantwortlich: string;
   streitbeilegung: string | null;
+  /** z. B. Hinweis auf Kleinunternehmerregelung (§ 19 UStG), wenn keine USt-IdNr. vorhanden */
+  umsatzsteuer: string | null;
+  /** Zweiter schneller Kontaktweg neben der E-Mail (z. B. Kontaktformular) */
+  kontaktUrl: string | null;
 }
 
 function env(name: string): string | null {
@@ -40,12 +44,17 @@ export function getImpressum(): Impressum | null {
     aufsicht: env("IMPRESSUM_AUFSICHT"),
     verantwortlich: env("IMPRESSUM_VERANTWORTLICH") ?? anbieter,
     streitbeilegung: env("IMPRESSUM_STREITBEILEGUNG"),
+    umsatzsteuer: env("IMPRESSUM_UMSATZSTEUER"),
+    kontaktUrl: env("IMPRESSUM_KONTAKT_URL"),
   };
 }
 
-/** Externe Seiten für AGB und Datenschutzerklärung (z. B. auf secret58.com). */
+/**
+ * AGB und Datenschutzerklärung. Die Datenschutzerklärung der App liegt unter
+ * /datenschutz; DATENSCHUTZ_URL überschreibt das nur bei Bedarf.
+ */
 export function legalLinks() {
-  return { agb: env("AGB_URL"), datenschutz: env("DATENSCHUTZ_URL") };
+  return { agb: env("AGB_URL"), datenschutz: env("DATENSCHUTZ_URL") ?? "/datenschutz" };
 }
 
 /** Verkauf erst, wenn Impressum, AGB und Datenschutzerklärung erreichbar sind. */

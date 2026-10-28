@@ -1,0 +1,15 @@
+{
+  "title": "Analytics",
+  "subtitle": "Statisticile platformelor (vizualizări, aprecieri, comentarii, distribuiri) sunt preluate automat pentru YouTube și Facebook imediat ce o postare a fost publicată prin aplicație – aproximativ o dată la șase ore. Instagram, TikTok și LinkedIn vor urma imediat ce platforma va acorda accesul. Cifrele altor postări le poți introduce manual la <weiter>Recomandări</weiter> („Introdu cifrele platformei”) sau în <varianten>compararea variantelor</varianten>.",
+  "statViewsTotal": "Total vizualizări",
+  "statLikesTotal": "Total aprecieri",
+  "statComments": "Comentarii",
+  "statShares": "Distribuiri",
+  "chartTitle": "Performanța conținutului în timp",
+  "chartLegend": "Vizualizări (violet) · Engagement % (turcoaz)",
+  "chartEmpty": "Încă nu există statistici – nu este disponibilă nicio evoluție.",
+  "bestPerformingTitle": "Cel mai performant conținut",
+  "bestPerformingEmpty": "Încă nu există statistici – nu este posibil un clasament.",
+  "learningAgentTitle": "Learning Agent — Recomandări",
+  "statsEmpty": "Încă nu sunt salvate statistici. Pentru YouTube și Facebook, cifrele apar automat imediat ce o postare a fost publicată prin aplicație."
+}

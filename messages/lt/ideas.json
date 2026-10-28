@@ -1,0 +1,25 @@
+{
+  "title": "Idėjos ir įkvėpimas",
+  "subtitle": "Temų grupės, serijos ir formatai būsimam turiniui — sugeneruoti IdeaAgent arba įvesti rankiniu būdu.",
+  "board": {
+    "topicLabel": "Naujų idėjų tema",
+    "topicPlaceholder": "pvz. Produktyvumas su DI agentais",
+    "generateButton": "Generuoti idėjas",
+    "manualButton": "Rankiniu būdu",
+    "manualTitlePlaceholder": "Idėjos pavadinimas",
+    "addButton": "Pridėti",
+    "generateError": "Klaida generuojant idėjas.",
+    "unknownError": "Nežinoma klaida.",
+    "emptyState": "Idėjų dar nėra — sugeneruok arba pridėk rankiniu būdu.",
+    "minutesUnit": "~{count} min.",
+    "statusNew": "Nauja",
+    "statusInProgress": "Vykdoma",
+    "statusUsed": "Panaudota",
+    "statusArchived": "Archyvuota",
+    "sourceAiGenerated": "IdeaAgent (DI arba šablonas)",
+    "sourceManual": "Rankiniu būdu",
+    "templateResult": "Šablonas: ką tik sukurtos idėjos paimtos iš fiksuotų teksto blokų, o ne sukurtos DI. DI idėjoms įvesk savo DI raktą skiltyje „Nustatymai → Savos prieigos“.",
+    "textEngineLabel": "Teksto variklis:",
+    "templateMode": "Šablono režimas (DI tiekėjas nesukonfigūruotas)"
+  }
+}

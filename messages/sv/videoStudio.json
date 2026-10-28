@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Videoskapande är inte tillgängligt ännu: ingen videotjänst som skapar videor är ansluten. Nedan ser du de förberedda formaten per plattform; manus, speakerröst och undertexter skapar du i Script Studio, Voice Studio och Content Factory.",
+  "providerCardTitle": "Videoleverantörer",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Videoresurser",
+  "assetsEmpty": "Inga videor ännu. Videoskapande är inte tillgängligt i appen ännu.",
+  "providerNote": "Ingen videotjänst användbar ännu – videor kan för närvarande inte skapas i appen."
+}

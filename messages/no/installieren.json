@@ -1,0 +1,20 @@
+{
+  "button": "Installer appen",
+  "buttonHint": "Installer SECRET 58 som en app på denne enheten",
+  "close": "Lukk",
+  "canceled": "Installasjonen ble avbrutt. Du kan starte den på nytt når som helst.",
+  "iosTitle": "Installer på iPhone eller iPad",
+  "iosStep1": "Åpne denne siden i Safari.",
+  "iosStep2": "Trykk på «Del» (firkanten med pilen som peker oppover).",
+  "iosStep3": "Velg «Legg til på Hjem-skjerm» og bekreft med «Legg til».",
+  "iosShort": "Safari: Del → Legg til på Hjem-skjerm",
+  "iosNotSafari": "På iPhone og iPad fungerer installasjonen bare i Safari. Åpne denne siden i Safari.",
+  "otherTitle": "Slik installerer du appen",
+  "otherChromium": "Åpne nettlesermenyen (tre prikker) og velg «Installer appen» eller «Legg til på startskjermen».",
+  "otherSafariMac": "I Safari på Mac: menyen «Arkiv» → «Legg til i Dock».",
+  "otherFirefox": "Firefox på datamaskinen kan ikke installere nettapper. Bruk Chrome, Edge eller Safari.",
+  "otherGeneric": "Denne nettleseren tilbyr ikke noe installasjonsvindu akkurat nå. Det kan komme av at appen allerede er installert, eller at nettleseren ikke støtter installasjon. Prøv i Chrome, Edge eller Safari.",
+  "insecureTitle": "Installasjon er ikke mulig her",
+  "insecureText": "Installasjonen krever et publisert nettsted over HTTPS. Det fungerer ikke fra en lokal fil eller uten HTTPS. På din egen datamaskin fungerer det via «localhost» i et utviklingsmiljø.",
+  "installedNote": "Appen er installert."
+}

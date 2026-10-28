@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Meira en efni.",
+    "footerLine2": "Heil efnisvél.",
+    "workspace": "Vinnusvæði",
+    "role": "Stjórnandi"
+  },
+  "nav": {
+    "dashboard": "Yfirlit",
+    "schulung": "Þjálfun",
+    "contentFactory": "Content Factory",
+    "ideas": "Hugmyndir og innblástur",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Samfélagsmiðlar",
+    "calendar": "Efnisdagatal",
+    "analytics": "Greining",
+    "growth": "Vöxtur",
+    "weiterempfehlungen": "Meðmæli",
+    "reichweitenaufbau": "Aukin útbreiðsla",
+    "revenue": "Tekjur",
+    "inbox": "Pósthólf",
+    "anfragen": "Fyrirspurnir",
+    "dateien": "Skrár",
+    "agents": "Fulltrúar",
+    "integrations": "Samþættingar",
+    "settings": "Stillingar",
+    "billing": "Pakki og reikningar",
+    "sales": "Sala og verslun",
+    "website": "Vefsíðan mín"
+  },
+  "topbar": {
+    "menuOpen": "Opna valmynd",
+    "menuClose": "Loka valmynd",
+    "searchPlaceholder": "Leita að efni, verkefnum, herferðum …",
+    "notifications": "Tilkynningar",
+    "language": "Tungumál"
+  },
+  "footer": {
+    "help": "Hjálp",
+    "privacy": "Persónuvernd",
+    "imprint": "Útgefandaupplýsingar",
+    "systemOnline": "Kerfið er í gangi"
+  },
+  "actions": {
+    "save": "Vista",
+    "cancel": "Hætta við",
+    "delete": "Eyða",
+    "edit": "Breyta",
+    "create": "Búa til",
+    "close": "Loka",
+    "back": "Til baka",
+    "loading": "Hleður …"
+  },
+  "status": {
+    "connected": "Tengt",
+    "notConfigured": "Ekki stillt",
+    "error": "Villa"
+  },
+  "statusBadge": {
+    "CONNECTED": "Tengt",
+    "ACTIVE": "Virkt",
+    "COMPLETED": "Lokið",
+    "RUNNING": "Í gangi",
+    "SUCCESS": "Tókst",
+    "PUBLISHED": "Birt",
+    "APPROVED": "Samþykkt",
+    "SCHEDULED": "Áætlað",
+    "WAITING": "Bíður",
+    "IN_REVIEW": "Í yfirferð",
+    "NOT_CONFIGURED": "Ekki stillt",
+    "IDLE": "Tilbúið",
+    "DRAFT": "Drög",
+    "ARCHIVED": "Í safni",
+    "ERROR": "Villa",
+    "REJECTED": "Hafnað",
+    "RECEIVED": "Móttekið",
+    "PENDING": "Í bið",
+    "NOT_AVAILABLE": "Ekki tiltækt enn"
+  },
+  "integrationStatus": {
+    "notConfigured": "Ekki stillt — vantar breytu/breytur: {vars}.",
+    "verifyFailedGeneric": "Tenging mistókst.",
+    "verifyFailedStatus": "{service} svaraði með stöðunni {status}.",
+    "verifyUnreachable": "Ekki náðist samband við {service}.",
+    "connected": "Tengt.",
+    "notAvailable": "Ekki tiltækt enn – þessi tenging hefur ekki enn verið smíðuð í appinu."
+  },
+  "mediaPreview": {
+    "expand": "Sýna stærra",
+    "close": "Loka"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Voice Studio",
+  "subtitle": "ElevenLabs Voice Engine — immaniġġja l-Voice Library, oħloq previews tal-voiceover u importa Voices.",
+  "envWarning": "Il-voiceover għadu mhux disponibbli: l-operatur jissettja s-servizz tal-vuċi (ElevenLabs). Tista' diġà tuża l-librerija tal-vuċijiet għall-ippjanar.",
+  "addManual": "Oħloq Voice manwalment",
+  "importFromElevenLabs": "Importa minn ElevenLabs",
+  "form": {
+    "namePlaceholder": "Isem",
+    "voiceIdPlaceholder": "Voice ID (ElevenLabs)",
+    "languagePlaceholder": "Lingwa",
+    "submit": "Żid"
+  },
+  "confirmDelete": "Tassew trid tħassar il-Voice?",
+  "importFailed": "L-importazzjoni falliet.",
+  "previewFailed": "Il-Preview falla.",
+  "unknownError": "Żball mhux magħruf.",
+  "empty": "Għad m'hemm l-ebda Voices fil-Library.",
+  "active": "Attiv",
+  "inactive": "Inattiv",
+  "remove": "Neħħi",
+  "preview": {
+    "heading": "Voice Preview",
+    "defaultText": "Bonġu, dan huwa eżempju għal din il-Voice.",
+    "selectPlaceholder": "Agħżel Voice…",
+    "play": "Mexxi l-Preview"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "title": "Mokymai",
+  "subtitle": "Žingsnis po žingsnio instrukcijos ir paaiškinamieji vaizdo įrašai apie kiekvieną SECRET 58 skiltį — bet kada čia galima pasižiūrėti.",
+  "welcomeBanner": {
+    "title": "Sveiki atvykę į SECRET 58!",
+    "body": "Ačiū už pirkimą. Prieš pradedant verta trumpai pažvelgti į „Pirmuosius žingsnius“ žemiau — kad DI agentai nuo pat pradžių dirbtų su tavo tikrais duomenimis."
+  },
+  "stepsLabel": "Žingsniai",
+  "openPage": "Atidaryti puslapį",
+  "topics": {
+    "firstSteps": {
+      "title": "Pirmieji žingsniai",
+      "description": "Pirmiausia atlik šiuos tris dalykus, tada visi DI agentai dirbs su tikrais duomenimis, o ne su vietos žymėjimais.",
+      "steps": [
+        "Skiltyje „Nustatymai → Savos prieigos“ įvesk savo DI raktą iš Anthropic, OpenAI arba Gemini. DI funkcijos naudoja tik tavo raktą; DI teikėjas sąskaitas išrašo tiesiogiai tau. Be savo rakto programa veikia šablonų režimu su fiksuotais teksto blokais.",
+        "Skiltyje „Brand DNA“ užpildyk savo prekės ženklą (tonas, tikslinė auditorija, vertybės) — DI agentai tai naudoja kiekvienam sugeneruotam tekstui.",
+        "Skiltyje „Idėjos ir įkvėpimas“ arba „Content Brain“ leisk sukurti pirmąją idėją arba kampaniją."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Taip iš idėjos tampa paruoštas, patvirtintas turinys.",
+      "steps": [
+        "Content Brain sukurk naują kampaniją su tema ir tikslinėmis platformomis — iš jos automatiškai atsiranda keli turinio elementai.",
+        "Content Factory kiekvienas turinio elementas pereina būsenas: Juodraštis → Peržiūrima → Patvirtinta → Suplanuota → Paskelbta.",
+        "Patvirtinimas yra rankinis žingsnis ir privalomas — nieko nepaskelbiama automatiškai be patvirtinimo.",
+        "Turinio elemento išsamiame rodinyje scenarijų, balso įrašą, subtitrus, žymas (hashtag) ir miniatiūrą galima sugeneruoti atskirai."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video ir Design Studio",
+      "description": "Specializuoti įrankiai kiekvienai turinio daliai.",
+      "steps": [
+        "Script Studio: kuria scenarijus pagal struktūrą Hook → Problema → Vertė → Pavyzdys → Atpildas → CTA.",
+        "Voice Studio: importuok arba sukurk savo ElevenLabs balsą, tada kurk balso įrašą tiesiai iš scenarijaus.",
+        "Design Studio: miniatiūrų agentas siūlo pavadinimą, vizualinę idėją, tekstą, maketą ir vaizdo aprašymą.",
+        "Video Studio: rodo dabartinę vaizdo įrašų tiekėjų integracijos būseną (formatų tvarkyklė, tiekėjo būsena)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Turinio kalendorius ir publikavimas",
+      "description": "Kur patenka suplanuoti įrašai — ir kodėl įrašas tikrai išeina (arba neišeina).",
+      "steps": [
+        "Turinio kalendoriuje rodomi visi turinio elementai su suplanuota paskelbimo data.",
+        "Prieš kiekvieną paskelbimą PublishingAgent realiuoju laiku patikrina, ar tikslinė platforma skiltyje „Socialiniai tinklai“ tikrai pažymėta kaip „Prijungta“.",
+        "Be tikro ryšio su platforma sąžiningai rodoma klaida, o ne apsimetama, kad paskelbta."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analitika ir augimas",
+      "description": "Tikri skaičiai apie savo veiklą — ir rekomendacijos, o ne automatizavimas.",
+      "steps": [
+        "Analytics rodo išsaugotą statistiką. YouTube ir Facebook paskelbtų įrašų skaičius programa gauna automatiškai; Instagram, TikTok ir LinkedIn bus pridėti, kai platforma suteiks leidimą. Kitus skaičius rankiniu būdu įvedi skiltyje „Rekomendacijos“ arba variantų palyginime.",
+        "Augimo puslapis iš šių duomenų apskaičiuoja geriausius publikavimo laikus, sėkmingas žymas (hashtag) ir formatus.",
+        "Svarbu: sąmoningai nėra automatizuoto sekėjų / įsitraukimo didinimo (jokio bot elgesio) — tai pažeistų kiekvienos platformos naudojimo sąlygas."
+      ]
+    },
+    "inbox": {
+      "title": "Gautieji",
+      "description": "DI atsakymų juodraščiai žinutėms — su patvirtinimu prieš siunčiant.",
+      "steps": [
+        "Žinutės iš platformų dar negaunamos, o atsakymai nesiunčiami. Norėdamas išbandyti, pokalbius kuri kaip simuliaciją.",
+        "MessageAgent siūlo atsakymą pagal Brand DNA ir pokalbio eigą.",
+        "Juodraštį peržiūri ir patvirtini tu. Siuntimas į platformas dar nesukurtas – „Patvirtinti ir siųsti“ sąžiningai praneša apie tai kaip apie klaidą, užuot apsimetęs sėkme."
+      ]
+    },
+    "revenue": {
+      "title": "Pajamų stebėjimas",
+      "description": "Visų platformų pajamų apžvalga vienoje vietoje — išmokėjimas vis tiek vyksta per pačias platformas.",
+      "steps": [
+        "Pajamos įvedamos rankiniu būdu, nes TikTok/Meta nesiūlo viešo pajamų API, o YouTube tam reikia prieigos prie partnerių programos (dar neprijungta).",
+        "Faktinis išmokėjimas visada vyksta tiesiogiai per atitinkamą platformą (pvz., YouTube per Google AdSense) — SECRET 58 jokių išmokėjimų neapdoroja."
+      ]
+    },
+    "integrations": {
+      "title": "Integracijos ir API raktai",
+      "description": "Iš kur imama kiekviena ryšio būsena ir kur įrašomas tinkamas raktas.",
+      "steps": [
+        "Kiekvienoje eilutėje rodoma tikra, realiuoju laiku patikrinta būsena — niekada apsimestinis ryšys.",
+        "Savas prieigas (DI raktus, Resend naujienlaiškiui) įvedi skiltyje „Nustatymai → Savos prieigos“ – ten vedlys nuveda į oficialų teikėjo raktų puslapį.",
+        "Prisijungimo duomenys niekada nesaugomi naršyklėje, tik užšifruoti serveryje. Balso išvestį ir platformų programų prieigas nustato operatorius; „Dar neprieinama“ reiškia, kad ryšys programoje dar nesukurtas.",
+        "Išlaidos: Pro ir Maxi yra prenumeratos, mėnesinės arba metinės. Dabartinės kainos pateikiamos skiltyje „Paketas ir apmokėjimas“. Už tavo savas prieigas (DI, Resend) kiekvienas teikėjas sąskaitą išrašo tiesiogiai tau pagal savo kainodarą – SECRET 58 už tai papildomai nieko neima."
+      ]
+    }
+  }
+}

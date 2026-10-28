@@ -1,0 +1,15 @@
+{
+  "title": "Analytiikka",
+  "subtitle": "Alustojen tilastot (katselut, tykkäykset, kommentit, jaot) haetaan YouTuben ja Facebookin osalta automaattisesti heti, kun postaus on julkaistu sovelluksen kautta – noin kuuden tunnin välein. Instagram, TikTok ja LinkedIn seuraavat heti, kun alusta on myöntänyt pääsyn. Muiden postausten lukuja voit syöttää käsin kohdassa <weiter>Suositukset</weiter> (”Syötä alustan luvut”) tai <varianten>versiovertailussa</varianten>.",
+  "statViewsTotal": "Katselut yhteensä",
+  "statLikesTotal": "Tykkäykset yhteensä",
+  "statComments": "Kommentit",
+  "statShares": "Jaot",
+  "chartTitle": "Sisällön suorituskyky ajan yli",
+  "chartLegend": "Katselut (violetti) · Sitoutuminen % (turkoosi)",
+  "chartEmpty": "Ei vielä tilastoja – kehitystä ei ole saatavilla.",
+  "bestPerformingTitle": "Parhaiten menestynyt sisältö",
+  "bestPerformingEmpty": "Ei vielä tilastoja – järjestys ei ole mahdollinen.",
+  "learningAgentTitle": "Learning Agent — suositukset",
+  "statsEmpty": "Tilastoja ei ole vielä tallennettu. YouTuben ja Facebookin luvut näkyvät automaattisesti heti, kun postaus on julkaistu sovelluksen kautta."
+}

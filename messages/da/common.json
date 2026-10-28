@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Mere end content.",
+    "footerLine2": "En komplet content-maskine.",
+    "workspace": "Workspace",
+    "role": "Administrator"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "schulung": "Træning",
+    "contentFactory": "Content Factory",
+    "ideas": "Idéer & inspiration",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Sociale medier",
+    "calendar": "Content-kalender",
+    "analytics": "Analytics",
+    "growth": "Vækst",
+    "weiterempfehlungen": "Anbefalinger",
+    "reichweitenaufbau": "Opbyg rækkevidde",
+    "revenue": "Indtægter",
+    "inbox": "Indbakke",
+    "anfragen": "Forespørgsler",
+    "dateien": "Filer",
+    "agents": "Agenter",
+    "integrations": "Integrationer",
+    "settings": "Indstillinger",
+    "billing": "Pakke & fakturering",
+    "sales": "Salg & shop",
+    "website": "Min hjemmeside"
+  },
+  "topbar": {
+    "menuOpen": "Åbn menu",
+    "menuClose": "Luk menu",
+    "searchPlaceholder": "Søg efter indhold, projekter, kampagner …",
+    "notifications": "Notifikationer",
+    "language": "Sprog"
+  },
+  "footer": {
+    "help": "Hjælp",
+    "privacy": "Privatliv",
+    "imprint": "Juridisk information",
+    "systemOnline": "System online"
+  },
+  "actions": {
+    "save": "Gem",
+    "cancel": "Annuller",
+    "delete": "Slet",
+    "edit": "Rediger",
+    "create": "Opret",
+    "close": "Luk",
+    "back": "Tilbage",
+    "loading": "Indlæser …"
+  },
+  "status": {
+    "connected": "Forbundet",
+    "notConfigured": "Ikke konfigureret",
+    "error": "Fejl"
+  },
+  "statusBadge": {
+    "CONNECTED": "Forbundet",
+    "ACTIVE": "Aktiv",
+    "COMPLETED": "Afsluttet",
+    "RUNNING": "Kører",
+    "SUCCESS": "Gennemført",
+    "PUBLISHED": "Udgivet",
+    "APPROVED": "Godkendt",
+    "SCHEDULED": "Planlagt",
+    "WAITING": "Venter",
+    "IN_REVIEW": "Under gennemgang",
+    "NOT_CONFIGURED": "Ikke konfigureret",
+    "IDLE": "Klar",
+    "DRAFT": "Kladde",
+    "ARCHIVED": "Arkiveret",
+    "ERROR": "Fejl",
+    "REJECTED": "Afvist",
+    "RECEIVED": "Modtaget",
+    "PENDING": "Afventer",
+    "NOT_AVAILABLE": "Endnu ikke tilgængelig"
+  },
+  "integrationStatus": {
+    "notConfigured": "Ikke konfigureret — manglende variabel/variabler: {vars}.",
+    "verifyFailedGeneric": "Forbindelsen mislykkedes.",
+    "verifyFailedStatus": "{service} svarede med status {status}.",
+    "verifyUnreachable": "{service} kunne ikke nås.",
+    "connected": "Forbundet.",
+    "notAvailable": "Endnu ikke tilgængelig – denne forbindelse er endnu ikke bygget i appen."
+  },
+  "mediaPreview": {
+    "expand": "Vis større",
+    "close": "Luk"
+  }
+}

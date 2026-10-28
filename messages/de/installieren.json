@@ -1,0 +1,20 @@
+{
+  "button": "App installieren",
+  "buttonHint": "SECRET 58 als App auf dem Gerät installieren",
+  "close": "Schließen",
+  "canceled": "Installation abgebrochen. Du kannst sie jederzeit erneut starten.",
+  "iosTitle": "Auf iPhone oder iPad installieren",
+  "iosStep1": "Öffne diese Seite in Safari.",
+  "iosStep2": "Tippe auf „Teilen“ (das Quadrat mit dem Pfeil nach oben).",
+  "iosStep3": "Wähle „Zum Home-Bildschirm“ und bestätige mit „Hinzufügen“.",
+  "iosShort": "Safari: Teilen → Zum Home-Bildschirm",
+  "iosNotSafari": "Auf dem iPhone und iPad klappt die Installation nur in Safari. Öffne diese Seite bitte in Safari.",
+  "otherTitle": "So installierst du die App",
+  "otherChromium": "Öffne das Browsermenü (drei Punkte) und wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“.",
+  "otherSafariMac": "In Safari am Mac: Menü „Ablage“ → „Zum Dock hinzufügen“.",
+  "otherFirefox": "Firefox auf dem Computer kann Web-Apps nicht installieren. Nutze Chrome, Edge oder Safari.",
+  "otherGeneric": "Dieser Browser bietet gerade keinen Installationsdialog an. Das kann daran liegen, dass die App schon installiert ist oder der Browser die Installation nicht unterstützt. Versuche es in Chrome, Edge oder Safari.",
+  "insecureTitle": "Installation hier nicht möglich",
+  "insecureText": "Die Installation braucht eine bereitgestellte Website über HTTPS. Aus einer lokalen Datei oder ohne HTTPS geht es nicht. Auf dem eigenen Rechner funktioniert sie über „localhost“ in einer Entwicklungsumgebung.",
+  "installedNote": "Die App wurde installiert."
+}

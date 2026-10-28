@@ -1,0 +1,31 @@
+{
+  "title": "Script Studio",
+  "subtitle": "Inneall scripte agus hook: cruthaíonn sé scripteanna oiriúnaithe don ardán de réir an struchtúir Hook → Fadhb → Luach → Sampla → Tairbhe → CTA mar aon le leaganacha hook éagsúla.",
+  "form": {
+    "topicLabel": "Téama",
+    "topicPlaceholder": "m.sh. 5 bhealach a shábhálann gníomhairí AI am",
+    "platformLabel": "Ardán",
+    "generateButton": "Gin script & hooks",
+    "generateFailed": "Theip ar an nginiúint.",
+    "unknownError": "Earráid anaithnid."
+  },
+  "hookTypes": {
+    "direkt": "Díreach",
+    "neugierig": "Fiosrach",
+    "story": "Scéal",
+    "problem": "Fadhb",
+    "zahlen": "Uimhreacha",
+    "kontroversSachlich": "Conspóideach (réasúnta)",
+    "educational": "Oideachasúil"
+  },
+  "hooksHeading": "Leaganacha hook",
+  "engine": {
+    "label": "Inneall: {provider}",
+    "templateMode": "Mód teimpléid (níl aon soláthraí AI cumraithe)"
+  },
+  "script": {
+    "heading": "Script",
+    "save": "Sábháil mar mhír inneachair",
+    "saving": "Ag sábháil…"
+  }
+}

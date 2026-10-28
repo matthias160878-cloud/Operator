@@ -1,0 +1,21 @@
+{
+  "title": "Logáil na gcúntóirí",
+  "description": "Gach cúntóir (gníomhaire) de chuid SECRET 58 le stádas, an tasc deireanach agus toradh. Logáiltear gach rith anseo.",
+  "table": {
+    "agent": "Gníomhaire",
+    "description": "Cur síos",
+    "status": "Stádas",
+    "lastTask": "An tasc deireanach"
+  },
+  "history": {
+    "title": "Stair na rith",
+    "agent": "Gníomhaire",
+    "task": "Tasc",
+    "status": "Stádas",
+    "start": "Tús",
+    "end": "Deireadh",
+    "resultError": "Toradh / Earráid",
+    "empty": "Gan aon rith gníomhaire go fóill.",
+    "completed": "Críochnaithe"
+  }
+}

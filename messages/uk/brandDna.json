@@ -1,0 +1,30 @@
+{
+  "title": "Brand / Content DNA",
+  "subtitle": "Твій бренд. Твій стиль. Скрізь. Ці дані автоматично потрапляють у Content Brain, агенти скриптів, хуків і хештегів.",
+  "form": {
+    "nameLabel": "Назва бренду",
+    "industryLabel": "Галузь",
+    "descriptionLabel": "Опис",
+    "descriptionHint": "Чим особливий бренд?",
+    "audienceLabel": "Цільова аудиторія",
+    "languageLabel": "Мова",
+    "tonalityLabel": "Тональність",
+    "humorLabel": "Гумор",
+    "formalityLabel": "Офіційність",
+    "preferredWordsLabel": "Бажані слова",
+    "forbiddenWordsLabel": "Заборонені слова",
+    "preferredCtasLabel": "Бажані CTA",
+    "brandValuesLabel": "Цінності бренду",
+    "topicsLabel": "Теми",
+    "csvHint": "через кому",
+    "colorsLabel": "Кольори",
+    "colorsHint": "через кому, напр. #6D5BFF",
+    "fontsLabel": "Шрифти",
+    "visualRulesLabel": "Візуальні правила",
+    "saveError": "Не вдалося зберегти.",
+    "unknownError": "Невідома помилка.",
+    "saving": "Збереження…",
+    "save": "Зберегти Brand DNA",
+    "savedAt": "Збережено о {time}"
+  }
+}

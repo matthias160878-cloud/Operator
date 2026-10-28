@@ -1,0 +1,7 @@
+{
+ "schulung.subtitle": "Stapsgewijze handleidingen en uitlegvideo’s voor elk onderdeel van SECRET 58 — hier altijd terug te vinden.",
+ "schulung.topics.firstSteps.steps.0": "Controleer onder „Integraties“ of er een AI-aanbieder is ingesteld. De AI-functies lopen via de toegangen van de beheerder, dus je hebt geen eigen AI-abonnement nodig. Zonder AI-aanbieder werkt de app in sjabloonmodus.",
+ "schulung.topics.integrations.steps.2": "Toegangsgegevens worden nooit in de browser opgeslagen, maar alleen beschermd op de server. Ontbreekt er een toegang, dan stelt de beheerder die in.",
+ "schulung.topics.integrations.steps.3": "Kosten: Pro en Maxi zijn abonnementen, maandelijks of jaarlijks. De actuele prijzen staan onder „Pakket & facturering“. Elke externe aanbieder heeft zijn eigen, onafhankelijke kostenmodel (gratis / gebruiksgebaseerd / abonnement) — op de pagina Integraties staat bij elke dienst welk model geldt, met een link naar de actuele prijzen bij de aanbieder.",
+ "integrations.costNote": "Je SECRET 58-pakket (Pro of Maxi) is een abonnement, zie „Pakket & facturering“. Elke externe dienst hier heeft zijn eigen, onafhankelijke kostenmodel bij de betreffende aanbieder — SECRET 58 brengt hiervoor nooit extra in rekening."
+}

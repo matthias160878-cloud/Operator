@@ -1,0 +1,27 @@
+{
+  "title": "Ayarlar",
+  "description": "Çalışma alanın, kullanıcılar ve verilerine genel bakış. Kendi API anahtarlarını (yapay zekâ metinleri, bülten gönderimi) <zugaenge>Kendi erişimlerim</zugaenge> altında girersin; paketini <billing>Paket ve faturalama</billing> altında bulursun.",
+  "workspace": {
+    "title": "Çalışma alanı",
+    "name": "Ad",
+    "slug": "Slug",
+    "createdAt": "Oluşturulma tarihi"
+  },
+  "users": {
+    "title": "Kullanıcılar ve roller",
+    "note": "Her hesabın diğer müşterilerden ayrı kendi çalışma alanı vardır. Ek kullanıcıları henüz kendin ekleyemezsin."
+  },
+  "system": {
+    "title": "Sistem",
+    "contentItems": "İçerik öğeleri",
+    "campaigns": "Kampanyalar",
+    "mediaAssets": "Medya varlıkları",
+    "agentRuns": "Ajan çalıştırmaları",
+    "dbNote": "Çalışma alanında kaydedilmiş kayıt sayısı. Tüm verileri dışa aktarabilir veya çalışma alanını aşağıda „Verilerim” altında silebilirsin."
+  },
+  "onboarding": {
+    "title": "Kurulum asistanı",
+    "description": "İlk açılışta görünen, yapay zekâ sağlayıcıları, sosyal medya platformları ve sesli çıktı için küçük adım adım pencereler.",
+    "reopen": "Kurulum asistanını yeniden aç"
+  }
+}

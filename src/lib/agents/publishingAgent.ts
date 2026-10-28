@@ -38,6 +38,14 @@ export async function scheduleContentItem(contentItemId: string, scheduledAt: Da
   });
 }
 
+/** Beitrag wurde vom Kunden selbst gepostet — nur Status, kein Plattform-Aufruf. */
+export async function markPublishedManually(contentItemId: string) {
+  return prisma.contentItem.update({
+    where: { id: contentItemId },
+    data: { status: "PUBLISHED", publishedAt: new Date(), publishingStartedAt: null },
+  });
+}
+
 export async function publishContentItem(
   contentItemId: string,
   publicOrigin: string
@@ -99,7 +107,7 @@ export async function publishContentItem(
     if (result.published) {
       await prisma.contentItem.update({
         where: { id: item.id },
-        data: { status: "PUBLISHED", publishedAt: new Date() },
+        data: { status: "PUBLISHED", publishedAt: new Date(), externalPostId: result.externalPostId ?? null },
       });
     }
     return result;

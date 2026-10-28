@@ -1,0 +1,23 @@
+{
+ "pageTitle": "Design Studio",
+ "subtitle": "Koncepti sličica kao tekst i stanje veze s Canvom.",
+ "imageAssetsTitle": "Slikovni asseti",
+ "imageAssetsEmpty": "Još nema slika. Agent za sličice trenutno pravi samo tekstualne koncepte, ne slikovne datoteke.",
+ "thumbnailAgent": {
+  "title": "Thumbnail agent",
+  "description": "Kreira tekstualni koncept (naslov, vizualna ideja, layout, CTA) — pripremljen za povezivanje generatora slika. Slika se još ne kreira.",
+  "inputPlaceholder": "Tema za thumbnail",
+  "submitButton": "Generiši koncept",
+  "errorGenerationFailed": "Generisanje nije uspjelo.",
+  "errorUnknown": "Nepoznata greška.",
+  "fieldTitle": "Naslov",
+  "fieldVisualIdea": "Vizualna ideja",
+  "fieldText": "Tekst",
+  "fieldLayout": "Layout",
+  "fieldCta": "CTA",
+  "fieldImageDescription": "Opis slike",
+  "templateResult": "Šablon: ovaj koncept potiče iz fiksnog tekstualnog šablona, a ne od AI-ja. Za AI koncepte unesi vlastiti AI ključ pod „Postavke → Vlastiti pristupi”.",
+  "textEngineLabel": "Tekstualni pogon:",
+  "templateMode": "Način šablona (nije konfigurisan AI provajder)"
+ }
+}

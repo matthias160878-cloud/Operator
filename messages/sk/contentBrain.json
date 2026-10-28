@@ -1,0 +1,27 @@
+{
+ "title": "Content Brain",
+ "subtitle": "Jeden nápad dnu — kompletný plán obsahu šitý na platformy von. ContentBrainAgent zohľadňuje tvoju Brand DNA a pre každú vybranú platformu vytvorí vhodné háčiky, skripty, hashtagy a koncepty miniatúr ako koncept.",
+ "campaignsHeading": "Kampane",
+ "noCampaigns": "Zatiaľ nie sú vytvorené žiadne kampane.",
+ "campaignSummary": "{count} položiek obsahu · {audience}",
+ "form": {
+  "textEngineLabel": "Textový engine:",
+  "templateMode": "Režim šablóny (nie je nakonfigurovaný žiadny poskytovateľ AI)",
+  "modeTemplate": "Šablóna",
+  "topicLabel": "Téma / nápad",
+  "topicPlaceholder": "napr. Vysvetli, prečo autonómni agenti AI menia svet práce.",
+  "audienceLabel": "Cieľová skupina",
+  "audiencePlaceholder": "napr. 25-45, záujemcovia o technológie",
+  "goalLabel": "Cieľ",
+  "languageLabel": "Jazyk",
+  "platformsLabel": "Platformy",
+  "itemsPerPlatformLabel": "Položky obsahu na platformu ({count})",
+  "generateError": "Generovanie zlyhalo.",
+  "unknownError": "Neznáma chyba.",
+  "submitLoading": "Content Brain pracuje…",
+  "submitIdle": "Vygenerovať plán obsahu",
+  "resultHeading": "Kampaň vytvorená — {count} položiek obsahu uložených ako koncept.",
+  "resultDescription": "Vygenerované v režime {mode}. Všetok obsah začína ako DRAFT — skontroluj a uprav ho v Content Factory.",
+  "resultLink": "Do Content Factory →"
+ }
+}

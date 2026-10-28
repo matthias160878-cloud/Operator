@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Tworzenie wideo nie jest jeszcze dostępne: nie podłączono jeszcze usługi, która tworzy filmy. Poniżej widzisz przygotowane formaty dla każdej platformy; skrypty, lektora i napisy tworzysz w Script Studio, Voice Studio i Content Factory.",
+  "providerCardTitle": "Dostawcy wideo",
+  "formatManagerTitle": "Format Manager",
+  "assetsTitle": "Zasoby wideo",
+  "assetsEmpty": "Brak filmów. Tworzenie wideo nie jest jeszcze dostępne w aplikacji.",
+  "providerNote": "Żadna usługa wideo nie jest jeszcze dostępna – filmów nie można obecnie tworzyć w aplikacji."
+}

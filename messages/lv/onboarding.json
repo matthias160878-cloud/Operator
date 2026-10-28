@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "{current}. solis no {total}",
+    "close": "Aizvērt",
+    "back": "Atpakaļ",
+    "next": "Tālāk",
+    "skip": "Izlaist",
+    "finish": "Gatavs, sākam",
+    "checking": "Pārbauda …",
+    "checkAgain": "Pārbaudīt tagad",
+    "connected": "Pievienots",
+    "notConnected": "Vēl nav pievienots",
+    "skippedNote": "Izlaists — to vari jebkurā laikā izdarīt sadaļā „Integrācijas“.",
+    "envHint": "Piezīme: pēc saglabāšanas Render parasti paiet 1–2 minūtes, līdz pakalpojums pārstartējas un izmaiņas stājas spēkā. Ja „Pārbaudīt tagad“ vēl neko neatrod, mazliet pagaidi un klikšķini vēlreiz.",
+    "reopenHint": "Šo asistentu vari jebkurā laikā atvērt vēlreiz: Iestatījumos sadaļā „Iestatīšanas asistents“."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Laipni lūdzam SECRET 58",
+      "body": "Pirms sākam, kopā iestatīsim nepieciešamāko — pavisam nelielos, atsevišķos soļos. Vari jebkurā laikā apstāties un vēlāk turpināt no tās pašas vietas."
+    },
+    "aiProvider": {
+      "title": "1. solis: pievieno MI pakalpojumu sniedzēju",
+      "body": "Tekstiem, skriptiem, āķiem un tēmturiem programmatūrai vajadzīgs MI pakalpojumu sniedzējs. Izvēlies vienu no diviem — pietiek ar vienu.",
+      "steps": [
+        "Zemāk pie Anthropic vai OpenAI noklikšķini uz „Iegūt API atslēgu“.",
+        "Ja vajag, izveido tur bezmaksas kontu.",
+        "Izveido tur jaunu API atslēgu un nokopē to.",
+        "Noklikšķini uz „Ievadīt Render“, ielīmē atslēgu tur kā vides mainīgo un saglabā.",
+        "Atgriezies šeit un zemāk noklikšķini uz „Pārbaudīt tagad“."
+      ],
+      "costHint": "Izmaksas rodas tikai faktiskas lietošanas gadījumā, tieši pie attiecīgā pakalpojumu sniedzēja — nekad caur SECRET 58."
+    },
+    "platform": {
+      "title": "2. solis: pievieno sociālo mediju platformu (neobligāti)",
+      "body": "Neobligāti, bet ieteicams: pievieno vismaz vienu platformu, kurā vēlāk gribēsi publicēt. Šo soli vari izpildīt arī vēlāk.",
+      "steps": [
+        "Zemāk izvēlies platformu, kuru vēlies izmantot.",
+        "Noklikšķini uz „Iegūt API atslēgu“ un seko pakalpojumu sniedzēja norādēm.",
+        "Noklikšķini uz „Ievadīt Render“ un saglabā piekļuves datus tur.",
+        "Atgriezies šeit un noklikšķini uz „Pārbaudīt tagad“."
+      ]
+    },
+    "voice": {
+      "title": "3. solis: pievieno runas izvadi (neobligāti)",
+      "body": "Vajadzīgs tikai tad, ja vēlies automātiski izveidot ierunātus balss ierakstus saviem video. Bez šī soļa viss pārējais tāpat darbojas.",
+      "steps": [
+        "Noklikšķini uz „Iegūt API atslēgu“ pie ElevenLabs.",
+        "Izveido tur kontu un API atslēgu.",
+        "Noklikšķini uz „Ievadīt Render“ un saglabā atslēgu tur.",
+        "Atgriezies šeit un noklikšķini uz „Pārbaudīt tagad“."
+      ]
+    },
+    "done": {
+      "title": "Gatavs!",
+      "body": "Tagad vari sākt. Visu, ko izlaidi, vari jebkurā laikā atrast un papildināt sadaļā „Integrācijas“ — vai atkal atvērt šo asistentu caur „Iestatījumi“."
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "title": "Formació",
+  "subtitle": "Guies pas a pas i vídeos explicatius sobre cada àrea de SECRET 58 — sempre els pots consultar aquí.",
+  "welcomeBanner": {
+    "title": "Us donem la benvinguda a SECRET 58!",
+    "body": "Gràcies per la teva compra. Abans de començar, val la pena fer un cop d'ull a «Primers passos» a sota, perquè els agents d'IA treballin des del principi amb les teves dades reals."
+  },
+  "stepsLabel": "Passos",
+  "openPage": "Obre la pàgina",
+  "topics": {
+    "firstSteps": {
+      "title": "Primers passos",
+      "description": "Fes primer aquestes tres coses i tots els agents d'IA treballaran amb dades reals en lloc de marcadors de posició.",
+      "steps": [
+        "A «Configuració → Accessos propis», introdueix la teva pròpia clau d'IA d'Anthropic, OpenAI o Gemini. Les funcions d'IA utilitzen exclusivament la teva clau; el proveïdor d'IA et factura directament. Sense clau pròpia, l'app funciona en mode plantilla amb blocs de text fixos.",
+        "A «Brand DNA», omple la teva marca (to, públic objectiu, valors): els agents d'IA ho fan servir per a cada text generat.",
+        "A «Idees i inspiració» o «Content Brain», fes generar la primera idea o campanya."
+      ]
+    },
+    "contentBrainToFactory": {
+      "title": "Content Brain → Content Factory",
+      "description": "Així una idea es converteix en contingut final i aprovat.",
+      "steps": [
+        "A Content Brain, crea una campanya nova amb tema i plataformes de destinació: se'n generen automàticament diversos elements de contingut.",
+        "A Content Factory, cada element de contingut passa per un estat: Esborrany → En revisió → Aprovat → Planificat → Publicat.",
+        "L'aprovació és un pas manual i obligatori: res no es publica automàticament sense confirmació.",
+        "A la vista de detall d'un element de contingut es poden tornar a generar per separat el guió, la veu en off, els subtítols, els hashtags i la miniatura."
+      ]
+    },
+    "studios": {
+      "title": "Script, Voice, Video i Design Studio",
+      "description": "Les eines especialitzades per a cada component del contingut.",
+      "steps": [
+        "Script Studio: genera guions amb l'estructura Hook → Problema → Value → Exemple → Payoff → CTA.",
+        "Voice Studio: importa o crea la teva pròpia veu d'ElevenLabs i després genera la veu en off directament a partir d'un guió.",
+        "Design Studio: l'agent de miniatures proposa títol, idea visual, text, disseny i descripció de la imatge.",
+        "Video Studio: mostra l'estat actual de la connexió amb proveïdors de vídeo (gestor de formats, estat dels proveïdors)."
+      ]
+    },
+    "calendarPublishing": {
+      "title": "Content Kalender i publicació",
+      "description": "On acaben les publicacions planificades i per què una publicació surt realment (o no).",
+      "steps": [
+        "Al Content Kalender apareixen tots els elements de contingut amb data de publicació planificada.",
+        "Abans de cada publicació, el PublishingAgent comprova en directe si la plataforma de destinació està realment marcada com a «Connectat» a «Xarxes socials».",
+        "Sense una connexió real amb la plataforma, es mostra honestament un error en lloc de simular una publicació."
+      ]
+    },
+    "analyticsGrowth": {
+      "title": "Analytics i creixement",
+      "description": "Xifres reals del teu propi rendiment i recomanacions en lloc d'automatització.",
+      "steps": [
+        "Analytics mostra estadístiques desades. Per a YouTube i Facebook, l'aplicació obté automàticament les xifres de les entrades publicades; Instagram, TikTok i LinkedIn s'hi afegiran quan la plataforma ho autoritzi. Les altres xifres les introdueixes a mà a «Recomanacions» o a la comparació de variants.",
+        "La pàgina de creixement calcula a partir d'aquestes dades les millors hores de publicació, els hashtags i els formats amb més èxit.",
+        "Important: deliberadament no hi ha cap augment automatitzat de seguidors/engagement (cap comportament de bot): infringiria les condicions d'ús de totes les plataformes."
+      ]
+    },
+    "inbox": {
+      "title": "Safata d'entrada",
+      "description": "Esborranys de resposta amb IA per als missatges, amb aprovació abans de l'enviament.",
+      "steps": [
+        "Els missatges de les plataformes encara no s'obtenen i les respostes no s'envien. Per provar-ho, crees converses com a simulació.",
+        "El MessageAgent proposa una resposta a partir del Brand DNA i de l'historial de la conversa.",
+        "Tu revises i aproves l'esborrany. L'enviament a les plataformes encara no està desenvolupat: «Aprova i envia» ho indica honestament com a error en lloc de simular un èxit."
+      ]
+    },
+    "revenue": {
+      "title": "Seguiment d'ingressos",
+      "description": "Visió general de tots els ingressos de les plataformes en un sol lloc; el pagament continua fent-se a través de les mateixes plataformes.",
+      "steps": [
+        "Els ingressos s'introdueixen manualment, perquè TikTok/Meta no ofereixen una API pública d'ingressos i YouTube requereix accés al programa de socis (encara no connectat).",
+        "El pagament real sempre es fa directament a través de la plataforma corresponent (p. ex. YouTube mitjançant Google AdSense): SECRET 58 no gestiona cap pagament."
+      ]
+    },
+    "integrations": {
+      "title": "Integracions i claus d'API",
+      "description": "D'on ve cada estat de connexió i on s'introdueix la clau corresponent.",
+      "steps": [
+        "Cada fila mostra l'estat real, comprovat en directe: mai una connexió simulada.",
+        "Els teus accessos propis (claus d'IA, Resend per al butlletí) els introdueixes a «Configuració → Accessos propis»; allà una guia et porta a la pàgina oficial de claus del proveïdor.",
+        "Les credencials mai no es desen al navegador, només xifrades al servidor. La sortida de veu i els accessos d'aplicació de les plataformes els configura l'operador; «Encara no disponible» vol dir que la connexió encara no està desenvolupada a l'app.",
+        "Costos: Pro i Maxi són subscripcions, mensuals o anuals. Els preus actuals són a «Paquet i facturació». Pels teus accessos propis (IA, Resend), cada proveïdor et factura directament segons el seu propi model de preus; SECRET 58 no hi cobra res addicional."
+      ]
+    }
+  }
+}

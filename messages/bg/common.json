@@ -1,0 +1,99 @@
+{
+  "appName": "SECRET 58",
+  "appTagline": "AI Social Command Center",
+  "sidebar": {
+    "footerLine1": "Повече от съдържание.",
+    "footerLine2": "Цяла машина за съдържание.",
+    "workspace": "Работно пространство",
+    "role": "Администратор"
+  },
+  "nav": {
+    "dashboard": "Табло",
+    "schulung": "Обучение",
+    "contentFactory": "Content Factory",
+    "ideas": "Идеи и вдъхновение",
+    "contentBrain": "Content Brain",
+    "brandDna": "Brand DNA",
+    "scriptStudio": "Script Studio",
+    "voiceStudio": "Voice Studio",
+    "videoStudio": "Video Studio",
+    "designStudio": "Design Studio",
+    "socialMedia": "Социални мрежи",
+    "calendar": "Календар на съдържанието",
+    "analytics": "Анализи",
+    "growth": "Растеж",
+    "weiterempfehlungen": "Препоръки",
+    "reichweitenaufbau": "Изграждане на обхват",
+    "revenue": "Приходи",
+    "inbox": "Входяща поща",
+    "anfragen": "Запитвания",
+    "dateien": "Файлове",
+    "agents": "Агенти",
+    "integrations": "Интеграции",
+    "settings": "Настройки",
+    "billing": "Пакет и фактуриране",
+    "sales": "Продажби и магазин",
+    "website": "Моят уебсайт"
+  },
+  "topbar": {
+    "menuOpen": "Отвори менюто",
+    "menuClose": "Затвори менюто",
+    "searchPlaceholder": "Търси съдържание, проекти, кампании …",
+    "notifications": "Известия",
+    "language": "Език"
+  },
+  "footer": {
+    "help": "Помощ",
+    "privacy": "Поверителност",
+    "imprint": "Правна информация",
+    "systemOnline": "Системата е онлайн"
+  },
+  "actions": {
+    "save": "Запази",
+    "cancel": "Отказ",
+    "delete": "Изтрий",
+    "edit": "Редактирай",
+    "create": "Създай",
+    "close": "Затвори",
+    "back": "Назад",
+    "loading": "Зарежда се …"
+  },
+  "status": {
+    "connected": "Свързано",
+    "notConfigured": "Не е конфигурирано",
+    "error": "Грешка"
+  },
+  "statusBadge": {
+    "CONNECTED": "Свързано",
+    "ACTIVE": "Активно",
+    "COMPLETED": "Завършено",
+    "RUNNING": "Изпълнява се",
+    "SUCCESS": "Успешно",
+    "PUBLISHED": "Публикувано",
+    "APPROVED": "Одобрено",
+    "SCHEDULED": "Планирано",
+    "WAITING": "Чака",
+    "IN_REVIEW": "В преглед",
+    "NOT_CONFIGURED": "Не е конфигурирано",
+    "IDLE": "Готово",
+    "DRAFT": "Чернова",
+    "ARCHIVED": "Архивирано",
+    "ERROR": "Грешка",
+    "REJECTED": "Отхвърлено",
+    "RECEIVED": "Получено",
+    "PENDING": "Изчаква",
+    "NOT_AVAILABLE": "Все още не е налично"
+  },
+  "integrationStatus": {
+    "notConfigured": "Не е конфигурирано — липсваща(и) променлива(и): {vars}.",
+    "verifyFailedGeneric": "Свързването не успя.",
+    "verifyFailedStatus": "{service} отговори със статус {status}.",
+    "verifyUnreachable": "{service} не можа да бъде достигнат.",
+    "connected": "Свързано.",
+    "notAvailable": "Все още не е налично – тази връзка все още не е изградена в приложението."
+  },
+  "mediaPreview": {
+    "expand": "Покажи по-голямо",
+    "close": "Затвори"
+  }
+}

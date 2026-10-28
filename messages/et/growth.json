@@ -1,0 +1,15 @@
+{
+  "title": "Kasv",
+  "subtitle": "Soovitused ulatuse ja kasvu jaoks – tuletatud sinu sisu salvestatud statistikast: parimad postitusajad, edukamad teemaviited ja formaadid. YouTube'i ja Facebooki puhul tuuakse numbrid automaatselt.",
+  "warning": "Teadlikult <strong>pole</strong> kaasatud: automatiseeritud jälgimine/meeldimine/kommenteerimine jälgijate kunstlikuks suurendamiseks. See rikub YouTube'i, Instagrami, TikToki, LinkedIni ja Facebooki kasutustingimusi ning võib viia konto blokeerimiseni. See leht annab ainult andmepõhiseid soovitusi sinu enda sisu jaoks.",
+  "filterAll": "Kõik platvormid",
+  "emptyState": "Platvormi {platform} kohta pole veel statistikat salvestatud, seega pole veel ka soovitusi. YouTube'i ja Facebooki puhul ilmuvad numbrid automaatselt pärast rakenduse kaudu avaldamist.",
+  "emptyStateDefaultScope": "see tööruum",
+  "bestPostingTimesTitle": "Parimad postitusajad",
+  "postingTime": "{day} · kell {hour}",
+  "avgLabel": "Ø {percent} ({count})",
+  "topHashtagsTitle": "Edukaimad märksõnad",
+  "topHashtagsEmpty": "Märksõnade andmeid pole.",
+  "hashtagTooltip": "Ø {percent} haaratus, kasutatud {count}×",
+  "topFormatsTitle": "Parimad vormingud"
+}

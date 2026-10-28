@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Video Studio",
+  "subtitle": "Izrada videa još nije dostupna: nije povezana nijedna video usluga koja izrađuje videozapise. Ispod vidiš pripremljene formate po platformi; skripte, glasovnu naraciju i titlove izrađuješ u Script Studiju, Voice Studiju i Content Factoryju.",
+  "providerCardTitle": "Video pružatelji",
+  "formatManagerTitle": "Upravitelj formata",
+  "assetsTitle": "Video materijali",
+  "assetsEmpty": "Još nema videozapisa. Izrada videa u aplikaciji još nije dostupna.",
+  "providerNote": "Još nema upotrebljive video usluge – videozapisi se trenutačno ne mogu izraditi u aplikaciji."
+}

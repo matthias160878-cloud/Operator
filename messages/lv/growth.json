@@ -1,0 +1,15 @@
+{
+  "title": "Izaugsme",
+  "subtitle": "Ieteikumi sasniedzamībai un izaugsmei – atvasināti no tava satura saglabātās statistikas: labākie publicēšanas laiki, veiksmīgākie tēmturi un formāti. YouTube un Facebook skaitļi tiek iegūti automātiski.",
+  "warning": "Apzināti <strong>nav</strong> iekļauta: automatizēta sekošana/patīk atzīmēšana/komentēšana, lai mākslīgi palielinātu sekotāju skaitu. Tas YouTube, Instagram, TikTok, LinkedIn un Facebook pārkāpj lietošanas noteikumus un var novest pie konta bloķēšanas. Šī lapa sniedz tikai uz datiem balstītus ieteikumus tavam saturam.",
+  "filterAll": "Visas platformas",
+  "emptyState": "Platformai {platform} statistika vēl nav saglabāta, tāpēc ieteikumu vēl nav. YouTube un Facebook skaitļi parādās automātiski pēc publicēšanas ar lietotnes starpniecību.",
+  "emptyStateDefaultScope": "šo darbvietu",
+  "bestPostingTimesTitle": "Labākie publicēšanas laiki",
+  "postingTime": "{day} · plkst. {hour}",
+  "avgLabel": "Vid. {percent} ({count})",
+  "topHashtagsTitle": "Veiksmīgākie tēmturi",
+  "topHashtagsEmpty": "Tēmturu datu nav.",
+  "hashtagTooltip": "Vid. {percent} iesaiste, izmantots {count}×",
+  "topFormatsTitle": "Labākie formāti"
+}

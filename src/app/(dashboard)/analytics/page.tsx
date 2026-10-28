@@ -1,4 +1,5 @@
 import { Eye, Heart, MessageCircle, Share2, TrendingUp } from "lucide-react";
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { getCurrentWorkspaceId } from "@/lib/workspace";
 import {
@@ -33,15 +34,34 @@ export default async function AnalyticsPage() {
     <div className="space-y-5">
       <div>
         <h1 className="text-xl font-semibold text-foreground">{t("title")}</h1>
-        <p className="mt-1 text-sm text-muted">{t("subtitle")}</p>
+        <p className="mt-1 max-w-3xl text-sm text-muted">
+          {t.rich("subtitle", {
+            weiter: (chunks) => (
+              <Link href="/weiterempfehlungen" className="text-accent-2 underline">
+                {chunks}
+              </Link>
+            ),
+            varianten: (chunks) => (
+              <Link href="/reichweitenaufbau?tab=varianten" className="text-accent-2 underline">
+                {chunks}
+              </Link>
+            ),
+          })}
+        </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <StatCard icon={Eye} label={t("statViewsTotal")} value={formatNumber(stats.totalViews)} accent="accent" />
-        <StatCard icon={Heart} label={t("statLikesTotal")} value={formatNumber(stats.totalLikes)} accent="accent-3" />
-        <StatCard icon={MessageCircle} label={t("statComments")} value={formatNumber(stats.totalComments)} accent="accent-2" />
-        <StatCard icon={Share2} label={t("statShares")} value={formatNumber(stats.totalShares)} accent="success" />
-      </div>
+      {stats.analyticsRecords === 0 ? (
+        <div className="card p-6 text-center text-sm text-muted" data-testid="analytics-leer">
+          {t("statsEmpty")}
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatCard icon={Eye} label={t("statViewsTotal")} value={formatNumber(stats.totalViews)} accent="accent" />
+          <StatCard icon={Heart} label={t("statLikesTotal")} value={formatNumber(stats.totalLikes)} accent="accent-3" />
+          <StatCard icon={MessageCircle} label={t("statComments")} value={formatNumber(stats.totalComments)} accent="accent-2" />
+          <StatCard icon={Share2} label={t("statShares")} value={formatNumber(stats.totalShares)} accent="success" />
+        </div>
+      )}
 
       <div className="card p-4">
         <div className="mb-2 flex items-center justify-between">

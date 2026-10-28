@@ -1,0 +1,59 @@
+{
+  "wizard": {
+    "stepIndicator": "Skref {current} af {total}",
+    "close": "Loka",
+    "back": "Til baka",
+    "next": "Áfram",
+    "skip": "Sleppa",
+    "finish": "Búið, byrjum",
+    "checking": "Athuga …",
+    "checkAgain": "Athuga núna",
+    "connected": "Tengt",
+    "notConnected": "Ekki enn tengt",
+    "skippedNote": "Sleppt — þú getur bætt þessu við hvenær sem er undir „Samþættingar“.",
+    "envHint": "Athugið: Eftir að þú vistar í Render tekur það yfirleitt 1–2 mínútur þar til þjónustan endurræsist og breytingin tekur gildi. Ef „Athuga núna“ finnur ekkert enn, bíddu stutta stund og smelltu aftur.",
+    "reopenHint": "Þú getur opnað þennan aðstoðarmann aftur hvenær sem er: í stillingum undir „Uppsetningaraðstoð“."
+  },
+  "steps": {
+    "welcome": {
+      "title": "Velkomin(n) í SECRET 58",
+      "body": "Áður en lengra er haldið setjum við saman upp það nauðsynlegasta — í mjög litlum, stökum skrefum. Þú getur gert hlé hvenær sem er og haldið áfram á sama stað síðar."
+    },
+    "aiProvider": {
+      "title": "Skref 1: Tengja gervigreindarveitu",
+      "body": "Fyrir texta, handrit, krækjur og myllumerki þarf hugbúnaðurinn gervigreindarveitu. Veldu aðra hvora — ein nægir.",
+      "steps": [
+        "Smelltu hér fyrir neðan á „Sækja API-lykil“ hjá Anthropic eða OpenAI.",
+        "Stofnaðu þar ókeypis aðgang ef þörf krefur.",
+        "Búðu þar til nýjan API-lykil og afritaðu hann.",
+        "Smelltu á „Skrá í Render“, límdu lykilinn þar inn sem umhverfisbreytu og vistaðu.",
+        "Komdu aftur hingað og smelltu hér fyrir neðan á „Athuga núna“."
+      ],
+      "costHint": "Kostnaður fellur aðeins til við raunverulega notkun, beint hjá viðkomandi veitanda — aldrei í gegnum SECRET 58."
+    },
+    "platform": {
+      "title": "Skref 2: Tengja samfélagsmiðil (valfrjálst)",
+      "body": "Valfrjálst en mælt með: Tengdu að minnsta kosti einn miðil sem þú vilt birta á síðar. Þú getur líka gert þetta skref síðar.",
+      "steps": [
+        "Veldu hér fyrir neðan miðil sem þú vilt nota.",
+        "Smelltu á „Sækja API-lykil“ og fylgdu leiðbeiningum veitandans.",
+        "Smelltu á „Skrá í Render“ og vistaðu aðgangsgögnin þar.",
+        "Komdu aftur hingað og smelltu á „Athuga núna“."
+      ]
+    },
+    "voice": {
+      "title": "Skref 3: Tengja talgervil (valfrjálst)",
+      "body": "Aðeins nauðsynlegt ef þú vilt láta búa til talsetningu sjálfkrafa fyrir myndskeiðin þín. Án þessa skrefs virkar allt annað samt.",
+      "steps": [
+        "Smelltu á „Sækja API-lykil“ hjá ElevenLabs.",
+        "Stofnaðu þar aðgang og API-lykil.",
+        "Smelltu á „Skrá í Render“ og vistaðu lykilinn þar.",
+        "Komdu aftur hingað og smelltu á „Athuga núna“."
+      ]
+    },
+    "done": {
+      "title": "Búið!",
+      "body": "Þú getur byrjað núna. Allt sem þú slepptir finnurðu og bætir við hvenær sem er undir „Samþættingar“ — eða opnar þennan aðstoðarmann aftur í gegnum „Stillingar“."
+    }
+  }
+}

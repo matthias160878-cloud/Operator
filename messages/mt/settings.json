@@ -1,0 +1,27 @@
+{
+  "title": "Settings",
+  "description": "Iż-żona tax-xogħol tiegħek, l-utenti u ħarsa ġenerali lejn id-dejta tiegħek. Iċ-ċwievet API tiegħek (testi tal-IA, bgħit ta' newsletters) iddaħħalhom taħt <zugaenge>Aċċessi tiegħi</zugaenge>; il-pakkett tiegħek issibu taħt <billing>Pakkett u Fatturar</billing>.",
+  "workspace": {
+    "title": "Workspace",
+    "name": "Isem",
+    "slug": "Slug",
+    "createdAt": "Maħluq fi"
+  },
+  "users": {
+    "title": "Utenti u Rwoli",
+    "note": "Kull kont għandu ż-żona tax-xogħol tiegħu, separata minn klijenti oħra. Għalissa ma tistax iżżid utenti oħra int stess."
+  },
+  "system": {
+    "title": "Sistema",
+    "contentItems": "Items ta' kontenut",
+    "campaigns": "Kampanji",
+    "mediaAssets": "Assi tal-midja",
+    "agentRuns": "Eżekuzzjonijiet ta' agenti",
+    "dbNote": "Numru ta' entrati ssejvjati fiż-żona tax-xogħol tiegħek. Tista' tesporta d-dejta kollha jew tħassar iż-żona tax-xogħol hawn taħt, taħt \"Id-dejta tiegħi\"."
+  },
+  "onboarding": {
+    "title": "Assistent tal-konfigurazzjoni",
+    "description": "It-twieqi żgħar pass pass għall-fornituri tal-AI, il-pjattaformi tas-social media u l-output tal-vuċi li jidhru meta tiftaħ għall-ewwel darba.",
+    "reopen": "Erġa' iftaħ l-assistent tal-konfigurazzjoni"
+  }
+}

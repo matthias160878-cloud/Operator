@@ -1,14 +1,17 @@
 {
   "kicker": "AI Social Command Center",
   "title": "SECRET 58 — {packageName}",
-  "subtitle": "Eine Idee. Mehrere Plattformen. Maximale Reichweite. Ein einziges Komplettpaket — kein Abo, keine Staffelung, voller Zugriff auf die gesamte Anwendung.",
+  "claim": "Kein Abo. Alle Agenten. Deine eigenen KI-Anbieter.",
+  "subtitle": "Eine Idee. Mehrere Plattformen. Maximale Reichweite. Ein einziges Komplettpaket — einmal zahlen, voller Zugriff auf die gesamte Anwendung.",
   "features": [
     "Content Brain — eine Idee, alle Plattformen",
-    "Script-, Hook-, Hashtag- und Thumbnail-Agenten",
-    "Content Factory mit Freigabe-Workflow",
-    "Content Kalender, Analytics & Wachstums-Empfehlungen",
+    "Alle KI-Agenten: Ideen, Trends, Script, Hook, Hashtags, Thumbnails, Untertitel, Publishing",
+    "Voice Studio mit ElevenLabs-Stimmen",
+    "Video Studio mit Format-Manager — Anbindung von KI-Videogeneratoren in Arbeit",
+    "Content Factory mit Freigabe-Workflow und Content Kalender",
+    "Analytics, Wachstums-Empfehlungen und Einnahmen-Tracking",
     "Posteingang mit KI-Antwortentwürfen",
-    "Einnahmen-Tracking über alle Plattformen"
+    "Freie Wahl der KI-Anbieter über eigene Zugänge — keine Kontingente"
   ],
   "priceOnetime": "einmalig",
   "priceRecommendedNote": "Empfohlener Preis — wird verbindlich, sobald Stripe mit einem passenden Preis konfiguriert ist.",
@@ -17,5 +20,25 @@
   "checkoutFailed": "Checkout fehlgeschlagen.",
   "unknownError": "Unbekannter Fehler.",
   "notConfigured": "Zahlung ist noch nicht konfiguriert — der Betreiber muss zuerst in Stripe ein Produkt zu {price} anlegen und STRIPE_SECRET_KEY / STRIPE_PRICE_ID hinterlegen.",
-  "costDisclosure": "Hinweis: Dieser Preis ist einmalig für die Software. Einzelne Funktionen (z. B. KI-Textgenerierung, Sprachausgabe) benötigen eigene Zugänge bei Drittanbietern (z. B. Anthropic, ElevenLabs) — deren Kosten sind unabhängig von SECRET 58 und werden direkt beim jeweiligen Anbieter fällig, nicht hier berechnet. Details nach dem Kauf unter Integrationen."
+  "costDisclosure": "Hinweis: Dieser Preis ist einmalig für die Software. Einzelne Funktionen (z. B. KI-Textgenerierung, Sprachausgabe) benötigen eigene Zugänge bei Drittanbietern (z. B. Anthropic, ElevenLabs) — deren Kosten sind unabhängig von SECRET 58 und werden direkt beim jeweiligen Anbieter fällig, nicht hier berechnet. Details nach dem Kauf unter Integrationen.",
+  "setupServiceTitle": "Einrichtungsservice dazubuchen (+{price} einmalig)",
+  "setupServiceDescription": "Wir richten für dich API-Schlüssel, Brand DNA und die ersten Posts ein.",
+  "setupServiceUnavailable": "Bald buchbar — der Betreiber muss den Service zuerst in Stripe hinterlegen.",
+  "autopilot": {
+    "kicker": "Demnächst",
+    "title": "Autopilot — alles inklusive",
+    "subtitle": "Keine eigenen Zugänge nötig: Alle Anbieterkosten für Text, Stimme und Video sind enthalten. Gleicher Funktionsumfang wie das Komplettpaket — die Größen unterscheiden sich nur in der Menge.",
+    "comingSoon": "Demnächst",
+    "perMonth": "/ Monat",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agentur"
+    },
+    "brands": "{count, plural, one {# Marke} other {# Marken}}",
+    "ideas": "{count} Content-Ideen pro Monat",
+    "videos": "{count} KI-Videos (à 30 s) pro Monat",
+    "voiceMinutes": "{count} Minuten Sprachausgabe pro Monat",
+    "note": "Geplante Preise, noch nicht buchbar. Der Autopilot startet, sobald die KI-Videogeneratoren angebunden sind."
+  }
 }

@@ -1,14 +1,17 @@
 {
   "kicker": "AI Social Command Center",
   "title": "SECRET 58 — {packageName}",
-  "subtitle": "Una idea. Varias plataformas. Máximo alcance. Un único paquete completo — sin suscripción, sin niveles, acceso total a toda la aplicación.",
+  "claim": "Sin suscripción. Todos los agentes. Tus propios proveedores de IA.",
+  "subtitle": "Una idea. Varias plataformas. Máximo alcance. Un único paquete completo — pagas una vez, acceso total a toda la aplicación.",
   "features": [
     "Content Brain — una idea, todas las plataformas",
-    "Agentes de guion, gancho, hashtags y miniaturas",
-    "Fábrica de contenido con flujo de aprobación",
-    "Calendario de contenido, analítica y recomendaciones de crecimiento",
+    "Todos los agentes de IA: ideas, tendencias, guion, gancho, hashtags, miniaturas, subtítulos, publicación",
+    "Voice Studio con voces de ElevenLabs",
+    "Video Studio con gestor de formatos — integración de generadores de vídeo con IA en curso",
+    "Fábrica de contenido con flujo de aprobación y calendario de contenido",
+    "Analítica, recomendaciones de crecimiento y seguimiento de ingresos",
     "Bandeja de entrada con respuestas redactadas por IA",
-    "Seguimiento de ingresos en todas las plataformas"
+    "Libre elección de proveedores de IA con tus propias cuentas — sin cuotas"
   ],
   "priceOnetime": "pago único",
   "priceRecommendedNote": "Precio recomendado — será vinculante en cuanto se configure un precio correspondiente en Stripe.",
@@ -17,5 +20,25 @@
   "checkoutFailed": "Error en el proceso de pago.",
   "unknownError": "Error desconocido.",
   "notConfigured": "El pago aún no está configurado — primero el operador debe crear un producto de {price} en Stripe y definir STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
-  "costDisclosure": "Nota: este precio es un pago único por el software. Algunas funciones concretas (p. ej. generación de texto con IA, locución) requieren tus propias cuentas con proveedores externos (p. ej. Anthropic, ElevenLabs) — sus costes son independientes de SECRET 58 y los cobra directamente ese proveedor, no aquí. Detalles después de la compra en Integraciones."
+  "costDisclosure": "Nota: este precio es un pago único por el software. Algunas funciones concretas (p. ej. generación de texto con IA, locución) requieren tus propias cuentas con proveedores externos (p. ej. Anthropic, ElevenLabs) — sus costes son independientes de SECRET 58 y los cobra directamente ese proveedor, no aquí. Detalles después de la compra en Integraciones.",
+  "setupServiceTitle": "Añadir servicio de configuración (+{price} pago único)",
+  "setupServiceDescription": "Configuramos por ti las claves API, el Brand DNA y tus primeras publicaciones.",
+  "setupServiceUnavailable": "Disponible pronto — el operador debe añadir primero el servicio en Stripe.",
+  "autopilot": {
+    "kicker": "Próximamente",
+    "title": "Autopilot — todo incluido",
+    "subtitle": "Sin cuentas propias: todos los costes de proveedores para texto, voz y vídeo están incluidos. Las mismas funciones que el paquete completo — los tamaños solo se diferencian en el volumen.",
+    "comingSoon": "Próximamente",
+    "perMonth": "/ mes",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agencia"
+    },
+    "brands": "{count, plural, one {# marca} other {# marcas}}",
+    "ideas": "{count} ideas de contenido al mes",
+    "videos": "{count} vídeos con IA (de 30 s) al mes",
+    "voiceMinutes": "{count} minutos de locución al mes",
+    "note": "Precios previstos, aún no disponibles. Autopilot se lanzará cuando los generadores de vídeo con IA estén conectados."
+  }
 }

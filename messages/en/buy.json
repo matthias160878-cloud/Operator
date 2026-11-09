@@ -1,14 +1,17 @@
 {
   "kicker": "AI Social Command Center",
   "title": "SECRET 58 — {packageName}",
-  "subtitle": "One idea. Multiple platforms. Maximum reach. A single complete package — no subscription, no tiers, full access to the entire application.",
+  "claim": "No subscription. Every agent. Your own AI providers.",
+  "subtitle": "One idea. Multiple platforms. Maximum reach. A single complete package — pay once, full access to the entire application.",
   "features": [
     "Content Brain — one idea, every platform",
-    "Script, hook, hashtag and thumbnail agents",
-    "Content Factory with approval workflow",
-    "Content calendar, analytics & growth recommendations",
+    "Every AI agent: ideas, trends, script, hook, hashtags, thumbnails, subtitles, publishing",
+    "Voice Studio with ElevenLabs voices",
+    "Video Studio with format manager — AI video generator integration in progress",
+    "Content Factory with approval workflow and content calendar",
+    "Analytics, growth recommendations and revenue tracking",
     "Inbox with AI-drafted replies",
-    "Revenue tracking across all platforms"
+    "Free choice of AI providers through your own accounts — no quotas"
   ],
   "priceOnetime": "one-time",
   "priceRecommendedNote": "Recommended price — becomes binding once a matching price is configured in Stripe.",
@@ -17,5 +20,25 @@
   "checkoutFailed": "Checkout failed.",
   "unknownError": "Unknown error.",
   "notConfigured": "Payment isn't configured yet — the operator first needs to create a {price} product in Stripe and set STRIPE_SECRET_KEY / STRIPE_PRICE_ID.",
-  "costDisclosure": "Note: this price is a one-time payment for the software. Individual features (e.g. AI text generation, voice output) require your own accounts with third-party providers (e.g. Anthropic, ElevenLabs) — their costs are separate from SECRET 58 and are billed directly by that provider, not charged here. Details after purchase under Integrations."
+  "costDisclosure": "Note: this price is a one-time payment for the software. Individual features (e.g. AI text generation, voice output) require your own accounts with third-party providers (e.g. Anthropic, ElevenLabs) — their costs are separate from SECRET 58 and are billed directly by that provider, not charged here. Details after purchase under Integrations.",
+  "setupServiceTitle": "Add the setup service (+{price} one-time)",
+  "setupServiceDescription": "We set up your API keys, Brand DNA and your first posts for you.",
+  "setupServiceUnavailable": "Available soon — the operator first needs to add the service in Stripe.",
+  "autopilot": {
+    "kicker": "Coming soon",
+    "title": "Autopilot — everything included",
+    "subtitle": "No accounts of your own needed: all provider costs for text, voice and video are included. Same features as the complete package — the sizes differ only in volume.",
+    "comingSoon": "Coming soon",
+    "perMonth": "/ month",
+    "tiers": {
+      "s": "Autopilot S",
+      "m": "Autopilot M",
+      "l": "Autopilot L · Agency"
+    },
+    "brands": "{count, plural, one {# brand} other {# brands}}",
+    "ideas": "{count} content ideas per month",
+    "videos": "{count} AI videos (30 s each) per month",
+    "voiceMinutes": "{count} minutes of voice output per month",
+    "note": "Planned prices, not yet available. Autopilot launches once the AI video generators are connected."
+  }
 }

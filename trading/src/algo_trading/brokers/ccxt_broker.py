@@ -21,9 +21,11 @@ class CcxtBroker:  # pragma: no cover - braucht Börsenzugang
                 import ccxt
             except ImportError as exc:
                 raise SystemExit('CCXT fehlt: pip install -e ".[crypto]"') from exc
-            self._ex = getattr(ccxt, os.environ.get("CCXT_EXCHANGE", "phemex"))({
-                "apiKey": os.environ.get("CCXT_API_KEY"), "secret": os.environ.get("CCXT_SECRET"), "enableRateLimit": True,
-            })
+            from ..data import ccxt_options
+
+            self._ex = getattr(ccxt, os.environ.get("CCXT_EXCHANGE", "phemex"))(ccxt_options({
+                "apiKey": os.environ.get("CCXT_API_KEY"), "secret": os.environ.get("CCXT_SECRET"),
+            }))
         return self._ex
 
     def place(self, order: OrderRequest) -> dict:

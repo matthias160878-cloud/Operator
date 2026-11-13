@@ -74,3 +74,13 @@ def test_discovery_funnel(df):
     res = discover(df, cfgs, Costs(), workers=1)
     assert res.funnel.generated == 60
     assert res.funnel.passed_filter == len(res.ranked) <= res.funnel.backtested
+
+
+def test_ccxt_options_pass_proxy(monkeypatch):
+    from algo_trading.data import ccxt_options
+
+    monkeypatch.setenv("HTTPS_PROXY", "http://proxy:8080")
+    assert ccxt_options({"apiKey": "k"})["httpsProxy"] == "http://proxy:8080"
+    monkeypatch.delenv("HTTPS_PROXY")
+    monkeypatch.delenv("https_proxy", raising=False)
+    assert "httpsProxy" not in ccxt_options()

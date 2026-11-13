@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 
@@ -66,7 +67,7 @@ def render(r: dict) -> str:
 
 def save(r: dict, out_dir: Path) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
-    stem = f"{r['created'][:19].replace(':', '').replace('-', '')}-{r['pair'].replace('/', '')}-{r['timeframe']}"
+    stem = f"{r['created'][:19].replace(':', '').replace('-', '')}-{re.sub(r'[^A-Za-z0-9]', '', r['pair'])}-{r['timeframe']}"
     (out_dir / f"{stem}.json").write_text(json.dumps(r, indent=2, default=str), encoding="utf-8")
     md = out_dir / f"{stem}.md"
     md.write_text(render(r), encoding="utf-8")

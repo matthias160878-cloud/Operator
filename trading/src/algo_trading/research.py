@@ -55,7 +55,7 @@ def run_research(df: pd.DataFrame, settings: Settings, *, pair: str, timeframe: 
     code = team.code_reviewer(candidates[0] if candidates else (configs[0].to_dict() if configs else {}), assumptions)
     funnel = vars(disc.funnel)
     log.info("Lead Orchestrator ...")
-    orch = team.orchestrator({"funnel": funnel, "family_stats": disc.family_stats, "market": market.data,
+    orch = team.orchestrator({"data_source": data_source, "funnel": funnel, "family_stats": disc.family_stats, "market": market.data,
                               "quant": quant.data, "risk": risk.data, "code_review": code.data})
 
     sources = {a.source for a in (market, hyp, quant, risk, code, orch)}

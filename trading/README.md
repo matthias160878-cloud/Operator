@@ -53,7 +53,10 @@ algo-trading research --strategies 10000 --top 20
 
 # mit echten Daten
 algo-trading research --csv eurusd_15m.csv --pair EURUSD --timeframe 15m --strategies 10000
-algo-trading research --ccxt phemex --pair BTC/USDT --timeframe 15m --bars 20000
+# Phemex liefert für Spot nur die letzten 1000 Kerzen - für Historie den Perpetual nutzen,
+# Kosten an den Markt anpassen (Spread/Slippage in USD, Taker-Gebühr 0,06 %):
+SPREAD=1 SLIPPAGE=2 COMMISSION_RATE=0.0006 \
+  algo-trading research --ccxt phemex --pair BTC/USDT:USDT --timeframe 15m --bars 20000
 algo-trading research --mt5 --pair XAUUSD --timeframe 15m          # Windows + MT5-Terminal
 
 # 2. Einzelne Konfiguration prüfen

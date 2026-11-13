@@ -65,23 +65,41 @@ def synthetic_ohlcv(bars: int = 20_000, timeframe: str = "15m", start_price: flo
     return pd.DataFrame({"open": open_, "high": high, "low": low, "close": close, "volume": rng.integers(50, 500, bars)}, index=idx).astype(float)
 
 
+def ccxt_options(extra: dict | None = None) -> dict:
+    """CCXT ignoriert HTTP(S)_PROXY aus der Umgebung - einen gesetzten Proxy explizit übergeben."""
+    import os
+
+    opts = {"enableRateLimit": True, **(extra or {})}
+    proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
+    if proxy:
+        opts["httpsProxy"] = proxy
+    return opts
+
+
 def fetch_ccxt(symbol: str, timeframe: str = "15m", limit: int = 5000, exchange: str = "phemex") -> pd.DataFrame:  # pragma: no cover - Netzwerk
     """Historische Kerzen über CCXT (öffentliche Endpunkte, kein API-Key nötig)."""
     try:
         import ccxt
     except ImportError as exc:
         raise SystemExit('CCXT fehlt: pip install -e ".[crypto]"') from exc
-    ex = getattr(ccxt, exchange)({"enableRateLimit": True})
+    ex = getattr(ccxt, exchange)(ccxt_options())
+    tf_ms = ex.parse_timeframe(timeframe) * 1000
+    since = ex.milliseconds() - limit * tf_ms  # vorwärts blättern ab 'limit' Kerzen in der Vergangenheit
     rows: list[list[float]] = []
-    since = None
     while len(rows) < limit:
         batch = ex.fetch_ohlcv(symbol, timeframe=timeframe, since=since, limit=min(1000, limit - len(rows)))
         if not batch:
             break
         rows += batch
-        since = batch[-1][0] + 1
-        if len(batch) < 2:
+        since = batch[-1][0] + tf_ms
+        if since > ex.milliseconds():
             break
+    if len(rows) < 0.9 * limit:
+        import logging
+
+        logging.getLogger("algo_trading.data").warning(
+            "Nur %d von %d Kerzen geladen - %s liefert für %s offenbar keine tiefere Historie "
+            "(bei Phemex z. B. den Perpetual 'BTC/USDT:USDT' statt Spot 'BTC/USDT' verwenden).", len(rows), limit, exchange, symbol)
     df = pd.DataFrame(rows, columns=["timestamp", *COLUMNS])
     df.index = pd.to_datetime(df.pop("timestamp"), unit="ms", utc=True)
     return _validate(df)

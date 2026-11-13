@@ -152,7 +152,9 @@ class ResearchTeam:
                                     f"bestanden den ersten Filter, {f['passed_validation']} die Validierung. Status: nur Research."),
               "insights": [f"{k}: {v['passed_filter']}/{v['tested']} bestanden den Filter" for k, v in facts["family_stats"].items()],
               "next_experiments": ["Beste Kandidaten im Paper-Trading über TradingView-Webhook beobachten",
-                                   "Mit echten Broker-Daten (CCXT/MT5) statt synthetischer Daten wiederholen",
+                                   ("Mit echten Broker-Daten (CCXT/MT5) statt synthetischer Daten wiederholen"
+                                    if "synthetisch" in str(facts.get("data_source", "")) else
+                                    "Auf einem zweiten Markt oder Zeitrahmen gegenprüfen"),
                                    "Kosten-Stresstest mit doppeltem Spread"]}
         return self.ask("orchestrator", "Fasse die Arbeit des Teams zu einem konsolidierten Research-Bericht zusammen: "
                         "Kernaussage, Erkenntnisse, nächste Experimente.", facts, fb)

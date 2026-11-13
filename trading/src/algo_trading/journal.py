@@ -40,6 +40,13 @@ class Journal:
         row = self.db.execute("SELECT value FROM account WHERE key=?", (key,)).fetchone()
         return None if row is None else float(row["value"])
 
+    def get_state(self, key: str) -> float | None:
+        return self._get(f"state:{key}")
+
+    def set_state(self, key: str, value: float) -> None:
+        self.db.execute("INSERT OR REPLACE INTO account VALUES (?, ?)", (f"state:{key}", value))
+        self.db.commit()
+
     @property
     def balance(self) -> float:
         return self._get("balance") or 0.0

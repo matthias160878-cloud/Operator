@@ -66,7 +66,12 @@ algo-trading research --mt5 --pair XAUUSD --timeframe 15m          # Windows + M
 # 2. Einzelne Konfiguration prüfen
 algo-trading backtest --csv eurusd_15m.csv --family breakout --params '{"lookback": 40, "sl_atr": 1.5, "tp_atr": 3}'
 
-# 3. Paper-Trading über TradingView
+# 3. Paper-Trading einer validierten Strategie auf Live-Kerzen (holt jede Minute neue Kerzen,
+#    handelt nur auf abgeschlossenen Kerzen, Journal in data/journal.db)
+algo-trading paper --strategy br-2031033fb9 --symbol XAUUSD --market-hours
+algo-trading paper --strategy br-2031033fb9 --symbol XAUUSD --market-hours --once   # ein Durchlauf, z. B. per Cron
+
+# 4. Alternativ: Paper-Trading über TradingView-Alerts
 algo-trading webhook               # lauscht auf 127.0.0.1:8765/webhook
 algo-trading status                # Konto, Abstand zu den Limits, offene Positionen, Paper-Statistik
 ```

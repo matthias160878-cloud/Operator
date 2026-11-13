@@ -1,4 +1,4 @@
-"""Kommandozeile: algo-trading research | backtest | webhook | approve | status | signal"""
+"""Kommandozeile: algo-trading research | backtest | paper | webhook | approve | status | signal"""
 from __future__ import annotations
 
 import argparse
@@ -21,6 +21,10 @@ def _load(args) -> tuple:
         df, src = data.fetch_mt5(args.pair, args.timeframe, args.bars), "MetaTrader 5"
     else:
         df, src = data.synthetic_ohlcv(args.bars, args.timeframe), "synthetisch (Demo)"
+    if args.market_hours:
+        before = len(df)
+        df = data.drop_closed_hours(df)
+        src += f", ohne Wochenende ({before - len(df)} Kerzen entfernt)"
     if args.resample:
         df = data.resample(df, args.resample)
     return df, src
@@ -35,6 +39,8 @@ def _data_args(p: argparse.ArgumentParser) -> None:
     src.add_argument("--mt5", action="store_true", help="Kerzen aus laufendem MT5-Terminal laden")
     p.add_argument("--bars", type=int, default=20_000)
     p.add_argument("--resample", help="z. B. 1h")
+    p.add_argument("--market-hours", action="store_true",
+                   help="Wochenendpause von Forex/Gold/Indizes entfernen (für 24/7-Perpetuals wie XAU/USDT:USDT)")
 
 
 def cmd_research(args, s: Settings) -> int:
@@ -69,6 +75,35 @@ def _pipeline(s: Settings):
     from .pipeline import SignalPipeline
 
     return SignalPipeline(s)
+
+
+def cmd_paper(args, s: Settings) -> int:
+    import pandas as pd
+
+    from . import data
+    from .paper import PaperRunner, load_strategy
+
+    if s.broker != "paper" or s.live_trading:
+        raise SystemExit("Paper-Runner nur mit BROKER=paper und LIVE_TRADING=false.")
+    cfg = load_strategy(args.strategy, s.reports_dir)
+    source = args.source or cfg.pair
+    timeframe = args.timeframe or cfg.timeframe
+    symbol = (args.symbol or source.split(":")[0].replace("/", "")).upper()
+    if symbol not in s.allowed_symbols:
+        raise SystemExit(f"{symbol} fehlt in ALLOWED_SYMBOLS")
+
+    def fetch():
+        if args.mt5:
+            return data.fetch_mt5(source, timeframe, 500)
+        return data.fetch_ccxt(source, timeframe, 500, args.exchange)
+
+    runner = PaperRunner(_pipeline(s), cfg, symbol, fetch, pd.Timedelta(data.TIMEFRAMES[timeframe]), args.market_hours)
+    if args.once:
+        for e in runner.step():
+            print(e)
+        return 0
+    runner.run(args.poll)
+    return 0
 
 
 def cmd_webhook(args, s: Settings) -> int:
@@ -129,6 +164,18 @@ def main(argv: list[str] | None = None) -> int:
     b.add_argument("--family", required=True, choices=["trend", "breakout", "mean_reversion", "momentum"])
     b.add_argument("--params", default="{}", help='JSON, z. B. {"fast": 9, "slow": 50}')
     b.set_defaults(func=cmd_backtest)
+
+    pp = sub.add_parser("paper", help="Paper-Trading einer Strategie aus einem Bericht auf Live-Kerzen")
+    pp.add_argument("--strategy", required=True, help="Strategie-ID aus einem Bericht, z. B. br-2031033fb9")
+    pp.add_argument("--source", help="Datenquelle/Symbol, Standard: Paar aus dem Bericht (z. B. XAU/USDT:USDT)")
+    pp.add_argument("--exchange", default="phemex")
+    pp.add_argument("--mt5", action="store_true", help="Kerzen aus MT5 statt CCXT")
+    pp.add_argument("--symbol", help="Symbol im Journal, Standard: aus der Quelle abgeleitet (z. B. XAUUSDT -> mit --symbol XAUUSD setzen)")
+    pp.add_argument("--timeframe", help="Standard: Zeitrahmen aus dem Bericht")
+    pp.add_argument("--market-hours", action="store_true", help="Wochenendpause entfernen (wie im Research-Lauf)")
+    pp.add_argument("--poll", type=int, default=60, help="Abfrage-Intervall in Sekunden")
+    pp.add_argument("--once", action="store_true", help="nur einen Durchlauf (z. B. für Cron)")
+    pp.set_defaults(func=cmd_paper)
 
     sub.add_parser("webhook", help="TradingView-Webhook starten").set_defaults(func=cmd_webhook)
     sg = sub.add_parser("signal", help="Signal lokal einspielen (wie ein Webhook, ohne Secret)")

@@ -43,6 +43,16 @@ def resample(df: pd.DataFrame, timeframe: str) -> pd.DataFrame:
     return df.resample(rule).agg(agg).dropna()
 
 
+def drop_closed_hours(df: pd.DataFrame) -> pd.DataFrame:
+    """Entfernt die Wochenendpause von Forex/Gold/Indizes (Fr 21:00 bis So 22:00 UTC).
+
+    Krypto-Perpetuals auf solche Märkte handeln rund um die Uhr; die Wochenendkerzen sind meist
+    flach und verfälschen Indikatoren und Backtests."""
+    dow, hour = df.index.day_of_week, df.index.hour
+    closed = ((dow == 4) & (hour >= 21)) | (dow == 5) | ((dow == 6) & (hour < 22))
+    return df[~closed]
+
+
 def synthetic_ohlcv(bars: int = 20_000, timeframe: str = "15m", start_price: float = 1.10, seed: int = 7) -> pd.DataFrame:
     """Synthetische Kursreihe mit wechselnden Regimen (Trend, Seitwärts, Volatil) - nur für Tests und Demos."""
     rng = np.random.default_rng(seed)
@@ -86,10 +96,11 @@ def fetch_ccxt(symbol: str, timeframe: str = "15m", limit: int = 5000, exchange:
     tf_ms = ex.parse_timeframe(timeframe) * 1000
     since = ex.milliseconds() - limit * tf_ms  # vorwärts blättern ab 'limit' Kerzen in der Vergangenheit
     rows: list[list[float]] = []
-    while len(rows) < limit:
+    while len(rows) < limit and since <= ex.milliseconds():
         batch = ex.fetch_ohlcv(symbol, timeframe=timeframe, since=since, limit=min(1000, limit - len(rows)))
-        if not batch:
-            break
+        if not batch:  # Zeitraum vor dem Listing: vorspulen statt abbrechen
+            since += 1000 * tf_ms
+            continue
         rows += batch
         since = batch[-1][0] + tf_ms
         if since > ex.milliseconds():
@@ -98,8 +109,12 @@ def fetch_ccxt(symbol: str, timeframe: str = "15m", limit: int = 5000, exchange:
         import logging
 
         logging.getLogger("algo_trading.data").warning(
-            "Nur %d von %d Kerzen geladen - %s liefert für %s offenbar keine tiefere Historie "
-            "(bei Phemex z. B. den Perpetual 'BTC/USDT:USDT' statt Spot 'BTC/USDT' verwenden).", len(rows), limit, exchange, symbol)
+            "Nur %d von %d Kerzen geladen - %s liefert für %s keine ältere Historie (frühestes Datum: %s). "
+            "Mögliche Ursachen: Markt erst seit kurzem gelistet, oder Spot ohne Historie "
+            "(bei Phemex dann den Perpetual, z. B. 'BTC/USDT:USDT', verwenden).",
+            len(rows), limit, exchange, symbol, ex.iso8601(rows[0][0]) if rows else "-")
+    if not rows:
+        raise SystemExit(f"Keine Kerzen für {symbol} ({timeframe}) von {exchange} erhalten.")
     df = pd.DataFrame(rows, columns=["timestamp", *COLUMNS])
     df.index = pd.to_datetime(df.pop("timestamp"), unit="ms", utc=True)
     return _validate(df)

@@ -57,12 +57,21 @@ algo-trading research --csv eurusd_15m.csv --pair EURUSD --timeframe 15m --strat
 # Kosten an den Markt anpassen (Spread/Slippage in USD, Taker-Gebühr 0,06 %):
 SPREAD=1 SLIPPAGE=2 COMMISSION_RATE=0.0006 \
   algo-trading research --ccxt phemex --pair BTC/USDT:USDT --timeframe 15m --bars 20000
+# Gold (XAUUSD) über den Phemex-Perpetual; --market-hours entfernt die Wochenendpause,
+# die der 24/7-Perpetual als flache Kerzen enthält:
+SPREAD=0.3 SLIPPAGE=0.2 COMMISSION_RATE=0.0006 \
+  algo-trading research --ccxt phemex --pair XAU/USDT:USDT --timeframe 15m --bars 27000 --market-hours
 algo-trading research --mt5 --pair XAUUSD --timeframe 15m          # Windows + MT5-Terminal
 
 # 2. Einzelne Konfiguration prüfen
 algo-trading backtest --csv eurusd_15m.csv --family breakout --params '{"lookback": 40, "sl_atr": 1.5, "tp_atr": 3}'
 
-# 3. Paper-Trading über TradingView
+# 3. Paper-Trading einer validierten Strategie auf Live-Kerzen (holt jede Minute neue Kerzen,
+#    handelt nur auf abgeschlossenen Kerzen, Journal in data/journal.db)
+algo-trading paper --strategy br-2031033fb9 --symbol XAUUSD --market-hours
+algo-trading paper --strategy br-2031033fb9 --symbol XAUUSD --market-hours --once   # ein Durchlauf, z. B. per Cron
+
+# 4. Alternativ: Paper-Trading über TradingView-Alerts
 algo-trading webhook               # lauscht auf 127.0.0.1:8765/webhook
 algo-trading status                # Konto, Abstand zu den Limits, offene Positionen, Paper-Statistik
 ```

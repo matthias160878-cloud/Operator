@@ -84,3 +84,12 @@ def test_ccxt_options_pass_proxy(monkeypatch):
     monkeypatch.delenv("HTTPS_PROXY")
     monkeypatch.delenv("https_proxy", raising=False)
     assert "httpsProxy" not in ccxt_options()
+
+
+def test_drop_closed_hours():
+    from algo_trading.data import drop_closed_hours
+
+    idx = pd.date_range("2026-11-13 20:00", "2026-11-15 23:00", freq="1h", tz="UTC")  # Fr 20:00 bis So 23:00
+    df = pd.DataFrame({"open": 1.0, "high": 1.0, "low": 1.0, "close": 1.0, "volume": 0.0}, index=idx)
+    kept = drop_closed_hours(df).index
+    assert list(kept.strftime("%a %H")) == ["Fri 20", "Sun 22", "Sun 23"]

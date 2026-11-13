@@ -57,6 +57,10 @@ algo-trading research --csv eurusd_15m.csv --pair EURUSD --timeframe 15m --strat
 # Kosten an den Markt anpassen (Spread/Slippage in USD, Taker-Gebühr 0,06 %):
 SPREAD=1 SLIPPAGE=2 COMMISSION_RATE=0.0006 \
   algo-trading research --ccxt phemex --pair BTC/USDT:USDT --timeframe 15m --bars 20000
+# Gold (XAUUSD) über den Phemex-Perpetual; --market-hours entfernt die Wochenendpause,
+# die der 24/7-Perpetual als flache Kerzen enthält:
+SPREAD=0.3 SLIPPAGE=0.2 COMMISSION_RATE=0.0006 \
+  algo-trading research --ccxt phemex --pair XAU/USDT:USDT --timeframe 15m --bars 27000 --market-hours
 algo-trading research --mt5 --pair XAUUSD --timeframe 15m          # Windows + MT5-Terminal
 
 # 2. Einzelne Konfiguration prüfen

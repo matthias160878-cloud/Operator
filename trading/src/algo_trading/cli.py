@@ -21,6 +21,10 @@ def _load(args) -> tuple:
         df, src = data.fetch_mt5(args.pair, args.timeframe, args.bars), "MetaTrader 5"
     else:
         df, src = data.synthetic_ohlcv(args.bars, args.timeframe), "synthetisch (Demo)"
+    if args.market_hours:
+        before = len(df)
+        df = data.drop_closed_hours(df)
+        src += f", ohne Wochenende ({before - len(df)} Kerzen entfernt)"
     if args.resample:
         df = data.resample(df, args.resample)
     return df, src
@@ -35,6 +39,8 @@ def _data_args(p: argparse.ArgumentParser) -> None:
     src.add_argument("--mt5", action="store_true", help="Kerzen aus laufendem MT5-Terminal laden")
     p.add_argument("--bars", type=int, default=20_000)
     p.add_argument("--resample", help="z. B. 1h")
+    p.add_argument("--market-hours", action="store_true",
+                   help="Wochenendpause von Forex/Gold/Indizes entfernen (für 24/7-Perpetuals wie XAU/USDT:USDT)")
 
 
 def cmd_research(args, s: Settings) -> int:

@@ -4,10 +4,11 @@ Diese Datei gibt Claude Code (claude.ai/code) Hinweise für die Arbeit mit dem C
 
 ## Repository-Status
 
-Dieses Repository enthält zwei unabhängige Teilprojekte:
+Dieses Repository enthält drei unabhängige Teilprojekte:
 
 - **`src/`** — Next.js-Anwendung (App Router), erstellt mit `create-next-app`, TypeScript und Tailwind CSS v4. Ausgangspunkt für die Darwin-AI-Assistant-Webanwendung.
 - **`assistant/`** — eigenständiges Python-Projekt für einen lokalen KI-Assistenten (Textmodus + optionale Sprach-Erweiterung mit faster-whisper/sherpa-onnx). Siehe `assistant/README.md` für Befehle, Architektur und Einrichtung — eigene, unabhängige Implementierung, keine Kopie eines bezahlten Produkts.
+- **`trading/`** — eigenständiges Python-Projekt: KI-gestützte Trading-Research-Pipeline (Multi-Agent-Research mit Claude, Strategie-Suche, Backtests, Validation Gate, Risk Engine, TradingView-Webhook, Paper-Trading; Live-Handel nur mit Freigabe pro Order). Siehe `trading/README.md`; Tests mit `pytest` in `trading/`.
 
 Die folgenden Abschnitte beziehen sich auf das Next.js-Teilprojekt (`src/`).
 
@@ -34,7 +35,7 @@ Die folgenden Abschnitte beziehen sich auf das Next.js-Teilprojekt (`src/`).
 - Kein echter Netzwerkverkehr: Plattform-APIs, Webhooks und Website-Abrufe werden mit `mockFetch` simuliert, DNS per `vi.mock("node:dns/promises")`. KI-Schlüssel sind leer, Agenten laufen im Vorlagen-Modus.
 - Datenbank: `tests/globalSetup.ts` legt pro Lauf eine eigene SQLite-Datei im Temp-Ordner an (`prisma db push`) und löscht sie danach; `dev.db` bleibt unberührt. Dateien laufen nacheinander (`fileParallelism: false`).
 - Umgebungsvariablen in Tests mit `vi.stubEnv` setzen — sie werden nach jedem Test zurückgesetzt (`tests/setup.ts`).
-- CI: `.github/workflows/ci.yml` führt bei jedem Push auf `main` und jedem PR Lint, Typprüfung, Tests und Build aus, außerdem `pytest` für `assistant/`.
+- CI: `.github/workflows/ci.yml` führt bei jedem Push auf `main` und jedem PR Lint, Typprüfung, Tests und Build aus, außerdem `pytest` für `assistant/` und `trading/`.
 
 ## Architektur
 

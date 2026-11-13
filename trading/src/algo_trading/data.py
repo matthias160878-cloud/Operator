@@ -96,10 +96,11 @@ def fetch_ccxt(symbol: str, timeframe: str = "15m", limit: int = 5000, exchange:
     tf_ms = ex.parse_timeframe(timeframe) * 1000
     since = ex.milliseconds() - limit * tf_ms  # vorwärts blättern ab 'limit' Kerzen in der Vergangenheit
     rows: list[list[float]] = []
-    while len(rows) < limit:
+    while len(rows) < limit and since <= ex.milliseconds():
         batch = ex.fetch_ohlcv(symbol, timeframe=timeframe, since=since, limit=min(1000, limit - len(rows)))
-        if not batch:
-            break
+        if not batch:  # Zeitraum vor dem Listing: vorspulen statt abbrechen
+            since += 1000 * tf_ms
+            continue
         rows += batch
         since = batch[-1][0] + tf_ms
         if since > ex.milliseconds():
@@ -108,8 +109,12 @@ def fetch_ccxt(symbol: str, timeframe: str = "15m", limit: int = 5000, exchange:
         import logging
 
         logging.getLogger("algo_trading.data").warning(
-            "Nur %d von %d Kerzen geladen - %s liefert für %s offenbar keine tiefere Historie "
-            "(bei Phemex z. B. den Perpetual 'BTC/USDT:USDT' statt Spot 'BTC/USDT' verwenden).", len(rows), limit, exchange, symbol)
+            "Nur %d von %d Kerzen geladen - %s liefert für %s keine ältere Historie (frühestes Datum: %s). "
+            "Mögliche Ursachen: Markt erst seit kurzem gelistet, oder Spot ohne Historie "
+            "(bei Phemex dann den Perpetual, z. B. 'BTC/USDT:USDT', verwenden).",
+            len(rows), limit, exchange, symbol, ex.iso8601(rows[0][0]) if rows else "-")
+    if not rows:
+        raise SystemExit(f"Keine Kerzen für {symbol} ({timeframe}) von {exchange} erhalten.")
     df = pd.DataFrame(rows, columns=["timestamp", *COLUMNS])
     df.index = pd.to_datetime(df.pop("timestamp"), unit="ms", utc=True)
     return _validate(df)

@@ -45,3 +45,17 @@ jobs:
           python-version: "3.12"
       - run: pip install -e ".[dev]"
       - run: pytest -q
+
+  trading:
+    name: Trading-Pipeline (pytest)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: trading
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - run: pytest -q

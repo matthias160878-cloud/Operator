@@ -75,3 +75,13 @@ Falls dieses Projekt jemals Skills aus einer externen "Jarvis"-Skill-Sammlung ei
 ```
 ln -s /pfad/zu/jarvis/skills /pfad/zu/diesem-repo/.claude/skills
 ```
+
+# Arbeitsweise (Token sparen)
+
+- Antworte kurz und direkt: keine Einleitung, keine Wiederholung der Frage, keine Zusammenfassung am Ende.
+- Lies nur die Dateien, die für die Aufgabe nötig sind. Keine ganzen Ordner durchsuchen.
+- Bei Änderungen nur den geänderten Teil zeigen, nicht die ganze Datei.
+- Keine ungefragten Refactorings, keine zusätzlichen Features.
+- Frage höchstens einmal nach, wenn etwas wirklich unklar ist.
+- Starte bei neuen Themen eine neue Sitzung, statt lange Verläufe weiterzuführen.
+- Fasse lange Sitzungen zusammen und setze in einer neuen Sitzung fort.

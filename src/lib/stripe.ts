@@ -12,6 +12,11 @@ export function isStripeConfigured(): boolean {
   return Boolean(process.env.STRIPE_SECRET_KEY && process.env.STRIPE_PRICE_ID);
 }
 
+/** Einrichtungsservice als optionaler Zusatz im Checkout (einmaliger Preis). */
+export function isSetupServiceConfigured(): boolean {
+  return isStripeConfigured() && Boolean(process.env.STRIPE_SETUP_PRICE_ID);
+}
+
 export function isStripeWebhookConfigured(): boolean {
   return Boolean(process.env.STRIPE_WEBHOOK_SECRET);
 }
@@ -29,6 +34,7 @@ function getClient(): Stripe {
 export async function createCheckoutSession(input: {
   successUrl: string;
   cancelUrl: string;
+  includeSetupService?: boolean;
 }): Promise<string> {
   if (!isStripeConfigured()) {
     throw new Error("Stripe ist noch nicht konfiguriert (STRIPE_SECRET_KEY/STRIPE_PRICE_ID fehlt).");
@@ -36,7 +42,12 @@ export async function createCheckoutSession(input: {
 
   const session = await getClient().checkout.sessions.create({
     mode: "payment",
-    line_items: [{ price: process.env.STRIPE_PRICE_ID, quantity: 1 }],
+    line_items: [
+      { price: process.env.STRIPE_PRICE_ID, quantity: 1 },
+      ...(input.includeSetupService && isSetupServiceConfigured()
+        ? [{ price: process.env.STRIPE_SETUP_PRICE_ID, quantity: 1 }]
+        : []),
+    ],
     success_url: input.successUrl,
     cancel_url: input.cancelUrl,
   });

@@ -20,5 +20,30 @@
     "payAsYouGo": "Pay-as-you-go",
     "subscription": "Subscription",
     "unknown": "Check provider for pricing"
+  },
+  "setup": {
+    "toggle": "Set up",
+    "missingCount": "{count} missing",
+    "envTitle": "Environment variables (names only, values stay secret)",
+    "envSet": "set",
+    "envMissing": "missing",
+    "optional": "inbox only",
+    "openPortal": "Open developer portal",
+    "openEnvDashboard": "Set in Render",
+    "localHint": "Locally: put the values in .env or run `npm run setup` once (generates TOKEN_ENCRYPTION_KEY automatically). Restart the app after changes.",
+    "redirectTitle": "Register this redirect URL in the developer portal",
+    "redirectMessaging": "Second app for the inbox (comments/direct messages):",
+    "encryptionNote": "TOKEN_ENCRYPTION_KEY is still missing — without it “Connect” stays locked.",
+    "connectHint": "Then click “Connect” under Social Media; only that step shows whether the credentials are valid.",
+    "noLiveCheckHint": "This service cannot be tested without a user login; the check only reports whether the variables are set.",
+    "copy": "Copy",
+    "copied": "Copied"
+  },
+  "verify": {
+    "button": "Check connection",
+    "checking": "Checking …",
+    "noLiveCheck": "variables only",
+    "rateLimited": "Too many checks — please wait {seconds} seconds.",
+    "failed": "Check not possible."
   }
 }

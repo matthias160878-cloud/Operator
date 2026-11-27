@@ -20,5 +20,30 @@
     "payAsYouGo": "Según uso",
     "subscription": "Suscripción",
     "unknown": "Consultar precio con el proveedor"
+  },
+  "setup": {
+    "toggle": "Configurar",
+    "missingCount": "faltan {count}",
+    "envTitle": "Variables de entorno (solo nombres, los valores siguen secretos)",
+    "envSet": "definida",
+    "envMissing": "falta",
+    "optional": "solo bandeja de entrada",
+    "openPortal": "Abrir portal de desarrolladores",
+    "openEnvDashboard": "Configurar en Render",
+    "localHint": "En local: escribe los valores en .env o ejecuta una vez `npm run setup` (genera TOKEN_ENCRYPTION_KEY automáticamente). Reinicia la app tras los cambios.",
+    "redirectTitle": "Registra esta URL de redirección en el portal de desarrolladores",
+    "redirectMessaging": "Segunda app para la bandeja de entrada (comentarios/mensajes directos):",
+    "encryptionNote": "Falta TOKEN_ENCRYPTION_KEY — sin ella, «Conectar» permanece bloqueado.",
+    "connectHint": "Después pulsa «Conectar» en Redes sociales; solo ese paso muestra si las credenciales son válidas.",
+    "noLiveCheckHint": "Este servicio no se puede probar sin inicio de sesión de usuario; la comprobación solo indica si las variables están definidas.",
+    "copy": "Copiar",
+    "copied": "Copiado"
+  },
+  "verify": {
+    "button": "Comprobar conexión",
+    "checking": "Comprobando …",
+    "noLiveCheck": "solo variables",
+    "rateLimited": "Demasiadas comprobaciones — espera {seconds} segundos.",
+    "failed": "Comprobación no posible."
   }
 }

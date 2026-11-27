@@ -38,11 +38,24 @@ Hooks, Hashtags, Untertiteln, Voiceover-Anbindung und Publishing-Workflow.
 
 ```bash
 npm install
-cp .env.example .env      # DATABASE_URL ist der einzige Pflichtwert, Rest optional
-npx prisma db push        # legt prisma/dev.db (SQLite) gemäß Schema an
-npm run db:seed           # optional: realistische Demo-Daten für das Dashboard
-npm run dev                # http://localhost:3000
+npm run setup             # legt .env an, erzeugt TOKEN_ENCRYPTION_KEY/NEXTAUTH_SECRET,
+                          # synchronisiert die Datenbank, druckt die Redirect-URLs
+npm run dev               # http://localhost:3000
 ```
+
+`npm run setup` fragt nur nach Demo-Daten und der App-Adresse, überschreibt
+eine vorhandene `.env` nie und ist beliebig oft wiederholbar (Optionen:
+`--yes`, `--seed`/`--no-seed`, `--skip-db`, `--url=https://…`). Von Hand
+entspricht das: `cp .env.example .env`, `npx prisma db push`, optional
+`npm run db:seed`.
+
+Danach zeigt die Seite **Integrationen** je Dienst einen aufklappbaren
+Bereich **„Einrichten“**: welche Variablen gesetzt sind oder fehlen (nur
+Namen, nie Werte), die kopierfertige Redirect-URL für die eigene Domain, der
+Link ins Entwicklerportal und ein Knopf **„Verbindung prüfen“**. Der Prüfknopf
+macht bei Anthropic, OpenAI und ElevenLabs einen leichten Testaufruf; bei den
+Social-Plattformen gibt es ohne Nutzer-Login keinen Test, dort meldet er nur,
+ob die Zugangsdaten und `TOKEN_ENCRYPTION_KEY` vorhanden sind.
 
 Die Anwendung startet vollständig **ohne** externe API-Keys. Jede nicht
 konfigurierte Integration wird im UI (Integrationen, Dashboard, Social Media)
@@ -58,7 +71,7 @@ Siehe [`.env.example`](.env.example) für die vollständige Liste. Wichtig:
 | `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` | Nein | Aktiviert echte KI-Generierung für Content Brain, Idea-, Script-, Hook-, Hashtag-, Thumbnail- und Research-Agent. Ohne Key läuft ein deterministischer Template-Fallback. |
 | `ANTHROPIC_MODEL` / `OPENAI_MODEL` | Nein | Überschreibt das Standardmodell (`claude-haiku-4-5-20251001` bzw. `gpt-4o-mini`). |
 | `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID`, `ELEVENLABS_MODEL_ID` | Nein | Voice Engine (Text-to-Speech, Voice Library Import) |
-| `YOUTUBE_CLIENT_ID/SECRET`, `INSTAGRAM_CLIENT_ID/SECRET`, `TIKTOK_CLIENT_KEY/SECRET`, `LINKEDIN_CLIENT_ID/SECRET`, `FACEBOOK_APP_ID/SECRET` | Nein | App-Zugangsdaten je Social-Plattform (Statusanzeige unter Integrationen/Social Media). Ein echter OAuth-Login-Flow ist vorbereitet, aber noch nicht implementiert (siehe unten). |
+| `YOUTUBE_CLIENT_ID/SECRET`, `INSTAGRAM_CLIENT_ID/SECRET`, `TIKTOK_CLIENT_KEY/SECRET`, `LINKEDIN_CLIENT_ID/SECRET`, `FACEBOOK_APP_ID/SECRET` | Nein | App-Zugangsdaten je Social-Plattform. Mit gesetzten Werten (und `TOKEN_ENCRYPTION_KEY`) funktioniert „Verbinden“ unter Social Media als echter OAuth-Login (siehe unten). |
 | `CANVA_API_KEY`, `CAPCUT_API_KEY` | Nein | Design-/Video-Provider-Status |
 | `TREND_API_KEY`, `TREND_API_PROVIDER` | Nein | TrendAgent — ohne diese Variablen zeigt der Agent konsequent „Trend API nicht konfiguriert.“ statt erfundener Trends. |
 | `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, `STRIPE_WEBHOOK_SECRET` | Nein | Kauf-Freischaltung über Stripe Checkout (siehe „Kauf-Freischaltung“ unten). Ohne diese Variablen zeigt `/buy` „Zahlung noch nicht konfiguriert.“ |
@@ -126,12 +139,19 @@ benötigt, um den Integrationsstatus auf „Verbunden“ zu heben:
 - TikTok: TikTok for Developers → App anlegen → `TIKTOK_CLIENT_KEY`, `TIKTOK_CLIENT_SECRET`.
 - LinkedIn: LinkedIn Developer Portal → App anlegen → `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`.
 
-**Wichtig:** Das Setzen dieser Variablen aktiviert nur die
-„App-Zugangsdaten“-Statusanzeige unter **Integrationen**/**Social Media**.
-Ein vollständiger OAuth-Login-Flow pro Nutzer-Account (Redirect, Token-Speicherung,
-Refresh) ist als nächster Ausbauschritt vorgesehen und aktuell **nicht**
-implementiert — der „Verbinden“-Button ist bewusst deaktiviert, statt eine
-Verbindung vorzutäuschen. `PublishingAgent.publishContentItem()` prüft live,
+**Redirect-URLs:** Jede Plattform muss im Entwicklerportal die Callback-URL
+`<APP_URL>/api/oauth/<PLATTFORM>/callback` kennen. `npm run setup` druckt sie
+alle für die angegebene Adresse; die Seite **Integrationen → Einrichten**
+zeigt sie kopierfertig für die Domain, unter der die App gerade läuft.
+
+**OAuth-Login:** Mit gesetzten App-Zugangsdaten und `TOKEN_ENCRYPTION_KEY`
+startet „Verbinden“ unter **Social Media** den echten OAuth-Flow
+(`/api/oauth/<PLATTFORM>/start` → Redirect mit State und PKCE →
+`/api/oauth/<PLATTFORM>/callback`, Code: `src/lib/oauth/providers.ts`). Tokens
+werden verschlüsselt am `PlatformAccount` gespeichert; Refresh-Tokens werden
+genutzt, wo die Plattform sie ausgibt. Ohne Zugangsdaten bleibt der Button
+deaktiviert und die Seite zeigt „Nicht konfiguriert“, statt eine Verbindung
+vorzutäuschen. `PublishingAgent.publishContentItem()` prüft live,
 ob ein `PlatformAccount` den Status `CONNECTED` trägt, und veröffentlicht
 niemals automatisch ohne diese Prüfung.
 
@@ -595,7 +615,7 @@ für den Python-Assistenten in `assistant/`.
 - [x] Video Pipeline vorbereitet (Format Manager + austauschbarer Provider, kein Provider fest verdrahtet)
 - [x] Untertitel funktionieren (lokal, SRT/VTT)
 - [x] Content Calendar funktioniert (Monatsansicht, Plattformfilter)
-- [x] Social Accounts können verwaltet werden (Statusanzeige; OAuth-Login-Flow noch offen)
+- [x] Social Accounts können verwaltet werden (OAuth-Login pro Plattform, verschlüsselte Tokens, zweite Posteingang-Verbindung für TikTok/LinkedIn)
 - [x] Publishing Workflow funktioniert (DRAFT…PUBLISHED, echte Veröffentlichung korrekt blockiert ohne verbundenen Account)
 - [x] Analytics funktioniert (KPIs, Performance-Chart, Best Performing Content)
 - [x] Agent Monitor funktioniert
@@ -604,10 +624,11 @@ für den Python-Assistenten in `assistant/`.
 - [ ] Multi-Tenant-**UI** (mehrere Workspaces/Login) — noch offen, siehe unten
 - [ ] Authentication/Login-UI — noch offen, siehe unten
 - [x] Secrets sind geschützt (ausschließlich Env-Variablen, nie im Frontend/Log)
-- [ ] Automatisierte Tests — noch offen, siehe [Tests](#tests)
+- [x] Automatisierte Tests (Vitest, 9 Dateien; CI führt Lint, Typprüfung, Tests und Build aus), siehe [Tests](#tests)
 - [x] Mobile UI funktioniert (responsives Sidebar/Topbar-Layout mit mobilem Menü)
 - [x] README vorhanden (dieses Dokument)
-- [x] `.env.example` vorhanden
+- [x] `.env.example` vorhanden; `npm run setup` richtet `.env`, Geheimnisse und Datenbank ein
+- [x] Setup-Assistent und „Verbindung prüfen“ auf der Integrationen-Seite
 
 ## Bekannte Grenzen & nächste Schritte
 
@@ -619,14 +640,20 @@ sind folgende Punkte bewusst **nicht** als fertige Funktion ausgegeben:
    nutzt einen einzelnen Default-Workspace (`src/lib/workspace.ts`). Das
    Datenmodell ist vollständig multi-tenant-fähig; es fehlt die
    Session-/Auth-Schicht (z.B. NextAuth) und die UI dafür.
-2. **OAuth für Social-Plattformen** — Zugangsdaten-Status wird geprüft, ein
-   echter Login-/Token-Flow pro Nutzer-Account fehlt noch.
+2. **OAuth für Social-Plattformen** — der Login-/Token-Flow ist implementiert,
+   aber nur gegen die Plattform-Dokumentation gebaut und mit simulierten
+   Antworten getestet; ein Lauf mit echten App-Zugangsdaten jeder Plattform
+   (inkl. Meta-/TikTok-/LinkedIn-App-Review) steht noch aus.
 3. **Video-Rendering** — die Provider-Architektur steht, es ist aber kein
    Video-Provider tatsächlich angebunden (kein Account zum Testen vorhanden).
 4. **Trend Engine** — es ist keine Trend-Datenquelle angebunden; der Agent
    zeigt konsequent den Konfigurationsstatus.
-5. **Automatisierte Tests** fehlen noch komplett.
-6. **Rate Limiting / CSRF** für API-Routen sind noch nicht implementiert
+5. **Testabdeckung** — Tests gibt es für Messaging, Posteingang, Widget,
+   externe API, Website-Abruf und SEO; die übrigen Agenten, die Dashboard-
+   Seiten und die internen API-Routen sind noch nicht automatisiert geprüft.
+6. **Rate Limiting / CSRF** — Rate Limiting gilt für die externe API
+   (`/api/v1`) und das Website-Widget (`src/lib/api/rateLimit.ts`); die
+   internen API-Routen haben weder Rate Limiting noch CSRF-Schutz
    (Abschnitt 28) — für den produktiven Einsatz ergänzen.
 
 Diese Punkte eignen sich als nächste Ausbauphasen (7–14 des Master-Prompts).

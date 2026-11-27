@@ -84,7 +84,9 @@
     "verifyFailedGeneric": "Échec de la connexion.",
     "verifyFailedStatus": "{service} a répondu avec le statut {status}.",
     "verifyUnreachable": "Impossible de contacter {service}.",
-    "connected": "Connecté."
+    "connected": "Connecté.",
+    "credentialsPresent": "Identifiants définis (aucun appel de test possible).",
+    "credentialsPresentOauth": "Identifiants de l’app définis — « Connecter » dans Réseaux sociaux montre s’ils fonctionnent."
   },
   "mediaPreview": {
     "expand": "Agrandir",

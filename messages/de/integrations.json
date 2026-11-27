@@ -20,5 +20,30 @@
     "payAsYouGo": "Nutzungsbasiert",
     "subscription": "Abo",
     "unknown": "Preis beim Anbieter prüfen"
+  },
+  "setup": {
+    "toggle": "Einrichten",
+    "missingCount": "{count} fehlt/fehlen",
+    "envTitle": "Umgebungsvariablen (nur Namen, Werte bleiben geheim)",
+    "envSet": "gesetzt",
+    "envMissing": "fehlt",
+    "optional": "nur für Posteingang",
+    "openPortal": "Entwicklerportal öffnen",
+    "openEnvDashboard": "In Render eintragen",
+    "localHint": "Lokal: Werte in .env eintragen oder einmal `npm run setup` ausführen (erzeugt TOKEN_ENCRYPTION_KEY automatisch). Nach Änderungen die App neu starten.",
+    "redirectTitle": "Diese Redirect-URL im Entwicklerportal eintragen",
+    "redirectMessaging": "Zweite App für den Posteingang (Kommentare/Direktnachrichten):",
+    "encryptionNote": "TOKEN_ENCRYPTION_KEY fehlt noch — ohne diese Variable bleibt „Verbinden“ gesperrt.",
+    "connectHint": "Danach unter Social Media auf „Verbinden“ klicken; erst dieser Schritt zeigt, ob die Zugangsdaten stimmen.",
+    "noLiveCheckHint": "Für diesen Dienst gibt es keinen Testaufruf ohne Nutzer-Login; die Prüfung meldet nur, ob die Variablen gesetzt sind.",
+    "copy": "Kopieren",
+    "copied": "Kopiert"
+  },
+  "verify": {
+    "button": "Verbindung prüfen",
+    "checking": "Prüfe …",
+    "noLiveCheck": "nur Variablen geprüft",
+    "rateLimited": "Zu viele Prüfungen — bitte {seconds} Sekunden warten.",
+    "failed": "Prüfung nicht möglich."
   }
 }

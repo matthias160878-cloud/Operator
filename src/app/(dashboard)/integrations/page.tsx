@@ -1,7 +1,10 @@
 import { ExternalLink } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { headers } from "next/headers";
 import clsx from "clsx";
-import { getAllIntegrationStatuses } from "@/lib/integrations/registry";
+import { INTEGRATIONS, getAllIntegrationStatuses } from "@/lib/integrations/registry";
+import { buildSetupGuide } from "@/lib/integrations/setup";
+import { SetupGuide } from "@/components/integrations/SetupGuide";
 import {
   API_KEY_SIGNUP_LINKS,
   RENDER_ENV_DASHBOARD_URL,
@@ -32,6 +35,13 @@ export default async function IntegrationsPage() {
   };
   const ti = await getTranslations("common.integrationStatus");
   const statuses = await getAllIntegrationStatuses(ti);
+
+  // Eigene Domain für die Redirect-URLs der OAuth-Plattformen (hinter Render/Proxy).
+  const h = await headers();
+  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
+  const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+  const origin = `${proto}://${host}`;
+  const definitions = new Map(INTEGRATIONS.map((def) => [def.key, def]));
   const byCategory = new Map<IntegrationCategory, typeof statuses>();
   for (const s of statuses) {
     const list = byCategory.get(s.category) ?? [];
@@ -54,12 +64,13 @@ export default async function IntegrationsPage() {
             {items.map((integ) => {
               const signupUrl = API_KEY_SIGNUP_LINKS[integ.key];
               const pricing = INTEGRATION_PRICING[integ.key];
+              const def = definitions.get(integ.key);
               return (
                 <div
                   key={integ.key}
-                  className="flex flex-col gap-1 rounded-lg border border-border bg-surface-2 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between"
+                  className="flex flex-col gap-1 rounded-lg border border-border bg-surface-2 px-3 py-2.5 sm:flex-row sm:items-start sm:justify-between"
                 >
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
                       <span className="text-sm text-foreground">{integ.name}</span>
                       {pricing && (
@@ -106,6 +117,13 @@ export default async function IntegrationsPage() {
                         </a>
                       )}
                     </div>
+                    {def && (
+                      <SetupGuide
+                        guide={buildSetupGuide(def, origin)}
+                        portalUrl={signupUrl}
+                        envDashboardUrl={RENDER_ENV_DASHBOARD_URL}
+                      />
+                    )}
                   </div>
                   <StatusBadge status={integ.status} />
                 </div>

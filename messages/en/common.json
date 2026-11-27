@@ -84,7 +84,9 @@
     "verifyFailedGeneric": "Connection failed.",
     "verifyFailedStatus": "{service} responded with status {status}.",
     "verifyUnreachable": "{service} could not be reached.",
-    "connected": "Connected."
+    "connected": "Connected.",
+    "credentialsPresent": "Credentials set (no test call possible).",
+    "credentialsPresentOauth": "App credentials set — “Connect” under Social Media shows whether they work."
   },
   "mediaPreview": {
     "expand": "View larger",

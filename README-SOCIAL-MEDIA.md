@@ -38,11 +38,24 @@ Hooks, Hashtags, Untertiteln, Voiceover-Anbindung und Publishing-Workflow.
 
 ```bash
 npm install
-cp .env.example .env      # DATABASE_URL ist der einzige Pflichtwert, Rest optional
-npx prisma db push        # legt prisma/dev.db (SQLite) gemäß Schema an
-npm run db:seed           # optional: realistische Demo-Daten für das Dashboard
-npm run dev                # http://localhost:3000
+npm run setup             # legt .env an, erzeugt TOKEN_ENCRYPTION_KEY/NEXTAUTH_SECRET,
+                          # synchronisiert die Datenbank, druckt die Redirect-URLs
+npm run dev               # http://localhost:3000
 ```
+
+`npm run setup` fragt nur nach Demo-Daten und der App-Adresse, überschreibt
+eine vorhandene `.env` nie und ist beliebig oft wiederholbar (Optionen:
+`--yes`, `--seed`/`--no-seed`, `--skip-db`, `--url=https://…`). Von Hand
+entspricht das: `cp .env.example .env`, `npx prisma db push`, optional
+`npm run db:seed`.
+
+Danach zeigt die Seite **Integrationen** je Dienst einen aufklappbaren
+Bereich **„Einrichten“**: welche Variablen gesetzt sind oder fehlen (nur
+Namen, nie Werte), die kopierfertige Redirect-URL für die eigene Domain, der
+Link ins Entwicklerportal und ein Knopf **„Verbindung prüfen“**. Der Prüfknopf
+macht bei Anthropic, OpenAI und ElevenLabs einen leichten Testaufruf; bei den
+Social-Plattformen gibt es ohne Nutzer-Login keinen Test, dort meldet er nur,
+ob die Zugangsdaten und `TOKEN_ENCRYPTION_KEY` vorhanden sind.
 
 Die Anwendung startet vollständig **ohne** externe API-Keys. Jede nicht
 konfigurierte Integration wird im UI (Integrationen, Dashboard, Social Media)
@@ -125,6 +138,11 @@ benötigt, um den Integrationsstatus auf „Verbunden“ zu heben:
 - Instagram/Facebook: Meta for Developers → App anlegen → `INSTAGRAM_CLIENT_ID/SECRET`, `FACEBOOK_APP_ID/SECRET`.
 - TikTok: TikTok for Developers → App anlegen → `TIKTOK_CLIENT_KEY`, `TIKTOK_CLIENT_SECRET`.
 - LinkedIn: LinkedIn Developer Portal → App anlegen → `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`.
+
+**Redirect-URLs:** Jede Plattform muss im Entwicklerportal die Callback-URL
+`<APP_URL>/api/oauth/<PLATTFORM>/callback` kennen. `npm run setup` druckt sie
+alle für die angegebene Adresse; die Seite **Integrationen → Einrichten**
+zeigt sie kopierfertig für die Domain, unter der die App gerade läuft.
 
 **OAuth-Login:** Mit gesetzten App-Zugangsdaten und `TOKEN_ENCRYPTION_KEY`
 startet „Verbinden“ unter **Social Media** den echten OAuth-Flow
@@ -609,7 +627,8 @@ für den Python-Assistenten in `assistant/`.
 - [x] Automatisierte Tests (Vitest, 9 Dateien; CI führt Lint, Typprüfung, Tests und Build aus), siehe [Tests](#tests)
 - [x] Mobile UI funktioniert (responsives Sidebar/Topbar-Layout mit mobilem Menü)
 - [x] README vorhanden (dieses Dokument)
-- [x] `.env.example` vorhanden
+- [x] `.env.example` vorhanden; `npm run setup` richtet `.env`, Geheimnisse und Datenbank ein
+- [x] Setup-Assistent und „Verbindung prüfen“ auf der Integrationen-Seite
 
 ## Bekannte Grenzen & nächste Schritte
 

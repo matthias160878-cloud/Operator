@@ -20,5 +20,30 @@
     "payAsYouGo": "À l'usage",
     "subscription": "Abonnement",
     "unknown": "Voir le tarif chez le fournisseur"
+  },
+  "setup": {
+    "toggle": "Configurer",
+    "missingCount": "{count} manquante(s)",
+    "envTitle": "Variables d’environnement (noms seulement, les valeurs restent secrètes)",
+    "envSet": "définie",
+    "envMissing": "manquante",
+    "optional": "boîte de réception seulement",
+    "openPortal": "Ouvrir le portail développeur",
+    "openEnvDashboard": "Configurer dans Render",
+    "localHint": "En local : saisissez les valeurs dans .env ou lancez une fois `npm run setup` (génère TOKEN_ENCRYPTION_KEY automatiquement). Redémarrez l’app après modification.",
+    "redirectTitle": "Enregistrez cette URL de redirection dans le portail développeur",
+    "redirectMessaging": "Seconde app pour la boîte de réception (commentaires/messages directs) :",
+    "encryptionNote": "TOKEN_ENCRYPTION_KEY manque encore — sans elle, « Connecter » reste verrouillé.",
+    "connectHint": "Ensuite, cliquez sur « Connecter » dans Réseaux sociaux ; seule cette étape montre si les identifiants sont valides.",
+    "noLiveCheckHint": "Ce service ne peut pas être testé sans connexion utilisateur ; la vérification indique seulement si les variables sont définies.",
+    "copy": "Copier",
+    "copied": "Copié"
+  },
+  "verify": {
+    "button": "Vérifier la connexion",
+    "checking": "Vérification …",
+    "noLiveCheck": "variables seulement",
+    "rateLimited": "Trop de vérifications — patientez {seconds} secondes.",
+    "failed": "Vérification impossible."
   }
 }

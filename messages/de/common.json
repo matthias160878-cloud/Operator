@@ -84,7 +84,9 @@
     "verifyFailedGeneric": "Verbindung fehlgeschlagen.",
     "verifyFailedStatus": "{service} antwortete mit Status {status}.",
     "verifyUnreachable": "{service} konnte nicht erreicht werden.",
-    "connected": "Verbunden."
+    "connected": "Verbunden.",
+    "credentialsPresent": "Zugangsdaten gesetzt (kein Testaufruf möglich).",
+    "credentialsPresentOauth": "App-Zugangsdaten gesetzt — ob sie stimmen, zeigt „Verbinden“ unter Social Media."
   },
   "mediaPreview": {
     "expand": "Größer anzeigen",

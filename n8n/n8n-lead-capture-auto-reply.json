@@ -1,0 +1,106 @@
+{
+  "name": "Lead Capture & Auto-Reply",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "new-lead",
+        "options": {}
+      },
+      "id": "a1f0c1d2-0001-4a00-8000-000000000001",
+      "name": "Webhook (New Lead)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "a1f0c1d2-1111-4a00-8000-00000000aaaa"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "f1", "name": "name", "value": "={{ $json.body.name }}", "type": "string" },
+            { "id": "f2", "name": "email", "value": "={{ $json.body.email }}", "type": "string" },
+            { "id": "f3", "name": "message", "value": "={{ $json.body.message }}", "type": "string" },
+            { "id": "f4", "name": "receivedAt", "value": "={{ $now.toISO() }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1f0c1d2-0002-4a00-8000-000000000002",
+      "name": "Edit Fields (Set Data)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "resource": "text",
+        "operation": "response",
+        "modelId": { "__rl": true, "value": "gpt-4o-mini", "mode": "list", "cachedResultName": "gpt-4o-mini" },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Du bist ein freundlicher Assistent. Schreibe eine kurze, persönliche Antwort-E-Mail (max. 120 Wörter) auf die Anfrage eines neuen Leads. Bedanke dich, gehe auf die Nachricht ein und nenne als nächsten Schritt einen Rückruf innerhalb von 24 Stunden. Nur den E-Mail-Text ausgeben, ohne Betreff."
+            },
+            {
+              "content": "=Name: {{ $json.name }}\nNachricht: {{ $json.message }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1f0c1d2-0003-4a00-8000-000000000003",
+      "name": "OpenAI (Write Reply)",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [480, 0]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Edit Fields (Set Data)').item.json.email }}",
+        "subject": "Danke für deine Anfrage",
+        "message": "={{ $json.output[0].content[0].text }}",
+        "options": { "appendAttribution": false }
+      },
+      "id": "a1f0c1d2-0004-4a00-8000-000000000004",
+      "name": "Gmail (Send Email)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [720, 0],
+      "webhookId": "a1f0c1d2-2222-4a00-8000-00000000bbbb"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "value": "", "mode": "id" },
+        "sheetName": { "__rl": true, "value": "Leads", "mode": "name" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('Edit Fields (Set Data)').item.json.name }}",
+            "E-Mail": "={{ $('Edit Fields (Set Data)').item.json.email }}",
+            "Nachricht": "={{ $('Edit Fields (Set Data)').item.json.message }}",
+            "Eingegangen": "={{ $('Edit Fields (Set Data)').item.json.receivedAt }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "id": "a1f0c1d2-0005-4a00-8000-000000000005",
+      "name": "Google Sheets (Save Lead)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [960, 0]
+    }
+  ],
+  "connections": {
+    "Webhook (New Lead)": { "main": [[{ "node": "Edit Fields (Set Data)", "type": "main", "index": 0 }]] },
+    "Edit Fields (Set Data)": { "main": [[{ "node": "OpenAI (Write Reply)", "type": "main", "index": 0 }]] },
+    "OpenAI (Write Reply)": { "main": [[{ "node": "Gmail (Send Email)", "type": "main", "index": 0 }]] },
+    "Gmail (Send Email)": { "main": [[{ "node": "Google Sheets (Save Lead)", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {}
+}

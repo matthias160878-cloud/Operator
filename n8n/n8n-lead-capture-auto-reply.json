@@ -1,4 +1,5 @@
 {
+  "id": "leadCaptureAutoReply01",
   "name": "Lead Capture & Auto-Reply",
   "nodes": [
     {
@@ -11,17 +12,40 @@
       "name": "Webhook (New Lead)",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [0, 0],
+      "position": [
+        0,
+        0
+      ],
       "webhookId": "a1f0c1d2-1111-4a00-8000-00000000aaaa"
     },
     {
       "parameters": {
         "assignments": {
           "assignments": [
-            { "id": "f1", "name": "name", "value": "={{ $json.body.name }}", "type": "string" },
-            { "id": "f2", "name": "email", "value": "={{ $json.body.email }}", "type": "string" },
-            { "id": "f3", "name": "message", "value": "={{ $json.body.message }}", "type": "string" },
-            { "id": "f4", "name": "receivedAt", "value": "={{ $now.toISO() }}", "type": "string" }
+            {
+              "id": "f1",
+              "name": "name",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "f2",
+              "name": "email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "f3",
+              "name": "message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "f4",
+              "name": "receivedAt",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
           ]
         },
         "options": {}
@@ -30,13 +54,21 @@
       "name": "Edit Fields (Set Data)",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [240, 0]
+      "position": [
+        240,
+        0
+      ]
     },
     {
       "parameters": {
         "resource": "text",
         "operation": "response",
-        "modelId": { "__rl": true, "value": "gpt-4o-mini", "mode": "list", "cachedResultName": "gpt-4o-mini" },
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
         "responses": {
           "values": [
             {
@@ -54,27 +86,43 @@
       "name": "OpenAI (Write Reply)",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
-      "position": [480, 0]
+      "position": [
+        480,
+        0
+      ]
     },
     {
       "parameters": {
         "sendTo": "={{ $('Edit Fields (Set Data)').item.json.email }}",
         "subject": "Danke für deine Anfrage",
         "message": "={{ $json.output[0].content[0].text }}",
-        "options": { "appendAttribution": false }
+        "options": {
+          "appendAttribution": false
+        }
       },
       "id": "a1f0c1d2-0004-4a00-8000-000000000004",
       "name": "Gmail (Send Email)",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
-      "position": [720, 0],
+      "position": [
+        720,
+        0
+      ],
       "webhookId": "a1f0c1d2-2222-4a00-8000-00000000bbbb"
     },
     {
       "parameters": {
         "operation": "append",
-        "documentId": { "__rl": true, "value": "", "mode": "id" },
-        "sheetName": { "__rl": true, "value": "Leads", "mode": "name" },
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
@@ -92,15 +140,60 @@
       "name": "Google Sheets (Save Lead)",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
-      "position": [960, 0]
+      "position": [
+        960,
+        0
+      ]
     }
   ],
   "connections": {
-    "Webhook (New Lead)": { "main": [[{ "node": "Edit Fields (Set Data)", "type": "main", "index": 0 }]] },
-    "Edit Fields (Set Data)": { "main": [[{ "node": "OpenAI (Write Reply)", "type": "main", "index": 0 }]] },
-    "OpenAI (Write Reply)": { "main": [[{ "node": "Gmail (Send Email)", "type": "main", "index": 0 }]] },
-    "Gmail (Send Email)": { "main": [[{ "node": "Google Sheets (Save Lead)", "type": "main", "index": 0 }]] }
+    "Webhook (New Lead)": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields (Set Data)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields (Set Data)": {
+      "main": [
+        [
+          {
+            "node": "OpenAI (Write Reply)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI (Write Reply)": {
+      "main": [
+        [
+          {
+            "node": "Gmail (Send Email)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail (Send Email)": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets (Save Lead)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
   },
-  "settings": { "executionOrder": "v1" },
+  "settings": {
+    "executionOrder": "v1"
+  },
   "pinData": {}
 }
